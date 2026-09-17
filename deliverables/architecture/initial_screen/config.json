@@ -1,0 +1,29 @@
+{
+  "model_kind": "algebraic_requirements_screen_not_circuit_simulation",
+  "reference_hz": 24000000,
+  "k_min": 9,
+  "k_max": 41,
+  "frequency_groups": [
+    {"k_min": 9, "k_max": 9, "m": 14},
+    {"k_min": 10, "k_max": 11, "m": 12},
+    {"k_min": 12, "k_max": 13, "m": 10},
+    {"k_min": 14, "k_max": 18, "m": 8},
+    {"k_min": 19, "k_max": 27, "m": 6},
+    {"k_min": 28, "k_max": 41, "m": 4}
+  ],
+  "vco_min_hz": 2688000000,
+  "vco_max_hz": 3936000000,
+  "jitter_limit_s": 2e-13,
+  "spur_limit_dbc": -60,
+  "supply_v": 1.2,
+  "power_limit_w": 0.004,
+  "area_limit_mm2": 0.3,
+  "hypotheses": {
+    "integration_low_hz": 10000,
+    "integration_fixed_high_hz": 10000000,
+    "integration_alternative_high": "fout/2",
+    "tank_inductance_sweep_nh": [2, 3, 4, 5],
+    "closed_loop_reference_contribution_sweep_fs": [50, 100, 150, 180, 200],
+    "output_chain_contribution_sweep_fs": [0, 50, 80, 100]
+  }
+}

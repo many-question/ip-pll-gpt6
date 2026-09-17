@@ -1,0 +1,302 @@
+{
+  "schema": "chip-report/0.1",
+  "report": {
+    "seq": 1,
+    "time": "2026-09-17T20:57:59+08:00",
+    "trigger": "requested",
+    "covers_since": null
+  },
+  "overall": {
+    "phase": "研究启动与首轮可行性筛查",
+    "summary": "已完整阅读项目约定，核验本地及指定服务器状态，记录已确认功耗/面积边界。33 点规划通过算术检查；固定 L 总电容比 2.144 且无 PVT 余量；分频不降低同偏移带宽内的输入时间抖动。文献支持研究路线，暂无本项目电路或仿真性能证据。",
+    "since_last": [],
+    "route_confidence": "low",
+    "route_confidence_reason": "同节点有相关实测先例，但本项目的 1.2 V、24 MHz 参考、宽调谐和输出链预算未验证，积分范围与参考条件待定。"
+  },
+  "levels": {
+    "survey": {
+      "maturity": 2,
+      "note": "核实三篇一手论文及测试条件；没有系统性穷尽综述。",
+      "artifacts": [
+        "share/deliverables/sources/initial_sources.md"
+      ]
+    },
+    "modeling": {
+      "maturity": 1,
+      "note": "可重跑算术模型与预算情景；无闭环、采样或电路模型。",
+      "artifacts": [
+        "share/deliverables/architecture/initial_screen/README.md",
+        "share/deliverables/architecture/initial_screen/calculate.py",
+        "share/deliverables/architecture/initial_screen/results.json"
+      ]
+    },
+    "architecture": {
+      "maturity": 2,
+      "note": "保留现有基线，形成可复查的频率及预算筛查；未冻结。",
+      "artifacts": [
+        "share/deliverables/architecture/initial_screen/README.md",
+        "share/deliverables/spec/startup_status.md"
+      ]
+    },
+    "blocks": [
+      {
+        "name": "reference_buffer",
+        "role": "24 MHz 参考整形",
+        "stage": "concept",
+        "maturity": 1,
+        "note": "参考幅度、边沿与噪声未知；暂无电路。",
+        "artifacts": [
+          "share/deliverables/verification/initial_plan.md"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "subsampling_detector",
+        "role": "直接采样差分 VCO 并鉴相",
+        "stage": "concept",
+        "maturity": 1,
+        "note": "需联合检验采样噪声与周期性 VCO 扰动。",
+        "artifacts": [
+          "share/deliverables/verification/initial_plan.md"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "transconductor_charge_pump",
+        "role": "采样误差转电流及增益控制",
+        "stage": "concept",
+        "maturity": 1,
+        "note": "1.2 V 余量、噪声和电荷注入未验证。",
+        "artifacts": [
+          "share/deliverables/verification/initial_plan.md"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "passive_loop_filter",
+        "role": "环路滤波与稳定性",
+        "stage": "concept",
+        "maturity": 1,
+        "note": "电容面积、带宽和采样稳定性待预算。",
+        "artifacts": [
+          "share/deliverables/verification/initial_plan.md"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "lc_vco_and_cap_bank",
+        "role": "2.688–3.936 GHz 振荡、粗调和模拟细调",
+        "stage": "concept",
+        "maturity": 1,
+        "note": "固定 L 总电容比估算 2.144，未含 PVT；暂无 PDK 电路。",
+        "artifacts": [
+          "share/deliverables/verification/initial_plan.md"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "auxiliary_fll",
+        "role": "启动捕获和正确谐波选择",
+        "stage": "concept",
+        "maturity": 1,
+        "note": "关闭与唤醒策略、启动峰值和锁定时间待定义。",
+        "artifacts": [
+          "share/deliverables/verification/initial_plan.md"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "programmable_even_divider",
+        "role": "÷4/6/8/10/12/14 对称半周期分频",
+        "stage": "concept",
+        "maturity": 1,
+        "note": "频率关系通过算术检查；无 RTL 或电路时序验证。",
+        "artifacts": [
+          "share/deliverables/verification/initial_plan.md"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "output_retimer",
+        "role": "利用 VCO 派生时钟重定时",
+        "stage": "concept",
+        "maturity": 1,
+        "note": "需验证建立/保持及自身噪声；不能消除 VCO 共同抖动。",
+        "artifacts": [
+          "share/deliverables/verification/initial_plan.md"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "output_buffer",
+        "role": "驱动片内轻负载",
+        "stage": "concept",
+        "maturity": 1,
+        "note": "负载电容、摆幅和占空比容差待确认。",
+        "artifacts": [
+          "share/deliverables/verification/initial_plan.md"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "bias_and_control",
+        "role": "偏置、频点配置及状态控制",
+        "stage": "concept",
+        "maturity": 1,
+        "note": "计入总功耗；没有实现或接口定义。",
+        "artifacts": [
+          "share/deliverables/verification/initial_plan.md"
+        ],
+        "blockers": []
+      }
+    ],
+    "verification": {
+      "maturity": 1,
+      "note": "已形成实验计划、算术断言和理想相位/时间恒等式检查；无 PVT/统计/后仿真。",
+      "artifacts": [
+        "share/deliverables/verification/initial_plan.md",
+        "share/deliverables/architecture/initial_screen/README.md"
+      ]
+    },
+    "integration": {
+      "maturity": 1,
+      "note": "功耗面积边界已确认；远程有初始化，无顶层/版图/DRC/LVS/PEX。",
+      "artifacts": [
+        "share/deliverables/spec/startup_status.md",
+        "share/reports/decisions/DEC-0001.md"
+      ]
+    }
+  },
+  "spec_status": [
+    {
+      "id": "REQ-01",
+      "current": null,
+      "condition": "服务器项目配置引用 TSMC180/TSMC180MS；未读取或验证器件模型。",
+      "evidence": "none",
+      "status": "unknown",
+      "note": "目标 TSMC 180 nm；需核验 PDK 版本与 RF 器件选项。"
+    },
+    {
+      "id": "REQ-02",
+      "current": null,
+      "condition": "1.2 V 为目标，尚无电路。",
+      "evidence": "none",
+      "status": "at_risk",
+      "note": "低电压下 VCO/采样/高速分频的速度、余量和模型适用性未知。"
+    },
+    {
+      "id": "REQ-03",
+      "current": null,
+      "condition": "仅使用目标参考频率 24 MHz 进行算术规划。",
+      "evidence": "none",
+      "status": "unknown",
+      "note": "准方波幅度、共模、边沿和噪声未约定。"
+    },
+    {
+      "id": "REQ-04",
+      "current": "K=9…41（整数、无量纲）",
+      "condition": "N=KM；33 点精确整数算术，无实际锁相。",
+      "evidence": "estimate",
+      "status": "on_track",
+      "note": "仅验证整数频率关系，不代表捕获和锁定达成。"
+    },
+    {
+      "id": "REQ-05",
+      "current": "216–984 MHz，24 MHz 步进，共 33 点（规划）",
+      "condition": "按 02 表格 M 配置；VCO 2.688–3.936 GHz；无 PVT/电路。",
+      "evidence": "estimate",
+      "status": "on_track",
+      "note": "频率规划自洽，电路覆盖待验证。"
+    },
+    {
+      "id": "REQ-06",
+      "current": null,
+      "condition": "<200 fs、不含 spur；积分范围仍未确认。",
+      "evidence": "estimate",
+      "status": "at_risk",
+      "note": "只有预算扫描，没有噪声预测；理想分频不减少相同偏移带宽的时间抖动。"
+    },
+    {
+      "id": "REQ-07",
+      "current": null,
+      "condition": "<−60 dBc 目标；偏移范围与测量方法待定。",
+      "evidence": "none",
+      "status": "at_risk",
+      "note": "采样扰动与输出链杂散需独立验证，不可混用不同文献的最佳指标。"
+    },
+    {
+      "id": "REQ-08",
+      "current": null,
+      "condition": "DEC-0001：锁定后全部电路 ≤4 mW；启动峰值单列。",
+      "evidence": "estimate",
+      "status": "at_risk",
+      "note": "1.2 V 下总电流边界 3.333 mA；这是目标折算，不是设计耗流。"
+    },
+    {
+      "id": "REQ-09",
+      "current": null,
+      "condition": "DEC-0001：含电感、滤波器、隔离，暂不含 pad，<0.3 mm²。",
+      "evidence": "none",
+      "status": "unknown",
+      "note": "电感和隔离尺寸未取得，无面积评估或版图。"
+    },
+    {
+      "id": "REQ-10",
+      "current": null,
+      "condition": "0–60 °C 为目标，未做温度扫描。",
+      "evidence": "none",
+      "status": "unknown",
+      "note": "需与工艺、电压和负载角落联合验证。"
+    },
+    {
+      "id": "REQ-11",
+      "current": "50%（理想计数）",
+      "condition": "每个输出半周期包含 M/2 个相同 VCO 周期；不含延迟、失配与重定时电路。",
+      "evidence": "estimate",
+      "status": "unknown",
+      "note": "容差未约定，真实占空比尚无证据。"
+    },
+    {
+      "id": "REQ-12",
+      "current": null,
+      "condition": "仅约定片内逻辑门轻负载。",
+      "evidence": "none",
+      "status": "unknown",
+      "note": "负载电容、摆幅、门限和扇出待明确。"
+    }
+  ],
+  "questions_for_human": [
+    {
+      "q": "抖动积分范围和 24 MHz 参考源是否已有约定？当前仅并列候选窗口和参考贡献情景。",
+      "blocking": false,
+      "since": "2026-09-17T20:57:59+08:00",
+      "options": [
+        "尚无约定，先做敏感性分析",
+        "补充已有积分范围及参考源条件"
+      ]
+    },
+    {
+      "q": "后续请补充占空比容差、等效负载、杂散测量范围、电源容差与启动/切频需求。",
+      "blocking": false,
+      "since": "2026-09-17T20:57:59+08:00"
+    }
+  ],
+  "blocked_on": null,
+  "risks": [
+    "VCO 总谐振电容需至少 2.144 倍覆盖，尚无 PVT 和寄生余量。",
+    "1.2 V 下 3.936 GHz 输出链可能占用较大功耗/噪声预算。",
+    "积分带宽与参考源未定义，暂不能验收抖动。",
+    "降低采样扰动、噪声和功耗存在权衡。",
+    "工具/PDK/实际计算主机与 license 尚未完成运行验证。"
+  ],
+  "next_steps": [
+    "确认关键测量口径并完善噪声预算。",
+    "在已指定环境验证 EDA/PDK 与最小仿真。",
+    "优先筛查 VCO 调谐/噪声/功耗及输出链最高速时序。",
+    "建立含采样效应和参考传递的闭环模型，再验证 FLL 捕获与失锁恢复。"
+  ],
+  "decisions_since_last": [
+    "share/reports/decisions/DEC-0001.md"
+  ],
+  "resources_note": "本地标准库算术计算、公开论文检索及只读 SSH 检查；未提交 EDA 仿真或高成本作业。"
+}
