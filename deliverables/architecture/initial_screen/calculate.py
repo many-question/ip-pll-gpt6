@@ -110,10 +110,10 @@ def main():
     write_csv("tank_sweep.csv", tank)
     write_csv("equivalent_noise_limits.csv", noise)
     write_csv("jitter_budget_sensitivity.csv", budgets)
-    (HERE / "results.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+    (HERE / "results.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8", newline="\n")
     files = [p for p in sorted(HERE.iterdir()) if p.suffix in (".json", ".csv", ".py") and p.name != "manifest.json"]
     manifest = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in files}
-    (HERE / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    (HERE / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8", newline="\n")
     print(json.dumps(summary, indent=2))
 
 
