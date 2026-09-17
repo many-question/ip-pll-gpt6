@@ -1,6 +1,13 @@
 # 交付物索引
 
-2026-09-17：已开展首轮研究，完成项目状态核验、一手资料对照及算术筛查；尚无电路、版图或仿真性能结果。
+2026-09-18：已完成首版 Python 系统/行为模型、噪声与资源工作分配及数值交叉验证；得到假设参数下的候选 B。尚无本项目晶体管、PVT 或版图性能结果。
+
+- [系统指标拆解与工作预算 B](spec/system_budget_v1.md)
+- [Python 行为模型、结果、验证及复现入口](architecture/behavioral_v1/README.md)
+- [DEC-0002：先研究随机抖动与 Python 行为模型](../reports/decisions/DEC-0002.md)
+- [本轮建模来源与自有推导](sources/behavioral_sources.md)
+
+初始研究资料：
 
 - [启动状态、目标和待澄清项](spec/startup_status.md)
 - [首轮频率、LC 与抖动预算计算](architecture/initial_screen/README.md)：含输入、Python 脚本、CSV/JSON 结果和 SHA-256。

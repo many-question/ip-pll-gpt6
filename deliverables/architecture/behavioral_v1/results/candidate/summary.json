@@ -1,0 +1,55 @@
+{
+  "selected_candidate": "B (proposal)",
+  "reason": "Kvco /4 and Kpd x4 keep RC and dynamics unchanged; filter resistor time jitter /4; CP ASD x2 assumption; sampler C x2.",
+  "nominal_loop": {
+    "fs": 24000000,
+    "kpd": 2.4e-06,
+    "kv": 125663706.14359173,
+    "r": 22222.22222222222,
+    "c1": 2.8647889756541167e-11,
+    "c2": 1.9098593171027444e-12,
+    "duty": 0.05,
+    "delay": 0.05,
+    "latency": 0
+  },
+  "worst_wide": {
+    "k": 28,
+    "m": 4,
+    "n": 112,
+    "fout_hz": 672000000,
+    "fvco_hz": 2688000000,
+    "method": "hybrid",
+    "design_crossover_hz": 1000000,
+    "window": "10k_to_fout_over_2",
+    "high_hz": 336000000.0,
+    "reference_fs": 59.55094770026662,
+    "reference_buffer_fs": 36.72859596298798,
+    "sampler_fs": 28.575930984839882,
+    "charge_pump_fs": 18.122326389926044,
+    "retimer_fs": 36.660060010861955,
+    "output_buffer_fs": 36.660060010861955,
+    "vco_fs": 129.18805381897263,
+    "filter_resistor_fs": 27.751141803909768,
+    "total_fs": 161.8267802305914,
+    "below_200fs_in_hypothesis": true
+  },
+  "worst_fixed_fs": 148.98091415181926,
+  "worst_full_predivider_variance_screen_fs": 172.89643285192756,
+  "validation_all_passed": true,
+  "working_allocation_B_rss_fs": 175.9261208575918,
+  "gain_delay_scenarios": 18,
+  "gain_delay_unstable_cases": 1,
+  "gain_delay_stable_cases_above_200fs": 7,
+  "provisional_blocks_above_allocation": [
+    "vco",
+    "retimer",
+    "output_buffer"
+  ],
+  "not_demonstrated": [
+    "PDK-realizable gain/noise/power/area",
+    "Fine tuning linearity and PVT overlap",
+    "Synchronous divider cyclostationary edge aliasing",
+    "Full FLL startup",
+    "Spur"
+  ]
+}

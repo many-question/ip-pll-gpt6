@@ -1,0 +1,191 @@
+{
+  "model_version": "sspll-behavioral/1.0",
+  "parameter_status": "HYPOTHESIS: all circuit and noise parameters are research inputs, not extracted PDK data",
+  "reference_hz": 24000000,
+  "frequency_groups": [
+    [
+      9,
+      9,
+      14
+    ],
+    [
+      10,
+      11,
+      12
+    ],
+    [
+      12,
+      13,
+      10
+    ],
+    [
+      14,
+      18,
+      8
+    ],
+    [
+      19,
+      27,
+      6
+    ],
+    [
+      28,
+      41,
+      4
+    ]
+  ],
+  "loop": {
+    "crossover_hz": 1000000,
+    "zero_to_crossover_ratio": 0.25,
+    "pole_to_crossover_ratio": 4,
+    "kpd_average_a_per_rad": 6e-07,
+    "kvco_hz_per_v": 80000000,
+    "pulse_duty": 0.05,
+    "pulse_delay_cycles": 0.05,
+    "extra_delay_cycles": 0,
+    "temperature_c": 27,
+    "control_voltage_deviation_limit_v": 0.4
+  },
+  "noise": {
+    "reference_time_asd_as_per_sqrt_hz": 40,
+    "reference_flicker_corner_hz": 10000,
+    "reference_buffer_time_asd_as_per_sqrt_hz": 25,
+    "sampling_capacitance_each_f": 2e-14,
+    "detector_differential_slope_v_per_rad": 0.4,
+    "cp_period_average_current_asd_a_per_sqrt_hz": 2.5e-13,
+    "vco_close_in_l1mhz_dbc_hz": -120,
+    "vco_flicker_corner_hz": 100000,
+    "vco_white_floor_dbc_hz": -155,
+    "analog_noise_cutoff_hz": 2000000000,
+    "source_regularization_hz": 10,
+    "retimer_time_asd_as_per_sqrt_hz": 2,
+    "output_buffer_time_asd_as_per_sqrt_hz": 2
+  },
+  "sweeps": {
+    "crossover_hz": [
+      200000,
+      400000,
+      600000,
+      800000,
+      1000000,
+      1200000,
+      1600000,
+      2400000,
+      4000000
+    ],
+    "vco_l1mhz_dbc_hz": [
+      -125,
+      -120,
+      -115,
+      -110
+    ],
+    "reference_asd_as_per_sqrt_hz": [
+      20,
+      40,
+      80,
+      120
+    ],
+    "gain_scale": [
+      0.5,
+      0.75,
+      1,
+      1.5,
+      2
+    ],
+    "extra_delay_cycles": [
+      0,
+      1
+    ],
+    "temperature_c": [
+      0,
+      27,
+      60
+    ],
+    "capacitor_density_ff_per_um2": [
+      1,
+      1.5,
+      2
+    ]
+  },
+  "integration": {
+    "low_hz": 10000,
+    "fixed_high_hz": 10000000,
+    "wide_high_rule": "fout/2",
+    "grid_points": 6000
+  },
+  "allocation": {
+    "jitter_budget_fs": {
+      "reference": 65,
+      "reference_buffer": 45,
+      "sampler": 30,
+      "charge_pump": 45,
+      "filter_resistor": 30,
+      "vco": 125,
+      "retimer": 40,
+      "output_buffer": 40
+    },
+    "power_mw": {
+      "vco": 1.8,
+      "reference_buffer": 0.25,
+      "sampler_and_cp": 0.3,
+      "filter": 0,
+      "fll_control_locked": 0.05,
+      "divider": 0.6,
+      "retimer": 0.25,
+      "output_buffer": 0.15,
+      "bias": 0.1
+    },
+    "area_mm2": {
+      "vco_and_tank": 0.15,
+      "reference_buffer": 0.01,
+      "sampler_and_cp": 0.015,
+      "filter": 0.04,
+      "fll_control": 0.015,
+      "divider": 0.015,
+      "retimer": 0.005,
+      "output_buffer": 0.005,
+      "bias": 0.005,
+      "routing_isolation": 0.02
+    },
+    "capacitor_area_overhead_factor": 1.2
+  },
+  "transient": {
+    "samples": 2400,
+    "phase_initial_rad": [
+      0,
+      0.5,
+      1.5,
+      2.8
+    ],
+    "frequency_error_hz": [
+      -4000000,
+      -1000000,
+      0,
+      1000000,
+      4000000,
+      24000000
+    ],
+    "phase_tolerance_rad": 0.01,
+    "frequency_tolerance_hz": 1000
+  },
+  "retiming": {
+    "events": 16384,
+    "vco_duty_sweep": [
+      0.4,
+      0.5,
+      0.6
+    ],
+    "logic_delay_ps": 50,
+    "logic_jitter_ps": 3,
+    "setup_ps": 20,
+    "hold_ps": 10,
+    "clock_buffer_jitter_fs": 35,
+    "clkq_jitter_fs": 35,
+    "output_buffer_jitter_fs": 30,
+    "common_timing_rms_fs": 150,
+    "common_timing_test_frequency_hz": 170000,
+    "rise_fall_skew_ps": 4,
+    "stress_logic_delay_ps": 110
+  },
+  "seed": 17092026
+}

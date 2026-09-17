@@ -1,0 +1,117 @@
+{
+  "checks": [
+    {
+      "name": "RC nodal-state plant agrees with impedance formula",
+      "observed": 3.204186122342192e-14,
+      "limit": 1e-09,
+      "passed": true
+    },
+    {
+      "name": "Synthesized continuous crossover has unity loop gain",
+      "observed": 1.1102230246251565e-16,
+      "limit": 1e-10,
+      "passed": true
+    },
+    {
+      "name": "Fast-sampling limit approaches continuous transfer",
+      "observed": 0.001089098128665357,
+      "limit": 0.015,
+      "passed": true
+    },
+    {
+      "name": "Nominal exact sampled loop is stable",
+      "observed": 0.9066796535243451,
+      "limit": 1,
+      "passed": true
+    },
+    {
+      "name": "One-sided sampled PSD integral matches Lyapunov variance",
+      "observed": 6.661338147750939e-16,
+      "limit": 0.0001,
+      "passed": true
+    },
+    {
+      "name": "Four seeded white-noise runs match exact sampled variance",
+      "observed": 0.0008837178304389459,
+      "limit": 0.03,
+      "passed": true
+    },
+    {
+      "name": "Physical resistor Langevin covariance matches folded analog PSD",
+      "observed": 2.0670971181413478e-06,
+      "limit": 0.005,
+      "passed": true
+    },
+    {
+      "name": "White VCO frequency-noise covariance matches folded analog PSD",
+      "observed": 0.0002742402291593393,
+      "limit": 0.005,
+      "passed": true
+    },
+    {
+      "name": "Oversampled pulse impulse FFT matches baseband and images",
+      "observed": 1.8238179190998544e-05,
+      "limit": 0.02,
+      "passed": true
+    },
+    {
+      "name": "Sine detector converges to small-signal state trajectory",
+      "observed": 6.173345526178791e-12,
+      "limit": 1e-07,
+      "passed": true
+    },
+    {
+      "name": "Main sampler alone cannot reject adjacent reference harmonic",
+      "observed": 24000000.00000002,
+      "limit": 24000000,
+      "passed": true
+    },
+    {
+      "name": "Retimer preserves shared VCO time error",
+      "observed": 1.0019079324915512,
+      "limit": "1 +/- 0.03",
+      "passed": true
+    },
+    {
+      "name": "Retimer rejects setup-violating scenario",
+      "observed": 16384,
+      "limit": ">0 and no output jitter claim",
+      "passed": true
+    }
+  ],
+  "all_passed": true,
+  "stochastic_reference": {
+    "samples_per_seed": 524288,
+    "burn_in": 4096,
+    "seeds": 4,
+    "sample_phase_variance": 1e-08,
+    "exact_output_phase_variance": 1.8624071423300293e-09,
+    "simulated_output_phase_variances": [
+      1.8609085666993345e-09,
+      1.867635492743127e-09,
+      1.8615840574667072e-09,
+      1.8529170828140927e-09
+    ]
+  },
+  "physical_analog_noise_crosscheck": {
+    "resistor_time_domain_variance": 2.196753729546734e-07,
+    "resistor_harmonic_spectrum_variance": 2.1967582704500376e-07,
+    "vco_time_domain_variance": 4.2729645819858555e-06,
+    "vco_harmonic_spectrum_variance": 4.271792763199702e-06
+  },
+  "impulse_comparison": {
+    "cycles": 4096,
+    "samples_per_cycle": 128,
+    "frequency_hz": [
+      52734.375,
+      199218.75,
+      498046.875,
+      1001953.125,
+      1998046.875,
+      4998046.875,
+      24498046.875,
+      49001953.125
+    ],
+    "relative_complex_error_max": 1.8238179190998544e-05
+  }
+}

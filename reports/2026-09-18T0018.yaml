@@ -1,0 +1,318 @@
+{
+  "schema": "chip-report/0.1",
+  "report": {
+    "seq": 2,
+    "time": "2026-09-18T00:18:37+08:00",
+    "trigger": "proactive",
+    "covers_since": "2026-09-17T20:57:59+08:00"
+  },
+  "overall": {
+    "phase": "系统指标工作分配与 Python 行为建模验证",
+    "summary": "已建立连续与精确矩形脉冲采样主环、含模拟噪声反馈混叠的周期平均 PSD、非线性局部捕获及分频重定时边沿模型。假设参数下 A 最差宽窗口 198.85 fs；识别滤波电阻 111.0 fs 瓶颈后，候选 B 为 161.83 fs。B 以低 Kvco/高 Kpd 和更细粗调换取噪声余量；增益/延迟扫描仍有失稳及超标。无电路、完整 FLL 或 PVT 达标结论。",
+    "since_last": [
+      "记录人类要求先以 Python 建模、随机抖动暂不计 spur，及服务器环境可用的信息。",
+      "建立可复跑模型、33 点噪声拆分及功耗/面积工作分配。",
+      "基线 15 项、候选 13 项数值交叉检查通过，含独立连续随机协方差验证。",
+      "形成候选 B：Kvco=20 MHz/V、Kpd=2.4 µA/rad、采样电容每侧 40 fF；全频点工作 RSS 预算 175.93 fs。",
+      "保存增益/延迟失稳、噪声超标、错误谐波及重定时 setup 失败情景。",
+      "等电容粗调步长估算显示本候选名义需至少 177 码/8 bit，未含 PVT。"
+    ],
+    "route_confidence": "medium",
+    "route_confidence_reason": "在明示假设下已得到有噪声余量的系统候选并通过跨方法数值检查；置信度仅针对继续研究路线，参数、功耗面积和同步边沿噪声仍需工艺验证。"
+  },
+  "levels": {
+    "survey": {
+      "maturity": 2,
+      "note": "沿用一手 PLL 来源，补充数值工具官方文档，区分文献与自有推导。",
+      "artifacts": [
+        "share/deliverables/sources/behavioral_sources.md"
+      ]
+    },
+    "modeling": {
+      "maturity": 3,
+      "note": "假设参数下的关键噪声/状态结论已由谱积分、协方差、随机时域和脉冲 FFT 交叉验证；完整 FLL、同步边沿周期平稳噪声仍缺失。",
+      "artifacts": [
+        "share/deliverables/architecture/behavioral_v1/README.md",
+        "share/deliverables/architecture/behavioral_v1/results/baseline/validation.json",
+        "share/deliverables/architecture/behavioral_v1/results/candidate/candidate_B_validation.json"
+      ]
+    },
+    "architecture": {
+      "maturity": 2,
+      "note": "保留架构基线，提出 B 的块级工作预算，不冻结。",
+      "artifacts": [
+        "share/deliverables/spec/system_budget_v1.md",
+        "share/deliverables/architecture/behavioral_v1/results/candidate/summary.json"
+      ]
+    },
+    "blocks": [
+      {
+        "name": "reference_buffer",
+        "role": "24 MHz 参考整形",
+        "stage": "behavioral",
+        "maturity": 1,
+        "note": "以采样后等效时间 PSD 建模；幅度、边沿与真实源相噪待提供。",
+        "artifacts": [
+          "share/deliverables/architecture/behavioral_v1/README.md",
+          "share/deliverables/spec/system_budget_v1.md"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "subsampling_detector",
+        "role": "直接采样差分 VCO 并鉴相",
+        "stage": "behavioral",
+        "maturity": 2,
+        "note": "正弦鉴相和两侧 kT/C 模型；B 每侧 40 fF、斜率 0.4 V/rad 为假设。",
+        "artifacts": [
+          "share/deliverables/architecture/behavioral_v1/README.md",
+          "share/deliverables/spec/system_budget_v1.md"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "transconductor_charge_pump",
+        "role": "采样误差转电流及增益控制",
+        "stage": "behavioral",
+        "maturity": 2,
+        "note": "显式脉冲宽度/延迟与周期平均增益、等效电流噪声模型；未实现晶体管脉冲噪声。",
+        "artifacts": [
+          "share/deliverables/architecture/behavioral_v1/README.md",
+          "share/deliverables/spec/system_budget_v1.md"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "passive_loop_filter",
+        "role": "环路滤波与稳定性",
+        "stage": "behavioral",
+        "maturity": 3,
+        "note": "节点方程、阻抗和热噪声经独立随机协方差校验；发现初始预算不足并形成调整候选。",
+        "artifacts": [
+          "share/deliverables/architecture/behavioral_v1/README.md",
+          "share/deliverables/spec/system_budget_v1.md"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "lc_vco_and_cap_bank",
+        "role": "2.688–3.936 GHz 振荡、粗调和模拟细调",
+        "stage": "behavioral",
+        "maturity": 2,
+        "note": "用线性 Kvco 和 1/f³、1/f²、白底相噪模型；粗调仅覆盖/码数估算，无器件实现。",
+        "artifacts": [
+          "share/deliverables/architecture/behavioral_v1/README.md",
+          "share/deliverables/spec/system_budget_v1.md"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "auxiliary_fll",
+        "role": "启动捕获和正确谐波选择",
+        "stage": "concept",
+        "maturity": 1,
+        "note": "保存相邻参考谐波假锁反例，未实现 FLL 或粗调控制。",
+        "artifacts": [
+          "share/deliverables/architecture/behavioral_v1/README.md",
+          "share/deliverables/spec/system_budget_v1.md"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "programmable_even_divider",
+        "role": "÷4/6/8/10/12/14 对称半周期分频",
+        "stage": "behavioral",
+        "maturity": 2,
+        "note": "全部 33 点边沿计数和对称半周期；尚无 RTL 和实际门延迟。",
+        "artifacts": [
+          "share/deliverables/architecture/behavioral_v1/README.md",
+          "share/deliverables/spec/system_budget_v1.md"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "output_retimer",
+        "role": "利用 VCO 派生时钟重定时",
+        "stage": "behavioral",
+        "maturity": 2,
+        "note": "覆盖名义及 setup 失败；验证保留共同 VCO 时间误差；原始 TIE 不混作积分抖动。",
+        "artifacts": [
+          "share/deliverables/architecture/behavioral_v1/README.md",
+          "share/deliverables/spec/system_budget_v1.md"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "output_buffer",
+        "role": "驱动片内轻负载",
+        "stage": "behavioral",
+        "maturity": 1,
+        "note": "以等效噪声底和边沿延迟建模，具体负载尚未定义。",
+        "artifacts": [
+          "share/deliverables/architecture/behavioral_v1/README.md",
+          "share/deliverables/spec/system_budget_v1.md"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "bias_and_control",
+        "role": "偏置、频点配置及状态控制",
+        "stage": "concept",
+        "maturity": 1,
+        "note": "功耗/面积预算占位，暂无电路/控制实现。",
+        "artifacts": [
+          "share/deliverables/architecture/behavioral_v1/README.md",
+          "share/deliverables/spec/system_budget_v1.md"
+        ],
+        "blockers": []
+      }
+    ],
+    "verification": {
+      "maturity": 2,
+      "note": "完成行为级参数扫描及负例；不是 PVT、Monte Carlo 工艺统计或签核。",
+      "artifacts": [
+        "share/deliverables/architecture/behavioral_v1/results/baseline/validation.json",
+        "share/deliverables/architecture/behavioral_v1/results/baseline/stability_sweep.csv",
+        "share/deliverables/architecture/behavioral_v1/results/candidate/candidate_B_gain_delay_sensitivity.csv",
+        "share/deliverables/architecture/behavioral_v1/results/baseline/retiming.csv"
+      ]
+    },
+    "integration": {
+      "maturity": 1,
+      "note": "锁定后功耗工作分配 3.50 mW，含隔离面积分配 0.280 mm²；均非实际估计/提取。用户确认服务器及仿真环境可用，本轮只运行本地 Python。",
+      "artifacts": [
+        "share/deliverables/spec/system_budget_v1.md",
+        "share/reports/decisions/DEC-0002.md"
+      ]
+    }
+  },
+  "spec_status": [
+    {
+      "id": "REQ-01",
+      "current": null,
+      "condition": "用户确认服务器/仿真环境可用；本轮无 PDK 电路。",
+      "evidence": "none",
+      "status": "unknown",
+      "note": "Python 模型不证明工艺可实现性。"
+    },
+    {
+      "id": "REQ-02",
+      "current": null,
+      "condition": "1.2 V 目标；行为参数未由器件验证。",
+      "evidence": "none",
+      "status": "at_risk",
+      "note": "Vtune 假设 0.8 V 可用范围，非实际电压余量结论。"
+    },
+    {
+      "id": "REQ-03",
+      "current": "24 MHz（模型参考频率）",
+      "condition": "采样后参考 PSD 白底 40 as/√Hz、1/f 转折 10 kHz 均为假设。",
+      "evidence": "behavioral_sim",
+      "status": "unknown",
+      "note": "实际准方波幅度/共模/边沿/相噪未定义。"
+    },
+    {
+      "id": "REQ-04",
+      "current": "K=9…41、N=KM（整数）",
+      "condition": "理想频率规划和输出计数，主环局部捕获模型。",
+      "evidence": "behavioral_sim",
+      "status": "on_track",
+      "note": "无完整 FLL；+24 MHz 反例会停在错误谐波。"
+    },
+    {
+      "id": "REQ-05",
+      "current": "216–984 MHz，24 MHz 步进，共 33 点（规划）",
+      "condition": "33 点频域和边沿模型；LC 粗调只估算，未做器件/PVT。",
+      "evidence": "behavioral_sim",
+      "status": "on_track",
+      "note": "连续粗调覆盖假设下等 C 步进名义至少约 177 码，未含 PVT。"
+    },
+    {
+      "id": "REQ-06",
+      "current": "B 最差 148.98 fs（10 kHz–10 MHz）/161.83 fs（10 kHz–fout/2）",
+      "condition": "27 °C 热噪声；假设 Kvco=20 MHz/V、Kpd=2.4 µA/rad、Cs=40 fF/侧、VCO L1MHz=-120 dBc/Hz 与 -155 dBc/Hz 白底、2 GHz 源截止；无 spur；完整条件见模型 config 和说明。",
+      "evidence": "behavioral_sim",
+      "status": "at_risk",
+      "note": "候选窗口未确认为验收。同步分频边沿周期平稳噪声未完整处理；增益/延迟情景存在超标。"
+    },
+    {
+      "id": "REQ-07",
+      "current": null,
+      "condition": "依 DEC-0002，本轮随机抖动计算不计 spur。",
+      "evidence": "none",
+      "status": "unknown",
+      "note": "<−60 dBc 硬目标保留，未验证，不视为豁免。"
+    },
+    {
+      "id": "REQ-08",
+      "current": "3.50 mW（工作分配，非实际功耗）",
+      "condition": "锁定后全部电路；对 ≤4 mW 留 0.50 mW 未分配余量，启动峰值另计。",
+      "evidence": "estimate",
+      "status": "unknown",
+      "note": "没有器件功耗仿真，预算不等于功耗估计。"
+    },
+    {
+      "id": "REQ-09",
+      "current": "0.280 mm²（工作分配，非版图面积）",
+      "condition": "含电感、滤波器、隔离，暂不含 pad。滤波器约 0.03667 mm² 基于 1 fF/µm² 和 20% 开销假设。",
+      "evidence": "estimate",
+      "status": "unknown",
+      "note": "密度、电感尺寸及粗调开销须由 PDK 核实。"
+    },
+    {
+      "id": "REQ-10",
+      "current": null,
+      "condition": "只扫描 0/27/60 °C 的 kT，其他参数保持不变。",
+      "evidence": "estimate",
+      "status": "unknown",
+      "note": "没有频率、增益、功耗温度变化或工艺电压角，不能称作 PVT 验证。"
+    },
+    {
+      "id": "REQ-11",
+      "current": "理想 50%；4 ps 沿偏差情景最高约 50.394%",
+      "condition": "984 MHz、研究延迟模型；33 点×三种 VCO 占空比共 99 名义时序情景通过。",
+      "evidence": "behavioral_sim",
+      "status": "unknown",
+      "note": "占空比容差未定，电路/负载未验证；110 ps 逻辑延迟压力测试出现 setup 失败。"
+    },
+    {
+      "id": "REQ-12",
+      "current": null,
+      "condition": "轻负载尚无具体电容/摆幅/门限。",
+      "evidence": "none",
+      "status": "unknown",
+      "note": "输出噪声底及功耗为工作输入，不能证明真实负载能力。"
+    }
+  ],
+  "questions_for_human": [
+    {
+      "q": "抖动积分范围和实际 24 MHz 参考源参数仍待确认；当前并列候选频带建模。",
+      "blocking": false,
+      "since": "2026-09-17T20:57:59+08:00"
+    },
+    {
+      "q": "占空比容差及片内输出负载的电容、门限/摆幅后续需要明确。",
+      "blocking": false,
+      "since": "2026-09-17T20:57:59+08:00"
+    }
+  ],
+  "blocked_on": null,
+  "risks": [
+    "候选 B 的输入参数尚无 PDK 证据，不能保证功耗面积或噪声同时实现。",
+    "低 Kvco 要求更细且重叠的粗调码，等电容名义至少 8 bit，仍缺 PVT。",
+    "增益和脉冲时序改变会导致噪声超标或失稳。",
+    "同步分频边沿噪声相关/混叠尚未完整验证。",
+    "参考输入、积分口径、负载和占空比容差未定。",
+    "无完整 FLL、粗调算法、供电耦合、spur、晶体管/PVT 或版图验证。"
+  ],
+  "next_steps": [
+    "以候选 B 工作参数提取/验证 VCO 的 Kvco、噪声、幅度及粗调重叠。",
+    "建立有限测频精度与粗调/主环交接的 FLL 行为模型。",
+    "补同步分频和重定时的周期平稳噪声/边沿相关性。",
+    "用电路级采样/CP 和输出链结果替换假设输入，检查预算与 gain/latency 鲁棒性。"
+  ],
+  "decisions_since_last": [
+    "share/reports/decisions/DEC-0002.md"
+  ],
+  "resources_note": "本地 Python，单次完整基线或候选运行约 5–6 s；随机噪声每种检查四种子、每种子 524288 样本；无服务器仿真作业。run01 JSON 标量导出错误和 tradeoff01 终端输出错误已记录，最终接受 run06/tradeoff06。"
+}
