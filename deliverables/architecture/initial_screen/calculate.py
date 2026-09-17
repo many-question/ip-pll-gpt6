@@ -16,7 +16,7 @@ HERE = Path(__file__).resolve().parent
 
 def write_csv(name, rows):
     with (HERE / name).open("w", encoding="utf-8", newline="") as stream:
-        writer = csv.DictWriter(stream, fieldnames=list(rows[0]))
+        writer = csv.DictWriter(stream, fieldnames=list(rows[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
