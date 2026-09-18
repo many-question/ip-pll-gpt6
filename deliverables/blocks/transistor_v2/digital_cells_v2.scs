@@ -1,0 +1,45 @@
+simulator lang=spectre
+subckt tx_and (a b y vdd vss)
+XN (a b n vdd vss) pll_nand2
+XI (n y vdd vss) pll_inv wn=500n wp=1.25u
+ends tx_and
+subckt tx_or (a b y vdd vss)
+XN (a b n vdd vss) pll_nor2
+XI (n y vdd vss) pll_inv wn=500n wp=1.25u
+ends tx_or
+subckt tx_mux (a b s y vdd vss)
+XI (s sb vdd vss) pll_inv wn=500n wp=1.25u
+XT0 (a z sb s vdd vss) pll_tg wn=500n wp=1u
+XT1 (b z s sb vdd vss) pll_tg wn=500n wp=1u
+XB0 (z zb vdd vss) pll_inv wn=500n wp=1.25u
+XB1 (zb y vdd vss) pll_inv wn=500n wp=1.25u
+ends tx_mux
+subckt tx_xor (a b y vdd vss)
+XI (a ab vdd vss) pll_inv wn=500n wp=1.25u
+XM (a ab b y vdd vss) tx_mux
+ends tx_xor
+subckt tx_xnor (a b y vdd vss)
+XX (a b n vdd vss) tx_xor
+XI (n y vdd vss) pll_inv wn=500n wp=1.25u
+ends tx_xnor
+subckt tx_latch_r (d gate gateb resetb q vdd vss)
+XT (d x gate gateb vdd vss) pll_tg wn=800n wp=1.6u
+XN (x resetb qb vdd vss) pll_nand2 wn=1u wp=1.25u
+XO (qb q vdd vss) pll_inv wn=800n wp=2u
+XF (q x gateb gate vdd vss) pll_tg wn=400n wp=800n
+ends tx_latch_r
+subckt tx_dff_r0 (d clk reset q vdd vss)
+XC (clk clkb vdd vss) pll_inv wn=2u wp=5u
+XR (reset resetb vdd vss) pll_inv wn=1u wp=2.5u
+XM (d clkb clk resetb qm vdd vss) tx_latch_r
+XS (qm clk clkb resetb q vdd vss) tx_latch_r
+ends tx_dff_r0
+subckt tx_dff_r1 (d clk reset q vdd vss)
+XI (d db vdd vss) pll_inv wn=500n wp=1.25u
+XF (db clk reset qb vdd vss) tx_dff_r0
+XO (qb q vdd vss) pll_inv wn=800n wp=2u
+ends tx_dff_r1
+subckt tx_tff (clk reset q qb vdd vss)
+XF (qb clk reset q vdd vss) tx_dff_r0
+XI (q qb vdd vss) pll_inv wn=1u wp=2.5u
+ends tx_tff

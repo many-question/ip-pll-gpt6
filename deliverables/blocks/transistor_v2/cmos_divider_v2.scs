@@ -1,0 +1,41 @@
+simulator lang=spectre
+subckt tx_cmos_modn (clk reset s2 s3 s4 s5 s6 s7 out vdd vss)
+XF0 (feedback clk reset q0 vdd vss) tx_dff_r0
+XB0 (q0 qb0 vdd vss) pll_inv wn=1u wp=2.5u
+XF1 (q0 clk reset q1 vdd vss) tx_dff_r0
+XB1 (q1 qb1 vdd vss) pll_inv wn=1u wp=2.5u
+XF2 (q1 clk reset q2 vdd vss) tx_dff_r0
+XB2 (q2 qb2 vdd vss) pll_inv wn=1u wp=2.5u
+XF3 (q2 clk reset q3 vdd vss) tx_dff_r0
+XB3 (q3 qb3 vdd vss) pll_inv wn=1u wp=2.5u
+XF4 (q3 clk reset q4 vdd vss) tx_dff_r0
+XB4 (q4 qb4 vdd vss) pll_inv wn=1u wp=2.5u
+XF5 (q4 clk reset q5 vdd vss) tx_dff_r0
+XB5 (q5 qb5 vdd vss) pll_inv wn=1u wp=2.5u
+XF6 (q5 clk reset q6 vdd vss) tx_dff_r0
+XB6 (q6 qb6 vdd vss) pll_inv wn=1u wp=2.5u
+XI2 (s2 sb2 vdd vss) pll_inv
+XT2 (qb1 feedback s2 sb2 vdd vss) pll_tg wn=1u wp=2u
+XO2 (q1 tap s2 sb2 vdd vss) pll_tg wn=1u wp=2u
+XI3 (s3 sb3 vdd vss) pll_inv
+XT3 (qb2 feedback s3 sb3 vdd vss) pll_tg wn=1u wp=2u
+XO3 (q1 tap s3 sb3 vdd vss) pll_tg wn=1u wp=2u
+XI4 (s4 sb4 vdd vss) pll_inv
+XT4 (qb3 feedback s4 sb4 vdd vss) pll_tg wn=1u wp=2u
+XO4 (q2 tap s4 sb4 vdd vss) pll_tg wn=1u wp=2u
+XI5 (s5 sb5 vdd vss) pll_inv
+XT5 (qb4 feedback s5 sb5 vdd vss) pll_tg wn=1u wp=2u
+XO5 (q2 tap s5 sb5 vdd vss) pll_tg wn=1u wp=2u
+XI6 (s6 sb6 vdd vss) pll_inv
+XT6 (qb5 feedback s6 sb6 vdd vss) pll_tg wn=1u wp=2u
+XO6 (q3 tap s6 sb6 vdd vss) pll_tg wn=1u wp=2u
+XI7 (s7 sb7 vdd vss) pll_inv
+XT7 (qb6 feedback s7 sb7 vdd vss) pll_tg wn=1u wp=2u
+XO7 (q3 tap s7 sb7 vdd vss) pll_tg wn=1u wp=2u
+XX (q0 tap out vdd vss) tx_xor
+ends tx_cmos_modn
+subckt tx_programmable_divider (cp cn reset s2 s3 s4 s5 s6 s7 out vdd vss)
+XD (cp cn p n vdd vss) tx_cml_div2
+XR (p clk vdd vss) tx_limiter4
+XC (clk reset s2 s3 s4 s5 s6 s7 out vdd vss) tx_cmos_modn
+ends tx_programmable_divider

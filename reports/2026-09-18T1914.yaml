@@ -1,0 +1,323 @@
+{
+  "schema": "chip-report/0.1",
+  "report": {
+    "seq": 5,
+    "time": "2026-09-18T19:14:15+08:00",
+    "trigger": "proactive",
+    "covers_since": "2026-09-18T16:18:02+08:00"
+  },
+  "overall": {
+    "phase": "晶体管分频/FLL 实现、逐级混合闭环与 PDK 器件噪声验证",
+    "summary": "六档分频的 R3/R4 各 18 个配对角测试通过；实际 LC 联合负载端点已恢复。FLL 修正码 0 边界与错误禁止交接后，控制器/DAC 完整搜索、实际计数器完整窗口及器件耦合首次更新通过，尚无完整全器件 FLL/PLL 捕获。实际 PSS/Pnoise 已确认原输出链超标并改善；VCO/采样 CP 噪声回填后，整机 <200 fs 仍存在明显风险。",
+    "since_last": [
+      "DEC-0004 确认随机抖动验收为 10 kHz–fout/2，保留 <200 fs 和不计 spur。",
+      "实现 ÷4/6/8/10/12/14 固定 CML Johnson 环银行及 CMOS 恢复；修复 SS 高频漏计，R3/R4 均完成 18/18 角测试。",
+      "R4 实际 LC 联合负载、60 fF 固定电容端点抽查 2.609135–4.006439 GHz；保留 R3 40 fF 高频覆盖失败证据。",
+      "FLL RTL 修正码 0 搜索和越界禁止交接，综合为 443 个通用单元并映射到自有 MOS 门；实现 14 位计数、保持总线、时钟门控与 6 位 R-2R DAC。",
+      "R3 控制器名义捕获在 168.90 µs 交接；码 0 捕获和越界禁止交接通过。R2 另有 reltol 1e-2/1e-3 交叉检查。实际计数窗口为 10496，R3 耦合首窗完成更新。",
+      "S8/S9 混合 PLL 依次代入实际分频和低噪声输出链，末端输出分别为 984.000304/984.000320 MHz。",
+      "完成 VCO、采样器+CP、参考缓冲及输出链 PSS/Pnoise；984 MHz 输出链由 TT 267.49 fs 改善到 TT/SS/FF 87.01/100.89/64.74 fs；216 MHz 下 TT/SS 为 86.47/120.99 fs，均积分 10 kHz–fout/2。",
+      "同一近零平均电流工作点提取 Kpd=0.300045 µA/rad 与 1 MHz 电流 ASD=0.6775 pA/√Hz；VCO 偏置滤波改善高端相噪。"
+    ],
+    "route_confidence": "medium",
+    "route_confidence_reason": "器件分频、FLL 分块与混合闭环有新增可复查证据；实际器件噪声使旧预算失效，理想 GHz 重定时时钟和无源/基准实现仍是关键缺口。"
+  },
+  "levels": {
+    "survey": {
+      "maturity": 2,
+      "note": "核对已安装 Spectre PSS/Pnoise 官方帮助及 PDK 噪声接口，使用 Yosys 官方资料完成通用门映射；性能来自本项目器件实验。",
+      "artifacts": [
+        "share/deliverables/sources/transistor_v2_sources.md"
+      ]
+    },
+    "modeling": {
+      "maturity": 3,
+      "note": "33 频道及码 0/上下越界的 FLL 门图功能验证；保留旧版边界失败证据。器件 PSD 积分与 Spectre Jee、噪声贡献求和交叉核验。新增连续环路回填仅作诊断，明确缺少采样折叠等项。",
+      "artifacts": [
+        "share/deliverables/integration/transistor_v2/results/noise_summary.json",
+        "share/deliverables/integration/transistor_v2/results/noise_projection.json",
+        "share/deliverables/integration/transistor_v2/results/fll_logic_validation.json",
+        "share/deliverables/integration/transistor_v2/results/fll_boundary_regression.json"
+      ]
+    },
+    "architecture": {
+      "maturity": 2,
+      "note": "高频 LC 亚采样 + 偶数分频 + 重定时架构继续研究。实际宽带噪声和 GHz 时钟接口使 200 fs / 4 mW 同时实现的可信度仍有限；未擅自调整指标。",
+      "artifacts": [
+        "share/deliverables/integration/transistor_v2/README.md",
+        "share/deliverables/integration/transistor_v2/results/noise_projection.json"
+      ]
+    },
+    "blocks": [
+      {
+        "name": "reference_buffer",
+        "role": "24 MHz 参考整形",
+        "stage": "circuit",
+        "maturity": 3,
+        "note": "原版及增大前两级候选完成 TT 器件噪声；1 ns 理想输入边沿、24 MHz/60 fF、10 kHz–12 MHz 从 348.82 降至 135.88 fs。最终参考源噪声/边沿未知，改进版尚无完整 PVT。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v2/README.md",
+          "share/deliverables/integration/transistor_v2/results/validation.json",
+          "share/deliverables/integration/transistor_v2/results/noise_summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "subsampling_detector",
+        "role": "直接采样差分 VCO 并鉴相",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "与真实 CP 联合周期稳态提取；3.936 GHz、差分峰值 0.4 V、输出钳位 0.6 V 的近零平均电流点 Kpd=0.300045 µA/rad，贡献谱已拆分。脉冲产生仍为理想测试激励/VA，实际加载点需重新匹配。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v2/README.md",
+          "share/deliverables/integration/transistor_v2/results/validation.json",
+          "share/deliverables/integration/transistor_v2/results/noise_summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "transconductor_charge_pump",
+        "role": "采样误差转电流及增益控制",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "联合周期噪声的 1 MHz ASD=0.6775 pA/√Hz，10 kHz–492 MHz 电流噪声 8.892 nA RMS；不是输出抖动。已在 S8/S9 保留实际 CP 闭环，偏置源理想。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v2/README.md",
+          "share/deliverables/integration/transistor_v2/results/validation.json",
+          "share/deliverables/integration/transistor_v2/results/noise_summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "passive_loop_filter",
+        "role": "环路滤波与稳定性",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "R=100 kΩ、C1=28.648 pF、C2=1.910 pF 及 MOS 预充继续用于混合系统/FLL；RC 缩放仅为噪声计算试案。无工艺 RC、失配、版图提取。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v2/README.md",
+          "share/deliverables/integration/transistor_v2/results/validation.json",
+          "share/deliverables/integration/transistor_v2/results/noise_summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "lc_vco_and_cap_bank",
+        "role": "2.688–3.936 GHz 振荡、粗调和模拟细调",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "实际 MOS VCO 完成三个码的自主 PSS/Pnoise；最高频段偏置滤波将 1 MHz 相噪从约 −107.47 改善至 −114.34 dBc/Hz。实际 LC+采样/CP+分频 R4 端点抽查约 2.609–4.006 GHz；噪声未包含该联合负载。L/R/固定及阵列 C、基准仍理想。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v2/README.md",
+          "share/deliverables/integration/transistor_v2/results/validation.json",
+          "share/deliverables/integration/transistor_v2/results/noise_summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "auxiliary_fll",
+        "role": "启动捕获和正确谐波选择",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "R3 的 443 个门映射 MOS 控制器、14 位计数器/保持总线、锁存式时钟门控、6 位 R-2R DAC 已实现。修正码 0 捕获与范围错误交接，控制器完整捕获/边界测试和实际计数器完整窗口分别通过；R3 全 MOS 耦合首窗通过。长控制器试验的计数为宏模型，完整全器件捕获、失锁检测/重捕获仍未完成。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v2/README.md",
+          "share/deliverables/integration/transistor_v2/results/validation.json",
+          "share/deliverables/integration/transistor_v2/results/noise_summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "programmable_even_divider",
+        "role": "÷4/6/8/10/12/14 对称半周期分频",
+        "stage": "circuit",
+        "maturity": 3,
+        "note": "R3/R4 两版六档分频各 18/18 配对角端点通过；R4 减小输入负载后通过真实 LC 联合端点。当前需静态单热配置、复位后启动；运行中切换及实际工艺无源件未验证。S8/S9 混合顶层使用 R3。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v2/README.md",
+          "share/deliverables/integration/transistor_v2/results/validation.json",
+          "share/deliverables/integration/transistor_v2/results/noise_summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "output_retimer",
+        "role": "利用 VCO 派生时钟重定时",
+        "stage": "circuit",
+        "maturity": 3,
+        "note": "实际 PDK 边沿噪声揭示原链 267.49 fs；改进后 984 MHz 的 TT/SS/FF 为 87.01/100.89/64.74 fs，216 MHz 的 TT/SS 为 86.47/120.99 fs，含输出缓冲，均积分 10 kHz–fout/2。已代回 S9；输入 GHz 全摆幅时钟仍理想，不能忽略其实际接收/驱动噪声。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v2/README.md",
+          "share/deliverables/integration/transistor_v2/results/validation.json",
+          "share/deliverables/integration/transistor_v2/results/noise_summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "output_buffer",
+        "role": "驱动片内轻负载",
+        "stage": "circuit",
+        "maturity": 3,
+        "note": "两级输出缓冲纳入新重定时链共同验证，10 fF、984 MHz、三配对角噪声结果见上项；整个链约 0.873–0.880 mW。原输出缓冲单独 TT 宽带噪声 123.86 fs。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v2/README.md",
+          "share/deliverables/integration/transistor_v2/results/validation.json",
+          "share/deliverables/integration/transistor_v2/results/noise_summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "bias_and_control",
+        "role": "偏置、频点配置及状态控制",
+        "stage": "circuit",
+        "maturity": 1,
+        "note": "保留中点分压、实现 FLL DAC 关断和分频单热门控；LC/CP/CML 参考电流源、GHz 时钟接收与完整配置/锁相资格控制尚未器件化。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v2/README.md",
+          "share/deliverables/integration/transistor_v2/results/validation.json",
+          "share/deliverables/integration/transistor_v2/results/noise_summary.json"
+        ],
+        "blockers": []
+      }
+    ],
+    "verification": {
+      "maturity": 3,
+      "note": "分频角点、FLL 数字门图/实际计数/控制器长仿真、逐级混合闭环与实际 PDK 噪声形成证据链；数值和谱积分交叉检查。仍无完整 PLL 全频道/PVT/统计签核。",
+      "artifacts": [
+        "share/deliverables/integration/transistor_v2/results/validation.json",
+        "share/deliverables/integration/transistor_v2/results/noise_summary.json",
+        "share/deliverables/integration/transistor_v2/results/raw_manifest.json"
+      ]
+    },
+    "integration": {
+      "maturity": 2,
+      "note": "S8/S9 混合 PLL 通过当前固定码功能检查；S9 同相位控制电压末段峰峰 4.582 µV。完整实际 VCO/FLL/时钟驱动和偏置尚未共同接入，布局/DRC/LVS/PEX 未开始。",
+      "artifacts": [
+        "share/deliverables/integration/transistor_v2/README.md",
+        "share/deliverables/integration/transistor_v2/results/validation.json"
+      ]
+    }
+  },
+  "spec_status": [
+    {
+      "id": "REQ-01",
+      "current": "TSMC180 BCD Gen2 PDK 核心 MOS / nmoscap",
+      "condition": "真实 PDK 模型、tt/ss/ff + stat_noise，电感/电阻/固定及阵列电容有理想模型。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "不声称全部工艺单元或完整物理实现。"
+    },
+    {
+      "id": "REQ-02",
+      "current": "1.2 V",
+      "condition": "全部本轮器件 TB；LC 节点可超过供电，分频前增加交流偏置。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "器件端电压可靠性、ESD/电源变化和寄生尚未签核。"
+    },
+    {
+      "id": "REQ-03",
+      "current": "24 MHz；参考缓冲 TT 附加噪声 135.88 fs",
+      "condition": "改进版，理想 1 ns 输入边沿、60 fF、10 kHz–12 MHz；外部参考本身无噪声。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "需实际输入相噪/边沿和新版 PVT；不得直接把参考缓冲全带抖动当作 PLL 输出贡献。"
+    },
+    {
+      "id": "REQ-04",
+      "current": "K=41 混合 PLL；33 频道 FLL 门图搜索",
+      "condition": "S8/S9 实际 M=4 分频和输出电路、VA VCO、固定粗调；FLL 长控制器仿真另测。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "完整实际器件 PLL 的整数合成及启动尚未证明。"
+    },
+    {
+      "id": "REQ-05",
+      "current": "S9 984.000320 MHz；R4 加载 VCO 约 2.609–4.006 GHz",
+      "condition": "1.2 V/TT、60 fF 固定电容、码 0/255、控制 0.2/1.0 V；独立六档分频有三配对角最高频率验证。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "全 33 点、256 码间覆盖和完整工艺温度范围尚未完成。"
+    },
+    {
+      "id": "REQ-06",
+      "current": "984 MHz 输出链 TT/SS/FF 87.01/100.89/64.74 fs；216 MHz SS 为 120.99 fs；完整 PLL 未知",
+      "condition": "10 fF、10 kHz–fout/2、理想输入 GHz 时钟；VCO/采样 CP 已提取器件谱。",
+      "evidence": "circuit_sim",
+      "status": "at_risk",
+      "note": "DEC-0004 已确认 10 kHz–fout/2；连续近似部分噪声试算最好约 263 fs，含不同独立工作点且缺少折叠/真实时钟/参考，不能宣称 <200 fs 达标。"
+    },
+    {
+      "id": "REQ-07",
+      "current": null,
+      "condition": "按 DEC-0002 暂缓离散杂散研究，不纳入随机抖动。",
+      "evidence": "none",
+      "status": "unknown",
+      "note": "<−60 dBc 需求保留。"
+    },
+    {
+      "id": "REQ-08",
+      "current": "S9 已实现部分 1.8786 mW；R4 加载支路约 2.52–2.75 mW",
+      "condition": "S9 为 4–6 µs 供电积分，不含 VA VCO 和缺失接口；R4 支路含 LC/采样 CP/参考/分频，不含重定时链。",
+      "evidence": "circuit_sim",
+      "status": "at_risk",
+      "note": "上述不同 TB 数字不能相加作为总功耗。完整基准、GHz 时钟驱动、控制和实际负载未齐；≤4 mW 仍待证明，启动峰值另列。"
+    },
+    {
+      "id": "REQ-09",
+      "current": "0.280 mm² 原工作预算；无布局提取",
+      "condition": "包含电感、环路滤波、隔离，暂不含 pad。",
+      "evidence": "estimate",
+      "status": "unknown",
+      "note": "六个 Johnson 环、FLL 门、偏置滤波及无源几何改变面积，旧预算需更新，<0.3 mm² 未验证。"
+    },
+    {
+      "id": "REQ-10",
+      "current": "SS/60 °C、TT/27 °C、FF/0 °C 局部验证",
+      "condition": "分频两版各 18 点、计数器角点、输出链噪声三配对角。",
+      "evidence": "pvt_sim",
+      "status": "on_track",
+      "note": "不是完整工艺×温度矩阵；最终 VCO/偏置/FLL 尚无完整温度覆盖。"
+    },
+    {
+      "id": "REQ-11",
+      "current": "S9 占空比约 54.12%",
+      "condition": "固定码 984 MHz 混合 PLL、TT、10 fF；按 DEC-0003 不专门优化占空比。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "保持名义 50%，没有新增数值容差；继续检验漏边与窄脉冲。"
+    },
+    {
+      "id": "REQ-12",
+      "current": "10 fF 工作负载",
+      "condition": "器件输出链三配对角及 S9 混合顶层。",
+      "evidence": "pvt_sim",
+      "status": "on_track",
+      "note": "实际逻辑门电容、门限和互连尚待定义；10 fF 是临时假设。"
+    }
+  ],
+  "questions_for_human": [
+    {
+      "q": "后续需要实际 24 MHz 参考源的边沿、相噪以及片内输出负载/门限；当前理想输入和 10 fF 仅为工作假设。",
+      "blocking": false,
+      "since": "2026-09-17T20:57:59+08:00"
+    }
+  ],
+  "blocked_on": null,
+  "risks": [
+    "器件噪声回填超过 200 fs；优化输出链不代表整机达标，真实 GHz 时钟接收/驱动仍缺失。",
+    "VCO 噪声测试未包含最终负载，实际增益和调谐曲线随码/幅度/PVT 改变；采样 CP 零点测试不等于最终锁定点。",
+    "FLL 全流程控制器使用计数宏模型，全 MOS 耦合仅完成首窗；完整捕获、失锁重捕获、范围异常和亚稳态统计待验证。",
+    "功耗与面积余量未闭合；理想无源与偏置参考、RC 失配、工艺电感、启动峰值、可靠性和版图签核均有缺口。"
+  ],
+  "next_steps": [
+    "用加载 VCO 的实际工作点提取噪声/Kvco/采样增益，联合优化 VCO 偏置与核心、采样 CP 噪声及环路带宽。",
+    "实现真实 VCO→重定时 GHz 时钟接口，验证边沿裕量、器件噪声与功耗后代回 S9。",
+    "完成 FLL 全器件长时间捕获，将真实 LC 粗细调表接入，并补失锁/范围异常/重捕获控制。",
+    "扩大全部频道与 PVT 覆盖，替换工艺无源/偏置，建立同一顶层功耗和面积证据，再推进版图/PEX。"
+  ],
+  "decisions_since_last": [
+    "share/reports/decisions/DEC-0004.md"
+  ],
+  "resources_note": "本轮保存 165 个运行记录，远端执行累计约 24338 s（作业求和）；主要 APS 单线程，独立作业并行。包含失败/中断探索，未全部算作通过。完整证据已回收到本项目。"
+}

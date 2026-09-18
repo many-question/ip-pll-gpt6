@@ -1,0 +1,59 @@
+simulator lang=spectre
+subckt tx_limiter2 (inp out vdd vss)
+parameters wn=4u wp=10u
+C0 (inp g0) capacitor c=200f
+R0 (g0 o0) resistor r=50k
+X0 (g0 o0 vdd vss) pll_inv wn=wn wp=wp
+C1 (o0 g1) capacitor c=200f
+R1 (g1 o1) resistor r=50k
+X1 (g1 o1 vdd vss) pll_inv wn=wn wp=wp
+XO (o1 out vdd vss) pll_inv wn=2*wn wp=2*wp
+ends tx_limiter2
+subckt tx_limiter3 (inp out vdd vss)
+parameters wn=4u wp=10u
+C0 (inp g0) capacitor c=200f
+R0 (g0 o0) resistor r=50k
+X0 (g0 o0 vdd vss) pll_inv wn=wn wp=wp
+C1 (o0 g1) capacitor c=200f
+R1 (g1 o1) resistor r=50k
+X1 (g1 o1 vdd vss) pll_inv wn=wn wp=wp
+C2 (o1 g2) capacitor c=200f
+R2 (g2 o2) resistor r=50k
+X2 (g2 o2 vdd vss) pll_inv wn=wn wp=wp
+XO (o2 out vdd vss) pll_inv wn=2*wn wp=2*wp
+ends tx_limiter3
+subckt tx_limiter4 (inp out vdd vss)
+parameters wn=4u wp=10u
+C0 (inp g0) capacitor c=200f
+R0 (g0 o0) resistor r=50k
+X0 (g0 o0 vdd vss) pll_inv wn=wn wp=wp
+C1 (o0 g1) capacitor c=200f
+R1 (g1 o1) resistor r=50k
+X1 (g1 o1 vdd vss) pll_inv wn=wn wp=wp
+C2 (o1 g2) capacitor c=200f
+R2 (g2 o2) resistor r=50k
+X2 (g2 o2 vdd vss) pll_inv wn=wn wp=wp
+C3 (o2 g3) capacitor c=200f
+R3 (g3 o3) resistor r=50k
+X3 (g3 o3 vdd vss) pll_inv wn=wn wp=wp
+XO (o3 out vdd vss) pll_inv wn=2*wn wp=2*wp
+ends tx_limiter4
+subckt tx_limiter5 (inp out vdd vss)
+parameters wn=4u wp=10u
+C0 (inp g0) capacitor c=200f
+R0 (g0 o0) resistor r=50k
+X0 (g0 o0 vdd vss) pll_inv wn=wn wp=wp
+C1 (o0 g1) capacitor c=200f
+R1 (g1 o1) resistor r=50k
+X1 (g1 o1 vdd vss) pll_inv wn=wn wp=wp
+C2 (o1 g2) capacitor c=200f
+R2 (g2 o2) resistor r=50k
+X2 (g2 o2 vdd vss) pll_inv wn=wn wp=wp
+C3 (o2 g3) capacitor c=200f
+R3 (g3 o3) resistor r=50k
+X3 (g3 o3 vdd vss) pll_inv wn=wn wp=wp
+C4 (o3 g4) capacitor c=200f
+R4 (g4 o4) resistor r=50k
+X4 (g4 o4 vdd vss) pll_inv wn=wn wp=wp
+XO (o4 out vdd vss) pll_inv wn=2*wn wp=2*wp
+ends tx_limiter5

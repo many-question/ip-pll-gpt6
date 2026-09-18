@@ -1,0 +1,131 @@
+simulator lang=spectre
+subckt tx_divider_bank_light (cp cn reset s2 s3 s4 s5 s6 s7 out vdd vss)
+parameters scale2=1 scale3=.75 scale4=.75 scale5=.5 scale6=.5 scale7=.5
+IREF (vdd nb) isource dc=15u
+MB (nb nb vss vss) nch w=1u l=1u ad=.24p as=.24p pd=2.48u ps=2.48u
+RH (vdd cm) resistor r=25k
+RL (cm vss) resistor r=50k
+CB (cm vss) capacitor c=1p
+RIH (vdd cim) resistor r=20k
+RIL (cim vss) resistor r=100k
+CIM (cim vss) capacitor c=1p
+CINP (cp icp) capacitor c=2p
+CINN (cn icn) capacitor c=2p
+RINP (icp cim) resistor r=50k
+RINN (icn cim) resistor r=50k
+XI2 (s2 sb2 vdd vss) pll_inv
+XB2 (nb nb2 s2 sb2 vdd vss) pll_tg wn=1u wp=2u
+MB2 (nb2 sb2 vss vss) nch w=1u l=180n ad=.24p as=.24p pd=2.48u ps=2.48u
+XCP2 (icp acp2 s2 sb2 vdd vss) pll_tg wn=4u wp=8u
+XCN2 (icn acn2 s2 sb2 vdd vss) pll_tg wn=4u wp=8u
+CP2 (acp2 ckp2) capacitor c=500f
+CN2 (acn2 ckn2) capacitor c=500f
+RP2 (ckp2 cm) resistor r=50k
+RN2 (ckn2 cm) resistor r=50k
+XM2_0 (q2_1n q2_1p ckp2 ckn2 m2_0p m2_0n nb2 reset vdd vss) tx_cml_latch_v2 scale=scale2 rload=2000
+XS2_0 (m2_0p m2_0n ckn2 ckp2 q2_0p q2_0n nb2 reset vdd vss) tx_cml_latch_v2 scale=scale2 rload=2000
+XM2_1 (q2_0p q2_0n ckp2 ckn2 m2_1p m2_1n nb2 reset vdd vss) tx_cml_latch_v2 scale=scale2 rload=2000
+XS2_1 (m2_1p m2_1n ckn2 ckp2 q2_1p q2_1n nb2 reset vdd vss) tx_cml_latch_v2 scale=scale2 rload=2000
+XO2 (q2_1p selected s2 sb2 vdd vss) pll_tg wn=1u wp=2u
+XI3 (s3 sb3 vdd vss) pll_inv
+XB3 (nb nb3 s3 sb3 vdd vss) pll_tg wn=1u wp=2u
+MB3 (nb3 sb3 vss vss) nch w=1u l=180n ad=.24p as=.24p pd=2.48u ps=2.48u
+XCP3 (icp acp3 s3 sb3 vdd vss) pll_tg wn=4u wp=8u
+XCN3 (icn acn3 s3 sb3 vdd vss) pll_tg wn=4u wp=8u
+CP3 (acp3 ckp3) capacitor c=500f
+CN3 (acn3 ckn3) capacitor c=500f
+RP3 (ckp3 cm) resistor r=50k
+RN3 (ckn3 cm) resistor r=50k
+XM3_0 (q3_2n q3_2p ckp3 ckn3 m3_0p m3_0n nb3 reset vdd vss) tx_cml_latch_v2 scale=scale3 rload=2000
+XS3_0 (m3_0p m3_0n ckn3 ckp3 q3_0p q3_0n nb3 reset vdd vss) tx_cml_latch_v2 scale=scale3 rload=2000
+XM3_1 (q3_0p q3_0n ckp3 ckn3 m3_1p m3_1n nb3 reset vdd vss) tx_cml_latch_v2 scale=scale3 rload=2000
+XS3_1 (m3_1p m3_1n ckn3 ckp3 q3_1p q3_1n nb3 reset vdd vss) tx_cml_latch_v2 scale=scale3 rload=2000
+XM3_2 (q3_1p q3_1n ckp3 ckn3 m3_2p m3_2n nb3 reset vdd vss) tx_cml_latch_v2 scale=scale3 rload=2000
+XS3_2 (m3_2p m3_2n ckn3 ckp3 q3_2p q3_2n nb3 reset vdd vss) tx_cml_latch_v2 scale=scale3 rload=2000
+XO3 (q3_2p selected s3 sb3 vdd vss) pll_tg wn=1u wp=2u
+XI4 (s4 sb4 vdd vss) pll_inv
+XB4 (nb nb4 s4 sb4 vdd vss) pll_tg wn=1u wp=2u
+MB4 (nb4 sb4 vss vss) nch w=1u l=180n ad=.24p as=.24p pd=2.48u ps=2.48u
+XCP4 (icp acp4 s4 sb4 vdd vss) pll_tg wn=4u wp=8u
+XCN4 (icn acn4 s4 sb4 vdd vss) pll_tg wn=4u wp=8u
+CP4 (acp4 ckp4) capacitor c=500f
+CN4 (acn4 ckn4) capacitor c=500f
+RP4 (ckp4 cm) resistor r=50k
+RN4 (ckn4 cm) resistor r=50k
+XM4_0 (q4_3n q4_3p ckp4 ckn4 m4_0p m4_0n nb4 reset vdd vss) tx_cml_latch_v2 scale=scale4 rload=2000
+XS4_0 (m4_0p m4_0n ckn4 ckp4 q4_0p q4_0n nb4 reset vdd vss) tx_cml_latch_v2 scale=scale4 rload=2000
+XM4_1 (q4_0p q4_0n ckp4 ckn4 m4_1p m4_1n nb4 reset vdd vss) tx_cml_latch_v2 scale=scale4 rload=2000
+XS4_1 (m4_1p m4_1n ckn4 ckp4 q4_1p q4_1n nb4 reset vdd vss) tx_cml_latch_v2 scale=scale4 rload=2000
+XM4_2 (q4_1p q4_1n ckp4 ckn4 m4_2p m4_2n nb4 reset vdd vss) tx_cml_latch_v2 scale=scale4 rload=2000
+XS4_2 (m4_2p m4_2n ckn4 ckp4 q4_2p q4_2n nb4 reset vdd vss) tx_cml_latch_v2 scale=scale4 rload=2000
+XM4_3 (q4_2p q4_2n ckp4 ckn4 m4_3p m4_3n nb4 reset vdd vss) tx_cml_latch_v2 scale=scale4 rload=2000
+XS4_3 (m4_3p m4_3n ckn4 ckp4 q4_3p q4_3n nb4 reset vdd vss) tx_cml_latch_v2 scale=scale4 rload=2000
+XO4 (q4_3p selected s4 sb4 vdd vss) pll_tg wn=1u wp=2u
+XI5 (s5 sb5 vdd vss) pll_inv
+XB5 (nb nb5 s5 sb5 vdd vss) pll_tg wn=1u wp=2u
+MB5 (nb5 sb5 vss vss) nch w=1u l=180n ad=.24p as=.24p pd=2.48u ps=2.48u
+XCP5 (icp acp5 s5 sb5 vdd vss) pll_tg wn=4u wp=8u
+XCN5 (icn acn5 s5 sb5 vdd vss) pll_tg wn=4u wp=8u
+CP5 (acp5 ckp5) capacitor c=500f
+CN5 (acn5 ckn5) capacitor c=500f
+RP5 (ckp5 cm) resistor r=50k
+RN5 (ckn5 cm) resistor r=50k
+XM5_0 (q5_4n q5_4p ckp5 ckn5 m5_0p m5_0n nb5 reset vdd vss) tx_cml_latch_v2 scale=scale5 rload=2000
+XS5_0 (m5_0p m5_0n ckn5 ckp5 q5_0p q5_0n nb5 reset vdd vss) tx_cml_latch_v2 scale=scale5 rload=2000
+XM5_1 (q5_0p q5_0n ckp5 ckn5 m5_1p m5_1n nb5 reset vdd vss) tx_cml_latch_v2 scale=scale5 rload=2000
+XS5_1 (m5_1p m5_1n ckn5 ckp5 q5_1p q5_1n nb5 reset vdd vss) tx_cml_latch_v2 scale=scale5 rload=2000
+XM5_2 (q5_1p q5_1n ckp5 ckn5 m5_2p m5_2n nb5 reset vdd vss) tx_cml_latch_v2 scale=scale5 rload=2000
+XS5_2 (m5_2p m5_2n ckn5 ckp5 q5_2p q5_2n nb5 reset vdd vss) tx_cml_latch_v2 scale=scale5 rload=2000
+XM5_3 (q5_2p q5_2n ckp5 ckn5 m5_3p m5_3n nb5 reset vdd vss) tx_cml_latch_v2 scale=scale5 rload=2000
+XS5_3 (m5_3p m5_3n ckn5 ckp5 q5_3p q5_3n nb5 reset vdd vss) tx_cml_latch_v2 scale=scale5 rload=2000
+XM5_4 (q5_3p q5_3n ckp5 ckn5 m5_4p m5_4n nb5 reset vdd vss) tx_cml_latch_v2 scale=scale5 rload=2000
+XS5_4 (m5_4p m5_4n ckn5 ckp5 q5_4p q5_4n nb5 reset vdd vss) tx_cml_latch_v2 scale=scale5 rload=2000
+XO5 (q5_4p selected s5 sb5 vdd vss) pll_tg wn=1u wp=2u
+XI6 (s6 sb6 vdd vss) pll_inv
+XB6 (nb nb6 s6 sb6 vdd vss) pll_tg wn=1u wp=2u
+MB6 (nb6 sb6 vss vss) nch w=1u l=180n ad=.24p as=.24p pd=2.48u ps=2.48u
+XCP6 (icp acp6 s6 sb6 vdd vss) pll_tg wn=4u wp=8u
+XCN6 (icn acn6 s6 sb6 vdd vss) pll_tg wn=4u wp=8u
+CP6 (acp6 ckp6) capacitor c=500f
+CN6 (acn6 ckn6) capacitor c=500f
+RP6 (ckp6 cm) resistor r=50k
+RN6 (ckn6 cm) resistor r=50k
+XM6_0 (q6_5n q6_5p ckp6 ckn6 m6_0p m6_0n nb6 reset vdd vss) tx_cml_latch_v2 scale=scale6 rload=2000
+XS6_0 (m6_0p m6_0n ckn6 ckp6 q6_0p q6_0n nb6 reset vdd vss) tx_cml_latch_v2 scale=scale6 rload=2000
+XM6_1 (q6_0p q6_0n ckp6 ckn6 m6_1p m6_1n nb6 reset vdd vss) tx_cml_latch_v2 scale=scale6 rload=2000
+XS6_1 (m6_1p m6_1n ckn6 ckp6 q6_1p q6_1n nb6 reset vdd vss) tx_cml_latch_v2 scale=scale6 rload=2000
+XM6_2 (q6_1p q6_1n ckp6 ckn6 m6_2p m6_2n nb6 reset vdd vss) tx_cml_latch_v2 scale=scale6 rload=2000
+XS6_2 (m6_2p m6_2n ckn6 ckp6 q6_2p q6_2n nb6 reset vdd vss) tx_cml_latch_v2 scale=scale6 rload=2000
+XM6_3 (q6_2p q6_2n ckp6 ckn6 m6_3p m6_3n nb6 reset vdd vss) tx_cml_latch_v2 scale=scale6 rload=2000
+XS6_3 (m6_3p m6_3n ckn6 ckp6 q6_3p q6_3n nb6 reset vdd vss) tx_cml_latch_v2 scale=scale6 rload=2000
+XM6_4 (q6_3p q6_3n ckp6 ckn6 m6_4p m6_4n nb6 reset vdd vss) tx_cml_latch_v2 scale=scale6 rload=2000
+XS6_4 (m6_4p m6_4n ckn6 ckp6 q6_4p q6_4n nb6 reset vdd vss) tx_cml_latch_v2 scale=scale6 rload=2000
+XM6_5 (q6_4p q6_4n ckp6 ckn6 m6_5p m6_5n nb6 reset vdd vss) tx_cml_latch_v2 scale=scale6 rload=2000
+XS6_5 (m6_5p m6_5n ckn6 ckp6 q6_5p q6_5n nb6 reset vdd vss) tx_cml_latch_v2 scale=scale6 rload=2000
+XO6 (q6_5p selected s6 sb6 vdd vss) pll_tg wn=1u wp=2u
+XI7 (s7 sb7 vdd vss) pll_inv
+XB7 (nb nb7 s7 sb7 vdd vss) pll_tg wn=1u wp=2u
+MB7 (nb7 sb7 vss vss) nch w=1u l=180n ad=.24p as=.24p pd=2.48u ps=2.48u
+XCP7 (icp acp7 s7 sb7 vdd vss) pll_tg wn=4u wp=8u
+XCN7 (icn acn7 s7 sb7 vdd vss) pll_tg wn=4u wp=8u
+CP7 (acp7 ckp7) capacitor c=500f
+CN7 (acn7 ckn7) capacitor c=500f
+RP7 (ckp7 cm) resistor r=50k
+RN7 (ckn7 cm) resistor r=50k
+XM7_0 (q7_6n q7_6p ckp7 ckn7 m7_0p m7_0n nb7 reset vdd vss) tx_cml_latch_v2 scale=scale7 rload=2000
+XS7_0 (m7_0p m7_0n ckn7 ckp7 q7_0p q7_0n nb7 reset vdd vss) tx_cml_latch_v2 scale=scale7 rload=2000
+XM7_1 (q7_0p q7_0n ckp7 ckn7 m7_1p m7_1n nb7 reset vdd vss) tx_cml_latch_v2 scale=scale7 rload=2000
+XS7_1 (m7_1p m7_1n ckn7 ckp7 q7_1p q7_1n nb7 reset vdd vss) tx_cml_latch_v2 scale=scale7 rload=2000
+XM7_2 (q7_1p q7_1n ckp7 ckn7 m7_2p m7_2n nb7 reset vdd vss) tx_cml_latch_v2 scale=scale7 rload=2000
+XS7_2 (m7_2p m7_2n ckn7 ckp7 q7_2p q7_2n nb7 reset vdd vss) tx_cml_latch_v2 scale=scale7 rload=2000
+XM7_3 (q7_2p q7_2n ckp7 ckn7 m7_3p m7_3n nb7 reset vdd vss) tx_cml_latch_v2 scale=scale7 rload=2000
+XS7_3 (m7_3p m7_3n ckn7 ckp7 q7_3p q7_3n nb7 reset vdd vss) tx_cml_latch_v2 scale=scale7 rload=2000
+XM7_4 (q7_3p q7_3n ckp7 ckn7 m7_4p m7_4n nb7 reset vdd vss) tx_cml_latch_v2 scale=scale7 rload=2000
+XS7_4 (m7_4p m7_4n ckn7 ckp7 q7_4p q7_4n nb7 reset vdd vss) tx_cml_latch_v2 scale=scale7 rload=2000
+XM7_5 (q7_4p q7_4n ckp7 ckn7 m7_5p m7_5n nb7 reset vdd vss) tx_cml_latch_v2 scale=scale7 rload=2000
+XS7_5 (m7_5p m7_5n ckn7 ckp7 q7_5p q7_5n nb7 reset vdd vss) tx_cml_latch_v2 scale=scale7 rload=2000
+XM7_6 (q7_5p q7_5n ckp7 ckn7 m7_6p m7_6n nb7 reset vdd vss) tx_cml_latch_v2 scale=scale7 rload=2000
+XS7_6 (m7_6p m7_6n ckn7 ckp7 q7_6p q7_6n nb7 reset vdd vss) tx_cml_latch_v2 scale=scale7 rload=2000
+XO7 (q7_6p selected s7 sb7 vdd vss) pll_tg wn=1u wp=2u
+XR (selected out vdd vss) tx_limiter4 wn=1.2u wp=3u
+ends tx_divider_bank_light

@@ -1,0 +1,7 @@
+simulator lang=spectre
+subckt tx_reference_low_noise (inp out vdd vss)
+X0 (inp a vdd vss) pll_inv wn=8u wp=20u
+X1 (a b vdd vss) pll_inv wn=8u wp=20u
+X2 (b c vdd vss) pll_inv wn=16u wp=40u
+X3 (c out vdd vss) pll_inv wn=64u wp=160u
+ends tx_reference_low_noise

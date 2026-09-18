@@ -1,0 +1,26 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=ss
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "cells.scs"
+include "receiver.scs"
+simulatorOptions options reltol=1e-5 vabstol=1e-7 iabstol=1e-13 temp=60
+
+include "limiter_chain.scs"
+VP (ip 0) vsource type=sine dc=1.05 ampl=.1 freq=1G
+VD0 (vdd0 0) vsource dc=1.2
+X0 (ip o0 vdd0 0) tx_limiter2
+CL0 (o0 0) capacitor c=10f
+VD1 (vdd1 0) vsource dc=1.2
+X1 (ip o1 vdd1 0) tx_limiter3
+CL1 (o1 0) capacitor c=10f
+VD2 (vdd2 0) vsource dc=1.2
+X2 (ip o2 vdd2 0) tx_limiter4
+CL2 (o2 0) capacitor c=10f
+VD3 (vdd3 0) vsource dc=1.2
+X3 (ip o3 vdd3 0) tx_limiter5
+CL3 (o3 0) capacitor c=10f
+tran tran stop=100n maxstep=5p errpreset=moderate
+save o0 VD0:p o1 VD1:p o2 VD2:p o3 VD3:p
+saveOptions options save=selected

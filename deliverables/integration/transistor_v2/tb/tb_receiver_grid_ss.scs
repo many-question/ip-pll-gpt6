@@ -1,0 +1,86 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=ss
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "cells.scs"
+include "receiver.scs"
+simulatorOptions options reltol=1e-5 vabstol=1e-7 iabstol=1e-13 temp=60
+
+VP (ip 0) vsource type=sine dc=1.05 ampl=.08 freq=2G
+VN (in 0) vsource type=sine dc=1.05 ampl=.08 freq=2G sinephase=180
+VS0 (vdd0 0) vsource dc=1.2
+X0 (ip in op0 on0 vdd0 0) tx_regen_receiver wn=2u wp=0.3u ibias=5u
+C0 (op0 0) capacitor c=20f
+D0 (on0 0) capacitor c=20f
+VS1 (vdd1 0) vsource dc=1.2
+X1 (ip in op1 on1 vdd1 0) tx_regen_receiver wn=2u wp=0.3u ibias=15u
+C1 (op1 0) capacitor c=20f
+D1 (on1 0) capacitor c=20f
+VS2 (vdd2 0) vsource dc=1.2
+X2 (ip in op2 on2 vdd2 0) tx_regen_receiver wn=2u wp=0.6u ibias=5u
+C2 (op2 0) capacitor c=20f
+D2 (on2 0) capacitor c=20f
+VS3 (vdd3 0) vsource dc=1.2
+X3 (ip in op3 on3 vdd3 0) tx_regen_receiver wn=2u wp=0.6u ibias=15u
+C3 (op3 0) capacitor c=20f
+D3 (on3 0) capacitor c=20f
+VS4 (vdd4 0) vsource dc=1.2
+X4 (ip in op4 on4 vdd4 0) tx_regen_receiver wn=2u wp=1.2u ibias=5u
+C4 (op4 0) capacitor c=20f
+D4 (on4 0) capacitor c=20f
+VS5 (vdd5 0) vsource dc=1.2
+X5 (ip in op5 on5 vdd5 0) tx_regen_receiver wn=2u wp=1.2u ibias=15u
+C5 (op5 0) capacitor c=20f
+D5 (on5 0) capacitor c=20f
+VS6 (vdd6 0) vsource dc=1.2
+X6 (ip in op6 on6 vdd6 0) tx_regen_receiver wn=4u wp=0.3u ibias=5u
+C6 (op6 0) capacitor c=20f
+D6 (on6 0) capacitor c=20f
+VS7 (vdd7 0) vsource dc=1.2
+X7 (ip in op7 on7 vdd7 0) tx_regen_receiver wn=4u wp=0.3u ibias=15u
+C7 (op7 0) capacitor c=20f
+D7 (on7 0) capacitor c=20f
+VS8 (vdd8 0) vsource dc=1.2
+X8 (ip in op8 on8 vdd8 0) tx_regen_receiver wn=4u wp=0.6u ibias=5u
+C8 (op8 0) capacitor c=20f
+D8 (on8 0) capacitor c=20f
+VS9 (vdd9 0) vsource dc=1.2
+X9 (ip in op9 on9 vdd9 0) tx_regen_receiver wn=4u wp=0.6u ibias=15u
+C9 (op9 0) capacitor c=20f
+D9 (on9 0) capacitor c=20f
+VS10 (vdd10 0) vsource dc=1.2
+X10 (ip in op10 on10 vdd10 0) tx_regen_receiver wn=4u wp=1.2u ibias=5u
+C10 (op10 0) capacitor c=20f
+D10 (on10 0) capacitor c=20f
+VS11 (vdd11 0) vsource dc=1.2
+X11 (ip in op11 on11 vdd11 0) tx_regen_receiver wn=4u wp=1.2u ibias=15u
+C11 (op11 0) capacitor c=20f
+D11 (on11 0) capacitor c=20f
+VS12 (vdd12 0) vsource dc=1.2
+X12 (ip in op12 on12 vdd12 0) tx_regen_receiver wn=8u wp=0.3u ibias=5u
+C12 (op12 0) capacitor c=20f
+D12 (on12 0) capacitor c=20f
+VS13 (vdd13 0) vsource dc=1.2
+X13 (ip in op13 on13 vdd13 0) tx_regen_receiver wn=8u wp=0.3u ibias=15u
+C13 (op13 0) capacitor c=20f
+D13 (on13 0) capacitor c=20f
+VS14 (vdd14 0) vsource dc=1.2
+X14 (ip in op14 on14 vdd14 0) tx_regen_receiver wn=8u wp=0.6u ibias=5u
+C14 (op14 0) capacitor c=20f
+D14 (on14 0) capacitor c=20f
+VS15 (vdd15 0) vsource dc=1.2
+X15 (ip in op15 on15 vdd15 0) tx_regen_receiver wn=8u wp=0.6u ibias=15u
+C15 (op15 0) capacitor c=20f
+D15 (on15 0) capacitor c=20f
+VS16 (vdd16 0) vsource dc=1.2
+X16 (ip in op16 on16 vdd16 0) tx_regen_receiver wn=8u wp=1.2u ibias=5u
+C16 (op16 0) capacitor c=20f
+D16 (on16 0) capacitor c=20f
+VS17 (vdd17 0) vsource dc=1.2
+X17 (ip in op17 on17 vdd17 0) tx_regen_receiver wn=8u wp=1.2u ibias=15u
+C17 (op17 0) capacitor c=20f
+D17 (on17 0) capacitor c=20f
+tran tran stop=100n maxstep=5p errpreset=conservative
+save op0 on0 VS0:p op1 on1 VS1:p op2 on2 VS2:p op3 on3 VS3:p op4 on4 VS4:p op5 on5 VS5:p op6 on6 VS6:p op7 on7 VS7:p op8 on8 VS8:p op9 on9 VS9:p op10 on10 VS10:p op11 on11 VS11:p op12 on12 VS12:p op13 on13 VS13:p op14 on14 VS14:p op15 on15 VS15:p op16 on16 VS16:p op17 on17 VS17:p
+saveOptions options save=selected

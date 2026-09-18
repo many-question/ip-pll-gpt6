@@ -1,0 +1,71 @@
+simulator lang=spectre
+// Device sizes and bias scale together; R scales inversely.
+subckt tx_cml_latch_v2 (dp dn cp cn qp qn nb reset vdd vss)
+parameters scale=.25 rload=2000
+RP (vdd qp) resistor r=rload/scale
+RN (vdd qn) resistor r=rload/scale
+MDP (qn dp st vss) nch w=8u*scale l=180n ad=8u*scale*240n as=8u*scale*240n pd=2*(8u*scale+240n) ps=2*(8u*scale+240n)
+MDN (qp dn st vss) nch w=8u*scale l=180n ad=8u*scale*240n as=8u*scale*240n pd=2*(8u*scale+240n) ps=2*(8u*scale+240n)
+MHP (qn qp ht vss) nch w=8u*scale l=180n ad=8u*scale*240n as=8u*scale*240n pd=2*(8u*scale+240n) ps=2*(8u*scale+240n)
+MHN (qp qn ht vss) nch w=8u*scale l=180n ad=8u*scale*240n as=8u*scale*240n pd=2*(8u*scale+240n) ps=2*(8u*scale+240n)
+MCS (st cp tail vss) nch w=10u*scale l=180n ad=10u*scale*240n as=10u*scale*240n pd=2*(10u*scale+240n) ps=2*(10u*scale+240n)
+MCH (ht cn tail vss) nch w=10u*scale l=180n ad=10u*scale*240n as=10u*scale*240n pd=2*(10u*scale+240n) ps=2*(10u*scale+240n)
+MT (tail nb vss vss) nch w=10u*scale l=1u ad=10u*scale*240n as=10u*scale*240n pd=2*(10u*scale+240n) ps=2*(10u*scale+240n)
+MR (qp reset vss vss) nch w=1u l=180n ad=1u*240n as=1u*240n pd=2*(1u+240n) ps=2*(1u+240n)
+ends tx_cml_latch_v2
+subckt tx_johnson (cp cn reset s2 s3 s4 s5 s6 s7 op on vdd vss)
+parameters scale=.5 ibias=30u rload=2000 selw=300n
+CCP (cp ckp) capacitor c=500f
+CCN (cn ckn) capacitor c=500f
+RBP (ckp cm) resistor r=50k
+RBN (ckn cm) resistor r=50k
+RHI (vdd cm) resistor r=25k
+RLO (cm vss) resistor r=50k
+CB (cm vss) capacitor c=1p
+IREF (vdd nb) isource dc=ibias*scale
+MB (nb nb vss vss) nch w=2u*scale l=1u ad=2u*scale*240n as=2u*scale*240n pd=2*(2u*scale+240n) ps=2*(2u*scale+240n)
+XM0 (on op ckp ckn m0p m0n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XS0 (m0p m0n ckn ckp q0p q0n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XM1 (q0p q0n ckp ckn m1p m1n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XS1 (m1p m1n ckn ckp q1p q1n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XM2 (q1p q1n ckp ckn m2p m2n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XS2 (m2p m2n ckn ckp q2p q2n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XM3 (q2p q2n ckp ckn m3p m3n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XS3 (m3p m3n ckn ckp q3p q3n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XM4 (q3p q3n ckp ckn m4p m4n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XS4 (m4p m4n ckn ckp q4p q4n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XM5 (q4p q4n ckp ckn m5p m5n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XS5 (m5p m5n ckn ckp q5p q5n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XM6 (q5p q5n ckp ckn m6p m6n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XS6 (m6p m6n ckn ckp q6p q6n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XI2 (s2 sb2 vdd vss) pll_inv wn=300n wp=750n
+XP2 (q1p op s2 sb2 vdd vss) pll_tg wn=selw wp=2*selw
+XN2 (q1n on s2 sb2 vdd vss) pll_tg wn=selw wp=2*selw
+XI3 (s3 sb3 vdd vss) pll_inv wn=300n wp=750n
+XP3 (q2p op s3 sb3 vdd vss) pll_tg wn=selw wp=2*selw
+XN3 (q2n on s3 sb3 vdd vss) pll_tg wn=selw wp=2*selw
+XI4 (s4 sb4 vdd vss) pll_inv wn=300n wp=750n
+XP4 (q3p op s4 sb4 vdd vss) pll_tg wn=selw wp=2*selw
+XN4 (q3n on s4 sb4 vdd vss) pll_tg wn=selw wp=2*selw
+XI5 (s5 sb5 vdd vss) pll_inv wn=300n wp=750n
+XP5 (q4p op s5 sb5 vdd vss) pll_tg wn=selw wp=2*selw
+XN5 (q4n on s5 sb5 vdd vss) pll_tg wn=selw wp=2*selw
+XI6 (s6 sb6 vdd vss) pll_inv wn=300n wp=750n
+XP6 (q5p op s6 sb6 vdd vss) pll_tg wn=selw wp=2*selw
+XN6 (q5n on s6 sb6 vdd vss) pll_tg wn=selw wp=2*selw
+XI7 (s7 sb7 vdd vss) pll_inv wn=300n wp=750n
+XP7 (q6p op s7 sb7 vdd vss) pll_tg wn=selw wp=2*selw
+XN7 (q6n on s7 sb7 vdd vss) pll_tg wn=selw wp=2*selw
+ends tx_johnson
+
+subckt tx_ac_receiver_v2 (ip out vdd vss)
+parameters wn=600n ratio=2.5 cc=100f
+C0 (ip a) capacitor c=cc
+R0 (a b) resistor r=50k
+X0 (a b vdd vss) pll_inv wn=wn wp=wn*ratio
+C1 (b c) capacitor c=cc
+R1 (c d) resistor r=50k
+X1 (c d vdd vss) pll_inv wn=wn wp=wn*ratio
+X2 (d e vdd vss) pll_inv wn=1u wp=2.5u
+X3 (e out vdd vss) pll_inv wn=3u wp=7.5u
+ends tx_ac_receiver_v2

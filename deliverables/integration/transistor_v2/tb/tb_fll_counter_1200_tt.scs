@@ -1,0 +1,20 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "cells.scs"
+include "receiver.scs"
+simulatorOptions options reltol=1e-5 vabstol=1e-7 iabstol=1e-13 temp=27
+
+include "digital_cells_v2.scs"
+include "fll_circuit.scs"
+
+VDD (vdd 0) vsource dc=1.2
+VC (clk 0) vsource type=pulse val0=0 val1=1.2 delay=20.25n rise=20p fall=20p width=396.666666666667p period=833.333333333333p
+VG (gate 0) vsource type=pulse val0=0 val1=1.2 delay=40n rise=20p fall=20p width=256n period=1u
+VR (rst 0) vsource type=pulse val0=1.2 val1=0 delay=10n rise=20p fall=20p width=1u period=2u
+XC (clk gate rst q0 q1 q2 q3 q4 q5 q6 q7 q8 q9 q10 q11 q12 q13 vdd 0) tx_fll_counter
+tran tran stop=350n maxstep=20p errpreset=conservative
+save clk gate rst VDD:p q0 q1 q2 q3 q4 q5 q6 q7 q8 q9 q10 q11 q12 q13
+saveOptions options save=selected

@@ -1,0 +1,21 @@
+simulator lang=spectre
+// Differential regenerative level converter with tracking NMOS threshold bias.
+// IREF remains an explicit ideal current-reference assumption in this candidate.
+subckt tx_regen_receiver (ip in op on vdd vss)
+parameters wn=4u wp=600n ibias=10u cc=120f
+IREF (vdd nb) isource dc=ibias
+MB (nb nb vss vss) nch w=4u l=180n ad=.96p as=.96p pd=8.48u ps=8.48u
+CB (nb vss) capacitor c=1p
+CP (ip gp) capacitor c=cc
+CN (in gn) capacitor c=cc
+RGP (gp nb) resistor r=50k
+RGN (gn nb) resistor r=50k
+MN0 (qp gn vss vss) nch w=wn l=180n ad=wn*240n as=wn*240n pd=2*(wn+240n) ps=2*(wn+240n)
+MN1 (qn gp vss vss) nch w=wn l=180n ad=wn*240n as=wn*240n pd=2*(wn+240n) ps=2*(wn+240n)
+MP0 (qp qn vdd vdd) pch w=wp l=180n ad=wp*240n as=wp*240n pd=2*(wp+240n) ps=2*(wp+240n)
+MP1 (qn qp vdd vdd) pch w=wp l=180n ad=wp*240n as=wp*240n pd=2*(wp+240n) ps=2*(wp+240n)
+XP0 (qp bp vdd vss) pll_inv wn=500n wp=1.25u
+XP1 (bp op vdd vss) pll_inv wn=2u wp=5u
+XN0 (qn bn vdd vss) pll_inv wn=500n wp=1.25u
+XN1 (bn on vdd vss) pll_inv wn=2u wp=5u
+ends tx_regen_receiver

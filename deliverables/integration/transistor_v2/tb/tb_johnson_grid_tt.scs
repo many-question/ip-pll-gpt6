@@ -1,0 +1,40 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "cells.scs"
+include "receiver.scs"
+simulatorOptions options reltol=1e-5 vabstol=1e-7 iabstol=1e-13 temp=27
+
+include "divider_v2.scs"
+VP (cp 0) vsource type=sine dc=1.2 ampl=.2 freq=4G
+VN (cn 0) vsource type=sine dc=1.2 ampl=.2 freq=4G sinephase=180
+VR (rst 0) vsource type=pulse val0=1.2 val1=0 delay=5n rise=20p fall=20p width=1u period=2u
+VD0 (vdd0 0) vsource dc=1.2
+X0 (cp cn rst vdd0 0 0 0 0 0 p0 n0 vdd0 0) tx_johnson scale=0.25
+XP0 (p0 o0 vdd0 0) tx_ac_receiver_v2
+CL0 (o0 0) capacitor c=10f
+VD1 (vdd1 0) vsource dc=1.2
+X1 (cp cn rst 0 0 0 0 0 vdd1 p1 n1 vdd1 0) tx_johnson scale=0.25
+XP1 (p1 o1 vdd1 0) tx_ac_receiver_v2
+CL1 (o1 0) capacitor c=10f
+VD2 (vdd2 0) vsource dc=1.2
+X2 (cp cn rst vdd2 0 0 0 0 0 p2 n2 vdd2 0) tx_johnson scale=0.5
+XP2 (p2 o2 vdd2 0) tx_ac_receiver_v2
+CL2 (o2 0) capacitor c=10f
+VD3 (vdd3 0) vsource dc=1.2
+X3 (cp cn rst 0 0 0 0 0 vdd3 p3 n3 vdd3 0) tx_johnson scale=0.5
+XP3 (p3 o3 vdd3 0) tx_ac_receiver_v2
+CL3 (o3 0) capacitor c=10f
+VD4 (vdd4 0) vsource dc=1.2
+X4 (cp cn rst vdd4 0 0 0 0 0 p4 n4 vdd4 0) tx_johnson scale=1.0
+XP4 (p4 o4 vdd4 0) tx_ac_receiver_v2
+CL4 (o4 0) capacitor c=10f
+VD5 (vdd5 0) vsource dc=1.2
+X5 (cp cn rst 0 0 0 0 0 vdd5 p5 n5 vdd5 0) tx_johnson scale=1.0
+XP5 (p5 o5 vdd5 0) tx_ac_receiver_v2
+CL5 (o5 0) capacitor c=10f
+tran tran stop=150n maxstep=5p errpreset=conservative
+save cp cn rst p0 n0 o0 VD0:p p1 n1 o1 VD1:p p2 n2 o2 VD2:p p3 n3 o3 VD3:p p4 n4 o4 VD4:p p5 n5 o5 VD5:p
+saveOptions options save=selected

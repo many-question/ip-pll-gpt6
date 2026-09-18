@@ -1,0 +1,43 @@
+simulator lang=spectre
+subckt tx_direct2 (cp cn reset op on vdd vss)
+parameters scale=.25 ibias=30u rload=2000
+CCP (cp ckp) capacitor c=500f
+CCN (cn ckn) capacitor c=500f
+RBP (ckp cm) resistor r=50k
+RBN (ckn cm) resistor r=50k
+RHI (vdd cm) resistor r=25k
+RLO (cm vss) resistor r=50k
+CB (cm vss) capacitor c=1p
+IREF (vdd nb) isource dc=ibias*scale
+MB (nb nb vss vss) nch w=2u*scale l=1u ad=2u*scale*240n as=2u*scale*240n pd=2*(2u*scale+240n) ps=2*(2u*scale+240n)
+XM0 (on op ckp ckn m0p m0n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XS0 (m0p m0n ckn ckp q0p q0n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XM1 (q0p q0n ckp ckn m1p m1n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XS1 (m1p m1n ckn ckp op on nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+ends tx_direct2
+subckt tx_direct7 (cp cn reset op on vdd vss)
+parameters scale=.25 ibias=30u rload=2000
+CCP (cp ckp) capacitor c=500f
+CCN (cn ckn) capacitor c=500f
+RBP (ckp cm) resistor r=50k
+RBN (ckn cm) resistor r=50k
+RHI (vdd cm) resistor r=25k
+RLO (cm vss) resistor r=50k
+CB (cm vss) capacitor c=1p
+IREF (vdd nb) isource dc=ibias*scale
+MB (nb nb vss vss) nch w=2u*scale l=1u ad=2u*scale*240n as=2u*scale*240n pd=2*(2u*scale+240n) ps=2*(2u*scale+240n)
+XM0 (on op ckp ckn m0p m0n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XS0 (m0p m0n ckn ckp q0p q0n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XM1 (q0p q0n ckp ckn m1p m1n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XS1 (m1p m1n ckn ckp q1p q1n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XM2 (q1p q1n ckp ckn m2p m2n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XS2 (m2p m2n ckn ckp q2p q2n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XM3 (q2p q2n ckp ckn m3p m3n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XS3 (m3p m3n ckn ckp q3p q3n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XM4 (q3p q3n ckp ckn m4p m4n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XS4 (m4p m4n ckn ckp q4p q4n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XM5 (q4p q4n ckp ckn m5p m5n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XS5 (m5p m5n ckn ckp q5p q5n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XM6 (q5p q5n ckp ckn m6p m6n nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+XS6 (m6p m6n ckn ckp op on nb reset vdd vss) tx_cml_latch_v2 scale=scale rload=rload
+ends tx_direct7

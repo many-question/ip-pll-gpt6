@@ -1,0 +1,42 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "cells.scs"
+include "receiver.scs"
+simulatorOptions options reltol=1e-5 vabstol=1e-7 iabstol=1e-13 temp=27
+
+include "diff_receiver_v2.scs"
+VP (ip 0) vsource type=sine dc=1.05 ampl=.1 freq=2G
+VN (in 0) vsource type=sine dc=1.05 ampl=.1 freq=2G sinephase=180
+VD0 (vdd0 0) vsource dc=1.2
+X0 (ip in o0 vdd0 0) tx_diff_receiver ibias=10u rload=24k wn=2u
+CL0 (o0 0) capacitor c=10f
+VD1 (vdd1 0) vsource dc=1.2
+X1 (ip in o1 vdd1 0) tx_diff_receiver ibias=10u rload=24k wn=4u
+CL1 (o1 0) capacitor c=10f
+VD2 (vdd2 0) vsource dc=1.2
+X2 (ip in o2 vdd2 0) tx_diff_receiver ibias=10u rload=24k wn=8u
+CL2 (o2 0) capacitor c=10f
+VD3 (vdd3 0) vsource dc=1.2
+X3 (ip in o3 vdd3 0) tx_diff_receiver ibias=20u rload=12k wn=2u
+CL3 (o3 0) capacitor c=10f
+VD4 (vdd4 0) vsource dc=1.2
+X4 (ip in o4 vdd4 0) tx_diff_receiver ibias=20u rload=12k wn=4u
+CL4 (o4 0) capacitor c=10f
+VD5 (vdd5 0) vsource dc=1.2
+X5 (ip in o5 vdd5 0) tx_diff_receiver ibias=20u rload=12k wn=8u
+CL5 (o5 0) capacitor c=10f
+VD6 (vdd6 0) vsource dc=1.2
+X6 (ip in o6 vdd6 0) tx_diff_receiver ibias=30u rload=8k wn=2u
+CL6 (o6 0) capacitor c=10f
+VD7 (vdd7 0) vsource dc=1.2
+X7 (ip in o7 vdd7 0) tx_diff_receiver ibias=30u rload=8k wn=4u
+CL7 (o7 0) capacitor c=10f
+VD8 (vdd8 0) vsource dc=1.2
+X8 (ip in o8 vdd8 0) tx_diff_receiver ibias=30u rload=8k wn=8u
+CL8 (o8 0) capacitor c=10f
+tran tran stop=70n maxstep=5p errpreset=moderate
+save o0 X0.dp VD0:p o1 X1.dp VD1:p o2 X2.dp VD2:p o3 X3.dp VD3:p o4 X4.dp VD4:p o5 X5.dp VD5:p o6 X6.dp VD6:p o7 X7.dp VD7:p o8 X8.dp VD8:p
+saveOptions options save=selected

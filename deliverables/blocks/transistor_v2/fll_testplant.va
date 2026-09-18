@@ -1,0 +1,22 @@
+`include "constants.vams"
+`include "disciplines.vams"
+module fll_testplant(c0,c1,c2,c3,c4,c5,c6,c7,d0,d1,d2,d3,d4,d5,m0,m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11,m12,m13,s0,s1,s2,preset,clk,code_mon,dac_mon,count_mon,state_mon,freq_mon);
+inout c0,c1,c2,c3,c4,c5,c6,c7,d0,d1,d2,d3,d4,d5,m0,m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11,m12,m13,s0,s1,s2,preset,clk,code_mon,dac_mon,count_mon,state_mon,freq_mon;
+electrical c0,c1,c2,c3,c4,c5,c6,c7,d0,d1,d2,d3,d4,d5,m0,m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11,m12,m13,s0,s1,s2,preset,clk,code_mon,dac_mon,count_mon,state_mon,freq_mon;
+parameter real ratio=4; parameter real f0=4.0e9; parameter real step=5e6; parameter real kv=20e6;
+real code,dcnt,mcount,state,freq,phase,sinewave; integer logic_clk;
+analog begin
+code=((V(c0)>0.6)?1:0)+((V(c1)>0.6)?2:0)+((V(c2)>0.6)?4:0)+((V(c3)>0.6)?8:0)+((V(c4)>0.6)?16:0)+((V(c5)>0.6)?32:0)+((V(c6)>0.6)?64:0)+((V(c7)>0.6)?128:0);
+@(timer(0,20n)) begin
+dcnt=((V(d0)>0.6)?1:0)+((V(d1)>0.6)?2:0)+((V(d2)>0.6)?4:0)+((V(d3)>0.6)?8:0)+((V(d4)>0.6)?16:0)+((V(d5)>0.6)?32:0);
+mcount=((V(m0)>0.6)?1:0)+((V(m1)>0.6)?2:0)+((V(m2)>0.6)?4:0)+((V(m3)>0.6)?8:0)+((V(m4)>0.6)?16:0)+((V(m5)>0.6)?32:0)+((V(m6)>0.6)?64:0)+((V(m7)>0.6)?128:0)+((V(m8)>0.6)?256:0)+((V(m9)>0.6)?512:0)+((V(m10)>0.6)?1024:0)+((V(m11)>0.6)?2048:0)+((V(m12)>0.6)?4096:0)+((V(m13)>0.6)?8192:0);
+state=((V(s0)>0.6)?1:0)+((V(s1)>0.6)?2:0)+((V(s2)>0.6)?4:0);
+end
+freq=(f0-step*code+kv*(V(preset)-0.6))/ratio;
+phase=idtmod(freq,0,1); sinewave=sin(2*`M_PI*phase);
+@(initial_step) logic_clk=0;
+@(cross(sinewave,0,1f,1u)) logic_clk=(sinewave>0);
+V(clk)<+transition(1.2*logic_clk,0,15p,15p); $bound_step(1.0/(12*freq));
+V(code_mon)<+transition(code,0,1n); V(dac_mon)<+transition(dcnt,0,1n); V(count_mon)<+transition(mcount,0,1n); V(state_mon)<+transition(state,0,1n); V(freq_mon)<+freq;
+end
+endmodule

@@ -1,0 +1,32 @@
+`include "disciplines.vams"
+`include "constants.vams"
+module fll_window_meter(c0,c1,c2,c3,c4,c5,c6,c7,m0,m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11,m12,m13,ctrl,gate,reset,frequency,value);
+inout c0,c1,c2,c3,c4,c5,c6,c7,m0,m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11,m12,m13,ctrl,gate,reset,frequency,value;
+electrical c0,c1,c2,c3,c4,c5,c6,c7,m0,m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11,m12,m13,ctrl,gate,reset,frequency,value;
+parameter real f0=4.0e9, step=5e6, kv=20e6, ratio=4;
+real code,freq,phase,startphase; integer count;
+analog begin
+code=((V(c0)>0.6)?1:0)+((V(c1)>0.6)?2:0)+((V(c2)>0.6)?4:0)+((V(c3)>0.6)?8:0)+((V(c4)>0.6)?16:0)+((V(c5)>0.6)?32:0)+((V(c6)>0.6)?64:0)+((V(c7)>0.6)?128:0);
+freq=(f0-step*code+kv*(V(ctrl)-0.6))/ratio;
+phase=idt(freq,0);
+@(initial_step) begin count=0;startphase=0;end
+@(cross(V(reset)-0.6,+1)) count=0;
+@(cross(V(gate)-0.6,+1)) startphase=floor(phase);
+@(cross(V(gate)-0.6,-1)) count=$rtoi(floor(phase)-startphase);
+V(m0)<+transition(((count>>0)&1)*1.2,0,50p);
+V(m1)<+transition(((count>>1)&1)*1.2,0,50p);
+V(m2)<+transition(((count>>2)&1)*1.2,0,50p);
+V(m3)<+transition(((count>>3)&1)*1.2,0,50p);
+V(m4)<+transition(((count>>4)&1)*1.2,0,50p);
+V(m5)<+transition(((count>>5)&1)*1.2,0,50p);
+V(m6)<+transition(((count>>6)&1)*1.2,0,50p);
+V(m7)<+transition(((count>>7)&1)*1.2,0,50p);
+V(m8)<+transition(((count>>8)&1)*1.2,0,50p);
+V(m9)<+transition(((count>>9)&1)*1.2,0,50p);
+V(m10)<+transition(((count>>10)&1)*1.2,0,50p);
+V(m11)<+transition(((count>>11)&1)*1.2,0,50p);
+V(m12)<+transition(((count>>12)&1)*1.2,0,50p);
+V(m13)<+transition(((count>>13)&1)*1.2,0,50p);
+V(frequency)<+freq/1e9; V(value)<+transition(count/16384.0,0,1n);
+end
+endmodule

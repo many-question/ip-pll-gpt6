@@ -1,6 +1,13 @@
 # 交付物索引
 
-2026-09-18：已进入 TSMC180 PDK 晶体管模块与逐级混合顶层验证。参考/输出缓冲、采样保持、滤波预充、重定时及跨导级已逐级代回；LC VCO、CML ÷2 有联合负载候选。尚未完成全晶体管 PLL；实际增益已暴露原抖动预算的风险，不能沿用行为候选 B 的估算宣称达标。
+2026-09-18：已完成六档晶体管分频的配对角验证、FLL 控制器/计数器/DAC 实现及分块验证，并提取关键模块的实际 PDK 器件噪声。宽带验收下原输出链超标，改进后明显下降；整机 <200 fs、≤4 mW 及完整全器件启动仍未证明。
+
+- [分频、FLL、器件噪声与逐级代回的本轮证据](integration/transistor_v2/README.md)
+- [新增晶体管电路、接口和使用边界](blocks/transistor_v2/README.md)
+- [实际使用的模型、Spectre 帮助与综合工具依据](sources/transistor_v2_sources.md)
+- [DEC-0004：10 kHz–输出频率一半的抖动验收频带](../reports/decisions/DEC-0004.md)
+
+上一阶段器件与混合系统基线：
 
 - [晶体管实现、混合系统结果、失败记录和复现入口](integration/transistor_v1/README.md)
 - [晶体管模块网表及接口边界](blocks/transistor_v1/README.md)

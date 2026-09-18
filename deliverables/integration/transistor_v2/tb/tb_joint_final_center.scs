@@ -1,0 +1,22 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "cells.scs"
+include "receiver.scs"
+simulatorOptions options reltol=1e-5 vabstol=1e-7 iabstol=1e-13 temp=27
+
+include "cp_experiment.scs"
+VDD (vdd 0) vsource dc=1.2
+VP (vp 0) vsource type=sine dc=.6 ampl=.2 freq=3.936G sinephase=217.869884783412
+VN (vn 0) vsource type=sine dc=.6 ampl=.2 freq=3.936G sinephase=397.869884783412
+VR (ref 0) vsource type=pulse val0=0 val1=1.2 period=41.6666666666667n width=20.8233333333333n rise=10p fall=10p
+VG (pulse 0) vsource type=pulse val0=0 val1=1.2 period=41.6666666666667n width=2.07333333333333n rise=10p fall=10p delay=2.08333333333333n
+VO (out 0) vsource dc=.6
+XS (ref vp vn hp hn vdd 0) tx_sampler
+XC (hp hn pulse vdd out vdd 0) tx_cp_experiment
+pss pss fund=24M harms=8 tstab=200n maxstep=3p method=trap errpreset=conservative saveinit=yes
+pn pnoise oprobe=VO start=10k stop=492M dec=20 maxsideband=512 pnoisemethod=fullspectrum
+save hp hn out pulse ref VO:p VDD:p
+saveOptions options save=selected

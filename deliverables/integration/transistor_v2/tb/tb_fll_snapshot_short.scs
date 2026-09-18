@@ -1,0 +1,34 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "cells.scs"
+include "receiver.scs"
+simulatorOptions options reltol=1e-5 vabstol=1e-7 iabstol=1e-13 temp=27
+
+include "digital_cells_v2.scs"
+include "fll_circuit.scs"
+
+ahdl_include "fll_testplant.va"
+ahdl_include "supply_meter.va"
+VDD (vd 0) vsource dc=1.2
+XM (vd vdd 0 pmw) supply_meter start=0
+VC (refclk 0) vsource type=pulse val0=0 val1=1.2 delay=21n rise=50p fall=50p width=20.7833333333n period=41.6666666667n
+VR (reset 0) vsource type=pulse val0=1.2 val1=0 delay=100n rise=50p fall=50p width=1m period=2m
+Vtarget_k0 (target_k0 0) vsource dc=1.2
+Vtarget_k1 (target_k1 0) vsource dc=0
+Vtarget_k2 (target_k2 0) vsource dc=0
+Vtarget_k3 (target_k3 0) vsource dc=1.2
+Vtarget_k4 (target_k4 0) vsource dc=0
+Vtarget_k5 (target_k5 0) vsource dc=1.2
+XF (refclk reset target_k0 target_k1 target_k2 target_k3 target_k4 target_k5 measured0 measured1 measured2 measured3 measured4 measured5 measured6 measured7 measured8 measured9 measured10 measured11 measured12 measured13 coarse0 coarse1 coarse2 coarse3 coarse4 coarse5 coarse6 coarse7 dac0 dac1 dac2 dac3 dac4 dac5 count_gate count_reset enable range_error state_out0 state_out1 state_out2 vdd 0) tx_fll_controller
+XC (outclk count_gate count_reset counter0 counter1 counter2 counter3 counter4 counter5 counter6 counter7 counter8 counter9 counter10 counter11 counter12 counter13 vdd 0) tx_fll_counter
+XSN (count_gate counter0 counter1 counter2 counter3 counter4 counter5 counter6 counter7 counter8 counter9 counter10 counter11 counter12 counter13 measured0 measured1 measured2 measured3 measured4 measured5 measured6 measured7 measured8 measured9 measured10 measured11 measured12 measured13 vdd 0) tx_fll_snapshot
+XD (dac0 dac1 dac2 dac3 dac4 dac5 enable preset vdd 0) tx_fll_dac
+XL (ctrl vc1 enable preset vdd 0) tx_loop_filter rlf=100k
+XP (coarse0 coarse1 coarse2 coarse3 coarse4 coarse5 coarse6 coarse7 dac0 dac1 dac2 dac3 dac4 dac5 measured0 measured1 measured2 measured3 measured4 measured5 measured6 measured7 measured8 measured9 measured10 measured11 measured12 measured13 state_out0 state_out1 state_out2 ctrl outclk code_mon dac_mon count_mon state_mon freq_mon) fll_testplant
+tran tran stop=1u errpreset=moderate strobeperiod=20n strobeoutput=strobeonly
+save pmw preset ctrl vc1 count_gate count_reset enable range_error code_mon dac_mon count_mon state_mon freq_mon
+saveOptions options save=selected
+

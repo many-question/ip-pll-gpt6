@@ -1,0 +1,24 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=ss
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "cells.scs"
+include "receiver.scs"
+simulatorOptions options reltol=1e-5 vabstol=1e-7 iabstol=1e-13 temp=60
+
+include "divider_v2.scs"
+VP (cp 0) vsource type=sine dc=1.2 ampl=.2 freq=4G
+VN (cn 0) vsource type=sine dc=1.2 ampl=.2 freq=4G sinephase=180
+VR (rst 0) vsource type=pulse val0=1.2 val1=0 delay=5n rise=20p fall=20p width=1u period=2u
+VD0 (vdd0 0) vsource dc=1.2
+X0 (cp cn rst vdd0 0 0 0 0 0 p0 n0 vdd0 0) tx_johnson scale=.5 selw=0.3u
+VD1 (vdd1 0) vsource dc=1.2
+X1 (cp cn rst vdd1 0 0 0 0 0 p1 n1 vdd1 0) tx_johnson scale=.5 selw=0.6u
+VD2 (vdd2 0) vsource dc=1.2
+X2 (cp cn rst vdd2 0 0 0 0 0 p2 n2 vdd2 0) tx_johnson scale=.5 selw=1.2u
+VD3 (vdd3 0) vsource dc=1.2
+X3 (cp cn rst vdd3 0 0 0 0 0 p3 n3 vdd3 0) tx_johnson scale=.5 selw=2.4u
+tran tran stop=70n maxstep=5p errpreset=moderate
+save p0 n0 X0.q0p VD0:p p1 n1 X1.q0p VD1:p p2 n2 X2.q0p VD2:p p3 n3 X3.q0p VD3:p
+saveOptions options save=selected

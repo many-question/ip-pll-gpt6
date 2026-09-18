@@ -1,0 +1,76 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "cells.scs"
+include "receiver.scs"
+simulatorOptions options reltol=1e-5 vabstol=1e-7 iabstol=1e-13 temp=27
+
+include "cp_experiment.scs"
+VDD (vdd 0) vsource dc=1.2
+VR (ref 0) vsource type=pulse val0=0 val1=1.2 period=41.6666666666667n width=20.8233333333333n rise=10p fall=10p
+VG (pulse 0) vsource type=pulse val0=0 val1=1.2 period=41.6666666666667n width=2.07333333333333n rise=10p fall=10p delay=2.08333333333333n
+VP0 (vp0 0) vsource type=sine dc=.6 ampl=.2 freq=3.936G sinephase=0
+VN0 (vn0 0) vsource type=sine dc=.6 ampl=.2 freq=3.936G sinephase=180
+XS0 (ref vp0 vn0 hp0 hn0 vdd 0) tx_sampler
+XC0 (hp0 hn0 pulse vdd out0 vdd 0) tx_cp_experiment
+VO0 (out0 0) vsource dc=.6
+VP1 (vp1 0) vsource type=sine dc=.6 ampl=.2 freq=3.936G sinephase=30
+VN1 (vn1 0) vsource type=sine dc=.6 ampl=.2 freq=3.936G sinephase=210
+XS1 (ref vp1 vn1 hp1 hn1 vdd 0) tx_sampler
+XC1 (hp1 hn1 pulse vdd out1 vdd 0) tx_cp_experiment
+VO1 (out1 0) vsource dc=.6
+VP2 (vp2 0) vsource type=sine dc=.6 ampl=.2 freq=3.936G sinephase=60
+VN2 (vn2 0) vsource type=sine dc=.6 ampl=.2 freq=3.936G sinephase=240
+XS2 (ref vp2 vn2 hp2 hn2 vdd 0) tx_sampler
+XC2 (hp2 hn2 pulse vdd out2 vdd 0) tx_cp_experiment
+VO2 (out2 0) vsource dc=.6
+VP3 (vp3 0) vsource type=sine dc=.6 ampl=.2 freq=3.936G sinephase=90
+VN3 (vn3 0) vsource type=sine dc=.6 ampl=.2 freq=3.936G sinephase=270
+XS3 (ref vp3 vn3 hp3 hn3 vdd 0) tx_sampler
+XC3 (hp3 hn3 pulse vdd out3 vdd 0) tx_cp_experiment
+VO3 (out3 0) vsource dc=.6
+VP4 (vp4 0) vsource type=sine dc=.6 ampl=.2 freq=3.936G sinephase=120
+VN4 (vn4 0) vsource type=sine dc=.6 ampl=.2 freq=3.936G sinephase=300
+XS4 (ref vp4 vn4 hp4 hn4 vdd 0) tx_sampler
+XC4 (hp4 hn4 pulse vdd out4 vdd 0) tx_cp_experiment
+VO4 (out4 0) vsource dc=.6
+VP5 (vp5 0) vsource type=sine dc=.6 ampl=.2 freq=3.936G sinephase=150
+VN5 (vn5 0) vsource type=sine dc=.6 ampl=.2 freq=3.936G sinephase=330
+XS5 (ref vp5 vn5 hp5 hn5 vdd 0) tx_sampler
+XC5 (hp5 hn5 pulse vdd out5 vdd 0) tx_cp_experiment
+VO5 (out5 0) vsource dc=.6
+VP6 (vp6 0) vsource type=sine dc=.6 ampl=.2 freq=3.936G sinephase=180
+VN6 (vn6 0) vsource type=sine dc=.6 ampl=.2 freq=3.936G sinephase=360
+XS6 (ref vp6 vn6 hp6 hn6 vdd 0) tx_sampler
+XC6 (hp6 hn6 pulse vdd out6 vdd 0) tx_cp_experiment
+VO6 (out6 0) vsource dc=.6
+VP7 (vp7 0) vsource type=sine dc=.6 ampl=.2 freq=3.936G sinephase=210
+VN7 (vn7 0) vsource type=sine dc=.6 ampl=.2 freq=3.936G sinephase=390
+XS7 (ref vp7 vn7 hp7 hn7 vdd 0) tx_sampler
+XC7 (hp7 hn7 pulse vdd out7 vdd 0) tx_cp_experiment
+VO7 (out7 0) vsource dc=.6
+VP8 (vp8 0) vsource type=sine dc=.6 ampl=.2 freq=3.936G sinephase=240
+VN8 (vn8 0) vsource type=sine dc=.6 ampl=.2 freq=3.936G sinephase=420
+XS8 (ref vp8 vn8 hp8 hn8 vdd 0) tx_sampler
+XC8 (hp8 hn8 pulse vdd out8 vdd 0) tx_cp_experiment
+VO8 (out8 0) vsource dc=.6
+VP9 (vp9 0) vsource type=sine dc=.6 ampl=.2 freq=3.936G sinephase=270
+VN9 (vn9 0) vsource type=sine dc=.6 ampl=.2 freq=3.936G sinephase=450
+XS9 (ref vp9 vn9 hp9 hn9 vdd 0) tx_sampler
+XC9 (hp9 hn9 pulse vdd out9 vdd 0) tx_cp_experiment
+VO9 (out9 0) vsource dc=.6
+VP10 (vp10 0) vsource type=sine dc=.6 ampl=.2 freq=3.936G sinephase=300
+VN10 (vn10 0) vsource type=sine dc=.6 ampl=.2 freq=3.936G sinephase=480
+XS10 (ref vp10 vn10 hp10 hn10 vdd 0) tx_sampler
+XC10 (hp10 hn10 pulse vdd out10 vdd 0) tx_cp_experiment
+VO10 (out10 0) vsource dc=.6
+VP11 (vp11 0) vsource type=sine dc=.6 ampl=.2 freq=3.936G sinephase=330
+VN11 (vn11 0) vsource type=sine dc=.6 ampl=.2 freq=3.936G sinephase=510
+XS11 (ref vp11 vn11 hp11 hn11 vdd 0) tx_sampler
+XC11 (hp11 hn11 pulse vdd out11 vdd 0) tx_cp_experiment
+VO11 (out11 0) vsource dc=.6
+tran tran stop=150n maxstep=5p errpreset=conservative
+save VO0:p hp0 hn0 VO1:p hp1 hn1 VO2:p hp2 hn2 VO3:p hp3 hn3 VO4:p hp4 hn4 VO5:p hp5 hn5 VO6:p hp6 hn6 VO7:p hp7 hn7 VO8:p hp8 hn8 VO9:p hp9 hn9 VO10:p hp10 hn10 VO11:p hp11 hn11
+saveOptions options save=selected

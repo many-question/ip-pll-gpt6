@@ -1,0 +1,17 @@
+simulator lang=spectre
+subckt tx_clocked_inv_scaled (d ck ckb q vdd vss)
+parameters scale=1 wp=2.5u
+MPCK (pp ckb vdd vdd) pch w=2*wp*scale l=180n ad=2*wp*scale*240n as=2*wp*scale*240n pd=2*(2*wp*scale+240n) ps=2*(2*wp*scale+240n)
+MPD (q d pp vdd) pch w=wp*scale l=180n ad=wp*scale*240n as=wp*scale*240n pd=2*(wp*scale+240n) ps=2*(wp*scale+240n)
+MND (q d nn vss) nch w=1u*scale l=180n ad=1u*scale*240n as=1u*scale*240n pd=2*(1u*scale+240n) ps=2*(1u*scale+240n)
+MNCK (nn ck vss vss) nch w=2u*scale l=180n ad=2u*scale*240n as=2u*scale*240n pd=2*(2u*scale+240n) ps=2*(2u*scale+240n)
+ends tx_clocked_inv_scaled
+subckt tx_retimer_scaled (data clk out vdd vss)
+parameters scale=4 oscale=4 sp=1.06u
+XC (clk clkb vdd vss) pll_inv wn=3u*scale wp=7.5u*scale
+XM (data clk clkb qb vdd vss) tx_clocked_inv_scaled scale=scale
+XS (qb clkb clk q vdd vss) tx_clocked_inv_scaled scale=scale wp=sp
+// Omit the redundant enable logic in the noise core; output gating is separate.
+XO0 (q outb vdd vss) pll_inv wn=800n*oscale wp=2u*oscale
+XO1 (outb out vdd vss) pll_inv wn=2u*oscale wp=3.9u*oscale
+ends tx_retimer_scaled

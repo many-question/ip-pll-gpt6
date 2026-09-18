@@ -1,0 +1,20 @@
+simulator lang=spectre
+subckt tx_diff_receiver (ip in out vdd vss)
+parameters ibias=20u rload=12k wn=4u
+IREF (vdd nb) isource dc=ibias
+MR (nb nb vss vss) nch w=2u l=1u ad=.48p as=.48p pd=4.48u ps=4.48u
+MT (tail nb vss vss) nch w=10u l=1u ad=2.4p as=2.4p pd=20.48u ps=20.48u
+CP (ip gp) capacitor c=120f
+CN (in gn) capacitor c=120f
+RGP (gp cm) resistor r=50k
+RGN (gn cm) resistor r=50k
+RH (vdd cm) resistor r=50k
+RL (cm vss) resistor r=100k
+CB (cm vss) capacitor c=1p
+RP (vdd dp) resistor r=rload
+RN (vdd dn) resistor r=rload
+MP (dn gp tail vss) nch w=wn l=180n ad=wn*240n as=wn*240n pd=2*(wn+240n) ps=2*(wn+240n)
+MN (dp gn tail vss) nch w=wn l=180n ad=wn*240n as=wn*240n pd=2*(wn+240n) ps=2*(wn+240n)
+XI0 (dp qb vdd vss) pll_inv wn=600n wp=1.5u
+XI1 (qb out vdd vss) pll_inv wn=3u wp=7.5u
+ends tx_diff_receiver
