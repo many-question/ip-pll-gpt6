@@ -1,0 +1,29 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt_bbmvar
+simulator lang=spectre insensitive=no
+include "cells.scs"
+simulatorOptions options reltol=1e-5 vabstol=1e-7 iabstol=1e-13 temp=27
+include "lc_vco_v4r.scs"
+VDD (vdd 0) vsource dc=1.2
+VVCO (vco_vdd vdd) vsource dc=0
+VC (ctrl 0) vsource dc=0.6
+VB0 (b0 0) vsource dc=0
+VB1 (b1 0) vsource dc=1.2
+VB2 (b2 0) vsource dc=1.2
+VB3 (b3 0) vsource dc=0
+VB4 (b4 0) vsource dc=0
+VB5 (b5 0) vsource dc=0
+VB6 (b6 0) vsource dc=0
+VB7 (b7 0) vsource dc=0
+XV (vp vn ctrl b0 b1 b2 b3 b4 b5 b6 b7 vco_vdd 0) tx_lc_vco_v4r fixed_c=1e-14 tank_l=2e-09 series_r=6.822430344006 cscale=1 core_w=0.00012 pcore_w=8e-05 ibias=8e-05 unit_c=4.4e-15 unit_w=1.2e-06 fine_w=4.5e-06
+CPROX (vp 0) capacitor c=1.4e-13
+CNROX (vn 0) capacitor c=1.4e-13
+ic vp=1.20001 vn=1.2
+pss (vp vn) pss fund=3940000000 harms=31 tstab=2e-07 maxstep=1e-12 errpreset=conservative saveinit=yes
+pn (vp vn) pnoise start=10k stop=500M dec=20 maxsideband=127 noiseout=[usb am pm] sweeptype=relative relharmnum=1
+save vp vn XV.XL.tail VDD:p VVCO:p
+saveOptions options save=selected

@@ -1,0 +1,48 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt_bbmvar
+simulator lang=spectre insensitive=no
+include "cells.scs"
+simulatorOptions options reltol=1e-5 vabstol=1e-7 iabstol=1e-13 temp=27
+include "lc_vco_v4n.scs"
+VDD (vdd 0) vsource dc=1.2
+VVCO (vco_vdd vdd) vsource dc=0
+VC (ctrl 0) vsource dc=0.6
+VB0 (b0 0) vsource dc=0
+VB1 (b1 0) vsource dc=0
+VB2 (b2 0) vsource dc=0
+VB3 (b3 0) vsource dc=0
+VB4 (b4 0) vsource dc=0
+VB5 (b5 0) vsource dc=0
+VB6 (b6 0) vsource dc=0
+VB7 (b7 0) vsource dc=0
+XV (vp vn ctrl b0 b1 b2 b3 b4 b5 b6 b7 vco_vdd 0) tx_lc_vco_v4n fixed_c=2e-14 tank_l=1.6e-09 series_r=5.6911977177131 cscale=1 core_w=8e-05 pcore_w=8e-05 ibias=0.0001 unit_c=6.5e-15 unit_w=2.4e-06 fine_w=3e-06
+include "divider_v2.scs"
+include "limiter_chain.scs"
+include "bank_divider_light.scs"
+include "cp_experiment.scs"
+include "digital_cells_v2.scs"
+include "cp_timing.scs"
+XBM (vdd 0 vmid) tx_bias_mid
+CCP (vp sp) capacitor c=120f
+CCN (vn sn) capacitor c=120f
+RBP (sp vmid) resistor r=100k
+RBN (sn vmid) resistor r=100k
+VR (ref 0) vsource type=pulse val0=0 val1=1.2 period=41.6666666666667n width=20.8233333333333n rise=10p fall=10p delay=1n
+XR (ref refb vdd 0) tx_reference_buffer
+CR (refb 0) capacitor c=60f
+XS (refb sp sn hp hn vdd 0) tx_sampler
+XA (refb en rst pulse vdd 0) tx_cp_timing
+VE (en 0) vsource dc=1.2
+XCP (hp hn pulse en cpout vdd 0) tx_cp_experiment
+VO (cpout 0) vsource dc=.6
+VRST (rst 0) vsource type=pulse val0=1.2 val1=0 delay=20n rise=20p fall=20p width=1u period=2u
+XD (vp vn rst vdd 0 0 0 0 0 out vdd 0) tx_divider_bank_light
+CL (out 0) capacitor c=10f
+ic vp=1.20001 vn=1.2
+tran tran stop=2.5e-07 maxstep=5e-12 errpreset=conservative
+save vp vn XV.XL.tail VDD:p VVCO:p out XD.selected XD.icp XD.icn sp sn hp hn VO:p
+saveOptions options save=selected

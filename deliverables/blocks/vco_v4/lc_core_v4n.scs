@@ -1,0 +1,17 @@
+simulator lang=spectre
+// Pi winding includes metal loss, winding capacitance and lossy substrate.
+// Fitted Q and all geometry remain explicitly provisional; IREF remains ideal.
+subckt tx_lc_core_v4n (vp vn vdd vss)
+parameters tank_c=750f tank_l=2n tank_r=7 ibias=80u core_w=20u cscale=1
+XP (vdd vp vss) tx_inductor_pi ls=tank_l rs=tank_r cw=20f*cscale cox=80f*cscale csub=50f*cscale
+XN (vdd vn vss) tx_inductor_pi ls=tank_l rs=tank_r cw=20f*cscale cox=80f*cscale csub=50f*cscale
+CP (vp vss) capacitor c=tank_c
+CN (vn vss) capacitor c=tank_c
+MN0 (vp vn tail vss) nch w=core_w l=180n ad=core_w*240n as=core_w*240n pd=2*(core_w+240n) ps=2*(core_w+240n)
+MN1 (vn vp tail vss) nch w=core_w l=180n ad=core_w*240n as=core_w*240n pd=2*(core_w+240n) ps=2*(core_w+240n)
+MT (tail nfilt vss vss) nch w=30u l=1u ad=7.2p as=7.2p pd=60.48u ps=60.48u
+MR (nb nb vss vss) nch w=2u l=1u ad=.48p as=.48p pd=4.48u ps=4.48u
+IREF (vdd nb) isource dc=ibias
+RF (nb nfilt) resistor r=1Meg
+CF (nfilt vss) capacitor c=10p
+ends tx_lc_core_v4n

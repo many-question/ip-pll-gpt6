@@ -1,0 +1,13 @@
+simulator lang=spectre
+include "inductor_pi.scs"
+include "lc_core_v4n.scs"
+include "cap_bank_v4.scs"
+// Q and parasitics are provisional RLC assumptions. Bias reference stays ideal.
+subckt tx_lc_vco_v4b (vp vn ctrl b0 b1 b2 b3 b4 b5 b6 b7 vdd vss)
+parameters fixed_c=20f tank_l=1.6n series_r=5 cscale=1 core_w=80u pcore_w=80u ibias=80u unit_c=6.5f unit_w=2.4u fine_w=3u
+XL (vp vn vdd vss) tx_lc_core_v4n tank_l=tank_l tank_r=series_r tank_c=fixed_c core_w=core_w ibias=ibias cscale=cscale
+XBP (vp b0 b1 b2 b3 b4 b5 b6 b7 vdd vss) tx_cap_bank_v4 unit_c=unit_c unit_w=unit_w
+XBN (vn b0 b1 b2 b3 b4 b5 b6 b7 vdd vss) tx_cap_bank_v4 unit_c=unit_c unit_w=unit_w
+CVP (vp ctrl) nmoscap lr=2u wr=fine_w mr=1
+CVN (vn ctrl) nmoscap lr=2u wr=fine_w mr=1
+ends tx_lc_vco_v4b
