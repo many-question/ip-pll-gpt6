@@ -1,0 +1,17 @@
+simulator lang=spectre
+// AC-coupled self-biased CMOS limiter. DC feedback uses an assumed ideal R.
+// No startup/reset guarantees are implied by the independent clock tests.
+subckt tx_ac_limiter (inp out vdd vss)
+CIN (inp gate) capacitor c=60f
+RFB (gate first) resistor r=50k
+X0 (gate first vdd vss) pll_inv wn=4u wp=10u
+CMID (first gate2) capacitor c=40f
+RFB2 (gate2 second) resistor r=50k
+X1 (gate2 second vdd vss) pll_inv wn=4u wp=10u
+X2 (second out vdd vss) pll_inv wn=8u wp=20u
+ends tx_ac_limiter
+
+subckt tx_cml_to_cmos (qp qn cp cn vdd vss)
+XP (qn cp vdd vss) tx_ac_limiter
+XN (qp cn vdd vss) tx_ac_limiter
+ends tx_cml_to_cmos

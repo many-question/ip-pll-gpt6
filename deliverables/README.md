@@ -1,6 +1,13 @@
 # 交付物索引
 
-2026-09-18：已推进到 Python 完整捕获模型、模块 Verilog-A 和 Spectre 顶层行为验证。随机噪声预算仍沿用假设参数候选 B；尚无本项目晶体管、PVT 或版图性能结果。
+2026-09-18：已进入 TSMC180 PDK 晶体管模块与逐级混合顶层验证。参考/输出缓冲、采样保持、滤波预充、重定时及跨导级已逐级代回；LC VCO、CML ÷2 有联合负载候选。尚未完成全晶体管 PLL；实际增益已暴露原抖动预算的风险，不能沿用行为候选 B 的估算宣称达标。
+
+- [晶体管实现、混合系统结果、失败记录和复现入口](integration/transistor_v1/README.md)
+- [晶体管模块网表及接口边界](blocks/transistor_v1/README.md)
+- [器件模型与电路依据](sources/transistor_v1_sources.md)
+- [DEC-0003：占空比无需专门优化](../reports/decisions/DEC-0003.md)
+
+行为模型基线：
 
 - [Spectre 顶层、模块 TB、结果和复现入口](integration/va_v1/README.md)
 - [十个功能模块的 Verilog-A](blocks/behavioral_va/README.md)

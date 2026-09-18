@@ -1,0 +1,4401 @@
+{
+  "time": "2026-09-18T16:18:00.816299+08:00",
+  "case_counts": {
+    "checks_passed": 107,
+    "characterization": 18,
+    "design_check_failed": 20,
+    "execution_incomplete": 3
+  },
+  "total_cases": 148,
+  "pdk": {
+    "path": "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs",
+    "sha256": "d44aa9da7ba670f0b4cfb0198b019dc73abf8bae21b15f45ce5a30c7cb5973ff",
+    "variant": "Project-configured TSMC180 BCD Gen2 V1.6; core nch/pch, nmoscap fine-tuning model"
+  },
+  "remote_input_audits_passed": 148,
+  "remote_exec_seconds_sum_recorded": 9777.714562300185,
+  "full_startup_s5": {
+    "case": "top_s5_k41_moderate",
+    "run": "startup04",
+    "raw_path": "research/runs/spectre_transistor/startup04/top_s5_k41_moderate",
+    "execution_ok": true,
+    "remote_inputs_match": true,
+    "source_inputs_sha256": {
+      "top_s5_k41_moderate.scs": "689c93b6e5f8844098ce3fdfa5619aa3c0e9abc78e2088664e869f8592b606c9",
+      "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+      "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+      "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+      "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+      "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+      "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+      "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+      "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+      "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+      "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+      "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+      "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+      "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+      "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+      "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+      "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+      "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+    },
+    "measurements": {
+      "stop_s": 2.5e-05,
+      "integrated_realized_supply_mw": 0.09063269342926586,
+      "freqout": 0.9839999870191182,
+      "dutyout": 0.5002663437670574,
+      "ctrl": 0.3806855931519415,
+      "vc1": 0.3806856089613804,
+      "sample": -0.10815252573887,
+      "phaseerr": 0.75073015950469,
+      "locked": 1.2,
+      "vmin": 0.3806614133036727,
+      "vmax": 0.380687121614102,
+      "code": 6.0,
+      "edgecount": 4920.0,
+      "output_frequency_hz": 983999987.0191182,
+      "frequency_error_ppm": -0.01319195308546739,
+      "tail_ctrl_pp_v": 1.1944257338747377e-07,
+      "valid_held_sample_max_v": 1.151794702392017e-06,
+      "first_lock_us": 18.26000000000034
+    },
+    "checks": [
+      {
+        "name": "immutable input audit",
+        "passed": true,
+        "value": true,
+        "limit": "true"
+      },
+      {
+        "name": "local input snapshots match recorded hashes",
+        "passed": true,
+        "value": [],
+        "limit": "all frozen local inputs intact"
+      },
+      {
+        "name": "Spectre completed with zero errors",
+        "passed": true,
+        "value": true,
+        "limit": "completed log states 0 errors; notices are not errors"
+      },
+      {
+        "name": "finite increasing saved time",
+        "passed": true,
+        "value": [
+          0.0,
+          2.5e-05
+        ],
+        "limit": "finite and strictly increasing"
+      },
+      {
+        "name": "finite saved signals",
+        "passed": true,
+        "value": [],
+        "limit": "no NaN or infinity in any saved signal"
+      },
+      {
+        "name": "requested transient completed",
+        "passed": true,
+        "value": 2.5e-05,
+        "limit": 2.4999999999999998e-05
+      },
+      {
+        "name": "output frequency",
+        "passed": true,
+        "value": -0.01319195308546739,
+        "limit": "abs < 1 ppm"
+      },
+      {
+        "name": "control operating interval",
+        "passed": true,
+        "value": [
+          0.3806614133036727,
+          0.380687121614102
+        ],
+        "limit": "0.2..1.0 V"
+      },
+      {
+        "name": "settled control",
+        "passed": true,
+        "value": 1.1944257338747377e-07,
+        "limit": "< 1 mV over final 0.5 us; reference-phase samples when observer present; raw ripple reported separately"
+      },
+      {
+        "name": "FLL qualified lock",
+        "passed": true,
+        "value": 1.2,
+        "limit": "> .6 V"
+      },
+      {
+        "name": "valid held error settled",
+        "passed": true,
+        "value": 1.151794702392017e-06,
+        "limit": "abs < 4 mV"
+      }
+    ],
+    "outcome": "checks_passed",
+    "waveform_sha256": "27d7ae02a6412000e9276e59ad95c0d1f712e132c333de0ac23327370ad935aa"
+  },
+  "fixed_code_loop_s6": {
+    "case": "loop_s6_k41_moderate",
+    "run": "startup03",
+    "raw_path": "research/runs/spectre_transistor/startup03/loop_s6_k41_moderate",
+    "execution_ok": true,
+    "remote_inputs_match": true,
+    "source_inputs_sha256": {
+      "loop_s6_k41_moderate.scs": "69e4e22d88b0fb78441a5ab8b83515bbb7a68fc1ed6d26b288e2ebcfc4d695d4",
+      "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+      "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+      "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+      "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+      "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+      "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+      "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+      "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+      "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+      "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+      "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+      "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+      "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+      "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+      "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+      "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+      "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+    },
+    "measurements": {
+      "stop_s": 5.999999999999953e-06,
+      "integrated_realized_supply_mw": 0.2947469956028932,
+      "freqout": 0.9839996597086603,
+      "dutyout": 0.4949369687409723,
+      "ctrl": 0.3807107523031932,
+      "vc1": 0.3806872503982615,
+      "sample": -0.1083958884569229,
+      "phaseerr": 0.7490505749894921,
+      "vmin": 0.3804926762317593,
+      "vmax": 0.3807052805713784,
+      "code": 6.0,
+      "edgecount": 1968.0,
+      "output_frequency_hz": 983999659.7086604,
+      "frequency_error_ppm": -0.3458245321219522,
+      "tail_ctrl_pp_v": 5.459881550201606e-05,
+      "valid_held_sample_max_v": 0.0005402439451261953
+    },
+    "checks": [
+      {
+        "name": "immutable input audit",
+        "passed": true,
+        "value": true,
+        "limit": "true"
+      },
+      {
+        "name": "local input snapshots match recorded hashes",
+        "passed": true,
+        "value": [],
+        "limit": "all frozen local inputs intact"
+      },
+      {
+        "name": "Spectre completed with zero errors",
+        "passed": true,
+        "value": true,
+        "limit": "completed log states 0 errors; notices are not errors"
+      },
+      {
+        "name": "finite increasing saved time",
+        "passed": true,
+        "value": [
+          0.0,
+          5.999999999999953e-06
+        ],
+        "limit": "finite and strictly increasing"
+      },
+      {
+        "name": "finite saved signals",
+        "passed": true,
+        "value": [],
+        "limit": "no NaN or infinity in any saved signal"
+      },
+      {
+        "name": "requested transient completed",
+        "passed": true,
+        "value": 5.999999999999953e-06,
+        "limit": 6e-06
+      },
+      {
+        "name": "output frequency",
+        "passed": true,
+        "value": -0.3458245321219522,
+        "limit": "abs < 1 ppm"
+      },
+      {
+        "name": "control operating interval",
+        "passed": true,
+        "value": [
+          0.3804926762317593,
+          0.3807052805713784
+        ],
+        "limit": "0.2..1.0 V"
+      },
+      {
+        "name": "settled control",
+        "passed": true,
+        "value": 5.459881550201606e-05,
+        "limit": "< 1 mV over final 0.5 us; reference-phase samples when observer present; raw ripple reported separately"
+      },
+      {
+        "name": "valid held error settled",
+        "passed": true,
+        "value": 0.0005402439451261953,
+        "limit": "abs < 4 mV"
+      }
+    ],
+    "outcome": "checks_passed",
+    "waveform_sha256": "5924aafe4d6e91fb9f0e9f30e4a7b485bdf6290cf1ebc4855e083624839a5b46"
+  },
+  "fine_vco": [
+    {
+      "code": 0,
+      "control_v": 0.2,
+      "stop_s": 2e-07,
+      "supply_average_mw": 1.5570401692821076,
+      "power_window_s": [
+        1.5e-07,
+        2e-07
+      ],
+      "frequency_hz": 3988688757.5632577,
+      "differential_peak_v": 0.8526112094740756,
+      "max_node_voltage_v": 1.626430367144699
+    },
+    {
+      "code": 0,
+      "control_v": 0.6,
+      "stop_s": 2e-07,
+      "supply_average_mw": 1.5570621178254143,
+      "power_window_s": [
+        1.5e-07,
+        2e-07
+      ],
+      "frequency_hz": 3992823092.6671553,
+      "differential_peak_v": 0.8544489232659809,
+      "max_node_voltage_v": 1.626833463616735
+    },
+    {
+      "code": 0,
+      "control_v": 1.0,
+      "stop_s": 2e-07,
+      "supply_average_mw": 1.5571784554956378,
+      "power_window_s": [
+        1.5e-07,
+        2e-07
+      ],
+      "frequency_hz": 4012079391.8029857,
+      "differential_peak_v": 0.8625343938951908,
+      "max_node_voltage_v": 1.629217467333183
+    },
+    {
+      "code": 1,
+      "control_v": 0.2,
+      "stop_s": 2e-07,
+      "supply_average_mw": 1.5569432729415946,
+      "power_window_s": [
+        1.5e-07,
+        2e-07
+      ],
+      "frequency_hz": 3978847578.1256275,
+      "differential_peak_v": 0.8455023663034547,
+      "max_node_voltage_v": 1.622636062440308
+    },
+    {
+      "code": 1,
+      "control_v": 1.0,
+      "stop_s": 2e-07,
+      "supply_average_mw": 1.557075122495301,
+      "power_window_s": [
+        1.5e-07,
+        2e-07
+      ],
+      "frequency_hz": 4002073059.3261023,
+      "differential_peak_v": 0.8553301794168462,
+      "max_node_voltage_v": 1.625412643353872
+    },
+    {
+      "code": 127,
+      "control_v": 0.2,
+      "stop_s": 2e-07,
+      "supply_average_mw": 1.5428933302382493,
+      "power_window_s": [
+        1.5e-07,
+        2e-07
+      ],
+      "frequency_hz": 3098202548.7304306,
+      "differential_peak_v": 0.4027337388227888,
+      "max_node_voltage_v": 1.397096555374151
+    },
+    {
+      "code": 127,
+      "control_v": 0.6,
+      "stop_s": 2e-07,
+      "supply_average_mw": 1.54288219391367,
+      "power_window_s": [
+        1.5e-07,
+        2e-07
+      ],
+      "frequency_hz": 3099653642.003408,
+      "differential_peak_v": 0.40308081291035475,
+      "max_node_voltage_v": 1.397206120218881
+    },
+    {
+      "code": 127,
+      "control_v": 1.0,
+      "stop_s": 2e-07,
+      "supply_average_mw": 1.5430066970885967,
+      "power_window_s": [
+        1.5e-07,
+        2e-07
+      ],
+      "frequency_hz": 3108049747.0746145,
+      "differential_peak_v": 0.40505338970309934,
+      "max_node_voltage_v": 1.397901666274806
+    },
+    {
+      "code": 128,
+      "control_v": 0.2,
+      "stop_s": 2e-07,
+      "supply_average_mw": 1.542776697526374,
+      "power_window_s": [
+        1.5e-07,
+        2e-07
+      ],
+      "frequency_hz": 3093210611.875466,
+      "differential_peak_v": 0.40105660897054357,
+      "max_node_voltage_v": 1.396262091898691
+    },
+    {
+      "code": 128,
+      "control_v": 1.0,
+      "stop_s": 2e-07,
+      "supply_average_mw": 1.542894046878447,
+      "power_window_s": [
+        1.5e-07,
+        2e-07
+      ],
+      "frequency_hz": 3103004917.7906904,
+      "differential_peak_v": 0.4033642677961295,
+      "max_node_voltage_v": 1.397063142465862
+    },
+    {
+      "code": 254,
+      "control_v": 0.2,
+      "stop_s": 2e-07,
+      "supply_average_mw": 1.536245559962566,
+      "power_window_s": [
+        1.5e-07,
+        2e-07
+      ],
+      "frequency_hz": 2621859035.6793523,
+      "differential_peak_v": 0.25064642673556503,
+      "max_node_voltage_v": 1.321685369713068
+    },
+    {
+      "code": 254,
+      "control_v": 1.0,
+      "stop_s": 2e-07,
+      "supply_average_mw": 1.536311929756268,
+      "power_window_s": [
+        1.5e-07,
+        2e-07
+      ],
+      "frequency_hz": 2627708546.9934483,
+      "differential_peak_v": 0.25207370021677655,
+      "max_node_voltage_v": 1.32229089673108
+    },
+    {
+      "code": 255,
+      "control_v": 0.2,
+      "stop_s": 2e-07,
+      "supply_average_mw": 1.536178916292313,
+      "power_window_s": [
+        1.5e-07,
+        2e-07
+      ],
+      "frequency_hz": 2618665659.710822,
+      "differential_peak_v": 0.24964040718200642,
+      "max_node_voltage_v": 1.321183807778544
+    },
+    {
+      "code": 255,
+      "control_v": 0.6,
+      "stop_s": 2e-07,
+      "supply_average_mw": 1.536196230093225,
+      "power_window_s": [
+        1.5e-07,
+        2e-07
+      ],
+      "frequency_hz": 2619498468.3343077,
+      "differential_peak_v": 0.24984460854534796,
+      "max_node_voltage_v": 1.32126833124766
+    },
+    {
+      "code": 255,
+      "control_v": 1.0,
+      "stop_s": 2e-07,
+      "supply_average_mw": 1.5362833247721184,
+      "power_window_s": [
+        1.5e-07,
+        2e-07
+      ],
+      "frequency_hz": 2624497181.5373755,
+      "differential_peak_v": 0.2510579305120779,
+      "max_node_voltage_v": 1.32178944724367
+    }
+  ],
+  "sampled_code_overlaps": [
+    {
+      "adjacent_codes": [
+        0,
+        1
+      ],
+      "overlap_hz": 13384301.762844563
+    },
+    {
+      "adjacent_codes": [
+        127,
+        128
+      ],
+      "overlap_hz": 4802369.060259819
+    },
+    {
+      "adjacent_codes": [
+        254,
+        255
+      ],
+      "overlap_hz": 2638145.8580231667
+    }
+  ],
+  "fine_vco_slopes": [
+    {
+      "code": 0,
+      "average_kvco_hz_v": 29238292.799659967,
+      "low_half_kvco_hz_v": 10335837.759743929,
+      "high_half_kvco_hz_v": 48140747.839576006
+    },
+    {
+      "code": 127,
+      "average_kvco_hz_v": 12308997.930229902,
+      "low_half_kvco_hz_v": 3627733.1824433804,
+      "high_half_kvco_hz_v": 20990262.678016424
+    },
+    {
+      "code": 255,
+      "average_kvco_hz_v": 7289402.283191681,
+      "low_half_kvco_hz_v": 2082021.558713913,
+      "high_half_kvco_hz_v": 12496783.007669449
+    }
+  ],
+  "cml_final": [
+    {
+      "case": "tb_cml_div2_tt_27",
+      "run": "cml04",
+      "raw_path": "research/runs/spectre_transistor/cml04/tb_cml_div2_tt_27",
+      "execution_ok": true,
+      "remote_inputs_match": true,
+      "source_inputs_sha256": {
+        "tb_cml_div2_tt_27.scs": "5d3a75b8e4ad91f35dd604f7cb3beaa4145bed2336df8ad622aab80467eb98c1",
+        "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+        "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+        "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+        "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+        "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+        "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+        "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+        "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+        "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+        "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+        "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+        "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+        "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+        "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+        "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+        "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+        "lc_vco_candidate.scs": "37b0a032c4f3d11ea8585085028b4570d126b7580592e8eb8fc6d70043044f6c",
+        "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+        "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+      },
+      "measurements": {
+        "stop_s": 1e-07,
+        "supply_average_mw": 0.39696264689646077,
+        "power_window_s": [
+          5e-08,
+          1e-07
+        ],
+        "frequency_hz": 1999999936.7251403,
+        "differential_peak_v": 0.224580763242819
+      },
+      "checks": [
+        {
+          "name": "immutable input audit",
+          "passed": true,
+          "value": true,
+          "limit": "true"
+        },
+        {
+          "name": "local input snapshots match recorded hashes",
+          "passed": true,
+          "value": [],
+          "limit": "all frozen local inputs intact"
+        },
+        {
+          "name": "Spectre completed with zero errors",
+          "passed": true,
+          "value": true,
+          "limit": "completed log states 0 errors; notices are not errors"
+        },
+        {
+          "name": "finite increasing saved time",
+          "passed": true,
+          "value": [
+            0.0,
+            1e-07
+          ],
+          "limit": "finite and strictly increasing"
+        },
+        {
+          "name": "finite saved signals",
+          "passed": true,
+          "value": [],
+          "limit": "no NaN or infinity in any saved signal"
+        },
+        {
+          "name": "requested transient completed",
+          "passed": true,
+          "value": 1e-07,
+          "limit": 1.0000000000000001e-07
+        },
+        {
+          "name": "correct divide by two",
+          "passed": true,
+          "value": 1999999936.7251403,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "usable differential amplitude",
+          "passed": true,
+          "value": 0.224580763242819,
+          "limit": "> 50 mV; CMOS conversion not included"
+        }
+      ],
+      "outcome": "checks_passed",
+      "waveform_sha256": "3fd54de42c18f03a457ef9b9778a1d131d39fb5890cd3744d21f565f93bd22ec"
+    },
+    {
+      "case": "tb_cml_div2_ss_60",
+      "run": "cml04",
+      "raw_path": "research/runs/spectre_transistor/cml04/tb_cml_div2_ss_60",
+      "execution_ok": true,
+      "remote_inputs_match": true,
+      "source_inputs_sha256": {
+        "tb_cml_div2_ss_60.scs": "27ef32cf6031b54ae1d88de5a01b7d8dd1bb0cbcd5af8f73d263dc15b3815c36",
+        "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+        "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+        "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+        "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+        "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+        "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+        "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+        "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+        "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+        "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+        "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+        "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+        "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+        "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+        "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+        "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+        "lc_vco_candidate.scs": "37b0a032c4f3d11ea8585085028b4570d126b7580592e8eb8fc6d70043044f6c",
+        "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+        "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+      },
+      "measurements": {
+        "stop_s": 1e-07,
+        "supply_average_mw": 0.3675801706730738,
+        "power_window_s": [
+          5e-08,
+          1e-07
+        ],
+        "frequency_hz": 1999999721.6423175,
+        "differential_peak_v": 0.1667181912215897
+      },
+      "checks": [
+        {
+          "name": "immutable input audit",
+          "passed": true,
+          "value": true,
+          "limit": "true"
+        },
+        {
+          "name": "local input snapshots match recorded hashes",
+          "passed": true,
+          "value": [],
+          "limit": "all frozen local inputs intact"
+        },
+        {
+          "name": "Spectre completed with zero errors",
+          "passed": true,
+          "value": true,
+          "limit": "completed log states 0 errors; notices are not errors"
+        },
+        {
+          "name": "finite increasing saved time",
+          "passed": true,
+          "value": [
+            0.0,
+            1e-07
+          ],
+          "limit": "finite and strictly increasing"
+        },
+        {
+          "name": "finite saved signals",
+          "passed": true,
+          "value": [],
+          "limit": "no NaN or infinity in any saved signal"
+        },
+        {
+          "name": "requested transient completed",
+          "passed": true,
+          "value": 1e-07,
+          "limit": 1.0000000000000001e-07
+        },
+        {
+          "name": "correct divide by two",
+          "passed": true,
+          "value": 1999999721.6423175,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "usable differential amplitude",
+          "passed": true,
+          "value": 0.1667181912215897,
+          "limit": "> 50 mV; CMOS conversion not included"
+        }
+      ],
+      "outcome": "checks_passed",
+      "waveform_sha256": "dbad11f7e191f8ce1cd5f4f595a3cbcc8bdbc401976a7311218fd0eb1fd014e1"
+    },
+    {
+      "case": "tb_cml_div2_ff_0",
+      "run": "cml04",
+      "raw_path": "research/runs/spectre_transistor/cml04/tb_cml_div2_ff_0",
+      "execution_ok": true,
+      "remote_inputs_match": true,
+      "source_inputs_sha256": {
+        "tb_cml_div2_ff_0.scs": "55cd99c7dfd5dde3b5ab30a28c012911c304595dec1910e1db00862cbe6afa22",
+        "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+        "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+        "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+        "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+        "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+        "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+        "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+        "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+        "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+        "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+        "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+        "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+        "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+        "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+        "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+        "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+        "lc_vco_candidate.scs": "37b0a032c4f3d11ea8585085028b4570d126b7580592e8eb8fc6d70043044f6c",
+        "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+        "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+      },
+      "measurements": {
+        "stop_s": 1e-07,
+        "supply_average_mw": 0.40933700829642594,
+        "power_window_s": [
+          5e-08,
+          1e-07
+        ],
+        "frequency_hz": 1999999689.9860923,
+        "differential_peak_v": 0.2496609280255201
+      },
+      "checks": [
+        {
+          "name": "immutable input audit",
+          "passed": true,
+          "value": true,
+          "limit": "true"
+        },
+        {
+          "name": "local input snapshots match recorded hashes",
+          "passed": true,
+          "value": [],
+          "limit": "all frozen local inputs intact"
+        },
+        {
+          "name": "Spectre completed with zero errors",
+          "passed": true,
+          "value": true,
+          "limit": "completed log states 0 errors; notices are not errors"
+        },
+        {
+          "name": "finite increasing saved time",
+          "passed": true,
+          "value": [
+            0.0,
+            1e-07
+          ],
+          "limit": "finite and strictly increasing"
+        },
+        {
+          "name": "finite saved signals",
+          "passed": true,
+          "value": [],
+          "limit": "no NaN or infinity in any saved signal"
+        },
+        {
+          "name": "requested transient completed",
+          "passed": true,
+          "value": 1e-07,
+          "limit": 1.0000000000000001e-07
+        },
+        {
+          "name": "correct divide by two",
+          "passed": true,
+          "value": 1999999689.9860923,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "usable differential amplitude",
+          "passed": true,
+          "value": 0.2496609280255201,
+          "limit": "> 50 mV; CMOS conversion not included"
+        }
+      ],
+      "outcome": "checks_passed",
+      "waveform_sha256": "c8d39c523d001463798564334923948a52aae597f1a14111528e19b0866ab949"
+    },
+    {
+      "case": "tb_cml_div2_lowamp_ss_60",
+      "run": "cml04",
+      "raw_path": "research/runs/spectre_transistor/cml04/tb_cml_div2_lowamp_ss_60",
+      "execution_ok": true,
+      "remote_inputs_match": true,
+      "source_inputs_sha256": {
+        "tb_cml_div2_lowamp_ss_60.scs": "65c2647e4cdc544a36471d3881dd785e68ad9b2b37986eb47e30d504fa8f499b",
+        "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+        "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+        "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+        "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+        "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+        "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+        "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+        "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+        "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+        "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+        "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+        "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+        "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+        "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+        "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+        "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+        "lc_vco_candidate.scs": "37b0a032c4f3d11ea8585085028b4570d126b7580592e8eb8fc6d70043044f6c",
+        "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+        "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+      },
+      "measurements": {
+        "stop_s": 1e-07,
+        "supply_average_mw": 0.3401020886417328,
+        "power_window_s": [
+          5e-08,
+          1e-07
+        ],
+        "frequency_hz": 1343999762.3685453,
+        "differential_peak_v": 0.14324491240018888
+      },
+      "checks": [
+        {
+          "name": "immutable input audit",
+          "passed": true,
+          "value": true,
+          "limit": "true"
+        },
+        {
+          "name": "local input snapshots match recorded hashes",
+          "passed": true,
+          "value": [],
+          "limit": "all frozen local inputs intact"
+        },
+        {
+          "name": "Spectre completed with zero errors",
+          "passed": true,
+          "value": true,
+          "limit": "completed log states 0 errors; notices are not errors"
+        },
+        {
+          "name": "finite increasing saved time",
+          "passed": true,
+          "value": [
+            0.0,
+            1e-07
+          ],
+          "limit": "finite and strictly increasing"
+        },
+        {
+          "name": "finite saved signals",
+          "passed": true,
+          "value": [],
+          "limit": "no NaN or infinity in any saved signal"
+        },
+        {
+          "name": "requested transient completed",
+          "passed": true,
+          "value": 1e-07,
+          "limit": 1.0000000000000001e-07
+        },
+        {
+          "name": "correct divide by two",
+          "passed": true,
+          "value": 1343999762.3685453,
+          "limit": "1344000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "usable differential amplitude",
+          "passed": true,
+          "value": 0.14324491240018888,
+          "limit": "> 50 mV; CMOS conversion not included"
+        }
+      ],
+      "outcome": "checks_passed",
+      "waveform_sha256": "5db8d84a7e2c0bbb86244b5922c5c52950b711468d507151c88280528337ecdd"
+    }
+  ],
+  "scope_limits": [
+    "S6 full acquisition completed at nominal K=41; full transistor PLL and all frequency/PVT acquisition remain unverified.",
+    "LC tank and fixed/switched C are ideal assumptions; fine nmoscap and active/switch MOS use PDK models.",
+    "Bias current references, full programmable divider and FLL digital implementation remain incomplete.",
+    "PVT is selected paired MOS corners, not a full PLL PVT or mismatch campaign.",
+    "Transient numerical comparison is not a random-jitter or noise verification."
+  ],
+  "full_startup_s6": {
+    "case": "top_s6_k41_moderate",
+    "run": "startup05",
+    "raw_path": "research/runs/spectre_transistor/startup05/top_s6_k41_moderate",
+    "execution_ok": true,
+    "remote_inputs_match": true,
+    "source_inputs_sha256": {
+      "top_s6_k41_moderate.scs": "6441a9673f831c2d961233c7502847a1678fa1055adb0c4195f20441a071d9f0",
+      "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+      "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+      "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+      "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+      "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+      "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+      "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+      "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+      "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+      "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+      "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+      "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+      "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+      "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+      "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+      "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+      "lc_vco_candidate.scs": "37b0a032c4f3d11ea8585085028b4570d126b7580592e8eb8fc6d70043044f6c",
+      "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+      "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+    },
+    "measurements": {
+      "stop_s": 2.5e-05,
+      "integrated_realized_supply_mw": 0.29474743545753,
+      "freqout": 0.9839999950969931,
+      "dutyout": 0.4949371508779271,
+      "ctrl": 0.3806856904465066,
+      "vc1": 0.3806855995215773,
+      "sample": -0.1084050460543359,
+      "phaseerr": 0.7504849578403172,
+      "locked": 1.2,
+      "vmin": 0.3806763385481887,
+      "vmax": 0.3806908902330216,
+      "code": 6.0,
+      "edgecount": 4920.0,
+      "output_frequency_hz": 983999995.0969931,
+      "frequency_error_ppm": -0.004982730561486903,
+      "tail_ctrl_pp_v": 2.1249913739751491e-07,
+      "valid_held_sample_max_v": 1.475605282741377e-06,
+      "first_lock_us": 18.26000000000034
+    },
+    "checks": [
+      {
+        "name": "immutable input audit",
+        "passed": true,
+        "value": true,
+        "limit": "true"
+      },
+      {
+        "name": "local input snapshots match recorded hashes",
+        "passed": true,
+        "value": [],
+        "limit": "all frozen local inputs intact"
+      },
+      {
+        "name": "Spectre completed with zero errors",
+        "passed": true,
+        "value": true,
+        "limit": "completed log states 0 errors; notices are not errors"
+      },
+      {
+        "name": "finite increasing saved time",
+        "passed": true,
+        "value": [
+          0.0,
+          2.5e-05
+        ],
+        "limit": "finite and strictly increasing"
+      },
+      {
+        "name": "finite saved signals",
+        "passed": true,
+        "value": [],
+        "limit": "no NaN or infinity in any saved signal"
+      },
+      {
+        "name": "requested transient completed",
+        "passed": true,
+        "value": 2.5e-05,
+        "limit": 2.4999999999999998e-05
+      },
+      {
+        "name": "output frequency",
+        "passed": true,
+        "value": -0.004982730561486903,
+        "limit": "abs < 1 ppm"
+      },
+      {
+        "name": "control operating interval",
+        "passed": true,
+        "value": [
+          0.3806763385481887,
+          0.3806908902330216
+        ],
+        "limit": "0.2..1.0 V"
+      },
+      {
+        "name": "settled control",
+        "passed": true,
+        "value": 2.1249913739751491e-07,
+        "limit": "< 1 mV over final 0.5 us; reference-phase samples when observer present; raw ripple reported separately"
+      },
+      {
+        "name": "FLL qualified lock",
+        "passed": true,
+        "value": 1.2,
+        "limit": "> .6 V"
+      },
+      {
+        "name": "valid held error settled",
+        "passed": true,
+        "value": 1.475605282741377e-06,
+        "limit": "abs < 4 mV"
+      }
+    ],
+    "outcome": "checks_passed",
+    "waveform_sha256": "a8e1e003eb11a816ef4a2b082255a83093ea546e208a1681f6b33a2f11f1e689"
+  },
+  "fixed_code_loop_s7": {
+    "case": "loop_s7_k41_moderate",
+    "run": "loop_cp01",
+    "raw_path": "research/runs/spectre_transistor/loop_cp01/loop_s7_k41_moderate",
+    "execution_ok": true,
+    "remote_inputs_match": true,
+    "source_inputs_sha256": {
+      "loop_s7_k41_moderate.scs": "7a427ea7ce26e5d7d36fda4205fc047fe7e771367ed915be4b5517b0a00ff41e",
+      "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+      "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+      "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+      "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+      "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+      "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+      "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+      "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+      "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+      "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+      "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+      "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+      "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+      "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+      "cml_to_cmos_experiment.scs": "9df698277ca28e838de959152192ac641ba7f43e3052542f9fa2faa2ab7734f9",
+      "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+      "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+      "lc_vco_candidate.scs": "37b0a032c4f3d11ea8585085028b4570d126b7580592e8eb8fc6d70043044f6c",
+      "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+      "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+    },
+    "measurements": {
+      "stop_s": 5.999999999999953e-06,
+      "integrated_realized_supply_mw": 0.3246301208546103,
+      "freqout": 0.9840032739097204,
+      "dutyout": 0.4949375936167381,
+      "ctrl": 0.3805315433495371,
+      "vc1": 0.3806270702830655,
+      "sample": -0.0814308105690361,
+      "phaseerr": 0.8537960616227952,
+      "vmin": 0.3806906958912682,
+      "vmax": 0.3838962269306954,
+      "code": 6.0,
+      "edgecount": 1968.0,
+      "output_frequency_hz": 984003273.9097204,
+      "frequency_error_ppm": 3.3271440247339967,
+      "tail_ctrl_pp_v": 0.002598859764180783,
+      "valid_held_sample_max_v": 0.01818400661588271
+    },
+    "checks": [
+      {
+        "name": "immutable input audit",
+        "passed": true,
+        "value": true,
+        "limit": "true"
+      },
+      {
+        "name": "local input snapshots match recorded hashes",
+        "passed": true,
+        "value": [],
+        "limit": "all frozen local inputs intact"
+      },
+      {
+        "name": "Spectre completed with zero errors",
+        "passed": true,
+        "value": true,
+        "limit": "completed log states 0 errors; notices are not errors"
+      },
+      {
+        "name": "finite increasing saved time",
+        "passed": true,
+        "value": [
+          0.0,
+          5.999999999999953e-06
+        ],
+        "limit": "finite and strictly increasing"
+      },
+      {
+        "name": "finite saved signals",
+        "passed": true,
+        "value": [],
+        "limit": "no NaN or infinity in any saved signal"
+      },
+      {
+        "name": "requested transient completed",
+        "passed": true,
+        "value": 5.999999999999953e-06,
+        "limit": 6e-06
+      },
+      {
+        "name": "output frequency",
+        "passed": false,
+        "value": 3.3271440247339967,
+        "limit": "abs < 1 ppm"
+      },
+      {
+        "name": "control operating interval",
+        "passed": true,
+        "value": [
+          0.3806906958912682,
+          0.3838962269306954
+        ],
+        "limit": "0.2..1.0 V"
+      },
+      {
+        "name": "settled control",
+        "passed": false,
+        "value": 0.002598859764180783,
+        "limit": "< 1 mV over final 0.5 us; reference-phase samples when observer present; raw ripple reported separately"
+      },
+      {
+        "name": "valid held error settled",
+        "passed": false,
+        "value": 0.01818400661588271,
+        "limit": "abs < 4 mV"
+      }
+    ],
+    "outcome": "design_check_failed",
+    "waveform_sha256": "38b0d71bfb45cfb61eebcc64b74a7435b2624d0ea70494a06f1185b18ee7f6fd"
+  },
+  "compensated_loop_s7": {
+    "case": "loop_s7_compensated",
+    "run": "loop_cp02",
+    "raw_path": "research/runs/spectre_transistor/loop_cp02/loop_s7_compensated",
+    "execution_ok": true,
+    "remote_inputs_match": true,
+    "source_inputs_sha256": {
+      "loop_s7_compensated.scs": "e72bca0acf5f5ec159c08945424b56abaac6b29f9514df7eebd8a45c3e463279",
+      "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+      "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+      "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+      "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+      "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+      "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+      "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+      "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+      "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+      "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+      "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+      "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+      "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+      "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+      "cml_to_cmos_experiment.scs": "013159f54d82dfc1863a9779a3bcfbc7f48208930f7a99ca22a6419c6a07cbf5",
+      "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+      "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+      "lc_vco_candidate.scs": "7c4528da82dad9d9c0c24931a47bf93551f6342fc3a3685990d449a82ab2f7cb",
+      "loop_observer.va": "c685115dd4be6c5792563d19161c4f5b2201cad41bb5f775b431361e9678e6e6",
+      "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+      "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+    },
+    "measurements": {
+      "stop_s": 5.999999999999953e-06,
+      "integrated_realized_supply_mw": 0.32468713135918,
+      "freqout": 0.9840003086504506,
+      "dutyout": 0.4949378605197313,
+      "ctrl": 0.381313297162642,
+      "vc1": 0.3802684585921151,
+      "sample": -0.0813558789202731,
+      "phaseerr": 0.778967390857413,
+      "vmin": 0.381431215145628,
+      "vmax": 0.3814503807913595,
+      "code": 6.0,
+      "edgecount": 1968.0,
+      "output_frequency_hz": 984000308.6504506,
+      "frequency_error_ppm": 0.3136691570926331,
+      "tail_ctrl_pp_v": 0.002101782151419651,
+      "tail_cycle_ctrl_pp_v": 3.721730144679025e-06,
+      "tail_cycle_vc1_pp_v": 8.913336914140313e-05,
+      "valid_held_sample_max_v": 0.0003950809501783725
+    },
+    "checks": [
+      {
+        "name": "immutable input audit",
+        "passed": true,
+        "value": true,
+        "limit": "true"
+      },
+      {
+        "name": "local input snapshots match recorded hashes",
+        "passed": true,
+        "value": [],
+        "limit": "all frozen local inputs intact"
+      },
+      {
+        "name": "Spectre completed with zero errors",
+        "passed": true,
+        "value": true,
+        "limit": "completed log states 0 errors; notices are not errors"
+      },
+      {
+        "name": "finite increasing saved time",
+        "passed": true,
+        "value": [
+          0.0,
+          5.999999999999953e-06
+        ],
+        "limit": "finite and strictly increasing"
+      },
+      {
+        "name": "finite saved signals",
+        "passed": true,
+        "value": [],
+        "limit": "no NaN or infinity in any saved signal"
+      },
+      {
+        "name": "requested transient completed",
+        "passed": true,
+        "value": 5.999999999999953e-06,
+        "limit": 6e-06
+      },
+      {
+        "name": "output frequency",
+        "passed": true,
+        "value": 0.3136691570926331,
+        "limit": "abs < 1 ppm"
+      },
+      {
+        "name": "control operating interval",
+        "passed": true,
+        "value": [
+          0.381431215145628,
+          0.3814503807913595
+        ],
+        "limit": "0.2..1.0 V"
+      },
+      {
+        "name": "settled control",
+        "passed": true,
+        "value": 3.721730144679025e-06,
+        "limit": "< 1 mV over final 0.5 us; reference-phase samples when observer present; raw ripple reported separately"
+      },
+      {
+        "name": "valid held error settled",
+        "passed": true,
+        "value": 0.0003950809501783725,
+        "limit": "abs < 4 mV"
+      }
+    ],
+    "outcome": "checks_passed",
+    "waveform_sha256": "5789403c594c16d5f21ec1d613cad9739fc9afcd1236c0f64cc166915690d26a"
+  },
+  "joint_sampler_cp": {
+    "case": "tb_sampler_cp_phase",
+    "run": "joint01",
+    "raw_path": "research/runs/spectre_transistor/joint01/tb_sampler_cp_phase",
+    "execution_ok": true,
+    "remote_inputs_match": true,
+    "source_inputs_sha256": {
+      "tb_sampler_cp_phase.scs": "bf399cca5e74ec322b1c303da0e5c1ba0c58bc9618f55c7065400de487818704",
+      "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+      "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+      "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+      "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+      "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+      "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+      "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+      "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+      "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+      "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+      "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+      "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+      "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+      "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+      "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+      "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+      "lc_vco_candidate.scs": "37b0a032c4f3d11ea8585085028b4570d126b7580592e8eb8fc6d70043044f6c",
+      "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+      "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+    },
+    "measurements": {
+      "stop_s": 1.45e-07,
+      "supply_average_mw": 0.7474675835619627,
+      "power_window_s": [
+        7.25e-08,
+        1.45e-07
+      ],
+      "phase_sweep_rad": [
+        0.0,
+        0.5235987755982988,
+        1.0471975511965976,
+        1.5707963267948966,
+        2.0943951023931953,
+        2.6179938779914944,
+        3.141592653589793,
+        3.665191429188092,
+        4.1887902047863905,
+        4.71238898038469,
+        5.235987755982989,
+        5.759586531581287
+      ],
+      "charge_per_cycle_c": [
+        8.938429838191883e-15,
+        1.1901403661087711e-14,
+        1.2472213481555362e-14,
+        1.1949296952888963e-14,
+        7.877793803404935e-15,
+        -2.4217779295913393e-16,
+        -6.4384476995205895e-15,
+        -9.269199413467407e-15,
+        -9.942254684963487e-15,
+        -9.1205578969715e-15,
+        -5.873962910579781e-15,
+        9.088852874040395e-16
+      ],
+      "held_differential_v": [
+        0.05409567975965395,
+        0.08275507661806533,
+        0.08769320257883693,
+        0.07596254587872496,
+        0.0465914693902756,
+        -0.00030878282060429286,
+        -0.046987659787528224,
+        -0.07523019550268435,
+        -0.08005814143398686,
+        -0.06824899507793321,
+        -0.039338631647461195,
+        0.007254474374622731
+      ],
+      "kpd_fundamental_a_rad": 2.9442536779807926e-07,
+      "average_offset_current_a": 2.6322845252141956e-08,
+      "charge_fit_residual_c": 1.3350840845302835e-15,
+      "loaded_sampler_fundamental_v_rad": 0.08728242803359364,
+      "held_common_mode_v": [
+        0.5245723854356449,
+        0.522725252743387,
+        0.5378819014428047,
+        0.5557876356132511,
+        0.5572009638221904,
+        0.5407724358329064,
+        0.5234454103823657,
+        0.5212957563371269,
+        0.5363098849379004,
+        0.5543208667734354,
+        0.556035762603989,
+        0.54063646617723
+      ]
+    },
+    "checks": [
+      {
+        "name": "immutable input audit",
+        "passed": true,
+        "value": true,
+        "limit": "true"
+      },
+      {
+        "name": "local input snapshots match recorded hashes",
+        "passed": true,
+        "value": [],
+        "limit": "all frozen local inputs intact"
+      },
+      {
+        "name": "Spectre completed with zero errors",
+        "passed": true,
+        "value": true,
+        "limit": "completed log states 0 errors; notices are not errors"
+      },
+      {
+        "name": "finite increasing saved time",
+        "passed": true,
+        "value": [
+          0.0,
+          1.45e-07
+        ],
+        "limit": "finite and strictly increasing"
+      },
+      {
+        "name": "finite saved signals",
+        "passed": true,
+        "value": [],
+        "limit": "no NaN or infinity in any saved signal"
+      },
+      {
+        "name": "requested transient completed",
+        "passed": true,
+        "value": 1.45e-07,
+        "limit": 1.4500000000000001e-07
+      }
+    ],
+    "outcome": "characterization",
+    "waveform_sha256": "554aab3c9e19d944828e545a9de583f656a66ac0aa9f78865eddc54f41b7186b"
+  },
+  "joint_sampler_cp_local": {
+    "case": "tb_sampler_cp_fine",
+    "run": "joint02",
+    "raw_path": "research/runs/spectre_transistor/joint02/tb_sampler_cp_fine",
+    "execution_ok": true,
+    "remote_inputs_match": true,
+    "source_inputs_sha256": {
+      "tb_sampler_cp_fine.scs": "869ca64cd17e09fa1ba4870846f0ee06fbbccee93fecce7dc1a464ee54c0f5d7",
+      "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+      "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+      "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+      "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+      "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+      "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+      "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+      "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+      "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+      "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+      "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+      "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+      "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+      "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+      "cml_to_cmos_experiment.scs": "4df0d3c2dbd7c742e08d88b5010c55b46f1b157ee86d4ccd5351a8363c4c87a7",
+      "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+      "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+      "lc_vco_candidate.scs": "37b0a032c4f3d11ea8585085028b4570d126b7580592e8eb8fc6d70043044f6c",
+      "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+      "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+    },
+    "measurements": {
+      "stop_s": 1.45e-07,
+      "supply_average_mw": 0.3116165671827479,
+      "power_window_s": [
+        7.25e-08,
+        1.45e-07
+      ],
+      "phase_degrees": [
+        144.0,
+        147.0,
+        150.0,
+        153.0,
+        156.0
+      ],
+      "charge_per_cycle_c": [
+        1.3197016213009135e-15,
+        5.20062077258409e-16,
+        -2.601604187247872e-16,
+        -1.0193494533989902e-15,
+        -1.7542218085699971e-15
+      ],
+      "held_differential_v": [
+        0.009688084219129691,
+        0.004631951321690398,
+        -0.0004352000513206205,
+        -0.005494446970825681,
+        -0.010520179865846009
+      ],
+      "local_kpd_a_rad": 3.523579694371235e-07,
+      "zero_charge_phase_deg": 149.0680932617337,
+      "local_loaded_sampler_v_rad": 0.096529879017982,
+      "fit_residual_c": 2.202346593674203e-17,
+      "charge_window_s": [
+        9e-08,
+        1.3166666666666667e-07
+      ],
+      "sample_time_s": 1.35e-07
+    },
+    "checks": [
+      {
+        "name": "immutable input audit",
+        "passed": true,
+        "value": true,
+        "limit": "true"
+      },
+      {
+        "name": "local input snapshots match recorded hashes",
+        "passed": true,
+        "value": [],
+        "limit": "all frozen local inputs intact"
+      },
+      {
+        "name": "Spectre completed with zero errors",
+        "passed": true,
+        "value": true,
+        "limit": "completed log states 0 errors; notices are not errors"
+      },
+      {
+        "name": "finite increasing saved time",
+        "passed": true,
+        "value": [
+          0.0,
+          1.45e-07
+        ],
+        "limit": "finite and strictly increasing"
+      },
+      {
+        "name": "finite saved signals",
+        "passed": true,
+        "value": [],
+        "limit": "no NaN or infinity in any saved signal"
+      },
+      {
+        "name": "requested transient completed",
+        "passed": true,
+        "value": 1.45e-07,
+        "limit": 1.4500000000000001e-07
+      }
+    ],
+    "outcome": "characterization",
+    "waveform_sha256": "6d30bb1ce7c47bbb821cd48719a322921f67ad835217a95ac7ccf1f181a352d4"
+  },
+  "cml_cmos_experiments": [
+    {
+      "case": "tb_cml_cmos_ff_0",
+      "run": "cml_cmos01",
+      "raw_path": "research/runs/spectre_transistor/cml_cmos01/tb_cml_cmos_ff_0",
+      "execution_ok": true,
+      "remote_inputs_match": true,
+      "source_inputs_sha256": {
+        "tb_cml_cmos_ff_0.scs": "dbf4ce4947f5b547c52906edb1a8474242fbf4432bfbb218138b31533c53f36e",
+        "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+        "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+        "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+        "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+        "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+        "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+        "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+        "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+        "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+        "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+        "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+        "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+        "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+        "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+        "cml_to_cmos_experiment.scs": "4df0d3c2dbd7c742e08d88b5010c55b46f1b157ee86d4ccd5351a8363c4c87a7",
+        "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+        "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+        "lc_vco_candidate.scs": "37b0a032c4f3d11ea8585085028b4570d126b7580592e8eb8fc6d70043044f6c",
+        "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+        "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+      },
+      "measurements": {
+        "stop_s": 1e-07,
+        "supply_average_mw": 0.7007144999701443,
+        "power_window_s": [
+          5e-08,
+          1e-07
+        ],
+        "frequency_hz": 1999999914.005514,
+        "differential_peak_v": 0.23576320871337725,
+        "cout_frequency_hz": 1999999810.6995006,
+        "cout_swing_v": [
+          -0.01174351644944079,
+          1.211433051822107
+        ],
+        "cb_frequency_hz": 1999999807.8059037,
+        "cb_swing_v": [
+          -0.01174356692834368,
+          1.211433010357614
+        ]
+      },
+      "checks": [
+        {
+          "name": "immutable input audit",
+          "passed": true,
+          "value": true,
+          "limit": "true"
+        },
+        {
+          "name": "local input snapshots match recorded hashes",
+          "passed": true,
+          "value": [],
+          "limit": "all frozen local inputs intact"
+        },
+        {
+          "name": "Spectre completed with zero errors",
+          "passed": true,
+          "value": true,
+          "limit": "completed log states 0 errors; notices are not errors"
+        },
+        {
+          "name": "finite increasing saved time",
+          "passed": true,
+          "value": [
+            0.0,
+            1e-07
+          ],
+          "limit": "finite and strictly increasing"
+        },
+        {
+          "name": "finite saved signals",
+          "passed": true,
+          "value": [],
+          "limit": "no NaN or infinity in any saved signal"
+        },
+        {
+          "name": "requested transient completed",
+          "passed": true,
+          "value": 1e-07,
+          "limit": 1.0000000000000001e-07
+        },
+        {
+          "name": "correct divide by two",
+          "passed": true,
+          "value": 1999999914.005514,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "usable differential amplitude",
+          "passed": true,
+          "value": 0.23576320871337725,
+          "limit": "> 50 mV; CMOS conversion not included"
+        },
+        {
+          "name": "cout CMOS frequency",
+          "passed": true,
+          "value": 1999999810.6995006,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cout CMOS swing",
+          "passed": true,
+          "value": [
+            -0.01174351644944079,
+            1.211433051822107
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        },
+        {
+          "name": "cb CMOS frequency",
+          "passed": true,
+          "value": 1999999807.8059037,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cb CMOS swing",
+          "passed": true,
+          "value": [
+            -0.01174356692834368,
+            1.211433010357614
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        }
+      ],
+      "outcome": "checks_passed",
+      "waveform_sha256": "02b1e2234f5c742b3f4b8f84aa63817e5e4fd1388d1e2fdde9a1b4c86cc32f89"
+    },
+    {
+      "case": "tb_cml_cmos_lowamp_ss_60",
+      "run": "cml_cmos01",
+      "raw_path": "research/runs/spectre_transistor/cml_cmos01/tb_cml_cmos_lowamp_ss_60",
+      "execution_ok": true,
+      "remote_inputs_match": true,
+      "source_inputs_sha256": {
+        "tb_cml_cmos_lowamp_ss_60.scs": "36cfcbdfd3dc5bd1c87a7218749028be996eaa2775b0ab75d71e71b23db5b36a",
+        "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+        "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+        "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+        "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+        "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+        "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+        "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+        "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+        "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+        "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+        "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+        "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+        "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+        "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+        "cml_to_cmos_experiment.scs": "4df0d3c2dbd7c742e08d88b5010c55b46f1b157ee86d4ccd5351a8363c4c87a7",
+        "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+        "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+        "lc_vco_candidate.scs": "37b0a032c4f3d11ea8585085028b4570d126b7580592e8eb8fc6d70043044f6c",
+        "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+        "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+      },
+      "measurements": {
+        "stop_s": 1e-07,
+        "supply_average_mw": 0.3743808389088819,
+        "power_window_s": [
+          5e-08,
+          1e-07
+        ],
+        "frequency_hz": 1343999761.1775706,
+        "differential_peak_v": 0.13899559794244465,
+        "cout_frequency_hz": 0.0,
+        "cout_swing_v": [
+          -0.004695548809744417,
+          0.01800805694146207
+        ],
+        "cb_frequency_hz": 0.0,
+        "cb_swing_v": [
+          -0.004695802986312126,
+          0.01800949455358551
+        ]
+      },
+      "checks": [
+        {
+          "name": "immutable input audit",
+          "passed": true,
+          "value": true,
+          "limit": "true"
+        },
+        {
+          "name": "local input snapshots match recorded hashes",
+          "passed": true,
+          "value": [],
+          "limit": "all frozen local inputs intact"
+        },
+        {
+          "name": "Spectre completed with zero errors",
+          "passed": true,
+          "value": true,
+          "limit": "completed log states 0 errors; notices are not errors"
+        },
+        {
+          "name": "finite increasing saved time",
+          "passed": true,
+          "value": [
+            0.0,
+            1e-07
+          ],
+          "limit": "finite and strictly increasing"
+        },
+        {
+          "name": "finite saved signals",
+          "passed": true,
+          "value": [],
+          "limit": "no NaN or infinity in any saved signal"
+        },
+        {
+          "name": "requested transient completed",
+          "passed": true,
+          "value": 1e-07,
+          "limit": 1.0000000000000001e-07
+        },
+        {
+          "name": "correct divide by two",
+          "passed": true,
+          "value": 1343999761.1775706,
+          "limit": "1344000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "usable differential amplitude",
+          "passed": true,
+          "value": 0.13899559794244465,
+          "limit": "> 50 mV; CMOS conversion not included"
+        },
+        {
+          "name": "cout CMOS frequency",
+          "passed": false,
+          "value": 0.0,
+          "limit": "1344000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cout CMOS swing",
+          "passed": false,
+          "value": [
+            -0.004695548809744417,
+            0.01800805694146207
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        },
+        {
+          "name": "cb CMOS frequency",
+          "passed": false,
+          "value": 0.0,
+          "limit": "1344000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cb CMOS swing",
+          "passed": false,
+          "value": [
+            -0.004695802986312126,
+            0.01800949455358551
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        }
+      ],
+      "outcome": "design_check_failed",
+      "waveform_sha256": "b4f85bdf52cf97d5d40c23494ec4f71483e3efae94b22e437e871ca04b20b548"
+    },
+    {
+      "case": "tb_cml_cmos_ss_60",
+      "run": "cml_cmos01",
+      "raw_path": "research/runs/spectre_transistor/cml_cmos01/tb_cml_cmos_ss_60",
+      "execution_ok": true,
+      "remote_inputs_match": true,
+      "source_inputs_sha256": {
+        "tb_cml_cmos_ss_60.scs": "36d8dca0abfc53ce8725be09229b24ab008f413ce2ab44ae97f3177e399f5f22",
+        "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+        "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+        "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+        "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+        "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+        "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+        "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+        "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+        "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+        "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+        "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+        "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+        "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+        "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+        "cml_to_cmos_experiment.scs": "4df0d3c2dbd7c742e08d88b5010c55b46f1b157ee86d4ccd5351a8363c4c87a7",
+        "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+        "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+        "lc_vco_candidate.scs": "37b0a032c4f3d11ea8585085028b4570d126b7580592e8eb8fc6d70043044f6c",
+        "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+        "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+      },
+      "measurements": {
+        "stop_s": 1e-07,
+        "supply_average_mw": 0.39541001262472214,
+        "power_window_s": [
+          5e-08,
+          1e-07
+        ],
+        "frequency_hz": 1999999765.5678916,
+        "differential_peak_v": 0.15661124368280116,
+        "cout_frequency_hz": 0.0,
+        "cout_swing_v": [
+          -0.002744545465959198,
+          0.003226465456252032
+        ],
+        "cb_frequency_hz": 0.0,
+        "cb_swing_v": [
+          -0.002744558992362102,
+          0.003226514241984156
+        ]
+      },
+      "checks": [
+        {
+          "name": "immutable input audit",
+          "passed": true,
+          "value": true,
+          "limit": "true"
+        },
+        {
+          "name": "local input snapshots match recorded hashes",
+          "passed": true,
+          "value": [],
+          "limit": "all frozen local inputs intact"
+        },
+        {
+          "name": "Spectre completed with zero errors",
+          "passed": true,
+          "value": true,
+          "limit": "completed log states 0 errors; notices are not errors"
+        },
+        {
+          "name": "finite increasing saved time",
+          "passed": true,
+          "value": [
+            0.0,
+            1e-07
+          ],
+          "limit": "finite and strictly increasing"
+        },
+        {
+          "name": "finite saved signals",
+          "passed": true,
+          "value": [],
+          "limit": "no NaN or infinity in any saved signal"
+        },
+        {
+          "name": "requested transient completed",
+          "passed": true,
+          "value": 1e-07,
+          "limit": 1.0000000000000001e-07
+        },
+        {
+          "name": "correct divide by two",
+          "passed": true,
+          "value": 1999999765.5678916,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "usable differential amplitude",
+          "passed": true,
+          "value": 0.15661124368280116,
+          "limit": "> 50 mV; CMOS conversion not included"
+        },
+        {
+          "name": "cout CMOS frequency",
+          "passed": false,
+          "value": 0.0,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cout CMOS swing",
+          "passed": false,
+          "value": [
+            -0.002744545465959198,
+            0.003226465456252032
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        },
+        {
+          "name": "cb CMOS frequency",
+          "passed": false,
+          "value": 0.0,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cb CMOS swing",
+          "passed": false,
+          "value": [
+            -0.002744558992362102,
+            0.003226514241984156
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        }
+      ],
+      "outcome": "design_check_failed",
+      "waveform_sha256": "61ab16973184a50fa4eaff09f9c04c0e2f96ad8c24d3bebcf207a62078cd9755"
+    },
+    {
+      "case": "tb_cml_cmos_tt_27",
+      "run": "cml_cmos01",
+      "raw_path": "research/runs/spectre_transistor/cml_cmos01/tb_cml_cmos_tt_27",
+      "execution_ok": true,
+      "remote_inputs_match": true,
+      "source_inputs_sha256": {
+        "tb_cml_cmos_tt_27.scs": "b93f3bfcd82d4fc5b93b30e864a932f5b5cb6cae9a6c65975a6233d21cdbae4a",
+        "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+        "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+        "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+        "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+        "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+        "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+        "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+        "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+        "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+        "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+        "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+        "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+        "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+        "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+        "cml_to_cmos_experiment.scs": "4df0d3c2dbd7c742e08d88b5010c55b46f1b157ee86d4ccd5351a8363c4c87a7",
+        "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+        "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+        "lc_vco_candidate.scs": "37b0a032c4f3d11ea8585085028b4570d126b7580592e8eb8fc6d70043044f6c",
+        "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+        "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+      },
+      "measurements": {
+        "stop_s": 1e-07,
+        "supply_average_mw": 0.4963876717906632,
+        "power_window_s": [
+          5e-08,
+          1e-07
+        ],
+        "frequency_hz": 1999999668.2405198,
+        "differential_peak_v": 0.2125676691219025,
+        "cout_frequency_hz": 0.0,
+        "cout_swing_v": [
+          -0.008148183587019877,
+          0.1984380956516648
+        ],
+        "cb_frequency_hz": 0.0,
+        "cb_swing_v": [
+          -0.008147990163394328,
+          0.1984351632633978
+        ]
+      },
+      "checks": [
+        {
+          "name": "immutable input audit",
+          "passed": true,
+          "value": true,
+          "limit": "true"
+        },
+        {
+          "name": "local input snapshots match recorded hashes",
+          "passed": true,
+          "value": [],
+          "limit": "all frozen local inputs intact"
+        },
+        {
+          "name": "Spectre completed with zero errors",
+          "passed": true,
+          "value": true,
+          "limit": "completed log states 0 errors; notices are not errors"
+        },
+        {
+          "name": "finite increasing saved time",
+          "passed": true,
+          "value": [
+            0.0,
+            1e-07
+          ],
+          "limit": "finite and strictly increasing"
+        },
+        {
+          "name": "finite saved signals",
+          "passed": true,
+          "value": [],
+          "limit": "no NaN or infinity in any saved signal"
+        },
+        {
+          "name": "requested transient completed",
+          "passed": true,
+          "value": 1e-07,
+          "limit": 1.0000000000000001e-07
+        },
+        {
+          "name": "correct divide by two",
+          "passed": true,
+          "value": 1999999668.2405198,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "usable differential amplitude",
+          "passed": true,
+          "value": 0.2125676691219025,
+          "limit": "> 50 mV; CMOS conversion not included"
+        },
+        {
+          "name": "cout CMOS frequency",
+          "passed": false,
+          "value": 0.0,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cout CMOS swing",
+          "passed": false,
+          "value": [
+            -0.008148183587019877,
+            0.1984380956516648
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        },
+        {
+          "name": "cb CMOS frequency",
+          "passed": false,
+          "value": 0.0,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cb CMOS swing",
+          "passed": false,
+          "value": [
+            -0.008147990163394328,
+            0.1984351632633978
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        }
+      ],
+      "outcome": "design_check_failed",
+      "waveform_sha256": "39c99ebb2830430e4f3ab27cb3b405a9fac5e672c6a9934d7f5afda2e9092bdf"
+    },
+    {
+      "case": "tb_cml_cmos_ff_0",
+      "run": "cml_cmos02",
+      "raw_path": "research/runs/spectre_transistor/cml_cmos02/tb_cml_cmos_ff_0",
+      "execution_ok": true,
+      "remote_inputs_match": true,
+      "source_inputs_sha256": {
+        "tb_cml_cmos_ff_0.scs": "dbf4ce4947f5b547c52906edb1a8474242fbf4432bfbb218138b31533c53f36e",
+        "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+        "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+        "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+        "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+        "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+        "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+        "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+        "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+        "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+        "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+        "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+        "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+        "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+        "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+        "cml_to_cmos_experiment.scs": "9df698277ca28e838de959152192ac641ba7f43e3052542f9fa2faa2ab7734f9",
+        "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+        "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+        "lc_vco_candidate.scs": "37b0a032c4f3d11ea8585085028b4570d126b7580592e8eb8fc6d70043044f6c",
+        "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+        "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+      },
+      "measurements": {
+        "stop_s": 1e-07,
+        "supply_average_mw": 1.3087712081727882,
+        "power_window_s": [
+          5e-08,
+          1e-07
+        ],
+        "frequency_hz": 1999999931.255436,
+        "differential_peak_v": 0.1661794248223879,
+        "cout_frequency_hz": 2000000806.393067,
+        "cout_swing_v": [
+          -0.009687500574659419,
+          1.21603546877647
+        ],
+        "cb_frequency_hz": 2000000729.190863,
+        "cb_swing_v": [
+          -0.009687496505403632,
+          1.216035505383739
+        ]
+      },
+      "checks": [
+        {
+          "name": "immutable input audit",
+          "passed": true,
+          "value": true,
+          "limit": "true"
+        },
+        {
+          "name": "local input snapshots match recorded hashes",
+          "passed": true,
+          "value": [],
+          "limit": "all frozen local inputs intact"
+        },
+        {
+          "name": "Spectre completed with zero errors",
+          "passed": true,
+          "value": true,
+          "limit": "completed log states 0 errors; notices are not errors"
+        },
+        {
+          "name": "finite increasing saved time",
+          "passed": true,
+          "value": [
+            0.0,
+            1e-07
+          ],
+          "limit": "finite and strictly increasing"
+        },
+        {
+          "name": "finite saved signals",
+          "passed": true,
+          "value": [],
+          "limit": "no NaN or infinity in any saved signal"
+        },
+        {
+          "name": "requested transient completed",
+          "passed": true,
+          "value": 1e-07,
+          "limit": 1.0000000000000001e-07
+        },
+        {
+          "name": "correct divide by two",
+          "passed": true,
+          "value": 1999999931.255436,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "usable differential amplitude",
+          "passed": true,
+          "value": 0.1661794248223879,
+          "limit": "> 50 mV; CMOS conversion not included"
+        },
+        {
+          "name": "cout CMOS frequency",
+          "passed": true,
+          "value": 2000000806.393067,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cout CMOS swing",
+          "passed": true,
+          "value": [
+            -0.009687500574659419,
+            1.21603546877647
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        },
+        {
+          "name": "cb CMOS frequency",
+          "passed": true,
+          "value": 2000000729.190863,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cb CMOS swing",
+          "passed": true,
+          "value": [
+            -0.009687496505403632,
+            1.216035505383739
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        }
+      ],
+      "outcome": "checks_passed",
+      "waveform_sha256": "b256ddbfb5dde1521dcea03b2f99bc413e4d504a247f49530c9eaa834e43d103"
+    },
+    {
+      "case": "tb_cml_cmos_lowamp_ss_60",
+      "run": "cml_cmos02",
+      "raw_path": "research/runs/spectre_transistor/cml_cmos02/tb_cml_cmos_lowamp_ss_60",
+      "execution_ok": true,
+      "remote_inputs_match": true,
+      "source_inputs_sha256": {
+        "tb_cml_cmos_lowamp_ss_60.scs": "36cfcbdfd3dc5bd1c87a7218749028be996eaa2775b0ab75d71e71b23db5b36a",
+        "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+        "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+        "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+        "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+        "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+        "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+        "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+        "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+        "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+        "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+        "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+        "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+        "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+        "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+        "cml_to_cmos_experiment.scs": "9df698277ca28e838de959152192ac641ba7f43e3052542f9fa2faa2ab7734f9",
+        "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+        "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+        "lc_vco_candidate.scs": "37b0a032c4f3d11ea8585085028b4570d126b7580592e8eb8fc6d70043044f6c",
+        "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+        "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+      },
+      "measurements": {
+        "stop_s": 1e-07,
+        "supply_average_mw": 0.5924521666781011,
+        "power_window_s": [
+          5e-08,
+          1e-07
+        ],
+        "frequency_hz": 1343999751.0213923,
+        "differential_peak_v": 0.11139209955787754,
+        "cout_frequency_hz": 0.0,
+        "cout_swing_v": [
+          0.8744668725213096,
+          1.207060179066217
+        ],
+        "cb_frequency_hz": 0.0,
+        "cb_swing_v": [
+          0.8738037558468312,
+          1.207059791752906
+        ]
+      },
+      "checks": [
+        {
+          "name": "immutable input audit",
+          "passed": true,
+          "value": true,
+          "limit": "true"
+        },
+        {
+          "name": "local input snapshots match recorded hashes",
+          "passed": true,
+          "value": [],
+          "limit": "all frozen local inputs intact"
+        },
+        {
+          "name": "Spectre completed with zero errors",
+          "passed": true,
+          "value": true,
+          "limit": "completed log states 0 errors; notices are not errors"
+        },
+        {
+          "name": "finite increasing saved time",
+          "passed": true,
+          "value": [
+            0.0,
+            1e-07
+          ],
+          "limit": "finite and strictly increasing"
+        },
+        {
+          "name": "finite saved signals",
+          "passed": true,
+          "value": [],
+          "limit": "no NaN or infinity in any saved signal"
+        },
+        {
+          "name": "requested transient completed",
+          "passed": true,
+          "value": 1e-07,
+          "limit": 1.0000000000000001e-07
+        },
+        {
+          "name": "correct divide by two",
+          "passed": true,
+          "value": 1343999751.0213923,
+          "limit": "1344000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "usable differential amplitude",
+          "passed": true,
+          "value": 0.11139209955787754,
+          "limit": "> 50 mV; CMOS conversion not included"
+        },
+        {
+          "name": "cout CMOS frequency",
+          "passed": false,
+          "value": 0.0,
+          "limit": "1344000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cout CMOS swing",
+          "passed": false,
+          "value": [
+            0.8744668725213096,
+            1.207060179066217
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        },
+        {
+          "name": "cb CMOS frequency",
+          "passed": false,
+          "value": 0.0,
+          "limit": "1344000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cb CMOS swing",
+          "passed": false,
+          "value": [
+            0.8738037558468312,
+            1.207059791752906
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        }
+      ],
+      "outcome": "design_check_failed",
+      "waveform_sha256": "8924cb40128ccd9df75823dafa7fd8aa877b007edb398d81033284471d4df645"
+    },
+    {
+      "case": "tb_cml_cmos_ss_60",
+      "run": "cml_cmos02",
+      "raw_path": "research/runs/spectre_transistor/cml_cmos02/tb_cml_cmos_ss_60",
+      "execution_ok": true,
+      "remote_inputs_match": true,
+      "source_inputs_sha256": {
+        "tb_cml_cmos_ss_60.scs": "36d8dca0abfc53ce8725be09229b24ab008f413ce2ab44ae97f3177e399f5f22",
+        "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+        "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+        "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+        "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+        "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+        "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+        "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+        "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+        "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+        "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+        "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+        "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+        "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+        "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+        "cml_to_cmos_experiment.scs": "9df698277ca28e838de959152192ac641ba7f43e3052542f9fa2faa2ab7734f9",
+        "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+        "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+        "lc_vco_candidate.scs": "37b0a032c4f3d11ea8585085028b4570d126b7580592e8eb8fc6d70043044f6c",
+        "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+        "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+      },
+      "measurements": {
+        "stop_s": 1e-07,
+        "supply_average_mw": 0.6379237218803386,
+        "power_window_s": [
+          5e-08,
+          1e-07
+        ],
+        "frequency_hz": 2000000074.2749877,
+        "differential_peak_v": 0.10001026616945508,
+        "cout_frequency_hz": 0.0,
+        "cout_swing_v": [
+          0.9558137917558297,
+          1.175114605305349
+        ],
+        "cb_frequency_hz": 0.0,
+        "cb_swing_v": [
+          0.9531369193832993,
+          1.175120072705835
+        ]
+      },
+      "checks": [
+        {
+          "name": "immutable input audit",
+          "passed": true,
+          "value": true,
+          "limit": "true"
+        },
+        {
+          "name": "local input snapshots match recorded hashes",
+          "passed": true,
+          "value": [],
+          "limit": "all frozen local inputs intact"
+        },
+        {
+          "name": "Spectre completed with zero errors",
+          "passed": true,
+          "value": true,
+          "limit": "completed log states 0 errors; notices are not errors"
+        },
+        {
+          "name": "finite increasing saved time",
+          "passed": true,
+          "value": [
+            0.0,
+            1e-07
+          ],
+          "limit": "finite and strictly increasing"
+        },
+        {
+          "name": "finite saved signals",
+          "passed": true,
+          "value": [],
+          "limit": "no NaN or infinity in any saved signal"
+        },
+        {
+          "name": "requested transient completed",
+          "passed": true,
+          "value": 1e-07,
+          "limit": 1.0000000000000001e-07
+        },
+        {
+          "name": "correct divide by two",
+          "passed": true,
+          "value": 2000000074.2749877,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "usable differential amplitude",
+          "passed": true,
+          "value": 0.10001026616945508,
+          "limit": "> 50 mV; CMOS conversion not included"
+        },
+        {
+          "name": "cout CMOS frequency",
+          "passed": false,
+          "value": 0.0,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cout CMOS swing",
+          "passed": false,
+          "value": [
+            0.9558137917558297,
+            1.175114605305349
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        },
+        {
+          "name": "cb CMOS frequency",
+          "passed": false,
+          "value": 0.0,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cb CMOS swing",
+          "passed": false,
+          "value": [
+            0.9531369193832993,
+            1.175120072705835
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        }
+      ],
+      "outcome": "design_check_failed",
+      "waveform_sha256": "eb89e00769bd96fd80bf49555f694998e092ab8a039500eba30cfe99965e5f82"
+    },
+    {
+      "case": "tb_cml_cmos_tt_27",
+      "run": "cml_cmos02",
+      "raw_path": "research/runs/spectre_transistor/cml_cmos02/tb_cml_cmos_tt_27",
+      "execution_ok": true,
+      "remote_inputs_match": true,
+      "source_inputs_sha256": {
+        "tb_cml_cmos_tt_27.scs": "b93f3bfcd82d4fc5b93b30e864a932f5b5cb6cae9a6c65975a6233d21cdbae4a",
+        "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+        "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+        "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+        "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+        "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+        "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+        "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+        "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+        "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+        "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+        "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+        "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+        "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+        "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+        "cml_to_cmos_experiment.scs": "9df698277ca28e838de959152192ac641ba7f43e3052542f9fa2faa2ab7734f9",
+        "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+        "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+        "lc_vco_candidate.scs": "37b0a032c4f3d11ea8585085028b4570d126b7580592e8eb8fc6d70043044f6c",
+        "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+        "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+      },
+      "measurements": {
+        "stop_s": 1e-07,
+        "supply_average_mw": 0.9644520401512763,
+        "power_window_s": [
+          5e-08,
+          1e-07
+        ],
+        "frequency_hz": 1999999742.7105818,
+        "differential_peak_v": 0.15053123024205167,
+        "cout_frequency_hz": 2000025892.1013665,
+        "cout_swing_v": [
+          0.3027444639822223,
+          1.207922874901334
+        ],
+        "cb_frequency_hz": 2000026237.9202495,
+        "cb_swing_v": [
+          0.3026726325928406,
+          1.207923060614826
+        ]
+      },
+      "checks": [
+        {
+          "name": "immutable input audit",
+          "passed": true,
+          "value": true,
+          "limit": "true"
+        },
+        {
+          "name": "local input snapshots match recorded hashes",
+          "passed": true,
+          "value": [],
+          "limit": "all frozen local inputs intact"
+        },
+        {
+          "name": "Spectre completed with zero errors",
+          "passed": true,
+          "value": true,
+          "limit": "completed log states 0 errors; notices are not errors"
+        },
+        {
+          "name": "finite increasing saved time",
+          "passed": true,
+          "value": [
+            0.0,
+            1e-07
+          ],
+          "limit": "finite and strictly increasing"
+        },
+        {
+          "name": "finite saved signals",
+          "passed": true,
+          "value": [],
+          "limit": "no NaN or infinity in any saved signal"
+        },
+        {
+          "name": "requested transient completed",
+          "passed": true,
+          "value": 1e-07,
+          "limit": 1.0000000000000001e-07
+        },
+        {
+          "name": "correct divide by two",
+          "passed": true,
+          "value": 1999999742.7105818,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "usable differential amplitude",
+          "passed": true,
+          "value": 0.15053123024205167,
+          "limit": "> 50 mV; CMOS conversion not included"
+        },
+        {
+          "name": "cout CMOS frequency",
+          "passed": false,
+          "value": 2000025892.1013665,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cout CMOS swing",
+          "passed": false,
+          "value": [
+            0.3027444639822223,
+            1.207922874901334
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        },
+        {
+          "name": "cb CMOS frequency",
+          "passed": false,
+          "value": 2000026237.9202495,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cb CMOS swing",
+          "passed": false,
+          "value": [
+            0.3026726325928406,
+            1.207923060614826
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        }
+      ],
+      "outcome": "design_check_failed",
+      "waveform_sha256": "9b84fdf1f51dd5d7572009333a477279b632d2c09b93424405b841a9c5a8323c"
+    },
+    {
+      "case": "tb_cml_cmos_ff_0",
+      "run": "cml_cmos03",
+      "raw_path": "research/runs/spectre_transistor/cml_cmos03/tb_cml_cmos_ff_0",
+      "execution_ok": true,
+      "remote_inputs_match": true,
+      "source_inputs_sha256": {
+        "tb_cml_cmos_ff_0.scs": "dbf4ce4947f5b547c52906edb1a8474242fbf4432bfbb218138b31533c53f36e",
+        "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+        "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+        "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+        "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+        "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+        "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+        "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+        "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+        "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+        "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+        "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+        "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+        "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+        "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+        "cml_to_cmos_experiment.scs": "6756eef5a39c8f10d9732d0f02216183417bc347ca61a199647760e4f846f29a",
+        "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+        "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+        "lc_vco_candidate.scs": "37b0a032c4f3d11ea8585085028b4570d126b7580592e8eb8fc6d70043044f6c",
+        "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+        "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+      },
+      "measurements": {
+        "stop_s": 1e-07,
+        "supply_average_mw": 1.3120618847620382,
+        "power_window_s": [
+          5e-08,
+          1e-07
+        ],
+        "frequency_hz": 1999999916.4113925,
+        "differential_peak_v": 0.16407333175842004,
+        "cout_frequency_hz": 1999999980.5980825,
+        "cout_swing_v": [
+          -0.009712929618759327,
+          1.215652519708356
+        ],
+        "cb_frequency_hz": 1999999983.0640786,
+        "cb_swing_v": [
+          -0.009711958488820761,
+          1.215653089270035
+        ]
+      },
+      "checks": [
+        {
+          "name": "immutable input audit",
+          "passed": true,
+          "value": true,
+          "limit": "true"
+        },
+        {
+          "name": "local input snapshots match recorded hashes",
+          "passed": true,
+          "value": [],
+          "limit": "all frozen local inputs intact"
+        },
+        {
+          "name": "Spectre completed with zero errors",
+          "passed": true,
+          "value": true,
+          "limit": "completed log states 0 errors; notices are not errors"
+        },
+        {
+          "name": "finite increasing saved time",
+          "passed": true,
+          "value": [
+            0.0,
+            1e-07
+          ],
+          "limit": "finite and strictly increasing"
+        },
+        {
+          "name": "finite saved signals",
+          "passed": true,
+          "value": [],
+          "limit": "no NaN or infinity in any saved signal"
+        },
+        {
+          "name": "requested transient completed",
+          "passed": true,
+          "value": 1e-07,
+          "limit": 1.0000000000000001e-07
+        },
+        {
+          "name": "correct divide by two",
+          "passed": true,
+          "value": 1999999916.4113925,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "usable differential amplitude",
+          "passed": true,
+          "value": 0.16407333175842004,
+          "limit": "> 50 mV; CMOS conversion not included"
+        },
+        {
+          "name": "cout CMOS frequency",
+          "passed": true,
+          "value": 1999999980.5980825,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cout CMOS swing",
+          "passed": true,
+          "value": [
+            -0.009712929618759327,
+            1.215652519708356
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        },
+        {
+          "name": "cb CMOS frequency",
+          "passed": true,
+          "value": 1999999983.0640786,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cb CMOS swing",
+          "passed": true,
+          "value": [
+            -0.009711958488820761,
+            1.215653089270035
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        }
+      ],
+      "outcome": "checks_passed",
+      "waveform_sha256": "7b7243dcaea4cedb734d7362782e35cf377ea750a699ef4c4e92f9437528b2b8"
+    },
+    {
+      "case": "tb_cml_cmos_lowamp_ss_60",
+      "run": "cml_cmos03",
+      "raw_path": "research/runs/spectre_transistor/cml_cmos03/tb_cml_cmos_lowamp_ss_60",
+      "execution_ok": true,
+      "remote_inputs_match": true,
+      "source_inputs_sha256": {
+        "tb_cml_cmos_lowamp_ss_60.scs": "36cfcbdfd3dc5bd1c87a7218749028be996eaa2775b0ab75d71e71b23db5b36a",
+        "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+        "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+        "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+        "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+        "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+        "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+        "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+        "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+        "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+        "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+        "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+        "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+        "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+        "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+        "cml_to_cmos_experiment.scs": "6756eef5a39c8f10d9732d0f02216183417bc347ca61a199647760e4f846f29a",
+        "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+        "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+        "lc_vco_candidate.scs": "37b0a032c4f3d11ea8585085028b4570d126b7580592e8eb8fc6d70043044f6c",
+        "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+        "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+      },
+      "measurements": {
+        "stop_s": 1e-07,
+        "supply_average_mw": 0.5914529258387673,
+        "power_window_s": [
+          5e-08,
+          1e-07
+        ],
+        "frequency_hz": 1343999768.2780743,
+        "differential_peak_v": 0.1079050515931399,
+        "cout_frequency_hz": 0.0,
+        "cout_swing_v": [
+          0.8810657685726374,
+          1.206510379289845
+        ],
+        "cb_frequency_hz": 0.0,
+        "cb_swing_v": [
+          0.8810923949460507,
+          1.206510216248493
+        ]
+      },
+      "checks": [
+        {
+          "name": "immutable input audit",
+          "passed": true,
+          "value": true,
+          "limit": "true"
+        },
+        {
+          "name": "local input snapshots match recorded hashes",
+          "passed": true,
+          "value": [],
+          "limit": "all frozen local inputs intact"
+        },
+        {
+          "name": "Spectre completed with zero errors",
+          "passed": true,
+          "value": true,
+          "limit": "completed log states 0 errors; notices are not errors"
+        },
+        {
+          "name": "finite increasing saved time",
+          "passed": true,
+          "value": [
+            0.0,
+            1e-07
+          ],
+          "limit": "finite and strictly increasing"
+        },
+        {
+          "name": "finite saved signals",
+          "passed": true,
+          "value": [],
+          "limit": "no NaN or infinity in any saved signal"
+        },
+        {
+          "name": "requested transient completed",
+          "passed": true,
+          "value": 1e-07,
+          "limit": 1.0000000000000001e-07
+        },
+        {
+          "name": "correct divide by two",
+          "passed": true,
+          "value": 1343999768.2780743,
+          "limit": "1344000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "usable differential amplitude",
+          "passed": true,
+          "value": 0.1079050515931399,
+          "limit": "> 50 mV; CMOS conversion not included"
+        },
+        {
+          "name": "cout CMOS frequency",
+          "passed": false,
+          "value": 0.0,
+          "limit": "1344000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cout CMOS swing",
+          "passed": false,
+          "value": [
+            0.8810657685726374,
+            1.206510379289845
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        },
+        {
+          "name": "cb CMOS frequency",
+          "passed": false,
+          "value": 0.0,
+          "limit": "1344000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cb CMOS swing",
+          "passed": false,
+          "value": [
+            0.8810923949460507,
+            1.206510216248493
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        }
+      ],
+      "outcome": "design_check_failed",
+      "waveform_sha256": "5a5d9e8a8019f862a8061eb6c86d94fa1293fde7f651d73a3c94e28c848e708a"
+    },
+    {
+      "case": "tb_cml_cmos_ss_60",
+      "run": "cml_cmos03",
+      "raw_path": "research/runs/spectre_transistor/cml_cmos03/tb_cml_cmos_ss_60",
+      "execution_ok": true,
+      "remote_inputs_match": true,
+      "source_inputs_sha256": {
+        "tb_cml_cmos_ss_60.scs": "36d8dca0abfc53ce8725be09229b24ab008f413ce2ab44ae97f3177e399f5f22",
+        "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+        "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+        "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+        "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+        "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+        "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+        "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+        "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+        "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+        "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+        "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+        "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+        "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+        "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+        "cml_to_cmos_experiment.scs": "6756eef5a39c8f10d9732d0f02216183417bc347ca61a199647760e4f846f29a",
+        "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+        "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+        "lc_vco_candidate.scs": "37b0a032c4f3d11ea8585085028b4570d126b7580592e8eb8fc6d70043044f6c",
+        "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+        "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+      },
+      "measurements": {
+        "stop_s": 1e-07,
+        "supply_average_mw": 0.6378205833259745,
+        "power_window_s": [
+          5e-08,
+          1e-07
+        ],
+        "frequency_hz": 1999999717.323989,
+        "differential_peak_v": 0.10027524455172399,
+        "cout_frequency_hz": 0.0,
+        "cout_swing_v": [
+          0.9716624630899399,
+          1.173933098796312
+        ],
+        "cb_frequency_hz": 0.0,
+        "cb_swing_v": [
+          0.9716559949075355,
+          1.173933780145499
+        ]
+      },
+      "checks": [
+        {
+          "name": "immutable input audit",
+          "passed": true,
+          "value": true,
+          "limit": "true"
+        },
+        {
+          "name": "local input snapshots match recorded hashes",
+          "passed": true,
+          "value": [],
+          "limit": "all frozen local inputs intact"
+        },
+        {
+          "name": "Spectre completed with zero errors",
+          "passed": true,
+          "value": true,
+          "limit": "completed log states 0 errors; notices are not errors"
+        },
+        {
+          "name": "finite increasing saved time",
+          "passed": true,
+          "value": [
+            0.0,
+            1e-07
+          ],
+          "limit": "finite and strictly increasing"
+        },
+        {
+          "name": "finite saved signals",
+          "passed": true,
+          "value": [],
+          "limit": "no NaN or infinity in any saved signal"
+        },
+        {
+          "name": "requested transient completed",
+          "passed": true,
+          "value": 1e-07,
+          "limit": 1.0000000000000001e-07
+        },
+        {
+          "name": "correct divide by two",
+          "passed": true,
+          "value": 1999999717.323989,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "usable differential amplitude",
+          "passed": true,
+          "value": 0.10027524455172399,
+          "limit": "> 50 mV; CMOS conversion not included"
+        },
+        {
+          "name": "cout CMOS frequency",
+          "passed": false,
+          "value": 0.0,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cout CMOS swing",
+          "passed": false,
+          "value": [
+            0.9716624630899399,
+            1.173933098796312
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        },
+        {
+          "name": "cb CMOS frequency",
+          "passed": false,
+          "value": 0.0,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cb CMOS swing",
+          "passed": false,
+          "value": [
+            0.9716559949075355,
+            1.173933780145499
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        }
+      ],
+      "outcome": "design_check_failed",
+      "waveform_sha256": "748dea80bbb45778a9769e84c08d001a2c0416f1f7f51a1a247f6c022e31ba14"
+    },
+    {
+      "case": "tb_cml_cmos_tt_27",
+      "run": "cml_cmos03",
+      "raw_path": "research/runs/spectre_transistor/cml_cmos03/tb_cml_cmos_tt_27",
+      "execution_ok": true,
+      "remote_inputs_match": true,
+      "source_inputs_sha256": {
+        "tb_cml_cmos_tt_27.scs": "b93f3bfcd82d4fc5b93b30e864a932f5b5cb6cae9a6c65975a6233d21cdbae4a",
+        "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+        "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+        "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+        "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+        "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+        "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+        "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+        "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+        "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+        "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+        "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+        "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+        "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+        "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+        "cml_to_cmos_experiment.scs": "6756eef5a39c8f10d9732d0f02216183417bc347ca61a199647760e4f846f29a",
+        "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+        "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+        "lc_vco_candidate.scs": "37b0a032c4f3d11ea8585085028b4570d126b7580592e8eb8fc6d70043044f6c",
+        "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+        "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+      },
+      "measurements": {
+        "stop_s": 1e-07,
+        "supply_average_mw": 0.9666949037845868,
+        "power_window_s": [
+          5e-08,
+          1e-07
+        ],
+        "frequency_hz": 1999999794.867121,
+        "differential_peak_v": 0.14986233677484928,
+        "cout_frequency_hz": 2000002634.882988,
+        "cout_swing_v": [
+          0.3002517066130194,
+          1.20763669727481
+        ],
+        "cb_frequency_hz": 2000002659.6148174,
+        "cb_swing_v": [
+          0.3002443394633227,
+          1.207636720381193
+        ]
+      },
+      "checks": [
+        {
+          "name": "immutable input audit",
+          "passed": true,
+          "value": true,
+          "limit": "true"
+        },
+        {
+          "name": "local input snapshots match recorded hashes",
+          "passed": true,
+          "value": [],
+          "limit": "all frozen local inputs intact"
+        },
+        {
+          "name": "Spectre completed with zero errors",
+          "passed": true,
+          "value": true,
+          "limit": "completed log states 0 errors; notices are not errors"
+        },
+        {
+          "name": "finite increasing saved time",
+          "passed": true,
+          "value": [
+            0.0,
+            1e-07
+          ],
+          "limit": "finite and strictly increasing"
+        },
+        {
+          "name": "finite saved signals",
+          "passed": true,
+          "value": [],
+          "limit": "no NaN or infinity in any saved signal"
+        },
+        {
+          "name": "requested transient completed",
+          "passed": true,
+          "value": 1e-07,
+          "limit": 1.0000000000000001e-07
+        },
+        {
+          "name": "correct divide by two",
+          "passed": true,
+          "value": 1999999794.867121,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "usable differential amplitude",
+          "passed": true,
+          "value": 0.14986233677484928,
+          "limit": "> 50 mV; CMOS conversion not included"
+        },
+        {
+          "name": "cout CMOS frequency",
+          "passed": true,
+          "value": 2000002634.882988,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cout CMOS swing",
+          "passed": false,
+          "value": [
+            0.3002517066130194,
+            1.20763669727481
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        },
+        {
+          "name": "cb CMOS frequency",
+          "passed": true,
+          "value": 2000002659.6148174,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cb CMOS swing",
+          "passed": false,
+          "value": [
+            0.3002443394633227,
+            1.207636720381193
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        }
+      ],
+      "outcome": "design_check_failed",
+      "waveform_sha256": "9dc317f35758e26b0c439a540db511ac8b72269f43b863de451be4d1dc22726c"
+    },
+    {
+      "case": "tb_cml_cmos_ff_0",
+      "run": "cml_cmos04",
+      "raw_path": "research/runs/spectre_transistor/cml_cmos04/tb_cml_cmos_ff_0",
+      "execution_ok": true,
+      "remote_inputs_match": true,
+      "source_inputs_sha256": {
+        "tb_cml_cmos_ff_0.scs": "dbf4ce4947f5b547c52906edb1a8474242fbf4432bfbb218138b31533c53f36e",
+        "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+        "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+        "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+        "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+        "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+        "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+        "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+        "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+        "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+        "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+        "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+        "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+        "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+        "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+        "cml_to_cmos_experiment.scs": "013159f54d82dfc1863a9779a3bcfbc7f48208930f7a99ca22a6419c6a07cbf5",
+        "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+        "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+        "lc_vco_candidate.scs": "37b0a032c4f3d11ea8585085028b4570d126b7580592e8eb8fc6d70043044f6c",
+        "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+        "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+      },
+      "measurements": {
+        "stop_s": 1e-07,
+        "supply_average_mw": 1.2850759603439799,
+        "power_window_s": [
+          5e-08,
+          1e-07
+        ],
+        "frequency_hz": 1999999923.9124575,
+        "differential_peak_v": 0.15562049686941548,
+        "cout_frequency_hz": 1999999799.7513921,
+        "cout_swing_v": [
+          -0.006009490182654716,
+          1.211210296066391
+        ],
+        "cb_frequency_hz": 1999999841.0782692,
+        "cb_swing_v": [
+          -0.006009821450976787,
+          1.211210510394731
+        ]
+      },
+      "checks": [
+        {
+          "name": "immutable input audit",
+          "passed": true,
+          "value": true,
+          "limit": "true"
+        },
+        {
+          "name": "local input snapshots match recorded hashes",
+          "passed": true,
+          "value": [],
+          "limit": "all frozen local inputs intact"
+        },
+        {
+          "name": "Spectre completed with zero errors",
+          "passed": true,
+          "value": true,
+          "limit": "completed log states 0 errors; notices are not errors"
+        },
+        {
+          "name": "finite increasing saved time",
+          "passed": true,
+          "value": [
+            0.0,
+            1e-07
+          ],
+          "limit": "finite and strictly increasing"
+        },
+        {
+          "name": "finite saved signals",
+          "passed": true,
+          "value": [],
+          "limit": "no NaN or infinity in any saved signal"
+        },
+        {
+          "name": "requested transient completed",
+          "passed": true,
+          "value": 1e-07,
+          "limit": 1.0000000000000001e-07
+        },
+        {
+          "name": "correct divide by two",
+          "passed": true,
+          "value": 1999999923.9124575,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "usable differential amplitude",
+          "passed": true,
+          "value": 0.15562049686941548,
+          "limit": "> 50 mV; CMOS conversion not included"
+        },
+        {
+          "name": "cout CMOS frequency",
+          "passed": true,
+          "value": 1999999799.7513921,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cout CMOS swing",
+          "passed": true,
+          "value": [
+            -0.006009490182654716,
+            1.211210296066391
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        },
+        {
+          "name": "cb CMOS frequency",
+          "passed": true,
+          "value": 1999999841.0782692,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cb CMOS swing",
+          "passed": true,
+          "value": [
+            -0.006009821450976787,
+            1.211210510394731
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        }
+      ],
+      "outcome": "checks_passed",
+      "waveform_sha256": "d40ecf09e1781c8b230492bb294dc8f53af2e6b4e63bd246071d9d94bf5003af"
+    },
+    {
+      "case": "tb_cml_cmos_lowamp_ss_60",
+      "run": "cml_cmos04",
+      "raw_path": "research/runs/spectre_transistor/cml_cmos04/tb_cml_cmos_lowamp_ss_60",
+      "execution_ok": true,
+      "remote_inputs_match": true,
+      "source_inputs_sha256": {
+        "tb_cml_cmos_lowamp_ss_60.scs": "36cfcbdfd3dc5bd1c87a7218749028be996eaa2775b0ab75d71e71b23db5b36a",
+        "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+        "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+        "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+        "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+        "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+        "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+        "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+        "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+        "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+        "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+        "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+        "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+        "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+        "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+        "cml_to_cmos_experiment.scs": "013159f54d82dfc1863a9779a3bcfbc7f48208930f7a99ca22a6419c6a07cbf5",
+        "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+        "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+        "lc_vco_candidate.scs": "37b0a032c4f3d11ea8585085028b4570d126b7580592e8eb8fc6d70043044f6c",
+        "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+        "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+      },
+      "measurements": {
+        "stop_s": 1e-07,
+        "supply_average_mw": 0.6638873594906375,
+        "power_window_s": [
+          5e-08,
+          1e-07
+        ],
+        "frequency_hz": 1343999791.3223906,
+        "differential_peak_v": 0.10431797217204908,
+        "cout_frequency_hz": 1343999600.0350804,
+        "cout_swing_v": [
+          0.1648007269131372,
+          0.8839974015020498
+        ],
+        "cb_frequency_hz": 1343999535.007597,
+        "cb_swing_v": [
+          0.1647883173532742,
+          0.8840096755529158
+        ]
+      },
+      "checks": [
+        {
+          "name": "immutable input audit",
+          "passed": true,
+          "value": true,
+          "limit": "true"
+        },
+        {
+          "name": "local input snapshots match recorded hashes",
+          "passed": true,
+          "value": [],
+          "limit": "all frozen local inputs intact"
+        },
+        {
+          "name": "Spectre completed with zero errors",
+          "passed": true,
+          "value": true,
+          "limit": "completed log states 0 errors; notices are not errors"
+        },
+        {
+          "name": "finite increasing saved time",
+          "passed": true,
+          "value": [
+            0.0,
+            1e-07
+          ],
+          "limit": "finite and strictly increasing"
+        },
+        {
+          "name": "finite saved signals",
+          "passed": true,
+          "value": [],
+          "limit": "no NaN or infinity in any saved signal"
+        },
+        {
+          "name": "requested transient completed",
+          "passed": true,
+          "value": 1e-07,
+          "limit": 1.0000000000000001e-07
+        },
+        {
+          "name": "correct divide by two",
+          "passed": true,
+          "value": 1343999791.3223906,
+          "limit": "1344000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "usable differential amplitude",
+          "passed": true,
+          "value": 0.10431797217204908,
+          "limit": "> 50 mV; CMOS conversion not included"
+        },
+        {
+          "name": "cout CMOS frequency",
+          "passed": true,
+          "value": 1343999600.0350804,
+          "limit": "1344000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cout CMOS swing",
+          "passed": false,
+          "value": [
+            0.1648007269131372,
+            0.8839974015020498
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        },
+        {
+          "name": "cb CMOS frequency",
+          "passed": true,
+          "value": 1343999535.007597,
+          "limit": "1344000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cb CMOS swing",
+          "passed": false,
+          "value": [
+            0.1647883173532742,
+            0.8840096755529158
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        }
+      ],
+      "outcome": "design_check_failed",
+      "waveform_sha256": "b45b9fe43e12b8354128963f5159544fdd1e67bd48974f0157300305ac8cd53e"
+    },
+    {
+      "case": "tb_cml_cmos_ss_60",
+      "run": "cml_cmos04",
+      "raw_path": "research/runs/spectre_transistor/cml_cmos04/tb_cml_cmos_ss_60",
+      "execution_ok": true,
+      "remote_inputs_match": true,
+      "source_inputs_sha256": {
+        "tb_cml_cmos_ss_60.scs": "36d8dca0abfc53ce8725be09229b24ab008f413ce2ab44ae97f3177e399f5f22",
+        "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+        "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+        "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+        "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+        "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+        "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+        "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+        "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+        "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+        "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+        "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+        "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+        "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+        "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+        "cml_to_cmos_experiment.scs": "013159f54d82dfc1863a9779a3bcfbc7f48208930f7a99ca22a6419c6a07cbf5",
+        "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+        "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+        "lc_vco_candidate.scs": "37b0a032c4f3d11ea8585085028b4570d126b7580592e8eb8fc6d70043044f6c",
+        "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+        "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+      },
+      "measurements": {
+        "stop_s": 1e-07,
+        "supply_average_mw": 0.6538651067520812,
+        "power_window_s": [
+          5e-08,
+          1e-07
+        ],
+        "frequency_hz": 1999999871.682094,
+        "differential_peak_v": 0.09712368926417092,
+        "cout_frequency_hz": 1999998503.956558,
+        "cout_swing_v": [
+          0.4386693353115344,
+          0.6639009164127541
+        ],
+        "cb_frequency_hz": 1999998692.7917428,
+        "cb_swing_v": [
+          0.4386688165080959,
+          0.6638982683096776
+        ]
+      },
+      "checks": [
+        {
+          "name": "immutable input audit",
+          "passed": true,
+          "value": true,
+          "limit": "true"
+        },
+        {
+          "name": "local input snapshots match recorded hashes",
+          "passed": true,
+          "value": [],
+          "limit": "all frozen local inputs intact"
+        },
+        {
+          "name": "Spectre completed with zero errors",
+          "passed": true,
+          "value": true,
+          "limit": "completed log states 0 errors; notices are not errors"
+        },
+        {
+          "name": "finite increasing saved time",
+          "passed": true,
+          "value": [
+            0.0,
+            1e-07
+          ],
+          "limit": "finite and strictly increasing"
+        },
+        {
+          "name": "finite saved signals",
+          "passed": true,
+          "value": [],
+          "limit": "no NaN or infinity in any saved signal"
+        },
+        {
+          "name": "requested transient completed",
+          "passed": true,
+          "value": 1e-07,
+          "limit": 1.0000000000000001e-07
+        },
+        {
+          "name": "correct divide by two",
+          "passed": true,
+          "value": 1999999871.682094,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "usable differential amplitude",
+          "passed": true,
+          "value": 0.09712368926417092,
+          "limit": "> 50 mV; CMOS conversion not included"
+        },
+        {
+          "name": "cout CMOS frequency",
+          "passed": true,
+          "value": 1999998503.956558,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cout CMOS swing",
+          "passed": false,
+          "value": [
+            0.4386693353115344,
+            0.6639009164127541
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        },
+        {
+          "name": "cb CMOS frequency",
+          "passed": true,
+          "value": 1999998692.7917428,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cb CMOS swing",
+          "passed": false,
+          "value": [
+            0.4386688165080959,
+            0.6638982683096776
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        }
+      ],
+      "outcome": "design_check_failed",
+      "waveform_sha256": "4f6fecf25f31336c21f76bc5a68cb8e94f59ab24ee0e9a7978305663c25c55e4"
+    },
+    {
+      "case": "tb_cml_cmos_tt_27",
+      "run": "cml_cmos04",
+      "raw_path": "research/runs/spectre_transistor/cml_cmos04/tb_cml_cmos_tt_27",
+      "execution_ok": true,
+      "remote_inputs_match": true,
+      "source_inputs_sha256": {
+        "tb_cml_cmos_tt_27.scs": "b93f3bfcd82d4fc5b93b30e864a932f5b5cb6cae9a6c65975a6233d21cdbae4a",
+        "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+        "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+        "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+        "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+        "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+        "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+        "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+        "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+        "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+        "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+        "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+        "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+        "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+        "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+        "cml_to_cmos_experiment.scs": "013159f54d82dfc1863a9779a3bcfbc7f48208930f7a99ca22a6419c6a07cbf5",
+        "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+        "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+        "lc_vco_candidate.scs": "37b0a032c4f3d11ea8585085028b4570d126b7580592e8eb8fc6d70043044f6c",
+        "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+        "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+      },
+      "measurements": {
+        "stop_s": 1e-07,
+        "supply_average_mw": 1.0065642625654398,
+        "power_window_s": [
+          5e-08,
+          1e-07
+        ],
+        "frequency_hz": 1999999950.4846807,
+        "differential_peak_v": 0.14438450994021074,
+        "cout_frequency_hz": 1999999524.839877,
+        "cout_swing_v": [
+          0.04718435484496441,
+          1.097670653218866
+        ],
+        "cb_frequency_hz": 1999999523.527836,
+        "cb_swing_v": [
+          0.0471841199710494,
+          1.097668384017527
+        ]
+      },
+      "checks": [
+        {
+          "name": "immutable input audit",
+          "passed": true,
+          "value": true,
+          "limit": "true"
+        },
+        {
+          "name": "local input snapshots match recorded hashes",
+          "passed": true,
+          "value": [],
+          "limit": "all frozen local inputs intact"
+        },
+        {
+          "name": "Spectre completed with zero errors",
+          "passed": true,
+          "value": true,
+          "limit": "completed log states 0 errors; notices are not errors"
+        },
+        {
+          "name": "finite increasing saved time",
+          "passed": true,
+          "value": [
+            0.0,
+            1e-07
+          ],
+          "limit": "finite and strictly increasing"
+        },
+        {
+          "name": "finite saved signals",
+          "passed": true,
+          "value": [],
+          "limit": "no NaN or infinity in any saved signal"
+        },
+        {
+          "name": "requested transient completed",
+          "passed": true,
+          "value": 1e-07,
+          "limit": 1.0000000000000001e-07
+        },
+        {
+          "name": "correct divide by two",
+          "passed": true,
+          "value": 1999999950.4846807,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "usable differential amplitude",
+          "passed": true,
+          "value": 0.14438450994021074,
+          "limit": "> 50 mV; CMOS conversion not included"
+        },
+        {
+          "name": "cout CMOS frequency",
+          "passed": true,
+          "value": 1999999524.839877,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cout CMOS swing",
+          "passed": true,
+          "value": [
+            0.04718435484496441,
+            1.097670653218866
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        },
+        {
+          "name": "cb CMOS frequency",
+          "passed": true,
+          "value": 1999999523.527836,
+          "limit": "2000000000.0 Hz +/- 10 ppm"
+        },
+        {
+          "name": "cb CMOS swing",
+          "passed": true,
+          "value": [
+            0.0471841199710494,
+            1.097668384017527
+          ],
+          "limit": "low < .2 V, high > 1.0 V"
+        }
+      ],
+      "outcome": "checks_passed",
+      "waveform_sha256": "95e4f28c4ce055e902892577fd57b4f26c4ece805af5394d4f2b533ff5e5e5a2"
+    }
+  ],
+  "loaded_vco_experiments": [
+    {
+      "case": "tb_vco_loaded_c0",
+      "run": "loaded_vco01",
+      "raw_path": "research/runs/spectre_transistor/loaded_vco01/tb_vco_loaded_c0",
+      "execution_ok": true,
+      "remote_inputs_match": true,
+      "source_inputs_sha256": {
+        "tb_vco_loaded_c0.scs": "2cb8e71c11432eef3385028fa88cf3fad7783eb0f9b802295c7b74285d43760d",
+        "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+        "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+        "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+        "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+        "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+        "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+        "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+        "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+        "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+        "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+        "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+        "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+        "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+        "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+        "cml_to_cmos_experiment.scs": "013159f54d82dfc1863a9779a3bcfbc7f48208930f7a99ca22a6419c6a07cbf5",
+        "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+        "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+        "lc_vco_candidate.scs": "37b0a032c4f3d11ea8585085028b4570d126b7580592e8eb8fc6d70043044f6c",
+        "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+        "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+      },
+      "measurements": {
+        "stop_s": 2e-07,
+        "supply_average_mw": 2.031413723383794,
+        "power_window_s": [
+          1.5e-07,
+          2e-07
+        ],
+        "frequency_hz": 3890821395.418225,
+        "differential_peak_v": 0.8019325889363667,
+        "max_node_voltage_v": 1.59884282281609,
+        "sampler_input_swing_v": [
+          0.2230666217723683,
+          0.9686063803130677
+        ],
+        "midpoint_v": 0.6019862980176143,
+        "cml_frequency_hz": 1945409412.7964418,
+        "cml_diff_peak_v": 0.2465759239570915
+      },
+      "checks": [
+        {
+          "name": "immutable input audit",
+          "passed": true,
+          "value": true,
+          "limit": "true"
+        },
+        {
+          "name": "local input snapshots match recorded hashes",
+          "passed": true,
+          "value": [],
+          "limit": "all frozen local inputs intact"
+        },
+        {
+          "name": "Spectre completed with zero errors",
+          "passed": true,
+          "value": true,
+          "limit": "completed log states 0 errors; notices are not errors"
+        },
+        {
+          "name": "finite increasing saved time",
+          "passed": true,
+          "value": [
+            0.0,
+            2e-07
+          ],
+          "limit": "finite and strictly increasing"
+        },
+        {
+          "name": "finite saved signals",
+          "passed": true,
+          "value": [],
+          "limit": "no NaN or infinity in any saved signal"
+        },
+        {
+          "name": "requested transient completed",
+          "passed": true,
+          "value": 2e-07,
+          "limit": 2.0000000000000002e-07
+        },
+        {
+          "name": "sustained oscillation",
+          "passed": true,
+          "value": [
+            3890821395.418225,
+            0.8019325889363667
+          ],
+          "limit": "> 2 GHz and > .05 V differential peak; feasibility only"
+        },
+        {
+          "name": "loaded CML divide two",
+          "passed": true,
+          "value": 1945409412.7964418,
+          "limit": "within 0.1% of measured free-running VCO/2"
+        }
+      ],
+      "outcome": "checks_passed",
+      "waveform_sha256": "749e8e62fa466ef852aee912ecf441196c4ccca7b38c656fd0ee076b955e4ede"
+    },
+    {
+      "case": "tb_vco_loaded_c127",
+      "run": "loaded_vco01",
+      "raw_path": "research/runs/spectre_transistor/loaded_vco01/tb_vco_loaded_c127",
+      "execution_ok": true,
+      "remote_inputs_match": true,
+      "source_inputs_sha256": {
+        "tb_vco_loaded_c127.scs": "b54422e1a6d983f8d963e994272a7e2fa85523cf5aac04d84f55000e5476ada7",
+        "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+        "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+        "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+        "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+        "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+        "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+        "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+        "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+        "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+        "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+        "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+        "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+        "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+        "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+        "cml_to_cmos_experiment.scs": "013159f54d82dfc1863a9779a3bcfbc7f48208930f7a99ca22a6419c6a07cbf5",
+        "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+        "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+        "lc_vco_candidate.scs": "37b0a032c4f3d11ea8585085028b4570d126b7580592e8eb8fc6d70043044f6c",
+        "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+        "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+      },
+      "measurements": {
+        "stop_s": 2e-07,
+        "supply_average_mw": 2.0036807359525355,
+        "power_window_s": [
+          1.5e-07,
+          2e-07
+        ],
+        "frequency_hz": 3051257255.666869,
+        "differential_peak_v": 0.38881107308919394,
+        "max_node_voltage_v": 1.390065677165822,
+        "sampler_input_swing_v": [
+          0.4231246234504538,
+          0.7799243094926456
+        ],
+        "midpoint_v": 0.6003710500626497,
+        "cml_frequency_hz": 1525658571.728917,
+        "cml_diff_peak_v": 0.2563476727548913
+      },
+      "checks": [
+        {
+          "name": "immutable input audit",
+          "passed": true,
+          "value": true,
+          "limit": "true"
+        },
+        {
+          "name": "local input snapshots match recorded hashes",
+          "passed": true,
+          "value": [],
+          "limit": "all frozen local inputs intact"
+        },
+        {
+          "name": "Spectre completed with zero errors",
+          "passed": true,
+          "value": true,
+          "limit": "completed log states 0 errors; notices are not errors"
+        },
+        {
+          "name": "finite increasing saved time",
+          "passed": true,
+          "value": [
+            0.0,
+            2e-07
+          ],
+          "limit": "finite and strictly increasing"
+        },
+        {
+          "name": "finite saved signals",
+          "passed": true,
+          "value": [],
+          "limit": "no NaN or infinity in any saved signal"
+        },
+        {
+          "name": "requested transient completed",
+          "passed": true,
+          "value": 2e-07,
+          "limit": 2.0000000000000002e-07
+        },
+        {
+          "name": "sustained oscillation",
+          "passed": true,
+          "value": [
+            3051257255.666869,
+            0.38881107308919394
+          ],
+          "limit": "> 2 GHz and > .05 V differential peak; feasibility only"
+        },
+        {
+          "name": "loaded CML divide two",
+          "passed": true,
+          "value": 1525658571.728917,
+          "limit": "within 0.1% of measured free-running VCO/2"
+        }
+      ],
+      "outcome": "checks_passed",
+      "waveform_sha256": "49d88ede2cf8ba47a8a8f63159fb52de9aa7b4955aafbdea77ef2bb72a65f872"
+    },
+    {
+      "case": "tb_vco_loaded_c255",
+      "run": "loaded_vco01",
+      "raw_path": "research/runs/spectre_transistor/loaded_vco01/tb_vco_loaded_c255",
+      "execution_ok": true,
+      "remote_inputs_match": true,
+      "source_inputs_sha256": {
+        "tb_vco_loaded_c255.scs": "9956e9c642909c625a5e24eb506619ea8d5173b5cff931e343bc3515e0d60372",
+        "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+        "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+        "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+        "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+        "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+        "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+        "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+        "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+        "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+        "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+        "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+        "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+        "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+        "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+        "cml_to_cmos_experiment.scs": "013159f54d82dfc1863a9779a3bcfbc7f48208930f7a99ca22a6419c6a07cbf5",
+        "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+        "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+        "lc_vco_candidate.scs": "37b0a032c4f3d11ea8585085028b4570d126b7580592e8eb8fc6d70043044f6c",
+        "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+        "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+      },
+      "measurements": {
+        "stop_s": 2e-07,
+        "supply_average_mw": 1.9865099904528671,
+        "power_window_s": [
+          1.5e-07,
+          2e-07
+        ],
+        "frequency_hz": 2589731541.452626,
+        "differential_peak_v": 0.23984017893660992,
+        "max_node_voltage_v": 1.316296400276418,
+        "sampler_input_swing_v": [
+          0.4874281595266881,
+          0.7207721477403347
+        ],
+        "midpoint_v": 0.600069385009884,
+        "cml_frequency_hz": 1294867118.8386247,
+        "cml_diff_peak_v": 0.23468539044967301
+      },
+      "checks": [
+        {
+          "name": "immutable input audit",
+          "passed": true,
+          "value": true,
+          "limit": "true"
+        },
+        {
+          "name": "local input snapshots match recorded hashes",
+          "passed": true,
+          "value": [],
+          "limit": "all frozen local inputs intact"
+        },
+        {
+          "name": "Spectre completed with zero errors",
+          "passed": true,
+          "value": true,
+          "limit": "completed log states 0 errors; notices are not errors"
+        },
+        {
+          "name": "finite increasing saved time",
+          "passed": true,
+          "value": [
+            0.0,
+            2e-07
+          ],
+          "limit": "finite and strictly increasing"
+        },
+        {
+          "name": "finite saved signals",
+          "passed": true,
+          "value": [],
+          "limit": "no NaN or infinity in any saved signal"
+        },
+        {
+          "name": "requested transient completed",
+          "passed": true,
+          "value": 2e-07,
+          "limit": 2.0000000000000002e-07
+        },
+        {
+          "name": "sustained oscillation",
+          "passed": true,
+          "value": [
+            2589731541.452626,
+            0.23984017893660992
+          ],
+          "limit": "> 2 GHz and > .05 V differential peak; feasibility only"
+        },
+        {
+          "name": "loaded CML divide two",
+          "passed": true,
+          "value": 1294867118.8386247,
+          "limit": "within 0.1% of measured free-running VCO/2"
+        }
+      ],
+      "outcome": "checks_passed",
+      "waveform_sha256": "e8e3f80ea2fcad7fefe9e19ab31755d041c6fd3a4d14a15eac88e86f05f4bae9"
+    },
+    {
+      "case": "tb_vco_loaded_c0_v10_tuned",
+      "run": "loaded_vco02",
+      "raw_path": "research/runs/spectre_transistor/loaded_vco02/tb_vco_loaded_c0_v10_tuned",
+      "execution_ok": true,
+      "remote_inputs_match": true,
+      "source_inputs_sha256": {
+        "tb_vco_loaded_c0_v10_tuned.scs": "659ef5dbcc6e8e0151e2f6ef9c14ae398b9bd5f52232ffd56b2032ef28c672e9",
+        "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+        "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+        "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+        "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+        "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+        "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+        "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+        "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+        "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+        "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+        "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+        "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+        "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+        "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+        "cml_to_cmos_experiment.scs": "013159f54d82dfc1863a9779a3bcfbc7f48208930f7a99ca22a6419c6a07cbf5",
+        "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+        "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+        "lc_vco_candidate.scs": "7c4528da82dad9d9c0c24931a47bf93551f6342fc3a3685990d449a82ab2f7cb",
+        "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+        "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+      },
+      "measurements": {
+        "stop_s": 2e-07,
+        "supply_average_mw": 2.0335504795936346,
+        "power_window_s": [
+          1.5e-07,
+          2e-07
+        ],
+        "frequency_hz": 4011686836.990988,
+        "differential_peak_v": 0.8526659401568907,
+        "max_node_voltage_v": 1.623535544227396,
+        "sampler_input_swing_v": [
+          0.2047587385218428,
+          0.9882940631176623
+        ],
+        "midpoint_v": 0.6016059435130099,
+        "cml_frequency_hz": 2005817019.8198526,
+        "cml_diff_peak_v": 0.2422559574256018
+      },
+      "checks": [
+        {
+          "name": "immutable input audit",
+          "passed": true,
+          "value": true,
+          "limit": "true"
+        },
+        {
+          "name": "local input snapshots match recorded hashes",
+          "passed": true,
+          "value": [],
+          "limit": "all frozen local inputs intact"
+        },
+        {
+          "name": "Spectre completed with zero errors",
+          "passed": true,
+          "value": true,
+          "limit": "completed log states 0 errors; notices are not errors"
+        },
+        {
+          "name": "finite increasing saved time",
+          "passed": true,
+          "value": [
+            0.0,
+            2e-07
+          ],
+          "limit": "finite and strictly increasing"
+        },
+        {
+          "name": "finite saved signals",
+          "passed": true,
+          "value": [],
+          "limit": "no NaN or infinity in any saved signal"
+        },
+        {
+          "name": "requested transient completed",
+          "passed": true,
+          "value": 2e-07,
+          "limit": 2.0000000000000002e-07
+        },
+        {
+          "name": "sustained oscillation",
+          "passed": true,
+          "value": [
+            4011686836.990988,
+            0.8526659401568907
+          ],
+          "limit": "> 2 GHz and > .05 V differential peak; feasibility only"
+        },
+        {
+          "name": "loaded CML divide two",
+          "passed": true,
+          "value": 2005817019.8198526,
+          "limit": "within 0.1% of measured free-running VCO/2"
+        }
+      ],
+      "outcome": "checks_passed",
+      "waveform_sha256": "1bb6bcbdcaf4004d8e5bc8677e0a5d174a229538e18b91a7868d59216b3e16de"
+    },
+    {
+      "case": "tb_vco_loaded_c0_v2_tuned",
+      "run": "loaded_vco02",
+      "raw_path": "research/runs/spectre_transistor/loaded_vco02/tb_vco_loaded_c0_v2_tuned",
+      "execution_ok": true,
+      "remote_inputs_match": true,
+      "source_inputs_sha256": {
+        "tb_vco_loaded_c0_v2_tuned.scs": "c16535a135607b88fb0914096ec978d98b194b5fccc7aabf0406b581fbed36f9",
+        "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+        "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+        "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+        "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+        "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+        "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+        "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+        "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+        "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+        "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+        "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+        "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+        "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+        "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+        "cml_to_cmos_experiment.scs": "013159f54d82dfc1863a9779a3bcfbc7f48208930f7a99ca22a6419c6a07cbf5",
+        "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+        "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+        "lc_vco_candidate.scs": "7c4528da82dad9d9c0c24931a47bf93551f6342fc3a3685990d449a82ab2f7cb",
+        "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+        "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+      },
+      "measurements": {
+        "stop_s": 2e-07,
+        "supply_average_mw": 2.032623995063851,
+        "power_window_s": [
+          1.5e-07,
+          2e-07
+        ],
+        "frequency_hz": 3988418120.0256863,
+        "differential_peak_v": 0.8430736123363118,
+        "max_node_voltage_v": 1.620906141198665,
+        "sampler_input_swing_v": [
+          0.1982676719047954,
+          0.9800929066575058
+        ],
+        "midpoint_v": 0.5998224113701953,
+        "cml_frequency_hz": 1994295719.62889,
+        "cml_diff_peak_v": 0.243177994761751
+      },
+      "checks": [
+        {
+          "name": "immutable input audit",
+          "passed": true,
+          "value": true,
+          "limit": "true"
+        },
+        {
+          "name": "local input snapshots match recorded hashes",
+          "passed": true,
+          "value": [],
+          "limit": "all frozen local inputs intact"
+        },
+        {
+          "name": "Spectre completed with zero errors",
+          "passed": true,
+          "value": true,
+          "limit": "completed log states 0 errors; notices are not errors"
+        },
+        {
+          "name": "finite increasing saved time",
+          "passed": true,
+          "value": [
+            0.0,
+            2e-07
+          ],
+          "limit": "finite and strictly increasing"
+        },
+        {
+          "name": "finite saved signals",
+          "passed": true,
+          "value": [],
+          "limit": "no NaN or infinity in any saved signal"
+        },
+        {
+          "name": "requested transient completed",
+          "passed": true,
+          "value": 2e-07,
+          "limit": 2.0000000000000002e-07
+        },
+        {
+          "name": "sustained oscillation",
+          "passed": true,
+          "value": [
+            3988418120.0256863,
+            0.8430736123363118
+          ],
+          "limit": "> 2 GHz and > .05 V differential peak; feasibility only"
+        },
+        {
+          "name": "loaded CML divide two",
+          "passed": true,
+          "value": 1994295719.62889,
+          "limit": "within 0.1% of measured free-running VCO/2"
+        }
+      ],
+      "outcome": "checks_passed",
+      "waveform_sha256": "d51dcaa0d365a849592a4ba3d6aa131c79a3e183d304cc7718f7a82c6f3ee5d8"
+    },
+    {
+      "case": "tb_vco_loaded_c255_v10_tuned",
+      "run": "loaded_vco02",
+      "raw_path": "research/runs/spectre_transistor/loaded_vco02/tb_vco_loaded_c255_v10_tuned",
+      "execution_ok": true,
+      "remote_inputs_match": true,
+      "source_inputs_sha256": {
+        "tb_vco_loaded_c255_v10_tuned.scs": "aa245d69e126a84970a6617679c5f97b0af53e1da77876c03f874fe3e7819953",
+        "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+        "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+        "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+        "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+        "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+        "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+        "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+        "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+        "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+        "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+        "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+        "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+        "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+        "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+        "cml_to_cmos_experiment.scs": "013159f54d82dfc1863a9779a3bcfbc7f48208930f7a99ca22a6419c6a07cbf5",
+        "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+        "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+        "lc_vco_candidate.scs": "7c4528da82dad9d9c0c24931a47bf93551f6342fc3a3685990d449a82ab2f7cb",
+        "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+        "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+      },
+      "measurements": {
+        "stop_s": 2e-07,
+        "supply_average_mw": 1.987691637897639,
+        "power_window_s": [
+          1.5e-07,
+          2e-07
+        ],
+        "frequency_hz": 2624508557.88704,
+        "differential_peak_v": 0.24848108172901395,
+        "max_node_voltage_v": 1.320475778922766,
+        "sampler_input_swing_v": [
+          0.4689458888939135,
+          0.7324742444768757
+        ],
+        "midpoint_v": 0.6002333137769643,
+        "cml_frequency_hz": 1312272288.01221,
+        "cml_diff_peak_v": 0.2372309669993123
+      },
+      "checks": [
+        {
+          "name": "immutable input audit",
+          "passed": true,
+          "value": true,
+          "limit": "true"
+        },
+        {
+          "name": "local input snapshots match recorded hashes",
+          "passed": true,
+          "value": [],
+          "limit": "all frozen local inputs intact"
+        },
+        {
+          "name": "Spectre completed with zero errors",
+          "passed": true,
+          "value": true,
+          "limit": "completed log states 0 errors; notices are not errors"
+        },
+        {
+          "name": "finite increasing saved time",
+          "passed": true,
+          "value": [
+            0.0,
+            2e-07
+          ],
+          "limit": "finite and strictly increasing"
+        },
+        {
+          "name": "finite saved signals",
+          "passed": true,
+          "value": [],
+          "limit": "no NaN or infinity in any saved signal"
+        },
+        {
+          "name": "requested transient completed",
+          "passed": true,
+          "value": 2e-07,
+          "limit": 2.0000000000000002e-07
+        },
+        {
+          "name": "sustained oscillation",
+          "passed": true,
+          "value": [
+            2624508557.88704,
+            0.24848108172901395
+          ],
+          "limit": "> 2 GHz and > .05 V differential peak; feasibility only"
+        },
+        {
+          "name": "loaded CML divide two",
+          "passed": true,
+          "value": 1312272288.01221,
+          "limit": "within 0.1% of measured free-running VCO/2"
+        }
+      ],
+      "outcome": "checks_passed",
+      "waveform_sha256": "011dd5c2d8194692cd2645c190661cef9deb08333ba0067bbfa3074e04ed387b"
+    },
+    {
+      "case": "tb_vco_loaded_c255_v2_tuned",
+      "run": "loaded_vco02",
+      "raw_path": "research/runs/spectre_transistor/loaded_vco02/tb_vco_loaded_c255_v2_tuned",
+      "execution_ok": true,
+      "remote_inputs_match": true,
+      "source_inputs_sha256": {
+        "tb_vco_loaded_c255_v2_tuned.scs": "50878ab0214f70415edf908e1a9c90ebab69f640b2eb77d6f2586fe0a201f839",
+        "auxiliary_fll.va": "b9387f513dda1c22d0583c3a59eff19207145fce24305e4ce88196aa5c769d44",
+        "bias_control.va": "66c87f557d4f4efd06289f47b395422c3db7186db5efeac8ab39c850f8b4998e",
+        "charge_pump.va": "0f2f9bd80ecf6a996c2fb15a3e9c6bbcabe519283d68f1c5c4658dfe5fe7767c",
+        "even_divider.va": "5ee01567bb201b4bca112a692b2b76ac978c76f0b19ddab0f76c84e0dcbf1a9b",
+        "lc_vco.va": "95791758e8fae6fcf6f52ad7ff97d66fdc3a836cd54896274464a2f3199f3007",
+        "loop_filter.va": "a6bd93b2f60263cf0d33d46ddfd5425187128f75d2e04423e4b5751b311685ac",
+        "output_buffer.va": "f4432f198d5eb576009fe4f8d807d7a31bcc379362b8e1ddf17643b21d0379a6",
+        "output_retimer.va": "60ac0d2ee316c2cb0c49ce18b63937e3dc93089a10c6be0df59d9be976ee195f",
+        "pll_monitor.va": "f043c27ac2a086ef17f7fc3c78531928c33feb1829c215650540c87cffdd6700",
+        "reference_buffer.va": "858ee30bf8f9670160bb0e1214ad4d4b06fd5663e2e13478d5f0a22f5e2edaf7",
+        "subsampling_detector.va": "bba187136cdf729e916b6edfb87a8c2791cae25227a83aa41fdc3643feaee7f4",
+        "cap_bank_experiment.scs": "041242d7169fff96b6e914b518328e99ad3414bf8e70ad70a49105a14ea29eb3",
+        "cells.scs": "51c12cec0897127007f6de9ddeb993bf134b6b8c0988b92e6a5634ab901764dc",
+        "cml_prescaler_experiment.scs": "3847e1cbb935a2add4267c17036e32a7b8668db35a33f3c41f2bc744f2fcf8f7",
+        "cml_to_cmos_experiment.scs": "013159f54d82dfc1863a9779a3bcfbc7f48208930f7a99ca22a6419c6a07cbf5",
+        "cp_experiment.scs": "dfb50d99ce89ae3b7938f0a8637f0f0d0cd83242f1811ee38fd0528919ee2cd5",
+        "lc_core_experiment.scs": "bbc53b7fb2564da6469b9a622c6918990a9a46a851ff109c2cb2593fd0fd6e05",
+        "lc_vco_candidate.scs": "7c4528da82dad9d9c0c24931a47bf93551f6342fc3a3685990d449a82ab2f7cb",
+        "sampler_interface.va": "0b85d06cc5a4544b7b103605e839ddf8a35f9dee2a90a920c933867818051c66",
+        "supply_meter.va": "a54c140b7ae0179a6b9673a78f18a23d30255223dc2ab2712f12985ac54a6422"
+      },
+      "measurements": {
+        "stop_s": 2e-07,
+        "supply_average_mw": 1.9874664983576147,
+        "power_window_s": [
+          1.5e-07,
+          2e-07
+        ],
+        "frequency_hz": 2618653987.437674,
+        "differential_peak_v": 0.24706145510077104,
+        "max_node_voltage_v": 1.319885155131411,
+        "sampler_input_swing_v": [
+          0.4785043846165641,
+          0.7276715198362378
+        ],
+        "midpoint_v": 0.6002594794931566,
+        "cml_frequency_hz": 1309328004.3867142,
+        "cml_diff_peak_v": 0.23685534683702375
+      },
+      "checks": [
+        {
+          "name": "immutable input audit",
+          "passed": true,
+          "value": true,
+          "limit": "true"
+        },
+        {
+          "name": "local input snapshots match recorded hashes",
+          "passed": true,
+          "value": [],
+          "limit": "all frozen local inputs intact"
+        },
+        {
+          "name": "Spectre completed with zero errors",
+          "passed": true,
+          "value": true,
+          "limit": "completed log states 0 errors; notices are not errors"
+        },
+        {
+          "name": "finite increasing saved time",
+          "passed": true,
+          "value": [
+            0.0,
+            2e-07
+          ],
+          "limit": "finite and strictly increasing"
+        },
+        {
+          "name": "finite saved signals",
+          "passed": true,
+          "value": [],
+          "limit": "no NaN or infinity in any saved signal"
+        },
+        {
+          "name": "requested transient completed",
+          "passed": true,
+          "value": 2e-07,
+          "limit": 2.0000000000000002e-07
+        },
+        {
+          "name": "sustained oscillation",
+          "passed": true,
+          "value": [
+            2618653987.437674,
+            0.24706145510077104
+          ],
+          "limit": "> 2 GHz and > .05 V differential peak; feasibility only"
+        },
+        {
+          "name": "loaded CML divide two",
+          "passed": true,
+          "value": 1309328004.3867142,
+          "limit": "within 0.1% of measured free-running VCO/2"
+        }
+      ],
+      "outcome": "checks_passed",
+      "waveform_sha256": "a08832b002b4688cd4979b1b5f28ff9eb112f1f2ca86c50010d2c5f355d587d0"
+    }
+  ]
+}

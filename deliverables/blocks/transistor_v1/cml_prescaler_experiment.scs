@@ -1,0 +1,30 @@
+simulator lang=spectre
+// Differential CML divide-by-two front end; not the complete programmable divider.
+subckt tx_cml_latch (dp dn cp cn qp qn nb vdd vss)
+parameters rload=1200
+RP (vdd qp) resistor r=rload
+RN (vdd qn) resistor r=rload
+MDP (qn dp st vss) nch w=8u l=180n ad=1.92p as=1.92p pd=16.48u ps=16.48u
+MDN (qp dn st vss) nch w=8u l=180n ad=1.92p as=1.92p pd=16.48u ps=16.48u
+MHP (qn qp ht vss) nch w=8u l=180n ad=1.92p as=1.92p pd=16.48u ps=16.48u
+MHN (qp qn ht vss) nch w=8u l=180n ad=1.92p as=1.92p pd=16.48u ps=16.48u
+MCS (st cp tail vss) nch w=10u l=180n ad=2.4p as=2.4p pd=20.48u ps=20.48u
+MCH (ht cn tail vss) nch w=10u l=180n ad=2.4p as=2.4p pd=20.48u ps=20.48u
+MT (tail nb vss vss) nch w=10u l=1u ad=2.4p as=2.4p pd=20.48u ps=20.48u
+ends tx_cml_latch
+
+subckt tx_cml_div2 (cp cn qp qn vdd vss)
+parameters rload=2000 ibias=30u
+// AC-couple the 1.2 V VCO common mode to the clock pair's 0.8 V bias.
+CCP (cp ckp) capacitor c=200f
+CCN (cn ckn) capacitor c=200f
+RBP (ckp cm) resistor r=50k
+RBN (ckn cm) resistor r=50k
+RHI (vdd cm) resistor r=25k
+RLO (cm vss) resistor r=50k
+CBIAS (cm vss) capacitor c=1p
+IREF (vdd nb) isource dc=ibias
+MR (nb nb vss vss) nch w=2u l=1u ad=.48p as=.48p pd=4.48u ps=4.48u
+XM (qn qp ckp ckn mp mn nb vdd vss) tx_cml_latch rload=rload
+XS (mp mn ckn ckp qp qn nb vdd vss) tx_cml_latch rload=rload
+ends tx_cml_div2

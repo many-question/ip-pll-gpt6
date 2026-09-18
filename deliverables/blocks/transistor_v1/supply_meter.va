@@ -1,0 +1,13 @@
+`include "disciplines.vams"
+// Testbench series ammeter and continuous integration; survives coarse saved strobes.
+module supply_meter(p,n,vss,power_mw);
+  inout p,n; input vss; output power_mw;
+  electrical p,n,vss,power_mw;
+  parameter real start=4u;
+  real energy;
+  analog begin
+    V(p,n)<+0;
+    energy=idt((($abstime>=start)?1.0:0.0)*V(p,vss)*I(p,n),0);
+    V(power_mw,vss)<+1000*energy/max($abstime-start,1p);
+  end
+endmodule

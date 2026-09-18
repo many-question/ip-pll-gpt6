@@ -1,0 +1,78 @@
+{
+  "warning": "Gain sensitivity only. Assumed VCO/reference/CP/retimer noise retained. Not PDK jitter verification. Kvco still 20 MHz/V hypothesis.",
+  "fixed_filter": {
+    "r_ohm": 22222.22222222222,
+    "c1_f": 2.8647889756541167e-11,
+    "c2_f": 1.9098593171027444e-12
+  },
+  "cases": [
+    {
+      "case": "B_hypothesis",
+      "sampler_slope_v_rad": 0.4,
+      "gm_s": 0.00012,
+      "average_kpd_a_rad": 2.4000000000000003e-06,
+      "fixed_rc_ct_crossover_hz": 999999.9999999999,
+      "sampled_radius": 0.906679653524345,
+      "worst_fixed_fs_under_old_noise_assumptions": 148.98091415181887,
+      "worst_wide_fs_under_old_noise_assumptions": 161.82678023059103
+    },
+    {
+      "case": "initial_sampler",
+      "sampler_slope_v_rad": 0.033619333768376204,
+      "gm_s": 0.00012,
+      "average_kpd_a_rad": 2.0171600261025723e-07,
+      "fixed_rc_ct_crossover_hz": 157532.57838115984,
+      "sampled_radius": 0.9895701610726948,
+      "worst_fixed_fs_under_old_noise_assumptions": 508.24655932150256,
+      "worst_wide_fs_under_old_noise_assumptions": 512.1265102406511
+    },
+    {
+      "case": "stronger_driver_sampler",
+      "sampler_slope_v_rad": 0.12464823832840954,
+      "gm_s": 0.00012,
+      "average_kpd_a_rad": 7.478894299704572e-07,
+      "fixed_rc_ct_crossover_hz": 373394.29470413085,
+      "sampled_radius": 0.959330469722968,
+      "worst_fixed_fs_under_old_noise_assumptions": 237.80269251879648,
+      "worst_wide_fs_under_old_noise_assumptions": 245.99756696445408
+    },
+    {
+      "case": "sampler_and_pulsed_gm",
+      "sampler_slope_v_rad": 0.12464823832840954,
+      "gm_s": 0.00011117679469224854,
+      "average_kpd_a_rad": 6.928995800694027e-07,
+      "fixed_rc_ct_crossover_hz": 352559.58383551205,
+      "sampled_radius": 0.962529329855109,
+      "worst_fixed_fs_under_old_noise_assumptions": 246.2507482869174,
+      "worst_wide_fs_under_old_noise_assumptions": 254.171588330883
+    }
+  ],
+  "filter_proposal": {
+    "status": "Unimplemented filter proposal; not adopted and not circuit verified.",
+    "r_ohm": 76971.23056127602,
+    "c1_f": 8.270879492575798e-12,
+    "c2_f": 5.513919661717199e-13,
+    "worst_fixed_fs_under_old_noise_assumptions": 187.78152827965812,
+    "worst_wide_fs_under_old_noise_assumptions": 198.21571645531512
+  },
+  "joint_gain_sensitivity": {
+    "source_run": "joint02/tb_sampler_cp_fine",
+    "local_sampler_slope_v_rad": 0.096529879017982,
+    "local_kpd_a_rad": 3.523579694371235e-07,
+    "fixed_rc_ct_crossover_hz": 221212.87855459496,
+    "worst_fixed_fs_under_old_noise_assumptions": 350.9090043595356,
+    "worst_wide_fs_under_old_noise_assumptions": 356.5057502261053,
+    "limitations": "Same-test deterministic local gain, but assumed noise, original Cs, fixed Kvco and different top-level CP output voltage. Not PDK jitter."
+  },
+  "r100k_sensitivity": {
+    "r_ohm": 100000.0,
+    "c1_f": 2.8647889756541167e-11,
+    "c2_f": 1.9098593171027444e-12,
+    "local_kpd_a_rad": 3.523579694371235e-07,
+    "ct_crossover_hz": 561337.9058259004,
+    "sampled_radius": 0.9842235692541841,
+    "worst_fixed_fs_under_old_noise_assumptions": 243.21302318084284,
+    "worst_wide_fs_under_old_noise_assumptions": 251.21741519704645,
+    "limitations": "Same-test deterministic local gain, but assumed noise, original Cs, fixed Kvco and different top-level CP output voltage. Not PDK jitter. R=100 kohm is the S7 functional damping candidate."
+  }
+}

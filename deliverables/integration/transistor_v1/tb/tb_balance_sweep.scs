@@ -1,0 +1,36 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "cells.scs"
+parameters vddval=1.2
+VDD (vdd 0) vsource dc=vddval
+simulatorOptions options reltol=1e-5 vabstol=1e-7 iabstol=1e-13 temp=27
+
+VC (clk 0) vsource type=pulse val0=0 val1=1.2 period=250p width=123p rise=2p fall=2p delay=20p
+VD (data 0) vsource type=pulse val0=0 val1=1.2 period=1n width=490p rise=10p fall=10p delay=70p
+VE (en 0) vsource dc=1.2
+XR0 (data clk en rt0 vdd 0) tx_retimer_c2mos sp=0.6u
+CR0 (rt0 0) capacitor c=5f
+XR1 (data clk en rt1 vdd 0) tx_retimer_c2mos sp=1.0u
+CR1 (rt1 0) capacitor c=5f
+XR2 (data clk en rt2 vdd 0) tx_retimer_c2mos sp=1.5u
+CR2 (rt2 0) capacitor c=5f
+XR3 (data clk en rt3 vdd 0) tx_retimer_c2mos sp=2.0u
+CR3 (rt3 0) capacitor c=5f
+XR4 (data clk en rt4 vdd 0) tx_retimer_c2mos sp=2.5u
+CR4 (rt4 0) capacitor c=5f
+XO0 (data out0 vdd 0) tx_output_buffer fp=3.0u
+CO0 (out0 0) capacitor c=10f
+XO1 (data out1 vdd 0) tx_output_buffer fp=3.5u
+CO1 (out1 0) capacitor c=10f
+XO2 (data out2 vdd 0) tx_output_buffer fp=4.0u
+CO2 (out2 0) capacitor c=10f
+XO3 (data out3 vdd 0) tx_output_buffer fp=4.5u
+CO3 (out3 0) capacitor c=10f
+XO4 (data out4 vdd 0) tx_output_buffer fp=5.0u
+CO4 (out4 0) capacitor c=10f
+tran tran stop=20n errpreset=conservative maxstep=5p
+save rt0 rt1 rt2 rt3 rt4 out0 out1 out2 out3 out4
+saveOptions options save=selected

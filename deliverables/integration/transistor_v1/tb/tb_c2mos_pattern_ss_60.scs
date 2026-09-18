@@ -1,0 +1,18 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=ss
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "cells.scs"
+parameters vddval=1.2
+VDD (vdd 0) vsource dc=vddval
+simulatorOptions options reltol=1e-5 vabstol=1e-7 iabstol=1e-13 temp=60
+
+VC (clk 0) vsource type=pulse val0=0 val1=1.2 period=250p width=105p rise=20p fall=20p delay=20p
+VD (data 0) vsource type=pwl wave=[0 0 2.07e-09 0 2.82e-09 0 2.83e-09 1.2 3.32e-09 1.2 3.33e-09 0.0 5.07e-09 0.0 5.08e-09 1.2 5.57e-09 1.2 5.58e-09 0.0 7.07e-09 0.0 7.08e-09 1.2 8.07e-09 1.2 8.08e-09 0.0 8.57e-09 0.0 8.58e-09 1.2 1.007e-08 1.2 1.008e-08 0.0 1.157e-08 0.0 1.158e-08 1.2 1.282e-08 1.2 1.283e-08 0.0 1.357e-08 0.0 1.358e-08 1.2 1.507e-08 1.2 1.508e-08 0.0 1.557e-08 0.0 1.558e-08 1.2 1.632e-08 1.2 1.633e-08 0.0 1.682e-08 0.0 1.683e-08 1.2 1.732e-08 1.2 1.733e-08 0.0 1.907e-08 0.0 1.908e-08 1.2 1.957e-08 1.2 1.958e-08 0.0 2.032e-08 0.0 2.033e-08 1.2 2.107e-08 1.2 2.108e-08 0.0 2.157e-08 0.0 2.158e-08 1.2 2.232e-08 1.2 2.233e-08 0.0 2.357e-08 0.0 2.358e-08 1.2 2.507e-08 1.2 2.508e-08 0.0 2.632e-08 0.0 2.633e-08 1.2 2.807e-08 1.2 2.808e-08 0.0 2.982e-08 0.0 2.983e-08 1.2 3.157e-08 1.2 3.158e-08 0.0 3.207e-08 0.0 3.208e-08 1.2 3.307e-08 1.2 3.308e-08 0.0 3.407e-08 0.0 3.408e-08 1.2 3.457e-08 1.2 3.458e-08 0.0 3.532e-08 0.0 3.533e-08 1.2 3.582e-08 1.2 3.583e-08 0.0 3.632e-08 0.0 3.633e-08 1.2 3.757e-08 1.2 3.758e-08 0.0 3.907e-08 0.0 3.908e-08 1.2 4.007e-08 1.2 4.008e-08 0.0 4.182e-08 0.0 4.183e-08 1.2 4.357e-08 1.2 4.358e-08 0.0 4.507e-08 0.0 4.508e-08 1.2 4.657e-08 1.2 4.658e-08 0.0 4.807e-08 0.0 4.808e-08 1.2 4.932e-08 1.2 4.933e-08 0.0 5.057e-08 0.0 5.058e-08 1.2 5.157e-08 1.2 5.158e-08 0.0 5.307e-08 0.0 5.308e-08 1.2 5.357e-08 1.2 5.358e-08 0.0]
+VE (en 0) vsource type=pulse val0=0 val1=1.2 delay=1n rise=20p fall=20p width=100n period=200n
+XR (data clk en out vdd 0) tx_retimer_c2mos
+CL (out 0) capacitor c=5f
+tran tran stop=5.557e-08 errpreset=conservative maxstep=5p
+save clk data out VDD:p
+saveOptions options save=selected

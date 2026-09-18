@@ -1,0 +1,26 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=ff
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "cells.scs"
+parameters vddval=1.2
+VDD (vdd 0) vsource dc=vddval
+simulatorOptions options reltol=1e-5 vabstol=1e-7 iabstol=1e-13 temp=0
+include "lc_core_experiment.scs"
+include "cap_bank_experiment.scs"
+XL (vp vn vdd 0) tx_lc_core_experiment tank_r=5 tank_c=240f core_w=40u
+VB0 (b0 0) vsource dc=0
+VB1 (b1 0) vsource dc=0
+VB2 (b2 0) vsource dc=0
+VB3 (b3 0) vsource dc=0
+VB4 (b4 0) vsource dc=0
+VB5 (b5 0) vsource dc=0
+VB6 (b6 0) vsource dc=0
+VB7 (b7 0) vsource dc=0
+XBvp (vp b0 b1 b2 b3 b4 b5 b6 b7 0) tx_cap_bank_experiment unit_c=5.7f
+XBvn (vn b0 b1 b2 b3 b4 b5 b6 b7 0) tx_cap_bank_experiment unit_c=5.7f
+ic vp=1.20001 vn=1.2
+tran tran stop=200n errpreset=conservative maxstep=5p
+save vp vn XL.tail VDD:p
+saveOptions options save=selected

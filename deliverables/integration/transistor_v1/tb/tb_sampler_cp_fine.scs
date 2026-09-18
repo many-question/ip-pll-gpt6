@@ -1,0 +1,54 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "cells.scs"
+parameters vddval=1.2
+VDD (vdd 0) vsource dc=vddval
+simulatorOptions options reltol=1e-5 vabstol=1e-7 iabstol=1e-13 temp=27
+
+
+include "cp_experiment.scs"
+ahdl_include "sampler_interface.va"
+VP (vp 0) vsource type=sine dc=.6 ampl=.2 freq=3.936G
+VN (vn 0) vsource type=sine dc=.6 ampl=.2 freq=3.936G sinephase=180
+VE (enable 0) vsource dc=1.2
+VR0 (ref0 0) vsource type=pulse val0=0 val1=1.2 period=41.6666666666667n width=20.8233333333333n rise=10p fall=10p delay=1.101626016260163e-09
+XR0 (ref0 refb0 vdd 0) tx_reference_buffer
+CR0 (refb0 0) capacitor c=60f
+XS0 (refb0 vp vn hp0 hn0 vdd 0) tx_sampler
+XA0 (refb0 hp0 hn0 sample0 held0 pulse0 vdd 0) sampler_interface
+XC0 (hp0 hn0 pulse0 enable out0 vdd 0) tx_cp_experiment
+VO0 (out0 0) vsource dc=.6
+VR1 (ref1 0) vsource type=pulse val0=0 val1=1.2 period=41.6666666666667n width=20.8233333333333n rise=10p fall=10p delay=1.103743224932249e-09
+XR1 (ref1 refb1 vdd 0) tx_reference_buffer
+CR1 (refb1 0) capacitor c=60f
+XS1 (refb1 vp vn hp1 hn1 vdd 0) tx_sampler
+XA1 (refb1 hp1 hn1 sample1 held1 pulse1 vdd 0) sampler_interface
+XC1 (hp1 hn1 pulse1 enable out1 vdd 0) tx_cp_experiment
+VO1 (out1 0) vsource dc=.6
+VR2 (ref2 0) vsource type=pulse val0=0 val1=1.2 period=41.6666666666667n width=20.8233333333333n rise=10p fall=10p delay=1.105860433604336e-09
+XR2 (ref2 refb2 vdd 0) tx_reference_buffer
+CR2 (refb2 0) capacitor c=60f
+XS2 (refb2 vp vn hp2 hn2 vdd 0) tx_sampler
+XA2 (refb2 hp2 hn2 sample2 held2 pulse2 vdd 0) sampler_interface
+XC2 (hp2 hn2 pulse2 enable out2 vdd 0) tx_cp_experiment
+VO2 (out2 0) vsource dc=.6
+VR3 (ref3 0) vsource type=pulse val0=0 val1=1.2 period=41.6666666666667n width=20.8233333333333n rise=10p fall=10p delay=1.107977642276423e-09
+XR3 (ref3 refb3 vdd 0) tx_reference_buffer
+CR3 (refb3 0) capacitor c=60f
+XS3 (refb3 vp vn hp3 hn3 vdd 0) tx_sampler
+XA3 (refb3 hp3 hn3 sample3 held3 pulse3 vdd 0) sampler_interface
+XC3 (hp3 hn3 pulse3 enable out3 vdd 0) tx_cp_experiment
+VO3 (out3 0) vsource dc=.6
+VR4 (ref4 0) vsource type=pulse val0=0 val1=1.2 period=41.6666666666667n width=20.8233333333333n rise=10p fall=10p delay=1.11009485094851e-09
+XR4 (ref4 refb4 vdd 0) tx_reference_buffer
+CR4 (refb4 0) capacitor c=60f
+XS4 (refb4 vp vn hp4 hn4 vdd 0) tx_sampler
+XA4 (refb4 hp4 hn4 sample4 held4 pulse4 vdd 0) sampler_interface
+XC4 (hp4 hn4 pulse4 enable out4 vdd 0) tx_cp_experiment
+VO4 (out4 0) vsource dc=.6
+tran tran stop=145n errpreset=conservative maxstep=5p
+save VDD:p hp0 hn0 VO0:p hp1 hn1 VO1:p hp2 hn2 VO2:p hp3 hn3 VO3:p hp4 hn4 VO4:p
+saveOptions options save=selected

@@ -1,0 +1,18 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=ss
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "cells.scs"
+parameters vddval=1.2
+VDD (vdd 0) vsource dc=vddval
+simulatorOptions options reltol=1e-5 vabstol=1e-7 iabstol=1e-13 temp=60
+
+VC (clk 0) vsource type=pulse val0=0 val1=1.2 period=250p width=123p rise=2p fall=2p delay=20p
+VD (data 0) vsource type=pulse val0=0 val1=1.2 period=1n width=490p rise=10p fall=10p delay=70p
+VE (en 0) vsource dc=1.2
+XR (data clk en out vdd 0) tx_output_retimer
+CL (out 0) capacitor c=5f
+tran tran stop=25n errpreset=conservative maxstep=5p
+save clk data out VDD:p
+saveOptions options save=selected

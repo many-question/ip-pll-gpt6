@@ -1,0 +1,124 @@
+simulator lang=spectre
+// Project-owned cells; nch/pch are the configured TSMC180 BCD Gen2 core BSIM4 models.
+// Width is per finger, nf=1. Drawn diffusion geometry is explicit; no PEX claimed.
+subckt pll_inv (a y vdd vss)
+parameters wn=1u wp=2.5u ln=180n
+MN (y a vss vss) nch w=wn l=ln nf=1 ad=wn*240n as=wn*240n pd=2*(wn+240n) ps=2*(wn+240n)
+MP (y a vdd vdd) pch w=wp l=ln nf=1 ad=wp*240n as=wp*240n pd=2*(wp+240n) ps=2*(wp+240n)
+ends pll_inv
+
+subckt pll_nand2 (a b y vdd vss)
+parameters wn=1u wp=1.25u
+MN0 (y a x vss) nch w=wn l=180n ad=wn*240n as=wn*240n pd=2*(wn+240n) ps=2*(wn+240n)
+MN1 (x b vss vss) nch w=wn l=180n ad=wn*240n as=wn*240n pd=2*(wn+240n) ps=2*(wn+240n)
+MP0 (y a vdd vdd) pch w=wp l=180n ad=wp*240n as=wp*240n pd=2*(wp+240n) ps=2*(wp+240n)
+MP1 (y b vdd vdd) pch w=wp l=180n ad=wp*240n as=wp*240n pd=2*(wp+240n) ps=2*(wp+240n)
+ends pll_nand2
+
+subckt pll_tg (a b on off vdd vss)
+parameters wn=1u wp=2u
+MN (a on b vss) nch w=wn l=180n ad=wn*240n as=wn*240n pd=2*(wn+240n) ps=2*(wn+240n)
+MP (a off b vdd) pch w=wp l=180n ad=wp*240n as=wp*240n pd=2*(wp+240n) ps=2*(wp+240n)
+ends pll_tg
+
+subckt pll_latch (d gate gateb q vdd vss)
+XT (d x gate gateb vdd vss) pll_tg wn=800n wp=1.6u
+XI (x qb vdd vss) pll_inv wn=500n wp=1.25u
+XO (qb q vdd vss) pll_inv wn=800n wp=2u
+XF (q x gateb gate vdd vss) pll_tg wn=400n wp=800n
+ends pll_latch
+
+subckt pll_dff_fall (d clk q vdd vss)
+XC (clk clkb vdd vss) pll_inv wn=2u wp=5u
+XM (d clk clkb qm vdd vss) pll_latch
+XS (qm clkb clk q vdd vss) pll_latch
+ends pll_dff_fall
+
+subckt tx_reference_buffer (inp out vdd vss)
+X0 (inp a vdd vss) pll_inv wn=1u wp=2.5u
+X1 (a b vdd vss) pll_inv wn=4u wp=10u
+X2 (b c vdd vss) pll_inv wn=16u wp=40u
+X3 (c out vdd vss) pll_inv wn=64u wp=160u
+ends tx_reference_buffer
+
+subckt tx_output_buffer (inp out vdd vss)
+parameters fp=3.9u
+X0 (inp a vdd vss) pll_inv wn=800n wp=2u
+X1 (a out vdd vss) pll_inv wn=2u wp=fp
+ends tx_output_buffer
+
+subckt tx_output_retimer (data clk enable out vdd vss)
+XFF (data clk q vdd vss) pll_dff_fall
+XEN (q enable qb vdd vss) pll_nand2
+XOUT (qb out vdd vss) pll_inv wn=800n wp=2u
+ends tx_output_retimer
+
+subckt tx_loop_filter (ctrl vc1 enable preset vdd vss)
+parameters rlf=22222.2222222222
+R (ctrl vc1) resistor r=rlf
+C1 (vc1 vss) capacitor c=28.6478897565412p
+C2 (ctrl vss) capacitor c=1.90985931710274p
+XI (enable enb vdd vss) pll_inv
+XP0 (preset ctrl enb enable vdd vss) pll_tg wn=20u wp=40u
+XP1 (preset vc1 enb enable vdd vss) pll_tg wn=20u wp=40u
+ends tx_loop_filter
+
+subckt tx_sampler (ref vp vn hp hn vdd vss)
+XI (ref refb vdd vss) pll_inv wn=8u wp=20u
+XSP (vp hp refb ref vdd vss) pll_tg wn=4u wp=8u
+XSN (vn hn refb ref vdd vss) pll_tg wn=4u wp=8u
+CP (hp vss) capacitor c=40f
+CN (hn vss) capacitor c=40f
+ends tx_sampler
+
+subckt tx_bias_mid (vdd vss vmid)
+R0 (vdd vmid) resistor r=100k
+R1 (vmid vss) resistor r=100k
+C0 (vmid vss) capacitor c=1p
+ends tx_bias_mid
+
+// Experimental C2MOS dynamic master/slave alternative. No static keeper yet.
+subckt pll_clocked_inv (d ck ckb q vdd vss)
+parameters wp=2.5u
+MPCK (pp ckb vdd vdd) pch w=2*wp l=180n ad=2*wp*240n as=2*wp*240n pd=2*(2*wp+240n) ps=2*(2*wp+240n)
+MPD (q d pp vdd) pch w=wp l=180n ad=wp*240n as=wp*240n pd=2*(wp+240n) ps=2*(wp+240n)
+MND (q d nn vss) nch w=1u l=180n ad=.24p as=.24p pd=2.48u ps=2.48u
+MNCK (nn ck vss vss) nch w=2u l=180n ad=.48p as=.48p pd=4.48u ps=4.48u
+ends pll_clocked_inv
+
+subckt tx_retimer_c2mos (data clk enable out vdd vss)
+parameters sp=1.06u
+XC (clk clkb vdd vss) pll_inv wn=3u wp=7.5u
+XM (data clk clkb qb vdd vss) pll_clocked_inv
+XS (qb clkb clk q vdd vss) pll_clocked_inv wp=sp
+XEN (q enable qbb vdd vss) pll_nand2
+XO (qbb out vdd vss) pll_inv wn=800n wp=2u
+ends tx_retimer_c2mos
+
+// 9T TSPC, inverted output sampled at positive clock edge.
+// Connectivity reference: Razavi, TSPC Logic, 2016, Fig. 6(c).
+subckt pll_tspc_inv (d ck qb vdd vss)
+MP0 (p0 d vdd vdd) pch w=2u l=180n ad=.48p as=.48p pd=4.48u ps=4.48u
+MPC0 (b ck p0 vdd) pch w=2u l=180n ad=.48p as=.48p pd=4.48u ps=4.48u
+MN0 (b d vss vss) nch w=800n l=180n ad=.192p as=.192p pd=2.08u ps=2.08u
+MP1 (a ck vdd vdd) pch w=2u l=180n ad=.48p as=.48p pd=4.48u ps=4.48u
+MN1 (a b n1 vss) nch w=1.6u l=180n ad=.384p as=.384p pd=3.68u ps=3.68u
+MNC1 (n1 ck vss vss) nch w=1.6u l=180n ad=.384p as=.384p pd=3.68u ps=3.68u
+MP2 (qb a vdd vdd) pch w=2u l=180n ad=.48p as=.48p pd=4.48u ps=4.48u
+MNC2 (qb ck n2 vss) nch w=1.6u l=180n ad=.384p as=.384p pd=3.68u ps=3.68u
+MN2 (n2 a vss vss) nch w=1.6u l=180n ad=.384p as=.384p pd=3.68u ps=3.68u
+ends pll_tspc_inv
+
+subckt pll_nor2 (a b y vdd vss)
+MP0 (p a vdd vdd) pch w=4u l=180n ad=.96p as=.96p pd=8.48u ps=8.48u
+MP1 (y b p vdd) pch w=4u l=180n ad=.96p as=.96p pd=8.48u ps=8.48u
+MN0 (y a vss vss) nch w=1u l=180n ad=.24p as=.24p pd=2.48u ps=2.48u
+MN1 (y b vss vss) nch w=1u l=180n ad=.24p as=.24p pd=2.48u ps=2.48u
+ends pll_nor2
+
+subckt tx_retimer_tspc (data clk enable out vdd vss)
+XC (clk ck vdd vss) pll_inv wn=2u wp=5u
+XE (enable enb vdd vss) pll_inv wn=500n wp=1.25u
+XFF (data ck qb vdd vss) pll_tspc_inv
+XO (qb enb out vdd vss) pll_nor2
+ends tx_retimer_tspc

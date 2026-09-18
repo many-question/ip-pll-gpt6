@@ -1,0 +1,35 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "cells.scs"
+parameters vddval=1.2
+VDD (vdd 0) vsource dc=vddval
+simulatorOptions options reltol=1e-5 vabstol=1e-7 iabstol=1e-13 temp=27
+include "cp_experiment.scs"
+VE (en 0) vsource dc=1.2
+VPULSE (pulse 0) vsource type=pulse val0=0 val1=1.2 delay=5n period=41.6666666666667n width=2.063333333333n rise=20p fall=20p
+VP0 (hp0 0) vsource dc=0.45499999999999996
+VN0 (hn0 0) vsource dc=0.505
+XC0 (hp0 hn0 pulse en out0 vdd 0) tx_cp_experiment
+VO0 (out0 0) vsource dc=.6
+VP1 (hp1 0) vsource dc=0.475
+VN1 (hn1 0) vsource dc=0.485
+XC1 (hp1 hn1 pulse en out1 vdd 0) tx_cp_experiment
+VO1 (out1 0) vsource dc=.6
+VP2 (hp2 0) vsource dc=0.48
+VN2 (hn2 0) vsource dc=0.48
+XC2 (hp2 hn2 pulse en out2 vdd 0) tx_cp_experiment
+VO2 (out2 0) vsource dc=.6
+VP3 (hp3 0) vsource dc=0.485
+VN3 (hn3 0) vsource dc=0.475
+XC3 (hp3 hn3 pulse en out3 vdd 0) tx_cp_experiment
+VO3 (out3 0) vsource dc=.6
+VP4 (hp4 0) vsource dc=0.505
+VN4 (hn4 0) vsource dc=0.45499999999999996
+XC4 (hp4 hn4 pulse en out4 vdd 0) tx_cp_experiment
+VO4 (out4 0) vsource dc=.6
+tran tran stop=140n errpreset=conservative maxstep=20p
+save VO0:p VO1:p VO2:p VO3:p VO4:p out0 VDD:p
+saveOptions options save=selected

@@ -1,0 +1,13 @@
+`include "disciplines.vams"
+// TB instrument: compare control at one reference phase, separately from ripple.
+module loop_observer(ref,ctrl,vc1,cycle_ctrl,cycle_vc1,vss);
+  input ref,ctrl,vc1,vss; output cycle_ctrl,cycle_vc1;
+  electrical ref,ctrl,vc1,cycle_ctrl,cycle_vc1,vss;
+  real c,c1;
+  analog begin
+    @(initial_step) begin c=0;c1=0;end
+    @(cross(V(ref,vss)-0.6,+1)) begin c=V(ctrl,vss);c1=V(vc1,vss);end
+    V(cycle_ctrl,vss)<+transition(c,0,10p);
+    V(cycle_vc1,vss)<+transition(c1,0,10p);
+  end
+endmodule

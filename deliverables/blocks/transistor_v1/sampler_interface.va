@@ -1,0 +1,20 @@
+`include "disciplines.vams"
+// Explicit mixed-level boundary: difference readout and CP pulse timing remain VA.
+// Physical track/hold switches and capacitors are in tx_sampler.
+module sampler_interface(ref,hp,hn,sample,fll_sample,pulse,vdd,vss);
+  input ref,hp,hn,vdd,vss; output sample,fll_sample,pulse;
+  electrical ref,hp,hn,sample,fll_sample,pulse,vdd,vss;
+  parameter real delay=2.083333333333n,width=2.083333333333n,tr=10p;
+  real t_on,t_off,held_for_fll; integer gate;
+  analog begin
+    @(initial_step) begin gate=0;t_on=1e9;t_off=1e9;held_for_fll=0;end
+    @(cross(V(ref,vss)-0.5*V(vdd,vss),+1,1f,1u)) begin t_on=$abstime+delay;t_off=t_on+width;end
+    // FLL observes the previous completed sample on the next reference edge.
+    // Reading hp-hn at the opening edge would observe a still-tracking capacitor.
+    @(timer(t_on)) begin gate=1;held_for_fll=V(hp,hn);end
+    @(timer(t_off)) gate=0;
+    V(sample,vss)<+V(hp,hn);
+    V(fll_sample,vss)<+transition(held_for_fll,0,tr);
+    V(pulse,vss)<+transition(gate,0,tr)*V(vdd,vss);
+  end
+endmodule

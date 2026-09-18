@@ -1,0 +1,14 @@
+simulator lang=spectre
+include "lc_core_experiment.scs"
+include "cap_bank_experiment.scs"
+// Combined candidate reconstructed from fine02/neighbor tests.
+// Core and switches: PDK MOS. Fine tuning: PDK nmoscap (tt_bbmvar, etc.).
+// Tank L/R, fixed/bank C and bias-current reference remain explicit assumptions.
+subckt tx_lc_vco_candidate (vp vn ctrl b0 b1 b2 b3 b4 b5 b6 b7 vdd vss)
+parameters fixed_c=190f
+XL (vp vn vdd vss) tx_lc_core_experiment tank_r=5 tank_c=fixed_c core_w=40u
+XBP (vp b0 b1 b2 b3 b4 b5 b6 b7 vss) tx_cap_bank_experiment unit_c=5.7f unit_w=2.4u
+XBN (vn b0 b1 b2 b3 b4 b5 b6 b7 vss) tx_cap_bank_experiment unit_c=5.7f unit_w=2.4u
+CVP (vp ctrl) nmoscap lr=2u wr=3u mr=1
+CVN (vn ctrl) nmoscap lr=2u wr=3u mr=1
+ends tx_lc_vco_candidate

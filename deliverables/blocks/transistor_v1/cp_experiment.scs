@@ -1,0 +1,17 @@
+simulator lang=spectre
+// First simple mirror-loaded NMOS differential transconductor candidate.
+// IREF is an explicit ideal bias assumption; no claim of complete bias generation.
+subckt tx_cp_experiment (hp hn pulse enable out vdd vss)
+parameters itail=24u win=8u
+IREF (vdd nb) isource dc=itail
+MB (nb nb vss vss) nch w=10u l=1u ad=2.4p as=2.4p pd=20.48u ps=20.48u
+XG (pulse enable gateb vdd vss) pll_nand2
+XGI (gateb gate vdd vss) pll_inv
+XT (nb ng gate gateb vdd vss) pll_tg wn=1u wp=2u
+MOFF (ng gateb vss vss) nch w=1u l=180n ad=.24p as=.24p pd=2.48u ps=2.48u
+MT (tail ng vss vss) nch w=10u l=1u ad=2.4p as=2.4p pd=20.48u ps=20.48u
+MIP (out hp tail vss) nch w=win l=1u ad=win*240n as=win*240n pd=2*(win+240n) ps=2*(win+240n)
+MIN (mir hn tail vss) nch w=win l=1u ad=win*240n as=win*240n pd=2*(win+240n) ps=2*(win+240n)
+MPD (mir mir vdd vdd) pch w=4u l=1u ad=.96p as=.96p pd=8.48u ps=8.48u
+MPO (out mir vdd vdd) pch w=4u l=1u ad=.96p as=.96p pd=8.48u ps=8.48u
+ends tx_cp_experiment

@@ -1,0 +1,21 @@
+simulator lang=spectre
+// Binary switched ideal capacitors with physical PDK NMOS bottom switches.
+subckt tx_cap_bank_experiment (tank b0 b1 b2 b3 b4 b5 b6 b7 vss)
+parameters unit_c=5f unit_w=2.4u
+C0 (tank x0) capacitor c=unit_c*1
+M0 (x0 b0 vss vss) nch w=unit_w*1 l=180n ad=unit_w*1*240n as=unit_w*1*240n pd=2*(unit_w*1+240n) ps=2*(unit_w*1+240n)
+C1 (tank x1) capacitor c=unit_c*2
+M1 (x1 b1 vss vss) nch w=unit_w*2 l=180n ad=unit_w*2*240n as=unit_w*2*240n pd=2*(unit_w*2+240n) ps=2*(unit_w*2+240n)
+C2 (tank x2) capacitor c=unit_c*4
+M2 (x2 b2 vss vss) nch w=unit_w*4 l=180n ad=unit_w*4*240n as=unit_w*4*240n pd=2*(unit_w*4+240n) ps=2*(unit_w*4+240n)
+C3 (tank x3) capacitor c=unit_c*8
+M3 (x3 b3 vss vss) nch w=unit_w*8 l=180n ad=unit_w*8*240n as=unit_w*8*240n pd=2*(unit_w*8+240n) ps=2*(unit_w*8+240n)
+C4 (tank x4) capacitor c=unit_c*16
+M4 (x4 b4 vss vss) nch w=unit_w*16 l=180n ad=unit_w*16*240n as=unit_w*16*240n pd=2*(unit_w*16+240n) ps=2*(unit_w*16+240n)
+C5 (tank x5) capacitor c=unit_c*32
+M5 (x5 b5 vss vss) nch w=unit_w*32 l=180n ad=unit_w*32*240n as=unit_w*32*240n pd=2*(unit_w*32+240n) ps=2*(unit_w*32+240n)
+C6 (tank x6) capacitor c=unit_c*64
+M6 (x6 b6 vss vss) nch w=unit_w*64 l=180n ad=unit_w*64*240n as=unit_w*64*240n pd=2*(unit_w*64+240n) ps=2*(unit_w*64+240n)
+C7 (tank x7) capacitor c=unit_c*128
+M7 (x7 b7 vss vss) nch w=unit_w*128 l=180n ad=unit_w*128*240n as=unit_w*128*240n pd=2*(unit_w*128+240n) ps=2*(unit_w*128+240n)
+ends tx_cap_bank_experiment

@@ -1,0 +1,321 @@
+{
+  "schema": "chip-report/0.1",
+  "report": {
+    "seq": 4,
+    "time": "2026-09-18T16:18:02+08:00",
+    "trigger": "requested",
+    "covers_since": "2026-09-18T11:46:06+08:00"
+  },
+  "overall": {
+    "phase": "晶体管模块初稿、接口表征与逐级混合顶层验证",
+    "summary": "使用项目实际配置的 TSMC180 BCD Gen2 核心器件，在 1.2 V 下完成若干模块和配对角验证，并逐级代回电路。S5 完成 FLL 启动，S6 已完成固定粗调码闭环。S6 完整启动通过，18.26 µs 确认锁定。S7 首次直接替换 CP 的 6 µs 仿真未通过收敛检查：约 3.33 ppm、控制峰峰变化约 2.60 mV。 R=100 kΩ、C 不变的复测为 checks_passed；频率误差 0.3137 ppm，最后 0.5 µs 同参考相位控制电压变化 3.7 µV，原始控制纹波/变化 2.102 mV，有效保持信号最大绝对值 0.395 mV。 LC VCO、CML ÷2 有联合负载候选；完整分频/FLL/偏置及全器件噪声、全 PVT、面积仍未闭合。",
+    "since_last": [
+      "建立 nch/pch 器件网表、独立 TB、不可变输入快照、远端 hash 校验和本地原始证据回收。模型和 license 未发布。",
+      "参考/输出缓冲与 C²MOS 重定时通过 TT/27 °C、SS/60 °C、FF/0 °C 配对角；重定时变长数据序列的边沿守恒通过。慢角失败的 TG/TSPC 候选保留。",
+      "采样器/参考驱动改进后独立增益约 0.12465 V/rad，接入真实 CP 后基波增益降到约 0.08728 V/rad；局部 Kpd 约 0.35236 µA/rad，旧噪声灵敏度估算约 351/357 fs。",
+      "LC 负阻核心、8 bit MOS 电容开关和 PDK nmoscap 细调候选已起振；名义抽样频率约 2.619–4.012 GHz，抽查三个相邻码边界存在重叠。",
+      "CML ÷2 在 4 GHz 三配对角与 2.688 GHz 低摆幅慢角通过；CMOS 转换器四版探索最终 TT/FF 通过而 SS 逻辑摆幅仍失败，未完成完整可编程分频。",
+      "LC 接入实际共模接口、采样/CP 和 CML 后高端下降约 100 MHz；将固定电容由 190 改为 150 fF 后，加载端点抽查恢复约 2.619–4.012 GHz。",
+      "修正物理采样后 FLL 有效保持样本的读取时刻，S5 在约 18.26 µs 确认锁定；S6 固定码闭环误差约 −0.346 ppm。S6 完整启动通过，18.26 µs 确认锁定。",
+      "S7 首次直接替换 CP 的 6 µs 仿真未通过收敛检查：约 3.33 ppm、控制峰峰变化约 2.60 mV。 R=100 kΩ、C 不变的复测为 checks_passed；频率误差 0.3137 ppm，最后 0.5 µs 同参考相位控制电压变化 3.7 µV，原始控制纹波/变化 2.102 mV，有效保持信号最大绝对值 0.395 mV。",
+      "按人类回复记录 DEC-0003：占空比不严格，无需继续专门优化；保留测量和 REQ-11 追踪。"
+    ],
+    "route_confidence": "medium",
+    "route_confidence_reason": "器件级起振、参考/输出链和混合闭环已有证据；实际采样增益、非线性 Kvco、CP 偏移及有源负载使旧抖动估算失效，尚不能证明全部硬指标可同时满足。"
+  },
+  "levels": {
+    "survey": {
+      "maturity": 2,
+      "note": "核验实际 PDK 核心/变容接口和已有 Spectre 环境；使用一手 TSPC 文献核对候选，文献速度不替代本工艺验证。",
+      "artifacts": [
+        "share/deliverables/sources/transistor_v1_sources.md"
+      ]
+    },
+    "modeling": {
+      "maturity": 3,
+      "note": "保留 Python/VA 回归基线；将测得增益用于敏感性复算。其余噪声仍是假设，不是电路随机抖动结果。",
+      "artifacts": [
+        "share/deliverables/integration/transistor_v1/results/gain_sensitivity.json",
+        "share/deliverables/architecture/behavioral_v2/README.md"
+      ]
+    },
+    "architecture": {
+      "maturity": 2,
+      "note": "高频 LC 亚采样 + 偶数分频/重定时架构未改；实际低频段 Kvco 更小，需共同重估滤波器与 FLL 调谐策略。",
+      "artifacts": [
+        "share/deliverables/spec/system_budget_v1.md",
+        "share/deliverables/integration/transistor_v1/README.md"
+      ]
+    },
+    "blocks": [
+      {
+        "name": "reference_buffer",
+        "role": "24 MHz 参考整形",
+        "stage": "circuit",
+        "maturity": 3,
+        "note": "四级 MOS，24 MHz/60 fF 三配对角功能通过，约 0.033 mW；已驱动实际采样器。输入相噪仍未知。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v1/cells.scs",
+          "share/deliverables/integration/transistor_v1/results/validation.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "subsampling_detector",
+        "role": "直接采样差分 VCO 并鉴相",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "MOS 传输门和 40 fF/侧保持电容，物理孔径、真实 CP 联合负载和共模已有测量；联合局部斜率约 0.09653 V/rad。CP 脉冲/FLL 资格适配仍为 VA，器件噪声未提取。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v1/cells.scs",
+          "share/deliverables/blocks/transistor_v1/sampler_interface.va",
+          "share/deliverables/integration/transistor_v1/results/validation.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "transconductor_charge_pump",
+        "role": "采样误差转电流及增益控制",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "门控差分跨导/镜像负载候选已测 DC、脉冲与输入共模；独立等效 gm 约 101–111 µS、零电荷输入偏移约 −22 至 −19 mV。偏置参考仍理想，已进入 S7 逐级代回实验。S7 首次直接替换 CP 的 6 µs 仿真未通过收敛检查：约 3.33 ppm、控制峰峰变化约 2.60 mV。 R=100 kΩ、C 不变的复测为 checks_passed；频率误差 0.3137 ppm，最后 0.5 µs 同参考相位控制电压变化 3.7 µV，原始控制纹波/变化 2.102 mV，有效保持信号最大绝对值 0.395 mV。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v1/cp_experiment.scs",
+          "share/deliverables/integration/transistor_v1/results/validation.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "passive_loop_filter",
+        "role": "环路滤波与稳定性",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "R=22.222 kΩ、C1=28.648 pF、C2=1.910 pF 理想无源件与 MOS 预充已代回；有电荷注入。尚无 PDK RC/布局提取，新的 RC 数值仅计算提案。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v1/cells.scs",
+          "share/deliverables/integration/transistor_v1/results/gain_sensitivity.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "lc_vco_and_cap_bank",
+        "role": "2.688–3.936 GHz 振荡、粗调和模拟细调",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "真实 MOS 自激核心/8 bit 开关/nmoscap 细调已组成候选；TT 三码×三控制电压与三个码边界抽查完成。L/R/固定及阵列 C、偏置参考仍理想；尚未接入完整顶层。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v1/lc_vco_candidate.scs",
+          "share/deliverables/integration/transistor_v1/results/summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "auxiliary_fll",
+        "role": "启动捕获和正确谐波选择",
+        "stage": "behavioral",
+        "maturity": 3,
+        "note": "有限 32 参考周期计数的 VA 控制保留；已修复物理采样接口资格判断并在 S5 启动锁定。全晶体管/数字综合和真实预置 DAC 未实现。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v1/sampler_interface.va",
+          "share/deliverables/blocks/behavioral_va/auxiliary_fll.va",
+          "share/deliverables/integration/transistor_v1/results/summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "programmable_even_divider",
+        "role": "÷4/6/8/10/12/14 对称半周期分频",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "CML ÷2 在三角和实际 LC 负载链中通过；CMOS 转换器 TT/FF 可用、SS 逻辑摆幅失败。完整 ÷4/6/8/10/12/14、复位/门控未完成，PLL 顶层分频仍为 VA。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v1/cml_prescaler_experiment.scs",
+          "share/deliverables/blocks/transistor_v1/cml_to_cmos_experiment.scs",
+          "share/deliverables/integration/transistor_v1/results/summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "output_retimer",
+        "role": "利用 VCO 派生时钟重定时",
+        "stage": "circuit",
+        "maturity": 3,
+        "note": "C²MOS 三配对角变长数据各 48 次跳变正确，最慢延迟约 295 ps；已代回 S6 闭环。动态保持/停钟恢复、噪声和完整时序裕量仍待验证。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v1/cells.scs",
+          "share/deliverables/integration/transistor_v1/results/validation.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "output_buffer",
+        "role": "驱动片内轻负载",
+        "stage": "circuit",
+        "maturity": 3,
+        "note": "真实 MOS 两级缓冲驱动 10 fF，在 984 MHz 三配对角通过；约 0.046 mW，已接入混合系统。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v1/cells.scs",
+          "share/deliverables/integration/transistor_v1/results/validation.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "bias_and_control",
+        "role": "偏置、频点配置及状态控制",
+        "stage": "circuit",
+        "maturity": 1,
+        "note": "2×100 kΩ 与 1 pF 中点分压已代回；其他 LC/CP/CML 偏置电流源和数字控制仍有理想源，完整偏置/启动未实现。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v1/cells.scs",
+          "share/deliverables/blocks/transistor_v1/README.md"
+        ],
+        "blockers": []
+      }
+    ],
+    "verification": {
+      "maturity": 3,
+      "note": "本轮留存 148 个运行记录，含失败/未完成；模块配对角、变长边沿序列、S5 启动和 S6 闭环均有独立测量。500 ns moderate/conservative 对照支持功能精度，不支持随机抖动。S6 完整启动通过，18.26 µs 确认锁定。",
+      "artifacts": [
+        "share/deliverables/integration/transistor_v1/results/validation.json",
+        "share/deliverables/integration/transistor_v1/results/precision_comparison.json",
+        "share/deliverables/integration/transistor_v1/results/raw_manifest.json"
+      ]
+    },
+    "integration": {
+      "maturity": 2,
+      "note": "累计替换参考、输出、RC/预充、中点、采样器、重定时，新增 S7 真实 CP 替换实验。VCO/完整分频/FLL 仍有行为模块；未完成 OA 原理图、版图或签核。S6 完整启动通过，18.26 µs 确认锁定。S7 首次直接替换 CP 的 6 µs 仿真未通过收敛检查：约 3.33 ppm、控制峰峰变化约 2.60 mV。 R=100 kΩ、C 不变的复测为 checks_passed；频率误差 0.3137 ppm，最后 0.5 µs 同参考相位控制电压变化 3.7 µV，原始控制纹波/变化 2.102 mV，有效保持信号最大绝对值 0.395 mV。",
+      "artifacts": [
+        "share/deliverables/integration/transistor_v1/README.md",
+        "share/deliverables/integration/transistor_v1/results/summary.json"
+      ]
+    }
+  },
+  "spec_status": [
+    {
+      "id": "REQ-01",
+      "current": "TSMC180 BCD Gen2 V1.6 的 nch/pch 与 nmoscap",
+      "condition": "由项目 cds.lib 定位的实际模型；MOS tt/ss/ff，细调当前 tt_bbmvar；模型路径/hash 见摘要。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "已从 VA 进入 PDK 器件阶段；电感/固定与阵列 C/电阻尚为理想元件，不声称全工艺实现。"
+    },
+    {
+      "id": "REQ-02",
+      "current": "1.2 V",
+      "condition": "真实 MOS 模块和混合环路；配对角 TT/27 °C、SS/60 °C、FF/0 °C 为局部模块覆盖。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "当前功能通过，LC 节点高于供电；器件各端电压可靠性和低压裕量仍待完整审核。"
+    },
+    {
+      "id": "REQ-03",
+      "current": "24 MHz，0–1.2 V 准方波",
+      "condition": "MOS 参考链驱动 60 fF；模块 TB 和混合顶层的输入边沿由各运行快照确定（工作假设 10/100 ps）。",
+      "evidence": "pvt_sim",
+      "status": "on_track",
+      "note": "实际参考源的边沿、输入负载和相噪未确认。"
+    },
+    {
+      "id": "REQ-04",
+      "current": "混合系统 K=41 已验证；先前 Python K=9…41",
+      "condition": "1.2 V/27 °C，3.936 GHz 行为 VCO，M=4，FLL 仍为 VA；S5 启动及 S6 闭环。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "可编程分频只有高速 ÷2 前端成为器件候选，尚不能证明全晶体管整数合成。"
+    },
+    {
+      "id": "REQ-05",
+      "current": "混合输出 984 MHz；LC 加载候选端点抽样约 2.619–4.012 GHz",
+      "condition": "TT，实际采样/CP 与 CML 输入负载、150 fF 固定 C，0/255 码×0.2/1.0 V；L/R/固定及阵列 C 理想。190 fF 未加载版本另有三个相邻码重叠抽查。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "不能把未加载版本码间重叠直接用于新的加载版本；全 256 码连续性、全部 33 个输出点和完整 PVT 未证明。"
+    },
+    {
+      "id": "REQ-06",
+      "current": "约 243/251 fs（100 kΩ 候选敏感性估算，非器件抖动）",
+      "condition": "R=100 kΩ、C 不变，Kvco=20 MHz/V、Cs 与旧噪声仍假设；联合 Kpd=0.35236 µA/rad、局部采样斜率 0.09653 V/rad；分别积分 10 kHz–10 MHz / 10 kHz–fout/2，排除 spur。",
+      "evidence": "estimate",
+      "status": "at_risk",
+      "note": "联合测试为 3.936 GHz、差分峰值 0.4 V、CP 输出 0.6 V、TT/27 °C；保留原 R 时为约 351/357 fs。实际工作点增益、Kvco 和器件噪声未共同提取，功能收敛不代表 <200 fs 达标。"
+    },
+    {
+      "id": "REQ-07",
+      "current": null,
+      "condition": "按当前讨论先研究随机抖动，spur 暂缓，不计入抖动。",
+      "evidence": "none",
+      "status": "unknown",
+      "note": "<−60 dBc 需求保留；电荷注入和 CP 周期偏移已经出现，未开展杂散验收。"
+    },
+    {
+      "id": "REQ-08",
+      "current": "S6 已实现部分约 0.2947 mW；LC 候选约 1.536–1.557 mW；CML ÷2 约 0.34–0.41 mW",
+      "condition": "S6 固定码 6 µs/10 fF；LC TT 150–200 ns 稳态；CML 各角 50–100 ns。各自不同 TB 的供电积分，不能当成整体功耗求和。",
+      "evidence": "circuit_sim",
+      "status": "unknown",
+      "note": "全部 PLL 锁定后 ≤4 mW 仍未证明；理想偏置参考虽计入相应供电，真实生成电路和时钟驱动/FLL/后续分频开销未齐，启动峰值需另计。"
+    },
+    {
+      "id": "REQ-09",
+      "current": "0.280 mm²（原工作预算，非布局结果）",
+      "condition": "含电感、环路滤波器及隔离，暂不含 pad；无版图。",
+      "evidence": "estimate",
+      "status": "unknown",
+      "note": "8 bit 电容银行、实际电感/隔离和数字布局面积未提取。"
+    },
+    {
+      "id": "REQ-10",
+      "current": "局部 TT/27 °C、SS/60 °C、FF/0 °C 功能结果",
+      "condition": "参考/输出缓冲、重定时、CML 前端已跑配对角；无细调的粗调版本有三粗调码配对角；不是所有工艺×温度组合。",
+      "evidence": "pvt_sim",
+      "status": "on_track",
+      "note": "带 nmoscap 的最终 VCO 候选当前仅 TT；尚无完整 PLL PVT、RC/电感角或失配。"
+    },
+    {
+      "id": "REQ-11",
+      "current": "名义 50%；S6 约 49.49%，重定时慢角约 46.8%",
+      "condition": "1.2 V，S6 固定码 984 MHz/10 fF；独立重定时 SS/60 °C、4 GHz 时钟。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "DEC-0003 已确认占空比要求不严格、无需刻意优化；没有擅自规定新数值容差，继续检查窄脉冲与边沿错误。"
+    },
+    {
+      "id": "REQ-12",
+      "current": "10 fF 临时输出负载",
+      "condition": "真实输出缓冲在 984 MHz、1.2 V、三个配对角通过；混合顶层同负载。",
+      "evidence": "pvt_sim",
+      "status": "on_track",
+      "note": "实际逻辑门数、输入电容和门限仍待明确，10 fF 不自动成为确认规格。"
+    }
+  ],
+  "questions_for_human": [
+    {
+      "q": "抖动积分频带及实际 24 MHz 参考源相噪/边沿参数仍待明确，当前保留并列积分口径。",
+      "blocking": false,
+      "since": "2026-09-17T20:57:59+08:00"
+    },
+    {
+      "q": "片内负载的电容与门限后续需要明确；当前沿用 10 fF 工作假设。占空比问题已按 DEC-0003 处理。",
+      "blocking": false,
+      "since": "2026-09-17T20:57:59+08:00"
+    }
+  ],
+  "blocked_on": null,
+  "risks": [
+    "主链虽已部分器件化，真实 CP 代回仍需完成闭环和 FLL 资格判断；LC/CML 系统替换、FLL/完整分频/偏置仍有未实现部分。",
+    "采样孔径与 CP 输入电容共同改变 Kpd，CP 开关偏移和实际保持共模必须联合处理；旧噪声预算不能宣称达标。",
+    "VCO Kvco 非线性且平均随粗调码由约 29.24 降至 7.29 MHz/V；采样增益也随摆幅变化，固定增益模型不再足够。",
+    "LC/电容阵列/滤波器无源模型仍理想，噪声、供电耦合、完整可靠性与冷启动、全 PVT/MC、版图面积和 DRC/LVS/PEX 未验证。",
+    "动态重定时器的停钟/复位恢复、CML CMOS 转换和高速时钟真实驱动负载需要继续验证。"
+  ],
+  "next_steps": [
+    "将已通过固定粗调码闭环的 S7 扩展为完整 FLL 启动/PVT；提取实际工作点 Kpd 与器件噪声，针对真实 Kvco/负载继续验证 100 kΩ 滤波候选。",
+    "提取 VCO 全粗调/细调表及 PVT，补工艺无源模型、采样和时钟负载，更新 FLL 搜索/预置策略后代回。",
+    "扩展 CML 前端为完整偶数分频链，补电平转换、复位、门控和实际偏置，再验证 FLL 实现。",
+    "持续按独立 TB、逐级代回、完整启动的次序推进，最终做全 33 点、PVT、PSS/pnoise 与功耗/面积闭合。"
+  ],
+  "decisions_since_last": [
+    "share/reports/decisions/DEC-0003.md"
+  ],
+  "resources_note": "本轮保存 148 个运行记录：{'checks_passed': 107, 'characterization': 18, 'design_check_failed': 20, 'execution_incomplete': 3}。基础 Spectre 或 APS 单线程，少量并行；有记录的远端执行时间累计约 9778 s（作业求和，不是任务历时）。所有运行的输入与远端 hash 审计共 148 项，原始证据回收到 research/runs/spectre_transistor。"
+}
