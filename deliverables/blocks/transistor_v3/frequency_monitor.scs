@@ -1,0 +1,8 @@
+simulator lang=spectre
+// Standalone device frequency monitor: no behavioral edge counter/comparator.
+// Inputs are CMOS outclk and refclk; phase/amplitude validity is a separate task.
+subckt tx_frequency_monitor (refclk reset active k0 k1 k2 k3 k4 k5 outclk frequency_good valid count_gate count_reset vdd vss)
+XW (refclk reset active k0 k1 k2 k3 k4 k5 m0 m1 m2 m3 m4 m5 m6 m7 m8 m9 m10 m11 m12 m13 count_gate count_reset frequency_good valid vdd vss) tx_frequency_watchdog
+XC (outclk count_gate count_reset q0 q1 q2 q3 q4 q5 q6 q7 q8 q9 q10 q11 q12 q13 vdd vss) tx_fll_counter
+XS (count_gate q0 q1 q2 q3 q4 q5 q6 q7 q8 q9 q10 q11 q12 q13 m0 m1 m2 m3 m4 m5 m6 m7 m8 m9 m10 m11 m12 m13 vdd vss) tx_fll_snapshot
+ends tx_frequency_monitor

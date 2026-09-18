@@ -1,0 +1,16 @@
+simulator lang=spectre
+// User-authorized preliminary model. Q=5 literature anchor; Q=3/8 sensitivity.
+// No claim of TSMC180BCD foundry fit, geometry, coupling or EM extraction.
+// p/n winding ports; sub is the grounded substrate, never a floating terminal.
+subckt tx_inductor_pi (p n sub)
+parameters ls=2n rs=7 cw=20f cox=80f csub=50f rsub=300
+RW (p x) resistor r=rs
+LW (x n) inductor l=ls
+CW (p n) capacitor c=cw
+COXP (p sp) capacitor c=cox
+COXN (n sn) capacitor c=cox
+RSP (sp sub) resistor r=rsub
+RSN (sn sub) resistor r=rsub
+CSP (sp sub) capacitor c=csub
+CSN (sn sub) capacitor c=csub
+ends tx_inductor_pi

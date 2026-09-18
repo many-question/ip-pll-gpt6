@@ -1,0 +1,268 @@
+simulator lang=spectre
+// 264 project-owned generic cells mapped to MOS.
+subckt tx_frequency_watchdog (refclk reset active target_k0 target_k1 target_k2 target_k3 target_k4 target_k5 measured0 measured1 measured2 measured3 measured4 measured5 measured6 measured7 measured8 measured9 measured10 measured11 measured12 measured13 count_gate count_reset frequency_good valid vdd vss)
+X0 (n29 refclk reset count_reset vdd vss) tx_dff_r1
+X1 (n30 refclk reset count_gate vdd vss) tx_dff_r0
+X2 (n31 refclk reset frequency_good vdd vss) tx_dff_r0
+X3 (n32 refclk reset valid vdd vss) tx_dff_r0
+X4 (n33 refclk reset n34 vdd vss) tx_dff_r0
+X5 (n35 refclk reset n36 vdd vss) tx_dff_r0
+X6 (n37 refclk reset n38 vdd vss) tx_dff_r0
+X7 (n39 refclk reset n40 vdd vss) tx_dff_r0
+X8 (n41 refclk reset n42 vdd vss) tx_dff_r0
+X9 (n43 refclk reset n44 vdd vss) tx_dff_r0
+X10 (n45 refclk reset n46 vdd vss) tx_dff_r0
+X11 (n47 refclk reset n48 vdd vss) tx_dff_r0
+X12 (count_reset n49 n50 n29 vdd vss) tx_mux
+X13 (count_gate n51 n52 n30 vdd vss) tx_mux
+X14 (frequency_good n53 n54 n31 vdd vss) tx_mux
+X15 (measured1 n55 vdd vss) pll_inv
+X16 (measured4 n56 vdd vss) pll_inv
+X17 (measured3 n57 vdd vss) pll_inv
+X18 (measured2 n58 vdd vss) pll_inv
+X19 (measured11 n59 vdd vss) pll_inv
+X20 (measured13 n60 vdd vss) pll_inv
+X21 (measured12 n61 vdd vss) pll_inv
+X22 (n62 n63 vdd vss) pll_inv
+X23 (n64 n65 vdd vss) pll_inv
+X24 (n66 n67 vdd vss) pll_inv
+X25 (n68 n69 vdd vss) pll_inv
+X26 (n70 n71 vdd vss) pll_inv
+X27 (n72 n73 vdd vss) pll_inv
+X28 (n74 n75 vdd vss) pll_inv
+X29 (target_k1 n76 vdd vss) pll_inv
+X30 (target_k0 n77 vdd vss) pll_inv
+X31 (active n78 vdd vss) pll_inv
+X32 (n79 n80 vdd vss) pll_inv
+X33 (n81 n82 vdd vss) pll_inv
+X34 (n38 n83 n84 vdd vss) tx_and
+X35 (n42 n85 n86 vdd vss) tx_and
+X36 (n87 n85 n88 vdd vss) tx_and
+X37 (n46 n88 n89 vdd vss) tx_and
+X38 (n90 n83 n85 vdd vss) tx_and
+X39 (n44 n42 n87 vdd vss) tx_and
+X40 (n40 n38 n90 vdd vss) tx_and
+X41 (n36 n34 n83 vdd vss) tx_and
+X42 (n91 n92 n81 vdd vss) tx_or
+X43 (n93 n94 n92 vdd vss) tx_and
+X44 (n95 n96 n94 vdd vss) tx_or
+X45 (n97 n98 n96 vdd vss) tx_and
+X46 (n99 n100 n93 vdd vss) tx_and
+X47 (target_k5 n101 n91 vdd vss) tx_or
+X48 (n99 target_k4 n101 vdd vss) tx_and
+X49 (n102 n94 n103 vdd vss) tx_and
+X50 (n104 n103 n79 vdd vss) tx_or
+X51 (target_k5 target_k4 n104 vdd vss) tx_and
+X52 (target_k3 target_k2 n95 vdd vss) tx_and
+X53 (target_k1 n105 n98 vdd vss) tx_or
+X54 (n76 target_k0 n105 vdd vss) tx_and
+X55 (measured4 n106 n107 vdd vss) tx_and
+X56 (measured2 n108 n109 vdd vss) tx_and
+X57 (measured10 n110 n111 vdd vss) tx_and
+X58 (n112 n113 n110 vdd vss) tx_and
+X59 (n114 n106 n115 vdd vss) tx_and
+X60 (measured6 n115 n116 vdd vss) tx_and
+X61 (n117 n113 n118 vdd vss) tx_and
+X62 (measured12 n118 n119 vdd vss) tx_and
+X63 (n120 n106 n113 vdd vss) tx_and
+X64 (n121 n112 n117 vdd vss) tx_and
+X65 (n122 n114 n120 vdd vss) tx_and
+X66 (n123 n108 n106 vdd vss) tx_and
+X67 (measured11 measured10 n121 vdd vss) tx_and
+X68 (measured9 measured8 n112 vdd vss) tx_and
+X69 (measured7 measured6 n122 vdd vss) tx_and
+X70 (measured5 measured4 n114 vdd vss) tx_and
+X71 (measured3 measured2 n123 vdd vss) tx_and
+X72 (measured8 n113 n124 vdd vss) tx_and
+X73 (measured1 measured0 n108 vdd vss) tx_and
+X74 (n125 n77 n126 vdd vss) tx_and
+X75 (n127 n76 n128 vdd vss) tx_and
+X76 (n129 n130 n131 vdd vss) tx_and
+X77 (n132 n133 n134 vdd vss) tx_and
+X78 (n135 n100 n136 vdd vss) tx_and
+X79 (n137 n99 n138 vdd vss) tx_and
+X80 (n125 n77 n139 vdd vss) tx_xor
+X81 (n127 n76 n140 vdd vss) tx_xor
+X82 (n129 n130 n141 vdd vss) tx_xor
+X83 (n132 n133 n142 vdd vss) tx_xor
+X84 (n135 n100 n143 vdd vss) tx_xor
+X85 (n137 n99 n144 vdd vss) tx_xor
+X86 (n145 n146 n147 vdd vss) tx_or
+X87 (n148 n149 n146 vdd vss) tx_and
+X88 (n150 n151 n149 vdd vss) tx_or
+X89 (n152 n153 n151 vdd vss) tx_and
+X90 (n154 n155 n153 vdd vss) tx_or
+X91 (n156 n157 n155 vdd vss) tx_and
+X92 (n158 n159 n150 vdd vss) tx_or
+X93 (n160 n161 n159 vdd vss) tx_and
+X94 (n162 n163 n154 vdd vss) tx_or
+X95 (n164 n165 n163 vdd vss) tx_and
+X96 (n166 n167 n157 vdd vss) tx_or
+X97 (n72 n168 n145 vdd vss) tx_or
+X98 (n73 n74 n168 vdd vss) tx_and
+X99 (n71 n144 n160 vdd vss) tx_and
+X100 (n70 n169 n158 vdd vss) tx_or
+X101 (n71 n138 n169 vdd vss) tx_and
+X102 (n143 n142 n170 vdd vss) tx_and
+X103 (n136 n171 n161 vdd vss) tx_or
+X104 (n143 n134 n171 vdd vss) tx_and
+X105 (n131 n172 n162 vdd vss) tx_or
+X106 (n141 n128 n172 vdd vss) tx_and
+X107 (n126 n173 n165 vdd vss) tx_or
+X108 (n139 n64 n173 vdd vss) tx_and
+X109 (n67 n69 n167 vdd vss) tx_and
+X110 (n66 n174 n166 vdd vss) tx_or
+X111 (n67 n68 n174 vdd vss) tx_and
+X112 (measured5 n77 n175 vdd vss) tx_and
+X113 (measured6 n76 n176 vdd vss) tx_and
+X114 (measured7 n130 n177 vdd vss) tx_and
+X115 (measured8 n133 n178 vdd vss) tx_and
+X116 (measured9 n100 n179 vdd vss) tx_and
+X117 (measured10 n99 n180 vdd vss) tx_and
+X118 (measured5 n77 n181 vdd vss) tx_xor
+X119 (measured6 n76 n182 vdd vss) tx_xor
+X120 (measured7 n130 n183 vdd vss) tx_xor
+X121 (measured8 n133 n184 vdd vss) tx_xor
+X122 (measured9 n100 n185 vdd vss) tx_xor
+X123 (measured10 n99 n186 vdd vss) tx_xor
+X124 (n187 n188 n189 vdd vss) tx_or
+X125 (n190 n191 n188 vdd vss) tx_and
+X126 (n192 n193 n191 vdd vss) tx_or
+X127 (n194 n195 n193 vdd vss) tx_and
+X128 (n196 n197 n195 vdd vss) tx_or
+X129 (n198 n199 n197 vdd vss) tx_and
+X130 (n200 n201 n192 vdd vss) tx_or
+X131 (n202 n203 n201 vdd vss) tx_and
+X132 (n204 n205 n196 vdd vss) tx_or
+X133 (n206 n207 n205 vdd vss) tx_and
+X134 (n208 n209 n199 vdd vss) tx_or
+X135 (n210 n211 n209 vdd vss) tx_and
+X136 (measured13 n212 n187 vdd vss) tx_or
+X137 (n60 measured12 n212 vdd vss) tx_and
+X138 (measured11 n213 n200 vdd vss) tx_or
+X139 (n59 n180 n213 vdd vss) tx_and
+X140 (n185 n184 n214 vdd vss) tx_and
+X141 (n179 n215 n203 vdd vss) tx_or
+X142 (n185 n178 n215 vdd vss) tx_and
+X143 (n183 n182 n206 vdd vss) tx_and
+X144 (n177 n216 n204 vdd vss) tx_or
+X145 (n183 n176 n216 vdd vss) tx_and
+X146 (n181 n56 n217 vdd vss) tx_and
+X147 (n175 n218 n207 vdd vss) tx_or
+X148 (n181 measured4 n218 vdd vss) tx_and
+X149 (measured3 n219 n208 vdd vss) tx_or
+X150 (n57 measured2 n219 vdd vss) tx_and
+X151 (measured1 n220 n211 vdd vss) tx_or
+X152 (n55 measured0 n220 vdd vss) tx_and
+X153 (n82 n221 n222 vdd vss) tx_or
+X154 (n223 n224 n225 vdd vss) tx_or
+X155 (n36 n34 n226 vdd vss) tx_xor
+X156 (n38 n83 n227 vdd vss) tx_xor
+X157 (n40 n84 n228 vdd vss) tx_xor
+X158 (n42 n85 n229 vdd vss) tx_xor
+X159 (n44 n86 n230 vdd vss) tx_xor
+X160 (n46 n88 n231 vdd vss) tx_xor
+X161 (n48 n89 n232 vdd vss) tx_xor
+X162 (measured1 measured0 n62 vdd vss) tx_xor
+X163 (measured2 n108 n68 vdd vss) tx_xor
+X164 (measured3 n109 n66 vdd vss) tx_xor
+X165 (measured4 n106 n64 vdd vss) tx_xor
+X166 (measured5 n107 n125 vdd vss) tx_xor
+X167 (measured6 n115 n127 vdd vss) tx_xor
+X168 (measured7 n116 n129 vdd vss) tx_xor
+X169 (measured8 n113 n132 vdd vss) tx_xor
+X170 (measured9 n124 n135 vdd vss) tx_xor
+X171 (measured10 n110 n137 vdd vss) tx_xor
+X172 (measured11 n111 n70 vdd vss) tx_xor
+X173 (measured12 n118 n74 vdd vss) tx_xor
+X174 (measured13 n119 n72 vdd vss) tx_xor
+X175 (n78 n233 n234 vdd vss) tx_or
+X176 (n234 n235 n50 vdd vss) tx_or
+X177 (n78 n236 n237 vdd vss) tx_or
+X178 (n237 n238 n52 vdd vss) tx_or
+X179 (n78 n239 n54 vdd vss) tx_or
+X180 (n240 n36 n241 vdd vss) tx_or
+X181 (n241 n242 n243 vdd vss) tx_or
+X182 (n243 n244 n245 vdd vss) tx_or
+X183 (n246 n40 n242 vdd vss) tx_or
+X184 (n247 n242 n248 vdd vss) tx_or
+X185 (n248 n244 n249 vdd vss) tx_or
+X186 (n42 n250 n251 vdd vss) tx_or
+X187 (n251 n252 n244 vdd vss) tx_or
+X188 (n253 n244 n254 vdd vss) tx_or
+X189 (n34 n255 n247 vdd vss) tx_or
+X190 (n38 n40 n256 vdd vss) tx_or
+X191 (n42 n44 n257 vdd vss) tx_or
+X192 (n46 n48 n252 vdd vss) tx_or
+X193 (n247 n256 n253 vdd vss) tx_or
+X194 (n257 n252 n258 vdd vss) tx_or
+X195 (n253 n258 n259 vdd vss) tx_or
+X196 (n260 n93 n221 vdd vss) tx_and
+X197 (n261 n221 n262 vdd vss) tx_or
+X198 (n130 target_k3 n97 vdd vss) tx_and
+X199 (n100 target_k5 n102 vdd vss) tx_and
+X200 (n105 n97 n260 vdd vss) tx_and
+X201 (n260 n102 n263 vdd vss) tx_and
+X202 (n80 n263 n264 vdd vss) tx_or
+X203 (measured0 n63 n265 vdd vss) tx_and
+X204 (n65 n139 n266 vdd vss) tx_and
+X205 (n140 n141 n164 vdd vss) tx_and
+X206 (n75 n73 n148 vdd vss) tx_and
+X207 (n265 n167 n267 vdd vss) tx_and
+X208 (n266 n164 n156 vdd vss) tx_and
+X209 (n170 n160 n152 vdd vss) tx_and
+X210 (n267 n156 n268 vdd vss) tx_and
+X211 (n152 n148 n269 vdd vss) tx_and
+X212 (n268 n269 n224 vdd vss) tx_and
+X213 (n270 n224 n271 vdd vss) tx_or
+X214 (n58 n57 n210 vdd vss) tx_and
+X215 (n186 n59 n202 vdd vss) tx_and
+X216 (n61 n60 n190 vdd vss) tx_and
+X217 (n220 n210 n272 vdd vss) tx_and
+X218 (n217 n206 n198 vdd vss) tx_and
+X219 (n214 n202 n194 vdd vss) tx_and
+X220 (n272 n198 n273 vdd vss) tx_and
+X221 (n194 n190 n274 vdd vss) tx_and
+X222 (n273 n274 n275 vdd vss) tx_and
+X223 (n276 n275 n277 vdd vss) tx_or
+X224 (n233 n235 n278 vdd vss) tx_or
+X225 (n34 n36 n279 vdd vss) tx_or
+X226 (n279 n256 n280 vdd vss) tx_or
+X227 (n280 n258 n281 vdd vss) tx_or
+X228 (n236 n238 n282 vdd vss) tx_or
+X229 (n245 n239 vdd vss) pll_inv
+X230 (n249 n233 vdd vss) pll_inv
+X231 (n281 n235 vdd vss) pll_inv
+X232 (n254 n236 vdd vss) pll_inv
+X233 (n259 n238 vdd vss) pll_inv
+X234 (n262 n264 n283 vdd vss) tx_and
+X235 (n283 n271 n284 vdd vss) tx_and
+X236 (n284 n277 n285 vdd vss) tx_and
+X237 (vss n239 active n32 vdd vss) tx_mux
+X238 (vss n240 active n33 vdd vss) tx_mux
+X239 (vss n226 active n35 vdd vss) tx_mux
+X240 (vss n227 active n37 vdd vss) tx_mux
+X241 (vss n228 active n39 vdd vss) tx_mux
+X242 (vss n229 active n41 vdd vss) tx_mux
+X243 (vss n230 active n43 vdd vss) tx_mux
+X244 (vss n231 active n45 vdd vss) tx_mux
+X245 (vss n232 active n47 vdd vss) tx_mux
+X246 (n285 nx n245 n286 vdd vss) tx_mux
+X247 (vss n286 active n53 vdd vss) tx_mux
+X248 (vdd n287 active n49 vdd vss) tx_mux
+X249 (vss n288 active n51 vdd vss) tx_mux
+X250 (target_k2 n130 vdd vss) pll_inv
+X251 (target_k3 n133 vdd vss) pll_inv
+X252 (target_k4 n100 vdd vss) pll_inv
+X253 (target_k5 n99 vdd vss) pll_inv
+X254 (n222 n261 vdd vss) pll_inv
+X255 (n225 n270 vdd vss) pll_inv
+X256 (n147 n223 vdd vss) pll_inv
+X257 (n189 n276 vdd vss) pll_inv
+X258 (n34 n240 vdd vss) pll_inv
+X259 (n36 n255 vdd vss) pll_inv
+X260 (n38 n246 vdd vss) pll_inv
+X261 (n44 n250 vdd vss) pll_inv
+X262 (nx n233 n278 n287 vdd vss) tx_mux
+X263 (nx n238 n282 n288 vdd vss) tx_mux
+ends tx_frequency_watchdog

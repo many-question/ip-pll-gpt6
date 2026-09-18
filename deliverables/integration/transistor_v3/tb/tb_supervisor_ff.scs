@@ -1,0 +1,27 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=ff
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "cells.scs"
+include "receiver.scs"
+simulatorOptions options reltol=1e-3 vabstol=1e-5 iabstol=1e-12 temp=0
+
+include "digital_cells_v2.scs"
+VDD (vdd 0) vsource dc=1.2
+VREF (refclk 0) vsource type=pulse val0=0 val1=1.2 delay=10n rise=50p fall=50p width=2.0783333333333334e-08 period=4.166666666666667e-08
+Vreset (reset 0) vsource type=pwl wave=[0 1.2 1e-07 1.2 1.0005e-07 0.0]
+include "pll_supervisor.scs"
+Vcfg_ready (cfg_ready 0) vsource type=pwl wave=[0 0.0 2e-07 0.0 2.0005e-07 1.2 1.2e-05 1.2 1.200005e-05 0.0 1.26e-05 0.0 1.260005e-05 1.2]
+Vfll_enable (fll_enable 0) vsource type=pwl wave=[0 0.0 1e-06 0.0 1.00005e-06 1.2 6.3e-06 1.2 6.30005e-06 0.0 7e-06 0.0 7.00005e-06 1.2]
+Vrange_error (range_error 0) vsource type=pwl wave=[0 0.0 1.1e-05 0.0 1.100005e-05 1.2 1.2e-05 1.2 1.200005e-05 0.0]
+Vphase_good (phase_good 0) vsource type=pwl wave=[0 0.0 1.5e-06 0.0 1.50005e-06 1.2 4e-06 1.2 4.00005e-06 0.0 4.075e-06 0.0 4.07505e-06 1.2 6e-06 1.2 6.00005e-06 0.0 7e-06 0.0 7.00005e-06 1.2]
+Vfrequency_good (frequency_good 0) vsource type=pwl wave=[0 0.0 5e-07 0.0 5.0005e-07 1.2 9e-06 1.2 9.00005e-06 0.0 9.5e-06 0.0 9.50005e-06 1.2]
+XS (refclk reset cfg_ready fll_enable range_error phase_good frequency_good pll_enable qualified restart fault vdd 0) tx_pll_supervisor
+Cpll_enable (pll_enable 0) capacitor c=20f
+Cqualified (qualified 0) capacitor c=20f
+Crestart (restart 0) capacitor c=20f
+Cfault (fault 0) capacitor c=20f
+tran tran stop=15u maxstep=2n method=gear2only errpreset=moderate strobeperiod=1n strobeoutput=strobeonly
+save refclk reset cfg_ready fll_enable range_error phase_good frequency_good pll_enable qualified restart fault VDD:p
+saveOptions options save=selected

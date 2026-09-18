@@ -1,0 +1,32 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "cells.scs"
+include "receiver.scs"
+simulatorOptions options reltol=1e-4 vabstol=1e-7 iabstol=1e-13 temp=27
+
+include "digital_cells_v2.scs"
+include "pll_config.scs"
+include "divider_v2.scs"
+include "limiter_chain.scs"
+include "bank_divider_light.scs"
+VDD (vdd 0) vsource dc=1.2
+VP (vp 0) vsource type=sine dc=1.0 ampl=.2 freq=3888000000.0
+VN (vn 0) vsource type=sine dc=1.0 ampl=.2 freq=3888000000.0 sinephase=180
+VR (ref 0) vsource type=pulse val0=0 val1=1.2 delay=10n rise=50p fall=50p width=20.7833333333n period=41.6666666667n
+VRESET (reset 0) vsource type=pulse val0=1.2 val1=0 delay=20n rise=50p fall=50p width=1m period=2m
+VAPPLY (apply 0) vsource type=pulse val0=0 val1=1.2 delay=60n rise=50p fall=50p width=300n period=2u
+VK0 (k0 0) vsource dc=1.2
+VK1 (k1 0) vsource dc=1.2
+VK2 (k2 0) vsource dc=0
+VK3 (k3 0) vsource dc=1.2
+VK4 (k4 0) vsource dc=1.2
+VK5 (k5 0) vsource dc=0
+XC (ref reset apply k0 k1 k2 k3 k4 k5 ak0 ak1 ak2 ak3 ak4 ak5 s0 s1 s2 s3 s4 s5 ready invalid rst vdd 0) tx_pll_config
+XD (vp vn rst s0 s1 s2 s3 s4 s5 out vdd 0) tx_divider_bank_light
+CL (out 0) capacitor c=10f
+tran tran stop=800n maxstep=10p errpreset=moderate
+save ref apply reset rst ready invalid out VDD:p s0 s1 s2 s3 s4 s5
+saveOptions options save=selected

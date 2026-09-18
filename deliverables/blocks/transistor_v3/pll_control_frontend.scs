@@ -1,0 +1,17 @@
+simulator lang=spectre
+// Physical control assembly. phase_good/frequency_good are sensing interfaces;
+// their detector circuits are not implemented by this digital wrapper.
+// Include cells, digital_cells_v2, fll_circuit, pll_config, pll_supervisor,
+// and cp_timing before this file. All below are MOS circuits except DAC resistors.
+subckt tx_pll_control_frontend (refclk reset apply k0 k1 k2 k3 k4 k5 outclk phase_good frequency_good b0 b1 b2 b3 b4 b5 b6 b7 s0 s1 s2 s3 s4 s5 divider_reset enable pulse preset qualified range_error config_ready config_invalid restart count_gate count_reset vdd vss)
+XC (refclk reset apply k0 k1 k2 k3 k4 k5 ak0 ak1 ak2 ak3 ak4 ak5 s0 s1 s2 s3 s4 s5 config_ready config_invalid cfg_reset vdd vss) tx_pll_config
+XR (cfg_reset restart fll_reset vdd vss) tx_or
+XDRESET (cfg_reset restart divider_reset vdd vss) tx_or
+XF (refclk fll_reset ak0 ak1 ak2 ak3 ak4 ak5 m0 m1 m2 m3 m4 m5 m6 m7 m8 m9 m10 m11 m12 m13 b0 b1 b2 b3 b4 b5 b6 b7 d0 d1 d2 d3 d4 d5 count_gate count_reset acquired range_error state0 state1 state2 vdd vss) tx_fll_controller
+XCOUNT (outclk count_gate count_reset q0 q1 q2 q3 q4 q5 q6 q7 q8 q9 q10 q11 q12 q13 vdd vss) tx_fll_counter
+XSN (count_gate q0 q1 q2 q3 q4 q5 q6 q7 q8 q9 q10 q11 q12 q13 m0 m1 m2 m3 m4 m5 m6 m7 m8 m9 m10 m11 m12 m13 vdd vss) tx_fll_snapshot
+// DAC is disabled only by the physical acquisition controller after fine search.
+XDAC (d0 d1 d2 d3 d4 d5 acquired preset vdd vss) tx_fll_dac
+XS (refclk reset config_ready acquired range_error phase_good frequency_good enable qualified restart fault vdd vss) tx_pll_supervisor
+XP (refclk enable fll_reset pulse vdd vss) tx_cp_timing
+ends tx_pll_control_frontend

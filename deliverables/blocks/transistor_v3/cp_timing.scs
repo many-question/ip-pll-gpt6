@@ -1,0 +1,39 @@
+simulator lang=spectre
+// Uncalibrated MOS propagation delay; all pulse timing is physical.
+subckt tx_cp_timing (ref enable reset pulse vdd vss)
+parameters delay_l=360n
+XI (ref refb vdd vss) pll_inv
+XR (reset resetb vdd vss) pll_inv
+// Clear the arm latch on reset; releasing reset during ref high cannot
+// create a late partial pulse. Re-arm only in the next ref-low interval.
+XE (enable refb ref resetb en_hold vdd vss) tx_latch_r
+XD0 (ref d1 vdd vss) pll_inv wn=500n wp=1.25u ln=delay_l
+XD1 (d1 d2 vdd vss) pll_inv wn=500n wp=1.25u ln=delay_l
+XD2 (d2 d3 vdd vss) pll_inv wn=500n wp=1.25u ln=delay_l
+XD3 (d3 d4 vdd vss) pll_inv wn=500n wp=1.25u ln=delay_l
+XD4 (d4 d5 vdd vss) pll_inv wn=500n wp=1.25u ln=delay_l
+XD5 (d5 d6 vdd vss) pll_inv wn=500n wp=1.25u ln=delay_l
+XD6 (d6 d7 vdd vss) pll_inv wn=500n wp=1.25u ln=delay_l
+XD7 (d7 d8 vdd vss) pll_inv wn=500n wp=1.25u ln=delay_l
+XD8 (d8 d9 vdd vss) pll_inv wn=500n wp=1.25u ln=delay_l
+XD9 (d9 d10 vdd vss) pll_inv wn=500n wp=1.25u ln=delay_l
+XD10 (d10 d11 vdd vss) pll_inv wn=500n wp=1.25u ln=delay_l
+XD11 (d11 d12 vdd vss) pll_inv wn=500n wp=1.25u ln=delay_l
+XD12 (d12 d13 vdd vss) pll_inv wn=500n wp=1.25u ln=delay_l
+XD13 (d13 d14 vdd vss) pll_inv wn=500n wp=1.25u ln=delay_l
+XD14 (d14 d15 vdd vss) pll_inv wn=500n wp=1.25u ln=delay_l
+XD15 (d15 d16 vdd vss) pll_inv wn=500n wp=1.25u ln=delay_l
+XD16 (d16 d17 vdd vss) pll_inv wn=500n wp=1.25u ln=delay_l
+XD17 (d17 d18 vdd vss) pll_inv wn=500n wp=1.25u ln=delay_l
+XD18 (d18 d19 vdd vss) pll_inv wn=500n wp=1.25u ln=delay_l
+XD19 (d19 d20 vdd vss) pll_inv wn=500n wp=1.25u ln=delay_l
+XD20 (d20 d21 vdd vss) pll_inv wn=500n wp=1.25u ln=delay_l
+XD21 (d21 d22 vdd vss) pll_inv wn=500n wp=1.25u ln=delay_l
+XD22 (d22 d23 vdd vss) pll_inv wn=500n wp=1.25u ln=delay_l
+XD23 (d23 d24 vdd vss) pll_inv wn=500n wp=1.25u ln=delay_l
+XN (d24 d24b vdd vss) pll_inv
+XP (d12 d24b raw vdd vss) tx_and
+XS (raw ref held vdd vss) tx_and
+XEN (held en_hold enabled vdd vss) tx_and
+XRESET (enabled resetb pulse vdd vss) tx_and
+ends tx_cp_timing

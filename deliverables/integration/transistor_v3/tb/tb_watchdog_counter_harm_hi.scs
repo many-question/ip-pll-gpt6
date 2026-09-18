@@ -1,0 +1,29 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "cells.scs"
+include "receiver.scs"
+simulatorOptions options reltol=1e-3 vabstol=1e-5 iabstol=1e-12 temp=27
+
+include "digital_cells_v2.scs"
+VDD (vdd 0) vsource dc=1.2
+VREF (refclk 0) vsource type=pulse val0=0 val1=1.2 delay=10n rise=50p fall=50p width=2.0783333333333334e-08 period=4.166666666666667e-08
+Vreset (reset 0) vsource type=pwl wave=[0 1.2 1e-07 1.2 1.0005e-07 0.0]
+include "frequency_watchdog.scs"
+include "fll_circuit.scs"
+Vactive (active 0) vsource type=pwl wave=[0 0.0 2e-07 0.0 2.0005e-07 1.2]
+VCLK (clk 0) vsource type=pulse val0=0 val1=1.2 period=4.59317585301837e-09 width=2.27658792650919e-09 rise=20p fall=20p delay=3n
+VK0 (target_k0 0) vsource dc=1.2
+VK1 (target_k1 0) vsource dc=0
+VK2 (target_k2 0) vsource dc=0
+VK3 (target_k3 0) vsource dc=1.2
+VK4 (target_k4 0) vsource dc=0
+VK5 (target_k5 0) vsource dc=0
+XD (refclk reset active target_k0 target_k1 target_k2 target_k3 target_k4 target_k5 measured0 measured1 measured2 measured3 measured4 measured5 measured6 measured7 measured8 measured9 measured10 measured11 measured12 measured13 count_gate count_reset frequency_good valid vdd 0) tx_frequency_watchdog
+XC (clk count_gate count_reset q0 q1 q2 q3 q4 q5 q6 q7 q8 q9 q10 q11 q12 q13 vdd 0) tx_fll_counter
+XS (count_gate q0 q1 q2 q3 q4 q5 q6 q7 q8 q9 q10 q11 q12 q13 measured0 measured1 measured2 measured3 measured4 measured5 measured6 measured7 measured8 measured9 measured10 measured11 measured12 measured13 vdd 0) tx_fll_snapshot
+tran tran stop=2.1u maxstep=100p method=gear2only errpreset=moderate strobeperiod=200p strobeoutput=strobeonly
+save refclk reset active target_k0 target_k1 target_k2 target_k3 target_k4 target_k5 measured0 measured1 measured2 measured3 measured4 measured5 measured6 measured7 measured8 measured9 measured10 measured11 measured12 measured13 count_gate count_reset frequency_good valid q0 q1 q2 q3 q4 q5 q6 q7 q8 q9 q10 q11 q12 q13 XC.gclk VDD:p
+saveOptions options save=selected

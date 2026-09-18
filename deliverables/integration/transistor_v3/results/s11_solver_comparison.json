@@ -1,0 +1,101 @@
+{
+  "note": "Partial comparisons check numerical sensitivity only. Cancelled trials do not establish final settling.",
+  "trials": [
+    {
+      "run": "system_config_r2",
+      "case": "loop_s11_parallel_tt",
+      "last_time_s": 7.800000000000006e-07,
+      "cancelled": true,
+      "solver": "APS",
+      "threads": 1,
+      "effective_settings": {
+        "reltol": "100e-06, default 1e-03",
+        "abstol(V)": "100 nV, default 1 uV",
+        "abstol(I)": "100 fA, default 1 pA",
+        "errpreset": "moderate",
+        "method": "traponly"
+      },
+      "enable_rise_ns": [
+        505.0000017790563
+      ]
+    },
+    {
+      "run": "system_config_gear",
+      "case": "loop_s11_gear_tt",
+      "last_time_s": 1.6e-07,
+      "cancelled": true,
+      "solver": "APS",
+      "threads": 1,
+      "effective_settings": {
+        "reltol": "100e-06, default 1e-03",
+        "abstol(V)": "100 nV, default 1 uV",
+        "abstol(I)": "100 fA, default 1 pA",
+        "errpreset": "moderate",
+        "method": "gear2only"
+      },
+      "enable_rise_ns": []
+    },
+    {
+      "run": "system_config_moderate",
+      "case": "loop_s11_moderate_tt",
+      "last_time_s": 9.900000000000005e-07,
+      "cancelled": true,
+      "solver": "APS",
+      "threads": 4,
+      "effective_settings": {
+        "reltol": "1e-03",
+        "abstol(V)": "10 uV",
+        "abstol(I)": "1 pA",
+        "errpreset": "moderate",
+        "method": "gear2only"
+      },
+      "enable_rise_ns": [
+        505.00000241748796
+      ]
+    },
+    {
+      "run": "system_config_ax",
+      "case": "loop_s11_moderate_tt",
+      "last_time_s": 5.999999999999953e-06,
+      "cancelled": false,
+      "solver": "Spectre X AX",
+      "threads": 4,
+      "effective_settings": {
+        "reltol": "1e-03",
+        "abstol(V)": "1 uV",
+        "abstol(I)": "1 pA",
+        "errpreset": "moderate",
+        "method": "trap"
+      },
+      "enable_rise_ns": [
+        505.0000017528401
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "candidate": "system_config_gear",
+      "reference": "system_config_r2",
+      "comparison_end_s": 1.6e-07,
+      "samples": 6,
+      "control_max_difference_v": 3.6292909361135273e-07,
+      "cycle_control_max_difference_v": 1.8266825163593126e-08
+    },
+    {
+      "candidate": "system_config_moderate",
+      "reference": "system_config_r2",
+      "comparison_end_s": 7.800000000000006e-07,
+      "samples": 68,
+      "control_max_difference_v": 3.159683874026653e-05,
+      "cycle_control_max_difference_v": 2.9068389142239415e-05
+    },
+    {
+      "candidate": "system_config_ax",
+      "reference": "system_config_r2",
+      "comparison_end_s": 7.800000000000006e-07,
+      "samples": 68,
+      "control_max_difference_v": 1.616544905486128e-05,
+      "cycle_control_max_difference_v": 1.5853030477130936e-05
+    }
+  ]
+}

@@ -1,6 +1,13 @@
 # 交付物索引
 
-2026-09-18：已完成六档晶体管分频的配对角验证、FLL 控制器/计数器/DAC 实现及分块验证，并提取关键模块的实际 PDK 器件噪声。宽带验收下原输出链超标，改进后明显下降；整机 <200 fs、≤4 mW 及完整全器件启动仍未证明。
+2026-09-18：新增 MOS 脉冲时序、频点配置/译码、数字资格/重启和周期测频控制，并验证其功能和性能影响。按已确认的初步电感 RLC 方案，Q=5 暴露原 VCO 低频端失振和高频覆盖不足；整机抖动、功耗和面积尚未闭合。偏置/基准后置，相位/振幅检测与 GHz 时钟接口仍待补齐。
+
+- [逻辑时序、混合闭环与电感 RLC 影响的本轮证据](integration/transistor_v3/README.md)
+- [新增控制电路与电感模型的接口及边界](blocks/transistor_v3/README.md)
+- [文献 Q、PDK 检查与综合来源](sources/transistor_v3_sources.md)
+- [DEC-0005：逻辑时序优先，允许初步电感 RLC 建模](../reports/decisions/DEC-0005.md)
+
+上一阶段分频、FLL 与器件噪声：
 
 - [分频、FLL、器件噪声与逐级代回的本轮证据](integration/transistor_v2/README.md)
 - [新增晶体管电路、接口和使用边界](blocks/transistor_v2/README.md)

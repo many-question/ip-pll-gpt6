@@ -1,0 +1,8 @@
+simulator lang=spectre
+global 0
+include "inductor_pi.scs"
+VTEST (p 0) vsource dc=0 mag=1
+XL (p 0 0) tx_inductor_pi rs=6.822430344006
+ac ac start=10M stop=30G dec=60
+save p VTEST:p
+saveOptions options save=selected
