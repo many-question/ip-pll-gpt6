@@ -1,0 +1,11 @@
+`include "disciplines.vams"
+module charge_pump(sample,pulse,enable,out,vdd,vss);
+  input sample,pulse,enable,vdd,vss; inout out;
+  electrical sample,pulse,enable,out,vdd,vss;
+  parameter real gm=120u, ilimit=48u;
+  real cur;
+  analog begin
+    cur=max(-ilimit,min(ilimit,gm*V(sample,vss)));
+    I(out,vss) <+ cur*max(0,min(1,V(pulse,vss)/V(vdd,vss)))*max(0,min(1,V(enable,vss)/V(vdd,vss)));
+  end
+endmodule

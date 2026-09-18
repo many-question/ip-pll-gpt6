@@ -1,0 +1,312 @@
+{
+  "schema": "chip-report/0.1",
+  "report": {
+    "seq": 3,
+    "time": "2026-09-18T11:46:06+08:00",
+    "trigger": "requested",
+    "covers_since": "2026-09-18T00:18:37+08:00"
+  },
+  "overall": {
+    "phase": "Python 完整捕获模型、模块 VA 和 Spectre 顶层行为验证",
+    "summary": "Python 补齐有限计数 FLL/粗调/预充交接/重捕获，396 名义启动和 66 个 ±1% 灵敏度情景通过；建立 10 个功能 VA 模块与 53 个 TB 网表。Spectre 完成 16 个模块测试、1 个 Python/VA 主环轨迹对照和 9 个顶层测试，均通过明示检查。六个名义顶层点覆盖全部 M 及输出/VCO 端点，频点切换和 −24 MHz 扰动恢复通过。仍属行为级证据。",
+    "since_last": [
+      "补齐整数边沿计数 FLL、粗调搜索、预充交接和周期失锁监视。",
+      "发现原保护范围不足，提出 2.64–4.00 GHz 粗调工作范围，保留范围失败证据。",
+      "建立 10 个模块 VA、独立测量监视器、16 个模块 TB、主环对照 TB 和 36 个顶层 TB。",
+      "Spectre 26 个已运行测试通过功能测量和负例预期；原始输入/日志/波形回收本地，远端输入 SHA-256 已核验。",
+      "主环 Python/VA 144 个采样点的最大相位差约 2.79e-5 rad、控制电压差约 3.13 µV。",
+      "保留 FLL 12.5% 周期监视所带来的锁定功耗预算风险。"
+    ],
+    "route_confidence": "medium",
+    "route_confidence_reason": "完整确定性闭环已跨 Python 和 Spectre 验证，可继续逐块用电路替换；器件参数、噪声、功耗面积及 PVT 仍未获得工艺证据。"
+  },
+  "levels": {
+    "survey": {
+      "maturity": 2,
+      "note": "补充官方 Verilog-AMS LRM 及实际工具/环境核验；沿用一手 PLL 来源。",
+      "artifacts": [
+        "share/deliverables/sources/va_model_sources.md"
+      ]
+    },
+    "modeling": {
+      "maturity": 3,
+      "note": "完整名义捕获、量化测频、正确谐波、重捕获，以及 Python/VA 主环逐周期轨迹得到交叉验证；噪声输入仍是假设。",
+      "artifacts": [
+        "share/deliverables/architecture/behavioral_v2/README.md",
+        "share/deliverables/integration/va_v1/results/validation.json"
+      ]
+    },
+    "architecture": {
+      "maturity": 3,
+      "note": "既定架构的确定性功能闭环跑通；粗调保护范围与 FLL 策略为工作候选，未冻结。",
+      "artifacts": [
+        "share/deliverables/architecture/behavioral_v2/README.md",
+        "share/deliverables/integration/va_v1/README.md"
+      ]
+    },
+    "blocks": [
+      {
+        "name": "reference_buffer",
+        "role": "24 MHz 参考整形",
+        "stage": "behavioral",
+        "maturity": 2,
+        "note": "有限门限/延迟 VA 和独立参考测试通过，未验证实际参考噪声。",
+        "artifacts": [
+          "share/deliverables/blocks/behavioral_va/reference_buffer.va",
+          "share/deliverables/integration/va_v1/results/validation.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "subsampling_detector",
+        "role": "直接采样差分 VCO 并鉴相",
+        "stage": "behavioral",
+        "maturity": 2,
+        "note": "直接采样 VCO 差分波形；采样值与脉冲时序测试通过。",
+        "artifacts": [
+          "share/deliverables/blocks/behavioral_va/subsampling_detector.va",
+          "share/deliverables/integration/va_v1/results/validation.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "transconductor_charge_pump",
+        "role": "采样误差转电流及增益控制",
+        "stage": "behavioral",
+        "maturity": 2,
+        "note": "增益/限幅/负反馈极性和电荷积分测试通过；无器件噪声与电压余量证据。",
+        "artifacts": [
+          "share/deliverables/blocks/behavioral_va/charge_pump.va",
+          "share/deliverables/integration/va_v1/results/validation.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "passive_loop_filter",
+        "role": "环路滤波与稳定性",
+        "stage": "behavioral",
+        "maturity": 3,
+        "note": "连续 R/C 与预充 VA 经 Spectre 原生 R/C 独立比较；主环轨迹与 Python 一致。",
+        "artifacts": [
+          "share/deliverables/blocks/behavioral_va/loop_filter.va",
+          "share/deliverables/integration/va_v1/results/validation.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "lc_vco_and_cap_bank",
+        "role": "2.688–3.936 GHz 振荡、粗调和模拟细调",
+        "stage": "behavioral",
+        "maturity": 2,
+        "note": "等 C 256 码和细调 VA 已闭环运行；2.64–4.00 GHz 名义保护范围为假设，无 LC 器件启动或 PVT。",
+        "artifacts": [
+          "share/deliverables/blocks/behavioral_va/lc_vco.va",
+          "share/deliverables/integration/va_v1/results/validation.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "auxiliary_fll",
+        "role": "启动捕获和正确谐波选择",
+        "stage": "behavioral",
+        "maturity": 3,
+        "note": "实际边沿计数、二分搜索、交接、频率确认、周期监视及重捕获通过；需核实锁定功耗。",
+        "artifacts": [
+          "share/deliverables/blocks/behavioral_va/auxiliary_fll.va",
+          "share/deliverables/integration/va_v1/results/validation.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "programmable_even_divider",
+        "role": "÷4/6/8/10/12/14 对称半周期分频",
+        "stage": "behavioral",
+        "maturity": 3,
+        "note": "六种对称偶数分频独立 TB 及六种顶层 M 通过。",
+        "artifacts": [
+          "share/deliverables/blocks/behavioral_va/even_divider.va",
+          "share/deliverables/integration/va_v1/results/validation.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "output_retimer",
+        "role": "利用 VCO 派生时钟重定时",
+        "stage": "behavioral",
+        "maturity": 2,
+        "note": "名义无 setup/hold 违例，故意失败情景检出 99 次；未模拟亚稳态。",
+        "artifacts": [
+          "share/deliverables/blocks/behavioral_va/output_retimer.va",
+          "share/deliverables/integration/va_v1/results/validation.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "output_buffer",
+        "role": "驱动片内轻负载",
+        "stage": "behavioral",
+        "maturity": 2,
+        "note": "50 Ω 行为缓冲驱动 10 fF 临时负载通过，不代表实际器件驱动能力。",
+        "artifacts": [
+          "share/deliverables/blocks/behavioral_va/output_buffer.va",
+          "share/deliverables/integration/va_v1/results/validation.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "bias_and_control",
+        "role": "偏置、频点配置及状态控制",
+        "stage": "behavioral",
+        "maturity": 2,
+        "note": "行为中点参考与配置输入已接入顶层；没有实际偏置电路或供电电流模型。",
+        "artifacts": [
+          "share/deliverables/blocks/behavioral_va/bias_control.va",
+          "share/deliverables/integration/va_v1/results/validation.json"
+        ],
+        "blockers": []
+      }
+    ],
+    "verification": {
+      "maturity": 3,
+      "note": "确定性模块/顶层、负例、扰动恢复、重配和收紧数值精度通过；不是 PVT 或噪声性能签核。",
+      "artifacts": [
+        "share/deliverables/integration/va_v1/results/validation.json",
+        "share/deliverables/integration/va_v1/results/summary.json"
+      ]
+    },
+    "integration": {
+      "maturity": 2,
+      "note": "Spectre 结构顶层、全部模块接口与 TB 已集成；六个代表频点和动态情景跑通。无晶体管/版图集成。",
+      "artifacts": [
+        "share/deliverables/integration/va_v1/README.md",
+        "share/deliverables/integration/va_v1/tb/top_k41.scs"
+      ]
+    }
+  },
+  "spec_status": [
+    {
+      "id": "REQ-01",
+      "current": null,
+      "condition": "本轮 Spectre 使用自有 VA，无 TSMC180 器件模型。",
+      "evidence": "none",
+      "status": "unknown",
+      "note": "工具运行成功不证明工艺实现可行。"
+    },
+    {
+      "id": "REQ-02",
+      "current": "1.2 V（行为模型电源）",
+      "condition": "27 °C，理想行为源和临时 10 fF 输出负载。",
+      "evidence": "behavioral_sim",
+      "status": "at_risk",
+      "note": "行为功能通过；器件电压余量和可靠性未验证。"
+    },
+    {
+      "id": "REQ-03",
+      "current": "24 MHz，0–1.2 V 准方波（TB 输入）",
+      "condition": "10 ps 转换、约 50% 占空比为本轮临时输入假设。",
+      "evidence": "behavioral_sim",
+      "status": "unknown",
+      "note": "参考缓冲和主环功能通过；实际输入边沿/幅度/相噪仍待定义。"
+    },
+    {
+      "id": "REQ-04",
+      "current": "Python K=9…41；Spectre 六个代表整数倍频点通过",
+      "condition": "有限计数 FLL + 正弦亚采样主环，1.2 V/27 °C 行为模型。",
+      "evidence": "behavioral_sim",
+      "status": "on_track",
+      "note": "已补完整名义捕获及错误谐波监视；不等于全部器件工况验证。"
+    },
+    {
+      "id": "REQ-05",
+      "current": "Python 33 点；Spectre 216/240/288/336/456/984 MHz",
+      "condition": "Spectre 覆盖 M=14/12/10/8/6/4 和 VCO 2.688/3.936 GHz 端点，名义模型。",
+      "evidence": "behavioral_sim",
+      "status": "on_track",
+      "note": "53 个 TB 中 26 项已运行，27 个其他名义顶层频点网表未运行；无 PVT 调谐覆盖证明。"
+    },
+    {
+      "id": "REQ-06",
+      "current": "B 最差 148.98 fs（10 kHz–10 MHz）/161.83 fs（10 kHz–fout/2）",
+      "condition": "27 °C 热噪声；假设 Kvco=20 MHz/V、Kpd=2.4 µA/rad、Cs=40 fF/侧、VCO L1MHz=-120 dBc/Hz 与 -155 dBc/Hz 白底、2 GHz 源截止；无 spur；完整条件见模型 config 和说明。",
+      "evidence": "behavioral_sim",
+      "status": "at_risk",
+      "note": "沿用 Python v1 候选 B 的假设噪声结果，本轮确定性 VA 不提供随机抖动证据。积分口径与完整同步边沿噪声仍未闭合。"
+    },
+    {
+      "id": "REQ-07",
+      "current": null,
+      "condition": "依已确认范围，随机抖动暂不计 spur；本轮验证确定性捕获和功能。",
+      "evidence": "none",
+      "status": "unknown",
+      "note": "<−60 dBc 硬目标保留，未验证，不视为豁免。"
+    },
+    {
+      "id": "REQ-08",
+      "current": "3.50 mW（工作分配，非实际功耗）",
+      "condition": "锁定后全部电路；对 ≤4 mW 留 0.50 mW 未分配余量，启动峰值另计。",
+      "evidence": "estimate",
+      "status": "unknown",
+      "note": "VA 无真实供电电流。FLL 周期测频启用占比 12.5%，0.05 mW 锁定预算要求需由实现核实。"
+    },
+    {
+      "id": "REQ-09",
+      "current": "0.280 mm²（工作分配，非版图面积）",
+      "condition": "含电感、滤波器、隔离，暂不含 pad。滤波器约 0.03667 mm² 基于 1 fF/µm² 和 20% 开销假设。",
+      "evidence": "estimate",
+      "status": "unknown",
+      "note": "工作分配未变；8 bit 粗调及实际电感/隔离布局面积未提取。"
+    },
+    {
+      "id": "REQ-10",
+      "current": null,
+      "condition": "本轮 VA/Spectre 只在 27 °C 仿真，行为参数不随工艺温度变化。",
+      "evidence": "none",
+      "status": "unknown",
+      "note": "Python ±1% bank_scale 是参数灵敏度，不是 PVT。"
+    },
+    {
+      "id": "REQ-11",
+      "current": "六个名义 Spectre 顶层点均约 50%（行为测量）",
+      "condition": "对称分频和重定时；工作检查 50%±0.05 个百分点，不是确认的验收容差。",
+      "evidence": "behavioral_sim",
+      "status": "unknown",
+      "note": "实际占空比容差、器件失配、负载/PVT 仍待验证。"
+    },
+    {
+      "id": "REQ-12",
+      "current": "10 fF（临时 TB 负载）",
+      "condition": "50 Ω 行为输出模型、1.2 V 摆幅；最高 984 MHz 功能通过。",
+      "evidence": "behavioral_sim",
+      "status": "unknown",
+      "note": "仅是假设负载，不取代待明确的实际门数、电容和门限。"
+    }
+  ],
+  "questions_for_human": [
+    {
+      "q": "抖动积分范围和实际 24 MHz 参考源参数仍待确认；当前并列候选频带建模。",
+      "blocking": false,
+      "since": "2026-09-17T20:57:59+08:00"
+    },
+    {
+      "q": "占空比容差及片内输出负载的电容、门限/摆幅后续需要明确。",
+      "blocking": false,
+      "since": "2026-09-17T20:57:59+08:00"
+    }
+  ],
+  "blocked_on": null,
+  "risks": [
+    "VA 为行为模型，未验证任何晶体管/PVT/版图性能。",
+    "2.64–4.00 GHz 粗调保护范围与固定 20 MHz/V 尚无 PDK 支持；实际 Kvco 变小会产生粗调覆盖风险。",
+    "FLL 周期监视存在检测延迟和锁定功耗开销，输出只在锁定后使用；未保证切频无毛刺。",
+    "假设噪声、供电耦合、spur、真正同步边沿噪声仍未闭合。",
+    "参考源、抖动积分范围、占空比容差与输出负载仍待定义。"
+  ],
+  "next_steps": [
+    "以现有 TB 为回归基线，优先用 PDK 电路替换 LC VCO/粗调及输出链，核实低 Kvco、保护范围和功耗。",
+    "实现采样器/CP 并提取增益、噪声和脉冲时序，替换 Python 假设。",
+    "将 FLL/分频器转为可实现的数字结构，检查高频计数和时钟门控功耗、复位及亚稳态。",
+    "在器件参数到位后补 PVT、噪声和全 33 点 Spectre 回归；持续保留 REQ-07 杂散需求。"
+  ],
+  "decisions_since_last": [],
+  "resources_note": "本轮接受 26 个 Spectre 测试；基础单核模式、最多 4 个并行作业。累计作业墙钟约 2575 s（并发求和，不是任务实际历时）。全部原始证据留在本项目，远端输入 hash 一致。"
+}

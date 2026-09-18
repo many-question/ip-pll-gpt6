@@ -1,0 +1,17 @@
+`include "disciplines.vams"
+module loop_filter(ctrl,vc1,enable,preset,vss);
+  inout ctrl,vc1; input enable,preset,vss;
+  electrical ctrl,vc1,enable,preset,vss;
+  parameter real r=22222.2222222222,c1=28.6478897565412p,c2=1.90985931710274p;
+  parameter real rpre=10, clamp_g=1m;
+  analog begin
+    I(ctrl,vc1) <+ V(ctrl,vc1)/r;
+    I(ctrl,vss) <+ c2*ddt(V(ctrl,vss));
+    I(vc1,vss) <+ c1*ddt(V(vc1,vss));
+    // Both capacitors precharged while searching; no phase reset of VCO.
+    I(ctrl,preset) <+ (V(enable,vss)<0.6 ? 1/rpre : 0)*V(ctrl,preset);
+    I(vc1,preset) <+ (V(enable,vss)<0.6 ? 1/rpre : 0)*V(vc1,preset);
+    I(ctrl,vss) <+ clamp_g*(max(V(ctrl,vss)-1.0,0)+min(V(ctrl,vss)-0.2,0));
+    I(vc1,vss) <+ clamp_g*(max(V(vc1,vss)-1.0,0)+min(V(vc1,vss)-0.2,0));
+  end
+endmodule

@@ -1,0 +1,20 @@
+`include "disciplines.vams"
+module even_divider(clk,ratio,enable,out,vdd,vss);
+  input clk,ratio,enable,vdd,vss; output out;
+  electrical clk,ratio,enable,out,vdd,vss;
+  parameter real td=50p,tr=10p;
+  integer count,q,m,oldm;
+  analog begin
+    @(initial_step) begin count=0;q=0;oldm=0;end
+    @(cross(V(clk,vss)-0.5*V(vdd,vss),+1,1f,1u)) begin
+      m=$rtoi(V(ratio,vss)+0.5);
+      if(V(enable,vss)<0.6 || m!=oldm || m<4 || m>14 || m%2!=0) begin count=0;q=0;end
+      else begin
+        count=count+1;
+        if(count>=m/2) begin q=1-q;count=0;end
+      end
+      oldm=m;
+    end
+    V(out,vss) <+ transition(q,td,tr)*V(vdd,vss);
+  end
+endmodule

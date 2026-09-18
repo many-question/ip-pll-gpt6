@@ -1,0 +1,18 @@
+`include "disciplines.vams"
+module subsampling_detector(refclk,vp,vn,sample,pulse,vdd,vss);
+  input refclk,vp,vn,vdd,vss; output sample,pulse;
+  electrical refclk,vp,vn,sample,pulse,vdd,vss;
+  parameter real delay=2.083333333333n,width=2.083333333333n,tr=10p;
+  real held, next_on, next_off;
+  integer gate;
+  analog begin
+    @(initial_step) begin held=0;gate=0;next_on=1e9;next_off=1e9;end
+    @(cross(V(refclk,vss)-0.5*V(vdd,vss),+1,1f,1u)) begin
+      held=V(vp,vn);next_on=$abstime+delay;next_off=$abstime+delay+width;
+    end
+    @(timer(next_on)) gate=1;
+    @(timer(next_off)) gate=0;
+    V(sample,vss) <+ transition(held,0,tr);
+    V(pulse,vss) <+ transition(gate,0,tr)*V(vdd,vss);
+  end
+endmodule

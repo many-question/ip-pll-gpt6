@@ -1,6 +1,11 @@
 # 交付物索引
 
-2026-09-18：已完成首版 Python 系统/行为模型、噪声与资源工作分配及数值交叉验证；得到假设参数下的候选 B。尚无本项目晶体管、PVT 或版图性能结果。
+2026-09-18：已推进到 Python 完整捕获模型、模块 Verilog-A 和 Spectre 顶层行为验证。随机噪声预算仍沿用假设参数候选 B；尚无本项目晶体管、PVT 或版图性能结果。
+
+- [Spectre 顶层、模块 TB、结果和复现入口](integration/va_v1/README.md)
+- [十个功能模块的 Verilog-A](blocks/behavioral_va/README.md)
+- [Python v2：有限计数 FLL、粗调、交接和重捕获](architecture/behavioral_v2/README.md)
+- [本轮语言和工具依据](sources/va_model_sources.md)
 
 - [系统指标拆解与工作预算 B](spec/system_budget_v1.md)
 - [Python 行为模型、结果、验证及复现入口](architecture/behavioral_v1/README.md)

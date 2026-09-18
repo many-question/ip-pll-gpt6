@@ -1,0 +1,32 @@
+`include "disciplines.vams"
+// Testbench-only independent output-edge measurement. Not part of PLL control.
+module pll_monitor(out,refclk,vp,vn,ctrl,freq,duty,edges,phaseerr,vmax,vmin,vdd,vss);
+  input out,refclk,vp,vn,ctrl,vdd,vss;
+  output freq,duty,edges,phaseerr,vmax,vmin;
+  electrical out,refclk,vp,vn,ctrl,freq,duty,edges,phaseerr,vmax,vmin,vdd,vss;
+  parameter real start=20u;
+  real first,last,fall,highsum,periodsum,lastphase,mx,mn,f,d;
+  integer count;
+  analog begin
+    @(initial_step) begin first=-1;last=-1;fall=-1;highsum=0;periodsum=0;count=0;lastphase=0;mx=0;mn=1.2;f=0;d=0;end
+    @(cross(V(out,vss)-0.5*V(vdd,vss),-1,1f,1u)) begin
+      if($abstime>=start) fall=$abstime;
+    end
+    @(cross(V(out,vss)-0.5*V(vdd,vss),+1,1f,1u)) begin
+      if($abstime>=start) begin
+        if(count==0) first=$abstime;
+        if(last>=start && fall>last) begin
+          highsum=highsum+fall-last;periodsum=periodsum+$abstime-last;d=highsum/periodsum;
+        end
+        last=$abstime;count=count+1;
+        if(count>1) f=(count-1)/(last-first)/1G;
+      end
+    end
+    @(cross(V(refclk,vss)-0.5*V(vdd,vss),+1,1f,1u)) begin
+      lastphase=V(vp,vn)/0.4;
+      if($abstime>=start) begin mx=max(mx,V(ctrl,vss));mn=min(mn,V(ctrl,vss));end
+    end
+    V(freq,vss)<+f;V(duty,vss)<+d;V(edges,vss)<+count;
+    V(phaseerr,vss)<+lastphase;V(vmax,vss)<+mx;V(vmin,vss)<+mn;
+  end
+endmodule

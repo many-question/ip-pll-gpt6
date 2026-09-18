@@ -1,0 +1,13 @@
+`include "disciplines.vams"
+// Behavioral logic restoration; no device noise or input power model.
+module reference_buffer(inp, out, vdd, vss);
+  input inp, vdd, vss; output out;
+  electrical inp,out,vdd,vss;
+  parameter real td=50p, tr=20p;
+  integer state;
+  analog begin
+    @(initial_step) state=(V(inp,vss) > 0.5*V(vdd,vss));
+    @(cross(V(inp,vss)-0.5*V(vdd,vss),0,1f,1u)) state=(V(inp,vss) > 0.5*V(vdd,vss));
+    V(out,vss) <+ transition(state,td,tr)*V(vdd,vss);
+  end
+endmodule

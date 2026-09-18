@@ -1,0 +1,94 @@
+{
+  "model": "sspll-acquisition/2.0",
+  "checks": [
+    {
+      "name": "33 frequencies x 3 initial codes x 4 phases capture correct harmonic",
+      "passed": true,
+      "cases": 396,
+      "failed": []
+    },
+    {
+      "name": "bank frequency scale +/-1 percent functional sensitivity",
+      "passed": true,
+      "cases": 66,
+      "failed": []
+    },
+    {
+      "name": "24 MHz disturbance triggers reacquisition",
+      "passed": true,
+      "result": {
+        "k": 41,
+        "m": 4,
+        "n": 164,
+        "fout_hz": 984000000,
+        "fvco_hz": 3936000000,
+        "initial_code": 127,
+        "phase0_rad": 0.7,
+        "bank_scale": 1.0,
+        "target_hz": 3936000000,
+        "selected_code": 4,
+        "searches": 2,
+        "trials_last_search": 3,
+        "handoff_us": 46.916666666666664,
+        "settled": true,
+        "settling_us": 49.08333333333333,
+        "final_error_hz": -1.430511474609375e-06,
+        "final_phase_rad": -6.686055319055004e-13,
+        "control_min_v": 0.375,
+        "control_max_v": 0.6019799703007381,
+        "rail_violation_cycles": 0
+      }
+    },
+    {
+      "name": "out-of-range bank cannot be falsely accepted",
+      "passed": true,
+      "result": {
+        "k": 28,
+        "m": 4,
+        "n": 112,
+        "fout_hz": 672000000,
+        "fvco_hz": 2688000000,
+        "initial_code": 127,
+        "phase0_rad": 0.7,
+        "bank_scale": 1.03,
+        "target_hz": 2688000000,
+        "selected_code": 255,
+        "searches": 4,
+        "trials_last_search": 1,
+        "handoff_us": 45.95833333333333,
+        "settled": false,
+        "settling_us": null,
+        "final_error_hz": 23874791.420385838,
+        "final_phase_rad": -0.0003406406494222605,
+        "control_min_v": 0.17714143416997907,
+        "control_max_v": 0.6,
+        "rail_violation_cycles": 30
+      }
+    },
+    {
+      "name": "intracycle 16 substeps agree with exact reference-period solution",
+      "passed": true
+    }
+  ],
+  "all_passed": true,
+  "nominal_passed": 396,
+  "nominal_cases": 396,
+  "worst_settling_us": 16.375,
+  "control_range_v": [
+    0.32735481030512387,
+    0.8511568630279179
+  ],
+  "largest_bank_step_hz": 10123665.014964104,
+  "counter_window_refcycles": 32,
+  "counter_resolution_hz": 750000.0,
+  "bank_nominal_limits_hz": [
+    2640000000.0,
+    4000000000.0
+  ],
+  "limits": [
+    "Nominal equal-C bank and fixed Kvco are hypotheses, no PVT model.",
+    "Rail crossing flags invalidate a case; no claim to simulate nonlinear clamp recovery.",
+    "FLL precharge idealizes a finite low-resistance reset; oscillator phase is not reset.",
+    "Behavioral V2 adds deterministic acquisition; V1 noise assumptions and limitations remain."
+  ]
+}

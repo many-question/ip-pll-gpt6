@@ -1,0 +1,26 @@
+`include "disciplines.vams"
+`include "constants.vams"
+// Equal-C bank plus clipped linear fine tuning. No transistor/LC startup claim.
+module lc_vco(ctrl, code, disturbance, vmid, vp, vn, clk, freqmon, vdd, vss);
+  input ctrl,code,disturbance,vmid,vdd,vss; output vp,vn,clk,freqmon;
+  electrical ctrl,code,disturbance,vmid,vp,vn,clk,freqmon,vdd,vss;
+  parameter real fhigh=4G, f_low=2.64G, kvco=20M, bank_scale=1;
+  parameter real phase_initial=0.1114084601643267, amplitude=0.4;
+  parameter integer points_per_cycle=16;
+  real c, f, phase, sinewave, fine;
+  integer clock_state;
+  analog begin
+    c=max(0,min(255,V(code,vss)));
+    fine=max(-0.4,min(0.4,V(ctrl,vss)-V(vmid,vss)));
+    f=bank_scale*fhigh/sqrt(1+c/255*((fhigh/f_low)*(fhigh/f_low)-1))+kvco*fine+1G*V(disturbance,vss);
+    phase=idtmod(f,phase_initial,1);
+    sinewave=sin(2*`M_PI*phase);
+    @(initial_step) clock_state=(sin(2*`M_PI*phase_initial)>0);
+    @(cross(sinewave,0,1f,1u)) clock_state=(sinewave>0);
+    V(vp,vss) <+ 0.5*V(vdd,vss)+0.5*amplitude*sinewave;
+    V(vn,vss) <+ 0.5*V(vdd,vss)-0.5*amplitude*sinewave;
+    V(clk,vss) <+ transition(clock_state,0,2p)*V(vdd,vss);
+    V(freqmon,vss) <+ f/1G;
+    $bound_step(1.0/(points_per_cycle*f));
+  end
+endmodule

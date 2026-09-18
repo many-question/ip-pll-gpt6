@@ -1,0 +1,61 @@
+`include "disciplines.vams"
+// Algorithm model: integer edge counting, monotone search, preset and watchdog.
+// target/code/status are real-valued electrical probes, not physical 1.2-V buses.
+module auxiliary_fll(refclk,vcoclk,target,sample,vmid,code,preset,enable,status,locked,measured,vdd,vss);
+  input refclk,vcoclk,target,sample,vmid,vdd,vss;
+  output code,preset,enable,status,locked,measured;
+  electrical refclk,vcoclk,target,sample,vmid,code,preset,enable,status,locked,measured,vdd,vss;
+  parameter real fref=24M,kvco=20M;
+  parameter integer initial_code=127,window=32,settle_cycles=2;
+  integer state,age,lo,hi,trial,c,bestc,count,gate,n,oldn,good,lockflag,verified;
+  real err,besterr,pre,meas;
+  analog begin
+    @(initial_step) begin
+      state=0;age=0;lo=0;hi=255;trial=0;c=initial_code;bestc=c;
+      count=0;gate=0;oldn=-1;good=0;lockflag=0;verified=0;
+      besterr=1e99;pre=0.6;meas=0;
+    end
+    @(cross(V(vcoclk,vss)-0.5*V(vdd,vss),+1,1f,1u)) begin
+      if(gate) count=count+1;
+    end
+    @(cross(V(refclk,vss)-0.5*V(vdd,vss),+1,1f,1u)) begin
+      n=$rtoi(V(target,vss)+0.5);
+      if(n!=oldn) begin
+        state=0;age=0;lo=0;hi=255;trial=0;besterr=1e99;bestc=c;
+        gate=0;pre=V(vmid,vss);good=0;lockflag=0;verified=0;oldn=n;
+      end
+      if(state==0) begin
+        if(age==settle_cycles) begin count=0;gate=1;end
+        if(age==settle_cycles+window) begin
+          gate=0;meas=count*fref/window;err=meas-n*fref;trial=trial+1;
+          if(abs(err)<abs(besterr)) begin besterr=err;bestc=c;end
+          if(err>0) lo=c+1; else hi=c-1;
+          if(lo>hi || trial>=9 || abs(err)<fref/window/2) begin
+            c=bestc;pre=max(0.22,min(0.98,V(vmid,vss)-besterr/kvco));state=1;age=-1;
+          end else begin c=(lo+hi)/2;age=-1;end
+        end
+      end else if(state==1) begin
+        if(age>=settle_cycles) begin state=2;age=0;end
+      end else begin
+        // First qualify frequency early; subsequently gated windows every 256.
+        if(age==32 || age%256==192) begin count=0;gate=1;end
+        if(age==64 || age%256==224) begin
+          gate=0;meas=count*fref/window;err=meas-n*fref;
+          if(abs(err)>3M) begin
+            state=0;age=-1;lo=0;hi=255;trial=0;besterr=1e99;bestc=c;
+            pre=V(vmid,vss);good=0;lockflag=0;verified=0;
+          end else verified=1;
+        end
+        if(abs(V(sample,vss))<0.004 && verified && state==2) good=good+1; else good=0;
+        lockflag=(good>=32);
+      end
+      age=age+1;
+    end
+    V(code,vss) <+ transition(c,0,20p);
+    V(preset,vss) <+ transition(pre,0,20p);
+    V(enable,vss) <+ transition(state==2,0,20p)*V(vdd,vss);
+    V(status,vss) <+ transition(state,0,20p);
+    V(locked,vss) <+ transition(lockflag,0,20p)*V(vdd,vss);
+    V(measured,vss) <+ transition(meas/1G,0,20p);
+  end
+endmodule

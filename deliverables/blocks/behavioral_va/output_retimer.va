@@ -1,0 +1,23 @@
+`include "disciplines.vams"
+module output_retimer(data,clk,enable,out,violations,vdd,vss);
+  input data,clk,enable,vdd,vss; output out,violations;
+  electrical data,clk,enable,out,violations,vdd,vss;
+  parameter real setup=20p,hold=10p,td=15p,tr=10p;
+  real last_data,last_capture;
+  integer q,bad;
+  analog begin
+    @(initial_step) begin q=0;bad=0;last_data=-1;last_capture=-1;end
+    @(cross(V(data,vss)-0.5*V(vdd,vss),0,1f,1u)) begin
+      if(V(enable,vss)>0.6 && $abstime-last_capture<hold) bad=bad+1;
+      last_data=$abstime;
+    end
+    @(cross(V(clk,vss)-0.5*V(vdd,vss),-1,1f,1u)) begin
+      if(V(enable,vss)>0.6) begin
+        if($abstime-last_data<setup) bad=bad+1;
+        q=(V(data,vss)>0.5*V(vdd,vss));last_capture=$abstime;
+      end else q=0;
+    end
+    V(out,vss) <+ transition(q,td,tr)*V(vdd,vss);
+    V(violations,vss) <+ bad;
+  end
+endmodule

@@ -1,0 +1,26 @@
+simulator lang=spectre
+global 0
+ahdl_include "auxiliary_fll.va"
+ahdl_include "bias_control.va"
+ahdl_include "charge_pump.va"
+ahdl_include "even_divider.va"
+ahdl_include "lc_vco.va"
+ahdl_include "loop_filter.va"
+ahdl_include "output_buffer.va"
+ahdl_include "output_retimer.va"
+ahdl_include "pll_monitor.va"
+ahdl_include "reference_buffer.va"
+ahdl_include "subsampling_detector.va"
+
+parameters vddval=1.2
+VDD (vdd 0) vsource dc=vddval
+simulatorOptions options reltol=1e-5 vabstol=1e-7 iabstol=1e-13 temp=27
+
+VC (clk 0) vsource type=pulse val0=0 val1=1.2 period=250p width=123p rise=2p fall=2p delay=20p
+VM (ratio 0) vsource dc=4
+VE (en 0) vsource dc=1.2
+XD (clk ratio en data vdd 0) even_divider td=50p
+XR (data clk en out violations vdd 0) output_retimer
+tran tran stop=50n errpreset=conservative maxstep=10p
+save clk data out violations
+saveOptions options save=selected

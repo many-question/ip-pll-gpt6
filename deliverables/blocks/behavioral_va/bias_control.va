@@ -1,0 +1,7 @@
+`include "disciplines.vams"
+// Voltage reference only. Supply current is intentionally not a power estimate.
+module bias_control(vdd,vss,vmid);
+  input vdd,vss; output vmid;
+  electrical vdd,vss,vmid;
+  analog V(vmid,vss) <+ 0.5*V(vdd,vss);
+endmodule

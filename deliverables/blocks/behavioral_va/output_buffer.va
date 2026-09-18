@@ -1,0 +1,12 @@
+`include "disciplines.vams"
+module output_buffer(inp,out,vdd,vss);
+  input inp,vdd,vss; output out;
+  electrical inp,out,vdd,vss;
+  parameter real td=15p,tr=10p,rout=50;
+  integer q;
+  analog begin
+    @(initial_step) q=(V(inp,vss)>0.5*V(vdd,vss));
+    @(cross(V(inp,vss)-0.5*V(vdd,vss),0,1f,1u)) q=(V(inp,vss)>0.5*V(vdd,vss));
+    I(out,vss) <+ (V(out,vss)-transition(q,td,tr)*V(vdd,vss))/rout;
+  end
+endmodule
