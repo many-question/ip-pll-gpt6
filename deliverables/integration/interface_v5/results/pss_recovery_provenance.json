@@ -1,0 +1,28 @@
+{
+  "recorded": "2026-09-30T10:40:51.903508+08:00",
+  "original_run": "loop_periodic/loop_quiet10_pss",
+  "assessment_correction": "The initial stop decision used a stale tail showing oscillating residuals. Full recovered log contains a last completed norm of 54.2 before the following iteration was interrupted. This is not a solver-convergence failure proof. Original cancellation/result/log are retained unchanged.",
+  "last_completed_shooting_norm": 54.2,
+  "original_checkpoint": "/home/jielu/saveFileAfterTrapSignals",
+  "checkpoint_mtime_server": "2026-09-30T10:30:46.477526167+08:00",
+  "checkpoint_owner": "jielu",
+  "checkpoint_bytes": 77570618,
+  "checkpoint_sha256": "55c0db92455958668b1d5e29da81dbc8724a232b3c5e3e25935e866e5cb91da3",
+  "preserved_remote_checkpoint": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/interface_v5/897128a9/pss_recovery.state",
+  "recovery_case": "loop_quiet10_pss_recover",
+  "recovery_run": "loop_periodic_recover",
+  "provenance": "Last of three sequential exact-process SIGINT cancellations; original log names ./saveFileAfterTrapSignals; bridge remote CWD is /home/jielu. Copied without overwrite, downloaded and SHA256 matched remotely.",
+  "limitations": "Binary checkpoint is simulator-version and circuit specific; recovery success must be independently verified.",
+  "recovery_inputs_check": {
+    "all_included_files_identical": true,
+    "included_files": 13,
+    "only_netlist_changes": [
+      "PSS recover path",
+      "PSS writefinal path"
+    ],
+    "documented_recovery_time_s": 1.41046e-06,
+    "effective_recovery_stabilization_end_s": 1.85259e-06,
+    "same_shooting_iteration_continued": false,
+    "note": "Spectre restores transient circuit state, adds a new stabilization segment and begins a fresh shooting solve; this is not continuation of the prior Newton iteration."
+  }
+}

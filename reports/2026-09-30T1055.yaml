@@ -1,0 +1,354 @@
+{
+  "schema": "chip-report/0.1",
+  "report": {
+    "seq": 8,
+    "time": "2026-09-30T10:55:18+08:00",
+    "trigger": "requested",
+    "covers_since": "2026-09-19T01:01:59+08:00"
+  },
+  "overall": {
+    "phase": "VCO 接口噪声对照、鉴相增益重提与真实 LC 固定码闭环",
+    "summary": "四个真实 LC 闭环瞬态试案尚未通过本轮全部稳态筛选；恢复尝试后仍未取得通过独立波形筛选的闭环周期解。低阻候选单次收敛相噪为 -102.450 dBc/Hz @1 MHz，比基线改善 0.735 dB，但加密复核未收敛，暂不采用；FF 低端余量仍未通过。新提取 Kpd=0.258828 µA/rad。完整 PLL 捕获、抖动、功耗和面积仍未签核。",
+    "since_last": [
+      "重新核实服务器身份及 PDK 模型哈希，保持上轮 VCO R2、1.2 V、Q=5 和全部需求不变。",
+      "六组接口候选完成周期采样瞬态；分组比较实际器件噪声。采样电阻从 100 kΩ 增至 1 MΩ 反而使 1 MHz 相噪恶化约 0.615 dB，未将失败假设作为推荐设计。",
+      "10 kΩ 采样偏置配合去耦候选单次结果降噪约 0.735 dB，但载频改变约 -2.832 MHz；加密复核数次未收敛，结果仅为待确认观察。重点角落重选两个码后 6/7 达到 2 MHz 余量筛选，FF K14 仍为 1.880 MHz；未继承旧 99 点证据。",
+      "组合候选完成 7 个重点角落检查；宽带噪声加密至 1 ps/127 边带，重合频偏最大变化约 0.0011 dB。固定跟踪噪声仍不等于周期采样 PLL 抖动。",
+      "按实际加载 VCO 波形构建增益 fixture，CP 钳位 0.84 V 提取 Kpd=0.258828 µA/rad；测试台仅在增益提取中使用理想回放源。",
+      "实际 VCO、采样器、CP、MOS 时序、RC 滤波和分频形成固定码闭环；比较三个滤波配置及低阻接口共四组瞬态，同时检查参考采样相位和实际周期数。短时仍有慢漂移；日志审计发现四组瞬态实际 reltol=1e-3，尚需显式收紧复核；恢复尝试后仍未取得通过独立波形筛选的闭环周期解。",
+      "首次 PSS 依据滞后日志片段提前中断，完整日志显示最后完整残差已降至 54.2；已更正评估、保存状态并独立恢复，保留全部原始记录。",
+      "局部频率/电压割线受周期采样拉频和测量窗口影响，未将单一 Kvco 或标量噪声模型当成锁定周期工作点证明。"
+    ],
+    "route_confidence": "low",
+    "route_confidence_reason": "器件闭环集成取得进展，但被动接口优化仅获小幅噪声收益；实际采样拉频、完整时钟输出链、自动捕获、全带抖动及总功耗/面积仍未闭合。"
+  },
+  "levels": {
+    "survey": {
+      "maturity": 3,
+      "note": "本轮无新增文献或 PDK 电感；沿用人类同意的 Q=5 RLC，复核运行环境、模型哈希与数值设置。",
+      "artifacts": [
+        "share/deliverables/sources/interface_v5_sources.md"
+      ]
+    },
+    "modeling": {
+      "maturity": 3,
+      "note": "用实测波形提取平均鉴相电流增益，建立三组滤波参数的采样环路筛选；局部割线增益受采样拉频影响，已保留限制，不宣称为实际闭环噪声模型。",
+      "artifacts": [
+        "share/deliverables/integration/interface_v5/README.md",
+        "share/deliverables/integration/interface_v5/results/noise_summary.json",
+        "share/deliverables/integration/interface_v5/results/loop_validation.json",
+        "share/deliverables/integration/interface_v5/results/loop_model.json",
+        "share/deliverables/integration/interface_v5/results/gain_source.json"
+      ]
+    },
+    "architecture": {
+      "maturity": 2,
+      "note": "继续子采样 PLL 和辅助 FLL 架构；已开展实际 LC 固定码闭环。接口隔离与负载、完整输出时钟链和自动捕获仍需推进，架构未冻结。",
+      "artifacts": [
+        "share/deliverables/integration/interface_v5/README.md",
+        "share/deliverables/integration/interface_v5/results/noise_summary.json",
+        "share/deliverables/integration/interface_v5/results/loop_validation.json"
+      ]
+    },
+    "blocks": [
+      {
+        "name": "reference_buffer",
+        "role": "24 MHz 参考整形",
+        "stage": "circuit",
+        "maturity": 3,
+        "note": "原版及增大前两级候选完成 TT 器件噪声；1 ns 理想输入边沿、24 MHz/60 fF、10 kHz–12 MHz 从 348.82 降至 135.88 fs。最终参考源噪声/边沿未知，改进版尚无完整 PVT。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v2/README.md",
+          "share/deliverables/integration/transistor_v2/results/validation.json",
+          "share/deliverables/integration/transistor_v2/results/noise_summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "subsampling_detector",
+        "role": "直接采样差分 VCO 并鉴相",
+        "stage": "circuit",
+        "maturity": 3,
+        "note": "真实采样 MOS 与输入偏置候选完成器件噪声对照；1 MΩ 方案反而恶化，10 kΩ 候选单次小幅改善但数值加密未通过，暂不采用。实际 VCO 波形理想回放、TT、CPout=0.84 V 得 Kpd=0.258828 µA/rad；真实闭环周期工作点噪声尚未提取。",
+        "artifacts": [
+          "share/deliverables/integration/interface_v5/README.md",
+          "share/deliverables/integration/interface_v5/results/noise_summary.json",
+          "share/deliverables/integration/interface_v5/results/loop_validation.json",
+          "share/deliverables/integration/interface_v5/results/gain_points.json",
+          "share/deliverables/integration/interface_v5/results/loop_model.json",
+          "share/deliverables/integration/interface_v5/results/quiet10_noise_precision.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "transconductor_charge_pump",
+        "role": "采样误差转电流及增益控制",
+        "stage": "circuit",
+        "maturity": 3,
+        "note": "实际 CP 与 MOS 脉冲时序已接入真实 LC 固定码闭环，平均电流增益已重提。IREF 发生器仍理想；历史 0.5906 pA/√Hz 数据来自旧匹配 fixture，不移植为新闭环噪声结果。",
+        "artifacts": [
+          "share/deliverables/integration/interface_v5/README.md",
+          "share/deliverables/integration/interface_v5/results/noise_summary.json",
+          "share/deliverables/integration/interface_v5/results/loop_validation.json",
+          "share/deliverables/integration/interface_v5/results/loop_model.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "passive_loop_filter",
+        "role": "环路滤波与稳定性",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "实际 MOS 预充与理想 RC 连接真实 LC 闭环；比较 R100k/C1=28.648p/C2=1.910p、R50k/相同电容、R100k/C1=7.162p/C2=.4775p。四个真实 LC 闭环瞬态试案尚未通过本轮全部稳态筛选。工艺 RC、失配与 PEX 未完成。",
+        "artifacts": [
+          "share/deliverables/integration/interface_v5/README.md",
+          "share/deliverables/integration/interface_v5/results/noise_summary.json",
+          "share/deliverables/integration/interface_v5/results/loop_validation.json",
+          "share/deliverables/blocks/interface_v5/loop_filter_v5.scs",
+          "share/deliverables/integration/interface_v5/results/loop_model.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "lc_vco_and_cap_bank",
+        "role": "2.688–3.936 GHz 振荡、粗调和模拟细调",
+        "stage": "circuit",
+        "maturity": 3,
+        "note": "VCO R2 核心及暂定 Q=5 模型保持不变。前轮 99 点覆盖证据保留；本轮进行新接口的重点角落与 TT 固定码真实闭环，候选间频率/噪声不混用。电感和无源工艺化、Q=3 失振风险仍在。",
+        "artifacts": [
+          "share/deliverables/blocks/vco_v4/README.md",
+          "share/deliverables/blocks/vco_v4/lc_vco_repaired.scs",
+          "share/deliverables/integration/vco_v4/README.md",
+          "share/deliverables/integration/vco_v4/results/final_validation.json",
+          "share/deliverables/integration/vco_v4/results/noise_summary.json",
+          "share/deliverables/integration/interface_v5/README.md",
+          "share/deliverables/integration/interface_v5/results/noise_summary.json",
+          "share/deliverables/integration/interface_v5/results/loop_validation.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "auxiliary_fll",
+        "role": "启动捕获和正确谐波选择",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "前轮晶体管控制器、计数/保持、DAC、配置/监督前端证据保留；本轮固定粗调码和使能由 TB 提供，未新增实际 FLL 自动捕获、资格判定或重捕获通过证据。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v3/README.md",
+          "share/deliverables/integration/transistor_v3/results/validation.json",
+          "share/deliverables/integration/transistor_v3/results/noise_summary.json",
+          "share/deliverables/integration/transistor_v3/results/watchdog_validation.json",
+          "share/deliverables/integration/interface_v5/README.md"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "programmable_even_divider",
+        "role": "÷4/6/8/10/12/14 对称半周期分频",
+        "stage": "circuit",
+        "maturity": 3,
+        "note": "真实分频器输入/时钟偏置参数化，六组接口 TT 双端点分频有效；组合及低阻候选各做 7 个重点角落，低阻候选结果含在独立验收文件中。真实 LC ÷4 闭环检查每参考周期计数，动态 FLL/配置接管尚待完成。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v3/README.md",
+          "share/deliverables/integration/transistor_v3/results/validation.json",
+          "share/deliverables/integration/transistor_v3/results/noise_summary.json",
+          "share/deliverables/integration/vco_v4/README.md",
+          "share/deliverables/integration/vco_v4/results/final_validation.json",
+          "share/deliverables/integration/interface_v5/README.md",
+          "share/deliverables/integration/interface_v5/results/noise_summary.json",
+          "share/deliverables/integration/interface_v5/results/loop_validation.json",
+          "share/deliverables/integration/interface_v5/results/q10corner_validation.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "output_retimer",
+        "role": "利用 VCO 派生时钟重定时",
+        "stage": "circuit",
+        "maturity": 3,
+        "note": "实际 PDK 边沿噪声揭示原链 267.49 fs；改进后 984 MHz 的 TT/SS/FF 为 87.01/100.89/64.74 fs，216 MHz 的 TT/SS 为 86.47/120.99 fs，含输出缓冲，均积分 10 kHz–fout/2。已代回 S9；输入 GHz 全摆幅时钟仍理想，不能忽略其实际接收/驱动噪声。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v2/README.md",
+          "share/deliverables/integration/transistor_v2/results/validation.json",
+          "share/deliverables/integration/transistor_v2/results/noise_summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "output_buffer",
+        "role": "驱动片内轻负载",
+        "stage": "circuit",
+        "maturity": 3,
+        "note": "两级输出缓冲纳入新重定时链共同验证，10 fF、984 MHz、三配对角噪声结果见上项；整个链约 0.873–0.880 mW。原输出缓冲单独 TT 宽带噪声 123.86 fs。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v2/README.md",
+          "share/deliverables/integration/transistor_v2/results/validation.json",
+          "share/deliverables/integration/transistor_v2/results/noise_summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "bias_and_control",
+        "role": "偏置、频点配置及状态控制",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "前轮 MOS 配置、数字监督和 CP 脉冲电路保留；本轮参数化偏置电阻和去耦，不是实际偏置/基准发生器。新增去耦共 27 pF，面积和冷启动未验证；GHz 接收和物理相位/幅度检测仍待完成。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v3/README.md",
+          "share/deliverables/integration/transistor_v3/results/validation.json",
+          "share/deliverables/integration/transistor_v3/results/noise_summary.json",
+          "share/deliverables/integration/transistor_v3/results/watchdog_validation.json",
+          "share/deliverables/blocks/interface_v5/README.md"
+        ],
+        "blockers": []
+      }
+    ],
+    "verification": {
+      "maturity": 3,
+      "note": "六组接口双端点瞬态、器件噪声对照及加密尝试、两个候选的 7 点角落、重选码、鉴相增益和四组固定码真实 LC 环路均留存独立证据。低阻噪声精度尚未确认；恢复尝试后仍未取得通过独立波形筛选的闭环周期解。数值发散、提前中断的评估修正、错误周期复位源和 include 预检失败保留。",
+      "artifacts": [
+        "share/deliverables/integration/interface_v5/README.md",
+        "share/deliverables/integration/interface_v5/results/noise_summary.json",
+        "share/deliverables/integration/interface_v5/results/loop_validation.json",
+        "share/deliverables/integration/interface_v5/results/screen_validation.json",
+        "share/deliverables/integration/interface_v5/results/q10_selected_validation.json",
+        "share/deliverables/integration/interface_v5/results/periodic_validation.json",
+        "share/deliverables/integration/interface_v5/results/solver_settings.json",
+        "share/deliverables/integration/interface_v5/results/quiet10_noise_precision.json",
+        "share/deliverables/integration/interface_v5/results/raw_manifest.json"
+      ]
+    },
+    "integration": {
+      "maturity": 2,
+      "note": "四个真实 LC 闭环瞬态试案尚未通过本轮全部稳态筛选；恢复尝试后仍未取得通过独立波形筛选的闭环周期解。VCO 不再是 VA 时钟源，但粗调码/预充/使能是 TB 激励。未纳入 FLL 捕获、完整监督、GHz 时钟接收和输出重定时链，不是完整 PLL 顶层签核。",
+      "artifacts": [
+        "share/deliverables/integration/interface_v5/README.md",
+        "share/deliverables/integration/interface_v5/results/noise_summary.json",
+        "share/deliverables/integration/interface_v5/results/loop_validation.json",
+        "share/deliverables/blocks/interface_v5/README.md"
+      ]
+    }
+  },
+  "spec_status": [
+    {
+      "id": "REQ-01",
+      "current": "TSMC180 BCD Gen2 MOS / nmoscap；R2 VCO 与暂定 Q=5 RLC",
+      "condition": "实际 PDK MOS/nmoscap；接口偏置及滤波 RC 仍理想，Q=5 电感仍无工艺/EM/几何保证。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "电感 Q、RC、互感、几何与温度系数未获工艺保证；IREF 发生器后置。"
+    },
+    {
+      "id": "REQ-02",
+      "current": "1.2 V",
+      "condition": "本轮为 1.2 V；接口角落和 TT 闭环，无供电扫描。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "器件端电压可靠性、ESD/电源变化和寄生尚未签核。"
+    },
+    {
+      "id": "REQ-03",
+      "current": "24 MHz；参考缓冲 TT 附加噪声 135.88 fs",
+      "condition": "改进版，理想 1 ns 输入边沿、60 fF、10 kHz–12 MHz；外部参考本身无噪声。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "本轮闭环参考为理想源和既有 MOS 缓冲；历史改进缓冲的噪声数据不等于本轮 PLL 输出贡献。"
+    },
+    {
+      "id": "REQ-04",
+      "current": "前轮 K=9…41 覆盖；本轮 TT、K=41 实际 LC 固定码环路",
+      "condition": "四个真实 LC 闭环瞬态试案尚未通过本轮全部稳态筛选；未完成完整配置/FLL 自动捕获。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "不能据仿真台寻码宣布 FLL 捕获、谐波选择和相位锁定已完成。"
+    },
+    {
+      "id": "REQ-05",
+      "current": "前轮 R2 99/99 加载目标；新接口仅重点角落及 TT 984 MHz 闭环研究",
+      "condition": "Q=5、1.2 V；不同接口候选的频率变化和逐周期分频见独立结果。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "新接口不得直接继承旧版 99 点码表；所有输出频点的完整闭环及自动捕获仍未签核。"
+    },
+    {
+      "id": "REQ-06",
+      "current": "低阻候选单次 -102.450 dBc/Hz @1 MHz，加密未确认；整机抖动未定",
+      "condition": "TT27、Q=5、VCO 3.912686 GHz、采样器固定跟踪、实际 ÷4、APS 2 ps/63 边带；不是闭环噪声。",
+      "evidence": "circuit_sim",
+      "status": "at_risk",
+      "note": "维持 10 kHz–fout/2、<200 fs；首先解决数值复核，再在实际周期锁定工作点连同输出链验证，不据自由振荡 Pnoise 宣称达标。"
+    },
+    {
+      "id": "REQ-07",
+      "current": null,
+      "condition": "按 DEC-0002 暂缓离散杂散研究，不纳入随机抖动。",
+      "evidence": "none",
+      "status": "unknown",
+      "note": "<−60 dBc 需求保留。"
+    },
+    {
+      "id": "REQ-08",
+      "current": "VCO 支路 1.546–2.257 mW；已连接测量支路 2.379–3.575 mW",
+      "condition": "历史 99 点局部功耗及本轮接口支路测量；缺完整控制、重定时/GHz 接收和实际基准；稀疏闭环记录不用于精确功耗签核。",
+      "evidence": "circuit_sim",
+      "status": "at_risk",
+      "note": "是局部支路功耗，不能和其他 TB 简单相加或宣布完整锁定 PLL ≤4 mW；启动峰值另待统计。"
+    },
+    {
+      "id": "REQ-09",
+      "current": null,
+      "condition": "无电感几何、布局及隔离面积结果；含电感/滤波/隔离，暂不含 pad。",
+      "evidence": "none",
+      "status": "unknown",
+      "note": "接口候选增加 27 pF 去耦，快速环路减少滤波电容；均未换算成实际 PDK/布局面积，<0.3 mm² 未验证。"
+    },
+    {
+      "id": "REQ-10",
+      "current": "前轮 R2 三角全频覆盖；本轮两个接口候选各 7 个重点角落",
+      "condition": "TT27/SS60/FF0、Q=5、1.2 V；真实闭环仅 TT，不是完整 PVT。",
+      "evidence": "pvt_sim",
+      "status": "on_track",
+      "note": "本轮结果只是配对角覆盖，不能代表连续温度与统计签核。"
+    },
+    {
+      "id": "REQ-11",
+      "current": "历史 S11 约 54.13%；R2 分频逐周期有效",
+      "condition": "本轮检查分频周期数与相位收敛；占空比沿用 DEC-0003，不额外优化。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "继续检查毛刺与漏脉冲，未增加占空比数值容差。"
+    },
+    {
+      "id": "REQ-12",
+      "current": "10 fF 临时工作负载",
+      "condition": "R2 实际分频负载检查及历史输出重定时链器件验证；最终逻辑负载/门限未定义。",
+      "evidence": "pvt_sim",
+      "status": "on_track",
+      "note": "实际逻辑门电容、门限和互连尚待定义；10 fF 是临时假设。"
+    }
+  ],
+  "questions_for_human": [
+    {
+      "q": "后续需要实际 24 MHz 参考源的边沿、相噪以及片内输出负载/门限；当前理想输入和 10 fF 仅为工作假设。",
+      "blocking": false,
+      "since": "2026-09-17T20:57:59+08:00"
+    }
+  ],
+  "blocked_on": null,
+  "risks": [
+    "低阻接口单次降噪观察尚未通过数值加密，且 FF K14 仍不满足 2 MHz 内部余量筛选；不能采用该候选替换已交付接口。",
+    "四组瞬态实际 reltol=1e-3，尚无显式收紧容差的同条件复核，不能把全部相位漂移归因于电路慢状态。",
+    "周期采样拉频、有限窗调谐割线与理想回放增益不等于实际锁定周期线性化；随机抖动及新 CP 噪声仍待验证。",
+    "真实 LC 固定码环路仍缺 FLL 自动捕获/接管/重捕获、相位/振幅资格、GHz 接收与输出重定时链，不能作为完整 PLL 功耗或频率签核。",
+    "Q=5 电感缺工艺/EM 保证，Q=3 慢角低频仍有失振；工艺无源、寄生、冷启动、面积和完整 PVT/失配均未完成。"
+  ],
+  "next_steps": [
+    "以完整显式容差复核真实 LC 瞬态，保存偏置与关断分频支路状态，区分真实慢状态、浮置节点和数值误差。",
+    "优先保存完整终态、延长实际 LC 稳定过程并定位慢状态，从接近稳态的初值重启 PSS；当前尚无通过独立波形检查的闭环周期工作点。",
+    "解决低阻候选数值加密和 FF K14 调谐余量问题，研究减少负载和隔离接口；比较宽带整体收益，避免只优化 1 MHz 单点。",
+    "逐级接入真实 GHz 时钟接收、输出重定时链、FLL 和监督，验证各频点捕获及接管，并在同一顶层统计抖动和总功耗。",
+    "按既有约定后置偏置/基准发生器；工艺电感/无源或 EM 数据可用后复核 Q、寄生、面积和 PVT。"
+  ],
+  "decisions_since_last": [],
+  "resources_note": "本轮 56 个完整运行记录，另保留本地启动前 include 检查失败；远端时间求和约 14768 s。包括失败/取消，不以次数代替验证通过。原始证据全部回收本项目。"
+}

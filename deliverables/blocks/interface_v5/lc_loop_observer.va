@@ -1,0 +1,40 @@
+`include "disciplines.vams"
+`include "constants.vams"
+// Testbench-only observer. Inputs draw no current; it is not PLL control.
+module lc_loop_observer(vp,vn,refclk,ctrl,out,vss,phase,cycles,sampled_ctrl,divcycles);
+input vp,vn,refclk,ctrl,out,vss;
+output phase,cycles,sampled_ctrl,divcycles;
+electrical vp,vn,refclk,ctrl,out,vss,phase,cycles,sampled_ctrl,divcycles;
+real last_edge,period,previous_phase,total_phase,p,n,c;
+integer edge_count,refs;
+real divlast,divperiod,divprevious,divtotal,nd;
+integer divcount;
+analog begin
+ @(initial_step) begin
+  last_edge=-1;period=0;previous_phase=0;p=0;n=0;c=0;edge_count=0;refs=0;
+  divlast=-1;divperiod=0;divprevious=0;divtotal=0;nd=0;divcount=0;
+ end
+ @(cross(V(out,vss)-0.6,+1,1f,1u)) begin
+  if(divlast>=0) divperiod=$abstime-divlast;
+  divlast=$abstime;divcount=divcount+1;
+ end
+ @(cross(V(vp,vn),+1,1f,1u)) begin
+  if(last_edge>=0) period=$abstime-last_edge;
+  last_edge=$abstime;edge_count=edge_count+1;
+ end
+ @(cross(V(refclk,vss)-0.6,+1,1f,1u)) begin
+  if(period>0) begin
+   total_phase=edge_count+($abstime-last_edge)/period;
+   p=2*`M_PI*(total_phase-floor(total_phase));
+   if(refs>0) n=total_phase-previous_phase;
+   previous_phase=total_phase;refs=refs+1;c=V(ctrl,vss);
+   if(divperiod>0) begin
+    divtotal=divcount+($abstime-divlast)/divperiod;
+    if(refs>1) nd=divtotal-divprevious;
+    divprevious=divtotal;
+   end
+  end
+ end
+ V(phase,vss)<+p;V(cycles,vss)<+n;V(sampled_ctrl,vss)<+c;V(divcycles,vss)<+nd;
+end
+endmodule

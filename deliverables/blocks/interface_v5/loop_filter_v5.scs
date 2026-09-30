@@ -1,0 +1,11 @@
+simulator lang=spectre
+// Same physical MOS precharge switches; schematic RC parameters remain ideal.
+subckt tx_loop_filter_v5 (ctrl vc1 enable preset vdd vss)
+parameters rlf=100k c1lf=7.1619724391353p c2lf=.477464829275685p
+R (ctrl vc1) resistor r=rlf
+C1 (vc1 vss) capacitor c=c1lf
+C2 (ctrl vss) capacitor c=c2lf
+XI (enable enb vdd vss) pll_inv
+XP0 (preset ctrl enb enable vdd vss) pll_tg wn=20u wp=40u
+XP1 (preset vc1 enb enable vdd vss) pll_tg wn=20u wp=40u
+ends tx_loop_filter_v5

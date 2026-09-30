@@ -1,0 +1,51 @@
+{
+  "kpd_a_per_rad": 2.5882784624211306e-07,
+  "zero_current_phase_deg": 320.83373186792363,
+  "clamp_v": 0.84,
+  "fit_max_error_a": 7.29595331364016e-13,
+  "pulse_duty": 0.04275785233731252,
+  "pulse_delay_cycles": 0.050370075065115004,
+  "kvco_hz_per_v": 44409859.30276309,
+  "local_interval_slopes_hz_per_v": [
+    87197847.01822774,
+    51066914.93259596,
+    37752803.67293021
+  ],
+  "loops": [
+    {
+      "name": "original",
+      "r_ohm": 100000.0,
+      "c1_f": 2.86478897565412e-11,
+      "c2_f": 1.90985931710274e-12,
+      "crossover_hz": 801889.1453924873,
+      "continuous_phase_margin_deg": 43.98241515628837,
+      "sampled_spectral_radius": 0.9847988054951816,
+      "slow_time_constant_s": 2.7201261450462614e-06
+    },
+    {
+      "name": "r50k",
+      "r_ohm": 50000.0,
+      "c1_f": 2.86478897565412e-11,
+      "c2_f": 1.90985931710274e-12,
+      "crossover_hz": 527936.5046141017,
+      "continuous_phase_margin_deg": 61.57527568762954,
+      "sampled_spectral_radius": 0.9619224575781303,
+      "slow_time_constant_s": 1.0732901688773545e-06
+    },
+    {
+      "name": "fast",
+      "r_ohm": 100000.0,
+      "c1_f": 7.1619724391353e-12,
+      "c2_f": 4.77464829275685e-13,
+      "crossover_hz": 1055446.81173273,
+      "continuous_phase_margin_deg": 61.5769244896763,
+      "sampled_spectral_radius": 0.9257468352075726,
+      "slow_time_constant_s": 5.400421057100543e-07
+    }
+  ],
+  "limitations": [
+    "Detector fixture uses measured RF shape as an ideal voltage source; no VCO source impedance or noise back-action.",
+    "Kvco is a local secant with periodic sampling and finite windows; phase-dependent pulling is not captured by this scalar gain.",
+    "Filter elements are schematic ideal R/C; sampled linear model is a design screen, not nonlinear capture or jitter signoff."
+  ]
+}

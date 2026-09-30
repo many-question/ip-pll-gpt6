@@ -1,0 +1,8 @@
+simulator lang=spectre
+// Same DC divider; extra decoupling is an explicit, unextracted capacitor.
+subckt tx_bias_mid_v5 (vdd vss vmid)
+parameters rmid=100k cmid=10p
+R0 (vdd vmid) resistor r=rmid
+R1 (vmid vss) resistor r=rmid
+C0 (vmid vss) capacitor c=cmid
+ends tx_bias_mid_v5

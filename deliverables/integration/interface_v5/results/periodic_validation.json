@@ -1,0 +1,326 @@
+{
+  "case": "loop_quiet10_pss_functional",
+  "run": "loop_periodic_functional",
+  "simulator_ok": false,
+  "condition": "TT27,Q5,quiet10,code6,physical LC/sample/CP/filter/divider; driven 24 MHz PSS. Existence of a periodic solution is not capture or stability proof.",
+  "cancelled": true,
+  "shooting_norms": [
+    119000.0,
+    3740.0,
+    52600.0,
+    67800.0
+  ],
+  "shooting_norm_log_lines": [
+    "Conv norm = 119e+03, max dV(vn) = 1.34663 V, took 133.62 s.",
+    "Conv norm = 3.74e+03, max dV(XD.XR.o1) = -65.678 mV, took 91.58 s.",
+    "Conv norm = 52.6e+03, max dV(XD.XR.o1) = 884.235 mV, took 86.88 s.",
+    "Conv norm = 67.8e+03, max dV(XD.acp7) = 9.70311 V, took 83.24 s."
+  ],
+  "stop_review": {
+    "time": "2026-09-30T10:54:02.392883+08:00",
+    "norms": [
+      119000.0,
+      3740.0,
+      52600.0,
+      67800.0
+    ],
+    "observation": "The larger steadyratio trial develops large, increasing periodic mismatch and nonphysical trial biases. Last complete mismatch is dV(XD.acp7)=9.70311 V with norm 67,800. Stop this initialization; no claim that a better initial state cannot converge.",
+    "cancellation_reason_fact_check": "The cancellation reason incorrectly carried over the >40 mA mismatch from the strict recovery run. In THIS trial the log reports voltage mismatch: -65.678 mV, 884.235 mV, then 9.70311 V. Both runs follow a diverging class of trajectory, but their residual normalization/iteration metrics differ. Original cancellation record retained; use these directly logged values."
+  },
+  "recovery_log_lines": [
+    "Recovering from save-restart file /home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/interface_v5/897128a9/pss_recovery.state,",
+    "Restarting at time 1.41046 us."
+  ],
+  "numerical_settings": {
+    "reltol": [
+      "1e-05",
+      "10e-06",
+      "10e-06"
+    ],
+    "lteratio": [
+      "3.5",
+      "3.5"
+    ],
+    "steadyratio": [
+      "100e-03"
+    ],
+    "maxstep": [
+      "2 ps",
+      "2 ps"
+    ],
+    "method": [
+      "traponly",
+      "traponly"
+    ],
+    "errpreset": [
+      "moderate"
+    ]
+  },
+  "noise_precision_verified": false,
+  "cancellation": {
+    "time": "2026-09-30T10:54:04.030464+08:00",
+    "target": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/interface_v5/34ea6e67/loop_quiet10_pss_functional.scs",
+    "reason": "Fresh full log verifies 100x steady-state tolerance study follows the same divergent recovery path: last mismatch above 40 mA, following iteration shows nonphysical branch biases. Stop this initialization and preserve evidence; no usable periodic point and no inference of physical circuit overvoltage or impossible lock.",
+    "returncode": 0,
+    "stdout": "285878\n",
+    "stderr": ""
+  },
+  "attempts": [
+    {
+      "case": "loop_quiet10_pss",
+      "run": "loop_periodic",
+      "simulator_ok": false,
+      "condition": "TT27,Q5,quiet10,code6,physical LC/sample/CP/filter/divider; driven 24 MHz PSS. Existence of a periodic solution is not capture or stability proof.",
+      "cancelled": true,
+      "shooting_norms": [
+        4770000.0,
+        214000.0,
+        3660000.0,
+        163000.0,
+        219000.0,
+        13800.0,
+        58700.0,
+        47900.0,
+        9920.0,
+        25800.0,
+        41100.0,
+        54.2
+      ],
+      "shooting_norm_log_lines": [
+        "Conv norm = 4.77e+06, max dI(VDD:p) = 11.0241 mA, took 432.71 s.",
+        "Conv norm = 214e+03, max dI(XV.XL.XP.LW:1) = -326.082 uA, took 90.14 s.",
+        "Conv norm = 3.66e+06, max dI(VDD:p) = -6.15544 mA, took 89.69 s.",
+        "Conv norm = 163e+03, max dI(XV.XL.XP.LW:1) = 234.676 uA, took 89.45 s.",
+        "Conv norm = 219e+03, max dI(VDD:p) = -331.594 uA, took 89.49 s.",
+        "Conv norm = 13.8e+03, max dI(VDD:p) = -21.2501 uA, took 89.44 s.",
+        "Conv norm = 58.7e+03, max dI(VDD:p) = 90.3147 uA, took 89.01 s.",
+        "Conv norm = 47.9e+03, max dI(VDD:p) = -73.4561 uA, took 89.28 s.",
+        "Conv norm = 9.92e+03, max dI(VDD:p) = 15.2451 uA, took 89.47 s.",
+        "Conv norm = 25.8e+03, max dI(VDD:p) = 39.6184 uA, took 89.58 s.",
+        "Conv norm = 41.1e+03, max dI(VDD:p) = 63.0863 uA, took 89.79 s.",
+        "Conv norm = 54.2, max dI(VDD:p) = -82.9418 nA, took 87.96 s."
+      ],
+      "recovery_log_lines": [],
+      "numerical_settings": {
+        "reltol": [
+          "1e-05",
+          "10e-06",
+          "10e-06"
+        ],
+        "lteratio": [
+          "3.5",
+          "3.5"
+        ],
+        "steadyratio": [
+          "1e-03"
+        ],
+        "maxstep": [
+          "2 ps",
+          "2 ps"
+        ],
+        "method": [
+          "traponly",
+          "traponly"
+        ],
+        "errpreset": [
+          "moderate"
+        ]
+      },
+      "noise_precision_verified": false,
+      "cancellation": {
+        "time": "2026-09-30T10:32:34.515792+08:00",
+        "target": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/interface_v5/897128a9/loop_quiet10_pss.scs",
+        "reason": "Driven closed-loop PSS did not converge from 1 us stabilization after nine completed shooting iterations; recent norms remain about 1e4 to 4e4. Stop this initialization attempt. No periodic solution, loop noise, or stability result is accepted; a saved settled initial state is needed for follow-up.",
+        "returncode": 0,
+        "stdout": "254355\n",
+        "stderr": ""
+      }
+    },
+    {
+      "case": "loop_quiet10_pss_recover",
+      "run": "loop_periodic_recover",
+      "simulator_ok": false,
+      "condition": "TT27,Q5,quiet10,code6,physical LC/sample/CP/filter/divider; driven 24 MHz PSS. Existence of a periodic solution is not capture or stability proof.",
+      "cancelled": true,
+      "shooting_norms": [
+        1220000.0,
+        176000.0,
+        4190000.0,
+        4010000.0,
+        11700000.0
+      ],
+      "shooting_norm_log_lines": [
+        "Conv norm = 1.22e+06, max dV(vn) = 1.34663 V, took 132.98 s.",
+        "Conv norm = 176e+03, max dI(XV.XL.XP.LW:1) = 1.25031 mA, took 91.13 s.",
+        "Conv norm = 4.19e+06, max dI(VDD:p) = 42.4464 mA, took 85.12 s.",
+        "Conv norm = 4.01e+06, max dV(XD.acp7) = 9.70311 V, took 81.93 s.",
+        "Conv norm = 11.7e+06, max dV(out) = -113.205 V, took 139.98 s."
+      ],
+      "stop_review": {
+        "time": "2026-09-30T10:51:45.858220+08:00",
+        "norms": [
+          1220000.0,
+          176000.0,
+          4190000.0,
+          4010000.0,
+          11700000.0
+        ],
+        "observation": "Fresh complete log includes 52.3264 V trial body-source voltage and renewed multi-million residual after restart. Stop this diverging initialization; not a proof no periodic solution exists."
+      },
+      "recovery_log_lines": [
+        "Recovering from save-restart file /home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/interface_v5/897128a9/pss_recovery.state,",
+        "Restarting at time 1.41046 us."
+      ],
+      "numerical_settings": {
+        "reltol": [
+          "1e-05",
+          "10e-06",
+          "10e-06"
+        ],
+        "lteratio": [
+          "3.5",
+          "3.5"
+        ],
+        "steadyratio": [
+          "1e-03"
+        ],
+        "maxstep": [
+          "2 ps",
+          "2 ps"
+        ],
+        "method": [
+          "traponly",
+          "traponly"
+        ],
+        "errpreset": [
+          "moderate"
+        ]
+      },
+      "noise_precision_verified": false,
+      "cancellation": {
+        "time": "2026-09-30T10:51:47.201842+08:00",
+        "target": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/interface_v5/73d10763/loop_quiet10_pss_recover.scs",
+        "reason": "Fresh full log verified after checkpoint restart: repeated multi-million residuals and nonphysical trial branch voltages above 52 V. Stop this diverging initialization, retaining complete evidence; not a proof of absent periodic solution.",
+        "returncode": 0,
+        "stdout": "280811\n",
+        "stderr": ""
+      }
+    },
+    {
+      "case": "loop_quiet10_pss_functional",
+      "run": "loop_periodic_functional",
+      "simulator_ok": false,
+      "condition": "TT27,Q5,quiet10,code6,physical LC/sample/CP/filter/divider; driven 24 MHz PSS. Existence of a periodic solution is not capture or stability proof.",
+      "cancelled": true,
+      "shooting_norms": [
+        119000.0,
+        3740.0,
+        52600.0,
+        67800.0
+      ],
+      "shooting_norm_log_lines": [
+        "Conv norm = 119e+03, max dV(vn) = 1.34663 V, took 133.62 s.",
+        "Conv norm = 3.74e+03, max dV(XD.XR.o1) = -65.678 mV, took 91.58 s.",
+        "Conv norm = 52.6e+03, max dV(XD.XR.o1) = 884.235 mV, took 86.88 s.",
+        "Conv norm = 67.8e+03, max dV(XD.acp7) = 9.70311 V, took 83.24 s."
+      ],
+      "stop_review": {
+        "time": "2026-09-30T10:54:02.392883+08:00",
+        "norms": [
+          119000.0,
+          3740.0,
+          52600.0,
+          67800.0
+        ],
+        "observation": "The larger steadyratio trial develops large, increasing periodic mismatch and nonphysical trial biases. Last complete mismatch is dV(XD.acp7)=9.70311 V with norm 67,800. Stop this initialization; no claim that a better initial state cannot converge.",
+        "cancellation_reason_fact_check": "The cancellation reason incorrectly carried over the >40 mA mismatch from the strict recovery run. In THIS trial the log reports voltage mismatch: -65.678 mV, 884.235 mV, then 9.70311 V. Both runs follow a diverging class of trajectory, but their residual normalization/iteration metrics differ. Original cancellation record retained; use these directly logged values."
+      },
+      "recovery_log_lines": [
+        "Recovering from save-restart file /home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/interface_v5/897128a9/pss_recovery.state,",
+        "Restarting at time 1.41046 us."
+      ],
+      "numerical_settings": {
+        "reltol": [
+          "1e-05",
+          "10e-06",
+          "10e-06"
+        ],
+        "lteratio": [
+          "3.5",
+          "3.5"
+        ],
+        "steadyratio": [
+          "100e-03"
+        ],
+        "maxstep": [
+          "2 ps",
+          "2 ps"
+        ],
+        "method": [
+          "traponly",
+          "traponly"
+        ],
+        "errpreset": [
+          "moderate"
+        ]
+      },
+      "noise_precision_verified": false,
+      "cancellation": {
+        "time": "2026-09-30T10:54:04.030464+08:00",
+        "target": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/interface_v5/34ea6e67/loop_quiet10_pss_functional.scs",
+        "reason": "Fresh full log verifies 100x steady-state tolerance study follows the same divergent recovery path: last mismatch above 40 mA, following iteration shows nonphysical branch biases. Stop this initialization and preserve evidence; no usable periodic point and no inference of physical circuit overvoltage or impossible lock.",
+        "returncode": 0,
+        "stdout": "285878\n",
+        "stderr": ""
+      }
+    }
+  ],
+  "tolerance_study": {
+    "purpose": "Numerical convergence-tolerance study for a long driven LC loop; no circuit, timestep, noise requirement or waveform acceptance change.",
+    "baseline": {
+      "reltol": 1e-05,
+      "lteratio": 3.5,
+      "steadyratio": 0.001,
+      "relative_product": 3.5e-08
+    },
+    "trial": {
+      "reltol": 1e-05,
+      "lteratio": 3.5,
+      "steadyratio": 0.1,
+      "relative_product": 3.5e-06
+    },
+    "installed_help": "research/spectre_help/pss.txt lines 649-655 and 714-719: driven conservative default reltol=1e-4, steadyratio=.01; lteratio default is context dependent. Compare reltol*steadyratio=1e-6; effective lteratio/actual tolerances must be read from each run log.",
+    "acceptance": "Independent final period, 164 VCO / 41 output / 1 reference edges, harmonics, bounded amplitude/control, endpoint voltage mismatch <1mV. Even a pass is a functional periodic point and requires numerical refinement before noise signoff.",
+    "checkpoint_provenance": "pss_recovery_provenance.json",
+    "run": "loop_periodic_functional",
+    "case": "loop_quiet10_pss_functional"
+  },
+  "initial_interruption_review": {
+    "recorded": "2026-09-30T10:40:51.903508+08:00",
+    "original_run": "loop_periodic/loop_quiet10_pss",
+    "assessment_correction": "The initial stop decision used a stale tail showing oscillating residuals. Full recovered log contains a last completed norm of 54.2 before the following iteration was interrupted. This is not a solver-convergence failure proof. Original cancellation/result/log are retained unchanged.",
+    "last_completed_shooting_norm": 54.2,
+    "original_checkpoint": "/home/jielu/saveFileAfterTrapSignals",
+    "checkpoint_mtime_server": "2026-09-30T10:30:46.477526167+08:00",
+    "checkpoint_owner": "jielu",
+    "checkpoint_bytes": 77570618,
+    "checkpoint_sha256": "55c0db92455958668b1d5e29da81dbc8724a232b3c5e3e25935e866e5cb91da3",
+    "preserved_remote_checkpoint": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/interface_v5/897128a9/pss_recovery.state",
+    "recovery_case": "loop_quiet10_pss_recover",
+    "recovery_run": "loop_periodic_recover",
+    "provenance": "Last of three sequential exact-process SIGINT cancellations; original log names ./saveFileAfterTrapSignals; bridge remote CWD is /home/jielu. Copied without overwrite, downloaded and SHA256 matched remotely.",
+    "limitations": "Binary checkpoint is simulator-version and circuit specific; recovery success must be independently verified.",
+    "recovery_inputs_check": {
+      "all_included_files_identical": true,
+      "included_files": 13,
+      "only_netlist_changes": [
+        "PSS recover path",
+        "PSS writefinal path"
+      ],
+      "documented_recovery_time_s": 1.41046e-06,
+      "effective_recovery_stabilization_end_s": 1.85259e-06,
+      "same_shooting_iteration_continued": false,
+      "note": "Spectre restores transient circuit state, adds a new stabilization segment and begins a fresh shooting solve; this is not continuation of the prior Newton iteration."
+    }
+  }
+}

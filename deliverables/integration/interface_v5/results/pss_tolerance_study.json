@@ -1,0 +1,20 @@
+{
+  "purpose": "Numerical convergence-tolerance study for a long driven LC loop; no circuit, timestep, noise requirement or waveform acceptance change.",
+  "baseline": {
+    "reltol": 1e-05,
+    "lteratio": 3.5,
+    "steadyratio": 0.001,
+    "relative_product": 3.5e-08
+  },
+  "trial": {
+    "reltol": 1e-05,
+    "lteratio": 3.5,
+    "steadyratio": 0.1,
+    "relative_product": 3.5e-06
+  },
+  "installed_help": "research/spectre_help/pss.txt lines 649-655 and 714-719: driven conservative default reltol=1e-4, steadyratio=.01; lteratio default is context dependent. Compare reltol*steadyratio=1e-6; effective lteratio/actual tolerances must be read from each run log.",
+  "acceptance": "Independent final period, 164 VCO / 41 output / 1 reference edges, harmonics, bounded amplitude/control, endpoint voltage mismatch <1mV. Even a pass is a functional periodic point and requires numerical refinement before noise signoff.",
+  "checkpoint_provenance": "pss_recovery_provenance.json",
+  "run": "loop_periodic_functional",
+  "case": "loop_quiet10_pss_functional"
+}
