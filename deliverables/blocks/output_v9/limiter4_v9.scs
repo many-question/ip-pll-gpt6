@@ -1,0 +1,17 @@
+simulator lang=spectre
+subckt tx_limiter4_v9 (inp out vdd vss)
+parameters wn=4u wp=10u rfb=50k cac=200f
+C0 (inp g0) capacitor c=cac
+R0 (g0 o0) resistor r=rfb
+X0 (g0 o0 vdd vss) pll_inv wn=wn wp=wp
+C1 (o0 g1) capacitor c=cac
+R1 (g1 o1) resistor r=rfb
+X1 (g1 o1 vdd vss) pll_inv wn=wn wp=wp
+C2 (o1 g2) capacitor c=cac
+R2 (g2 o2) resistor r=rfb
+X2 (g2 o2 vdd vss) pll_inv wn=wn wp=wp
+C3 (o2 g3) capacitor c=cac
+R3 (g3 o3) resistor r=rfb
+X3 (g3 o3 vdd vss) pll_inv wn=wn wp=wp
+XO (o3 out vdd vss) pll_inv wn=2*wn wp=2*wp
+ends tx_limiter4_v9

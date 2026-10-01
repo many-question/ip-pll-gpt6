@@ -1,0 +1,24 @@
+{
+  "time": "2026-10-01T21:14:03.349058+08:00",
+  "questions": [
+    "Does lowering inverter bias feedback resistance suppress low-offset gain/noise peaking without losing GHz clock swing?",
+    "Can raw differential divider data and VCO-shaped differential clocks drive a physical CML retiming stage, avoiding a full-rail GHz restoring chain?"
+  ],
+  "conditions": "TT27,1.2V,ideal noiseless measured-shapeRF3.936GHz,/4,10fF. Same PDK hash. Actual divider and output chain, no mainloop/VCO impedance/generators. No claimed PVT or adoption.",
+  "functional_criteria": {
+    "window_s": [
+      7e-08,
+      1e-07
+    ],
+    "mean_frequency_error": 0.001,
+    "max_output_period_error": 0.02,
+    "min_output_edges": 20,
+    "output_low_v": 0.2,
+    "output_high_v": 1.0,
+    "cml_diff_data_pp_min_v": 0.05
+  },
+  "feedback_clock_criteria": "Retain v8 logic-clock swing<0.2/>1V,frequency3936MHz,error<0.1%,maxperioderror<2%.",
+  "cml_clock_criteria": "Differential analog clock must have4RFcycles/output,positive andnegative differential levels,and>50mV differentialpp. Logic-rail requirements do not apply to this CML input.",
+  "timing_scope": "Frequency/swing screen only. Report physical data-to-clock separation and delay; no assumed setup/hold or arbitrary delayed-data oracle. Single latch requires checking data transition within hold interval and output controlled by reopening before acceptance as a retimer.",
+  "noise_scope": "Only after function and periodic checks; explicit10k\u2013492MHz ASD\u00b2/slew\u00b2. Old v8PSS values are baselines, not signoff of modified loading. Preserve failing trials."
+}

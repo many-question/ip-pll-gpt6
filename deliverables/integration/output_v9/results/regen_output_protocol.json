@@ -1,0 +1,7 @@
+{
+  "time": "2026-10-01T21:27:58.266667+08:00",
+  "basis": "Single CML same phase passes only about0.5x deterministic timing suppression and~978fs coarse noise; opposite phase about2x sensitivity and~2558fs. Both are rejected as final choices. Two-latch physical baseline function passes.",
+  "hypothesis": "Differential post-retiming regeneration at984MHz may avoid the four-stage AC chain and reject common-mode latch/bias fluctuations. Existing RF regenerative receiver failed at3.936GHz; its behavior at984MHz is a new experiment, not inherited validation.",
+  "change": "Replace single-ended tx_limiter4 only with actual tx_regen_receiver using both retimed nodes; dummy complementary output10fF balances load. Compare three stated receiver/latch scalings.",
+  "conditions": "Same actual raw divider,ideal noiseless RFshape,TT27/1.2V/10fF,original CML output frequency/swing checks. Actual VCO and mainloop excluded."
+}

@@ -1,0 +1,43 @@
+{
+  "time": "2026-10-01T21:22:22.530187+08:00",
+  "sources": [
+    {
+      "case": "cml1_s1_tt",
+      "source": "research/runs/spectre_output_v9/cml/cml1_s1_tt/waveforms.npz",
+      "sha256": "0baebbee8a824470167d9d3390510fb895a39ef538230b053a48dec8ddccdab4",
+      "fit_max_error_v": {
+        "dp": 2.7454874012677877e-05,
+        "dn": 2.8052343588935713e-05
+      },
+      "end_difference_v": {
+        "dp": 1.2334567962568599e-06,
+        "dn": 2.414319303589707e-06
+      },
+      "fit_window_s": [
+        9.75609756097561e-08,
+        9.857723577235772e-08
+      ]
+    },
+    {
+      "case": "cml1_opp_s1_tt",
+      "source": "research/runs/spectre_output_v9/phase/cml1_opp_s1_tt/waveforms.npz",
+      "sha256": "8b174f776160a4f856424fdb7b4f3f0051687f798c95bf4f04b424dc3fc3cb53",
+      "fit_max_error_v": {
+        "dp": 1.993016852641638e-05,
+        "dn": 1.9447311441656012e-05
+      },
+      "end_difference_v": {
+        "dp": 5.511628198284768e-08,
+        "dn": 1.439785232149049e-06
+      },
+      "fit_window_s": [
+        9.75609756097561e-08,
+        9.857723577235772e-08
+      ]
+    }
+  ],
+  "method": "63-harmonic fit to one raw differential data period aligned to absolute RF phase. Replace the divider only in this diagnostic with ideal replay, apply-10/0/+10ps time shift to both data polarities, leave actual retimer/RF shape unchanged.",
+  "qualification": "Fit error<0.5mV. Zero-shift output rising-edge phase must match the physical-divider source fixture within2ps before interpreting timing sensitivity. Unchanged frequency/swing screen.",
+  "diagnostic_target": "Report delta output edge time / delta actual raw data edge time for\u00b110ps. Magnitude<0.1 is an internal research target, not a new user requirement or universal setup/hold specification.",
+  "scope": "Deterministic local sensitivity only, oneTT/984MHz phase. Ideal replay has no divider noise/impedance or bidirectional coupling; no power or integrated-noise signoff from these TBs. Actual integrated-noise TBs retain the physical divider."
+}

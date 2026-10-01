@@ -1,0 +1,325 @@
+{
+  "protocol": {
+    "time": "2026-10-01T21:22:22.530187+08:00",
+    "sources": [
+      {
+        "case": "cml1_s1_tt",
+        "source": "research/runs/spectre_output_v9/cml/cml1_s1_tt/waveforms.npz",
+        "sha256": "0baebbee8a824470167d9d3390510fb895a39ef538230b053a48dec8ddccdab4",
+        "fit_max_error_v": {
+          "dp": 2.7454874012677877e-05,
+          "dn": 2.8052343588935713e-05
+        },
+        "end_difference_v": {
+          "dp": 1.2334567962568599e-06,
+          "dn": 2.414319303589707e-06
+        },
+        "fit_window_s": [
+          9.75609756097561e-08,
+          9.857723577235772e-08
+        ]
+      },
+      {
+        "case": "cml1_opp_s1_tt",
+        "source": "research/runs/spectre_output_v9/phase/cml1_opp_s1_tt/waveforms.npz",
+        "sha256": "8b174f776160a4f856424fdb7b4f3f0051687f798c95bf4f04b424dc3fc3cb53",
+        "fit_max_error_v": {
+          "dp": 1.993016852641638e-05,
+          "dn": 1.9447311441656012e-05
+        },
+        "end_difference_v": {
+          "dp": 5.511628198284768e-08,
+          "dn": 1.439785232149049e-06
+        },
+        "fit_window_s": [
+          9.75609756097561e-08,
+          9.857723577235772e-08
+        ]
+      }
+    ],
+    "method": "63-harmonic fit to one raw differential data period aligned to absolute RF phase. Replace the divider only in this diagnostic with ideal replay, apply-10/0/+10ps time shift to both data polarities, leave actual retimer/RF shape unchanged.",
+    "qualification": "Fit error<0.5mV. Zero-shift output rising-edge phase must match the physical-divider source fixture within2ps before interpreting timing sensitivity. Unchanged frequency/swing screen.",
+    "diagnostic_target": "Report delta output edge time / delta actual raw data edge time for\u00b110ps. Magnitude<0.1 is an internal research target, not a new user requirement or universal setup/hold specification.",
+    "scope": "Deterministic local sensitivity only, oneTT/984MHz phase. Ideal replay has no divider noise/impedance or bidirectional coupling; no power or integrated-noise signoff from these TBs. Actual integrated-noise TBs retain the physical divider."
+  },
+  "additional_protocols": [
+    {
+      "time": "2026-10-01T21:42:48.947908+08:00",
+      "sources": [
+        {
+          "case": "cml2_opp_s2_tt",
+          "tag": "double_opp",
+          "source": "research/runs/spectre_output_v9/phase2/cml2_opp_s2_tt/waveforms.npz",
+          "sha256": "e499da1bedbcde1c98e569692c59832fd2ce12532d8468e082f45353428e9b8e",
+          "fit_max_error_v": {
+            "dp": 2.6004259148670883e-05,
+            "dn": 2.6074251780139335e-05
+          },
+          "end_difference_v": {
+            "dp": 7.04799911321885e-07,
+            "dn": 2.5923630138091625e-06
+          },
+          "fit_window_s": [
+            9.75609756097561e-08,
+            9.857723577235772e-08
+          ]
+        }
+      ],
+      "method": "63-harmonic fit to one raw differential data period aligned to absolute RF phase. Replace the divider only in this diagnostic with ideal replay, apply-10/0/+10ps time shift to both data polarities, leave actual retimer/RF shape unchanged.",
+      "qualification": "Fit error<0.5mV. Zero-shift output rising-edge phase must match the physical-divider source fixture within2ps before interpreting timing sensitivity. Unchanged frequency/swing screen.",
+      "diagnostic_target": "Report delta output edge time / delta actual raw data edge time for\u00b110ps. Magnitude<0.1 is an internal research target, not a new user requirement or universal setup/hold specification.",
+      "scope": "Deterministic local sensitivity only, oneTT/984MHz phase. Ideal replay has no divider noise/impedance or bidirectional coupling; no power or integrated-noise signoff from these TBs. Actual integrated-noise TBs retain the physical divider."
+    },
+    {
+      "time": "2026-10-01T21:46:57.654515+08:00",
+      "sources": [
+        {
+          "case": "cml2_s2_tt",
+          "tag": "double_same",
+          "source": "research/runs/spectre_output_v9/cml/cml2_s2_tt/waveforms.npz",
+          "sha256": "6567cc833975a94516846703620ac1362ff007630c6fc18354ad4227d72a693e",
+          "fit_max_error_v": {
+            "dp": 1.8036955706124402e-05,
+            "dn": 1.6274946371019894e-05
+          },
+          "end_difference_v": {
+            "dp": 1.336165888821128e-06,
+            "dn": 2.8931509739038574e-06
+          },
+          "fit_window_s": [
+            9.75609756097561e-08,
+            9.857723577235772e-08
+          ]
+        }
+      ],
+      "method": "63-harmonic fit to one raw differential data period aligned to absolute RF phase. Replace the divider only in this diagnostic with ideal replay, apply-10/0/+10ps time shift to both data polarities, leave actual retimer/RF shape unchanged.",
+      "qualification": "Fit error<0.5mV. Zero-shift output rising-edge phase must match the physical-divider source fixture within2ps before interpreting timing sensitivity. Unchanged frequency/swing screen.",
+      "diagnostic_target": "Report delta output edge time / delta actual raw data edge time for\u00b110ps. Magnitude<0.1 is an internal research target, not a new user requirement or universal setup/hold specification.",
+      "scope": "Deterministic local sensitivity only, oneTT/984MHz phase. Ideal replay has no divider noise/impedance or bidirectional coupling; no power or integrated-noise signoff from these TBs. Actual integrated-noise TBs retain the physical divider."
+    },
+    {
+      "time": "2026-10-01T21:38:50.180191+08:00",
+      "sources": [
+        {
+          "case": "cml2_regen_b_tt",
+          "tag": "regen_b",
+          "source": "research/runs/spectre_output_v9/regen_output/cml2_regen_b_tt/waveforms.npz",
+          "sha256": "8050a85ce7cf58805bc231ce33f5b29504ef5b91d1c4b579f0c0cee7de21d5c6",
+          "fit_max_error_v": {
+            "dp": 2.1558077172967316e-05,
+            "dn": 1.991833677594812e-05
+          },
+          "end_difference_v": {
+            "dp": 2.9259156528738117e-06,
+            "dn": 4.027782457560747e-06
+          },
+          "fit_window_s": [
+            9.75609756097561e-08,
+            9.857723577235772e-08
+          ]
+        }
+      ],
+      "method": "63-harmonic fit to one raw differential data period aligned to absolute RF phase. Replace the divider only in this diagnostic with ideal replay, apply-10/0/+10ps time shift to both data polarities, leave actual retimer/RF shape unchanged.",
+      "qualification": "Fit error<0.5mV. Zero-shift output rising-edge phase must match the physical-divider source fixture within2ps before interpreting timing sensitivity. Unchanged frequency/swing screen.",
+      "diagnostic_target": "Report delta output edge time / delta actual raw data edge time for\u00b110ps. Magnitude<0.1 is an internal research target, not a new user requirement or universal setup/hold specification.",
+      "scope": "Deterministic local sensitivity only, oneTT/984MHz phase. Ideal replay has no divider noise/impedance or bidirectional coupling; no power or integrated-noise signoff from these TBs. Actual integrated-noise TBs retain the physical divider."
+    },
+    {
+      "time": "2026-10-01T21:39:57.091705+08:00",
+      "sources": [
+        {
+          "case": "cml2_regen_bopp_tt",
+          "tag": "regen_bopp",
+          "source": "research/runs/spectre_output_v9/phase2/cml2_regen_bopp_tt/waveforms.npz",
+          "sha256": "5584dea19642307959929369af0b7f5f32bd09459de2770cea8f119f5344aba8",
+          "fit_max_error_v": {
+            "dp": 3.193911252963311e-05,
+            "dn": 2.6458362110570732e-05
+          },
+          "end_difference_v": {
+            "dp": 1.17703924940038e-06,
+            "dn": 2.458731777954526e-06
+          },
+          "fit_window_s": [
+            9.75609756097561e-08,
+            9.857723577235772e-08
+          ]
+        }
+      ],
+      "method": "63-harmonic fit to one raw differential data period aligned to absolute RF phase. Replace the divider only in this diagnostic with ideal replay, apply-10/0/+10ps time shift to both data polarities, leave actual retimer/RF shape unchanged.",
+      "qualification": "Fit error<0.5mV. Zero-shift output rising-edge phase must match the physical-divider source fixture within2ps before interpreting timing sensitivity. Unchanged frequency/swing screen.",
+      "diagnostic_target": "Report delta output edge time / delta actual raw data edge time for\u00b110ps. Magnitude<0.1 is an internal research target, not a new user requirement or universal setup/hold specification.",
+      "scope": "Deterministic local sensitivity only, oneTT/984MHz phase. Ideal replay has no divider noise/impedance or bidirectional coupling; no power or integrated-noise signoff from these TBs. Actual integrated-noise TBs retain the physical divider."
+    }
+  ],
+  "cases": [
+    {
+      "phase": "same",
+      "zero_replay_minus_physical_ps": {
+        "data_rise": 0.020165635676747933,
+        "data_fall": 0.020321677241965833,
+        "retimed_rise": 0.020218601637230032,
+        "retimed_fall": 0.0202369187762581,
+        "out_rise": 0.05343468339725524,
+        "out_fall": 0.008999473109297926
+      },
+      "late_minus_early_ps": {
+        "data_rise": 20.0000000014188,
+        "data_fall": 19.99999999188679,
+        "retimed_rise": 6.119393117810712,
+        "retimed_fall": 6.2455447083787785,
+        "out_rise": 10.825513950390034,
+        "out_fall": 10.068136817215368
+      },
+      "output_to_input_timing_gain": {
+        "retimed_rise": 0.30596965586883007,
+        "retimed_fall": 0.3122772355456175,
+        "out_rise": 0.5412756974811036,
+        "out_fall": 0.5034068410649807
+      },
+      "qualified_replay": true,
+      "pass_internal_timing_target": false,
+      "scope": "Deterministic finite-difference timing response over\u00b110ps at oneTT phase, with measured ideal data replay. Not actual divider noise or universal setup/hold/PVT signoff."
+    },
+    {
+      "phase": "opp",
+      "zero_replay_minus_physical_ps": {
+        "data_rise": 0.024770204297756837,
+        "data_fall": 0.02560741813125906,
+        "retimed_rise": 0.20053693731387803,
+        "retimed_fall": 0.174828492544159,
+        "out_rise": 0.12778613313449208,
+        "out_fall": 0.016377283060358506
+      },
+      "late_minus_early_ps": {
+        "data_rise": 20.000000019570923,
+        "data_fall": 19.999999987504566,
+        "retimed_rise": 107.54780725589119,
+        "retimed_fall": 100.60863417088487,
+        "out_rise": 40.48723207464543,
+        "out_fall": 41.876244720885325
+      },
+      "output_to_input_timing_gain": {
+        "retimed_rise": 5.377390357532534,
+        "retimed_fall": 5.030431711687115,
+        "out_rise": 2.0243616017513406,
+        "out_fall": 2.093812237352421
+      },
+      "qualified_replay": true,
+      "pass_internal_timing_target": false,
+      "scope": "Deterministic finite-difference timing response over\u00b110ps at oneTT phase, with measured ideal data replay. Not actual divider noise or universal setup/hold/PVT signoff."
+    },
+    {
+      "phase": "double_opp",
+      "zero_replay_minus_physical_ps": {
+        "data_rise": 0.018085305259285513,
+        "data_fall": 0.018304190382474855,
+        "retimed_rise": 0.01987641525254816,
+        "retimed_fall": 0.019173923623743573,
+        "out_rise": 0.011348085016083304,
+        "out_fall": 0.03166915695674518
+      },
+      "late_minus_early_ps": {
+        "data_rise": 19.999984117043805,
+        "data_fall": 20.000017675572533,
+        "retimed_rise": 7.238441278547246,
+        "retimed_fall": 7.523400292355086,
+        "out_rise": 11.099525065023526,
+        "out_fall": 10.798481777011098
+      },
+      "output_to_input_timing_gain": {
+        "retimed_rise": 0.3619223513472049,
+        "retimed_fall": 0.3761696821670292,
+        "out_rise": 0.5549766939847023,
+        "out_fall": 0.5399236116776068
+      },
+      "qualified_replay": true,
+      "pass_internal_timing_target": false,
+      "scope": "Deterministic finite-difference timing response over\u00b110ps at oneTT phase, with measured ideal data replay. Not actual divider noise or universal setup/hold/PVT signoff."
+    },
+    {
+      "phase": "double_same",
+      "zero_replay_minus_physical_ps": {
+        "data_rise": 0.030943175389050833,
+        "data_fall": 0.03252928263774558,
+        "retimed_rise": 0.005662292840301366,
+        "retimed_fall": 0.005430015283344739,
+        "out_rise": 0.005404847568305821,
+        "out_fall": 0.021929199086074505
+      },
+      "late_minus_early_ps": {
+        "data_rise": 20.000000437152064,
+        "data_fall": 19.999999618033257,
+        "retimed_rise": 3.0738771654149173,
+        "retimed_fall": 2.970824642115805,
+        "out_rise": 8.882177848064321,
+        "out_fall": 8.211364977970108
+      },
+      "output_to_input_timing_gain": {
+        "retimed_rise": 0.15369385491136658,
+        "retimed_fall": 0.14854123494268082,
+        "out_rise": 0.44410888269606036,
+        "out_fall": 0.4105682567396764
+      },
+      "qualified_replay": true,
+      "pass_internal_timing_target": false,
+      "scope": "Deterministic finite-difference timing response over\u00b110ps at oneTT phase, with measured ideal data replay. Not actual divider noise or universal setup/hold/PVT signoff."
+    },
+    {
+      "phase": "regen_b",
+      "zero_replay_minus_physical_ps": {
+        "data_rise": 0.02498543333241171,
+        "data_fall": 0.024704421934663545,
+        "retimed_rise": 0.7867700001527578,
+        "retimed_fall": -0.6318135094709388,
+        "out_rise": 11.891016474584603,
+        "out_fall": -14.406680776961343
+      },
+      "late_minus_early_ps": {
+        "data_rise": 19.99999995971866,
+        "data_fall": 19.999999998527638,
+        "retimed_rise": 13.369066865876905,
+        "retimed_fall": 12.026183008945786,
+        "out_rise": -0.2652667408021578,
+        "out_fall": 29.712409320132114
+      },
+      "output_to_input_timing_gain": {
+        "retimed_rise": 0.668453344640155,
+        "retimed_fall": 0.6013091504915565,
+        "out_rise": -0.013263337066821139,
+        "out_fall": 1.4856204661159742
+      },
+      "qualified_replay": false,
+      "pass_internal_timing_target": false,
+      "scope": "Deterministic finite-difference timing response over\u00b110ps at oneTT phase, with measured ideal data replay. Not actual divider noise or universal setup/hold/PVT signoff."
+    },
+    {
+      "phase": "regen_bopp",
+      "zero_replay_minus_physical_ps": {
+        "data_rise": 0.016776845826882752,
+        "data_fall": 0.02146707600942353,
+        "retimed_rise": 0.1848697370783932,
+        "retimed_fall": -0.13839711695923926,
+        "out_rise": 5.763204691554894,
+        "out_fall": -5.762236008917433
+      },
+      "late_minus_early_ps": {
+        "data_rise": 20.000000007078217,
+        "data_fall": 20.000000002228496,
+        "retimed_rise": 4.706130659119927,
+        "retimed_fall": 4.925144630773961,
+        "out_rise": 8.079017292055845,
+        "out_fall": 7.715355834638771
+      },
+      "output_to_input_timing_gain": {
+        "retimed_rise": 0.2353065328727188,
+        "retimed_fall": 0.24625723151125886,
+        "out_rise": 0.40395086445982964,
+        "out_fall": 0.3857677916889545
+      },
+      "qualified_replay": false,
+      "pass_internal_timing_target": false,
+      "scope": "Deterministic finite-difference timing response over\u00b110ps at oneTT phase, with measured ideal data replay. Not actual divider noise or universal setup/hold/PVT signoff."
+    }
+  ]
+}

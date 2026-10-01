@@ -1,0 +1,15 @@
+simulator lang=spectre
+subckt tx_cml_retimer1_v9 (dp dn cp cn out vdd vss)
+parameters scale=1 lscale=1 rb=50k cdec=10p
+CP (cp ckp) capacitor c=300f
+CN (cn ckn) capacitor c=300f
+RBP (ckp cm) resistor r=rb
+RBN (ckn cm) resistor r=rb
+RH (vdd cm) resistor r=25k
+RL (cm vss) resistor r=rb
+CB (cm vss) capacitor c=cdec
+IREF (vdd nb) isource dc=30u*scale
+MR (nb nb vss vss) nch w=2u*scale l=1u ad=2u*scale*240n as=2u*scale*240n pd=2*(2u*scale+240n) ps=2*(2u*scale+240n)
+XS (dp dn ckn ckp qp qn nb vss vdd vss) tx_cml_latch_v2 scale=scale rload=2000
+XL (qp out vdd vss) tx_limiter4 wn=1.2u*lscale wp=3u*lscale
+ends tx_cml_retimer1_v9

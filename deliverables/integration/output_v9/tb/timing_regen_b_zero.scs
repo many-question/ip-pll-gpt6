@@ -1,0 +1,24 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt_bbmvar
+simulator lang=spectre insensitive=no
+include "cells.scs"
+include "divider_v2.scs"
+include "limiter_chain.scs"
+simulatorOptions options reltol=1e-5 vabstol=1e-7 iabstol=1e-13 temp=27
+VDD (vdd 0) vsource dc=1.2
+ahdl_include "tank_waveform_v5.va"
+XRF (vp vn 0) tank_waveform_v5
+ahdl_include "data_wave_regen_b_v9.va"
+XDATA (dp dn 0) data_wave_regen_b_v9 delay_s=0
+include "receiver.scs"
+include "cml_retimer_regen_v9.scs"
+VRT (rt_vdd vdd) vsource dc=0
+XRT (dp dn vp vn out rt_vdd 0) tx_cml_retimer_regen_v9 scale=1 rwn=8u rwp=1.2u ribias=20u
+CL (out 0) capacitor c=10f
+tran tran stop=100n maxstep=1p method=traponly errpreset=conservative
+save vp vn dp dn out XRT.ckp XRT.ckn XRT.cm XRT.nb XRT.qp XRT.qn XRT.XL.gp XRT.XL.gn XRT.XL.qp XRT.XL.qn VDD:p VRT:p
+saveOptions options save=selected

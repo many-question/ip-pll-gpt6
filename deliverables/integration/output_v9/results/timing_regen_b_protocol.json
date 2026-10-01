@@ -1,0 +1,27 @@
+{
+  "time": "2026-10-01T21:38:50.180191+08:00",
+  "sources": [
+    {
+      "case": "cml2_regen_b_tt",
+      "tag": "regen_b",
+      "source": "research/runs/spectre_output_v9/regen_output/cml2_regen_b_tt/waveforms.npz",
+      "sha256": "8050a85ce7cf58805bc231ce33f5b29504ef5b91d1c4b579f0c0cee7de21d5c6",
+      "fit_max_error_v": {
+        "dp": 2.1558077172967316e-05,
+        "dn": 1.991833677594812e-05
+      },
+      "end_difference_v": {
+        "dp": 2.9259156528738117e-06,
+        "dn": 4.027782457560747e-06
+      },
+      "fit_window_s": [
+        9.75609756097561e-08,
+        9.857723577235772e-08
+      ]
+    }
+  ],
+  "method": "63-harmonic fit to one raw differential data period aligned to absolute RF phase. Replace the divider only in this diagnostic with ideal replay, apply-10/0/+10ps time shift to both data polarities, leave actual retimer/RF shape unchanged.",
+  "qualification": "Fit error<0.5mV. Zero-shift output rising-edge phase must match the physical-divider source fixture within2ps before interpreting timing sensitivity. Unchanged frequency/swing screen.",
+  "diagnostic_target": "Report delta output edge time / delta actual raw data edge time for\u00b110ps. Magnitude<0.1 is an internal research target, not a new user requirement or universal setup/hold specification.",
+  "scope": "Deterministic local sensitivity only, oneTT/984MHz phase. Ideal replay has no divider noise/impedance or bidirectional coupling; no power or integrated-noise signoff from these TBs. Actual integrated-noise TBs retain the physical divider."
+}
