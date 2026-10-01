@@ -1,0 +1,15 @@
+{
+  "time": "2026-10-02T03:55:39.506981+08:00",
+  "rejected": [
+    "noise_cc4_rtcomb_onlyXRX_coarse",
+    "noise_cc4_rtcomb_onlyXD_coarse",
+    "noise_cc4_rtcomb_onlyXR_coarse"
+  ],
+  "cause": "noiseon_* was mistakenly placed on pnoise analysis; SpectreSFE106 ignored it. Independent PSD closure rejected the three runs. All-on noise and coarse/fine results unaffected.",
+  "repair": "Use simulatorOptions options noiseon_inst=[group] noiseon_type=all as verified v12 baseline; retain rejected inputs and outputs; parser now rejects ignored noise-option warnings.",
+  "cases": [
+    "noise_cc4_rtcomb_gateXRX_coarse",
+    "noise_cc4_rtcomb_gateXD_coarse",
+    "noise_cc4_rtcomb_gateXR_coarse"
+  ]
+}

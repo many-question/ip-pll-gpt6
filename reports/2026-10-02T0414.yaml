@@ -1,0 +1,324 @@
+{
+  "schema": "chip-report/0.1",
+  "report": {
+    "seq": 15,
+    "time": "2026-10-02T04:14:03+08:00",
+    "trigger": "requested",
+    "covers_since": "2026-10-02T02:37:44+08:00"
+  },
+  "overall": {
+    "phase": "CMOS局部降噪与慢角时钟/分频接口优化",
+    "summary": "TT数字链抖动由181.186降至126.892fs（-29.97%），独立noise-on与加密通过；实际LC接回后TT正确 /4，测试电路约3.24mW、步长精度通过。实际LC慢角100/120uA仍漏计，完整PLL噪声/功耗/PVT未签核。",
+    "since_last": [
+      "只将RF耦合电容1pF改4pF，并分别优化重定时FF的MN1/MNC1、MP2及首缓冲NMOS。受控粗网格154.0/140.6/141.6/126.8fs，加密组合126.892fs；数字夹具功耗1.201648mW，较v12增加84.85uW。",
+      "独立XRX/XD/XR噪声约40.044/18.464/118.909fs，最大PSD闭合差1.18e-15。FF/首缓冲细网格贡献由约138/80fs降到105.194/45.638fs。",
+      "实际LC仍用Q5/100uA/码21，0.2/1.0V端点3.932900/3.962921GHz包围3.936GHz；同一测试电路3.237481/3.241250mW。低端0.5ps为3.933019GHz/3.237530mW，精度复核通过。",
+      "慢角内部取证发现：理想全摆幅时钟下首TSPC q0已÷2而后级缓冲丢脉冲；调整门限的divtrip可在理想时钟SS60运行。全摆幅50%时钟10/30/50ps均通过，30ps下60%通过/40%失败，需保证有效评估时间。",
+      "更宽/短链/再生接收器、首FF局部尺寸、缓冲级数、复位/IC及ratioed7T对照均未形成实际接收时钟下的SS合格候选。最终TT版FF0通过、SS60失败；实际LC SS60在100/120uA均漏计，不能用增大VCO电流代替修复。",
+      "67组运行全部回收。三次noiseon误放pnoise分析行，被SFE106和独立闭合检查拒绝；原证据保留，修正为全局options后重跑闭合。解析器增加对被忽略噪声选项的拒绝。"
+    ],
+    "route_confidence": "low",
+    "route_confidence_reason": "TT已得到受控、可复核的30%降噪；慢角时钟与分频接口尚未解决，固定 /4到完整PLL和全频PVT仍有实质缺口。"
+  },
+  "levels": {
+    "survey": {
+      "maturity": 3,
+      "note": "复读Razavi原文Fig6/8/9核对拓扑和形成时序竞争假设；性能结论均来自本项目仿真。",
+      "artifacts": [
+        "share/deliverables/sources/cmos_v13_sources.md",
+        "share/deliverables/integration/cmos_v13/results/literature_basis.json"
+      ]
+    },
+    "modeling": {
+      "maturity": 3,
+      "note": "受控局部尺寸/电容对照、独立noise-on、器件PSD/Jee积分与联合加密；增加内部门限时间/斜率取证和SS理想时钟接受点。",
+      "artifacts": [
+        "share/deliverables/integration/cmos_v13/README.md",
+        "share/deliverables/integration/cmos_v13/results/noise_validation.json",
+        "share/deliverables/integration/cmos_v13/results/gating_validation.json",
+        "share/deliverables/integration/cmos_v13/results/node_analysis.json"
+      ]
+    },
+    "architecture": {
+      "maturity": 2,
+      "note": "主架构与CMOS方向保持。当前仍为单级接收器+9T /4/TSPC重定时TT候选；所有未通过的SS替代试案保留，不冻结。",
+      "artifacts": [
+        "share/deliverables/blocks/cmos_v13/README.md",
+        "share/deliverables/integration/cmos_v13/README.md",
+        "share/reports/decisions/DEC-0006.md"
+      ]
+    },
+    "blocks": [
+      {
+        "name": "reference_buffer",
+        "role": "24 MHz 参考整形",
+        "stage": "circuit",
+        "maturity": 3,
+        "note": "实际24MHz参考缓冲和60fF负载继续参与LC试验，理想外部边沿10ps。历史135.88fs仅适用其单独1ns输入夹具；本轮未新增参考噪声签核。",
+        "artifacts": [
+          "share/deliverables/blocks/cmos_v12/README.md",
+          "share/deliverables/blocks/cmos_v13/README.md",
+          "share/deliverables/integration/cmos_v13/results/summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "subsampling_detector",
+        "role": "直接采样差分 VCO 并鉴相",
+        "stage": "circuit",
+        "maturity": 3,
+        "note": "quiet10与实际LC/优化CMOS链共同运行，控制固定，未完成新的完整闭环pnoise或接口精度签核。",
+        "artifacts": [
+          "share/deliverables/blocks/cmos_v12/README.md",
+          "share/deliverables/blocks/cmos_v13/README.md",
+          "share/deliverables/integration/cmos_v13/results/summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "transconductor_charge_pump",
+        "role": "采样误差转电流及增益控制",
+        "stage": "circuit",
+        "maturity": 3,
+        "note": "实际CP/时序计入当前LC测试电路，CP输出另行钳位，不构成完整闭环；偏置参考发生器仍理想。",
+        "artifacts": [
+          "share/deliverables/blocks/cmos_v12/README.md",
+          "share/deliverables/blocks/cmos_v13/README.md",
+          "share/deliverables/integration/cmos_v13/results/summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "passive_loop_filter",
+        "role": "环路滤波与稳定性",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "既有R100k/C1=7.162p/C2=.4775p核心证据保留。本轮固定控制，滤波器未接回；工艺RC、完整稳定性与PEX仍待验证。",
+        "artifacts": [
+          "share/deliverables/blocks/cmos_v12/README.md",
+          "share/deliverables/blocks/cmos_v13/README.md",
+          "share/deliverables/integration/cmos_v13/results/summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "lc_vco_and_cap_bank",
+        "role": "2.688–3.936 GHz 振荡、粗调和模拟细调",
+        "stage": "circuit",
+        "maturity": 3,
+        "note": "R2/Q5继续，TT100uA/码21/控制0.2–1.0V端点3.932900–3.962921GHz包围目标，低端精度通过。实际SS60/100和120uA仍漏计，不能把低功耗失败点当合格工作点；旧99点码表不移植。",
+        "artifacts": [
+          "share/deliverables/blocks/cmos_v12/README.md",
+          "share/deliverables/blocks/cmos_v13/README.md",
+          "share/deliverables/integration/cmos_v13/results/summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "auxiliary_fll",
+        "role": "启动捕获和正确谐波选择",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "历史FLL计数/DAC/监督晶体管单元保留。本轮固定码/控制，无自动捕获、接管或重捕获回归。",
+        "artifacts": [
+          "share/deliverables/blocks/cmos_v12/README.md",
+          "share/deliverables/blocks/cmos_v13/README.md",
+          "share/deliverables/integration/cmos_v13/results/summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "programmable_even_divider",
+        "role": "÷4/6/8/10/12/14 对称半周期分频",
+        "stage": "circuit",
+        "maturity": 3,
+        "note": "TT噪声候选继续原有缓冲9T /4，输出折算独立XD约18.464fs。慢角理想全摆幅输入下divtrip改缓冲门限可工作；实际RF接收时钟下仍失败。六档、复位/保持与全频PVT未完成，试验不能视作合格新分频库。",
+        "artifacts": [
+          "share/deliverables/blocks/cmos_v12/README.md",
+          "share/deliverables/blocks/cmos_v13/README.md",
+          "share/deliverables/integration/cmos_v13/results/summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "output_retimer",
+        "role": "利用 VCO 派生时钟重定时",
+        "stage": "circuit",
+        "maturity": 3,
+        "note": "TSPC scale2中MN1/MNC1为4.8u、MP2为6u；首缓冲NMOS增至3.2u。独立XR118.909fs；细网格FF105.194fs，较v12显著下降。没有采用整体增宽，仍需慢角时序稳健性。",
+        "artifacts": [
+          "share/deliverables/blocks/cmos_v12/README.md",
+          "share/deliverables/blocks/cmos_v13/README.md",
+          "share/deliverables/integration/cmos_v13/results/summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "output_buffer",
+        "role": "驱动片内轻负载",
+        "stage": "circuit",
+        "maturity": 3,
+        "note": "首反相器WN3.2/WP4u，末级保持。细网格首/末缓冲贡献45.638/31.747fs；10fF TT实际LC输出通过，内部动态节点/输出占空比和可靠性无新增全范围签核。",
+        "artifacts": [
+          "share/deliverables/blocks/cmos_v12/README.md",
+          "share/deliverables/blocks/cmos_v13/README.md",
+          "share/deliverables/integration/cmos_v13/results/summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "bias_and_control",
+        "role": "偏置、频点配置及状态控制",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "理想IREF发生器后置。TT仍100uA，实际SS100/120uA对照未修复漏计；同一VDD测量含现有电流负载，偏置/基准发生器与完整控制未计全。",
+        "artifacts": [
+          "share/deliverables/blocks/cmos_v12/README.md",
+          "share/deliverables/blocks/cmos_v13/README.md",
+          "share/deliverables/integration/cmos_v13/results/summary.json"
+        ],
+        "blockers": []
+      }
+    ],
+    "verification": {
+      "maturity": 3,
+      "note": "67组全部输入哈希核对、23组功能筛选通过；9个噪声协议有效、1组联合加密和1组实际LC精度通过。3个noiseon设置错误已拒绝并重跑。",
+      "artifacts": [
+        "share/deliverables/integration/cmos_v13/results/raw_manifest.json",
+        "share/deliverables/integration/cmos_v13/results/validation.json",
+        "share/deliverables/integration/cmos_v13/results/noise_validation.json",
+        "share/deliverables/integration/cmos_v13/results/summary.json",
+        "share/deliverables/integration/cmos_v13/results/gating_rejected_attempt.json"
+      ]
+    },
+    "integration": {
+      "maturity": 2,
+      "note": "新4pF/局部重定时与实际LC/参考/采样/CP相连，TT /4通过，真实LC SS60仍漏计。固定控制/CP钳位；尚无新的完整闭环锁定或实际LC噪声结果。",
+      "artifacts": [
+        "share/deliverables/integration/cmos_v13/README.md",
+        "share/deliverables/integration/cmos_v13/results/summary.json"
+      ]
+    }
+  },
+  "spec_status": [
+    {
+      "id": "REQ-01",
+      "current": "TSMC180BCDGen2 MOS；局部尺寸和4pF耦合优化已实现",
+      "condition": "实际MOS、既定RLC/RC工作假设；本轮未换工艺。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "4pF耦合电容和器件布局/寄生/面积未提取，偏置发生器后置。"
+    },
+    {
+      "id": "REQ-02",
+      "current": "1.2 V",
+      "condition": "TT27/SS60/FF0；全部保持1.2V。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "未做供电扫描和完整可靠性签核；动态节点的过冲/负压不能忽略。"
+    },
+    {
+      "id": "REQ-03",
+      "current": "24 MHz参考参与真实LC负载",
+      "condition": "理想10ps输入、实际缓冲/60fF/采样/CP。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "外部参考相噪未知；历史单模块135.88fs不能作为本轮完整噪声。"
+    },
+    {
+      "id": "REQ-04",
+      "current": "新TT候选接实际LC正确 /4，未闭环锁定",
+      "condition": "固定码/控制和CP输出钳位，原核心整数倍频仅历史证据。",
+      "evidence": "circuit_sim",
+      "status": "at_risk",
+      "note": "需将优化候选接回主环路/FLL重新核对整数锁定与捕获。"
+    },
+    {
+      "id": "REQ-05",
+      "current": "TT实际LC端点3.932900–3.962921GHz包围3.936GHz",
+      "condition": "码21/100uA/控制0.2–1.0V，固定 /4，60ns观测窗。",
+      "evidence": "circuit_sim",
+      "status": "at_risk",
+      "note": "不是984MHz锁定或连续单调覆盖证明，33点/六档及PVT尚未完成。"
+    },
+    {
+      "id": "REQ-06",
+      "current": "TT数字链126.892fs，相对v12降低29.97%",
+      "condition": "理想无噪声3.936GHz低摆幅RF电压回放，984MHz输出，1.2V/TT27/10fF，10kHz–492MHz，0.6V上升沿。",
+      "evidence": "circuit_sim",
+      "status": "at_risk",
+      "note": "联合加密、PSD/Jee及独立XRX/XD/XR开噪声通过；实际LC源噪声/阻抗/回注和完整PLL未计，<200fs不作全系统达标。"
+    },
+    {
+      "id": "REQ-07",
+      "current": null,
+      "condition": "按 DEC-0002 暂缓离散杂散研究，不纳入随机抖动。",
+      "evidence": "none",
+      "status": "unknown",
+      "note": "<−60 dBc 需求保留。"
+    },
+    {
+      "id": "REQ-08",
+      "current": "实际LC TT测试电路约3.24mW；理想RF数字夹具1.201648mW",
+      "condition": "同一个VDD测量LC/数字/参考/采样/CP；固定控制、100uA；两种测量边界不相加。",
+      "evidence": "circuit_sim",
+      "status": "at_risk",
+      "note": "完整FLL/偏置发生器/控制及启动峰值仍缺，≤4mW未签核。"
+    },
+    {
+      "id": "REQ-09",
+      "current": null,
+      "condition": "无电感几何、布局及隔离面积结果；含电感/滤波/隔离，暂不含 pad。",
+      "evidence": "none",
+      "status": "unknown",
+      "note": "耦合电容从1pF增至4pF，面积与布线寄生尚未提取；含电感/滤波/隔离、暂不含pad，<0.3mm²未验证。"
+    },
+    {
+      "id": "REQ-10",
+      "current": "FF0理想源筛选通过，SS60理想源和实际LC均失败",
+      "condition": "实际SS码21/0.2V/100与120uA，RF约3.907/3.924GHz仍漏计；理想全摆幅SS时钟接受点另行测量。",
+      "evidence": "circuit_sim",
+      "status": "at_risk",
+      "note": "SS理想时钟50%下10/30/50ps可通过，30ps下40%失败/60%通过；不能迁移为真实接收器PVT通过。"
+    },
+    {
+      "id": "REQ-11",
+      "current": "TT实际LC /4输出频率/摆幅通过",
+      "condition": "10fF；输出占空比遵照DEC-0003不刻意优化，内部时钟占空比因功能需要单独研究。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "内部时序接受点不替代setup/hold、亚稳态、保持器、动态换档和统计签核。"
+    },
+    {
+      "id": "REQ-12",
+      "current": "10fF临时负载；真实LC及内部MOS负载已连接",
+      "condition": "TT实际LC功能/功耗测试；噪声仍单独理想RF电压源。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "最终片内门/互连/PEX未落实；不能把理想源噪声作为真实LC结果。"
+    }
+  ],
+  "questions_for_human": [
+    {
+      "q": "后续需要实际 24 MHz 参考源的边沿、相噪以及片内输出负载/门限；当前理想输入和 10 fF 仅为工作假设。",
+      "blocking": false,
+      "since": "2026-09-17T20:57:59+08:00"
+    }
+  ],
+  "blocked_on": null,
+  "risks": [
+    "126.892fs仍为理想RF源下数字链，未含LC实际源阻抗/噪声、数字回注与完整闭环。",
+    "SS60接收器及分频接口仍有漏计，单节点摆幅合格不足以保证时序；加VCO偏置、加宽或更换试验拓扑均不能当已修复。",
+    "完整≤4mW未闭合；约3.24mW测试电路缺偏置发生器/FLL/完整控制，失败SS点功耗不能拿来作为预算。",
+    "CMOS仍只有 /4；六档、复位/保持、全33频点、PVT/统计、PEX/面积/可靠性未完成。",
+    "Q5为临时RLC假设，历史Q3慢角低端失振、quiet10精度、FF K14余量问题仍开放。"
+  ],
+  "next_steps": [
+    "根据SS全摆幅10/30/50ps和占空比接受点，先对接收时钟的高电平有效时间、接近电源轨的程度与首FF级间门限作联合优化；建立含实际VCO源阻抗的接受范围。",
+    "保持本轮TT126.9fs候选作为基线；继续围绕约105fs FF贡献优化，任何时序/尺寸修改都先过功能再做noise-on和加密。",
+    "慢角接口稳健后将候选接回主PLL周期点，测量真实LC噪声和数字回注、完整功耗，再回归FLL自动捕获。",
+    "扩展六档、确定复位/使能/停钟保持与全33点/PVT；偏置基准后置，落实电容/电感及布局面积。"
+  ],
+  "decisions_since_last": [],
+  "resources_note": "67组全部回收并核对输入哈希；67组正常结束，23组功能筛选通过。12个噪声记录中9个有效，3个错误noiseon设置被拒绝且修正重跑。1组噪声加密、1组实际LC步长精度与独立noise-on通过。远端执行时间求和约1775s，最多4个单线程作业；无在跑作业，PDK不发布。"
+}

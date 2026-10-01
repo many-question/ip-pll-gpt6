@@ -1,0 +1,11 @@
+simulator lang=spectre
+include "div_fastff_v13.scs"
+// Isolate first TSPC output from the three clock-gate loads of the next stage.
+// Only a /4 proof cell: no mode control, reset or keeper is claimed.
+subckt divfast_v13 (clk q1 out vdd vss)
+X0 (q0 clk q0 vdd vss) div_fastff_v13 scale=1
+XB0 (q0 qb0 vdd vss) pll_inv wn=1.6u wp=.5u
+XB1 (qb0 q1 vdd vss) pll_inv wn=1u wp=8u
+X1 (q2 q1 q2 vdd vss) pll_tspc_inv
+XB (q2 out vdd vss) pll_inv wn=2u wp=5u
+ends divfast_v13

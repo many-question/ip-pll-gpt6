@@ -1,0 +1,19 @@
+simulator lang=spectre
+subckt rtpre_ff_v13 (d ck qb vdd vss)
+parameters scale=2
+MP0 (p0 d vdd vdd) pch w=2u*scale l=180n ad=2u*scale*240n as=2u*scale*240n pd=2*(2u*scale+240n) ps=2*(2u*scale+240n)
+MPC0 (b ck p0 vdd) pch w=2u*scale l=180n ad=2u*scale*240n as=2u*scale*240n pd=2*(2u*scale+240n) ps=2*(2u*scale+240n)
+MN0 (b d vss vss) nch w=800n*scale l=180n ad=800n*scale*240n as=800n*scale*240n pd=2*(800n*scale+240n) ps=2*(800n*scale+240n)
+MP1 (a ck vdd vdd) pch w=2u*scale l=180n ad=2u*scale*240n as=2u*scale*240n pd=2*(2u*scale+240n) ps=2*(2u*scale+240n)
+MN1 (a b n1 vss) nch w=2.4000000000000004u*scale l=180n ad=2.4000000000000004u*scale*240n as=2.4000000000000004u*scale*240n pd=2*(2.4000000000000004u*scale+240n) ps=2*(2.4000000000000004u*scale+240n)
+MNC1 (n1 ck vss vss) nch w=2.4000000000000004u*scale l=180n ad=2.4000000000000004u*scale*240n as=2.4000000000000004u*scale*240n pd=2*(2.4000000000000004u*scale+240n) ps=2*(2.4000000000000004u*scale+240n)
+MP2 (qb a vdd vdd) pch w=2u*scale l=180n ad=2u*scale*240n as=2u*scale*240n pd=2*(2u*scale+240n) ps=2*(2u*scale+240n)
+MNC2 (qb ck n2 vss) nch w=1.6u*scale l=180n ad=1.6u*scale*240n as=1.6u*scale*240n pd=2*(1.6u*scale+240n) ps=2*(1.6u*scale+240n)
+MN2 (n2 a vss vss) nch w=1.6u*scale l=180n ad=1.6u*scale*240n as=1.6u*scale*240n pd=2*(1.6u*scale+240n) ps=2*(1.6u*scale+240n)
+ends rtpre_ff_v13
+subckt rtpre_v13 (data clk out vdd vss)
+parameters scale=2 oscale=2
+XFF (data clk qb vdd vss) rtpre_ff_v13 scale=scale
+X0 (qb ob vdd vss) pll_inv wn=.8u*oscale wp=2u*oscale
+X1 (ob out vdd vss) pll_inv wn=2u*oscale wp=3.9u*oscale
+ends rtpre_v13

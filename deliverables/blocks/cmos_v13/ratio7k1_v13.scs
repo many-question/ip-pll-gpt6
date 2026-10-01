@@ -1,0 +1,17 @@
+simulator lang=spectre
+// Ratioed7T reference: Razavi,TSPC Logic,2016,Fig8. Widths are our trial.
+subckt ratio7k1_ff_v13 (d ck qb vdd vss)
+MP0 (b d vdd vdd) pch w=1.6u l=180n ad=1.6u*240n as=1.6u*240n pd=2*(1.6u+240n) ps=2*(1.6u+240n)
+MNC0 (b ck n0 vss) nch w=1.6u l=180n ad=1.6u*240n as=1.6u*240n pd=2*(1.6u+240n) ps=2*(1.6u+240n)
+MN0 (n0 d vss vss) nch w=1.6u l=180n ad=1.6u*240n as=1.6u*240n pd=2*(1.6u+240n) ps=2*(1.6u+240n)
+MP1 (c b vdd vdd) pch w=1.6u l=180n ad=1.6u*240n as=1.6u*240n pd=2*(1.6u+240n) ps=2*(1.6u+240n)
+MNC1 (c ck vss vss) nch w=4.8u l=180n ad=4.8u*240n as=4.8u*240n pd=2*(4.8u+240n) ps=2*(4.8u+240n)
+MPC2 (qb ck vdd vdd) pch w=1.6u l=180n ad=1.6u*240n as=1.6u*240n pd=2*(1.6u+240n) ps=2*(1.6u+240n)
+MN2 (qb c vss vss) nch w=1.6u l=180n ad=1.6u*240n as=1.6u*240n pd=2*(1.6u+240n) ps=2*(1.6u+240n)
+ends ratio7k1_ff_v13
+subckt ratio7k1_v13 (clk q1 out vdd vss)
+X0 (q0 clk q0 vdd vss) ratio7k1_ff_v13
+XB0 (q0 q1 vdd vss) pll_inv wn=2u wp=2u
+X1 (q2 q1 q2 vdd vss) pll_tspc_inv
+XB (q2 out vdd vss) pll_inv wn=2u wp=5u
+ends ratio7k1_v13

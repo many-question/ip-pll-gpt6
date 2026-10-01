@@ -1,0 +1,13 @@
+{
+  "time": "2026-10-02T03:47:24.244567+08:00",
+  "cases": [
+    "screen_regen16k1_tt",
+    "screen_regen16k1_ss",
+    "screen_regen16k2_tt",
+    "screen_regen16k2_ss",
+    "screen_regen32k2_tt",
+    "screen_regen32k2_ss"
+  ],
+  "reason": "SS ideal-clock divtrip passes but sinusoidal-derived clocks still fail. Explore weak differential CMOS cross-coupling to improve edge regeneration, with actual MOS and same default RF source amplitude. Combine already-tested local retimer optimization. This is a new unproven receiver, not frozen architecture.",
+  "criteria": "Unchanged function/swing/frequency; reject latched/subharmonic candidates. RealLC and noise validation required before promotion."
+}

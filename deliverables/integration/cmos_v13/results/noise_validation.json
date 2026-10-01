@@ -1,0 +1,5740 @@
+{
+  "protocol": {
+    "time": "2026-10-02T03:35:26.686843+08:00",
+    "objective": "Improve SS60 receiver margin and reduce dominant retimer noise; no requirement changes.",
+    "screen_cases": [
+      "screen_wide64_ss",
+      "screen_wide128_ss",
+      "screen_one32_ss_a1p4",
+      "screen_one32_ss_a1p8",
+      "screen_light2_tt",
+      "screen_light2_ss",
+      "screen_light3_tt",
+      "screen_light3_ss"
+    ],
+    "conditions": "1.2V/3.936GHz/984MHz/10fF. Ideal measured-shape voltage source; amplitude scaling explicitly diagnostic. TT27/SS60 screens. Actual LC required before system claims.",
+    "criteria": "RF/clock3.936G, q1=1.968G,data/out984M; error<0.1%,per-cycle<2%;all digital nodes low<.2 high>1V;>=10 out edges;PSS endpoint<1mV,correct harmonic. Noise10k-492M sampled rising0.6V;refine1ps/63 to.5ps/127;RMS<1%,spectrum<.1dB. Autonomous LC judged by measured fRF/fout=4,not forced984MHz; retune separately. FullPLL<200fs and<=4mW unchanged."
+  },
+  "cases": [
+    {
+      "case": "noise_cc4_rtcomb_fine",
+      "run": "cc4_fine",
+      "simulator_ok": true,
+      "valid_noise": true,
+      "noise_option_conflict_warning": false,
+      "noise_option_ignored": false,
+      "local_edges": {
+        "q1": {
+          "range_v": [
+            -0.02493502053807994,
+            1.203893290757337
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            15.275705002145518,
+            14.131031427667846
+          ]
+        },
+        "data": {
+          "range_v": [
+            -0.02942312115730675,
+            1.238326142687951
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            19.437429077907975
+          ]
+        },
+        "out": {
+          "range_v": [
+            -0.06460569083759772,
+            1.251118260166473
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            28.011484655717272
+          ]
+        },
+        "XRX.g0": {
+          "range_v": [
+            0.3952395377549583,
+            0.7474126858486264
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.293516023768372,
+            4.292853840557271,
+            4.294090475674213,
+            4.293904444720012
+          ]
+        },
+        "XR.XFF.b": {
+          "range_v": [
+            -0.01019995305079549,
+            1.183023287019263
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.246030326378014
+          ]
+        },
+        "XR.XFF.a": {
+          "range_v": [
+            0.01982619052781961,
+            1.292429482751041
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            10.71015416951362
+          ]
+        },
+        "XR.XFF.n1": {
+          "range_v": [
+            -0.1423959268613469,
+            0.5118007720224972
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            10.246853122442795
+          ]
+        },
+        "XR.qb": {
+          "range_v": [
+            -0.06949247536547587,
+            1.30038143055856
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            21.949959595903216
+          ]
+        },
+        "XR.ob": {
+          "range_v": [
+            -0.02898972204444349,
+            1.26452611391916
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            9.150956971643465
+          ]
+        },
+        "clk": {
+          "range_v": [
+            0.1089972279300576,
+            1.049489282386227
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            12.37222510635157,
+            12.416927063246503,
+            12.420871319552099,
+            12.171455889518024
+          ]
+        },
+        "vn": {
+          "range_v": [
+            1.003519668686843,
+            1.368159322972026
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.439757892809547,
+            4.439757892894744,
+            4.4397578934091815,
+            4.439841069278199
+          ]
+        },
+        "vp": {
+          "range_v": [
+            1.003562311538786,
+            1.368962558625096
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.440906993871842,
+            4.440906993926873,
+            4.4409069935616845,
+            4.44096250870839
+          ]
+        }
+      },
+      "periodic": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.1089972279300576,
+              1.049489282386227
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 0.0028040675697524886,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.02493502053807994,
+              1.203893290757337
+            ],
+            "frequency_hz": 1968000000.000031,
+            "edges": 2,
+            "max_period_error": 0.005752758363985144,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.02942312115730675,
+              1.238326142687951
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.06460569083759772,
+              1.251118260166473
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.364441042961968,
+              0.36526683193324194
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 1.3246307384306988e-08,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": true,
+        "actual_LC": false,
+        "reference_RF_frequency_hz": 3936000000.0,
+        "power_mw": {
+          "VRX:p": 0.7758635466714543,
+          "VRT:p": 0.1778701350058273,
+          "VDD:p": 1.2016481841419775
+        },
+        "node_ranges_v": {
+          "XRX.g0": [
+            0.3952395377549583,
+            0.7474126858486264
+          ]
+        },
+        "pass_function": true,
+        "endpoint_v": 1.1874573546677425e-10,
+        "pass_periodic": true
+      },
+      "dominant_harmonics": {
+        "out": 1,
+        "clk": 4,
+        "q1": 2,
+        "data": 1,
+        "vp": 4
+      },
+      "pass_periodic": true,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "noise_by_band": [
+        {
+          "band_hz": [
+            10000.0,
+            1000000.0
+          ],
+          "jitter_fs": 16.212847357220724,
+          "variance_fraction": 0.016324964461634728
+        },
+        {
+          "band_hz": [
+            1000000.0,
+            10000000.0
+          ],
+          "jitter_fs": 20.829245000849802,
+          "variance_fraction": 0.026945156690769655
+        },
+        {
+          "band_hz": [
+            10000000.0,
+            100000000.0
+          ],
+          "jitter_fs": 54.75455930703961,
+          "variance_fraction": 0.1861976659056516
+        },
+        {
+          "band_hz": [
+            100000000.0,
+            492000000.0
+          ],
+          "jitter_fs": 111.3854776105972,
+          "variance_fraction": 0.7705322129419441
+        }
+      ],
+      "fundamental_hz": 984000000.0,
+      "slew_v_per_s": 28011500000.0,
+      "numeric_jitter_fs": 126.89168709644827,
+      "spectre_jee_fs": 126.8917566058391,
+      "integration_relative_error": 5.477849207569108e-07,
+      "device_psd_sum_max_relative_error": 1.0660377850430263e-15,
+      "noise_budget_valid": true,
+      "noise_by_instance": {
+        "XRX": {
+          "variance_s2": 1.6039596544773292e-27,
+          "jitter_fs": 40.04946509602006,
+          "variance_fraction": 0.09961554073575497
+        },
+        "XR": {
+          "variance_s2": 1.415648728053019e-26,
+          "jitter_fs": 118.98103748299638,
+          "variance_fraction": 0.879202997053181
+        },
+        "XD": {
+          "variance_s2": 3.410533191754162e-28,
+          "jitter_fs": 18.467628953804983,
+          "variance_fraction": 0.021181462211064185
+        }
+      },
+      "noise_by_subblock": {
+        "XRX.X0": {
+          "jitter_fs": 39.831616163708915,
+          "variance_fraction": 0.09853477136708878
+        },
+        "XR.X1": {
+          "jitter_fs": 31.7474445082716,
+          "variance_fraction": 0.06259666595626372
+        },
+        "XR.X0": {
+          "jitter_fs": 45.63800235983348,
+          "variance_fraction": 0.12935609890482583
+        },
+        "XR.XFF": {
+          "jitter_fs": 105.19391516779018,
+          "variance_fraction": 0.6872502321920914
+        },
+        "XD.XB": {
+          "jitter_fs": 4.305177774510852,
+          "variance_fraction": 0.0011511073736950202
+        },
+        "XD.X1": {
+          "jitter_fs": 5.864551994080933,
+          "variance_fraction": 0.0021360102815477615
+        },
+        "XD.XB1": {
+          "jitter_fs": 2.2680210007614456,
+          "variance_fraction": 0.00031946832150368316
+        },
+        "XD.X0": {
+          "jitter_fs": 14.393511354753164,
+          "variance_fraction": 0.012866699739087216
+        },
+        "XD.XB0": {
+          "jitter_fs": 8.706819455730786,
+          "variance_fraction": 0.004708176495230508
+        },
+        "XRX.bias_and_passives": {
+          "jitter_fs": 4.171571438234255,
+          "variance_fraction": 0.0010807693686661916
+        }
+      },
+      "top_devices": [
+        {
+          "device": "XR.XFF.MNC1",
+          "variance_s2": 2.5976674493387172e-27,
+          "jitter_fs": 50.967317462651664,
+          "variance_fraction": 0.1613307709425326
+        },
+        {
+          "device": "XR.XFF.MPC0",
+          "variance_s2": 2.4720136466594797e-27,
+          "jitter_fs": 49.719348815722434,
+          "variance_fraction": 0.15352691411580027
+        },
+        {
+          "device": "XR.XFF.MP2",
+          "variance_s2": 2.105245720083705e-27,
+          "jitter_fs": 45.882956749578646,
+          "variance_fraction": 0.13074842013785598
+        },
+        {
+          "device": "XR.X0.MN",
+          "variance_s2": 1.9541929039781195e-27,
+          "jitter_fs": 44.20625412742092,
+          "variance_fraction": 0.1213671318280077
+        },
+        {
+          "device": "XR.XFF.MN1",
+          "variance_s2": 1.7425805668270933e-27,
+          "jitter_fs": 41.744227946233394,
+          "variance_fraction": 0.10822473305705761
+        },
+        {
+          "device": "XRX.X0.MP",
+          "variance_s2": 1.335504366622982e-27,
+          "jitter_fs": 36.544553173119816,
+          "variance_fraction": 0.08294285287335493
+        },
+        {
+          "device": "XR.XFF.MP0",
+          "variance_s2": 1.1378766202436165e-27,
+          "jitter_fs": 33.732426835963295,
+          "variance_fraction": 0.07066898129247384
+        },
+        {
+          "device": "XR.X1.MP",
+          "variance_s2": 8.824326475923272e-28,
+          "jitter_fs": 29.7057679179032,
+          "variance_fraction": 0.05480437435406581
+        },
+        {
+          "device": "XR.XFF.MP1",
+          "variance_s2": 4.501036970124599e-28,
+          "jitter_fs": 21.21564745682912,
+          "variance_fraction": 0.027954146502313013
+        },
+        {
+          "device": "XR.XFF.MN2",
+          "variance_s2": 2.5348867865827382e-28,
+          "jitter_fs": 15.921327791936006,
+          "variance_fraction": 0.01574317142232887
+        },
+        {
+          "device": "XRX.X0.MN",
+          "variance_s2": 2.5105327959005535e-28,
+          "jitter_fs": 15.844660917484331,
+          "variance_fraction": 0.01559191849373386
+        },
+        {
+          "device": "XR.XFF.MN0",
+          "variance_s2": 1.552652501047552e-28,
+          "jitter_fs": 12.460547744973141,
+          "variance_fraction": 0.009642905794720562
+        },
+        {
+          "device": "XR.XFF.MNC2",
+          "variance_s2": 1.5151815940013782e-28,
+          "jitter_fs": 12.309271278192622,
+          "variance_fraction": 0.009410188927008564
+        },
+        {
+          "device": "XR.X0.MP",
+          "variance_s2": 1.2863435541804625e-28,
+          "jitter_fs": 11.34170866395563,
+          "variance_fraction": 0.007988967076818133
+        },
+        {
+          "device": "XR.X1.MN",
+          "variance_s2": 1.2546758521345734e-28,
+          "jitter_fs": 11.20123141504796,
+          "variance_fraction": 0.007792291602197919
+        },
+        {
+          "device": "XD.XB0.MN",
+          "variance_s2": 7.050649498393195e-29,
+          "jitter_fs": 8.396814573630405,
+          "variance_fraction": 0.004378877363655316
+        },
+        {
+          "device": "XD.X0.MNC1",
+          "variance_s2": 6.289519965206583e-29,
+          "jitter_fs": 7.9306493840079595,
+          "variance_fraction": 0.00390617014931429
+        },
+        {
+          "device": "XD.X0.MP2",
+          "variance_s2": 5.910865757523849e-29,
+          "jitter_fs": 7.688215500051912,
+          "variance_fraction": 0.00367100311412801
+        },
+        {
+          "device": "XD.X0.MN1",
+          "variance_s2": 2.5837624543575676e-29,
+          "jitter_fs": 5.083072352777961,
+          "variance_fraction": 0.001604671871297424
+        },
+        {
+          "device": "XD.X0.MPC0",
+          "variance_s2": 2.4684665454176746e-29,
+          "jitter_fs": 4.9683664774427365,
+          "variance_fraction": 0.0015330661779646298
+        },
+        {
+          "device": "XD.XB.MN",
+          "variance_s2": 1.7864057063274598e-29,
+          "jitter_fs": 4.226589294368995,
+          "variance_fraction": 0.0011094653778385513
+        },
+        {
+          "device": "XRX.R0",
+          "variance_s2": 1.7402008264291813e-29,
+          "jitter_fs": 4.171571438234255,
+          "variance_fraction": 0.0010807693686661916
+        },
+        {
+          "device": "XD.X1.MP2",
+          "variance_s2": 1.349147792080578e-29,
+          "jitter_fs": 3.6730747230087464,
+          "variance_fraction": 0.000837901916456567
+        },
+        {
+          "device": "XD.X0.MP1",
+          "variance_s2": 1.3298896483618268e-29,
+          "jitter_fs": 3.6467652081835853,
+          "variance_fraction": 0.0008259414510249385
+        },
+        {
+          "device": "XD.X0.MP0",
+          "variance_s2": 8.718589622252335e-30,
+          "jitter_fs": 2.952725795303779,
+          "variance_fraction": 0.0005414768490276162
+        }
+      ]
+    },
+    {
+      "case": "noise_cc4_rtcomb_onlyXD_coarse",
+      "run": "cc4_fine",
+      "simulator_ok": true,
+      "valid_noise": false,
+      "noise_option_conflict_warning": false,
+      "noise_option_ignored": true,
+      "local_edges": {
+        "q1": {
+          "range_v": [
+            -0.02492845483039251,
+            1.203886349147058
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            15.279538294474552,
+            14.129729124972858
+          ]
+        },
+        "data": {
+          "range_v": [
+            -0.02940361816899658,
+            1.238321766629846
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            19.48086908762402
+          ]
+        },
+        "out": {
+          "range_v": [
+            -0.06454697153263958,
+            1.251098482571581
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            28.02555448299131
+          ]
+        },
+        "XRX.g0": {
+          "range_v": [
+            0.3952476143765168,
+            0.7474107292722741
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.295524801874779,
+            4.295348459992087,
+            4.2953084690959,
+            4.2964060489105504
+          ]
+        },
+        "XR.XFF.b": {
+          "range_v": [
+            -0.01020403838985193,
+            1.183013018615445
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.240379644995711
+          ]
+        },
+        "XR.XFF.a": {
+          "range_v": [
+            0.01983199126200775,
+            1.292426841984115
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            10.7572617211844
+          ]
+        },
+        "XR.XFF.n1": {
+          "range_v": [
+            -0.142365052078032,
+            0.511771938674995
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            10.244726352334924
+          ]
+        },
+        "XR.qb": {
+          "range_v": [
+            -0.06949101323959166,
+            1.30035876982557
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            21.974875040812353
+          ]
+        },
+        "XR.ob": {
+          "range_v": [
+            -0.02898316768906372,
+            1.2644896805796
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            9.150861056787205
+          ]
+        },
+        "clk": {
+          "range_v": [
+            0.1090002535524099,
+            1.049480857027548
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            12.37712515114832,
+            12.427827336012816,
+            12.415753493438679,
+            12.166667431983853
+          ]
+        },
+        "vn": {
+          "range_v": [
+            1.003520324073164,
+            1.368160527716481
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.434786178942654,
+            4.434512801714205,
+            4.438699684602755,
+            4.442034979673525
+          ]
+        },
+        "vp": {
+          "range_v": [
+            1.003560596884659,
+            1.368962190296011
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.439224948484668,
+            4.439611378817071,
+            4.438460778981429,
+            4.439685460789463
+          ]
+        }
+      },
+      "periodic": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.1090002535524099,
+              1.049480857027548
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 0.002803724103812799,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.02492845483039251,
+              1.203886349147058
+            ],
+            "frequency_hz": 1968000000.000031,
+            "edges": 2,
+            "max_period_error": 0.00575372511332084,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.02940361816899658,
+              1.238321766629846
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.06454697153263958,
+              1.251098482571581
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.36444059356690195,
+              0.365261847772119
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 5.166827292679699e-07,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": true,
+        "actual_LC": false,
+        "reference_RF_frequency_hz": 3936000000.0,
+        "power_mw": {
+          "VRX:p": 0.7758659168131417,
+          "VRT:p": 0.17787087052712097,
+          "VDD:p": 1.2016506652037409
+        },
+        "node_ranges_v": {
+          "XRX.g0": [
+            0.3952476143765168,
+            0.7474107292722741
+          ]
+        },
+        "pass_function": true,
+        "endpoint_v": 1.0033676389742396e-08,
+        "pass_periodic": true
+      },
+      "dominant_harmonics": {
+        "out": 1,
+        "clk": 4,
+        "q1": 2,
+        "data": 1,
+        "vp": 4
+      },
+      "pass_periodic": true,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "noise_by_band": [
+        {
+          "band_hz": [
+            10000.0,
+            1000000.0
+          ],
+          "jitter_fs": 16.20283720678259,
+          "variance_fraction": 0.016322805533628467
+        },
+        {
+          "band_hz": [
+            1000000.0,
+            10000000.0
+          ],
+          "jitter_fs": 20.817201048893796,
+          "variance_fraction": 0.0269437067179012
+        },
+        {
+          "band_hz": [
+            10000000.0,
+            100000000.0
+          ],
+          "jitter_fs": 54.72432246211161,
+          "variance_fraction": 0.18619733298004
+        },
+        {
+          "band_hz": [
+            100000000.0,
+            492000000.0
+          ],
+          "jitter_fs": 111.32435202409131,
+          "variance_fraction": 0.7705361547684304
+        }
+      ],
+      "fundamental_hz": 984000000.0,
+      "slew_v_per_s": 28025600000.0,
+      "numeric_jitter_fs": 126.82172769514118,
+      "spectre_jee_fs": 126.82193366950641,
+      "integration_relative_error": 1.624122572985165e-06,
+      "device_psd_sum_max_relative_error": 9.888979877360279e-16,
+      "noise_budget_valid": true,
+      "noise_by_instance": {
+        "XRX": {
+          "variance_s2": 1.6035140894915873e-27,
+          "jitter_fs": 40.04390202629593,
+          "variance_fraction": 0.09969777123615943
+        },
+        "XR": {
+          "variance_s2": 1.4139309448913747e-26,
+          "jitter_fs": 118.90882830519249,
+          "variance_fraction": 0.8791052402427088
+        },
+        "XD": {
+          "variance_s2": 3.409270771752075e-28,
+          "jitter_fs": 18.464210710864613,
+          "variance_fraction": 0.021196988521131815
+        }
+      },
+      "noise_by_subblock": {
+        "XRX.X0": {
+          "jitter_fs": 39.82627189728765,
+          "variance_fraction": 0.09861704344633253
+        },
+        "XR.X1": {
+          "jitter_fs": 31.619908160985563,
+          "variance_fraction": 0.06216327372923975
+        },
+        "XR.X0": {
+          "jitter_fs": 45.59430897074414,
+          "variance_fraction": 0.12925100992960428
+        },
+        "XR.XFF": {
+          "jitter_fs": 105.16962416156532,
+          "variance_fraction": 0.6876909565838647
+        },
+        "XD.XB": {
+          "jitter_fs": 4.304739727042702,
+          "variance_fraction": 0.001152143213388839
+        },
+        "XD.X1": {
+          "jitter_fs": 5.8630456022172845,
+          "variance_fraction": 0.0021372691330080454
+        },
+        "XD.XB1": {
+          "jitter_fs": 2.267350479432113,
+          "variance_fraction": 0.00031963180227384265
+        },
+        "XD.X0": {
+          "jitter_fs": 14.39109389169434,
+          "variance_fraction": 0.01287657265706036
+        },
+        "XD.XB0": {
+          "jitter_fs": 8.704971437506572,
+          "variance_fraction": 0.004711371715400729
+        },
+        "XRX.bias_and_passives": {
+          "jitter_fs": 4.169191319057392,
+          "variance_fraction": 0.0010807277898269069
+        }
+      },
+      "top_devices": [
+        {
+          "device": "XR.XFF.MNC1",
+          "variance_s2": 2.6013091470602e-27,
+          "jitter_fs": 51.003030763477184,
+          "variance_fraction": 0.16173523261050052
+        },
+        {
+          "device": "XR.XFF.MPC0",
+          "variance_s2": 2.469728089751313e-27,
+          "jitter_fs": 49.69635891844907,
+          "variance_fraction": 0.1535542392306714
+        },
+        {
+          "device": "XR.XFF.MP2",
+          "variance_s2": 2.1020241501892334e-27,
+          "jitter_fs": 45.84783691941456,
+          "variance_fraction": 0.13069241126836267
+        },
+        {
+          "device": "XR.X0.MN",
+          "variance_s2": 1.9503266395542096e-27,
+          "jitter_fs": 44.162502641428844,
+          "variance_fraction": 0.12126068640139834
+        },
+        {
+          "device": "XR.XFF.MN1",
+          "variance_s2": 1.740497805096452e-27,
+          "jitter_fs": 41.71927378438474,
+          "variance_fraction": 0.10821467247884389
+        },
+        {
+          "device": "XRX.X0.MP",
+          "variance_s2": 1.3352898388682568e-27,
+          "jitter_fs": 36.54161790162358,
+          "variance_fraction": 0.08302104843473163
+        },
+        {
+          "device": "XR.XFF.MP0",
+          "variance_s2": 1.1373165468568897e-27,
+          "jitter_fs": 33.72412410807566,
+          "variance_fraction": 0.07071214756060419
+        },
+        {
+          "device": "XR.X1.MP",
+          "variance_s2": 8.745738886622592e-28,
+          "jitter_fs": 29.573195442194933,
+          "variance_fraction": 0.0543762403164252
+        },
+        {
+          "device": "XR.XFF.MP1",
+          "variance_s2": 4.496598091567152e-28,
+          "jitter_fs": 21.20518354451843,
+          "variance_fraction": 0.02795739749415934
+        },
+        {
+          "device": "XR.XFF.MN2",
+          "variance_s2": 2.534391699198626e-28,
+          "jitter_fs": 15.91977292299933,
+          "variance_fraction": 0.015757467022297196
+        },
+        {
+          "device": "XRX.X0.MN",
+          "variance_s2": 2.5084209436842705e-28,
+          "jitter_fs": 15.837995276184012,
+          "variance_fraction": 0.015595995011600902
+        },
+        {
+          "device": "XR.XFF.MN0",
+          "variance_s2": 1.5515401397541642e-28,
+          "jitter_fs": 12.456083412349823,
+          "variance_fraction": 0.009646631416002974
+        },
+        {
+          "device": "XR.XFF.MNC2",
+          "variance_s2": 1.5152111427882453e-28,
+          "jitter_fs": 12.309391304155723,
+          "variance_fraction": 0.009420757502422602
+        },
+        {
+          "device": "XR.X0.MP",
+          "variance_s2": 1.2851437096546996e-28,
+          "jitter_fs": 11.336417907146418,
+          "variance_fraction": 0.00799032352820594
+        },
+        {
+          "device": "XR.X1.MN",
+          "variance_s2": 1.2524470344690245e-28,
+          "jitter_fs": 11.191278007756864,
+          "variance_fraction": 0.007787033412814562
+        },
+        {
+          "device": "XD.XB0.MN",
+          "variance_s2": 7.047822977536417e-29,
+          "jitter_fs": 8.395131313765388,
+          "variance_fraction": 0.004381952410222711
+        },
+        {
+          "device": "XD.X0.MNC1",
+          "variance_s2": 6.287402357723208e-29,
+          "jitter_fs": 7.929314193373352,
+          "variance_fraction": 0.003909164291339184
+        },
+        {
+          "device": "XD.X0.MP2",
+          "variance_s2": 5.908945141258549e-29,
+          "jitter_fs": 7.686966333514509,
+          "variance_fraction": 0.0036738602099030786
+        },
+        {
+          "device": "XD.X0.MN1",
+          "variance_s2": 2.582457168083086e-29,
+          "jitter_fs": 5.081788236519785,
+          "variance_fraction": 0.0016056311925039585
+        },
+        {
+          "device": "XD.X0.MPC0",
+          "variance_s2": 2.4679222274870963e-29,
+          "jitter_fs": 4.967818663646144,
+          "variance_fraction": 0.0015344196055218536
+        },
+        {
+          "device": "XD.XB.MN",
+          "variance_s2": 1.7860859969656295e-29,
+          "jitter_fs": 4.22621106544104,
+          "variance_fraction": 0.0011104909791596895
+        },
+        {
+          "device": "XRX.R0",
+          "variance_s2": 1.738215625490351e-29,
+          "jitter_fs": 4.169191319057392,
+          "variance_fraction": 0.0010807277898269069
+        },
+        {
+          "device": "XD.X1.MP2",
+          "variance_s2": 1.348526657056641e-29,
+          "jitter_fs": 3.6722291010456316,
+          "variance_fraction": 0.0008384404168454996
+        },
+        {
+          "device": "XD.X0.MP1",
+          "variance_s2": 1.329356643218468e-29,
+          "jitter_fs": 3.646034343253596,
+          "variance_fraction": 0.0008265215464922111
+        },
+        {
+          "device": "XD.X0.MP0",
+          "variance_s2": 8.715976985983987e-30,
+          "jitter_fs": 2.952283351235783,
+          "variance_fraction": 0.0005419119703050297
+        }
+      ]
+    },
+    {
+      "case": "noise_cc4_rtcomb_onlyXR_coarse",
+      "run": "cc4_fine",
+      "simulator_ok": true,
+      "valid_noise": false,
+      "noise_option_conflict_warning": false,
+      "noise_option_ignored": true,
+      "local_edges": {
+        "q1": {
+          "range_v": [
+            -0.02492845483039251,
+            1.203886349147058
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            15.279538294474552,
+            14.129729124972858
+          ]
+        },
+        "data": {
+          "range_v": [
+            -0.02940361816899658,
+            1.238321766629846
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            19.48086908762402
+          ]
+        },
+        "out": {
+          "range_v": [
+            -0.06454697153263958,
+            1.251098482571581
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            28.02555448299131
+          ]
+        },
+        "XRX.g0": {
+          "range_v": [
+            0.3952476143765168,
+            0.7474107292722741
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.295524801874779,
+            4.295348459992087,
+            4.2953084690959,
+            4.2964060489105504
+          ]
+        },
+        "XR.XFF.b": {
+          "range_v": [
+            -0.01020403838985193,
+            1.183013018615445
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.240379644995711
+          ]
+        },
+        "XR.XFF.a": {
+          "range_v": [
+            0.01983199126200775,
+            1.292426841984115
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            10.7572617211844
+          ]
+        },
+        "XR.XFF.n1": {
+          "range_v": [
+            -0.142365052078032,
+            0.511771938674995
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            10.244726352334924
+          ]
+        },
+        "XR.qb": {
+          "range_v": [
+            -0.06949101323959166,
+            1.30035876982557
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            21.974875040812353
+          ]
+        },
+        "XR.ob": {
+          "range_v": [
+            -0.02898316768906372,
+            1.2644896805796
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            9.150861056787205
+          ]
+        },
+        "clk": {
+          "range_v": [
+            0.1090002535524099,
+            1.049480857027548
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            12.37712515114832,
+            12.427827336012816,
+            12.415753493438679,
+            12.166667431983853
+          ]
+        },
+        "vn": {
+          "range_v": [
+            1.003520324073164,
+            1.368160527716481
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.434786178942654,
+            4.434512801714205,
+            4.438699684602755,
+            4.442034979673525
+          ]
+        },
+        "vp": {
+          "range_v": [
+            1.003560596884659,
+            1.368962190296011
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.439224948484668,
+            4.439611378817071,
+            4.438460778981429,
+            4.439685460789463
+          ]
+        }
+      },
+      "periodic": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.1090002535524099,
+              1.049480857027548
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 0.002803724103812799,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.02492845483039251,
+              1.203886349147058
+            ],
+            "frequency_hz": 1968000000.000031,
+            "edges": 2,
+            "max_period_error": 0.00575372511332084,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.02940361816899658,
+              1.238321766629846
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.06454697153263958,
+              1.251098482571581
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.36444059356690195,
+              0.365261847772119
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 5.166827292679699e-07,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": true,
+        "actual_LC": false,
+        "reference_RF_frequency_hz": 3936000000.0,
+        "power_mw": {
+          "VRX:p": 0.7758659168131417,
+          "VRT:p": 0.17787087052712097,
+          "VDD:p": 1.2016506652037409
+        },
+        "node_ranges_v": {
+          "XRX.g0": [
+            0.3952476143765168,
+            0.7474107292722741
+          ]
+        },
+        "pass_function": true,
+        "endpoint_v": 1.0033676389742396e-08,
+        "pass_periodic": true
+      },
+      "dominant_harmonics": {
+        "out": 1,
+        "clk": 4,
+        "q1": 2,
+        "data": 1,
+        "vp": 4
+      },
+      "pass_periodic": true,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "noise_by_band": [
+        {
+          "band_hz": [
+            10000.0,
+            1000000.0
+          ],
+          "jitter_fs": 16.20283720678259,
+          "variance_fraction": 0.016322805533628467
+        },
+        {
+          "band_hz": [
+            1000000.0,
+            10000000.0
+          ],
+          "jitter_fs": 20.817201048893796,
+          "variance_fraction": 0.0269437067179012
+        },
+        {
+          "band_hz": [
+            10000000.0,
+            100000000.0
+          ],
+          "jitter_fs": 54.72432246211161,
+          "variance_fraction": 0.18619733298004
+        },
+        {
+          "band_hz": [
+            100000000.0,
+            492000000.0
+          ],
+          "jitter_fs": 111.32435202409131,
+          "variance_fraction": 0.7705361547684304
+        }
+      ],
+      "fundamental_hz": 984000000.0,
+      "slew_v_per_s": 28025600000.0,
+      "numeric_jitter_fs": 126.82172769514118,
+      "spectre_jee_fs": 126.82193366950641,
+      "integration_relative_error": 1.624122572985165e-06,
+      "device_psd_sum_max_relative_error": 9.888979877360279e-16,
+      "noise_budget_valid": true,
+      "noise_by_instance": {
+        "XRX": {
+          "variance_s2": 1.6035140894915873e-27,
+          "jitter_fs": 40.04390202629593,
+          "variance_fraction": 0.09969777123615943
+        },
+        "XR": {
+          "variance_s2": 1.4139309448913747e-26,
+          "jitter_fs": 118.90882830519249,
+          "variance_fraction": 0.8791052402427088
+        },
+        "XD": {
+          "variance_s2": 3.409270771752075e-28,
+          "jitter_fs": 18.464210710864613,
+          "variance_fraction": 0.021196988521131815
+        }
+      },
+      "noise_by_subblock": {
+        "XRX.X0": {
+          "jitter_fs": 39.82627189728765,
+          "variance_fraction": 0.09861704344633253
+        },
+        "XR.X1": {
+          "jitter_fs": 31.619908160985563,
+          "variance_fraction": 0.06216327372923975
+        },
+        "XR.X0": {
+          "jitter_fs": 45.59430897074414,
+          "variance_fraction": 0.12925100992960428
+        },
+        "XR.XFF": {
+          "jitter_fs": 105.16962416156532,
+          "variance_fraction": 0.6876909565838647
+        },
+        "XD.XB": {
+          "jitter_fs": 4.304739727042702,
+          "variance_fraction": 0.001152143213388839
+        },
+        "XD.X1": {
+          "jitter_fs": 5.8630456022172845,
+          "variance_fraction": 0.0021372691330080454
+        },
+        "XD.XB1": {
+          "jitter_fs": 2.267350479432113,
+          "variance_fraction": 0.00031963180227384265
+        },
+        "XD.X0": {
+          "jitter_fs": 14.39109389169434,
+          "variance_fraction": 0.01287657265706036
+        },
+        "XD.XB0": {
+          "jitter_fs": 8.704971437506572,
+          "variance_fraction": 0.004711371715400729
+        },
+        "XRX.bias_and_passives": {
+          "jitter_fs": 4.169191319057392,
+          "variance_fraction": 0.0010807277898269069
+        }
+      },
+      "top_devices": [
+        {
+          "device": "XR.XFF.MNC1",
+          "variance_s2": 2.6013091470602e-27,
+          "jitter_fs": 51.003030763477184,
+          "variance_fraction": 0.16173523261050052
+        },
+        {
+          "device": "XR.XFF.MPC0",
+          "variance_s2": 2.469728089751313e-27,
+          "jitter_fs": 49.69635891844907,
+          "variance_fraction": 0.1535542392306714
+        },
+        {
+          "device": "XR.XFF.MP2",
+          "variance_s2": 2.1020241501892334e-27,
+          "jitter_fs": 45.84783691941456,
+          "variance_fraction": 0.13069241126836267
+        },
+        {
+          "device": "XR.X0.MN",
+          "variance_s2": 1.9503266395542096e-27,
+          "jitter_fs": 44.162502641428844,
+          "variance_fraction": 0.12126068640139834
+        },
+        {
+          "device": "XR.XFF.MN1",
+          "variance_s2": 1.740497805096452e-27,
+          "jitter_fs": 41.71927378438474,
+          "variance_fraction": 0.10821467247884389
+        },
+        {
+          "device": "XRX.X0.MP",
+          "variance_s2": 1.3352898388682568e-27,
+          "jitter_fs": 36.54161790162358,
+          "variance_fraction": 0.08302104843473163
+        },
+        {
+          "device": "XR.XFF.MP0",
+          "variance_s2": 1.1373165468568897e-27,
+          "jitter_fs": 33.72412410807566,
+          "variance_fraction": 0.07071214756060419
+        },
+        {
+          "device": "XR.X1.MP",
+          "variance_s2": 8.745738886622592e-28,
+          "jitter_fs": 29.573195442194933,
+          "variance_fraction": 0.0543762403164252
+        },
+        {
+          "device": "XR.XFF.MP1",
+          "variance_s2": 4.496598091567152e-28,
+          "jitter_fs": 21.20518354451843,
+          "variance_fraction": 0.02795739749415934
+        },
+        {
+          "device": "XR.XFF.MN2",
+          "variance_s2": 2.534391699198626e-28,
+          "jitter_fs": 15.91977292299933,
+          "variance_fraction": 0.015757467022297196
+        },
+        {
+          "device": "XRX.X0.MN",
+          "variance_s2": 2.5084209436842705e-28,
+          "jitter_fs": 15.837995276184012,
+          "variance_fraction": 0.015595995011600902
+        },
+        {
+          "device": "XR.XFF.MN0",
+          "variance_s2": 1.5515401397541642e-28,
+          "jitter_fs": 12.456083412349823,
+          "variance_fraction": 0.009646631416002974
+        },
+        {
+          "device": "XR.XFF.MNC2",
+          "variance_s2": 1.5152111427882453e-28,
+          "jitter_fs": 12.309391304155723,
+          "variance_fraction": 0.009420757502422602
+        },
+        {
+          "device": "XR.X0.MP",
+          "variance_s2": 1.2851437096546996e-28,
+          "jitter_fs": 11.336417907146418,
+          "variance_fraction": 0.00799032352820594
+        },
+        {
+          "device": "XR.X1.MN",
+          "variance_s2": 1.2524470344690245e-28,
+          "jitter_fs": 11.191278007756864,
+          "variance_fraction": 0.007787033412814562
+        },
+        {
+          "device": "XD.XB0.MN",
+          "variance_s2": 7.047822977536417e-29,
+          "jitter_fs": 8.395131313765388,
+          "variance_fraction": 0.004381952410222711
+        },
+        {
+          "device": "XD.X0.MNC1",
+          "variance_s2": 6.287402357723208e-29,
+          "jitter_fs": 7.929314193373352,
+          "variance_fraction": 0.003909164291339184
+        },
+        {
+          "device": "XD.X0.MP2",
+          "variance_s2": 5.908945141258549e-29,
+          "jitter_fs": 7.686966333514509,
+          "variance_fraction": 0.0036738602099030786
+        },
+        {
+          "device": "XD.X0.MN1",
+          "variance_s2": 2.582457168083086e-29,
+          "jitter_fs": 5.081788236519785,
+          "variance_fraction": 0.0016056311925039585
+        },
+        {
+          "device": "XD.X0.MPC0",
+          "variance_s2": 2.4679222274870963e-29,
+          "jitter_fs": 4.967818663646144,
+          "variance_fraction": 0.0015344196055218536
+        },
+        {
+          "device": "XD.XB.MN",
+          "variance_s2": 1.7860859969656295e-29,
+          "jitter_fs": 4.22621106544104,
+          "variance_fraction": 0.0011104909791596895
+        },
+        {
+          "device": "XRX.R0",
+          "variance_s2": 1.738215625490351e-29,
+          "jitter_fs": 4.169191319057392,
+          "variance_fraction": 0.0010807277898269069
+        },
+        {
+          "device": "XD.X1.MP2",
+          "variance_s2": 1.348526657056641e-29,
+          "jitter_fs": 3.6722291010456316,
+          "variance_fraction": 0.0008384404168454996
+        },
+        {
+          "device": "XD.X0.MP1",
+          "variance_s2": 1.329356643218468e-29,
+          "jitter_fs": 3.646034343253596,
+          "variance_fraction": 0.0008265215464922111
+        },
+        {
+          "device": "XD.X0.MP0",
+          "variance_s2": 8.715976985983987e-30,
+          "jitter_fs": 2.952283351235783,
+          "variance_fraction": 0.0005419119703050297
+        }
+      ]
+    },
+    {
+      "case": "noise_cc4_rtcomb_onlyXRX_coarse",
+      "run": "cc4_fine",
+      "simulator_ok": true,
+      "valid_noise": false,
+      "noise_option_conflict_warning": false,
+      "noise_option_ignored": true,
+      "local_edges": {
+        "q1": {
+          "range_v": [
+            -0.02492845483039251,
+            1.203886349147058
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            15.279538294474552,
+            14.129729124972858
+          ]
+        },
+        "data": {
+          "range_v": [
+            -0.02940361816899658,
+            1.238321766629846
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            19.48086908762402
+          ]
+        },
+        "out": {
+          "range_v": [
+            -0.06454697153263958,
+            1.251098482571581
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            28.02555448299131
+          ]
+        },
+        "XRX.g0": {
+          "range_v": [
+            0.3952476143765168,
+            0.7474107292722741
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.295524801874779,
+            4.295348459992087,
+            4.2953084690959,
+            4.2964060489105504
+          ]
+        },
+        "XR.XFF.b": {
+          "range_v": [
+            -0.01020403838985193,
+            1.183013018615445
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.240379644995711
+          ]
+        },
+        "XR.XFF.a": {
+          "range_v": [
+            0.01983199126200775,
+            1.292426841984115
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            10.7572617211844
+          ]
+        },
+        "XR.XFF.n1": {
+          "range_v": [
+            -0.142365052078032,
+            0.511771938674995
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            10.244726352334924
+          ]
+        },
+        "XR.qb": {
+          "range_v": [
+            -0.06949101323959166,
+            1.30035876982557
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            21.974875040812353
+          ]
+        },
+        "XR.ob": {
+          "range_v": [
+            -0.02898316768906372,
+            1.2644896805796
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            9.150861056787205
+          ]
+        },
+        "clk": {
+          "range_v": [
+            0.1090002535524099,
+            1.049480857027548
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            12.37712515114832,
+            12.427827336012816,
+            12.415753493438679,
+            12.166667431983853
+          ]
+        },
+        "vn": {
+          "range_v": [
+            1.003520324073164,
+            1.368160527716481
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.434786178942654,
+            4.434512801714205,
+            4.438699684602755,
+            4.442034979673525
+          ]
+        },
+        "vp": {
+          "range_v": [
+            1.003560596884659,
+            1.368962190296011
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.439224948484668,
+            4.439611378817071,
+            4.438460778981429,
+            4.439685460789463
+          ]
+        }
+      },
+      "periodic": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.1090002535524099,
+              1.049480857027548
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 0.002803724103812799,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.02492845483039251,
+              1.203886349147058
+            ],
+            "frequency_hz": 1968000000.000031,
+            "edges": 2,
+            "max_period_error": 0.00575372511332084,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.02940361816899658,
+              1.238321766629846
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.06454697153263958,
+              1.251098482571581
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.36444059356690195,
+              0.365261847772119
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 5.166827292679699e-07,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": true,
+        "actual_LC": false,
+        "reference_RF_frequency_hz": 3936000000.0,
+        "power_mw": {
+          "VRX:p": 0.7758659168131417,
+          "VRT:p": 0.17787087052712097,
+          "VDD:p": 1.2016506652037409
+        },
+        "node_ranges_v": {
+          "XRX.g0": [
+            0.3952476143765168,
+            0.7474107292722741
+          ]
+        },
+        "pass_function": true,
+        "endpoint_v": 1.0033676389742396e-08,
+        "pass_periodic": true
+      },
+      "dominant_harmonics": {
+        "out": 1,
+        "clk": 4,
+        "q1": 2,
+        "data": 1,
+        "vp": 4
+      },
+      "pass_periodic": true,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "noise_by_band": [
+        {
+          "band_hz": [
+            10000.0,
+            1000000.0
+          ],
+          "jitter_fs": 16.20283720678259,
+          "variance_fraction": 0.016322805533628467
+        },
+        {
+          "band_hz": [
+            1000000.0,
+            10000000.0
+          ],
+          "jitter_fs": 20.817201048893796,
+          "variance_fraction": 0.0269437067179012
+        },
+        {
+          "band_hz": [
+            10000000.0,
+            100000000.0
+          ],
+          "jitter_fs": 54.72432246211161,
+          "variance_fraction": 0.18619733298004
+        },
+        {
+          "band_hz": [
+            100000000.0,
+            492000000.0
+          ],
+          "jitter_fs": 111.32435202409131,
+          "variance_fraction": 0.7705361547684304
+        }
+      ],
+      "fundamental_hz": 984000000.0,
+      "slew_v_per_s": 28025600000.0,
+      "numeric_jitter_fs": 126.82172769514118,
+      "spectre_jee_fs": 126.82193366950641,
+      "integration_relative_error": 1.624122572985165e-06,
+      "device_psd_sum_max_relative_error": 9.888979877360279e-16,
+      "noise_budget_valid": true,
+      "noise_by_instance": {
+        "XRX": {
+          "variance_s2": 1.6035140894915873e-27,
+          "jitter_fs": 40.04390202629593,
+          "variance_fraction": 0.09969777123615943
+        },
+        "XR": {
+          "variance_s2": 1.4139309448913747e-26,
+          "jitter_fs": 118.90882830519249,
+          "variance_fraction": 0.8791052402427088
+        },
+        "XD": {
+          "variance_s2": 3.409270771752075e-28,
+          "jitter_fs": 18.464210710864613,
+          "variance_fraction": 0.021196988521131815
+        }
+      },
+      "noise_by_subblock": {
+        "XRX.X0": {
+          "jitter_fs": 39.82627189728765,
+          "variance_fraction": 0.09861704344633253
+        },
+        "XR.X1": {
+          "jitter_fs": 31.619908160985563,
+          "variance_fraction": 0.06216327372923975
+        },
+        "XR.X0": {
+          "jitter_fs": 45.59430897074414,
+          "variance_fraction": 0.12925100992960428
+        },
+        "XR.XFF": {
+          "jitter_fs": 105.16962416156532,
+          "variance_fraction": 0.6876909565838647
+        },
+        "XD.XB": {
+          "jitter_fs": 4.304739727042702,
+          "variance_fraction": 0.001152143213388839
+        },
+        "XD.X1": {
+          "jitter_fs": 5.8630456022172845,
+          "variance_fraction": 0.0021372691330080454
+        },
+        "XD.XB1": {
+          "jitter_fs": 2.267350479432113,
+          "variance_fraction": 0.00031963180227384265
+        },
+        "XD.X0": {
+          "jitter_fs": 14.39109389169434,
+          "variance_fraction": 0.01287657265706036
+        },
+        "XD.XB0": {
+          "jitter_fs": 8.704971437506572,
+          "variance_fraction": 0.004711371715400729
+        },
+        "XRX.bias_and_passives": {
+          "jitter_fs": 4.169191319057392,
+          "variance_fraction": 0.0010807277898269069
+        }
+      },
+      "top_devices": [
+        {
+          "device": "XR.XFF.MNC1",
+          "variance_s2": 2.6013091470602e-27,
+          "jitter_fs": 51.003030763477184,
+          "variance_fraction": 0.16173523261050052
+        },
+        {
+          "device": "XR.XFF.MPC0",
+          "variance_s2": 2.469728089751313e-27,
+          "jitter_fs": 49.69635891844907,
+          "variance_fraction": 0.1535542392306714
+        },
+        {
+          "device": "XR.XFF.MP2",
+          "variance_s2": 2.1020241501892334e-27,
+          "jitter_fs": 45.84783691941456,
+          "variance_fraction": 0.13069241126836267
+        },
+        {
+          "device": "XR.X0.MN",
+          "variance_s2": 1.9503266395542096e-27,
+          "jitter_fs": 44.162502641428844,
+          "variance_fraction": 0.12126068640139834
+        },
+        {
+          "device": "XR.XFF.MN1",
+          "variance_s2": 1.740497805096452e-27,
+          "jitter_fs": 41.71927378438474,
+          "variance_fraction": 0.10821467247884389
+        },
+        {
+          "device": "XRX.X0.MP",
+          "variance_s2": 1.3352898388682568e-27,
+          "jitter_fs": 36.54161790162358,
+          "variance_fraction": 0.08302104843473163
+        },
+        {
+          "device": "XR.XFF.MP0",
+          "variance_s2": 1.1373165468568897e-27,
+          "jitter_fs": 33.72412410807566,
+          "variance_fraction": 0.07071214756060419
+        },
+        {
+          "device": "XR.X1.MP",
+          "variance_s2": 8.745738886622592e-28,
+          "jitter_fs": 29.573195442194933,
+          "variance_fraction": 0.0543762403164252
+        },
+        {
+          "device": "XR.XFF.MP1",
+          "variance_s2": 4.496598091567152e-28,
+          "jitter_fs": 21.20518354451843,
+          "variance_fraction": 0.02795739749415934
+        },
+        {
+          "device": "XR.XFF.MN2",
+          "variance_s2": 2.534391699198626e-28,
+          "jitter_fs": 15.91977292299933,
+          "variance_fraction": 0.015757467022297196
+        },
+        {
+          "device": "XRX.X0.MN",
+          "variance_s2": 2.5084209436842705e-28,
+          "jitter_fs": 15.837995276184012,
+          "variance_fraction": 0.015595995011600902
+        },
+        {
+          "device": "XR.XFF.MN0",
+          "variance_s2": 1.5515401397541642e-28,
+          "jitter_fs": 12.456083412349823,
+          "variance_fraction": 0.009646631416002974
+        },
+        {
+          "device": "XR.XFF.MNC2",
+          "variance_s2": 1.5152111427882453e-28,
+          "jitter_fs": 12.309391304155723,
+          "variance_fraction": 0.009420757502422602
+        },
+        {
+          "device": "XR.X0.MP",
+          "variance_s2": 1.2851437096546996e-28,
+          "jitter_fs": 11.336417907146418,
+          "variance_fraction": 0.00799032352820594
+        },
+        {
+          "device": "XR.X1.MN",
+          "variance_s2": 1.2524470344690245e-28,
+          "jitter_fs": 11.191278007756864,
+          "variance_fraction": 0.007787033412814562
+        },
+        {
+          "device": "XD.XB0.MN",
+          "variance_s2": 7.047822977536417e-29,
+          "jitter_fs": 8.395131313765388,
+          "variance_fraction": 0.004381952410222711
+        },
+        {
+          "device": "XD.X0.MNC1",
+          "variance_s2": 6.287402357723208e-29,
+          "jitter_fs": 7.929314193373352,
+          "variance_fraction": 0.003909164291339184
+        },
+        {
+          "device": "XD.X0.MP2",
+          "variance_s2": 5.908945141258549e-29,
+          "jitter_fs": 7.686966333514509,
+          "variance_fraction": 0.0036738602099030786
+        },
+        {
+          "device": "XD.X0.MN1",
+          "variance_s2": 2.582457168083086e-29,
+          "jitter_fs": 5.081788236519785,
+          "variance_fraction": 0.0016056311925039585
+        },
+        {
+          "device": "XD.X0.MPC0",
+          "variance_s2": 2.4679222274870963e-29,
+          "jitter_fs": 4.967818663646144,
+          "variance_fraction": 0.0015344196055218536
+        },
+        {
+          "device": "XD.XB.MN",
+          "variance_s2": 1.7860859969656295e-29,
+          "jitter_fs": 4.22621106544104,
+          "variance_fraction": 0.0011104909791596895
+        },
+        {
+          "device": "XRX.R0",
+          "variance_s2": 1.738215625490351e-29,
+          "jitter_fs": 4.169191319057392,
+          "variance_fraction": 0.0010807277898269069
+        },
+        {
+          "device": "XD.X1.MP2",
+          "variance_s2": 1.348526657056641e-29,
+          "jitter_fs": 3.6722291010456316,
+          "variance_fraction": 0.0008384404168454996
+        },
+        {
+          "device": "XD.X0.MP1",
+          "variance_s2": 1.329356643218468e-29,
+          "jitter_fs": 3.646034343253596,
+          "variance_fraction": 0.0008265215464922111
+        },
+        {
+          "device": "XD.X0.MP0",
+          "variance_s2": 8.715976985983987e-30,
+          "jitter_fs": 2.952283351235783,
+          "variance_fraction": 0.0005419119703050297
+        }
+      ]
+    },
+    {
+      "case": "noise_cc4_rtcomb_gateXD_coarse",
+      "run": "gate_repair",
+      "simulator_ok": true,
+      "valid_noise": true,
+      "noise_option_conflict_warning": false,
+      "noise_option_ignored": false,
+      "local_edges": {
+        "q1": {
+          "range_v": [
+            -0.02492845483039251,
+            1.203886349147058
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            15.279538294474552,
+            14.129729124972858
+          ]
+        },
+        "data": {
+          "range_v": [
+            -0.02940361816899658,
+            1.238321766629846
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            19.48086908762402
+          ]
+        },
+        "out": {
+          "range_v": [
+            -0.06454697153263958,
+            1.251098482571581
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            28.02555448299131
+          ]
+        },
+        "XRX.g0": {
+          "range_v": [
+            0.3952476143765168,
+            0.7474107292722741
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.295524801874779,
+            4.295348459992087,
+            4.2953084690959,
+            4.2964060489105504
+          ]
+        },
+        "XR.XFF.b": {
+          "range_v": [
+            -0.01020403838985193,
+            1.183013018615445
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.240379644995711
+          ]
+        },
+        "XR.XFF.a": {
+          "range_v": [
+            0.01983199126200775,
+            1.292426841984115
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            10.7572617211844
+          ]
+        },
+        "XR.XFF.n1": {
+          "range_v": [
+            -0.142365052078032,
+            0.511771938674995
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            10.244726352334924
+          ]
+        },
+        "XR.qb": {
+          "range_v": [
+            -0.06949101323959166,
+            1.30035876982557
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            21.974875040812353
+          ]
+        },
+        "XR.ob": {
+          "range_v": [
+            -0.02898316768906372,
+            1.2644896805796
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            9.150861056787205
+          ]
+        },
+        "clk": {
+          "range_v": [
+            0.1090002535524099,
+            1.049480857027548
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            12.37712515114832,
+            12.427827336012816,
+            12.415753493438679,
+            12.166667431983853
+          ]
+        },
+        "vn": {
+          "range_v": [
+            1.003520324073164,
+            1.368160527716481
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.434786178942654,
+            4.434512801714205,
+            4.438699684602755,
+            4.442034979673525
+          ]
+        },
+        "vp": {
+          "range_v": [
+            1.003560596884659,
+            1.368962190296011
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.439224948484668,
+            4.439611378817071,
+            4.438460778981429,
+            4.439685460789463
+          ]
+        }
+      },
+      "periodic": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.1090002535524099,
+              1.049480857027548
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 0.002803724103812799,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.02492845483039251,
+              1.203886349147058
+            ],
+            "frequency_hz": 1968000000.000031,
+            "edges": 2,
+            "max_period_error": 0.00575372511332084,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.02940361816899658,
+              1.238321766629846
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.06454697153263958,
+              1.251098482571581
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.36444059356690195,
+              0.365261847772119
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 5.166827292679699e-07,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": true,
+        "actual_LC": false,
+        "reference_RF_frequency_hz": 3936000000.0,
+        "power_mw": {
+          "VRX:p": 0.7758659168131417,
+          "VRT:p": 0.17787087052712097,
+          "VDD:p": 1.2016506652037409
+        },
+        "node_ranges_v": {
+          "XRX.g0": [
+            0.3952476143765168,
+            0.7474107292722741
+          ]
+        },
+        "pass_function": true,
+        "endpoint_v": 1.0033676389742396e-08,
+        "pass_periodic": true
+      },
+      "dominant_harmonics": {
+        "out": 1,
+        "clk": 4,
+        "q1": 2,
+        "data": 1,
+        "vp": 4
+      },
+      "pass_periodic": true,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "noise_by_band": [
+        {
+          "band_hz": [
+            10000.0,
+            1000000.0
+          ],
+          "jitter_fs": 2.717699808295371,
+          "variance_fraction": 0.02166414093361372
+        },
+        {
+          "band_hz": [
+            1000000.0,
+            10000000.0
+          ],
+          "jitter_fs": 3.2186700690081462,
+          "variance_fraction": 0.030387252015787618
+        },
+        {
+          "band_hz": [
+            10000000.0,
+            100000000.0
+          ],
+          "jitter_fs": 8.01824060972381,
+          "variance_fraction": 0.18858045247718278
+        },
+        {
+          "band_hz": [
+            100000000.0,
+            492000000.0
+          ],
+          "jitter_fs": 16.090033108687063,
+          "variance_fraction": 0.7593681545734159
+        }
+      ],
+      "fundamental_hz": 984000000.0,
+      "slew_v_per_s": 28025600000.0,
+      "numeric_jitter_fs": 18.464210710864613,
+      "spectre_jee_fs": 18.46424069905473,
+      "integration_relative_error": 1.6241225733182318e-06,
+      "device_psd_sum_max_relative_error": 1.1308513720206583e-15,
+      "noise_budget_valid": true,
+      "noise_by_instance": {
+        "XRX": {
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XR": {
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XD": {
+          "variance_s2": 3.409270771752075e-28,
+          "jitter_fs": 18.464210710864613,
+          "variance_fraction": 1.0
+        }
+      },
+      "noise_by_subblock": {
+        "XRX.X0": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XR.X1": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XR.X0": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XR.XFF": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XD.XB": {
+          "jitter_fs": 4.304739727042702,
+          "variance_fraction": 0.05435409903818357
+        },
+        "XD.X1": {
+          "jitter_fs": 5.8630456022172845,
+          "variance_fraction": 0.1008289045812969
+        },
+        "XD.XB1": {
+          "jitter_fs": 2.267350479432113,
+          "variance_fraction": 0.015079113806906748
+        },
+        "XD.X0": {
+          "jitter_fs": 14.39109389169434,
+          "variance_fraction": 0.6074717946006046
+        },
+        "XD.XB0": {
+          "jitter_fs": 8.704971437506572,
+          "variance_fraction": 0.2222660879730082
+        },
+        "XRX.bias_and_passives": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        }
+      },
+      "top_devices": [
+        {
+          "device": "XD.XB0.MN",
+          "variance_s2": 7.047822977536417e-29,
+          "jitter_fs": 8.395131313765388,
+          "variance_fraction": 0.20672523391019587
+        },
+        {
+          "device": "XD.X0.MNC1",
+          "variance_s2": 6.287402357723208e-29,
+          "jitter_fs": 7.929314193373352,
+          "variance_fraction": 0.18442073917443694
+        },
+        {
+          "device": "XD.X0.MP2",
+          "variance_s2": 5.908945141258549e-29,
+          "jitter_fs": 7.686966333514509,
+          "variance_fraction": 0.17331991316787826
+        },
+        {
+          "device": "XD.X0.MN1",
+          "variance_s2": 2.582457168083086e-29,
+          "jitter_fs": 5.081788236519785,
+          "variance_fraction": 0.07574808048337923
+        },
+        {
+          "device": "XD.X0.MPC0",
+          "variance_s2": 2.4679222274870963e-29,
+          "jitter_fs": 4.967818663646144,
+          "variance_fraction": 0.0723885661395793
+        },
+        {
+          "device": "XD.XB.MN",
+          "variance_s2": 1.7860859969656295e-29,
+          "jitter_fs": 4.22621106544104,
+          "variance_fraction": 0.05238909187749066
+        },
+        {
+          "device": "XD.X1.MP2",
+          "variance_s2": 1.348526657056641e-29,
+          "jitter_fs": 3.6722291010456316,
+          "variance_fraction": 0.039554695045932446
+        },
+        {
+          "device": "XD.X0.MP1",
+          "variance_s2": 1.329356643218468e-29,
+          "jitter_fs": 3.646034343253596,
+          "variance_fraction": 0.03899240430631128
+        },
+        {
+          "device": "XD.X0.MP0",
+          "variance_s2": 8.715976985983987e-30,
+          "jitter_fs": 2.952283351235783,
+          "variance_fraction": 0.02556551699618953
+        },
+        {
+          "device": "XD.X1.MNC1",
+          "variance_s2": 8.444115977396522e-30,
+          "jitter_fs": 2.905876111845879,
+          "variance_fraction": 0.024768100109153153
+        },
+        {
+          "device": "XD.X0.MN2",
+          "variance_s2": 6.593811878028361e-30,
+          "jitter_fs": 2.567841871694665,
+          "variance_fraction": 0.01934082775900989
+        },
+        {
+          "device": "XD.XB0.MP",
+          "variance_s2": 5.298297952441055e-30,
+          "jitter_fs": 2.3018031958534277,
+          "variance_fraction": 0.015540854062812325
+        },
+        {
+          "device": "XD.XB1.MP",
+          "variance_s2": 4.7653489500955044e-30,
+          "jitter_fs": 2.182967922369796,
+          "variance_fraction": 0.013977619465075579
+        },
+        {
+          "device": "XD.X1.MN1",
+          "variance_s2": 4.661835558900734e-30,
+          "jitter_fs": 2.159128425754414,
+          "variance_fraction": 0.013673996203314023
+        },
+        {
+          "device": "XD.X0.MNC2",
+          "variance_s2": 4.661252629217129e-30,
+          "jitter_fs": 2.1589934296373228,
+          "variance_fraction": 0.013672286366452617
+        },
+        {
+          "device": "XD.X1.MN2",
+          "variance_s2": 2.2954959512061008e-30,
+          "jitter_fs": 1.5150894202013625,
+          "variance_fraction": 0.006733099553798161
+        },
+        {
+          "device": "XD.X1.MPC0",
+          "variance_s2": 2.243671437039024e-30,
+          "jitter_fs": 1.4978889935636166,
+          "variance_fraction": 0.00658108899894146
+        },
+        {
+          "device": "XD.X1.MNC2",
+          "variance_s2": 1.8819734725184812e-30,
+          "jitter_fs": 1.3718503827015835,
+          "variance_fraction": 0.005520164277099372
+        },
+        {
+          "device": "XD.X0.MN0",
+          "variance_s2": 1.371706528628578e-30,
+          "jitter_fs": 1.1711987570982896,
+          "variance_fraction": 0.0040234602073675645
+        },
+        {
+          "device": "XD.X1.MP1",
+          "variance_s2": 1.0205179341283911e-30,
+          "jitter_fs": 1.0102068768962083,
+          "variance_fraction": 0.002993361344555017
+        },
+        {
+          "device": "XD.XB.MP",
+          "variance_s2": 6.699241479233872e-31,
+          "jitter_fs": 0.8184889418455128,
+          "variance_fraction": 0.0019650071606929103
+        },
+        {
+          "device": "XD.XB1.MN",
+          "variance_s2": 3.755292464855296e-31,
+          "jitter_fs": 0.6128044112810624,
+          "variance_fraction": 0.0011014943418311697
+        },
+        {
+          "device": "XD.X1.MP0",
+          "variance_s2": 3.3672946805170705e-31,
+          "jitter_fs": 0.5802839546736641,
+          "variance_fraction": 0.0009876876628331188
+        },
+        {
+          "device": "XD.X1.MN0",
+          "variance_s2": 5.6973638720717606e-33,
+          "jitter_fs": 0.07548088415004,
+          "variance_fraction": 1.671138567014963e-05
+        },
+        {
+          "device": "XRX.X0.MP",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "case": "noise_cc4_rtcomb_gateXR_coarse",
+      "run": "gate_repair",
+      "simulator_ok": true,
+      "valid_noise": true,
+      "noise_option_conflict_warning": false,
+      "noise_option_ignored": false,
+      "local_edges": {
+        "q1": {
+          "range_v": [
+            -0.02492845483039251,
+            1.203886349147058
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            15.279538294474552,
+            14.129729124972858
+          ]
+        },
+        "data": {
+          "range_v": [
+            -0.02940361816899658,
+            1.238321766629846
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            19.48086908762402
+          ]
+        },
+        "out": {
+          "range_v": [
+            -0.06454697153263958,
+            1.251098482571581
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            28.02555448299131
+          ]
+        },
+        "XRX.g0": {
+          "range_v": [
+            0.3952476143765168,
+            0.7474107292722741
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.295524801874779,
+            4.295348459992087,
+            4.2953084690959,
+            4.2964060489105504
+          ]
+        },
+        "XR.XFF.b": {
+          "range_v": [
+            -0.01020403838985193,
+            1.183013018615445
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.240379644995711
+          ]
+        },
+        "XR.XFF.a": {
+          "range_v": [
+            0.01983199126200775,
+            1.292426841984115
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            10.7572617211844
+          ]
+        },
+        "XR.XFF.n1": {
+          "range_v": [
+            -0.142365052078032,
+            0.511771938674995
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            10.244726352334924
+          ]
+        },
+        "XR.qb": {
+          "range_v": [
+            -0.06949101323959166,
+            1.30035876982557
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            21.974875040812353
+          ]
+        },
+        "XR.ob": {
+          "range_v": [
+            -0.02898316768906372,
+            1.2644896805796
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            9.150861056787205
+          ]
+        },
+        "clk": {
+          "range_v": [
+            0.1090002535524099,
+            1.049480857027548
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            12.37712515114832,
+            12.427827336012816,
+            12.415753493438679,
+            12.166667431983853
+          ]
+        },
+        "vn": {
+          "range_v": [
+            1.003520324073164,
+            1.368160527716481
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.434786178942654,
+            4.434512801714205,
+            4.438699684602755,
+            4.442034979673525
+          ]
+        },
+        "vp": {
+          "range_v": [
+            1.003560596884659,
+            1.368962190296011
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.439224948484668,
+            4.439611378817071,
+            4.438460778981429,
+            4.439685460789463
+          ]
+        }
+      },
+      "periodic": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.1090002535524099,
+              1.049480857027548
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 0.002803724103812799,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.02492845483039251,
+              1.203886349147058
+            ],
+            "frequency_hz": 1968000000.000031,
+            "edges": 2,
+            "max_period_error": 0.00575372511332084,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.02940361816899658,
+              1.238321766629846
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.06454697153263958,
+              1.251098482571581
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.36444059356690195,
+              0.365261847772119
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 5.166827292679699e-07,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": true,
+        "actual_LC": false,
+        "reference_RF_frequency_hz": 3936000000.0,
+        "power_mw": {
+          "VRX:p": 0.7758659168131417,
+          "VRT:p": 0.17787087052712097,
+          "VDD:p": 1.2016506652037409
+        },
+        "node_ranges_v": {
+          "XRX.g0": [
+            0.3952476143765168,
+            0.7474107292722741
+          ]
+        },
+        "pass_function": true,
+        "endpoint_v": 1.0033676389742396e-08,
+        "pass_periodic": true
+      },
+      "dominant_harmonics": {
+        "out": 1,
+        "clk": 4,
+        "q1": 2,
+        "data": 1,
+        "vp": 4
+      },
+      "pass_periodic": true,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "noise_by_band": [
+        {
+          "band_hz": [
+            10000.0,
+            1000000.0
+          ],
+          "jitter_fs": 15.107150467700697,
+          "variance_fraction": 0.016141240566121335
+        },
+        {
+          "band_hz": [
+            1000000.0,
+            10000000.0
+          ],
+          "jitter_fs": 19.44941545991195,
+          "variance_fraction": 0.026753764962780643
+        },
+        {
+          "band_hz": [
+            10000000.0,
+            100000000.0
+          ],
+          "jitter_fs": 51.29045958716791,
+          "variance_fraction": 0.18605655772425356
+        },
+        {
+          "band_hz": [
+            100000000.0,
+            492000000.0
+          ],
+          "jitter_fs": 104.41308561317796,
+          "variance_fraction": 0.7710484367468442
+        }
+      ],
+      "fundamental_hz": 984000000.0,
+      "slew_v_per_s": 28025600000.0,
+      "numeric_jitter_fs": 118.90882830519251,
+      "spectre_jee_fs": 118.90902142801829,
+      "integration_relative_error": 1.6241225725410757e-06,
+      "device_psd_sum_max_relative_error": 8.671357589404482e-16,
+      "noise_budget_valid": true,
+      "noise_by_instance": {
+        "XRX": {
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XR": {
+          "variance_s2": 1.4139309448913747e-26,
+          "jitter_fs": 118.90882830519249,
+          "variance_fraction": 0.9999999999999998
+        },
+        "XD": {
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        }
+      },
+      "noise_by_subblock": {
+        "XRX.X0": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XR.X1": {
+          "jitter_fs": 31.619908160985563,
+          "variance_fraction": 0.0707119817782878
+        },
+        "XR.X0": {
+          "jitter_fs": 45.59430897074414,
+          "variance_fraction": 0.14702563926694354
+        },
+        "XR.XFF": {
+          "jitter_fs": 105.16962416156532,
+          "variance_fraction": 0.7822623789547685
+        },
+        "XD.XB": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XD.X1": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XD.XB1": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XD.X0": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XD.XB0": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XRX.bias_and_passives": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        }
+      },
+      "top_devices": [
+        {
+          "device": "XR.XFF.MNC1",
+          "variance_s2": 2.6013091470602e-27,
+          "jitter_fs": 51.003030763477184,
+          "variance_fraction": 0.18397709990427044
+        },
+        {
+          "device": "XR.XFF.MPC0",
+          "variance_s2": 2.469728089751313e-27,
+          "jitter_fs": 49.69635891844907,
+          "variance_fraction": 0.1746710543873873
+        },
+        {
+          "device": "XR.XFF.MP2",
+          "variance_s2": 2.1020241501892334e-27,
+          "jitter_fs": 45.84783691941456,
+          "variance_fraction": 0.1486652624574053
+        },
+        {
+          "device": "XR.X0.MN",
+          "variance_s2": 1.9503266395542096e-27,
+          "jitter_fs": 44.162502641428844,
+          "variance_fraction": 0.13793648456460106
+        },
+        {
+          "device": "XR.XFF.MN1",
+          "variance_s2": 1.740497805096452e-27,
+          "jitter_fs": 41.71927378438474,
+          "variance_fraction": 0.12309637973374757
+        },
+        {
+          "device": "XR.XFF.MP0",
+          "variance_s2": 1.1373165468568897e-27,
+          "jitter_fs": 33.72412410807566,
+          "variance_fraction": 0.0804364987530748
+        },
+        {
+          "device": "XR.X1.MP",
+          "variance_s2": 8.745738886622592e-28,
+          "jitter_fs": 29.573195442194933,
+          "variance_fraction": 0.06185407369590091
+        },
+        {
+          "device": "XR.XFF.MP1",
+          "variance_s2": 4.496598091567152e-28,
+          "jitter_fs": 21.20518354451843,
+          "variance_fraction": 0.03180210538438001
+        },
+        {
+          "device": "XR.XFF.MN2",
+          "variance_s2": 2.534391699198626e-28,
+          "jitter_fs": 15.91977292299933,
+          "variance_fraction": 0.017924437599697137
+        },
+        {
+          "device": "XR.XFF.MN0",
+          "variance_s2": 1.5515401397541642e-28,
+          "jitter_fs": 12.456083412349823,
+          "variance_fraction": 0.010973238441099124
+        },
+        {
+          "device": "XR.XFF.MNC2",
+          "variance_s2": 1.5152111427882453e-28,
+          "jitter_fs": 12.309391304155723,
+          "variance_fraction": 0.010716302293706792
+        },
+        {
+          "device": "XR.X0.MP",
+          "variance_s2": 1.2851437096546996e-28,
+          "jitter_fs": 11.336417907146418,
+          "variance_fraction": 0.009089154702342487
+        },
+        {
+          "device": "XR.X1.MN",
+          "variance_s2": 1.2524470344690245e-28,
+          "jitter_fs": 11.191278007756864,
+          "variance_fraction": 0.008857908082386892
+        },
+        {
+          "device": "XRX.X0.MP",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.XB.MP",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X1.MP2",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X1.MP1",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X1.MPC0",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X1.MP0",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.XB1.MP",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X0.MP2",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X0.MP1",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X0.MPC0",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X0.MP0",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.XB0.MP",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "case": "noise_cc4_rtcomb_gateXRX_coarse",
+      "run": "gate_repair",
+      "simulator_ok": true,
+      "valid_noise": true,
+      "noise_option_conflict_warning": false,
+      "noise_option_ignored": false,
+      "local_edges": {
+        "q1": {
+          "range_v": [
+            -0.02492845483039251,
+            1.203886349147058
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            15.279538294474552,
+            14.129729124972858
+          ]
+        },
+        "data": {
+          "range_v": [
+            -0.02940361816899658,
+            1.238321766629846
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            19.48086908762402
+          ]
+        },
+        "out": {
+          "range_v": [
+            -0.06454697153263958,
+            1.251098482571581
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            28.02555448299131
+          ]
+        },
+        "XRX.g0": {
+          "range_v": [
+            0.3952476143765168,
+            0.7474107292722741
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.295524801874779,
+            4.295348459992087,
+            4.2953084690959,
+            4.2964060489105504
+          ]
+        },
+        "XR.XFF.b": {
+          "range_v": [
+            -0.01020403838985193,
+            1.183013018615445
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.240379644995711
+          ]
+        },
+        "XR.XFF.a": {
+          "range_v": [
+            0.01983199126200775,
+            1.292426841984115
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            10.7572617211844
+          ]
+        },
+        "XR.XFF.n1": {
+          "range_v": [
+            -0.142365052078032,
+            0.511771938674995
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            10.244726352334924
+          ]
+        },
+        "XR.qb": {
+          "range_v": [
+            -0.06949101323959166,
+            1.30035876982557
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            21.974875040812353
+          ]
+        },
+        "XR.ob": {
+          "range_v": [
+            -0.02898316768906372,
+            1.2644896805796
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            9.150861056787205
+          ]
+        },
+        "clk": {
+          "range_v": [
+            0.1090002535524099,
+            1.049480857027548
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            12.37712515114832,
+            12.427827336012816,
+            12.415753493438679,
+            12.166667431983853
+          ]
+        },
+        "vn": {
+          "range_v": [
+            1.003520324073164,
+            1.368160527716481
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.434786178942654,
+            4.434512801714205,
+            4.438699684602755,
+            4.442034979673525
+          ]
+        },
+        "vp": {
+          "range_v": [
+            1.003560596884659,
+            1.368962190296011
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.439224948484668,
+            4.439611378817071,
+            4.438460778981429,
+            4.439685460789463
+          ]
+        }
+      },
+      "periodic": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.1090002535524099,
+              1.049480857027548
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 0.002803724103812799,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.02492845483039251,
+              1.203886349147058
+            ],
+            "frequency_hz": 1968000000.000031,
+            "edges": 2,
+            "max_period_error": 0.00575372511332084,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.02940361816899658,
+              1.238321766629846
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.06454697153263958,
+              1.251098482571581
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.36444059356690195,
+              0.365261847772119
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 5.166827292679699e-07,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": true,
+        "actual_LC": false,
+        "reference_RF_frequency_hz": 3936000000.0,
+        "power_mw": {
+          "VRX:p": 0.7758659168131417,
+          "VRT:p": 0.17787087052712097,
+          "VDD:p": 1.2016506652037409
+        },
+        "node_ranges_v": {
+          "XRX.g0": [
+            0.3952476143765168,
+            0.7474107292722741
+          ]
+        },
+        "pass_function": true,
+        "endpoint_v": 1.0033676389742396e-08,
+        "pass_periodic": true
+      },
+      "dominant_harmonics": {
+        "out": 1,
+        "clk": 4,
+        "q1": 2,
+        "data": 1,
+        "vp": 4
+      },
+      "pass_periodic": true,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "noise_by_band": [
+        {
+          "band_hz": [
+            10000.0,
+            1000000.0
+          ],
+          "jitter_fs": 5.1884531459521,
+          "variance_fraction": 0.016788156851353615
+        },
+        {
+          "band_hz": [
+            1000000.0,
+            10000000.0
+          ],
+          "jitter_fs": 6.687021815776744,
+          "variance_fraction": 0.027886415877301025
+        },
+        {
+          "band_hz": [
+            10000000.0,
+            100000000.0
+          ],
+          "jitter_fs": 17.313233141121973,
+          "variance_fraction": 0.1869319663376845
+        },
+        {
+          "band_hz": [
+            100000000.0,
+            492000000.0
+          ],
+          "jitter_fs": 35.10170566910288,
+          "variance_fraction": 0.7683934609336609
+        }
+      ],
+      "fundamental_hz": 984000000.0,
+      "slew_v_per_s": 28025600000.0,
+      "numeric_jitter_fs": 40.04390202629593,
+      "spectre_jee_fs": 40.043967062606754,
+      "integration_relative_error": 1.6241225732072095e-06,
+      "device_psd_sum_max_relative_error": 9.465628200143076e-16,
+      "noise_budget_valid": true,
+      "noise_by_instance": {
+        "XRX": {
+          "variance_s2": 1.6035140894915873e-27,
+          "jitter_fs": 40.04390202629593,
+          "variance_fraction": 0.9999999999999999
+        },
+        "XR": {
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XD": {
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        }
+      },
+      "noise_by_subblock": {
+        "XRX.X0": {
+          "jitter_fs": 39.82627189728765,
+          "variance_fraction": 0.9891599603839996
+        },
+        "XR.X1": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XR.X0": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XR.XFF": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XD.XB": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XD.X1": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XD.XB1": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XD.X0": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XD.XB0": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XRX.bias_and_passives": {
+          "jitter_fs": 4.169191319057392,
+          "variance_fraction": 0.010840039616000332
+        }
+      },
+      "top_devices": [
+        {
+          "device": "XRX.X0.MP",
+          "variance_s2": 1.3352898388682568e-27,
+          "jitter_fs": 36.54161790162358,
+          "variance_fraction": 0.8327272255472515
+        },
+        {
+          "device": "XRX.X0.MN",
+          "variance_s2": 2.5084209436842705e-28,
+          "jitter_fs": 15.837995276184012,
+          "variance_fraction": 0.15643273483674808
+        },
+        {
+          "device": "XRX.R0",
+          "variance_s2": 1.738215625490351e-29,
+          "jitter_fs": 4.169191319057392,
+          "variance_fraction": 0.010840039616000332
+        },
+        {
+          "device": "XR.X1.MP",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XR.X0.MP",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XR.XFF.MP2",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XR.XFF.MP1",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XR.XFF.MPC0",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XR.XFF.MP0",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.XB.MP",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X1.MP2",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X1.MP1",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X1.MPC0",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X1.MP0",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.XB1.MP",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X0.MP2",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X0.MP1",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X0.MPC0",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X0.MP0",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.XB0.MP",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XR.X1.MN",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XR.X0.MN",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XR.XFF.MN2",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XR.XFF.MNC2",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XR.XFF.MNC1",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "case": "noise_cc4_base_coarse",
+      "run": "local_a",
+      "simulator_ok": true,
+      "valid_noise": true,
+      "noise_option_conflict_warning": false,
+      "noise_option_ignored": false,
+      "local_edges": {
+        "q1": {
+          "range_v": [
+            -0.02500639693091988,
+            1.205338611566107
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            15.373186085777338,
+            14.192521864506563
+          ]
+        },
+        "data": {
+          "range_v": [
+            -0.02967001433814458,
+            1.238105083934198
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            19.411095006526665
+          ]
+        },
+        "out": {
+          "range_v": [
+            -0.04109858366636703,
+            1.267011679605827
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            23.979628405626546
+          ]
+        },
+        "XRX.g0": {
+          "range_v": [
+            0.3952614747008327,
+            0.7474294601923734
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.295018559236894,
+            4.289644167984613,
+            4.294004480346795,
+            4.2942613894931005
+          ]
+        },
+        "XR.XFF.b": {
+          "range_v": [
+            -0.01289941204476225,
+            1.236248171284097
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            16.364099788166968
+          ]
+        },
+        "XR.XFF.a": {
+          "range_v": [
+            0.02022673044106259,
+            1.304240052855952
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.934734751242827
+          ]
+        },
+        "XR.XFF.n1": {
+          "range_v": [
+            -0.138428170889581,
+            0.5593195331683255
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            11.51367714557305
+          ]
+        },
+        "XR.qb": {
+          "range_v": [
+            -0.0786501135518687,
+            1.259993872829345
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            19.94447724014899
+          ]
+        },
+        "XR.ob": {
+          "range_v": [
+            -0.03139116644895917,
+            1.261112669303023
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.39866364458764
+          ]
+        },
+        "clk": {
+          "range_v": [
+            0.1027798384797221,
+            1.056683875362374
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            12.514715657305194,
+            12.586122194355118,
+            12.620758264104293,
+            12.337138322728057
+          ]
+        },
+        "vn": {
+          "range_v": [
+            1.003519776039805,
+            1.368160346452273
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.435954107384013,
+            4.436403503661656,
+            4.436659457109994,
+            4.439403077315676
+          ]
+        },
+        "vp": {
+          "range_v": [
+            1.003563139170685,
+            1.368962540410805
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.440030148670626,
+            4.442667263401463,
+            4.443879051474786,
+            4.4378258720548285
+          ]
+        }
+      },
+      "periodic": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.1027798384797221,
+              1.056683875362374
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 0.0027287903296553395,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.02500639693091988,
+              1.205338611566107
+            ],
+            "frequency_hz": 1968000000.000031,
+            "edges": 2,
+            "max_period_error": 0.005987740555923771,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.02967001433814458,
+              1.238105083934198
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.04109858366636703,
+              1.267011679605827
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.3644410487852221,
+              0.36526515658896686
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 7.122841115814182e-07,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": true,
+        "actual_LC": false,
+        "reference_RF_frequency_hz": 3936000000.0,
+        "power_mw": {
+          "VRX:p": 0.7748703092609309,
+          "VRT:p": 0.15694031241917045,
+          "VDD:p": 1.1804368314527407
+        },
+        "node_ranges_v": {
+          "XRX.g0": [
+            0.3952614747008327,
+            0.7474294601923734
+          ]
+        },
+        "pass_function": true,
+        "endpoint_v": 5.066217612093027e-09,
+        "pass_periodic": true
+      },
+      "dominant_harmonics": {
+        "out": 1,
+        "clk": 4,
+        "q1": 2,
+        "data": 1,
+        "vp": 4
+      },
+      "pass_periodic": true,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "noise_by_band": [
+        {
+          "band_hz": [
+            10000.0,
+            1000000.0
+          ],
+          "jitter_fs": 23.54069941424372,
+          "variance_fraction": 0.023370182242665575
+        },
+        {
+          "band_hz": [
+            1000000.0,
+            10000000.0
+          ],
+          "jitter_fs": 27.238949913629764,
+          "variance_fraction": 0.03128989439510575
+        },
+        {
+          "band_hz": [
+            10000000.0,
+            100000000.0
+          ],
+          "jitter_fs": 66.98325300418492,
+          "variance_fraction": 0.1892151233164537
+        },
+        {
+          "band_hz": [
+            100000000.0,
+            492000000.0
+          ],
+          "jitter_fs": 133.9013802598533,
+          "variance_fraction": 0.7561248000457749
+        }
+      ],
+      "fundamental_hz": 984000000.0,
+      "slew_v_per_s": 23976900000.0,
+      "numeric_jitter_fs": 153.98850846678624,
+      "spectre_jee_fs": 153.9887100793694,
+      "integration_relative_error": 1.3092686019788857e-06,
+      "device_psd_sum_max_relative_error": 9.368161259887764e-16,
+      "noise_budget_valid": true,
+      "noise_by_instance": {
+        "XRX": {
+          "variance_s2": 3.5318457880237995e-27,
+          "jitter_fs": 59.42933440670356,
+          "variance_fraction": 0.14894471842359247
+        },
+        "XR": {
+          "variance_s2": 1.989616689411306e-26,
+          "jitter_fs": 141.05377305876317,
+          "variance_fraction": 0.8390595608112951
+        },
+        "XD": {
+          "variance_s2": 2.8444805768863847e-28,
+          "jitter_fs": 16.865587973404264,
+          "variance_fraction": 0.011995720765112452
+        }
+      },
+      "noise_by_subblock": {
+        "XRX.X0": {
+          "jitter_fs": 58.467621928521076,
+          "variance_fraction": 0.14416314069990674
+        },
+        "XR.X1": {
+          "jitter_fs": 35.83594298744744,
+          "variance_fraction": 0.054157804366660345
+        },
+        "XR.X0": {
+          "jitter_fs": 78.764424452936,
+          "variance_fraction": 0.26162761543270846
+        },
+        "XR.XFF": {
+          "jitter_fs": 111.3917300561905,
+          "variance_fraction": 0.5232741410119263
+        },
+        "XD.XB": {
+          "jitter_fs": 2.7820341434439513,
+          "variance_fraction": 0.00032639859946247314
+        },
+        "XD.X1": {
+          "jitter_fs": 3.3585182095183232,
+          "variance_fraction": 0.0004756842694407417
+        },
+        "XD.XB1": {
+          "jitter_fs": 2.292025399790331,
+          "variance_fraction": 0.00022154513995508197
+        },
+        "XD.X0": {
+          "jitter_fs": 14.016698943190184,
+          "variance_fraction": 0.008285426443914258
+        },
+        "XD.XB0": {
+          "jitter_fs": 7.981695900770186,
+          "variance_fraction": 0.002686666312339899
+        },
+        "XRX.bias_and_passives": {
+          "jitter_fs": 10.648144159773636,
+          "variance_fraction": 0.004781577723685704
+        }
+      },
+      "top_devices": [
+        {
+          "device": "XR.X0.MN",
+          "variance_s2": 5.78957836348685e-27,
+          "jitter_fs": 76.08927889976911,
+          "variance_fraction": 0.2441576362322933
+        },
+        {
+          "device": "XR.XFF.MNC1",
+          "variance_s2": 4.0652022204542454e-27,
+          "jitter_fs": 63.75893835733344,
+          "variance_fraction": 0.1714373832837461
+        },
+        {
+          "device": "XR.XFF.MP2",
+          "variance_s2": 3.940885473038326e-27,
+          "jitter_fs": 62.7764722888944,
+          "variance_fraction": 0.1661947073430274
+        },
+        {
+          "device": "XRX.X0.MP",
+          "variance_s2": 2.1433557283198313e-27,
+          "jitter_fs": 46.29639001390747,
+          "variance_fraction": 0.09038942654821258
+        },
+        {
+          "device": "XR.XFF.MN1",
+          "variance_s2": 1.5695232331850463e-27,
+          "jitter_fs": 39.617208801038046,
+          "variance_fraction": 0.06618980840520715
+        },
+        {
+          "device": "XRX.X0.MN",
+          "variance_s2": 1.2751070856566467e-27,
+          "jitter_fs": 35.708641610353176,
+          "variance_fraction": 0.05377371415169417
+        },
+        {
+          "device": "XR.XFF.MPC0",
+          "variance_s2": 1.223254724024392e-27,
+          "jitter_fs": 34.975058599298904,
+          "variance_fraction": 0.05158700049927396
+        },
+        {
+          "device": "XR.X1.MP",
+          "variance_s2": 1.1537207289826309e-27,
+          "jitter_fs": 33.96646477016162,
+          "variance_fraction": 0.04865461841524261
+        },
+        {
+          "device": "XR.XFF.MP1",
+          "variance_s2": 5.607227264085784e-28,
+          "jitter_fs": 23.67958459113205,
+          "variance_fraction": 0.023646754023585355
+        },
+        {
+          "device": "XR.XFF.MN2",
+          "variance_s2": 4.862757688675609e-28,
+          "jitter_fs": 22.05166136298036,
+          "variance_fraction": 0.020507182877517734
+        },
+        {
+          "device": "XR.X0.MP",
+          "variance_s2": 4.142561959154127e-28,
+          "jitter_fs": 20.353284646842944,
+          "variance_fraction": 0.017469979200415167
+        },
+        {
+          "device": "XR.XFF.MNC2",
+          "variance_s2": 2.8633829268815904e-28,
+          "jitter_fs": 16.921533402388775,
+          "variance_fraction": 0.012075435604506825
+        },
+        {
+          "device": "XR.XFF.MP0",
+          "variance_s2": 2.6443630203143156e-28,
+          "jitter_fs": 16.261497533481705,
+          "variance_fraction": 0.011151786604218015
+        },
+        {
+          "device": "XR.X1.MN",
+          "variance_s2": 1.3049408081695232e-28,
+          "jitter_fs": 11.423400580254214,
+          "variance_fraction": 0.005503185951417737
+        },
+        {
+          "device": "XRX.R0",
+          "variance_s2": 1.1338297404732142e-28,
+          "jitter_fs": 10.648144159773636,
+          "variance_fraction": 0.004781577723685704
+        },
+        {
+          "device": "XD.X0.MP2",
+          "variance_s2": 5.784224187262453e-29,
+          "jitter_fs": 7.605408724889447,
+          "variance_fraction": 0.002439318403402877
+        },
+        {
+          "device": "XD.X0.MNC1",
+          "variance_s2": 5.724350302990431e-29,
+          "jitter_fs": 7.565943631160907,
+          "variance_fraction": 0.0024140684367591945
+        },
+        {
+          "device": "XD.XB0.MN",
+          "variance_s2": 5.663997132753514e-29,
+          "jitter_fs": 7.525953183985079,
+          "variance_fraction": 0.0023886163460212846
+        },
+        {
+          "device": "XD.X0.MN1",
+          "variance_s2": 2.3932135975156523e-29,
+          "jitter_fs": 4.892048239250767,
+          "variance_fraction": 0.0010092641264751608
+        },
+        {
+          "device": "XD.X0.MPC0",
+          "variance_s2": 2.083172366944113e-29,
+          "jitter_fs": 4.564178312625518,
+          "variance_fraction": 0.000878513786401505
+        },
+        {
+          "device": "XD.X0.MP1",
+          "variance_s2": 1.3250260880299255e-29,
+          "jitter_fs": 3.640090779128901,
+          "variance_fraction": 0.0005587889433189533
+        },
+        {
+          "device": "XR.XFF.MN0",
+          "variance_s2": 1.1478784213472217e-29,
+          "jitter_fs": 3.3880354504450243,
+          "variance_fraction": 0.0004840823708436719
+        },
+        {
+          "device": "XD.X0.MN2",
+          "variance_s2": 7.939021080666815e-30,
+          "jitter_fs": 2.8176268526309185,
+          "variance_fraction": 0.0003348037627884435
+        },
+        {
+          "device": "XD.X0.MNC2",
+          "variance_s2": 7.8005180959561e-30,
+          "jitter_fs": 2.792940761268685,
+          "variance_fraction": 0.0003289628259818262
+        },
+        {
+          "device": "XD.XB0.MP",
+          "variance_s2": 7.067498124836459e-30,
+          "jitter_fs": 2.6584766549353893,
+          "variance_fraction": 0.00029804996631861453
+        }
+      ]
+    },
+    {
+      "case": "noise_cc4_rtout_coarse",
+      "run": "local_b",
+      "simulator_ok": true,
+      "valid_noise": true,
+      "noise_option_conflict_warning": false,
+      "noise_option_ignored": false,
+      "local_edges": {
+        "q1": {
+          "range_v": [
+            -0.02500338734530793,
+            1.205268522857327
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            15.368950767744785,
+            14.181422309589813
+          ]
+        },
+        "data": {
+          "range_v": [
+            -0.02947512078538427,
+            1.238100683793867
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            19.47483826048568
+          ]
+        },
+        "out": {
+          "range_v": [
+            -0.0640538708817944,
+            1.261195900345753
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            27.99205535070745
+          ]
+        },
+        "XRX.g0": {
+          "range_v": [
+            0.3952749839681237,
+            0.7474307529489564
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.2912748385284765,
+            4.289379043660294,
+            4.292415316662979,
+            4.294654146457743
+          ]
+        },
+        "XR.XFF.b": {
+          "range_v": [
+            -0.01259258993855526,
+            1.236201390314515
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            16.36484550504002
+          ]
+        },
+        "XR.XFF.a": {
+          "range_v": [
+            0.05851865730769563,
+            1.297687934797329
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            12.837008135751848
+          ]
+        },
+        "XR.XFF.n1": {
+          "range_v": [
+            -0.1141444759024718,
+            0.5593175368906463
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            11.479685833888608
+          ]
+        },
+        "XR.qb": {
+          "range_v": [
+            -0.07108650921948392,
+            1.298588079129037
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            21.125184748687143
+          ]
+        },
+        "XR.ob": {
+          "range_v": [
+            -0.03491741590426065,
+            1.263576485527133
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            12.694854978053483
+          ]
+        },
+        "clk": {
+          "range_v": [
+            0.1027719898644171,
+            1.056527434975563
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            12.511364087305015,
+            12.604584635181494,
+            12.614526462452108,
+            12.331885324002767
+          ]
+        },
+        "vn": {
+          "range_v": [
+            1.003521019916397,
+            1.368159030125037
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.436690462994313,
+            4.441191176525088,
+            4.434670703907304,
+            4.43990860313972
+          ]
+        },
+        "vp": {
+          "range_v": [
+            1.003562425709762,
+            1.368961568845423
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.443365369890267,
+            4.441670046252691,
+            4.442640925584374,
+            4.438175474494079
+          ]
+        }
+      },
+      "periodic": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.1027719898644171,
+              1.056527434975563
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 0.0024891497098418203,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.02500338734530793,
+              1.205268522857327
+            ],
+            "frequency_hz": 1968000000.000031,
+            "edges": 2,
+            "max_period_error": 0.005858390894914134,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.02947512078538427,
+              1.238100683793867
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.0640538708817944,
+              1.261195900345753
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.3644410390366408,
+              0.3652709776557459
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 2.805703021024897e-07,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": true,
+        "actual_LC": false,
+        "reference_RF_frequency_hz": 3936000000.0,
+        "power_mw": {
+          "VRX:p": 0.7748423588083088,
+          "VRT:p": 0.17184220854775142,
+          "VDD:p": 1.1953205703086354
+        },
+        "node_ranges_v": {
+          "XRX.g0": [
+            0.3952749839681237,
+            0.7474307529489564
+          ]
+        },
+        "pass_function": true,
+        "endpoint_v": 1.5166524147680605e-09,
+        "pass_periodic": true
+      },
+      "dominant_harmonics": {
+        "out": 1,
+        "clk": 4,
+        "q1": 2,
+        "data": 1,
+        "vp": 4
+      },
+      "pass_periodic": true,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "noise_by_band": [
+        {
+          "band_hz": [
+            10000.0,
+            1000000.0
+          ],
+          "jitter_fs": 18.49828112211001,
+          "variance_fraction": 0.017314539584154402
+        },
+        {
+          "band_hz": [
+            1000000.0,
+            10000000.0
+          ],
+          "jitter_fs": 23.380726323076612,
+          "variance_fraction": 0.02766076544330556
+        },
+        {
+          "band_hz": [
+            10000000.0,
+            100000000.0
+          ],
+          "jitter_fs": 61.16902509001891,
+          "variance_fraction": 0.1893264600519216
+        },
+        {
+          "band_hz": [
+            100000000.0,
+            492000000.0
+          ],
+          "jitter_fs": 123.014052086626,
+          "variance_fraction": 0.7656982349206185
+        }
+      ],
+      "fundamental_hz": 984000000.0,
+      "slew_v_per_s": 27992100000.0,
+      "numeric_jitter_fs": 140.58076471943704,
+      "spectre_jee_fs": 140.58098895562608,
+      "integration_relative_error": 1.5950676597320523e-06,
+      "device_psd_sum_max_relative_error": 9.030513834462281e-16,
+      "noise_budget_valid": true,
+      "noise_by_instance": {
+        "XRX": {
+          "variance_s2": 4.44768875126042e-27,
+          "jitter_fs": 66.69099452894986,
+          "variance_fraction": 0.22505184874421452
+        },
+        "XR": {
+          "variance_s2": 1.528465546397585e-26,
+          "jitter_fs": 123.63112659834434,
+          "variance_fraction": 0.7733994355183502
+        },
+        "XD": {
+          "variance_s2": 3.060719386544224e-29,
+          "jitter_fs": 5.5323768730485305,
+          "variance_fraction": 0.0015487157374351624
+        }
+      },
+      "noise_by_subblock": {
+        "XRX.X0": {
+          "jitter_fs": 65.5938809185985,
+          "variance_fraction": 0.21770823218144245
+        },
+        "XR.X1": {
+          "jitter_fs": 31.680053350280087,
+          "variance_fraction": 0.050783193233697795
+        },
+        "XR.X0": {
+          "jitter_fs": 45.33483928626277,
+          "variance_fraction": 0.10399497577900953
+        },
+        "XR.XFF": {
+          "jitter_fs": 110.57025834548811,
+          "variance_fraction": 0.618621266505643
+        },
+        "XD.XB": {
+          "jitter_fs": 2.656774029297709,
+          "variance_fraction": 0.0003571555734079302
+        },
+        "XD.X1": {
+          "jitter_fs": 1.244202558581175,
+          "variance_fraction": 7.833040595682488e-05
+        },
+        "XD.XB1": {
+          "jitter_fs": 0.6380220573627541,
+          "variance_fraction": 2.0597740552756036e-05
+        },
+        "XD.X0": {
+          "jitter_fs": 4.127472269473447,
+          "variance_fraction": 0.0008620183788655395
+        },
+        "XD.XB0": {
+          "jitter_fs": 2.134855061815163,
+          "variance_fraction": 0.0002306136386521117
+        },
+        "XRX.bias_and_passives": {
+          "jitter_fs": 12.047055129662981,
+          "variance_fraction": 0.007343616562772079
+        }
+      },
+      "top_devices": [
+        {
+          "device": "XR.XFF.MNC1",
+          "variance_s2": 4.681705127958219e-27,
+          "jitter_fs": 68.42298683891414,
+          "variance_fraction": 0.23689301415789984
+        },
+        {
+          "device": "XRX.X0.MP",
+          "variance_s2": 2.8087912208194143e-27,
+          "jitter_fs": 52.9980303484895,
+          "variance_fraction": 0.1421240766460541
+        },
+        {
+          "device": "XR.XFF.MP2",
+          "variance_s2": 2.290457748648714e-27,
+          "jitter_fs": 47.85872698525018,
+          "variance_fraction": 0.11589654304335621
+        },
+        {
+          "device": "XR.X0.MN",
+          "variance_s2": 1.9282252128790893e-27,
+          "jitter_fs": 43.91156126669934,
+          "variance_fraction": 0.09756767463340807
+        },
+        {
+          "device": "XR.XFF.MPC0",
+          "variance_s2": 1.8696115024676494e-27,
+          "jitter_fs": 43.239004411152315,
+          "variance_fraction": 0.09460183672802083
+        },
+        {
+          "device": "XR.XFF.MN1",
+          "variance_s2": 1.8667286503159602e-27,
+          "jitter_fs": 43.205655304785736,
+          "variance_fraction": 0.0944559651882891
+        },
+        {
+          "device": "XRX.X0.MN",
+          "variance_s2": 1.4937659931438663e-27,
+          "jitter_fs": 38.64926898589243,
+          "variance_fraction": 0.07558415553538836
+        },
+        {
+          "device": "XR.X1.MP",
+          "variance_s2": 8.77653074748867e-28,
+          "jitter_fs": 29.62521012159858,
+          "variance_fraction": 0.04440900838043193
+        },
+        {
+          "device": "XR.XFF.MP1",
+          "variance_s2": 6.602551798237106e-28,
+          "jitter_fs": 25.695431107955955,
+          "variance_fraction": 0.033408733652992434
+        },
+        {
+          "device": "XR.XFF.MP0",
+          "variance_s2": 4.125083257607568e-28,
+          "jitter_fs": 20.310300976616688,
+          "variance_fraction": 0.020872809795543925
+        },
+        {
+          "device": "XR.XFF.MN2",
+          "variance_s2": 2.635728795007576e-28,
+          "jitter_fs": 16.23492776395256,
+          "variance_fraction": 0.013336716467327378
+        },
+        {
+          "device": "XR.XFF.MNC2",
+          "variance_s2": 1.6456281880178093e-28,
+          "jitter_fs": 12.828204036488543,
+          "variance_fraction": 0.00832683415524629
+        },
+        {
+          "device": "XRX.R0",
+          "variance_s2": 1.4513153729713913e-28,
+          "jitter_fs": 12.047055129662981,
+          "variance_fraction": 0.007343616562772079
+        },
+        {
+          "device": "XR.X0.MP",
+          "variance_s2": 1.2702244023218553e-28,
+          "jitter_fs": 11.270423249913266,
+          "variance_fraction": 0.006427301145601465
+        },
+        {
+          "device": "XR.X1.MN",
+          "variance_s2": 1.2597270552772545e-28,
+          "jitter_fs": 11.223756302046363,
+          "variance_fraction": 0.006374184853265867
+        },
+        {
+          "device": "XR.XFF.MN0",
+          "variance_s2": 1.6379797310434428e-29,
+          "jitter_fs": 4.047196228308485,
+          "variance_fraction": 0.000828813316966959
+        },
+        {
+          "device": "XD.XB.MN",
+          "variance_s2": 6.796785465008152e-30,
+          "jitter_fs": 2.60706453027311,
+          "variance_fraction": 0.0003439155075733239
+        },
+        {
+          "device": "XD.X0.MNC1",
+          "variance_s2": 5.639547265057774e-30,
+          "jitter_fs": 2.3747730975943306,
+          "variance_fraction": 0.00028535956742070987
+        },
+        {
+          "device": "XD.XB0.MN",
+          "variance_s2": 4.097555219495513e-30,
+          "jitter_fs": 2.0242418875953323,
+          "variance_fraction": 0.00020733518666692707
+        },
+        {
+          "device": "XD.X0.MP2",
+          "variance_s2": 4.065904618221315e-30,
+          "jitter_fs": 2.016408842031128,
+          "variance_fraction": 0.0002057336747966089
+        },
+        {
+          "device": "XD.X0.MN1",
+          "variance_s2": 2.0844756320598803e-30,
+          "jitter_fs": 1.4437713226338444,
+          "variance_fraction": 0.0001054739036144109
+        },
+        {
+          "device": "XD.X0.MP1",
+          "variance_s2": 1.2712263480588499e-30,
+          "jitter_fs": 1.1274867396376995,
+          "variance_fraction": 6.432370963951234e-05
+        },
+        {
+          "device": "XD.X0.MPC0",
+          "variance_s2": 1.2388859683404948e-30,
+          "jitter_fs": 1.1130525451839615,
+          "variance_fraction": 6.268729516634509e-05
+        },
+        {
+          "device": "XD.X0.MN2",
+          "variance_s2": 9.361118885167047e-31,
+          "jitter_fs": 0.9675287533281398,
+          "variance_fraction": 4.7367008557516555e-05
+        },
+        {
+          "device": "XD.X0.MNC2",
+          "variance_s2": 9.164730144598202e-31,
+          "jitter_fs": 0.9573259708478717,
+          "variance_fraction": 4.6373286838004566e-05
+        }
+      ]
+    },
+    {
+      "case": "noise_cc4_rtpre_coarse",
+      "run": "local_c",
+      "simulator_ok": true,
+      "valid_noise": true,
+      "noise_option_conflict_warning": false,
+      "noise_option_ignored": false,
+      "local_edges": {
+        "q1": {
+          "range_v": [
+            -0.02493723690571632,
+            1.203977843904868
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            15.265386798371903,
+            14.110048199688809
+          ]
+        },
+        "data": {
+          "range_v": [
+            -0.02959353635961292,
+            1.238341233548697
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            19.3616393150654
+          ]
+        },
+        "out": {
+          "range_v": [
+            -0.04055870071240922,
+            1.266030016948406
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            23.93115095731929
+          ]
+        },
+        "XRX.g0": {
+          "range_v": [
+            0.3952304420154723,
+            0.7474115322470504
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.296070809136415,
+            4.288022497815454,
+            4.291866566446036,
+            4.293005605765865
+          ]
+        },
+        "XR.XFF.b": {
+          "range_v": [
+            -0.01069535209492176,
+            1.182720639021851
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.243000508532626
+          ]
+        },
+        "XR.XFF.a": {
+          "range_v": [
+            0.002213772177642871,
+            1.298560638879932
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            12.998790382744456
+          ]
+        },
+        "XR.XFF.n1": {
+          "range_v": [
+            -0.1536554074855046,
+            0.5114874116723299
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            10.210552663585656
+          ]
+        },
+        "XR.qb": {
+          "range_v": [
+            -0.07725871505172162,
+            1.282906310611952
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            20.102352255530644
+          ]
+        },
+        "XR.ob": {
+          "range_v": [
+            -0.03376070726962466,
+            1.261148983680235
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.263656664341129
+          ]
+        },
+        "clk": {
+          "range_v": [
+            0.1088858907117362,
+            1.049740419097916
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            12.37655244195356,
+            12.417418633985497,
+            12.429158859626101,
+            12.17954525026414
+          ]
+        },
+        "vn": {
+          "range_v": [
+            1.003520044170636,
+            1.368159500031628
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.440774934850041,
+            4.442023315100323,
+            4.433699433151911,
+            4.437916783568211
+          ]
+        },
+        "vp": {
+          "range_v": [
+            1.003563249225421,
+            1.368962543835963
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.439682093718674,
+            4.440766692744693,
+            4.442036574835624,
+            4.443448844721802
+          ]
+        }
+      },
+      "periodic": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.1088858907117362,
+              1.049740419097916
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 0.0027378349708238048,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.02493723690571632,
+              1.203977843904868
+            ],
+            "frequency_hz": 1968000000.000031,
+            "edges": 2,
+            "max_period_error": 0.005983163859124341,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.02959353635961292,
+              1.238341233548697
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.04055870071240922,
+              1.266030016948406
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.36444073833589985,
+              0.365271184801794
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 8.830690869654489e-07,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": true,
+        "actual_LC": false,
+        "reference_RF_frequency_hz": 3936000000.0,
+        "power_mw": {
+          "VRX:p": 0.7759027327623313,
+          "VRT:p": 0.16262450800400508,
+          "VDD:p": 1.1864014295538519
+        },
+        "node_ranges_v": {
+          "XRX.g0": [
+            0.3952304420154723,
+            0.7474115322470504
+          ]
+        },
+        "pass_function": true,
+        "endpoint_v": 1.1976553526693579e-08,
+        "pass_periodic": true
+      },
+      "dominant_harmonics": {
+        "out": 1,
+        "clk": 4,
+        "q1": 2,
+        "data": 1,
+        "vp": 4
+      },
+      "pass_periodic": true,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "noise_by_band": [
+        {
+          "band_hz": [
+            10000.0,
+            1000000.0
+          ],
+          "jitter_fs": 22.384863453653928,
+          "variance_fraction": 0.024994466931167678
+        },
+        {
+          "band_hz": [
+            1000000.0,
+            10000000.0
+          ],
+          "jitter_fs": 25.444299451454928,
+          "variance_fraction": 0.03229356387872664
+        },
+        {
+          "band_hz": [
+            10000000.0,
+            100000000.0
+          ],
+          "jitter_fs": 61.41728848147336,
+          "variance_fraction": 0.18815521385860468
+        },
+        {
+          "band_hz": [
+            100000000.0,
+            492000000.0
+          ],
+          "jitter_fs": 122.99245375077373,
+          "variance_fraction": 0.754556755331501
+        }
+      ],
+      "fundamental_hz": 984000000.0,
+      "slew_v_per_s": 23925800000.0,
+      "numeric_jitter_fs": 141.58997665960248,
+      "spectre_jee_fs": 141.5900430939706,
+      "integration_relative_error": 4.692022593788536e-07,
+      "device_psd_sum_max_relative_error": 8.576502594227128e-16,
+      "noise_budget_valid": true,
+      "noise_by_instance": {
+        "XRX": {
+          "variance_s2": 1.1896616868451819e-27,
+          "jitter_fs": 34.49147266854783,
+          "variance_fraction": 0.05934149112211568
+        },
+        "XR": {
+          "variance_s2": 1.8729761402530328e-26,
+          "jitter_fs": 136.85671851440225,
+          "variance_fraction": 0.9342588588651746
+        },
+        "XD": {
+          "variance_s2": 1.2829840109126413e-28,
+          "jitter_fs": 11.32688841170708,
+          "variance_fraction": 0.006399650012709595
+        }
+      },
+      "noise_by_subblock": {
+        "XRX.X0": {
+          "jitter_fs": 34.25165611932015,
+          "variance_fraction": 0.058519166254082176
+        },
+        "XR.X1": {
+          "jitter_fs": 35.8750382241121,
+          "variance_fraction": 0.0641977377924726
+        },
+        "XR.X0": {
+          "jitter_fs": 79.92475547882567,
+          "variance_fraction": 0.3186380328252126
+        },
+        "XR.XFF": {
+          "jitter_fs": 105.14169723092144,
+          "variance_fraction": 0.5514230882474895
+        },
+        "XD.XB": {
+          "jitter_fs": 3.548609451697473,
+          "variance_fraction": 0.0006281326806472632
+        },
+        "XD.X1": {
+          "jitter_fs": 3.5044594686753014,
+          "variance_fraction": 0.0006126000988904414
+        },
+        "XD.XB1": {
+          "jitter_fs": 1.5315573046683792,
+          "variance_fraction": 0.00011700420811404918
+        },
+        "XD.X0": {
+          "jitter_fs": 8.394364396300178,
+          "variance_fraction": 0.0035148809130942987
+        },
+        "XD.XB0": {
+          "jitter_fs": 5.532948082861827,
+          "variance_fraction": 0.0015270321119635417
+        },
+        "XRX.bias_and_passives": {
+          "jitter_fs": 4.060263529504019,
+          "variance_fraction": 0.0008223248680334992
+        }
+      },
+      "top_devices": [
+        {
+          "device": "XR.X0.MN",
+          "variance_s2": 5.9667668180818075e-27,
+          "jitter_fs": 77.24484978354096,
+          "variance_fraction": 0.29762817789139595
+        },
+        {
+          "device": "XR.XFF.MP2",
+          "variance_s2": 3.64194096612746e-27,
+          "jitter_fs": 60.3484959723725,
+          "variance_fraction": 0.18166358545330447
+        },
+        {
+          "device": "XR.XFF.MNC1",
+          "variance_s2": 2.355662749747415e-27,
+          "jitter_fs": 48.53517023507196,
+          "variance_fraction": 0.1175027671283041
+        },
+        {
+          "device": "XR.XFF.MPC0",
+          "variance_s2": 1.62701661449116e-27,
+          "jitter_fs": 40.33629401037185,
+          "variance_fraction": 0.08115718363629751
+        },
+        {
+          "device": "XR.XFF.MN1",
+          "variance_s2": 1.455245467217227e-27,
+          "jitter_fs": 38.147679709482034,
+          "variance_fraction": 0.0725890704292373
+        },
+        {
+          "device": "XR.X1.MP",
+          "variance_s2": 1.1574960793135226e-27,
+          "jitter_fs": 34.02199405257609,
+          "variance_fraction": 0.05773703908765605
+        },
+        {
+          "device": "XRX.X0.MP",
+          "variance_s2": 9.772715122909405e-28,
+          "jitter_fs": 31.261342138349413,
+          "variance_fraction": 0.048747261016951926
+        },
+        {
+          "device": "XR.XFF.MP0",
+          "variance_s2": 7.366711865860177e-28,
+          "jitter_fs": 27.14168724648521,
+          "variance_fraction": 0.03674588091900242
+        },
+        {
+          "device": "XR.XFF.MN2",
+          "variance_s2": 4.723880116279053e-28,
+          "jitter_fs": 21.734488989343767,
+          "variance_fraction": 0.02356317708486415
+        },
+        {
+          "device": "XR.X0.MP",
+          "variance_s2": 4.211997202682654e-28,
+          "jitter_fs": 20.523150836756656,
+          "variance_fraction": 0.021009854933816647
+        },
+        {
+          "device": "XR.XFF.MP1",
+          "variance_s2": 3.969733180142731e-28,
+          "jitter_fs": 19.924189268682255,
+          "variance_fraction": 0.019801418241122536
+        },
+        {
+          "device": "XR.XFF.MNC2",
+          "variance_s2": 2.7182468279755324e-28,
+          "jitter_fs": 16.487106562327824,
+          "variance_fraction": 0.013558881637836653
+        },
+        {
+          "device": "XRX.X0.MN",
+          "variance_s2": 1.9590443462522086e-28,
+          "jitter_fs": 13.996586534767,
+          "variance_fraction": 0.009771905237130245
+        },
+        {
+          "device": "XR.X1.MN",
+          "variance_s2": 1.2952228826798145e-28,
+          "jitter_fs": 11.380785924881527,
+          "variance_fraction": 0.006460698704816542
+        },
+        {
+          "device": "XR.XFF.MN0",
+          "variance_s2": 9.705349998974251e-29,
+          "jitter_fs": 9.851573477863449,
+          "variance_fraction": 0.004841123717520419
+        },
+        {
+          "device": "XD.XB0.MN",
+          "variance_s2": 2.8400530968599973e-29,
+          "jitter_fs": 5.329214854798028,
+          "variance_fraction": 0.0014166463247259884
+        },
+        {
+          "device": "XD.X0.MNC1",
+          "variance_s2": 2.30550819002115e-29,
+          "jitter_fs": 4.801570774258305,
+          "variance_fraction": 0.0011500100852445902
+        },
+        {
+          "device": "XD.X0.MP2",
+          "variance_s2": 1.8213011305888117e-29,
+          "jitter_fs": 4.267670477659694,
+          "variance_fraction": 0.0009084828574932512
+        },
+        {
+          "device": "XRX.R0",
+          "variance_s2": 1.6485739929020436e-29,
+          "jitter_fs": 4.060263529504019,
+          "variance_fraction": 0.0008223248680334992
+        },
+        {
+          "device": "XD.XB.MN",
+          "variance_s2": 1.1798373072040917e-29,
+          "jitter_fs": 3.434875990780587,
+          "variance_fraction": 0.0005885144143513444
+        },
+        {
+          "device": "XD.X0.MN1",
+          "variance_s2": 9.040940717574615e-30,
+          "jitter_fs": 3.0068157106105815,
+          "variance_fraction": 0.0004509709854994655
+        },
+        {
+          "device": "XD.X0.MPC0",
+          "variance_s2": 7.386145724741284e-30,
+          "jitter_fs": 2.7177464423196813,
+          "variance_fraction": 0.000368428189121322
+        },
+        {
+          "device": "XD.X1.MP2",
+          "variance_s2": 4.48256035213035e-30,
+          "jitter_fs": 2.1172057888005007,
+          "variance_fraction": 0.00022359450445587676
+        },
+        {
+          "device": "XD.X0.MP1",
+          "variance_s2": 4.318109154805134e-30,
+          "jitter_fs": 2.0780060526391964,
+          "variance_fraction": 0.00021539151752774047
+        },
+        {
+          "device": "XD.X0.MN2",
+          "variance_s2": 2.729311698522321e-30,
+          "jitter_fs": 1.6520628615528892,
+          "variance_fraction": 0.00013614074296773232
+        }
+      ]
+    },
+    {
+      "case": "noise_cc4_rtcomb_coarse",
+      "run": "local_d",
+      "simulator_ok": true,
+      "valid_noise": true,
+      "noise_option_conflict_warning": false,
+      "noise_option_ignored": false,
+      "local_edges": {
+        "q1": {
+          "range_v": [
+            -0.02492845483039251,
+            1.203886349147058
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            15.279538294474552,
+            14.129729124972858
+          ]
+        },
+        "data": {
+          "range_v": [
+            -0.02940361816899658,
+            1.238321766629846
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            19.48086908762402
+          ]
+        },
+        "out": {
+          "range_v": [
+            -0.06454697153263958,
+            1.251098482571581
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            28.02555448299131
+          ]
+        },
+        "XRX.g0": {
+          "range_v": [
+            0.3952476143765168,
+            0.7474107292722741
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.295524801874779,
+            4.295348459992087,
+            4.2953084690959,
+            4.2964060489105504
+          ]
+        },
+        "XR.XFF.b": {
+          "range_v": [
+            -0.01020403838985193,
+            1.183013018615445
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.240379644995711
+          ]
+        },
+        "XR.XFF.a": {
+          "range_v": [
+            0.01983199126200775,
+            1.292426841984115
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            10.7572617211844
+          ]
+        },
+        "XR.XFF.n1": {
+          "range_v": [
+            -0.142365052078032,
+            0.511771938674995
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            10.244726352334924
+          ]
+        },
+        "XR.qb": {
+          "range_v": [
+            -0.06949101323959166,
+            1.30035876982557
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            21.974875040812353
+          ]
+        },
+        "XR.ob": {
+          "range_v": [
+            -0.02898316768906372,
+            1.2644896805796
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            9.150861056787205
+          ]
+        },
+        "clk": {
+          "range_v": [
+            0.1090002535524099,
+            1.049480857027548
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            12.37712515114832,
+            12.427827336012816,
+            12.415753493438679,
+            12.166667431983853
+          ]
+        },
+        "vn": {
+          "range_v": [
+            1.003520324073164,
+            1.368160527716481
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.434786178942654,
+            4.434512801714205,
+            4.438699684602755,
+            4.442034979673525
+          ]
+        },
+        "vp": {
+          "range_v": [
+            1.003560596884659,
+            1.368962190296011
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.439224948484668,
+            4.439611378817071,
+            4.438460778981429,
+            4.439685460789463
+          ]
+        }
+      },
+      "periodic": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.1090002535524099,
+              1.049480857027548
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 0.002803724103812799,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.02492845483039251,
+              1.203886349147058
+            ],
+            "frequency_hz": 1968000000.000031,
+            "edges": 2,
+            "max_period_error": 0.00575372511332084,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.02940361816899658,
+              1.238321766629846
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.06454697153263958,
+              1.251098482571581
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.36444059356690195,
+              0.365261847772119
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 5.166827292679699e-07,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": true,
+        "actual_LC": false,
+        "reference_RF_frequency_hz": 3936000000.0,
+        "power_mw": {
+          "VRX:p": 0.7758659168131417,
+          "VRT:p": 0.17787087052712097,
+          "VDD:p": 1.2016506652037409
+        },
+        "node_ranges_v": {
+          "XRX.g0": [
+            0.3952476143765168,
+            0.7474107292722741
+          ]
+        },
+        "pass_function": true,
+        "endpoint_v": 1.0033676389742396e-08,
+        "pass_periodic": true
+      },
+      "dominant_harmonics": {
+        "out": 1,
+        "clk": 4,
+        "q1": 2,
+        "data": 1,
+        "vp": 4
+      },
+      "pass_periodic": true,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "noise_by_band": [
+        {
+          "band_hz": [
+            10000.0,
+            1000000.0
+          ],
+          "jitter_fs": 16.20283720678259,
+          "variance_fraction": 0.016322805533628467
+        },
+        {
+          "band_hz": [
+            1000000.0,
+            10000000.0
+          ],
+          "jitter_fs": 20.817201048893796,
+          "variance_fraction": 0.0269437067179012
+        },
+        {
+          "band_hz": [
+            10000000.0,
+            100000000.0
+          ],
+          "jitter_fs": 54.72432246211161,
+          "variance_fraction": 0.18619733298004
+        },
+        {
+          "band_hz": [
+            100000000.0,
+            492000000.0
+          ],
+          "jitter_fs": 111.32435202409131,
+          "variance_fraction": 0.7705361547684304
+        }
+      ],
+      "fundamental_hz": 984000000.0,
+      "slew_v_per_s": 28025600000.0,
+      "numeric_jitter_fs": 126.82172769514118,
+      "spectre_jee_fs": 126.82193366950641,
+      "integration_relative_error": 1.624122572985165e-06,
+      "device_psd_sum_max_relative_error": 9.888979877360279e-16,
+      "noise_budget_valid": true,
+      "noise_by_instance": {
+        "XRX": {
+          "variance_s2": 1.6035140894915873e-27,
+          "jitter_fs": 40.04390202629593,
+          "variance_fraction": 0.09969777123615943
+        },
+        "XR": {
+          "variance_s2": 1.4139309448913747e-26,
+          "jitter_fs": 118.90882830519249,
+          "variance_fraction": 0.8791052402427088
+        },
+        "XD": {
+          "variance_s2": 3.409270771752075e-28,
+          "jitter_fs": 18.464210710864613,
+          "variance_fraction": 0.021196988521131815
+        }
+      },
+      "noise_by_subblock": {
+        "XRX.X0": {
+          "jitter_fs": 39.82627189728765,
+          "variance_fraction": 0.09861704344633253
+        },
+        "XR.X1": {
+          "jitter_fs": 31.619908160985563,
+          "variance_fraction": 0.06216327372923975
+        },
+        "XR.X0": {
+          "jitter_fs": 45.59430897074414,
+          "variance_fraction": 0.12925100992960428
+        },
+        "XR.XFF": {
+          "jitter_fs": 105.16962416156532,
+          "variance_fraction": 0.6876909565838647
+        },
+        "XD.XB": {
+          "jitter_fs": 4.304739727042702,
+          "variance_fraction": 0.001152143213388839
+        },
+        "XD.X1": {
+          "jitter_fs": 5.8630456022172845,
+          "variance_fraction": 0.0021372691330080454
+        },
+        "XD.XB1": {
+          "jitter_fs": 2.267350479432113,
+          "variance_fraction": 0.00031963180227384265
+        },
+        "XD.X0": {
+          "jitter_fs": 14.39109389169434,
+          "variance_fraction": 0.01287657265706036
+        },
+        "XD.XB0": {
+          "jitter_fs": 8.704971437506572,
+          "variance_fraction": 0.004711371715400729
+        },
+        "XRX.bias_and_passives": {
+          "jitter_fs": 4.169191319057392,
+          "variance_fraction": 0.0010807277898269069
+        }
+      },
+      "top_devices": [
+        {
+          "device": "XR.XFF.MNC1",
+          "variance_s2": 2.6013091470602e-27,
+          "jitter_fs": 51.003030763477184,
+          "variance_fraction": 0.16173523261050052
+        },
+        {
+          "device": "XR.XFF.MPC0",
+          "variance_s2": 2.469728089751313e-27,
+          "jitter_fs": 49.69635891844907,
+          "variance_fraction": 0.1535542392306714
+        },
+        {
+          "device": "XR.XFF.MP2",
+          "variance_s2": 2.1020241501892334e-27,
+          "jitter_fs": 45.84783691941456,
+          "variance_fraction": 0.13069241126836267
+        },
+        {
+          "device": "XR.X0.MN",
+          "variance_s2": 1.9503266395542096e-27,
+          "jitter_fs": 44.162502641428844,
+          "variance_fraction": 0.12126068640139834
+        },
+        {
+          "device": "XR.XFF.MN1",
+          "variance_s2": 1.740497805096452e-27,
+          "jitter_fs": 41.71927378438474,
+          "variance_fraction": 0.10821467247884389
+        },
+        {
+          "device": "XRX.X0.MP",
+          "variance_s2": 1.3352898388682568e-27,
+          "jitter_fs": 36.54161790162358,
+          "variance_fraction": 0.08302104843473163
+        },
+        {
+          "device": "XR.XFF.MP0",
+          "variance_s2": 1.1373165468568897e-27,
+          "jitter_fs": 33.72412410807566,
+          "variance_fraction": 0.07071214756060419
+        },
+        {
+          "device": "XR.X1.MP",
+          "variance_s2": 8.745738886622592e-28,
+          "jitter_fs": 29.573195442194933,
+          "variance_fraction": 0.0543762403164252
+        },
+        {
+          "device": "XR.XFF.MP1",
+          "variance_s2": 4.496598091567152e-28,
+          "jitter_fs": 21.20518354451843,
+          "variance_fraction": 0.02795739749415934
+        },
+        {
+          "device": "XR.XFF.MN2",
+          "variance_s2": 2.534391699198626e-28,
+          "jitter_fs": 15.91977292299933,
+          "variance_fraction": 0.015757467022297196
+        },
+        {
+          "device": "XRX.X0.MN",
+          "variance_s2": 2.5084209436842705e-28,
+          "jitter_fs": 15.837995276184012,
+          "variance_fraction": 0.015595995011600902
+        },
+        {
+          "device": "XR.XFF.MN0",
+          "variance_s2": 1.5515401397541642e-28,
+          "jitter_fs": 12.456083412349823,
+          "variance_fraction": 0.009646631416002974
+        },
+        {
+          "device": "XR.XFF.MNC2",
+          "variance_s2": 1.5152111427882453e-28,
+          "jitter_fs": 12.309391304155723,
+          "variance_fraction": 0.009420757502422602
+        },
+        {
+          "device": "XR.X0.MP",
+          "variance_s2": 1.2851437096546996e-28,
+          "jitter_fs": 11.336417907146418,
+          "variance_fraction": 0.00799032352820594
+        },
+        {
+          "device": "XR.X1.MN",
+          "variance_s2": 1.2524470344690245e-28,
+          "jitter_fs": 11.191278007756864,
+          "variance_fraction": 0.007787033412814562
+        },
+        {
+          "device": "XD.XB0.MN",
+          "variance_s2": 7.047822977536417e-29,
+          "jitter_fs": 8.395131313765388,
+          "variance_fraction": 0.004381952410222711
+        },
+        {
+          "device": "XD.X0.MNC1",
+          "variance_s2": 6.287402357723208e-29,
+          "jitter_fs": 7.929314193373352,
+          "variance_fraction": 0.003909164291339184
+        },
+        {
+          "device": "XD.X0.MP2",
+          "variance_s2": 5.908945141258549e-29,
+          "jitter_fs": 7.686966333514509,
+          "variance_fraction": 0.0036738602099030786
+        },
+        {
+          "device": "XD.X0.MN1",
+          "variance_s2": 2.582457168083086e-29,
+          "jitter_fs": 5.081788236519785,
+          "variance_fraction": 0.0016056311925039585
+        },
+        {
+          "device": "XD.X0.MPC0",
+          "variance_s2": 2.4679222274870963e-29,
+          "jitter_fs": 4.967818663646144,
+          "variance_fraction": 0.0015344196055218536
+        },
+        {
+          "device": "XD.XB.MN",
+          "variance_s2": 1.7860859969656295e-29,
+          "jitter_fs": 4.22621106544104,
+          "variance_fraction": 0.0011104909791596895
+        },
+        {
+          "device": "XRX.R0",
+          "variance_s2": 1.738215625490351e-29,
+          "jitter_fs": 4.169191319057392,
+          "variance_fraction": 0.0010807277898269069
+        },
+        {
+          "device": "XD.X1.MP2",
+          "variance_s2": 1.348526657056641e-29,
+          "jitter_fs": 3.6722291010456316,
+          "variance_fraction": 0.0008384404168454996
+        },
+        {
+          "device": "XD.X0.MP1",
+          "variance_s2": 1.329356643218468e-29,
+          "jitter_fs": 3.646034343253596,
+          "variance_fraction": 0.0008265215464922111
+        },
+        {
+          "device": "XD.X0.MP0",
+          "variance_s2": 8.715976985983987e-30,
+          "jitter_fs": 2.952283351235783,
+          "variance_fraction": 0.0005419119703050297
+        }
+      ]
+    },
+    {
+      "case": "noise_light2_tt_coarse",
+      "run": "noise_light",
+      "simulator_ok": true,
+      "valid_noise": true,
+      "noise_option_conflict_warning": false,
+      "noise_option_ignored": false,
+      "local_edges": {
+        "q1": {
+          "range_v": [
+            -0.02548578609776739,
+            1.212311664101235
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.474697384086578,
+            15.795234231203525
+          ]
+        },
+        "data": {
+          "range_v": [
+            -0.03043138393916119,
+            1.23697810618631
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            19.521468144843812
+          ]
+        },
+        "out": {
+          "range_v": [
+            -0.041464203240115,
+            1.267545231769271
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            24.085369668735666
+          ]
+        },
+        "XRX.g0": {
+          "range_v": [
+            0.4022697307656309,
+            0.741150842067678
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.146514368014366,
+            4.142554637774017,
+            4.142707725921926,
+            4.146831125740159
+          ]
+        },
+        "XRX.r0": {
+          "range_v": [
+            0.1750160205740776,
+            1.004028917573187
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            10.896598976023524,
+            10.91081470623922,
+            10.928662697854723,
+            10.879348570953281
+          ]
+        },
+        "XR.qb": {
+          "range_v": [
+            -0.09225406151478087,
+            1.270429429066195
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            19.91971542948389
+          ]
+        },
+        "XR.ob": {
+          "range_v": [
+            -0.0339748812194417,
+            1.260119031790687
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.456940166232597
+          ]
+        },
+        "XR.XFF.b": {
+          "range_v": [
+            -0.01201597379962809,
+            1.261617132470334
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            18.390712138775076
+          ]
+        },
+        "XR.XFF.a": {
+          "range_v": [
+            -0.01281968780685916,
+            1.318670412831367
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            18.088607546585592
+          ]
+        },
+        "XR.XFF.n1": {
+          "range_v": [
+            -0.1873442460705964,
+            0.5899989650669437
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            12.496358706653316
+          ]
+        },
+        "clk": {
+          "range_v": [
+            0.01767051732827503,
+            1.11480297015102
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.234377886260457,
+            14.445262536826485,
+            13.315130148624068,
+            13.902763573758273
+          ]
+        },
+        "vn": {
+          "range_v": [
+            1.003521284714494,
+            1.368160612727733
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.435491983469154,
+            4.441239698880988,
+            4.434769048286603,
+            4.439668035327957
+          ]
+        },
+        "vp": {
+          "range_v": [
+            1.003561220758541,
+            1.368957383332441
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.439475782550984,
+            4.4431520840722705,
+            4.443196779940711,
+            4.44002946982442
+          ]
+        }
+      },
+      "periodic": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.01767051732827503,
+              1.11480297015102
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 0.007632123771630361,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.02548578609776739,
+              1.212311664101235
+            ],
+            "frequency_hz": 1968000000.000031,
+            "edges": 2,
+            "max_period_error": 0.007212280029972429,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.03043138393916119,
+              1.23697810618631
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.041464203240115,
+              1.267545231769271
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.36443845848047807,
+              0.3652653783479771
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 7.950573515103088e-07,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": true,
+        "actual_LC": false,
+        "reference_RF_frequency_hz": 3936000000.0,
+        "power_mw": {
+          "VRX:p": 0.5972161241880468,
+          "VRT:p": 0.15832091895355183,
+          "VDD:p": 1.0084287828772047
+        },
+        "node_ranges_v": {
+          "XRX.g0": [
+            0.4022697307656309,
+            0.741150842067678
+          ],
+          "XRX.r0": [
+            0.1750160205740776,
+            1.004028917573187
+          ]
+        },
+        "pass_function": true,
+        "endpoint_v": 3.212354382498006e-09,
+        "pass_periodic": true
+      },
+      "dominant_harmonics": {
+        "out": 1,
+        "clk": 4,
+        "q1": 2,
+        "data": 1,
+        "vp": 4
+      },
+      "pass_periodic": true,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "noise_by_band": [
+        {
+          "band_hz": [
+            10000.0,
+            1000000.0
+          ],
+          "jitter_fs": 29.176719866016295,
+          "variance_fraction": 0.010225228969959622
+        },
+        {
+          "band_hz": [
+            1000000.0,
+            10000000.0
+          ],
+          "jitter_fs": 39.95879050668947,
+          "variance_fraction": 0.019178947890058577
+        },
+        {
+          "band_hz": [
+            10000000.0,
+            100000000.0
+          ],
+          "jitter_fs": 117.96068738479936,
+          "variance_fraction": 0.16713780710438986
+        },
+        {
+          "band_hz": [
+            100000000.0,
+            492000000.0
+          ],
+          "jitter_fs": 258.63157153152787,
+          "variance_fraction": 0.803458016035592
+        }
+      ],
+      "fundamental_hz": 984000000.0,
+      "slew_v_per_s": 24086800000.0,
+      "numeric_jitter_fs": 288.5359587331528,
+      "spectre_jee_fs": 288.53626817081494,
+      "integration_relative_error": 1.0724393991745629e-06,
+      "device_psd_sum_max_relative_error": 6.65036181015509e-16,
+      "noise_budget_valid": true,
+      "noise_by_instance": {
+        "XRX": {
+          "variance_s2": 6.579393094427707e-26,
+          "jitter_fs": 256.50327667356817,
+          "variance_fraction": 0.7902890148535143
+        },
+        "XR": {
+          "variance_s2": 1.7126190432199974e-26,
+          "jitter_fs": 130.86707161161652,
+          "variance_fraction": 0.20571259340500428
+        },
+        "XD": {
+          "variance_s2": 3.3287810558261804e-28,
+          "jitter_fs": 18.2449473987353,
+          "variance_fraction": 0.003998391741481345
+        }
+      },
+      "noise_by_subblock": {
+        "XRX.X0": {
+          "jitter_fs": 236.66484177676992,
+          "variance_fraction": 0.6727715239292165
+        },
+        "XR.X1": {
+          "jitter_fs": 35.712618905908954,
+          "variance_fraction": 0.01531946184585844
+        },
+        "XR.X0": {
+          "jitter_fs": 77.46306161911416,
+          "variance_fraction": 0.07207579249681857
+        },
+        "XR.XFF": {
+          "jitter_fs": 99.24854340328937,
+          "variance_fraction": 0.1183173390623273
+        },
+        "XD.XB": {
+          "jitter_fs": 2.7041596316193575,
+          "variance_fraction": 8.783442469067455e-05
+        },
+        "XD.X1": {
+          "jitter_fs": 4.448866713549403,
+          "variance_fraction": 0.00023773816148441558
+        },
+        "XD.XB1": {
+          "jitter_fs": 2.692720413703678,
+          "variance_fraction": 8.70928767910516e-05
+        },
+        "XD.X0": {
+          "jitter_fs": 14.75702863686673,
+          "variance_fraction": 0.0026157603394966252
+        },
+        "XRX.X1": {
+          "jitter_fs": 59.19291418036081,
+          "variance_fraction": 0.042086184413314735
+        },
+        "XD.XB0": {
+          "jitter_fs": 8.986243587769541,
+          "variance_fraction": 0.0009699659390185781
+        },
+        "XRX.bias_and_passives": {
+          "jitter_fs": 79.24570980116187,
+          "variance_fraction": 0.0754313065109831
+        }
+      },
+      "top_devices": [
+        {
+          "device": "XRX.X0.MN",
+          "variance_s2": 3.638714131474288e-26,
+          "jitter_fs": 190.75413839480095,
+          "variance_fraction": 0.4370670311114016
+        },
+        {
+          "device": "XRX.X0.MP",
+          "variance_s2": 1.962310601848068e-26,
+          "jitter_fs": 140.08249718819508,
+          "variance_fraction": 0.23570449281781486
+        },
+        {
+          "device": "XRX.R0",
+          "variance_s2": 6.279882521889961e-27,
+          "jitter_fs": 79.24570980116187,
+          "variance_fraction": 0.0754313065109831
+        },
+        {
+          "device": "XR.X0.MN",
+          "variance_s2": 5.59571603020619e-27,
+          "jitter_fs": 74.80451878199733,
+          "variance_fraction": 0.06721338648479591
+        },
+        {
+          "device": "XR.XFF.MP2",
+          "variance_s2": 3.630272731198396e-27,
+          "jitter_fs": 60.25174463198884,
+          "variance_fraction": 0.04360530856285472
+        },
+        {
+          "device": "XR.XFF.MNC1",
+          "variance_s2": 2.860438014609649e-27,
+          "jitter_fs": 53.48306287610732,
+          "variance_fraction": 0.03435837786512484
+        },
+        {
+          "device": "XRX.X1.MP",
+          "variance_s2": 2.4193383384865284e-27,
+          "jitter_fs": 49.186769953784605,
+          "variance_fraction": 0.02906007415393935
+        },
+        {
+          "device": "XR.XFF.MN1",
+          "variance_s2": 1.227635391920752e-27,
+          "jitter_fs": 35.03762822910181,
+          "variance_fraction": 0.014745839784250621
+        },
+        {
+          "device": "XR.X1.MP",
+          "variance_s2": 1.145039948759373e-27,
+          "jitter_fs": 33.83843892320349,
+          "variance_fraction": 0.013753738074099296
+        },
+        {
+          "device": "XRX.X1.MN",
+          "variance_s2": 1.0844627506770314e-27,
+          "jitter_fs": 32.931182041904165,
+          "variance_fraction": 0.013026110259375388
+        },
+        {
+          "device": "XR.XFF.MPC0",
+          "variance_s2": 8.547758949928647e-28,
+          "jitter_fs": 29.23655066851876,
+          "variance_fraction": 0.010267208392618476
+        },
+        {
+          "device": "XR.XFF.MN2",
+          "variance_s2": 4.730290417522397e-28,
+          "jitter_fs": 21.749230831278602,
+          "variance_fraction": 0.005681825816428074
+        },
+        {
+          "device": "XR.X0.MP",
+          "variance_s2": 4.048098852004868e-28,
+          "jitter_fs": 20.119887802880182,
+          "variance_fraction": 0.004862406012022665
+        },
+        {
+          "device": "XR.XFF.MP1",
+          "variance_s2": 3.8232031551040333e-28,
+          "jitter_fs": 19.55301295223842,
+          "variance_fraction": 0.004592270763683297
+        },
+        {
+          "device": "XR.XFF.MNC2",
+          "variance_s2": 2.700092870529868e-28,
+          "jitter_fs": 16.431959318747925,
+          "variance_fraction": 0.0032432379461735973
+        },
+        {
+          "device": "XR.XFF.MP0",
+          "variance_s2": 1.482376222185134e-28,
+          "jitter_fs": 12.175287356712095,
+          "variance_fraction": 0.0017805679451880574
+        },
+        {
+          "device": "XR.X1.MN",
+          "variance_s2": 1.3035120035931264e-28,
+          "jitter_fs": 11.417145017880461,
+          "variance_fraction": 0.0015657237717591453
+        },
+        {
+          "device": "XD.X0.MP2",
+          "variance_s2": 7.798952796864024e-29,
+          "jitter_fs": 8.831167984397094,
+          "variance_fraction": 0.0009367773948546602
+        },
+        {
+          "device": "XD.XB0.MN",
+          "variance_s2": 7.194585146774102e-29,
+          "jitter_fs": 8.482090041242254,
+          "variance_fraction": 0.0008641832956810734
+        },
+        {
+          "device": "XD.X0.MNC1",
+          "variance_s2": 5.899085103741131e-29,
+          "jitter_fs": 7.680550178041369,
+          "variance_fraction": 0.0007085732814962822
+        },
+        {
+          "device": "XD.X0.MN1",
+          "variance_s2": 2.5310618137221535e-29,
+          "jitter_fs": 5.030965924871837,
+          "variance_fraction": 0.0003040204952936952
+        },
+        {
+          "device": "XD.X0.MPC0",
+          "variance_s2": 1.506585045083504e-29,
+          "jitter_fs": 3.881475293085741,
+          "variance_fraction": 0.0001809646564635981
+        },
+        {
+          "device": "XD.X0.MP1",
+          "variance_s2": 1.385865099297261e-29,
+          "jitter_fs": 3.7227209125816305,
+          "variance_fraction": 0.00016646428452057194
+        },
+        {
+          "device": "XD.X0.MN2",
+          "variance_s2": 1.0552483624707252e-29,
+          "jitter_fs": 3.2484586536859683,
+          "variance_fraction": 0.00012675199320573698
+        },
+        {
+          "device": "XD.X0.MNC2",
+          "variance_s2": 9.630069591157102e-30,
+          "jitter_fs": 3.1032353425348043,
+          "variance_fraction": 0.00011567234395239178
+        }
+      ]
+    }
+  ],
+  "precision": {
+    "noise_cc4_rtcomb_onlyXD": {
+      "status": "not_run",
+      "pass_precision": false
+    },
+    "noise_cc4_rtcomb_onlyXR": {
+      "status": "not_run",
+      "pass_precision": false
+    },
+    "noise_cc4_rtcomb_onlyXRX": {
+      "status": "not_run",
+      "pass_precision": false
+    },
+    "noise_cc4_rtcomb_gateXD": {
+      "status": "not_run",
+      "pass_precision": false
+    },
+    "noise_cc4_rtcomb_gateXR": {
+      "status": "not_run",
+      "pass_precision": false
+    },
+    "noise_cc4_rtcomb_gateXRX": {
+      "status": "not_run",
+      "pass_precision": false
+    },
+    "noise_cc4_base": {
+      "status": "not_run",
+      "pass_precision": false
+    },
+    "noise_cc4_rtout": {
+      "status": "not_run",
+      "pass_precision": false
+    },
+    "noise_cc4_rtpre": {
+      "status": "not_run",
+      "pass_precision": false
+    },
+    "noise_cc4_rtcomb": {
+      "status": "completed",
+      "pass_precision": true,
+      "relative_jitter_change": 0.0005516357691897067,
+      "max_abs_spectrum_delta_db": 0.005436699745229269
+    },
+    "noise_light2_tt": {
+      "status": "not_run",
+      "pass_precision": false
+    }
+  }
+}

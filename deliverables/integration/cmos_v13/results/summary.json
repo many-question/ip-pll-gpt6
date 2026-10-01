@@ -1,0 +1,1000 @@
+{
+  "counts": {
+    "recovered": 67,
+    "simulator_ok": 67,
+    "function_pass": 23,
+    "noise_cases": 12,
+    "valid_noise": 9,
+    "rejected_noise_option_setups": 3
+  },
+  "preferred_TT_candidate": {
+    "receiver": "rf_cc4_v13",
+    "divider": "cmos_tspc_buffered_v11",
+    "retimer": "rtcomb_v13",
+    "old_fine_jitter_fs": 181.18630042856816,
+    "new_fine_jitter_fs": 126.89168709644827,
+    "relative_jitter_change": -0.2996618022648202,
+    "old_forced_power_mw": 1.1168011190145097,
+    "new_forced_power_mw": 1.2016481841419775,
+    "noise_scope": "TT27,1.2V,ideal noiseless RF20-harmonic waveform,3.936GHz,984MHz output,10fF,10kHz-492MHz,rising0.6V. No actualLCsourceimpedance/noise/feedback."
+  },
+  "controlled_changes": [
+    {
+      "case": "noise_cc4_base_coarse",
+      "change": "Only coupling capacitor1->4pF",
+      "jitter_fs": 153.98850846678624,
+      "power_mw": 1.1804368314527407,
+      "valid_noise": true
+    },
+    {
+      "case": "noise_cc4_rtout_coarse",
+      "change": "4pF + MP2x1.5,first bufferNMOSx2",
+      "jitter_fs": 140.58076471943704,
+      "power_mw": 1.1953205703086354,
+      "valid_noise": true
+    },
+    {
+      "case": "noise_cc4_rtpre_coarse",
+      "change": "4pF + MN1/MNC1x1.5",
+      "jitter_fs": 141.58997665960248,
+      "power_mw": 1.1864014295538519,
+      "valid_noise": true
+    },
+    {
+      "case": "noise_cc4_rtcomb_coarse",
+      "change": "4pF + both local changes",
+      "jitter_fs": 126.82172769514118,
+      "power_mw": 1.2016506652037409,
+      "valid_noise": true
+    }
+  ],
+  "noise_precision": {
+    "status": "completed",
+    "pass_precision": true,
+    "relative_jitter_change": 0.0005516357691897067,
+    "max_abs_spectrum_delta_db": 0.005436699745229269
+  },
+  "gating": {
+    "cases": [
+      {
+        "group": "XRX",
+        "jitter_fs": 40.04390202629593,
+        "voltage_max_difference_v": 0.0,
+        "power_difference_mw": 0.0,
+        "slew_relative_difference": 0.0,
+        "active_spectrum_max_relative_error": 9.465628200143066e-16,
+        "inactive_psd_max": 0.0,
+        "pass_gate": true
+      },
+      {
+        "group": "XD",
+        "jitter_fs": 18.464210710864613,
+        "voltage_max_difference_v": 0.0,
+        "power_difference_mw": 0.0,
+        "slew_relative_difference": 0.0,
+        "active_spectrum_max_relative_error": 1.1308513720206597e-15,
+        "inactive_psd_max": 0.0,
+        "pass_gate": true
+      },
+      {
+        "group": "XR",
+        "jitter_fs": 118.90882830519251,
+        "voltage_max_difference_v": 0.0,
+        "power_difference_mw": 0.0,
+        "slew_relative_difference": 0.0,
+        "active_spectrum_max_relative_error": 8.67135758940449e-16,
+        "inactive_psd_max": 0.0,
+        "pass_gate": true
+      }
+    ],
+    "PSD_closure_max_relative_error": 1.1803021135553958e-15,
+    "pass_gating": true
+  },
+  "actual_LC_precision": {
+    "coarse_case": "lc_cc4rt_c21_v0p2_i100_tt",
+    "fine_case": "lc_cc4rt_c21_v0p2_i100_tt_fine",
+    "relative_RF_change": 3.0375776398194887e-05,
+    "relative_power_change": 1.5162439548355167e-05,
+    "pass_precision": true
+  },
+  "actual_LC_bracket": {
+    "low_case": "lc_cc4rt_c21_v0p2_i100_tt",
+    "high_case": "lc_cc4rt_c21_v1p0_i100_tt",
+    "RF_hz": [
+      3932899771.582196,
+      3962921455.8391957
+    ],
+    "pass_endpoint_bracket": true,
+    "scope": "Fixed control, not lock; endpoints do not prove monotonic coverage."
+  },
+  "actual_LC_cases": [
+    {
+      "case": "lc_cc4rt_c21_v0p2_i100_ss",
+      "run": "actual_ss",
+      "wave": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.210532753479101,
+              0.9293859340857096
+            ],
+            "frequency_hz": 3906573684.924339,
+            "edges": 235,
+            "max_period_error": 0.009062942944177532,
+            "pass_frequency": true,
+            "pass_swing": false
+          },
+          "q1": {
+            "range_v": [
+              -0.02939185400156713,
+              1.236685666078816
+            ],
+            "frequency_hz": 693303170.0808281,
+            "edges": 42,
+            "max_period_error": 4.08611717215761,
+            "pass_frequency": false,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.04406564592365717,
+              1.248135214230771
+            ],
+            "frequency_hz": 343899830.6837685,
+            "edges": 20,
+            "max_period_error": 3.024475244291896,
+            "pass_frequency": false,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.07283057082516152,
+              1.26291265564587
+            ],
+            "frequency_hz": 343191778.7088335,
+            "edges": 20,
+            "max_period_error": 2.9835729775144957,
+            "pass_frequency": false,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.41150715699310725,
+              0.410480900365946
+            ],
+            "frequency_hz": 3906549758.3298593,
+            "edges": 235,
+            "max_period_error": 0.002698382138892619,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": false,
+        "actual_LC": true,
+        "reference_RF_frequency_hz": 3906549758.3298593,
+        "power_mw": {
+          "VVCO:p": 1.9488514257195868,
+          "VRX:p": 0.5410015963102541,
+          "VRT:p": 0.07514159223635546,
+          "VDD:p": 2.7481852462093643
+        },
+        "node_ranges_v": {},
+        "pass_function": false
+      }
+    },
+    {
+      "case": "lc_cc4rt_c21_v0p2_i120_ss",
+      "run": "actual_ss",
+      "wave": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.1363852664728949,
+              1.002748314802073
+            ],
+            "frequency_hz": 3924337203.492677,
+            "edges": 236,
+            "max_period_error": 0.008657735629747476,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.02952932786279002,
+              1.239589251027235
+            ],
+            "frequency_hz": 625374605.2465736,
+            "edges": 37,
+            "max_period_error": 6.50806653039981,
+            "pass_frequency": false,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.04497054739140217,
+              1.248944827816203
+            ],
+            "frequency_hz": 294802159.45575935,
+            "edges": 17,
+            "max_period_error": 5.2336190818691035,
+            "pass_frequency": false,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.07163250981835266,
+              1.265912419498439
+            ],
+            "frequency_hz": 294800833.36364716,
+            "edges": 17,
+            "max_period_error": 4.740423712838014,
+            "pass_frequency": false,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.49990284386357564,
+              0.4962525769885886
+            ],
+            "frequency_hz": 3924136951.5279236,
+            "edges": 236,
+            "max_period_error": 0.0030320168558641836,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": false,
+        "actual_LC": true,
+        "reference_RF_frequency_hz": 3924136951.5279236,
+        "power_mw": {
+          "VVCO:p": 2.295611848577658,
+          "VRX:p": 0.6376188920340077,
+          "VRT:p": 0.07465171503573743,
+          "VDD:p": 3.193438065007812
+        },
+        "node_ranges_v": {},
+        "pass_function": false
+      }
+    },
+    {
+      "case": "lc_cc4rt_c21_v0p2_i100_tt",
+      "run": "lc_cc4",
+      "wave": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.1047194754522425,
+              1.027252006751596
+            ],
+            "frequency_hz": 3932941552.2603483,
+            "edges": 236,
+            "max_period_error": 0.006669245672799473,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.02484781468236518,
+              1.202753688795738
+            ],
+            "frequency_hz": 1966299929.7693522,
+            "edges": 118,
+            "max_period_error": 0.011182756122657844,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.02882798409146712,
+              1.239864825089154
+            ],
+            "frequency_hz": 983213092.8179373,
+            "edges": 59,
+            "max_period_error": 0.006575460691293333,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.06451885543354656,
+              1.246953621089014
+            ],
+            "frequency_hz": 983205544.6577551,
+            "edges": 59,
+            "max_period_error": 0.005068322020506999,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.3637524612547338,
+              0.3633559754257877
+            ],
+            "frequency_hz": 3932899771.582196,
+            "edges": 236,
+            "max_period_error": 0.003995413092315436,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": false,
+        "actual_LC": true,
+        "reference_RF_frequency_hz": 3932899771.582196,
+        "power_mw": {
+          "VVCO:p": 1.9792487990073415,
+          "VRX:p": 0.7533550304605701,
+          "VRT:p": 0.17653158978333006,
+          "VDD:p": 3.2374806385609567
+        },
+        "node_ranges_v": {},
+        "pass_function": true
+      }
+    },
+    {
+      "case": "lc_cc4rt_c21_v0p2_i100_tt_fine",
+      "run": "lc_cc4fine",
+      "wave": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.1047281436248016,
+              1.027252861895632
+            ],
+            "frequency_hz": 3933061760.549151,
+            "edges": 236,
+            "max_period_error": 0.006714948650525132,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.02483733300785224,
+              1.202238834671669
+            ],
+            "frequency_hz": 1966360855.3741114,
+            "edges": 118,
+            "max_period_error": 0.011067346782435483,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.0290347271832518,
+              1.239956110049441
+            ],
+            "frequency_hz": 983243505.5881032,
+            "edges": 59,
+            "max_period_error": 0.006369231379482088,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.06456325189900282,
+              1.247087733965373
+            ],
+            "frequency_hz": 983236137.7684504,
+            "edges": 59,
+            "max_period_error": 0.005285978335202168,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.3636795098272181,
+              0.36334931486856303
+            ],
+            "frequency_hz": 3933019236.466254,
+            "edges": 236,
+            "max_period_error": 0.004038124429971868,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": false,
+        "actual_LC": true,
+        "reference_RF_frequency_hz": 3933019236.466254,
+        "power_mw": {
+          "VVCO:p": 1.9793281473921414,
+          "VRX:p": 0.7533587801497611,
+          "VRT:p": 0.17653410081626253,
+          "VDD:p": 3.237529726665428
+        },
+        "node_ranges_v": {},
+        "pass_function": true
+      }
+    },
+    {
+      "case": "lc_cc4rt_c21_v1p0_i100_tt",
+      "run": "lc_high",
+      "wave": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.1035958400017723,
+              1.027655330374831
+            ],
+            "frequency_hz": 3962959975.6443725,
+            "edges": 238,
+            "max_period_error": 0.00675674412411742,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.02473321582240462,
+              1.195613961410574
+            ],
+            "frequency_hz": 1981390237.1010854,
+            "edges": 119,
+            "max_period_error": 0.011860109987916312,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.02553170883863107,
+              1.240387109411035
+            ],
+            "frequency_hz": 990699583.7120708,
+            "edges": 59,
+            "max_period_error": 0.007694485533178863,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.06452977983086926,
+              1.244816360144232
+            ],
+            "frequency_hz": 990684159.5429089,
+            "edges": 59,
+            "max_period_error": 0.0052682321370263185,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.36492495220420285,
+              0.36563319465157174
+            ],
+            "frequency_hz": 3962921455.8391957,
+            "edges": 238,
+            "max_period_error": 0.004074386147093989,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": false,
+        "actual_LC": true,
+        "reference_RF_frequency_hz": 3962921455.8391957,
+        "power_mw": {
+          "VVCO:p": 1.9783236722367585,
+          "VRX:p": 0.7579769192729334,
+          "VRT:p": 0.17754997362547784,
+          "VDD:p": 3.2412496327351032
+        },
+        "node_ranges_v": {},
+        "pass_function": true
+      }
+    }
+  ],
+  "final_corner_screens": {
+    "ss": {
+      "signals": {
+        "clk": {
+          "range_v": [
+            0.2739229855901155,
+            0.8866563708729263
+          ],
+          "frequency_hz": 3936381929.361227,
+          "edges": 118,
+          "max_period_error": 0.00512313648033258,
+          "pass_frequency": true,
+          "pass_swing": false
+        },
+        "q1": {
+          "range_v": [
+            -0.02908843523967856,
+            1.23340128446718
+          ],
+          "frequency_hz": 655999996.1953079,
+          "edges": 19,
+          "max_period_error": 2.3261567303036297,
+          "pass_frequency": false,
+          "pass_swing": true
+        },
+        "data": {
+          "range_v": [
+            -0.04371613388040494,
+            1.241994185598817
+          ],
+          "frequency_hz": 328000005.7505997,
+          "edges": 9,
+          "max_period_error": 2.0000000334484342,
+          "pass_frequency": false,
+          "pass_swing": true
+        },
+        "out": {
+          "range_v": [
+            -0.06594735594710044,
+            1.255675185773748
+          ],
+          "frequency_hz": 328000020.55092937,
+          "edges": 10,
+          "max_period_error": 2.0000000215129035,
+          "pass_frequency": false,
+          "pass_swing": true
+        },
+        "rf": {
+          "range_v": [
+            -0.36444103144449413,
+            0.3652711806616291
+          ],
+          "frequency_hz": 3936000008.088539,
+          "edges": 118,
+          "max_period_error": 1.0913455983363463e-06,
+          "pass_frequency": true,
+          "pass_swing": true
+        }
+      },
+      "periodic": false,
+      "actual_LC": false,
+      "reference_RF_frequency_hz": 3936000000.0,
+      "power_mw": {
+        "VRX:p": 0.48966672904793535,
+        "VRT:p": 0.07101775651919452,
+        "VDD:p": 0.651419818573585
+      },
+      "node_ranges_v": {
+        "XRX.g0": [
+          0.3935703107428519,
+          0.747182217542651
+        ]
+      },
+      "pass_function": false
+    },
+    "ff": {
+      "signals": {
+        "clk": {
+          "range_v": [
+            0.01326679882532884,
+            1.180357504287578
+          ],
+          "frequency_hz": 3935999849.94293,
+          "edges": 118,
+          "max_period_error": 0.0007870072499491787,
+          "pass_frequency": true,
+          "pass_swing": true
+        },
+        "q1": {
+          "range_v": [
+            -0.02066568146736361,
+            1.230292366215363
+          ],
+          "frequency_hz": 1967996240.3372684,
+          "edges": 59,
+          "max_period_error": 0.0025223765993465097,
+          "pass_frequency": true,
+          "pass_swing": true
+        },
+        "data": {
+          "range_v": [
+            -0.02851322226903326,
+            1.236019884381092
+          ],
+          "frequency_hz": 983998086.506617,
+          "edges": 29,
+          "max_period_error": 3.549380872547303e-06,
+          "pass_frequency": true,
+          "pass_swing": true
+        },
+        "out": {
+          "range_v": [
+            -0.05230273478596383,
+            1.258211264778632
+          ],
+          "frequency_hz": 983997803.3205732,
+          "edges": 30,
+          "max_period_error": 4.249830863223281e-06,
+          "pass_frequency": true,
+          "pass_swing": true
+        },
+        "rf": {
+          "range_v": [
+            -0.36444104888581386,
+            0.3652711839609779
+          ],
+          "frequency_hz": 3936000013.191018,
+          "edges": 118,
+          "max_period_error": 1.3667330298616776e-06,
+          "pass_frequency": true,
+          "pass_swing": true
+        }
+      },
+      "periodic": false,
+      "actual_LC": false,
+      "reference_RF_frequency_hz": 3936000000.0,
+      "power_mw": {
+        "VRX:p": 1.0335378079852164,
+        "VRT:p": 0.23910824863450533,
+        "VDD:p": 1.5461257791136134
+      },
+      "node_ranges_v": {
+        "XRX.g0": [
+          0.4015973164667815,
+          0.748827710925881
+        ]
+      },
+      "pass_function": true
+    }
+  },
+  "clock_input_window": [
+    {
+      "case": "screen_clock_e10_d50_ss",
+      "wave": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.0,
+              1.2
+            ],
+            "frequency_hz": 3936000000.000002,
+            "edges": 118,
+            "max_period_error": 3.6637359812630166e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.02776401812447073,
+              1.199114484245059
+            ],
+            "frequency_hz": 1968000000.4385269,
+            "edges": 59,
+            "max_period_error": 0.00172450012327241,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.03888347357892816,
+              1.244383514975986
+            ],
+            "frequency_hz": 984000000.2896751,
+            "edges": 29,
+            "max_period_error": 7.951171276943114e-09,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.07483029950507451,
+              1.272067569383649
+            ],
+            "frequency_hz": 983999999.9950491,
+            "edges": 29,
+            "max_period_error": 2.8977531485452346e-10,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.656186660569299,
+              0.6572927811776177
+            ],
+            "frequency_hz": 3936000003.880238,
+            "edges": 118,
+            "max_period_error": 1.944397665099018e-07,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": false,
+        "actual_LC": false,
+        "reference_RF_frequency_hz": 3936000000.0,
+        "power_mw": {
+          "VRX:p": -0.0,
+          "VRT:p": 0.19880413102770117,
+          "VDD:p": 0.43504085522424263
+        },
+        "node_ranges_v": {},
+        "pass_function": true
+      }
+    },
+    {
+      "case": "screen_clock_e30_d50_ss",
+      "wave": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.0,
+              1.2
+            ],
+            "frequency_hz": 3936000000.000002,
+            "edges": 118,
+            "max_period_error": 3.6637359812630166e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.02500595926930601,
+              1.208967447445666
+            ],
+            "frequency_hz": 1967999975.487551,
+            "edges": 59,
+            "max_period_error": 0.0012780680273354328,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.03946664778473369,
+              1.243847534112295
+            ],
+            "frequency_hz": 983999977.8653795,
+            "edges": 29,
+            "max_period_error": 6.389317230848235e-07,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.07554064019106593,
+              1.271846619396514
+            ],
+            "frequency_hz": 983999999.9068807,
+            "edges": 29,
+            "max_period_error": 3.495914002726863e-09,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.6561868468134028,
+              0.6572949293934123
+            ],
+            "frequency_hz": 3935999999.7969437,
+            "edges": 118,
+            "max_period_error": 5.317711504471134e-07,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": false,
+        "actual_LC": false,
+        "reference_RF_frequency_hz": 3936000000.0,
+        "power_mw": {
+          "VRX:p": -0.0,
+          "VRT:p": 0.19371586912639488,
+          "VDD:p": 0.42663012128437966
+        },
+        "node_ranges_v": {},
+        "pass_function": true
+      }
+    },
+    {
+      "case": "screen_clock_e30_d40_ss",
+      "wave": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.0,
+              1.2
+            ],
+            "frequency_hz": 3936000000.000002,
+            "edges": 118,
+            "max_period_error": 3.6637359812630166e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.01962274652282426,
+              0.0125914717024544
+            ],
+            "frequency_hz": 0.0,
+            "edges": 0,
+            "max_period_error": 1000000000.0,
+            "pass_frequency": false,
+            "pass_swing": false
+          },
+          "data": {
+            "range_v": [
+              1.193618055497062,
+              1.205949347378337
+            ],
+            "frequency_hz": 0.0,
+            "edges": 0,
+            "max_period_error": 1000000000.0,
+            "pass_frequency": false,
+            "pass_swing": false
+          },
+          "out": {
+            "range_v": [
+              -0.0007004570021220669,
+              0.001012335338124898
+            ],
+            "frequency_hz": 0.0,
+            "edges": 0,
+            "max_period_error": 1000000000.0,
+            "pass_frequency": false,
+            "pass_swing": false
+          },
+          "rf": {
+            "range_v": [
+              -0.656186811933248,
+              0.6572946250357874
+            ],
+            "frequency_hz": 3936000004.911573,
+            "edges": 118,
+            "max_period_error": 1.5130557096121322e-07,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": false,
+        "actual_LC": false,
+        "reference_RF_frequency_hz": 3936000000.0,
+        "power_mw": {
+          "VRX:p": -0.0,
+          "VRT:p": 3.445751049825051e-05,
+          "VDD:p": 0.09570198406065586
+        },
+        "node_ranges_v": {},
+        "pass_function": false
+      }
+    },
+    {
+      "case": "screen_clock_e50_d50_ss",
+      "wave": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.0,
+              1.2
+            ],
+            "frequency_hz": 3936000000.000002,
+            "edges": 118,
+            "max_period_error": 3.6637359812630166e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.02681657160351265,
+              1.167821922216211
+            ],
+            "frequency_hz": 1968000003.449514,
+            "edges": 59,
+            "max_period_error": 0.0018178516781579557,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.04300066198940949,
+              1.250359479511321
+            ],
+            "frequency_hz": 984000004.770919,
+            "edges": 29,
+            "max_period_error": 1.3153688704914401e-07,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.07498188411098443,
+              1.265184128134816
+            ],
+            "frequency_hz": 984000000.0176333,
+            "edges": 29,
+            "max_period_error": 4.430102951147319e-10,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.6561776544782695,
+              0.6572919955965609
+            ],
+            "frequency_hz": 3935999964.467527,
+            "edges": 118,
+            "max_period_error": 1.0764710984823012e-06,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": false,
+        "actual_LC": false,
+        "reference_RF_frequency_hz": 3936000000.0,
+        "power_mw": {
+          "VRX:p": -0.0,
+          "VRT:p": 0.18902040620199587,
+          "VDD:p": 0.4158472646131223
+        },
+        "node_ranges_v": {},
+        "pass_function": true
+      }
+    },
+    {
+      "case": "screen_clock_e30_d60_ss",
+      "wave": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.0,
+              1.2
+            ],
+            "frequency_hz": 3936000000.000002,
+            "edges": 118,
+            "max_period_error": 3.6637359812630166e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              0.015783580401612,
+              1.261292106894421
+            ],
+            "frequency_hz": 1968000004.3572986,
+            "edges": 59,
+            "max_period_error": 0.002819424964837891,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.04087009144120866,
+              1.241071194692651
+            ],
+            "frequency_hz": 983999989.1497931,
+            "edges": 30,
+            "max_period_error": 3.2104541647370866e-07,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.07465969597447557,
+              1.260974598895094
+            ],
+            "frequency_hz": 983999997.6524884,
+            "edges": 30,
+            "max_period_error": 7.969726500967056e-08,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.6561863188021202,
+              0.657288713296299
+            ],
+            "frequency_hz": 3936000005.9864216,
+            "edges": 118,
+            "max_period_error": 5.078986563544774e-07,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": false,
+        "actual_LC": false,
+        "reference_RF_frequency_hz": 3936000000.0,
+        "power_mw": {
+          "VRX:p": -0.0,
+          "VRT:p": 0.18525606473433237,
+          "VDD:p": 0.41707527083537305
+        },
+        "node_ranges_v": {},
+        "pass_function": true
+      }
+    }
+  ],
+  "remaining": [
+    "SS60 receiver plus divider pulse/timing robustness",
+    "Full actualLC+PLLnoise and backaction",
+    "Six CMOS division modes and reset/hold timing",
+    "Full power/bias/FLL,33channels,PVT/MC/PEX/area"
+  ]
+}

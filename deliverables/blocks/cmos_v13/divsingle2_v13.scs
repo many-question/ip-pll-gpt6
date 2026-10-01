@@ -1,0 +1,8 @@
+simulator lang=spectre
+include "div_fastff_v13.scs"
+subckt divsingle2_v13 (clk q1 out vdd vss)
+X0 (q0 clk q0 vdd vss) div_fastff_v13 scale=1
+XB0 (q0 q1 vdd vss) pll_inv wn=2u wp=1u
+X1 (q2 q1 q2 vdd vss) pll_tspc_inv
+XB (q2 out vdd vss) pll_inv wn=2u wp=5u
+ends divsingle2_v13

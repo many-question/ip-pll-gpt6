@@ -1,0 +1,16 @@
+{
+  "time": "2026-10-02T03:35:26.686843+08:00",
+  "objective": "Improve SS60 receiver margin and reduce dominant retimer noise; no requirement changes.",
+  "screen_cases": [
+    "screen_wide64_ss",
+    "screen_wide128_ss",
+    "screen_one32_ss_a1p4",
+    "screen_one32_ss_a1p8",
+    "screen_light2_tt",
+    "screen_light2_ss",
+    "screen_light3_tt",
+    "screen_light3_ss"
+  ],
+  "conditions": "1.2V/3.936GHz/984MHz/10fF. Ideal measured-shape voltage source; amplitude scaling explicitly diagnostic. TT27/SS60 screens. Actual LC required before system claims.",
+  "criteria": "RF/clock3.936G, q1=1.968G,data/out984M; error<0.1%,per-cycle<2%;all digital nodes low<.2 high>1V;>=10 out edges;PSS endpoint<1mV,correct harmonic. Noise10k-492M sampled rising0.6V;refine1ps/63 to.5ps/127;RMS<1%,spectrum<.1dB. Autonomous LC judged by measured fRF/fout=4,not forced984MHz; retune separately. FullPLL<200fs and<=4mW unchanged."
+}
