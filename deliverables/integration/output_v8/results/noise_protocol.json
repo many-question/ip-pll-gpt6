@@ -1,0 +1,20 @@
+{
+  "time": "2026-10-01T13:49:31.903712+08:00",
+  "selection": "mirror_gain4small_tt passes original TT frequency/swing screen and uses less power than standard-width gain4. This is a provisional fixture candidate, not architecture adoption.",
+  "conditions": "TT27,1.2V,ideal noiseless prior RF shape3.936GHz,/4 physical clamped divider,new40uA mirror receiver and4 half-width self-biased gain stages,physical C2MOS scale2/output scale4,10fF. All output-chain devices active; actual VCO/mainloop/FLL/generators absent.",
+  "band_hz": [
+    10000.0,
+    492000000.0
+  ],
+  "periodic_fund_hz": 984000000.0,
+  "sampleratio": 1,
+  "event": "out rising0.6V",
+  "precision_limits": {
+    "relative_integrated_jitter": 0.01,
+    "max_spectrum_delta_db": 0.1,
+    "numeric_vs_jee": 0.015
+  },
+  "refinement": "1ps/63harmonics/63maxsideband to0.5ps/127/127, joint time/bandwidth refinement, same dec30 frequency grid. maxsideband is for colored sources in fullspectrum.",
+  "acceptance": "Require PSS success and independent1 output/1 data/4 clock cycles, dominant output1/clock4, logic swing, endpoint mismatch<1mV, explicit band integral and convergence. Even<200fs here is not fullPLL signoff.",
+  "power": "VDD total simultaneously covers divider,receiver,retimer andbuffer; subbranch currents separate receiver/retimer. Ideal RF source real/reactive loading is not actual VCO supply power."
+}

@@ -1,0 +1,55 @@
+{
+  "time": "2026-10-01T12:45:53.428480+08:00",
+  "environment": {
+    "server": "jielu@thu-xia",
+    "project": "/home/jielu/TSMC180/MP/IP-PLL-GPT6",
+    "pdklib_sha256": "d44aa9da7ba670f0b4cfb0198b019dc73abf8bae21b15f45ce5a30c7cb5973ff",
+    "ssh_reverified": true,
+    "GUI_tunnel_running": false
+  },
+  "conditions": "Same physical R2 VCO, Q5, TT27,1.2V,code6,clamped divider /4,quiet10 sampler,10fF,fast filter. No physical circuit changes.",
+  "source_run": "research/runs/spectre_closure_v6/clamp_precision/loop_clamp_1ps",
+  "source_state_sha256": "be5767d91b994de5ab13a48451a5349a76078a48d098b30bcb9ab4345671a679",
+  "derived_state_sha256": "4f22e80ebb13ccad50d4bff8c9c77877b6f1f743f9a79bbb25f83dd8ccc7475a",
+  "removed_observer_equations": [
+    "obsctrl",
+    "obscycles",
+    "obsdivcycles",
+    "obsphase",
+    "XOBS:cycles_vss_flow",
+    "XOBS:divcycles_vss_flow",
+    "XOBS:phase_vss_flow",
+    "XOBS:sampled_ctrl_vss_flow"
+  ],
+  "source_phase": "Physical IC at4us,96 reference cycles; enable1.2V/reset0V. Both continuations start from the same1ps state. 0.5ps is refined continuation, not a0.5ps cold start.",
+  "continuation": {
+    "added_time_s": 4e-06,
+    "total_elapsed_s": 8e-06,
+    "settling_window_s": [
+      3e-06,
+      4e-06
+    ],
+    "criteria": {
+      "phase_pp_rad": 0.02,
+      "abs_phase_drift_rad_per_us": 0.01,
+      "max_vco_cycles_error": 0.001,
+      "max_output_cycles_error": 0.001,
+      "ctrl_bounds_v": [
+        0.2,
+        1
+      ]
+    },
+    "precision_limits": {
+      "max_end_phase_delta_rad": 0.02,
+      "max_mean_control_delta_v": 0.005,
+      "max_mean_output_delta_hz": 5000,
+      "both_pass_stationary": true
+    }
+  },
+  "mesh": {
+    "stop_s": 2.5e-07,
+    "measurement": "Dense waveforms with/without the same read-only observer at1ps and0.5ps, independent edge interpolation; finite transient diagnostic, not lock/noise signoff.",
+    "only_observer_and_save_settings_differ": true
+  },
+  "scope": "No PVT, jitter or full PLL signoff; retain previous4us failure. Do not relax criteria to convert it to pass."
+}

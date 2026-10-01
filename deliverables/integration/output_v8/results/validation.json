@@ -1,0 +1,1945 @@
+[
+  {
+    "run": "balance",
+    "case": "regen_f_p_tt",
+    "sim_ok": true,
+    "errors": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "transient": {
+      "window_s": [
+        7.000080420659893e-08,
+        1e-07
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            -0.0008007078882534357,
+            0.000513093452428355
+          ],
+          "pass_signal": false
+        },
+        "data": {
+          "rising_edges": 30,
+          "frequency_hz": 983979075.6267252,
+          "max_period_relative": 3.677249223899004e-05,
+          "range_v": [
+            -0.03709211551694325,
+            1.261435233652058
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            1.182499761337174,
+            1.210732705992886
+          ],
+          "pass_signal": false
+        }
+      },
+      "power_mw": {
+        "VDD:p": 1.030837318533966,
+        "VRX:p": 0.10406227080523767,
+        "VRT:p": 0.06159653685009857
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": false,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression."
+    }
+  },
+  {
+    "run": "balance",
+    "case": "regen_g_p_tt",
+    "sim_ok": true,
+    "errors": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "transient": {
+      "window_s": [
+        7.000050966841347e-08,
+        1e-07
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            -0.0007547851869686983,
+            0.0005727942748581339
+          ],
+          "pass_signal": false
+        },
+        "data": {
+          "rising_edges": 30,
+          "frequency_hz": 983979072.1016237,
+          "max_period_relative": 3.694870823234275e-05,
+          "range_v": [
+            -0.03708159070360421,
+            1.26142361378515
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            1.18355325604988,
+            1.210082066699533
+          ],
+          "pass_signal": false
+        }
+      },
+      "power_mw": {
+        "VDD:p": 1.095796643996616,
+        "VRX:p": 0.17080531471304947,
+        "VRT:p": 0.059814273463207474
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": false,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression."
+    }
+  },
+  {
+    "run": "balance",
+    "case": "regen_h_p_tt",
+    "sim_ok": true,
+    "errors": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "transient": {
+      "window_s": [
+        7.00009720411725e-08,
+        1e-07
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 4,
+          "frequency_hz": 4259615897.3448815,
+          "max_period_relative": 0.08484275871214231,
+          "range_v": [
+            -0.007910462541630102,
+            1.217448633177375
+          ],
+          "pass_signal": false
+        },
+        "data": {
+          "rising_edges": 30,
+          "frequency_hz": 983826117.5429817,
+          "max_period_relative": 0.004069687003108058,
+          "range_v": [
+            -0.03703373519092993,
+            1.262431766352159
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            0.9222998566273845,
+            1.212869470244768
+          ],
+          "pass_signal": false
+        }
+      },
+      "geometric_data_margin_ps": {
+        "min_previous_edge": 68.45296905165263,
+        "min_next_edge": 162.42986690373752,
+        "note": "Distance to actual falling clock; not characterized setup/hold or metastability signoff."
+      },
+      "stable_data_samples": 3,
+      "stable_data_mismatches": 2,
+      "sample_check_note": "Diagnostic: data stable20ps before/after clock fall; output observed0.35RF periods later. Marginal samples excluded and geometric margins reported.",
+      "sample_check_is_acceptance": false,
+      "sample_check_limit": "The arbitrary0.35RF-period observation can precede actual propagation; this early-sample diagnostic is not a valid data oracle. Functional acceptance below uses the predeclared frequency/swing/period criteria only; retiming noise/timing remain unvalidated.",
+      "data_to_output_delay": {},
+      "power_mw": {
+        "VDD:p": 1.3629041531283799,
+        "VRX:p": 0.4403029251794387,
+        "VRT:p": 0.05352447858832398
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": false,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression."
+    }
+  },
+  {
+    "run": "direct",
+    "case": "direct4_small_vn_tt",
+    "sim_ok": true,
+    "errors": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "transient": {
+      "window_s": [
+        7.00000405527647e-08,
+        1e-07
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 118,
+          "frequency_hz": 3936109135.3481183,
+          "max_period_relative": 0.005780811249621154,
+          "range_v": [
+            0.2091143761338555,
+            0.9320145504943967
+          ],
+          "pass_signal": false
+        },
+        "data": {
+          "rising_edges": 30,
+          "frequency_hz": 983978504.1101365,
+          "max_period_relative": 3.736970742296286e-05,
+          "range_v": [
+            -0.03560860246764044,
+            1.255318053014763
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 29,
+          "frequency_hz": 983997945.8298442,
+          "max_period_relative": 8.193632189179567e-06,
+          "range_v": [
+            -0.02934773159324423,
+            1.265825135591157
+          ],
+          "pass_signal": true
+        }
+      },
+      "geometric_data_margin_ps": {
+        "min_previous_edge": 230.56497822198307,
+        "min_next_edge": 19.179313782583574,
+        "note": "Distance to actual falling clock; not characterized setup/hold or metastability signoff."
+      },
+      "stable_data_samples": 83,
+      "stable_data_mismatches": 56,
+      "sample_check_note": "Diagnostic: data stable20ps before/after clock fall; output observed0.35RF periods later. Marginal samples excluded and geometric margins reported.",
+      "sample_check_is_acceptance": false,
+      "sample_check_limit": "The arbitrary0.35RF-period observation can precede actual propagation; this early-sample diagnostic is not a valid data oracle. Functional acceptance below uses the predeclared frequency/swing/period criteria only; retiming noise/timing remain unvalidated.",
+      "data_to_output_delay": {
+        "rise": {
+          "min_ps": 444.2595674372714,
+          "max_ps": 444.83678018915924,
+          "mean_ps": 444.4916249140329
+        },
+        "fall": {
+          "min_ps": 419.3803490987801,
+          "max_ps": 419.86637498628016,
+          "mean_ps": 419.5710656824418
+        }
+      },
+      "power_mw": {
+        "VDD:p": 1.8651308368803678,
+        "VRX:p": 0.536081972456912,
+        "VRT:p": 0.4554767880444551
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": false,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression."
+    }
+  },
+  {
+    "run": "direct",
+    "case": "direct4_small_vp_tt",
+    "sim_ok": true,
+    "errors": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "transient": {
+      "window_s": [
+        7.000019613759217e-08,
+        1e-07
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 119,
+          "frequency_hz": 3935917389.907486,
+          "max_period_relative": 0.0036908915585680546,
+          "range_v": [
+            0.2066617876401412,
+            0.9334889198793784
+          ],
+          "pass_signal": false
+        },
+        "data": {
+          "rising_edges": 30,
+          "frequency_hz": 983978135.5037926,
+          "max_period_relative": 3.841141096905254e-05,
+          "range_v": [
+            -0.02824310069158734,
+            1.269025812755113
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 29,
+          "frequency_hz": 983900531.8640352,
+          "max_period_relative": 0.0001710077720489256,
+          "range_v": [
+            -0.02031772527153137,
+            1.266740328615747
+          ],
+          "pass_signal": true
+        }
+      },
+      "geometric_data_margin_ps": {
+        "min_previous_edge": 103.50819456254234,
+        "min_next_edge": 145.11962580868104,
+        "note": "Distance to actual falling clock; not characterized setup/hold or metastability signoff."
+      },
+      "stable_data_samples": 110,
+      "stable_data_mismatches": 55,
+      "sample_check_note": "Diagnostic: data stable20ps before/after clock fall; output observed0.35RF periods later. Marginal samples excluded and geometric margins reported.",
+      "sample_check_is_acceptance": false,
+      "sample_check_limit": "The arbitrary0.35RF-period observation can precede actual propagation; this early-sample diagnostic is not a valid data oracle. Functional acceptance below uses the predeclared frequency/swing/period criteria only; retiming noise/timing remain unvalidated.",
+      "data_to_output_delay": {
+        "rise": {
+          "min_ps": 374.9332832263607,
+          "max_ps": 377.1625326775364,
+          "mean_ps": 376.24736957347494
+        },
+        "fall": {
+          "min_ps": 317.69534026582255,
+          "max_ps": 318.1547812354604,
+          "mean_ps": 317.97161254879023
+        }
+      },
+      "power_mw": {
+        "VDD:p": 1.8748511516175295,
+        "VRX:p": 0.5380080435677123,
+        "VRT:p": 0.4627747767496052
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": false,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression."
+    }
+  },
+  {
+    "run": "direct",
+    "case": "direct4_wide_vn_tt",
+    "sim_ok": true,
+    "errors": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "transient": {
+      "window_s": [
+        7.00002594717321e-08,
+        1e-07
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 118,
+          "frequency_hz": 3936035026.758086,
+          "max_period_relative": 0.001957199481591232,
+          "range_v": [
+            0.07192547808323688,
+            1.105290574375513
+          ],
+          "pass_signal": true
+        },
+        "data": {
+          "rising_edges": 30,
+          "frequency_hz": 983978464.5070643,
+          "max_period_relative": 3.788143568494995e-05,
+          "range_v": [
+            -0.02829210757330049,
+            1.257743101500105
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 29,
+          "frequency_hz": 983997909.0255343,
+          "max_period_relative": 8.162840830827633e-06,
+          "range_v": [
+            -0.03456478557874891,
+            1.266529237715838
+          ],
+          "pass_signal": true
+        }
+      },
+      "geometric_data_margin_ps": {
+        "min_previous_edge": 234.97412715898167,
+        "min_next_edge": 14.972325801940352,
+        "note": "Distance to actual falling clock; not characterized setup/hold or metastability signoff."
+      },
+      "stable_data_samples": 56,
+      "stable_data_mismatches": 56,
+      "sample_check_note": "Diagnostic: data stable20ps before/after clock fall; output observed0.35RF periods later. Marginal samples excluded and geometric margins reported.",
+      "sample_check_is_acceptance": false,
+      "sample_check_limit": "The arbitrary0.35RF-period observation can precede actual propagation; this early-sample diagnostic is not a valid data oracle. Functional acceptance below uses the predeclared frequency/swing/period criteria only; retiming noise/timing remain unvalidated.",
+      "data_to_output_delay": {
+        "rise": {
+          "min_ps": 425.48191679028275,
+          "max_ps": 426.0592182021547,
+          "mean_ps": 425.723111571951
+        },
+        "fall": {
+          "min_ps": 417.9346625141614,
+          "max_ps": 418.2948050380913,
+          "mean_ps": 418.0751488271937
+        }
+      },
+      "power_mw": {
+        "VDD:p": 2.3566064369603703,
+        "VRX:p": 1.010656214821448,
+        "VRT:p": 0.4722970391319624
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": true,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression."
+    }
+  },
+  {
+    "run": "direct",
+    "case": "direct4_wide_vp_tt",
+    "sim_ok": true,
+    "errors": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "transient": {
+      "window_s": [
+        7.000005781443806e-08,
+        1e-07
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 119,
+          "frequency_hz": 3935961266.768261,
+          "max_period_relative": 0.0018408508019547298,
+          "range_v": [
+            0.07052370783044941,
+            1.108572703272342
+          ],
+          "pass_signal": true
+        },
+        "data": {
+          "rising_edges": 30,
+          "frequency_hz": 983978114.4547156,
+          "max_period_relative": 3.825734719242746e-05,
+          "range_v": [
+            -0.03158457520246294,
+            1.267052522851738
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 29,
+          "frequency_hz": 983982812.569877,
+          "max_period_relative": 3.1923778108566836e-05,
+          "range_v": [
+            -0.03095671488262757,
+            1.267205965178489
+          ],
+          "pass_signal": true
+        }
+      },
+      "geometric_data_margin_ps": {
+        "min_previous_edge": 107.10984321972461,
+        "min_next_edge": 140.65599766654063,
+        "note": "Distance to actual falling clock; not characterized setup/hold or metastability signoff."
+      },
+      "stable_data_samples": 110,
+      "stable_data_mismatches": 55,
+      "sample_check_note": "Diagnostic: data stable20ps before/after clock fall; output observed0.35RF periods later. Marginal samples excluded and geometric margins reported.",
+      "sample_check_is_acceptance": false,
+      "sample_check_limit": "The arbitrary0.35RF-period observation can precede actual propagation; this early-sample diagnostic is not a valid data oracle. Functional acceptance below uses the predeclared frequency/swing/period criteria only; retiming noise/timing remain unvalidated.",
+      "data_to_output_delay": {
+        "rise": {
+          "min_ps": 321.4424940769737,
+          "max_ps": 321.59707442951475,
+          "mean_ps": 321.51198319391574
+        },
+        "fall": {
+          "min_ps": 309.54637226425865,
+          "max_ps": 310.07413139450153,
+          "mean_ps": 309.8711936415218
+        }
+      },
+      "power_mw": {
+        "VDD:p": 2.3668313089381208,
+        "VRX:p": 1.0131854208916593,
+        "VRT:p": 0.4792579273513151
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": true,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression."
+    }
+  },
+  {
+    "run": "first",
+    "case": "chain_s2_vn_tt",
+    "sim_ok": true,
+    "errors": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "transient": {
+      "window_s": [
+        7.000054942827913e-08,
+        1e-07
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 118,
+          "frequency_hz": 3936102319.2814016,
+          "max_period_relative": 0.0030740730171119335,
+          "range_v": [
+            0.4969209248247543,
+            0.806828205290137
+          ],
+          "pass_signal": false
+        },
+        "data": {
+          "rising_edges": 30,
+          "frequency_hz": 983978231.159156,
+          "max_period_relative": 3.811375806384021e-05,
+          "range_v": [
+            -0.03298835594054719,
+            1.26082625672988
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            1.199670184509801,
+            1.200305410847478
+          ],
+          "pass_signal": false
+        }
+      },
+      "geometric_data_margin_ps": {
+        "min_previous_edge": 153.82238516751232,
+        "min_next_edge": 95.50825465970617,
+        "note": "Distance to actual falling clock; not characterized setup/hold or metastability signoff."
+      },
+      "stable_data_samples": 110,
+      "stable_data_mismatches": 55,
+      "sample_check_note": "Diagnostic: data stable20ps before/after clock fall; output observed0.35RF periods later. Marginal samples excluded and geometric margins reported.",
+      "sample_check_is_acceptance": false,
+      "sample_check_limit": "The arbitrary0.35RF-period observation can precede actual propagation; this early-sample diagnostic is not a valid data oracle. Functional acceptance below uses the predeclared frequency/swing/period criteria only; retiming noise/timing remain unvalidated.",
+      "data_to_output_delay": {},
+      "power_mw": {
+        "VDD:p": 1.3372403936710258,
+        "VRX:p": 0.3550575582438016,
+        "VRT:p": 0.10806460800378347
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": false,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression."
+    }
+  },
+  {
+    "run": "first",
+    "case": "chain_s2_vp_tt",
+    "sim_ok": true,
+    "errors": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "transient": {
+      "window_s": [
+        7.000086626027284e-08,
+        1e-07
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 118,
+          "frequency_hz": 3936082854.1954575,
+          "max_period_relative": 0.002865020725887568,
+          "range_v": [
+            0.4983821180872221,
+            0.8007720999735856
+          ],
+          "pass_signal": false
+        },
+        "data": {
+          "rising_edges": 30,
+          "frequency_hz": 983978352.4341612,
+          "max_period_relative": 3.785540343481664e-05,
+          "range_v": [
+            -0.03486019077795167,
+            1.258860082972739
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            1.199794891877461,
+            1.200347142385453
+          ],
+          "pass_signal": false
+        }
+      },
+      "geometric_data_margin_ps": {
+        "min_previous_edge": 27.507180543104344,
+        "min_next_edge": 222.61705301529096,
+        "note": "Distance to actual falling clock; not characterized setup/hold or metastability signoff."
+      },
+      "stable_data_samples": 110,
+      "stable_data_mismatches": 55,
+      "sample_check_note": "Diagnostic: data stable20ps before/after clock fall; output observed0.35RF periods later. Marginal samples excluded and geometric margins reported.",
+      "sample_check_is_acceptance": false,
+      "sample_check_limit": "The arbitrary0.35RF-period observation can precede actual propagation; this early-sample diagnostic is not a valid data oracle. Functional acceptance below uses the predeclared frequency/swing/period criteria only; retiming noise/timing remain unvalidated.",
+      "data_to_output_delay": {},
+      "power_mw": {
+        "VDD:p": 1.335712731766152,
+        "VRX:p": 0.35552212585657583,
+        "VRT:p": 0.10627954976703466
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": false,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression."
+    }
+  },
+  {
+    "run": "first",
+    "case": "chain_s4_vn_tt",
+    "sim_ok": true,
+    "errors": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "transient": {
+      "window_s": [
+        7.000097684400615e-08,
+        1e-07
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 119,
+          "frequency_hz": 3935995462.764334,
+          "max_period_relative": 0.005506342533520003,
+          "range_v": [
+            0.5819172512724319,
+            0.8164050532262648
+          ],
+          "pass_signal": false
+        },
+        "data": {
+          "rising_edges": 30,
+          "frequency_hz": 983977316.2069507,
+          "max_period_relative": 3.953824728619715e-05,
+          "range_v": [
+            -0.02903086945709269,
+            1.253832452840159
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            1.199561041311751,
+            1.200338844895926
+          ],
+          "pass_signal": false
+        }
+      },
+      "geometric_data_margin_ps": {
+        "min_previous_edge": 175.11829704528728,
+        "min_next_edge": 76.16718337273714,
+        "note": "Distance to actual falling clock; not characterized setup/hold or metastability signoff."
+      },
+      "stable_data_samples": 110,
+      "stable_data_mismatches": 55,
+      "sample_check_note": "Diagnostic: data stable20ps before/after clock fall; output observed0.35RF periods later. Marginal samples excluded and geometric margins reported.",
+      "sample_check_is_acceptance": false,
+      "sample_check_limit": "The arbitrary0.35RF-period observation can precede actual propagation; this early-sample diagnostic is not a valid data oracle. Functional acceptance below uses the predeclared frequency/swing/period criteria only; retiming noise/timing remain unvalidated.",
+      "data_to_output_delay": {},
+      "power_mw": {
+        "VDD:p": 1.381818980187941,
+        "VRX:p": 0.36039189055165205,
+        "VRT:p": 0.12909288728557788
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": false,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression."
+    }
+  },
+  {
+    "run": "first",
+    "case": "chain_s4_vp_tt",
+    "sim_ok": true,
+    "errors": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "transient": {
+      "window_s": [
+        7.000097684399574e-08,
+        1e-07
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 118,
+          "frequency_hz": 3936653707.2750216,
+          "max_period_relative": 0.03238363631669339,
+          "range_v": [
+            0.5855264094883149,
+            0.8087224526752307
+          ],
+          "pass_signal": false
+        },
+        "data": {
+          "rising_edges": 30,
+          "frequency_hz": 983977450.4976753,
+          "max_period_relative": 3.9307795016041425e-05,
+          "range_v": [
+            -0.02997045212204238,
+            1.251320327646643
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            1.199759842311392,
+            1.200384645913624
+          ],
+          "pass_signal": false
+        }
+      },
+      "geometric_data_margin_ps": {
+        "min_previous_edge": 57.37848129151216,
+        "min_next_edge": 200.90493688323647,
+        "note": "Distance to actual falling clock; not characterized setup/hold or metastability signoff."
+      },
+      "stable_data_samples": 110,
+      "stable_data_mismatches": 55,
+      "sample_check_note": "Diagnostic: data stable20ps before/after clock fall; output observed0.35RF periods later. Marginal samples excluded and geometric margins reported.",
+      "sample_check_is_acceptance": false,
+      "sample_check_limit": "The arbitrary0.35RF-period observation can precede actual propagation; this early-sample diagnostic is not a valid data oracle. Functional acceptance below uses the predeclared frequency/swing/period criteria only; retiming noise/timing remain unvalidated.",
+      "data_to_output_delay": {},
+      "power_mw": {
+        "VDD:p": 1.3761382878592767,
+        "VRX:p": 0.3606866888127151,
+        "VRT:p": 0.12324115033080689
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": false,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression."
+    }
+  },
+  {
+    "run": "gain",
+    "case": "mirror_gain2_tt",
+    "sim_ok": true,
+    "errors": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "transient": {
+      "window_s": [
+        7.000013415898464e-08,
+        1e-07
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 118,
+          "frequency_hz": 3936051393.1120806,
+          "max_period_relative": 0.003355935770686047,
+          "range_v": [
+            0.2948462340862124,
+            0.860317191366016
+          ],
+          "pass_signal": false
+        },
+        "data": {
+          "rising_edges": 30,
+          "frequency_hz": 983976766.9033308,
+          "max_period_relative": 4.039350743534342e-05,
+          "range_v": [
+            -0.03399122323507585,
+            1.257258837006626
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 29,
+          "frequency_hz": 983976612.8181648,
+          "max_period_relative": 6.036228549932687e-05,
+          "range_v": [
+            -0.02771057222290938,
+            1.265035216587567
+          ],
+          "pass_signal": true
+        }
+      },
+      "geometric_data_margin_ps": {
+        "min_previous_edge": 59.59475641385348,
+        "min_next_edge": 191.67398565179258,
+        "note": "Distance to actual falling clock; not characterized setup/hold or metastability signoff."
+      },
+      "stable_data_samples": 110,
+      "stable_data_mismatches": 82,
+      "sample_check_note": "Diagnostic: data stable20ps before/after clock fall; output observed0.35RF periods later. Marginal samples excluded and geometric margins reported.",
+      "sample_check_is_acceptance": false,
+      "sample_check_limit": "The arbitrary0.35RF-period observation can precede actual propagation; this early-sample diagnostic is not a valid data oracle. Functional acceptance below uses the predeclared frequency/swing/period criteria only; retiming noise/timing remain unvalidated.",
+      "data_to_output_delay": {
+        "rise": {
+          "min_ps": 528.6521820674151,
+          "max_ps": 528.707236204574,
+          "mean_ps": 528.6796435774155
+        },
+        "fall": {
+          "min_ps": 270.9781240899455,
+          "max_ps": 271.3328997860694,
+          "mean_ps": 271.1918746378827
+        }
+      },
+      "power_mw": {
+        "VDD:p": 2.030678593849344,
+        "VRX:p": 0.7424073669298158,
+        "VRT:p": 0.4144098102223011
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": false,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression."
+    }
+  },
+  {
+    "run": "gain",
+    "case": "mirror_gain3_tt",
+    "sim_ok": true,
+    "errors": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "transient": {
+      "window_s": [
+        7.000075291600376e-08,
+        1e-07
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 118,
+          "frequency_hz": 3936073248.7434087,
+          "max_period_relative": 0.00314098677497765,
+          "range_v": [
+            0.1679474586043058,
+            0.9640775253113885
+          ],
+          "pass_signal": false
+        },
+        "data": {
+          "rising_edges": 30,
+          "frequency_hz": 983978422.7996324,
+          "max_period_relative": 3.838023092250786e-05,
+          "range_v": [
+            -0.04357281325021123,
+            1.252485630901052
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 29,
+          "frequency_hz": 983994898.8236268,
+          "max_period_relative": 7.996336267668269e-05,
+          "range_v": [
+            -0.03120363018144519,
+            1.260056118070536
+          ],
+          "pass_signal": true
+        }
+      },
+      "geometric_data_margin_ps": {
+        "min_previous_edge": 239.8718550939243,
+        "min_next_edge": 10.233400634668929,
+        "note": "Distance to actual falling clock; not characterized setup/hold or metastability signoff."
+      },
+      "stable_data_samples": 56,
+      "stable_data_mismatches": 56,
+      "sample_check_note": "Diagnostic: data stable20ps before/after clock fall; output observed0.35RF periods later. Marginal samples excluded and geometric margins reported.",
+      "sample_check_is_acceptance": false,
+      "sample_check_limit": "The arbitrary0.35RF-period observation can precede actual propagation; this early-sample diagnostic is not a valid data oracle. Functional acceptance below uses the predeclared frequency/swing/period criteria only; retiming noise/timing remain unvalidated.",
+      "data_to_output_delay": {
+        "rise": {
+          "min_ps": 445.3248164291827,
+          "max_ps": 445.8812028775145,
+          "mean_ps": 445.56704669191834
+        },
+        "fall": {
+          "min_ps": 403.05619696569147,
+          "max_ps": 405.3209262028855,
+          "mean_ps": 403.998796493868
+        }
+      },
+      "power_mw": {
+        "VDD:p": 2.3322208398906095,
+        "VRX:p": 0.9977858538363198,
+        "VRT:p": 0.46075004034738254
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": false,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression."
+    }
+  },
+  {
+    "run": "gain4",
+    "case": "mirror_gain4_tt",
+    "sim_ok": true,
+    "errors": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "transient": {
+      "window_s": [
+        7.000000771133866e-08,
+        1e-07
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 118,
+          "frequency_hz": 3936063203.934237,
+          "max_period_relative": 0.002628106109674233,
+          "range_v": [
+            0.05234590525830741,
+            1.137108517428981
+          ],
+          "pass_signal": true
+        },
+        "data": {
+          "rising_edges": 30,
+          "frequency_hz": 983978613.4925458,
+          "max_period_relative": 3.7426195790057903e-05,
+          "range_v": [
+            -0.02561028585438535,
+            1.268752466711263
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 29,
+          "frequency_hz": 983998737.0844507,
+          "max_period_relative": 2.2781017996464925e-06,
+          "range_v": [
+            -0.03360499976009663,
+            1.267358156998484
+          ],
+          "pass_signal": true
+        }
+      },
+      "geometric_data_margin_ps": {
+        "min_previous_edge": 163.55647217813737,
+        "min_next_edge": 82.47932122599973,
+        "note": "Distance to actual falling clock; not characterized setup/hold or metastability signoff."
+      },
+      "stable_data_samples": 110,
+      "stable_data_mismatches": 55,
+      "sample_check_note": "Diagnostic: data stable20ps before/after clock fall; output observed0.35RF periods later. Marginal samples excluded and geometric margins reported.",
+      "sample_check_is_acceptance": false,
+      "sample_check_limit": "The arbitrary0.35RF-period observation can precede actual propagation; this early-sample diagnostic is not a valid data oracle. Functional acceptance below uses the predeclared frequency/swing/period criteria only; retiming noise/timing remain unvalidated.",
+      "data_to_output_delay": {
+        "rise": {
+          "min_ps": 365.84925727619884,
+          "max_ps": 366.4469224628935,
+          "mean_ps": 366.10238158117767
+        },
+        "fall": {
+          "min_ps": 364.0373136710219,
+          "max_ps": 364.5625399346833,
+          "mean_ps": 364.35928385018804
+        }
+      },
+      "power_mw": {
+        "VDD:p": 2.698037509961416,
+        "VRX:p": 1.341372925688313,
+        "VRT:p": 0.4826026899587082
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": true,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression."
+    }
+  },
+  {
+    "run": "gain4",
+    "case": "mirror_gain4small_tt",
+    "sim_ok": true,
+    "errors": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "transient": {
+      "window_s": [
+        7.000024448813405e-08,
+        1e-07
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 118,
+          "frequency_hz": 3936102210.067511,
+          "max_period_relative": 0.0049806811555790365,
+          "range_v": [
+            0.1223867826773658,
+            1.028541698349084
+          ],
+          "pass_signal": true
+        },
+        "data": {
+          "rising_edges": 30,
+          "frequency_hz": 983978579.9336462,
+          "max_period_relative": 3.760739695990445e-05,
+          "range_v": [
+            -0.02256965483846692,
+            1.272363447473039
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 29,
+          "frequency_hz": 983998718.5954878,
+          "max_period_relative": 2.4349019576153097e-06,
+          "range_v": [
+            -0.03093498446532196,
+            1.267118340604383
+          ],
+          "pass_signal": true
+        }
+      },
+      "geometric_data_margin_ps": {
+        "min_previous_edge": 147.62324742513127,
+        "min_next_edge": 99.1512217961049,
+        "note": "Distance to actual falling clock; not characterized setup/hold or metastability signoff."
+      },
+      "stable_data_samples": 110,
+      "stable_data_mismatches": 55,
+      "sample_check_note": "Diagnostic: data stable20ps before/after clock fall; output observed0.35RF periods later. Marginal samples excluded and geometric margins reported.",
+      "sample_check_is_acceptance": false,
+      "sample_check_limit": "The arbitrary0.35RF-period observation can precede actual propagation; this early-sample diagnostic is not a valid data oracle. Functional acceptance below uses the predeclared frequency/swing/period criteria only; retiming noise/timing remain unvalidated.",
+      "data_to_output_delay": {
+        "rise": {
+          "min_ps": 360.9584762840642,
+          "max_ps": 361.5556903151634,
+          "mean_ps": 361.2132436026997
+        },
+        "fall": {
+          "min_ps": 354.2039006376122,
+          "max_ps": 354.74219650286506,
+          "mean_ps": 354.5336202338648
+        }
+      },
+      "power_mw": {
+        "VDD:p": 2.3257977425997276,
+        "VRX:p": 0.9764328475924792,
+        "VRT:p": 0.4752989416366741
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": true,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression."
+    }
+  },
+  {
+    "run": "mirror",
+    "case": "mirror_a_tt",
+    "sim_ok": true,
+    "errors": [
+      "convergence failure"
+    ],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "transient": {
+      "window_s": [
+        7.000097684362067e-08,
+        1e-07
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            1.198666425889944,
+            1.202039445435137
+          ],
+          "pass_signal": false
+        },
+        "data": {
+          "rising_edges": 30,
+          "frequency_hz": 983978367.5897194,
+          "max_period_relative": 3.7798295908997304e-05,
+          "range_v": [
+            -0.03482155345049606,
+            1.259318091893485
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            -0.0009728860226229815,
+            0.002358156101316539
+          ],
+          "pass_signal": false
+        }
+      },
+      "power_mw": {
+        "VDD:p": 1.100218375281563,
+        "VRX:p": 0.17288880384578176,
+        "VRT:p": 0.05327759898540768
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": false,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression."
+    }
+  },
+  {
+    "run": "mirror",
+    "case": "mirror_b_tt",
+    "sim_ok": true,
+    "errors": [
+      "convergence failure"
+    ],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "transient": {
+      "window_s": [
+        7.000006330607097e-08,
+        1e-07
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            -0.002604192956506596,
+            0.002296480338812306
+          ],
+          "pass_signal": false
+        },
+        "data": {
+          "rising_edges": 30,
+          "frequency_hz": 983978961.3770112,
+          "max_period_relative": 3.74446178301735e-05,
+          "range_v": [
+            -0.0359802079314608,
+            1.260979439349289
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            -4.087782427553575e-05,
+            4.71117271819278e-05
+          ],
+          "pass_signal": false
+        }
+      },
+      "power_mw": {
+        "VDD:p": 1.2008340812741614,
+        "VRX:p": 0.3340105299091439,
+        "VRT:p": -0.0002512169722504082
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": false,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression."
+    }
+  },
+  {
+    "run": "noise_coarse",
+    "case": "noise_gain4small_1ps",
+    "sim_ok": true,
+    "errors": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "periodic": {
+      "window_s": [
+        0.0,
+        1.016260162601637e-09
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 4,
+          "frequency_hz": 3935999999.9999576,
+          "max_period_relative": 0.004937129259275697,
+          "range_v": [
+            0.122382293608423,
+            1.028537231940946
+          ],
+          "pass_signal": true
+        },
+        "data": {
+          "rising_edges": 1,
+          "frequency_hz": 983999999.9999894,
+          "max_period_relative": 1.0436096431476471e-14,
+          "range_v": [
+            -0.02188915424499816,
+            1.272484396623165
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 1,
+          "frequency_hz": 983999999.9999894,
+          "max_period_relative": 1.0658141036401503e-14,
+          "range_v": [
+            -0.03092038973713813,
+            1.267103546733205
+          ],
+          "pass_signal": true
+        }
+      },
+      "power_mw": {
+        "VDD:p": 2.319851332223869,
+        "VRX:p": 0.9763530112908847,
+        "VRT:p": 0.47588304050358865
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": true,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression.",
+      "period_s": 1.016260162601637e-09,
+      "endpoint_voltage_error": {
+        "clk": 9.136503997808632e-09,
+        "out": 4.4622133599236946e-08,
+        "XRX.gp": 2.2809306665649842e-09,
+        "XRX.gn": 2.884780525569397e-09,
+        "XRX.dp": 8.095623060810908e-10,
+        "XRX.dn": 5.547237114100767e-10,
+        "XRX.tail": 1.1997383086992386e-09,
+        "XRX.nb": 6.277132147403108e-10,
+        "XRX.XGAIN.g0": 1.5531292363313298e-09,
+        "XRX.XGAIN.o0": 7.055878104011981e-10,
+        "XRX.XGAIN.g1": 2.0385140242495936e-09,
+        "XRX.XGAIN.o1": 6.2020464319800794e-09,
+        "XRT.clkb": 3.044054849854483e-08,
+        "data": 5.289479965142618e-10,
+        "vn": 0.0,
+        "vp": 0.0
+      },
+      "pass_periodic": true
+    }
+  },
+  {
+    "run": "noise_direct",
+    "case": "noise_direct4wide_1ps",
+    "sim_ok": true,
+    "errors": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "periodic": {
+      "window_s": [
+        0.0,
+        1.016260162601637e-09
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 4,
+          "frequency_hz": 3935999999.9999576,
+          "max_period_relative": 0.0017418473114432231,
+          "range_v": [
+            0.07048686888473212,
+            1.108742555060973
+          ],
+          "pass_signal": true
+        },
+        "data": {
+          "rising_edges": 1,
+          "frequency_hz": 983999999.9999894,
+          "max_period_relative": 1.0880185641326534e-14,
+          "range_v": [
+            -0.03145597453721919,
+            1.266927997179309
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 1,
+          "frequency_hz": 983999999.9999894,
+          "max_period_relative": 1.0658141036401503e-14,
+          "range_v": [
+            -0.03071169260079296,
+            1.267213553932302
+          ],
+          "pass_signal": true
+        }
+      },
+      "power_mw": {
+        "VDD:p": 2.360961479108422,
+        "VRX:p": 1.012807490910855,
+        "VRT:p": 0.48023824164516526
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": true,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression.",
+      "period_s": 1.016260162601637e-09,
+      "endpoint_voltage_error": {
+        "clk": 1.0142333173313034e-07,
+        "out": 9.908293496785348e-08,
+        "XRX.g0": 8.979905707917624e-11,
+        "XRX.o0": 1.4203083154029628e-11,
+        "XRX.g1": 5.543583370126726e-10,
+        "XRX.o1": 5.814453418739873e-09,
+        "XRX.g2": 4.77226591577562e-10,
+        "XRX.o2": 5.694362925634522e-09,
+        "XRX.g3": 5.997041696570449e-09,
+        "XRX.o3": 1.6204849573320246e-08,
+        "XRT.clkb": 3.4926536905677263e-09,
+        "data": 3.5799785358392455e-10,
+        "vn": 0.0,
+        "vp": 0.0
+      },
+      "pass_periodic": true
+    }
+  },
+  {
+    "run": "noise_fine",
+    "case": "noise_gain4small_halfps",
+    "sim_ok": true,
+    "errors": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "periodic": {
+      "window_s": [
+        0.0,
+        1.016260162601637e-09
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 4,
+          "frequency_hz": 3935999999.9999576,
+          "max_period_relative": 0.004941556217420429,
+          "range_v": [
+            0.1223556692225867,
+            1.028551384337975
+          ],
+          "pass_signal": true
+        },
+        "data": {
+          "rising_edges": 1,
+          "frequency_hz": 983999999.9999894,
+          "max_period_relative": 1.0880185641326534e-14,
+          "range_v": [
+            -0.02189229213994227,
+            1.272491693973108
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 1,
+          "frequency_hz": 983999999.9999894,
+          "max_period_relative": 1.0658141036401503e-14,
+          "range_v": [
+            -0.03093479252979865,
+            1.267131328406932
+          ],
+          "pass_signal": true
+        }
+      },
+      "power_mw": {
+        "VDD:p": 2.3198646142719315,
+        "VRX:p": 0.9763665054079678,
+        "VRT:p": 0.475882641977804
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": true,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression.",
+      "period_s": 1.016260162601637e-09,
+      "endpoint_voltage_error": {
+        "clk": 2.649916397423624e-08,
+        "out": 1.782864401111972e-07,
+        "XRX.gp": 9.363398945083645e-12,
+        "XRX.gn": 2.6349256110336228e-11,
+        "XRX.dp": 3.897426825716366e-11,
+        "XRX.dn": 1.1480982831102438e-11,
+        "XRX.tail": 1.6861595453221412e-11,
+        "XRX.nb": 7.547074076796889e-12,
+        "XRX.XGAIN.g0": 1.937314197952844e-10,
+        "XRX.XGAIN.o0": 2.51410559037879e-10,
+        "XRX.XGAIN.g1": 7.131190082887429e-10,
+        "XRX.XGAIN.o1": 3.361972811255498e-09,
+        "XRT.clkb": 1.0253258320158665e-07,
+        "data": 2.3467991994152726e-09,
+        "vn": 0.0,
+        "vp": 0.0
+      },
+      "pass_periodic": true
+    }
+  },
+  {
+    "run": "pullup",
+    "case": "regen_d_n_tt",
+    "sim_ok": true,
+    "errors": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "transient": {
+      "window_s": [
+        7.000097684369577e-08,
+        1e-07
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            1.198174399211328,
+            1.201358452211472
+          ],
+          "pass_signal": false
+        },
+        "data": {
+          "rising_edges": 30,
+          "frequency_hz": 983978367.4293982,
+          "max_period_relative": 3.779904131384626e-05,
+          "range_v": [
+            -0.03482166088201463,
+            1.259318017647396
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            -0.0009729669423412639,
+            0.002358269269092957
+          ],
+          "pass_signal": false
+        }
+      },
+      "power_mw": {
+        "VDD:p": 1.0326923767329115,
+        "VRX:p": 0.10536111226504824,
+        "VRT:p": 0.05327925250144068
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": false,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression."
+    }
+  },
+  {
+    "run": "pullup",
+    "case": "regen_d_p_tt",
+    "sim_ok": true,
+    "errors": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "transient": {
+      "window_s": [
+        7.000006282289957e-08,
+        1e-07
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            -0.0007624625201006887,
+            0.0005901450579538145
+          ],
+          "pass_signal": false
+        },
+        "data": {
+          "rising_edges": 30,
+          "frequency_hz": 983979001.1711881,
+          "max_period_relative": 3.694102168050328e-05,
+          "range_v": [
+            -0.03695830295122125,
+            1.261801270183389
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            -0.0007593007175648959,
+            0.0008555367943368421
+          ],
+          "pass_signal": false
+        }
+      },
+      "power_mw": {
+        "VDD:p": 1.0066773528430706,
+        "VRX:p": 0.10533898988506182,
+        "VRT:p": 0.03623947986386885
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": false,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression."
+    }
+  },
+  {
+    "run": "pullup",
+    "case": "regen_e_n_tt",
+    "sim_ok": true,
+    "errors": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "transient": {
+      "window_s": [
+        7.000097684364819e-08,
+        1e-07
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            1.198175125877223,
+            1.201359638310621
+          ],
+          "pass_signal": false
+        },
+        "data": {
+          "rising_edges": 30,
+          "frequency_hz": 983978366.1919545,
+          "max_period_relative": 3.7798641451702863e-05,
+          "range_v": [
+            -0.03482180764131302,
+            1.259317817647712
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            -0.0009729671859299859,
+            0.002358326871033955
+          ],
+          "pass_signal": false
+        }
+      },
+      "power_mw": {
+        "VDD:p": 1.2028410358249226,
+        "VRX:p": 0.27550981449944917,
+        "VRT:p": 0.05327920891321423
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": false,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression."
+    }
+  },
+  {
+    "run": "pullup",
+    "case": "regen_e_p_tt",
+    "sim_ok": true,
+    "errors": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "transient": {
+      "window_s": [
+        7.00000636366994e-08,
+        1e-07
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            -0.0007762581536932624,
+            0.0005917291914831836
+          ],
+          "pass_signal": false
+        },
+        "data": {
+          "rising_edges": 30,
+          "frequency_hz": 983979006.345268,
+          "max_period_relative": 3.69533707216263e-05,
+          "range_v": [
+            -0.03697093292967344,
+            1.261769884974682
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            -0.001712245488351534,
+            0.002430641913314787
+          ],
+          "pass_signal": false
+        }
+      },
+      "power_mw": {
+        "VDD:p": 1.184439201655778,
+        "VRX:p": 0.2754858009905514,
+        "VRT:p": 0.04385125473270772
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": false,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression."
+    }
+  },
+  {
+    "run": "regen",
+    "case": "regen_a_n_tt",
+    "sim_ok": true,
+    "errors": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "transient": {
+      "window_s": [
+        7.000097684354636e-08,
+        1e-07
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            1.198169103028089,
+            1.201358706544363
+          ],
+          "pass_signal": false
+        },
+        "data": {
+          "rising_edges": 30,
+          "frequency_hz": 983978367.4310646,
+          "max_period_relative": 3.7799969550667e-05,
+          "range_v": [
+            -0.03482181957900899,
+            1.25931770542373
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            -0.0009729615735389076,
+            0.002358253364182782
+          ],
+          "pass_signal": false
+        }
+      },
+      "power_mw": {
+        "VDD:p": 1.0352593788881355,
+        "VRX:p": 0.10792825418743256,
+        "VRT:p": 0.053279160277704456
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": false,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression."
+    }
+  },
+  {
+    "run": "regen",
+    "case": "regen_a_p_tt",
+    "sim_ok": true,
+    "errors": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "transient": {
+      "window_s": [
+        7.000097684354632e-08,
+        1e-07
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            1.198203683373388,
+            1.201404237700805
+          ],
+          "pass_signal": false
+        },
+        "data": {
+          "rising_edges": 30,
+          "frequency_hz": 983978367.4099206,
+          "max_period_relative": 3.7799813911165714e-05,
+          "range_v": [
+            -0.03482164593285884,
+            1.259317981573279
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            -0.0009729512067584914,
+            0.002358228419876919
+          ],
+          "pass_signal": false
+        }
+      },
+      "power_mw": {
+        "VDD:p": 1.0352596188374408,
+        "VRX:p": 0.10792861929985041,
+        "VRT:p": 0.053279033821106256
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": false,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression."
+    }
+  },
+  {
+    "run": "regen",
+    "case": "regen_b_n_tt",
+    "sim_ok": true,
+    "errors": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "transient": {
+      "window_s": [
+        7.000097684354906e-08,
+        1e-07
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            1.198170162522011,
+            1.201360778056853
+          ],
+          "pass_signal": false
+        },
+        "data": {
+          "rising_edges": 30,
+          "frequency_hz": 983978367.4327546,
+          "max_period_relative": 3.780000595021704e-05,
+          "range_v": [
+            -0.03482184160312033,
+            1.25931767083977
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            -0.0009729612441451097,
+            0.002358253040038812
+          ],
+          "pass_signal": false
+        }
+      },
+      "power_mw": {
+        "VDD:p": 1.12970767408273,
+        "VRX:p": 0.20237655369261756,
+        "VRT:p": 0.05327915605754113
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": false,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression."
+    }
+  },
+  {
+    "run": "regen",
+    "case": "regen_b_p_tt",
+    "sim_ok": true,
+    "errors": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "transient": {
+      "window_s": [
+        7.000097684354907e-08,
+        1e-07
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            1.198207689148125,
+            1.201408603201581
+          ],
+          "pass_signal": false
+        },
+        "data": {
+          "rising_edges": 30,
+          "frequency_hz": 983978367.4153932,
+          "max_period_relative": 3.780052453139504e-05,
+          "range_v": [
+            -0.03482164918988832,
+            1.25931796674362
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            -0.0009729507457276939,
+            0.002358227656123092
+          ],
+          "pass_signal": false
+        }
+      },
+      "power_mw": {
+        "VDD:p": 1.1297079783028634,
+        "VRX:p": 0.20237697748407799,
+        "VRT:p": 0.053279034965882204
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": false,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression."
+    }
+  },
+  {
+    "run": "regen",
+    "case": "regen_c_n_tt",
+    "sim_ok": true,
+    "errors": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "transient": {
+      "window_s": [
+        7.000097684346911e-08,
+        1e-07
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            1.198166309390783,
+            1.201356272825843
+          ],
+          "pass_signal": false
+        },
+        "data": {
+          "rising_edges": 30,
+          "frequency_hz": 983978367.4256706,
+          "max_period_relative": 3.780012576304337e-05,
+          "range_v": [
+            -0.03482166053414845,
+            1.259317921375407
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            -0.0009729618579684199,
+            0.00235825464622589
+          ],
+          "pass_signal": false
+        }
+      },
+      "power_mw": {
+        "VDD:p": 1.1509377144976443,
+        "VRX:p": 0.2236066027860462,
+        "VRT:p": 0.05327914629174867
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": false,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression."
+    }
+  },
+  {
+    "run": "regen",
+    "case": "regen_c_p_tt",
+    "sim_ok": true,
+    "errors": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "transient": {
+      "window_s": [
+        7.00009768434691e-08,
+        1e-07
+      ],
+      "signals": {
+        "clk": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            1.198186891549936,
+            1.201398543815057
+          ],
+          "pass_signal": false
+        },
+        "data": {
+          "rising_edges": 30,
+          "frequency_hz": 983978367.4658463,
+          "max_period_relative": 3.7799832573348624e-05,
+          "range_v": [
+            -0.03482151134780424,
+            1.259317965055718
+          ],
+          "pass_signal": true
+        },
+        "out": {
+          "rising_edges": 0,
+          "frequency_hz": 0.0,
+          "max_period_relative": null,
+          "range_v": [
+            -0.0009729492266132729,
+            0.002358224935185007
+          ],
+          "pass_signal": false
+        }
+      },
+      "power_mw": {
+        "VDD:p": 1.1509381854963063,
+        "VRX:p": 0.22360722863762342,
+        "VRT:p": 0.05327899039875207
+      },
+      "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+      "pass_function": false,
+      "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression."
+    }
+  }
+]

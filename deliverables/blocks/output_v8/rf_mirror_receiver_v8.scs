@@ -1,0 +1,24 @@
+simulator lang=spectre
+// Continuous differential pair with PMOS current-mirror load, then CMOS drive.
+// IREF and schematic R/C remain explicit assumptions; no hysteretic latch.
+subckt tx_rf_mirror_receiver_v8 (ip in clk vdd vss)
+parameters wn=4u wp=2u ibias=20u rlow=150k
+IREF (vdd nb) isource dc=ibias
+MR (nb nb vss vss) nch w=2u l=1u ad=.48p as=.48p pd=4.48u ps=4.48u
+MT (tail nb vss vss) nch w=10u l=1u ad=2.4p as=2.4p pd=20.48u ps=20.48u
+CB (nb vss) capacitor c=1p
+CP (ip gp) capacitor c=120f
+CN (in gn) capacitor c=120f
+RGP (gp cm) resistor r=50k
+RGN (gn cm) resistor r=50k
+RH (vdd cm) resistor r=50k
+RL (cm vss) resistor r=rlow
+CC (cm vss) capacitor c=10p
+MN0 (dp gp tail vss) nch w=wn l=180n ad=wn*240n as=wn*240n pd=2*(wn+240n) ps=2*(wn+240n)
+MN1 (dn gn tail vss) nch w=wn l=180n ad=wn*240n as=wn*240n pd=2*(wn+240n) ps=2*(wn+240n)
+MP0 (dp dp vdd vdd) pch w=wp l=180n ad=wp*240n as=wp*240n pd=2*(wp+240n) ps=2*(wp+240n)
+MP1 (dn dp vdd vdd) pch w=wp l=180n ad=wp*240n as=wp*240n pd=2*(wp+240n) ps=2*(wp+240n)
+X0 (dn a vdd vss) pll_inv wn=500n wp=1.25u
+X1 (a b vdd vss) pll_inv wn=2u wp=5u
+X2 (b clk vdd vss) pll_inv wn=8u wp=20u
+ends tx_rf_mirror_receiver_v8

@@ -1,0 +1,20 @@
+{
+  "time": "2026-10-01T13:37:54.085733+08:00",
+  "reason": "Regenerative trials show either insufficient swing or latched states. Test a continuous differential current-steering amplifier with active mirror load.",
+  "change": "Differential NMOS pair,PMOS mirror load,1:5 tail mirror,0.9V resistor-derived input bias,then0.5u/2u/8u NMOS inverter chain. Retimer scale2/output scale4.",
+  "cases": [
+    {
+      "case": "mirror_a_tt",
+      "wn": "4u",
+      "wp": "2u",
+      "ibias": "20u"
+    },
+    {
+      "case": "mirror_b_tt",
+      "wn": "8u",
+      "wp": "4u",
+      "ibias": "40u"
+    }
+  ],
+  "criteria": "Original output_v8 functional criteria. IREF and ideal R/C explicitly retained; no fullPLL power/noise or PVT claim."
+}

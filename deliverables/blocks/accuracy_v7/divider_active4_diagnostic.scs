@@ -1,0 +1,36 @@
+simulator lang=spectre
+// DIAGNOSTIC ABLATION ONLY: remove deselected /6../14 banks and their RF loading.
+// Keeps full pin list for TB reuse; only select2/divide4 is implemented.
+subckt tx_divider_bank_v7_active4 (cp cn reset s2 s3 s4 s5 s6 s7 out vdd vss)
+parameters rb_input=500k rb_clock=500k cdec=10p scale2=1 scale3=.75 scale4=.75 scale5=.5 scale6=.5 scale7=.5
+IREF (vdd nb) isource dc=15u
+MB (nb nb vss vss) nch w=1u l=1u ad=.24p as=.24p pd=2.48u ps=2.48u
+RH (vdd cm) resistor r=25k
+RL (cm vss) resistor r=50k
+CB (cm vss) capacitor c=cdec
+RIH (vdd cim) resistor r=20k
+RIL (cim vss) resistor r=100k
+CIM (cim vss) capacitor c=cdec
+CINP (cp icp) capacitor c=2p
+CINN (cn icn) capacitor c=2p
+RINP (icp cim) resistor r=rb_input
+RINN (icn cim) resistor r=rb_input
+XI2 (s2 sb2 vdd vss) pll_inv
+XB2 (nb nb2 s2 sb2 vdd vss) pll_tg wn=1u wp=2u
+MB2 (nb2 sb2 vss vss) nch w=1u l=180n ad=.24p as=.24p pd=2.48u ps=2.48u
+XCP2 (icp acp2 s2 sb2 vdd vss) pll_tg wn=4u wp=8u
+XCN2 (icn acn2 s2 sb2 vdd vss) pll_tg wn=4u wp=8u
+// Clamp only the deselected coupling plates to their input common mode.
+XKP2 (acp2 cim sb2 s2 vdd vss) pll_tg wn=500n wp=1u
+XKN2 (acn2 cim sb2 s2 vdd vss) pll_tg wn=500n wp=1u
+CP2 (acp2 ckp2) capacitor c=500f
+CN2 (acn2 ckn2) capacitor c=500f
+RP2 (ckp2 cm) resistor r=rb_clock
+RN2 (ckn2 cm) resistor r=rb_clock
+XM2_0 (q2_1n q2_1p ckp2 ckn2 m2_0p m2_0n nb2 reset vdd vss) tx_cml_latch_v2 scale=scale2 rload=2000
+XS2_0 (m2_0p m2_0n ckn2 ckp2 q2_0p q2_0n nb2 reset vdd vss) tx_cml_latch_v2 scale=scale2 rload=2000
+XM2_1 (q2_0p q2_0n ckp2 ckn2 m2_1p m2_1n nb2 reset vdd vss) tx_cml_latch_v2 scale=scale2 rload=2000
+XS2_1 (m2_1p m2_1n ckn2 ckp2 q2_1p q2_1n nb2 reset vdd vss) tx_cml_latch_v2 scale=scale2 rload=2000
+XO2 (q2_1p selected s2 sb2 vdd vss) pll_tg wn=1u wp=2u
+XR (selected out vdd vss) tx_limiter4 wn=1.2u wp=3u
+ends tx_divider_bank_v7_active4

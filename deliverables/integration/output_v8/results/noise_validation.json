@@ -1,0 +1,802 @@
+{
+  "protocol": {
+    "time": "2026-10-01T13:49:31.903712+08:00",
+    "selection": "mirror_gain4small_tt passes original TT frequency/swing screen and uses less power than standard-width gain4. This is a provisional fixture candidate, not architecture adoption.",
+    "conditions": "TT27,1.2V,ideal noiseless prior RF shape3.936GHz,/4 physical clamped divider,new40uA mirror receiver and4 half-width self-biased gain stages,physical C2MOS scale2/output scale4,10fF. All output-chain devices active; actual VCO/mainloop/FLL/generators absent.",
+    "band_hz": [
+      10000.0,
+      492000000.0
+    ],
+    "periodic_fund_hz": 984000000.0,
+    "sampleratio": 1,
+    "event": "out rising0.6V",
+    "precision_limits": {
+      "relative_integrated_jitter": 0.01,
+      "max_spectrum_delta_db": 0.1,
+      "numeric_vs_jee": 0.015
+    },
+    "refinement": "1ps/63harmonics/63maxsideband to0.5ps/127/127, joint time/bandwidth refinement, same dec30 frequency grid. maxsideband is for colored sources in fullspectrum.",
+    "acceptance": "Require PSS success and independent1 output/1 data/4 clock cycles, dominant output1/clock4, logic swing, endpoint mismatch<1mV, explicit band integral and convergence. Even<200fs here is not fullPLL signoff.",
+    "power": "VDD total simultaneously covers divider,receiver,retimer andbuffer; subbranch currents separate receiver/retimer. Ideal RF source real/reactive loading is not actual VCO supply power."
+  },
+  "cases": [
+    {
+      "case": "noise_gain4small_1ps",
+      "run": "noise_coarse",
+      "simulator_ok": true,
+      "valid_noise": true,
+      "periodic": {
+        "window_s": [
+          0.0,
+          1.016260162601637e-09
+        ],
+        "signals": {
+          "clk": {
+            "rising_edges": 4,
+            "frequency_hz": 3935999999.9999576,
+            "max_period_relative": 0.004937129259275697,
+            "range_v": [
+              0.122382293608423,
+              1.028537231940946
+            ],
+            "pass_signal": true
+          },
+          "data": {
+            "rising_edges": 1,
+            "frequency_hz": 983999999.9999894,
+            "max_period_relative": 1.0436096431476471e-14,
+            "range_v": [
+              -0.02188915424499816,
+              1.272484396623165
+            ],
+            "pass_signal": true
+          },
+          "out": {
+            "rising_edges": 1,
+            "frequency_hz": 983999999.9999894,
+            "max_period_relative": 1.0658141036401503e-14,
+            "range_v": [
+              -0.03092038973713813,
+              1.267103546733205
+            ],
+            "pass_signal": true
+          }
+        },
+        "power_mw": {
+          "VDD:p": 2.319851332223869,
+          "VRX:p": 0.9763530112908847,
+          "VRT:p": 0.47588304050358865
+        },
+        "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+        "pass_function": true,
+        "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression.",
+        "period_s": 1.016260162601637e-09,
+        "endpoint_voltage_error": {
+          "clk": 9.136503997808632e-09,
+          "out": 4.4622133599236946e-08,
+          "XRX.gp": 2.2809306665649842e-09,
+          "XRX.gn": 2.884780525569397e-09,
+          "XRX.dp": 8.095623060810908e-10,
+          "XRX.dn": 5.547237114100767e-10,
+          "XRX.tail": 1.1997383086992386e-09,
+          "XRX.nb": 6.277132147403108e-10,
+          "XRX.XGAIN.g0": 1.5531292363313298e-09,
+          "XRX.XGAIN.o0": 7.055878104011981e-10,
+          "XRX.XGAIN.g1": 2.0385140242495936e-09,
+          "XRX.XGAIN.o1": 6.2020464319800794e-09,
+          "XRT.clkb": 3.044054849854483e-08,
+          "data": 5.289479965142618e-10,
+          "vn": 0.0,
+          "vp": 0.0
+        },
+        "pass_periodic": true
+      },
+      "dominant_harmonics": {
+        "clk": 4,
+        "data": 1,
+        "out": 1
+      },
+      "pass_periodic": true,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "fundamental_hz": 984000000.0,
+      "slew_v_per_s": 22890900000.0,
+      "numeric_jitter_fs": 8405.7805638523,
+      "spectre_jee_fs": 8405.767085728288,
+      "integration_relative_error": 1.603437720154588e-06,
+      "device_psd_sum_max_relative_error": 6.661338147750939e-16,
+      "noise_budget_valid": true,
+      "noise_by_instance": {
+        "XRT": {
+          "variance_s2": 5.203406347865541e-26,
+          "jitter_fs": 228.1097619100406,
+          "variance_fraction": 0.0007364302943253974
+        },
+        "XRX": {
+          "variance_s2": 7.060205214706601e-23,
+          "jitter_fs": 8402.502731154927,
+          "variance_fraction": 0.9992202524019449
+        },
+        "XD": {
+          "variance_s2": 3.06067709240059e-27,
+          "jitter_fs": 55.323386487095945,
+          "variance_fraction": 4.331730372962623e-05
+        }
+      },
+      "top_devices": [
+        {
+          "device": "XRX.MP1",
+          "variance_s2": 2.000270032599297e-23,
+          "jitter_fs": 4472.4378504338065,
+          "variance_fraction": 0.28309521693258255
+        },
+        {
+          "device": "XRX.MN1",
+          "variance_s2": 1.710794426890162e-23,
+          "jitter_fs": 4136.175077157835,
+          "variance_fraction": 0.2421261687244126
+        },
+        {
+          "device": "XRX.MN0",
+          "variance_s2": 1.1707045630444928e-23,
+          "jitter_fs": 3421.5560247415106,
+          "variance_fraction": 0.1656880605306937
+        },
+        {
+          "device": "XRX.MP0",
+          "variance_s2": 4.714622895453898e-24,
+          "jitter_fs": 2171.3182391012833,
+          "variance_fraction": 0.0667253505572671
+        },
+        {
+          "device": "XRX.XGAIN.X0.MN",
+          "variance_s2": 3.2997360057840227e-24,
+          "jitter_fs": 1816.51754898873,
+          "variance_fraction": 0.04670066866740949
+        },
+        {
+          "device": "XRX.RGP",
+          "variance_s2": 2.9671075212080974e-24,
+          "jitter_fs": 1722.5293963262563,
+          "variance_fraction": 0.04199302762573412
+        },
+        {
+          "device": "XRX.RGN",
+          "variance_s2": 2.795703712947993e-24,
+          "jitter_fs": 1672.03579894331,
+          "variance_fraction": 0.03956717524122332
+        },
+        {
+          "device": "XRX.MT",
+          "variance_s2": 2.6722166656160152e-24,
+          "jitter_fs": 1634.6916117775902,
+          "variance_fraction": 0.03781948158571309
+        },
+        {
+          "device": "XRX.XGAIN.X0.MP",
+          "variance_s2": 2.4931512045913534e-24,
+          "jitter_fs": 1578.9715654790473,
+          "variance_fraction": 0.0352851949790175
+        },
+        {
+          "device": "XRX.XGAIN.R0",
+          "variance_s2": 2.0216450029627376e-24,
+          "jitter_fs": 1421.8456326066967,
+          "variance_fraction": 0.028612038442164527
+        },
+        {
+          "device": "XRX.XGAIN.X1.MN",
+          "variance_s2": 2.2409463709246334e-25,
+          "jitter_fs": 473.3863507669642,
+          "variance_fraction": 0.0031715777803600124
+        },
+        {
+          "device": "XRX.XGAIN.R1",
+          "variance_s2": 2.1150055019527084e-25,
+          "jitter_fs": 459.89188968198914,
+          "variance_fraction": 0.002993335557853911
+        },
+        {
+          "device": "XRX.XGAIN.X1.MP",
+          "variance_s2": 1.6779865118824872e-25,
+          "jitter_fs": 409.632336599845,
+          "variance_fraction": 0.0023748291373141836
+        },
+        {
+          "device": "XRX.XGAIN.X2.MN",
+          "variance_s2": 7.218089866900829e-26,
+          "jitter_fs": 268.6650306031812,
+          "variance_fraction": 0.0010215654303703259
+        },
+        {
+          "device": "XRX.XGAIN.X2.MP",
+          "variance_s2": 2.9679354276593876e-26,
+          "jitter_fs": 172.27696966395095,
+          "variance_fraction": 0.00042004744861537694
+        },
+        {
+          "device": "XRX.XGAIN.X3.MP",
+          "variance_s2": 2.955408023675411e-26,
+          "jitter_fs": 171.913001942128,
+          "variance_fraction": 0.00041827446392298645
+        },
+        {
+          "device": "XRX.XGAIN.X3.MN",
+          "variance_s2": 2.6391359438619386e-26,
+          "jitter_fs": 162.4541764271371,
+          "variance_fraction": 0.00037351295093457983
+        },
+        {
+          "device": "XRX.XGAIN.R2",
+          "variance_s2": 2.361733872148994e-26,
+          "jitter_fs": 153.67933732772906,
+          "variance_fraction": 0.0003342526518803193
+        },
+        {
+          "device": "XRX.XGAIN.R3",
+          "variance_s2": 1.5179206823395552e-26,
+          "jitter_fs": 123.2039237337657,
+          "variance_fraction": 0.0002148290370050516
+        },
+        {
+          "device": "XRT.XS.MPCK",
+          "variance_s2": 1.3263198623583445e-26,
+          "jitter_fs": 115.16596121937873,
+          "variance_fraction": 0.00018771206039037102
+        },
+        {
+          "device": "XRT.XM.MNCK",
+          "variance_s2": 1.2234845006818473e-26,
+          "jitter_fs": 110.61123363754007,
+          "variance_fraction": 0.00017315792592467687
+        },
+        {
+          "device": "XRX.XGAIN.XO.MN",
+          "variance_s2": 1.1943592830139005e-26,
+          "jitter_fs": 109.28674590332996,
+          "variance_fraction": 0.00016903587756143582
+        },
+        {
+          "device": "XRT.XS.MPD",
+          "variance_s2": 9.28339467688329e-27,
+          "jitter_fs": 96.35037455497144,
+          "variance_fraction": 0.00013138649217815516
+        },
+        {
+          "device": "XRT.XO0.MN",
+          "variance_s2": 6.4077932549910466e-27,
+          "jitter_fs": 80.04869302487734,
+          "variance_fraction": 9.068853664840269e-05
+        },
+        {
+          "device": "XRX.MR",
+          "variance_s2": 6.0141168574859425e-27,
+          "jitter_fs": 77.55073731104008,
+          "variance_fraction": 8.511689365337559e-05
+        }
+      ]
+    },
+    {
+      "case": "noise_direct4wide_1ps",
+      "run": "noise_direct",
+      "simulator_ok": true,
+      "valid_noise": true,
+      "periodic": {
+        "window_s": [
+          0.0,
+          1.016260162601637e-09
+        ],
+        "signals": {
+          "clk": {
+            "rising_edges": 4,
+            "frequency_hz": 3935999999.9999576,
+            "max_period_relative": 0.0017418473114432231,
+            "range_v": [
+              0.07048686888473212,
+              1.108742555060973
+            ],
+            "pass_signal": true
+          },
+          "data": {
+            "rising_edges": 1,
+            "frequency_hz": 983999999.9999894,
+            "max_period_relative": 1.0880185641326534e-14,
+            "range_v": [
+              -0.03145597453721919,
+              1.266927997179309
+            ],
+            "pass_signal": true
+          },
+          "out": {
+            "rising_edges": 1,
+            "frequency_hz": 983999999.9999894,
+            "max_period_relative": 1.0658141036401503e-14,
+            "range_v": [
+              -0.03071169260079296,
+              1.267213553932302
+            ],
+            "pass_signal": true
+          }
+        },
+        "power_mw": {
+          "VDD:p": 2.360961479108422,
+          "VRX:p": 1.012807490910855,
+          "VRT:p": 0.48023824164516526
+        },
+        "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+        "pass_function": true,
+        "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression.",
+        "period_s": 1.016260162601637e-09,
+        "endpoint_voltage_error": {
+          "clk": 1.0142333173313034e-07,
+          "out": 9.908293496785348e-08,
+          "XRX.g0": 8.979905707917624e-11,
+          "XRX.o0": 1.4203083154029628e-11,
+          "XRX.g1": 5.543583370126726e-10,
+          "XRX.o1": 5.814453418739873e-09,
+          "XRX.g2": 4.77226591577562e-10,
+          "XRX.o2": 5.694362925634522e-09,
+          "XRX.g3": 5.997041696570449e-09,
+          "XRX.o3": 1.6204849573320246e-08,
+          "XRT.clkb": 3.4926536905677263e-09,
+          "data": 3.5799785358392455e-10,
+          "vn": 0.0,
+          "vp": 0.0
+        },
+        "pass_periodic": true
+      },
+      "dominant_harmonics": {
+        "clk": 4,
+        "data": 1,
+        "out": 1
+      },
+      "pass_periodic": true,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "fundamental_hz": 984000000.0,
+      "slew_v_per_s": 22737800000.0,
+      "numeric_jitter_fs": 30034.6767952368,
+      "spectre_jee_fs": 30034.620516507333,
+      "integration_relative_error": 1.8737952569569671e-06,
+      "device_psd_sum_max_relative_error": 6.661338147750939e-16,
+      "noise_budget_valid": true,
+      "noise_by_instance": {
+        "XRT": {
+          "variance_s2": 5.784086855084141e-26,
+          "jitter_fs": 240.5012859650472,
+          "variance_fraction": 6.411931589484186e-05
+        },
+        "XRX": {
+          "variance_s2": 9.014362721187281e-22,
+          "jitter_fs": 30023.928325899127,
+          "variance_fraction": 0.999284390763329
+        },
+        "XD": {
+          "variance_s2": 5.876972070572118e-25,
+          "jitter_fs": 766.6141187437208,
+          "variance_fraction": 0.0006514899207762585
+        }
+      },
+      "top_devices": [
+        {
+          "device": "XRX.X0.MN",
+          "variance_s2": 4.266858673602736e-22,
+          "jitter_fs": 20656.375949335194,
+          "variance_fraction": 0.4730012982617977
+        },
+        {
+          "device": "XRX.X0.MP",
+          "variance_s2": 2.5408396316795085e-22,
+          "jitter_fs": 15940.011391713333,
+          "variance_fraction": 0.28166399133268566
+        },
+        {
+          "device": "XRX.R0",
+          "variance_s2": 1.9622862629485316e-22,
+          "jitter_fs": 14008.162845100465,
+          "variance_fraction": 0.21752863662396596
+        },
+        {
+          "device": "XRX.R1",
+          "variance_s2": 1.013191711203514e-23,
+          "jitter_fs": 3183.0672490594884,
+          "variance_fraction": 0.011231705370328235
+        },
+        {
+          "device": "XRX.X1.MN",
+          "variance_s2": 8.222317422536908e-24,
+          "jitter_fs": 2867.458355850509,
+          "variance_fraction": 0.009114824542095099
+        },
+        {
+          "device": "XRX.X1.MP",
+          "variance_s2": 4.7327450565589646e-24,
+          "jitter_fs": 2175.4873147317967,
+          "variance_fraction": 0.005246469891172494
+        },
+        {
+          "device": "XRX.X2.MN",
+          "variance_s2": 5.398787033785445e-25,
+          "jitter_fs": 734.7643863025374,
+          "variance_fraction": 0.0005984808664551589
+        },
+        {
+          "device": "XRX.R2",
+          "variance_s2": 4.079344960837755e-25,
+          "jitter_fs": 638.6974996692687,
+          "variance_fraction": 0.0004522145236426992
+        },
+        {
+          "device": "XRX.X2.MP",
+          "variance_s2": 3.0588506374968947e-25,
+          "jitter_fs": 553.0687694579124,
+          "variance_fraction": 0.00033908794113007607
+        },
+        {
+          "device": "XD.XR.X0.MP",
+          "variance_s2": 1.0936629342991402e-25,
+          "jitter_fs": 330.7057505244111,
+          "variance_fraction": 0.00012123766624487546
+        },
+        {
+          "device": "XD.XS2_1.RP",
+          "variance_s2": 8.218670085346281e-26,
+          "jitter_fs": 286.68222974831,
+          "variance_fraction": 9.110781297735875e-05
+        },
+        {
+          "device": "XD.XR.X0.MN",
+          "variance_s2": 7.766673590796738e-26,
+          "jitter_fs": 278.6875237752264,
+          "variance_fraction": 8.609721982004667e-05
+        },
+        {
+          "device": "XD.XO2.MP",
+          "variance_s2": 6.268849541355502e-26,
+          "jitter_fs": 250.3767070107661,
+          "variance_fraction": 6.949313765682738e-05
+        },
+        {
+          "device": "XD.XR.R0",
+          "variance_s2": 5.115197894713586e-26,
+          "jitter_fs": 226.1680325491113,
+          "variance_fraction": 5.670436801748187e-05
+        },
+        {
+          "device": "XD.XS2_1.MT",
+          "variance_s2": 4.7133215666946044e-26,
+          "jitter_fs": 217.10185551244385,
+          "variance_fraction": 5.2249380415720945e-05
+        },
+        {
+          "device": "XRX.R3",
+          "variance_s2": 3.238529261126018e-26,
+          "jitter_fs": 179.95914150512104,
+          "variance_fraction": 3.590061593668915e-05
+        },
+        {
+          "device": "XRX.X3.MN",
+          "variance_s2": 3.118418487138079e-26,
+          "jitter_fs": 176.5904438846587,
+          "variance_fraction": 3.456913166740693e-05
+        },
+        {
+          "device": "XRX.X3.MP",
+          "variance_s2": 2.841312412637352e-26,
+          "jitter_fs": 168.56192964715822,
+          "variance_fraction": 3.1497280851115334e-05
+        },
+        {
+          "device": "XD.XR.X1.MN",
+          "variance_s2": 2.433629323090532e-26,
+          "jitter_fs": 156.00093983981418,
+          "variance_fraction": 2.6977922574076222e-05
+        },
+        {
+          "device": "XD.XR.R1",
+          "variance_s2": 1.646847807261741e-26,
+          "jitter_fs": 128.32956819306065,
+          "variance_fraction": 1.825608042032196e-05
+        },
+        {
+          "device": "XD.XS2_1.MHP",
+          "variance_s2": 1.5651386603194827e-26,
+          "jitter_fs": 125.10550189018397,
+          "variance_fraction": 1.7350296199657366e-05
+        },
+        {
+          "device": "XD.XS2_1.MCH",
+          "variance_s2": 1.4570871538560335e-26,
+          "jitter_fs": 120.70986512526777,
+          "variance_fraction": 1.615249456745095e-05
+        },
+        {
+          "device": "XRT.XM.MNCK",
+          "variance_s2": 1.4508607069473427e-26,
+          "jitter_fs": 120.45167939665028,
+          "variance_fraction": 1.6083471482866758e-05
+        },
+        {
+          "device": "XRT.XS.MPCK",
+          "variance_s2": 1.295363880232165e-26,
+          "jitter_fs": 113.81405362397761,
+          "variance_fraction": 1.4359716220783833e-05
+        },
+        {
+          "device": "XRT.XS.MPD",
+          "variance_s2": 1.0599577203991968e-26,
+          "jitter_fs": 102.9542481104688,
+          "variance_fraction": 1.1750128518508198e-05
+        }
+      ]
+    },
+    {
+      "case": "noise_gain4small_halfps",
+      "run": "noise_fine",
+      "simulator_ok": true,
+      "valid_noise": true,
+      "periodic": {
+        "window_s": [
+          0.0,
+          1.016260162601637e-09
+        ],
+        "signals": {
+          "clk": {
+            "rising_edges": 4,
+            "frequency_hz": 3935999999.9999576,
+            "max_period_relative": 0.004941556217420429,
+            "range_v": [
+              0.1223556692225867,
+              1.028551384337975
+            ],
+            "pass_signal": true
+          },
+          "data": {
+            "rising_edges": 1,
+            "frequency_hz": 983999999.9999894,
+            "max_period_relative": 1.0880185641326534e-14,
+            "range_v": [
+              -0.02189229213994227,
+              1.272491693973108
+            ],
+            "pass_signal": true
+          },
+          "out": {
+            "rising_edges": 1,
+            "frequency_hz": 983999999.9999894,
+            "max_period_relative": 1.0658141036401503e-14,
+            "range_v": [
+              -0.03093479252979865,
+              1.267131328406932
+            ],
+            "pass_signal": true
+          }
+        },
+        "power_mw": {
+          "VDD:p": 2.3198646142719315,
+          "VRX:p": 0.9763665054079678,
+          "VRT:p": 0.475882641977804
+        },
+        "power_scope": "Simultaneous supply power for divider+receiver+retimer/output; ideal RF-source energy and actual VCO/mainloop/FLL/bias generators excluded.",
+        "pass_function": true,
+        "functional_scope": "Predeclared frequency,cycle-period and logic-swing screen. Does not prove data-independent retiming, setup/hold, metastability or noise suppression.",
+        "period_s": 1.016260162601637e-09,
+        "endpoint_voltage_error": {
+          "clk": 2.649916397423624e-08,
+          "out": 1.782864401111972e-07,
+          "XRX.gp": 9.363398945083645e-12,
+          "XRX.gn": 2.6349256110336228e-11,
+          "XRX.dp": 3.897426825716366e-11,
+          "XRX.dn": 1.1480982831102438e-11,
+          "XRX.tail": 1.6861595453221412e-11,
+          "XRX.nb": 7.547074076796889e-12,
+          "XRX.XGAIN.g0": 1.937314197952844e-10,
+          "XRX.XGAIN.o0": 2.51410559037879e-10,
+          "XRX.XGAIN.g1": 7.131190082887429e-10,
+          "XRX.XGAIN.o1": 3.361972811255498e-09,
+          "XRT.clkb": 1.0253258320158665e-07,
+          "data": 2.3467991994152726e-09,
+          "vn": 0.0,
+          "vp": 0.0
+        },
+        "pass_periodic": true
+      },
+      "dominant_harmonics": {
+        "clk": 4,
+        "data": 1,
+        "out": 1
+      },
+      "pass_periodic": true,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "fundamental_hz": 984000000.0,
+      "slew_v_per_s": 22872100000.0,
+      "numeric_jitter_fs": 8410.26234797784,
+      "spectre_jee_fs": 8410.270288974156,
+      "integration_relative_error": 9.442022721461996e-07,
+      "device_psd_sum_max_relative_error": 6.661338147750939e-16,
+      "noise_budget_valid": true,
+      "noise_by_instance": {
+        "XRT": {
+          "variance_s2": 5.210472098226068e-26,
+          "jitter_fs": 228.26458547540983,
+          "variance_fraction": 0.0007366445634091824
+        },
+        "XRX": {
+          "variance_s2": 7.067734261832127e-23,
+          "jitter_fs": 8406.981778160416,
+          "variance_fraction": 0.999220017198057
+        },
+        "XD": {
+          "variance_s2": 3.065422510140589e-27,
+          "jitter_fs": 55.36625786650737,
+          "variance_fraction": 4.333823853343318e-05
+        }
+      },
+      "top_devices": [
+        {
+          "device": "XRX.MP1",
+          "variance_s2": 2.0029282663475698e-23,
+          "jitter_fs": 4475.408658823872,
+          "variance_fraction": 0.2831693924252736
+        },
+        {
+          "device": "XRX.MN1",
+          "variance_s2": 1.712471153719949e-23,
+          "jitter_fs": 4138.20148581476,
+          "variance_fraction": 0.24210523376803592
+        },
+        {
+          "device": "XRX.MN0",
+          "variance_s2": 1.1716328718015585e-23,
+          "jitter_fs": 3422.9123152683283,
+          "variance_fraction": 0.1656427611651437
+        },
+        {
+          "device": "XRX.MP0",
+          "variance_s2": 4.7197038445715446e-24,
+          "jitter_fs": 2172.487938878268,
+          "variance_fraction": 0.0667260876262771
+        },
+        {
+          "device": "XRX.XGAIN.X0.MN",
+          "variance_s2": 3.3039362946105823e-24,
+          "jitter_fs": 1817.6733190016798,
+          "variance_fraction": 0.04671029157038905
+        },
+        {
+          "device": "XRX.RGP",
+          "variance_s2": 2.96946507439153e-24,
+          "jitter_fs": 1723.2135893125756,
+          "variance_fraction": 0.04198161437288359
+        },
+        {
+          "device": "XRX.RGN",
+          "variance_s2": 2.7978366151006548e-24,
+          "jitter_fs": 1672.6734932737634,
+          "variance_fraction": 0.03955517068257075
+        },
+        {
+          "device": "XRX.MT",
+          "variance_s2": 2.6753808366056857e-24,
+          "jitter_fs": 1635.6591443835985,
+          "variance_fraction": 0.03782391904575517
+        },
+        {
+          "device": "XRX.XGAIN.X0.MP",
+          "variance_s2": 2.4955519177679575e-24,
+          "jitter_fs": 1579.731596749257,
+          "variance_fraction": 0.03528153914412085
+        },
+        {
+          "device": "XRX.XGAIN.R0",
+          "variance_s2": 2.0238930618444765e-24,
+          "jitter_fs": 1422.6359554870237,
+          "variance_fraction": 0.02861333470026409
+        },
+        {
+          "device": "XRX.XGAIN.X1.MN",
+          "variance_s2": 2.2440290729059815e-25,
+          "jitter_fs": 473.7118399307729,
+          "variance_fraction": 0.003172556700286581
+        },
+        {
+          "device": "XRX.XGAIN.R1",
+          "variance_s2": 2.1174966974485846e-25,
+          "jitter_fs": 460.16265574778936,
+          "variance_fraction": 0.002993668137563686
+        },
+        {
+          "device": "XRX.XGAIN.X1.MP",
+          "variance_s2": 1.6803508440766845e-25,
+          "jitter_fs": 409.9208269991517,
+          "variance_fraction": 0.002375641382535266
+        },
+        {
+          "device": "XRX.XGAIN.X2.MN",
+          "variance_s2": 7.228002298864207e-26,
+          "jitter_fs": 268.849442976254,
+          "variance_fraction": 0.0010218783437263071
+        },
+        {
+          "device": "XRX.XGAIN.X2.MP",
+          "variance_s2": 2.972651369860527e-26,
+          "jitter_fs": 172.41378627767926,
+          "variance_fraction": 0.00042026661485513765
+        },
+        {
+          "device": "XRX.XGAIN.X3.MP",
+          "variance_s2": 2.956856308553089e-26,
+          "jitter_fs": 171.95511939320355,
+          "variance_fraction": 0.0004180335454093191
+        },
+        {
+          "device": "XRX.XGAIN.X3.MN",
+          "variance_s2": 2.643245625304425e-26,
+          "jitter_fs": 162.58061462869506,
+          "variance_fraction": 0.0003736959881809023
+        },
+        {
+          "device": "XRX.XGAIN.R2",
+          "variance_s2": 2.3648317714309938e-26,
+          "jitter_fs": 153.78009531246215,
+          "variance_fraction": 0.0003343344777520322
+        },
+        {
+          "device": "XRX.XGAIN.R3",
+          "variance_s2": 1.519688801214269e-26,
+          "jitter_fs": 123.27565863601252,
+          "variance_fraction": 0.00021485010808702698
+        },
+        {
+          "device": "XRT.XS.MPCK",
+          "variance_s2": 1.327941353759398e-26,
+          "jitter_fs": 115.23633774809916,
+          "variance_fraction": 0.00018774129490226632
+        },
+        {
+          "device": "XRT.XM.MNCK",
+          "variance_s2": 1.2258352517085207e-26,
+          "jitter_fs": 110.71744450214341,
+          "variance_fraction": 0.00017330576899429924
+        },
+        {
+          "device": "XRX.XGAIN.XO.MN",
+          "variance_s2": 1.1966263471568452e-26,
+          "jitter_fs": 109.39041764052486,
+          "variance_fraction": 0.00016917628123666305
+        },
+        {
+          "device": "XRT.XS.MPD",
+          "variance_s2": 9.288071493852742e-27,
+          "jitter_fs": 96.37464134227811,
+          "variance_fraction": 0.00013131261892433552
+        },
+        {
+          "device": "XRT.XO0.MN",
+          "variance_s2": 6.41988155807732e-27,
+          "jitter_fs": 80.12416338457032,
+          "variance_fraction": 9.076280917229362e-05
+        },
+        {
+          "device": "XRX.MR",
+          "variance_s2": 6.0179649080740424e-27,
+          "jitter_fs": 77.57554323415366,
+          "variance_fraction": 8.508060399803803e-05
+        }
+      ]
+    }
+  ],
+  "precision": {
+    "status": "completed",
+    "pass_precision": true,
+    "relative_jitter_change": 0.0005331788156368589,
+    "max_abs_spectrum_delta_db": 0.007012621016716049
+  }
+}

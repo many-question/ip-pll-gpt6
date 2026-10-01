@@ -1,0 +1,32 @@
+{
+  "time": "2026-10-01T13:32:25.283112+08:00",
+  "source": "regen_a_p_tt measured internal qp/qn range0.009..0.373V; following MOS inverter never switches.",
+  "hypothesis": "Weak regenerative PMOS cannot recharge internal capacitance within127ps half-cycle. Increase PMOS/NMOS strength ratio and evaluate both output polarities.",
+  "cases": [
+    {
+      "case": "regen_d_p_tt",
+      "wn": "8u",
+      "wp": "2.4u",
+      "ibias": "10u"
+    },
+    {
+      "case": "regen_d_n_tt",
+      "wn": "8u",
+      "wp": "2.4u",
+      "ibias": "10u"
+    },
+    {
+      "case": "regen_e_p_tt",
+      "wn": "16u",
+      "wp": "4.8u",
+      "ibias": "20u"
+    },
+    {
+      "case": "regen_e_n_tt",
+      "wn": "16u",
+      "wp": "4.8u",
+      "ibias": "20u"
+    }
+  ],
+  "criteria": "Unchanged output_v8 functional criteria; circuit investigation, not selected or noise-qualified."
+}

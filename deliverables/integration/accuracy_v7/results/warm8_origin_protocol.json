@@ -1,0 +1,22 @@
+{
+  "time": "2026-10-01T13:17:45.803642+08:00",
+  "source_job": "settle_1ps/continue_1ps",
+  "source_sha256": "d1374de12479dfc6da511aec7b9907a5bc693b92d6b55f81b413f715554ecca8",
+  "derived_sha256": "ea6a4b3378efcf7130f03232dc7efa8fcf88279289d5eade03361112b1f71714",
+  "removed_observer_equations": [
+    "obsctrl",
+    "obscycles",
+    "obsdivcycles",
+    "obsphase",
+    "XOBS:cycles_vss_flow",
+    "XOBS:divcycles_vss_flow",
+    "XOBS:phase_vss_flow",
+    "XOBS:sampled_ctrl_vss_flow"
+  ],
+  "question": "Does moving the shooting boundary away from the reference transition improve convergence?",
+  "source_phase": "Cumulative8us=192 reference periods; four-us cold1ps plus four-us1ps continuation. Same source phase and enable/reset final values.",
+  "conditions": "TT27,1.2V,Q5,code6,/4,full v6 clamped bank,quiet10 sampler,fast filter; maxstep1ps,reltol1e-5,traponly,20 shooting iterations. No circuit or tolerance relaxation.",
+  "changed": "Edge versus mid: only tstab83.3333333333333ns versus100ns and unique output paths. Allopts duplicates mid but runs with bare -preset_override; record effective values to compare absolute tolerances. All include out/ref waveforms. Changing tstab also changes stabilization duration; origin-effect inference is conditional.",
+  "source_help": "research/spectre_help/pss.txt: shooting boundary placement discussion, lines585-600. Installed Spectre help, not a claim of convergence.",
+  "criteria": "Require solver success plus independent24MHz period,164 VCO/41 output/1 reference edges, dominant harmonics164/41, control0.2..1V, plausible swing and endpoint mismatch<1mV. Not fullPLL/noise/capture signoff."
+}

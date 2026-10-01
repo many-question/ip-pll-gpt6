@@ -1,0 +1,31 @@
+{
+  "time": "2026-10-01T13:13:50.859352+08:00",
+  "question": "Does a24MHz PSS superperiod with sampleratio41 reproduce the984MHz RC clock sampled-noise result?",
+  "circuit": "LTI R1kohm/C20fF, noiseless984MHz sine0.6Vdc/0.5Vpeak,27C; not PLL devices.",
+  "cases": {
+    "sampling_984": {
+      "fund_hz": 984000000.0,
+      "sampleratio": 1
+    },
+    "sampling_24ratio41": {
+      "fund_hz": 24000000.0,
+      "sampleratio": 41
+    },
+    "sampling_24ratio1": {
+      "fund_hz": 24000000.0,
+      "sampleratio": 1,
+      "negative_control": true
+    }
+  },
+  "analytic": "For the matched984MHz sampling rate, integrate sampled thermal PSD from10kHz to492MHz. Total variance approaches k*T/C; edge-time variance is voltage variance divided by squared sinusoidal crossing slew. Account for finite10kHz lower cutoff using the exact alias sum of the RC PSD.",
+  "limits": {
+    "correct_cases_relative_jitter_difference": 0.01,
+    "numeric_vs_spectre_jee": 0.015,
+    "numeric_vs_analytic": 0.02
+  },
+  "scope": "Tool/measurement verification only. Identical edges in an LTI fixture do not validate phase-dependent noise or all41 edge phases of the actual PLL. Deliberate ratio1 at24MHz integrated past12MHz is invalid bandwidth and must not become a performance result.",
+  "sources": [
+    "research/spectre_help/pnoise.txt: sampleratio definition",
+    "https://community.cadence.com/cadence_technology_forums/f/rf-design/47558/phase-noise-and-jitter-simulation/1372822"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "time": "2026-10-01T13:29:58.233725+08:00",
+  "reason": "The new3-inverter linear clock receiver attenuates the3.936GHz input and cannot provide valid clock rails with retimer load; initial scale2/4 cases fail functionality.",
+  "change": "Use existing physical differential regenerative receiver,cc240f,plus8u/20u MOS output inverter. Retimer scale2/output scale4. Three input/regeneration/bias choices and two output polarities.",
+  "criteria": "Keep original protocol functional/swing criteria. IREF is an explicit ideal current-reference assumption; supplies and both receiver output chains are counted.",
+  "cases": [
+    {
+      "case": "regen_a_p_tt",
+      "wn": "8u",
+      "wp": "600n",
+      "ibias": "10u",
+      "polarity": "p"
+    },
+    {
+      "case": "regen_a_n_tt",
+      "wn": "8u",
+      "wp": "600n",
+      "ibias": "10u",
+      "polarity": "n"
+    },
+    {
+      "case": "regen_b_p_tt",
+      "wn": "16u",
+      "wp": "1.2u",
+      "ibias": "10u",
+      "polarity": "p"
+    },
+    {
+      "case": "regen_b_n_tt",
+      "wn": "16u",
+      "wp": "1.2u",
+      "ibias": "10u",
+      "polarity": "n"
+    },
+    {
+      "case": "regen_c_p_tt",
+      "wn": "16u",
+      "wp": "1.2u",
+      "ibias": "20u",
+      "polarity": "p"
+    },
+    {
+      "case": "regen_c_n_tt",
+      "wn": "16u",
+      "wp": "1.2u",
+      "ibias": "20u",
+      "polarity": "n"
+    }
+  ],
+  "scope": "RF driven output-chain fixture; no real VCO/mainloop/FLL or noise conclusion."
+}

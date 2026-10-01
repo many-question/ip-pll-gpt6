@@ -1,0 +1,22 @@
+{
+  "time": "2026-10-01T13:24:39.393421+08:00",
+  "question": "Can a physical MOS RF clock receiver drive the existing retimer while connected to the actual divider?",
+  "conditions": "TT27,1.2V,ideal noiseless replay of prior measured R2 RF shape at3.936GHz,clamped divide4,10fF output. Two retimer scales2/4 and RF polarity vp/vn. Complete divider+clockreceiver+retimer/output-buffer on the measured supply.",
+  "source_waveform": "share/deliverables/blocks/interface_v5/tank_waveform_v5.va and its existing source provenance; voltage replay fixes source impedance and omits VCO back-action/noise.",
+  "physical_change": "Add120fF AC coupling,100kohm resistive feedback,and three MOS inverter stages2u/4u/12u NMOS width with2.5x PMOS. Existing C2MOS retimer scale2 or4,output scale4.",
+  "criteria": {
+    "window_s": [
+      7e-08,
+      1e-07
+    ],
+    "clock_average_frequency_relative": 0.001,
+    "output_average_frequency_relative": 0.001,
+    "max_clock_period_relative": 0.02,
+    "max_output_period_relative": 0.02,
+    "low_v": 0.2,
+    "high_v": 1.0,
+    "minimum_output_edges": 20
+  },
+  "margin_note": "Report data-to-clock-falling geometric separation; no uncharacterized10ps setup/hold rule or metastability signoff.",
+  "scope": "Output-chain functional fixture only. Not connected to real VCO, main loop,FLL or generators. Total chain power is measured together; do not declare fullPLL<=4mW by adding unrelated fixtures. PSS/noise only meaningful after waveform validation."
+}

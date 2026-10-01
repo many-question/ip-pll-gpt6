@@ -1,0 +1,21 @@
+{
+  "time": "2026-10-01T13:19:38.841020+08:00",
+  "reason": "Original predeclared combined check fails: auto Jee differs from the full10kHz-492MHz spectral integral for fund24MHz/ratio41. The scalar matches integration only through the last grid point below12MHz. Preserve the failure.",
+  "cases": {
+    "sampling_984_fine": {
+      "fund_hz": 984000000.0,
+      "sampleratio": 1
+    },
+    "sampling_24ratio41_fine": {
+      "fund_hz": 24000000.0,
+      "sampleratio": 41
+    }
+  },
+  "changed": "Joint maxacfreq100GHz->1THz and maxstep1ps->0.25ps; same RC/circuit, temperature, band and noise settings.",
+  "new_diagnostic_limits": {
+    "psd_integral_vs_analytic": 0.005,
+    "between_fundamental_psd_integrals": 0.005,
+    "auto_jee_vs_actual_grid_clipped_integral": 0.015
+  },
+  "scope": "Separate PSD normalization and integration-band diagnostic, not a relaxed pass for the original auto-Jee check or PLL jitter signoff. Values beyond nominal bandwidth are solver accuracy controls, not a physical1THz circuit claim."
+}

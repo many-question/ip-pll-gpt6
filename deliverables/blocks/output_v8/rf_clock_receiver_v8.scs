@@ -1,0 +1,11 @@
+simulator lang=spectre
+// AC coupling and resistive inverter feedback track the actual MOS threshold.
+// Passives are schematic assumptions; no separate ideal GHz CMOS clock is used.
+subckt tx_rf_clock_receiver_v8 (rf clk vdd vss)
+parameters cin=120f rbias=100k wfirst=2u wsecond=4u wfinal=12u
+CC (rf g0) capacitor c=cin
+RB (g0 a) resistor r=rbias
+X0 (g0 a vdd vss) pll_inv wn=wfirst wp=2.5*wfirst
+X1 (a b vdd vss) pll_inv wn=wsecond wp=2.5*wsecond
+X2 (b clk vdd vss) pll_inv wn=wfinal wp=2.5*wfinal
+ends tx_rf_clock_receiver_v8

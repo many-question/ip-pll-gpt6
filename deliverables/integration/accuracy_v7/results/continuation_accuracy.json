@@ -1,0 +1,191 @@
+{
+  "protocol": {
+    "added_time_s": 4e-06,
+    "total_elapsed_s": 8e-06,
+    "settling_window_s": [
+      3e-06,
+      4e-06
+    ],
+    "criteria": {
+      "phase_pp_rad": 0.02,
+      "abs_phase_drift_rad_per_us": 0.01,
+      "max_vco_cycles_error": 0.001,
+      "max_output_cycles_error": 0.001,
+      "ctrl_bounds_v": [
+        0.2,
+        1
+      ]
+    },
+    "precision_limits": {
+      "max_end_phase_delta_rad": 0.02,
+      "max_mean_control_delta_v": 0.005,
+      "max_mean_output_delta_hz": 5000,
+      "both_pass_stationary": true
+    }
+  },
+  "status": "completed",
+  "pass_precision": true,
+  "scope": "Same physical1ps4us initial state,4us continuation at1ps vs0.5ps. Not two independent cold starts, no jitter/PVT/fullPLL signoff.",
+  "cases": {
+    "continue_1ps": {
+      "end_s": 4e-06,
+      "last_window_samples": 24,
+      "phase_pp_rad": 9.355758847762186e-05,
+      "phase_drift_rad_per_us": 7.56535702314966e-05,
+      "max_vco_cycles_error": 8.754685012490881e-06,
+      "max_div_cycles_error": 2.274126927659381e-06,
+      "mean_output_mhz": 984.0000030394035,
+      "ctrl_range_v": [
+        0.8857591382625344,
+        0.8857804555223893
+      ],
+      "pass_stationary": true,
+      "criteria": "Last 1 us: phase pp<.02 rad, abs drift<.01 rad/us, VCO cycles/ref error<.001 from164, output cycles/ref error<.001 from41, control inside0.2..1 V. Same v5 functional screen, not jitter or full capture signoff.",
+      "slow_nodes": {
+        "XV.XL.nb": {
+          "mean_v": 1.040572406972102,
+          "pp_v": 2.5893565092083293e-07,
+          "slope_v_per_us": -2.52868204530639e-08,
+          "final_v": 1.040572454472996
+        },
+        "XV.XL.nfilt": {
+          "mean_v": 1.0406821258541434,
+          "pp_v": 0.0001619237476280233,
+          "slope_v_per_us": -7.505205968310981e-06,
+          "final_v": 1.040682604165548
+        },
+        "XD.acp3": {
+          "mean_v": 0.9999986266861057,
+          "pp_v": 0.0002630413894451067,
+          "slope_v_per_us": 4.718055004572399e-06,
+          "final_v": 1.000034101770326
+        },
+        "XD.acn3": {
+          "mean_v": 0.9999986237345354,
+          "pp_v": 0.00026175491255553407,
+          "slope_v_per_us": 4.714957379653979e-06,
+          "final_v": 1.00003373419247
+        },
+        "XD.acp7": {
+          "mean_v": 0.9999986640504267,
+          "pp_v": 0.00019982504188387207,
+          "slope_v_per_us": 3.8059553915086544e-06,
+          "final_v": 1.000020579777219
+        },
+        "XD.acn7": {
+          "mean_v": 0.9999986628219971,
+          "pp_v": 0.00019902999341148142,
+          "slope_v_per_us": 3.7956437564858615e-06,
+          "final_v": 1.000020347423856
+        },
+        "XD.cim": {
+          "mean_v": 0.9999988242453184,
+          "pp_v": 6.0507368355722235e-06,
+          "slope_v_per_us": 2.2213177801071246e-07,
+          "final_v": 0.9999967334877794
+        },
+        "XD.cm": {
+          "mean_v": 0.8000249992195637,
+          "pp_v": 5.8080713130514994e-05,
+          "slope_v_per_us": -3.952925420187626e-06,
+          "final_v": 0.7999976956660558
+        },
+        "XD.nb7": {
+          "mean_v": 4.4911546414539274e-08,
+          "pp_v": 3.271182480368094e-05,
+          "slope_v_per_us": 4.873400949016475e-07,
+          "final_v": 6.008483218397881e-06
+        },
+        "vmid": {
+          "mean_v": 0.5999996872407111,
+          "pp_v": 0.00046491795636505184,
+          "slope_v_per_us": -2.107657184733277e-05,
+          "final_v": 0.599769430523398
+        }
+      },
+      "measurement_limit": "Phase/cycle outputs come from solver-edge observer; 1 ns strobes may alias RF and current, so no accurate swing/power is inferred from them."
+    },
+    "continue_halfps": {
+      "end_s": 4e-06,
+      "last_window_samples": 24,
+      "phase_pp_rad": 0.0008086976055012851,
+      "phase_drift_rad_per_us": -0.0008020308845555839,
+      "max_vco_cycles_error": 1.2201966512748186e-05,
+      "max_div_cycles_error": 3.0597552722611e-06,
+      "mean_output_mhz": 983.9999644944146,
+      "ctrl_range_v": [
+        0.8841378460577337,
+        0.8841740827538732
+      ],
+      "pass_stationary": true,
+      "criteria": "Last 1 us: phase pp<.02 rad, abs drift<.01 rad/us, VCO cycles/ref error<.001 from164, output cycles/ref error<.001 from41, control inside0.2..1 V. Same v5 functional screen, not jitter or full capture signoff.",
+      "slow_nodes": {
+        "XV.XL.nb": {
+          "mean_v": 1.0405723521809183,
+          "pp_v": 2.712169051566349e-07,
+          "slope_v_per_us": -3.832110176584833e-08,
+          "final_v": 1.040572393283239
+        },
+        "XV.XL.nfilt": {
+          "mean_v": 1.0406679018045335,
+          "pp_v": 0.00016493108972892578,
+          "slope_v_per_us": -1.0888595715630235e-05,
+          "final_v": 1.0406667505524
+        },
+        "XD.acp3": {
+          "mean_v": 0.9999986593154724,
+          "pp_v": 0.0002628551077017427,
+          "slope_v_per_us": 4.7402815254334665e-06,
+          "final_v": 1.000034106946726
+        },
+        "XD.acn3": {
+          "mean_v": 0.9999986459477569,
+          "pp_v": 0.0002607429306241693,
+          "slope_v_per_us": 4.683296219244798e-06,
+          "final_v": 1.000033392945626
+        },
+        "XD.acp7": {
+          "mean_v": 0.9999986707984689,
+          "pp_v": 0.00019979551962678865,
+          "slope_v_per_us": 3.825661683544082e-06,
+          "final_v": 1.000020556071326
+        },
+        "XD.acn7": {
+          "mean_v": 0.9999986706283549,
+          "pp_v": 0.00019900184648302677,
+          "slope_v_per_us": 3.820537608966959e-06,
+          "final_v": 1.000020323703603
+        },
+        "XD.cim": {
+          "mean_v": 0.9999988345057212,
+          "pp_v": 6.0573776469174945e-06,
+          "slope_v_per_us": 2.385546955632902e-07,
+          "final_v": 0.9999967561541329
+        },
+        "XD.cm": {
+          "mean_v": 0.800025020298062,
+          "pp_v": 5.806079445380696e-05,
+          "slope_v_per_us": -3.952354766534849e-06,
+          "final_v": 0.7999977279702756
+        },
+        "XD.nb7": {
+          "mean_v": 4.475332472230551e-08,
+          "pp_v": 3.270940516769719e-05,
+          "slope_v_per_us": 4.867058456327256e-07,
+          "final_v": 6.000357619358276e-06
+        },
+        "vmid": {
+          "mean_v": 0.5999994423774374,
+          "pp_v": 0.00046530145717682547,
+          "slope_v_per_us": -2.073714068748979e-05,
+          "final_v": 0.5997693496921073
+        }
+      },
+      "measurement_limit": "Phase/cycle outputs come from solver-edge observer; 1 ns strobes may alias RF and current, so no accurate swing/power is inferred from them."
+    }
+  },
+  "only_timestep_changed": true,
+  "end_phase_delta_rad": -0.0002311555142692212,
+  "mean_control_delta_v": -0.0016132713228399487,
+  "mean_output_delta_hz": -38.544988910871325
+}

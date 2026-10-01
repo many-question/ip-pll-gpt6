@@ -1,0 +1,25 @@
+{
+  "time": "2026-10-01T13:34:40.393639+08:00",
+  "reason": "Weak0.6u PMOS leaves both internal outputs below inverter threshold;2.4u PMOS with8u input instead latches one side high and cannot be overturned. Test intermediate pull-up and input bias.",
+  "cases": [
+    {
+      "case": "regen_f_p_tt",
+      "wn": "8u",
+      "wp": "1.2u",
+      "ibias": "10u"
+    },
+    {
+      "case": "regen_g_p_tt",
+      "wn": "8u",
+      "wp": "1.5u",
+      "ibias": "20u"
+    },
+    {
+      "case": "regen_h_p_tt",
+      "wn": "16u",
+      "wp": "2.4u",
+      "ibias": "20u"
+    }
+  ],
+  "criteria": "Keep original functional criteria. This is a bracketed feasibility exploration; no PVT/robustness/noise claim."
+}

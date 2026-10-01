@@ -1,0 +1,219 @@
+{
+  "protocol": {
+    "time": "2026-10-01T13:13:50.859352+08:00",
+    "question": "Does a24MHz PSS superperiod with sampleratio41 reproduce the984MHz RC clock sampled-noise result?",
+    "circuit": "LTI R1kohm/C20fF, noiseless984MHz sine0.6Vdc/0.5Vpeak,27C; not PLL devices.",
+    "cases": {
+      "sampling_984": {
+        "fund_hz": 984000000.0,
+        "sampleratio": 1
+      },
+      "sampling_24ratio41": {
+        "fund_hz": 24000000.0,
+        "sampleratio": 41
+      },
+      "sampling_24ratio1": {
+        "fund_hz": 24000000.0,
+        "sampleratio": 1,
+        "negative_control": true
+      }
+    },
+    "analytic": "For the matched984MHz sampling rate, integrate sampled thermal PSD from10kHz to492MHz. Total variance approaches k*T/C; edge-time variance is voltage variance divided by squared sinusoidal crossing slew. Account for finite10kHz lower cutoff using the exact alias sum of the RC PSD.",
+    "limits": {
+      "correct_cases_relative_jitter_difference": 0.01,
+      "numeric_vs_spectre_jee": 0.015,
+      "numeric_vs_analytic": 0.02
+    },
+    "scope": "Tool/measurement verification only. Identical edges in an LTI fixture do not validate phase-dependent noise or all41 edge phases of the actual PLL. Deliberate ratio1 at24MHz integrated past12MHz is invalid bandwidth and must not become a performance result.",
+    "sources": [
+      "research/spectre_help/pnoise.txt: sampleratio definition",
+      "https://community.cadence.com/cadence_technology_forums/f/rf-design/47558/phase-noise-and-jitter-simulation/1372822"
+    ]
+  },
+  "refinement_protocol": {
+    "time": "2026-10-01T13:19:38.841020+08:00",
+    "reason": "Original predeclared combined check fails: auto Jee differs from the full10kHz-492MHz spectral integral for fund24MHz/ratio41. The scalar matches integration only through the last grid point below12MHz. Preserve the failure.",
+    "cases": {
+      "sampling_984_fine": {
+        "fund_hz": 984000000.0,
+        "sampleratio": 1
+      },
+      "sampling_24ratio41_fine": {
+        "fund_hz": 24000000.0,
+        "sampleratio": 41
+      }
+    },
+    "changed": "Joint maxacfreq100GHz->1THz and maxstep1ps->0.25ps; same RC/circuit, temperature, band and noise settings.",
+    "new_diagnostic_limits": {
+      "psd_integral_vs_analytic": 0.005,
+      "between_fundamental_psd_integrals": 0.005,
+      "auto_jee_vs_actual_grid_clipped_integral": 0.015
+    },
+    "scope": "Separate PSD normalization and integration-band diagnostic, not a relaxed pass for the original auto-Jee check or PLL jitter signoff. Values beyond nominal bandwidth are solver accuracy controls, not a physical1THz circuit claim."
+  },
+  "cases": [
+    {
+      "case": "sampling_24ratio41_fine",
+      "simulator_ok": true,
+      "valid_frequency_band": true,
+      "scope": "RC tool fixture, not PLL noise",
+      "fund_hz": 24000000.0,
+      "sampleratio": 41,
+      "declared_sample_rate_hz": 984000000.0,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "period_s": 4.166666666666667e-08,
+      "rising_edges": 41,
+      "periodic_pass": true,
+      "endpoint_error_v": 3.181575891630928e-09,
+      "slew_v_per_s": 3067960000.0,
+      "analytic_slew_v_per_s": 3067961451.2289395,
+      "numeric_fs": 147.7799978224405,
+      "spectre_jee_fs": 22.959089459542557,
+      "analytic_fs": 148.36843143933223,
+      "numeric_vs_spectre_relative": 5.436666318272401,
+      "numeric_vs_analytic_relative": -0.003966029775898328,
+      "auto_jee_grid_cutoff_hz": 11885022.27437019,
+      "grid_clipped_psd_integral_fs": 22.959093385546048,
+      "clipped_vs_auto_jee_relative": 1.7099996485470115e-07,
+      "sample_ratio_header": 41.0,
+      "full_band_upper_limit_hz": 492000000.0,
+      "valid_correct_case": false
+    },
+    {
+      "case": "sampling_984_fine",
+      "simulator_ok": true,
+      "valid_frequency_band": true,
+      "scope": "RC tool fixture, not PLL noise",
+      "fund_hz": 984000000.0,
+      "sampleratio": 1,
+      "declared_sample_rate_hz": 984000000.0,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "period_s": 1.016260162601626e-09,
+      "rising_edges": 1,
+      "periodic_pass": true,
+      "endpoint_error_v": 3.1512550902057512e-09,
+      "slew_v_per_s": 3067960000.0,
+      "analytic_slew_v_per_s": 3067961451.2289395,
+      "numeric_fs": 147.814574321406,
+      "spectre_jee_fs": 147.8145490456315,
+      "analytic_fs": 148.36843143933223,
+      "numeric_vs_spectre_relative": 1.709965269380831e-07,
+      "numeric_vs_analytic_relative": -0.0037329849251165337,
+      "auto_jee_grid_cutoff_hz": 492000000.0,
+      "grid_clipped_psd_integral_fs": 147.814574321406,
+      "clipped_vs_auto_jee_relative": 1.709965269380831e-07,
+      "sample_ratio_header": 1.0,
+      "full_band_upper_limit_hz": 492000000.0,
+      "valid_correct_case": true
+    },
+    {
+      "case": "sampling_24ratio1",
+      "simulator_ok": true,
+      "valid_frequency_band": false,
+      "scope": "RC tool fixture, not PLL noise",
+      "fund_hz": 24000000.0,
+      "sampleratio": 1,
+      "declared_sample_rate_hz": 24000000.0,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "period_s": 4.166666666666667e-08,
+      "rising_edges": 41,
+      "periodic_pass": true,
+      "endpoint_error_v": 9.271253209597319e-10,
+      "slew_v_per_s": 3067950000.0,
+      "analytic_slew_v_per_s": 3067961451.2289395,
+      "numeric_fs": 931.7882637036098,
+      "spectre_jee_fs": 144.7626943761415,
+      "analytic_fs": 950.021499419082,
+      "numeric_vs_spectre_relative": 5.436660133463079,
+      "numeric_vs_analytic_relative": -0.019192445356890797,
+      "auto_jee_grid_cutoff_hz": 11885022.27437019,
+      "grid_clipped_psd_integral_fs": 144.76258114127273,
+      "clipped_vs_auto_jee_relative": -7.82210287320062e-07,
+      "sample_ratio_header": 1.0,
+      "full_band_upper_limit_hz": 12000000.0,
+      "valid_correct_case": false
+    },
+    {
+      "case": "sampling_24ratio41",
+      "simulator_ok": true,
+      "valid_frequency_band": true,
+      "scope": "RC tool fixture, not PLL noise",
+      "fund_hz": 24000000.0,
+      "sampleratio": 41,
+      "declared_sample_rate_hz": 984000000.0,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "period_s": 4.166666666666667e-08,
+      "rising_edges": 41,
+      "periodic_pass": true,
+      "endpoint_error_v": 9.271253209597319e-10,
+      "slew_v_per_s": 3067950000.0,
+      "analytic_slew_v_per_s": 3067961451.2289395,
+      "numeric_fs": 145.50300596085668,
+      "spectre_jee_fs": 22.605357910533918,
+      "analytic_fs": 148.36843143933223,
+      "numeric_vs_spectre_relative": 5.436660128838457,
+      "numeric_vs_analytic_relative": -0.01931290538477659,
+      "auto_jee_grid_cutoff_hz": 11885022.27437019,
+      "grid_clipped_psd_integral_fs": 22.605340228390403,
+      "clipped_vs_auto_jee_relative": -7.822102876531289e-07,
+      "sample_ratio_header": 41.0,
+      "full_band_upper_limit_hz": 492000000.0,
+      "valid_correct_case": false
+    },
+    {
+      "case": "sampling_984",
+      "simulator_ok": true,
+      "valid_frequency_band": true,
+      "scope": "RC tool fixture, not PLL noise",
+      "fund_hz": 984000000.0,
+      "sampleratio": 1,
+      "declared_sample_rate_hz": 984000000.0,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "period_s": 1.016260162601504e-09,
+      "rising_edges": 1,
+      "periodic_pass": true,
+      "endpoint_error_v": 0.0,
+      "slew_v_per_s": 3067960000.0,
+      "analytic_slew_v_per_s": 3067961451.2289395,
+      "numeric_fs": 145.99728911950405,
+      "spectre_jee_fs": 145.9974804771391,
+      "analytic_fs": 148.36843143933223,
+      "numeric_vs_spectre_relative": -1.3106913517857421e-06,
+      "numeric_vs_analytic_relative": -0.01598144764910947,
+      "auto_jee_grid_cutoff_hz": 492000000.0,
+      "grid_clipped_psd_integral_fs": 145.99728911950405,
+      "clipped_vs_auto_jee_relative": -1.3106913517857421e-06,
+      "sample_ratio_header": 1.0,
+      "full_band_upper_limit_hz": 492000000.0,
+      "valid_correct_case": true
+    }
+  ],
+  "comparison": {
+    "completed": true,
+    "pass_normalization": false,
+    "negative_control_ratio": 6.403910747756511,
+    "expected_negative_control_ratio": 6.4031242374328485
+  },
+  "refined_psd_diagnostic": {
+    "completed": true,
+    "pass_psd_and_clip_diagnostic": true,
+    "between_fundamental_relative": -0.00023391806338624033
+  },
+  "interpretation": "In this installed Spectre21.1.0.509 fixture, auto Jee matches the spectrum integrated only over saved frequencies <= PSSfund/2, including when sampleratio41. It must not be relabeled as a10kHz-492MHz integral. Original combined check remains failed.",
+  "limitation": "Validates identical-edge LTI normalization only. Real PLL edges can have phase-dependent slopes/noise; this does not sign off PLL multi-phase noise or substitute for PSS convergence."
+}
