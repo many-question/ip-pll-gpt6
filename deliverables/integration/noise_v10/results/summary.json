@@ -1,0 +1,562 @@
+{
+  "scope": "TT27/1.2V/984MHz/10fF output-chain fixture; ideal noiseless3.936GHz RF voltage shape.10kHz\u2013492MHz,out0.6V rising. Not fullPLL.",
+  "baseline": {
+    "jitter_fs": 792.9830497277682,
+    "power_mw": {
+      "VDD:p": 1.7239668324474164,
+      "VRT:p": 1.0075173434513922
+    },
+    "gate_pass": true,
+    "variance_closure": {
+      "max_spectrum_difference_db": 2.603684159693883e-14,
+      "variance_relative_error": 1.1102230246251565e-15,
+      "rss_fs": 792.9830497277687
+    },
+    "contributions": [
+      {
+        "group": "slave",
+        "jitter_fs": 367.0989110719569,
+        "variance_fraction": 0.214308000360745
+      },
+      {
+        "group": "output",
+        "jitter_fs": 355.0454865533299,
+        "variance_fraction": 0.20046575030169922
+      },
+      {
+        "group": "bias",
+        "jitter_fs": 105.90329422075703,
+        "variance_fraction": 0.01783573990294912
+      },
+      {
+        "group": "divider",
+        "jitter_fs": 499.14146916790065,
+        "variance_fraction": 0.3962045854399549
+      },
+      {
+        "group": "master",
+        "jitter_fs": 328.0937292200919,
+        "variance_fraction": 0.1711859239946528
+      }
+    ]
+  },
+  "run_counts": {
+    "completed": 32,
+    "simulator_success": 32,
+    "physical_transient_cases": 8,
+    "physical_transient_pass": 6,
+    "timing_diagnostic_cases": 3,
+    "noise_cases": 21,
+    "valid_noise": 21
+  },
+  "single_module_changes": [
+    {
+      "case": "opt_divlast2_tt",
+      "group": "divider",
+      "function_pass": true,
+      "change": "Double scale of only selected/4 final slave XS2_1: device widths/current double and Rload halves; all other divider/retimer/output parameters unchanged.",
+      "only": {
+        "case": "noise_opt_divlast2_only_coarse",
+        "valid_noise": true,
+        "jitter_fs": 783.2495266153514,
+        "baseline_jitter_fs": 499.14146916790065,
+        "relative_rms_change": 0.5691934551562632,
+        "power_mw": {
+          "VDD:p": 1.8841563766195952,
+          "VRT:p": 1.0064617944999883
+        },
+        "power_delta_mw": 0.1601895441721788,
+        "noise_by_instance": {
+          "XRT": {
+            "variance_s2": 0.0,
+            "jitter_fs": 0.0,
+            "variance_fraction": 0.0
+          },
+          "XD": {
+            "variance_s2": 6.134798209431726e-25,
+            "jitter_fs": 783.2495266153517,
+            "variance_fraction": 1.0000000000000009
+          }
+        },
+        "inactive_variance_fraction": 0.0,
+        "pass_single_on": true,
+        "passes_internal_reduction_target": false
+      }
+    },
+    {
+      "case": "opt_master2_tt",
+      "group": "master",
+      "function_pass": true,
+      "change": "Double only XRT.XM scale, preserving slave/output/bias reference.",
+      "only": {
+        "case": "noise_opt_master2_only_coarse",
+        "valid_noise": true,
+        "jitter_fs": 205.55689265105988,
+        "baseline_jitter_fs": 328.0937292200919,
+        "relative_rms_change": -0.3734811904522315,
+        "power_mw": {
+          "VDD:p": 2.0461720071101817,
+          "VRT:p": 1.3297663555840744
+        },
+        "power_delta_mw": 0.3222051746627652,
+        "noise_by_instance": {
+          "XRT": {
+            "variance_s2": 4.2253636116359335e-26,
+            "jitter_fs": 205.55689265105985,
+            "variance_fraction": 0.9999999999999996
+          },
+          "XD": {
+            "variance_s2": 0.0,
+            "jitter_fs": 0.0,
+            "variance_fraction": 0.0
+          }
+        },
+        "inactive_variance_fraction": 0.0,
+        "pass_single_on": true,
+        "passes_internal_reduction_target": true
+      },
+      "all": {
+        "case": "noise_opt_master2_all_coarse",
+        "valid_noise": true,
+        "jitter_fs": 713.1152825014393,
+        "baseline_jitter_fs": 792.9830497277682,
+        "relative_rms_change": -0.10071812664059787,
+        "power_mw": {
+          "VDD:p": 2.0461720071101817,
+          "VRT:p": 1.3297663555840744
+        },
+        "power_delta_mw": 0.3222051746627652,
+        "noise_by_instance": {
+          "XRT": {
+            "variance_s2": 3.298459731965892e-25,
+            "jitter_fs": 574.3221858822704,
+            "variance_fraction": 0.6486220358700647
+          },
+          "XD": {
+            "variance_s2": 1.7868743294051903e-25,
+            "jitter_fs": 422.7143633004668,
+            "variance_fraction": 0.3513779641299365
+          }
+        }
+      },
+      "all_on_contributions_fs": {
+        "XRT.XL": 368.79547330279155,
+        "XRT.XS": 380.04886652051005,
+        "XRT.XM": 205.55689265105985,
+        "XRT.bias_and_passives": 84.5286638252107,
+        "XD": 422.7143633004668
+      },
+      "all_on_group_relative_changes": {
+        "XRT.XL": 0.038727394855634145,
+        "XRT.XS": 0.03527647469925288,
+        "XRT.XM": -0.3734811904522315,
+        "XRT.bias_and_passives": -0.20183159129111294,
+        "XD": -0.15311712327738025
+      },
+      "precision": {
+        "status": "completed",
+        "pass_precision": true,
+        "relative_jitter_change": -0.0006280738348988235,
+        "max_abs_spectrum_delta_db": 0.005523090247348071,
+        "source_group_relative_rms_changes": {
+          "XD": -0.0006131017453916421,
+          "XRT.XM": -0.0005929447038603985,
+          "XRT.XS": -0.0006708663066516962,
+          "XRT.XL": -0.0006169309193928552,
+          "XRT.bias_and_passives": -0.0005573385045488655
+        }
+      },
+      "fine": {
+        "jitter_fs": 712.6673934512337,
+        "power_mw": {
+          "VDD:p": 2.0461961640728887,
+          "VRT:p": 1.3297646411357968
+        }
+      }
+    },
+    {
+      "case": "opt_slave2_tt",
+      "group": "slave",
+      "function_pass": true,
+      "change": "Double only XRT.XS scale, preserving master/output/bias reference.",
+      "only": {
+        "case": "noise_opt_slave2_only_coarse",
+        "valid_noise": true,
+        "jitter_fs": 256.2753489235188,
+        "baseline_jitter_fs": 367.0989110719569,
+        "relative_rms_change": -0.3018901958189547,
+        "power_mw": {
+          "VDD:p": 2.0473336239354585,
+          "VRT:p": 1.3308769886992997
+        },
+        "power_delta_mw": 0.32336679148804204,
+        "noise_by_instance": {
+          "XRT": {
+            "variance_s2": 6.56770544658713e-26,
+            "jitter_fs": 256.2753489235188,
+            "variance_fraction": 1.0
+          },
+          "XD": {
+            "variance_s2": 0.0,
+            "jitter_fs": 0.0,
+            "variance_fraction": 0.0
+          }
+        },
+        "inactive_variance_fraction": 0.0,
+        "pass_single_on": true,
+        "passes_internal_reduction_target": true
+      },
+      "all": {
+        "case": "noise_opt_slave2_all_coarse",
+        "valid_noise": true,
+        "jitter_fs": 723.0893189757759,
+        "baseline_jitter_fs": 792.9830497277682,
+        "relative_rms_change": -0.0881402582009626,
+        "power_mw": {
+          "VDD:p": 2.0473336239354585,
+          "VRT:p": 1.3308769886992997
+        },
+        "power_delta_mw": 0.32336679148804204,
+        "noise_by_instance": {
+          "XRT": {
+            "variance_s2": 2.932860242656712e-25,
+            "jitter_fs": 541.5588834703676,
+            "variance_fraction": 0.5609284599503004
+          },
+          "XD": {
+            "variance_s2": 2.29572138951181e-25,
+            "jitter_fs": 479.13686870369406,
+            "variance_fraction": 0.4390715400497013
+          }
+        }
+      },
+      "all_on_contributions_fs": {
+        "XRT.XL": 347.3997432310079,
+        "XRT.XS": 256.2753489235188,
+        "XRT.XM": 316.0506483807775,
+        "XRT.bias_and_passives": 83.87118611847511,
+        "XD": 479.13686870369406
+      },
+      "all_on_group_relative_changes": {
+        "XRT.XL": -0.021534545887470724,
+        "XRT.XS": -0.3018901958189547,
+        "XRT.XM": -0.036706220713031756,
+        "XRT.bias_and_passives": -0.20803987509921695,
+        "XD": -0.040078017355592244
+      },
+      "precision": {
+        "status": "not_run",
+        "pass_precision": false
+      }
+    },
+    {
+      "case": "opt_bias1p_tt",
+      "group": "bias",
+      "function_pass": true,
+      "change": "Add1pF at the existing retimer current-mirror reference gate nb; no new bias generator.",
+      "only": {
+        "case": "noise_opt_bias1p_only_coarse",
+        "valid_noise": true,
+        "jitter_fs": 38.16917244105542,
+        "baseline_jitter_fs": 105.90329422075703,
+        "relative_rms_change": -0.6395846538872416,
+        "power_mw": {
+          "VDD:p": 1.7238387382705662,
+          "VRT:p": 1.0073931102383529
+        },
+        "power_delta_mw": -0.00012809417685022417,
+        "noise_by_instance": {
+          "XRT": {
+            "variance_s2": 1.4568857248350249e-27,
+            "jitter_fs": 38.16917244105543,
+            "variance_fraction": 1.0000000000000002
+          },
+          "XD": {
+            "variance_s2": 0.0,
+            "jitter_fs": 0.0,
+            "variance_fraction": 0.0
+          }
+        },
+        "inactive_variance_fraction": 0.0,
+        "pass_single_on": true,
+        "passes_internal_reduction_target": true
+      },
+      "all": {
+        "case": "noise_opt_bias1p_all_coarse",
+        "valid_noise": true,
+        "jitter_fs": 786.5746560230315,
+        "baseline_jitter_fs": 792.9830497277682,
+        "relative_rms_change": -0.008081375392496315,
+        "power_mw": {
+          "VDD:p": 1.7238387382705662,
+          "VRT:p": 1.0073931102383529
+        },
+        "power_delta_mw": -0.00012809417685022417,
+        "noise_by_instance": {
+          "XRT": {
+            "variance_s2": 3.709105997359576e-25,
+            "jitter_fs": 609.0243014330033,
+            "variance_fraction": 0.5995002196252216
+          },
+          "XD": {
+            "variance_s2": 2.4778908976179354e-25,
+            "jitter_fs": 497.7841799030917,
+            "variance_fraction": 0.40049978037478
+          }
+        }
+      },
+      "all_on_contributions_fs": {
+        "XRT.XL": 355.19513197001135,
+        "XRT.XS": 368.5926208535249,
+        "XRT.XM": 327.7645680793737,
+        "XRT.bias_and_passives": 38.16917244105543,
+        "XD": 497.7841799030917
+      },
+      "all_on_group_relative_changes": {
+        "XRT.XL": 0.00042148238000172533,
+        "XRT.XS": 0.0040689572660574935,
+        "XRT.XM": -0.001003253373664248,
+        "XRT.bias_and_passives": -0.6395846538872416,
+        "XD": -0.0027192476455061287
+      },
+      "precision": {
+        "status": "not_run",
+        "pass_precision": false
+      }
+    },
+    {
+      "case": "opt_outfirst2_tt",
+      "group": "output",
+      "function_pass": true,
+      "change": "Double only first output-restoring inverter XRT.XL.X0 widths; retain all remaining stages, feedbackR and couplingC.",
+      "only": {
+        "case": "noise_opt_outfirst2_only_coarse",
+        "valid_noise": true,
+        "jitter_fs": 261.2072410624918,
+        "baseline_jitter_fs": 355.0454865533299,
+        "relative_rms_change": -0.26429922093022595,
+        "power_mw": {
+          "VDD:p": 1.7603296534501465,
+          "VRT:p": 1.043881837275029
+        },
+        "power_delta_mw": 0.03636282100273003,
+        "noise_by_instance": {
+          "XRT": {
+            "variance_s2": 6.822922278347869e-26,
+            "jitter_fs": 261.2072410624918,
+            "variance_fraction": 1.0
+          },
+          "XD": {
+            "variance_s2": 0.0,
+            "jitter_fs": 0.0,
+            "variance_fraction": 0.0
+          }
+        },
+        "inactive_variance_fraction": 0.0,
+        "pass_single_on": true,
+        "passes_internal_reduction_target": true
+      },
+      "all": {
+        "case": "noise_opt_outfirst2_all_coarse",
+        "valid_noise": true,
+        "jitter_fs": 621.0467406178334,
+        "baseline_jitter_fs": 792.9830497277682,
+        "relative_rms_change": -0.21682217440708307,
+        "power_mw": {
+          "VDD:p": 1.7603296534501465,
+          "VRT:p": 1.043881837275029
+        },
+        "power_delta_mw": 0.03636282100273003,
+        "noise_by_instance": {
+          "XRT": {
+            "variance_s2": 2.4788874642145007e-25,
+            "jitter_fs": 497.8842701084762,
+            "variance_fraction": 0.6426999076872549
+          },
+          "XD": {
+            "variance_s2": 1.3781030761058461e-25,
+            "jitter_fs": 371.2281072475313,
+            "variance_fraction": 0.35730009231274573
+          }
+        }
+      },
+      "all_on_contributions_fs": {
+        "XRT.XL": 261.2072410624918,
+        "XRT.XS": 331.10527953703496,
+        "XRT.XM": 246.56811049023344,
+        "XRT.bias_and_passives": 96.08841964539418,
+        "XD": 371.2281072475313
+      },
+      "all_on_group_relative_changes": {
+        "XRT.XL": -0.26429922093022606,
+        "XRT.XS": -0.09804886489534326,
+        "XRT.XM": -0.24848270926619687,
+        "XRT.bias_and_passives": -0.09267770797482067,
+        "XD": -0.25626674965237617
+      },
+      "precision": {
+        "status": "completed",
+        "pass_precision": true,
+        "relative_jitter_change": 0.0013781387945244195,
+        "max_abs_spectrum_delta_db": 0.012525711828309078,
+        "source_group_relative_rms_changes": {
+          "XD": 0.0013876875354632556,
+          "XRT.XM": 0.0014194895897161608,
+          "XRT.XS": 0.0013217449577536122,
+          "XRT.XL": 0.0014038693390621138,
+          "XRT.bias_and_passives": 0.0014427740213487361
+        }
+      },
+      "fine": {
+        "jitter_fs": 621.9026292242918,
+        "power_mw": {
+          "VDD:p": 1.76036300530773,
+          "VRT:p": 1.0438809314622357
+        }
+      }
+    },
+    {
+      "case": "opt_out2stage_tt",
+      "group": "output",
+      "function_pass": true,
+      "change": "Replace four AC-coupled restoring inverters plus final inverter with two AC-coupled inverters plus identical final inverter; same first-stage sizes/R/C.",
+      "only": {
+        "case": "noise_opt_out2stage_only_coarse",
+        "valid_noise": true,
+        "jitter_fs": 396.3617669194136,
+        "baseline_jitter_fs": 355.0454865533299,
+        "relative_rms_change": 0.1163689778658199,
+        "power_mw": {
+          "VDD:p": 1.6172040057642596,
+          "VRT:p": 0.9007546177695651
+        },
+        "power_delta_mw": -0.10676282668315684,
+        "noise_by_instance": {
+          "XRT": {
+            "variance_s2": 1.5710265027547958e-25,
+            "jitter_fs": 396.36176691941364,
+            "variance_fraction": 1.0000000000000002
+          },
+          "XD": {
+            "variance_s2": 0.0,
+            "jitter_fs": 0.0,
+            "variance_fraction": 0.0
+          }
+        },
+        "inactive_variance_fraction": 0.0,
+        "pass_single_on": true,
+        "passes_internal_reduction_target": false
+      }
+    },
+    {
+      "case": "opt_divlasthalf_tt",
+      "group": "divider",
+      "function_pass": false,
+      "change": "Halve only selected/4 final slave XS2_1 scale from1 to0.5; remaining divider,retimer and output unchanged."
+    },
+    {
+      "case": "opt_divtg4_tt",
+      "group": "divider",
+      "function_pass": false,
+      "change": "Only selected/4 differential output selection TGs XO2/XON2 use WN4um/WP8um instead of1um/2um. L,divider latches,retimer and output unchanged."
+    }
+  ],
+  "best_qualified_single_module_candidate": {
+    "case": "opt_outfirst2_tt",
+    "group": "output",
+    "function_pass": true,
+    "change": "Double only first output-restoring inverter XRT.XL.X0 widths; retain all remaining stages, feedbackR and couplingC.",
+    "only": {
+      "case": "noise_opt_outfirst2_only_coarse",
+      "valid_noise": true,
+      "jitter_fs": 261.2072410624918,
+      "baseline_jitter_fs": 355.0454865533299,
+      "relative_rms_change": -0.26429922093022595,
+      "power_mw": {
+        "VDD:p": 1.7603296534501465,
+        "VRT:p": 1.043881837275029
+      },
+      "power_delta_mw": 0.03636282100273003,
+      "noise_by_instance": {
+        "XRT": {
+          "variance_s2": 6.822922278347869e-26,
+          "jitter_fs": 261.2072410624918,
+          "variance_fraction": 1.0
+        },
+        "XD": {
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        }
+      },
+      "inactive_variance_fraction": 0.0,
+      "pass_single_on": true,
+      "passes_internal_reduction_target": true
+    },
+    "all": {
+      "case": "noise_opt_outfirst2_all_coarse",
+      "valid_noise": true,
+      "jitter_fs": 621.0467406178334,
+      "baseline_jitter_fs": 792.9830497277682,
+      "relative_rms_change": -0.21682217440708307,
+      "power_mw": {
+        "VDD:p": 1.7603296534501465,
+        "VRT:p": 1.043881837275029
+      },
+      "power_delta_mw": 0.03636282100273003,
+      "noise_by_instance": {
+        "XRT": {
+          "variance_s2": 2.4788874642145007e-25,
+          "jitter_fs": 497.8842701084762,
+          "variance_fraction": 0.6426999076872549
+        },
+        "XD": {
+          "variance_s2": 1.3781030761058461e-25,
+          "jitter_fs": 371.2281072475313,
+          "variance_fraction": 0.35730009231274573
+        }
+      }
+    },
+    "all_on_contributions_fs": {
+      "XRT.XL": 261.2072410624918,
+      "XRT.XS": 331.10527953703496,
+      "XRT.XM": 246.56811049023344,
+      "XRT.bias_and_passives": 96.08841964539418,
+      "XD": 371.2281072475313
+    },
+    "all_on_group_relative_changes": {
+      "XRT.XL": -0.26429922093022606,
+      "XRT.XS": -0.09804886489534326,
+      "XRT.XM": -0.24848270926619687,
+      "XRT.bias_and_passives": -0.09267770797482067,
+      "XD": -0.25626674965237617
+    },
+    "precision": {
+      "status": "completed",
+      "pass_precision": true,
+      "relative_jitter_change": 0.0013781387945244195,
+      "max_abs_spectrum_delta_db": 0.012525711828309078,
+      "source_group_relative_rms_changes": {
+        "XD": 0.0013876875354632556,
+        "XRT.XM": 0.0014194895897161608,
+        "XRT.XS": 0.0013217449577536122,
+        "XRT.XL": 0.0014038693390621138,
+        "XRT.bias_and_passives": 0.0014427740213487361
+      }
+    },
+    "fine": {
+      "jitter_fs": 621.9026292242918,
+      "power_mw": {
+        "VDD:p": 1.76036300530773,
+        "VRT:p": 1.0438809314622357
+      }
+    }
+  },
+  "limitations": [
+    "200fs wholePLL requirement remains unchanged and unmet by output chain.",
+    "WholePLL power cannot be obtained by adding this fixture to old core power.",
+    "No new full-frequency,PVT,VCO-loading,physicalRC/area or FLL capture qualification.",
+    "Limited deterministic timing replay does not qualify general setup/hold or divider-noise suppression.",
+    "Added ideal1pF must later use actual PDK capacitor; bias/reference generator is still deferred."
+  ]
+}

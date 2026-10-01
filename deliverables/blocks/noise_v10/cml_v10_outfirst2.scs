@@ -1,0 +1,33 @@
+simulator lang=spectre
+subckt tx_limiter4_first2_v10 (inp out vdd vss)
+parameters wn=4u wp=10u
+C0 (inp g0) capacitor c=200f
+R0 (g0 o0) resistor r=50k
+X0 (g0 o0 vdd vss) pll_inv wn=2*wn wp=2*wp
+C1 (o0 g1) capacitor c=200f
+R1 (g1 o1) resistor r=50k
+X1 (g1 o1 vdd vss) pll_inv wn=wn wp=wp
+C2 (o1 g2) capacitor c=200f
+R2 (g2 o2) resistor r=50k
+X2 (g2 o2 vdd vss) pll_inv wn=wn wp=wp
+C3 (o2 g3) capacitor c=200f
+R3 (g3 o3) resistor r=50k
+X3 (g3 o3 vdd vss) pll_inv wn=wn wp=wp
+XO (o3 out vdd vss) pll_inv wn=2*wn wp=2*wp
+ends tx_limiter4_first2_v10
+simulator lang=spectre
+subckt tx_cml_v10_outfirst2 (dp dn cp cn out vdd vss)
+parameters scale=1 lscale=1 rb=50k cdec=10p
+CP (cp ckp) capacitor c=300f
+CN (cn ckn) capacitor c=300f
+RBP (ckp cm) resistor r=rb
+RBN (ckn cm) resistor r=rb
+RH (vdd cm) resistor r=25k
+RL (cm vss) resistor r=rb
+CB (cm vss) capacitor c=cdec
+IREF (vdd nb) isource dc=30u*scale
+MR (nb nb vss vss) nch w=2u*scale l=1u ad=2u*scale*240n as=2u*scale*240n pd=2*(2u*scale+240n) ps=2*(2u*scale+240n)
+XM (dp dn ckp ckn mp mn nb vss vdd vss) tx_cml_latch_v2 scale=scale rload=2000
+XS (mp mn ckn ckp qp qn nb vss vdd vss) tx_cml_latch_v2 scale=scale rload=2000
+XL (qp out vdd vss) tx_limiter4_first2_v10 wn=1.2u*lscale wp=3u*lscale
+ends tx_cml_v10_outfirst2

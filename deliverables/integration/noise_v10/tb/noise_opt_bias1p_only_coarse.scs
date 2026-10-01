@@ -1,0 +1,26 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt_bbmvar
+simulator lang=spectre insensitive=no
+include "cells.scs"
+include "divider_v2.scs"
+include "limiter_chain.scs"
+include "divider_raw_v9.scs"
+simulatorOptions options reltol=1e-5 vabstol=1e-7 iabstol=1e-13 temp=27 noiseon_inst=[XRT.RBP XRT.RBN XRT.RH XRT.RL XRT.MR] noiseon_type=all
+VDD (vdd 0) vsource dc=1.2
+ahdl_include "tank_waveform_v5.va"
+XRF (vp vn 0) tank_waveform_v5
+VRST (rst 0) vsource type=pwl wave=[0 1.2 20n 1.2 20.02n 0]
+XD (vp vn rst vdd 0 0 0 0 0 dp dn vdd 0) tx_divider_raw_v9 rb_input=50k rb_clock=50k cdec=10p
+include "cml_v10_bias1p.scs"
+VRT (rt_vdd vdd) vsource dc=0
+XRT (dp dn vp vn out rt_vdd 0) tx_cml_v10_bias1p scale=2 lscale=2
+CL (out 0) capacitor c=10f
+pss pss fund=984M harms=63 tstab=200n maxstep=1p method=traponly errpreset=conservative maxperiods=30 saveinit=yes writefinal="__FINAL_STATE__"
+save XRT.mp XRT.mn XRT.XL.g0 XRT.XL.o0 vp vn dp dn out XRT.ckp XRT.ckn XRT.cm XRT.nb XRT.qp XRT.qn VDD:p VRT:p
+saveOptions options save=selected
+pn pnoise start=10k stop=492M dec=30 pnoisemethod=fullspectrum noisetype=sampled measurement=[edge] sampleratio=1 maxsideband=63
+edge jitterevent trigger=[out] triggerthresh=0.6 triggernum=1 triggerdir=rise target=[out] jittercal=[Jee]
