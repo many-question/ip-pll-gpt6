@@ -1,0 +1,21 @@
+{
+  "research/runs/spectre_closure_v6/dc_sensitivity/dc_base_g1p/collector_failure.json": {
+    "sha256": "940db5a766d0c13cf948d639fa60dd04365763bcee3e3fff9ee163c91b9dd65e",
+    "record": {
+      "time": "2026-10-01T10:56:00.209800+08:00",
+      "type": "local_collector_error",
+      "error": "TypeError: len() of unsized object while indexing scalar DC result",
+      "simulation_not_asserted_failed": true,
+      "remedy": "Normalize result values with numpy.atleast_1d; retain original raw output and retry in dc_sensitivity_retry."
+    }
+  },
+  "research/runs/spectre_closure_v6/dc_sensitivity_retry/dc_base_g1p/collector_failure.json": {
+    "sha256": "f01390152c93f8f51d488d67751de9f026603b520581d169dccd5893f18818d1",
+    "record": {
+      "time": "2026-10-01T10:56:39.776201+08:00",
+      "type": "local_collector_error",
+      "error": "DC parser includes dc_units as a string, not a numeric waveform; final_values incorrectly applied isfinite",
+      "remedy": "Separate nonnumeric metadata before numeric waveform indexing; retry in dc_sensitivity_numeric."
+    }
+  }
+}

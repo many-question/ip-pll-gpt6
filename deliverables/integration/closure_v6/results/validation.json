@@ -1,0 +1,2318 @@
+[
+  {
+    "run": "base_continue",
+    "case": "loop_base_continue",
+    "sim_ok": true,
+    "settings": {
+      "reltol": [
+        "10e-06"
+      ],
+      "abstol(V)": [
+        "1 uV"
+      ],
+      "abstol(I)": [
+        "1 pA"
+      ],
+      "maxstep": [
+        "2 ps"
+      ],
+      "errpreset": [
+        "moderate"
+      ],
+      "method": [
+        "traponly"
+      ],
+      "steadyratio": [],
+      "lteratio": [
+        "3.5"
+      ],
+      "gmin": [
+        "1 pS"
+      ]
+    },
+    "state_file": {
+      "remote": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/closure_v6/base_continue_loop_base_continue.final.ic",
+      "collected": true,
+      "stderr": ""
+    },
+    "norm_lines": [],
+    "gmin_notices": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow.",
+      "WARNING (SPECTRE-8301): line 27: Unknown node `VRST:p' will be ignored.",
+      "WARNING (SPECTRE-16780): LTE tolerance was temporarily relaxed to step over a discontinuity in the signal: XV.XBP.MP6:int_s. Check the design or use '+diagnose' to get more information.",
+      "WARNING (SPECTRE-16780): LTE tolerance was temporarily relaxed to step over a discontinuity in the signal: XV.XBP.MP7:int_s. Check the design or use '+diagnose' to get more information.",
+      "WARNING (SPECTRE-16780): LTE tolerance was temporarily relaxed to step over a discontinuity in the signal: XV.XBP.MP6:int_s. Check the design or use '+diagnose' to get more information.",
+      "WARNING (SPECTRE-16780): LTE tolerance was temporarily relaxed to step over a discontinuity in the signal: XV.XBP.MP7:int_s. Check the design or use '+diagnose' to get more information.",
+      "WARNING (SPECTRE-16780): LTE tolerance was temporarily relaxed to step over a discontinuity in the signal: XV.XBP.MP6:int_s. Check the design or use '+diagnose' to get more information."
+    ],
+    "errors": [],
+    "iteration_limit_reached": false,
+    "cancelled": false,
+    "transient": {
+      "end_s": 4e-06,
+      "last_window_samples": 24,
+      "phase_pp_rad": 0.0003618574385291229,
+      "phase_drift_rad_per_us": 0.00014748896360929883,
+      "max_vco_cycles_error": 2.5458539312239736e-05,
+      "max_div_cycles_error": 6.30536852241903e-06,
+      "mean_output_mhz": 983.9999977324906,
+      "ctrl_range_v": [
+        0.8844106843290057,
+        0.8844174860711804
+      ],
+      "pass_stationary": true,
+      "criteria": "Last 1 us: phase pp<.02 rad, abs drift<.01 rad/us, VCO cycles/ref error<.001 from164, output cycles/ref error<.001 from41, control inside0.2..1 V. Same v5 functional screen, not jitter or full capture signoff.",
+      "slow_nodes": {
+        "XV.XL.nb": {
+          "mean_v": 1.0405727068501232,
+          "pp_v": 2.4283748500941726e-07,
+          "slope_v_per_us": 1.1824031498100803e-09,
+          "final_v": 1.040572767480128
+        },
+        "XV.XL.nfilt": {
+          "mean_v": 1.0407596646623463,
+          "pp_v": 0.00015833353520910975,
+          "slope_v_per_us": -6.362352425909856e-07,
+          "final_v": 1.04076337527924
+        },
+        "XD.acp3": {
+          "mean_v": 0.7902927983093986,
+          "pp_v": 0.0002687396402845099,
+          "slope_v_per_us": 2.2432666558350263e-06,
+          "final_v": 0.7902865901943527
+        },
+        "XD.acn3": {
+          "mean_v": 0.7902930358718183,
+          "pp_v": 0.00026739911534456873,
+          "slope_v_per_us": 2.149488708499306e-06,
+          "final_v": 0.79028639862274
+        },
+        "XD.acp7": {
+          "mean_v": 0.7902964516014556,
+          "pp_v": 0.0002050384413524453,
+          "slope_v_per_us": 5.581676889457738e-07,
+          "final_v": 0.7902868815839722
+        },
+        "XD.acn7": {
+          "mean_v": 0.7902963991298761,
+          "pp_v": 0.000204139932934555,
+          "slope_v_per_us": 5.416701273458397e-07,
+          "final_v": 0.790286578207964
+        },
+        "XD.cim": {
+          "mean_v": 0.9999998058508678,
+          "pp_v": 5.047811228342525e-06,
+          "slope_v_per_us": -1.0302647744734974e-07,
+          "final_v": 0.9999997431603105
+        },
+        "XD.cm": {
+          "mean_v": 0.8000248786980144,
+          "pp_v": 5.951192974218422e-05,
+          "slope_v_per_us": -3.6438709323885585e-06,
+          "final_v": 0.7999973769222083
+        },
+        "XD.nb7": {
+          "mean_v": 4.409558312697762e-08,
+          "pp_v": 3.364796361107835e-05,
+          "slope_v_per_us": 5.036570791019888e-07,
+          "final_v": 6.086070191121811e-06
+        },
+        "vmid": {
+          "mean_v": 0.5999996467976819,
+          "pp_v": 0.00046608787070967495,
+          "slope_v_per_us": -2.1097163003789402e-05,
+          "final_v": 0.5997688311499503
+        }
+      },
+      "measurement_limit": "Phase/cycle outputs come from solver-edge observer; 1 ns strobes may alias RF and current, so no accurate swing/power is inferred from them."
+    },
+    "periodic": null,
+    "switching": null,
+    "static_divider": null
+  },
+  {
+    "run": "baseline_strict",
+    "case": "loop_base_strict",
+    "sim_ok": true,
+    "settings": {
+      "reltol": [
+        "10e-06"
+      ],
+      "abstol(V)": [
+        "1 uV"
+      ],
+      "abstol(I)": [
+        "1 pA"
+      ],
+      "maxstep": [
+        "2 ps"
+      ],
+      "errpreset": [
+        "moderate"
+      ],
+      "method": [
+        "traponly"
+      ],
+      "steadyratio": [],
+      "lteratio": [
+        "3.5"
+      ],
+      "gmin": [
+        "1 pS"
+      ]
+    },
+    "state_file": {
+      "remote": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/closure_v6/baseline_strict_loop_base_strict.final.ic",
+      "collected": true,
+      "stderr": ""
+    },
+    "norm_lines": [],
+    "gmin_notices": [
+      "dV(XD.acp3) = 9.31554 mV"
+    ],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow.",
+      "WARNING (SPECTRE-16780): LTE tolerance was temporarily relaxed to step over a discontinuity in the signal: XV.XBP.MP6:int_s. Check the design or use '+diagnose' to get more information.",
+      "WARNING (SPECTRE-16780): LTE tolerance was temporarily relaxed to step over a discontinuity in the signal: XV.XBP.MP6:int_s. Check the design or use '+diagnose' to get more information.",
+      "WARNING (SPECTRE-16780): LTE tolerance was temporarily relaxed to step over a discontinuity in the signal: XV.XBP.MP6:int_s. Check the design or use '+diagnose' to get more information.",
+      "WARNING (SPECTRE-16780): LTE tolerance was temporarily relaxed to step over a discontinuity in the signal: XV.XBP.MP7:int_s. Check the design or use '+diagnose' to get more information.",
+      "WARNING (SPECTRE-16780): LTE tolerance was temporarily relaxed to step over a discontinuity in the signal: XV.XBP.MP7:int_s. Check the design or use '+diagnose' to get more information."
+    ],
+    "errors": [],
+    "iteration_limit_reached": false,
+    "cancelled": false,
+    "transient": {
+      "end_s": 4e-06,
+      "last_window_samples": 24,
+      "phase_pp_rad": 0.016256063416005828,
+      "phase_drift_rad_per_us": -0.01637208421935463,
+      "max_vco_cycles_error": 0.00021753440890392994,
+      "max_div_cycles_error": 5.3920416121400194e-05,
+      "mean_output_mhz": 983.999296061726,
+      "ctrl_range_v": [
+        0.8844209989233103,
+        0.8844607214536625
+      ],
+      "pass_stationary": false,
+      "criteria": "Last 1 us: phase pp<.02 rad, abs drift<.01 rad/us, VCO cycles/ref error<.001 from164, output cycles/ref error<.001 from41, control inside0.2..1 V. Same v5 functional screen, not jitter or full capture signoff.",
+      "slow_nodes": {
+        "XV.XL.nb": {
+          "mean_v": 1.0405725824444985,
+          "pp_v": 2.443717710409743e-07,
+          "slope_v_per_us": 3.0214866765688922e-09,
+          "final_v": 1.040572643729341
+        },
+        "XV.XL.nfilt": {
+          "mean_v": 1.0407548116185033,
+          "pp_v": 0.00015847004347913085,
+          "slope_v_per_us": -1.483007188570293e-07,
+          "final_v": 1.040758132601971
+        },
+        "XD.acp3": {
+          "mean_v": 0.7903236264270745,
+          "pp_v": 0.0002795286512045081,
+          "slope_v_per_us": -1.3200383766348727e-05,
+          "final_v": 0.790311107294518
+        },
+        "XD.acn3": {
+          "mean_v": 0.7903246036632641,
+          "pp_v": 0.00027840826725433754,
+          "slope_v_per_us": -1.3622754303030162e-05,
+          "final_v": 0.7903115016755765
+        },
+        "XD.acp7": {
+          "mean_v": 0.7903326424939303,
+          "pp_v": 0.00021797235599496645,
+          "slope_v_per_us": -1.729257764456524e-05,
+          "final_v": 0.7903155313960976
+        },
+        "XD.acn7": {
+          "mean_v": 0.7903326164000845,
+          "pp_v": 0.00021708158807942635,
+          "slope_v_per_us": -1.7309070907667494e-05,
+          "final_v": 0.790315251741475
+        },
+        "XD.cim": {
+          "mean_v": 0.9999993816280434,
+          "pp_v": 5.556534100836785e-06,
+          "slope_v_per_us": 4.0381248499467865e-07,
+          "final_v": 0.9999995090947645
+        },
+        "XD.cm": {
+          "mean_v": 0.800055935940267,
+          "pp_v": 7.190492994313402e-05,
+          "slope_v_per_us": -1.723524275816159e-05,
+          "final_v": 0.8000223630079862
+        },
+        "XD.nb7": {
+          "mean_v": 1.2145008735180493e-07,
+          "pp_v": 3.379027305915439e-05,
+          "slope_v_per_us": 4.6850093808083157e-07,
+          "final_v": 6.224122620760814e-06
+        },
+        "vmid": {
+          "mean_v": 0.5999958705491414,
+          "pp_v": 0.0004739587995693517,
+          "slope_v_per_us": -1.6548161203228573e-05,
+          "final_v": 0.5997663680597802
+        }
+      },
+      "measurement_limit": "Phase/cycle outputs come from solver-edge observer; 1 ns strobes may alias RF and current, so no accurate swing/power is inferred from them."
+    },
+    "periodic": null,
+    "switching": null,
+    "static_divider": null
+  },
+  {
+    "run": "clamp_precision",
+    "case": "loop_clamp_1ps",
+    "sim_ok": true,
+    "settings": {
+      "reltol": [
+        "10e-06"
+      ],
+      "abstol(V)": [
+        "1 uV"
+      ],
+      "abstol(I)": [
+        "1 pA"
+      ],
+      "maxstep": [
+        "1 ps"
+      ],
+      "errpreset": [
+        "moderate"
+      ],
+      "method": [
+        "traponly"
+      ],
+      "steadyratio": [],
+      "lteratio": [
+        "3.5"
+      ],
+      "gmin": [
+        "1 pS"
+      ]
+    },
+    "state_file": {
+      "remote": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/closure_v6/clamp_precision_loop_clamp_1ps.final.ic",
+      "collected": true,
+      "stderr": ""
+    },
+    "norm_lines": [],
+    "gmin_notices": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "errors": [],
+    "iteration_limit_reached": false,
+    "cancelled": false,
+    "transient": {
+      "end_s": 4e-06,
+      "last_window_samples": 24,
+      "phase_pp_rad": 0.022201841298663316,
+      "phase_drift_rad_per_us": -0.02225119353782122,
+      "max_vco_cycles_error": 0.0003322754600958433,
+      "max_div_cycles_error": 8.306489417009288e-05,
+      "mean_output_mhz": 983.999031406443,
+      "ctrl_range_v": [
+        0.885533073132767,
+        0.885658067420315
+      ],
+      "pass_stationary": false,
+      "criteria": "Last 1 us: phase pp<.02 rad, abs drift<.01 rad/us, VCO cycles/ref error<.001 from164, output cycles/ref error<.001 from41, control inside0.2..1 V. Same v5 functional screen, not jitter or full capture signoff.",
+      "slow_nodes": {
+        "XV.XL.nb": {
+          "mean_v": 1.0405724135953651,
+          "pp_v": 2.696624150644311e-07,
+          "slope_v_per_us": -3.644469901819014e-08,
+          "final_v": 1.040572455448037
+        },
+        "XV.XL.nfilt": {
+          "mean_v": 1.0407109802896009,
+          "pp_v": 0.00016456562323519108,
+          "slope_v_per_us": -1.0387479642973208e-05,
+          "final_v": 1.040709428991467
+        },
+        "XD.acp3": {
+          "mean_v": 0.9999938708352067,
+          "pp_v": 0.0002679385966595227,
+          "slope_v_per_us": 1.0903277074100224e-05,
+          "final_v": 1.000032499411467
+        },
+        "XD.acn3": {
+          "mean_v": 0.9999938712993249,
+          "pp_v": 0.0002664713046098832,
+          "slope_v_per_us": 1.0915692456916895e-05,
+          "final_v": 1.000032118141588
+        },
+        "XD.acp7": {
+          "mean_v": 0.9999938922162013,
+          "pp_v": 0.00020434836311045146,
+          "slope_v_per_us": 1.0049839301830712e-05,
+          "final_v": 1.000018603649792
+        },
+        "XD.acn7": {
+          "mean_v": 0.9999938892961567,
+          "pp_v": 0.0002034623626967491,
+          "slope_v_per_us": 1.0044378283453396e-05,
+          "final_v": 1.000018368320994
+        },
+        "XD.cim": {
+          "mean_v": 0.9999941192475201,
+          "pp_v": 1.2169341200851669e-05,
+          "slope_v_per_us": 6.406073800697188e-06,
+          "final_v": 0.9999944092036913
+        },
+        "XD.cm": {
+          "mean_v": 0.8000597052904928,
+          "pp_v": 7.494966327803443e-05,
+          "slope_v_per_us": -2.201014488421833e-05,
+          "final_v": 0.8000246004437438
+        },
+        "XD.nb7": {
+          "mean_v": 1.231671258982402e-07,
+          "pp_v": 3.289234388912026e-05,
+          "slope_v_per_us": 4.513142896783308e-07,
+          "final_v": 6.145631295761018e-06
+        },
+        "vmid": {
+          "mean_v": 0.5999944245880668,
+          "pp_v": 0.0004755031016714373,
+          "slope_v_per_us": -1.4605508425710534e-05,
+          "final_v": 0.5997662594641793
+        }
+      },
+      "measurement_limit": "Phase/cycle outputs come from solver-edge observer; 1 ns strobes may alias RF and current, so no accurate swing/power is inferred from them."
+    },
+    "periodic": null,
+    "switching": null,
+    "static_divider": null
+  },
+  {
+    "run": "clamp_strict",
+    "case": "loop_clamp_strict",
+    "sim_ok": true,
+    "settings": {
+      "reltol": [
+        "10e-06"
+      ],
+      "abstol(V)": [
+        "1 uV"
+      ],
+      "abstol(I)": [
+        "1 pA"
+      ],
+      "maxstep": [
+        "2 ps"
+      ],
+      "errpreset": [
+        "moderate"
+      ],
+      "method": [
+        "traponly"
+      ],
+      "steadyratio": [],
+      "lteratio": [
+        "3.5"
+      ],
+      "gmin": [
+        "1 pS"
+      ]
+    },
+    "state_file": {
+      "remote": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/closure_v6/clamp_strict_loop_clamp_strict.final.ic",
+      "collected": true,
+      "stderr": ""
+    },
+    "norm_lines": [],
+    "gmin_notices": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow.",
+      "WARNING (SPECTRE-16780): LTE tolerance was temporarily relaxed to step over a discontinuity in the signal: XV.XBN.MP6:int_s. Check the design or use '+diagnose' to get more information.",
+      "WARNING (SPECTRE-16780): LTE tolerance was temporarily relaxed to step over a discontinuity in the signal: XV.XBN.MP6:int_s. Check the design or use '+diagnose' to get more information.",
+      "WARNING (SPECTRE-16780): LTE tolerance was temporarily relaxed to step over a discontinuity in the signal: XV.XBN.MP6:int_s. Check the design or use '+diagnose' to get more information.",
+      "WARNING (SPECTRE-16780): LTE tolerance was temporarily relaxed to step over a discontinuity in the signal: XV.XBP.MP7:int_s. Check the design or use '+diagnose' to get more information."
+    ],
+    "errors": [],
+    "iteration_limit_reached": false,
+    "cancelled": false,
+    "transient": {
+      "end_s": 4e-06,
+      "last_window_samples": 24,
+      "phase_pp_rad": 0.008496246062751567,
+      "phase_drift_rad_per_us": 0.0087224239054941,
+      "max_vco_cycles_error": 9.562475318602992e-05,
+      "max_div_cycles_error": 2.408408453646871e-05,
+      "mean_output_mhz": 984.0003583107618,
+      "ctrl_range_v": [
+        0.8915612830152229,
+        0.8915719517164419
+      ],
+      "pass_stationary": true,
+      "criteria": "Last 1 us: phase pp<.02 rad, abs drift<.01 rad/us, VCO cycles/ref error<.001 from164, output cycles/ref error<.001 from41, control inside0.2..1 V. Same v5 functional screen, not jitter or full capture signoff.",
+      "slow_nodes": {
+        "XV.XL.nb": {
+          "mean_v": 1.0405725794496854,
+          "pp_v": 2.432233370264214e-07,
+          "slope_v_per_us": 3.5527742226812233e-09,
+          "final_v": 1.040572641164851
+        },
+        "XV.XL.nfilt": {
+          "mean_v": 1.0407540372190844,
+          "pp_v": 0.00015811663667797404,
+          "slope_v_per_us": -1.815942046751358e-08,
+          "final_v": 1.040758632798081
+        },
+        "XD.acp3": {
+          "mean_v": 0.9999941020672709,
+          "pp_v": 0.0002679604330715346,
+          "slope_v_per_us": 1.0938711820739287e-05,
+          "final_v": 1.000031421182009
+        },
+        "XD.acn3": {
+          "mean_v": 0.9999940989503793,
+          "pp_v": 0.0002666287599266681,
+          "slope_v_per_us": 1.094762819438409e-05,
+          "final_v": 1.000031047372578
+        },
+        "XD.acp7": {
+          "mean_v": 0.9999941248894461,
+          "pp_v": 0.00020543288584307096,
+          "slope_v_per_us": 1.0058446826068395e-05,
+          "final_v": 1.00001779918392
+        },
+        "XD.acn7": {
+          "mean_v": 0.9999941249698915,
+          "pp_v": 0.00020515075040972164,
+          "slope_v_per_us": 1.0061713474235371e-05,
+          "final_v": 1.000017567809146
+        },
+        "XD.cim": {
+          "mean_v": 0.9999943714531918,
+          "pp_v": 1.2204773442991979e-05,
+          "slope_v_per_us": 6.416557686957658e-06,
+          "final_v": 0.9999946243024741
+        },
+        "XD.cm": {
+          "mean_v": 0.800060009638429,
+          "pp_v": 7.49946583816774e-05,
+          "slope_v_per_us": -2.2014000493706607e-05,
+          "final_v": 0.8000248697538974
+        },
+        "XD.nb7": {
+          "mean_v": 1.21436853136087e-07,
+          "pp_v": 3.2700570806205005e-05,
+          "slope_v_per_us": 4.559401686696776e-07,
+          "final_v": 6.008687488175798e-06
+        },
+        "vmid": {
+          "mean_v": 0.6000005879456269,
+          "pp_v": 0.0004640170145787659,
+          "slope_v_per_us": -2.1510159491920118e-05,
+          "final_v": 0.5997704719781355
+        }
+      },
+      "measurement_limit": "Phase/cycle outputs come from solver-edge observer; 1 ns strobes may alias RF and current, so no accurate swing/power is inferred from them."
+    },
+    "periodic": null,
+    "switching": null,
+    "static_divider": null
+  },
+  {
+    "run": "dc_sensitivity_numeric",
+    "case": "dc_base_g100f",
+    "sim_ok": true,
+    "settings": {
+      "reltol": [
+        "10e-06"
+      ],
+      "abstol(V)": [
+        "100 nV"
+      ],
+      "abstol(I)": [
+        "100 fA"
+      ],
+      "maxstep": [],
+      "errpreset": [],
+      "method": [],
+      "steadyratio": [],
+      "lteratio": [],
+      "gmin": []
+    },
+    "state_file": null,
+    "norm_lines": [],
+    "gmin_notices": [
+      "dV(XD.XCN7.MP:int_s) = 49.7073 mV"
+    ],
+    "warnings": [],
+    "errors": [],
+    "iteration_limit_reached": false,
+    "cancelled": false,
+    "transient": null,
+    "periodic": null,
+    "switching": null,
+    "static_divider": null,
+    "dc_values": {
+      "dc_VDD:p": -0.0006680892237881766,
+      "dc_vn": 1.2,
+      "dc_out": 0.5872413493939348,
+      "dc_XD.acp3": 0.7293455933675399,
+      "dc_XD.acn3": 0.7293455933675399,
+      "dc_XD.acp7": 0.7293455933675399,
+      "dc_XD.acn7": 0.7293455933675399,
+      "dc_XD.cim": 0.9999999496474149,
+      "dc_XD.cm": 0.7999999999999994,
+      "dc_XD.nb7": 7.759078379487938e-09,
+      "dc_vp": 1.2
+    }
+  },
+  {
+    "run": "dc_sensitivity_numeric",
+    "case": "dc_base_g1p",
+    "sim_ok": true,
+    "settings": {
+      "reltol": [
+        "10e-06"
+      ],
+      "abstol(V)": [
+        "100 nV"
+      ],
+      "abstol(I)": [
+        "100 fA"
+      ],
+      "maxstep": [],
+      "errpreset": [],
+      "method": [],
+      "steadyratio": [],
+      "lteratio": [],
+      "gmin": []
+    },
+    "state_file": null,
+    "norm_lines": [],
+    "gmin_notices": [
+      "dV(XD.XM7_0.MCS:int_d) = -13.2572 mV"
+    ],
+    "warnings": [],
+    "errors": [],
+    "iteration_limit_reached": false,
+    "cancelled": false,
+    "transient": null,
+    "periodic": null,
+    "switching": null,
+    "static_divider": null,
+    "dc_values": {
+      "dc_VDD:p": -0.0006680896943583051,
+      "dc_vn": 1.2,
+      "dc_out": 0.5872413472523936,
+      "dc_XD.acp3": 0.7902542577572435,
+      "dc_XD.acn3": 0.7902542577572435,
+      "dc_XD.acp7": 0.7902542577572435,
+      "dc_XD.acn7": 0.7902542577572435,
+      "dc_XD.cim": 0.9999997208112678,
+      "dc_XD.cm": 0.7999999999999994,
+      "dc_XD.nb7": 9.798318532195056e-09,
+      "dc_vp": 1.2
+    }
+  },
+  {
+    "run": "dc_sensitivity_numeric",
+    "case": "dc_clamp_g100f",
+    "sim_ok": true,
+    "settings": {
+      "reltol": [
+        "10e-06"
+      ],
+      "abstol(V)": [
+        "100 nV"
+      ],
+      "abstol(I)": [
+        "100 fA"
+      ],
+      "maxstep": [],
+      "errpreset": [],
+      "method": [],
+      "steadyratio": [],
+      "lteratio": [],
+      "gmin": []
+    },
+    "state_file": null,
+    "norm_lines": [],
+    "gmin_notices": [
+      "dV(XD.XS6_5.MCH:int_d) = -2.53554 mV"
+    ],
+    "warnings": [],
+    "errors": [],
+    "iteration_limit_reached": false,
+    "cancelled": false,
+    "transient": null,
+    "periodic": null,
+    "switching": null,
+    "static_divider": null,
+    "dc_values": {
+      "dc_VDD:p": -0.0006680892267104033,
+      "dc_vn": 1.2,
+      "dc_out": 0.5872413493939347,
+      "dc_XD.acp3": 0.9999998931916768,
+      "dc_XD.acn3": 0.9999998931916768,
+      "dc_XD.acp7": 0.9999998931916768,
+      "dc_XD.acn7": 0.9999998931916768,
+      "dc_XD.cim": 0.9999998945189705,
+      "dc_XD.cm": 0.7999999999999994,
+      "dc_XD.nb7": 7.759078472267463e-09,
+      "dc_vp": 1.2
+    }
+  },
+  {
+    "run": "dc_sensitivity_numeric",
+    "case": "dc_clamp_g1p",
+    "sim_ok": true,
+    "settings": {
+      "reltol": [
+        "10e-06"
+      ],
+      "abstol(V)": [
+        "100 nV"
+      ],
+      "abstol(I)": [
+        "100 fA"
+      ],
+      "maxstep": [],
+      "errpreset": [],
+      "method": [],
+      "steadyratio": [],
+      "lteratio": [],
+      "gmin": []
+    },
+    "state_file": null,
+    "norm_lines": [],
+    "gmin_notices": [
+      "dV(XD.XS7_6.MCH:int_d) = -13.2572 mV"
+    ],
+    "warnings": [],
+    "errors": [],
+    "iteration_limit_reached": false,
+    "cancelled": false,
+    "transient": null,
+    "periodic": null,
+    "switching": null,
+    "static_divider": null,
+    "dc_values": {
+      "dc_VDD:p": -0.0006680897171482768,
+      "dc_vn": 1.2,
+      "dc_out": 0.5872413472523936,
+      "dc_XD.acp3": 0.9999993099450813,
+      "dc_XD.acn3": 0.9999993099450813,
+      "dc_XD.acp7": 0.9999993099450813,
+      "dc_XD.acn7": 0.9999993099450813,
+      "dc_XD.cim": 0.9999993185203259,
+      "dc_XD.cm": 0.7999999999999994,
+      "dc_XD.nb7": 9.798318488696638e-09,
+      "dc_vp": 1.2
+    }
+  },
+  {
+    "run": "divider_noise",
+    "case": "noise_divider_base_2ps",
+    "sim_ok": true,
+    "settings": {
+      "reltol": [
+        "10e-06",
+        "10e-06"
+      ],
+      "abstol(V)": [
+        "1 uV",
+        "1 uV"
+      ],
+      "abstol(I)": [
+        "1 pA",
+        "1 pA"
+      ],
+      "maxstep": [
+        "2 ps",
+        "2 ps"
+      ],
+      "errpreset": [
+        "moderate"
+      ],
+      "method": [
+        "traponly",
+        "traponly"
+      ],
+      "steadyratio": [
+        "1e-03"
+      ],
+      "lteratio": [
+        "3.5",
+        "3.5"
+      ],
+      "gmin": [
+        "1 pS",
+        "1 pS"
+      ]
+    },
+    "state_file": {
+      "remote": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/closure_v6/divider_noise_noise_divider_base_2ps.final.ic",
+      "collected": true,
+      "stderr": ""
+    },
+    "norm_lines": [
+      "Conv norm = 6.72e+06, max dI(VDD:p) = 12.177 mA, took 46.91 s.",
+      "Conv norm = 23.9e+03, max dI(XRF:vn_vss_flow) = -22.5482 uA, took 1.71 s.",
+      "Conv norm = 3.64e+03, max dI(VDD:p) = 3.48553 uA, took 1.71 s.",
+      "Conv norm = 326, max dI(XRF:vn_vss_flow) = -307.006 nA, took 1.69 s.",
+      "Conv norm = 437, max dI(VDD:p) = -418.286 nA, took 1.64 s.",
+      "Conv norm = 402, max dI(VDD:p) = -384.528 nA, took 1.65 s.",
+      "Conv norm = 7.79, max dI(XRF:vp_vss_flow) = -7.35694 nA, took 1.68 s.",
+      "Conv norm = 4.42, max dI(XRF:vp_vss_flow) = -4.17276 nA, took 1.67 s.",
+      "Conv norm = 1.75, max dI(XRF:vp_vss_flow) = -1.64768 nA, took 1.67 s.",
+      "Conv norm = 2.32, max dI(VDD:p) = 2.21921 nA, took 1.71 s.",
+      "Conv norm = 93.9e-03, max dI(XRF:vn_vss_flow) = 88.3206 pA, took 1.7 s."
+    ],
+    "gmin_notices": [
+      "dV(XD.acp3) = 9.31554 mV"
+    ],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "errors": [],
+    "iteration_limit_reached": false,
+    "cancelled": false,
+    "transient": null,
+    "periodic": {
+      "period_s": 1.016260162601637e-09,
+      "vco_edges": 4,
+      "output_edges": 1,
+      "output_frequency_mhz": null,
+      "output_harmonic": 1,
+      "output_range_v": [
+        -0.03465445452886717,
+        1.25759589323997
+      ],
+      "branch_power_mw": 0.8648599893535299,
+      "endpoint_mismatch_v": {
+        "vn": 0.0,
+        "out": 1.7116308370646038e-10,
+        "XD.acp3": 2.0915037479696252e-09,
+        "XD.acn3": 2.093211604048406e-09,
+        "XD.acp7": 8.949919694245523e-10,
+        "XD.acn7": 8.787865990456112e-10,
+        "XD.cim": 6.503686478254167e-13,
+        "XD.cm": 5.963562976774028e-12,
+        "XD.nb7": 1.3772278529403429e-11,
+        "vp": 0.0
+      },
+      "node_mean_v": {
+        "XD.acp3": 0.7905890103524826,
+        "XD.acn3": 0.7905815254286557,
+        "XD.acp7": 0.790588867898565,
+        "XD.acn7": 0.7905813813356902,
+        "XD.cim": 0.9999998997998941,
+        "XD.cm": 0.8000004374958642,
+        "XD.nb7": 3.0159682126311056e-09
+      },
+      "expected_fundamental_hz": 984000000.0,
+      "pass_divider_periodic": true
+    },
+    "switching": null,
+    "static_divider": null
+  },
+  {
+    "run": "divider_noise",
+    "case": "noise_divider_clamp_2ps",
+    "sim_ok": true,
+    "settings": {
+      "reltol": [
+        "10e-06",
+        "10e-06"
+      ],
+      "abstol(V)": [
+        "1 uV",
+        "1 uV"
+      ],
+      "abstol(I)": [
+        "1 pA",
+        "1 pA"
+      ],
+      "maxstep": [
+        "2 ps",
+        "2 ps"
+      ],
+      "errpreset": [
+        "moderate"
+      ],
+      "method": [
+        "traponly",
+        "traponly"
+      ],
+      "steadyratio": [
+        "1e-03"
+      ],
+      "lteratio": [
+        "3.5",
+        "3.5"
+      ],
+      "gmin": [
+        "1 pS",
+        "1 pS"
+      ]
+    },
+    "state_file": {
+      "remote": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/closure_v6/divider_noise_noise_divider_clamp_2ps.final.ic",
+      "collected": true,
+      "stderr": ""
+    },
+    "norm_lines": [
+      "Conv norm = 6.7e+06, max dI(VDD:p) = 12.1344 mA, took 49.44 s.",
+      "Conv norm = 59.7e+03, max dI(XRF:vp_vss_flow) = -55.9955 uA, took 1.79 s.",
+      "Conv norm = 1.29e+03, max dI(VDD:p) = 1.23811 uA, took 1.75 s.",
+      "Conv norm = 169, max dI(XRF:vp_vss_flow) = 159.292 nA, took 1.77 s.",
+      "Conv norm = 1.6e+03, max dI(XRF:vp_vss_flow) = 1.5054 uA, took 1.75 s.",
+      "Conv norm = 786, max dI(VDD:p) = -754.835 nA, took 1.74 s.",
+      "Conv norm = 233, max dI(VDD:p) = -223.911 nA, took 1.75 s.",
+      "Conv norm = 71.2, max dI(VDD:p) = 68.3955 nA, took 1.74 s.",
+      "Conv norm = 12.2, max dI(XRF:vp_vss_flow) = -11.5297 nA, took 1.79 s.",
+      "Conv norm = 378, max dI(VDD:p) = -362.91 nA, took 1.74 s.",
+      "Conv norm = 15.8, max dI(VDD:p) = -15.1586 nA, took 1.73 s.",
+      "Conv norm = 391, max dI(VDD:p) = -375.062 nA, took 1.75 s.",
+      "Conv norm = 19.6, max dI(VDD:p) = 18.8442 nA, took 1.74 s.",
+      "Conv norm = 812e-03, max dI(XRF:vp_vss_flow) = -765.745 pA, took 1.75 s."
+    ],
+    "gmin_notices": [
+      "dV(XD.XM3_0.st) = -326.626 uV"
+    ],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "errors": [],
+    "iteration_limit_reached": false,
+    "cancelled": false,
+    "transient": null,
+    "periodic": {
+      "period_s": 1.016260162601637e-09,
+      "vco_edges": 4,
+      "output_edges": 1,
+      "output_frequency_mhz": null,
+      "output_harmonic": 1,
+      "output_range_v": [
+        -0.03464871070186454,
+        1.257601166626189
+      ],
+      "branch_power_mw": 0.8644165684510302,
+      "endpoint_mismatch_v": {
+        "vn": 0.0,
+        "out": 2.8597701984267587e-10,
+        "XD.acp3": 7.112768152239823e-09,
+        "XD.acn3": 6.3652401127711755e-09,
+        "XD.acp7": 1.333435695194396e-08,
+        "XD.acn7": 1.9151062957689646e-08,
+        "XD.cim": 2.051441239103724e-10,
+        "XD.cm": 5.501944455588159e-10,
+        "XD.nb7": 6.296180605011451e-11,
+        "vp": 0.0
+      },
+      "node_mean_v": {
+        "XD.acp3": 0.9999995794317393,
+        "XD.acn3": 0.9999996152716703,
+        "XD.acp7": 0.9999997447584787,
+        "XD.acn7": 0.9999995943348989,
+        "XD.cim": 0.9999996516848711,
+        "XD.cm": 0.8000004316577524,
+        "XD.nb7": 3.587212869179201e-09
+      },
+      "expected_fundamental_hz": 984000000.0,
+      "pass_divider_periodic": true
+    },
+    "switching": null,
+    "static_divider": null
+  },
+  {
+    "run": "divider_noise_precision",
+    "case": "noise_divider_base_1ps",
+    "sim_ok": true,
+    "settings": {
+      "reltol": [
+        "10e-06",
+        "10e-06"
+      ],
+      "abstol(V)": [
+        "1 uV",
+        "1 uV"
+      ],
+      "abstol(I)": [
+        "1 pA",
+        "1 pA"
+      ],
+      "maxstep": [
+        "1 ps",
+        "1 ps"
+      ],
+      "errpreset": [
+        "moderate"
+      ],
+      "method": [
+        "traponly",
+        "traponly"
+      ],
+      "steadyratio": [
+        "1e-03"
+      ],
+      "lteratio": [
+        "3.5",
+        "3.5"
+      ],
+      "gmin": [
+        "1 pS",
+        "1 pS"
+      ]
+    },
+    "state_file": {
+      "remote": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/closure_v6/divider_noise_precision_noise_divider_base_1ps.final.ic",
+      "collected": true,
+      "stderr": ""
+    },
+    "norm_lines": [
+      "Conv norm = 6.75e+06, max dI(VDD:p) = 12.2529 mA, took 82.29 s.",
+      "Conv norm = 110e+03, max dI(VDD:p) = -105.33 uA, took 3.4 s.",
+      "Conv norm = 7.18e+03, max dI(VDD:p) = -6.92884 uA, took 3.34 s.",
+      "Conv norm = 1.22e+03, max dI(VDD:p) = -1.17872 uA, took 3.33 s.",
+      "Conv norm = 291, max dI(VDD:p) = 280.531 nA, took 3.36 s.",
+      "Conv norm = 100, max dI(XRF:vn_vss_flow) = 94.6961 nA, took 3.29 s.",
+      "Conv norm = 144, max dI(XRF:vp_vss_flow) = 136.767 nA, took 3.28 s.",
+      "Conv norm = 136, max dI(VDD:p) = 131.321 nA, took 3.36 s.",
+      "Conv norm = 135, max dI(VDD:p) = -130.792 nA, took 3.37 s.",
+      "Conv norm = 6.82, max dI(VDD:p) = 6.58243 nA, took 3.3 s.",
+      "Conv norm = 15.2, max dI(VDD:p) = 14.6947 nA, took 3.32 s.",
+      "Conv norm = 6.68, max dI(VDD:p) = 6.45247 nA, took 3.38 s.",
+      "Conv norm = 207e-03, max dI(VDD:p) = -199.678 pA, took 3.34 s."
+    ],
+    "gmin_notices": [
+      "dV(XD.acp3) = 9.31554 mV"
+    ],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "errors": [],
+    "iteration_limit_reached": false,
+    "cancelled": false,
+    "transient": null,
+    "periodic": {
+      "period_s": 1.016260162601637e-09,
+      "vco_edges": 4,
+      "output_edges": 1,
+      "output_frequency_mhz": null,
+      "output_harmonic": 1,
+      "output_range_v": [
+        -0.03468590405610532,
+        1.257630998021438
+      ],
+      "branch_power_mw": 0.8648779690746147,
+      "endpoint_mismatch_v": {
+        "vn": 0.0,
+        "out": 3.5549341248497512e-12,
+        "XD.acp3": 1.6406608294161629e-09,
+        "XD.acn3": 1.6381422884848007e-09,
+        "XD.acp7": 2.0712522807997402e-09,
+        "XD.acn7": 1.944950533960821e-09,
+        "XD.cim": 7.684434200072587e-09,
+        "XD.cm": 1.8605293972129289e-09,
+        "XD.nb7": 9.702654341082995e-11,
+        "vp": 0.0
+      },
+      "node_mean_v": {
+        "XD.acp3": 0.7904482489247268,
+        "XD.acn3": 0.7904439213374648,
+        "XD.acp7": 0.7904482208892627,
+        "XD.acn7": 0.7904438826207125,
+        "XD.cim": 0.9999982455927336,
+        "XD.cm": 0.8000005517390794,
+        "XD.nb7": 3.0268073833840465e-09
+      },
+      "expected_fundamental_hz": 984000000.0,
+      "pass_divider_periodic": true
+    },
+    "switching": null,
+    "static_divider": null
+  },
+  {
+    "run": "divider_noise_precision",
+    "case": "noise_divider_clamp_1ps",
+    "sim_ok": true,
+    "settings": {
+      "reltol": [
+        "10e-06",
+        "10e-06"
+      ],
+      "abstol(V)": [
+        "1 uV",
+        "1 uV"
+      ],
+      "abstol(I)": [
+        "1 pA",
+        "1 pA"
+      ],
+      "maxstep": [
+        "1 ps",
+        "1 ps"
+      ],
+      "errpreset": [
+        "moderate"
+      ],
+      "method": [
+        "traponly",
+        "traponly"
+      ],
+      "steadyratio": [
+        "1e-03"
+      ],
+      "lteratio": [
+        "3.5",
+        "3.5"
+      ],
+      "gmin": [
+        "1 pS",
+        "1 pS"
+      ]
+    },
+    "state_file": {
+      "remote": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/closure_v6/divider_noise_precision_noise_divider_clamp_1ps.final.ic",
+      "collected": true,
+      "stderr": ""
+    },
+    "norm_lines": [
+      "Conv norm = 6.73e+06, max dI(VDD:p) = 12.2226 mA, took 85.91 s.",
+      "Conv norm = 54.3e+03, max dI(VDD:p) = -52.0934 uA, took 3.5 s.",
+      "Conv norm = 6.53e+03, max dI(VDD:p) = 6.30499 uA, took 3.49 s.",
+      "Conv norm = 56.6, max dI(XRF:vn_vss_flow) = -53.4834 nA, took 3.5 s.",
+      "Conv norm = 146, max dI(VDD:p) = 140.981 nA, took 3.44 s.",
+      "Conv norm = 252, max dI(VDD:p) = 242.765 nA, took 3.43 s.",
+      "Conv norm = 26.5, max dI(VDD:p) = 25.5266 nA, took 3.43 s.",
+      "Conv norm = 1.07e+03, max dI(VDD:p) = 1.03176 uA, took 3.42 s.",
+      "Conv norm = 3.24, max dI(XRF:vp_vss_flow) = 3.06773 nA, took 3.44 s.",
+      "Conv norm = 9.12, max dI(XRF:vp_vss_flow) = 8.62592 nA, took 3.44 s.",
+      "Conv norm = 269e-03, max dI(XRF:vp_vss_flow) = 254.088 pA, took 3.44 s."
+    ],
+    "gmin_notices": [
+      "dV(XD.XM3_0.st) = -326.626 uV"
+    ],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "errors": [],
+    "iteration_limit_reached": false,
+    "cancelled": false,
+    "transient": null,
+    "periodic": {
+      "period_s": 1.016260162601637e-09,
+      "vco_edges": 4,
+      "output_edges": 1,
+      "output_frequency_mhz": null,
+      "output_harmonic": 1,
+      "output_range_v": [
+        -0.03468603304598217,
+        1.257624375030949
+      ],
+      "branch_power_mw": 0.8644194436510966,
+      "endpoint_mismatch_v": {
+        "vn": 0.0,
+        "out": 1.198108279254484e-11,
+        "XD.acp3": 2.099814100375852e-09,
+        "XD.acn3": 1.464059984357391e-10,
+        "XD.acp7": 5.092460009237243e-09,
+        "XD.acn7": 2.5050150842531593e-09,
+        "XD.cim": 3.4587974706568048e-09,
+        "XD.cm": 1.3638488116640701e-09,
+        "XD.nb7": 1.5339744461099168e-09,
+        "vp": 0.0
+      },
+      "node_mean_v": {
+        "XD.acp3": 0.9999987665439061,
+        "XD.acn3": 0.9999987671774517,
+        "XD.acp7": 0.9999988222722904,
+        "XD.acn7": 0.99999878708424,
+        "XD.cim": 0.9999987960784521,
+        "XD.cm": 0.7999999053202391,
+        "XD.nb7": 3.7489033972576034e-09
+      },
+      "expected_fundamental_hz": 984000000.0,
+      "pass_divider_periodic": true
+    },
+    "switching": null,
+    "static_divider": null
+  },
+  {
+    "run": "divider_pss_screen",
+    "case": "divider_base_pss",
+    "sim_ok": true,
+    "settings": {
+      "reltol": [
+        "10e-06",
+        "10e-06"
+      ],
+      "abstol(V)": [
+        "1 uV",
+        "1 uV"
+      ],
+      "abstol(I)": [
+        "1 pA",
+        "1 pA"
+      ],
+      "maxstep": [
+        "2 ps",
+        "2 ps"
+      ],
+      "errpreset": [
+        "moderate"
+      ],
+      "method": [
+        "traponly",
+        "traponly"
+      ],
+      "steadyratio": [
+        "1e-03"
+      ],
+      "lteratio": [
+        "3.5",
+        "3.5"
+      ],
+      "gmin": [
+        "1 pS",
+        "1 pS"
+      ]
+    },
+    "state_file": {
+      "remote": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/closure_v6/divider_pss_screen_divider_base_pss.final.ic",
+      "collected": true,
+      "stderr": ""
+    },
+    "norm_lines": [
+      "Conv norm = 6.71e+06, max dI(VDD:p) = 12.1538 mA, took 53.72 s.",
+      "Conv norm = 258e+03, max dI(XRF:vp_vss_flow) = -243.183 uA, took 57.87 s.",
+      "Conv norm = 31.5e+03, max dI(VDD:p) = -29.3579 uA, took 56.8 s.",
+      "Conv norm = 4.06e+03, max dI(VDD:p) = 3.79433 uA, took 56.67 s.",
+      "Conv norm = 190, max dI(VDD:p) = -177.638 nA, took 56.92 s.",
+      "Conv norm = 59.8, max dV(XD.XS5_4.st) = 70.0526 uV, took 57.33 s.",
+      "Conv norm = 19.3, max dV(XD.XS5_4.st) = 22.626 uV, took 56.94 s.",
+      "Conv norm = 4.76, max dV(XD.XS5_4.st) = 5.58709 uV, took 57.16 s.",
+      "Conv norm = 977e-03, max dI(XRF:vn_vss_flow) = -920.805 pA, took 57.13 s."
+    ],
+    "gmin_notices": [
+      "dV(XD.acp3) = 9.31554 mV",
+      "Conv norm = 59.8, max dV(XD.XS5_4.st) = 70.0526 uV, took 57.33 s.",
+      "Conv norm = 19.3, max dV(XD.XS5_4.st) = 22.626 uV, took 56.94 s.",
+      "Conv norm = 4.76, max dV(XD.XS5_4.st) = 5.58709 uV, took 57.16 s."
+    ],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "errors": [],
+    "iteration_limit_reached": false,
+    "cancelled": false,
+    "transient": null,
+    "periodic": {
+      "period_s": 4.166666666666666e-08,
+      "vco_edges": 164,
+      "output_edges": 41,
+      "output_frequency_mhz": 983.9999708847552,
+      "output_harmonic": 41,
+      "output_range_v": [
+        -0.03465639079657049,
+        1.257572345055129
+      ],
+      "branch_power_mw": 0.8648709020489905,
+      "endpoint_mismatch_v": {
+        "vn": 0.0,
+        "out": 5.154987547939527e-12,
+        "XD.acp3": 4.862352664947167e-08,
+        "XD.acn3": 4.823918842156161e-08,
+        "XD.acp7": 5.52271465226184e-08,
+        "XD.acn7": 5.4039650421167096e-08,
+        "XD.cim": 1.3794154707369444e-10,
+        "XD.cm": 9.735794614940119e-09,
+        "XD.nb7": 6.514962750054157e-12,
+        "vp": 0.0
+      },
+      "node_mean_v": {
+        "XD.acp3": 0.7910322920632312,
+        "XD.acn3": 0.7910147994735549,
+        "XD.acp7": 0.7910322078919123,
+        "XD.acn7": 0.7910147299379376,
+        "XD.cim": 1.000000025827859,
+        "XD.cm": 0.800000741255941,
+        "XD.nb7": 3.05429808754317e-09
+      },
+      "expected_fundamental_hz": 24000000.0,
+      "pass_divider_periodic": true
+    },
+    "switching": null,
+    "static_divider": null
+  },
+  {
+    "run": "divider_pss_screen",
+    "case": "divider_clamp_pss",
+    "sim_ok": true,
+    "settings": {
+      "reltol": [
+        "10e-06",
+        "10e-06"
+      ],
+      "abstol(V)": [
+        "1 uV",
+        "1 uV"
+      ],
+      "abstol(I)": [
+        "1 pA",
+        "1 pA"
+      ],
+      "maxstep": [
+        "2 ps",
+        "2 ps"
+      ],
+      "errpreset": [
+        "moderate"
+      ],
+      "method": [
+        "traponly",
+        "traponly"
+      ],
+      "steadyratio": [
+        "1e-03"
+      ],
+      "lteratio": [
+        "3.5",
+        "3.5"
+      ],
+      "gmin": [
+        "1 pS",
+        "1 pS"
+      ]
+    },
+    "state_file": {
+      "remote": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/closure_v6/divider_pss_screen_divider_clamp_pss.final.ic",
+      "collected": true,
+      "stderr": ""
+    },
+    "norm_lines": [
+      "Conv norm = 6.65e+06, max dI(VDD:p) = 12.0504 mA, took 57.43 s.",
+      "Conv norm = 318e+03, max dI(XRF:vp_vss_flow) = -297.94 uA, took 60.72 s.",
+      "Conv norm = 15.6e+03, max dI(XRF:vn_vss_flow) = 14.7528 uA, took 60.03 s.",
+      "Conv norm = 1.84e+03, max dI(VDD:p) = -1.72499 uA, took 59.71 s.",
+      "Conv norm = 469, max dI(VDD:p) = 439.625 nA, took 59.96 s.",
+      "Conv norm = 206, max dI(VDD:p) = 193.561 nA, took 59.62 s.",
+      "Conv norm = 43, max dI(VDD:p) = 40.3722 nA, took 59.46 s.",
+      "Conv norm = 10.6, max dI(VDD:p) = 9.94132 nA, took 59.31 s.",
+      "Conv norm = 1.96, max dI(VDD:p) = 1.84087 nA, took 59.25 s.",
+      "Conv norm = 123e-03, max dI(VDD:p) = 115.303 pA, took 60.4 s."
+    ],
+    "gmin_notices": [
+      "dV(XD.XM3_0.st) = -326.626 uV"
+    ],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "errors": [],
+    "iteration_limit_reached": false,
+    "cancelled": false,
+    "transient": null,
+    "periodic": {
+      "period_s": 4.166666666666666e-08,
+      "vco_edges": 164,
+      "output_edges": 41,
+      "output_frequency_mhz": 983.9999705186402,
+      "output_harmonic": 41,
+      "output_range_v": [
+        -0.03465540290950033,
+        1.257587252076985
+      ],
+      "branch_power_mw": 0.8644115952879496,
+      "endpoint_mismatch_v": {
+        "vn": 0.0,
+        "out": 1.1612932837579137e-13,
+        "XD.acp3": 5.629496868664319e-11,
+        "XD.acn3": 5.646905165690441e-11,
+        "XD.acp7": 5.467093444622151e-11,
+        "XD.acn7": 5.978706418829915e-11,
+        "XD.cim": 5.3236970387615656e-11,
+        "XD.cm": 6.798106522154512e-11,
+        "XD.nb7": 5.79916414775129e-14,
+        "vp": 0.0
+      },
+      "node_mean_v": {
+        "XD.acp3": 0.9999988271150191,
+        "XD.acn3": 0.9999988271041289,
+        "XD.acp7": 0.9999988292136585,
+        "XD.acn7": 0.9999988292069492,
+        "XD.cim": 0.9999988377915129,
+        "XD.cm": 0.8000005347176057,
+        "XD.nb7": 3.4685725399367636e-09
+      },
+      "expected_fundamental_hz": 24000000.0,
+      "pass_divider_periodic": true
+    },
+    "switching": null,
+    "static_divider": null
+  },
+  {
+    "run": "divider_static",
+    "case": "divider_clamp_m10_tt",
+    "sim_ok": true,
+    "settings": {
+      "reltol": [
+        "10e-06"
+      ],
+      "abstol(V)": [
+        "1 uV"
+      ],
+      "abstol(I)": [
+        "1 pA"
+      ],
+      "maxstep": [
+        "2 ps"
+      ],
+      "errpreset": [
+        "moderate"
+      ],
+      "method": [
+        "traponly"
+      ],
+      "steadyratio": [],
+      "lteratio": [
+        "3.5"
+      ],
+      "gmin": [
+        "1 pS"
+      ]
+    },
+    "state_file": null,
+    "norm_lines": [],
+    "gmin_notices": [
+      "dV(XD.XM2_0.st) = -8.40982 mV"
+    ],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "errors": [],
+    "iteration_limit_reached": false,
+    "cancelled": false,
+    "transient": null,
+    "periodic": null,
+    "switching": null,
+    "static_divider": {
+      "m": 10,
+      "rf_hz": 3119999999.652514,
+      "output_hz": 311999670.11575323,
+      "ratio_error": -1.057209930155345e-06,
+      "max_period_error": 1.4139821691294685e-06,
+      "output_edges": 25,
+      "pass_divide": true,
+      "window_s": [
+        2e-07,
+        2.8e-07
+      ],
+      "fixture": "Ideal waveform replay at planned maximum RF for this divider mode; TT27,1.2V,10fF; not loaded VCO noise."
+    }
+  },
+  {
+    "run": "divider_static",
+    "case": "divider_clamp_m12_tt",
+    "sim_ok": true,
+    "settings": {
+      "reltol": [
+        "10e-06"
+      ],
+      "abstol(V)": [
+        "1 uV"
+      ],
+      "abstol(I)": [
+        "1 pA"
+      ],
+      "maxstep": [
+        "2 ps"
+      ],
+      "errpreset": [
+        "moderate"
+      ],
+      "method": [
+        "traponly"
+      ],
+      "steadyratio": [],
+      "lteratio": [
+        "3.5"
+      ],
+      "gmin": [
+        "1 pS"
+      ]
+    },
+    "state_file": null,
+    "norm_lines": [],
+    "gmin_notices": [
+      "dV(XD.XM2_0.st) = -8.40982 mV"
+    ],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "errors": [],
+    "iteration_limit_reached": false,
+    "cancelled": false,
+    "transient": null,
+    "periodic": null,
+    "switching": null,
+    "static_divider": {
+      "m": 12,
+      "rf_hz": 3167999999.0998406,
+      "output_hz": 263999723.40648535,
+      "ratio_error": -1.0474185661024649e-06,
+      "max_period_error": 1.2192487697237908e-06,
+      "output_edges": 21,
+      "pass_divide": true,
+      "window_s": [
+        2e-07,
+        2.8e-07
+      ],
+      "fixture": "Ideal waveform replay at planned maximum RF for this divider mode; TT27,1.2V,10fF; not loaded VCO noise."
+    }
+  },
+  {
+    "run": "divider_static",
+    "case": "divider_clamp_m14_tt",
+    "sim_ok": true,
+    "settings": {
+      "reltol": [
+        "10e-06"
+      ],
+      "abstol(V)": [
+        "1 uV"
+      ],
+      "abstol(I)": [
+        "1 pA"
+      ],
+      "maxstep": [
+        "2 ps"
+      ],
+      "errpreset": [
+        "moderate"
+      ],
+      "method": [
+        "traponly"
+      ],
+      "steadyratio": [],
+      "lteratio": [
+        "3.5"
+      ],
+      "gmin": [
+        "1 pS"
+      ]
+    },
+    "state_file": null,
+    "norm_lines": [],
+    "gmin_notices": [
+      "dV(XD.XM2_0.st) = -8.40982 mV"
+    ],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "errors": [],
+    "iteration_limit_reached": false,
+    "cancelled": false,
+    "transient": null,
+    "periodic": null,
+    "switching": null,
+    "static_divider": {
+      "m": 14,
+      "rf_hz": 3024000008.1399336,
+      "output_hz": 215999796.7934942,
+      "ratio_error": -9.434626346838115e-07,
+      "max_period_error": 1.1102090042847124e-06,
+      "output_edges": 17,
+      "pass_divide": true,
+      "window_s": [
+        2e-07,
+        2.8e-07
+      ],
+      "fixture": "Ideal waveform replay at planned maximum RF for this divider mode; TT27,1.2V,10fF; not loaded VCO noise."
+    }
+  },
+  {
+    "run": "divider_static",
+    "case": "divider_clamp_m4_tt",
+    "sim_ok": true,
+    "settings": {
+      "reltol": [
+        "10e-06"
+      ],
+      "abstol(V)": [
+        "1 uV"
+      ],
+      "abstol(I)": [
+        "1 pA"
+      ],
+      "maxstep": [
+        "2 ps"
+      ],
+      "errpreset": [
+        "moderate"
+      ],
+      "method": [
+        "traponly"
+      ],
+      "steadyratio": [],
+      "lteratio": [
+        "3.5"
+      ],
+      "gmin": [
+        "1 pS"
+      ]
+    },
+    "state_file": null,
+    "norm_lines": [],
+    "gmin_notices": [
+      "dV(XD.XM3_0.st) = -326.626 uV"
+    ],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "errors": [],
+    "iteration_limit_reached": false,
+    "cancelled": false,
+    "transient": null,
+    "periodic": null,
+    "switching": null,
+    "static_divider": {
+      "m": 4,
+      "rf_hz": 3936000003.0993733,
+      "output_hz": 983998314.1185315,
+      "ratio_error": -1.7140816164218364e-06,
+      "max_period_error": 2.456293441532864e-06,
+      "output_edges": 79,
+      "pass_divide": true,
+      "window_s": [
+        2e-07,
+        2.8e-07
+      ],
+      "fixture": "Ideal waveform replay at planned maximum RF for this divider mode; TT27,1.2V,10fF; not loaded VCO noise."
+    }
+  },
+  {
+    "run": "divider_static",
+    "case": "divider_clamp_m6_tt",
+    "sim_ok": true,
+    "settings": {
+      "reltol": [
+        "10e-06"
+      ],
+      "abstol(V)": [
+        "1 uV"
+      ],
+      "abstol(I)": [
+        "1 pA"
+      ],
+      "maxstep": [
+        "2 ps"
+      ],
+      "errpreset": [
+        "moderate"
+      ],
+      "method": [
+        "traponly"
+      ],
+      "steadyratio": [],
+      "lteratio": [
+        "3.5"
+      ],
+      "gmin": [
+        "1 pS"
+      ]
+    },
+    "state_file": null,
+    "norm_lines": [],
+    "gmin_notices": [
+      "dV(XD.XM2_0.st) = -8.40982 mV"
+    ],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "errors": [],
+    "iteration_limit_reached": false,
+    "cancelled": false,
+    "transient": null,
+    "periodic": null,
+    "switching": null,
+    "static_divider": {
+      "m": 6,
+      "rf_hz": 3888000005.598021,
+      "output_hz": 647998712.838165,
+      "ratio_error": -1.987800673730611e-06,
+      "max_period_error": 2.7073102293329043e-06,
+      "output_edges": 51,
+      "pass_divide": true,
+      "window_s": [
+        2e-07,
+        2.8e-07
+      ],
+      "fixture": "Ideal waveform replay at planned maximum RF for this divider mode; TT27,1.2V,10fF; not loaded VCO noise."
+    }
+  },
+  {
+    "run": "divider_static",
+    "case": "divider_clamp_m8_tt",
+    "sim_ok": true,
+    "settings": {
+      "reltol": [
+        "10e-06"
+      ],
+      "abstol(V)": [
+        "1 uV"
+      ],
+      "abstol(I)": [
+        "1 pA"
+      ],
+      "maxstep": [
+        "2 ps"
+      ],
+      "errpreset": [
+        "moderate"
+      ],
+      "method": [
+        "traponly"
+      ],
+      "steadyratio": [],
+      "lteratio": [
+        "3.5"
+      ],
+      "gmin": [
+        "1 pS"
+      ]
+    },
+    "state_file": null,
+    "norm_lines": [],
+    "gmin_notices": [
+      "dV(XD.XM2_0.st) = -8.40982 mV"
+    ],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "errors": [],
+    "iteration_limit_reached": false,
+    "cancelled": false,
+    "transient": null,
+    "periodic": null,
+    "switching": null,
+    "static_divider": {
+      "m": 8,
+      "rf_hz": 3455999999.812328,
+      "output_hz": 431999370.85749227,
+      "ratio_error": -1.456294094315247e-06,
+      "max_period_error": 1.6817655332790338e-06,
+      "output_edges": 35,
+      "pass_divide": true,
+      "window_s": [
+        2e-07,
+        2.8e-07
+      ],
+      "fixture": "Ideal waveform replay at planned maximum RF for this divider mode; TT27,1.2V,10fF; not loaded VCO noise."
+    }
+  },
+  {
+    "run": "divider_switch",
+    "case": "divider_clamp_switch_tt",
+    "sim_ok": true,
+    "settings": {
+      "reltol": [
+        "10e-06"
+      ],
+      "abstol(V)": [
+        "1 uV"
+      ],
+      "abstol(I)": [
+        "1 pA"
+      ],
+      "maxstep": [
+        "2 ps"
+      ],
+      "errpreset": [
+        "moderate"
+      ],
+      "method": [
+        "traponly"
+      ],
+      "steadyratio": [],
+      "lteratio": [
+        "3.5"
+      ],
+      "gmin": [
+        "1 pS"
+      ]
+    },
+    "state_file": null,
+    "norm_lines": [],
+    "gmin_notices": [
+      "dV(XD.XM3_0.st) = -326.623 uV"
+    ],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "errors": [],
+    "iteration_limit_reached": false,
+    "cancelled": false,
+    "transient": null,
+    "periodic": null,
+    "switching": {
+      "rows": [
+        {
+          "m": 4,
+          "window_s": [
+            3.0000000000000004e-08,
+            9.5e-08
+          ],
+          "rf_hz": 3936000024.1930723,
+          "output_hz": 984385840.1434718,
+          "output_edges": 64,
+          "ratio_error": 0.0003921078179189852,
+          "max_period_error": 0.0024039656913339424,
+          "pass_divide": true
+        },
+        {
+          "m": 6,
+          "window_s": [
+            1.3e-07,
+            1.95e-07
+          ],
+          "rf_hz": 3936000030.0154357,
+          "output_hz": 656347657.6567422,
+          "output_edges": 42,
+          "ratio_error": 0.0005299583102416072,
+          "max_period_error": 0.004396314595464301,
+          "pass_divide": true
+        },
+        {
+          "m": 8,
+          "window_s": [
+            2.3000000000000002e-07,
+            2.9500000000000003e-07
+          ],
+          "rf_hz": 3936000018.8887377,
+          "output_hz": 492642674.71159023,
+          "output_edges": 32,
+          "ratio_error": 0.001306244608564766,
+          "max_period_error": 0.01207586154304885,
+          "pass_divide": false
+        },
+        {
+          "m": 10,
+          "window_s": [
+            3.3e-07,
+            3.9500000000000003e-07
+          ],
+          "rf_hz": 3935999984.8071866,
+          "output_hz": 393926766.1211029,
+          "output_edges": 26,
+          "ratio_error": 0.000830202341579156,
+          "max_period_error": 0.005397567289715743,
+          "pass_divide": true
+        },
+        {
+          "m": 12,
+          "window_s": [
+            4.3e-07,
+            4.95e-07
+          ],
+          "rf_hz": 3936000061.7963834,
+          "output_hz": 328583773.0657183,
+          "output_edges": 22,
+          "ratio_error": 0.0017797802038241883,
+          "max_period_error": 0.0140198442359879,
+          "pass_divide": false
+        },
+        {
+          "m": 14,
+          "window_s": [
+            5.3e-07,
+            5.95e-07
+          ],
+          "rf_hz": 3935999947.3993464,
+          "output_hz": 281006382.89336264,
+          "output_edges": 19,
+          "ratio_error": -0.0004854133429375018,
+          "max_period_error": 0.03309302813670967,
+          "pass_divide": false
+        }
+      ],
+      "all_pass": false,
+      "scope": "STRESS TEST: TT27, ideal measured-shape RF3.936GHz for all modes,10fF; exceeds planned maximum RF for M6/8/10/12/14. 100ns mode dwell, externally sequenced selects/reset; includes settling. Not required-frequency/FLL/glitchless switching signoff."
+    },
+    "static_divider": null
+  },
+  {
+    "run": "warm_base",
+    "case": "loop_base_warm_pss",
+    "sim_ok": false,
+    "settings": {
+      "reltol": [
+        "10e-06",
+        "10e-06"
+      ],
+      "abstol(V)": [
+        "1 uV",
+        "1 uV"
+      ],
+      "abstol(I)": [
+        "1 pA",
+        "1 pA"
+      ],
+      "maxstep": [
+        "2 ps",
+        "2 ps"
+      ],
+      "errpreset": [
+        "moderate"
+      ],
+      "method": [
+        "traponly",
+        "traponly"
+      ],
+      "steadyratio": [
+        "1e-03"
+      ],
+      "lteratio": [
+        "3.5",
+        "3.5"
+      ],
+      "gmin": [
+        "1 pS",
+        "1 pS"
+      ]
+    },
+    "state_file": {
+      "remote": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/closure_v6/warm_base_loop_base_warm_pss.final.ic",
+      "collected": true,
+      "stderr": ""
+    },
+    "norm_lines": [
+      "Conv norm = 7.8e+06, max dI(XV.XL.XN.LW:1) = 5.66481 mA, took 47.37 s.",
+      "Conv norm = 58.2e+03, max dI(XV.XL.XN.LW:1) = -45.4314 uA, took 91.01 s.",
+      "Conv norm = 232e+03, max dI(VDD:p) = 161.194 uA, took 90.56 s.",
+      "Conv norm = 54.6e+03, max dI(VDD:p) = -37.3591 uA, took 89.63 s.",
+      "Conv norm = 156e+03, max dI(VDD:p) = 107.281 uA, took 89.33 s.",
+      "Conv norm = 115e+03, max dI(VDD:p) = -77.9109 uA, took 87.46 s.",
+      "Conv norm = 109e+03, max dI(VDD:p) = 74.3964 uA, took 88.65 s.",
+      "Conv norm = 110e+03, max dI(VDD:p) = -74.5942 uA, took 87.89 s.",
+      "Conv norm = 11.2e+03, max dI(VVCO:p) = 7.09834 uA, took 88.67 s.",
+      "Conv norm = 35.4e+03, max dI(VDD:p) = 24.2386 uA, took 88.37 s.",
+      "Conv norm = 68.1e+03, max dI(VDD:p) = 46.4919 uA, took 89.27 s.",
+      "Conv norm = 47.1e+03, max dI(VDD:p) = -32.0106 uA, took 89.45 s.",
+      "Conv norm = 111e+03, max dI(VDD:p) = 75.5881 uA, took 90.06 s.",
+      "Conv norm = 220e+03, max dI(VDD:p) = -148.572 uA, took 88.47 s.",
+      "Conv norm = 27.8, max dI(VDD:p) = 19.0978 nA, took 87.85 s.",
+      "Conv norm = 101e+03, max dI(VDD:p) = -69.6001 uA, took 90.2 s.",
+      "Conv norm = 10.8e+03, max dI(VDD:p) = 7.44409 uA, took 90.11 s.",
+      "Conv norm = 131e+03, max dI(VDD:p) = 90.839 uA, took 88.93 s.",
+      "Conv norm = 38.3e+03, max dI(VDD:p) = -26.1908 uA, took 89.02 s.",
+      "Conv norm = 103, max dI(VDD:p) = 70.3767 nA, took 88.54 s."
+    ],
+    "gmin_notices": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow.",
+      "WARNING (SPECTRE-8301): line 27: Unknown node `VRST:p' will be ignored.",
+      "WARNING (SPECTRE-8301): line 27: Unknown node `VRST:p' will be ignored."
+    ],
+    "errors": [
+      "ERROR (SPCRTRF-15044): pss analysis did not converge."
+    ],
+    "iteration_limit_reached": true,
+    "cancelled": false
+  },
+  {
+    "run": "warm_base8",
+    "case": "loop_base8_warm_pss",
+    "sim_ok": false,
+    "settings": {
+      "reltol": [
+        "10e-06",
+        "10e-06"
+      ],
+      "abstol(V)": [
+        "1 uV",
+        "1 uV"
+      ],
+      "abstol(I)": [
+        "1 pA",
+        "1 pA"
+      ],
+      "maxstep": [
+        "2 ps",
+        "2 ps"
+      ],
+      "errpreset": [
+        "moderate"
+      ],
+      "method": [
+        "traponly",
+        "traponly"
+      ],
+      "steadyratio": [
+        "1e-03"
+      ],
+      "lteratio": [
+        "3.5",
+        "3.5"
+      ],
+      "gmin": [
+        "1 pS",
+        "1 pS"
+      ]
+    },
+    "state_file": {
+      "remote": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/closure_v6/warm_base8_loop_base8_warm_pss.final.ic",
+      "collected": true,
+      "stderr": ""
+    },
+    "norm_lines": [
+      "Conv norm = 7.82e+06, max dI(XV.XL.XN.LW:1) = 5.67399 mA, took 47.61 s.",
+      "Conv norm = 316e+03, max dI(VDD:p) = -213.445 uA, took 92.45 s.",
+      "Conv norm = 99.3e+03, max dI(VDD:p) = 68.3022 uA, took 92.32 s.",
+      "Conv norm = 362e+03, max dI(VDD:p) = -245.894 uA, took 92.38 s.",
+      "Conv norm = 214e+03, max dI(VDD:p) = 149.522 uA, took 91.63 s.",
+      "Conv norm = 60.5e+03, max dI(VDD:p) = -41.6457 uA, took 91.32 s.",
+      "Conv norm = 144e+03, max dI(VDD:p) = -99.1288 uA, took 91.34 s.",
+      "Conv norm = 298e+03, max dI(VDD:p) = 207.4 uA, took 90.61 s.",
+      "Conv norm = 176e+03, max dI(VDD:p) = 120.01 uA, took 90.44 s.",
+      "Conv norm = 46.7e+03, max dI(VDD:p) = -31.4932 uA, took 90.49 s.",
+      "Conv norm = 155e+03, max dI(VDD:p) = -104.759 uA, took 89.41 s.",
+      "Conv norm = 29.9e+03, max dI(VVCO:p) = -18.9255 uA, took 89.16 s.",
+      "Conv norm = 81.5e+03, max dI(VDD:p) = 55.7289 uA, took 88.95 s.",
+      "Conv norm = 18.9e+03, max dI(VVCO:p) = -11.9351 uA, took 87.53 s.",
+      "Conv norm = 61.6e+03, max dI(VDD:p) = -41.8381 uA, took 87.29 s.",
+      "Conv norm = 113e+03, max dI(VDD:p) = -77.1952 uA, took 87.57 s.",
+      "Conv norm = 281e+03, max dI(VDD:p) = 192.929 uA, took 87.1 s.",
+      "Conv norm = 25.7e+03, max dI(VDD:p) = -17.3117 uA, took 87.77 s.",
+      "Conv norm = 289, max dI(VDD:p) = 195.462 nA, took 86.71 s.",
+      "Conv norm = 210e+03, max dI(VDD:p) = -142.077 uA, took 88.47 s."
+    ],
+    "gmin_notices": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "errors": [
+      "ERROR (SPCRTRF-15044): pss analysis did not converge."
+    ],
+    "iteration_limit_reached": true,
+    "cancelled": false
+  },
+  {
+    "run": "warm_base8_gear",
+    "case": "loop_base8_gear_pss",
+    "sim_ok": false,
+    "settings": {
+      "reltol": [
+        "10e-06",
+        "10e-06"
+      ],
+      "abstol(V)": [
+        "1 uV",
+        "1 uV"
+      ],
+      "abstol(I)": [
+        "1 pA",
+        "1 pA"
+      ],
+      "maxstep": [
+        "2 ps",
+        "2 ps"
+      ],
+      "errpreset": [
+        "moderate"
+      ],
+      "method": [
+        "gear2only",
+        "gear2only"
+      ],
+      "steadyratio": [
+        "1e-03"
+      ],
+      "lteratio": [
+        "3.5",
+        "3.5"
+      ],
+      "gmin": [
+        "1 pS",
+        "1 pS"
+      ]
+    },
+    "state_file": {
+      "remote": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/closure_v6/warm_base8_gear_loop_base8_gear_pss.final.ic",
+      "collected": false,
+      "stderr": "cat: /home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/closure_v6/warm_base8_gear_loop_base8_gear_pss.final.ic: No such file or directory\n"
+    },
+    "norm_lines": [
+      "Conv norm = 8.44e+06, max dI(XV.XL.XN.LW:1) = 6.12604 mA, took 54.68 s.",
+      "Conv norm = 316e+03, max dI(XV.XL.XP.LW:1) = 224.647 uA, took 126.35 s.",
+      "Conv norm = 6.1e+06, max dI(XV.XL.XN.LW:1) = -19.8502 mA, took 103.68 s.",
+      "Conv norm = 2.54e+06, max dI(XV.XL.XN.LW:1) = 20.2161 mA, took 177.79 s."
+    ],
+    "gmin_notices": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow.",
+      "WARNING (CMI-2754): XV.XBN.MP5: Vgd(=-1.98013 V) has exceeded vgd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2754): XV.XBN.MP4: Vgd(=-1.99773 V) has exceeded vgd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2754): XV.XBN.MP3: Vgd(=-2.03044 V) has exceeded vgd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2754): XV.XBN.MP0: Vgd(=-2.14115 V) has exceeded vgd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2751): XV.XBN.M0: Vds(=2.14115 V) has exceeded vds_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2755): XV.XBN.M0: Vbd(=-2.14115 V) has exceeded vbd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2754): XV.XBN.M0: Vgd(=-2.14115 V) has exceeded vgd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2751): XV.XBN.M5: Vds(=1.98013 V) has exceeded vds_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2755): XV.XBN.M5: Vbd(=-1.98013 V) has exceeded vbd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2751): XV.XBN.M4: Vds(=1.99773 V) has exceeded vds_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2755): XV.XBN.M4: Vbd(=-1.99773 V) has exceeded vbd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2755): XV.XL.MN1: Vbd(=-2.13984 V) has exceeded vbd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2753): XV.XL.MN0: Vgb(=2.13984 V) has exceeded vgb_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2751): XV.XBN.M3: Vds(=2.03044 V) has exceeded vds_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2755): XV.XBN.M3: Vbd(=-2.03044 V) has exceeded vbd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2751): XV.XBN.M0: Vds(=2.1411 V) has exceeded vds_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2753): XV.XL.MN0: Vgb(=2.14014 V) has exceeded vgb_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2753): XV.XL.MN0: Vgb(=2.14074 V) has exceeded vgb_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2753): XV.XL.MN0: Vgb(=2.14168 V) has exceeded vgb_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2753): XV.XL.MN0: Vgb(=2.14272 V) has exceeded vgb_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2752): XV.XL.MN0: Vgs(=1.9822 V) has exceeded vgs_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2752): XV.XL.MN0: Vgs(=1.98995 V) has exceeded vgs_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2752): XV.XL.MN0: Vgs(=1.99749 V) has exceeded vgs_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2752): XV.XL.MN0: Vgs(=2.00486 V) has exceeded vgs_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2752): XV.XL.MN0: Vgs(=2.01191 V) has exceeded vgs_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2682): XD.XCN7.MP: The bulk-source junction forward bias voltage (1.00594 V) exceeds `VjsmFwd' = 883.187 mV.  The results may be inaccurate because Spectre has linearized the junction current model. Check and verify your design if the higher junction forward bias voltage is not expected",
+      "WARNING (CMI-2682): XD.XCN7.MP: The bulk-drain junction forward bias voltage (1.19737 V) exceeds `VjdmFwd' = 883.187 mV.  The results may be inaccurate because Spectre has linearized the junction current model. Check and verify your design if the higher junction forward bias voltage is not expected",
+      "WARNING (CMI-2756): XD.XCP7.MP: Vbs(=2.26887 V) has exceeded vbs_max (=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2752): XD.XCP7.MP: Vgs(=2.24209 V) has exceeded vgs_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2682): XD.XCN6.MP: The bulk-source junction forward bias voltage (993.896 mV) exceeds `VjsmFwd' = 883.187 mV.  The results may be inaccurate because Spectre has linearized the junction current model. Check and verify your design if the higher junction forward bias voltage is not expected",
+      "WARNING (CMI-2682): XD.XCN6.MP: The bulk-drain junction forward bias voltage (1.19737 V) exceeds `VjdmFwd' = 883.187 mV.  The results may be inaccurate because Spectre has linearized the junction current model. Check and verify your design if the higher junction forward bias voltage is not expected",
+      "WARNING (CMI-2756): XD.XCP6.MP: Vbs(=2.24119 V) has exceeded vbs_max (=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2752): XD.XCP6.MP: Vgs(=2.21432 V) has exceeded vgs_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2682): XD.XCN5.MP: The bulk-source junction forward bias voltage (958.954 mV) exceeds `VjsmFwd' = 883.187 mV.  The results may be inaccurate because Spectre has linearized the junction current model. Check and verify your design if the higher junction forward bias voltage is not expected",
+      "WARNING (CMI-2756): XD.XCP5.MP: Vbs(=2.20475 V) has exceeded vbs_max (=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2752): XD.XCP5.MP: Vgs(=2.17792 V) has exceeded vgs_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2756): XD.XCP4.MP: Vbs(=2.24117 V) has exceeded vbs_max (=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2752): XD.XCP4.MP: Vgs(=2.21431 V) has exceeded vgs_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2756): XD.XCP3.MP: Vbs(=2.18214 V) has exceeded vbs_max (=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2752): XD.XCP3.MP: Vgs(=2.1556 V) has exceeded vgs_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2754): XD.XCN2.MP: Vgd(=-2.40115 V) has exceeded vgd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2755): XS.XSP.MP: Vbd(=1.99585 V) has exceeded vbd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2754): XS.XSP.MP: Vgd(=1.99512 V) has exceeded vgd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2754): XV.XBN.MP7: Vgd(=-2.14937 V) has exceeded vgd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2754): XV.XBN.MP6: Vgd(=-2.14551 V) has exceeded vgd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2754): XV.XBN.MP5: Vgd(=-2.13832 V) has exceeded vgd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2751): XV.XBN.M7: Vds(=2.14937 V) has exceeded vds_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2755): XV.XBN.M7: Vbd(=-2.14937 V) has exceeded vbd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2751): XV.XBN.M6: Vds(=2.14551 V) has exceeded vds_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2755): XV.XBN.M6: Vbd(=-2.14551 V) has exceeded vbd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2751): XV.XBN.M5: Vds(=2.13832 V) has exceeded vds_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2755): XV.XBN.M5: Vbd(=-2.13832 V) has exceeded vbd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2751): XV.XBN.M4: Vds(=2.12346 V) has exceeded vds_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2755): XV.XBN.M4: Vbd(=-2.12346 V) has exceeded vbd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2753): XV.XL.MN0: Vgb(=2.38761 V) has exceeded vgb_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2751): XV.XBN.M3: Vds(=2.09144 V) has exceeded vds_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2753): XV.XL.MN0: Vgb(=2.38329 V) has exceeded vgb_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2753): XV.XL.MN0: Vgb(=2.37481 V) has exceeded vgb_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2753): XV.XL.MN0: Vgb(=2.36522 V) has exceeded vgb_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2753): XV.XL.MN0: Vgb(=2.35508 V) has exceeded vgb_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2751): XD.XR.XO.MP: Vds(=-30.9875 V) has exceeded vds_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2755): XD.XR.XO.MP: Vbd(=30.9875 V) has exceeded vbd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2752): XD.XR.XO.MP: Vgs(=112.539 V) has exceeded vgs_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2753): XD.XR.XO.MP: Vgb(=112.539 V) has exceeded vgb_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2754): XD.XR.XO.MP: Vgd(=143.527 V) has exceeded vgd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2375): XD.XR.XO.MP: Vgs has exceeded the oxide breakdown voltage of `vbox' = 12.18 V.",
+      "WARNING (CMI-2377): XD.XR.XO.MP: Vgd has exceeded the oxide breakdown voltage of `vbox' = 12.18 V.",
+      "WARNING (CMI-2751): XD.XR.X3.MP: Vds(=112.539 V) has exceeded vds_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2755): XD.XR.X3.MP: Vbd(=-112.539 V) has exceeded vbd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2752): XD.XR.X3.MP: Vgs(=-12.8101 V) has exceeded vgs_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2753): XD.XR.X3.MP: Vgb(=-12.8101 V) has exceeded vgb_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2754): XD.XR.X3.MP: Vgd(=-125.349 V) has exceeded vgd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2682): XD.XR.X3.MP: The bulk-drain junction forward bias voltage (112.539 V) exceeds `VjdmFwd' = 908.033 mV.  The results may be inaccurate because Spectre has linearized the junction current model. Check and verify your design if the higher junction forward bias voltage is not expected",
+      "WARNING (CMI-2375): XD.XR.X3.MP: Vgs has exceeded the oxide breakdown voltage of `vbox' = 12.18 V.",
+      "WARNING (CMI-2377): XD.XR.X3.MP: Vgd has exceeded the oxide breakdown voltage of `vbox' = 12.18 V.",
+      "WARNING (CMI-2751): XD.XR.X2.MP: Vds(=-6.73897 V) has exceeded vds_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2755): XD.XR.X2.MP: Vbd(=6.73897 V) has exceeded vbd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2752): XD.XR.X2.MP: Vgs(=17.9455 V) has exceeded vgs_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2753): XD.XR.X2.MP: Vgb(=17.9455 V) has exceeded vgb_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2754): XD.XR.X2.MP: Vgd(=24.6845 V) has exceeded vgd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2375): XD.XR.X2.MP: Vgs has exceeded the oxide breakdown voltage of `vbox' = 12.18 V.",
+      "WARNING (CMI-2377): XD.XR.X2.MP: Vgd has exceeded the oxide breakdown voltage of `vbox' = 12.18 V.",
+      "WARNING (CMI-2751): XD.XR.X1.MP: Vds(=14.1683 V) has exceeded vds_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2755): XD.XR.X1.MP: Vbd(=-14.1683 V) has exceeded vbd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2752): XD.XR.X1.MP: Vgs(=-28.0381 V) has exceeded vgs_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2753): XD.XR.X1.MP: Vgb(=-28.0381 V) has exceeded vgb_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2754): XD.XR.X1.MP: Vgd(=-42.2064 V) has exceeded vgd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2682): XD.XR.X1.MP: The bulk-drain junction forward bias voltage (14.1683 V) exceeds `VjdmFwd' = 908.033 mV.  The results may be inaccurate because Spectre has linearized the junction current model. Check and verify your design if the higher junction forward bias voltage is not expected",
+      "WARNING (CMI-2375): XD.XR.X1.MP: Vgs has exceeded the oxide breakdown voltage of `vbox' = 12.18 V.",
+      "WARNING (CMI-2377): XD.XR.X1.MP: Vgd has exceeded the oxide breakdown voltage of `vbox' = 12.18 V.",
+      "WARNING (CMI-2751): XD.XR.X0.MP: Vds(=-24.8798 V) has exceeded vds_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2755): XD.XR.X0.MP: Vbd(=24.8798 V) has exceeded vbd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2752): XD.XR.X0.MP: Vgs(=2.48577 V) has exceeded vgs_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2753): XD.XR.X0.MP: Vgb(=2.48577 V) has exceeded vgb_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2754): XD.XR.X0.MP: Vgd(=27.3656 V) has exceeded vgd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2377): XD.XR.X0.MP: Vgd has exceeded the oxide breakdown voltage of `vbox' = 12.18 V.",
+      "WARNING (CMI-2682): XD.XR.X2.MN: The bulk-drain junction forward bias voltage (5.53897 V) exceeds `VjdmFwd' = 925.528 mV.  The results may be inaccurate because Spectre has linearized the junction current model. Check and verify your design if the higher junction forward bias voltage is not expected",
+      "WARNING (CMI-2375): XD.XR.X2.MN: Vgs has exceeded the oxide breakdown voltage of `vbox' = 11.943 V.",
+      "WARNING (CMI-2682): XD.XR.X0.MN: The bulk-drain junction forward bias voltage (23.6798 V) exceeds `VjdmFwd' = 925.528 mV.  The results may be inaccurate because Spectre has linearized the junction current model. Check and verify your design if the higher junction forward bias voltage is not expected",
+      "WARNING (CMI-2682): XD.XS2_0.MR: The bulk-drain junction forward bias voltage (2.12773 V) exceeds `VjdmFwd' = 929.428 mV.  The results may be inaccurate because Spectre has linearized the junction current model. Check and verify your design if the higher junction forward bias voltage is not expected",
+      "WARNING (CMI-2756): XD.XO7.MN: Vbs(=-1.98092 V) has exceeded vbs_max (=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2756): XD.XO6.MN: Vbs(=-1.98092 V) has exceeded vbs_max (=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2756): XD.XO5.MN: Vbs(=-1.98092 V) has exceeded vbs_max (=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2756): XD.XO4.MN: Vbs(=-1.98092 V) has exceeded vbs_max (=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+      "WARNING (CMI-2756): XD.XO3.MN: Vbs(=-1.98092 V) has exceeded vbs_max (=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance"
+    ],
+    "errors": [
+      "ERROR (SPECTRE-25): The simulation is stopped either by the user or the farm."
+    ],
+    "iteration_limit_reached": false,
+    "cancelled": true
+  },
+  {
+    "run": "warm_clamp",
+    "case": "loop_clamp_warm_pss",
+    "sim_ok": false,
+    "settings": {
+      "reltol": [
+        "10e-06",
+        "10e-06"
+      ],
+      "abstol(V)": [
+        "1 uV",
+        "1 uV"
+      ],
+      "abstol(I)": [
+        "1 pA",
+        "1 pA"
+      ],
+      "maxstep": [
+        "2 ps",
+        "2 ps"
+      ],
+      "errpreset": [
+        "moderate"
+      ],
+      "method": [
+        "traponly",
+        "traponly"
+      ],
+      "steadyratio": [
+        "1e-03"
+      ],
+      "lteratio": [
+        "3.5",
+        "3.5"
+      ],
+      "gmin": [
+        "1 pS",
+        "1 pS"
+      ]
+    },
+    "state_file": {
+      "remote": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/closure_v6/warm_clamp_loop_clamp_warm_pss.final.ic",
+      "collected": true,
+      "stderr": ""
+    },
+    "norm_lines": [
+      "Conv norm = 7.78e+06, max dI(XV.XL.XN.LW:1) = 5.65328 mA, took 48.93 s.",
+      "Conv norm = 184e+03, max dI(VDD:p) = 126.882 uA, took 94.38 s.",
+      "Conv norm = 170e+03, max dI(VDD:p) = -115.352 uA, took 93.48 s.",
+      "Conv norm = 16.3e+03, max dI(VVCO:p) = 10.3361 uA, took 92.86 s.",
+      "Conv norm = 178, max dI(VDD:p) = 122.198 nA, took 91.74 s.",
+      "Conv norm = 202e+03, max dI(VDD:p) = 139.188 uA, took 92.52 s.",
+      "Conv norm = 163e+03, max dI(VDD:p) = -110.733 uA, took 93.48 s.",
+      "Conv norm = 478, max dI(VVCO:p) = 303.282 nA, took 92.05 s.",
+      "Conv norm = 30.7e+03, max dI(VVCO:p) = -19.4602 uA, took 92.53 s.",
+      "Conv norm = 55.1, max dI(VDD:p) = 37.8042 nA, took 92.09 s.",
+      "Conv norm = 432, max dI(VDD:p) = -296.382 nA, took 91.97 s.",
+      "Conv norm = 97.1e+03, max dI(VDD:p) = 66.5485 uA, took 91.18 s.",
+      "Conv norm = 50.2, max dI(VDD:p) = -34.1773 nA, took 91.7 s.",
+      "Conv norm = 84.3, max dI(VDD:p) = 57.3799 nA, took 92.01 s.",
+      "Conv norm = 11.5, max dI(VDD:p) = -7.82408 nA, took 93.16 s.",
+      "Conv norm = 338, max dI(VVCO:p) = -214.527 nA, took 93.29 s.",
+      "Conv norm = 351, max dI(VDD:p) = 239.206 nA, took 92.12 s.",
+      "Conv norm = 127e+03, max dI(VDD:p) = -86.2365 uA, took 94.24 s.",
+      "Conv norm = 19.9, max dI(VVCO:p) = 12.6366 nA, took 92.1 s.",
+      "Conv norm = 9.59, max dI(VDD:p) = 6.59045 nA, took 91.43 s."
+    ],
+    "gmin_notices": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow.",
+      "WARNING (SPECTRE-8301): line 27: Unknown node `VRST:p' will be ignored.",
+      "WARNING (SPECTRE-8301): line 27: Unknown node `VRST:p' will be ignored."
+    ],
+    "errors": [
+      "ERROR (SPCRTRF-15044): pss analysis did not converge."
+    ],
+    "iteration_limit_reached": true,
+    "cancelled": false
+  },
+  {
+    "run": "warm_clamp_linear",
+    "case": "loop_clamp_linear_pss",
+    "sim_ok": false,
+    "settings": {
+      "reltol": [
+        "10e-06",
+        "10e-06"
+      ],
+      "abstol(V)": [
+        "1 uV",
+        "1 uV"
+      ],
+      "abstol(I)": [
+        "1 pA",
+        "1 pA"
+      ],
+      "maxstep": [
+        "2 ps",
+        "2 ps"
+      ],
+      "errpreset": [
+        "moderate"
+      ],
+      "method": [
+        "traponly",
+        "traponly"
+      ],
+      "steadyratio": [
+        "1e-03"
+      ],
+      "lteratio": [
+        "3.5",
+        "3.5"
+      ],
+      "gmin": [
+        "1 pS",
+        "1 pS"
+      ]
+    },
+    "state_file": {
+      "remote": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/closure_v6/warm_clamp_linear_loop_clamp_linear_pss.final.ic",
+      "collected": true,
+      "stderr": ""
+    },
+    "norm_lines": [
+      "Conv norm = 7.78e+06, max dI(XV.XL.XN.LW:1) = 5.65328 mA, took 49.25 s.",
+      "Conv norm = 184e+03, max dI(VDD:p) = 126.882 uA, took 95.52 s.",
+      "Conv norm = 170e+03, max dI(VDD:p) = -115.352 uA, took 93.58 s.",
+      "Conv norm = 15.2e+03, max dI(VVCO:p) = 9.64135 uA, took 93.82 s.",
+      "Conv norm = 233e+03, max dI(VDD:p) = 160.274 uA, took 91.51 s.",
+      "Conv norm = 71.8e+03, max dI(VDD:p) = -48.5859 uA, took 93.26 s.",
+      "Conv norm = 73.7e+03, max dI(VDD:p) = -50.1336 uA, took 93.17 s.",
+      "Conv norm = 101e+03, max dI(VDD:p) = -68.6932 uA, took 93.69 s.",
+      "Conv norm = 29.9e+03, max dI(VDD:p) = 20.5399 uA, took 94 s.",
+      "Conv norm = 59e+03, max dI(VDD:p) = -40.4723 uA, took 93.41 s.",
+      "Conv norm = 206e+03, max dI(VDD:p) = 141.755 uA, took 93.99 s.",
+      "Conv norm = 132, max dI(VDD:p) = -89.7476 nA, took 91.53 s."
+    ],
+    "gmin_notices": [],
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow.",
+      "WARNING (SPECTRE-8301): line 27: Unknown node `VRST:p' will be ignored.",
+      "WARNING (SPECTRE-8301): line 27: Unknown node `VRST:p' will be ignored."
+    ],
+    "errors": [
+      "ERROR (SPCRTRF-15044): pss analysis did not converge."
+    ],
+    "iteration_limit_reached": true,
+    "cancelled": false
+  }
+]

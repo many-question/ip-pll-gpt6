@@ -1,0 +1,27 @@
+{
+  "scope": "Analytical ideal lossless LC with constant-step trapezoidal integration. Diagnostic scale estimate only; not a simulation or error bound for nonlinear Q5 PDK VCO, adaptive Spectre steps, or PLL.",
+  "physical_frequency_hz": 3936000000.0,
+  "formula": "f_num=atan(pi*f*h)/(pi*h)",
+  "rows": [
+    {
+      "step_s": 2e-12,
+      "numerical_frequency_hz": 3935197870.623165,
+      "error_hz": -802129.3768348694,
+      "relative_error": -0.00020379303273243554
+    },
+    {
+      "step_s": 1e-12,
+      "numerical_frequency_hz": 3935799412.474852,
+      "error_hz": -200587.5251479149,
+      "relative_error": -5.0962277730715044e-05
+    },
+    {
+      "step_s": 5e-13,
+      "numerical_frequency_hz": 3935949849.6684923,
+      "error_hz": -50150.3315076828,
+      "relative_error": -1.2741446013153634e-05
+    }
+  ],
+  "change_2ps_to_1ps_hz": 601541.8516869545,
+  "inference": "Feedback can compensate an integration-induced oscillator frequency shift by changing control voltage. This is one possible contributor to step-dependent PLL control, not a demonstrated cause or a Kvco extraction."
+}

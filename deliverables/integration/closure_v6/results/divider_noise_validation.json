@@ -1,0 +1,237 @@
+{
+  "protocol": {
+    "scope": "Isolated divider intrinsic rising-edge jitter, ideal noiseless measured-shape RF3.936GHz, TT27,1.2V,10fF, output984MHz,10kHz..492MHz; no actual VCO source impedance/noise or retimer.",
+    "precision_limits": {
+      "max_relative_integrated_jitter_change": 0.01,
+      "max_spectrum_delta_db": 0.1,
+      "numeric_vs_spectre_jee_relative": 0.015
+    },
+    "comparison": "2ps/31 harmonics/31 sidebands versus1ps/63 harmonics/63 sidebands. Joint precision study, not independent attribution of each setting. Both must have valid984MHz periodic waveform with4RF/1output edges and endpoint mismatch<1mV."
+  },
+  "cases": [
+    {
+      "run": "divider_noise",
+      "case": "noise_divider_base_2ps",
+      "simulator_ok": true,
+      "valid_noise": true,
+      "periodic": {
+        "period_s": 1.016260162601637e-09,
+        "vco_edges": 4,
+        "output_edges": 1,
+        "output_frequency_mhz": null,
+        "output_harmonic": 1,
+        "output_range_v": [
+          -0.03465445452886717,
+          1.25759589323997
+        ],
+        "branch_power_mw": 0.8648599893535299,
+        "endpoint_mismatch_v": {
+          "vn": 0.0,
+          "out": 1.7116308370646038e-10,
+          "XD.acp3": 2.0915037479696252e-09,
+          "XD.acn3": 2.093211604048406e-09,
+          "XD.acp7": 8.949919694245523e-10,
+          "XD.acn7": 8.787865990456112e-10,
+          "XD.cim": 6.503686478254167e-13,
+          "XD.cm": 5.963562976774028e-12,
+          "XD.nb7": 1.3772278529403429e-11,
+          "vp": 0.0
+        },
+        "node_mean_v": {
+          "XD.acp3": 0.7905890103524826,
+          "XD.acn3": 0.7905815254286557,
+          "XD.acp7": 0.790588867898565,
+          "XD.acn7": 0.7905813813356902,
+          "XD.cim": 0.9999998997998941,
+          "XD.cm": 0.8000004374958642,
+          "XD.nb7": 3.0159682126311056e-09
+        },
+        "expected_fundamental_hz": 984000000.0,
+        "pass_divider_periodic": true
+      },
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "fundamental_hz": 984000000.0,
+      "slew_v_per_s": 20662000000.0,
+      "spectre_jee_fs": 994.2025790242232,
+      "numeric_jitter_fs": 994.2002934011451,
+      "integration_relative_error": 2.2989510651827416e-06
+    },
+    {
+      "run": "divider_noise",
+      "case": "noise_divider_clamp_2ps",
+      "simulator_ok": true,
+      "valid_noise": true,
+      "periodic": {
+        "period_s": 1.016260162601637e-09,
+        "vco_edges": 4,
+        "output_edges": 1,
+        "output_frequency_mhz": null,
+        "output_harmonic": 1,
+        "output_range_v": [
+          -0.03464871070186454,
+          1.257601166626189
+        ],
+        "branch_power_mw": 0.8644165684510302,
+        "endpoint_mismatch_v": {
+          "vn": 0.0,
+          "out": 2.8597701984267587e-10,
+          "XD.acp3": 7.112768152239823e-09,
+          "XD.acn3": 6.3652401127711755e-09,
+          "XD.acp7": 1.333435695194396e-08,
+          "XD.acn7": 1.9151062957689646e-08,
+          "XD.cim": 2.051441239103724e-10,
+          "XD.cm": 5.501944455588159e-10,
+          "XD.nb7": 6.296180605011451e-11,
+          "vp": 0.0
+        },
+        "node_mean_v": {
+          "XD.acp3": 0.9999995794317393,
+          "XD.acn3": 0.9999996152716703,
+          "XD.acp7": 0.9999997447584787,
+          "XD.acn7": 0.9999995943348989,
+          "XD.cim": 0.9999996516848711,
+          "XD.cm": 0.8000004316577524,
+          "XD.nb7": 3.587212869179201e-09
+        },
+        "expected_fundamental_hz": 984000000.0,
+        "pass_divider_periodic": true
+      },
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "fundamental_hz": 984000000.0,
+      "slew_v_per_s": 20661500000.0,
+      "spectre_jee_fs": 994.6480776256711,
+      "numeric_jitter_fs": 994.6489806655652,
+      "integration_relative_error": 9.078988985056213e-07
+    },
+    {
+      "run": "divider_noise_precision",
+      "case": "noise_divider_base_1ps",
+      "simulator_ok": true,
+      "valid_noise": true,
+      "periodic": {
+        "period_s": 1.016260162601637e-09,
+        "vco_edges": 4,
+        "output_edges": 1,
+        "output_frequency_mhz": null,
+        "output_harmonic": 1,
+        "output_range_v": [
+          -0.03468590405610532,
+          1.257630998021438
+        ],
+        "branch_power_mw": 0.8648779690746147,
+        "endpoint_mismatch_v": {
+          "vn": 0.0,
+          "out": 3.5549341248497512e-12,
+          "XD.acp3": 1.6406608294161629e-09,
+          "XD.acn3": 1.6381422884848007e-09,
+          "XD.acp7": 2.0712522807997402e-09,
+          "XD.acn7": 1.944950533960821e-09,
+          "XD.cim": 7.684434200072587e-09,
+          "XD.cm": 1.8605293972129289e-09,
+          "XD.nb7": 9.702654341082995e-11,
+          "vp": 0.0
+        },
+        "node_mean_v": {
+          "XD.acp3": 0.7904482489247268,
+          "XD.acn3": 0.7904439213374648,
+          "XD.acp7": 0.7904482208892627,
+          "XD.acn7": 0.7904438826207125,
+          "XD.cim": 0.9999982455927336,
+          "XD.cm": 0.8000005517390794,
+          "XD.nb7": 3.0268073833840465e-09
+        },
+        "expected_fundamental_hz": 984000000.0,
+        "pass_divider_periodic": true
+      },
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "fundamental_hz": 984000000.0,
+      "slew_v_per_s": 20648400000.0,
+      "spectre_jee_fs": 995.138301836926,
+      "numeric_jitter_fs": 995.1404747438299,
+      "integration_relative_error": 2.1835225314514872e-06
+    },
+    {
+      "run": "divider_noise_precision",
+      "case": "noise_divider_clamp_1ps",
+      "simulator_ok": true,
+      "valid_noise": true,
+      "periodic": {
+        "period_s": 1.016260162601637e-09,
+        "vco_edges": 4,
+        "output_edges": 1,
+        "output_frequency_mhz": null,
+        "output_harmonic": 1,
+        "output_range_v": [
+          -0.03468603304598217,
+          1.257624375030949
+        ],
+        "branch_power_mw": 0.8644194436510966,
+        "endpoint_mismatch_v": {
+          "vn": 0.0,
+          "out": 1.198108279254484e-11,
+          "XD.acp3": 2.099814100375852e-09,
+          "XD.acn3": 1.464059984357391e-10,
+          "XD.acp7": 5.092460009237243e-09,
+          "XD.acn7": 2.5050150842531593e-09,
+          "XD.cim": 3.4587974706568048e-09,
+          "XD.cm": 1.3638488116640701e-09,
+          "XD.nb7": 1.5339744461099168e-09,
+          "vp": 0.0
+        },
+        "node_mean_v": {
+          "XD.acp3": 0.9999987665439061,
+          "XD.acn3": 0.9999987671774517,
+          "XD.acp7": 0.9999988222722904,
+          "XD.acn7": 0.99999878708424,
+          "XD.cim": 0.9999987960784521,
+          "XD.cm": 0.7999999053202391,
+          "XD.nb7": 3.7489033972576034e-09
+        },
+        "expected_fundamental_hz": 984000000.0,
+        "pass_divider_periodic": true
+      },
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "fundamental_hz": 984000000.0,
+      "slew_v_per_s": 20660700000.0,
+      "spectre_jee_fs": 995.0488631453393,
+      "numeric_jitter_fs": 995.0495351996984,
+      "integration_relative_error": 6.753983488039239e-07
+    }
+  ],
+  "precision": {
+    "base": {
+      "pass_precision": true,
+      "relative_jitter_change": 0.0009456659276054769,
+      "max_abs_spectrum_delta_db": 0.01081773365288292
+    },
+    "clamp": {
+      "pass_precision": true,
+      "relative_jitter_change": 0.0004027094401335418,
+      "max_abs_spectrum_delta_db": 0.005458218505019404
+    }
+  },
+  "verified_comparison": {
+    "base_fs": 995.1404747438299,
+    "clamp_fs": 995.0495351996984,
+    "clamp_minus_base_fs": -0.0909395441315155,
+    "clamp_relative_change": -9.138362516603049e-05,
+    "scope": "Isolated divider intrinsic rising-edge jitter, ideal noiseless measured-shape RF3.936GHz, TT27,1.2V,10fF, output984MHz,10kHz..492MHz; no actual VCO source impedance/noise or retimer.",
+    "precision_change_fs": {
+      "base": 0.9401813426848094,
+      "clamp": 0.40055453413322084
+    },
+    "interpretation": "The base/clamp difference is smaller than the observed joint numerical refinement shifts; no resolved additive-noise benefit or penalty in this ideal-input fixture. Does not bound noise fed back into a real VCO."
+  }
+}

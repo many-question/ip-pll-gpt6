@@ -1,0 +1,27 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt_bbmvar
+simulator lang=spectre insensitive=no
+include "cells.scs"
+include "divider_v2.scs"
+include "limiter_chain.scs"
+include "divider_bank_v6_clamp.scs"
+simulatorOptions options reltol=1e-5 vabstol=1e-7 iabstol=1e-13 temp=27
+VDD (vdd 0) vsource dc=1.2
+ahdl_include "tank_waveform_v5.va"
+XRF (vp vn 0) tank_waveform_v5
+VRST (rst 0) vsource type=pwl wave=[0 1.2 5e-09 1.2 5.05e-09 0 9.99e-08 0 9.995e-08 1.2 1.05e-07 1.2 1.0505e-07 0 1.999e-07 0 1.9995e-07 1.2 2.05e-07 1.2 2.0505e-07 0 2.999e-07 0 2.9995e-07 1.2 3.05e-07 1.2 3.0505e-07 0 3.999e-07 0 3.9995e-07 1.2 4.05e-07 1.2 4.0505e-07 0 4.999e-07 0 4.9995e-07 1.2 5.05e-07 1.2 5.0505e-07 0]
+XD (vp vn rst s2 s3 s4 s5 s6 s7 out vdd 0) tx_divider_bank_v6_clamp rb_input=50k rb_clock=50k cdec=10p
+VS2 (s2 0) vsource type=pwl wave=[0 1.2 1e-07 1.2 1.0005e-07 0 2e-07 0 2.0005e-07 0 3e-07 0 3.0005e-07 0 4e-07 0 4.0005e-07 0 5e-07 0 5.0005e-07 0]
+VS3 (s3 0) vsource type=pwl wave=[0 0 1e-07 0 1.0005e-07 1.2 2e-07 1.2 2.0005e-07 0 3e-07 0 3.0005e-07 0 4e-07 0 4.0005e-07 0 5e-07 0 5.0005e-07 0]
+VS4 (s4 0) vsource type=pwl wave=[0 0 1e-07 0 1.0005e-07 0 2e-07 0 2.0005e-07 1.2 3e-07 1.2 3.0005e-07 0 4e-07 0 4.0005e-07 0 5e-07 0 5.0005e-07 0]
+VS5 (s5 0) vsource type=pwl wave=[0 0 1e-07 0 1.0005e-07 0 2e-07 0 2.0005e-07 0 3e-07 0 3.0005e-07 1.2 4e-07 1.2 4.0005e-07 0 5e-07 0 5.0005e-07 0]
+VS6 (s6 0) vsource type=pwl wave=[0 0 1e-07 0 1.0005e-07 0 2e-07 0 2.0005e-07 0 3e-07 0 3.0005e-07 0 4e-07 0 4.0005e-07 1.2 5e-07 1.2 5.0005e-07 0]
+VS7 (s7 0) vsource type=pwl wave=[0 0 1e-07 0 1.0005e-07 0 2e-07 0 2.0005e-07 0 3e-07 0 3.0005e-07 0 4e-07 0 4.0005e-07 0 5e-07 0 5.0005e-07 1.2]
+CL (out 0) capacitor c=10f
+tran tran stop=600n maxstep=2p method=traponly errpreset=conservative
+save vp vn out s2 s3 s4 s5 s6 s7 rst XD.acp3 XD.acn3 XD.acp7 XD.acn7 XD.cim XD.cm XD.nb7 VDD:p
+saveOptions options save=selected

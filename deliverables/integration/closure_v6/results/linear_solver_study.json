@@ -1,0 +1,9 @@
+{
+  "scope": "Same clamp circuit, physical IC and periodic acceptance; change linear solver residual to1e-6. No nonlinear waveform tolerance relaxation.",
+  "source": "Installed Spectre -h pss parameter51 itres: tightening may help Newton convergence; does not change result accuracy. Default shooting1e-4, APS1e-3; actual preset behavior checked in log when printed.",
+  "case": "loop_clamp_linear_pss",
+  "maxperiods": 12,
+  "itres": 1e-06,
+  "reference_case": "loop_clamp_warm_pss",
+  "additional_output_setting": "writepss requests reusable periodic state. Installed help says it also enables finite-difference refinement after shooting converges. Therefore final outputs are a solver/refinement study, not a claim all algorithm settings except itres stayed identical."
+}
