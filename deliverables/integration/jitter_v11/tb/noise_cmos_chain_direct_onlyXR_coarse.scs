@@ -1,0 +1,19 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "cells.scs"
+simulatorOptions options reltol=1e-5 vabstol=1e-7 iabstol=1e-13 temp=27 noiseon_inst=[XR] noiseon_type=all
+VDD (vdd 0) vsource dc=1.2
+include "cmos_tspc_buffered_v11.scs"
+VC (clk 0) vsource type=pulse val0=0 val1=1.2 delay=0 rise=10p fall=10p width=117.0325203252033p period=254.0650406504065p
+include "retimer_scaled.scs"
+XD (clk q1 data vdd 0) cmos_tspc_buffered_v11
+XR (data clk out vdd 0) tx_retimer_scaled scale=4 oscale=4 sp=2.5u
+CL (out 0) capacitor c=10f
+pss pss fund=984M harms=63 tstab=100n maxstep=1p method=traponly errpreset=conservative maxperiods=30 saveinit=yes writefinal="__FINAL_STATE__"
+pn pnoise start=10k stop=492M dec=30 pnoisemethod=fullspectrum noisetype=sampled measurement=[edge] sampleratio=1 maxsideband=63
+edge jitterevent trigger=[out] triggerthresh=0.6 triggernum=1 triggerdir=rise target=[out] jittercal=[Jee]
+save clk q1 data out XR.qb XR.q XR.clkb VDD:p
+saveOptions options save=selected

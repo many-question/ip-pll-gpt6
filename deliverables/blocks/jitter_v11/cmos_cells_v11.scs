@@ -1,0 +1,20 @@
+simulator lang=spectre
+subckt cmos_latch_v11 (d ck ckb q qb rst vdd vss)
+parameters s=1
+XI (d x ck ckb vdd vss) pll_tg wn=1u*s wp=2u*s
+XN (x qb vdd vss) pll_inv wn=1u*s wp=2.5u*s
+XQ (qb q vdd vss) pll_inv wn=2u*s wp=5u*s
+XF (q x ckb ck vdd vss) pll_tg wn=.5u*s wp=1u*s
+MR (q rst vss vss) nch w=4u*s l=180n ad=4u*s*240n as=4u*s*240n pd=2*(4u*s+240n) ps=2*(4u*s+240n)
+ends cmos_latch_v11
+subckt cmos_dff_v11 (d clk q qb rst vdd vss)
+parameters s=1
+XC (clk clkb vdd vss) pll_inv wn=4u*s wp=10u*s
+XM (d clk clkb qm qmb rst vdd vss) cmos_latch_v11 s=s
+XS (qm clkb clk q qb rst vdd vss) cmos_latch_v11 s=s
+ends cmos_dff_v11
+subckt cmos_div4_v11 (clk rst q1 out vdd vss)
+parameters s=1
+X0 (qb0 clk q1 qb0 rst vdd vss) cmos_dff_v11 s=s
+X1 (qb1 q1 out qb1 rst vdd vss) cmos_dff_v11 s=s
+ends cmos_div4_v11

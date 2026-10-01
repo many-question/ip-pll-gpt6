@@ -1,0 +1,6 @@
+simulator lang=spectre
+subckt cmos_buffer_v11 (inp out vdd vss)
+parameters s=1
+X0 (inp mid vdd vss) pll_inv wn=.8u*s wp=2u*s
+X1 (mid out vdd vss) pll_inv wn=2u*s wp=3.9u*s
+ends cmos_buffer_v11

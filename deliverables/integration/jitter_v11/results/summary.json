@@ -1,0 +1,123 @@
+{
+  "selected": [
+    {
+      "case": "noise_cmos_buf_s2_r10_fine",
+      "jitter_fs": 85.24681024212543,
+      "fixture_power_mw": 0.07810274218627915,
+      "precision": {
+        "status": "completed",
+        "pass_precision": true,
+        "relative_jitter_change": -0.0011244140734497643,
+        "max_abs_spectrum_delta_db": 0.010604848486976747
+      },
+      "scope": "TT27,1.2V,ideal external fullrail clock/input;10fF;10kHz-492MHz. Actual CMOS devices, no real LC interface or source-driver power."
+    },
+    {
+      "case": "noise_cmos_buf_s4_r10_fine",
+      "jitter_fs": 58.8828052302462,
+      "fixture_power_mw": 0.14063037627263933,
+      "precision": {
+        "status": "completed",
+        "pass_precision": true,
+        "relative_jitter_change": -0.0007388181271190675,
+        "max_abs_spectrum_delta_db": 0.006685462568691538
+      },
+      "scope": "TT27,1.2V,ideal external fullrail clock/input;10fF;10kHz-492MHz. Actual CMOS devices, no real LC interface or source-driver power."
+    },
+    {
+      "case": "noise_cmos_rt_s8_fine",
+      "jitter_fs": 79.0344787868712,
+      "fixture_power_mw": 1.6676212717745293,
+      "precision": {
+        "status": "completed",
+        "pass_precision": true,
+        "relative_jitter_change": -0.0006744679219908845,
+        "max_abs_spectrum_delta_db": 0.005936072087245841
+      },
+      "scope": "TT27,1.2V,ideal external fullrail clock/input;10fF;10kHz-492MHz. Actual CMOS devices, no real LC interface or source-driver power."
+    },
+    {
+      "case": "noise_cmos_rt_s4_sp25_ck10_fine",
+      "jitter_fs": 87.00204728245983,
+      "fixture_power_mw": 0.8789774814105378,
+      "precision": {
+        "status": "completed",
+        "pass_precision": true,
+        "relative_jitter_change": -9.243795377733566e-05,
+        "max_abs_spectrum_delta_db": 0.001962658371109139
+      },
+      "scope": "TT27,1.2V,ideal external fullrail clock/input;10fF;10kHz-492MHz. Actual CMOS devices, no real LC interface or source-driver power."
+    },
+    {
+      "case": "noise_cmos_rt_s4_sp25_ck50_fine",
+      "jitter_fs": 85.7962239754669,
+      "fixture_power_mw": 0.8249514732038299,
+      "precision": {
+        "status": "completed",
+        "pass_precision": true,
+        "relative_jitter_change": -0.0007654469069975356,
+        "max_abs_spectrum_delta_db": 0.007273567739521987
+      },
+      "scope": "TT27,1.2V,ideal external fullrail clock/input;10fF;10kHz-492MHz. Actual CMOS devices, no real LC interface or source-driver power."
+    },
+    {
+      "case": "noise_cmos_chain_direct_fine",
+      "jitter_fs": 130.27219515004873,
+      "fixture_power_mw": 1.1501145886575594,
+      "precision": {
+        "status": "completed",
+        "pass_precision": true,
+        "relative_jitter_change": 0.000283453681680923,
+        "max_abs_spectrum_delta_db": 0.009030858558609018
+      },
+      "scope": "TT27,1.2V,ideal external fullrail clock/input;10fF;10kHz-492MHz. Actual CMOS devices, no real LC interface or source-driver power."
+    },
+    {
+      "case": "noise_cmos_chain_inv_fine",
+      "jitter_fs": 102.68136190144638,
+      "fixture_power_mw": 2.081006312029413,
+      "precision": {
+        "status": "completed",
+        "pass_precision": true,
+        "relative_jitter_change": 0.00013904315603219253,
+        "max_abs_spectrum_delta_db": 0.010420917811835859
+      },
+      "scope": "TT27,1.2V,ideal external fullrail clock/input;10fF;10kHz-492MHz. Actual CMOS devices, no real LC interface or source-driver power."
+    }
+  ],
+  "noise_cases": 27,
+  "valid_noise_cases": 27,
+  "precision_pairs_passed": 7,
+  "function_trials": {
+    "valid_protocol_count": 9,
+    "passed": 5,
+    "excluded_initialization_trials": 4
+  },
+  "gating": {
+    "cases": [
+      {
+        "group": "XD",
+        "jitter_fs": 96.46704959236513,
+        "voltage_max_difference_v": 0.0,
+        "power_difference_mw": 0.0,
+        "slew_relative_difference": 0.0,
+        "active_spectrum_max_relative_error": 1.0695812581086702e-15,
+        "inactive_psd_max": 0.0,
+        "pass_gate": true
+      },
+      {
+        "group": "XR",
+        "jitter_fs": 87.49477906899877,
+        "voltage_max_difference_v": 0.0,
+        "power_difference_mw": 0.0,
+        "slew_relative_difference": 0.0,
+        "active_spectrum_max_relative_error": 1.1608578070246252e-15,
+        "inactive_psd_max": 0.0,
+        "pass_gate": true
+      }
+    ],
+    "PSD_closure_max_relative_error": 1.215542308051505e-15,
+    "pass_gating": true
+  },
+  "conclusion": "CMOS is the preferred research direction. 100fs-class intrinsic retiming is demonstrated; fullPLL performance remains unqualified. CML continuation was motivated by poor GHz receiver interface, not demonstrated necessity at this frequency."
+}

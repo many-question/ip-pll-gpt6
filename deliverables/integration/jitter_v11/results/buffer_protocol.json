@@ -1,0 +1,75 @@
+{
+  "time": "2026-10-02T01:23:15.485141+08:00",
+  "cases": {
+    "noise_cmos_buf_s1_r10_coarse": {
+      "type": "CMOS buffer",
+      "scale": 1,
+      "input_rise_ps": 10,
+      "input_swing_v": 1.2,
+      "goal": "Same full-swing input and load; separate source slew from size."
+    },
+    "noise_cmos_buf_s1_r100_coarse": {
+      "type": "CMOS buffer",
+      "scale": 1,
+      "input_rise_ps": 100,
+      "input_swing_v": 1.2,
+      "goal": "Same full-swing input and load; separate source slew from size."
+    },
+    "noise_cmos_buf_s1_r300_coarse": {
+      "type": "CMOS buffer",
+      "scale": 1,
+      "input_rise_ps": 300,
+      "input_swing_v": 1.2,
+      "goal": "Same full-swing input and load; separate source slew from size."
+    },
+    "noise_cmos_buf_s2_r10_coarse": {
+      "type": "CMOS buffer",
+      "scale": 2,
+      "input_rise_ps": 10,
+      "input_swing_v": 1.2,
+      "goal": "Same full-swing input and load; separate source slew from size."
+    },
+    "noise_cmos_buf_s4_r10_coarse": {
+      "type": "CMOS buffer",
+      "scale": 4,
+      "input_rise_ps": 10,
+      "input_swing_v": 1.2,
+      "goal": "Same full-swing input and load; separate source slew from size."
+    },
+    "noise_restorer_replay_coarse": {
+      "type": "CML-to-CMOS restorer",
+      "input": "Actual noiseless qp replay from physical chain",
+      "source": "research/runs/spectre_noise_v10/opt_func_c/opt_outfirst2_tt/waveforms.npz",
+      "source_sha256": "49ff35913d88ac2d2bef4f189c5e975f2c9c7fa402ef9c9246ba1e2d014d011c",
+      "fit_max_error_v": 6.91541009967267e-06,
+      "qualification": "Must match full-chain output phase/slew and XL-only noise before interpreting replay comparison."
+    },
+    "noise_restorer_small_r10_coarse": {
+      "type": "CML-to-CMOS restorer",
+      "input_rise_ps": 10,
+      "input_range_v": [
+        0.9360207043703069,
+        1.1862393571421137
+      ],
+      "goal": "Hold devices,swing,common-mode,load constant; change only source edge. Synthetic source does not reproduce RF ripple or impedance."
+    },
+    "noise_restorer_small_r100_coarse": {
+      "type": "CML-to-CMOS restorer",
+      "input_rise_ps": 100,
+      "input_range_v": [
+        0.9360207043703069,
+        1.1862393571421137
+      ],
+      "goal": "Hold devices,swing,common-mode,load constant; change only source edge. Synthetic source does not reproduce RF ripple or impedance."
+    },
+    "noise_restorer_small_r300_coarse": {
+      "type": "CML-to-CMOS restorer",
+      "input_rise_ps": 300,
+      "input_range_v": [
+        0.9360207043703069,
+        1.1862393571421137
+      ],
+      "goal": "Hold devices,swing,common-mode,load constant; change only source edge. Synthetic source does not reproduce RF ripple or impedance."
+    }
+  }
+}

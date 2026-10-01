@@ -1,0 +1,6 @@
+simulator lang=spectre
+subckt cmos_tspc_div4_v11 (clk q1 out vdd vss)
+X0 (q1 clk q1 vdd vss) pll_tspc_inv
+X1 (q2 q1 q2 vdd vss) pll_tspc_inv
+XB (q2 out vdd vss) pll_inv wn=2u wp=5u
+ends cmos_tspc_div4_v11

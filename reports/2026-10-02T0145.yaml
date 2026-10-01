@@ -1,0 +1,493 @@
+{
+  "schema": "chip-report/0.1",
+  "report": {
+    "seq": 13,
+    "time": "2026-10-02T01:45:46+08:00",
+    "trigger": "requested",
+    "covers_since": "2026-10-02T01:01:25+08:00"
+  },
+  "overall": {
+    "phase": "数字噪声机制诊断与 CMOS 输出链实现",
+    "summary": "CMOS是优先研究方向：同PDK/1.2V下缓冲85.247fs、对称C2MOS重定时与缓冲87.002fs；实体CMOS /4加重定时链130.272fs/1.150115mW，反相时钟102.681fs/2.081006mW。均完成联合加密，但外部RF为理想全摆幅源，真实LC接口及完整PLL仍未签核。",
+    "since_last": [
+      "复查旧CML选择缘由：为绕过具体GHz电平恢复器噪声问题，并无证据证明当前频率必须CML；按用户意见优先CMOS，未冻结主架构或改变需求。",
+      "保留实体CML链的内部电压及42个MOS动态工作点：分频数据仅0.182V/0.534V每ns，恢复首级栅仅0.226V/1.035V每ns，而最终输出约25.85V每ns；尾管VDS-VDSAT整个观测窗为负，不能仅看输出边沿或盲目整体增宽。",
+      "同条件CMOS缓冲尺寸/输入边沿单因素实验确认尺寸近1/sqrt比例降噪；s2/s4加密85.247/58.883fs。旧C2MOS从级弱PMOS恢复对称后，scale4即87.002fs/0.878977mW；50ps时钟同相位85.796fs。",
+      "TSPC直接串接摆幅不足，增加级间缓冲后3.936GHz至984MHz /4通过；静态TG两尺寸和C2MOS分频试案失败并保留，不用于推断CMOS极限。",
+      "实际TSPC /4与C2MOS重定时/输出相连，两种物理时钟极性均通过瞬态及PSS：联合加密为130.272fs/1.150115mW、102.681fs/2.081006mW；没有理想数据源。直接链只开启XD/XR得到96.467/87.495fs，PSD/方差闭合1.22e-15。",
+      "40组仿真全部回收并验证输入哈希；27噪声测量有效、7组联合加密通过。四个初始瞬态start设置错误的试案独立保留并重跑，9个有效协议瞬态5通过/4失败。电压回放噪声等效差9.41%，明确拒绝作为实体链替身。"
+    ],
+    "route_confidence": "low",
+    "route_confidence_reason": "CMOS单元及连接链获得显著进展，但全摆幅GHz驱动代价、真实LC加载、全频PVT与完整PLL噪声/4mW仍未闭合。"
+  },
+  "levels": {
+    "survey": {
+      "maturity": 3,
+      "note": "复查项目历史接收链/CML路线依据，使用Terrovitis阈值噪声/局部斜率转换说明；未引入新工艺保证。",
+      "artifacts": [
+        "share/deliverables/sources/accuracy_v7_sources.md",
+        "share/deliverables/sources/output_v8_sources.md",
+        "share/deliverables/sources/output_v9_sources.md",
+        "share/deliverables/sources/noise_v10_sources.md",
+        "share/deliverables/sources/jitter_v11_sources.md"
+      ]
+    },
+    "modeling": {
+      "maturity": 3,
+      "note": "新建内部动态工作点、同夹具尺寸/边沿对照、CMOS PSS及器件PSD分解；输入理想电压回放因9.41%噪声差明确不等效，未缩小频带。",
+      "artifacts": [
+        "share/deliverables/integration/accuracy_v7/README.md",
+        "share/deliverables/integration/accuracy_v7/results/continuation_accuracy.json",
+        "share/deliverables/integration/accuracy_v7/results/mesh_validation.json",
+        "share/deliverables/integration/accuracy_v7/results/sampling_fixture_validation.json",
+        "share/deliverables/integration/output_v9/README.md",
+        "share/deliverables/integration/output_v9/results/summary.json",
+        "share/deliverables/integration/output_v9/results/timing_validation.json",
+        "share/deliverables/integration/output_v9/results/orbit_comparison.json",
+        "share/deliverables/integration/noise_v10/README.md",
+        "share/deliverables/integration/noise_v10/results/gating_validation.json",
+        "share/deliverables/integration/noise_v10/results/optimization_validation.json",
+        "share/deliverables/integration/noise_v10/results/summary.json",
+        "share/deliverables/integration/noise_v10/results/noise_validation.json",
+        "share/deliverables/integration/noise_v10/results/raw_manifest.json",
+        "share/deliverables/integration/noise_v10/results/timing_validation.json",
+        "share/deliverables/integration/jitter_v11/README.md",
+        "share/deliverables/integration/jitter_v11/results/summary.json",
+        "share/deliverables/integration/jitter_v11/results/noise_validation.json",
+        "share/deliverables/integration/jitter_v11/results/probe_analysis.json",
+        "share/deliverables/integration/jitter_v11/results/gating_validation.json",
+        "share/deliverables/integration/jitter_v11/results/raw_manifest.json"
+      ]
+    },
+    "architecture": {
+      "maturity": 2,
+      "note": "主PLL架构保持。用户指出CMOS可行后优先CMOS输出链研究；真实实体 /4加重定时已连接，理想RF前提下130.272fs/1.150115mW。CML仅保留接口对照，未冻结方案。",
+      "artifacts": [
+        "share/deliverables/integration/accuracy_v7/README.md",
+        "share/deliverables/integration/output_v8/README.md",
+        "share/deliverables/integration/output_v8/results/noise_validation.json",
+        "share/deliverables/integration/output_v9/README.md",
+        "share/deliverables/integration/output_v9/results/summary.json",
+        "share/deliverables/integration/noise_v10/README.md",
+        "share/deliverables/integration/noise_v10/results/gating_validation.json",
+        "share/deliverables/integration/noise_v10/results/optimization_validation.json",
+        "share/deliverables/integration/noise_v10/results/summary.json",
+        "share/deliverables/integration/jitter_v11/README.md",
+        "share/deliverables/integration/jitter_v11/results/summary.json"
+      ]
+    },
+    "blocks": [
+      {
+        "name": "reference_buffer",
+        "role": "24 MHz 参考整形",
+        "stage": "circuit",
+        "maturity": 3,
+        "note": "原版及增大前两级候选完成 TT 器件噪声；1 ns 理想输入边沿、24 MHz/60 fF、10 kHz–12 MHz 从 348.82 降至 135.88 fs。最终参考源噪声/边沿未知，改进版尚无完整 PVT。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v2/README.md",
+          "share/deliverables/integration/transistor_v2/results/validation.json",
+          "share/deliverables/integration/transistor_v2/results/noise_summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "subsampling_detector",
+        "role": "直接采样差分 VCO 并鉴相",
+        "stage": "circuit",
+        "maturity": 3,
+        "note": "quiet10接口参与1ps/0.5ps真实LC接续与有效周期点。原约0.73dB接口噪声改善仍待加密，本轮没有该完整主环路pnoise结果。",
+        "artifacts": [
+          "share/deliverables/integration/interface_v5/README.md",
+          "share/deliverables/integration/interface_v5/results/noise_summary.json",
+          "share/deliverables/integration/interface_v5/results/loop_validation.json",
+          "share/deliverables/integration/interface_v5/results/gain_points.json",
+          "share/deliverables/integration/interface_v5/results/loop_model.json",
+          "share/deliverables/integration/interface_v5/results/quiet10_noise_precision.json",
+          "share/deliverables/integration/closure_v6/README.md",
+          "share/deliverables/integration/closure_v6/results/validation.json",
+          "share/deliverables/integration/closure_v6/results/precision_validation.json",
+          "share/deliverables/integration/closure_v6/results/summary.json",
+          "share/deliverables/integration/accuracy_v7/README.md",
+          "share/deliverables/integration/accuracy_v7/results/summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "transconductor_charge_pump",
+        "role": "采样误差转电流及增益控制",
+        "stage": "circuit",
+        "maturity": 3,
+        "note": "实际CP和MOS时序参与接续及有效核心PSS。IREF发生器仍理想；未把历史匹配fixture噪声当作锁定周期噪声。",
+        "artifacts": [
+          "share/deliverables/integration/interface_v5/README.md",
+          "share/deliverables/integration/interface_v5/results/noise_summary.json",
+          "share/deliverables/integration/interface_v5/results/loop_validation.json",
+          "share/deliverables/integration/interface_v5/results/loop_model.json",
+          "share/deliverables/integration/closure_v6/README.md",
+          "share/deliverables/integration/closure_v6/results/validation.json",
+          "share/deliverables/integration/closure_v6/results/precision_validation.json",
+          "share/deliverables/integration/closure_v6/results/summary.json",
+          "share/deliverables/integration/accuracy_v7/README.md",
+          "share/deliverables/integration/accuracy_v7/results/summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "passive_loop_filter",
+        "role": "环路滤波与稳定性",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "理想R100k/C1=7.162p/C2=.4775p与实际核心共同通过有限窗精度和周期波形。工艺RC、扰动稳定性、失配、PEX未完成。",
+        "artifacts": [
+          "share/deliverables/integration/interface_v5/README.md",
+          "share/deliverables/integration/interface_v5/results/noise_summary.json",
+          "share/deliverables/integration/interface_v5/results/loop_validation.json",
+          "share/deliverables/blocks/interface_v5/loop_filter_v5.scs",
+          "share/deliverables/integration/interface_v5/results/loop_model.json",
+          "share/deliverables/integration/closure_v6/README.md",
+          "share/deliverables/integration/closure_v6/results/validation.json",
+          "share/deliverables/integration/closure_v6/results/precision_validation.json",
+          "share/deliverables/integration/closure_v6/results/summary.json",
+          "share/deliverables/integration/accuracy_v7/README.md",
+          "share/deliverables/integration/accuracy_v7/results/summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "lc_vco_and_cap_bank",
+        "role": "2.688–3.936 GHz 振荡、粗调和模拟细调",
+        "stage": "circuit",
+        "maturity": 3,
+        "note": "R2/暂定Q5，TT27/码6/÷4核心实际闭环通过接续精度与周期/瞬态交叉核验；当前接口旧99点不继承。Q3慢角低端及FF K14调谐余量风险保留。",
+        "artifacts": [
+          "share/deliverables/blocks/vco_v4/README.md",
+          "share/deliverables/blocks/vco_v4/lc_vco_repaired.scs",
+          "share/deliverables/integration/vco_v4/README.md",
+          "share/deliverables/integration/vco_v4/results/final_validation.json",
+          "share/deliverables/integration/vco_v4/results/noise_summary.json",
+          "share/deliverables/integration/interface_v5/README.md",
+          "share/deliverables/integration/interface_v5/results/noise_summary.json",
+          "share/deliverables/integration/interface_v5/results/loop_validation.json",
+          "share/deliverables/integration/closure_v6/README.md",
+          "share/deliverables/integration/closure_v6/results/validation.json",
+          "share/deliverables/integration/closure_v6/results/precision_validation.json",
+          "share/deliverables/integration/closure_v6/results/summary.json",
+          "share/deliverables/integration/accuracy_v7/README.md",
+          "share/deliverables/integration/accuracy_v7/results/summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "auxiliary_fll",
+        "role": "启动捕获和正确谐波选择",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "已实现计数/DAC/监督等晶体管单元的历史证据保留；当前核心使用固定码和TB使能，FLL全自动捕获/接管/重捕获未代回验证。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v3/README.md",
+          "share/deliverables/integration/transistor_v3/results/validation.json",
+          "share/deliverables/integration/transistor_v3/results/noise_summary.json",
+          "share/deliverables/integration/transistor_v3/results/watchdog_validation.json",
+          "share/deliverables/integration/interface_v5/README.md",
+          "share/deliverables/integration/closure_v6/README.md",
+          "share/deliverables/integration/closure_v6/results/validation.json",
+          "share/deliverables/integration/closure_v6/results/precision_validation.json",
+          "share/deliverables/integration/closure_v6/results/summary.json",
+          "share/deliverables/integration/accuracy_v7/README.md",
+          "share/deliverables/integration/accuracy_v7/results/summary.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "programmable_even_divider",
+        "role": "÷4/6/8/10/12/14 对称半周期分频",
+        "stage": "circuit",
+        "maturity": 3,
+        "note": "新增CMOS固定/4原型：9T TSPC加级间隔离缓冲，TT27/1.2V/理想全摆幅3.936GHz通过。单独粗网格402.298fs；实际接重定时后贡献96.469fs(直接)/46.082fs(反相)，均折到输出。六档/复位/保持器及实际LC接口未实现于新CMOS候选；旧六档CML仍保留。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v3/README.md",
+          "share/deliverables/integration/transistor_v3/results/validation.json",
+          "share/deliverables/integration/transistor_v3/results/noise_summary.json",
+          "share/deliverables/integration/vco_v4/README.md",
+          "share/deliverables/integration/vco_v4/results/final_validation.json",
+          "share/deliverables/integration/interface_v5/README.md",
+          "share/deliverables/integration/interface_v5/results/noise_summary.json",
+          "share/deliverables/integration/interface_v5/results/loop_validation.json",
+          "share/deliverables/integration/interface_v5/results/q10corner_validation.json",
+          "share/deliverables/integration/closure_v6/README.md",
+          "share/deliverables/integration/closure_v6/results/validation.json",
+          "share/deliverables/integration/closure_v6/results/precision_validation.json",
+          "share/deliverables/integration/closure_v6/results/summary.json",
+          "share/deliverables/blocks/closure_v6/README.md",
+          "share/deliverables/blocks/closure_v6/divider_bank_v6_clamp.scs",
+          "share/deliverables/integration/closure_v6/results/divider_noise_validation.json",
+          "share/deliverables/integration/accuracy_v7/README.md",
+          "share/deliverables/integration/accuracy_v7/results/summary.json",
+          "share/deliverables/integration/output_v9/README.md",
+          "share/deliverables/integration/output_v9/results/summary.json",
+          "share/deliverables/integration/noise_v10/README.md",
+          "share/deliverables/integration/noise_v10/results/gating_validation.json",
+          "share/deliverables/integration/noise_v10/results/optimization_validation.json",
+          "share/deliverables/integration/noise_v10/results/summary.json",
+          "share/deliverables/blocks/noise_v10/README.md",
+          "share/deliverables/integration/jitter_v11/README.md",
+          "share/deliverables/integration/jitter_v11/results/summary.json",
+          "share/deliverables/integration/jitter_v11/results/noise_validation.json",
+          "share/deliverables/integration/jitter_v11/results/probe_analysis.json",
+          "share/deliverables/blocks/jitter_v11/README.md"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "output_retimer",
+        "role": "利用 VCO 派生时钟重定时",
+        "stage": "circuit",
+        "maturity": 3,
+        "note": "对称从级PMOS的C2MOS scale4、oscale4、sp2.5u，加缓冲87.002fs/0.878977mW，50ps时钟85.796fs；理想全摆幅时钟/数据。连接真实CMOS /4后全链130.272fs或102.681fs，完成联合加密；新增真实时钟反相器耗电明显，无PVT或真实LC接口。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v2/README.md",
+          "share/deliverables/integration/transistor_v2/results/validation.json",
+          "share/deliverables/integration/transistor_v2/results/noise_summary.json",
+          "share/deliverables/integration/output_v8/README.md",
+          "share/deliverables/integration/output_v8/results/summary.json",
+          "share/deliverables/integration/output_v9/README.md",
+          "share/deliverables/integration/output_v9/results/summary.json",
+          "share/deliverables/integration/noise_v10/README.md",
+          "share/deliverables/integration/noise_v10/results/gating_validation.json",
+          "share/deliverables/integration/noise_v10/results/optimization_validation.json",
+          "share/deliverables/integration/noise_v10/results/summary.json",
+          "share/deliverables/blocks/noise_v10/README.md",
+          "share/deliverables/integration/jitter_v11/README.md",
+          "share/deliverables/integration/jitter_v11/results/summary.json",
+          "share/deliverables/integration/jitter_v11/results/noise_validation.json",
+          "share/deliverables/integration/jitter_v11/results/probe_analysis.json",
+          "share/deliverables/blocks/jitter_v11/README.md"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "output_buffer",
+        "role": "驱动片内轻负载",
+        "stage": "circuit",
+        "maturity": 3,
+        "note": "两级CMOS缓冲同尺寸输入边沿10/100/300ps与固定10ps下尺寸1/2/4分开对照；s2/s4联合加密85.247/58.883fs，0.078103/0.140630mW，984MHz/10fF/TT27。旧低摆幅恢复器内部边沿与偏置裕量不足，保留诊断。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v2/README.md",
+          "share/deliverables/integration/transistor_v2/results/validation.json",
+          "share/deliverables/integration/transistor_v2/results/noise_summary.json",
+          "share/deliverables/integration/output_v8/README.md",
+          "share/deliverables/integration/output_v8/results/summary.json",
+          "share/deliverables/integration/output_v9/README.md",
+          "share/deliverables/integration/output_v9/results/summary.json",
+          "share/deliverables/integration/noise_v10/README.md",
+          "share/deliverables/integration/noise_v10/results/gating_validation.json",
+          "share/deliverables/integration/noise_v10/results/optimization_validation.json",
+          "share/deliverables/integration/noise_v10/results/summary.json",
+          "share/deliverables/blocks/noise_v10/README.md",
+          "share/deliverables/integration/jitter_v11/README.md",
+          "share/deliverables/integration/jitter_v11/results/summary.json",
+          "share/deliverables/integration/jitter_v11/results/noise_validation.json",
+          "share/deliverables/integration/jitter_v11/results/probe_analysis.json",
+          "share/deliverables/blocks/jitter_v11/README.md"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "bias_and_control",
+        "role": "偏置、频点配置及状态控制",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "重定时现有偏置/无源独立单开105.903fs；镜管栅新增1pF后38.169fs，整链粗网格786.575fs，直流功耗基本不变。仅改已有镜网络，理想IREF发生器后置；实际电容/面积和完整监督未验证。",
+        "artifacts": [
+          "share/deliverables/blocks/transistor_v3/README.md",
+          "share/deliverables/integration/transistor_v3/results/validation.json",
+          "share/deliverables/integration/transistor_v3/results/noise_summary.json",
+          "share/deliverables/integration/transistor_v3/results/watchdog_validation.json",
+          "share/deliverables/blocks/interface_v5/README.md",
+          "share/deliverables/integration/closure_v6/README.md",
+          "share/deliverables/integration/closure_v6/results/validation.json",
+          "share/deliverables/integration/closure_v6/results/precision_validation.json",
+          "share/deliverables/integration/closure_v6/results/summary.json",
+          "share/deliverables/integration/accuracy_v7/README.md",
+          "share/deliverables/integration/accuracy_v7/results/summary.json",
+          "share/deliverables/integration/output_v9/README.md",
+          "share/deliverables/integration/output_v9/results/summary.json",
+          "share/deliverables/integration/noise_v10/README.md",
+          "share/deliverables/integration/noise_v10/results/gating_validation.json",
+          "share/deliverables/integration/noise_v10/results/optimization_validation.json",
+          "share/deliverables/integration/noise_v10/results/summary.json",
+          "share/deliverables/blocks/noise_v10/README.md"
+        ],
+        "blockers": []
+      }
+    ],
+    "verification": {
+      "maturity": 3,
+      "note": "40组独立输入快照：27噪声测量有效、7个联合加密对照通过；9个有效协议瞬态5通过/4失败，另4个初始start错误已剔除并重跑。直接CMOS链XD/XR独立单开闭合。仅TT27，无全频/PVT/统计签核。",
+      "artifacts": [
+        "share/deliverables/integration/accuracy_v7/results/raw_manifest.json",
+        "share/deliverables/integration/accuracy_v7/results/summary.json",
+        "share/deliverables/integration/accuracy_v7/results/periodic_orbit_comparison.json",
+        "share/deliverables/integration/output_v8/results/raw_manifest.json",
+        "share/deliverables/integration/output_v8/results/noise_validation.json",
+        "share/deliverables/integration/output_v9/README.md",
+        "share/deliverables/integration/output_v9/results/summary.json",
+        "share/deliverables/integration/output_v9/results/raw_manifest.json",
+        "share/deliverables/integration/output_v9/results/noise_validation.json",
+        "share/deliverables/integration/noise_v10/README.md",
+        "share/deliverables/integration/noise_v10/results/gating_validation.json",
+        "share/deliverables/integration/noise_v10/results/optimization_validation.json",
+        "share/deliverables/integration/noise_v10/results/summary.json",
+        "share/deliverables/integration/noise_v10/results/noise_validation.json",
+        "share/deliverables/integration/noise_v10/results/raw_manifest.json",
+        "share/deliverables/integration/noise_v10/results/timing_validation.json",
+        "share/deliverables/integration/noise_v10/results/transport_and_setup_notes.json",
+        "share/deliverables/integration/jitter_v11/README.md",
+        "share/deliverables/integration/jitter_v11/results/summary.json",
+        "share/deliverables/integration/jitter_v11/results/noise_validation.json",
+        "share/deliverables/integration/jitter_v11/results/probe_analysis.json",
+        "share/deliverables/integration/jitter_v11/results/gating_validation.json",
+        "share/deliverables/integration/jitter_v11/results/raw_manifest.json",
+        "share/deliverables/integration/jitter_v11/results/validation.json"
+      ]
+    },
+    "integration": {
+      "maturity": 2,
+      "note": "已连接晶体管CMOS /4、重定时和输出驱动；只有RF源理想。真实LC共模/摆幅/源阻抗与GHz电平转换未代回，六档和完整FLL/捕获、偏置发生器、功耗/面积未闭合。",
+      "artifacts": [
+        "share/deliverables/integration/accuracy_v7/README.md",
+        "share/deliverables/integration/output_v8/README.md",
+        "share/deliverables/integration/output_v9/README.md",
+        "share/deliverables/integration/output_v9/results/summary.json",
+        "share/deliverables/integration/noise_v10/README.md",
+        "share/deliverables/integration/noise_v10/results/gating_validation.json",
+        "share/deliverables/integration/noise_v10/results/optimization_validation.json",
+        "share/deliverables/integration/noise_v10/results/summary.json",
+        "share/deliverables/integration/jitter_v11/README.md",
+        "share/deliverables/integration/jitter_v11/results/summary.json",
+        "share/deliverables/integration/jitter_v11/results/noise_validation.json"
+      ]
+    }
+  },
+  "spec_status": [
+    {
+      "id": "REQ-01",
+      "current": "TSMC180 BCD Gen2 MOS；CMOS固定/4与重定时/缓冲已实现并相连",
+      "condition": "本轮TT27，1.2V，实际MOS、理想外部驱动；工艺无源仍按既定工作假设。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "电感 Q、RC、互感、几何与温度系数未获工艺保证；IREF 发生器后置。"
+    },
+    {
+      "id": "REQ-02",
+      "current": "1.2 V",
+      "condition": "本轮均为 1.2 V、TT27，无新供电扫描。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "器件端电压可靠性、ESD/电源变化和寄生尚未签核。"
+    },
+    {
+      "id": "REQ-03",
+      "current": "24 MHz；参考缓冲 TT 附加噪声 135.88 fs",
+      "condition": "改进版，理想 1 ns 输入边沿、60 fF、10 kHz–12 MHz；外部参考本身无噪声。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "本轮输出夹具无24MHz参考，历史缓冲和真实LC核心参考证据保留；参考实际噪声/边沿仍未知。"
+    },
+    {
+      "id": "REQ-04",
+      "current": "固定码核心PSS为24MHz参考、164VCO/41输出周期；输出984MHz",
+      "condition": "TT27/1.2V/Q5/码6/÷4/quiet10接口；固定控制，不含FLL自动捕获。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "周期与长瞬态一致，仅该固定码工作点；正确谐波自动选择未签核。"
+    },
+    {
+      "id": "REQ-05",
+      "current": "CMOS /4链输出984MHz，TT功能/PSS通过；历史33频点/99点不迁移",
+      "condition": "理想3.936GHz全摆幅10ps RF，CMOS只有固定/4；六档、真实VCO和PVT未验证。",
+      "evidence": "circuit_sim",
+      "status": "at_risk",
+      "note": "旧99点不能直接移植；FF K14原quiet10仅1.880MHz余量，低于内部2MHz防护值。"
+    },
+    {
+      "id": "REQ-06",
+      "current": "CMOS相连输出链130.272fs(直接时钟)或102.681fs(实际反相器)；单元87.002fs",
+      "condition": "TT27/1.2V，理想全摆幅无噪声3.936GHz RF，实体TSPC /4+C2MOS重定时+缓冲；10fF，10kHz-492MHz，0.6V上升沿。",
+      "evidence": "circuit_sim",
+      "status": "at_risk",
+      "note": "均联合加密通过；直接链XD/XR单独noise-on闭合。真实LC电平转换/源噪声及完整PLL未计，REQ仍at_risk；用户100fs经验是研究参考，不是替换<200fs硬指标。"
+    },
+    {
+      "id": "REQ-07",
+      "current": null,
+      "condition": "按 DEC-0002 暂缓离散杂散研究，不纳入随机抖动。",
+      "evidence": "none",
+      "status": "unknown",
+      "note": "<−60 dBc 需求保留。"
+    },
+    {
+      "id": "REQ-08",
+      "current": "CMOS实体输出链1.150115mW(直接)/2.081006mW(反相)；单元0.878977mW",
+      "condition": "各自TT27/1.2V周期夹具实测VDD；外部理想RF源驱动能量和LC接口不在其中。",
+      "evidence": "circuit_sim",
+      "status": "at_risk",
+      "note": "不得与旧核心直接相加；分频重复且负载改变。完整锁定≤4mW和启动峰值仍未签核。"
+    },
+    {
+      "id": "REQ-09",
+      "current": null,
+      "condition": "无电感几何、布局及隔离面积结果；含电感/滤波/隔离，暂不含 pad。",
+      "evidence": "none",
+      "status": "unknown",
+      "note": "新CMOS宽度/缓冲的布局和隔离面积未提取；电感/滤波/隔离计入且暂不计pad，<0.3mm²未验证。"
+    },
+    {
+      "id": "REQ-10",
+      "current": "本轮CMOS和CML探针全部TT27，新增输出链无0-60°C/工艺角覆盖",
+      "condition": "新接口无SS60/FF0及连续温度/统计覆盖。",
+      "evidence": "circuit_sim",
+      "status": "at_risk",
+      "note": "旧接口PVT证据不能直接移植。"
+    },
+    {
+      "id": "REQ-11",
+      "current": "缓冲TSPC /4、两种相连输出链均通过984MHz频率与摆幅",
+      "condition": "10fF、TT27，遵照DEC-0003无严格占空比优化；旧C2MOS过弱从级PMOS已恢复对称配比。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "有限功能与周期测量不替代setup/hold、停钟保持、亚稳态、动态换档和统计验证。"
+    },
+    {
+      "id": "REQ-12",
+      "current": "10fF临时工作负载",
+      "condition": "10fF输出，CMOS分频-重定时及内部时钟缓冲负载真实连接；外部RF驱动仍理想。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "真实片内门/互连和LC源阻抗仍须代回；不得将理想驱动单元噪声当作含接收器系统噪声。"
+    }
+  ],
+  "questions_for_human": [
+    {
+      "q": "后续需要实际 24 MHz 参考源的边沿、相噪以及片内输出负载/门限；当前理想输入和 10 fF 仅为工作假设。",
+      "blocking": false,
+      "since": "2026-09-17T20:57:59+08:00"
+    }
+  ],
+  "blocked_on": null,
+  "risks": [
+    "CMOS <100fs是理想输入单元证据，完整相连输出链最低102.681fs且未含真实GHz电平转换；旧接收链的噪声问题不能靠理想全摆幅源隐去。",
+    "CMOS新分频仅/4 TT原型；无六档控制/确定复位/保持器/停钟验证，初始四种合法分频试案失败。动态节点超电源轨瞬态和器件可靠性、PEX、统计未签核。",
+    "反相时钟方案多约0.931mW；理想源驱动能量不在VDD夹具值里。完整4mW仍无闭合预算，旧核心/新输出链不能直接相加。",
+    "CML尾管VDSAT裕量及支路切换是观察，不是已证明的唯一噪声成因；理想qp回放噪声差9.41%明确不等效。",
+    "历史Q3慢角低端、quiet10精度、FF K14调谐余量、FLL自动捕获/接管、偏置基准和面积问题保持开放。"
+  ],
+  "next_steps": [
+    "优先以130.272fs/1.150115mW直接CMOS链构建低噪声GHz电平转换，接真实LC并保留其源阻抗与噪声，重提输入加载及频率覆盖。",
+    "保留102.681fs反相方案作时序对照，减少时钟反相驱动功耗、改善采样相位；只对贡献明显的级调整尺寸。",
+    "CMOS固定/4稳健后扩展六档和确定复位/使能/停钟保持，验证全频、SS60/FF0、setup/hold及统计。",
+    "在同一完整PLL周期点逐模块开噪声、核验≤4mW；继续FLL捕获/接管，按用户约定偏置基准后置，跟踪RLC/EM和面积。"
+  ],
+  "decisions_since_last": [],
+  "resources_note": "40组仿真已回收，远端执行时间求和约758s，非墙钟时间；最多4个单线程作业。PDK不发布。四个初始start错误和所有负结果保留，7组精度对照通过。"
+}

@@ -1,0 +1,12 @@
+simulator lang=spectre
+include "retimer_scaled.scs"
+subckt cmos_c2mos_div2_v11 (clk q out vdd vss)
+XC (clk clkb vdd vss) pll_inv wn=6u wp=15u
+XM (out clk clkb qm vdd vss) tx_clocked_inv_scaled scale=2
+XS (qm clkb clk q vdd vss) tx_clocked_inv_scaled scale=2
+XB (q out vdd vss) pll_inv wn=2u wp=5u
+ends cmos_c2mos_div2_v11
+subckt cmos_c2mos_div4_v11 (clk q1 out vdd vss)
+X0 (clk q0 q1 vdd vss) cmos_c2mos_div2_v11
+X1 (q1 q2 out vdd vss) cmos_c2mos_div2_v11
+ends cmos_c2mos_div4_v11

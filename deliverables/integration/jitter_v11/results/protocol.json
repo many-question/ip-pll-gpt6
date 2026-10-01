@@ -1,0 +1,15 @@
+{
+  "time": "2026-10-02T01:20:52.253783+08:00",
+  "objective": "Separate internal slew and latch operating-margin limitations from device-size effects; compare CMOS blocks at the same PDK,supply,frequency,load and integration band.",
+  "scope": "Ideal-drive CMOS unit results do not include actual LC level conversion and cannot be called a fullPLL result. Internal probes retain physical chain. User100fs experience is a research benchmark, not a change to REQ06.",
+  "conditions": "TT27,1.2V,out984MHz,10fF,10kHz\u2013492MHz. PSS1ps/63 to0.5ps/127 before promotion. CMOS RF clock source initially ideal10ps/3.936GHz; realRF interface remains to be measured.",
+  "physical_probes": [
+    "XD.XM2_0",
+    "XD.XS2_0",
+    "XD.XM2_1",
+    "XD.XS2_1",
+    "XRT.XM",
+    "XRT.XS"
+  ],
+  "criteria": "Frequency within0.1%, per-cycle error<2%,out<.2V and>1V; PSS endpoint<1mV and fundamental984MHz; numerical integration/Jee agreement<1.5%; refinement<1% RMS and<.1dB maximum PSD difference."
+}
