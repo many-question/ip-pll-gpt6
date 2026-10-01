@@ -1,0 +1,10 @@
+simulator lang=spectre
+subckt rf_tspc2ac_s2_v12 (rf clk vdd vss)
+C0 (rf g0) capacitor c=1p
+R0 (g0 a) resistor r=20k
+X0 (g0 a vdd vss) pll_inv wn=4u wp=10u
+C1 (a g1) capacitor c=1p
+R1 (g1 b) resistor r=20k
+X1 (g1 b vdd vss) pll_inv wn=4u wp=10u
+XO (b clk vdd vss) pll_inv wn=8u wp=20u
+ends rf_tspc2ac_s2_v12

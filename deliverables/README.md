@@ -1,5 +1,12 @@
 # 交付物索引
 
+2026-10-02（第14份快照）：CMOS低摆幅单级接收器＋TSPC输出链加密 **181.186fs**，独立noise-on闭合。实际LC提高偏置参考至100µA后TT正确÷4，码21调谐端点包围3.936GHz，测试电路约 **3.21mW**；SS60接收器仍失效，完整PLL噪声/功耗未签核。
+
+- [CMOS接口、实际LC加载与噪声证据](integration/cmos_v12/README.md)
+- [新增CMOS电路及边界](blocks/cmos_v12/README.md)
+- [第14份完整状态快照](../reports/2026-10-02T0237.yaml)
+- [DEC-0006：继续推进CMOS方向](../reports/decisions/DEC-0006.md)
+
 2026-10-02（第13份快照）：明确优先 CMOS。单元缓冲85.247fs、重定时加缓冲87.002fs；实体CMOS /4＋重定时/缓冲加密130.272fs/1.150115mW，反相时钟102.681fs/2.081006mW。直接链独立noise-on闭合；理想全摆幅RF前提，真实LC接口与完整PLL仍未签核。
 
 - [内部边沿、CML工作点与CMOS输出链证据](integration/jitter_v11/README.md)

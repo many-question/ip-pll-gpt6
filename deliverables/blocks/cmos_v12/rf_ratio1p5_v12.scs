@@ -1,0 +1,11 @@
+simulator lang=spectre
+subckt rf_ratio1p5_v12 (rf clk vdd vss)
+CC (rf g0) capacitor c=1000f
+RB (g0 a) resistor r=50k
+X0 (g0 a vdd vss) pll_inv wn=8u wp=20.0u
+X1 (a b vdd vss) pll_inv wn=1u wp=1.5u
+X2 (b c vdd vss) pll_inv wn=2u wp=3.0u
+X3 (c d vdd vss) pll_inv wn=4u wp=6.0u
+X4 (d e vdd vss) pll_inv wn=8u wp=12.0u
+X5 (e clk vdd vss) pll_inv wn=16u wp=24.0u
+ends rf_ratio1p5_v12

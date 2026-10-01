@@ -1,0 +1,19 @@
+simulator lang=spectre
+// Only the input is AC coupled; later CMOS stages preserve a direct DC path.
+subckt rf_receiver3_v12 (rf clk vdd vss)
+parameters w0=4u w1=4u w2=16u ratio=2.5 rb=5k cin=300f
+CC (rf g0) capacitor c=cin
+RB (g0 a) resistor r=rb
+X0 (g0 a vdd vss) pll_inv wn=w0 wp=ratio*w0
+X1 (a b vdd vss) pll_inv wn=w1 wp=ratio*w1
+X2 (b clk vdd vss) pll_inv wn=w2 wp=ratio*w2
+ends rf_receiver3_v12
+subckt rf_receiver4_v12 (rf clk vdd vss)
+parameters w0=4u w1=4u w2=8u w3=16u ratio=2.5 rb=5k cin=300f
+CC (rf g0) capacitor c=cin
+RB (g0 a) resistor r=rb
+X0 (g0 a vdd vss) pll_inv wn=w0 wp=ratio*w0
+X1 (a b vdd vss) pll_inv wn=w1 wp=ratio*w1
+X2 (b c vdd vss) pll_inv wn=w2 wp=ratio*w2
+X3 (c clk vdd vss) pll_inv wn=w3 wp=ratio*w3
+ends rf_receiver4_v12

@@ -1,0 +1,16 @@
+simulator lang=spectre
+subckt rf_equal8r50c1000_v12 (rf clk vdd vss)
+C0 (rf g0) capacitor c=1000f
+R0 (g0 a) resistor r=50k
+X0 (g0 a vdd vss) pll_inv wn=8u wp=20.0u
+C1 (a g1) capacitor c=1000f
+R1 (g1 b) resistor r=50k
+X1 (g1 b vdd vss) pll_inv wn=8u wp=20.0u
+C2 (b g2) capacitor c=1000f
+R2 (g2 c) resistor r=50k
+X2 (g2 c vdd vss) pll_inv wn=8u wp=20.0u
+C3 (c g3) capacitor c=1000f
+R3 (g3 d) resistor r=50k
+X3 (g3 d vdd vss) pll_inv wn=8u wp=20.0u
+XO (d clk vdd vss) pll_inv wn=16u wp=40u
+ends rf_equal8r50c1000_v12

@@ -1,0 +1,4902 @@
+{
+  "protocol": {
+    "time": "2026-10-02T01:53:21.030373+08:00",
+    "objective": "Advance CMOS direction authorized by user; build real low-swing RF-to-CMOS interface before replacing LC loading. Start with measured-shape source for bounded screening, then actual autonomous LC. No noise or power claims transfer between these boundaries.",
+    "screen_cases": {
+      "screen_dc3_r1": {
+        "receiver": "3",
+        "parameters": "rb=1k"
+      },
+      "screen_dc3_r5": {
+        "receiver": "3",
+        "parameters": "rb=5k"
+      },
+      "screen_dc3_r20": {
+        "receiver": "3",
+        "parameters": "rb=20k"
+      },
+      "screen_dc3_w8": {
+        "receiver": "3",
+        "parameters": "w0=8u w1=8u rb=5k"
+      },
+      "screen_dc3_taper": {
+        "receiver": "3",
+        "parameters": "w0=8u w1=4u w2=12u rb=5k"
+      },
+      "screen_dc4_r1": {
+        "receiver": "4",
+        "parameters": "rb=1k"
+      },
+      "screen_dc4_r5": {
+        "receiver": "4",
+        "parameters": "rb=5k"
+      },
+      "screen_dc4_r20": {
+        "receiver": "4",
+        "parameters": "rb=20k"
+      }
+    },
+    "conditions": "TT27,1.2V,3.936GHz RF replay1.004-1.369V,out984MHz,10fF; same CMOS divider and scale4 symmetric C2MOS as v11.",
+    "criteria": "RF/clock3.936G, q1=1.968G,data/out984M; error<0.1%,per-cycle<2%;all digital nodes low<.2 high>1V;>=10 out edges;PSS endpoint<1mV,correct harmonic. Noise10k-492M sampled rising0.6V;refine1ps/63 to.5ps/127;RMS<1%,spectrum<.1dB. Autonomous LC judged by measured fRF/fout=4,not forced984MHz; retune separately. FullPLL<200fs and<=4mW unchanged."
+  },
+  "cases": [
+    {
+      "case": "noise_one32_onlyXRX_coarse",
+      "run": "gate_one_a",
+      "simulator_ok": true,
+      "valid_noise": true,
+      "noise_option_conflict_warning": false,
+      "local_edges": {
+        "q1": {
+          "range_v": [
+            -0.02387637518736491,
+            1.171370472326661
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            13.828807566911808,
+            12.77286524349815
+          ]
+        },
+        "data": {
+          "range_v": [
+            -0.01605629483439832,
+            1.24190705597381
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            19.26356544770162
+          ]
+        },
+        "out": {
+          "range_v": [
+            -0.04085560126956864,
+            1.265410109946508
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            23.856995399421542
+          ]
+        },
+        "XRX.g0": {
+          "range_v": [
+            0.4148294113988594,
+            0.7312178611242732
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            3.8992022234698647,
+            3.8943816055735034,
+            3.893829423927565,
+            3.9021301779852475
+          ]
+        },
+        "XR.qb": {
+          "range_v": [
+            -0.07026953104690782,
+            1.233175198760831
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            19.575658391389375
+          ]
+        },
+        "XR.ob": {
+          "range_v": [
+            -0.02564109495297508,
+            1.261072987740626
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.094274410546149
+          ]
+        },
+        "clk": {
+          "range_v": [
+            0.1538952505827769,
+            1.009521375339112
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            10.938229657578043,
+            11.090826955081214,
+            11.165365220535067,
+            11.03462154150937
+          ]
+        },
+        "vn": {
+          "range_v": [
+            1.003520358621616,
+            1.368160466584566
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.434887267939382,
+            4.441028936933486,
+            4.44253938179323,
+            4.434642227516628
+          ]
+        },
+        "vp": {
+          "range_v": [
+            1.003560941548763,
+            1.368962051892343
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.441348146170696,
+            4.442775698867062,
+            4.442107354816445,
+            4.44223247133458
+          ]
+        }
+      },
+      "periodic": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.1538952505827769,
+              1.009521375339112
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 0.002543765219418126,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.02387637518736491,
+              1.171370472326661
+            ],
+            "frequency_hz": 1968000000.000031,
+            "edges": 2,
+            "max_period_error": 0.007609058489431497,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.01605629483439832,
+              1.24190705597381
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.587618925213974e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.04085560126956864,
+              1.265410109946508
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.36444046934694807,
+              0.3652710998002131
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 2.2815253186703188e-07,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": true,
+        "actual_LC": false,
+        "reference_RF_frequency_hz": 3936000000.0,
+        "power_mw": {
+          "VRX:p": 0.7243529176367227,
+          "VRT:p": 0.1548118206294408,
+          "VDD:p": 1.1167981365797224
+        },
+        "node_ranges_v": {
+          "XRX.g0": [
+            0.4148294113988594,
+            0.7312178611242732
+          ]
+        },
+        "pass_function": true,
+        "endpoint_v": 1.7969490173630476e-08,
+        "pass_periodic": true
+      },
+      "dominant_harmonics": {
+        "out": 1,
+        "clk": 4,
+        "q1": 2,
+        "data": 1,
+        "vp": 4
+      },
+      "pass_periodic": true,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "noise_by_band": [
+        {
+          "band_hz": [
+            10000.0,
+            1000000.0
+          ],
+          "jitter_fs": 7.193685976496962,
+          "variance_fraction": 0.013349895241214155
+        },
+        {
+          "band_hz": [
+            1000000.0,
+            10000000.0
+          ],
+          "jitter_fs": 10.064820691837099,
+          "variance_fraction": 0.026132862930161444
+        },
+        {
+          "band_hz": [
+            10000000.0,
+            100000000.0
+          ],
+          "jitter_fs": 27.176658537605388,
+          "variance_fraction": 0.19053160310103887
+        },
+        {
+          "band_hz": [
+            100000000.0,
+            492000000.0
+          ],
+          "jitter_fs": 54.63285034760641,
+          "variance_fraction": 0.7699856387275855
+        }
+      ],
+      "fundamental_hz": 984000000.0,
+      "slew_v_per_s": 23857000000.0,
+      "numeric_jitter_fs": 62.26049180548479,
+      "spectre_jee_fs": 62.26050381179019,
+      "integration_relative_error": 1.9283983676565697e-07,
+      "device_psd_sum_max_relative_error": 7.990706995823714e-16,
+      "noise_budget_valid": true,
+      "noise_by_instance": {
+        "XRX": {
+          "variance_s2": 3.876368839860838e-27,
+          "jitter_fs": 62.26049180548479,
+          "variance_fraction": 0.9999999999999998
+        },
+        "XR": {
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XD": {
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        }
+      },
+      "noise_by_subblock": {
+        "XRX.X0": {
+          "jitter_fs": 59.687001976374404,
+          "variance_fraction": 0.9190400480712814
+        },
+        "XR.X1": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XR.X0": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XR.XFF": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XD.XB": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XD.X1": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XD.XB1": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XD.X0": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XD.XB0": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XRX.bias_and_passives": {
+          "jitter_fs": 17.71526559025057,
+          "variance_fraction": 0.08095995192871855
+        }
+      },
+      "top_devices": [
+        {
+          "device": "XRX.X0.MP",
+          "variance_s2": 2.8107506799380586e-27,
+          "jitter_fs": 53.016513275941286,
+          "variance_fraction": 0.7250988737281678
+        },
+        {
+          "device": "XRX.X0.MN",
+          "variance_s2": 7.517875249896639e-28,
+          "jitter_fs": 27.41874404471627,
+          "variance_fraction": 0.1939411743431136
+        },
+        {
+          "device": "XRX.R0",
+          "variance_s2": 3.13830634933116e-28,
+          "jitter_fs": 17.71526559025057,
+          "variance_fraction": 0.08095995192871855
+        },
+        {
+          "device": "XR.X1.MP",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XR.X0.MP",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XR.XFF.MP2",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XR.XFF.MP1",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XR.XFF.MPC0",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XR.XFF.MP0",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.XB.MP",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X1.MP2",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X1.MP1",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X1.MPC0",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X1.MP0",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.XB1.MP",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X0.MP2",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X0.MP1",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X0.MPC0",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X0.MP0",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.XB0.MP",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XR.X1.MN",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XR.X0.MN",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XR.XFF.MN2",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XR.XFF.MNC2",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XR.XFF.MNC1",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "case": "noise_one32_onlyXD_coarse",
+      "run": "gate_one_b",
+      "simulator_ok": true,
+      "valid_noise": true,
+      "noise_option_conflict_warning": false,
+      "local_edges": {
+        "q1": {
+          "range_v": [
+            -0.02387637518736491,
+            1.171370472326661
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            13.828807566911808,
+            12.77286524349815
+          ]
+        },
+        "data": {
+          "range_v": [
+            -0.01605629483439832,
+            1.24190705597381
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            19.26356544770162
+          ]
+        },
+        "out": {
+          "range_v": [
+            -0.04085560126956864,
+            1.265410109946508
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            23.856995399421542
+          ]
+        },
+        "XRX.g0": {
+          "range_v": [
+            0.4148294113988594,
+            0.7312178611242732
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            3.8992022234698647,
+            3.8943816055735034,
+            3.893829423927565,
+            3.9021301779852475
+          ]
+        },
+        "XR.qb": {
+          "range_v": [
+            -0.07026953104690782,
+            1.233175198760831
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            19.575658391389375
+          ]
+        },
+        "XR.ob": {
+          "range_v": [
+            -0.02564109495297508,
+            1.261072987740626
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.094274410546149
+          ]
+        },
+        "clk": {
+          "range_v": [
+            0.1538952505827769,
+            1.009521375339112
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            10.938229657578043,
+            11.090826955081214,
+            11.165365220535067,
+            11.03462154150937
+          ]
+        },
+        "vn": {
+          "range_v": [
+            1.003520358621616,
+            1.368160466584566
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.434887267939382,
+            4.441028936933486,
+            4.44253938179323,
+            4.434642227516628
+          ]
+        },
+        "vp": {
+          "range_v": [
+            1.003560941548763,
+            1.368962051892343
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.441348146170696,
+            4.442775698867062,
+            4.442107354816445,
+            4.44223247133458
+          ]
+        }
+      },
+      "periodic": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.1538952505827769,
+              1.009521375339112
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 0.002543765219418126,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.02387637518736491,
+              1.171370472326661
+            ],
+            "frequency_hz": 1968000000.000031,
+            "edges": 2,
+            "max_period_error": 0.007609058489431497,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.01605629483439832,
+              1.24190705597381
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.587618925213974e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.04085560126956864,
+              1.265410109946508
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.36444046934694807,
+              0.3652710998002131
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 2.2815253186703188e-07,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": true,
+        "actual_LC": false,
+        "reference_RF_frequency_hz": 3936000000.0,
+        "power_mw": {
+          "VRX:p": 0.7243529176367227,
+          "VRT:p": 0.1548118206294408,
+          "VDD:p": 1.1167981365797224
+        },
+        "node_ranges_v": {
+          "XRX.g0": [
+            0.4148294113988594,
+            0.7312178611242732
+          ]
+        },
+        "pass_function": true,
+        "endpoint_v": 1.7969490173630476e-08,
+        "pass_periodic": true
+      },
+      "dominant_harmonics": {
+        "out": 1,
+        "clk": 4,
+        "q1": 2,
+        "data": 1,
+        "vp": 4
+      },
+      "pass_periodic": true,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "noise_by_band": [
+        {
+          "band_hz": [
+            10000.0,
+            1000000.0
+          ],
+          "jitter_fs": 9.582323343332279,
+          "variance_fraction": 0.04157735804164802
+        },
+        {
+          "band_hz": [
+            1000000.0,
+            10000000.0
+          ],
+          "jitter_fs": 9.592423051689734,
+          "variance_fraction": 0.04166504877624953
+        },
+        {
+          "band_hz": [
+            10000000.0,
+            100000000.0
+          ],
+          "jitter_fs": 20.144750351824953,
+          "variance_fraction": 0.18375494103839923
+        },
+        {
+          "band_hz": [
+            100000000.0,
+            492000000.0
+          ],
+          "jitter_fs": 40.234179559571956,
+          "variance_fraction": 0.7330026521437033
+        }
+      ],
+      "fundamental_hz": 984000000.0,
+      "slew_v_per_s": 23857000000.0,
+      "numeric_jitter_fs": 46.99399612959073,
+      "spectre_jee_fs": 46.99400519190703,
+      "integration_relative_error": 1.9283983698770157e-07,
+      "device_psd_sum_max_relative_error": 1.1031382793148756e-15,
+      "noise_budget_valid": true,
+      "noise_by_instance": {
+        "XRX": {
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XR": {
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XD": {
+          "variance_s2": 2.2084356722279892e-27,
+          "jitter_fs": 46.99399612959074,
+          "variance_fraction": 1.0000000000000002
+        }
+      },
+      "noise_by_subblock": {
+        "XRX.X0": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XR.X1": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XR.X0": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XR.XFF": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XD.XB": {
+          "jitter_fs": 5.40070750055927,
+          "variance_fraction": 0.013207376548655036
+        },
+        "XD.X1": {
+          "jitter_fs": 5.887196530883602,
+          "variance_fraction": 0.015693951799955294
+        },
+        "XD.XB1": {
+          "jitter_fs": 3.6986013543385057,
+          "variance_fraction": 0.006194272330565039
+        },
+        "XD.X0": {
+          "jitter_fs": 42.455403985965035,
+          "variance_fraction": 0.8161710799541088
+        },
+        "XD.XB0": {
+          "jitter_fs": 18.12368528027159,
+          "variance_fraction": 0.1487333193667158
+        },
+        "XRX.bias_and_passives": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        }
+      },
+      "top_devices": [
+        {
+          "device": "XD.X0.MNC1",
+          "variance_s2": 5.389126583489901e-28,
+          "jitter_fs": 23.21449242066236,
+          "variance_fraction": 0.24402461213882953
+        },
+        {
+          "device": "XD.X0.MPC0",
+          "variance_s2": 3.4899451076509154e-28,
+          "jitter_fs": 18.681394775687696,
+          "variance_fraction": 0.15802792680531516
+        },
+        {
+          "device": "XD.XB0.MN",
+          "variance_s2": 3.1219688787955727e-28,
+          "jitter_fs": 17.66909414428361,
+          "variance_fraction": 0.14136562445787532
+        },
+        {
+          "device": "XD.X0.MP2",
+          "variance_s2": 2.76734944631006e-28,
+          "jitter_fs": 16.635352254491217,
+          "variance_fraction": 0.12530813014436637
+        },
+        {
+          "device": "XD.X0.MN1",
+          "variance_s2": 2.123344727065511e-28,
+          "jitter_fs": 14.571701091724023,
+          "variance_fraction": 0.0961470036808166
+        },
+        {
+          "device": "XD.X0.MP0",
+          "variance_s2": 2.0966796562661535e-28,
+          "jitter_fs": 14.479915939901565,
+          "variance_fraction": 0.09493958473107394
+        },
+        {
+          "device": "XD.X0.MP1",
+          "variance_s2": 1.1043214059788943e-28,
+          "jitter_fs": 10.50866978251241,
+          "variance_fraction": 0.05000468973881388
+        },
+        {
+          "device": "XD.X0.MN0",
+          "variance_s2": 3.730286481485388e-29,
+          "jitter_fs": 6.107607126760355,
+          "variance_fraction": 0.016891080543550877
+        },
+        {
+          "device": "XD.X0.MN2",
+          "variance_s2": 3.7189201984785124e-29,
+          "jitter_fs": 6.0982950063755625,
+          "variance_fraction": 0.016839612967882674
+        },
+        {
+          "device": "XD.X0.MNC2",
+          "variance_s2": 3.0892568135713294e-29,
+          "jitter_fs": 5.558108323495801,
+          "variance_fraction": 0.013988439203459891
+        },
+        {
+          "device": "XD.XB.MN",
+          "variance_s2": 2.4912982273388122e-29,
+          "jitter_fs": 4.9912906420472165,
+          "variance_fraction": 0.0112808276857141
+        },
+        {
+          "device": "XD.XB0.MP",
+          "variance_s2": 1.6271080258775866e-29,
+          "jitter_fs": 4.033742711028539,
+          "variance_fraction": 0.007367694908840486
+        },
+        {
+          "device": "XD.XB1.MP",
+          "variance_s2": 1.2710083477033142e-29,
+          "jitter_fs": 3.5651204014777877,
+          "variance_fraction": 0.005755242788761208
+        },
+        {
+          "device": "XD.X1.MP2",
+          "variance_s2": 9.575614347401058e-30,
+          "jitter_fs": 3.094448956987505,
+          "variance_fraction": 0.004335926315544733
+        },
+        {
+          "device": "XD.X1.MNC1",
+          "variance_s2": 7.554027247974433e-30,
+          "jitter_fs": 2.748459067909587,
+          "variance_fraction": 0.003420533069162719
+        },
+        {
+          "device": "XD.X1.MNC2",
+          "variance_s2": 7.055474547022739e-30,
+          "jitter_fs": 2.656214326258847,
+          "variance_fraction": 0.003194783817227874
+        },
+        {
+          "device": "XD.XB.MP",
+          "variance_s2": 4.2546592332090296e-30,
+          "jitter_fs": 2.0626825333068175,
+          "variance_fraction": 0.0019265488629409346
+        },
+        {
+          "device": "XD.X1.MN2",
+          "variance_s2": 4.210437266926586e-30,
+          "jitter_fs": 2.051935005531751,
+          "variance_fraction": 0.0019065247495657733
+        },
+        {
+          "device": "XD.X1.MN1",
+          "variance_s2": 3.311280983429989e-30,
+          "jitter_fs": 1.8196925518971574,
+          "variance_fraction": 0.0014993785080864009
+        },
+        {
+          "device": "XD.X1.MPC0",
+          "variance_s2": 1.5688103637926496e-30,
+          "jitter_fs": 1.2525216021261467,
+          "variance_fraction": 0.0007103717728893364
+        },
+        {
+          "device": "XD.X1.MP1",
+          "variance_s2": 1.1376491442959094e-30,
+          "jitter_fs": 1.0666063680177,
+          "variance_fraction": 0.0005151380040642921
+        },
+        {
+          "device": "XD.XB1.MN",
+          "variance_s2": 9.695685012814889e-31,
+          "jitter_fs": 0.9846666955277248,
+          "variance_fraction": 0.0004390295418038308
+        },
+        {
+          "device": "XD.X1.MP0",
+          "variance_s2": 2.2630038477140178e-31,
+          "jitter_fs": 0.4757104001085133,
+          "variance_fraction": 0.00010247089721345507
+        },
+        {
+          "device": "XD.X1.MN0",
+          "variance_s2": 1.948870763315435e-32,
+          "jitter_fs": 0.13960196142301995,
+          "variance_fraction": 8.824666200710793e-06
+        },
+        {
+          "device": "XRX.X0.MP",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "case": "noise_one32_onlyXR_coarse",
+      "run": "gate_one_b",
+      "simulator_ok": true,
+      "valid_noise": true,
+      "noise_option_conflict_warning": false,
+      "local_edges": {
+        "q1": {
+          "range_v": [
+            -0.02387637518736491,
+            1.171370472326661
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            13.828807566911808,
+            12.77286524349815
+          ]
+        },
+        "data": {
+          "range_v": [
+            -0.01605629483439832,
+            1.24190705597381
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            19.26356544770162
+          ]
+        },
+        "out": {
+          "range_v": [
+            -0.04085560126956864,
+            1.265410109946508
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            23.856995399421542
+          ]
+        },
+        "XRX.g0": {
+          "range_v": [
+            0.4148294113988594,
+            0.7312178611242732
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            3.8992022234698647,
+            3.8943816055735034,
+            3.893829423927565,
+            3.9021301779852475
+          ]
+        },
+        "XR.qb": {
+          "range_v": [
+            -0.07026953104690782,
+            1.233175198760831
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            19.575658391389375
+          ]
+        },
+        "XR.ob": {
+          "range_v": [
+            -0.02564109495297508,
+            1.261072987740626
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.094274410546149
+          ]
+        },
+        "clk": {
+          "range_v": [
+            0.1538952505827769,
+            1.009521375339112
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            10.938229657578043,
+            11.090826955081214,
+            11.165365220535067,
+            11.03462154150937
+          ]
+        },
+        "vn": {
+          "range_v": [
+            1.003520358621616,
+            1.368160466584566
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.434887267939382,
+            4.441028936933486,
+            4.44253938179323,
+            4.434642227516628
+          ]
+        },
+        "vp": {
+          "range_v": [
+            1.003560941548763,
+            1.368962051892343
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.441348146170696,
+            4.442775698867062,
+            4.442107354816445,
+            4.44223247133458
+          ]
+        }
+      },
+      "periodic": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.1538952505827769,
+              1.009521375339112
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 0.002543765219418126,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.02387637518736491,
+              1.171370472326661
+            ],
+            "frequency_hz": 1968000000.000031,
+            "edges": 2,
+            "max_period_error": 0.007609058489431497,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.01605629483439832,
+              1.24190705597381
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.587618925213974e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.04085560126956864,
+              1.265410109946508
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.36444046934694807,
+              0.3652710998002131
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 2.2815253186703188e-07,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": true,
+        "actual_LC": false,
+        "reference_RF_frequency_hz": 3936000000.0,
+        "power_mw": {
+          "VRX:p": 0.7243529176367227,
+          "VRT:p": 0.1548118206294408,
+          "VDD:p": 1.1167981365797224
+        },
+        "node_ranges_v": {
+          "XRX.g0": [
+            0.4148294113988594,
+            0.7312178611242732
+          ]
+        },
+        "pass_function": true,
+        "endpoint_v": 1.7969490173630476e-08,
+        "pass_periodic": true
+      },
+      "dominant_harmonics": {
+        "out": 1,
+        "clk": 4,
+        "q1": 2,
+        "data": 1,
+        "vp": 4
+      },
+      "pass_periodic": true,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "noise_by_band": [
+        {
+          "band_hz": [
+            10000.0,
+            1000000.0
+          ],
+          "jitter_fs": 26.1017995894954,
+          "variance_fraction": 0.025481301969643703
+        },
+        {
+          "band_hz": [
+            1000000.0,
+            10000000.0
+          ],
+          "jitter_fs": 29.55934138461951,
+          "variance_fraction": 0.032679109940988486
+        },
+        {
+          "band_hz": [
+            10000000.0,
+            100000000.0
+          ],
+          "jitter_fs": 70.99110751838437,
+          "variance_fraction": 0.18849013090606237
+        },
+        {
+          "band_hz": [
+            100000000.0,
+            492000000.0
+          ],
+          "jitter_fs": 141.92466682930032,
+          "variance_fraction": 0.7533494571833055
+        }
+      ],
+      "fundamental_hz": 984000000.0,
+      "slew_v_per_s": 23857000000.0,
+      "numeric_jitter_fs": 163.51576990063487,
+      "spectre_jee_fs": 163.51580143299532,
+      "integration_relative_error": 1.9283983665463467e-07,
+      "device_psd_sum_max_relative_error": 7.663159292895911e-16,
+      "noise_budget_valid": true,
+      "noise_by_instance": {
+        "XRX": {
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XR": {
+          "variance_s2": 2.673740700619736e-26,
+          "jitter_fs": 163.51576990063484,
+          "variance_fraction": 0.9999999999999998
+        },
+        "XD": {
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        }
+      },
+      "noise_by_subblock": {
+        "XRX.X0": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XR.X1": {
+          "jitter_fs": 35.99269934590936,
+          "variance_fraction": 0.04845175921153278
+        },
+        "XR.X0": {
+          "jitter_fs": 79.8489911587811,
+          "variance_fraction": 0.23846221840424778
+        },
+        "XR.XFF": {
+          "jitter_fs": 138.07994499896515,
+          "variance_fraction": 0.7130860223842194
+        },
+        "XD.XB": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XD.X1": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XD.XB1": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XD.X0": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XD.XB0": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        "XRX.bias_and_passives": {
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        }
+      },
+      "top_devices": [
+        {
+          "device": "XR.XFF.MNC1",
+          "variance_s2": 6.494012778291946e-27,
+          "jitter_fs": 80.58543775578778,
+          "variance_fraction": 0.24288117306164816
+        },
+        {
+          "device": "XR.X0.MN",
+          "variance_s2": 5.9523312110894824e-27,
+          "jitter_fs": 77.15135261996048,
+          "variance_fraction": 0.22262185744899696
+        },
+        {
+          "device": "XR.XFF.MP2",
+          "variance_s2": 4.5762648719313815e-27,
+          "jitter_fs": 67.64809584852615,
+          "variance_fraction": 0.17115589671319534
+        },
+        {
+          "device": "XR.XFF.MPC0",
+          "variance_s2": 2.6431234734706275e-27,
+          "jitter_fs": 51.41131658954697,
+          "variance_fraction": 0.09885489168257744
+        },
+        {
+          "device": "XR.XFF.MN1",
+          "variance_s2": 2.3588382816132676e-27,
+          "jitter_fs": 48.567872936883575,
+          "variance_fraction": 0.08822240245909116
+        },
+        {
+          "device": "XR.X1.MP",
+          "variance_s2": 1.1641884039877121e-27,
+          "jitter_fs": 34.120205216084386,
+          "variance_fraction": 0.04354155972259648
+        },
+        {
+          "device": "XR.XFF.MP0",
+          "variance_s2": 1.061519177373328e-27,
+          "jitter_fs": 32.58096341996854,
+          "variance_fraction": 0.03970165009371636
+        },
+        {
+          "device": "XR.XFF.MP1",
+          "variance_s2": 9.02730798629825e-28,
+          "jitter_fs": 30.04547883841802,
+          "variance_fraction": 0.03376284014454298
+        },
+        {
+          "device": "XR.XFF.MN2",
+          "variance_s2": 5.585677651274488e-28,
+          "jitter_fs": 23.634038273800115,
+          "variance_fraction": 0.020890872663829385
+        },
+        {
+          "device": "XR.X0.MP",
+          "variance_s2": 4.235301779856183e-28,
+          "jitter_fs": 20.579848832914646,
+          "variance_fraction": 0.015840360955250814
+        },
+        {
+          "device": "XR.XFF.MNC2",
+          "variance_s2": 3.3688882471627166e-28,
+          "jitter_fs": 18.354531449107373,
+          "variance_fraction": 0.012599906364823839
+        },
+        {
+          "device": "XR.XFF.MN0",
+          "variance_s2": 1.3412523976314164e-28,
+          "jitter_fs": 11.581245173259292,
+          "variance_fraction": 0.005016389200794723
+        },
+        {
+          "device": "XR.X1.MN",
+          "variance_s2": 1.312860022173121e-28,
+          "jitter_fs": 11.458010395234947,
+          "variance_fraction": 0.004910199488936298
+        },
+        {
+          "device": "XRX.X0.MP",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.XB.MP",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X1.MP2",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X1.MP1",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X1.MPC0",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X1.MP0",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.XB1.MP",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X0.MP2",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X0.MP1",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X0.MPC0",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.X0.MP0",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        },
+        {
+          "device": "XD.XB0.MP",
+          "variance_s2": 0.0,
+          "jitter_fs": 0.0,
+          "variance_fraction": 0.0
+        }
+      ]
+    },
+    {
+      "case": "noise_one32_coarse",
+      "run": "noise_one",
+      "simulator_ok": true,
+      "valid_noise": true,
+      "noise_option_conflict_warning": false,
+      "local_edges": {
+        "q1": {
+          "range_v": [
+            -0.02387637518736491,
+            1.171370472326661
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            13.828807566911808,
+            12.77286524349815
+          ]
+        },
+        "data": {
+          "range_v": [
+            -0.01605629483439832,
+            1.24190705597381
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            19.26356544770162
+          ]
+        },
+        "out": {
+          "range_v": [
+            -0.04085560126956864,
+            1.265410109946508
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            23.856995399421542
+          ]
+        },
+        "XRX.g0": {
+          "range_v": [
+            0.4148294113988594,
+            0.7312178611242732
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            3.8992022234698647,
+            3.8943816055735034,
+            3.893829423927565,
+            3.9021301779852475
+          ]
+        },
+        "XR.qb": {
+          "range_v": [
+            -0.07026953104690782,
+            1.233175198760831
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            19.575658391389375
+          ]
+        },
+        "XR.ob": {
+          "range_v": [
+            -0.02564109495297508,
+            1.261072987740626
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.094274410546149
+          ]
+        },
+        "clk": {
+          "range_v": [
+            0.1538952505827769,
+            1.009521375339112
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            10.938229657578043,
+            11.090826955081214,
+            11.165365220535067,
+            11.03462154150937
+          ]
+        },
+        "vn": {
+          "range_v": [
+            1.003520358621616,
+            1.368160466584566
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.434887267939382,
+            4.441028936933486,
+            4.44253938179323,
+            4.434642227516628
+          ]
+        },
+        "vp": {
+          "range_v": [
+            1.003560941548763,
+            1.368962051892343
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.441348146170696,
+            4.442775698867062,
+            4.442107354816445,
+            4.44223247133458
+          ]
+        }
+      },
+      "periodic": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.1538952505827769,
+              1.009521375339112
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 0.002543765219418126,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.02387637518736491,
+              1.171370472326661
+            ],
+            "frequency_hz": 1968000000.000031,
+            "edges": 2,
+            "max_period_error": 0.007609058489431497,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.01605629483439832,
+              1.24190705597381
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.587618925213974e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.04085560126956864,
+              1.265410109946508
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.36444046934694807,
+              0.3652710998002131
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 2.2815253186703188e-07,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": true,
+        "actual_LC": false,
+        "reference_RF_frequency_hz": 3936000000.0,
+        "power_mw": {
+          "VRX:p": 0.7243529176367227,
+          "VRT:p": 0.1548118206294408,
+          "VDD:p": 1.1167981365797224
+        },
+        "node_ranges_v": {
+          "XRX.g0": [
+            0.4148294113988594,
+            0.7312178611242732
+          ]
+        },
+        "pass_function": true,
+        "endpoint_v": 1.7969490173630476e-08,
+        "pass_periodic": true
+      },
+      "dominant_harmonics": {
+        "out": 1,
+        "clk": 4,
+        "q1": 2,
+        "data": 1,
+        "vp": 4
+      },
+      "pass_periodic": true,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "noise_by_band": [
+        {
+          "band_hz": [
+            10000.0,
+            1000000.0
+          ],
+          "jitter_fs": 28.720619429162767,
+          "variance_fraction": 0.02513157835008287
+        },
+        {
+          "band_hz": [
+            1000000.0,
+            10000000.0
+          ],
+          "jitter_fs": 32.66603524540283,
+          "variance_fraction": 0.03251060209819821
+        },
+        {
+          "band_hz": [
+            10000000.0,
+            100000000.0
+          ],
+          "jitter_fs": 78.6391701551699,
+          "variance_fraction": 0.1884126265912464
+        },
+        {
+          "band_hz": [
+            100000000.0,
+            492000000.0
+          ],
+          "jitter_fs": 157.30908618558473,
+          "variance_fraction": 0.7539451929604727
+        }
+      ],
+      "fundamental_hz": 984000000.0,
+      "slew_v_per_s": 23857000000.0,
+      "numeric_jitter_fs": 181.16901368138588,
+      "spectre_jee_fs": 181.16904861799568,
+      "integration_relative_error": 1.9283983709872388e-07,
+      "device_psd_sum_max_relative_error": 9.721282926281165e-16,
+      "noise_budget_valid": true,
+      "noise_by_instance": {
+        "XRX": {
+          "variance_s2": 3.876368839860838e-27,
+          "jitter_fs": 62.26049180548479,
+          "variance_fraction": 0.11810200046091357
+        },
+        "XR": {
+          "variance_s2": 2.673740700619736e-26,
+          "jitter_fs": 163.51576990063484,
+          "variance_fraction": 0.8146132076231728
+        },
+        "XD": {
+          "variance_s2": 2.2084356722279892e-27,
+          "jitter_fs": 46.99399612959074,
+          "variance_fraction": 0.06728479191591362
+        }
+      },
+      "noise_by_subblock": {
+        "XRX.X0": {
+          "jitter_fs": 59.687001976374404,
+          "variance_fraction": 0.10854046818091252
+        },
+        "XR.X1": {
+          "jitter_fs": 35.99269934590936,
+          "variance_fraction": 0.03946944298629233
+        },
+        "XR.X0": {
+          "jitter_fs": 79.8489911587811,
+          "variance_fraction": 0.19425447263122192
+        },
+        "XR.XFF": {
+          "jitter_fs": 138.07994499896515,
+          "variance_fraction": 0.5808892920056586
+        },
+        "XD.XB": {
+          "jitter_fs": 5.40070750055927,
+          "variance_fraction": 0.0008886555828313711
+        },
+        "XD.X1": {
+          "jitter_fs": 5.887196530883602,
+          "variance_fraction": 0.0010559642811983697
+        },
+        "XD.XB1": {
+          "jitter_fs": 3.6986013543385057,
+          "variance_fraction": 0.00041678032483256976
+        },
+        "XD.X0": {
+          "jitter_fs": 42.455403985965035,
+          "variance_fraction": 0.05491590128249869
+        },
+        "XD.XB0": {
+          "jitter_fs": 18.12368528027159,
+          "variance_fraction": 0.010007490444552593
+        },
+        "XRX.bias_and_passives": {
+          "jitter_fs": 17.71526559025057,
+          "variance_fraction": 0.00956153228000106
+        }
+      },
+      "top_devices": [
+        {
+          "device": "XR.XFF.MNC1",
+          "variance_s2": 6.494012778291946e-27,
+          "jitter_fs": 80.58543775578778,
+          "variance_fraction": 0.19785421145902818
+        },
+        {
+          "device": "XR.X0.MN",
+          "variance_s2": 5.9523312110894824e-27,
+          "jitter_fs": 77.15135261996048,
+          "variance_fraction": 0.1813507053835562
+        },
+        {
+          "device": "XR.XFF.MP2",
+          "variance_s2": 4.5762648719313815e-27,
+          "jitter_fs": 67.64809584852615,
+          "variance_fraction": 0.13942585402515653
+        },
+        {
+          "device": "XRX.X0.MP",
+          "variance_s2": 2.8107506799380586e-27,
+          "jitter_fs": 53.016513275941286,
+          "variance_fraction": 0.085635627519252
+        },
+        {
+          "device": "XR.XFF.MPC0",
+          "variance_s2": 2.6431234734706275e-27,
+          "jitter_fs": 51.41131658954697,
+          "variance_fraction": 0.08052850040278572
+        },
+        {
+          "device": "XR.XFF.MN1",
+          "variance_s2": 2.3588382816132676e-27,
+          "jitter_fs": 48.567872936883575,
+          "variance_fraction": 0.07186713425142276
+        },
+        {
+          "device": "XR.X1.MP",
+          "variance_s2": 1.1641884039877121e-27,
+          "jitter_fs": 34.120205216084386,
+          "variance_fraction": 0.03546952963054027
+        },
+        {
+          "device": "XR.XFF.MP0",
+          "variance_s2": 1.061519177373328e-27,
+          "jitter_fs": 32.58096341996854,
+          "variance_fraction": 0.03234148853077513
+        },
+        {
+          "device": "XR.XFF.MP1",
+          "variance_s2": 9.02730798629825e-28,
+          "jitter_fs": 30.04547883841802,
+          "variance_fraction": 0.027503655508614583
+        },
+        {
+          "device": "XRX.X0.MN",
+          "variance_s2": 7.517875249896639e-28,
+          "jitter_fs": 27.41874404471627,
+          "variance_fraction": 0.022904840661660524
+        },
+        {
+          "device": "XR.XFF.MN2",
+          "variance_s2": 5.585677651274488e-28,
+          "jitter_fs": 23.634038273800115,
+          "variance_fraction": 0.017017980790729314
+        },
+        {
+          "device": "XD.X0.MNC1",
+          "variance_s2": 5.389126583489901e-28,
+          "jitter_fs": 23.21449242066236,
+          "variance_fraction": 0.016419145250122665
+        },
+        {
+          "device": "XR.X0.MP",
+          "variance_s2": 4.235301779856183e-28,
+          "jitter_fs": 20.579848832914646,
+          "variance_fraction": 0.012903767247665733
+        },
+        {
+          "device": "XD.X0.MPC0",
+          "variance_s2": 3.4899451076509154e-28,
+          "jitter_fs": 18.681394775687696,
+          "variance_fraction": 0.010632876171998854
+        },
+        {
+          "device": "XR.XFF.MNC2",
+          "variance_s2": 3.3688882471627166e-28,
+          "jitter_fs": 18.354531449107373,
+          "variance_fraction": 0.010264050139600779
+        },
+        {
+          "device": "XRX.R0",
+          "variance_s2": 3.13830634933116e-28,
+          "jitter_fs": 17.71526559025057,
+          "variance_fraction": 0.00956153228000106
+        },
+        {
+          "device": "XD.XB0.MN",
+          "variance_s2": 3.1219688787955727e-28,
+          "jitter_fs": 17.66909414428361,
+          "variance_fraction": 0.009511756625711326
+        },
+        {
+          "device": "XD.X0.MP2",
+          "variance_s2": 2.76734944631006e-28,
+          "jitter_fs": 16.635352254491217,
+          "variance_fraction": 0.00843133146213591
+        },
+        {
+          "device": "XD.X0.MN1",
+          "variance_s2": 2.123344727065511e-28,
+          "jitter_fs": 14.571701091724023,
+          "variance_fraction": 0.006469231136002324
+        },
+        {
+          "device": "XD.X0.MP0",
+          "variance_s2": 2.0966796562661535e-28,
+          "jitter_fs": 14.479915939901565,
+          "variance_fraction": 0.006387990203213558
+        },
+        {
+          "device": "XR.XFF.MN0",
+          "variance_s2": 1.3412523976314164e-28,
+          "jitter_fs": 11.581245173259292,
+          "variance_fraction": 0.004086416897545635
+        },
+        {
+          "device": "XR.X1.MN",
+          "variance_s2": 1.312860022173121e-28,
+          "jitter_fs": 11.458010395234947,
+          "variance_fraction": 0.003999913355752062
+        },
+        {
+          "device": "XD.X0.MP1",
+          "variance_s2": 1.1043214059788943e-28,
+          "jitter_fs": 10.50866978251241,
+          "variance_fraction": 0.0033645551438959117
+        },
+        {
+          "device": "XD.X0.MN0",
+          "variance_s2": 3.730286481485388e-29,
+          "jitter_fs": 6.107607126760355,
+          "variance_fraction": 0.0011365128396077576
+        },
+        {
+          "device": "XD.X0.MN2",
+          "variance_s2": 3.7189201984785124e-29,
+          "jitter_fs": 6.0982950063755625,
+          "variance_fraction": 0.001133049854488506
+        }
+      ]
+    },
+    {
+      "case": "noise_one32_fine",
+      "run": "noise_onefine",
+      "simulator_ok": true,
+      "valid_noise": true,
+      "noise_option_conflict_warning": false,
+      "local_edges": {
+        "q1": {
+          "range_v": [
+            -0.02387944979912471,
+            1.171413464244067
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            13.822326555130202,
+            12.80737690557932
+          ]
+        },
+        "data": {
+          "range_v": [
+            -0.01608709003070327,
+            1.241912867943749
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            19.295749527442652
+          ]
+        },
+        "out": {
+          "range_v": [
+            -0.04086255731909923,
+            1.265438177930002
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            23.859679815851873
+          ]
+        },
+        "XRX.g0": {
+          "range_v": [
+            0.414827893599051,
+            0.7312215596593775
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            3.897346030148413,
+            3.890436617065214,
+            3.8907955281191113,
+            3.8989187868063633
+          ]
+        },
+        "XR.qb": {
+          "range_v": [
+            -0.07027091440106142,
+            1.233194420124278
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            19.574529586824436
+          ]
+        },
+        "XR.ob": {
+          "range_v": [
+            -0.02564891433750591,
+            1.261107106178454
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.06456369195058
+          ]
+        },
+        "clk": {
+          "range_v": [
+            0.1538885666038761,
+            1.009529800619063
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            10.938727227961726,
+            11.09097774597486,
+            11.161976988164739,
+            11.03470801068789
+          ]
+        },
+        "vn": {
+          "range_v": [
+            1.00352017402853,
+            1.368159136441809
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.438990564954415,
+            4.4389905650651595,
+            4.438990565560192,
+            4.438990565217777
+          ]
+        },
+        "vp": {
+          "range_v": [
+            1.003561206834747,
+            1.368962117280602
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.440395107325665,
+            4.440395107353433,
+            4.440395107005449,
+            4.440395107462743
+          ]
+        }
+      },
+      "periodic": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.1538885666038761,
+              1.009529800619063
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 0.0025440816772859254,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.02387944979912471,
+              1.171413464244067
+            ],
+            "frequency_hz": 1968000000.000031,
+            "edges": 2,
+            "max_period_error": 0.007607136442479456,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.01608709003070327,
+              1.241912867943749
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.04086255731909923,
+              1.265438177930002
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.554312234475219e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.36444069733125595,
+              0.3652691811525781
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 8.137934770502397e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": true,
+        "actual_LC": false,
+        "reference_RF_frequency_hz": 3936000000.0,
+        "power_mw": {
+          "VRX:p": 0.7243509290355962,
+          "VRT:p": 0.15481181444419834,
+          "VDD:p": 1.1168011190145097
+        },
+        "node_ranges_v": {
+          "XRX.g0": [
+            0.414827893599051,
+            0.7312215596593775
+          ]
+        },
+        "pass_function": true,
+        "endpoint_v": 3.0660998517895166e-08,
+        "pass_periodic": true
+      },
+      "dominant_harmonics": {
+        "out": 1,
+        "clk": 4,
+        "q1": 2,
+        "data": 1,
+        "vp": 4
+      },
+      "pass_periodic": true,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "noise_by_band": [
+        {
+          "band_hz": [
+            10000.0,
+            1000000.0
+          ],
+          "jitter_fs": 28.716975568036208,
+          "variance_fraction": 0.025120407638327912
+        },
+        {
+          "band_hz": [
+            1000000.0,
+            10000000.0
+          ],
+          "jitter_fs": 32.666126950399615,
+          "variance_fraction": 0.03250458130907037
+        },
+        {
+          "band_hz": [
+            10000000.0,
+            100000000.0
+          ],
+          "jitter_fs": 78.64787719662928,
+          "variance_fraction": 0.18841839288300757
+        },
+        {
+          "band_hz": [
+            100000000.0,
+            492000000.0
+          ],
+          "jitter_fs": 157.3252883033763,
+          "variance_fraction": 0.7539566181695943
+        }
+      ],
+      "fundamental_hz": 984000000.0,
+      "slew_v_per_s": 23857400000.0,
+      "numeric_jitter_fs": 181.18630042856816,
+      "spectre_jee_fs": 181.1861185441392,
+      "integration_relative_error": 1.0038541053969396e-06,
+      "device_psd_sum_max_relative_error": 1.187543490496481e-15,
+      "noise_budget_valid": true,
+      "noise_by_instance": {
+        "XRX": {
+          "variance_s2": 3.87722859433158e-27,
+          "jitter_fs": 62.26739591737862,
+          "variance_fraction": 0.11810565491237965
+        },
+        "XR": {
+          "variance_s2": 2.67541959309717e-26,
+          "jitter_fs": 163.56709917025398,
+          "variance_fraction": 0.8149691861607343
+        },
+        "XD": {
+          "variance_s2": 2.197050937688079e-27,
+          "jitter_fs": 46.87270994606647,
+          "variance_fraction": 0.06692515892688615
+        }
+      },
+      "noise_by_subblock": {
+        "XRX.X0": {
+          "jitter_fs": 59.6944356606003,
+          "variance_fraction": 0.10854679050980356
+        },
+        "XR.X1": {
+          "jitter_fs": 36.12088625034805,
+          "variance_fraction": 0.03974349722640747
+        },
+        "XR.X0": {
+          "jitter_fs": 79.87007125486906,
+          "variance_fraction": 0.19431996741516008
+        },
+        "XR.XFF": {
+          "jitter_fs": 138.0950731387737,
+          "variance_fraction": 0.5809057215191668
+        },
+        "XD.XB": {
+          "jitter_fs": 5.398090900265559,
+          "variance_fraction": 0.0008876252995780947
+        },
+        "XD.X1": {
+          "jitter_fs": 5.878486960829341,
+          "variance_fraction": 0.0010526412957433068
+        },
+        "XD.XB1": {
+          "jitter_fs": 3.6934625923954396,
+          "variance_fraction": 0.0004155436927554905
+        },
+        "XD.X0": {
+          "jitter_fs": 42.340110582048595,
+          "variance_fraction": 0.05460762154858691
+        },
+        "XD.XB0": {
+          "jitter_fs": 18.083924169006583,
+          "variance_fraction": 0.00996172709022234
+        },
+        "XRX.bias_and_passives": {
+          "jitter_fs": 17.714484059492968,
+          "variance_fraction": 0.009558864402576082
+        }
+      },
+      "top_devices": [
+        {
+          "device": "XR.XFF.MNC1",
+          "variance_s2": 6.495901033615794e-27,
+          "jitter_fs": 80.59715276370372,
+          "variance_fraction": 0.19787397806330792
+        },
+        {
+          "device": "XR.X0.MN",
+          "variance_s2": 5.955648777763062e-27,
+          "jitter_fs": 77.17285000415018,
+          "variance_fraction": 0.1814171597604971
+        },
+        {
+          "device": "XR.XFF.MP2",
+          "variance_s2": 4.578228484146479e-27,
+          "jitter_fs": 67.66260772499446,
+          "variance_fraction": 0.13945906471677827
+        },
+        {
+          "device": "XRX.X0.MP",
+          "variance_s2": 2.8115517981371714e-27,
+          "jitter_fs": 53.02406810248693,
+          "variance_fraction": 0.08564369068270404
+        },
+        {
+          "device": "XR.XFF.MPC0",
+          "variance_s2": 2.6428323272954544e-27,
+          "jitter_fs": 51.40848497374198,
+          "variance_fraction": 0.08050426619033248
+        },
+        {
+          "device": "XR.XFF.MN1",
+          "variance_s2": 2.359528679781458e-27,
+          "jitter_fs": 48.57497997715962,
+          "variance_fraction": 0.07187445187460605
+        },
+        {
+          "device": "XR.X1.MP",
+          "variance_s2": 1.1735416005918722e-27,
+          "jitter_fs": 34.25699345523294,
+          "variance_fraction": 0.035747672837102805
+        },
+        {
+          "device": "XR.XFF.MP0",
+          "variance_s2": 1.0615597144289698e-27,
+          "jitter_fs": 32.58158551128183,
+          "variance_fraction": 0.032336552321039144
+        },
+        {
+          "device": "XR.XFF.MP1",
+          "variance_s2": 9.025453542066425e-28,
+          "jitter_fs": 30.042392617876537,
+          "variance_fraction": 0.02749275869432658
+        },
+        {
+          "device": "XRX.X0.MN",
+          "variance_s2": 7.518738507003779e-28,
+          "jitter_fs": 27.420318209320218,
+          "variance_fraction": 0.022903099827099514
+        },
+        {
+          "device": "XR.XFF.MN2",
+          "variance_s2": 5.586354277598473e-28,
+          "jitter_fs": 23.635469696197013,
+          "variance_fraction": 0.01701679471499113
+        },
+        {
+          "device": "XD.X0.MNC1",
+          "variance_s2": 5.35690550801765e-28,
+          "jitter_fs": 23.144989755922662,
+          "variance_fraction": 0.016317862564335858
+        },
+        {
+          "device": "XR.X0.MP",
+          "variance_s2": 4.235795044948005e-28,
+          "jitter_fs": 20.581047215698245,
+          "variance_fraction": 0.012902807654662972
+        },
+        {
+          "device": "XD.X0.MPC0",
+          "variance_s2": 3.4708197985574573e-28,
+          "jitter_fs": 18.63013633486738,
+          "variance_fraction": 0.010572589039263273
+        },
+        {
+          "device": "XR.XFF.MNC2",
+          "variance_s2": 3.3696664627868453e-28,
+          "jitter_fs": 18.356651281720325,
+          "variance_fraction": 0.010264462224526946
+        },
+        {
+          "device": "XRX.R0",
+          "variance_s2": 3.1380294549403043e-28,
+          "jitter_fs": 17.714484059492968,
+          "variance_fraction": 0.009558864402576082
+        },
+        {
+          "device": "XD.XB0.MN",
+          "variance_s2": 3.108250713467985e-28,
+          "jitter_fs": 17.630231743990166,
+          "variance_fraction": 0.009468154306988823
+        },
+        {
+          "device": "XD.X0.MP2",
+          "variance_s2": 2.7540774491780857e-28,
+          "jitter_fs": 16.59541336989858,
+          "variance_fraction": 0.008389294386462904
+        },
+        {
+          "device": "XD.X0.MN1",
+          "variance_s2": 2.1128122685069743e-28,
+          "jitter_fs": 14.535516050374593,
+          "variance_fraction": 0.006435913452297894
+        },
+        {
+          "device": "XD.X0.MP0",
+          "variance_s2": 2.085087683850152e-28,
+          "jitter_fs": 14.439832699342997,
+          "variance_fraction": 0.006351460597677591
+        },
+        {
+          "device": "XR.XFF.MN0",
+          "variance_s2": 1.3405155768992775e-28,
+          "jitter_fs": 11.578063641642663,
+          "variance_fraction": 0.004083392719258272
+        },
+        {
+          "device": "XR.X1.MN",
+          "variance_s2": 1.3117682291871048e-28,
+          "jitter_fs": 11.45324508245198,
+          "variance_fraction": 0.003995824389304661
+        },
+        {
+          "device": "XD.X0.MP1",
+          "variance_s2": 1.0983634106419202e-28,
+          "jitter_fs": 10.480283443886048,
+          "variance_fraction": 0.003345764295025342
+        },
+        {
+          "device": "XD.X0.MN0",
+          "variance_s2": 3.7100721516784423e-29,
+          "jitter_fs": 6.0910361611785255,
+          "variance_fraction": 0.0011301384238390634
+        },
+        {
+          "device": "XD.X0.MN2",
+          "variance_s2": 3.702408638043767e-29,
+          "jitter_fs": 6.08474209646043,
+          "variance_fraction": 0.0011278040133839344
+        }
+      ]
+    },
+    {
+      "case": "noise_tspc3ac_s2_coarse",
+      "run": "noise_short",
+      "simulator_ok": true,
+      "valid_noise": true,
+      "noise_option_conflict_warning": false,
+      "local_edges": {
+        "q1": {
+          "range_v": [
+            -0.02563984271760597,
+            1.219343242943296
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.701572596299549,
+            15.993115543786264
+          ]
+        },
+        "data": {
+          "range_v": [
+            -0.03144444816101456,
+            1.236110856705405
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            19.63321393256508
+          ]
+        },
+        "out": {
+          "range_v": [
+            -0.04134346403231144,
+            1.267669410777417
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            24.10420930005697
+          ]
+        },
+        "XRX.g0": {
+          "range_v": [
+            0.3919988630330695,
+            0.7507252178299254
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.359100304995518,
+            4.364427508794841,
+            4.363492127059714,
+            4.3645278368759035
+          ]
+        },
+        "XRX.a": {
+          "range_v": [
+            0.3442269954688895,
+            0.8308276375580774
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            6.336123201513852,
+            6.337604964419256,
+            6.341386747952024,
+            6.343269086937929
+          ]
+        },
+        "XRX.b": {
+          "range_v": [
+            0.2339724240275639,
+            0.9239722078026436
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            8.16782011781405,
+            8.175205367252902,
+            8.172036171083253,
+            8.150100497683432
+          ]
+        },
+        "XR.qb": {
+          "range_v": [
+            -0.09285938864641803,
+            1.278359446872932
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            19.927939035099325
+          ]
+        },
+        "XR.ob": {
+          "range_v": [
+            -0.03536482639943617,
+            1.259791519730191
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.535089416866398
+          ]
+        },
+        "clk": {
+          "range_v": [
+            0.02499378229986702,
+            1.138709409655553
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.355096557657586,
+            14.579278636121655,
+            14.738858873204737,
+            13.939016628700745
+          ]
+        },
+        "vn": {
+          "range_v": [
+            1.003520306178194,
+            1.368158639534297
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.442917876615038,
+            4.440693672368714,
+            4.43898461183525,
+            4.441472412895094
+          ]
+        },
+        "vp": {
+          "range_v": [
+            1.003561749719507,
+            1.368962202011718
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.441345422154261,
+            4.439570552449756,
+            4.43865525162853,
+            4.439696457426211
+          ]
+        }
+      },
+      "periodic": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.02499378229986702,
+              1.138709409655553
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 0.0038714859167818805,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.02563984271760597,
+              1.219343242943296
+            ],
+            "frequency_hz": 1968000000.000031,
+            "edges": 2,
+            "max_period_error": 0.0053436498713498315,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.03144444816101456,
+              1.236110856705405
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.554312234475219e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.04134346403231144,
+              1.267669410777417
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.36444102522425403,
+              0.3652707604066441
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 6.53912480386154e-07,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": true,
+        "actual_LC": false,
+        "reference_RF_frequency_hz": 3936000000.0,
+        "power_mw": {
+          "VRX:p": 0.7176861473545144,
+          "VRT:p": 0.15863329857372566,
+          "VDD:p": 1.1303494647095202
+        },
+        "node_ranges_v": {
+          "XRX.g0": [
+            0.3919988630330695,
+            0.7507252178299254
+          ],
+          "XRX.a": [
+            0.3442269954688895,
+            0.8308276375580774
+          ],
+          "XRX.b": [
+            0.2339724240275639,
+            0.9239722078026436
+          ]
+        },
+        "pass_function": true,
+        "endpoint_v": 2.838667501059433e-08,
+        "pass_periodic": true
+      },
+      "dominant_harmonics": {
+        "out": 1,
+        "clk": 4,
+        "q1": 2,
+        "data": 1,
+        "vp": 4
+      },
+      "pass_periodic": true,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "noise_by_band": [
+        {
+          "band_hz": [
+            10000.0,
+            1000000.0
+          ],
+          "jitter_fs": 60.810124287781115,
+          "variance_fraction": 0.00043592258395659986
+        },
+        {
+          "band_hz": [
+            1000000.0,
+            10000000.0
+          ],
+          "jitter_fs": 150.9245809441763,
+          "variance_fraction": 0.002685205601267796
+        },
+        {
+          "band_hz": [
+            10000000.0,
+            100000000.0
+          ],
+          "jitter_fs": 1362.4171118720192,
+          "variance_fraction": 0.21881534083478274
+        },
+        {
+          "band_hz": [
+            100000000.0,
+            492000000.0
+          ],
+          "jitter_fs": 2569.0865550688486,
+          "variance_fraction": 0.7780635309799929
+        }
+      ],
+      "fundamental_hz": 984000000.0,
+      "slew_v_per_s": 24105300000.0,
+      "numeric_jitter_fs": 2912.5353584988957,
+      "spectre_jee_fs": 2912.537004420356,
+      "integration_relative_error": 5.651160682740297e-07,
+      "device_psd_sum_max_relative_error": 8.393068279558746e-16,
+      "noise_budget_valid": true,
+      "noise_by_instance": {
+        "XR": {
+          "variance_s2": 1.6542525911035312e-26,
+          "jitter_fs": 128.61775115059083,
+          "variance_fraction": 0.0019501113530697729
+        },
+        "XD": {
+          "variance_s2": 2.20216877126091e-28,
+          "jitter_fs": 14.839706099720809,
+          "variance_fraction": 2.5960209131948963e-05
+        },
+        "XRX": {
+          "variance_s2": 8.466099471718127e-24,
+          "jitter_fs": 2909.656246314696,
+          "variance_fraction": 0.9980239284377981
+        }
+      },
+      "noise_by_subblock": {
+        "XR.X1": {
+          "jitter_fs": 35.68633759153589,
+          "variance_fraction": 0.00015012794720622338
+        },
+        "XR.X0": {
+          "jitter_fs": 77.46515963781607,
+          "variance_fraction": 0.0007074087502506467
+        },
+        "XR.XFF": {
+          "jitter_fs": 96.2712847251241,
+          "variance_fraction": 0.0010925746556129023
+        },
+        "XD.XB": {
+          "jitter_fs": 2.5391825710923213,
+          "variance_fraction": 7.600557413644445e-07
+        },
+        "XD.X1": {
+          "jitter_fs": 4.101937985421037,
+          "variance_fraction": 1.983516272074599e-06
+        },
+        "XD.XB1": {
+          "jitter_fs": 2.4700873071030682,
+          "variance_fraction": 7.192538497534456e-07
+        },
+        "XD.X0": {
+          "jitter_fs": 11.224688370693597,
+          "variance_fraction": 1.4852726100363401e-05
+        },
+        "XRX.X2": {
+          "jitter_fs": 189.8650278251782,
+          "variance_fraction": 0.0042495949927619766
+        },
+        "XRX.X1": {
+          "jitter_fs": 453.9982134569294,
+          "variance_fraction": 0.024297739679139622
+        },
+        "XRX.X0": {
+          "jitter_fs": 2695.746201525688,
+          "variance_fraction": 0.8566740092292213
+        },
+        "XRX.XO": {
+          "jitter_fs": 41.49548522314677,
+          "variance_fraction": 0.00020298281999203813
+        },
+        "XD.XB0": {
+          "jitter_fs": 8.052861195663082,
+          "variance_fraction": 7.644657168393076e-06
+        },
+        "XRX.bias_and_passives": {
+          "jitter_fs": 977.3264074867257,
+          "variance_fraction": 0.11259960171668318
+        }
+      },
+      "top_devices": [
+        {
+          "device": "XRX.X0.MN",
+          "variance_s2": 4.626902643310954e-24,
+          "jitter_fs": 2151.023626860234,
+          "variance_fraction": 0.5454412115050773
+        },
+        {
+          "device": "XRX.X0.MP",
+          "variance_s2": 2.6401449397292203e-24,
+          "jitter_fs": 1624.8522824334589,
+          "variance_fraction": 0.311232797724144
+        },
+        {
+          "device": "XRX.R0",
+          "variance_s2": 6.77787950978259e-25,
+          "jitter_fs": 823.2787808380943,
+          "variance_fraction": 0.07990085584782858
+        },
+        {
+          "device": "XRX.R1",
+          "variance_s2": 2.6491374394460796e-25,
+          "jitter_fs": 514.69772094367,
+          "variance_fraction": 0.031229287620820584
+        },
+        {
+          "device": "XRX.X1.MN",
+          "variance_s2": 1.2801661327076342e-25,
+          "jitter_fs": 357.79409339837264,
+          "variance_fraction": 0.015091205071307892
+        },
+        {
+          "device": "XRX.X1.MP",
+          "variance_s2": 7.809776455132027e-26,
+          "jitter_fs": 279.4597726888796,
+          "variance_fraction": 0.00920653460783173
+        },
+        {
+          "device": "XRX.X2.MN",
+          "variance_s2": 2.5451486736487715e-26,
+          "jitter_fs": 159.53522099050014,
+          "variance_fraction": 0.003000341876703347
+        },
+        {
+          "device": "XRX.R2",
+          "variance_s2": 1.2465211848042369e-26,
+          "jitter_fs": 111.64771313395705,
+          "variance_fraction": 0.0014694582480340164
+        },
+        {
+          "device": "XRX.X2.MP",
+          "variance_s2": 1.0597242054567985e-26,
+          "jitter_fs": 102.9429067715109,
+          "variance_fraction": 0.001249253116058629
+        },
+        {
+          "device": "XR.X0.MN",
+          "variance_s2": 5.597047975526385e-27,
+          "jitter_fs": 74.81342109225045,
+          "variance_fraction": 0.0006598065409992207
+        },
+        {
+          "device": "XR.XFF.MP2",
+          "variance_s2": 3.521504732492554e-27,
+          "jitter_fs": 59.342267672313916,
+          "variance_fraction": 0.00041513166705343084
+        },
+        {
+          "device": "XR.XFF.MNC1",
+          "variance_s2": 2.5865719421114513e-27,
+          "jitter_fs": 50.858351743951076,
+          "variance_fraction": 0.000304917358870716
+        },
+        {
+          "device": "XRX.XO.MP",
+          "variance_s2": 1.2606848616587242e-27,
+          "jitter_fs": 35.50612428382918,
+          "variance_fraction": 0.00014861550615579544
+        },
+        {
+          "device": "XR.XFF.MN1",
+          "variance_s2": 1.1908192847168997e-27,
+          "jitter_fs": 34.508249516845964,
+          "variance_fraction": 0.00014037942083752286
+        },
+        {
+          "device": "XR.X1.MP",
+          "variance_s2": 1.1435492892162313e-27,
+          "jitter_fs": 33.8164056223637,
+          "variance_fraction": 0.0001348070097449752
+        },
+        {
+          "device": "XR.XFF.MPC0",
+          "variance_s2": 7.644923215700936e-28,
+          "jitter_fs": 27.649454272554703,
+          "variance_fraction": 9.01219779643194e-05
+        },
+        {
+          "device": "XRX.XO.MN",
+          "variance_s2": 4.6119043224566785e-28,
+          "jitter_fs": 21.47534475266155,
+          "variance_fraction": 5.4367313836242655e-05
+        },
+        {
+          "device": "XR.XFF.MN2",
+          "variance_s2": 4.4718276562464e-28,
+          "jitter_fs": 21.146696328850993,
+          "variance_fraction": 5.271602370953593e-05
+        },
+        {
+          "device": "XR.X0.MP",
+          "variance_s2": 4.0380298218594362e-28,
+          "jitter_fs": 20.094849643277843,
+          "variance_fraction": 4.760220925142603e-05
+        },
+        {
+          "device": "XR.XFF.MP1",
+          "variance_s2": 3.741602751208539e-28,
+          "jitter_fs": 19.343222976558327,
+          "variance_fraction": 4.410778645927003e-05
+        },
+        {
+          "device": "XR.XFF.MNC2",
+          "variance_s2": 2.552399070779201e-28,
+          "jitter_fs": 15.976229438697985,
+          "variance_fraction": 3.0088889884530004e-05
+        },
+        {
+          "device": "XR.X1.MN",
+          "variance_s2": 1.2996540148083626e-28,
+          "jitter_fs": 11.400236904592653,
+          "variance_fraction": 1.53209374612482e-05
+        },
+        {
+          "device": "XR.XFF.MP0",
+          "variance_s2": 1.2482166656087744e-28,
+          "jitter_fs": 11.172361727086956,
+          "variance_fraction": 1.471456961158978e-05
+        },
+        {
+          "device": "XD.XB0.MN",
+          "variance_s2": 5.787561939876413e-29,
+          "jitter_fs": 7.607602736655229,
+          "variance_fraction": 6.822652300044761e-06
+        },
+        {
+          "device": "XD.X0.MP2",
+          "variance_s2": 4.8821538206926264e-29,
+          "jitter_fs": 6.987241101244916,
+          "variance_fraction": 5.755314299864261e-06
+        }
+      ]
+    },
+    {
+      "case": "noise_equal4r20c1000s2_coarse",
+      "run": "noise_small",
+      "simulator_ok": true,
+      "valid_noise": true,
+      "noise_option_conflict_warning": false,
+      "local_edges": {
+        "q1": {
+          "range_v": [
+            -0.02533408228123437,
+            1.209058173343644
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            15.673967270574307,
+            14.43455957871917
+          ]
+        },
+        "data": {
+          "range_v": [
+            -0.03771409623418196,
+            1.250232215440235
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            17.904278699227095
+          ]
+        },
+        "out": {
+          "range_v": [
+            -0.03497997801210535,
+            1.267226208832504
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            25.302885884633625
+          ]
+        },
+        "XRX.g0": {
+          "range_v": [
+            0.3919713168773274,
+            0.7507283606801214
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.364150688128088,
+            4.364209411946155,
+            4.360304756075351,
+            4.364196908792873
+          ]
+        },
+        "XRX.a": {
+          "range_v": [
+            0.3489545034105055,
+            0.8268858212632372
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            6.252848675985069,
+            6.25580244894919,
+            6.260091130349739,
+            6.260487650944736
+          ]
+        },
+        "XRX.b": {
+          "range_v": [
+            0.246696325926417,
+            0.9059564624601613
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            7.957762912794163,
+            7.963214646684471,
+            7.958873256428531,
+            7.95719257886701
+          ]
+        },
+        "XRX.c": {
+          "range_v": [
+            0.1075615427737545,
+            1.048424899926405
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            12.400806245659728,
+            12.419997361774348,
+            12.420926922299905,
+            12.4193396941119
+          ]
+        },
+        "XRX.d": {
+          "range_v": [
+            0.1413663700841641,
+            1.024626064206633
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            11.98264026306235,
+            11.914372405545132,
+            11.908843690077333,
+            11.92116835942499
+          ]
+        },
+        "XR.qb": {
+          "range_v": [
+            -0.05381423671077121,
+            1.269003201614392
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.949043077238064
+          ]
+        },
+        "XR.q": {
+          "range_v": [
+            -0.04537463627685775,
+            1.390392275420612
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            10.129658828668486
+          ]
+        },
+        "XR.clkb": {
+          "range_v": [
+            -0.03464682250132534,
+            1.257870025405765
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            25.113922386057208,
+            24.969513168368678,
+            25.736884545784662,
+            25.326344099657753
+          ]
+        },
+        "clk": {
+          "range_v": [
+            0.06019423293502114,
+            1.109152380610335
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.388596603085684,
+            13.969695303577605,
+            14.17880080076645,
+            14.126882872196912
+          ]
+        },
+        "vn": {
+          "range_v": [
+            1.003522069075246,
+            1.368160157764078
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.435088355916383,
+            4.441028438778253,
+            4.434592906806461,
+            4.435716345994157
+          ]
+        },
+        "vp": {
+          "range_v": [
+            1.003563670100101,
+            1.368960811745407
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.439091670217773,
+            4.439149138086646,
+            4.442223412568792,
+            4.439136528146083
+          ]
+        }
+      },
+      "periodic": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.06019423293502114,
+              1.109152380610335
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 0.0031584907981356825,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.02533408228123437,
+              1.209058173343644
+            ],
+            "frequency_hz": 1968000000.000031,
+            "edges": 2,
+            "max_period_error": 0.006065663241745511,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.03771409623418196,
+              1.250232215440235
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.03497997801210535,
+              1.267226208832504
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.3644410440073269,
+              0.3652711838743359
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 5.881090293646807e-07,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": true,
+        "actual_LC": false,
+        "reference_RF_frequency_hz": 3936000000.0,
+        "power_mw": {
+          "VRX:p": 1.1157678980288104,
+          "VRT:p": 0.47453374999023823,
+          "VDD:p": 1.8460834620165347
+        },
+        "node_ranges_v": {
+          "XRX.g0": [
+            0.3919713168773274,
+            0.7507283606801214
+          ],
+          "XRX.a": [
+            0.3489545034105055,
+            0.8268858212632372
+          ],
+          "XRX.b": [
+            0.246696325926417,
+            0.9059564624601613
+          ],
+          "XRX.c": [
+            0.1075615427737545,
+            1.048424899926405
+          ],
+          "XRX.d": [
+            0.1413663700841641,
+            1.024626064206633
+          ]
+        },
+        "pass_function": true,
+        "endpoint_v": 6.936628194065264e-08,
+        "pass_periodic": true
+      },
+      "dominant_harmonics": {
+        "out": 1,
+        "clk": 4,
+        "q1": 2,
+        "data": 1,
+        "vp": 4
+      },
+      "pass_periodic": true,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "noise_by_band": [
+        {
+          "band_hz": [
+            10000.0,
+            1000000.0
+          ],
+          "jitter_fs": 161.14874567966794,
+          "variance_fraction": 0.0007102653169248439
+        },
+        {
+          "band_hz": [
+            1000000.0,
+            10000000.0
+          ],
+          "jitter_fs": 475.16428768168703,
+          "variance_fraction": 0.006175247012829562
+        },
+        {
+          "band_hz": [
+            10000000.0,
+            100000000.0
+          ],
+          "jitter_fs": 2761.717479249553,
+          "variance_fraction": 0.208605255885841
+        },
+        {
+          "band_hz": [
+            100000000.0,
+            492000000.0
+          ],
+          "jitter_fs": 5355.692757853243,
+          "variance_fraction": 0.7845092317844046
+        }
+      ],
+      "fundamental_hz": 984000000.0,
+      "slew_v_per_s": 25212200000.0,
+      "numeric_jitter_fs": 6046.6749846702005,
+      "spectre_jee_fs": 6046.664056339783,
+      "integration_relative_error": 1.8073321612632753e-06,
+      "device_psd_sum_max_relative_error": 5.917612430011974e-16,
+      "noise_budget_valid": true,
+      "noise_by_instance": {
+        "XR": {
+          "variance_s2": 2.4641894259185605e-26,
+          "jitter_fs": 156.97736862103915,
+          "variance_fraction": 0.0006739704240982262
+        },
+        "XD": {
+          "variance_s2": 5.117152107934394e-27,
+          "jitter_fs": 71.53427226116439,
+          "variance_fraction": 0.00013995714534299997
+        },
+        "XRX": {
+          "variance_s2": 3.653251932386925e-23,
+          "jitter_fs": 6044.213706005873,
+          "variance_fraction": 0.9991860724305589
+        }
+      },
+      "noise_by_subblock": {
+        "XR.XO0": {
+          "jitter_fs": 69.0986195148141,
+          "variance_fraction": 0.0001305886676564402
+        },
+        "XR.XS": {
+          "jitter_fs": 116.0726175041659,
+          "variance_fraction": 0.0003684905081089262
+        },
+        "XR.XM": {
+          "jitter_fs": 74.26383158694934,
+          "variance_fraction": 0.00015084171249197566
+        },
+        "XD.XB": {
+          "jitter_fs": 14.118374730855868,
+          "variance_fraction": 5.451752842709428e-06
+        },
+        "XD.X1": {
+          "jitter_fs": 18.092382109489204,
+          "variance_fraction": 8.952786997602222e-06
+        },
+        "XD.XB1": {
+          "jitter_fs": 11.125273990280913,
+          "variance_fraction": 3.385229993204629e-06
+        },
+        "XD.X0": {
+          "jitter_fs": 54.7885984500018,
+          "variance_fraction": 8.210075120917949e-05
+        },
+        "XRX.X3": {
+          "jitter_fs": 159.74256132385185,
+          "variance_fraction": 0.0006979238448957634
+        },
+        "XRX.X2": {
+          "jitter_fs": 413.50488193840584,
+          "variance_fraction": 0.004676576378951452
+        },
+        "XRX.X1": {
+          "jitter_fs": 987.0521493134352,
+          "variance_fraction": 0.026646915588755576
+        },
+        "XRX.X0": {
+          "jitter_fs": 5623.468655563466,
+          "variance_fraction": 0.864918739469144
+        },
+        "XR.XO1": {
+          "jitter_fs": 27.198022061237598,
+          "variance_fraction": 2.0232120015960175e-05
+        },
+        "XR.XC": {
+          "jitter_fs": 11.814119520549001,
+          "variance_fraction": 3.817415824924004e-06
+        },
+        "XRX.XO": {
+          "jitter_fs": 59.27313016560013,
+          "variance_fraction": 9.609094717927075e-05
+        },
+        "XD.XB0": {
+          "jitter_fs": 38.27436571680057,
+          "variance_fraction": 4.00666243003042e-05
+        },
+        "XRX.bias_and_passives": {
+          "jitter_fs": 1932.5709252328516,
+          "variance_fraction": 0.10214982620163274
+        }
+      },
+      "top_devices": [
+        {
+          "device": "XRX.X0.MN",
+          "variance_s2": 1.9370362835395105e-23,
+          "jitter_fs": 4401.177437390488,
+          "variance_fraction": 0.529790912897912
+        },
+        {
+          "device": "XRX.X0.MP",
+          "variance_s2": 1.2253036884709677e-23,
+          "jitter_fs": 3500.4338137878963,
+          "variance_fraction": 0.33512782657123197
+        },
+        {
+          "device": "XRX.R0",
+          "variance_s2": 2.436536279649192e-24,
+          "jitter_fs": 1560.9408315657554,
+          "variance_fraction": 0.06664071245714988
+        },
+        {
+          "device": "XRX.R1",
+          "variance_s2": 1.2326718955879675e-24,
+          "jitter_fs": 1110.2575807387975,
+          "variance_fraction": 0.03371430749215639
+        },
+        {
+          "device": "XRX.X1.MN",
+          "variance_s2": 6.154331285995758e-25,
+          "jitter_fs": 784.4954611720681,
+          "variance_fraction": 0.016832461105612366
+        },
+        {
+          "device": "XRX.X1.MP",
+          "variance_s2": 3.588388168646964e-25,
+          "jitter_fs": 599.031565833301,
+          "variance_fraction": 0.009814454483143213
+        },
+        {
+          "device": "XRX.X2.MN",
+          "variance_s2": 1.0637067693900411e-25,
+          "jitter_fs": 326.14517770312676,
+          "variance_fraction": 0.002909301107055612
+        },
+        {
+          "device": "XRX.X2.MP",
+          "variance_s2": 6.461561044789084e-26,
+          "jitter_fs": 254.19600793067318,
+          "variance_fraction": 0.0017672752718958396
+        },
+        {
+          "device": "XRX.R2",
+          "variance_s2": 5.697530699493446e-26,
+          "jitter_fs": 238.6950083159144,
+          "variance_fraction": 0.0015583084406828264
+        },
+        {
+          "device": "XRX.X3.MN",
+          "variance_s2": 1.366134193815969e-26,
+          "jitter_fs": 116.88174339117161,
+          "variance_fraction": 0.00037364580510608296
+        },
+        {
+          "device": "XRX.X3.MP",
+          "variance_s2": 1.1856343960144878e-26,
+          "jitter_fs": 108.88684016053033,
+          "variance_fraction": 0.0003242780397896804
+        },
+        {
+          "device": "XRX.R3",
+          "variance_s2": 8.64689882326654e-27,
+          "jitter_fs": 92.98870266471373,
+          "variance_fraction": 0.0002364978116436413
+        },
+        {
+          "device": "XR.XS.MPCK",
+          "variance_s2": 5.788268064384748e-27,
+          "jitter_fs": 76.08066813839602,
+          "variance_fraction": 0.00015831256481808054
+        },
+        {
+          "device": "XR.XS.MPD",
+          "variance_s2": 5.156004732105224e-27,
+          "jitter_fs": 71.80532523500763,
+          "variance_fraction": 0.00014101978765914343
+        },
+        {
+          "device": "XR.XO0.MN",
+          "variance_s2": 4.491500959212993e-27,
+          "jitter_fs": 67.01866127589385,
+          "variance_fraction": 0.00012284521532633246
+        },
+        {
+          "device": "XR.XM.MNCK",
+          "variance_s2": 4.284607944141804e-27,
+          "jitter_fs": 65.45691670207056,
+          "variance_fraction": 0.00011718656864747527
+        },
+        {
+          "device": "XRX.XO.MN",
+          "variance_s2": 2.951724536440175e-27,
+          "jitter_fs": 54.32977578124334,
+          "variance_fraction": 8.07314168594875e-05
+        },
+        {
+          "device": "XR.XS.MND",
+          "variance_s2": 1.7650816238419384e-27,
+          "jitter_fs": 42.01287450106144,
+          "variance_fraction": 4.8276029353761734e-05
+        },
+        {
+          "device": "XD.XB0.MN",
+          "variance_s2": 1.30676295778731e-27,
+          "jitter_fs": 36.1491764468751,
+          "variance_fraction": 3.574074198973017e-05
+        },
+        {
+          "device": "XD.X0.MP2",
+          "variance_s2": 1.1540850232159897e-27,
+          "jitter_fs": 33.97182690430395,
+          "variance_fraction": 3.156490991971322e-05
+        },
+        {
+          "device": "XR.XM.MND",
+          "variance_s2": 9.92418072267294e-28,
+          "jitter_fs": 31.502667700804228,
+          "variance_fraction": 2.7143222920023906e-05
+        },
+        {
+          "device": "XR.XS.MNCK",
+          "variance_s2": 7.63498113936488e-28,
+          "jitter_fs": 27.631469630413942,
+          "variance_fraction": 2.088212627794049e-05
+        },
+        {
+          "device": "XD.X0.MNC1",
+          "variance_s2": 7.605713609012688e-28,
+          "jitter_fs": 27.578458276366153,
+          "variance_fraction": 2.080207784645101e-05
+        },
+        {
+          "device": "XR.XO1.MP",
+          "variance_s2": 6.785873042201845e-28,
+          "jitter_fs": 26.04970833272773,
+          "variance_fraction": 1.8559765268145616e-05
+        },
+        {
+          "device": "XRX.XO.MP",
+          "variance_s2": 5.61579423188001e-28,
+          "jitter_fs": 23.697667041040155,
+          "variance_fraction": 1.535953031978326e-05
+        }
+      ]
+    },
+    {
+      "case": "noise_equal4r20c1000s2_fine",
+      "run": "noise_smallfine",
+      "simulator_ok": true,
+      "valid_noise": true,
+      "noise_option_conflict_warning": false,
+      "local_edges": {
+        "q1": {
+          "range_v": [
+            -0.02534119234865609,
+            1.209057569155534
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.449836499606453,
+            15.67370818049221
+          ]
+        },
+        "data": {
+          "range_v": [
+            -0.03771317791355776,
+            1.25022825882299
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            17.90915566139453
+          ]
+        },
+        "out": {
+          "range_v": [
+            -0.03498722422872048,
+            1.267240536174281
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            25.312516077517344
+          ]
+        },
+        "XRX.g0": {
+          "range_v": [
+            0.391971375611573,
+            0.750728564485175
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.363173524593774,
+            4.361312910492674,
+            4.360308489657242,
+            4.362193024456993
+          ]
+        },
+        "XRX.a": {
+          "range_v": [
+            0.3489536844040054,
+            0.8268932280002123
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            6.252612266438198,
+            6.25475049584235,
+            6.255770912539272,
+            6.254095687753057
+          ]
+        },
+        "XRX.b": {
+          "range_v": [
+            0.2466825131602269,
+            0.9059639770563275
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            7.962295897382363,
+            7.9589405548365155,
+            7.959440661909733,
+            7.959424235151138
+          ]
+        },
+        "XRX.c": {
+          "range_v": [
+            0.1075229117875689,
+            1.048446501864388
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            12.419712919735673,
+            12.434913899029423,
+            12.422715831182156,
+            12.408071694203983
+          ]
+        },
+        "XRX.d": {
+          "range_v": [
+            0.1413342856510446,
+            1.024655570026045
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            11.923843951782292,
+            11.919500922797342,
+            11.921447142565391,
+            11.99070832757407
+          ]
+        },
+        "XR.qb": {
+          "range_v": [
+            -0.05384638834593077,
+            1.269005233226057
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.915796495812739
+          ]
+        },
+        "XR.q": {
+          "range_v": [
+            -0.0453881111768493,
+            1.390395599149126
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            10.12987236618831
+          ]
+        },
+        "XR.clkb": {
+          "range_v": [
+            -0.03466178314335187,
+            1.25789127366516
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            24.979714452807784,
+            25.743787114797275,
+            25.331677838145993,
+            25.12357226967155
+          ]
+        },
+        "clk": {
+          "range_v": [
+            0.06015593532897109,
+            1.109190468763989
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            13.989031188997407,
+            14.182251977073635,
+            14.135685132131739,
+            14.393653825082396
+          ]
+        },
+        "vn": {
+          "range_v": [
+            1.003519644088566,
+            1.368160590490392
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.436510988155893,
+            4.440081205689647,
+            4.439366458924634,
+            4.440526838411822
+          ]
+        },
+        "vp": {
+          "range_v": [
+            1.003560595417038,
+            1.368962601142953
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.44158302837269,
+            4.4398110677510125,
+            4.442229614531439,
+            4.440651271053725
+          ]
+        }
+      },
+      "periodic": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.06015593532897109,
+              1.109190468763989
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 0.0031789682527081364,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.02534119234865609,
+              1.209057569155534
+            ],
+            "frequency_hz": 1968000000.000031,
+            "edges": 2,
+            "max_period_error": 0.006039875844149223,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.03771317791355776,
+              1.25022825882299
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.03498722422872048,
+              1.267240536174281
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.36444098222530896,
+              0.3652706712038698
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 9.789915833557927e-08,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": true,
+        "actual_LC": false,
+        "reference_RF_frequency_hz": 3936000000.0,
+        "power_mw": {
+          "VRX:p": 1.1158036123552688,
+          "VRT:p": 0.47453317748707624,
+          "VDD:p": 1.8461234289218593
+        },
+        "node_ranges_v": {
+          "XRX.g0": [
+            0.391971375611573,
+            0.750728564485175
+          ],
+          "XRX.a": [
+            0.3489536844040054,
+            0.8268932280002123
+          ],
+          "XRX.b": [
+            0.2466825131602269,
+            0.9059639770563275
+          ],
+          "XRX.c": [
+            0.1075229117875689,
+            1.048446501864388
+          ],
+          "XRX.d": [
+            0.1413342856510446,
+            1.024655570026045
+          ]
+        },
+        "pass_function": true,
+        "endpoint_v": 1.1597504379068369e-07,
+        "pass_periodic": true
+      },
+      "dominant_harmonics": {
+        "out": 1,
+        "clk": 4,
+        "q1": 2,
+        "data": 1,
+        "vp": 4
+      },
+      "pass_periodic": true,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "noise_by_band": [
+        {
+          "band_hz": [
+            10000.0,
+            1000000.0
+          ],
+          "jitter_fs": 160.94107998162318,
+          "variance_fraction": 0.0007099875636510974
+        },
+        {
+          "band_hz": [
+            1000000.0,
+            10000000.0
+          ],
+          "jitter_fs": 474.5237537213409,
+          "variance_fraction": 0.006172098288368021
+        },
+        {
+          "band_hz": [
+            10000000.0,
+            100000000.0
+          ],
+          "jitter_fs": 2758.08065291318,
+          "variance_fraction": 0.20851189854548216
+        },
+        {
+          "band_hz": [
+            100000000.0,
+            492000000.0
+          ],
+          "jitter_fs": 5350.1672341402455,
+          "variance_fraction": 0.7846060156024989
+        }
+      ],
+      "fundamental_hz": 984000000.0,
+      "slew_v_per_s": 25224800000.0,
+      "numeric_jitter_fs": 6040.064001756381,
+      "spectre_jee_fs": 6040.060257666502,
+      "integration_relative_error": 6.198762461107066e-07,
+      "device_psd_sum_max_relative_error": 6.101770422250372e-16,
+      "noise_budget_valid": true,
+      "noise_by_instance": {
+        "XR": {
+          "variance_s2": 2.46110812693583e-26,
+          "jitter_fs": 156.87919323274932,
+          "variance_fraction": 0.0006746019830269717
+        },
+        "XD": {
+          "variance_s2": 5.103065119203134e-27,
+          "jitter_fs": 71.43574118886941,
+          "variance_fraction": 0.00013987755398688192
+        },
+        "XRX": {
+          "variance_s2": 3.6452658998924764e-23,
+          "jitter_fs": 6037.60374643159,
+          "variance_fraction": 0.9991855204629864
+        }
+      },
+      "noise_by_subblock": {
+        "XR.XO0": {
+          "jitter_fs": 69.06579521800828,
+          "variance_fraction": 0.00013075037772614413
+        },
+        "XR.XS": {
+          "jitter_fs": 115.98044368438771,
+          "variance_fraction": 0.00036871130240482885
+        },
+        "XR.XM": {
+          "jitter_fs": 74.23300840028935,
+          "variance_fraction": 0.00015104663049764723
+        },
+        "XD.XB": {
+          "jitter_fs": 14.110099265609042,
+          "variance_fraction": 5.457290305439393e-06
+        },
+        "XD.X1": {
+          "jitter_fs": 18.070691081027647,
+          "variance_fraction": 8.95089458257685e-06
+        },
+        "XD.XB1": {
+          "jitter_fs": 11.109766686102255,
+          "variance_fraction": 3.3831931746327036e-06
+        },
+        "XD.X0": {
+          "jitter_fs": 54.70491560324977,
+          "variance_fraction": 8.202941676076592e-05
+        },
+        "XRX.X3": {
+          "jitter_fs": 159.578847958324,
+          "variance_fraction": 0.0006980195234085884
+        },
+        "XRX.X2": {
+          "jitter_fs": 413.0843933407933,
+          "variance_fraction": 0.004677292108768759
+        },
+        "XRX.X1": {
+          "jitter_fs": 986.058486879568,
+          "variance_fraction": 0.02665153759801753
+        },
+        "XRX.X0": {
+          "jitter_fs": 5617.411417617218,
+          "variance_fraction": 0.8649467760523145
+        },
+        "XR.XO1": {
+          "jitter_fs": 27.191708423208397,
+          "variance_fraction": 2.0267020569843813e-05
+        },
+        "XR.XC": {
+          "jitter_fs": 11.815470363248902,
+          "variance_fraction": 3.826651828507692e-06
+        },
+        "XRX.XO": {
+          "jitter_fs": 59.243256289074424,
+          "variance_fraction": 9.620436153517703e-05
+        },
+        "XD.XB0": {
+          "jitter_fs": 38.22781232026695,
+          "variance_fraction": 4.005675916346705e-05
+        },
+        "XRX.bias_and_passives": {
+          "jitter_fs": 1930.1354191994087,
+          "variance_fraction": 0.10211569081894174
+        }
+      },
+      "top_devices": [
+        {
+          "device": "XRX.X0.MN",
+          "variance_s2": 1.9331190288941768e-23,
+          "jitter_fs": 4396.724950339943,
+          "variance_fraction": 0.5298775442031555
+        },
+        {
+          "device": "XRX.X0.MP",
+          "variance_s2": 1.2224120745834524e-23,
+          "jitter_fs": 3496.3010090429175,
+          "variance_fraction": 0.3350692318491591
+        },
+        {
+          "device": "XRX.R0",
+          "variance_s2": 2.4300253840252793e-24,
+          "jitter_fs": 1558.8538687206315,
+          "variance_fraction": 0.0666082048540598
+        },
+        {
+          "device": "XRX.R1",
+          "variance_s2": 1.2299169871579654e-24,
+          "jitter_fs": 1109.0162249299897,
+          "variance_fraction": 0.03371263657271062
+        },
+        {
+          "device": "XRX.X1.MN",
+          "variance_s2": 6.1425851698566985e-25,
+          "jitter_fs": 783.7464621838302,
+          "variance_fraction": 0.016837131579653834
+        },
+        {
+          "device": "XRX.X1.MP",
+          "variance_s2": 3.5805282256155312e-25,
+          "jitter_fs": 598.3751520255108,
+          "variance_fraction": 0.009814406018363697
+        },
+        {
+          "device": "XRX.X2.MN",
+          "variance_s2": 1.0617060019463787e-25,
+          "jitter_fs": 325.83830375607755,
+          "variance_fraction": 0.0029101889773384165
+        },
+        {
+          "device": "XRX.X2.MP",
+          "variance_s2": 6.446811582709338e-26,
+          "jitter_fs": 253.90572232049712,
+          "variance_fraction": 0.0017671031314303422
+        },
+        {
+          "device": "XRX.R2",
+          "variance_s2": 5.685193646086398e-26,
+          "jitter_fs": 238.43644113445404,
+          "variance_fraction": 0.0015583398655130368
+        },
+        {
+          "device": "XRX.X3.MN",
+          "variance_s2": 1.3634219926090214e-26,
+          "jitter_fs": 116.7656624444456,
+          "variance_fraction": 0.0003737207519857223
+        },
+        {
+          "device": "XRX.X3.MP",
+          "variance_s2": 1.183118878961567e-26,
+          "jitter_fs": 108.77126821737286,
+          "variance_fraction": 0.000324298771422866
+        },
+        {
+          "device": "XRX.R3",
+          "variance_s2": 8.628428803969517e-27,
+          "jitter_fs": 92.88933633076252,
+          "variance_fraction": 0.0002365095266582997
+        },
+        {
+          "device": "XR.XS.MPCK",
+          "variance_s2": 5.7803130392806684e-27,
+          "jitter_fs": 76.02836996332796,
+          "variance_fraction": 0.0001584412564461485
+        },
+        {
+          "device": "XR.XS.MPD",
+          "variance_s2": 5.1456018698286296e-27,
+          "jitter_fs": 71.73285070195266,
+          "variance_fraction": 0.00014104350748601606
+        },
+        {
+          "device": "XR.XO0.MN",
+          "variance_s2": 4.4877589827295035e-27,
+          "jitter_fs": 66.99073803690703,
+          "variance_fraction": 0.0001230117066358119
+        },
+        {
+          "device": "XR.XM.MNCK",
+          "variance_s2": 4.282615367334687e-27,
+          "jitter_fs": 65.44169441063309,
+          "variance_fraction": 0.00011738861806704727
+        },
+        {
+          "device": "XRX.XO.MN",
+          "variance_s2": 2.9496674695634173e-27,
+          "jitter_fs": 54.310841178934226,
+          "variance_fraction": 8.085185297059943e-05
+        },
+        {
+          "device": "XR.XS.MND",
+          "variance_s2": 1.7628095762838465e-27,
+          "jitter_fs": 41.98582589736501,
+          "variance_fraction": 4.8319487585480843e-05
+        },
+        {
+          "device": "XD.XB0.MN",
+          "variance_s2": 1.3036869883829611e-27,
+          "jitter_fs": 36.106605882898506,
+          "variance_fraction": 3.57347090111225e-05
+        },
+        {
+          "device": "XD.X0.MP2",
+          "variance_s2": 1.1506411356143316e-27,
+          "jitter_fs": 33.92110162736953,
+          "variance_fraction": 3.1539646037586455e-05
+        },
+        {
+          "device": "XR.XM.MND",
+          "variance_s2": 9.899187827941237e-28,
+          "jitter_fs": 31.462974792510064,
+          "variance_fraction": 2.7134166378134666e-05
+        },
+        {
+          "device": "XR.XS.MNCK",
+          "variance_s2": 7.6273883183428035e-28,
+          "jitter_fs": 27.617726768043028,
+          "variance_fraction": 2.0907050887183446e-05
+        },
+        {
+          "device": "XD.X0.MNC1",
+          "variance_s2": 7.581028723618162e-28,
+          "jitter_fs": 27.53366797870956,
+          "variance_fraction": 2.0779976931385708e-05
+        },
+        {
+          "device": "XR.XO1.MP",
+          "variance_s2": 6.78379841581198e-28,
+          "jitter_fs": 26.04572597531499,
+          "variance_fraction": 1.8594728990878315e-05
+        },
+        {
+          "device": "XRX.XO.MP",
+          "variance_s2": 5.600959461695388e-28,
+          "jitter_fs": 23.666346278408476,
+          "variance_fraction": 1.5352508564577608e-05
+        }
+      ]
+    },
+    {
+      "case": "noise_two8_coarse",
+      "run": "noise_two",
+      "simulator_ok": true,
+      "valid_noise": true,
+      "noise_option_conflict_warning": false,
+      "local_edges": {
+        "q1": {
+          "range_v": [
+            -0.02548807882559755,
+            1.216623515284633
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            15.693623330357996,
+            14.465919091576207
+          ]
+        },
+        "data": {
+          "range_v": [
+            -0.03125007880995001,
+            1.23662121071756
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            19.519235760366517
+          ]
+        },
+        "out": {
+          "range_v": [
+            -0.04101862898388804,
+            1.266207160515789
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            24.020321655387075
+          ]
+        },
+        "XRX.g0": {
+          "range_v": [
+            0.3947362751305996,
+            0.7469740210078871
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.285394427751331,
+            4.287950223738602,
+            4.284950294599945,
+            4.2874547043814655
+          ]
+        },
+        "XRX.g1": {
+          "range_v": [
+            0.3472892180365157,
+            0.8228009599311874
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            6.149187376106983,
+            6.157889179703059,
+            6.163029007480948,
+            6.1609506014566815
+          ]
+        },
+        "XR.qb": {
+          "range_v": [
+            -0.07881182776809076,
+            1.266151400384691
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            19.781951160779673
+          ]
+        },
+        "XR.ob": {
+          "range_v": [
+            -0.03011818741827654,
+            1.260177698428875
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.269328843330106
+          ]
+        },
+        "clk": {
+          "range_v": [
+            0.1107343826131734,
+            1.07587658966151
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            11.664738068290589,
+            11.886609175488696,
+            12.001945493781708,
+            12.109188680435423
+          ]
+        },
+        "vn": {
+          "range_v": [
+            1.003519674811759,
+            1.368160021256228
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.434164693027484,
+            4.438287855369211,
+            4.44195343416159,
+            4.438202666832609
+          ]
+        },
+        "vp": {
+          "range_v": [
+            1.003561359464572,
+            1.368962574043023
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.440212431105353,
+            4.442882417855973,
+            4.439431247888764,
+            4.44175014646444
+          ]
+        }
+      },
+      "periodic": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.1107343826131734,
+              1.07587658966151
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 0.0030237946945639305,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.02548807882559755,
+              1.216623515284633
+            ],
+            "frequency_hz": 1968000000.000031,
+            "edges": 2,
+            "max_period_error": 0.004226644449485284,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.03125007880995001,
+              1.23662121071756
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.04101862898388804,
+              1.266207160515789
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.5654144647214707e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.3644408829288639,
+              0.365268594515328
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 7.738724769890126e-07,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": true,
+        "actual_LC": false,
+        "reference_RF_frequency_hz": 3936000000.0,
+        "power_mw": {
+          "VRX:p": 0.8922021506005584,
+          "VRT:p": 0.1564423903311611,
+          "VDD:p": 1.2981679590781636
+        },
+        "node_ranges_v": {
+          "XRX.g0": [
+            0.3947362751305996,
+            0.7469740210078871
+          ],
+          "XRX.g1": [
+            0.3472892180365157,
+            0.8228009599311874
+          ]
+        },
+        "pass_function": true,
+        "endpoint_v": 7.271331869951325e-10,
+        "pass_periodic": true
+      },
+      "dominant_harmonics": {
+        "out": 1,
+        "clk": 4,
+        "q1": 2,
+        "data": 1,
+        "vp": 4
+      },
+      "pass_periodic": true,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "noise_by_band": [
+        {
+          "band_hz": [
+            10000.0,
+            1000000.0
+          ],
+          "jitter_fs": 46.273232762334615,
+          "variance_fraction": 0.0008412717099232934
+        },
+        {
+          "band_hz": [
+            1000000.0,
+            10000000.0
+          ],
+          "jitter_fs": 86.88124080234533,
+          "variance_fraction": 0.002965709656960774
+        },
+        {
+          "band_hz": [
+            10000000.0,
+            100000000.0
+          ],
+          "jitter_fs": 1060.50011341609,
+          "variance_fraction": 0.44187358510936414
+        },
+        {
+          "band_hz": [
+            100000000.0,
+            492000000.0
+          ],
+          "jitter_fs": 1187.79570699931,
+          "variance_fraction": 0.5543194335237518
+        }
+      ],
+      "fundamental_hz": 984000000.0,
+      "slew_v_per_s": 24011200000.0,
+      "numeric_jitter_fs": 1595.3710208585221,
+      "spectre_jee_fs": 1595.368184681045,
+      "integration_relative_error": 1.7777573253496826e-06,
+      "device_psd_sum_max_relative_error": 9.064562000333065e-16,
+      "noise_budget_valid": true,
+      "noise_by_instance": {
+        "XRX": {
+          "variance_s2": 2.5254125361957306e-24,
+          "jitter_fs": 1589.1546608797178,
+          "variance_fraction": 0.9922221867131835
+        },
+        "XR": {
+          "variance_s2": 1.9623346232490008e-26,
+          "jitter_fs": 140.0833545875098,
+          "variance_fraction": 0.007709916392021141
+        },
+        "XD": {
+          "variance_s2": 1.7281176694237149e-28,
+          "jitter_fs": 13.145788943322174,
+          "variance_fraction": 6.789689479550416e-05
+        }
+      },
+      "noise_by_subblock": {
+        "XRX.XO": {
+          "jitter_fs": 44.242257692336445,
+          "variance_fraction": 0.0007690439570551831
+        },
+        "XRX.X1": {
+          "jitter_fs": 214.443002925552,
+          "variance_fraction": 0.018067595639056147
+        },
+        "XRX.X0": {
+          "jitter_fs": 1407.3875588494739,
+          "variance_fraction": 0.7782229195278716
+        },
+        "XR.X1": {
+          "jitter_fs": 35.80582718598933,
+          "variance_fraction": 0.0005037140032551792
+        },
+        "XR.X0": {
+          "jitter_fs": 78.63134485306428,
+          "variance_fraction": 0.0024292264942763955
+        },
+        "XR.XFF": {
+          "jitter_fs": 110.26513763930808,
+          "variance_fraction": 0.004776975894489565
+        },
+        "XD.XB": {
+          "jitter_fs": 3.085102158566255,
+          "variance_fraction": 3.7395186298465278e-06
+        },
+        "XD.X1": {
+          "jitter_fs": 3.0009193863012333,
+          "variance_fraction": 3.538223479912426e-06
+        },
+        "XD.XB1": {
+          "jitter_fs": 1.9492480860587136,
+          "variance_fraction": 1.4928316525356852e-06
+        },
+        "XD.X0": {
+          "jitter_fs": 10.326086928235654,
+          "variance_fraction": 4.189364569304868e-05
+        },
+        "XD.XB0": {
+          "jitter_fs": 6.62274528424731,
+          "variance_fraction": 1.7232675340160853e-05
+        },
+        "XRX.bias_and_passives": {
+          "jitter_fs": 704.7904770369743,
+          "variance_fraction": 0.19516262758920047
+        }
+      },
+      "top_devices": [
+        {
+          "device": "XRX.X0.MN",
+          "variance_s2": 1.322142458200848e-24,
+          "jitter_fs": 1149.8445365356345,
+          "variance_fraction": 0.5194632806403058
+        },
+        {
+          "device": "XRX.X0.MP",
+          "variance_s2": 6.585972826034333e-25,
+          "jitter_fs": 811.5400683906083,
+          "variance_fraction": 0.25875963888756587
+        },
+        {
+          "device": "XRX.R0",
+          "variance_s2": 4.607092687805503e-25,
+          "jitter_fs": 678.7556767943456,
+          "variance_fraction": 0.18101040980697822
+        },
+        {
+          "device": "XRX.R1",
+          "variance_s2": 3.602034774145544e-26,
+          "jitter_fs": 189.79027304225954,
+          "variance_fraction": 0.014152217782222243
+        },
+        {
+          "device": "XRX.X1.MN",
+          "variance_s2": 3.4571438525710494e-26,
+          "jitter_fs": 185.93396280860173,
+          "variance_fraction": 0.013582948464916571
+        },
+        {
+          "device": "XRX.X1.MP",
+          "variance_s2": 1.1414362978017814e-26,
+          "jitter_fs": 106.83802215511955,
+          "variance_fraction": 0.004484647174139576
+        },
+        {
+          "device": "XR.X0.MN",
+          "variance_s2": 5.771937193349044e-27,
+          "jitter_fs": 75.97326630696513,
+          "variance_fraction": 0.0022677657853806075
+        },
+        {
+          "device": "XR.XFF.MP2",
+          "variance_s2": 3.703990622198097e-27,
+          "jitter_fs": 60.860419175340034,
+          "variance_fraction": 0.0014552797303599345
+        },
+        {
+          "device": "XR.XFF.MNC1",
+          "variance_s2": 3.593598423433528e-27,
+          "jitter_fs": 59.94662979212032,
+          "variance_fraction": 0.0014119071774465566
+        },
+        {
+          "device": "XR.XFF.MN1",
+          "variance_s2": 1.6080761227804602e-27,
+          "jitter_fs": 40.100824465096224,
+          "variance_fraction": 0.0006318052136345388
+        },
+        {
+          "device": "XR.XFF.MPC0",
+          "variance_s2": 1.4767282543834357e-27,
+          "jitter_fs": 38.428222108021544,
+          "variance_fraction": 0.0005801992810064645
+        },
+        {
+          "device": "XRX.XO.MP",
+          "variance_s2": 1.3183228284239794e-27,
+          "jitter_fs": 36.308715598654544,
+          "variance_fraction": 0.0005179625668538174
+        },
+        {
+          "device": "XR.X1.MP",
+          "variance_s2": 1.1521040753637786e-27,
+          "jitter_fs": 33.94265863723375,
+          "variance_fraction": 0.00045265603484357617
+        },
+        {
+          "device": "XRX.XO.MN",
+          "variance_s2": 6.39054537291124e-28,
+          "jitter_fs": 25.27952802745977,
+          "variance_fraction": 0.00025108139020136563
+        },
+        {
+          "device": "XR.XFF.MP1",
+          "variance_s2": 5.400279490231673e-28,
+          "jitter_fs": 23.238501436692673,
+          "variance_fraction": 0.0002121743298515382
+        },
+        {
+          "device": "XR.XFF.MN2",
+          "variance_s2": 4.695507690581809e-28,
+          "jitter_fs": 21.669120172683083,
+          "variance_fraction": 0.000184484191857855
+        },
+        {
+          "device": "XR.XFF.MP0",
+          "variance_s2": 4.552886227318537e-28,
+          "jitter_fs": 21.33749335634,
+          "variance_fraction": 0.00017888066458763356
+        },
+        {
+          "device": "XR.X0.MP",
+          "variance_s2": 4.109512000524731e-28,
+          "jitter_fs": 20.271931335037447,
+          "variance_fraction": 0.0001614607088957877
+        },
+        {
+          "device": "XR.XFF.MNC2",
+          "variance_s2": 2.6656492311095767e-28,
+          "jitter_fs": 16.32681607389995,
+          "variance_fraction": 0.00010473204956391599
+        },
+        {
+          "device": "XR.X1.MN",
+          "variance_s2": 1.299531851091538e-28,
+          "jitter_fs": 11.399701097360133,
+          "variance_fraction": 5.105796841160295e-05
+        },
+        {
+          "device": "XR.XFF.MN0",
+          "variance_s2": 4.457489189587671e-29,
+          "jitter_fs": 6.676443057188214,
+          "variance_fraction": 1.7513256181129004e-05
+        },
+        {
+          "device": "XD.XB0.MN",
+          "variance_s2": 3.963592990247565e-29,
+          "jitter_fs": 6.295707259909379,
+          "variance_fraction": 1.5572762262235316e-05
+        },
+        {
+          "device": "XD.X0.MP2",
+          "variance_s2": 2.7137880374382e-29,
+          "jitter_fs": 5.209403072750467,
+          "variance_fraction": 1.0662339963035312e-05
+        },
+        {
+          "device": "XD.X0.MNC1",
+          "variance_s2": 2.5642974262835265e-29,
+          "jitter_fs": 5.063889242749615,
+          "variance_fraction": 1.007499869119534e-05
+        },
+        {
+          "device": "XD.X0.MPC0",
+          "variance_s2": 1.5841162257806592e-29,
+          "jitter_fs": 3.980095759878975,
+          "variance_fraction": 6.223914877367583e-06
+        }
+      ]
+    },
+    {
+      "case": "noise_equal8r20c1000_coarse",
+      "run": "noise_wide",
+      "simulator_ok": true,
+      "valid_noise": true,
+      "noise_option_conflict_warning": false,
+      "local_edges": {
+        "q1": {
+          "range_v": [
+            -0.02565307894333999,
+            1.213500143180054
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            15.870919621473062,
+            14.636214384314131
+          ]
+        },
+        "data": {
+          "range_v": [
+            -0.04542521470680369,
+            1.24347680611733
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            13.383047661079763
+          ]
+        },
+        "out": {
+          "range_v": [
+            -0.04048866942557115,
+            1.27247645101064
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            28.039534871889835
+          ]
+        },
+        "XRX.g0": {
+          "range_v": [
+            0.3950486755744801,
+            0.7467903541153571
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.279535300442508,
+            4.281311559244659,
+            4.27727055409834,
+            4.279327427664881
+          ]
+        },
+        "XRX.a": {
+          "range_v": [
+            0.3448205914402419,
+            0.8291044563764824
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            6.354537863428671,
+            6.355423589045843,
+            6.355915954126459,
+            6.35456057547011
+          ]
+        },
+        "XRX.b": {
+          "range_v": [
+            0.2368275378284738,
+            0.9156750250178681
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            8.164613745902487,
+            8.165126000471806,
+            8.17135189293641,
+            8.16649567002994
+          ]
+        },
+        "XRX.c": {
+          "range_v": [
+            0.0884899100877182,
+            1.066438671477249
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            12.879477112617847,
+            12.863433806298634,
+            12.876335196895047,
+            12.896544975972931
+          ]
+        },
+        "XRX.d": {
+          "range_v": [
+            0.1267609066788508,
+            1.036694257789218
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            12.51442081042862,
+            12.542043767239045,
+            12.517980932898842,
+            12.477249644490126
+          ]
+        },
+        "XR.qb": {
+          "range_v": [
+            -0.09248007044886776,
+            1.248597613741507
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.577768001144934
+          ]
+        },
+        "XR.q": {
+          "range_v": [
+            -0.06317999648478875,
+            1.446262765328814
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            14.775870682670263
+          ]
+        },
+        "XR.clkb": {
+          "range_v": [
+            -0.03850795946947113,
+            1.263156085085737
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            26.47737372745607,
+            25.954307852175187,
+            25.912622895298313,
+            26.52290074310584
+          ]
+        },
+        "clk": {
+          "range_v": [
+            0.04132072961548967,
+            1.14648967040248
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            15.529521076258519,
+            15.693021017094495,
+            15.295109867965634,
+            15.428576709020334
+          ]
+        },
+        "vn": {
+          "range_v": [
+            1.003520019138821,
+            1.368154981018411
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.437511257668842,
+            4.4347465095963425,
+            4.43904486965244,
+            4.435942572798227
+          ]
+        },
+        "vp": {
+          "range_v": [
+            1.003564713843256,
+            1.368962605460908
+          ],
+          "midpoint_rising_slopes_v_per_ns": [
+            4.440529723653068,
+            4.44218215544021,
+            4.438413174213709,
+            4.4403342121575555
+          ]
+        }
+      },
+      "periodic": {
+        "signals": {
+          "clk": {
+            "range_v": [
+              0.04132072961548967,
+              1.14648967040248
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 0.0013741351999037033,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "q1": {
+            "range_v": [
+              -0.02565307894333999,
+              1.213500143180054
+            ],
+            "frequency_hz": 1968000000.000031,
+            "edges": 2,
+            "max_period_error": 0.005157385630170763,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "data": {
+            "range_v": [
+              -0.04542521470680369,
+              1.24347680611733
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.554312234475219e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "out": {
+            "range_v": [
+              -0.04048866942557115,
+              1.27247645101064
+            ],
+            "frequency_hz": 984000000.0000155,
+            "edges": 1,
+            "max_period_error": 1.587618925213974e-14,
+            "pass_frequency": true,
+            "pass_swing": true
+          },
+          "rf": {
+            "range_v": [
+              -0.36443989492752005,
+              0.365270484836572
+            ],
+            "frequency_hz": 3936000000.000062,
+            "edges": 4,
+            "max_period_error": 4.4647958097332463e-07,
+            "pass_frequency": true,
+            "pass_swing": true
+          }
+        },
+        "periodic": true,
+        "actual_LC": false,
+        "reference_RF_frequency_hz": 3936000000.0,
+        "power_mw": {
+          "VRX:p": 2.24331525166812,
+          "VRT:p": 0.7891658616745034,
+          "VDD:p": 3.307039969325916
+        },
+        "node_ranges_v": {
+          "XRX.g0": [
+            0.3950486755744801,
+            0.7467903541153571
+          ],
+          "XRX.a": [
+            0.3448205914402419,
+            0.8291044563764824
+          ],
+          "XRX.b": [
+            0.2368275378284738,
+            0.9156750250178681
+          ],
+          "XRX.c": [
+            0.0884899100877182,
+            1.066438671477249
+          ],
+          "XRX.d": [
+            0.1267609066788508,
+            1.036694257789218
+          ]
+        },
+        "pass_function": true,
+        "endpoint_v": 4.520557927989444e-09,
+        "pass_periodic": true
+      },
+      "dominant_harmonics": {
+        "out": 1,
+        "clk": 4,
+        "q1": 2,
+        "data": 1,
+        "vp": 4
+      },
+      "pass_periodic": true,
+      "band_hz": [
+        10000.0,
+        492000000.0
+      ],
+      "noise_by_band": [
+        {
+          "band_hz": [
+            10000.0,
+            1000000.0
+          ],
+          "jitter_fs": 82.36909158274622,
+          "variance_fraction": 0.00037197942080208966
+        },
+        {
+          "band_hz": [
+            1000000.0,
+            10000000.0
+          ],
+          "jitter_fs": 240.92067872096993,
+          "variance_fraction": 0.003182280936485211
+        },
+        {
+          "band_hz": [
+            10000000.0,
+            100000000.0
+          ],
+          "jitter_fs": 1898.2624131036473,
+          "variance_fraction": 0.19756174712699406
+        },
+        {
+          "band_hz": [
+            100000000.0,
+            492000000.0
+          ],
+          "jitter_fs": 3817.21550311295,
+          "variance_fraction": 0.7988839925157185
+        }
+      ],
+      "fundamental_hz": 984000000.0,
+      "slew_v_per_s": 27982100000.0,
+      "numeric_jitter_fs": 4270.75658717416,
+      "spectre_jee_fs": 4270.75655176639,
+      "integration_relative_error": 8.290748754191668e-09,
+      "device_psd_sum_max_relative_error": 6.410524955347702e-16,
+      "noise_budget_valid": true,
+      "noise_by_instance": {
+        "XR": {
+          "variance_s2": 8.107654310561856e-27,
+          "jitter_fs": 90.04251390627572,
+          "variance_fraction": 0.0004445141440534512
+        },
+        "XRX": {
+          "variance_s2": 1.822982952993733e-23,
+          "jitter_fs": 4269.6404450418695,
+          "variance_fraction": 0.9994773777150422
+        },
+        "XD": {
+          "variance_s2": 1.4246426435772188e-27,
+          "jitter_fs": 37.74443857811663,
+          "variance_fraction": 7.810814090418316e-05
+        }
+      },
+      "noise_by_subblock": {
+        "XR.XO1": {
+          "jitter_fs": 24.66812554926832,
+          "variance_fraction": 3.336281301340759e-05
+        },
+        "XR.XS": {
+          "jitter_fs": 57.75406034056007,
+          "variance_fraction": 0.00018287544912362356
+        },
+        "XR.XM": {
+          "jitter_fs": 29.94930210174903,
+          "variance_fraction": 4.9177197365501106e-05
+        },
+        "XR.XC": {
+          "jitter_fs": 8.015980053560826,
+          "variance_fraction": 3.5229267793979687e-06
+        },
+        "XRX.XO": {
+          "jitter_fs": 24.995690977989756,
+          "variance_fraction": 3.4254738372808534e-05
+        },
+        "XRX.X3": {
+          "jitter_fs": 59.662430149414305,
+          "variance_fraction": 0.0001951606424126958
+        },
+        "XRX.X2": {
+          "jitter_fs": 171.58924760241447,
+          "variance_fraction": 0.001614248906963026
+        },
+        "XRX.X1": {
+          "jitter_fs": 536.4611798311743,
+          "variance_fraction": 0.015778545334933114
+        },
+        "XRX.X0": {
+          "jitter_fs": 3994.586777638555,
+          "variance_fraction": 0.8748509775467439
+        },
+        "XR.XO0": {
+          "jitter_fs": 56.58966137047848,
+          "variance_fraction": 0.00017557575777152104
+        },
+        "XD.XB": {
+          "jitter_fs": 8.441251853490128,
+          "variance_fraction": 3.906646160667476e-06
+        },
+        "XD.X1": {
+          "jitter_fs": 10.419580015025856,
+          "variance_fraction": 5.952381926513345e-06
+        },
+        "XD.XB1": {
+          "jitter_fs": 6.240116862984857,
+          "variance_fraction": 2.1348914963843524e-06
+        },
+        "XD.X0": {
+          "jitter_fs": 27.496910163887236,
+          "variance_fraction": 4.145320849143676e-05
+        },
+        "XD.XB0": {
+          "jitter_fs": 21.208515648414647,
+          "variance_fraction": 2.466101282918123e-05
+        },
+        "XRX.bias_and_passives": {
+          "jitter_fs": 1397.0283276852842,
+          "variance_fraction": 0.10700419054561668
+        }
+      },
+      "top_devices": [
+        {
+          "device": "XRX.X0.MN",
+          "variance_s2": 9.950799379132265e-24,
+          "jitter_fs": 3154.48876668348,
+          "variance_fraction": 0.5455672996442866
+        },
+        {
+          "device": "XRX.X0.MP",
+          "variance_s2": 6.005924144952506e-24,
+          "jitter_fs": 2450.698705461874,
+          "variance_fraction": 0.3292836779024572
+        },
+        {
+          "device": "XRX.R0",
+          "variance_s2": 1.658332482014642e-24,
+          "jitter_fs": 1287.7625875970468,
+          "variance_fraction": 0.09092053207528648
+        },
+        {
+          "device": "XRX.R1",
+          "variance_s2": 2.8427422451036244e-25,
+          "jitter_fs": 533.1737282634642,
+          "variance_fraction": 0.015585754984652946
+        },
+        {
+          "device": "XRX.X1.MN",
+          "variance_s2": 1.8541944644391248e-25,
+          "jitter_fs": 430.6035838725829,
+          "variance_fraction": 0.01016589550685576
+        },
+        {
+          "device": "XRX.X1.MP",
+          "variance_s2": 1.0237115102194312e-25,
+          "jitter_fs": 319.9549202965054,
+          "variance_fraction": 0.005612649828077356
+        },
+        {
+          "device": "XRX.X2.MN",
+          "variance_s2": 1.8154829880231278e-26,
+          "jitter_fs": 134.73986002750368,
+          "variance_fraction": 0.0009953654109468037
+        },
+        {
+          "device": "XRX.X2.MP",
+          "variance_s2": 1.128804001253142e-26,
+          "jitter_fs": 106.24518818530758,
+          "variance_fraction": 0.000618883496016222
+        },
+        {
+          "device": "XRX.R2",
+          "variance_s2": 8.195169259581611e-27,
+          "jitter_fs": 90.52717414998445,
+          "variance_fraction": 0.00044931228062480464
+        },
+        {
+          "device": "XR.XO0.MN",
+          "variance_s2": 3.0004771766601023e-27,
+          "jitter_fs": 54.77661158432586,
+          "variance_fraction": 0.00016450560086133628
+        },
+        {
+          "device": "XRX.X3.MP",
+          "variance_s2": 1.8221536564704888e-27,
+          "jitter_fs": 42.68669179581019,
+          "variance_fraction": 9.990227036255016e-05
+        },
+        {
+          "device": "XRX.X3.MN",
+          "variance_s2": 1.7374519148632524e-27,
+          "jitter_fs": 41.682753206371245,
+          "variance_fraction": 9.525837205014566e-05
+        },
+        {
+          "device": "XR.XS.MPCK",
+          "variance_s2": 1.3910912827046776e-27,
+          "jitter_fs": 37.29733613416215,
+          "variance_fraction": 7.626863790013209e-05
+        },
+        {
+          "device": "XR.XS.MPD",
+          "variance_s2": 1.2790587150927067e-27,
+          "jitter_fs": 35.763930364163095,
+          "variance_fraction": 7.012628661200786e-05
+        },
+        {
+          "device": "XRX.R3",
+          "variance_s2": 8.862725705563457e-28,
+          "jitter_fs": 29.77033037365131,
+          "variance_fraction": 4.8591205052451814e-05
+        },
+        {
+          "device": "XR.XM.MNCK",
+          "variance_s2": 5.914654891131776e-28,
+          "jitter_fs": 24.320063509645234,
+          "variance_fraction": 3.2427970601533966e-05
+        },
+        {
+          "device": "XR.XO1.MP",
+          "variance_s2": 5.561119253098483e-28,
+          "jitter_fs": 23.582025470893043,
+          "variance_fraction": 3.0489659155175946e-05
+        },
+        {
+          "device": "XRX.XO.MN",
+          "variance_s2": 5.5219097320659135e-28,
+          "jitter_fs": 23.49874407721807,
+          "variance_fraction": 3.027468715448478e-05
+        },
+        {
+          "device": "XR.XS.MND",
+          "variance_s2": 4.100333866460961e-28,
+          "jitter_fs": 20.249281138995926,
+          "variance_fraction": 2.2480687128074693e-05
+        },
+        {
+          "device": "XD.XB0.MN",
+          "variance_s2": 4.0351215083711424e-28,
+          "jitter_fs": 20.087611874912216,
+          "variance_fraction": 2.21231507257118e-05
+        },
+        {
+          "device": "XD.X0.MP2",
+          "variance_s2": 3.2035879144365596e-28,
+          "jitter_fs": 17.898569536241045,
+          "variance_fraction": 1.7564144759238793e-05
+        },
+        {
+          "device": "XR.XS.MNCK",
+          "variance_s2": 2.553481013775726e-28,
+          "jitter_fs": 15.979615182399499,
+          "variance_fraction": 1.3999837483408895e-05
+        },
+        {
+          "device": "XR.XM.MND",
+          "variance_s2": 2.0874310782005685e-28,
+          "jitter_fs": 14.447944761108994,
+          "variance_fraction": 1.1444649752618721e-05
+        },
+        {
+          "device": "XR.XO0.MP",
+          "variance_s2": 2.019125973653224e-28,
+          "jitter_fs": 14.209595256914337,
+          "variance_fraction": 1.107015691018474e-05
+        },
+        {
+          "device": "XD.X0.MNC1",
+          "variance_s2": 1.7665167016083922e-28,
+          "jitter_fs": 13.291037211626458,
+          "variance_fraction": 9.685189198911017e-06
+        }
+      ]
+    },
+    {
+      "case": "noise_one32_rt3_coarse",
+      "run": "rt_scale",
+      "simulator_ok": true,
+      "valid_noise": false,
+      "noise_option_conflict_warning": false
+    },
+    {
+      "case": "noise_one32_rt4_coarse",
+      "run": "rt_scale",
+      "simulator_ok": false,
+      "valid_noise": false,
+      "noise_option_conflict_warning": false
+    }
+  ],
+  "precision": {
+    "noise_one32_onlyXRX": {
+      "status": "not_run",
+      "pass_precision": false
+    },
+    "noise_one32_onlyXD": {
+      "status": "not_run",
+      "pass_precision": false
+    },
+    "noise_one32_onlyXR": {
+      "status": "not_run",
+      "pass_precision": false
+    },
+    "noise_one32": {
+      "status": "completed",
+      "pass_precision": true,
+      "relative_jitter_change": 9.541779154731422e-05,
+      "max_abs_spectrum_delta_db": 0.0012982250097103446
+    },
+    "noise_tspc3ac_s2": {
+      "status": "not_run",
+      "pass_precision": false
+    },
+    "noise_equal4r20c1000s2": {
+      "status": "completed",
+      "pass_precision": true,
+      "relative_jitter_change": -0.0010933253284788336,
+      "max_abs_spectrum_delta_db": 0.011889018148430252
+    },
+    "noise_two8": {
+      "status": "not_run",
+      "pass_precision": false
+    },
+    "noise_equal8r20c1000": {
+      "status": "not_run",
+      "pass_precision": false
+    },
+    "noise_one32_rt3": {
+      "status": "not_run",
+      "pass_precision": false
+    },
+    "noise_one32_rt4": {
+      "status": "not_run",
+      "pass_precision": false
+    }
+  }
+}

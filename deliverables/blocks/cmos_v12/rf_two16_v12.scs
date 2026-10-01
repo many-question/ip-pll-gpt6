@@ -1,0 +1,10 @@
+simulator lang=spectre
+subckt rf_two16_v12 (rf clk vdd vss)
+C0 (rf g0) capacitor c=1p
+R0 (g0 a) resistor r=20k
+X0 (g0 a vdd vss) pll_inv wn=16u wp=40.0u
+C1 (a g1) capacitor c=1p
+R1 (g1 b) resistor r=20k
+X1 (g1 b vdd vss) pll_inv wn=16u wp=40.0u
+XO (b clk vdd vss) pll_inv wn=32u wp=80.0u
+ends rf_two16_v12

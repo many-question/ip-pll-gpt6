@@ -1,0 +1,10 @@
+simulator lang=spectre
+subckt rf_isolate32_v12 (rf clk vdd vss)
+CC (rf g0) capacitor c=1000f
+RB (g0 a) resistor r=50k
+X0 (g0 a vdd vss) pll_inv wn=32u wp=80.0u
+X1 (a b vdd vss) pll_inv wn=2u wp=5.0u
+X2 (b c vdd vss) pll_inv wn=4u wp=10.0u
+X3 (c d vdd vss) pll_inv wn=8u wp=20.0u
+X4 (d clk vdd vss) pll_inv wn=16u wp=40.0u
+ends rf_isolate32_v12

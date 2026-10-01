@@ -1,0 +1,40 @@
+{
+  "time": "2026-10-02T01:53:21.030373+08:00",
+  "objective": "Advance CMOS direction authorized by user; build real low-swing RF-to-CMOS interface before replacing LC loading. Start with measured-shape source for bounded screening, then actual autonomous LC. No noise or power claims transfer between these boundaries.",
+  "screen_cases": {
+    "screen_dc3_r1": {
+      "receiver": "3",
+      "parameters": "rb=1k"
+    },
+    "screen_dc3_r5": {
+      "receiver": "3",
+      "parameters": "rb=5k"
+    },
+    "screen_dc3_r20": {
+      "receiver": "3",
+      "parameters": "rb=20k"
+    },
+    "screen_dc3_w8": {
+      "receiver": "3",
+      "parameters": "w0=8u w1=8u rb=5k"
+    },
+    "screen_dc3_taper": {
+      "receiver": "3",
+      "parameters": "w0=8u w1=4u w2=12u rb=5k"
+    },
+    "screen_dc4_r1": {
+      "receiver": "4",
+      "parameters": "rb=1k"
+    },
+    "screen_dc4_r5": {
+      "receiver": "4",
+      "parameters": "rb=5k"
+    },
+    "screen_dc4_r20": {
+      "receiver": "4",
+      "parameters": "rb=20k"
+    }
+  },
+  "conditions": "TT27,1.2V,3.936GHz RF replay1.004-1.369V,out984MHz,10fF; same CMOS divider and scale4 symmetric C2MOS as v11.",
+  "criteria": "RF/clock3.936G, q1=1.968G,data/out984M; error<0.1%,per-cycle<2%;all digital nodes low<.2 high>1V;>=10 out edges;PSS endpoint<1mV,correct harmonic. Noise10k-492M sampled rising0.6V;refine1ps/63 to.5ps/127;RMS<1%,spectrum<.1dB. Autonomous LC judged by measured fRF/fout=4,not forced984MHz; retune separately. FullPLL<200fs and<=4mW unchanged."
+}
