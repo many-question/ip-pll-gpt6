@@ -1,0 +1,6 @@
+{
+  "time": "2026-10-02T12:27:18.691242+08:00",
+  "observation": "gain128half: firstFFq0 correctly1.968GHz but max.834V/high26%; isolationqb0 never dropsbelow.722V. Stage2 a already .039\u20131.232V and period2RF. Distinct interfacefailure after sampling fixed.",
+  "hypothesis": "Sense firstFF internal stage2 evaluate/precharge pulse at tap instead of loading weak q0. Preserve q0 feedback for divide2 state. Test one/two isolatinginverters with old and locallystrengthened FF.",
+  "risks": "tap has narrow pulse and can have hazards; require pulse-by-pulse checks and actualLC/PVT. Divider-output duty need not50% but must meet downstream timing. No reset/hold signoff."
+}

@@ -1,0 +1,6 @@
+{
+  "time": "2026-10-02T12:13:16.571481+08:00",
+  "hypothesis": "Reduce receiver RF clock load by retiming final /4 data at the VCO-derived /2 clock. Main architecture already permits VCO-derived clock; two output phases remain deterministic.",
+  "changes": "Retimer clock moves clk to q1; divider output buffer strength2/4/8u; same receiver and firstFF. Old divider included as control.",
+  "risks": "First-stage divider noise now enters retiming clock. Must remeasure noise and setup/hold after functionality. /4 proof cell only."
+}

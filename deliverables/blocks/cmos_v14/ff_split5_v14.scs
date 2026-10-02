@@ -1,0 +1,18 @@
+simulator lang=spectre
+subckt ff_split5_v14 (d ck qb vdd vss)
+MP0 (p0 d vdd vdd) pch w=2u l=180n ad=.48p as=.48p pd=4.48u ps=4.48u
+MPC0 (b ckp p0 vdd) pch w=2u l=180n ad=.48p as=.48p pd=4.48u ps=4.48u
+MN0 (b d vss vss) nch w=800n l=180n ad=.192p as=.192p pd=2.08u ps=2.08u
+MP1 (a ckp vdd vdd) pch w=2u l=180n ad=.48p as=.48p pd=4.48u ps=4.48u
+MN1 (a b n1 vss) nch w=1.6u l=180n ad=.384p as=.384p pd=3.68u ps=3.68u
+MNC1 (n1 ckn vss vss) nch w=1.6u l=180n ad=.384p as=.384p pd=3.68u ps=3.68u
+MP2 (qb a vdd vdd) pch w=2u l=180n ad=.48p as=.48p pd=4.48u ps=4.48u
+MNC2 (qb ckn n2 vss) nch w=1.6u l=180n ad=.384p as=.384p pd=3.68u ps=3.68u
+MN2 (n2 a vss vss) nch w=1.6u l=180n ad=.384p as=.384p pd=3.68u ps=3.68u
+CN (ck ckn) capacitor c=1p
+CP (ck ckp) capacitor c=1p
+RnH (vdd ckn) resistor r=9166.66667
+RnL (ckn vss) resistor r=10833.3333
+RpH (vdd ckp) resistor r=10833.3333
+RpL (ckp vss) resistor r=9166.66667
+ends ff_split5_v14

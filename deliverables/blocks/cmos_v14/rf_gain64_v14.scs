@@ -1,0 +1,7 @@
+simulator lang=spectre
+subckt rf_gain64_v14 (rf clk vdd vss)
+C0 (rf g0) capacitor c=4p
+R0 (g0 r0) resistor r=20k
+X0 (g0 r0 vdd vss) pll_inv wn=64u wp=160.0u
+X1 (r0 clk vdd vss) pll_inv wn=8u wp=20.0u
+ends rf_gain64_v14

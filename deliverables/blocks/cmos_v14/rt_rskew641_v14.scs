@@ -1,0 +1,6 @@
+simulator lang=spectre
+subckt rt_rskew641_v14 (data clk out vdd vss)
+XFF (data clk qb vdd vss) rtcomb_ff_v13 scale=2
+X0 (qb ob vdd vss) pll_inv wn=6.4u wp=1u
+X1 (ob out vdd vss) pll_inv wn=4u wp=7.8u
+ends rt_rskew641_v14

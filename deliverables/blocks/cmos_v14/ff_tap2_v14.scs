@@ -1,0 +1,12 @@
+simulator lang=spectre
+subckt ff_tap2_v14 (d ck qb tap vdd vss)
+MP0 (p0 d vdd vdd) pch w=2u l=180n ad=.48p as=.48p pd=4.48u ps=4.48u
+MPC0 (b ck p0 vdd) pch w=2u l=180n ad=.48p as=.48p pd=4.48u ps=4.48u
+MN0 (b d vss vss) nch w=800n l=180n ad=.192p as=.192p pd=2.08u ps=2.08u
+MP1 (tap ck vdd vdd) pch w=2u l=180n ad=.48p as=.48p pd=4.48u ps=4.48u
+MN1 (tap b n1 vss) nch w=1.6u l=180n ad=.384p as=.384p pd=3.68u ps=3.68u
+MNC1 (n1 ck vss vss) nch w=1.6u l=180n ad=.384p as=.384p pd=3.68u ps=3.68u
+MP2 (qb tap vdd vdd) pch w=2u l=180n ad=.48p as=.48p pd=4.48u ps=4.48u
+MNC2 (qb ck n2 vss) nch w=1.6u l=180n ad=.384p as=.384p pd=3.68u ps=3.68u
+MN2 (n2 tap vss vss) nch w=1.6u l=180n ad=.384p as=.384p pd=3.68u ps=3.68u
+ends ff_tap2_v14

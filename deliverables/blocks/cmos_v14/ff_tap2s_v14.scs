@@ -1,0 +1,13 @@
+simulator lang=spectre
+subckt ff_tap2s_v14 (d ck qb tap vdd vss)
+parameters scale=2
+MP0 (p0 d vdd vdd) pch w=2u*scale l=180n ad=2u*scale*240n as=2u*scale*240n pd=2*(2u*scale+240n) ps=2*(2u*scale+240n)
+MPC0 (b ck p0 vdd) pch w=2u*scale l=180n ad=2u*scale*240n as=2u*scale*240n pd=2*(2u*scale+240n) ps=2*(2u*scale+240n)
+MN0 (b d vss vss) nch w=800n*scale l=180n ad=800n*scale*240n as=800n*scale*240n pd=2*(800n*scale+240n) ps=2*(800n*scale+240n)
+MP1 (tap ck vdd vdd) pch w=2u*scale l=180n ad=2u*scale*240n as=2u*scale*240n pd=2*(2u*scale+240n) ps=2*(2u*scale+240n)
+MN1 (tap b n1 vss) nch w=2.4000000000000004u*scale l=180n ad=2.4000000000000004u*scale*240n as=2.4000000000000004u*scale*240n pd=2*(2.4000000000000004u*scale+240n) ps=2*(2.4000000000000004u*scale+240n)
+MNC1 (n1 ck vss vss) nch w=2.4000000000000004u*scale l=180n ad=2.4000000000000004u*scale*240n as=2.4000000000000004u*scale*240n pd=2*(2.4000000000000004u*scale+240n) ps=2*(2.4000000000000004u*scale+240n)
+MP2 (qb tap vdd vdd) pch w=3.0u*scale l=180n ad=3.0u*scale*240n as=3.0u*scale*240n pd=2*(3.0u*scale+240n) ps=2*(3.0u*scale+240n)
+MNC2 (qb ck n2 vss) nch w=1.6u*scale l=180n ad=1.6u*scale*240n as=1.6u*scale*240n pd=2*(1.6u*scale+240n) ps=2*(1.6u*scale+240n)
+MN2 (n2 tap vss vss) nch w=1.6u*scale l=180n ad=1.6u*scale*240n as=1.6u*scale*240n pd=2*(1.6u*scale+240n) ps=2*(1.6u*scale+240n)
+ends ff_tap2s_v14

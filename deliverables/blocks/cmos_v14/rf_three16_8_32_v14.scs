@@ -1,0 +1,8 @@
+simulator lang=spectre
+subckt rf_three16_8_32_v14 (rf clk vdd vss)
+C0 (rf g0) capacitor c=4p
+R0 (g0 r0) resistor r=20k
+X0 (g0 r0 vdd vss) pll_inv wn=16u wp=40.0u
+X1 (r0 r1 vdd vss) pll_inv wn=8u wp=20.0u
+X2 (r1 clk vdd vss) pll_inv wn=32u wp=80.0u
+ends rf_three16_8_32_v14

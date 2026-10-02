@@ -1,0 +1,7 @@
+simulator lang=spectre
+subckt rf_sep128p40_v14 (rf clk vdd vss)
+C0 (rf g0) capacitor c=4p
+R0 (g0 r0) resistor r=20k
+X0 (g0 r0 vdd vss) pll_inv wn=128u wp=320.0u
+X1 (r0 clk vdd vss) pll_inv wn=16u wp=40u
+ends rf_sep128p40_v14

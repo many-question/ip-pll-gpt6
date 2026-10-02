@@ -1,0 +1,17 @@
+simulator lang=spectre
+subckt dl2_v14 (dp dn ck qp qn vdd vss)
+MP0 (qp qn vdd vdd) pch w=2u l=180n ad=2u*240n as=2u*240n pd=2*(2u+240n) ps=2*(2u+240n)
+MP1 (qn qp vdd vdd) pch w=2u l=180n ad=2u*240n as=2u*240n pd=2*(2u+240n) ps=2*(2u+240n)
+MN0 (qp dp tail vss) nch w=4u l=180n ad=4u*240n as=4u*240n pd=2*(4u+240n) ps=2*(4u+240n)
+MN1 (qn dn tail vss) nch w=4u l=180n ad=4u*240n as=4u*240n pd=2*(4u+240n) ps=2*(4u+240n)
+MCK (tail ck vss vss) nch w=8u l=180n ad=8u*240n as=8u*240n pd=2*(8u+240n) ps=2*(8u+240n)
+ends dl2_v14
+subckt div_dl2_v14 (clk rst q1 out vdd vss)
+XC (clk clkb vdd vss) pll_inv wn=4u wp=10u
+XM (sn sp clk mp mn vdd vss) dl2_v14
+XS (mp mn clkb sp sn vdd vss) dl2_v14
+MRST (sp rst vss vss) nch w=4u l=180n ad=4u*240n as=4u*240n pd=2*(4u+240n) ps=2*(4u+240n)
+XOB (sp q1 vdd vss) pll_inv wn=1u wp=2.5u
+X1 (q2 q1 q2 vdd vss) pll_tspc_inv
+XB (q2 out vdd vss) pll_inv wn=2u wp=5u
+ends div_dl2_v14

@@ -1,0 +1,9 @@
+include "ff_tap2_v14.scs"
+simulator lang=spectre
+subckt div_tap2_v14 (clk q1 out vdd vss)
+X0 (q0 clk q0 tap vdd vss) ff_tap2_v14
+XB0 (tap qb0 vdd vss) pll_inv wn=.4u wp=1u
+XB1 (qb0 q1 vdd vss) pll_inv wn=2u wp=5u
+X1 (q2 q1 q2 vdd vss) pll_tspc_inv
+XB (q2 out vdd vss) pll_inv wn=2u wp=5u
+ends div_tap2_v14

@@ -1,0 +1,22 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=ss
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "cells.scs"
+simulatorOptions options reltol=1e-5 vabstol=1e-7 iabstol=1e-13 temp=60
+VDD (vdd 0) vsource dc=1.2
+ahdl_include "tank_waveform_v5.va"
+XRF (vp vn 0) tank_waveform_v5
+include "rf_gain128half_v14.scs"
+include "div_ac45_v14.scs"
+include "rtcomb_v13.scs"
+VRX (rx_vdd vdd) vsource dc=0
+VRT (rt_vdd vdd) vsource dc=0
+XRX (vp clk rx_vdd 0) rf_gain128half_v14
+XD (clk q1 data vdd 0) div_ac45_v14
+XR (data q1 out rt_vdd 0) rtcomb_v13 scale=2 oscale=2
+CL (out 0) capacitor c=10f
+tran tran stop=100n start=0 outputstart=70n maxstep=1p method=traponly errpreset=conservative
+save XRX.r0 XD.gb XD.X0.a XD.X0.b XD.X0.n1 XD.X0.n2 XD.q0 XD.qb0 XD.X1.a XD.X1.b XD.q2 vp vn clk q1 data out XRX.g0 XR.XFF.b XR.XFF.a XR.XFF.n1 XR.qb XR.ob VDD:p VRX:p VRT:p
+saveOptions options save=selected

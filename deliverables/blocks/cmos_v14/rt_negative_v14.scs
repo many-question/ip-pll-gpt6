@@ -1,0 +1,17 @@
+simulator lang=spectre
+subckt rt_negative_ff_v14 (d ck qb vdd vss)
+MP0 (p0 d vss vss) nch w=1.6u l=180n ad=1.6u*240n as=1.6u*240n pd=2*(1.6u+240n) ps=2*(1.6u+240n)
+MPC0 (b ck p0 vss) nch w=1.6u l=180n ad=1.6u*240n as=1.6u*240n pd=2*(1.6u+240n) ps=2*(1.6u+240n)
+MN0 (b d vdd vdd) pch w=4u l=180n ad=4u*240n as=4u*240n pd=2*(4u+240n) ps=2*(4u+240n)
+MP1 (a ck vss vss) nch w=1.6u l=180n ad=1.6u*240n as=1.6u*240n pd=2*(1.6u+240n) ps=2*(1.6u+240n)
+MN1 (a b n1 vdd) pch w=8u l=180n ad=8u*240n as=8u*240n pd=2*(8u+240n) ps=2*(8u+240n)
+MNC1 (n1 ck vdd vdd) pch w=8u l=180n ad=8u*240n as=8u*240n pd=2*(8u+240n) ps=2*(8u+240n)
+MP2 (qb a vss vss) nch w=1.6u l=180n ad=1.6u*240n as=1.6u*240n pd=2*(1.6u+240n) ps=2*(1.6u+240n)
+MNC2 (qb ck n2 vdd) pch w=8u l=180n ad=8u*240n as=8u*240n pd=2*(8u+240n) ps=2*(8u+240n)
+MN2 (n2 a vdd vdd) pch w=8u l=180n ad=8u*240n as=8u*240n pd=2*(8u+240n) ps=2*(8u+240n)
+ends rt_negative_ff_v14
+subckt rt_negative_v14 (data clk out vdd vss)
+XFF (data clk qb vdd vss) rt_negative_ff_v14
+X0 (qb ob vdd vss) pll_inv wn=3.2u wp=4u
+X1 (ob out vdd vss) pll_inv wn=4u wp=7.8u
+ends rt_negative_v14

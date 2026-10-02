@@ -1,0 +1,12 @@
+simulator lang=spectre
+subckt rf_schmitt64_v14 (rf clk vdd vss)
+C0 (rf g0) capacitor c=4p
+R0 (g0 r0) resistor r=20k
+X0 (g0 r0 vdd vss) pll_inv wn=64u wp=160.0u
+MP0 (p r0 vdd vdd) pch w=40u l=180n ad=40u*240n as=40u*240n pd=2*(40u+240n) ps=2*(40u+240n)
+MP1 (clk r0 p vdd) pch w=40u l=180n ad=40u*240n as=40u*240n pd=2*(40u+240n) ps=2*(40u+240n)
+MN0 (clk r0 n vss) nch w=16u l=180n ad=16u*240n as=16u*240n pd=2*(16u+240n) ps=2*(16u+240n)
+MN1 (n r0 vss vss) nch w=16u l=180n ad=16u*240n as=16u*240n pd=2*(16u+240n) ps=2*(16u+240n)
+MNF (vdd clk n vss) nch w=0.44u l=180n ad=0.44u*240n as=0.44u*240n pd=2*(0.44u+240n) ps=2*(0.44u+240n)
+MPF (vss clk p vdd) pch w=1.1u l=180n ad=1.1u*240n as=1.1u*240n pd=2*(1.1u+240n) ps=2*(1.1u+240n)
+ends rf_schmitt64_v14

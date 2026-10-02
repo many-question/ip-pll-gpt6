@@ -1,0 +1,10 @@
+simulator lang=spectre
+// Isolate first TSPC output from the three clock-gate loads of the next stage.
+// Only a /4 proof cell: no mode control, reset or keeper is claimed.
+subckt divhalf8_v14 (clk q1 out vdd vss)
+X0 (q0 clk q0 vdd vss) pll_tspc_inv
+XB0 (q0 qb0 vdd vss) pll_inv wn=0.8u wp=0.5u
+XB1 (qb0 q1 vdd vss) pll_inv wn=8u wp=20.0u
+X1 (q2 q1 q2 vdd vss) pll_tspc_inv
+XB (q2 out vdd vss) pll_inv wn=2u wp=5u
+ends divhalf8_v14

@@ -1,0 +1,7 @@
+simulator lang=spectre
+subckt rf_feed200_v14 (rf rfn clk vdd vss)
+C0 (rf g0) capacitor c=4p
+R0 (g0 clk) resistor r=20k
+X0 (g0 clk vdd vss) pll_inv wn=32u wp=80.0u
+CFF (rfn clk) capacitor c=200f
+ends rf_feed200_v14

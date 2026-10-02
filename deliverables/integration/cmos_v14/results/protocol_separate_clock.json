@@ -1,0 +1,6 @@
+{
+  "time": "2026-10-02T12:46:46.206963+08:00",
+  "hypothesis": "Half-rate retimer loading worsens divider output buffer timing. Restore originaldivtrip load and give retimer a dedicated RFreceiver, isolating the clockbranches without reducing retimingfrequency.",
+  "conditions": "OriginalRFamplitude forboth; originalFF/divtrip and rtcombunchanged. DividerRFpreamp64/128,finalN16P40/44;retimerRFreceiver32/80.",
+  "risks": "Extra sourcecapacitance andpower, differentialpath skew. RealLC backaction andretimerclockmargin mandatory."
+}

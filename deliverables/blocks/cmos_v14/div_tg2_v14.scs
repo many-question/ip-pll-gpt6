@@ -1,0 +1,12 @@
+simulator lang=spectre
+// Dynamic transmission-gate master/slave first divide2; no stopclock retention claimed.
+subckt div_tg2_v14 (clk q1 out vdd vss)
+XC (clk clkb vdd vss) pll_inv wn=4u wp=10u
+XM (qfb m clkb clk vdd vss) pll_tg wn=1.0u wp=2u
+XMI (m mb vdd vss) pll_inv wn=1.0u wp=2.5u
+XS (mb s clk clkb vdd vss) pll_tg wn=1.0u wp=2u
+XSI (s q1 vdd vss) pll_inv wn=2u wp=5.0u
+XFB (q1 qfb vdd vss) pll_inv wn=1.0u wp=2.5u
+X1 (q2 q1 q2 vdd vss) pll_tspc_inv
+XB (q2 out vdd vss) pll_inv wn=2u wp=5u
+ends div_tg2_v14

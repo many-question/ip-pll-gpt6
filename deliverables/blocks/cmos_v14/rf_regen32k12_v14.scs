@@ -1,0 +1,12 @@
+simulator lang=spectre
+// Exploratory differential CMOS receiver with cross-coupled regeneration.
+subckt rf_regen32k12_v14 (rfp rfn clk vdd vss)
+CP (rfp gp) capacitor c=4p
+CN (rfn gn) capacitor c=4p
+RP (gp clk) resistor r=20k
+RN (gn clkn) resistor r=20k
+X0 (gp clk vdd vss) pll_inv wn=32u wp=80.0u
+X1 (gn clkn vdd vss) pll_inv wn=32u wp=80.0u
+XF0 (clkn clk vdd vss) pll_inv wn=12u wp=30.0u
+XF1 (clk clkn vdd vss) pll_inv wn=12u wp=30.0u
+ends rf_regen32k12_v14
