@@ -9,6 +9,7 @@ H=Path(__file__).resolve().parent;ROOT=H.parents[3]
 run,case=sys.argv[1:3];job=ROOT/'research/runs/spectre_cmos_v14_full'/run/case
 rec=json.loads((job/'result.json').read_text());assert rec['remote_inputs_match']
 d=np.load(job/'waveforms.npz');t=d['time'];ix=np.flatnonzero(np.diff(d['obsphase'])!=0)+1
+ix=ix[d['obscycles'][ix]>0]  # first reference event has no complete cycle-count interval
 fig,axes=plt.subplots(4,1,figsize=(10,10),sharex=True,layout='constrained')
 x=t[ix]*1e6
 axes[0].plot(x,d['obscycles'][ix]*24/1000,label='RF');axes[0].axhline(3.936,color='k',ls=':',label='Target3.936GHz')

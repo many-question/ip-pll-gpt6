@@ -1,0 +1,288 @@
+{
+  "scope": "Join native continuation without disguising the user-requested checkpoint error.\n\nThe constructed near-lock initial state is not a reset/capture experiment.\nRF/output metrics below are deterministic waveform metrics, never random jitter.\n",
+  "condition": "TT27C,1.2V,24MHz reference,K41,M4,10fF,Q5 pi-RLC. 4ps/1e-4 functional numerics; strict1ps/1e-5 check separate.",
+  "sources": {
+    "research\\runs\\spectre_cmos_v14_full\\completewarm01\\complete_warm_tt\\result.json": "a578405749aba00d910f00d8cd2af4ca3de5f2b5fdc593b26042a59236ed9602",
+    "research\\runs\\spectre_cmos_v14_full\\completedense01\\complete_warm_tt\\result.json": "1ee86996aad8ca9b3af387c6cbd21fc998008655b43d1553320c3e8762ad7170",
+    "research\\runs\\spectre_cmos_v14_full\\completewarm01\\complete_warm_tt\\waveforms.npz": "5a2ae7c3e6c4cffb237352028fa97c52cb8492f11b7f21d90a25131669e6510a",
+    "research\\runs\\spectre_cmos_v14_full\\completedense01\\complete_warm_tt\\waveforms.npz": "efa3da8816d1099fe8c51f54abc8584e0867c7eea215a05e5c26bd5331e0e972"
+  },
+  "join": {
+    "boundary_us": 7.459333565227607,
+    "source_end_us": 8.0,
+    "resumed_end_us": 8.0,
+    "circuit_hashes_identical": true,
+    "reason": "Source log records a SIGUSR2 user-requested error at7.45933us although its raw data extend to8us. Only the prefix before checkpoint is used; an independently replayed native continuation completed with0errors. No state forcing at join."
+  },
+  "stationarity": {
+    "phase_pp_rad": 0.013339711698250878,
+    "phase_drift_rad_per_us": -0.009889899950822454,
+    "max_rf_cycles_error": 0.0004907533038931433,
+    "max_out_cycles_error": 0.00015453328433068236,
+    "mean_output_mhz": 983.9994937607416,
+    "ctrl_range_v": [
+      0.6934911803240424,
+      0.6947642373386967
+    ],
+    "observed_final_window_us": 0.9577208236394472,
+    "passed": true,
+    "criteria": "Last1us: phase pp<.02rad, drift<.01rad/us, cycles/ref errors<.001, ctrl0.2..1V; functional stationarity, not jitter.",
+    "measurement_limit": "Sparse GHz voltage/current samples are not used for RF swing or average power.",
+    "end_us": 8.0,
+    "final_state": {
+      "cfg_ready": 1.200001288089874,
+      "qualified": 1.199998147928087,
+      "range_error": -4.461387652189375e-07,
+      "frequency_good": 1.199992348425255,
+      "phase_good": 1.199998525721348,
+      "amp_good": 1.200000076675413,
+      "XP.en": 1.201725435560184,
+      "XP.XC.acquired": 1.189641318567422,
+      "XP.XV.XL.nb": 0.7256090911208769
+    },
+    "final_1us_total_supply_power_mw": 5.794364251425646,
+    "power_method": "Internal-timestep integration of complete external1.2V supply; power=delta(nJ)/delta(us). Does not assume sparse sampled current is accurate.",
+    "whole_run_energy_nj": 45.09777560142741,
+    "final_1us_phase_held_high_fraction": 1.0,
+    "final_1us_qualified_high_fraction": 1.0,
+    "first_qualified_us": null
+  },
+  "dense_window_us": [
+    7.459333565227607,
+    8.0
+  ],
+  "dense_output": {
+    "frequency_mhz": 984.0039273331055,
+    "cycles": 531,
+    "duty_mean_percent": 43.9706522722575,
+    "duty_range_percent": [
+      43.7880291629708,
+      44.09927910923945
+    ],
+    "voltage_range_v": [
+      -0.03751724957920605,
+      1.209443996360617
+    ],
+    "every_cycle_full_swing": true,
+    "rise_10_90": {
+      "mean_ps": 130.5715747305838,
+      "range_ps": [
+        130.5229607833074,
+        130.589283143746
+      ]
+    },
+    "fall_90_10": {
+      "mean_ps": 213.33403299991608,
+      "range_ps": [
+        213.17999146822868,
+        213.5787899873253
+      ]
+    }
+  },
+  "dense_rfclock": {
+    "frequency_mhz": 3936.009730346523,
+    "cycles": 2127,
+    "duty_mean_percent": 49.593893381967185,
+    "duty_range_percent": [
+      49.25942800324258,
+      49.86397731666102
+    ],
+    "voltage_range_v": [
+      -0.02785885204745308,
+      1.247210261817935
+    ],
+    "every_cycle_full_swing": true,
+    "rise_10_90": {
+      "mean_ps": 41.734577842456446,
+      "range_ps": [
+        39.95627662454093,
+        43.90308785734344
+      ]
+    },
+    "fall_90_10": {
+      "mean_ps": 41.98364810659555,
+      "range_ps": [
+        39.74600160255734,
+        44.23680318708684
+      ]
+    }
+  },
+  "dense_rf_frequency_mhz": 3936.0089104316526,
+  "dense_power_mw": {
+    "total": 5.796614585872981,
+    "vco": 3.7400606052614824,
+    "rx": 0.7147947833749447,
+    "rt": 0.13117171210780554,
+    "other": 1.2105874851287484
+  },
+  "dense_energy_power_mw": 5.796614416839484,
+  "power_method_relative_difference": 2.9160728276522718e-08,
+  "power_windows": [
+    {
+      "start_us": 0.0,
+      "stop_us": 0.25,
+      "power_mw": 5.598436777067994
+    },
+    {
+      "start_us": 0.25,
+      "stop_us": 0.5,
+      "power_mw": 5.616411910640973
+    },
+    {
+      "start_us": 0.5,
+      "stop_us": 0.75,
+      "power_mw": 5.6151082527421945
+    },
+    {
+      "start_us": 0.75,
+      "stop_us": 1.0,
+      "power_mw": 5.6132689974575705
+    },
+    {
+      "start_us": 1.0,
+      "stop_us": 1.25,
+      "power_mw": 5.6132107482061215
+    },
+    {
+      "start_us": 1.25,
+      "stop_us": 1.5,
+      "power_mw": 5.614983838965795
+    },
+    {
+      "start_us": 1.5,
+      "stop_us": 1.75,
+      "power_mw": 5.61287999512097
+    },
+    {
+      "start_us": 1.75,
+      "stop_us": 2.0,
+      "power_mw": 5.6109043446097715
+    },
+    {
+      "start_us": 2.0,
+      "stop_us": 2.25,
+      "power_mw": 5.613210016114245
+    },
+    {
+      "start_us": 2.25,
+      "stop_us": 2.5,
+      "power_mw": 5.610948697839909
+    },
+    {
+      "start_us": 2.5,
+      "stop_us": 2.75,
+      "power_mw": 5.612339672033862
+    },
+    {
+      "start_us": 2.75,
+      "stop_us": 3.0,
+      "power_mw": 5.610176494383673
+    },
+    {
+      "start_us": 3.0,
+      "stop_us": 3.25,
+      "power_mw": 5.610175218181496
+    },
+    {
+      "start_us": 3.25,
+      "stop_us": 3.5,
+      "power_mw": 5.61065327814984
+    },
+    {
+      "start_us": 3.5,
+      "stop_us": 3.75,
+      "power_mw": 5.6100680294059515
+    },
+    {
+      "start_us": 3.75,
+      "stop_us": 4.0,
+      "power_mw": 5.608138127623008
+    },
+    {
+      "start_us": 4.0,
+      "stop_us": 4.25,
+      "power_mw": 5.611719093569988
+    },
+    {
+      "start_us": 4.25,
+      "stop_us": 4.5,
+      "power_mw": 5.608179742490023
+    },
+    {
+      "start_us": 4.5,
+      "stop_us": 4.75,
+      "power_mw": 5.609320048349261
+    },
+    {
+      "start_us": 4.75,
+      "stop_us": 5.0,
+      "power_mw": 5.607567598100431
+    },
+    {
+      "start_us": 5.0,
+      "stop_us": 5.25,
+      "power_mw": 5.607617679991904
+    },
+    {
+      "start_us": 5.25,
+      "stop_us": 5.5,
+      "power_mw": 5.608372003525062
+    },
+    {
+      "start_us": 5.5,
+      "stop_us": 5.75,
+      "power_mw": 5.607559146092655
+    },
+    {
+      "start_us": 5.75,
+      "stop_us": 6.0,
+      "power_mw": 5.605681798448899
+    },
+    {
+      "start_us": 6.0,
+      "stop_us": 6.25,
+      "power_mw": 5.6081478412387185
+    },
+    {
+      "start_us": 6.25,
+      "stop_us": 6.5,
+      "power_mw": 5.605923999455484
+    },
+    {
+      "start_us": 6.5,
+      "stop_us": 6.75,
+      "power_mw": 5.609128537568665
+    },
+    {
+      "start_us": 6.75,
+      "stop_us": 7.0,
+      "power_mw": 5.733239190677011
+    },
+    {
+      "start_us": 7.0,
+      "stop_us": 7.25,
+      "power_mw": 5.79675255066627
+    },
+    {
+      "start_us": 7.25,
+      "stop_us": 7.5,
+      "power_mw": 5.798149122268228
+    },
+    {
+      "start_us": 7.5,
+      "stop_us": 7.75,
+      "power_mw": 5.797430838236949
+    },
+    {
+      "start_us": 7.75,
+      "stop_us": 8.0,
+      "power_mw": 5.79539881648671
+    }
+  ],
+  "limitations": [
+    "Constructed near-lock start, not reset acquisition.",
+    "No random-noise analysis.",
+    "Less than one complete32us state period; power is window-specific, not long-term locked average.",
+    "4ps numerics cannot be assumed equal to1ps without the independent check."
+  ]
+}

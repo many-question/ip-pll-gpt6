@@ -1,0 +1,10 @@
+simulator lang=spectre
+global 0
+ahdl_include "tb_edge_observer.va"
+simulatorOptions options reltol=1e-6 vabstol=1e-9 iabstol=1e-15
+VDD (vdd 0) vsource dc=1.2
+VIN (clk 0) vsource type=pulse val0=0 val1=1.2 delay=1n rise=100p fall=200p width=350p period=1n
+XM (clk vdd 0 rise_ns fall_ns period_ns duty_percent) tb_edge_observer
+tran tran stop=10n maxstep=1p strobeperiod=2p strobeoutput=strobeonly
+save clk rise_ns fall_ns period_ns duty_percent
+saveOptions options save=selected

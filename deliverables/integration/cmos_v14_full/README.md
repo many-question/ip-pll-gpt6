@@ -21,7 +21,11 @@ python share/deliverables/integration/cmos_v14_full/audit_boundary.py pll_comple
 - FLL、配置、监督、计数器和 DAC 均为物理 MOS 电路。当前 FLL 在启动时计固定 RF÷4，32 参考周期的 RF 计数量化步长为 3 MHz；锁定后切换为最终输出的频率监督。目标为 K×M×8，782 个通用逻辑单元映射为 MOS。33 点、码零边界及两种越界情形的门级验证通过，最大有效 RF 残差 3.325 MHz。这仍是数字逻辑证据，完整模拟捕获另行验证。
 - 第一份完整单通道近锁定 TB（`fullwarm/full_warm_tt`）在 2.919 µs 给出 qualified；4 µs 结束时各状态正常。但末 1 µs 相位漂移 0.02748 rad/µs、相位峰峰值 0.02877 rad，未通过当前稳定性筛选；输出约 984.001155 MHz。该 TB 使用构造并记录的近锁定初始状态，不能当作冷启动证据。
 - 上述同一单通道完整电路末 1 µs 的总供电功耗为 **5.105565 mW**，已高于 4 mW。测量来自仿真内部时间步上的供电能量积分；该窗口处于监督计数静默段，仍未证明长期锁定平均值。测量器独立 1.2 V／1 kΩ 验证得到 1.44 mW 和 100 ns 内 0.144 nJ。
-- 可编程完整 DUT 的 `completecold01` 冷启动与 `completewarm01` 近锁定连续运行均已启动，只有完成并回收后才写入正式验收结果；不能把 live snapshot 当作通过。
+- 可编程完整 DUT 的近锁定轨迹已延长到 8 µs。`completewarm01` 在 7.45933 µs 请求 native checkpoint，日志计入用户请求错误，尽管其原始数据仍延伸到 8 µs；正式合并仅使用断点前的数据，以及独立从该断点恢复、以零错误结束的 `completedense01`。电路输入 hash 完全一致，断点处没有强制修改节点。合并证据见 [近锁定结果](results/complete_warm_joined.json)。
+- 该可编程完整 DUT 在 TT27、1.2 V、K41/M4、10 fF 下，最后约 1 µs 平均输出 **983.999494 MHz**、相位峰峰值 **0.013340 rad**、漂移 **−0.009890 rad/µs**，通过当前功能稳定性筛选，漂移接近判据边界。它采用构造的近锁定初态，qualified 初态即为高，不能证明从复位捕获或锁定指示的完整建立过程；4 ps/reltol=1e-4 的结论仍需独立 1 ps/reltol=1e-5 复核。
+- 同一轨迹最后 1 µs 整机供电为 **5.794364 mW**。7.45933–8 µs 的密集波形积分为 5.796615 mW，其中 VCO 3.740061 mW、RF 接收器 0.714795 mW、重定时＋输出 0.131172 mW、其余模块 1.210587 mW；与内部时间步能量积分的相对差仅 2.92e-8。该窗口包含监督活动，不是完整 32 µs 状态周期的长期平均值。
+- 同一密集波形中，531 个输出周期均有完整摆幅，占空比约 43.971%，上升／下降 10–90% 时间约 130.57／213.33 ps。RF 接收时钟边沿约 41.73／41.98 ps。这些是无随机噪声的波形测量，不是 RMS 抖动。
+- 完整可编程 DUT 的复位捕获保持独立：`completecold01` 从复位到 4.03449 µs，`completecold02` 原生恢复至 6.65087 µs，`completecold03` 用相同电路和数值精度继续，只将线程从 4 改为 8。原生状态文件已回收本地，不发布包含潜在 PDK 状态的二进制。未完成的 live snapshot 不作验收。
 - 更粗的 10 ps／reltol=1e-3 仿真产生了足以影响 FLL 交接的 VCO 频率偏差，保留为负面的数值精度证据，不用于锁定验收。
 
 ## 可复现输入与证据
@@ -33,7 +37,7 @@ python share/deliverables/integration/cmos_v14_full/run_spectre.py --run-id newt
 python share/deliverables/integration/cmos_v14_full/analyze.py
 ```
 
-`results/validation.json` 只读取已经回收并核验输入的完整运行；`research/v14_full_progress.jsonl` 是未完成仿真的进度，禁止当作验收证据。桥接器可能把成功日志中的 DC 收敛回退提示误分类为 `convergence failure`；分析同时检查实际 Spectre 完成状态和 ERROR 行。
+`results/validation.json` 读取已经回收并核验输入的结果，包括明确标记的失败和断点片段；片段自身不作通过判定。`research/v14_full_progress.jsonl` 是未完成仿真的进度，禁止当作验收证据。桥接器可能把成功日志中的 DC 收敛回退提示误分类为 `convergence failure`；分析同时检查实际 Spectre 完成状态和 ERROR 行。原生合并的独立分析入口为 `analyze_complete_warm.py`，曲线由 `plot_complete_warm.py` 生成。
 
 当前噪声求解边界见 [完整周期分析](results/noise_period_boundary.md)：K41 正常监督模式的完整状态周期至少 32 µs，不能沿用 24 MHz 局部周期解作为整机噪声证据。暂未取得同一可编程完整 DUT 的冷启动通过、长期锁定平均功耗、10 kHz–fout/2 噪声积分、33 频点、全 PVT、负载范围、供电敏感性、重配置／失锁恢复和 Monte Carlo 结果。版图、面积、PEX、器件端电压可靠性均未签核。所有最终汇报继续覆盖 kickstart 中 REQ-01…REQ-12；杂散保留指标，但按用户要求暂缓优化与验收。
 

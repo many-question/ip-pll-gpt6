@@ -15,6 +15,10 @@ for run in sys.argv[1:]:
   out={'run':run,'case':case,'time_us':time*1e6,'read_time':datetime.datetime.now().astimezone().isoformat(),'preliminary':True}
   for key in ['obsphase','obscycles','obsctrl','obsdivcycles','ctrl','XP.ctrl','phase_good','amp_good','qualified','cfg_ready','range_error','XP.en','XP.XC.acquired','frequency_good','XP.XC.phase_held','energy_nj','power_mw']:
    if key in vals:out[key]=vals[key]
+  for prefix in ['reference','rfclock','output']:
+   for suffix in ['rise_ns','fall_ns','period_ns','duty_percent']:
+    key=prefix+'_'+suffix
+    if key in vals:out[key]=vals[key]
   for name,prefix,n in [('coarse','XP.b',8),('dac','XP.XC.d',6),('count','XP.XC.m',14),('state','XP.XC.state',3)]:
    if prefix+'0' in vals:out[name]=sum(int(vals[prefix+str(i)]>.6)<<i for i in range(n))
   print(json.dumps(out))

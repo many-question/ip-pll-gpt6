@@ -1,0 +1,9 @@
+`include "disciplines.vams"
+// External measurement only. Explicit zero integral initial condition keeps DC well posed.
+// power_w is encoded as volts by a one-way current/voltage observer in the TB.
+module tb_power_integrator(power_w,vss,energy_nj);
+input power_w,vss;
+output energy_nj;
+electrical power_w,vss,energy_nj;
+analog V(energy_nj,vss)<+1e9*idt(V(power_w,vss),0);
+endmodule

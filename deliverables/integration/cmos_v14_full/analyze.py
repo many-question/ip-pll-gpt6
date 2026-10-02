@@ -41,13 +41,14 @@ def divider(d,m):
                 scope='Ideal 20ps rail clock, 1.2V, 10fF, final40ns. No RF interface or retimer; not PLL power.')
 
 def loop(d):
-    t=d['time'];ix=np.flatnonzero(np.diff(d['obsphase'])!=0)+1
+    t=d['time'];ix=np.flatnonzero((abs(np.diff(d['obsphase']))>1e-9)|(abs(np.diff(d['obscycles']))>1e-9)|(abs(np.diff(d['obsctrl']))>1e-9))+1
     ix=ix[t[ix]>t[-1]-1e-6];tt=t[ix];p=np.unwrap(d['obsphase'][ix])
     if len(ix)<3:return dict(passed=False,reason='Insufficient observer samples')
     vals=dict(phase_pp_rad=float(np.ptp(p)),phase_drift_rad_per_us=float(np.polyfit((tt-tt[0])*1e6,p,1)[0]),
               max_rf_cycles_error=float(max(abs(d['obscycles'][ix]-164))),max_out_cycles_error=float(max(abs(d['obsdivcycles'][ix]-41))),
               mean_output_mhz=float(np.mean(d['obsdivcycles'][ix])*24),ctrl_range_v=[float(min(d['obsctrl'][ix])),float(max(d['obsctrl'][ix]))])
-    vals['passed']=bool(vals['phase_pp_rad']<.02 and abs(vals['phase_drift_rad_per_us'])<.01 and vals['max_rf_cycles_error']<.001 and vals['max_out_cycles_error']<.001 and .2<vals['ctrl_range_v'][0]<=vals['ctrl_range_v'][1]<1)
+    vals['observed_final_window_us']=float((tt[-1]-tt[0])*1e6)
+    vals['passed']=bool(vals['observed_final_window_us']>.94 and vals['phase_pp_rad']<.02 and abs(vals['phase_drift_rad_per_us'])<.01 and vals['max_rf_cycles_error']<.001 and vals['max_out_cycles_error']<.001 and .2<vals['ctrl_range_v'][0]<=vals['ctrl_range_v'][1]<1)
     vals['criteria']='Last1us: phase pp<.02rad, drift<.01rad/us, cycles/ref errors<.001, ctrl0.2..1V; functional stationarity, not jitter.'
     vals['measurement_limit']='Sparse GHz voltage/current samples are not used for RF swing or average power.'
     vals['end_us']=float(t[-1]*1e6)
@@ -88,16 +89,33 @@ def main():
     rows=[]
     for rp in sorted(R.glob('*/*/result.json')):
         rec=json.loads(rp.read_text());job=rp.parent
-        if not rec.get('remote_inputs_match') or not (job/'waveforms.npz').exists():continue
+        if not rec.get('remote_inputs_match'):continue
         log=(job/'spectre.out').read_text(errors='replace')
         row=dict(run=job.parent.name,case=job.name,simulator_completed=bool(re.search(r'spectre completes with 0 errors',log)),
                  cancelled=(job/'cancellation.json').exists(),
                  warnings=[x.strip() for x in log.splitlines() if 'WARNING (' in x],
                  errors=[x.strip() for x in log.splitlines() if 'ERROR (' in x],
                  input_hashes_verified=rec['remote_inputs_match'],source_result=str(rp.relative_to(ROOT)))
+        row['native_recovery']=rec.get('native_state')
+        row['checkpoint_segment']=(job/'checkpoint_stop.json').exists()
+        if (job/'failure_notes.json').exists():row['failure_notes']=json.loads((job/'failure_notes.json').read_text())
+        if not (job/'waveforms.npz').exists():
+            row['measurement_available']=False
+            rows.append(row)
+            continue
         # Bridge's coarse classifier reports "convergence failure" when a successful
         # log discusses DC fallback. Actual Spectre final status and ERROR lines govern.
         with np.load(job/'waveforms.npz') as z:d={k:z[k] for k in z.files if k!='units'}
+        if 'energy_test_nj' in d:
+            t=d['time'];dt_us=(t[-1]-t[0])*1e6
+            power={k:float((d['energy_'+k+'_nj'][-1]-d['energy_'+k+'_nj'][0])/dt_us) for k in ['test','total','vco','rx','rt']}
+            dense=float(-1.2*np.trapezoid(d['VDD:p'],t)/(t[-1]-t[0])*1e3)
+            power['other']=power['total']-power['vco']-power['rx']-power['rt']
+            row['power_instrument']=dict(power_mw=power,dense_current_total_mw=dense,
+                relative_integrator_vs_dense_error=float((power['total']-dense)/dense),
+                fixture_passed=bool(abs(power['test']/1.44-1)<1e-6),
+                integration_crosscheck_passed=bool(abs(power['total']/dense-1)<.002),
+                scope='Independent1.2V/1kohm hierarchical-current fixture and dense1ps current comparison. Other=divider/reference/sampler/CP/detector, no FLL in this loaded-oscillator fixture.')
         if job.name.startswith('detector_'):row['detector']=logic_windows(d)
         if job.name.startswith('phasehold_'):row['phase_timing']=phase_timing(d)
         if mt:=re.fullmatch(r'bank(?:\d*|tree|rt)_m(\d+)_(tt|ss|ff)',job.name):
@@ -110,11 +128,26 @@ def main():
             if row['cancelled']:
                 row['loop']['passed']=False
                 row['loop']['reason']='Deliberately stopped diagnostic; partial time window is not accepted.'
+            if row['checkpoint_segment']:
+                row['loop']['passed']=False
+                row['loop']['reason']='Native-checkpoint segment; final capture is judged with the resumed segment, not this unfinished interval.'
         if job.name.startswith('bias_lc') or job.name.startswith('bias2500'):
             t=d['time'];e=cross(t,d['vp']-d['vn'],0);o=cross(t,d['out'])
             row['bias_lc']=dict(rf_mhz=float(1e-6/np.mean(np.diff(e))),out_mhz=float(1e-6/np.mean(np.diff(o))),
                     power_mw=float(-1.2*np.trapezoid(d['VDD:p'],t)/(t[-1]-t[0])*1e3),bias_v=float(np.mean(d['XV.XL.nb'])),
                     scope='Fixed-code, fixed-control loaded oscillator fixture; no FLL/control, not full PLL power.')
+        if mt:=re.fullmatch(r'range_c(0|255)_v(02|10)_(tt|ss|ff)',job.name):
+            t=d['time'];e=cross(t,d['vp']-d['vn'],0);o=cross(t,d['out'])
+            rf=1/np.mean(np.diff(e)) if len(e)>2 else None
+            fo=1/np.mean(np.diff(o)) if len(o)>2 else None;m=4 if mt[1]=='0' else 14
+            row['range_endpoint']=dict(code=int(mt[1]),control_v=.2 if mt[2]=='02' else 1.,corner=mt[3],ratio=m,
+              rf_mhz=float(rf/1e6) if rf else None,out_mhz=float(fo/1e6) if fo else None,
+              differential_swing_pp_v=float(np.ptp(d['vp']-d['vn'])),
+              rf_terminal_range_v=[float(min(min(d['vp']),min(d['vn']))),float(max(max(d['vp']),max(d['vn'])))],
+              oscillator_running=bool(rf and np.ptp(d['vp']-d['vn'])>.2),
+              divider_ratio_ok=bool(rf and fo and abs(fo*m/rf-1)<.001),
+              partial_fixture_power_mw=float(-1.2*np.trapezoid(d['VDD:p'],t)/(t[-1]-t[0])*1e3),
+              scope='Physical new-bias loaded LC, sampler/reference/CP(clamped)/detector/programmable divider/retimer. Coarse/fine controls externally fixed; no FLL/control. Endpoint coverage is not intermediate-code continuity or PLL lock.')
         rows.append(row)
     (H/'results/validation.json').write_text(json.dumps(rows,indent=2)+'\n')
     for r in rows:

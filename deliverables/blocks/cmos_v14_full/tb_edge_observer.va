@@ -1,0 +1,24 @@
+`include "disciplines.vams"
+// External timing instrument only; all outputs are measurements, no DUT drive.
+module tb_edge_observer(clk,vdd,vss,rise_ns,fall_ns,period_ns,duty_percent);
+input clk,vdd,vss;
+output rise_ns,fall_ns,period_ns,duty_percent;
+electrical clk,vdd,vss,rise_ns,fall_ns,period_ns,duty_percent;
+real t10,t90,last_rise,high_time,tr,tf,per,duty;
+analog begin
+ @(initial_step) begin t10=-1;t90=-1;last_rise=-1;high_time=0;tr=0;tf=0;per=0;duty=0;end
+ @(cross(V(clk,vss)-0.1*V(vdd,vss),+1)) t10=$abstime;
+ @(cross(V(clk,vss)-0.9*V(vdd,vss),+1)) if(t10>=0) tr=1e9*($abstime-t10);
+ @(cross(V(clk,vss)-0.9*V(vdd,vss),-1)) t90=$abstime;
+ @(cross(V(clk,vss)-0.1*V(vdd,vss),-1)) if(t90>=0) tf=1e9*($abstime-t90);
+ @(cross(V(clk,vss)-0.5*V(vdd,vss),+1)) begin
+  if(last_rise>=0) begin per=1e9*($abstime-last_rise);duty=100*high_time/($abstime-last_rise);end
+  last_rise=$abstime;
+ end
+ @(cross(V(clk,vss)-0.5*V(vdd,vss),-1)) if(last_rise>=0) high_time=$abstime-last_rise;
+ V(rise_ns,vss)<+tr;
+ V(fall_ns,vss)<+tf;
+ V(period_ns,vss)<+per;
+ V(duty_percent,vss)<+duty;
+end
+endmodule

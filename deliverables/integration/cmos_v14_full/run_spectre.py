@@ -34,10 +34,30 @@ def main():
     parser.add_argument('--preset-override',choices=['maxstep','maxstep,reltol,method,errpreset','all'],help='Honor named options, or all netlist solver options with bare -preset_override; verify actual log values')
     parser.add_argument('--timeout',type=int,default=3600,help='Per-job wall-clock limit in seconds')
     parser.add_argument('--snapshot-run',help='Replay immutable inputs from a prior local run instead of current design files')
+    parser.add_argument('--native-state',help='Locally recovered native .srf checkpoint under project research/; requires --snapshot-run and exactly one case')
+    parser.add_argument('--tran-stop',help='Override transient stop for a native-checkpoint continuation, e.g.10u')
+    parser.add_argument('--transient-reltol',help='Explicit numerical comparison on a native continuation, e.g.1e-5')
+    parser.add_argument('--transient-maxstep',help='Explicit numerical comparison on a native continuation, e.g.1p')
+    parser.add_argument('--dense-output',action='store_true',help='Native continuation only: retain every accepted transient point for waveform/current checks')
+    parser.add_argument('--extra-save',nargs='+',help='Additional node/current observations; no DUT change')
     select=parser.add_mutually_exclusive_group(required=True)
     select.add_argument('--cases',nargs='+')
     select.add_argument('--suite',choices=['timing','control','inductor','loop'])
     args=parser.parse_args()
+    if args.native_state:
+        assert args.snapshot_run and args.cases and len(args.cases)==1
+    if args.dense_output:assert args.native_state
+    if args.extra_save:
+        import re
+        assert all(re.fullmatch(r'[A-Za-z0-9_.:]+',x) for x in args.extra_save)
+    if args.tran_stop:
+        import re
+        assert args.native_state and re.fullmatch(r'[0-9.]+(?:[eE][-+]?\d+|[pnum]?)',args.tran_stop)
+    if args.transient_reltol or args.transient_maxstep:
+        import re
+        assert args.native_state
+        for value in [args.transient_reltol,args.transient_maxstep]:
+            if value:assert re.fullmatch(r'[0-9.]+(?:[eE][-+]?\d+|[pnum]?)',value)
     if args.suite=='timing':args.cases=[f'tb_cp_timing_{c}' for c in ['tt','ss','ff']]
     elif args.suite=='control':args.cases=[f'tb_{b}_{c}' for c in ['tt','ss','ff'] for b in ['config','supervisor']]
     elif args.suite=='inductor':args.cases=[f'tb_inductor_q{q}' for q in [3,5,8]]+[f'tb_rlc_q{q}_c{c}_nom' for q in [3,5,8] for c in [0,255]]
@@ -84,7 +104,11 @@ def main():
         state_remote=REMOTE+'/'+args.run_id+'_'+case+'.final.ic'
         body=netlist.read_text()
         if args.snapshot_run:
-            prior=json.loads((snapshot.parent/'result.json').read_text())
+            if args.native_state:body=re.sub(r'\s+(?:readic|recover)="[^"]+"','',body)
+            if (snapshot.parent/'result.json').exists():prior=json.loads((snapshot.parent/'result.json').read_text())
+            else:
+                assert 'readic=' not in body,'Pending source with an initial-state remapping needs its result manifest'
+                prior={}
             for remote,info in prior.get('initial_states',{}).items():
                 body=body.replace('readic="'+remote+'"','readic="'+info['source']+'"')
         body=re.sub(r'writefinal="[^"]+"','writefinal="'+state_remote+'"',body)
@@ -92,6 +116,26 @@ def main():
         has_pss_state='writepss=' in body
         body=re.sub(r'writepss="[^"]+"','writepss="'+pss_state_remote+'"',body)
         has_final_state='writefinal=' in body
+        native_state_info=None
+        if args.native_state:
+            native=Path(args.native_state).resolve()
+            assert native.is_relative_to((ROOT/'research').resolve()) and native.suffix=='.srf' and native.is_file()
+            native_remote=REMOTE+'/'+args.run_id+'_'+case+'.recover.srf'
+            ssh=['C:/Windows/System32/OpenSSH/ssh.exe','-F',str(Path.home()/'.virtuoso-bridge/ssh_config_ipv6'),'-o','BatchMode=yes','thu-xia-v6']
+            subprocess.run(ssh+['mkdir -p '+shlex.quote(REMOTE)],check=True,capture_output=True,timeout=30)
+            subprocess.run(['C:/Windows/System32/OpenSSH/scp.exe','-F',str(Path.home()/'.virtuoso-bridge/ssh_config_ipv6'),'-o','BatchMode=yes',str(native),'thu-xia-v6:'+native_remote],check=True,capture_output=True,timeout=90)
+            digest=hashlib.sha256(native.read_bytes()).hexdigest()
+            proof=subprocess.check_output(ssh+['sha256sum '+shlex.quote(native_remote)],timeout=30).decode().split()[0]
+            assert proof==digest
+            native_state_info=dict(local=native.relative_to(ROOT).as_posix(),remote=native_remote,sha256=digest,remote_hash_match=True,source_snapshot=args.snapshot_run)
+            body=re.sub(r'^(tran tran .*)$',lambda m:m[0]+' recover="'+native_remote+'"',body,flags=re.M)
+            assert ' recover=' in body
+            if args.tran_stop:body=re.sub(r'(?<=\bstop=)\S+',args.tran_stop,body)
+            if args.transient_reltol:body=re.sub(r'(?<=\breltol=)\S+',args.transient_reltol,body)
+            if args.transient_maxstep:body=re.sub(r'(?<=\bmaxstep=)\S+',args.transient_maxstep,body)
+            if args.dense_output:body=body.replace('strobeoutput=strobeonly','strobeoutput=all')
+            netlist.write_text(body,encoding='utf-8',newline='\n')
+        if args.extra_save:body+='\nsave '+' '.join(args.extra_save)+'\n'
         netlist.write_text(body,encoding='utf-8',newline='\n')
         initial_states={}
         state_names=re.findall(r'readic="([^"]+)"',netlist.read_text())
@@ -132,6 +176,8 @@ def main():
         rec={'case':case,'time':datetime.datetime.now().astimezone().isoformat(),
              'ok':result.ok,'errors':result.errors,'metadata':result.metadata,
              'initial_states':initial_states,
+             'native_state':native_state_info,
+             'numerical_overrides':dict(reltol=args.transient_reltol,maxstep=args.transient_maxstep,dense_output=args.dense_output,extra_save=args.extra_save),
              'inputs_sha256':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in files}}
         work.mkdir(parents=True,exist_ok=True)
         if result.ok:
