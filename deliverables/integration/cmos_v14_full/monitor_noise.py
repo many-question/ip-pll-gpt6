@@ -9,7 +9,8 @@ for run in sys.argv[1:]:
   dirs=re.findall(r'(/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/[a-f0-9]{8})/',p.read_text(errors='replace'))
   if not dirs:continue
   folder=dirs[-1]+'/'+p.parent.name+'.raw'
-  code="import glob,json,os\na=[]\nfor p in glob.glob("+repr(folder+"/*.sample.pnoise")+"):\n f=[l.strip() for l in open(p) if l.startswith(chr(34)+'freq'+chr(34)+' ')]\n a.append([os.path.basename(p),len(f),f[-1] if f else None])\nprint(json.dumps(a))"
+  # Count numeric VALUE records only; the SWEEP declaration also starts "freq".
+  code="import glob,json,os,re\na=[]\nfor p in glob.glob("+repr(folder+"/*.sample.pnoise")+"):\n f=[l.strip() for l in open(p) if re.match(chr(34)+'freq'+chr(34)+r'\\s+[-+0-9.eE]+\\s*$',l)]\n a.append([os.path.basename(p),len(f),f[-1] if f else None])\nprint(json.dumps(a))"
   encoded=base64.b64encode(code.encode()).decode()
   inline="exec(__import__('base64').b64decode('"+encoded+"'))"
   proc=subprocess.run(ssh+['/usr/bin/python -c '+shlex.quote(inline)],capture_output=True,text=True,timeout=60)

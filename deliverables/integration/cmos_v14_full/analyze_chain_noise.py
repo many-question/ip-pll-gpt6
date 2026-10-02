@@ -62,17 +62,28 @@ for rp in sorted(R.glob('chainnoise*/*/result.json')):
  for group in grouped:
   spectra[job.name+'_'+group+'_st']=sum(v for k,v in components.items() if k.split('.')[0]==group)/slew**2
 out=dict(scope='Physical current RF receiver, full programmable divider and retimer/buffer, plus physical quiet shared-counter clock input load. TT27,1.2V,10fF,selectedM4. Ideal external measured RF replay at3.936GHz. This excludes VCO, main loop, reference, control and their impedance feedback; not full-PLL jitter.',
- period='164MHz PSS retains÷8/÷12 branch states;24 RF cycles and6 output cycles. sampleratio6, selected first rising-edge event. Other periodic edge positions are not yet checked.',
+ period='164MHz PSS retains÷8/÷12 branch states;24 RF cycles and6 output cycles. sampleratio6, selected first rising-edge event. The other five edge positions have a separate three-frequency comparison in chain_probe_validation.json; that is not a full-band all-edge check.',
  integration_boundary='Explicit10kHz-492MHz PSD/slew^2 integral is the reported band. In this Spectreversion autoJee clips to the last saved gridpoint<=PSSfund/2(82MHz); it is not the full-band result. Check autoJee against its clipped numerical integral separately.',
- tool_normalization_evidence='share/deliverables/integration/cmos_v14_full/results/noise_measurement_fixture.json: exact164MHz/ratio6 identical-edge LTI RC fixture matches analytic kT/C within0.4percent and independently confirms clipped autoJee. Earlier accuracy_v7 also checked alternate PSS fundamental. Neither validates actual PLL edge-position invariance.',cases=rows)
+ tool_normalization_evidence='share/deliverables/integration/cmos_v14_full/results/noise_measurement_fixture.json: exact164MHz/ratio6 identical-edge LTI RC fixture matches analytic kT/C within0.4percent and independently confirms clipped autoJee. Earlier accuracy_v7 also checked alternate PSS fundamental. Neither validates actual PLL edge-position invariance; see the separately scoped finite-frequency edge checks.',cases=rows)
 out['frequency_grid_boundary']='The original log grid hits492MHz=3*PSSfund exactly and logsSPCRTRF-15037 (infinite flicker noise omitted). Retain the numerical integral, but require separate finite-offset checks around164/328/492MHz before treating the grid as adequately resolved. Single-case validity and step/sideband precision checks do not by themselves resolve that warning.'
 coarse=next((r for r in rows if r['case']=='chain_noise_coarse_tt' and r.get('single_case_valid')),None)
 fine=next((r for r in rows if r['case']=='chain_noise_fine_tt' and r.get('single_case_valid')),None)
 out['precision']=dict(status='not_complete',passed=False)
 if coarse and fine:
+ records=[json.loads((ROOT/r['source_result']).read_text()) for r in [coarse,fine]]
+ dependencies=[{k:v for k,v in rec['inputs_sha256'].items() if k!=row['case']+'.scs'} for rec,row in zip(records,[coarse,fine])]
+ assert dependencies[0]==dependencies[1],'Coarse/fine circuit or RF replay differs'
+ def normalized_tb(row):
+  path=(ROOT/row['source_result']).parent/'inputs'/(row['case']+'.scs')
+  s=path.read_text()
+  for key in ['harms','maxstep','maxsideband']:
+   s=re.sub(r'\b'+key+r'=[^\s]+',key+'=PRECISION_SETTING',s)
+  return re.sub(r'writefinal="[^"]+"','writefinal="FINAL_STATE"',s)
+ assert normalized_tb(coarse)==normalized_tb(fine),'Unexpected coarse/fine TB difference'
  a=spectra['chain_noise_coarse_tt_st'];b=spectra['chain_noise_fine_tt_st'];assert np.allclose(spectra['chain_noise_coarse_tt_f'],spectra['chain_noise_fine_tt_f'])
  delta=10*np.log10(b/a);rel=fine['jitter_fs']/coarse['jitter_fs']-1
- out['precision']=dict(status='complete',relative_jitter_change=rel,max_spectrum_delta_db=float(max(abs(delta))),passed=bool(abs(rel)<.01 and max(abs(delta))<.1))
+ out['precision']=dict(status='complete',relative_jitter_change=rel,max_spectrum_delta_db=float(max(abs(delta))),passed=bool(abs(rel)<.01 and max(abs(delta))<.1),
+  identical_circuit_and_stimulus_dependencies=dependencies[0],only_tb_changes='maxstep1ps to0.5ps; harms/maxsideband383 to767; final-state output path.')
 (H/'results/chain_noise_validation.json').write_text(json.dumps(out,indent=2)+'\n')
 np.savez_compressed(H/'results/chain_noise_spectra.npz',**spectra)
 print(json.dumps(out,indent=2))

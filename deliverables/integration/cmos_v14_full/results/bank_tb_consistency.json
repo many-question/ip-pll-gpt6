@@ -1,0 +1,203 @@
+{
+  "scope": "Tie all 18 completed divider/retimer TBs to the current complete DUT.",
+  "conditions": "1.2V, ideal rail RF with20ps rise/fall,10fF;100ns transient, final40ns measured. Six-mode divider bank plus retimer and acquisition RF/4 buffer; no RF analog receiver or VCO.",
+  "reference_full_dut": "completestrict01/complete_strict_tt",
+  "identical_dependencies": {
+    "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+    "cmos_even_bank_acq_v14.scs": "34a80ae697397ff60cc61ba9cfc51513716c39afd3df68f4ea0a9c950ca0ff6f",
+    "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+    "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+    "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+    "rt_light24s12_out083_v14.scs": "06c7d7b838a666815504f42ebf8d2a79aa9f6031c5af2212880d642fad3f8836",
+    "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd"
+  },
+  "rows": [
+    {
+      "m": 4,
+      "rf_mhz": 3935.9999999999995,
+      "target_output_mhz": 983.9999999999999,
+      "cases": [
+        {
+          "corner": "tt",
+          "temperature_c": 27,
+          "passed": true,
+          "measured_output_mhz": 984.000006798941,
+          "source_result": "research\\runs\\spectre_cmos_v14_full\\bankrt01\\bankrt_m4_tt\\result.json",
+          "same_seven_circuit_dependencies": true
+        },
+        {
+          "corner": "ss",
+          "temperature_c": 60,
+          "passed": true,
+          "measured_output_mhz": 983.9998699726614,
+          "source_result": "research\\runs\\spectre_cmos_v14_full\\bankrt01\\bankrt_m4_ss\\result.json",
+          "same_seven_circuit_dependencies": true
+        },
+        {
+          "corner": "ff",
+          "temperature_c": 0,
+          "passed": true,
+          "measured_output_mhz": 984.0000012340113,
+          "source_result": "research\\runs\\spectre_cmos_v14_full\\bankrt01\\bankrt_m4_ff\\result.json",
+          "same_seven_circuit_dependencies": true
+        }
+      ]
+    },
+    {
+      "m": 6,
+      "rf_mhz": 3887.9999999999995,
+      "target_output_mhz": 647.9999999999999,
+      "cases": [
+        {
+          "corner": "tt",
+          "temperature_c": 27,
+          "passed": true,
+          "measured_output_mhz": 648.0009482291487,
+          "source_result": "research\\runs\\spectre_cmos_v14_full\\bankrt01\\bankrt_m6_tt\\result.json",
+          "same_seven_circuit_dependencies": true
+        },
+        {
+          "corner": "ss",
+          "temperature_c": 60,
+          "passed": false,
+          "measured_output_mhz": 0.0,
+          "source_result": "research\\runs\\spectre_cmos_v14_full\\bankrt01\\bankrt_m6_ss\\result.json",
+          "same_seven_circuit_dependencies": true
+        },
+        {
+          "corner": "ff",
+          "temperature_c": 0,
+          "passed": true,
+          "measured_output_mhz": 648.0000077532502,
+          "source_result": "research\\runs\\spectre_cmos_v14_full\\bankrt01\\bankrt_m6_ff\\result.json",
+          "same_seven_circuit_dependencies": true
+        }
+      ]
+    },
+    {
+      "m": 8,
+      "rf_mhz": 3456.0000000000005,
+      "target_output_mhz": 432.00000000000006,
+      "cases": [
+        {
+          "corner": "tt",
+          "temperature_c": 27,
+          "passed": true,
+          "measured_output_mhz": 432.0000078057756,
+          "source_result": "research\\runs\\spectre_cmos_v14_full\\bankrt01\\bankrt_m8_tt\\result.json",
+          "same_seven_circuit_dependencies": true
+        },
+        {
+          "corner": "ss",
+          "temperature_c": 60,
+          "passed": true,
+          "measured_output_mhz": 431.99993441906076,
+          "source_result": "research\\runs\\spectre_cmos_v14_full\\bankrt01\\bankrt_m8_ss\\result.json",
+          "same_seven_circuit_dependencies": true
+        },
+        {
+          "corner": "ff",
+          "temperature_c": 0,
+          "passed": true,
+          "measured_output_mhz": 431.9999994572153,
+          "source_result": "research\\runs\\spectre_cmos_v14_full\\bankrt01\\bankrt_m8_ff\\result.json",
+          "same_seven_circuit_dependencies": true
+        }
+      ]
+    },
+    {
+      "m": 10,
+      "rf_mhz": 3120.0,
+      "target_output_mhz": 312.0,
+      "cases": [
+        {
+          "corner": "tt",
+          "temperature_c": 27,
+          "passed": true,
+          "measured_output_mhz": 312.00000050994936,
+          "source_result": "research\\runs\\spectre_cmos_v14_full\\bankrt01\\bankrt_m10_tt\\result.json",
+          "same_seven_circuit_dependencies": true
+        },
+        {
+          "corner": "ss",
+          "temperature_c": 60,
+          "passed": false,
+          "measured_output_mhz": 0.0,
+          "source_result": "research\\runs\\spectre_cmos_v14_full\\bankrt01\\bankrt_m10_ss\\result.json",
+          "same_seven_circuit_dependencies": true
+        },
+        {
+          "corner": "ff",
+          "temperature_c": 0,
+          "passed": true,
+          "measured_output_mhz": 311.99999999996254,
+          "source_result": "research\\runs\\spectre_cmos_v14_full\\bankrt01\\bankrt_m10_ff\\result.json",
+          "same_seven_circuit_dependencies": true
+        }
+      ]
+    },
+    {
+      "m": 12,
+      "rf_mhz": 3168.0000000000005,
+      "target_output_mhz": 264.00000000000006,
+      "cases": [
+        {
+          "corner": "tt",
+          "temperature_c": 27,
+          "passed": true,
+          "measured_output_mhz": 264.0000018618118,
+          "source_result": "research\\runs\\spectre_cmos_v14_full\\bankrt01\\bankrt_m12_tt\\result.json",
+          "same_seven_circuit_dependencies": true
+        },
+        {
+          "corner": "ss",
+          "temperature_c": 60,
+          "passed": true,
+          "measured_output_mhz": 263.9999993743851,
+          "source_result": "research\\runs\\spectre_cmos_v14_full\\bankrt01\\bankrt_m12_ss\\result.json",
+          "same_seven_circuit_dependencies": true
+        },
+        {
+          "corner": "ff",
+          "temperature_c": 0,
+          "passed": true,
+          "measured_output_mhz": 263.99995147667414,
+          "source_result": "research\\runs\\spectre_cmos_v14_full\\bankrt01\\bankrt_m12_ff\\result.json",
+          "same_seven_circuit_dependencies": true
+        }
+      ]
+    },
+    {
+      "m": 14,
+      "rf_mhz": 3024.0,
+      "target_output_mhz": 216.0,
+      "cases": [
+        {
+          "corner": "tt",
+          "temperature_c": 27,
+          "passed": true,
+          "measured_output_mhz": 215.99998754784596,
+          "source_result": "research\\runs\\spectre_cmos_v14_full\\bankrt01\\bankrt_m14_tt\\result.json",
+          "same_seven_circuit_dependencies": true
+        },
+        {
+          "corner": "ss",
+          "temperature_c": 60,
+          "passed": false,
+          "measured_output_mhz": 0.0,
+          "source_result": "research\\runs\\spectre_cmos_v14_full\\bankrt01\\bankrt_m14_ss\\result.json",
+          "same_seven_circuit_dependencies": true
+        },
+        {
+          "corner": "ff",
+          "temperature_c": 0,
+          "passed": true,
+          "measured_output_mhz": 216.000001750164,
+          "source_result": "research\\runs\\spectre_cmos_v14_full\\bankrt01\\bankrt_m14_ff\\result.json",
+          "same_seven_circuit_dependencies": true
+        }
+      ]
+    }
+  ],
+  "limitation": "Six selected RF frequencies, not all33 channels or all PVT combinations. Functional tests only; no mismatch, supply/load sweep, layout/PEX or noise acceptance."
+}
