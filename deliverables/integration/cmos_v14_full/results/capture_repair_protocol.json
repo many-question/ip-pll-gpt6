@@ -1,0 +1,45 @@
+{
+  "created": "2026-10-02T23:18:05.595030+08:00",
+  "scope": "Generate a separately named V14 repair; baseline input files stay unchanged.",
+  "mapped": [
+    {
+      "name": "fll_best128_v14",
+      "cells": 1110,
+      "types": {
+        "$_DFF_PP0_": 39,
+        "$_DFF_PP1_": 20,
+        "$_MUX_": 289,
+        "$_NOT_": 102,
+        "$_OR_": 230,
+        "$_XOR_": 125,
+        "$_AND_": 305
+      },
+      "rtl_sha256": "e7e3c3c540e4d6d33f488ceda1c5bfc388c5ba6e608b0446aee1daccbfec3f00"
+    },
+    {
+      "name": "pll_supervisor_capture_v14",
+      "cells": 352,
+      "types": {
+        "$_DFF_PP0_": 25,
+        "$_MUX_": 207,
+        "$_NOT_": 30,
+        "$_AND_": 33,
+        "$_XOR_": 18,
+        "$_OR_": 39
+      },
+      "rtl_sha256": "40e2d6db83bffce5e94746e1b2a4a5a130d9ceb759a68569733aca59985301e9"
+    }
+  ],
+  "changes": [
+    "32-reference coarse SAR retained; coarse floor+2 headroom from previously screened candidate.",
+    "128-reference fine windows; choose the actually tested DAC with minimum absolute count error. Equal errors prefer lower code. Remove unconditional final+1.",
+    "First unqualified capture gets512reference clocks (21.333us), then an8-reference restart. Original32-good/4-bad qualification rules retained."
+  ],
+  "unchanged": "VCO/bias/Q5RLC, receiver, six-mode divider, retimer/output, sampler/CP/filter, phase/amplitude detector, configuration, watchdog and reference.",
+  "validation_order": [
+    "asynchronous gate-graph sweep and supervisor directed tests",
+    "MOS controller timing and supervisor TT/SS/FF",
+    "complete-DUT DC-supply reset capture, then stricter numerical/retention checks"
+  ],
+  "not_claimed": "No complete capture result yet; no state recovery across modified circuits; no supply-ramp/fullPVT/noise/power improvement claim."
+}

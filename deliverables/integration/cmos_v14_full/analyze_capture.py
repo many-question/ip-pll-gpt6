@@ -5,12 +5,18 @@ Earlier runs may be intentional checkpoint fragments; last run must complete.
 No waveform or progress snapshot is promoted to acceptance while still running.
 """
 from pathlib import Path
-import json,hashlib,sys,re
+import json,hashlib,sys,re,argparse
 import numpy as np
 from virtuoso_bridge.spectre.parsers import parse_psf_ascii_directory
 from analyze import loop,cross
 H=Path(__file__).resolve().parent;ROOT=H.parents[3];R=ROOT/'research/runs/spectre_cmos_v14_full'
-case='complete_k41_tt';runs=sys.argv[1:];assert runs
+parser=argparse.ArgumentParser()
+parser.add_argument('runs',nargs='+')
+parser.add_argument('--case',default='complete_k41_tt')
+parser.add_argument('--fine-window',type=int,choices=[32,64,128,256],default=32)
+args=parser.parse_args()
+case=args.case;runs=args.runs
+assert re.fullmatch(r'[A-Za-z0-9_]+',case)
 jobs=[R/run/case for run in runs];datasets=[];records=[]
 for j in jobs:
     rec=json.loads((j/'result.json').read_text());assert rec['remote_inputs_match'];records.append(rec)
@@ -54,7 +60,9 @@ for i in change:
 logic={}
 for k in ['cfg_ready','qualified','range_error','frequency_good','XP.XC.acquired','XP.en','XP.restart']:
     e=cross(t,d[k]);logic[k]=dict(first_rising_us=float(e[0]*1e6) if len(e) else None,final_v=float(d[k][-1]),final_1us_all_high=bool(np.all(d[k][t>t[-1]-1e-6]>.6)))
-result=dict(scope='Complete physical programmable PLL, independent reset/application sequence; native recovery preserves all states. Initial10uV differential VCO perturbation seeds deterministic oscillation. No constructed near-lock initial state. Supply is alreadyDC1.2V: this is reset acquisition, not a power-rail ramp/startup qualification.',condition='TT27,1.2V,24MHz,10fF,K41/M4,Q5 RLC,4ps/reltol1e-4. Functional result; strict numerics and random noise remain separate.',
+tb=(jobs[0]/'inputs'/(case+'.scs')).read_text()
+corner=re.search(r'section=(tt|ss|ff)\b',tb)[1];temp=float(re.search(r'\btemp=([-+0-9.]+)',tb)[1])
+result=dict(scope='Complete physical programmable PLL, independent reset/application sequence; native recovery preserves all states. Initial10uV differential VCO perturbation seeds deterministic oscillation. No constructed near-lock initial state. Supply is alreadyDC1.2V: this is reset acquisition, not a power-rail ramp/startup qualification.',condition=f'{corner.upper()}{temp:g},1.2V,24MHz,10fF,K41/M4,Q5 RLC,4ps/reltol1e-4. Functional result; strict numerics and random noise remain separate.',
     sources={str((j/'result.json').relative_to(ROOT)):hashlib.sha256((j/'result.json').read_bytes()).hexdigest() for j in jobs},
     boundaries=boundaries,circuit_hashes_identical=True,final_simulator_completed=True,stationarity=loop(d),logic=logic,digital_events=events,
     joined_waveform=str((dest/'waveforms.npz').relative_to(ROOT)),joined_waveform_sha256=hashlib.sha256((dest/'waveforms.npz').read_bytes()).hexdigest())
@@ -63,11 +71,15 @@ measured=np.zeros(len(t),dtype=int)
 for bit in range(14):measured+=((d['XP.XC.m'+str(bit)]>.6).astype(int)<<bit)
 eval_entries=np.flatnonzero((state[1:]==3)&(state[:-1]!=3))+1
 obs=np.flatnonzero((abs(np.diff(d['obsphase']))>1e-9)|(abs(np.diff(d['obscycles']))>1e-9))+1
-measurements=[]
+measurements=[];fine=False;previous_eval=0
 for i in eval_entries:
     if i+1>=len(t) or state[i+1]!=3:continue
+    if np.any(d['XP.restart'][previous_eval:i]>.6):fine=False
+    if dac[i]!=11:fine=True
+    target=1312*(args.fine_window//32 if fine else 1)
     window=obs[(t[obs]>t[i]-1.25e-6)&(t[obs]<t[i]-.17e-6)]
-    measurements.append(dict(eval_time_us=float(t[i]*1e6),coarse=int(coarse[i]),dac=int(dac[i]),captured_count=int(measured[i+1]),target_count=1312,rf_mhz_before_eval=float(np.mean(d['obscycles'][window])*24) if len(window) else None,frequency_window_note='Reference-cycle observations within late measurement interval, excludingdrain; not a direct count-window timing measurement.'))
+    measurements.append(dict(eval_time_us=float(t[i]*1e6),coarse=int(coarse[i]),dac=int(dac[i]),captured_count=int(measured[i+1]),target_count=target,rf_mhz_before_eval=float(np.mean(d['obscycles'][window])*24) if len(window) else None,frequency_window_note='Reference-cycle observations within late measurement interval, excludingdrain; not a direct count-window timing measurement.'))
+    previous_eval=i
 result['fll_measurements']=measurements
 handoff=logic['XP.XC.acquired']['first_rising_us']
 if handoff is not None:

@@ -1,0 +1,356 @@
+simulator lang=spectre
+// Project RTL mapped to actual MOS cells.
+subckt tx_pll_supervisor_capture_v14 (refclk reset cfg_ready fll_enable range_error phase_good frequency_good pll_enable qualified restart fault vdd vss)
+X0 (n13 refclk reset n14 vdd vss) tx_dff_r0
+X1 (n15 refclk reset n16 vdd vss) tx_dff_r0
+X2 (n17 refclk reset n18 vdd vss) tx_dff_r0
+X3 (n19 refclk reset restart vdd vss) tx_dff_r0
+X4 (n20 refclk reset n21 vdd vss) tx_dff_r0
+X5 (n22 refclk reset n23 vdd vss) tx_dff_r0
+X6 (n24 refclk reset n25 vdd vss) tx_dff_r0
+X7 (n26 refclk reset n27 vdd vss) tx_dff_r0
+X8 (n28 refclk reset qualified vdd vss) tx_dff_r0
+X9 (n29 refclk reset n30 vdd vss) tx_dff_r0
+X10 (n31 refclk reset n32 vdd vss) tx_dff_r0
+X11 (n33 refclk reset n34 vdd vss) tx_dff_r0
+X12 (n35 refclk reset n36 vdd vss) tx_dff_r0
+X13 (n37 refclk reset n38 vdd vss) tx_dff_r0
+X14 (n39 refclk reset n40 vdd vss) tx_dff_r0
+X15 (n41 refclk reset fault vdd vss) tx_dff_r0
+X16 (n42 refclk reset n43 vdd vss) tx_dff_r0
+X17 (n44 refclk reset n45 vdd vss) tx_dff_r0
+X18 (n46 refclk reset n47 vdd vss) tx_dff_r0
+X19 (n48 refclk reset n49 vdd vss) tx_dff_r0
+X20 (n50 refclk reset n51 vdd vss) tx_dff_r0
+X21 (n52 refclk reset n53 vdd vss) tx_dff_r0
+X22 (n54 refclk reset n55 vdd vss) tx_dff_r0
+X23 (n56 refclk reset n57 vdd vss) tx_dff_r0
+X24 (n58 refclk reset n59 vdd vss) tx_dff_r0
+X25 (n38 n60 n61 n37 vdd vss) tx_mux
+X26 (n36 n62 n61 n35 vdd vss) tx_mux
+X27 (n34 n63 n61 n33 vdd vss) tx_mux
+X28 (n32 n64 n61 n31 vdd vss) tx_mux
+X29 (n30 n65 n61 n29 vdd vss) tx_mux
+X30 (n25 n66 n67 n24 vdd vss) tx_mux
+X31 (n23 n68 n67 n22 vdd vss) tx_mux
+X32 (n21 n69 n67 n20 vdd vss) tx_mux
+X33 (n16 n70 n71 n15 vdd vss) tx_mux
+X34 (n14 n72 n71 n13 vdd vss) tx_mux
+X35 (n18 n73 n71 n17 vdd vss) tx_mux
+X36 (restart n74 n75 n19 vdd vss) tx_mux
+X37 (n27 n76 n67 n26 vdd vss) tx_mux
+X38 (qualified n77 n78 n28 vdd vss) tx_mux
+X39 (n40 n79 n61 n39 vdd vss) tx_mux
+X40 (fault n80 n81 n41 vdd vss) tx_mux
+X41 (n14 n82 vdd vss) pll_inv
+X42 (n30 n83 vdd vss) pll_inv
+X43 (n43 n84 vdd vss) pll_inv
+X44 (n36 n85 vdd vss) pll_inv
+X45 (n59 n86 vdd vss) pll_inv
+X46 (n25 n87 vdd vss) pll_inv
+X47 (n23 n88 vdd vss) pll_inv
+X48 (n21 n89 vdd vss) pll_inv
+X49 (cfg_ready n90 vdd vss) pll_inv
+X50 (qualified n91 vdd vss) pll_inv
+X51 (fll_enable n92 vdd vss) pll_inv
+X52 (n93 n94 vdd vss) pll_inv
+X53 (restart n95 vdd vss) pll_inv
+X54 (range_error n96 vdd vss) pll_inv
+X55 (n51 n97 n98 vdd vss) tx_and
+X56 (n47 n99 n100 vdd vss) tx_and
+X57 (n55 n101 n102 vdd vss) tx_and
+X58 (n103 n97 n101 vdd vss) tx_and
+X59 (n104 n97 n105 vdd vss) tx_and
+X60 (n106 n103 n104 vdd vss) tx_and
+X61 (n107 n99 n97 vdd vss) tx_and
+X62 (n57 n55 n106 vdd vss) tx_and
+X63 (n53 n51 n103 vdd vss) tx_and
+X64 (n49 n47 n107 vdd vss) tx_and
+X65 (n45 n43 n99 vdd vss) tx_and
+X66 (n34 n108 n109 vdd vss) tx_and
+X67 (n38 n110 n111 vdd vss) tx_and
+X68 (n112 n108 n110 vdd vss) tx_and
+X69 (n36 n34 n112 vdd vss) tx_and
+X70 (n32 n30 n108 vdd vss) tx_and
+X71 (n16 n14 n113 vdd vss) tx_and
+X72 (n23 n21 n114 vdd vss) tx_xor
+X73 (n25 n115 n116 vdd vss) tx_xor
+X74 (n27 n117 n118 vdd vss) tx_xor
+X75 (n45 n43 n119 vdd vss) tx_xor
+X76 (n47 n99 n120 vdd vss) tx_xor
+X77 (n49 n100 n121 vdd vss) tx_xor
+X78 (n51 n97 n122 vdd vss) tx_xor
+X79 (n53 n98 n123 vdd vss) tx_xor
+X80 (n55 n101 n124 vdd vss) tx_xor
+X81 (n57 n102 n125 vdd vss) tx_xor
+X82 (n59 n105 n126 vdd vss) tx_xor
+X83 (n32 n30 n127 vdd vss) tx_xor
+X84 (n34 n108 n128 vdd vss) tx_xor
+X85 (n36 n109 n129 vdd vss) tx_xor
+X86 (n38 n110 n130 vdd vss) tx_xor
+X87 (n40 n111 n131 vdd vss) tx_xor
+X88 (n16 n14 n132 vdd vss) tx_xor
+X89 (n18 n113 n133 vdd vss) tx_xor
+X90 (n25 n115 n117 vdd vss) tx_and
+X91 (n23 n21 n115 vdd vss) tx_and
+X92 (n134 n78 n71 vdd vss) tx_and
+X93 (range_error qualified n135 vdd vss) tx_or
+X94 (n93 n136 n137 vdd vss) tx_or
+X95 (n138 n135 n139 vdd vss) tx_or
+X96 (n139 n137 n134 vdd vss) tx_or
+X97 (n90 n96 n75 vdd vss) tx_or
+X98 (n140 n141 n142 vdd vss) tx_and
+X99 (n143 n75 n144 vdd vss) tx_and
+X100 (n142 n144 n145 vdd vss) tx_and
+X101 (n145 n146 n67 vdd vss) tx_and
+X102 (n147 n136 n148 vdd vss) tx_or
+X103 (n149 n148 n140 vdd vss) tx_or
+X104 (n90 restart n149 vdd vss) tx_or
+X105 (n149 n150 n141 vdd vss) tx_or
+X106 (n90 qualified n151 vdd vss) tx_or
+X107 (restart n136 n152 vdd vss) tx_or
+X108 (n151 n152 n143 vdd vss) tx_or
+X109 (n90 fll_enable n153 vdd vss) tx_or
+X110 (n153 restart n146 vdd vss) tx_or
+X111 (n90 range_error n81 vdd vss) tx_or
+X112 (n81 n95 n78 vdd vss) tx_or
+X113 (n78 n154 n61 vdd vss) tx_and
+X114 (n90 n92 n138 vdd vss) tx_or
+X115 (range_error n91 n155 vdd vss) tx_or
+X116 (n94 n136 n150 vdd vss) tx_or
+X117 (n138 n155 n156 vdd vss) tx_or
+X118 (n156 n150 n154 vdd vss) tx_or
+X119 (n89 n88 n157 vdd vss) tx_or
+X120 (n87 n27 n158 vdd vss) tx_or
+X121 (n157 n158 n159 vdd vss) tx_or
+X122 (n82 n160 n161 vdd vss) tx_or
+X123 (n161 n18 n162 vdd vss) tx_or
+X124 (n84 n163 n164 vdd vss) tx_or
+X125 (n165 n166 n167 vdd vss) tx_or
+X126 (n168 n169 n170 vdd vss) tx_or
+X127 (n171 n172 n173 vdd vss) tx_or
+X128 (n164 n167 n174 vdd vss) tx_or
+X129 (n170 n173 n175 vdd vss) tx_or
+X130 (n174 n175 n176 vdd vss) tx_or
+X131 (n176 n86 n177 vdd vss) tx_or
+X132 (n83 n178 n179 vdd vss) tx_or
+X133 (n180 n85 n181 vdd vss) tx_or
+X134 (n182 n40 n183 vdd vss) tx_or
+X135 (n179 n181 n184 vdd vss) tx_or
+X136 (n184 n183 n185 vdd vss) tx_or
+X137 (reset n186 vdd vss) pll_inv
+X138 (n177 n187 vdd vss) pll_inv
+X139 (n188 n189 vdd vss) pll_inv
+X140 (phase_good frequency_good n93 vdd vss) tx_and
+X141 (cfg_ready fll_enable n190 vdd vss) tx_and
+X142 (n190 n96 n191 vdd vss) tx_and
+X143 (n191 n95 n192 vdd vss) tx_and
+X144 (n192 n186 pll_enable vdd vss) tx_and
+X145 (n91 n187 n193 vdd vss) tx_and
+X146 (n93 n194 n188 vdd vss) tx_and
+X147 (n193 n189 n136 vdd vss) tx_and
+X148 (n84 vss qualified n195 vdd vss) tx_mux
+X149 (n119 vss qualified n196 vdd vss) tx_mux
+X150 (n120 vss qualified n197 vdd vss) tx_mux
+X151 (n121 vss qualified n198 vdd vss) tx_mux
+X152 (n122 vss qualified n199 vdd vss) tx_mux
+X153 (n123 vss qualified n200 vdd vss) tx_mux
+X154 (n124 vss qualified n201 vdd vss) tx_mux
+X155 (n125 vss qualified n202 vdd vss) tx_mux
+X156 (n126 vss qualified n203 vdd vss) tx_mux
+X157 (vss n195 n185 n204 vdd vss) tx_mux
+X158 (vss n196 n185 n205 vdd vss) tx_mux
+X159 (vss n197 n185 n206 vdd vss) tx_mux
+X160 (vss n198 n185 n207 vdd vss) tx_mux
+X161 (vss n199 n185 n208 vdd vss) tx_mux
+X162 (vss n200 n185 n209 vdd vss) tx_mux
+X163 (vss n201 n185 n210 vdd vss) tx_mux
+X164 (vss n202 n185 n211 vdd vss) tx_mux
+X165 (vss n203 n185 n212 vdd vss) tx_mux
+X166 (n204 n195 qualified n213 vdd vss) tx_mux
+X167 (n205 n196 qualified n214 vdd vss) tx_mux
+X168 (n206 n197 qualified n215 vdd vss) tx_mux
+X169 (n207 n198 qualified n216 vdd vss) tx_mux
+X170 (n208 n199 qualified n217 vdd vss) tx_mux
+X171 (n209 n200 qualified n218 vdd vss) tx_mux
+X172 (n210 n201 qualified n219 vdd vss) tx_mux
+X173 (n211 n202 qualified n220 vdd vss) tx_mux
+X174 (n212 n203 qualified n221 vdd vss) tx_mux
+X175 (n195 n213 n93 n222 vdd vss) tx_mux
+X176 (n196 n214 n93 n223 vdd vss) tx_mux
+X177 (n197 n215 n93 n224 vdd vss) tx_mux
+X178 (n198 n216 n93 n225 vdd vss) tx_mux
+X179 (n199 n217 n93 n226 vdd vss) tx_mux
+X180 (n200 n218 n93 n227 vdd vss) tx_mux
+X181 (n201 n219 n93 n228 vdd vss) tx_mux
+X182 (n202 n220 n93 n229 vdd vss) tx_mux
+X183 (n203 n221 n93 n230 vdd vss) tx_mux
+X184 (n222 vss n136 n231 vdd vss) tx_mux
+X185 (n223 vss n136 n232 vdd vss) tx_mux
+X186 (n224 vss n136 n233 vdd vss) tx_mux
+X187 (n225 vss n136 n234 vdd vss) tx_mux
+X188 (n226 vss n136 n235 vdd vss) tx_mux
+X189 (n227 vss n136 n236 vdd vss) tx_mux
+X190 (n228 vss n136 n237 vdd vss) tx_mux
+X191 (n229 vss n136 n238 vdd vss) tx_mux
+X192 (n230 vss n136 n239 vdd vss) tx_mux
+X193 (vss n231 fll_enable n240 vdd vss) tx_mux
+X194 (vss n232 fll_enable n241 vdd vss) tx_mux
+X195 (vss n233 fll_enable n242 vdd vss) tx_mux
+X196 (vss n234 fll_enable n243 vdd vss) tx_mux
+X197 (vss n235 fll_enable n244 vdd vss) tx_mux
+X198 (vss n236 fll_enable n245 vdd vss) tx_mux
+X199 (vss n237 fll_enable n246 vdd vss) tx_mux
+X200 (vss n238 fll_enable n247 vdd vss) tx_mux
+X201 (vss n239 fll_enable n248 vdd vss) tx_mux
+X202 (n240 vss restart n249 vdd vss) tx_mux
+X203 (n241 vss restart n250 vdd vss) tx_mux
+X204 (n242 vss restart n251 vdd vss) tx_mux
+X205 (n243 vss restart n252 vdd vss) tx_mux
+X206 (n244 vss restart n253 vdd vss) tx_mux
+X207 (n245 vss restart n254 vdd vss) tx_mux
+X208 (n246 vss restart n255 vdd vss) tx_mux
+X209 (n247 vss restart n256 vdd vss) tx_mux
+X210 (n248 vss restart n257 vdd vss) tx_mux
+X211 (n249 vss range_error n258 vdd vss) tx_mux
+X212 (n250 vss range_error n259 vdd vss) tx_mux
+X213 (n251 vss range_error n260 vdd vss) tx_mux
+X214 (n252 vss range_error n261 vdd vss) tx_mux
+X215 (n253 vss range_error n262 vdd vss) tx_mux
+X216 (n254 vss range_error n263 vdd vss) tx_mux
+X217 (n255 vss range_error n264 vdd vss) tx_mux
+X218 (n256 vss range_error n265 vdd vss) tx_mux
+X219 (n257 vss range_error n266 vdd vss) tx_mux
+X220 (vss n258 cfg_ready n42 vdd vss) tx_mux
+X221 (vss n259 cfg_ready n44 vdd vss) tx_mux
+X222 (vss n260 cfg_ready n46 vdd vss) tx_mux
+X223 (vss n261 cfg_ready n48 vdd vss) tx_mux
+X224 (vss n262 cfg_ready n50 vdd vss) tx_mux
+X225 (vss n263 cfg_ready n52 vdd vss) tx_mux
+X226 (vss n264 cfg_ready n54 vdd vss) tx_mux
+X227 (vss n265 cfg_ready n56 vdd vss) tx_mux
+X228 (vss n266 cfg_ready n58 vdd vss) tx_mux
+X229 (vss vss n162 n267 vdd vss) tx_mux
+X230 (vss n267 qualified n268 vdd vss) tx_mux
+X231 (n268 vss n93 n269 vdd vss) tx_mux
+X232 (n269 vss n136 n270 vdd vss) tx_mux
+X233 (vss n270 fll_enable n271 vdd vss) tx_mux
+X234 (vss n89 n159 n272 vdd vss) tx_mux
+X235 (vss n114 n159 n273 vdd vss) tx_mux
+X236 (vss n116 n159 n274 vdd vss) tx_mux
+X237 (vss n118 n159 n275 vdd vss) tx_mux
+X238 (n271 n272 restart n276 vdd vss) tx_mux
+X239 (n271 n273 restart n277 vdd vss) tx_mux
+X240 (n271 n274 restart n278 vdd vss) tx_mux
+X241 (n271 n275 restart n279 vdd vss) tx_mux
+X242 (n276 vss range_error n280 vdd vss) tx_mux
+X243 (n277 vss range_error n281 vdd vss) tx_mux
+X244 (n278 vss range_error n282 vdd vss) tx_mux
+X245 (n279 vss range_error n283 vdd vss) tx_mux
+X246 (vss n280 cfg_ready n69 vdd vss) tx_mux
+X247 (vss n281 cfg_ready n68 vdd vss) tx_mux
+X248 (vss n282 cfg_ready n66 vdd vss) tx_mux
+X249 (vss n283 cfg_ready n76 vdd vss) tx_mux
+X250 (vss n82 n162 n284 vdd vss) tx_mux
+X251 (vss n132 n162 n285 vdd vss) tx_mux
+X252 (vss n133 n162 n286 vdd vss) tx_mux
+X253 (vss n284 qualified n287 vdd vss) tx_mux
+X254 (vss n285 qualified n288 vdd vss) tx_mux
+X255 (vss n286 qualified n289 vdd vss) tx_mux
+X256 (n287 vss n93 n290 vdd vss) tx_mux
+X257 (n288 vss n93 n291 vdd vss) tx_mux
+X258 (n289 vss n93 n292 vdd vss) tx_mux
+X259 (n290 vss n136 n293 vdd vss) tx_mux
+X260 (n291 vss n136 n294 vdd vss) tx_mux
+X261 (n292 vss n136 n295 vdd vss) tx_mux
+X262 (vss n293 fll_enable n296 vdd vss) tx_mux
+X263 (vss n294 fll_enable n297 vdd vss) tx_mux
+X264 (vss n295 fll_enable n298 vdd vss) tx_mux
+X265 (n296 vss restart n299 vdd vss) tx_mux
+X266 (n297 vss restart n300 vdd vss) tx_mux
+X267 (n298 vss restart n301 vdd vss) tx_mux
+X268 (n299 vss range_error n302 vdd vss) tx_mux
+X269 (n300 vss range_error n303 vdd vss) tx_mux
+X270 (n301 vss range_error n304 vdd vss) tx_mux
+X271 (vss n302 cfg_ready n72 vdd vss) tx_mux
+X272 (vss n303 cfg_ready n70 vdd vss) tx_mux
+X273 (vss n304 cfg_ready n73 vdd vss) tx_mux
+X274 (vss n83 n185 n305 vdd vss) tx_mux
+X275 (vss n127 n185 n306 vdd vss) tx_mux
+X276 (vss n128 n185 n307 vdd vss) tx_mux
+X277 (vss n129 n185 n308 vdd vss) tx_mux
+X278 (vss n130 n185 n309 vdd vss) tx_mux
+X279 (vss n131 n185 n310 vdd vss) tx_mux
+X280 (n305 vss qualified n311 vdd vss) tx_mux
+X281 (n306 vss qualified n312 vdd vss) tx_mux
+X282 (n307 vss qualified n313 vdd vss) tx_mux
+X283 (n308 vss qualified n314 vdd vss) tx_mux
+X284 (n309 vss qualified n315 vdd vss) tx_mux
+X285 (n310 vss qualified n316 vdd vss) tx_mux
+X286 (vss n311 n93 n317 vdd vss) tx_mux
+X287 (vss n312 n93 n318 vdd vss) tx_mux
+X288 (vss n313 n93 n319 vdd vss) tx_mux
+X289 (vss n314 n93 n320 vdd vss) tx_mux
+X290 (vss n315 n93 n321 vdd vss) tx_mux
+X291 (vss n316 n93 n322 vdd vss) tx_mux
+X292 (n317 vss n136 n323 vdd vss) tx_mux
+X293 (n318 vss n136 n324 vdd vss) tx_mux
+X294 (n319 vss n136 n325 vdd vss) tx_mux
+X295 (n320 vss n136 n326 vdd vss) tx_mux
+X296 (n321 vss n136 n327 vdd vss) tx_mux
+X297 (n322 vss n136 n328 vdd vss) tx_mux
+X298 (vss n323 fll_enable n329 vdd vss) tx_mux
+X299 (vss n324 fll_enable n330 vdd vss) tx_mux
+X300 (vss n325 fll_enable n331 vdd vss) tx_mux
+X301 (vss n326 fll_enable n332 vdd vss) tx_mux
+X302 (vss n327 fll_enable n333 vdd vss) tx_mux
+X303 (vss n328 fll_enable n334 vdd vss) tx_mux
+X304 (n329 vss restart n335 vdd vss) tx_mux
+X305 (n330 vss restart n336 vdd vss) tx_mux
+X306 (n331 vss restart n337 vdd vss) tx_mux
+X307 (n332 vss restart n338 vdd vss) tx_mux
+X308 (n333 vss restart n339 vdd vss) tx_mux
+X309 (n334 vss restart n340 vdd vss) tx_mux
+X310 (n335 vss range_error n341 vdd vss) tx_mux
+X311 (n336 vss range_error n342 vdd vss) tx_mux
+X312 (n337 vss range_error n343 vdd vss) tx_mux
+X313 (n338 vss range_error n344 vdd vss) tx_mux
+X314 (n339 vss range_error n345 vdd vss) tx_mux
+X315 (n340 vss range_error n346 vdd vss) tx_mux
+X316 (vss n341 cfg_ready n65 vdd vss) tx_mux
+X317 (vss n342 cfg_ready n64 vdd vss) tx_mux
+X318 (vss n343 cfg_ready n63 vdd vss) tx_mux
+X319 (vss n344 cfg_ready n62 vdd vss) tx_mux
+X320 (vss n345 cfg_ready n60 vdd vss) tx_mux
+X321 (vss n346 cfg_ready n79 vdd vss) tx_mux
+X322 (vss vdd range_error n347 vdd vss) tx_mux
+X323 (vss n347 cfg_ready n80 vdd vss) tx_mux
+X324 (n162 n147 vdd vss) pll_inv
+X325 (vss n147 qualified n348 vdd vss) tx_mux
+X326 (n348 vss n93 n349 vdd vss) tx_mux
+X327 (n349 vdd n136 n350 vdd vss) tx_mux
+X328 (vss n350 fll_enable n351 vdd vss) tx_mux
+X329 (n351 n159 restart n352 vdd vss) tx_mux
+X330 (n352 vss range_error n353 vdd vss) tx_mux
+X331 (vss n353 cfg_ready n74 vdd vss) tx_mux
+X332 (vss n162 qualified n354 vdd vss) tx_mux
+X333 (n185 n194 vdd vss) pll_inv
+X334 (n194 vdd qualified n355 vdd vss) tx_mux
+X335 (n354 n355 n93 n356 vdd vss) tx_mux
+X336 (n356 vss n136 n357 vdd vss) tx_mux
+X337 (vss n357 fll_enable n358 vdd vss) tx_mux
+X338 (n358 vss restart n359 vdd vss) tx_mux
+X339 (n359 vss range_error n360 vdd vss) tx_mux
+X340 (vss n360 cfg_ready n77 vdd vss) tx_mux
+X341 (n45 n163 vdd vss) pll_inv
+X342 (n47 n165 vdd vss) pll_inv
+X343 (n49 n166 vdd vss) pll_inv
+X344 (n51 n168 vdd vss) pll_inv
+X345 (n53 n169 vdd vss) pll_inv
+X346 (n55 n171 vdd vss) pll_inv
+X347 (n57 n172 vdd vss) pll_inv
+X348 (n32 n178 vdd vss) pll_inv
+X349 (n34 n180 vdd vss) pll_inv
+X350 (n38 n182 vdd vss) pll_inv
+X351 (n16 n160 vdd vss) pll_inv
+ends tx_pll_supervisor_capture_v14
