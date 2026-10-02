@@ -58,7 +58,7 @@ XCOUNT (count_clock 0 vdd q0 qx1 q2 q3 q4 q5 q6 q7 q8 q9 q10 q11 q12 q13 vdd 0) 
 for label,step,side in [('coarse','1p',383),('fine','0.5p',767)]:
     s=base+f'''// Full divider-tree period is24 RF cycles; output has6 rising edges.
 pss pss fund=164M harms={side} tstab=300n maxstep={step} method=traponly errpreset=conservative maxperiods=30 saveinit=no writefinal="__FINAL_STATE__"
-pn pnoise start=10k stop=492M dec=30 pnoisemethod=fullspectrum noisetype=sampled measurement=[edge] sampleratio=6 maxsideband={side}
+pn pnoise start=10k stop=492M dec=10 pnoisemethod=fullspectrum noisetype=sampled measurement=[edge] sampleratio=6 maxsideband={side}
 edge jitterevent trigger=[out] triggerthresh=0.6 triggernum=1 triggerdir=rise target=[out] jittercal=[Jee]
 save vp vn clk q1 data out acqclk XD.d8 XD.d12 VDD:p VRX:p VRT:p
 saveOptions options save=selected

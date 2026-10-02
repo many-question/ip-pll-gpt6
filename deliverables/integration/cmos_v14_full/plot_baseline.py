@@ -14,8 +14,9 @@ fig,axes=plt.subplots(4,1,figsize=(10,10),sharex=True,layout='constrained')
 x=t[ix]*1e6
 axes[0].plot(x,d['obscycles'][ix]*24/1000,label='RF');axes[0].axhline(3.936,color='k',ls=':',label='Target3.936GHz')
 axes[0].set_ylabel('VCO frequency (GHz)');axes[0].legend(loc='best');axes[0].grid(alpha=.2)
-axes[1].plot(x,np.unwrap(d['obsphase'][ix]),label='RF phase at reference')
-axes[1].set_ylabel('Unwrapped phase (rad)');axes[1].grid(alpha=.2)
+axes[1].plot(x,d['obsphase'][ix],label='RF phase at reference')
+axes[1].set_ylabel('Sampled phase (rad mod 2pi)');axes[1].grid(alpha=.2)
+# Away from capture, unwrapping24MHz-sampled phase would alias RF offsets>12MHz.
 axes[2].plot(x,d['obsctrl'][ix],label='Held control voltage')
 axes[2].set_ylabel('Control voltage (V)');axes[2].grid(alpha=.2)
 axes[3].plot(t*1e6,d['qualified']/1.2,label='qualified',lw=1)

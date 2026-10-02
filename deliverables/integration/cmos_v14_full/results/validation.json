@@ -1,5 +1,51 @@
 [
   {
+    "run": "acquire01",
+    "case": "acquire_k41_tt",
+    "simulator_completed": false,
+    "cancelled": true,
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "errors": [
+      "ERROR (SPECTRE-25): The simulation is stopped either by the user or the farm."
+    ],
+    "input_hashes_verified": true,
+    "source_result": "research\\runs\\spectre_cmos_v14_full\\acquire01\\acquire_k41_tt\\result.json",
+    "native_recovery": null,
+    "checkpoint_segment": false,
+    "loop": {
+      "phase_pp_rad": 23.987954326743097,
+      "phase_drift_rad_per_us": 24.944609801606248,
+      "max_rf_cycles_error": 0.18495278702181395,
+      "max_out_cycles_error": 0.04701103460683953,
+      "mean_output_mhz": 984.993494391987,
+      "ctrl_range_v": [
+        0.6193991608782543,
+        0.6578287896773308
+      ],
+      "observed_final_window_us": 0.9599999999988457,
+      "passed": false,
+      "criteria": "Last1us: phase pp<.02rad, drift<.01rad/us, cycles/ref errors<.001, ctrl0.2..1V; functional stationarity, not jitter.",
+      "measurement_limit": "Sparse GHz voltage/current samples are not used for RF swing or average power.",
+      "end_us": 31.706000000003943,
+      "final_state": {
+        "cfg_ready": 1.200000813730442,
+        "qualified": 1.423315459551499e-06,
+        "range_error": 8.933725642396069e-07,
+        "frequency_good": 1.200007490809289,
+        "phase_good": 1.199999926781226,
+        "amp_good": 1.200000132223806,
+        "XP.en": 1.197883540606322,
+        "XP.XC.acquired": 1.199998935237458,
+        "XP.XV.XL.nb": 0.7256087284031726
+      },
+      "final_1us_qualified_high_fraction": 0.0,
+      "first_qualified_us": null,
+      "reason": "Deliberately stopped diagnostic; partial time window is not accepted."
+    }
+  },
+  {
     "run": "acquirefast3",
     "case": "acquire_fast3_tt",
     "simulator_completed": true,
@@ -2249,6 +2295,38 @@
     }
   },
   {
+    "run": "chainnoise01",
+    "case": "chain_noise_coarse_tt",
+    "simulator_completed": false,
+    "cancelled": true,
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "errors": [
+      "ERROR (SPECTRE-25): The simulation is stopped either by the user or the farm."
+    ],
+    "input_hashes_verified": true,
+    "source_result": "research\\runs\\spectre_cmos_v14_full\\chainnoise01\\chain_noise_coarse_tt\\result.json",
+    "native_recovery": null,
+    "checkpoint_segment": false,
+    "measurement_available": false
+  },
+  {
+    "run": "chainnoise02",
+    "case": "chain_noise_coarse_tt",
+    "simulator_completed": true,
+    "cancelled": false,
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow.",
+      "WARNING (SPCRTRF-15037): Infinite flicker noise is ignored."
+    ],
+    "errors": [],
+    "input_hashes_verified": true,
+    "source_result": "research\\runs\\spectre_cmos_v14_full\\chainnoise02\\chain_noise_coarse_tt\\result.json",
+    "native_recovery": null,
+    "checkpoint_segment": false
+  },
+  {
     "run": "completecold01",
     "case": "complete_k41_tt",
     "simulator_completed": false,
@@ -2351,6 +2429,118 @@
     }
   },
   {
+    "run": "completecold03",
+    "case": "complete_k41_tt",
+    "simulator_completed": false,
+    "cancelled": false,
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "errors": [
+      "ERROR (SPECTRE-25): The simulation is stopped either by the user or the farm."
+    ],
+    "input_hashes_verified": true,
+    "source_result": "research\\runs\\spectre_cmos_v14_full\\completecold03\\complete_k41_tt\\result.json",
+    "native_recovery": {
+      "local": "research/runs/spectre_cmos_v14_full/completecold02/complete_k41_tt/checkpoints/20261002T173023.srf",
+      "remote": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/completecold03_complete_k41_tt.recover.srf",
+      "sha256": "dfdd43eaa549989072f4485170667eb805d90cec2ba19934887cee082cc5fdb2",
+      "remote_hash_match": true,
+      "source_snapshot": "completecold02"
+    },
+    "checkpoint_segment": true,
+    "loop": {
+      "phase_pp_rad": 63.61167198396082,
+      "phase_drift_rad_per_us": 70.23605365932431,
+      "max_rf_cycles_error": 0.9617150449703047,
+      "max_out_cycles_error": 0.2404267392194015,
+      "mean_output_mhz": 985.78981684272,
+      "ctrl_range_v": [
+        0.1856975038367329,
+        0.2306062735802399
+      ],
+      "observed_final_window_us": 0.9579999999996697,
+      "passed": false,
+      "criteria": "Last1us: phase pp<.02rad, drift<.01rad/us, cycles/ref errors<.001, ctrl0.2..1V; functional stationarity, not jitter.",
+      "measurement_limit": "Sparse GHz voltage/current samples are not used for RF swing or average power.",
+      "end_us": 12.643999999998659,
+      "final_state": {
+        "cfg_ready": 1.199992023838984,
+        "qualified": -5.791224533194132e-06,
+        "range_error": -1.713255153003823e-06,
+        "frequency_good": -8.151950941679111e-07,
+        "phase_good": 1.19999974695508,
+        "amp_good": 1.200000055839397,
+        "XP.en": -0.004504917957429414,
+        "XP.XC.acquired": -0.01206501641101743,
+        "XP.XV.XL.nb": 0.7256098219503178
+      },
+      "final_1us_total_supply_power_mw": 5.93733303806933,
+      "power_method": "Internal-timestep integration of complete external1.2V supply; power=delta(nJ)/delta(us). Does not assume sparse sampled current is accurate.",
+      "whole_run_energy_nj": 35.97378920015131,
+      "final_1us_phase_held_high_fraction": 0.2874251497005988,
+      "final_1us_qualified_high_fraction": 0.0,
+      "first_qualified_us": null,
+      "reason": "Native-checkpoint segment; final capture is judged with the resumed segment, not this unfinished interval."
+    }
+  },
+  {
+    "run": "completecold04",
+    "case": "complete_k41_tt",
+    "simulator_completed": false,
+    "cancelled": false,
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+    ],
+    "errors": [
+      "ERROR (SPECTRE-25): The simulation is stopped either by the user or the farm."
+    ],
+    "input_hashes_verified": true,
+    "source_result": "research\\runs\\spectre_cmos_v14_full\\completecold04\\complete_k41_tt\\result.json",
+    "native_recovery": {
+      "local": "research/runs/spectre_cmos_v14_full/completecold03/complete_k41_tt/checkpoints/20261002T181554.srf",
+      "remote": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/completecold04_complete_k41_tt.recover.srf",
+      "sha256": "0cb9b8d15c518c4cc5d1f356c1677535cdb5d5bec8d09ad66a291ecb4782419a",
+      "remote_hash_match": true,
+      "source_snapshot": "completecold03"
+    },
+    "checkpoint_segment": true,
+    "loop": {
+      "phase_pp_rad": 26.191272459855824,
+      "phase_drift_rad_per_us": -27.598697329568314,
+      "max_rf_cycles_error": 0.4859129520191061,
+      "max_out_cycles_error": 0.12145857625910139,
+      "mean_output_mhz": 983.2015187169036,
+      "ctrl_range_v": [
+        0.1857685102765198,
+        0.2296737332625801
+      ],
+      "observed_final_window_us": 0.9579999999996713,
+      "passed": false,
+      "criteria": "Last1us: phase pp<.02rad, drift<.01rad/us, cycles/ref errors<.001, ctrl0.2..1V; functional stationarity, not jitter.",
+      "measurement_limit": "Sparse GHz voltage/current samples are not used for RF swing or average power.",
+      "end_us": 14.511999999998011,
+      "final_state": {
+        "cfg_ready": 1.199997921214448,
+        "qualified": -1.299515124764795e-06,
+        "range_error": -5.111540198485665e-07,
+        "frequency_good": 8.351707706938407e-07,
+        "phase_good": 1.200002010731906,
+        "amp_good": 1.20000055229789,
+        "XP.en": -0.007001512338874127,
+        "XP.XC.acquired": 0.001591071271963946,
+        "XP.XV.XL.nb": 0.7256096184954518
+      },
+      "final_1us_total_supply_power_mw": 5.931335881260511,
+      "power_method": "Internal-timestep integration of complete external1.2V supply; power=delta(nJ)/delta(us). Does not assume sparse sampled current is accurate.",
+      "whole_run_energy_nj": 11.189030923218311,
+      "final_1us_phase_held_high_fraction": 0.3333333333333333,
+      "final_1us_qualified_high_fraction": 0.0,
+      "first_qualified_us": null,
+      "reason": "Native-checkpoint segment; final capture is judged with the resumed segment, not this unfinished interval."
+    }
+  },
+  {
     "run": "completedense01",
     "case": "complete_warm_tt",
     "simulator_completed": true,
@@ -2400,6 +2590,63 @@
       "whole_run_energy_nj": 3.1340348505028572,
       "final_1us_phase_held_high_fraction": 1.0,
       "final_1us_qualified_high_fraction": 1.0,
+      "first_qualified_us": null
+    }
+  },
+  {
+    "run": "completestrict01",
+    "case": "complete_strict_tt",
+    "simulator_completed": true,
+    "cancelled": false,
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow.",
+      "WARNING (SPECTRE-16686): Initial condition of -2.72675 mA on node VDD:p  converted into initial guess (nodeset). Initial conditions will only be accepted for inductor currents.",
+      "WARNING (SPECTRE-16686): Initial condition of -30.1836 pA on node VK0:p  converted into initial guess (nodeset). Initial conditions will only be accepted for inductor currents.",
+      "WARNING (SPECTRE-16686): Initial condition of -29.0731 pA on node VK3:p  converted into initial guess (nodeset). Initial conditions will only be accepted for inductor currents.",
+      "WARNING (SPECTRE-16686): Initial condition of -26.2364 pA on node VK5:p  converted into initial guess (nodeset). Initial conditions will only be accepted for inductor currents.",
+      "WARNING (SPECTRE-16686): Initial condition of -544.058 pA on node VR:p  converted into initial guess (nodeset). Initial conditions will only be accepted for inductor currents.",
+      "WARNING (SPECTRE-17412): Initial condition of -191.671 uV between nodes XP.XC.XDAC.r0 and 0 has no capacitive path to ground. This may cause discontinuity between the operation point and the t=0 time point. It could result in convergence or performance issues on the first step of the transient analysis. If such issues happen, check the initial condition setting to make sure it is correct. If it is correct, set a small value to iccap option to smooth out the discontinuity and rerun the simulation.",
+      "WARNING (SPECTRE-17412): Initial condition of -217.622 uV between nodes XP.XC.XDAC.r1 and 0 has no capacitive path to ground. This may cause discontinuity between the operation point and the t=0 time point. It could result in convergence or performance issues on the first step of the transient analysis. If such issues happen, check the initial condition setting to make sure it is correct. If it is correct, set a small value to iccap option to smooth out the discontinuity and rerun the simulation.",
+      "WARNING (SPECTRE-17412): Initial condition of -187.661 uV between nodes XP.XC.XDAC.r2 and 0 has no capacitive path to ground. This may cause discontinuity between the operation point and the t=0 time point. It could result in convergence or performance issues on the first step of the transient analysis. If such issues happen, check the initial condition setting to make sure it is correct. If it is correct, set a small value to iccap option to smooth out the discontinuity and rerun the simulation.",
+      "WARNING (SPECTRE-17412): Initial condition of -142.727 uV between nodes XP.XC.XDAC.r3 and 0 has no capacitive path to ground. This may cause discontinuity between the operation point and the t=0 time point. It could result in convergence or performance issues on the first step of the transient analysis. If such issues happen, check the initial condition setting to make sure it is correct. If it is correct, set a small value to iccap option to smooth out the discontinuity and rerun the simulation.",
+      "WARNING (SPECTRE-17412): Initial condition of -31.8446 uV between nodes XP.XC.XDAC.r4 and 0 has no capacitive path to ground. This may cause discontinuity between the operation point and the t=0 time point. It could result in convergence or performance issues on the first step of the transient analysis. If such issues happen, check the initial condition setting to make sure it is correct. If it is correct, set a small value to iccap option to smooth out the discontinuity and rerun the simulation."
+    ],
+    "errors": [],
+    "input_hashes_verified": true,
+    "source_result": "research\\runs\\spectre_cmos_v14_full\\completestrict01\\complete_strict_tt\\result.json",
+    "native_recovery": null,
+    "checkpoint_segment": false,
+    "loop": {
+      "phase_pp_rad": 0.00376826161465027,
+      "phase_drift_rad_per_us": 0.00026396784875678256,
+      "max_rf_cycles_error": 0.00038796593619849773,
+      "max_out_cycles_error": 9.604523665984743e-05,
+      "mean_output_mhz": 984.0000019568065,
+      "ctrl_range_v": [
+        0.6777898182618098,
+        0.6805177413769975
+      ],
+      "observed_final_window_us": 0.958000000000072,
+      "passed": true,
+      "criteria": "Last1us: phase pp<.02rad, drift<.01rad/us, cycles/ref errors<.001, ctrl0.2..1V; functional stationarity, not jitter.",
+      "measurement_limit": "Sparse GHz voltage/current samples are not used for RF swing or average power.",
+      "end_us": 4.0,
+      "final_state": {
+        "cfg_ready": 1.200000299823015,
+        "qualified": -4.789046250472219e-07,
+        "range_error": -2.807838543865919e-07,
+        "frequency_good": -6.317669158294089e-06,
+        "phase_good": 1.199998169948269,
+        "amp_good": 1.200000070573052,
+        "XP.en": 1.201607286130599,
+        "XP.XC.acquired": 1.195289689526926,
+        "XP.XV.XL.nb": 0.7256093519430895
+      },
+      "final_1us_total_supply_power_mw": 5.615579302248051,
+      "power_method": "Internal-timestep integration of complete external1.2V supply; power=delta(nJ)/delta(us). Does not assume sparse sampled current is accurate.",
+      "whole_run_energy_nj": 22.51974473610354,
+      "final_1us_phase_held_high_fraction": 1.0,
+      "final_1us_qualified_high_fraction": 0.0,
       "first_qualified_us": null
     }
   },
@@ -2953,6 +3200,134 @@
       "final_1us_qualified_high_fraction": 1.0,
       "first_qualified_us": 2.9189986954530416
     }
+  },
+  {
+    "run": "handoffprobe01",
+    "case": "handoff_probe_p0_tt",
+    "simulator_completed": true,
+    "cancelled": false,
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow.",
+      "WARNING (SPECTRE-16686): Initial condition of -2.72675 mA on node VDD:p  converted into initial guess (nodeset). Initial conditions will only be accepted for inductor currents.",
+      "WARNING (SPECTRE-16686): Initial condition of -30.1836 pA on node VK0:p  converted into initial guess (nodeset). Initial conditions will only be accepted for inductor currents.",
+      "WARNING (SPECTRE-16686): Initial condition of -29.0731 pA on node VK3:p  converted into initial guess (nodeset). Initial conditions will only be accepted for inductor currents.",
+      "WARNING (SPECTRE-16686): Initial condition of -26.2364 pA on node VK5:p  converted into initial guess (nodeset). Initial conditions will only be accepted for inductor currents.",
+      "WARNING (SPECTRE-16686): Initial condition of -544.058 pA on node VR:p  converted into initial guess (nodeset). Initial conditions will only be accepted for inductor currents.",
+      "WARNING (SPECTRE-17412): Initial condition of -191.671 uV between nodes XP.XC.XDAC.r0 and 0 has no capacitive path to ground. This may cause discontinuity between the operation point and the t=0 time point. It could result in convergence or performance issues on the first step of the transient analysis. If such issues happen, check the initial condition setting to make sure it is correct. If it is correct, set a small value to iccap option to smooth out the discontinuity and rerun the simulation.",
+      "WARNING (SPECTRE-17412): Initial condition of -217.622 uV between nodes XP.XC.XDAC.r1 and 0 has no capacitive path to ground. This may cause discontinuity between the operation point and the t=0 time point. It could result in convergence or performance issues on the first step of the transient analysis. If such issues happen, check the initial condition setting to make sure it is correct. If it is correct, set a small value to iccap option to smooth out the discontinuity and rerun the simulation.",
+      "WARNING (SPECTRE-17412): Initial condition of -187.661 uV between nodes XP.XC.XDAC.r2 and 0 has no capacitive path to ground. This may cause discontinuity between the operation point and the t=0 time point. It could result in convergence or performance issues on the first step of the transient analysis. If such issues happen, check the initial condition setting to make sure it is correct. If it is correct, set a small value to iccap option to smooth out the discontinuity and rerun the simulation.",
+      "WARNING (SPECTRE-17412): Initial condition of -142.727 uV between nodes XP.XC.XDAC.r3 and 0 has no capacitive path to ground. This may cause discontinuity between the operation point and the t=0 time point. It could result in convergence or performance issues on the first step of the transient analysis. If such issues happen, check the initial condition setting to make sure it is correct. If it is correct, set a small value to iccap option to smooth out the discontinuity and rerun the simulation.",
+      "WARNING (SPECTRE-17412): Initial condition of -31.8446 uV between nodes XP.XC.XDAC.r4 and 0 has no capacitive path to ground. This may cause discontinuity between the operation point and the t=0 time point. It could result in convergence or performance issues on the first step of the transient analysis. If such issues happen, check the initial condition setting to make sure it is correct. If it is correct, set a small value to iccap option to smooth out the discontinuity and rerun the simulation."
+    ],
+    "errors": [],
+    "input_hashes_verified": true,
+    "source_result": "research\\runs\\spectre_cmos_v14_full\\handoffprobe01\\handoff_probe_p0_tt\\result.json",
+    "native_recovery": null,
+    "checkpoint_segment": false,
+    "loop": {
+      "phase_pp_rad": 25.68505717976608,
+      "phase_drift_rad_per_us": 26.809092450698216,
+      "max_rf_cycles_error": 0.20332144062288648,
+      "max_out_cycles_error": 0.050779059469959975,
+      "mean_output_mhz": 985.0676961536781,
+      "ctrl_range_v": [
+        0.6171698259006019,
+        0.6538407140194878
+      ],
+      "observed_final_window_us": 0.9579999999999762,
+      "passed": false,
+      "criteria": "Last1us: phase pp<.02rad, drift<.01rad/us, cycles/ref errors<.001, ctrl0.2..1V; functional stationarity, not jitter.",
+      "measurement_limit": "Sparse GHz voltage/current samples are not used for RF swing or average power.",
+      "end_us": 1.9999999999999871,
+      "final_state": {
+        "cfg_ready": 1.200002106898191,
+        "qualified": 2.103038560900846e-06,
+        "range_error": 1.269110299232654e-06,
+        "frequency_good": 1.200007286421753,
+        "phase_good": 1.200000173296369,
+        "amp_good": 1.200000654363578,
+        "XP.en": 1.197880062591917,
+        "XP.XC.acquired": 1.198248717777918,
+        "XP.XV.XL.nb": 0.7256087413223379
+      },
+      "final_1us_total_supply_power_mw": 5.7024952466502485,
+      "power_method": "Internal-timestep integration of complete external1.2V supply; power=delta(nJ)/delta(us). Does not assume sparse sampled current is accurate.",
+      "whole_run_energy_nj": 11.473027945761729,
+      "final_1us_phase_held_high_fraction": 0.313373253493014,
+      "final_1us_qualified_high_fraction": 0.0,
+      "first_qualified_us": null
+    }
+  },
+  {
+    "run": "handoffprobe01",
+    "case": "handoff_probe_p180_tt",
+    "simulator_completed": true,
+    "cancelled": false,
+    "warnings": [
+      "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow.",
+      "WARNING (SPECTRE-16686): Initial condition of -2.72675 mA on node VDD:p  converted into initial guess (nodeset). Initial conditions will only be accepted for inductor currents.",
+      "WARNING (SPECTRE-16686): Initial condition of -30.1836 pA on node VK0:p  converted into initial guess (nodeset). Initial conditions will only be accepted for inductor currents.",
+      "WARNING (SPECTRE-16686): Initial condition of -29.0731 pA on node VK3:p  converted into initial guess (nodeset). Initial conditions will only be accepted for inductor currents.",
+      "WARNING (SPECTRE-16686): Initial condition of -26.2364 pA on node VK5:p  converted into initial guess (nodeset). Initial conditions will only be accepted for inductor currents.",
+      "WARNING (SPECTRE-16686): Initial condition of -544.058 pA on node VR:p  converted into initial guess (nodeset). Initial conditions will only be accepted for inductor currents.",
+      "WARNING (SPECTRE-17412): Initial condition of -191.671 uV between nodes XP.XC.XDAC.r0 and 0 has no capacitive path to ground. This may cause discontinuity between the operation point and the t=0 time point. It could result in convergence or performance issues on the first step of the transient analysis. If such issues happen, check the initial condition setting to make sure it is correct. If it is correct, set a small value to iccap option to smooth out the discontinuity and rerun the simulation.",
+      "WARNING (SPECTRE-17412): Initial condition of -217.622 uV between nodes XP.XC.XDAC.r1 and 0 has no capacitive path to ground. This may cause discontinuity between the operation point and the t=0 time point. It could result in convergence or performance issues on the first step of the transient analysis. If such issues happen, check the initial condition setting to make sure it is correct. If it is correct, set a small value to iccap option to smooth out the discontinuity and rerun the simulation.",
+      "WARNING (SPECTRE-17412): Initial condition of -187.661 uV between nodes XP.XC.XDAC.r2 and 0 has no capacitive path to ground. This may cause discontinuity between the operation point and the t=0 time point. It could result in convergence or performance issues on the first step of the transient analysis. If such issues happen, check the initial condition setting to make sure it is correct. If it is correct, set a small value to iccap option to smooth out the discontinuity and rerun the simulation.",
+      "WARNING (SPECTRE-17412): Initial condition of -142.727 uV between nodes XP.XC.XDAC.r3 and 0 has no capacitive path to ground. This may cause discontinuity between the operation point and the t=0 time point. It could result in convergence or performance issues on the first step of the transient analysis. If such issues happen, check the initial condition setting to make sure it is correct. If it is correct, set a small value to iccap option to smooth out the discontinuity and rerun the simulation.",
+      "WARNING (SPECTRE-17412): Initial condition of -31.8446 uV between nodes XP.XC.XDAC.r4 and 0 has no capacitive path to ground. This may cause discontinuity between the operation point and the t=0 time point. It could result in convergence or performance issues on the first step of the transient analysis. If such issues happen, check the initial condition setting to make sure it is correct. If it is correct, set a small value to iccap option to smooth out the discontinuity and rerun the simulation."
+    ],
+    "errors": [],
+    "input_hashes_verified": true,
+    "source_result": "research\\runs\\spectre_cmos_v14_full\\handoffprobe01\\handoff_probe_p180_tt\\result.json",
+    "native_recovery": null,
+    "checkpoint_segment": false,
+    "loop": {
+      "phase_pp_rad": 25.99419074870577,
+      "phase_drift_rad_per_us": 27.063444304344507,
+      "max_rf_cycles_error": 0.20231830191460176,
+      "max_out_cycles_error": 0.0506291390847835,
+      "mean_output_mhz": 985.0758719017542,
+      "ctrl_range_v": [
+        0.6170231725452132,
+        0.6571453593804006
+      ],
+      "observed_final_window_us": 0.9579999999999762,
+      "passed": false,
+      "criteria": "Last1us: phase pp<.02rad, drift<.01rad/us, cycles/ref errors<.001, ctrl0.2..1V; functional stationarity, not jitter.",
+      "measurement_limit": "Sparse GHz voltage/current samples are not used for RF swing or average power.",
+      "end_us": 1.9999999999999871,
+      "final_state": {
+        "cfg_ready": 1.200005101699521,
+        "qualified": 2.781631843435429e-06,
+        "range_error": 1.669580015659186e-06,
+        "frequency_good": 1.200006076476737,
+        "phase_good": 1.199999598959788,
+        "amp_good": 1.199999966842391,
+        "XP.en": 1.198296789816783,
+        "XP.XC.acquired": 1.201194928532249,
+        "XP.XV.XL.nb": 0.7256086087067002
+      },
+      "final_1us_total_supply_power_mw": 5.7026852659990555,
+      "power_method": "Internal-timestep integration of complete external1.2V supply; power=delta(nJ)/delta(us). Does not assume sparse sampled current is accurate.",
+      "whole_run_energy_nj": 11.473075593923866,
+      "final_1us_phase_held_high_fraction": 0.437125748502994,
+      "final_1us_qualified_high_fraction": 0.0,
+      "first_qualified_us": null
+    }
+  },
+  {
+    "run": "noisecal01",
+    "case": "noise_measurement_fixture",
+    "simulator_completed": true,
+    "cancelled": false,
+    "warnings": [
+      "WARNING (SPCRTRF-15045): pss analysis might be slow because at least 30488 time-steps are needed to meet `maxacfreq' constraints."
+    ],
+    "errors": [],
+    "input_hashes_verified": true,
+    "source_result": "research\\runs\\spectre_cmos_v14_full\\noisecal01\\noise_measurement_fixture\\result.json",
+    "native_recovery": null,
+    "checkpoint_segment": false
   },
   {
     "run": "numrelax01",

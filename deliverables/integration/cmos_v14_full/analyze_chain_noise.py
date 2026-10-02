@@ -19,6 +19,8 @@ def devices(p,n):
   cols.setdefault(name,[]).append(a[idx])
  for k,v in cols.items():assert len(v)==n and np.all(np.isfinite(v)) and min(v)>=0,k
  return {k:np.asarray(v) for k,v in cols.items()}
+calibration=json.loads((H/'results/noise_measurement_fixture.json').read_text())
+assert calibration['passed'],'The exact164MHz/ratio6 tool calibration must pass first'
 rows=[];spectra={}
 for rp in sorted(R.glob('chainnoise*/*/result.json')):
  job=rp.parent;rec=json.loads(rp.read_text());assert rec['remote_inputs_match'];log=(job/'spectre.out').read_text(errors='replace')
@@ -35,16 +37,33 @@ for rp in sorted(R.glob('chainnoise*/*/result.json')):
  assert slew>0 and np.all(np.diff(f)>0) and np.all(np.isfinite(st))
  components=devices(p,len(f));sumerr=float(max(abs(sum(components.values())-sv)/np.maximum(sv,1e-300)))
  var=float(np.trapezoid(st,f));jitter=float(np.sqrt(var)*1e15);jee=float(parse(raw/'pnMedge.0.Jee.pnoise')['Jee'][0])*1e15
+ # The independently validated Spectre21.1 fixture inaccuracy_v7 shows that
+ # autoJee clips at the last saved frequency<=PSSfund/2 even with sampleratio>1.
+ # Preserve both numbers and compare Jee only with that actual clipped band.
+ clip=f<=164e6/2*(1+1e-12)
+ clipped_fs=float(np.sqrt(np.trapezoid(st[clip],f[clip]))*1e15)
+ cliperr=abs(clipped_fs/jee-1)
+ ratio=header(p,'sample ratio factor')
  grouped={}
+ detail={};device_variances={}
  for k,v in components.items():
-  g=k.split('.')[0];grouped[g]=grouped.get(g,0)+float(np.trapezoid(v/slew**2,f))
- row.update(jitter_fs=jitter,spectre_jee_fs=jee,integration_relative_error=abs(jitter/jee-1),slew_v_per_s=slew,band_hz=[float(f[0]),float(f[-1])],device_psd_sum_max_relative_error=sumerr,
+  value=float(np.trapezoid(v/slew**2,f));g=k.split('.')[0];grouped[g]=grouped.get(g,0)+value
+  sub='.'.join(k.split('.')[:2]);detail[sub]=detail.get(sub,0)+value;device_variances[k]=value
+ row.update(jitter_fs=jitter,spectre_jee_fs=jee,full_band_vs_auto_jee_relative_difference=jitter/jee-1,
+    auto_jee_grid_cutoff_hz=float(f[clip][-1]),grid_clipped_integral_fs=clipped_fs,clipped_vs_auto_jee_relative_error=cliperr,
+    sample_ratio_header=ratio,slew_v_per_s=slew,band_hz=[float(f[0]),float(f[-1])],device_psd_sum_max_relative_error=sumerr,
     noise_by_instance={k:dict(jitter_fs=float(np.sqrt(v)*1e15),variance_fraction=v/var) for k,v in grouped.items()},
+    noise_by_subinstance={k:dict(jitter_fs=float(np.sqrt(v)*1e15),variance_fraction=v/var) for k,v in sorted(detail.items(),key=lambda kv:-kv[1])},
+    top_devices=[dict(device=k,jitter_fs=float(np.sqrt(v)*1e15),variance_fraction=v/var) for k,v in sorted(device_variances.items(),key=lambda kv:-kv[1])[:20]],
     power_mw={k:float(-1.2*np.trapezoid(td[k],t)/T*1e3) for k in ['VDD:p','VRX:p','VRT:p']})
- row['single_case_valid']=bool(periodic and sumerr<.01 and abs(jitter/jee-1)<.015 and abs(f[0]/1e4-1)<1e-9 and abs(f[-1]/492e6-1)<1e-9 and row['simulator_completed'])
+ row['single_case_valid']=bool(periodic and sumerr<.01 and cliperr<.015 and ratio==6 and abs(f[0]/1e4-1)<1e-9 and abs(f[-1]/492e6-1)<1e-9 and row['simulator_completed'])
  spectra[job.name+'_f']=f;spectra[job.name+'_st']=st
+ for group in grouped:
+  spectra[job.name+'_'+group+'_st']=sum(v for k,v in components.items() if k.split('.')[0]==group)/slew**2
 out=dict(scope='Physical current RF receiver, full programmable divider and retimer/buffer, plus physical quiet shared-counter clock input load. TT27,1.2V,10fF,selectedM4. Ideal external measured RF replay at3.936GHz. This excludes VCO, main loop, reference, control and their impedance feedback; not full-PLL jitter.',
- period='164MHz PSS retains÷8/÷12 branch states;24 RF cycles and6 output cycles. sampleratio6, selected first rising-edge event. Other periodic edge positions are not yet checked.',cases=rows)
+ period='164MHz PSS retains÷8/÷12 branch states;24 RF cycles and6 output cycles. sampleratio6, selected first rising-edge event. Other periodic edge positions are not yet checked.',
+ integration_boundary='Explicit10kHz-492MHz PSD/slew^2 integral is the reported band. In this Spectreversion autoJee clips to the last saved gridpoint<=PSSfund/2(82MHz); it is not the full-band result. Check autoJee against its clipped numerical integral separately.',
+ tool_normalization_evidence='share/deliverables/integration/cmos_v14_full/results/noise_measurement_fixture.json: exact164MHz/ratio6 identical-edge LTI RC fixture matches analytic kT/C within0.4percent and independently confirms clipped autoJee. Earlier accuracy_v7 also checked alternate PSS fundamental. Neither validates actual PLL edge-position invariance.',cases=rows)
 coarse=next((r for r in rows if r['case']=='chain_noise_coarse_tt' and r.get('single_case_valid')),None)
 fine=next((r for r in rows if r['case']=='chain_noise_fine_tt' and r.get('single_case_valid')),None)
 out['precision']=dict(status='not_complete',passed=False)

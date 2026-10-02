@@ -1,0 +1,379 @@
+{
+  "schema": "chip-report/0.1",
+  "report": {
+    "seq": 20,
+    "time": "2026-10-02T19:38:58+08:00",
+    "trigger": "proactive",
+    "covers_since": "2026-10-02T18:08:09+08:00"
+  },
+  "overall": {
+    "phase": "V14 完整晶体管 PLL 集成与首次系统验证",
+    "summary": "完整V14的TT严格精度近锁定主环通过：984.000002MHz，静默监督窗口5.616mW仍超4mW。当前输出链实际器件噪声首个上升沿141.222fs，积分10k–492MHz，尚非整机抖动且加密未完。两个FLL余差交接探针2µs内未捕获；独立复位轨迹仍在运行。",
+    "since_last": [
+      "同一完整DUT在1ps/reltol1e-5下完成4µs近锁定检查：末1µs相位峰峰0.003768rad、漂移+0.000264rad/µs，主环稳定性筛选通过；构造的监督历史未在此窗口重新建立qualified。",
+      "严格精度静默监督窗口整机5.615579mW，VCO3.751463、RF接收器0.714693、重定时/输出0.131186、其余1.018237mW。参考边沿约166/151ps，输出131/213ps。",
+      "两个完整DUT构造交接相位均零错误完成2µs，末段输出985.067696/985.075872MHz且相位持续旋转、qualified始终低；独立复位捕获仍未下结论。",
+      "连续RF相位的264组门图验证发现当前32参考周期FLL有19组range_error；旧36组模型重置RF计数相位，未覆盖该问题。保留未接入DUT的128周期/粗调留裕量候选及其逻辑测试。",
+      "当前物理输出链第一边沿积分10k–492MHz为141.222fs，重定时/输出方差占93.5%；PSS周期与器件PSD求和检查通过，加密和其他边沿尚未完成。",
+      "164MHz/采样比6的独立RC测量校准通过：显式积分与解析值差−0.396%；工具自动Jee仅覆盖PSS基频一半以下网格，不作为全频带结果。"
+    ],
+    "route_confidence": "low",
+    "route_confidence_reason": "同一电路主环近锁定已获严格精度证据，但自主捕获、完整监督和全频点尚未通过；功耗、低频端点与SS分频已有缺口，局部输出链噪声不能替代整机。"
+  },
+  "levels": {
+    "survey": {
+      "maturity": 3,
+      "note": "沿用项目需求及既定Q5 RLC口径；本轮基于实际PDK仿真与工具帮助定位集成边界，没有新增外部性能引用。",
+      "artifacts": [
+        "share/deliverables/integration/cmos_v14_full/README.md",
+        "share/deliverables/integration/cmos_v14_full/results/validation.json",
+        "share/deliverables/integration/cmos_v14_full/results/raw_manifest.json"
+      ]
+    },
+    "modeling": {
+      "maturity": 3,
+      "note": "当前32周期FLL新增连续RF相位门图验证264组，其中19组范围错误。未集成128周期/粗调留裕量候选在同一线性VCO模型264组无范围错误，余差−0.650…+0.325MHz；不代替实际VCO捕获。",
+      "artifacts": [
+        "share/deliverables/integration/cmos_v14_full/results/fll_async_quantization.json",
+        "share/deliverables/integration/cmos_v14_full/results/fll_center_candidate_validation.json"
+      ]
+    },
+    "architecture": {
+      "maturity": 2,
+      "note": "保留LC亚采样PLL和CMOS方向；真实偏置、相位下降沿采样和六档树为当前研究候选。非50%路径已如实报告，未冻结。",
+      "artifacts": [
+        "share/deliverables/integration/cmos_v14_full/README.md",
+        "share/deliverables/blocks/cmos_v14_full/pll_complete_v14.scs",
+        "share/deliverables/integration/cmos_v14_full/results/noise_period_boundary.md"
+      ]
+    },
+    "blocks": [
+      {
+        "name": "reference_buffer",
+        "role": "24 MHz 参考整形",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "真实缓冲驱动完整采样/控制负载，严格TT近锁定的边沿166.4/151.5ps。实际参考噪声、供电敏感性尚未测。",
+        "artifacts": [
+          "share/deliverables/integration/cmos_v14_full/results/full_metrics.json",
+          "share/deliverables/integration/cmos_v14_full/results/chain_noise_validation.json",
+          "share/deliverables/integration/cmos_v14_full/results/validation.json",
+          "share/deliverables/integration/cmos_v14_full/results/raw_manifest.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "subsampling_detector",
+        "role": "直接采样差分 VCO 并鉴相",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "真实PDK采样开关与保持节点已在完整TT1ps主环通过稳定性检查；SS动态相位检测仍有边界失败，噪声/失配未验收。",
+        "artifacts": [
+          "share/deliverables/integration/cmos_v14_full/results/full_metrics.json",
+          "share/deliverables/integration/cmos_v14_full/results/chain_noise_validation.json",
+          "share/deliverables/integration/cmos_v14_full/results/validation.json",
+          "share/deliverables/integration/cmos_v14_full/results/raw_manifest.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "transconductor_charge_pump",
+        "role": "采样误差转电流及增益控制",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "实际CP、24k电阻馈电MOS偏置和MOS时序已在同一完整TT1ps主环工作；静态电流及近锁定有证据，噪声/增益PVT未完整验收。",
+        "artifacts": [
+          "share/deliverables/integration/cmos_v14_full/results/full_metrics.json",
+          "share/deliverables/integration/cmos_v14_full/results/chain_noise_validation.json",
+          "share/deliverables/integration/cmos_v14_full/results/validation.json",
+          "share/deliverables/integration/cmos_v14_full/results/raw_manifest.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "passive_loop_filter",
+        "role": "环路滤波与稳定性",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "R100k/C1=7.162p/C2=.4775p及MOS预置开关接入完整主环；物理无源模型、容差与版图尚未实现。",
+        "artifacts": [
+          "share/deliverables/integration/cmos_v14_full/README.md",
+          "share/deliverables/integration/cmos_v14_full/results/validation.json",
+          "share/deliverables/integration/cmos_v14_full/results/raw_manifest.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "lc_vco_and_cap_bank",
+        "role": "2.688–3.936 GHz 振荡、粗调和模拟细调",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "物理MOS偏置与Q5RLC，严格TT完整主环VCO供电3.751463mW。12个加载端点未包围2.688GHz；新偏置的完整PLL噪声仍未得。",
+        "artifacts": [
+          "share/deliverables/integration/cmos_v14_full/results/full_metrics.json",
+          "share/deliverables/integration/cmos_v14_full/results/chain_noise_validation.json",
+          "share/deliverables/integration/cmos_v14_full/results/validation.json",
+          "share/deliverables/integration/cmos_v14_full/results/raw_manifest.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "auxiliary_fll",
+        "role": "启动捕获和正确谐波选择",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "当前RF÷4/32参考周期MOS控制器。新增异步门图模型264组中19组范围错误；两个实际完整DUT余差交接探针2µs内未捕获。自主复位仍运行。128周期候选未接入当前DUT。",
+        "artifacts": [
+          "share/deliverables/integration/cmos_v14_full/results/full_metrics.json",
+          "share/deliverables/integration/cmos_v14_full/results/chain_noise_validation.json",
+          "share/deliverables/integration/cmos_v14_full/results/validation.json",
+          "share/deliverables/integration/cmos_v14_full/results/raw_manifest.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "programmable_even_divider",
+        "role": "÷4/6/8/10/12/14 对称半周期分频",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "六档分级CMOS树；理想RF下TT27与FF0六档连重定时6/6通过，SS60的÷6/÷10/÷14失败。实际LC端点SS÷14也失败；非33点完整锁定验证。",
+        "artifacts": [
+          "share/deliverables/integration/cmos_v14_full/results/complete_warm_joined.json",
+          "share/deliverables/integration/cmos_v14_full/results/figures/complete_warm_joined.png",
+          "share/deliverables/integration/cmos_v14_full/results/validation.json",
+          "share/deliverables/integration/cmos_v14_full/results/raw_manifest.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "output_retimer",
+        "role": "利用 VCO 派生时钟重定时",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "本版实际重定时+输出级，输出链噪声第一边沿贡献136.553fs、占方差93.50%；完整主环功耗0.131186mW。尚非完整PLL噪声结果。",
+        "artifacts": [
+          "share/deliverables/integration/cmos_v14_full/results/full_metrics.json",
+          "share/deliverables/integration/cmos_v14_full/results/chain_noise_validation.json",
+          "share/deliverables/integration/cmos_v14_full/results/validation.json",
+          "share/deliverables/integration/cmos_v14_full/results/raw_manifest.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "output_buffer",
+        "role": "驱动片内轻负载",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "10fF负载下完整TT严格精度输出边沿130.6/213.3ps，占空比43.97%；最强单管噪声为末级PMOS，尚未开展优化或负载范围验收。",
+        "artifacts": [
+          "share/deliverables/integration/cmos_v14_full/results/full_metrics.json",
+          "share/deliverables/integration/cmos_v14_full/results/chain_noise_validation.json",
+          "share/deliverables/integration/cmos_v14_full/results/validation.json",
+          "share/deliverables/integration/cmos_v14_full/results/raw_manifest.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "bias_and_control",
+        "role": "偏置、频点配置及状态控制",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "内部理想电流源已全部移除；VCO/CP使用供电电阻及MOS镜像，中点用电阻产生。三配对角DC验证完成，但不是稳定带隙/PVT基准。",
+        "artifacts": [
+          "share/deliverables/integration/cmos_v14_full/README.md",
+          "share/deliverables/integration/cmos_v14_full/results/validation.json",
+          "share/deliverables/integration/cmos_v14_full/results/raw_manifest.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "rf_clock_receiver",
+        "role": "VCO到CMOS时钟接口",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "严格TT完整主环RF边沿约41.5/41.8ps、功耗0.714693mW；本版外部RF回放输出链中贡献约18.150fs，仅第一边沿、加密待完成。",
+        "artifacts": [
+          "share/deliverables/integration/cmos_v14_full/results/full_metrics.json",
+          "share/deliverables/integration/cmos_v14_full/results/chain_noise_validation.json",
+          "share/deliverables/integration/cmos_v14_full/results/validation.json",
+          "share/deliverables/integration/cmos_v14_full/results/raw_manifest.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "cp_pulse_timing",
+        "role": "参考后CP脉冲、使能与复位",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "实际MOS延迟与锁存时序接入完整DUT，沿用已验证电路；当前CP交接及闭环联合验证进行中。",
+        "artifacts": [
+          "share/deliverables/integration/cmos_v14_full/README.md",
+          "share/deliverables/integration/cmos_v14_full/results/validation.json",
+          "share/deliverables/integration/cmos_v14_full/results/raw_manifest.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "configuration_and_frequency_supervision",
+        "role": "频点配置、监督与周期测频",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "物理配置、下降沿相位采样、共享计数器和监督集成；TT严格TB因继承监督计时历史，qualified保持低，另已启动新监督初态TT及SS测试。复位/重配置/失锁恢复未完成。",
+        "artifacts": [
+          "share/deliverables/integration/cmos_v14_full/results/full_metrics.json",
+          "share/deliverables/integration/cmos_v14_full/results/chain_noise_validation.json",
+          "share/deliverables/integration/cmos_v14_full/results/validation.json",
+          "share/deliverables/integration/cmos_v14_full/results/raw_manifest.json"
+        ],
+        "blockers": []
+      },
+      {
+        "name": "phase_and_amplitude_validation",
+        "role": "锁定判定的物理相位与振幅有效性检测",
+        "stage": "circuit",
+        "maturity": 2,
+        "note": "已实现MOS包络检测/静态比较器/相位窗口/下降沿FF。静态三角测试通过；动态TT7过1临界、FF8过、SS4过2失败2临界，MC偏移未知。",
+        "artifacts": [
+          "share/deliverables/integration/cmos_v14_full/README.md",
+          "share/deliverables/integration/cmos_v14_full/results/validation.json",
+          "share/deliverables/integration/cmos_v14_full/results/raw_manifest.json"
+        ],
+        "blockers": []
+      }
+    ],
+    "verification": {
+      "maturity": 3,
+      "note": "TT完整DUT1ps近锁定4µs主环稳定性通过，监督初态边界明确。两种交接探针2µs不捕获；独立复位、SS近锁定、新初始化TT监督和输出链噪声加密仍在运行。噪声测量已以精确RC夹具校准。",
+      "artifacts": [
+        "share/deliverables/integration/cmos_v14_full/results/full_metrics.json",
+        "share/deliverables/integration/cmos_v14_full/results/chain_noise_validation.json",
+        "share/deliverables/integration/cmos_v14_full/results/validation.json",
+        "share/deliverables/integration/cmos_v14_full/results/raw_manifest.json",
+        "share/deliverables/integration/cmos_v14_full/results/noise_measurement_fixture.json"
+      ]
+    },
+    "integration": {
+      "maturity": 2,
+      "note": "13,394MOS的同一可编程顶层无内部功能VA或理想IREF；TT严格精度近锁定有效，完整自主复位捕获未完成。原生断点序列保持电路hash与4ps/1e-4不变。",
+      "artifacts": [
+        "share/deliverables/blocks/cmos_v14_full/pll_complete_v14.scs",
+        "share/deliverables/integration/cmos_v14_full/results/boundary_pll_complete_v14.json",
+        "share/deliverables/integration/cmos_v14_full/README.md"
+      ]
+    }
+  },
+  "spec_status": [
+    {
+      "id": "REQ-01",
+      "current": "TSMC180BCDGen2 MOS、PDK变容及RLC",
+      "condition": "实际MOS；Q5 RLC和理想几何RC仍为工作假设。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "无PDK电感、版图或PEX签核。"
+    },
+    {
+      "id": "REQ-02",
+      "current": "1.2 V；VCO基准SS/TT/FF约0.753/0.726/0.698 V",
+      "condition": "真实电阻馈电偏置，供电未扫描。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "旧理想偏置过压已识别并替换；器件端电压可靠性尚未签核。"
+    },
+    {
+      "id": "REQ-03",
+      "current": "24MHz外部准方波驱动真实完整缓冲；TT缓冲边沿166.4/151.5ps",
+      "condition": "TT27、1.2V、同一完整可编程DUT、K41/M4近锁定1ps检查。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "参考噪声和输入边沿/占空比范围未验收。"
+    },
+    {
+      "id": "REQ-04",
+      "current": "完整主环TT严格精度平均984.000001957MHz，稳定性筛选通过",
+      "condition": "K41/M4、1.2V、10fF、1ps/1e-5，构造近锁定4µs末1µs。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "qualified历史未重建，自主复位捕获仍在运行；两个余差交接探针2µs内失败。"
+    },
+    {
+      "id": "REQ-05",
+      "current": "新偏置最低端点TT2.750719/SS2.758130/FF2.734359GHz；984MHz近锁定已观察",
+      "condition": "12个实际LC加载端点，码0/255、控制0.2/1V，1.2V，TT27/SS60/FF0。端点非连续扫描或完整PLL锁定。",
+      "evidence": "circuit_sim",
+      "status": "at_risk",
+      "note": "端点不包围2.688GHz规划下限；SS÷14失效；33点覆盖尚未成立。"
+    },
+    {
+      "id": "REQ-06",
+      "current": "本版输出链局部第一上升沿141.222fs；整机未知",
+      "condition": "TT27、1.2V、984MHz、10fF、无噪声外部RF回放；164MHz PSS、采样比6，显式积分10kHz–492MHz。",
+      "evidence": "circuit_sim",
+      "status": "unknown",
+      "note": "包含实际接收器/完整分频树/重定时/缓冲/静默计数输入负载；不含VCO/参考/主环噪声及阻抗反馈。数值加密与其他边沿未完，不能宣称<200fs整机达标。"
+    },
+    {
+      "id": "REQ-07",
+      "current": null,
+      "condition": "按已确认决定暂缓离散杂散。",
+      "evidence": "none",
+      "status": "unknown",
+      "note": "−60dBc指标保留。"
+    },
+    {
+      "id": "REQ-08",
+      "current": "完整TT严格精度静默窗口5.615579mW；先前含监督活动窗口5.794364mW",
+      "condition": "1.2V、K41/M4、10fF、Q5、构造近锁定末1µs，内部时间步供电能量积分。",
+      "evidence": "circuit_sim",
+      "status": "at_risk",
+      "note": "均超过4mW；非同一完整32µs周期长期平均，未缩减统计边界。"
+    },
+    {
+      "id": "REQ-09",
+      "current": null,
+      "condition": "含电感、滤波及隔离，暂不计pad。",
+      "evidence": "none",
+      "status": "unknown",
+      "note": "无布局/工艺无源几何，不能确认<0.3mm²。"
+    },
+    {
+      "id": "REQ-10",
+      "current": "完整TT27主环近锁定通过；完整SS60近锁定运行中",
+      "condition": "完整PLL1.2V/K41/10fF；独立输出链TT27/FF0六档通过、SS60三档失败。",
+      "evidence": "circuit_sim",
+      "status": "at_risk",
+      "note": "未完成完整温度矩阵、全PVT或全33点；SS检测窗口也存在失败。"
+    },
+    {
+      "id": "REQ-11",
+      "current": "完整TT严格精度约43.97%；独立六档TT约41.6%–74.6%",
+      "condition": "1.2V、10fF、0.6V门限；本版实际MOS。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "按用户指示不刻意优化占空比，未声明50%验收。"
+    },
+    {
+      "id": "REQ-12",
+      "current": "10fF下完整顶层531个输出周期全摆幅，上升/下降131/213ps",
+      "condition": "TT27、984MHz、1.2V、7.45933–8µs密集仿真步。",
+      "evidence": "circuit_sim",
+      "status": "on_track",
+      "note": "负载为临时10fF；实际门限、互连PEX与负载范围未验证。"
+    }
+  ],
+  "questions_for_human": [],
+  "blocked_on": null,
+  "risks": [
+    "完整自主复位捕获未完成，构造近锁定通过不能替代；FLL量化/粗细衔接已有模型与交接负证据。",
+    "完整电路功耗超过4mW，最低VCO端点未包围2.688GHz，SS部分分频失败。",
+    "局部输出链141.222fs尚待数值加密和其他边沿覆盖，整机随机抖动未测；工具自动Jee不能替代指定全频带积分。",
+    "当前整机正常监督状态周期至少32µs；完整周期平均功耗/噪声、重配置/失锁恢复、供电/负载范围均有缺口。",
+    "无实际PDK电感、布局面积/PEX、MOS端电压可靠性和失配统计签核。"
+  ],
+  "next_steps": [
+    "完成当前独立复位轨迹，保留实际FLL交接和主环捕获结果；如需功能修复，先以本版证据确定修改。",
+    "完成完整SS60及新监督初态TT测试，完成输出链0.5ps/767边带加密并核对噪声变化。",
+    "基于同一完整电路的结果，再决定频率覆盖、SS逻辑、功耗与噪声优化的次序；不把局部或构造初态结果当作整机签核。"
+  ],
+  "decisions_since_last": [],
+  "resources_note": "当前4个长作业、17个请求线程；短RC校准已完成。各输入均冻结并核验SHA，原始结果及原生状态回收到本项目，PDK/native二进制不发布。"
+}

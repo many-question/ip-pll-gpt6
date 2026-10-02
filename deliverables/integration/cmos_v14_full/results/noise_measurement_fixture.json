@@ -1,0 +1,23 @@
+{
+  "scope": "Independent RC thermal-noise calibration for the exact164MHz/ratio6 setup.",
+  "source_result": "research\\runs\\spectre_cmos_v14_full\\noisecal01\\noise_measurement_fixture\\result.json",
+  "circuit": "1kohm/20fF first-order RC,27C,noiseless984MHz sinusoid0.5V amplitude+0.6VDC. Not a PLL noise result.",
+  "pss_fund_hz": 164000000.0,
+  "sample_ratio": 6.0,
+  "sample_rate_hz": 984000000.0,
+  "rising_edges": 6,
+  "periodic_passed": true,
+  "band_hz": [
+    10000.0,
+    492000000.0
+  ],
+  "explicit_integral_fs": 147.780526671167,
+  "analytic_integral_fs": 148.36843143933223,
+  "relative_to_analytic": -0.003962465346987409,
+  "spectre_auto_jee_fs": 59.376098716317564,
+  "auto_jee_grid_cutoff_hz": 79432823.4724283,
+  "grid_clipped_integral_fs": 59.37610886942423,
+  "clipped_relative_to_auto_jee": 1.709965269380831e-07,
+  "passed": true,
+  "interpretation": "AutoJee does not integrate through492MHz for the164MHz PSS superperiod. Explicit PSD/slew-squared integration supplies the requested band; cross-check autoJee only over its actual clipped grid. This identical-edge LTI fixture does not establish edge-position invariance in the real chain."
+}

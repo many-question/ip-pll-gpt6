@@ -30,7 +30,7 @@ def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('--run-id',required=True)
     parser.add_argument('--mode',choices=['spectre','aps','ax'],default='spectre')
-    parser.add_argument('--threads',type=int,choices=range(1,9),default=1,help='Bound APS threads; default remains one')
+    parser.add_argument('--threads',type=int,choices=range(1,17),default=1,help='Per-job APS threads; caller must enforce project-wide18-thread cap. Default one.')
     parser.add_argument('--preset-override',choices=['maxstep','maxstep,reltol,method,errpreset','all'],help='Honor named options, or all netlist solver options with bare -preset_override; verify actual log values')
     parser.add_argument('--timeout',type=int,default=3600,help='Per-job wall-clock limit in seconds')
     parser.add_argument('--snapshot-run',help='Replay immutable inputs from a prior local run instead of current design files')
