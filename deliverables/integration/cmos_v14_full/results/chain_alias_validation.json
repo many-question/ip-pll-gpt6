@@ -1,0 +1,165 @@
+{
+  "scope": "Check finite-frequency noise near PSS harmonics without hiding pole warnings.",
+  "source_result": "research\\runs\\spectre_cmos_v14_full\\chainalias01\\chain_alias_probe_tt\\result.json",
+  "same_circuit_dependencies": true,
+  "condition": "Currentphysicalchain,TT27,1.2V,984MHz/10fF,measuredRFreplay,firstedge,1ps/383sidebands. No device changes or suppression of noise sources.",
+  "warnings": [
+    "Warning from spectre during AHDL read-in.",
+    "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow."
+  ],
+  "offsets_hz": [
+    163990000.0,
+    163999999.0,
+    164000001.0,
+    327990000.0,
+    327999999.0,
+    328000001.0,
+    491990000.0,
+    491999990.0,
+    491999999.0
+  ],
+  "distance_to_pss_harmonic_hz": [
+    -10000.0,
+    -1.0,
+    1.0,
+    -10000.0,
+    -1.0,
+    1.0,
+    -10000.0,
+    -10.0,
+    -1.0
+  ],
+  "timing_psd_s2_per_hz": [
+    3.9855244196630074e-35,
+    3.9862005338464486e-35,
+    3.986200533475644e-35,
+    3.9706172808572906e-35,
+    4.064138398953081e-35,
+    4.064138398859608e-35,
+    3.9676731755692937e-35,
+    4.019029210034815e-35,
+    4.545062185375766e-35
+  ],
+  "delta_vs_interpolated_coarse_db": [
+    -0.00010576247889389186,
+    0.0006328042433282333,
+    0.0006328042156271418,
+    -8.973488985307486e-05,
+    0.10101524152557316,
+    0.10101524150005675,
+    5.301644379703092e-05,
+    0.05590582551944262,
+    0.5900924953388939
+  ],
+  "max_absolute_delta_db": 0.5900924953388939,
+  "finite_probe_passed": false,
+  "interpretation": "Finite-frequency probe only. No mathematical integral through a1/f singularity is asserted. If this check fails, the original logarithmic-grid141fs integral remains provisional and does not establish adequately resolved full-band chain noise.",
+  "protocol": {
+    "created": "2026-10-02T20:38:06.260061+08:00",
+    "scope": "Finite-offset diagnostic for the exact-harmonic flicker warning.\n\nThis does not change the requested integration band or any physical device.\nResults assess local peaks missed by the original logarithmic grid; it is not\na replacement full-band spectrum or an assumed low-frequency noise cutoff.\n",
+    "source": "chainnoise02/chain_noise_coarse_tt",
+    "offsets_hz": [
+      163990000,
+      163999999,
+      164000001,
+      327990000,
+      327999999,
+      328000001,
+      491990000,
+      491999990,
+      491999999
+    ],
+    "required_same_circuit": true,
+    "diagnostic_threshold_db": 0.1,
+    "threshold_meaning": "If all finite-offset PSDs differ from interpolated coarse PSD by less than0.1dB, no material local peaking is observed down to1Hz distance. This finite set does not prove an integral through an ideal1/f singularity or full-PLL jitter.",
+    "sources": [
+      {
+        "title": "PNoise Infinite flicker noise message",
+        "url": "https://community.cadence.com/cadence_technology_forums/f/custom-ic-design/62944/pnoise-infinite-flicker-noise-message",
+        "accessed": "2026-10-02",
+        "supports": "Exact harmonic1/f poles can be skipped; inspect nearby frequencies. Cadence-hosted discussion, not project performance evidence."
+      },
+      {
+        "title": "Pnoise on signal at multiple of the fundamental",
+        "url": "https://community.cadence.com/cadence_technology_forums/f/custom-ic-design/56829/pnoise-on-signal-at-multiple-of-the-fundamental",
+        "accessed": "2026-10-02",
+        "supports": "Cadence staff points to Sample Ratio for clocks above PSSfund. Linked support note requires login and was not read; project RC calibration supplies numerical evidence."
+      }
+    ]
+  },
+  "near_492mhz_excess_contributors_1hz_vs_10khz_distance": [
+    {
+      "device": "XD.XPB0.MP",
+      "fraction": 0.26702894848191105
+    },
+    {
+      "device": "XD.XPRE.MP2",
+      "fraction": 0.10086754706486607
+    },
+    {
+      "device": "XR.XFF.MP0",
+      "fraction": 0.08911244950830226
+    },
+    {
+      "device": "XD.XD4.MP2",
+      "fraction": 0.08795648518589894
+    },
+    {
+      "device": "XR.XFF.MPC0",
+      "fraction": 0.08621058973133498
+    },
+    {
+      "device": "XD.XO0.MP",
+      "fraction": 0.06377984933912832
+    },
+    {
+      "device": "XD.XB40.MN",
+      "fraction": 0.061515863257230144
+    },
+    {
+      "device": "XD.XB41.MP",
+      "fraction": 0.055250353129793324
+    },
+    {
+      "device": "XD.XMX0.MN",
+      "fraction": 0.04573160170186501
+    },
+    {
+      "device": "XD.XPB0.MN",
+      "fraction": 0.040286290948056594
+    },
+    {
+      "device": "XD.XPB1.MP",
+      "fraction": 0.021820336164209825
+    },
+    {
+      "device": "XR.XFF.MN1",
+      "fraction": 0.018353835777487504
+    }
+  ],
+  "excess_diagnostic_boundary": "Difference between two finite offset PSDs in the same run; not full-band variance or proof of a physical low-frequency cutoff.",
+  "conditional_peak_area_sensitivity": {
+    "fitted_exponent_from_1_and_10hz": 1.0505033849288814,
+    "examples": [
+      {
+        "assumed_min_distance_hz": 1.0,
+        "estimated_added_variance_s2": 2.1264353893218125e-34,
+        "relative_to_coarse_variance": 1.0662151351092956e-08,
+        "estimated_jitter_increase_fs": 7.528674491303447e-07
+      },
+      {
+        "assumed_min_distance_hz": 0.001,
+        "estimated_added_variance_s2": 4.5129668447900855e-34,
+        "relative_to_coarse_variance": 2.262844936801144e-08,
+        "estimated_jitter_increase_fs": 1.5978222725902738e-06
+      },
+      {
+        "assumed_min_distance_hz": 1e-06,
+        "estimated_added_variance_s2": 7.895774601173326e-34,
+        "relative_to_coarse_variance": 3.959017248046986e-08,
+        "estimated_jitter_increase_fs": 2.795510115075238e-06
+      }
+    ],
+    "assumption": "Assume all five harmonic sides have at most the observed492MHz1Hz excess and the same power-law exponent fitted at1/10Hz, between the stated cutoff and10kHz distance. This is an extrapolation; no physical cutoff is established and no requirement/band has been changed. Pointwise finite_probe_passed remains false when its original threshold is exceeded."
+  }
+}

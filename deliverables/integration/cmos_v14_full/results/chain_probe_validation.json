@@ -1,0 +1,322 @@
+{
+  "scope": "Three-offset phase and noise-isolation diagnostics, not full-band jitter.",
+  "protocol": {
+    "created": "2026-10-02T19:43:37.143168+08:00",
+    "scope": "Prepare phase-position and isolated-noise checks at three fixed offsets.\n\nLimited diagnostic spectra, not additional full-band jitter measurements.\nUse globalnoiseon_inst: this Spectreversion ignores it on a pnoiseanalysis.\n",
+    "basis": "chainnoise02/chain_noise_coarse_tt, identical RF replay and physicalchain",
+    "phase_numbers": [
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "offsets_hz": [
+      1000000.0,
+      100000000.0,
+      492000000.0
+    ],
+    "isolated_groups": {
+      "rt": [
+        "XR"
+      ],
+      "rx": [
+        "XRX"
+      ],
+      "divider": [
+        "XD"
+      ],
+      "aux": [
+        "XACQ0",
+        "XACQ1",
+        "XACB0",
+        "XACB1",
+        "XCOUNT"
+      ]
+    },
+    "limits": {
+      "max_phase_psd_delta_db": 0.1,
+      "max_gate_psd_relative_difference": 0.001,
+      "max_excluded_noise_fraction": 1e-08
+    },
+    "not_full_band": true
+  },
+  "cases": [
+    {
+      "case": "chain_edge_probe_tt",
+      "source_result": "research\\runs\\spectre_cmos_v14_full\\chainprobes01\\chain_edge_probe_tt\\result.json",
+      "simulator_completed": true,
+      "ignored_noise_warnings": [
+        "WARNING (SPCRTRF-15037): Infinite flicker noise is ignored.",
+        "WARNING (SPCRTRF-15037): Infinite flicker noise is ignored.",
+        "WARNING (SPCRTRF-15037): Infinite flicker noise is ignored.",
+        "WARNING (SPCRTRF-15037): Infinite flicker noise is ignored.",
+        "WARNING (SPCRTRF-15037): Infinite flicker noise is ignored."
+      ],
+      "exact_harmonic_flicker_warning": true,
+      "samples": [
+        {
+          "file": "pnMedge2.0.sample.pnoise",
+          "offsets_hz": [
+            1000000.0,
+            100000000.0,
+            492000000.0
+          ],
+          "time_ps": 1736.96,
+          "slew_v_per_s": 11951500000.0,
+          "timing_psd_s2_per_hz": [
+            8.218393686389531e-35,
+            4.0050595476623815e-35,
+            3.967684779619503e-35
+          ],
+          "delta_vs_first_edge_db": [
+            6.1872143839136e-05,
+            6.578283069329762e-05,
+            6.581423638908393e-05
+          ],
+          "passed": true
+        },
+        {
+          "file": "pnMedge3.0.sample.pnoise",
+          "offsets_hz": [
+            1000000.0,
+            100000000.0,
+            492000000.0
+          ],
+          "time_ps": 2753.2200000000003,
+          "slew_v_per_s": 11950100000.0,
+          "timing_psd_s2_per_hz": [
+            8.220364137477759e-35,
+            4.0060119195562986e-35,
+            3.9686282013599704e-35
+          ],
+          "delta_vs_first_edge_db": [
+            0.0011030165511541762,
+            0.0010983784376329881,
+            0.0010983412017554592
+          ],
+          "passed": true
+        },
+        {
+          "file": "pnMedge4.0.sample.pnoise",
+          "offsets_hz": [
+            1000000.0,
+            100000000.0,
+            492000000.0
+          ],
+          "time_ps": 3769.47,
+          "slew_v_per_s": 11944500000.0,
+          "timing_psd_s2_per_hz": [
+            8.227994271531473e-35,
+            4.0097443488807785e-35,
+            3.972325911822882e-35
+          ],
+          "delta_vs_first_edge_db": [
+            0.00513226405537558,
+            0.005142846663919328,
+            0.0051429316701016034
+          ],
+          "passed": true
+        },
+        {
+          "file": "pnMedge5.0.sample.pnoise",
+          "offsets_hz": [
+            1000000.0,
+            100000000.0,
+            492000000.0
+          ],
+          "time_ps": 4785.74,
+          "slew_v_per_s": 11945600000.0,
+          "timing_psd_s2_per_hz": [
+            8.226576440756321e-35,
+            4.0090362107753165e-35,
+            3.9716242452427703e-35
+          ],
+          "delta_vs_first_edge_db": [
+            0.004383832395612187,
+            0.004375796187504909,
+            0.004375731678545906
+          ],
+          "passed": true
+        },
+        {
+          "file": "pnMedge6.0.sample.pnoise",
+          "offsets_hz": [
+            1000000.0,
+            100000000.0,
+            492000000.0
+          ],
+          "time_ps": 5802.0,
+          "slew_v_per_s": 11950200000.0,
+          "timing_psd_s2_per_hz": [
+            8.220171511446185e-35,
+            4.0059277579203507e-35,
+            3.968544902358674e-35
+          ],
+          "delta_vs_first_edge_db": [
+            0.001001248063346514,
+            0.0010071372761840374,
+            0.0010071845742265423
+          ],
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "case": "chain_gate_aux_tt",
+      "source_result": "research\\runs\\spectre_cmos_v14_full\\chainprobes01\\chain_gate_aux_tt\\result.json",
+      "simulator_completed": true,
+      "ignored_noise_warnings": [
+        "WARNING (SPCRTRF-15037): Infinite flicker noise is ignored."
+      ],
+      "exact_harmonic_flicker_warning": true,
+      "samples": [
+        {
+          "file": "pnMedge.0.sample.pnoise",
+          "offsets_hz": [
+            1000000.0,
+            100000000.0,
+            492000000.0
+          ],
+          "time_ps": 720.6949999999999,
+          "slew_v_per_s": 11951600000.0,
+          "timing_psd_s2_per_hz": [
+            4.55867277494577e-36,
+            1.9339593911991375e-36,
+            1.905708693782986e-36
+          ],
+          "enabled_groups": [
+            "XACQ0",
+            "XACQ1",
+            "XACB0",
+            "XACB1",
+            "XCOUNT"
+          ],
+          "relative_psd_difference": [
+            1.8629542353210127e-13,
+            4.063416270128073e-14,
+            1.5543122344752192e-15
+          ],
+          "max_excluded_noise_fraction": 0.0,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "case": "chain_gate_divider_tt",
+      "source_result": "research\\runs\\spectre_cmos_v14_full\\chainprobes01\\chain_gate_divider_tt\\result.json",
+      "simulator_completed": true,
+      "ignored_noise_warnings": [
+        "WARNING (SPCRTRF-15037): Infinite flicker noise is ignored."
+      ],
+      "exact_harmonic_flicker_warning": true,
+      "samples": [
+        {
+          "file": "pnMedge.0.sample.pnoise",
+          "offsets_hz": [
+            1000000.0,
+            100000000.0,
+            492000000.0
+          ],
+          "time_ps": 720.6949999999999,
+          "slew_v_per_s": 11951600000.0,
+          "timing_psd_s2_per_hz": [
+            7.853741885586489e-39,
+            6.664738730305693e-39,
+            6.683730527222653e-39
+          ],
+          "enabled_groups": [
+            "XD"
+          ],
+          "relative_psd_difference": [
+            1.7054357925871955e-11,
+            3.877143051056464e-11,
+            -1.7020718168225812e-11
+          ],
+          "max_excluded_noise_fraction": 0.0,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "case": "chain_gate_rt_tt",
+      "source_result": "research\\runs\\spectre_cmos_v14_full\\chainprobes01\\chain_gate_rt_tt\\result.json",
+      "simulator_completed": true,
+      "ignored_noise_warnings": [
+        "WARNING (SPCRTRF-15037): Infinite flicker noise is ignored."
+      ],
+      "exact_harmonic_flicker_warning": true,
+      "samples": [
+        {
+          "file": "pnMedge.0.sample.pnoise",
+          "offsets_hz": [
+            1000000.0,
+            100000000.0,
+            492000000.0
+          ],
+          "time_ps": 720.6949999999999,
+          "slew_v_per_s": 11951600000.0,
+          "timing_psd_s2_per_hz": [
+            7.547413151693768e-35,
+            3.745771344866709e-35,
+            3.71171618404413e-35
+          ],
+          "enabled_groups": [
+            "XR"
+          ],
+          "relative_psd_difference": [
+            1.978417429882029e-13,
+            -7.238654120556021e-14,
+            -1.609823385706477e-14
+          ],
+          "max_excluded_noise_fraction": 0.0,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "case": "chain_gate_rx_tt",
+      "source_result": "research\\runs\\spectre_cmos_v14_full\\chainprobes01\\chain_gate_rx_tt\\result.json",
+      "simulator_completed": true,
+      "ignored_noise_warnings": [
+        "WARNING (SPCRTRF-15037): Infinite flicker noise is ignored."
+      ],
+      "exact_harmonic_flicker_warning": true,
+      "samples": [
+        {
+          "file": "pnMedge.0.sample.pnoise",
+          "offsets_hz": [
+            1000000.0,
+            100000000.0,
+            492000000.0
+          ],
+          "time_ps": 720.6949999999999,
+          "slew_v_per_s": 11951600000.0,
+          "timing_psd_s2_per_hz": [
+            2.1421079978255073e-36,
+            6.5165125398643095e-37,
+            6.466922616222981e-37
+          ],
+          "enabled_groups": [
+            "XRX"
+          ],
+          "relative_psd_difference": [
+            -1.9484414082171497e-13,
+            1.3773426843499692e-12,
+            7.001066393286237e-13
+          ],
+          "max_excluded_noise_fraction": 0.0,
+          "passed": true
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "completed": true,
+  "passed": true,
+  "limitation": "Only1MHz,100MHz,492MHz; no full-band integral or all-offset edge invariance follows from these checks. Isolated-noise controls validate PSD contribution bookkeeping in the same loaded physicalchain."
+}

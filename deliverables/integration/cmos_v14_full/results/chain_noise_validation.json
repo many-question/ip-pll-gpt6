@@ -8,13 +8,15 @@
       "run": "chainnoise01",
       "case": "chain_noise_coarse_tt",
       "simulator_completed": false,
-      "source_result": "research\\runs\\spectre_cmos_v14_full\\chainnoise01\\chain_noise_coarse_tt\\result.json"
+      "source_result": "research\\runs\\spectre_cmos_v14_full\\chainnoise01\\chain_noise_coarse_tt\\result.json",
+      "exact_harmonic_flicker_warning": false
     },
     {
       "run": "chainnoise02",
       "case": "chain_noise_coarse_tt",
       "simulator_completed": true,
       "source_result": "research\\runs\\spectre_cmos_v14_full\\chainnoise02\\chain_noise_coarse_tt\\result.json",
+      "exact_harmonic_flicker_warning": true,
       "periodic_passed": true,
       "dominant_harmonics": {
         "vp": 24,
@@ -548,6 +550,7 @@
       "single_case_valid": true
     }
   ],
+  "frequency_grid_boundary": "The original log grid hits492MHz=3*PSSfund exactly and logsSPCRTRF-15037 (infinite flicker noise omitted). Retain the numerical integral, but require separate finite-offset checks around164/328/492MHz before treating the grid as adequately resolved. Single-case validity and step/sideband precision checks do not by themselves resolve that warning.",
   "precision": {
     "status": "not_complete",
     "passed": false

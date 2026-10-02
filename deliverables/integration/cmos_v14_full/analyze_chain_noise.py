@@ -25,6 +25,7 @@ rows=[];spectra={}
 for rp in sorted(R.glob('chainnoise*/*/result.json')):
  job=rp.parent;rec=json.loads(rp.read_text());assert rec['remote_inputs_match'];log=(job/'spectre.out').read_text(errors='replace')
  row=dict(run=job.parent.name,case=job.name,simulator_completed='spectre completes with 0 errors' in log,source_result=str(rp.relative_to(ROOT)));rows.append(row)
+ row['exact_harmonic_flicker_warning']='SPCRTRF-15037' in log
  if not rec['ok']:continue
  raw=job/(job.name+'.raw');td=parse(raw/'pss.td.pss');fd=parse(raw/'pss.fd.pss');t=td['time'];T=t[-1]-t[0]
  expected={'vp':24,'clk':24,'q1':12,'data':6,'out':6,'acqclk':6,'XD.d8':3,'XD.d12':2}
@@ -64,6 +65,7 @@ out=dict(scope='Physical current RF receiver, full programmable divider and reti
  period='164MHz PSS retains÷8/÷12 branch states;24 RF cycles and6 output cycles. sampleratio6, selected first rising-edge event. Other periodic edge positions are not yet checked.',
  integration_boundary='Explicit10kHz-492MHz PSD/slew^2 integral is the reported band. In this Spectreversion autoJee clips to the last saved gridpoint<=PSSfund/2(82MHz); it is not the full-band result. Check autoJee against its clipped numerical integral separately.',
  tool_normalization_evidence='share/deliverables/integration/cmos_v14_full/results/noise_measurement_fixture.json: exact164MHz/ratio6 identical-edge LTI RC fixture matches analytic kT/C within0.4percent and independently confirms clipped autoJee. Earlier accuracy_v7 also checked alternate PSS fundamental. Neither validates actual PLL edge-position invariance.',cases=rows)
+out['frequency_grid_boundary']='The original log grid hits492MHz=3*PSSfund exactly and logsSPCRTRF-15037 (infinite flicker noise omitted). Retain the numerical integral, but require separate finite-offset checks around164/328/492MHz before treating the grid as adequately resolved. Single-case validity and step/sideband precision checks do not by themselves resolve that warning.'
 coarse=next((r for r in rows if r['case']=='chain_noise_coarse_tt' and r.get('single_case_valid')),None)
 fine=next((r for r in rows if r['case']=='chain_noise_fine_tt' and r.get('single_case_valid')),None)
 out['precision']=dict(status='not_complete',passed=False)

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-02T19:38:58.695579+08:00",
+  "generated_at": "2026-10-02T21:23:07.677162+08:00",
   "runs": [
     {
       "run": "acquire01",
@@ -3648,6 +3648,67 @@
       "scope": "Result.ok/bridge error classification is not acceptance. Use validation.json and actual Spectre final status. Native checkpoints are local research artifacts, not published."
     },
     {
+      "run": "chainalias01",
+      "case": "chain_alias_probe_tt",
+      "result_path": "research/runs/spectre_cmos_v14_full/chainalias01/chain_alias_probe_tt/result.json",
+      "result_sha256": "1a4fe82618c29170c8a5a8fa53b9199ad5a782f10984fa855228780fbe680a32",
+      "remote_inputs_match": true,
+      "inputs_sha256": {
+        "chain_alias_probe_tt.scs": "c17410a42f3bef0128ae7c79b0b3d1a0ac9a7177a72a058394ce77c8fc207204",
+        "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+        "cmos_even_bank_acq_v14.scs": "34a80ae697397ff60cc61ba9cfc51513716c39afd3df68f4ea0a9c950ca0ff6f",
+        "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+        "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+        "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+        "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+        "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+        "rt_light24s12_out083_v14.scs": "06c7d7b838a666815504f42ebf8d2a79aa9f6031c5af2212880d642fad3f8836",
+        "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+        "tank_replay_full_v14.va": "9582047b1de62cbb9dee8d4bdf60017efb61752d754751218fa5e820f4800897"
+      },
+      "local_outputs_sha256": {
+        "final.ic": "edc4c343fc608d54eb7eec070594beaca596ad8ca1bbc809ffe4d37c1c0c5b4f",
+        "runner.log": "69776bf5762dae42a697578cb778d401d09ff4afea07ee165da37cb80ccafc01",
+        "spectre.out": "6966ddd5c2a64a81298eff177eb3b1ee1ff02020a2f9fea484359728f8af0260",
+        "waveforms.npz": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85"
+      },
+      "native_state": null,
+      "checkpoint_segment": null,
+      "raw_files": [
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainalias01/chain_alias_probe_tt/chain_alias_probe_tt.raw/logFile",
+          "bytes": 1314,
+          "sha256": "12a192331729aed24d90fe7c1843e07a05d5db397a470c96d0f7898b9abffe8c"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainalias01/chain_alias_probe_tt/chain_alias_probe_tt.raw/logStatus",
+          "bytes": 148,
+          "sha256": "9368d96160d3dd96b6d54be0507eed012032ce9a8369011338316ee7c1a24322"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainalias01/chain_alias_probe_tt/chain_alias_probe_tt.raw/pnMedge.0.sample.pnoise",
+          "bytes": 2355622,
+          "sha256": "2a4e63cf46b1b9349e9392f624ad418f9a955e2618f82a37174f77d78448047f"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainalias01/chain_alias_probe_tt/chain_alias_probe_tt.raw/pnMedge.sample.pnoise",
+          "bytes": 2307,
+          "sha256": "5eae1b0ae5ad433c8ed90aafe6016122491d6dfb824b34a5d987509501a23907"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainalias01/chain_alias_probe_tt/chain_alias_probe_tt.raw/pss.fd.pss",
+          "bytes": 169517,
+          "sha256": "85b465ba008ff6d4b4a8be3fbc8627526374022e415d972cb16138e49af7b624"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainalias01/chain_alias_probe_tt/chain_alias_probe_tt.raw/pss.td.pss",
+          "bytes": 3082784,
+          "sha256": "5d5feedf3bd56211b43696b8733840522eda8dfab04214dad87f023883dc755a"
+        }
+      ],
+      "scope": "Result.ok/bridge error classification is not acceptance. Use validation.json and actual Spectre final status. Native checkpoints are local research artifacts, not published."
+    },
+    {
       "run": "chainnoise01",
       "case": "chain_noise_coarse_tt",
       "result_path": "research/runs/spectre_cmos_v14_full/chainnoise01/chain_noise_coarse_tt/result.json",
@@ -3775,6 +3836,351 @@
           "path": "research/runs/spectre_cmos_v14_full/chainnoise02/chain_noise_coarse_tt/chain_noise_coarse_tt.raw/pss.td.pss",
           "bytes": 3082784,
           "sha256": "734db551aaec43ecc7b2d884e0b60b8739529603aabf4836139f85440580526e"
+        }
+      ],
+      "scope": "Result.ok/bridge error classification is not acceptance. Use validation.json and actual Spectre final status. Native checkpoints are local research artifacts, not published."
+    },
+    {
+      "run": "chainprobes01",
+      "case": "chain_edge_probe_tt",
+      "result_path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_edge_probe_tt/result.json",
+      "result_sha256": "9745d9bd9136c00fcb96cb7353bc043e3b6a165b11ff210984f409bbb1273838",
+      "remote_inputs_match": true,
+      "inputs_sha256": {
+        "chain_edge_probe_tt.scs": "4ff00ccca1a2ca930e4a7572e0cd2b0025c01094406f3535f20f20e571c1ee2c",
+        "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+        "cmos_even_bank_acq_v14.scs": "34a80ae697397ff60cc61ba9cfc51513716c39afd3df68f4ea0a9c950ca0ff6f",
+        "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+        "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+        "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+        "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+        "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+        "rt_light24s12_out083_v14.scs": "06c7d7b838a666815504f42ebf8d2a79aa9f6031c5af2212880d642fad3f8836",
+        "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+        "tank_replay_full_v14.va": "9582047b1de62cbb9dee8d4bdf60017efb61752d754751218fa5e820f4800897"
+      },
+      "local_outputs_sha256": {
+        "final.ic": "372625e872adcc14adbea9c51c0a03908dd963a8d5802353ab755eba3ec6a7ce",
+        "runner.log": "78c6b187c4397d8c754a11ca03dbac64d8dcfe1c274341bef334855d2b24645d",
+        "spectre.out": "bc1105acc5f90bf2842a52779ff9c4c3c647e65ad72f67fa74a7ab2ff3f5871e",
+        "waveforms.npz": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85"
+      },
+      "native_state": null,
+      "checkpoint_segment": null,
+      "raw_files": [
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_edge_probe_tt/chain_edge_probe_tt.raw/logFile",
+          "bytes": 3078,
+          "sha256": "19928f26bf1b68198c42082b0bf6b61177ce203b3b5b0079a41e5c38bd3d81a0"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_edge_probe_tt/chain_edge_probe_tt.raw/logStatus",
+          "bytes": 148,
+          "sha256": "1f161eb194c1877915300efc25d26b8f369606e3c1b8f9a4da157f25270b9b3e"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_edge_probe_tt/chain_edge_probe_tt.raw/pnMedge2.0.sample.pnoise",
+          "bytes": 805518,
+          "sha256": "51f460561738ca3d3cc9462af106b12fccea2379897b6711ea6f930026753a46"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_edge_probe_tt/chain_edge_probe_tt.raw/pnMedge2.sample.pnoise",
+          "bytes": 2308,
+          "sha256": "c63860d0d97768e23f9ef3125d769a1a7e68650dac5cdf0a36e493098be9a528"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_edge_probe_tt/chain_edge_probe_tt.raw/pnMedge3.0.sample.pnoise",
+          "bytes": 805518,
+          "sha256": "85912c6066730ddef3efa2b22e4da61308a4dcefbf6e411afe033742c754637f"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_edge_probe_tt/chain_edge_probe_tt.raw/pnMedge3.sample.pnoise",
+          "bytes": 2308,
+          "sha256": "a5d38b8c21e9a04b6661b8bfa7ca6952c9976615cc2dd44125490f43735369ba"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_edge_probe_tt/chain_edge_probe_tt.raw/pnMedge4.0.sample.pnoise",
+          "bytes": 805518,
+          "sha256": "d1a43cf233643286749c5183b0e8096db78a38c949ae9980da2ae07347939d8c"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_edge_probe_tt/chain_edge_probe_tt.raw/pnMedge4.sample.pnoise",
+          "bytes": 2308,
+          "sha256": "4120f0f19a77a6d5fea2d1c30421dd6b2cbd3182a736c8d5dc0e49e8d1adcd33"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_edge_probe_tt/chain_edge_probe_tt.raw/pnMedge5.0.sample.pnoise",
+          "bytes": 805518,
+          "sha256": "9d5a813c4f1b6dbaae159818d137b8bb03f12653454bfb568b126f979bdbb7bf"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_edge_probe_tt/chain_edge_probe_tt.raw/pnMedge5.sample.pnoise",
+          "bytes": 2308,
+          "sha256": "7fd4c4ff60d5bc33e707b0eb8768053045eacd59876e4e52c38ac02fa60bfb21"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_edge_probe_tt/chain_edge_probe_tt.raw/pnMedge6.0.sample.pnoise",
+          "bytes": 805518,
+          "sha256": "d665275a1c6f55bc33383ef47ee71d7c9551cb9e99f97ca7f8a112e61df930ce"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_edge_probe_tt/chain_edge_probe_tt.raw/pnMedge6.sample.pnoise",
+          "bytes": 2308,
+          "sha256": "e230d98c0beb3838f9922672585c82968d336fb9ca78ad1b0e3ef74fd690bf59"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_edge_probe_tt/chain_edge_probe_tt.raw/pss.fd.pss",
+          "bytes": 169517,
+          "sha256": "e80253cb7e0c891cdce9212f6af379827817013c0be0af094c1865a3cac283f3"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_edge_probe_tt/chain_edge_probe_tt.raw/pss.td.pss",
+          "bytes": 3082784,
+          "sha256": "02653911a768fdb146e79033b0fc3ad8180ac3c184173cb49e9293c5329b1fa3"
+        }
+      ],
+      "scope": "Result.ok/bridge error classification is not acceptance. Use validation.json and actual Spectre final status. Native checkpoints are local research artifacts, not published."
+    },
+    {
+      "run": "chainprobes01",
+      "case": "chain_gate_aux_tt",
+      "result_path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_gate_aux_tt/result.json",
+      "result_sha256": "d6b22f046c4a1f55f4f5f366f3d26a45eb834d8726665ee19bbd441c61b254ec",
+      "remote_inputs_match": true,
+      "inputs_sha256": {
+        "chain_gate_aux_tt.scs": "e1320625942b016fe8ac75f043d7d3e1733f8c43fb7acf308d92d8f73bbafe55",
+        "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+        "cmos_even_bank_acq_v14.scs": "34a80ae697397ff60cc61ba9cfc51513716c39afd3df68f4ea0a9c950ca0ff6f",
+        "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+        "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+        "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+        "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+        "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+        "rt_light24s12_out083_v14.scs": "06c7d7b838a666815504f42ebf8d2a79aa9f6031c5af2212880d642fad3f8836",
+        "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+        "tank_replay_full_v14.va": "9582047b1de62cbb9dee8d4bdf60017efb61752d754751218fa5e820f4800897"
+      },
+      "local_outputs_sha256": {
+        "final.ic": "3481d2227a17b9090e344c459ef6a9ef69c97065c3a109cab4f249d7f9326bc6",
+        "runner.log": "0b621a6defbf73ea21eb227286b768d0a5eba9587e4687b9edc8144c6176c890",
+        "spectre.out": "7e57d9e29c5389443804f132f8ae66c6b260b1d567cdb34a75e6b37e8f0dd363",
+        "waveforms.npz": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85"
+      },
+      "native_state": null,
+      "checkpoint_segment": null,
+      "raw_files": [
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_gate_aux_tt/chain_gate_aux_tt.raw/logFile",
+          "bytes": 1309,
+          "sha256": "fc6c0a2512359037694a23265d677f2995ac3bc838907270d91e979f5ddae410"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_gate_aux_tt/chain_gate_aux_tt.raw/logStatus",
+          "bytes": 148,
+          "sha256": "1571edcc1df36e6e03331301a9785185014a0f7b0a7f4cebc19e1b4be5481a64"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_gate_aux_tt/chain_gate_aux_tt.raw/pnMedge.0.sample.pnoise",
+          "bytes": 805517,
+          "sha256": "3a06bdd85953ee3e4f286f8dd84ec14431936a292b2f2c4b45c8d671d2292fd7"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_gate_aux_tt/chain_gate_aux_tt.raw/pnMedge.sample.pnoise",
+          "bytes": 2307,
+          "sha256": "3533cbece88b92070e99b33e4c698e30e3e26f864ebc8f514f989f222a5d154e"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_gate_aux_tt/chain_gate_aux_tt.raw/pss.fd.pss",
+          "bytes": 169517,
+          "sha256": "79580104436f73f3cd3b375a21ed4eb6b77c241470172eb4b22a2a3c0ce21801"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_gate_aux_tt/chain_gate_aux_tt.raw/pss.td.pss",
+          "bytes": 3082784,
+          "sha256": "4ffedff9389155378dcdeb03c286058ba6f934fba2218b5937c6e55a6229c65c"
+        }
+      ],
+      "scope": "Result.ok/bridge error classification is not acceptance. Use validation.json and actual Spectre final status. Native checkpoints are local research artifacts, not published."
+    },
+    {
+      "run": "chainprobes01",
+      "case": "chain_gate_divider_tt",
+      "result_path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_gate_divider_tt/result.json",
+      "result_sha256": "4b45df0720d138387cdb9d190a0900be69436614e5874e9a65f8dee421ff4929",
+      "remote_inputs_match": true,
+      "inputs_sha256": {
+        "chain_gate_divider_tt.scs": "15fd17a7ca8e3da58e4afaf6e125882214c2f13c5ecfbc2b4b1708fa2dc43929",
+        "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+        "cmos_even_bank_acq_v14.scs": "34a80ae697397ff60cc61ba9cfc51513716c39afd3df68f4ea0a9c950ca0ff6f",
+        "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+        "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+        "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+        "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+        "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+        "rt_light24s12_out083_v14.scs": "06c7d7b838a666815504f42ebf8d2a79aa9f6031c5af2212880d642fad3f8836",
+        "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+        "tank_replay_full_v14.va": "9582047b1de62cbb9dee8d4bdf60017efb61752d754751218fa5e820f4800897"
+      },
+      "local_outputs_sha256": {
+        "final.ic": "1492cce1c5742f08f5eeced226e912046564cdabecf45a614060f82230899637",
+        "runner.log": "bdd3803902fbbb2e4e52c52118b43887de25ac6d44b658ef43d1fa2498636c8c",
+        "spectre.out": "cd77697796e0c13dbd6edd6df38b0d331a6369d37de0095c52787453d01a2944",
+        "waveforms.npz": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85"
+      },
+      "native_state": null,
+      "checkpoint_segment": null,
+      "raw_files": [
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_gate_divider_tt/chain_gate_divider_tt.raw/logFile",
+          "bytes": 1309,
+          "sha256": "ad6b06e89fa01ef3122eff3a6c820c19ee79e26b1cdfe50cfab1098bcf81e410"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_gate_divider_tt/chain_gate_divider_tt.raw/logStatus",
+          "bytes": 148,
+          "sha256": "1bd4364618880c7db4e993e7ee4458bfaa3ec5b90afc2edd8a91aece510ec25b"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_gate_divider_tt/chain_gate_divider_tt.raw/pnMedge.0.sample.pnoise",
+          "bytes": 805418,
+          "sha256": "22ece3687b0517a5b87f7c59ddcdfa0f568e445f676d2cda434ae9a04a7e7b1b"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_gate_divider_tt/chain_gate_divider_tt.raw/pnMedge.sample.pnoise",
+          "bytes": 2307,
+          "sha256": "fef319a7d95a5877d6dafeafe961bf5f618a2719e303f201833e54d7d57e3c8f"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_gate_divider_tt/chain_gate_divider_tt.raw/pss.fd.pss",
+          "bytes": 169517,
+          "sha256": "dfe6092c989e269c6c4d2be5fb674432238849e7701061793f7ad25953681711"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_gate_divider_tt/chain_gate_divider_tt.raw/pss.td.pss",
+          "bytes": 3082784,
+          "sha256": "8d4ca58dd556576033df722ccf36eca6c6ca752d7a3b482ba8fa68310b13c29d"
+        }
+      ],
+      "scope": "Result.ok/bridge error classification is not acceptance. Use validation.json and actual Spectre final status. Native checkpoints are local research artifacts, not published."
+    },
+    {
+      "run": "chainprobes01",
+      "case": "chain_gate_rt_tt",
+      "result_path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_gate_rt_tt/result.json",
+      "result_sha256": "b9f74adf320fc3f7e0f8b4ff1e98bf9a1c1ce4b0ffcbced4be78d2aabc882fe9",
+      "remote_inputs_match": true,
+      "inputs_sha256": {
+        "chain_gate_rt_tt.scs": "d619d4a8d92623e4a32426a88e64f99a1c7fe72228af217f6d22d54b5eb07564",
+        "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+        "cmos_even_bank_acq_v14.scs": "34a80ae697397ff60cc61ba9cfc51513716c39afd3df68f4ea0a9c950ca0ff6f",
+        "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+        "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+        "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+        "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+        "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+        "rt_light24s12_out083_v14.scs": "06c7d7b838a666815504f42ebf8d2a79aa9f6031c5af2212880d642fad3f8836",
+        "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+        "tank_replay_full_v14.va": "9582047b1de62cbb9dee8d4bdf60017efb61752d754751218fa5e820f4800897"
+      },
+      "local_outputs_sha256": {
+        "final.ic": "015fd8c55a41ab758ec93a321e026f332735e4dd8f7a2847e0ede553e5baaaf0",
+        "runner.log": "97fdd9d55905b25e01044d1c1fc6617d90bba5fa1a7c6dacc9e75bab7b923b56",
+        "spectre.out": "e395dbfd3b11b40445783e4a57b57bc94c4ff9987fc515e8b2c2b66792b52f67",
+        "waveforms.npz": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85"
+      },
+      "native_state": null,
+      "checkpoint_segment": null,
+      "raw_files": [
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_gate_rt_tt/chain_gate_rt_tt.raw/logFile",
+          "bytes": 1309,
+          "sha256": "faebaf82f993cd52d7adff9d482e19c0b8b06d9e2b8e058ed20da94766933a1d"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_gate_rt_tt/chain_gate_rt_tt.raw/logStatus",
+          "bytes": 148,
+          "sha256": "a204eb292d729c7c0d5f5557c336d82762adc93c3b002c3508e75bcd362ce684"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_gate_rt_tt/chain_gate_rt_tt.raw/pnMedge.0.sample.pnoise",
+          "bytes": 805418,
+          "sha256": "1da3e270f2af35e7f758542fa163d4f5abfe85788ee6b08bc1464be02156be1e"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_gate_rt_tt/chain_gate_rt_tt.raw/pnMedge.sample.pnoise",
+          "bytes": 2307,
+          "sha256": "986c8c34bd0cd3aa28bf52d9bde3ba9b696e4357dc1dad8764f1ee891ad7ec94"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_gate_rt_tt/chain_gate_rt_tt.raw/pss.fd.pss",
+          "bytes": 169517,
+          "sha256": "17b81facec0a90fd4f4991ebfd33e36f106f5e89cf0ce1c98e6133ec86d8a886"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_gate_rt_tt/chain_gate_rt_tt.raw/pss.td.pss",
+          "bytes": 3082784,
+          "sha256": "12ca9be3e5f90db2b854d4b16490ca9408721b27aeda3aae6e47eaf0c476a224"
+        }
+      ],
+      "scope": "Result.ok/bridge error classification is not acceptance. Use validation.json and actual Spectre final status. Native checkpoints are local research artifacts, not published."
+    },
+    {
+      "run": "chainprobes01",
+      "case": "chain_gate_rx_tt",
+      "result_path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_gate_rx_tt/result.json",
+      "result_sha256": "9e4455b5c5672092e68da0ebfdae8d941854b2f1db8237daeb3b93a912eeb52a",
+      "remote_inputs_match": true,
+      "inputs_sha256": {
+        "chain_gate_rx_tt.scs": "ddb661bda593ba97a6e790d1c3f15709c489e30d380b2b8125b3937990698610",
+        "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+        "cmos_even_bank_acq_v14.scs": "34a80ae697397ff60cc61ba9cfc51513716c39afd3df68f4ea0a9c950ca0ff6f",
+        "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+        "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+        "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+        "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+        "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+        "rt_light24s12_out083_v14.scs": "06c7d7b838a666815504f42ebf8d2a79aa9f6031c5af2212880d642fad3f8836",
+        "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+        "tank_replay_full_v14.va": "9582047b1de62cbb9dee8d4bdf60017efb61752d754751218fa5e820f4800897"
+      },
+      "local_outputs_sha256": {
+        "final.ic": "20283ab05b827ca12cdc81554f11f39b5288b32db2699a60af0c79ff771c1156",
+        "runner.log": "a3d6b4bf127d721f7ad5023fc0d60584a2030076db209cd14a494c909619b163",
+        "spectre.out": "fe8c9980cd33a031052f3a02ac9f9a3c83c8b942d98392d7e4ee8cd18b629d14",
+        "waveforms.npz": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85"
+      },
+      "native_state": null,
+      "checkpoint_segment": null,
+      "raw_files": [
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_gate_rx_tt/chain_gate_rx_tt.raw/logFile",
+          "bytes": 1309,
+          "sha256": "675fbc8875f8c896a6165cc9e3a525cdfddbf88b9033241b35c4bc628e3fece8"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_gate_rx_tt/chain_gate_rx_tt.raw/logStatus",
+          "bytes": 148,
+          "sha256": "d134645e951b81d8add184e35485982faf7f3547e7403723c0995c106a1cc6c9"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_gate_rx_tt/chain_gate_rx_tt.raw/pnMedge.0.sample.pnoise",
+          "bytes": 805418,
+          "sha256": "96a516dc9ac8ae7f5ce6cf7967e0e76791ed15b8f71d520cad2ccc61d0bb2b53"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_gate_rx_tt/chain_gate_rx_tt.raw/pnMedge.sample.pnoise",
+          "bytes": 2307,
+          "sha256": "f80183f082ca4ef8830dfd4e34455fc546900d413bd8d031629d8717100bf27e"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_gate_rx_tt/chain_gate_rx_tt.raw/pss.fd.pss",
+          "bytes": 169517,
+          "sha256": "e3dec55e758574c3ebeb45729e23090eaa9f6bf1e9f54cbf2256b9117cbe31c4"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/chainprobes01/chain_gate_rx_tt/chain_gate_rx_tt.raw/pss.td.pss",
+          "bytes": 3082784,
+          "sha256": "f334bf8504db6cf5927bee1f1ff3496cbaff30fa37c9f251992f78397e057079"
         }
       ],
       "scope": "Result.ok/bridge error classification is not acceptance. Use validation.json and actual Spectre final status. Native checkpoints are local research artifacts, not published."
@@ -4063,6 +4469,74 @@
       "scope": "Result.ok/bridge error classification is not acceptance. Use validation.json and actual Spectre final status. Native checkpoints are local research artifacts, not published."
     },
     {
+      "run": "completecold05",
+      "case": "complete_k41_tt",
+      "result_path": "research/runs/spectre_cmos_v14_full/completecold05/complete_k41_tt/result.json",
+      "result_sha256": "9fb4bc1aad47b95d3bdf1e3fb81c0211528b01d844ec67235b91308315f24a51",
+      "remote_inputs_match": true,
+      "inputs_sha256": {
+        "complete_k41_tt.scs": "876c9751b46f1f3fa682005b2d571ccc6026bb2ab7668cbaad29e52ef48fb7d8",
+        "cap_bank_switched_v4.scs": "82930a36417d5746edad5be73d95ff446cb94a046524d8eb12d6cc3a325caad0",
+        "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+        "cmos_even_bank_acq_v14.scs": "34a80ae697397ff60cc61ba9cfc51513716c39afd3df68f4ea0a9c950ca0ff6f",
+        "cp_physical_v14.scs": "ea3cd7184cafd899db18d5d9286adca6c2ffb861e9af2504afd1ea9bb702cc76",
+        "cp_timing.scs": "87a42f85028580ab52cc6d08a2514e4295dc93e4be0e019f52cb55964ae50fde",
+        "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+        "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+        "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+        "fll_controller_rf4_v14.scs": "04abe75d4b98b71871f0de6d39758a46de88f0d075ca82d49f3a581df48255a7",
+        "frequency_watchdog.scs": "63e1d92d0db21407142630dfe349b3da1afe127e3e04d712e7cf0f51c541d5f2",
+        "inductor_pi.scs": "417db0f24ee5d2a0544eda8a21f670d4b3ba5ba158422c913185ff82ef71438b",
+        "lc_core_physical_v14.scs": "8edc1b766e04d51405ffd185294fa1c7d6e7f2d2f8ef14f56753c1e84eaeb8b4",
+        "lc_loop_observer.va": "9f290fd2983cac41dc0d17a4342daf13dc5f8b0bb9dee94fad1ca143ff87cf07",
+        "lc_vco_physical_v14.scs": "c34bae69f93d9600f602bfb7e80f56ffe051458e8984da02604eb6ef07e727ce",
+        "loop_filter_v5.scs": "827a9a8cd9d91e8bf9af5d38c691f0bfc19416980aa1e6b34eda9d0802bb9499",
+        "pll_complete_v14.scs": "29eae277aea6e31db6ecf22d2288d6f0f59f18cc706c3b0aad287d9d3c11fc3f",
+        "pll_config.scs": "e9562e3410680ae20236c5e3a96229a0d83723e750753c4ae041ed3e5fd46622",
+        "pll_control_rf4_v14.scs": "2a59d87b2e1a6e3e10ae8add36a35bbe21b2aa61d2a8af2975e856980b852805",
+        "pll_supervisor.scs": "882b82e63d6869f15b87d2767d7f09d0059e6e45f831e6deb4d85278803b6b18",
+        "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+        "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+        "rt_light24s12_out083_v14.scs": "06c7d7b838a666815504f42ebf8d2a79aa9f6031c5af2212880d642fad3f8836",
+        "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+        "sampler_bias_v5.scs": "fe966831e65b04ee641625abc5187748bac130ea8d68babe17f33dc948c9cd67",
+        "supply_energy_observer.va": "e3f07b168283a02f1c14ccebe075bdc8370960227c058354d403dde41d5ce54e",
+        "validity_physical_v14.scs": "4adda2d6a864ac7ae7478c157989ea34d0901f52cf1f7b6bca2ec3238244f27f"
+      },
+      "local_outputs_sha256": {
+        "final.ic": "45f53900be341b118f891a87d252946bd19562adcdf6da5b8cc14511c3bcef8d",
+        "runner.log": "1843edcdf839fa97b4b5279fc7652d933d2758b3f9755246fce9d77ce6d6a08f",
+        "spectre.out": "63b879469b82985ff17c51ea95f74314c084156471ad52a7e934fe2c76b3109f",
+        "waveforms.npz": "a863c8cb09e47bf8ca85faaeaabec2e2169db3e34413a5ad83b96ca4426b176d"
+      },
+      "native_state": {
+        "local": "research/runs/spectre_cmos_v14_full/completecold04/complete_k41_tt/checkpoints/20261002T182953.srf",
+        "remote": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/completecold05_complete_k41_tt.recover.srf",
+        "sha256": "222bf3cf5d87723759dc6cfbf2a2368373736253a92a700a352d8e65878ae35d",
+        "remote_hash_match": true,
+        "source_snapshot": "completecold04"
+      },
+      "checkpoint_segment": null,
+      "raw_files": [
+        {
+          "path": "research/runs/spectre_cmos_v14_full/completecold05/complete_k41_tt/complete_k41_tt.raw/logFile",
+          "bytes": 665,
+          "sha256": "c7986f2c5efcf3382e2203cd4d3978afd7b9faed74f510a91572f9b6caf40520"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/completecold05/complete_k41_tt/complete_k41_tt.raw/logStatus",
+          "bytes": 77,
+          "sha256": "2145e2299dbc05a33e559d69e8aa33b6989c0a23b314981e27c4aefcd4c13746"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/completecold05/complete_k41_tt/complete_k41_tt.raw/tran.tran.tran",
+          "bytes": 23158008,
+          "sha256": "bd78f06a332dff475f2731d71ce803cc0f040158cd100c56a6e556ffb79e068a"
+        }
+      ],
+      "scope": "Result.ok/bridge error classification is not acceptance. Use validation.json and actual Spectre final status. Native checkpoints are local research artifacts, not published."
+    },
+    {
       "run": "completedense01",
       "case": "complete_warm_tt",
       "result_path": "research/runs/spectre_cmos_v14_full/completedense01/complete_warm_tt/result.json",
@@ -4127,6 +4601,136 @@
           "path": "research/runs/spectre_cmos_v14_full/completedense01/complete_warm_tt/complete_warm_tt.raw/tran.tran.tran",
           "bytes": 515134546,
           "sha256": "a053c304c36fac6f150935ee86750c991556d33c71d24557989a87c6a9c79a1e"
+        }
+      ],
+      "scope": "Result.ok/bridge error classification is not acceptance. Use validation.json and actual Spectre final status. Native checkpoints are local research artifacts, not published."
+    },
+    {
+      "run": "completequal01",
+      "case": "complete_qual_tt",
+      "result_path": "research/runs/spectre_cmos_v14_full/completequal01/complete_qual_tt/result.json",
+      "result_sha256": "af494966db51801c266ccba58f93accd0757f9b7cbcf2b2ddce00eab6a5705a2",
+      "remote_inputs_match": true,
+      "inputs_sha256": {
+        "complete_qual_tt.scs": "dce52d08ba1858385478b5568ff6be311d0781245832a744e2b6ef90e1374344",
+        "cap_bank_switched_v4.scs": "82930a36417d5746edad5be73d95ff446cb94a046524d8eb12d6cc3a325caad0",
+        "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+        "cmos_even_bank_acq_v14.scs": "34a80ae697397ff60cc61ba9cfc51513716c39afd3df68f4ea0a9c950ca0ff6f",
+        "complete_qual_tt.ic": "b316a828b53927ef156419c3bee2d674df7b2318f0a929e36c9fdc313a18d3fe",
+        "cp_physical_v14.scs": "ea3cd7184cafd899db18d5d9286adca6c2ffb861e9af2504afd1ea9bb702cc76",
+        "cp_timing.scs": "87a42f85028580ab52cc6d08a2514e4295dc93e4be0e019f52cb55964ae50fde",
+        "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+        "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+        "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+        "fll_controller_rf4_v14.scs": "04abe75d4b98b71871f0de6d39758a46de88f0d075ca82d49f3a581df48255a7",
+        "frequency_watchdog.scs": "63e1d92d0db21407142630dfe349b3da1afe127e3e04d712e7cf0f51c541d5f2",
+        "inductor_pi.scs": "417db0f24ee5d2a0544eda8a21f670d4b3ba5ba158422c913185ff82ef71438b",
+        "lc_core_physical_v14.scs": "8edc1b766e04d51405ffd185294fa1c7d6e7f2d2f8ef14f56753c1e84eaeb8b4",
+        "lc_loop_observer.va": "9f290fd2983cac41dc0d17a4342daf13dc5f8b0bb9dee94fad1ca143ff87cf07",
+        "lc_vco_physical_v14.scs": "c34bae69f93d9600f602bfb7e80f56ffe051458e8984da02604eb6ef07e727ce",
+        "loop_filter_v5.scs": "827a9a8cd9d91e8bf9af5d38c691f0bfc19416980aa1e6b34eda9d0802bb9499",
+        "pll_complete_v14.scs": "29eae277aea6e31db6ecf22d2288d6f0f59f18cc706c3b0aad287d9d3c11fc3f",
+        "pll_config.scs": "e9562e3410680ae20236c5e3a96229a0d83723e750753c4ae041ed3e5fd46622",
+        "pll_control_rf4_v14.scs": "2a59d87b2e1a6e3e10ae8add36a35bbe21b2aa61d2a8af2975e856980b852805",
+        "pll_supervisor.scs": "882b82e63d6869f15b87d2767d7f09d0059e6e45f831e6deb4d85278803b6b18",
+        "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+        "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+        "rt_light24s12_out083_v14.scs": "06c7d7b838a666815504f42ebf8d2a79aa9f6031c5af2212880d642fad3f8836",
+        "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+        "sampler_bias_v5.scs": "fe966831e65b04ee641625abc5187748bac130ea8d68babe17f33dc948c9cd67",
+        "supply_energy_observer.va": "e3f07b168283a02f1c14ccebe075bdc8370960227c058354d403dde41d5ce54e",
+        "tb_edge_observer.va": "b41b594dbce00f3f3fc8057091a2aa5143f398605827358ec98b3ede1dddd68e",
+        "tb_power_integrator.va": "47740c2795398890b5763edbdfcc46abf4fdf3d3bad246b2374fec309e9f7721",
+        "validity_physical_v14.scs": "4adda2d6a864ac7ae7478c157989ea34d0901f52cf1f7b6bca2ec3238244f27f"
+      },
+      "local_outputs_sha256": {
+        "final.ic": "7f91491cb197de0e116012594ef8bacc3186fa2981d1a09090732d4111c3251c",
+        "runner.log": "24d35a5cc586c4151e1235dd8f66c0aa27e02b53e81503f3a3f3510786e6984c",
+        "spectre.out": "2b20f8c881689677181a9ca2ab2c76cf362aefd8f1a4243a66a3be2889f4bee3",
+        "waveforms.npz": "b13fc84f400790ac6dc6209eefb5ee753c72f1404561683c2e3f44e76564c9fb"
+      },
+      "native_state": null,
+      "checkpoint_segment": null,
+      "raw_files": [
+        {
+          "path": "research/runs/spectre_cmos_v14_full/completequal01/complete_qual_tt/complete_qual_tt.raw/logFile",
+          "bytes": 664,
+          "sha256": "b563f62b95afb1cf2cb040e1a339a7735faa33e572700296e2f9fb2232cc98cc"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/completequal01/complete_qual_tt/complete_qual_tt.raw/logStatus",
+          "bytes": 77,
+          "sha256": "aadc08bc753ab81f326c18fab8af965ebdc31c2348c5b63ff47da82445b42650"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/completequal01/complete_qual_tt/complete_qual_tt.raw/tran.tran.tran",
+          "bytes": 5791796,
+          "sha256": "7664d8ec2e7c86bc33654e86dc9600cbe54636b5b9fc5689bebe8a7d7ba3af33"
+        }
+      ],
+      "scope": "Result.ok/bridge error classification is not acceptance. Use validation.json and actual Spectre final status. Native checkpoints are local research artifacts, not published."
+    },
+    {
+      "run": "completess01",
+      "case": "complete_near_ss",
+      "result_path": "research/runs/spectre_cmos_v14_full/completess01/complete_near_ss/result.json",
+      "result_sha256": "1cc9007b58705038f9d4d9c59776ff681b22d398e1d88f82331fb1286d290a7e",
+      "remote_inputs_match": true,
+      "inputs_sha256": {
+        "complete_near_ss.scs": "1a9804c5d499b6902eee82f8e321c68689dc97a41d596c57a650236bd913fa03",
+        "cap_bank_switched_v4.scs": "82930a36417d5746edad5be73d95ff446cb94a046524d8eb12d6cc3a325caad0",
+        "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+        "cmos_even_bank_acq_v14.scs": "34a80ae697397ff60cc61ba9cfc51513716c39afd3df68f4ea0a9c950ca0ff6f",
+        "complete_near_ss.ic": "1b637c257f77c2f295f0b3f8732a7feb12db79a3ba166af878d9cb57ac03fe15",
+        "cp_physical_v14.scs": "ea3cd7184cafd899db18d5d9286adca6c2ffb861e9af2504afd1ea9bb702cc76",
+        "cp_timing.scs": "87a42f85028580ab52cc6d08a2514e4295dc93e4be0e019f52cb55964ae50fde",
+        "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+        "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+        "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+        "fll_controller_rf4_v14.scs": "04abe75d4b98b71871f0de6d39758a46de88f0d075ca82d49f3a581df48255a7",
+        "frequency_watchdog.scs": "63e1d92d0db21407142630dfe349b3da1afe127e3e04d712e7cf0f51c541d5f2",
+        "inductor_pi.scs": "417db0f24ee5d2a0544eda8a21f670d4b3ba5ba158422c913185ff82ef71438b",
+        "lc_core_physical_v14.scs": "8edc1b766e04d51405ffd185294fa1c7d6e7f2d2f8ef14f56753c1e84eaeb8b4",
+        "lc_loop_observer.va": "9f290fd2983cac41dc0d17a4342daf13dc5f8b0bb9dee94fad1ca143ff87cf07",
+        "lc_vco_physical_v14.scs": "c34bae69f93d9600f602bfb7e80f56ffe051458e8984da02604eb6ef07e727ce",
+        "loop_filter_v5.scs": "827a9a8cd9d91e8bf9af5d38c691f0bfc19416980aa1e6b34eda9d0802bb9499",
+        "pll_complete_v14.scs": "29eae277aea6e31db6ecf22d2288d6f0f59f18cc706c3b0aad287d9d3c11fc3f",
+        "pll_config.scs": "e9562e3410680ae20236c5e3a96229a0d83723e750753c4ae041ed3e5fd46622",
+        "pll_control_rf4_v14.scs": "2a59d87b2e1a6e3e10ae8add36a35bbe21b2aa61d2a8af2975e856980b852805",
+        "pll_supervisor.scs": "882b82e63d6869f15b87d2767d7f09d0059e6e45f831e6deb4d85278803b6b18",
+        "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+        "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+        "rt_light24s12_out083_v14.scs": "06c7d7b838a666815504f42ebf8d2a79aa9f6031c5af2212880d642fad3f8836",
+        "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+        "sampler_bias_v5.scs": "fe966831e65b04ee641625abc5187748bac130ea8d68babe17f33dc948c9cd67",
+        "supply_energy_observer.va": "e3f07b168283a02f1c14ccebe075bdc8370960227c058354d403dde41d5ce54e",
+        "tb_edge_observer.va": "b41b594dbce00f3f3fc8057091a2aa5143f398605827358ec98b3ede1dddd68e",
+        "tb_power_integrator.va": "47740c2795398890b5763edbdfcc46abf4fdf3d3bad246b2374fec309e9f7721",
+        "validity_physical_v14.scs": "4adda2d6a864ac7ae7478c157989ea34d0901f52cf1f7b6bca2ec3238244f27f"
+      },
+      "local_outputs_sha256": {
+        "final.ic": "e85c6450cbcb07389c7d574ad136a471821a0e8a7a7590aff68f2ed1314841d3",
+        "runner.log": "7efbc88a62ab8594299da6c73ae82e19a4ec66280e0185173c6d6dec3f7a0b28",
+        "spectre.out": "c207a22e78e1c260448b703b7266b79c5adf9d8dbb9e5b558eefd52c337427b8",
+        "waveforms.npz": "ed5dd9d2c502e6ffa15282e1c11e311d1f0d167a6499ac44f3f44a4e98d453f1"
+      },
+      "native_state": null,
+      "checkpoint_segment": null,
+      "raw_files": [
+        {
+          "path": "research/runs/spectre_cmos_v14_full/completess01/complete_near_ss/complete_near_ss.raw/logFile",
+          "bytes": 664,
+          "sha256": "3316fb81fefb9087ff8e855f7193b301806ea39f527ceed67628f020c6e4d9a9"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/completess01/complete_near_ss/complete_near_ss.raw/logStatus",
+          "bytes": 77,
+          "sha256": "b7c2c19ccb9eca0015aff08da8260cc37a571f03cbd245a9ece18160926511fb"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/completess01/complete_near_ss/complete_near_ss.raw/tran.tran.tran",
+          "bytes": 5793699,
+          "sha256": "8b8d4366b6474b3377f68cdea1e85edae28e2cd41a70e768a561ca3453f9e0e4"
         }
       ],
       "scope": "Result.ok/bridge error classification is not acceptance. Use validation.json and actual Spectre final status. Native checkpoints are local research artifacts, not published."
@@ -7160,6 +7764,196 @@
           "path": "research/runs/spectre_cmos_v14_full/tune23/tune23_tt/tune23_tt.raw/tran.tran.tran",
           "bytes": 379394797,
           "sha256": "1b792c65a432783c02df02772ed1fe6b35223088c09f85181557340877b8d223"
+        }
+      ],
+      "scope": "Result.ok/bridge error classification is not acceptance. Use validation.json and actual Spectre final status. Native checkpoints are local research artifacts, not published."
+    },
+    {
+      "run": "vconoise01",
+      "case": "vco_noise_coarse_tt",
+      "result_path": "research/runs/spectre_cmos_v14_full/vconoise01/vco_noise_coarse_tt/result.json",
+      "result_sha256": "454f0ed05b51911486e94ed20f54feec602e6c3904056f323dc9d25caa79ac27",
+      "remote_inputs_match": true,
+      "inputs_sha256": {
+        "vco_noise_coarse_tt.scs": "181c6554a58fc8b615a471e9110f7b796994fd83bd26159d4139d132f86411b7",
+        "cap_bank_switched_v4.scs": "82930a36417d5746edad5be73d95ff446cb94a046524d8eb12d6cc3a325caad0",
+        "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+        "cp_physical_v14.scs": "ea3cd7184cafd899db18d5d9286adca6c2ffb861e9af2504afd1ea9bb702cc76",
+        "cp_timing.scs": "87a42f85028580ab52cc6d08a2514e4295dc93e4be0e019f52cb55964ae50fde",
+        "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+        "div_fb50buf24_v14.scs": "0ea70358ac98a50bbf06d5e3a3a8e73601fbc0c0ad5b3e768974a58a4ee33c38",
+        "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+        "inductor_pi.scs": "417db0f24ee5d2a0544eda8a21f670d4b3ba5ba158422c913185ff82ef71438b",
+        "lc_core_physical_v14.scs": "8edc1b766e04d51405ffd185294fa1c7d6e7f2d2f8ef14f56753c1e84eaeb8b4",
+        "lc_vco_physical_v14.scs": "c34bae69f93d9600f602bfb7e80f56ffe051458e8984da02604eb6ef07e727ce",
+        "loop_filter_v5.scs": "827a9a8cd9d91e8bf9af5d38c691f0bfc19416980aa1e6b34eda9d0802bb9499",
+        "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+        "rt_light24s12_out083_v14.scs": "06c7d7b838a666815504f42ebf8d2a79aa9f6031c5af2212880d642fad3f8836",
+        "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+        "sampler_bias_v5.scs": "fe966831e65b04ee641625abc5187748bac130ea8d68babe17f33dc948c9cd67",
+        "validity_physical_v14.scs": "4adda2d6a864ac7ae7478c157989ea34d0901f52cf1f7b6bca2ec3238244f27f"
+      },
+      "local_outputs_sha256": {
+        "final.ic": "9d5253d223e8f8cc28a1e5680ba4383a7261bb319381efd2a3b4c42efd77852e",
+        "runner.log": "8d2f4ddcb123ff5ad9ea7e501edc7abf87dec2ddd99eb53e8f32b715d02540f5",
+        "spectre.out": "8101fed9aab22b4aa771e01cb4f8d27065294e4284dd9357bca5c477f5dd392a",
+        "waveforms.npz": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85"
+      },
+      "native_state": null,
+      "checkpoint_segment": null,
+      "raw_files": [
+        {
+          "path": "research/runs/spectre_cmos_v14_full/vconoise01/vco_noise_coarse_tt/vco_noise_coarse_tt.raw/logFile",
+          "bytes": 1473,
+          "sha256": "e53766fca56fd7416216b2e89b02af97b0c16a6c005ec37500ba4470bc7f8594"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/vconoise01/vco_noise_coarse_tt/vco_noise_coarse_tt.raw/logStatus",
+          "bytes": 148,
+          "sha256": "d5974d5d97e35d9f504fcb24e47f845c1618be4c663c68bbe532196269ab22a1"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/vconoise01/vco_noise_coarse_tt/vco_noise_coarse_tt.raw/pn.am.pnoise",
+          "bytes": 7978456,
+          "sha256": "6174f80494db8ca683881de87dafa5bdc82e726484c5117c3b0d66210065c4ce"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/vconoise01/vco_noise_coarse_tt/vco_noise_coarse_tt.raw/pn.pm.pnoise",
+          "bytes": 7978456,
+          "sha256": "fee89efda2d825ca509d323fd02b7bf1d014c92cc07a86c613087a069b9c0c12"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/vconoise01/vco_noise_coarse_tt/vco_noise_coarse_tt.raw/pn.pnoise",
+          "bytes": 7978453,
+          "sha256": "2ba26c941eb8205d25a4798ec2b332df84a5ca890a2b06a1113c2e68586c03f1"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/vconoise01/vco_noise_coarse_tt/vco_noise_coarse_tt.raw/pss.fd.pss",
+          "bytes": 39485,
+          "sha256": "cfc7b55e3654b71c8eabebb2325586cc1f3ad9f4e257034f3f666510b2b9c874"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/vconoise01/vco_noise_coarse_tt/vco_noise_coarse_tt.raw/pss.td.pss",
+          "bytes": 661393,
+          "sha256": "2a188ca1869f342e234eb6c6a4a85ce0ab1ea66141a8476789ff39644d40249e"
+        }
+      ],
+      "scope": "Result.ok/bridge error classification is not acceptance. Use validation.json and actual Spectre final status. Native checkpoints are local research artifacts, not published."
+    },
+    {
+      "run": "vconoise01",
+      "case": "vco_noise_fine_tt",
+      "result_path": "research/runs/spectre_cmos_v14_full/vconoise01/vco_noise_fine_tt/result.json",
+      "result_sha256": "aa632b909f00baa75c4c02d6b17d14376fbb2e3348dc407b0d8c9ec59ed0ea4d",
+      "remote_inputs_match": true,
+      "inputs_sha256": {
+        "vco_noise_fine_tt.scs": "b537e340008909a7f10194df7b585c48b1a6af5fc0159a41ba94d4a65a24a972",
+        "cap_bank_switched_v4.scs": "82930a36417d5746edad5be73d95ff446cb94a046524d8eb12d6cc3a325caad0",
+        "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+        "cp_physical_v14.scs": "ea3cd7184cafd899db18d5d9286adca6c2ffb861e9af2504afd1ea9bb702cc76",
+        "cp_timing.scs": "87a42f85028580ab52cc6d08a2514e4295dc93e4be0e019f52cb55964ae50fde",
+        "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+        "div_fb50buf24_v14.scs": "0ea70358ac98a50bbf06d5e3a3a8e73601fbc0c0ad5b3e768974a58a4ee33c38",
+        "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+        "inductor_pi.scs": "417db0f24ee5d2a0544eda8a21f670d4b3ba5ba158422c913185ff82ef71438b",
+        "lc_core_physical_v14.scs": "8edc1b766e04d51405ffd185294fa1c7d6e7f2d2f8ef14f56753c1e84eaeb8b4",
+        "lc_vco_physical_v14.scs": "c34bae69f93d9600f602bfb7e80f56ffe051458e8984da02604eb6ef07e727ce",
+        "loop_filter_v5.scs": "827a9a8cd9d91e8bf9af5d38c691f0bfc19416980aa1e6b34eda9d0802bb9499",
+        "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+        "rt_light24s12_out083_v14.scs": "06c7d7b838a666815504f42ebf8d2a79aa9f6031c5af2212880d642fad3f8836",
+        "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+        "sampler_bias_v5.scs": "fe966831e65b04ee641625abc5187748bac130ea8d68babe17f33dc948c9cd67",
+        "validity_physical_v14.scs": "4adda2d6a864ac7ae7478c157989ea34d0901f52cf1f7b6bca2ec3238244f27f"
+      },
+      "local_outputs_sha256": {
+        "cancellation.json": "1f60d002b09235d40dfd28039eb968bb8fcbbf2d1136c9f2440b56b0afe7c73d",
+        "runner.log": "d661860f7ce5883eb9f34a2bbcbb35a332661bbe67ff66b0a2ec1b297ea3075c",
+        "spectre.out": "00bf2fc4afe73666003bda5aad1dbc3c4f51b8a3330374e782e1eda9a3aeec92"
+      },
+      "native_state": null,
+      "checkpoint_segment": null,
+      "raw_files": [
+        {
+          "path": "research/runs/spectre_cmos_v14_full/vconoise01/vco_noise_fine_tt/vco_noise_fine_tt.raw/logFile",
+          "bytes": 505,
+          "sha256": "9a36bdf4fac459f1800afb65d7dc6c6c7fda0718a64930897eadd7b8ba5425ea"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/vconoise01/vco_noise_fine_tt/vco_noise_fine_tt.raw/logStatus",
+          "bytes": 38,
+          "sha256": "a1540a1a49b5ce5284cb414cc24aa979a6b605f7b12c4512feee9697bbe244ca"
+        }
+      ],
+      "scope": "Result.ok/bridge error classification is not acceptance. Use validation.json and actual Spectre final status. Native checkpoints are local research artifacts, not published."
+    },
+    {
+      "run": "vconoise02",
+      "case": "vco_noise_check6_tt",
+      "result_path": "research/runs/spectre_cmos_v14_full/vconoise02/vco_noise_check6_tt/result.json",
+      "result_sha256": "6a23940d343d8415442efd7a2d016195552d9c72e4cd987d6170875a4285c4f7",
+      "remote_inputs_match": true,
+      "inputs_sha256": {
+        "vco_noise_check6_tt.scs": "12e3fae27c185bb03ab40fbb5041f3c291b7c1ab628725cfb44188ee93555a4f",
+        "cap_bank_switched_v4.scs": "82930a36417d5746edad5be73d95ff446cb94a046524d8eb12d6cc3a325caad0",
+        "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+        "cp_physical_v14.scs": "ea3cd7184cafd899db18d5d9286adca6c2ffb861e9af2504afd1ea9bb702cc76",
+        "cp_timing.scs": "87a42f85028580ab52cc6d08a2514e4295dc93e4be0e019f52cb55964ae50fde",
+        "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+        "div_fb50buf24_v14.scs": "0ea70358ac98a50bbf06d5e3a3a8e73601fbc0c0ad5b3e768974a58a4ee33c38",
+        "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+        "inductor_pi.scs": "417db0f24ee5d2a0544eda8a21f670d4b3ba5ba158422c913185ff82ef71438b",
+        "lc_core_physical_v14.scs": "8edc1b766e04d51405ffd185294fa1c7d6e7f2d2f8ef14f56753c1e84eaeb8b4",
+        "lc_vco_physical_v14.scs": "c34bae69f93d9600f602bfb7e80f56ffe051458e8984da02604eb6ef07e727ce",
+        "loop_filter_v5.scs": "827a9a8cd9d91e8bf9af5d38c691f0bfc19416980aa1e6b34eda9d0802bb9499",
+        "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+        "rt_light24s12_out083_v14.scs": "06c7d7b838a666815504f42ebf8d2a79aa9f6031c5af2212880d642fad3f8836",
+        "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+        "sampler_bias_v5.scs": "fe966831e65b04ee641625abc5187748bac130ea8d68babe17f33dc948c9cd67",
+        "validity_physical_v14.scs": "4adda2d6a864ac7ae7478c157989ea34d0901f52cf1f7b6bca2ec3238244f27f"
+      },
+      "local_outputs_sha256": {
+        "final.ic": "e914aeb39b7e8cc9de0ddcbd5c32f59f6c38cc9c51713a645b428c51cc3f308d",
+        "runner.log": "11a4b538e77111877d665c44f491112077f1dc734479c5feb1367617a188560e",
+        "spectre.out": "6c8a185af917f8e40b93920dc338579b8d4c9b4659a8e00b22d2c3ff19ee7a05",
+        "waveforms.npz": "8739c76e681f900923b900c9df0ef75cf421d39cabb54650c4b9ad19b6a76d85"
+      },
+      "native_state": null,
+      "checkpoint_segment": null,
+      "raw_files": [
+        {
+          "path": "research/runs/spectre_cmos_v14_full/vconoise02/vco_noise_check6_tt/vco_noise_check6_tt.raw/logFile",
+          "bytes": 1474,
+          "sha256": "c5aa2d8c12decbce88744e05a564955189d297f583bba314c0c51108f320a534"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/vconoise02/vco_noise_check6_tt/vco_noise_check6_tt.raw/logStatus",
+          "bytes": 148,
+          "sha256": "695783ee8523f8e7d27e1660d6993fdf55d6028d435b88e74efe9603abd19c5b"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/vconoise02/vco_noise_check6_tt/vco_noise_check6_tt.raw/pn.am.pnoise",
+          "bytes": 518385,
+          "sha256": "e7351b20d93086e7e9e9cdc4fe66630d73249035bc523c018dccb352a1daa568"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/vconoise02/vco_noise_check6_tt/vco_noise_check6_tt.raw/pn.pm.pnoise",
+          "bytes": 518385,
+          "sha256": "a333d48eed074383d9c861b0b7a175d1df9d21da3096ff8ffbf45d80f38d9b3c"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/vconoise02/vco_noise_check6_tt/vco_noise_check6_tt.raw/pn.pnoise",
+          "bytes": 518382,
+          "sha256": "693c89ee392944896ee633ee863b4ed7d2b8e2dc8057e27abf82d775d5d4886c"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/vconoise02/vco_noise_check6_tt/vco_noise_check6_tt.raw/pss.fd.pss",
+          "bytes": 76710,
+          "sha256": "1a2f7bf87bf02b8663938f4b79129a4cb49b8903d374a571e43feb268514061d"
+        },
+        {
+          "path": "research/runs/spectre_cmos_v14_full/vconoise02/vco_noise_check6_tt/vco_noise_check6_tt.raw/pss.td.pss",
+          "bytes": 1296448,
+          "sha256": "926faa2d782ca0a7c75beca6a6c17e828a246fa95e9543a7f6e63b181476e4b6"
         }
       ],
       "scope": "Result.ok/bridge error classification is not acceptance. Use validation.json and actual Spectre final status. Native checkpoints are local research artifacts, not published."

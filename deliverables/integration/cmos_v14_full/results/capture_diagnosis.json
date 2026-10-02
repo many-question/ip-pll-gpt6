@@ -1,0 +1,47 @@
+{
+  "condition": "TT27,1.2V,24MHz,10fF,K41/M4,Q5 RLC,4ps/reltol1e-4. Functional result; strict numerics and random noise remain separate.",
+  "source_capture_sha256": "02c5a8d6f520bcfc7d6379945db8b36a74eb839eaff28fd907a3777becc8911a",
+  "controller_source_sha256": "a709835d3f3e7084b0b12c6cd82ba4ceca2ef7fd6f8d6e34efeaad92ec7c6cc6",
+  "observed": {
+    "first_fine_trial": {
+      "eval_time_us": 19.04399999999964,
+      "coarse": 22,
+      "dac": 32,
+      "captured_count": 1312,
+      "target_count": 1312,
+      "rf_mhz_before_eval": 3938.110939687039,
+      "frequency_window_note": "Reference-cycle observations within late measurement interval, excludingdrain; not a direct count-window timing measurement."
+    },
+    "last_fine_trial": {
+      "eval_time_us": 28.21200000000421,
+      "coarse": 22,
+      "dac": 33,
+      "captured_count": 1313,
+      "target_count": 1312,
+      "rf_mhz_before_eval": 3939.1752263658727,
+      "frequency_window_note": "Reference-cycle observations within late measurement interval, excludingdrain; not a direct count-window timing measurement."
+    },
+    "handoff": {
+      "window_us": [
+        28.58531403814065,
+        29.485314038140647
+      ],
+      "rf_mean_mhz": 3939.1556670356395,
+      "rf_error_mhz": 3.1556670356394534,
+      "coarse": 22,
+      "dac": 33
+    },
+    "final_mean_output_mhz": 985.0815758676181,
+    "qualified_ever_high": false,
+    "restart_ever_high": false
+  },
+  "static_controller_facts": [
+    "RF/4 counted for32 reference cycles gives3MHz RF count resolution.",
+    "An equality measured==target is classified as not high; DAC32 was retained despite a late-window RF estimate above3936MHz.",
+    "At the finalbit, DAC33 measured1313>1312 and fine_keep clears bit0 to32. The unconditionalfine_keep+1 selects33 again for handoff.",
+    "The existing supervisor only requests restart after a previously qualified state loses qualification. There is no initial-capture timeout in the current controller."
+  ],
+  "inference": "FLL quantization, equality handling and the final ceiling choice leave a measured+3.156MHz RF error before handoff. Mainloop phase keeps slipping for the remaining6.415us. This establishes an observed failed handoff at this condition; it does not prove a unique cause, a global capture range, or failure at all initial phases/corners.",
+  "next_experiment": "Validate the retained128-reference-window/coarse-headroom proposal with actual MOS timing and actualVCO, then rerun reset capture in a separately named DUT revision. Do not reuse a native checkpoint across modified circuits. Mainloop capture range and bias-settling memory should be checked alongside the FLL change.",
+  "limitation": "No circuit modification or performance optimization is adopted by this diagnostic. The128-window candidate remains only gate-graph/linear-plant evidence."
+}

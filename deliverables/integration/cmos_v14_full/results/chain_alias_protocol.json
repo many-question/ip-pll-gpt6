@@ -1,0 +1,33 @@
+{
+  "created": "2026-10-02T20:38:06.260061+08:00",
+  "scope": "Finite-offset diagnostic for the exact-harmonic flicker warning.\n\nThis does not change the requested integration band or any physical device.\nResults assess local peaks missed by the original logarithmic grid; it is not\na replacement full-band spectrum or an assumed low-frequency noise cutoff.\n",
+  "source": "chainnoise02/chain_noise_coarse_tt",
+  "offsets_hz": [
+    163990000,
+    163999999,
+    164000001,
+    327990000,
+    327999999,
+    328000001,
+    491990000,
+    491999990,
+    491999999
+  ],
+  "required_same_circuit": true,
+  "diagnostic_threshold_db": 0.1,
+  "threshold_meaning": "If all finite-offset PSDs differ from interpolated coarse PSD by less than0.1dB, no material local peaking is observed down to1Hz distance. This finite set does not prove an integral through an ideal1/f singularity or full-PLL jitter.",
+  "sources": [
+    {
+      "title": "PNoise Infinite flicker noise message",
+      "url": "https://community.cadence.com/cadence_technology_forums/f/custom-ic-design/62944/pnoise-infinite-flicker-noise-message",
+      "accessed": "2026-10-02",
+      "supports": "Exact harmonic1/f poles can be skipped; inspect nearby frequencies. Cadence-hosted discussion, not project performance evidence."
+    },
+    {
+      "title": "Pnoise on signal at multiple of the fundamental",
+      "url": "https://community.cadence.com/cadence_technology_forums/f/custom-ic-design/56829/pnoise-on-signal-at-multiple-of-the-fundamental",
+      "accessed": "2026-10-02",
+      "supports": "Cadence staff points to Sample Ratio for clocks above PSSfund. Linked support note requires login and was not read; project RC calibration supplies numerical evidence."
+    }
+  ]
+}

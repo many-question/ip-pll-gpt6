@@ -130,12 +130,275 @@
         "XP.en": 1.0,
         "range_error": 0.0
       },
-      "history_boundary": "TT watchdog history inherited from8us warm state; first window is invalid and next watchdog window lies beyond4us. SS watchdog reset fresh; supervisor qualification initialized0 in both. Neither setup demonstrates FLL acquisition."
+      "history_boundary": "TT strict watchdog history inherited from8us warm state; first window is invalid and next watchdog window lies beyond4us. Qualification initialized0; no FLL acquisition proof.",
+      "measurement_note": "Supply-energy integration uses endpoint differences. Earlier constructed states retained a TB integrator initial offset, which cancels in these differences; no absolute initial energy is treated as consumed DUT energy.",
+      "near_lock_with_qualification_passed": false
     },
     {
       "run": "completess01",
       "case": "complete_near_ss",
-      "status": "not_completed"
+      "simulator_completed": true,
+      "source_result": "research\\runs\\spectre_cmos_v14_full\\completess01\\complete_near_ss\\result.json",
+      "scope": "Constructed near-lock physical completeDUT,1.2V,K41/M4,10fF,Q5RLC,1ps/1e-5. No reset-capture claim.",
+      "loop": {
+        "phase_pp_rad": 0.009351865497021328,
+        "phase_drift_rad_per_us": 0.004677380866256706,
+        "max_rf_cycles_error": 0.0005449889212911785,
+        "max_out_cycles_error": 0.0008974485022008594,
+        "mean_output_mhz": 984.0002926797888,
+        "ctrl_range_v": [
+          0.6795729019281865,
+          0.6813003900128307
+        ],
+        "observed_final_window_us": 0.958000000000072,
+        "passed": true,
+        "criteria": "Last1us: phase pp<.02rad, drift<.01rad/us, cycles/ref errors<.001, ctrl0.2..1V; functional stationarity, not jitter.",
+        "measurement_limit": "Sparse GHz voltage/current samples are not used for RF swing or average power.",
+        "end_us": 4.0,
+        "final_state": {
+          "cfg_ready": 1.200001280568467,
+          "qualified": 1.200000630241636,
+          "range_error": 8.662810951919795e-07,
+          "frequency_good": 1.20000774229787,
+          "phase_good": 1.200000413857308,
+          "amp_good": 1.199999903386402,
+          "XP.en": 1.198232016645963,
+          "XP.XC.acquired": 1.196458182647896,
+          "XP.XV.XL.nb": 0.752619438961173
+        },
+        "final_1us_total_supply_power_mw": 5.384195442006735,
+        "power_method": "Internal-timestep integration of complete external1.2V supply; power=delta(nJ)/delta(us). Does not assume sparse sampled current is accurate.",
+        "whole_run_energy_nj": 21.814805838400133,
+        "final_1us_phase_held_high_fraction": 1.0,
+        "final_1us_qualified_high_fraction": 1.0,
+        "first_qualified_us": 2.9190005801415118
+      },
+      "final_window_supply_power_mw": {
+        "total": 5.384195442006735,
+        "vco": 3.581458367627141,
+        "rx": 0.70508815024377,
+        "rt": 0.12285881841556658,
+        "other": 0.9747901057202579
+      },
+      "power_window_us": [
+        3.0000000000000617,
+        4.0
+      ],
+      "power_boundary": "All supply current including physical bias, dividers, FLL and supervision. Short window only; complete locked-state period is at least32us.",
+      "edges": {
+        "reference": {
+          "rise_ns": {
+            "mean": 0.2123921124747296,
+            "minimum": 0.2122829518264799,
+            "maximum": 0.2124860373725676
+          },
+          "fall_ns": {
+            "mean": 0.18883178691656505,
+            "minimum": 0.1885990706216404,
+            "maximum": 0.1890347443889059
+          },
+          "period_ns": {
+            "mean": 41.666673122662,
+            "minimum": 41.6665492201147,
+            "maximum": 41.66671786401408
+          },
+          "duty_percent": {
+            "mean": 50.01707793311979,
+            "minimum": 50.01677555416799,
+            "maximum": 50.0173578714983
+          }
+        },
+        "rfclock": {
+          "rise_ns": {
+            "mean": 0.051790571051470606,
+            "minimum": 0.04981073281188055,
+            "maximum": 0.0539574030673624
+          },
+          "fall_ns": {
+            "mean": 0.05349028196273106,
+            "minimum": 0.05096599106720445,
+            "maximum": 0.05609103961517163
+          },
+          "period_ns": {
+            "mean": 0.25406104328779516,
+            "minimum": 0.2526755128955834,
+            "maximum": 0.2548747460414381
+          },
+          "duty_percent": {
+            "mean": 49.52206008278307,
+            "minimum": 49.21694980214549,
+            "maximum": 49.83291483271916
+          }
+        },
+        "output": {
+          "rise_ns": {
+            "mean": 0.16576780001659305,
+            "minimum": 0.165439388165242,
+            "maximum": 0.1660613767467413
+          },
+          "fall_ns": {
+            "mean": 0.2771990426645684,
+            "minimum": 0.2766917898282203,
+            "maximum": 0.2777587671541601
+          },
+          "period_ns": {
+            "mean": 1.0162679000965802,
+            "minimum": 1.012205453533401,
+            "maximum": 1.020420227350029
+          },
+          "duty_percent": {
+            "mean": 63.40140317102024,
+            "minimum": 61.85965768449946,
+            "maximum": 64.88577657703276
+          }
+        }
+      },
+      "edge_boundary": "Validated TB observers measure10-90percent edges at internal solver time steps. Statistics are2ns snapshots of held observations, not a uniformly weighted census of RF cycles or random jitter.",
+      "logic_high_fraction": {
+        "qualified": 1.0,
+        "frequency_good": 1.0,
+        "XP.XC.phase_held": 1.0,
+        "XP.count_gate": 0.0,
+        "XP.count_reset": 1.0,
+        "XP.en": 1.0,
+        "range_error": 0.0
+      },
+      "history_boundary": "Watchdog and qualification initialized0, FLL DONE/configuration and analog near-lock state are constructed. No FLL acquisition proof.",
+      "measurement_note": "Supply-energy integration uses endpoint differences. Earlier constructed states retained a TB integrator initial offset, which cancels in these differences; no absolute initial energy is treated as consumed DUT energy.",
+      "near_lock_with_qualification_passed": true
+    },
+    {
+      "run": "completequal01",
+      "case": "complete_qual_tt",
+      "simulator_completed": true,
+      "source_result": "research\\runs\\spectre_cmos_v14_full\\completequal01\\complete_qual_tt\\result.json",
+      "scope": "Constructed near-lock physical completeDUT,1.2V,K41/M4,10fF,Q5RLC,4ps/1e-4. No reset-capture claim.",
+      "loop": {
+        "phase_pp_rad": 0.006934236461639154,
+        "phase_drift_rad_per_us": 0.004574085464345802,
+        "max_rf_cycles_error": 0.00030975686240708455,
+        "max_out_cycles_error": 7.630486562248961e-05,
+        "mean_output_mhz": 984.0002669823521,
+        "ctrl_range_v": [
+          0.6980073248524723,
+          0.6996700804033616
+        ],
+        "observed_final_window_us": 0.958000000000072,
+        "passed": true,
+        "criteria": "Last1us: phase pp<.02rad, drift<.01rad/us, cycles/ref errors<.001, ctrl0.2..1V; functional stationarity, not jitter.",
+        "measurement_limit": "Sparse GHz voltage/current samples are not used for RF swing or average power.",
+        "end_us": 4.0,
+        "final_state": {
+          "cfg_ready": 1.200000492949095,
+          "qualified": 1.200000582692309,
+          "range_error": -1.037565806080393e-06,
+          "frequency_good": 1.199992304743728,
+          "phase_good": 1.199998525061609,
+          "amp_good": 1.200000070977169,
+          "XP.en": 1.201725254167645,
+          "XP.XC.acquired": 1.19527728307908,
+          "XP.XV.XL.nb": 0.7256091968389083
+        },
+        "final_1us_total_supply_power_mw": 5.610096246790757,
+        "power_method": "Internal-timestep integration of complete external1.2V supply; power=delta(nJ)/delta(us). Does not assume sparse sampled current is accurate.",
+        "whole_run_energy_nj": 22.71912156725286,
+        "final_1us_phase_held_high_fraction": 1.0,
+        "final_1us_qualified_high_fraction": 1.0,
+        "first_qualified_us": 2.918998697451844
+      },
+      "final_window_supply_power_mw": {
+        "total": 5.610096246790757,
+        "vco": 3.7448843104686023,
+        "rx": 0.7147972383286803,
+        "rt": 0.13118361277810034,
+        "other": 1.0192310852153739
+      },
+      "power_window_us": [
+        3.0000000000000617,
+        4.0
+      ],
+      "power_boundary": "All supply current including physical bias, dividers, FLL and supervision. Short window only; complete locked-state period is at least32us.",
+      "edges": {
+        "reference": {
+          "rise_ns": {
+            "mean": 0.16648310172458614,
+            "minimum": 0.166387593236628,
+            "maximum": 0.1665802374931252
+          },
+          "fall_ns": {
+            "mean": 0.15157059027397993,
+            "minimum": 0.1513561710190822,
+            "maximum": 0.1517395128843455
+          },
+          "period_ns": {
+            "mean": 41.66667117593942,
+            "minimum": 41.66658571686789,
+            "maximum": 41.66670239604431
+          },
+          "duty_percent": {
+            "mean": 50.014145274379054,
+            "minimum": 50.01392295536876,
+            "maximum": 50.01434872338054
+          }
+        },
+        "rfclock": {
+          "rise_ns": {
+            "mean": 0.04162320787330325,
+            "minimum": 0.03989418869276699,
+            "maximum": 0.04372127255200563
+          },
+          "fall_ns": {
+            "mean": 0.04187969897867245,
+            "minimum": 0.03969023888338778,
+            "maximum": 0.04404700291401372
+          },
+          "period_ns": {
+            "mean": 0.2540729583459545,
+            "minimum": 0.2525492084009696,
+            "maximum": 0.256494603952879
+          },
+          "duty_percent": {
+            "mean": 49.59772075244625,
+            "minimum": 49.26644582001275,
+            "maximum": 49.86649753861642
+          }
+        },
+        "output": {
+          "rise_ns": {
+            "mean": 0.13060882237132013,
+            "minimum": 0.1305142020763858,
+            "maximum": 0.1307975096419576
+          },
+          "fall_ns": {
+            "mean": 0.21332418560504643,
+            "minimum": 0.2131625409941287,
+            "maximum": 0.2134721350443371
+          },
+          "period_ns": {
+            "mean": 1.0162621942355547,
+            "minimum": 1.0126200975241,
+            "maximum": 1.021073579034866
+          },
+          "duty_percent": {
+            "mean": 43.97475914951252,
+            "minimum": 43.88565070057093,
+            "maximum": 44.23203488311625
+          }
+        }
+      },
+      "edge_boundary": "Validated TB observers measure10-90percent edges at internal solver time steps. Statistics are2ns snapshots of held observations, not a uniformly weighted census of RF cycles or random jitter.",
+      "logic_high_fraction": {
+        "qualified": 1.0,
+        "frequency_good": 1.0,
+        "XP.XC.phase_held": 1.0,
+        "XP.count_gate": 0.0,
+        "XP.count_reset": 1.0,
+        "XP.en": 1.0,
+        "range_error": 0.0
+      },
+      "history_boundary": "Watchdog and qualification initialized0, FLL DONE/configuration and analog near-lock state are constructed. No FLL acquisition proof.",
+      "measurement_note": "Supply-energy integration uses endpoint differences. Earlier constructed states retained a TB integrator initial offset, which cancels in these differences; no absolute initial energy is treated as consumed DUT energy.",
+      "near_lock_with_qualification_passed": true
     }
   ]
 }

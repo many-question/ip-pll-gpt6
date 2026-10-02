@@ -1,0 +1,12 @@
+{
+  "created": "2026-10-02T20:11:11.878396+08:00",
+  "scope": "Current physical-bias VCO noise with the actual fixedM4 chain load.\n\nStatic reference and clamped control isolate a free-running VCO operating point.\nThe fixedM4 path omits other programmable branches and control/supervision.\nOnly XV noise is enabled; this is not closed-loop or full-DUT jitter.\n",
+  "condition": "TT27,1.2V,coarse23,control0.679V,biasR2500ohm,Q5RLC,actualfixedM4CMOSchain/10fF,referenceDC0. OnlyXVnoise.",
+  "not_closed_loop": true,
+  "not_full_programmable_load": true,
+  "precision_scope": "The original full-grid fine attempt in vconoise01 was explicitly stopped after coarse runtime showed its900s budget was insufficient. Its immutable snapshot and partialdata are retained. Separately named check6 uses six offsets10k/100k/1M/10M/100M/492MHz; it is not full-grid convergence.",
+  "precision_limits": {
+    "max_phase_noise_delta_db": 0.1,
+    "max_relative_carrier_change": 0.0001
+  }
+}
