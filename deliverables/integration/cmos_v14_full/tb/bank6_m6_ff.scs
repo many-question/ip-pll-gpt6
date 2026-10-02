@@ -1,0 +1,27 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=ff
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "cells.scs"
+include "digital_cells_v2.scs"
+include "cmos_even_bank_r6_v14.scs"
+simulatorOptions options temp=0 reltol=1e-5 vabstol=1e-7 iabstol=1e-13
+VDD (vdd 0) vsource dc=1.2
+VCLK (clk 0) vsource type=pulse val0=0 val1=1.2 period=2.57201646090535e-10 width=1.086008230452675e-10 rise=20p fall=20p
+VRST (reset 0) vsource type=pwl wave=[0 1.2 8n 1.2 8.01n 0]
+VS0 (s0 0) vsource dc=0
+VS1 (s1 0) vsource dc=1.2
+VS2 (s2 0) vsource dc=0
+VS3 (s3 0) vsource dc=0
+VS4 (s4 0) vsource dc=0
+VS5 (s5 0) vsource dc=0
+XD (clk reset s0 s1 s2 s3 s4 s5 q1 data vdd 0) cmos_even_bank_r6_v14
+CL (data 0) capacitor c=10f
+tran tran stop=100n outputstart=60n maxstep=1p method=traponly errpreset=conservative
+save clk q1 data reset VDD:p XD.ckbank XD.ck1 XD.r1_0 XD.r1_1 XD.r1_2
+saveOptions options save=selected
+
+save XD.ckbn XD.ckmid XD.gn0 XD.safe0
+
+save XD.ckn0 XD.ckn1 XD.ckn5

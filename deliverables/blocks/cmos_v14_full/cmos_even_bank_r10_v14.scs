@@ -1,0 +1,50 @@
+simulator lang=spectre
+include "ff_fbdelay50_v14.scs"
+subckt ring_tspc_sync_v14 (d clk load loadb init q vdd vss)
+XDATA (d din loadb load vdd vss) pll_tg wn=2u wp=4u
+XINIT (init din load loadb vdd vss) pll_tg wn=2u wp=4u
+XF (din clk qb vdd vss) pll_tspc_inv
+XO (qb q vdd vss) pll_inv wn=1u wp=2.5u
+XK (q qb vdd vss) pll_inv wn=0.4u wp=0.8u ln=1u
+ends ring_tspc_sync_v14
+subckt cmos_even_bank_r10_v14 (clk reset s0 s1 s2 s3 s4 s5 q1 out vdd vss)
+XPRE (q0 clk q0 vdd vss) ff_fbdelay50_v14
+XPB0 (q0 qb0 vdd vss) pll_inv wn=0.8u wp=0.5u
+XPB1 (qb0 q1 vdd vss) pll_inv wn=2u wp=4u
+XD4 (d4b q1 d4b vdd vss) pll_tspc_inv
+XB4 (d4b d4 vdd vss) pll_inv wn=2u wp=5u
+XNS (s0 not4 vdd vss) pll_inv
+XEN (reset not4 run vdd vss) tx_or
+XCI (q1 ci vdd vss) pll_inv wn=0.5u wp=2u
+XGN (ci run gn vdd vss) pll_nand2 wn=4u wp=4u
+XCB1 (gn cb vdd vss) pll_inv wn=2u wp=4u
+XCB2 (cb ck vdd vss) pll_inv wn=8u wp=16u
+XRL (reset ck loadb vdd vss) pll_tspc_inv
+XRLI (loadb load vdd vss) pll_inv wn=0.8u wp=2u
+XRK (load loadb vdd vss) pll_inv wn=0.4u wp=0.8u ln=1u
+XST0 (s3 s4 st0 vdd vss) tx_or
+XST1 (st0 s5 init2 vdd vss) tx_or
+XF0 (fb ck load loadb vdd r0 vdd vss) ring_tspc_sync_v14
+XF1 (r0 ck load loadb vdd r1 vdd vss) ring_tspc_sync_v14
+XF2 (r1 ck load loadb init2 r2 vdd vss) ring_tspc_sync_v14
+XF3 (r2 ck load loadb s5 r3 vdd vss) ring_tspc_sync_v14
+XF4 (r3 ck load loadb vss r4 vdd vss) ring_tspc_sync_v14
+XF5 (r4 ck load loadb vss r5 vdd vss) ring_tspc_sync_v14
+XF6 (r5 ck load loadb vss r6 vdd vss) ring_tspc_sync_v14
+XSI1 (s1 sb1 vdd vss) pll_inv
+XT1 (r2 fb s1 sb1 vdd vss) pll_tg wn=2u wp=4u
+XSI2 (s2 sb2 vdd vss) pll_inv
+XT2 (r3 fb s2 sb2 vdd vss) pll_tg wn=2u wp=4u
+XSI3 (s3 sb3 vdd vss) pll_inv
+XT3 (r4 fb s3 sb3 vdd vss) pll_tg wn=2u wp=4u
+XSI4 (s4 sb4 vdd vss) pll_inv
+XT4 (r5 fb s4 sb4 vdd vss) pll_tg wn=2u wp=4u
+XSI5 (s5 sb5 vdd vss) pll_inv
+XT5 (r6 fb s5 sb5 vdd vss) pll_tg wn=2u wp=4u
+RFB (fb vss) resistor r=10Meg
+X4 (d4 s0 o4 vdd vss) tx_and
+XR (r0 not4 oring vdd vss) tx_and
+XOR (o4 oring preout vdd vss) tx_or
+XRI (reset resetb vdd vss) pll_inv
+XM (preout resetb out vdd vss) tx_and
+ends cmos_even_bank_r10_v14

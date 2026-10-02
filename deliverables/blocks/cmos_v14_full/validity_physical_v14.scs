@@ -1,0 +1,33 @@
+simulator lang=spectre
+// Static MOS comparator; output high when vp>vn. Bias resistor is explicit.
+subckt cmp_physical_v14 (vp vn out vdd vss)
+RB (vdd nb) resistor r=100k
+MB (nb nb vss vss) nch w=1u l=1u ad=1u*240n as=1u*240n pd=2*(1u+240n) ps=2*(1u+240n)
+MT (tail nb vss vss) nch w=2u l=1u ad=2u*240n as=2u*240n pd=2*(2u+240n) ps=2*(2u+240n)
+MP (left vp tail vss) nch w=1u l=500n ad=1u*240n as=1u*240n pd=2*(1u+240n) ps=2*(1u+240n)
+MN (sense vn tail vss) nch w=1u l=500n ad=1u*240n as=1u*240n pd=2*(1u+240n) ps=2*(1u+240n)
+PL (left left vdd vdd) pch w=2u l=1u ad=2u*240n as=2u*240n pd=2*(2u+240n) ps=2*(2u+240n)
+PR (sense left vdd vdd) pch w=2u l=1u ad=2u*240n as=2u*240n pd=2*(2u+240n) ps=2*(2u+240n)
+XI0 (sense inv vdd vss) pll_inv wn=0.5u wp=1.25u
+XI1 (inv out vdd vss) pll_inv wn=1u wp=2.5u
+ends cmp_physical_v14
+subckt validity_physical_v14 (rf hp hn amp_good phase_good vdd vss)
+// MOS diode envelope and matched DC replica; finite RC decay rejects stopped RF.
+MD (rf rf env vss) nch w=0.5u l=180n ad=0.5u*240n as=0.5u*240n pd=2*(0.5u+240n) ps=2*(0.5u+240n)
+RE (env vss) resistor r=1Meg
+CE (env vss) capacitor c=50f
+MR (vdd vdd envref vss) nch w=0.5u l=180n ad=0.5u*240n as=0.5u*240n pd=2*(0.5u+240n) ps=2*(0.5u+240n)
+RR (envref vss) resistor r=1Meg
+RT0 (envref threshold) resistor r=10Meg
+RT1 (threshold vdd) resistor r=90Meg
+XA (env threshold amp_good vdd vss) cmp_physical_v14
+// Window centered around held hn; approximately +/-60mV at0.6V common mode.
+RH0 (hn wh) resistor r=1Meg
+RH1 (wh vdd) resistor r=9Meg
+RL0 (hn wl) resistor r=1Meg
+RL1 (wl vss) resistor r=9Meg
+XH (wh hp upper_ok vdd vss) cmp_physical_v14
+XL (hp wl lower_ok vdd vss) cmp_physical_v14
+XW (upper_ok lower_ok window_ok vdd vss) tx_and
+XG (window_ok amp_good phase_good vdd vss) tx_and
+ends validity_physical_v14

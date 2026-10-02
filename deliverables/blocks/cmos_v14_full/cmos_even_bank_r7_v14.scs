@@ -1,0 +1,57 @@
+simulator lang=spectre
+include "ff_fbdelay50_v14.scs"
+include "ring_tspc_v14.scs"
+subckt ring_tspc_set_v14 (d clk reset resetb setval q vdd vss)
+XF (d clk qb vdd vss) pll_tspc_inv
+XO (qb q vdd vss) pll_inv wn=1u wp=2.5u
+XSB (setval setb vdd vss) pll_inv
+XN (reset setval nr vdd vss) pll_nand2
+XNI (nr rn vdd vss) pll_inv
+XP (reset setb rp vdd vss) pll_nand2
+MRN (qb rn vss vss) nch w=1.6u l=180n ad=1.6u*240n as=1.6u*240n pd=2*(1.6u+240n) ps=2*(1.6u+240n)
+MRP (qb rp vdd vdd) pch w=3.2u l=180n ad=3.2u*240n as=3.2u*240n pd=2*(3.2u+240n) ps=2*(3.2u+240n)
+XK (q qb vdd vss) pll_inv wn=0.4u wp=0.8u ln=1u
+ends ring_tspc_set_v14
+subckt cmos_even_bank_r7_v14 (clk reset s0 s1 s2 s3 s4 s5 q1 out vdd vss)
+XPRE (q0 clk q0 vdd vss) ff_fbdelay50_v14
+XPB0 (q0 qb0 vdd vss) pll_inv wn=0.8u wp=0.5u
+XPB1 (qb0 q1 vdd vss) pll_inv wn=2u wp=4u
+XD4 (d4b q1 d4b vdd vss) pll_tspc_inv
+XB4 (d4b d4 vdd vss) pll_inv wn=2u wp=5u
+XRR (reset s0 rr vdd vss) tx_or
+XRA (rr allow vdd vss) pll_inv
+XCB0 (q1 ci vdd vss) pll_inv wn=0.5u wp=1u
+XCB1 (ci cr vdd vss) pll_inv wn=1u wp=2.5u
+XCI (cr crb vdd vss) pll_inv
+XL (allow crb cr safe vdd vss) pll_latch
+XGN (cr safe gn vdd vss) pll_nand2 wn=2u wp=2.5u
+XGC0 (gn g0 vdd vss) pll_inv wn=1u wp=2.5u
+XGC1 (g0 g1 vdd vss) pll_inv wn=4u wp=10u
+XGC2 (g1 ck vdd vss) pll_inv wn=12u wp=30u
+XST0 (s3 s4 st0 vdd vss) tx_or
+XST1 (st0 s5 init2 vdd vss) tx_or
+XF0 (fb ck rr allow r0 vdd vss) ring_tspc_r1_v14
+XF1 (r0 ck rr allow r1 vdd vss) ring_tspc_r1_v14
+XF2 (r1 ck rr allow init2 r2 vdd vss) ring_tspc_set_v14
+XF3 (r2 ck rr allow s5 r3 vdd vss) ring_tspc_set_v14
+XF4 (r3 ck rr allow r4 vdd vss) ring_tspc_r0_v14
+XF5 (r4 ck rr allow r5 vdd vss) ring_tspc_r0_v14
+XF6 (r5 ck rr allow r6 vdd vss) ring_tspc_r0_v14
+XSI1 (s1 sb1 vdd vss) pll_inv
+XT1 (r2 fb s1 sb1 vdd vss) pll_tg wn=2u wp=4u
+XSI2 (s2 sb2 vdd vss) pll_inv
+XT2 (r3 fb s2 sb2 vdd vss) pll_tg wn=2u wp=4u
+XSI3 (s3 sb3 vdd vss) pll_inv
+XT3 (r4 fb s3 sb3 vdd vss) pll_tg wn=2u wp=4u
+XSI4 (s4 sb4 vdd vss) pll_inv
+XT4 (r5 fb s4 sb4 vdd vss) pll_tg wn=2u wp=4u
+XSI5 (s5 sb5 vdd vss) pll_inv
+XT5 (r6 fb s5 sb5 vdd vss) pll_tg wn=2u wp=4u
+RFB (fb vss) resistor r=10Meg
+X4 (d4 s0 o4 vdd vss) tx_and
+XOTHER (s0 not4 vdd vss) pll_inv
+XR (r0 not4 oring vdd vss) tx_and
+XOR (o4 oring preout vdd vss) tx_or
+XRI (reset resetb vdd vss) pll_inv
+XM (preout resetb out vdd vss) tx_and
+ends cmos_even_bank_r7_v14

@@ -1,0 +1,83 @@
+simulator lang=spectre
+include "ff_fbdelay50_v14.scs"
+// Shared RF /2 retains V14 first stage; downstream rings run at RF/2.
+// Ring initial patterns rotate. Odd N has non-50% duty; no duty correction.
+subckt cmos_even_bank_r3_v14 (clk reset s0 s1 s2 s3 s4 s5 q1 out vdd vss)
+XPRE (q0 clk q0 vdd vss) ff_fbdelay50_v14
+XPB0 (q0 qb0 vdd vss) pll_inv wn=0.8u wp=0.5u
+XPB1 (qb0 q1 vdd vss) pll_inv wn=2u wp=4u
+XCB0 (q1 ckbn vdd vss) pll_inv wn=1u wp=2.5u
+XCB1 (ckbn ckmid vdd vss) pll_inv wn=4u wp=10u
+XCB2 (ckmid ckbank vdd vss) pll_inv wn=16u wp=40u
+XCI (ckbank ckb vdd vss) pll_inv wn=4u wp=10u
+XSI0 (s0 ns0 vdd vss) pll_inv
+XRS0 (reset ns0 rst0 vdd vss) tx_or
+XSE0 (s0 ckb ckbank safe0 vdd vss) pll_latch
+XGN0 (ckbank safe0 gn0 vdd vss) pll_nand2 wn=4u wp=5u
+XGO0 (gn0 ck0 vdd vss) pll_inv wn=8u wp=20u
+XF0_0 (r0_1 ck0 rst0 r0_0 vdd vss) tx_dff_r1
+XF0_1 (r0_0 ck0 rst0 r0_1 vdd vss) tx_dff_r0
+XSEL0 (r0_0 s0 o0 vdd vss) tx_and
+XSI1 (s1 ns1 vdd vss) pll_inv
+XRS1 (reset ns1 rst1 vdd vss) tx_or
+XSE1 (s1 ckb ckbank safe1 vdd vss) pll_latch
+XGN1 (ckbank safe1 gn1 vdd vss) pll_nand2 wn=4u wp=5u
+XGO1 (gn1 ck1 vdd vss) pll_inv wn=8u wp=20u
+XF1_0 (r1_2 ck1 rst1 r1_0 vdd vss) tx_dff_r1
+XF1_1 (r1_0 ck1 rst1 r1_1 vdd vss) tx_dff_r1
+XF1_2 (r1_1 ck1 rst1 r1_2 vdd vss) tx_dff_r0
+XSEL1 (r1_0 s1 o1 vdd vss) tx_and
+XSI2 (s2 ns2 vdd vss) pll_inv
+XRS2 (reset ns2 rst2 vdd vss) tx_or
+XSE2 (s2 ckb ckbank safe2 vdd vss) pll_latch
+XGN2 (ckbank safe2 gn2 vdd vss) pll_nand2 wn=4u wp=5u
+XGO2 (gn2 ck2 vdd vss) pll_inv wn=8u wp=20u
+XF2_0 (r2_3 ck2 rst2 r2_0 vdd vss) tx_dff_r1
+XF2_1 (r2_0 ck2 rst2 r2_1 vdd vss) tx_dff_r1
+XF2_2 (r2_1 ck2 rst2 r2_2 vdd vss) tx_dff_r0
+XF2_3 (r2_2 ck2 rst2 r2_3 vdd vss) tx_dff_r0
+XSEL2 (r2_0 s2 o2 vdd vss) tx_and
+XSI3 (s3 ns3 vdd vss) pll_inv
+XRS3 (reset ns3 rst3 vdd vss) tx_or
+XSE3 (s3 ckb ckbank safe3 vdd vss) pll_latch
+XGN3 (ckbank safe3 gn3 vdd vss) pll_nand2 wn=4u wp=5u
+XGO3 (gn3 ck3 vdd vss) pll_inv wn=8u wp=20u
+XF3_0 (r3_4 ck3 rst3 r3_0 vdd vss) tx_dff_r1
+XF3_1 (r3_0 ck3 rst3 r3_1 vdd vss) tx_dff_r1
+XF3_2 (r3_1 ck3 rst3 r3_2 vdd vss) tx_dff_r1
+XF3_3 (r3_2 ck3 rst3 r3_3 vdd vss) tx_dff_r0
+XF3_4 (r3_3 ck3 rst3 r3_4 vdd vss) tx_dff_r0
+XSEL3 (r3_0 s3 o3 vdd vss) tx_and
+XSI4 (s4 ns4 vdd vss) pll_inv
+XRS4 (reset ns4 rst4 vdd vss) tx_or
+XSE4 (s4 ckb ckbank safe4 vdd vss) pll_latch
+XGN4 (ckbank safe4 gn4 vdd vss) pll_nand2 wn=4u wp=5u
+XGO4 (gn4 ck4 vdd vss) pll_inv wn=8u wp=20u
+XF4_0 (r4_5 ck4 rst4 r4_0 vdd vss) tx_dff_r1
+XF4_1 (r4_0 ck4 rst4 r4_1 vdd vss) tx_dff_r1
+XF4_2 (r4_1 ck4 rst4 r4_2 vdd vss) tx_dff_r1
+XF4_3 (r4_2 ck4 rst4 r4_3 vdd vss) tx_dff_r0
+XF4_4 (r4_3 ck4 rst4 r4_4 vdd vss) tx_dff_r0
+XF4_5 (r4_4 ck4 rst4 r4_5 vdd vss) tx_dff_r0
+XSEL4 (r4_0 s4 o4 vdd vss) tx_and
+XSI5 (s5 ns5 vdd vss) pll_inv
+XRS5 (reset ns5 rst5 vdd vss) tx_or
+XSE5 (s5 ckb ckbank safe5 vdd vss) pll_latch
+XGN5 (ckbank safe5 gn5 vdd vss) pll_nand2 wn=4u wp=5u
+XGO5 (gn5 ck5 vdd vss) pll_inv wn=8u wp=20u
+XF5_0 (r5_6 ck5 rst5 r5_0 vdd vss) tx_dff_r1
+XF5_1 (r5_0 ck5 rst5 r5_1 vdd vss) tx_dff_r1
+XF5_2 (r5_1 ck5 rst5 r5_2 vdd vss) tx_dff_r1
+XF5_3 (r5_2 ck5 rst5 r5_3 vdd vss) tx_dff_r1
+XF5_4 (r5_3 ck5 rst5 r5_4 vdd vss) tx_dff_r0
+XF5_5 (r5_4 ck5 rst5 r5_5 vdd vss) tx_dff_r0
+XF5_6 (r5_5 ck5 rst5 r5_6 vdd vss) tx_dff_r0
+XSEL5 (r5_0 s5 o5 vdd vss) tx_and
+XOR1 (o0 o1 or1 vdd vss) tx_or
+XOR2 (or1 o2 or2 vdd vss) tx_or
+XOR3 (or2 o3 or3 vdd vss) tx_or
+XOR4 (or3 o4 or4 vdd vss) tx_or
+XOR5 (or4 o5 or5 vdd vss) tx_or
+XRSTI (reset resetb vdd vss) pll_inv
+XMUTE (or5 resetb out vdd vss) tx_and
+ends cmos_even_bank_r3_v14

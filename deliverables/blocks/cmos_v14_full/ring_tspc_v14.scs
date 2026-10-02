@@ -1,0 +1,13 @@
+simulator lang=spectre
+subckt ring_tspc_r0_v14 (d clk reset resetb q vdd vss)
+XF (d clk qb vdd vss) pll_tspc_inv
+XO (qb q vdd vss) pll_inv wn=1u wp=2.5u
+MR (qb resetb vdd vdd) pch w=3.2u l=180n ad=3.2u*240n as=3.2u*240n pd=2*(3.2u+240n) ps=2*(3.2u+240n)
+XK (q qb vdd vss) pll_inv wn=0.4u wp=0.8u ln=1u
+ends ring_tspc_r0_v14
+subckt ring_tspc_r1_v14 (d clk reset resetb q vdd vss)
+XF (d clk qb vdd vss) pll_tspc_inv
+XO (qb q vdd vss) pll_inv wn=1u wp=2.5u
+MR (qb reset vss vss) nch w=1.6u l=180n ad=1.6u*240n as=1.6u*240n pd=2*(1.6u+240n) ps=2*(1.6u+240n)
+XK (q qb vdd vss) pll_inv wn=0.4u wp=0.8u ln=1u
+ends ring_tspc_r1_v14

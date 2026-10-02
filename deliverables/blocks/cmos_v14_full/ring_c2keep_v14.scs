@@ -1,0 +1,21 @@
+simulator lang=spectre
+subckt ring_c2k_r0_v14 (d clk clkb reset resetb q vdd vss)
+XM (d clk clkb qb vdd vss) pll_clocked_inv wp=2.5u
+XS (qb clkb clk q vdd vss) pll_clocked_inv wp=2.5u
+MC (q reset vss vss) nch w=0.8u l=180n ad=0.8u*240n as=0.8u*240n pd=2*(0.8u+240n) ps=2*(0.8u+240n)
+MP (qb resetb vdd vdd) pch w=1.6u l=180n ad=1.6u*240n as=1.6u*240n pd=2*(1.6u+240n) ps=2*(1.6u+240n)
+XMKI (qb mk vdd vss) pll_inv wn=0.4u wp=0.8u
+XMKF (mk qb vdd vss) pll_inv wn=0.4u wp=0.8u ln=1u
+XSKI (q sk vdd vss) pll_inv wn=0.4u wp=0.8u
+XSKF (sk q vdd vss) pll_inv wn=0.4u wp=0.8u ln=1u
+ends ring_c2k_r0_v14
+subckt ring_c2k_r1_v14 (d clk clkb reset resetb q vdd vss)
+XM (d clk clkb qb vdd vss) pll_clocked_inv wp=2.5u
+XS (qb clkb clk q vdd vss) pll_clocked_inv wp=2.5u
+MC (qb reset vss vss) nch w=0.8u l=180n ad=0.8u*240n as=0.8u*240n pd=2*(0.8u+240n) ps=2*(0.8u+240n)
+MP (q resetb vdd vdd) pch w=1.6u l=180n ad=1.6u*240n as=1.6u*240n pd=2*(1.6u+240n) ps=2*(1.6u+240n)
+XMKI (qb mk vdd vss) pll_inv wn=0.4u wp=0.8u
+XMKF (mk qb vdd vss) pll_inv wn=0.4u wp=0.8u ln=1u
+XSKI (q sk vdd vss) pll_inv wn=0.4u wp=0.8u
+XSKF (sk q vdd vss) pll_inv wn=0.4u wp=0.8u ln=1u
+ends ring_c2k_r1_v14

@@ -1,0 +1,42 @@
+simulator lang=spectre
+include "cells.scs"
+include "digital_cells_v2.scs"
+include "fll_circuit.scs"
+include "fll_controller_full_v14.scs"
+include "pll_config.scs"
+include "pll_supervisor.scs"
+include "frequency_watchdog.scs"
+include "cp_timing.scs"
+include "pll_control_sampled_v14.scs"
+include "lc_vco_physical_v14.scs"
+include "cp_physical_v14.scs"
+include "sampler_bias_v5.scs"
+include "loop_filter_v5.scs"
+include "rf_light24s12_v14.scs"
+include "div_fb50buf24_v14.scs"
+include "rtcomb_v13.scs"
+include "rt_light24s12_out083_v14.scs"
+include "validity_physical_v14.scs"
+// First integration is explicitly K41/M4. Other K codes are not supported by this proof top.
+subckt pll_complete_k41_sampled_v14 (ref reset apply k0 k1 k2 k3 k4 k5 out qualified range_error cfg_ready frequency_good phase_good amp_good vdd vss)
+parameters bias_r=2500 cp_bias_r=24000 rlf=100k
+VVCO (vco_vdd vdd) vsource dc=0
+VRX (rx_vdd vdd) vsource dc=0
+VRT (rt_vdd vdd) vsource dc=0
+XV (vp vn ctrl b0 b1 b2 b3 b4 b5 b6 b7 vco_vdd vss) lc_vco_physical_v14 bias_r=bias_r
+XBM (vdd vss vmid) tx_bias_mid_v5
+CCP (vp sp) capacitor c=120f
+CCN (vn sn) capacitor c=120f
+RBP (sp vmid) resistor r=10k
+RBN (sn vmid) resistor r=10k
+XREF (ref refb vdd vss) tx_reference_buffer
+CR (refb vss) capacitor c=60f
+XS (refb sp sn hp hn vdd vss) tx_sampler
+XCP (hp hn pulse en ctrl vdd vss) cp_physical_v14 bias_r=cp_bias_r
+XLF (ctrl vc1 en preset vdd vss) tx_loop_filter_v5 rlf=rlf
+XRX (vp clk rx_vdd vss) rf_light24s12_v14
+XD (clk q1 data vdd vss) div_fb50buf24_v14
+XR (data clk out rt_vdd vss) rt_light24s12_out083_v14
+XDET (vp hp hn amp_good phase_good vdd vss) validity_physical_v14
+XC (refb reset apply k0 k1 k2 k3 k4 k5 out phase_good frequency_good b0 b1 b2 b3 b4 b5 b6 b7 s0 s1 s2 s3 s4 s5 divider_reset en pulse preset qualified range_error cfg_ready cfg_invalid restart count_gate count_reset vdd vss) pll_control_sampled_v14
+ends pll_complete_k41_sampled_v14

@@ -1,0 +1,65 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=ss
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+simulatorOptions options temp=60 reltol=1e-5 vabstol=1e-7 iabstol=1e-13
+VDD (vdd 0) vsource dc=1.2
+VS0 (vdd vd0) vsource dc=0
+R0 (vd0 nb0) resistor r=500
+MR0 (nb0 nb0 0 0) nch w=20u l=1u ad=20u*240n as=20u*240n pd=2*(20u+240n) ps=2*(20u+240n)
+VT0 (tail0 0) vsource dc=.2
+MT0 (tail0 nb0 0 0) nch w=300u l=1u ad=300u*240n as=300u*240n pd=2*(300u+240n) ps=2*(300u+240n)
+VS1 (vdd vd1) vsource dc=0
+R1 (vd1 nb1) resistor r=750
+MR1 (nb1 nb1 0 0) nch w=20u l=1u ad=20u*240n as=20u*240n pd=2*(20u+240n) ps=2*(20u+240n)
+VT1 (tail1 0) vsource dc=.2
+MT1 (tail1 nb1 0 0) nch w=300u l=1u ad=300u*240n as=300u*240n pd=2*(300u+240n) ps=2*(300u+240n)
+VS2 (vdd vd2) vsource dc=0
+R2 (vd2 nb2) resistor r=1000
+MR2 (nb2 nb2 0 0) nch w=20u l=1u ad=20u*240n as=20u*240n pd=2*(20u+240n) ps=2*(20u+240n)
+VT2 (tail2 0) vsource dc=.2
+MT2 (tail2 nb2 0 0) nch w=300u l=1u ad=300u*240n as=300u*240n pd=2*(300u+240n) ps=2*(300u+240n)
+VS3 (vdd vd3) vsource dc=0
+R3 (vd3 nb3) resistor r=1250
+MR3 (nb3 nb3 0 0) nch w=20u l=1u ad=20u*240n as=20u*240n pd=2*(20u+240n) ps=2*(20u+240n)
+VT3 (tail3 0) vsource dc=.2
+MT3 (tail3 nb3 0 0) nch w=300u l=1u ad=300u*240n as=300u*240n pd=2*(300u+240n) ps=2*(300u+240n)
+VS4 (vdd vd4) vsource dc=0
+R4 (vd4 nb4) resistor r=1500
+MR4 (nb4 nb4 0 0) nch w=20u l=1u ad=20u*240n as=20u*240n pd=2*(20u+240n) ps=2*(20u+240n)
+VT4 (tail4 0) vsource dc=.2
+MT4 (tail4 nb4 0 0) nch w=300u l=1u ad=300u*240n as=300u*240n pd=2*(300u+240n) ps=2*(300u+240n)
+VS5 (vdd vd5) vsource dc=0
+R5 (vd5 nb5) resistor r=2000
+MR5 (nb5 nb5 0 0) nch w=20u l=1u ad=20u*240n as=20u*240n pd=2*(20u+240n) ps=2*(20u+240n)
+VT5 (tail5 0) vsource dc=.2
+MT5 (tail5 nb5 0 0) nch w=300u l=1u ad=300u*240n as=300u*240n pd=2*(300u+240n) ps=2*(300u+240n)
+VS6 (vdd vd6) vsource dc=0
+R6 (vd6 nb6) resistor r=2500
+MR6 (nb6 nb6 0 0) nch w=20u l=1u ad=20u*240n as=20u*240n pd=2*(20u+240n) ps=2*(20u+240n)
+VT6 (tail6 0) vsource dc=.2
+MT6 (tail6 nb6 0 0) nch w=300u l=1u ad=300u*240n as=300u*240n pd=2*(300u+240n) ps=2*(300u+240n)
+VS7 (vdd vd7) vsource dc=0
+R7 (vd7 nb7) resistor r=3000
+MR7 (nb7 nb7 0 0) nch w=20u l=1u ad=20u*240n as=20u*240n pd=2*(20u+240n) ps=2*(20u+240n)
+VT7 (tail7 0) vsource dc=.2
+MT7 (tail7 nb7 0 0) nch w=300u l=1u ad=300u*240n as=300u*240n pd=2*(300u+240n) ps=2*(300u+240n)
+VC0 (vdd vc0) vsource dc=0
+RC0 (vc0 nc0) resistor r=16000
+MC0 (nc0 nc0 0 0) nch w=10u l=1u ad=10u*240n as=10u*240n pd=2*(10u+240n) ps=2*(10u+240n)
+VC1 (vdd vc1) vsource dc=0
+RC1 (vc1 nc1) resistor r=20000
+MC1 (nc1 nc1 0 0) nch w=10u l=1u ad=10u*240n as=10u*240n pd=2*(10u+240n) ps=2*(10u+240n)
+VC2 (vdd vc2) vsource dc=0
+RC2 (vc2 nc2) resistor r=24000
+MC2 (nc2 nc2 0 0) nch w=10u l=1u ad=10u*240n as=10u*240n pd=2*(10u+240n) ps=2*(10u+240n)
+VC3 (vdd vc3) vsource dc=0
+RC3 (vc3 nc3) resistor r=28000
+MC3 (nc3 nc3 0 0) nch w=10u l=1u ad=10u*240n as=10u*240n pd=2*(10u+240n) ps=2*(10u+240n)
+VC4 (vdd vc4) vsource dc=0
+RC4 (vc4 nc4) resistor r=32000
+MC4 (nc4 nc4 0 0) nch w=10u l=1u ad=10u*240n as=10u*240n pd=2*(10u+240n) ps=2*(10u+240n)
+tran tran stop=2n maxstep=20p method=traponly errpreset=conservative
+save nb0 VS0:p VT0:p nb1 VS1:p VT1:p nb2 VS2:p VT2:p nb3 VS3:p VT3:p nb4 VS4:p VT4:p nb5 VS5:p VT5:p nb6 VS6:p VT6:p nb7 VS7:p VT7:p nc0 VC0:p nc1 VC1:p nc2 VC2:p nc3 VC3:p nc4 VC4:p
+saveOptions options save=selected

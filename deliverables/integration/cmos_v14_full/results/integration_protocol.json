@@ -1,0 +1,16 @@
+{
+  "objective": "Complete one integrated V14 physical-circuit PLL before optimizing metrics. No internal VA functional blocks or ideal current sources in final DUT. Ideal supply/reference/config stimulus and approved Q5 RLC remain explicit.",
+  "new_observation": "Prior180uA IREF pushes VCO nb above1.2V: SS1.482249V TT1.369179V FF1.270501V. Prior loaded functional evidence depended on ideal compliance.",
+  "first_repair": "Scale reference/tail/boost MOS widths10x to reduce overdrive; replace VCO and CP IREF by resistor-fed diode MOS. Characterize before integrated adoption.",
+  "priority": "Function/integration first, measure power/noise/PVT honestly; no independent optimizer campaign.",
+  "coverage_plan": [
+    "physical bias and detectors TB",
+    "six-ratio CMOS divider TB",
+    "fixed-code mainloop",
+    "fullFLL/config/supervision acquisition",
+    "locked numerical refinement and sampled noise",
+    "representative corners then33channels"
+  ],
+  "limits": "Up to4 concurrent Spectre jobs on the authorized64-thread host; unit jobs1thread, full-DUT runs4 or8threads; at most18 requested threads. Inputs frozen and remote hashes checked. Checkpoint/savestate and valuable outputs are recovered locally.",
+  "numerics": "Initial capture screen4ps/reltol1e-4; a 10ps/reltol1e-3 speed diagnostic is separate and already shows material RF bias. Locked functional/noise evidence requires strict step/tolerance convergence. Sparse strobes are never used for power."
+}

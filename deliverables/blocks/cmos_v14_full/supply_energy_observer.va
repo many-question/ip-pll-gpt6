@@ -1,0 +1,14 @@
+`include "disciplines.vams"
+// TB instrument only. An ideal0V series current probe outside the physical DUT.
+// e_nj integrates every solver step; sparse output strobes do not alias energy.
+module supply_energy_observer(p,n,vss,e_nj,p_mw);
+inout p,n,vss;
+output e_nj,p_mw;
+electrical p,n,vss,e_nj,p_mw;
+branch (p,n) meter;
+analog begin
+ V(meter)<+0;
+ V(e_nj,vss)<+1e9*idt(V(n,vss)*I(meter),0);
+ V(p_mw,vss)<+1e3*V(n,vss)*I(meter);
+end
+endmodule

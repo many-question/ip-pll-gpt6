@@ -1,0 +1,785 @@
+simulator lang=spectre
+subckt tx_fll_controller_rf4_v14 (refclk reset target_k0 target_k1 target_k2 target_k3 target_k4 target_k5 measured0 measured1 measured2 measured3 measured4 measured5 measured6 measured7 measured8 measured9 measured10 measured11 measured12 measured13 coarse0 coarse1 coarse2 coarse3 coarse4 coarse5 coarse6 coarse7 dac0 dac1 dac2 dac3 dac4 dac5 count_gate count_reset enable range_error state_out0 state_out1 state_out2 vdd vss)
+X0 (n45 refclk reset range_error vdd vss) tx_dff_r0
+X1 (n46 refclk reset coarse0 vdd vss) tx_dff_r0
+X2 (n47 refclk reset coarse1 vdd vss) tx_dff_r0
+X3 (n48 refclk reset coarse2 vdd vss) tx_dff_r0
+X4 (n49 refclk reset coarse3 vdd vss) tx_dff_r0
+X5 (n50 refclk reset coarse4 vdd vss) tx_dff_r0
+X6 (n51 refclk reset coarse5 vdd vss) tx_dff_r0
+X7 (n52 refclk reset coarse6 vdd vss) tx_dff_r0
+X8 (n53 refclk reset coarse7 vdd vss) tx_dff_r0
+X9 (n54 refclk reset n55 vdd vss) tx_dff_r0
+X10 (n56 refclk reset dac0 vdd vss) tx_dff_r1
+X11 (n57 refclk reset dac1 vdd vss) tx_dff_r1
+X12 (n58 refclk reset dac2 vdd vss) tx_dff_r0
+X13 (n59 refclk reset dac3 vdd vss) tx_dff_r1
+X14 (n60 refclk reset dac4 vdd vss) tx_dff_r0
+X15 (n61 refclk reset dac5 vdd vss) tx_dff_r0
+X16 (n62 refclk reset state_out0 vdd vss) tx_dff_r0
+X17 (n63 refclk reset state_out1 vdd vss) tx_dff_r0
+X18 (n64 refclk reset state_out2 vdd vss) tx_dff_r0
+X19 (n65 refclk reset count_gate vdd vss) tx_dff_r0
+X20 (n66 refclk reset n67 vdd vss) tx_dff_r0
+X21 (n68 refclk reset n69 vdd vss) tx_dff_r0
+X22 (n70 refclk reset n71 vdd vss) tx_dff_r0
+X23 (n72 refclk reset n73 vdd vss) tx_dff_r0
+X24 (n74 refclk reset n75 vdd vss) tx_dff_r0
+X25 (n76 refclk reset n77 vdd vss) tx_dff_r0
+X26 (n78 refclk reset n79 vdd vss) tx_dff_r0
+X27 (n80 refclk reset n81 vdd vss) tx_dff_r1
+X28 (n82 refclk reset count_reset vdd vss) tx_dff_r1
+X29 (n83 refclk reset n84 vdd vss) tx_dff_r0
+X30 (n85 refclk reset n86 vdd vss) tx_dff_r0
+X31 (n87 refclk reset n88 vdd vss) tx_dff_r0
+X32 (n89 refclk reset n90 vdd vss) tx_dff_r0
+X33 (n91 refclk reset n92 vdd vss) tx_dff_r0
+X34 (n93 refclk reset n94 vdd vss) tx_dff_r0
+X35 (n95 refclk reset n96 vdd vss) tx_dff_r0
+X36 (n97 refclk reset n98 vdd vss) tx_dff_r0
+X37 (n99 refclk reset enable vdd vss) tx_dff_r0
+X38 (n100 refclk reset n101 vdd vss) tx_dff_r0
+X39 (n79 n102 n103 n78 vdd vss) tx_mux
+X40 (n77 n104 n103 n76 vdd vss) tx_mux
+X41 (n75 n105 n103 n74 vdd vss) tx_mux
+X42 (n73 n106 n103 n72 vdd vss) tx_mux
+X43 (n71 n107 n103 n70 vdd vss) tx_mux
+X44 (n69 n108 n103 n68 vdd vss) tx_mux
+X45 (n67 n109 n103 n66 vdd vss) tx_mux
+X46 (state_out1 n110 n111 n63 vdd vss) tx_mux
+X47 (state_out0 n112 n111 n62 vdd vss) tx_mux
+X48 (dac4 n113 n114 n60 vdd vss) tx_mux
+X49 (dac3 n115 n114 n59 vdd vss) tx_mux
+X50 (dac2 n116 n114 n58 vdd vss) tx_mux
+X51 (dac1 n117 n114 n57 vdd vss) tx_mux
+X52 (dac0 n118 n114 n56 vdd vss) tx_mux
+X53 (coarse6 n119 n120 n52 vdd vss) tx_mux
+X54 (coarse5 n121 n120 n51 vdd vss) tx_mux
+X55 (coarse4 n122 n120 n50 vdd vss) tx_mux
+X56 (coarse3 n123 n120 n49 vdd vss) tx_mux
+X57 (coarse2 n124 n120 n48 vdd vss) tx_mux
+X58 (coarse1 n125 n120 n47 vdd vss) tx_mux
+X59 (coarse0 n126 n120 n46 vdd vss) tx_mux
+X60 (range_error n127 n128 n45 vdd vss) tx_mux
+X61 (coarse7 n129 n120 n53 vdd vss) tx_mux
+X62 (n55 n130 n131 n54 vdd vss) tx_mux
+X63 (dac5 n132 n114 n61 vdd vss) tx_mux
+X64 (state_out2 n133 n111 n64 vdd vss) tx_mux
+X65 (count_gate n134 n135 n65 vdd vss) tx_mux
+X66 (n81 n136 n103 n80 vdd vss) tx_mux
+X67 (count_reset n137 n138 n82 vdd vss) tx_mux
+X68 (enable n139 n140 n99 vdd vss) tx_mux
+X69 (n101 vdd n141 n100 vdd vss) tx_mux
+X70 (n142 n96 n143 n95 vdd vss) tx_mux
+X71 (n144 n94 n143 n93 vdd vss) tx_mux
+X72 (n145 n92 n143 n91 vdd vss) tx_mux
+X73 (n146 n90 n143 n89 vdd vss) tx_mux
+X74 (n147 n88 n143 n87 vdd vss) tx_mux
+X75 (n148 n86 n143 n85 vdd vss) tx_mux
+X76 (n149 n84 n143 n83 vdd vss) tx_mux
+X77 (n150 n98 n143 n97 vdd vss) tx_mux
+X78 (n84 n151 vdd vss) pll_inv
+X79 (n152 n153 vdd vss) pll_inv
+X80 (n154 n155 vdd vss) pll_inv
+X81 (n156 n157 vdd vss) pll_inv
+X82 (n158 n159 vdd vss) pll_inv
+X83 (n160 n161 vdd vss) pll_inv
+X84 (n162 n163 vdd vss) pll_inv
+X85 (target_k0 n164 vdd vss) pll_inv
+X86 (n67 n165 vdd vss) pll_inv
+X87 (n166 n167 vdd vss) pll_inv
+X88 (n168 n169 vdd vss) pll_inv
+X89 (state_out1 n170 vdd vss) pll_inv
+X90 (state_out0 n171 vdd vss) pll_inv
+X91 (state_out2 n172 vdd vss) pll_inv
+X92 (n86 n173 vdd vss) pll_inv
+X93 (n101 n174 vdd vss) pll_inv
+X94 (n55 n175 vdd vss) pll_inv
+X95 (measured3 n176 vdd vss) pll_inv
+X96 (measured0 n177 vdd vss) pll_inv
+X97 (measured1 n178 vdd vss) pll_inv
+X98 (measured2 n179 vdd vss) pll_inv
+X99 (n180 n181 vdd vss) pll_inv
+X100 (n182 n183 vdd vss) pll_inv
+X101 (n184 n185 vdd vss) pll_inv
+X102 (n186 n187 vdd vss) pll_inv
+X103 (n188 n189 vdd vss) pll_inv
+X104 (n190 n191 vdd vss) pll_inv
+X105 (n192 n193 n194 vdd vss) tx_or
+X106 (n181 n195 n196 vdd vss) tx_or
+X107 (n197 n198 n199 vdd vss) tx_xor
+X108 (n200 n201 n202 vdd vss) tx_xor
+X109 (target_k5 n203 n204 vdd vss) tx_xor
+X110 (n205 n206 n207 vdd vss) tx_xor
+X111 (n208 n209 n210 vdd vss) tx_xor
+X112 (n211 n212 n213 vdd vss) tx_xor
+X113 (n214 n215 n216 vdd vss) tx_xor
+X114 (n202 n217 n218 vdd vss) tx_xor
+X115 (n204 n219 n220 vdd vss) tx_xor
+X116 (n221 n222 n223 vdd vss) tx_xor
+X117 (n224 n225 n226 vdd vss) tx_xor
+X118 (n227 n228 n229 vdd vss) tx_xor
+X119 (n230 n231 n232 vdd vss) tx_xor
+X120 (target_k4 n233 n234 vdd vss) tx_xor
+X121 (target_k5 n235 n236 vdd vss) tx_xor
+X122 (n237 n206 n238 vdd vss) tx_xor
+X123 (n239 n240 n241 vdd vss) tx_xor
+X124 (n197 n242 n243 vdd vss) tx_xor
+X125 (n200 n244 n245 vdd vss) tx_xor
+X126 (target_k5 n246 n247 vdd vss) tx_xor
+X127 (n168 n248 n249 vdd vss) tx_xor
+X128 (n250 n251 n252 vdd vss) tx_xor
+X129 (n253 n254 n255 vdd vss) tx_xor
+X130 (n256 n257 n258 vdd vss) tx_xor
+X131 (n259 n260 n261 vdd vss) tx_xor
+X132 (n166 n262 n263 vdd vss) tx_xor
+X133 (n264 n265 n266 vdd vss) tx_xor
+X134 (n154 n152 n267 vdd vss) tx_xor
+X135 (n162 n268 n269 vdd vss) tx_xor
+X136 (n156 n270 n271 vdd vss) tx_xor
+X137 (n160 n272 n273 vdd vss) tx_xor
+X138 (n158 n274 n275 vdd vss) tx_xor
+X139 (n86 n84 n276 vdd vss) tx_xor
+X140 (n88 n277 n278 vdd vss) tx_xor
+X141 (n90 n279 n280 vdd vss) tx_xor
+X142 (n92 n281 n282 vdd vss) tx_xor
+X143 (n94 n283 n284 vdd vss) tx_xor
+X144 (n96 n285 n286 vdd vss) tx_xor
+X145 (n98 n287 n288 vdd vss) tx_xor
+X146 (target_k1 target_k2 n289 vdd vss) tx_and
+X147 (target_k3 target_k4 n197 vdd vss) tx_xor
+X148 (target_k4 target_k5 n200 vdd vss) tx_xor
+X149 (n290 n291 n198 vdd vss) tx_or
+X150 (n200 n201 n292 vdd vss) tx_and
+X151 (n293 n294 n201 vdd vss) tx_or
+X152 (n295 n240 n294 vdd vss) tx_and
+X153 (n296 n292 n203 vdd vss) tx_or
+X154 (n297 n298 n221 vdd vss) tx_or
+X155 (n299 n240 n298 vdd vss) tx_and
+X156 (n300 n295 n299 vdd vss) tx_and
+X157 (n301 n302 n297 vdd vss) tx_or
+X158 (n300 n293 n302 vdd vss) tx_and
+X159 (target_k5 n200 n300 vdd vss) tx_and
+X160 (target_k5 n296 n301 vdd vss) tx_and
+X161 (n197 n239 n295 vdd vss) tx_and
+X162 (n303 n304 n293 vdd vss) tx_or
+X163 (n197 n290 n304 vdd vss) tx_and
+X164 (n239 n240 n291 vdd vss) tx_and
+X165 (target_k0 target_k1 n206 vdd vss) tx_and
+X166 (n305 target_k2 n306 vdd vss) tx_and
+X167 (n238 target_k3 n307 vdd vss) tx_and
+X168 (n241 target_k4 n308 vdd vss) tx_and
+X169 (n199 target_k5 n309 vdd vss) tx_and
+X170 (target_k0 target_k1 n305 vdd vss) tx_xor
+X171 (n305 target_k2 n205 vdd vss) tx_xor
+X172 (n238 target_k3 n208 vdd vss) tx_xor
+X173 (n241 target_k4 n211 vdd vss) tx_xor
+X174 (n199 target_k5 n214 vdd vss) tx_xor
+X175 (n308 n310 n215 vdd vss) tx_or
+X176 (n306 n311 n209 vdd vss) tx_or
+X177 (n202 n217 n219 vdd vss) tx_and
+X178 (n312 n313 n217 vdd vss) tx_or
+X179 (n314 n212 n313 vdd vss) tx_and
+X180 (n205 n206 n311 vdd vss) tx_and
+X181 (n315 n316 n222 vdd vss) tx_or
+X182 (n317 n212 n316 vdd vss) tx_and
+X183 (n221 n222 n318 vdd vss) tx_and
+X184 (n319 n314 n317 vdd vss) tx_and
+X185 (n319 n312 n315 vdd vss) tx_and
+X186 (n320 n321 n212 vdd vss) tx_or
+X187 (n322 n206 n321 vdd vss) tx_and
+X188 (n204 n202 n319 vdd vss) tx_and
+X189 (n214 n211 n314 vdd vss) tx_and
+X190 (n309 n323 n312 vdd vss) tx_or
+X191 (n214 n308 n323 vdd vss) tx_and
+X192 (n208 n205 n322 vdd vss) tx_and
+X193 (n307 n324 n320 vdd vss) tx_or
+X194 (n208 n306 n324 vdd vss) tx_and
+X195 (n211 n212 n310 vdd vss) tx_and
+X196 (n325 n326 n190 vdd vss) tx_or
+X197 (n327 n328 n326 vdd vss) tx_and
+X198 (target_k5 n329 n325 vdd vss) tx_or
+X199 (target_k3 n330 n331 vdd vss) tx_and
+X200 (n325 n332 n188 vdd vss) tx_or
+X201 (n327 n333 n332 vdd vss) tx_and
+X202 (n290 n334 n333 vdd vss) tx_and
+X203 (target_k1 n335 n334 vdd vss) tx_or
+X204 (n336 target_k0 n335 vdd vss) tx_and
+X205 (target_k0 target_k2 n225 vdd vss) tx_and
+X206 (target_k1 target_k3 n337 vdd vss) tx_and
+X207 (target_k2 target_k4 n338 vdd vss) tx_and
+X208 (target_k3 target_k5 n339 vdd vss) tx_and
+X209 (target_k0 target_k2 n340 vdd vss) tx_xor
+X210 (target_k1 target_k3 n224 vdd vss) tx_xor
+X211 (target_k2 target_k4 n227 vdd vss) tx_xor
+X212 (target_k3 target_k5 n230 vdd vss) tx_xor
+X213 (n338 n341 n231 vdd vss) tx_or
+X214 (target_k4 n233 n235 vdd vss) tx_and
+X215 (n342 n343 n233 vdd vss) tx_or
+X216 (n344 n228 n343 vdd vss) tx_and
+X217 (n345 n346 n347 vdd vss) tx_or
+X218 (n348 n228 n346 vdd vss) tx_and
+X219 (n296 n344 n348 vdd vss) tx_and
+X220 (n296 n342 n345 vdd vss) tx_and
+X221 (target_k5 target_k4 n296 vdd vss) tx_and
+X222 (n230 n227 n344 vdd vss) tx_and
+X223 (n339 n349 n342 vdd vss) tx_or
+X224 (n230 n338 n349 vdd vss) tx_and
+X225 (n337 n350 n228 vdd vss) tx_or
+X226 (n224 n225 n350 vdd vss) tx_and
+X227 (n227 n228 n341 vdd vss) tx_and
+X228 (n329 n351 n352 vdd vss) tx_and
+X229 (target_k5 n352 n186 vdd vss) tx_or
+X230 (n353 n354 n351 vdd vss) tx_or
+X231 (n355 target_k1 n354 vdd vss) tx_and
+X232 (target_k3 n356 n353 vdd vss) tx_or
+X233 (n357 target_k2 n356 vdd vss) tx_and
+X234 (target_k5 n358 n184 vdd vss) tx_or
+X235 (n329 n328 n358 vdd vss) tx_and
+X236 (n290 n359 n328 vdd vss) tx_or
+X237 (target_k3 target_k2 n290 vdd vss) tx_and
+X238 (target_k3 target_k4 n303 vdd vss) tx_and
+X239 (target_k1 target_k2 n237 vdd vss) tx_xor
+X240 (target_k2 target_k3 n239 vdd vss) tx_xor
+X241 (n303 n360 n244 vdd vss) tx_or
+X242 (n289 n361 n240 vdd vss) tx_or
+X243 (target_k5 n246 n362 vdd vss) tx_and
+X244 (n363 n364 n246 vdd vss) tx_or
+X245 (n365 n242 n364 vdd vss) tx_and
+X246 (n237 n206 n361 vdd vss) tx_and
+X247 (n366 n367 n242 vdd vss) tx_or
+X248 (n368 n206 n367 vdd vss) tx_and
+X249 (n200 n197 n365 vdd vss) tx_and
+X250 (n296 n369 n363 vdd vss) tx_or
+X251 (n200 n303 n369 vdd vss) tx_and
+X252 (n239 n237 n368 vdd vss) tx_and
+X253 (n290 n370 n366 vdd vss) tx_or
+X254 (n239 n289 n370 vdd vss) tx_and
+X255 (n197 n242 n360 vdd vss) tx_and
+X256 (measured4 n371 n372 vdd vss) tx_and
+X257 (measured5 n373 n374 vdd vss) tx_and
+X258 (measured6 n375 n376 vdd vss) tx_and
+X259 (measured7 n377 n378 vdd vss) tx_and
+X260 (measured8 n379 n380 vdd vss) tx_and
+X261 (measured9 n381 n382 vdd vss) tx_and
+X262 (measured10 n383 n384 vdd vss) tx_and
+X263 (measured11 n385 n386 vdd vss) tx_and
+X264 (measured12 n387 n388 vdd vss) tx_and
+X265 (measured13 n389 n390 vdd vss) tx_and
+X266 (measured4 n371 n391 vdd vss) tx_xor
+X267 (measured5 n373 n392 vdd vss) tx_xor
+X268 (measured6 n375 n393 vdd vss) tx_xor
+X269 (measured7 n377 n394 vdd vss) tx_xor
+X270 (measured8 n379 n395 vdd vss) tx_xor
+X271 (measured9 n381 n396 vdd vss) tx_xor
+X272 (measured10 n383 n397 vdd vss) tx_xor
+X273 (measured11 n385 n398 vdd vss) tx_xor
+X274 (measured12 n387 n399 vdd vss) tx_xor
+X275 (measured13 n389 n400 vdd vss) tx_xor
+X276 (n401 n402 n403 vdd vss) tx_or
+X277 (n404 n405 n402 vdd vss) tx_and
+X278 (n406 n407 n405 vdd vss) tx_or
+X279 (n408 n409 n407 vdd vss) tx_and
+X280 (n410 n411 n409 vdd vss) tx_or
+X281 (n412 n413 n411 vdd vss) tx_and
+X282 (n414 n415 n408 vdd vss) tx_and
+X283 (n416 n417 n406 vdd vss) tx_or
+X284 (n414 n418 n417 vdd vss) tx_and
+X285 (n419 n420 n412 vdd vss) tx_and
+X286 (n421 n422 n410 vdd vss) tx_or
+X287 (n419 n423 n422 vdd vss) tx_and
+X288 (n424 n425 n413 vdd vss) tx_or
+X289 (n400 n399 n404 vdd vss) tx_and
+X290 (n390 n426 n401 vdd vss) tx_or
+X291 (n400 n388 n426 vdd vss) tx_and
+X292 (n386 n427 n416 vdd vss) tx_or
+X293 (n398 n384 n427 vdd vss) tx_and
+X294 (n396 n395 n415 vdd vss) tx_and
+X295 (n382 n428 n418 vdd vss) tx_or
+X296 (n396 n380 n428 vdd vss) tx_and
+X297 (n378 n429 n421 vdd vss) tx_or
+X298 (n394 n376 n429 vdd vss) tx_and
+X299 (n392 n391 n420 vdd vss) tx_and
+X300 (n374 n430 n423 vdd vss) tx_or
+X301 (n392 n372 n430 vdd vss) tx_and
+X302 (measured3 n431 n424 vdd vss) tx_or
+X303 (n176 measured2 n431 vdd vss) tx_and
+X304 (n166 n262 n265 vdd vss) tx_and
+X305 (n256 n257 n260 vdd vss) tx_and
+X306 (n250 n251 n254 vdd vss) tx_and
+X307 (n432 n257 n262 vdd vss) tx_and
+X308 (n433 n251 n257 vdd vss) tx_and
+X309 (n259 n256 n432 vdd vss) tx_and
+X310 (n253 n250 n433 vdd vss) tx_and
+X311 (n168 n248 n251 vdd vss) tx_and
+X312 (n434 n435 n182 vdd vss) tx_or
+X313 (n436 n437 n435 vdd vss) tx_and
+X314 (n438 n439 n437 vdd vss) tx_or
+X315 (n440 n268 n439 vdd vss) tx_and
+X316 (n159 n161 n436 vdd vss) tx_and
+X317 (n158 n441 n434 vdd vss) tx_or
+X318 (n159 n160 n441 vdd vss) tx_and
+X319 (n156 n163 n440 vdd vss) tx_and
+X320 (n442 n443 n180 vdd vss) tx_and
+X321 (n156 n444 n443 vdd vss) tx_or
+X322 (n162 n268 n270 vdd vss) tx_and
+X323 (n160 n272 n274 vdd vss) tx_and
+X324 (n438 n268 n272 vdd vss) tx_and
+X325 (n156 n162 n438 vdd vss) tx_and
+X326 (n154 n152 n268 vdd vss) tx_and
+X327 (n88 n277 n279 vdd vss) tx_and
+X328 (n92 n281 n283 vdd vss) tx_and
+X329 (n445 n281 n285 vdd vss) tx_and
+X330 (n96 n285 n287 vdd vss) tx_and
+X331 (n446 n277 n281 vdd vss) tx_and
+X332 (n94 n92 n445 vdd vss) tx_and
+X333 (n90 n88 n446 vdd vss) tx_and
+X334 (n86 n84 n277 vdd vss) tx_and
+X335 (coarse0 n165 n447 vdd vss) tx_and
+X336 (coarse1 n448 n449 vdd vss) tx_and
+X337 (coarse2 n450 n451 vdd vss) tx_and
+X338 (coarse3 n452 n453 vdd vss) tx_and
+X339 (coarse4 n454 n455 vdd vss) tx_and
+X340 (coarse5 n456 n457 vdd vss) tx_and
+X341 (coarse6 n458 n459 vdd vss) tx_and
+X342 (coarse7 n460 n461 vdd vss) tx_and
+X343 (dac0 n165 n462 vdd vss) tx_and
+X344 (dac1 n448 n463 vdd vss) tx_and
+X345 (dac2 n450 n464 vdd vss) tx_and
+X346 (dac3 n452 n465 vdd vss) tx_and
+X347 (dac4 n454 n466 vdd vss) tx_and
+X348 (dac5 n456 n467 vdd vss) tx_and
+X349 (n248 n69 n468 vdd vss) tx_or
+X350 (n168 n71 n469 vdd vss) tx_or
+X351 (n250 n73 n470 vdd vss) tx_or
+X352 (n253 n75 n471 vdd vss) tx_or
+X353 (n256 n77 n472 vdd vss) tx_or
+X354 (n259 n79 n473 vdd vss) tx_or
+X355 (n166 n81 n474 vdd vss) tx_or
+X356 (n152 n69 n475 vdd vss) tx_or
+X357 (n154 n71 n476 vdd vss) tx_or
+X358 (n162 n73 n477 vdd vss) tx_or
+X359 (n156 n75 n478 vdd vss) tx_or
+X360 (n160 n77 n479 vdd vss) tx_or
+X361 (n480 n172 n481 vdd vss) tx_or
+X362 (n482 n172 n483 vdd vss) tx_or
+X363 (state_out0 n170 n484 vdd vss) tx_or
+X364 (n484 state_out2 n485 vdd vss) tx_or
+X365 (n171 state_out1 n482 vdd vss) tx_or
+X366 (n482 state_out2 n486 vdd vss) tx_or
+X367 (n171 n170 n487 vdd vss) tx_or
+X368 (n487 state_out2 n488 vdd vss) tx_or
+X369 (n359 n327 n489 vdd vss) tx_and
+X370 (n191 n489 n490 vdd vss) tx_or
+X371 (n491 n492 n327 vdd vss) tx_and
+X372 (n335 n290 n493 vdd vss) tx_and
+X373 (n493 n327 n494 vdd vss) tx_and
+X374 (n189 n494 n495 vdd vss) tx_or
+X375 (n164 target_k1 n496 vdd vss) tx_and
+X376 (n330 n357 n355 vdd vss) tx_and
+X377 (n496 n355 n497 vdd vss) tx_and
+X378 (n497 n329 n498 vdd vss) tx_and
+X379 (n187 n498 n499 vdd vss) tx_or
+X380 (target_k4 n492 n329 vdd vss) tx_and
+X381 (n206 n331 n359 vdd vss) tx_and
+X382 (n359 n329 n500 vdd vss) tx_and
+X383 (n185 n500 n501 vdd vss) tx_or
+X384 (n177 n178 n502 vdd vss) tx_and
+X385 (n179 n176 n425 vdd vss) tx_and
+X386 (n393 n394 n419 vdd vss) tx_and
+X387 (n397 n398 n414 vdd vss) tx_and
+X388 (n502 n425 n503 vdd vss) tx_and
+X389 (n503 n412 n504 vdd vss) tx_and
+X390 (n408 n404 n505 vdd vss) tx_and
+X391 (n504 n505 n193 vdd vss) tx_and
+X392 (n153 n155 n506 vdd vss) tx_and
+X393 (n162 n157 n444 vdd vss) tx_and
+X394 (n160 n158 n442 vdd vss) tx_and
+X395 (n506 n444 n507 vdd vss) tx_and
+X396 (n507 n442 n195 vdd vss) tx_and
+X397 (n508 n509 n510 vdd vss) tx_or
+X398 (n511 n55 n512 vdd vss) tx_and
+X399 (n101 n513 n514 vdd vss) tx_and
+X400 (n512 n514 n515 vdd vss) tx_and
+X401 (n515 n141 n128 vdd vss) tx_and
+X402 (n183 n516 n511 vdd vss) tx_or
+X403 (n517 n141 n120 vdd vss) tx_and
+X404 (n518 n141 n131 vdd vss) tx_and
+X405 (n518 n519 n520 vdd vss) tx_and
+X406 (n520 n141 n114 vdd vss) tx_and
+X407 (n101 n194 n518 vdd vss) tx_or
+X408 (n55 n174 n521 vdd vss) tx_or
+X409 (n521 n513 n519 vdd vss) tx_or
+X410 (n483 n522 n523 vdd vss) tx_and
+X411 (n524 n525 n526 vdd vss) tx_and
+X412 (n523 n526 n527 vdd vss) tx_and
+X413 (n527 n528 n111 vdd vss) tx_and
+X414 (n529 n486 n522 vdd vss) tx_or
+X415 (n529 n481 n524 vdd vss) tx_or
+X416 (n530 n485 n525 vdd vss) tx_or
+X417 (n531 n532 n528 vdd vss) tx_or
+X418 (n533 n141 n103 vdd vss) tx_and
+X419 (n175 n174 n517 vdd vss) tx_or
+X420 (n517 n534 n533 vdd vss) tx_or
+X421 (n529 n508 n140 vdd vss) tx_and
+X422 (n141 n535 n143 vdd vss) tx_or
+X423 (n535 n536 n537 vdd vss) tx_or
+X424 (n537 n538 n539 vdd vss) tx_or
+X425 (n164 target_k1 n540 vdd vss) tx_or
+X426 (target_k2 n357 n541 vdd vss) tx_or
+X427 (target_k4 target_k5 n542 vdd vss) tx_or
+X428 (n540 n541 n543 vdd vss) tx_or
+X429 (n543 n542 n544 vdd vss) tx_or
+X430 (n545 n90 n546 vdd vss) tx_or
+X431 (n547 n546 n548 vdd vss) tx_or
+X432 (n548 n549 n550 vdd vss) tx_or
+X433 (n84 n173 n551 vdd vss) tx_or
+X434 (n88 n90 n552 vdd vss) tx_or
+X435 (n92 n94 n553 vdd vss) tx_or
+X436 (n551 n552 n554 vdd vss) tx_or
+X437 (n553 n555 n549 vdd vss) tx_or
+X438 (n554 n549 n556 vdd vss) tx_or
+X439 (n557 n169 n558 vdd vss) tx_or
+X440 (n559 n560 n561 vdd vss) tx_or
+X441 (n562 n563 n564 vdd vss) tx_or
+X442 (n167 n565 n566 vdd vss) tx_or
+X443 (n558 n561 n567 vdd vss) tx_or
+X444 (n564 n566 n568 vdd vss) tx_or
+X445 (n567 n568 n569 vdd vss) tx_or
+X446 (n165 n69 n570 vdd vss) tx_or
+X447 (n71 n73 n571 vdd vss) tx_or
+X448 (n75 n77 n572 vdd vss) tx_or
+X449 (n79 n81 n573 vdd vss) tx_or
+X450 (n570 n571 n574 vdd vss) tx_or
+X451 (n572 n573 n575 vdd vss) tx_or
+X452 (n574 n575 n534 vdd vss) tx_or
+X453 (n151 n173 n547 vdd vss) tx_or
+X454 (n545 n576 n577 vdd vss) tx_or
+X455 (n578 n94 n579 vdd vss) tx_or
+X456 (n96 n98 n555 vdd vss) tx_or
+X457 (n547 n577 n580 vdd vss) tx_or
+X458 (n579 n555 n581 vdd vss) tx_or
+X459 (n580 n581 n582 vdd vss) tx_or
+X460 (n583 n584 n585 vdd vss) tx_or
+X461 (n586 n585 n587 vdd vss) tx_or
+X462 (n588 n589 n590 vdd vss) tx_or
+X463 (n591 n590 n592 vdd vss) tx_or
+X464 (n593 n594 n595 vdd vss) tx_or
+X465 (n596 n595 n597 vdd vss) tx_or
+X466 (n598 n599 n600 vdd vss) tx_or
+X467 (n601 n600 n602 vdd vss) tx_or
+X468 (n535 n508 n603 vdd vss) tx_or
+X469 (n141 n536 n604 vdd vss) tx_or
+X470 (n509 n538 n605 vdd vss) tx_or
+X471 (n603 n604 n606 vdd vss) tx_or
+X472 (n606 n605 n607 vdd vss) tx_or
+X473 (n608 n609 n610 vdd vss) tx_or
+X474 (n611 n612 n613 vdd vss) tx_or
+X475 (n613 n610 n614 vdd vss) tx_or
+X476 (n615 n616 n617 vdd vss) tx_or
+X477 (n618 n612 n619 vdd vss) tx_or
+X478 (n619 n617 n620 vdd vss) tx_or
+X479 (n621 n622 n623 vdd vss) tx_or
+X480 (n608 n616 n624 vdd vss) tx_or
+X481 (n611 n623 n625 vdd vss) tx_or
+X482 (n625 n624 n626 vdd vss) tx_or
+X483 (n538 n143 n138 vdd vss) tx_or
+X484 (n627 n143 n628 vdd vss) tx_or
+X485 (n509 n539 n135 vdd vss) tx_or
+X486 (state_out0 state_out1 n480 vdd vss) tx_or
+X487 (n480 state_out2 n532 vdd vss) tx_or
+X488 (n143 n536 n629 vdd vss) tx_or
+X489 (n510 n538 n630 vdd vss) tx_or
+X490 (n629 n630 n631 vdd vss) tx_or
+X491 (n632 n633 n634 vdd vss) tx_or
+X492 (n635 n634 n636 vdd vss) tx_or
+X493 (n637 n638 n639 vdd vss) tx_or
+X494 (n640 n639 n641 vdd vss) tx_or
+X495 (n642 n643 n644 vdd vss) tx_or
+X496 (n645 n644 n646 vdd vss) tx_or
+X497 (n647 n648 n649 vdd vss) tx_or
+X498 (n650 n649 n651 vdd vss) tx_or
+X499 (n481 n508 vdd vss) pll_inv
+X500 (n483 n535 vdd vss) pll_inv
+X501 (n485 n536 vdd vss) pll_inv
+X502 (n486 n509 vdd vss) pll_inv
+X503 (n532 n538 vdd vss) pll_inv
+X504 (n488 n141 vdd vss) pll_inv
+X505 (n550 n531 vdd vss) pll_inv
+X506 (n556 n530 vdd vss) pll_inv
+X507 (n582 n529 vdd vss) pll_inv
+X508 (range_error n139 vdd vss) pll_inv
+X509 (vss n151 n556 n652 vdd vss) tx_mux
+X510 (vss n276 n556 n653 vdd vss) tx_mux
+X511 (vss n278 n556 n654 vdd vss) tx_mux
+X512 (vss n280 n556 n655 vdd vss) tx_mux
+X513 (vss n282 n556 n656 vdd vss) tx_mux
+X514 (vss n284 n556 n657 vdd vss) tx_mux
+X515 (vss n286 n556 n658 vdd vss) tx_mux
+X516 (vss n288 n556 n659 vdd vss) tx_mux
+X517 (vss n151 n582 n660 vdd vss) tx_mux
+X518 (vss n276 n582 n661 vdd vss) tx_mux
+X519 (vss n278 n582 n662 vdd vss) tx_mux
+X520 (vss n280 n582 n663 vdd vss) tx_mux
+X521 (vss n282 n582 n664 vdd vss) tx_mux
+X522 (vss n284 n582 n665 vdd vss) tx_mux
+X523 (vss n286 n582 n666 vdd vss) tx_mux
+X524 (vss n288 n582 n667 vdd vss) tx_mux
+X525 (vss n151 n550 n668 vdd vss) tx_mux
+X526 (vss n276 n550 n669 vdd vss) tx_mux
+X527 (vss n278 n550 n670 vdd vss) tx_mux
+X528 (vss n280 n550 n671 vdd vss) tx_mux
+X529 (vss n282 n550 n672 vdd vss) tx_mux
+X530 (vss n284 n550 n673 vdd vss) tx_mux
+X531 (vss n286 n550 n674 vdd vss) tx_mux
+X532 (vss n288 n550 n675 vdd vss) tx_mux
+X533 (n534 n513 vdd vss) pll_inv
+X534 (vss n513 n55 n676 vdd vss) tx_mux
+X535 (vss n676 n101 n677 vdd vss) tx_mux
+X536 (vdd vss n556 n678 vdd vss) tx_mux
+X537 (vss vss n556 n679 vdd vss) tx_mux
+X538 (vss vss n582 n680 vdd vss) tx_mux
+X539 (vdd vss n582 n681 vdd vss) tx_mux
+X540 (vdd vss n550 n682 vdd vss) tx_mux
+X541 (vss vss n550 n683 vdd vss) tx_mux
+X542 (vdd vss n196 n684 vdd vss) tx_mux
+X543 (vdd n684 n182 n127 vdd vss) tx_mux
+X544 (vdd n153 n196 n685 vdd vss) tx_mux
+X545 (vss n267 n196 n686 vdd vss) tx_mux
+X546 (vdd n269 n196 n687 vdd vss) tx_mux
+X547 (vss n271 n196 n688 vdd vss) tx_mux
+X548 (vdd n273 n196 n689 vdd vss) tx_mux
+X549 (vdd n275 n196 n690 vdd vss) tx_mux
+X550 (vdd n685 n182 n691 vdd vss) tx_mux
+X551 (vdd n686 n182 n692 vdd vss) tx_mux
+X552 (vss n687 n182 n693 vdd vss) tx_mux
+X553 (vdd n688 n182 n694 vdd vss) tx_mux
+X554 (vss n689 n182 n695 vdd vss) tx_mux
+X555 (vss n690 n182 n696 vdd vss) tx_mux
+X556 (n691 n475 n534 n697 vdd vss) tx_mux
+X557 (n692 n476 n534 n698 vdd vss) tx_mux
+X558 (n693 n477 n534 n699 vdd vss) tx_mux
+X559 (n694 n478 n534 n700 vdd vss) tx_mux
+X560 (n695 n479 n534 n701 vdd vss) tx_mux
+X561 (n696 n158 n534 n702 vdd vss) tx_mux
+X562 (vss vss n534 n703 vdd vss) tx_mux
+X563 (vdd vss n534 n704 vdd vss) tx_mux
+X564 (n703 n697 n55 n705 vdd vss) tx_mux
+X565 (n703 n698 n55 n706 vdd vss) tx_mux
+X566 (n703 n699 n55 n707 vdd vss) tx_mux
+X567 (n703 n700 n55 n708 vdd vss) tx_mux
+X568 (n703 n701 n55 n709 vdd vss) tx_mux
+X569 (n704 n702 n55 n710 vdd vss) tx_mux
+X570 (vss vss n194 n711 vdd vss) tx_mux
+X571 (vss vdd n194 n712 vdd vss) tx_mux
+X572 (n711 n705 n101 n118 vdd vss) tx_mux
+X573 (n711 n706 n101 n117 vdd vss) tx_mux
+X574 (n711 n707 n101 n116 vdd vss) tx_mux
+X575 (n711 n708 n101 n115 vdd vss) tx_mux
+X576 (n711 n709 n101 n113 vdd vss) tx_mux
+X577 (n712 n710 n101 n132 vdd vss) tx_mux
+X578 (n713 n468 n534 n714 vdd vss) tx_mux
+X579 (n715 n469 n534 n716 vdd vss) tx_mux
+X580 (n717 n470 n534 n718 vdd vss) tx_mux
+X581 (n719 n471 n534 n720 vdd vss) tx_mux
+X582 (n721 n472 n534 n722 vdd vss) tx_mux
+X583 (n723 n473 n534 n724 vdd vss) tx_mux
+X584 (n725 n474 n534 n726 vdd vss) tx_mux
+X585 (n727 n264 n534 n728 vdd vss) tx_mux
+X586 (n714 vss n55 n729 vdd vss) tx_mux
+X587 (n716 vss n55 n730 vdd vss) tx_mux
+X588 (n718 vss n55 n731 vdd vss) tx_mux
+X589 (n720 vss n55 n732 vdd vss) tx_mux
+X590 (n722 vss n55 n733 vdd vss) tx_mux
+X591 (n724 vss n55 n734 vdd vss) tx_mux
+X592 (n726 vss n55 n735 vdd vss) tx_mux
+X593 (n728 vss n55 n736 vdd vss) tx_mux
+X594 (vss n729 n101 n126 vdd vss) tx_mux
+X595 (vss n730 n101 n125 vdd vss) tx_mux
+X596 (vss n731 n101 n124 vdd vss) tx_mux
+X597 (vss n732 n101 n123 vdd vss) tx_mux
+X598 (vss n733 n101 n122 vdd vss) tx_mux
+X599 (vss n734 n101 n121 vdd vss) tx_mux
+X600 (vss n735 n101 n119 vdd vss) tx_mux
+X601 (n737 n736 n101 n129 vdd vss) tx_mux
+X602 (vss target_k0 n501 n738 vdd vss) tx_mux
+X603 (target_k0 n305 n501 n739 vdd vss) tx_mux
+X604 (target_k1 n238 n501 n740 vdd vss) tx_mux
+X605 (target_k2 n241 n501 n741 vdd vss) tx_mux
+X606 (target_k3 n243 n501 n742 vdd vss) tx_mux
+X607 (target_k4 n245 n501 n743 vdd vss) tx_mux
+X608 (target_k5 n247 n501 n744 vdd vss) tx_mux
+X609 (vss n362 n501 n745 vdd vss) tx_mux
+X610 (n738 vss n499 n746 vdd vss) tx_mux
+X611 (n739 vss n499 n747 vdd vss) tx_mux
+X612 (n740 target_k0 n499 n748 vdd vss) tx_mux
+X613 (n741 target_k1 n499 n749 vdd vss) tx_mux
+X614 (n742 target_k2 n499 n750 vdd vss) tx_mux
+X615 (n743 target_k3 n499 n751 vdd vss) tx_mux
+X616 (n744 target_k4 n499 n752 vdd vss) tx_mux
+X617 (n745 target_k5 n499 n753 vdd vss) tx_mux
+X618 (n746 target_k0 n495 n754 vdd vss) tx_mux
+X619 (n747 target_k1 n495 n755 vdd vss) tx_mux
+X620 (n748 n340 n495 n756 vdd vss) tx_mux
+X621 (n749 n226 n495 n757 vdd vss) tx_mux
+X622 (n750 n229 n495 n758 vdd vss) tx_mux
+X623 (n751 n232 n495 n759 vdd vss) tx_mux
+X624 (n752 n234 n495 n760 vdd vss) tx_mux
+X625 (n753 n236 n495 n761 vdd vss) tx_mux
+X626 (vss n347 n495 n762 vdd vss) tx_mux
+X627 (n754 vss n490 n763 vdd vss) tx_mux
+X628 (n755 target_k0 n490 n764 vdd vss) tx_mux
+X629 (n756 n305 n490 n765 vdd vss) tx_mux
+X630 (n757 n238 n490 n766 vdd vss) tx_mux
+X631 (n758 n241 n490 n767 vdd vss) tx_mux
+X632 (n759 n199 n490 n768 vdd vss) tx_mux
+X633 (n760 n202 n490 n769 vdd vss) tx_mux
+X634 (n761 n204 n490 n770 vdd vss) tx_mux
+X635 (n762 n221 n490 n771 vdd vss) tx_mux
+X636 (target_k0 n763 n544 n772 vdd vss) tx_mux
+X637 (n305 n764 n544 n773 vdd vss) tx_mux
+X638 (n207 n765 n544 n774 vdd vss) tx_mux
+X639 (n210 n766 n544 n775 vdd vss) tx_mux
+X640 (n213 n767 n544 n776 vdd vss) tx_mux
+X641 (n216 n768 n544 n777 vdd vss) tx_mux
+X642 (n218 n769 n544 n778 vdd vss) tx_mux
+X643 (n220 n770 n544 n779 vdd vss) tx_mux
+X644 (n223 n771 n544 n780 vdd vss) tx_mux
+X645 (n318 vss n544 n781 vdd vss) tx_mux
+X646 (coarse0 n447 n194 n248 vdd vss) tx_mux
+X647 (coarse1 n449 n194 n168 vdd vss) tx_mux
+X648 (coarse2 n451 n194 n250 vdd vss) tx_mux
+X649 (coarse3 n453 n194 n253 vdd vss) tx_mux
+X650 (coarse4 n455 n194 n256 vdd vss) tx_mux
+X651 (coarse5 n457 n194 n259 vdd vss) tx_mux
+X652 (coarse6 n459 n194 n166 vdd vss) tx_mux
+X653 (coarse7 n461 n194 n264 vdd vss) tx_mux
+X654 (n462 dac0 n194 n152 vdd vss) tx_mux
+X655 (n463 dac1 n194 n154 vdd vss) tx_mux
+X656 (n464 dac2 n194 n162 vdd vss) tx_mux
+X657 (n465 dac3 n194 n156 vdd vss) tx_mux
+X658 (n466 dac4 n194 n160 vdd vss) tx_mux
+X659 (n467 dac5 n194 n158 vdd vss) tx_mux
+X660 (vdd n557 n569 n713 vdd vss) tx_mux
+X661 (vdd n249 n569 n715 vdd vss) tx_mux
+X662 (vdd n252 n569 n717 vdd vss) tx_mux
+X663 (vdd n255 n569 n719 vdd vss) tx_mux
+X664 (vdd n258 n569 n721 vdd vss) tx_mux
+X665 (vdd n261 n569 n723 vdd vss) tx_mux
+X666 (vdd n263 n569 n725 vdd vss) tx_mux
+X667 (vdd n266 n569 n727 vdd vss) tx_mux
+X668 (vss n69 n534 n782 vdd vss) tx_mux
+X669 (vss n71 n534 n783 vdd vss) tx_mux
+X670 (vss n73 n534 n784 vdd vss) tx_mux
+X671 (vss n75 n534 n785 vdd vss) tx_mux
+X672 (vss n77 n534 n786 vdd vss) tx_mux
+X673 (vss n79 n534 n787 vdd vss) tx_mux
+X674 (vss n81 n534 n788 vdd vss) tx_mux
+X675 (vss vss n534 n789 vdd vss) tx_mux
+X676 (vss n69 n534 n790 vdd vss) tx_mux
+X677 (vss n71 n534 n791 vdd vss) tx_mux
+X678 (vss n73 n534 n792 vdd vss) tx_mux
+X679 (vss n75 n534 n793 vdd vss) tx_mux
+X680 (vss n77 n534 n794 vdd vss) tx_mux
+X681 (vdd n79 n534 n795 vdd vss) tx_mux
+X682 (vss n81 n534 n796 vdd vss) tx_mux
+X683 (n790 n782 n55 n797 vdd vss) tx_mux
+X684 (n791 n783 n55 n798 vdd vss) tx_mux
+X685 (n792 n784 n55 n799 vdd vss) tx_mux
+X686 (n793 n785 n55 n800 vdd vss) tx_mux
+X687 (n794 n786 n55 n801 vdd vss) tx_mux
+X688 (n795 n787 n55 n802 vdd vss) tx_mux
+X689 (n796 n788 n55 n803 vdd vss) tx_mux
+X690 (vss n789 n55 n804 vdd vss) tx_mux
+X691 (n194 n737 vdd vss) pll_inv
+X692 (vss n797 n101 n109 vdd vss) tx_mux
+X693 (vss n798 n101 n108 vdd vss) tx_mux
+X694 (vss n799 n101 n107 vdd vss) tx_mux
+X695 (vss n800 n101 n106 vdd vss) tx_mux
+X696 (vss n801 n101 n105 vdd vss) tx_mux
+X697 (n194 n802 n101 n104 vdd vss) tx_mux
+X698 (vss n803 n101 n102 vdd vss) tx_mux
+X699 (n737 n804 n101 n136 vdd vss) tx_mux
+X700 (n513 vdd n55 n805 vdd vss) tx_mux
+X701 (n712 n805 n101 n130 vdd vss) tx_mux
+X702 (n656 n536 n586 vdd vss) tx_and
+X703 (n664 n510 n583 vdd vss) tx_and
+X704 (n672 n538 n584 vdd vss) tx_and
+X705 (n657 n536 n591 vdd vss) tx_and
+X706 (n665 n510 n588 vdd vss) tx_and
+X707 (n673 n538 n589 vdd vss) tx_and
+X708 (n658 n536 n596 vdd vss) tx_and
+X709 (n666 n510 n593 vdd vss) tx_and
+X710 (n674 n538 n594 vdd vss) tx_and
+X711 (n659 n536 n601 vdd vss) tx_and
+X712 (n667 n510 n598 vdd vss) tx_and
+X713 (n675 n538 n599 vdd vss) tx_and
+X714 (n682 n538 n609 vdd vss) tx_and
+X715 (n680 n508 n618 vdd vss) tx_and
+X716 (n678 n536 n612 vdd vss) tx_and
+X717 (n681 n509 n615 vdd vss) tx_and
+X718 (n681 n508 n611 vdd vss) tx_and
+X719 (n677 n141 n621 vdd vss) tx_and
+X720 (n679 n536 n622 vdd vss) tx_and
+X721 (n680 n509 n608 vdd vss) tx_and
+X722 (n683 n538 n616 vdd vss) tx_and
+X723 (n550 n538 n627 vdd vss) tx_and
+X724 (n652 n536 n635 vdd vss) tx_and
+X725 (n660 n510 n632 vdd vss) tx_and
+X726 (n668 n538 n633 vdd vss) tx_and
+X727 (n653 n536 n640 vdd vss) tx_and
+X728 (n661 n510 n637 vdd vss) tx_and
+X729 (n669 n538 n638 vdd vss) tx_and
+X730 (n654 n536 n645 vdd vss) tx_and
+X731 (n662 n510 n642 vdd vss) tx_and
+X732 (n670 n538 n643 vdd vss) tx_and
+X733 (n655 n536 n650 vdd vss) tx_and
+X734 (n663 n510 n647 vdd vss) tx_and
+X735 (n671 n538 n648 vdd vss) tx_and
+X736 (n403 n192 vdd vss) pll_inv
+X737 (n196 n516 vdd vss) pll_inv
+X738 (target_k2 n330 vdd vss) pll_inv
+X739 (target_k3 n357 vdd vss) pll_inv
+X740 (target_k4 n491 vdd vss) pll_inv
+X741 (target_k5 n492 vdd vss) pll_inv
+X742 (target_k1 n336 vdd vss) pll_inv
+X743 (n772 n371 vdd vss) pll_inv
+X744 (n773 n373 vdd vss) pll_inv
+X745 (n774 n375 vdd vss) pll_inv
+X746 (n775 n377 vdd vss) pll_inv
+X747 (n776 n379 vdd vss) pll_inv
+X748 (n777 n381 vdd vss) pll_inv
+X749 (n778 n383 vdd vss) pll_inv
+X750 (n779 n385 vdd vss) pll_inv
+X751 (n780 n387 vdd vss) pll_inv
+X752 (n781 n389 vdd vss) pll_inv
+X753 (n248 n557 vdd vss) pll_inv
+X754 (n250 n559 vdd vss) pll_inv
+X755 (n253 n560 vdd vss) pll_inv
+X756 (n256 n562 vdd vss) pll_inv
+X757 (n259 n563 vdd vss) pll_inv
+X758 (n264 n565 vdd vss) pll_inv
+X759 (n88 n545 vdd vss) pll_inv
+X760 (n90 n576 vdd vss) pll_inv
+X761 (n92 n578 vdd vss) pll_inv
+X762 (n77 n456 vdd vss) pll_inv
+X763 (n79 n458 vdd vss) pll_inv
+X764 (n81 n460 vdd vss) pll_inv
+X765 (n69 n448 vdd vss) pll_inv
+X766 (n71 n450 vdd vss) pll_inv
+X767 (n73 n452 vdd vss) pll_inv
+X768 (n75 n454 vdd vss) pll_inv
+X769 (vss n651 n631 n146 vdd vss) tx_mux
+X770 (vss n587 n631 n145 vdd vss) tx_mux
+X771 (vss n592 n631 n144 vdd vss) tx_mux
+X772 (vss n597 n631 n142 vdd vss) tx_mux
+X773 (vss n602 n631 n150 vdd vss) tx_mux
+X774 (vss n614 n607 n112 vdd vss) tx_mux
+X775 (vss n620 n607 n110 vdd vss) tx_mux
+X776 (vss n626 n607 n133 vdd vss) tx_mux
+X777 (vss n628 n138 n137 vdd vss) tx_mux
+X778 (vss n509 n135 n134 vdd vss) tx_mux
+X779 (vss n636 n631 n149 vdd vss) tx_mux
+X780 (vss n641 n631 n148 vdd vss) tx_mux
+X781 (vss n646 n631 n147 vdd vss) tx_mux
+ends tx_fll_controller_rf4_v14

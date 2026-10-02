@@ -1,0 +1,45 @@
+simulator lang=spectre
+include "ff_fbdelay50_v14.scs"
+include "ring_inv_static_v14.scs"
+subckt cmos_even_bank_r13_v14 (clk reset s0 s1 s2 s3 s4 s5 q1 out vdd vss)
+XPRE (q0 clk q0 vdd vss) ff_fbdelay50_v14
+XPB0 (q0 qb0 vdd vss) pll_inv wn=0.8u wp=0.5u
+XPB1 (qb0 q1 vdd vss) pll_inv wn=2u wp=4u
+XD4 (d4b q1 d4b vdd vss) pll_tspc_inv
+XB4 (d4b d4 vdd vss) pll_inv wn=2u wp=5u
+XNS (s0 not4 vdd vss) pll_inv
+XEN (reset not4 run vdd vss) tx_or
+XCI (q1 ci vdd vss) pll_inv wn=0.5u wp=2u
+XGN (ci run gn vdd vss) pll_nand2 wn=4u wp=4u
+XCB1 (gn cb vdd vss) pll_inv wn=4u wp=8u
+XCB2 (cb ck vdd vss) pll_inv wn=16u wp=32u
+XCKB (ck ckb vdd vss) pll_inv wn=8u wp=16u
+XRL (reset ck loadb vdd vss) pll_tspc_inv
+XRLI (loadb load vdd vss) pll_inv wn=0.8u wp=2u
+XRK (load loadb vdd vss) pll_inv wn=0.4u wp=0.8u ln=1u
+XST0 (s3 s4 st0 vdd vss) tx_or
+XST1 (st0 s5 init2 vdd vss) tx_or
+XF0 (fb ck ckb load loadb vdd r0 vdd vss) ring_inv_sync_v14
+XF1 (r0 ck ckb load loadb vdd r1 vdd vss) ring_inv_sync_v14
+XF2 (r1 ck ckb load loadb init2 r2 vdd vss) ring_inv_sync_v14
+XF3 (r2 ck ckb load loadb s5 r3 vdd vss) ring_inv_sync_v14
+XF4 (r3 ck ckb load loadb vss r4 vdd vss) ring_inv_sync_v14
+XF5 (r4 ck ckb load loadb vss r5 vdd vss) ring_inv_sync_v14
+XF6 (r5 ck ckb load loadb vss r6 vdd vss) ring_inv_sync_v14
+XSI1 (s1 sb1 vdd vss) pll_inv
+XT1 (r2 fb s1 sb1 vdd vss) pll_tg wn=2u wp=4u
+XSI2 (s2 sb2 vdd vss) pll_inv
+XT2 (r3 fb s2 sb2 vdd vss) pll_tg wn=2u wp=4u
+XSI3 (s3 sb3 vdd vss) pll_inv
+XT3 (r4 fb s3 sb3 vdd vss) pll_tg wn=2u wp=4u
+XSI4 (s4 sb4 vdd vss) pll_inv
+XT4 (r5 fb s4 sb4 vdd vss) pll_tg wn=2u wp=4u
+XSI5 (s5 sb5 vdd vss) pll_inv
+XT5 (r6 fb s5 sb5 vdd vss) pll_tg wn=2u wp=4u
+RFB (fb vss) resistor r=10Meg
+X4 (d4 s0 o4 vdd vss) tx_and
+XR (r0 not4 oring vdd vss) tx_and
+XOR (o4 oring preout vdd vss) tx_or
+XRI (reset resetb vdd vss) pll_inv
+XM (preout resetb out vdd vss) tx_and
+ends cmos_even_bank_r13_v14

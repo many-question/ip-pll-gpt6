@@ -1,0 +1,10 @@
+simulator lang=spectre
+global 0
+ahdl_include "supply_energy_observer.va"
+simulatorOptions options reltol=1e-6 vabstol=1e-9 iabstol=1e-15
+VDD (src 0) vsource dc=1.2
+XM (src vdd 0 energy power) supply_energy_observer
+RLOAD (vdd 0) resistor r=1000
+tran tran stop=100n maxstep=1n strobeperiod=5n strobeoutput=strobeonly
+save src vdd energy power VDD:p
+saveOptions options save=selected
