@@ -12,7 +12,7 @@
 | FF及两级输出整体2倍 | 90.867 fs | 20.410 GV/s | 0.01275 dB | 0.00958 dB，通过 |
 | 整体4倍 | 63.275 fs | 30.934 GV/s | 0.01455 dB | 0.03047 dB，通过 |
 
-候选完整频带采用fresh PSS、1 ps／383边带／20点每十倍频；自身精度检查为0.5 ps／767边带／maxacfreq 504 GHz。六点精度和六沿三点检查不等于全频带、谐波附近积分或PVT全部关闭。2倍新独立FF-only与全噪声的同器件贡献最大相对差1.11e-16，通过；其余4组以及4倍5组fresh-PSS noise-on继续。
+候选完整频带采用fresh PSS、1 ps／383边带／20点每十倍频；自身精度检查为0.5 ps／767边带／maxacfreq 504 GHz。六点精度和六沿三点不等于全频带、谐波附近积分或PVT关闭。局部fresh-PSS独立noise-on：2倍已通过ff,buffers,rx共3/5组，4倍已通过ff共1/5组；两者自身六沿与匹配六点精度此前已通过。1MHz/100MHz/491.99MHz三点归因不替代全带、谐波邻近、PVT或整机。
 
 4倍的暂定RSS贡献：FF50.491 fs、末级输出24.911 fs、前级19.505 fs、RX19.802 fs、分频1.747 fs、辅助负载7.586 fs。分量以方差相加。等效边沿电压RMS由原1.688 mV升到4倍1.957 mV，因此当前时间噪声改善来自更大斜率；此代数分解不能证明尺寸以外的唯一因果机制。见[尺寸数据](results/rt_noise_scaling_validation.json)、[斜率诊断](NOISE_SLEW_DIAGNOSIS.md)、[2倍审计](results/rt2_fine_audit_validation.json)、[4倍审计](results/rt4_fine_audit_validation.json)。
 
@@ -48,9 +48,11 @@ sampled edge-crossing电压PSD除以对应沿斜率平方后积分；自动Jee�
 
 修正供电轨迹相邻周期保存电压最大差0.829 mV、主要时钟共同提前约0.021 ps；分频沿数相同，未覆盖隐藏状态，也不是随机jitter。安静shooting边界+134.023 ns仅为待检假设，尚未应用。见[周期漂移](results/core_period_drift.json)、[边界](results/core_boundary_diagnosis.json)。
 
-释放的6线程用于真实LC四组3 µs／1 ps近锁定比较：基线、RT4、CF40、组合。**基线已通过**：末窗983.999994 MHz、参考采样相位峰峰0.0001063 rad、漂移−8.18e-5 rad/µs；粗调23和实际供电保持。其余继续，以[四组结果](results/core_noise_candidates_validation.json)为准。2 ns观察器仅用于包络，不能测GHz频谱或平均功耗；3 µs不能证明CF40最终偏置稳定或冷上电。
+释放的6线程继续真实LC四组3 µs／1 ps近锁定比较。原尺寸基线通过：983.999994 MHz、相位漂移−8.18e-5 rad/µs。**RT4完成但失败**：输出986.004435 MHz、RF3944.017724 MHz、相位漂移+50.3637 rad/µs，分频比仍正确。共同初态与固定慢控制不能证明重新FLL捕获一定失败；先测加载频率曲线，再验证交接，RT4未采用。CF40及组合继续。见[实际LC候选审阅](ACTUAL_LC_CANDIDATE_REVIEW.md)。
 
-基线实际终态的612个物理节点已形成新的[仅初态改变PSS试验](results/core_late_seed_protocol.json)：三个实际探针供电均1.2 V，其余电路、周期、时刻、容差和itres不变。**已准备、未运行**，待四组结果审阅并释放长任务槽位；不将其与安静边界变化同时施加，也不预判收敛。
+基线终态仅更换readic的PSS仍已准备、未运行。新内部状态审计发现，同相位3 µs前后35个节点变化>1 mV；外部稳定不证明内部周期稳定。612个状态条目准确为601个电压和11个电流，包含两个电感电流。两个端点不能区分初始化跳变与后续慢变，未证明shooting根因，也未修改初态，见[完整状态诊断](CORE_STATE_DIAGNOSIS.md)。
+
+固定控制端第一例已完成：相同边沿拟合下，LC／输出24 MHz PM幅度仍保留99.863%／99.332%。直接参考耦合路径得到证据，但载波均值也改变约1.299 MHz，不能把该比例解释为某个器件的贡献。其余保持／跟踪／KVCO继续，详见[参考负载诊断](REFERENCE_LOADING_DIAGNOSIS.md)。这些确定性调制不计入随机RMS。
 
 ## 接续工作
 

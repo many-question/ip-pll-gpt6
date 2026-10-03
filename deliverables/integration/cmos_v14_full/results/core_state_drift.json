@@ -1,0 +1,5215 @@
+{
+  "scope": "Audit physical text-state drift and equivalent reset-counter NAND states.\n\nTwo endpoints separated by3us are compared at the same forcing phase. This\nis not a one-period residual, and no assertion of PSS convergence is made.\nThe independent local-chain PSS supplies a check of identical reset-latch\ncells, not a valid periodic state of the actualLC core.\n",
+  "initial_file": "share/deliverables/integration/cmos_v14_full/state_inputs/core_pulsetrip_supply_seed_tt.ic",
+  "initial_sha256": "954139915dc28cbab2f73f5e1772612450515ee235bb522d4b7794c315f1329b",
+  "final_file": "share/deliverables/integration/cmos_v14_full/state_inputs/core_pulsetrip_late_seed_tt.ic",
+  "final_sha256": "1f8108ef2d763c99f9c66cb1336c23df4928115d08784e2f0723ea610c563756",
+  "endpoint_separation_us": 3.0,
+  "periods_of_250ns": 12,
+  "state_entries": 612,
+  "compared_entries": 609,
+  "voltage_entries": 601,
+  "current_entries": 11,
+  "added_entries": {
+    "XP.VRT:p": {
+      "value": -0.000232661928209612,
+      "unit": "A"
+    },
+    "XP.VRX:p": {
+      "value": -0.000527680433261773,
+      "unit": "A"
+    },
+    "XP.VVCO:p": {
+      "value": -0.00298530383082756,
+      "unit": "A"
+    }
+  },
+  "voltage_changes_over_1mv": 35,
+  "largest_voltage_changes": [
+    {
+      "node": "XP.XCOUNT.XG.XN.x",
+      "unit": "V",
+      "initial": 0.671714371779477,
+      "final": 0.682644046594154,
+      "delta": 0.010929674814676993
+    },
+    {
+      "node": "XP.XD.XF6.XEN.XN.x",
+      "unit": "V",
+      "initial": 0.909566852939326,
+      "final": 0.919699288198529,
+      "delta": 0.010132435259202932
+    },
+    {
+      "node": "XP.XD.XF5.XEN.XN.x",
+      "unit": "V",
+      "initial": 0.909566866297277,
+      "final": 0.919699298763671,
+      "delta": 0.010132432466393948
+    },
+    {
+      "node": "XP.XCOUNT.XF0.XF.XM.XN.x",
+      "unit": "V",
+      "initial": 0.926196220532789,
+      "final": 0.936248724710542,
+      "delta": 0.010052504177752941
+    },
+    {
+      "node": "XP.XCOUNT.XF0.XF.XS.XN.x",
+      "unit": "V",
+      "initial": 0.0117170280271241,
+      "final": 0.018374181812493,
+      "delta": 0.006657153785368899
+    },
+    {
+      "node": "XP.XCOUNT.XF1.XF.XS.XN.x",
+      "unit": "V",
+      "initial": 0.0117233708059974,
+      "final": 0.0183781323439327,
+      "delta": 0.006654761537935301
+    },
+    {
+      "node": "XP.XCOUNT.XF2.XF.XS.XN.x",
+      "unit": "V",
+      "initial": 0.0117238139890974,
+      "final": 0.0183784068156335,
+      "delta": 0.006654592826536101
+    },
+    {
+      "node": "XP.XCOUNT.XF3.XF.XS.XN.x",
+      "unit": "V",
+      "initial": 0.0117238309302211,
+      "final": 0.0183784177109959,
+      "delta": 0.006654586780774798
+    },
+    {
+      "node": "XP.XCOUNT.XF4.XF.XS.XN.x",
+      "unit": "V",
+      "initial": 0.011723831611595,
+      "final": 0.0183784181249248,
+      "delta": 0.006654586513329801
+    },
+    {
+      "node": "XP.XCOUNT.XF5.XF.XS.XN.x",
+      "unit": "V",
+      "initial": 0.0117238316354013,
+      "final": 0.0183784181396858,
+      "delta": 0.006654586504284502
+    },
+    {
+      "node": "XP.XCOUNT.XF8.XF.XS.XN.x",
+      "unit": "V",
+      "initial": 0.0117238316362016,
+      "final": 0.0183784181401742,
+      "delta": 0.0066545865039725986
+    },
+    {
+      "node": "XP.XCOUNT.XF6.XF.XS.XN.x",
+      "unit": "V",
+      "initial": 0.011723831636252,
+      "final": 0.018378418140211,
+      "delta": 0.006654586503959
+    },
+    {
+      "node": "XP.XCOUNT.XF7.XF.XS.XN.x",
+      "unit": "V",
+      "initial": 0.0117238316362976,
+      "final": 0.0183784181402268,
+      "delta": 0.006654586503929199
+    },
+    {
+      "node": "XP.XCOUNT.XF9.XF.XS.XN.x",
+      "unit": "V",
+      "initial": 0.0117238316376274,
+      "final": 0.0183784181410687,
+      "delta": 0.0066545865034413
+    },
+    {
+      "node": "XP.XCOUNT.XF10.XF.XS.XN.x",
+      "unit": "V",
+      "initial": 0.0117238317932018,
+      "final": 0.0183784182379603,
+      "delta": 0.006654586444758501
+    },
+    {
+      "node": "XP.XCOUNT.XF11.XF.XS.XN.x",
+      "unit": "V",
+      "initial": 0.0117238394465018,
+      "final": 0.0183784230040892,
+      "delta": 0.0066545835575873985
+    },
+    {
+      "node": "XP.XCOUNT.XF12.XF.XS.XN.x",
+      "unit": "V",
+      "initial": 0.0117241465116495,
+      "final": 0.0183786142259597,
+      "delta": 0.0066544677143102
+    },
+    {
+      "node": "XP.XCOUNT.XF13.XF.XS.XN.x",
+      "unit": "V",
+      "initial": 0.0117359091237989,
+      "final": 0.0183859396363892,
+      "delta": 0.0066500305125902996
+    },
+    {
+      "node": "XP.XCOUNT.XF10.XF.XM.XN.x",
+      "unit": "V",
+      "initial": 0.0119320503632623,
+      "final": 0.0185082781506325,
+      "delta": 0.006576227787370199
+    },
+    {
+      "node": "XP.XCOUNT.XF9.XF.XM.XN.x",
+      "unit": "V",
+      "initial": 0.0119320505942408,
+      "final": 0.0185082782948564,
+      "delta": 0.006576227700615599
+    },
+    {
+      "node": "XP.XCOUNT.XF8.XF.XM.XN.x",
+      "unit": "V",
+      "initial": 0.011932050615981,
+      "final": 0.0185082783084345,
+      "delta": 0.0065762276924534995
+    },
+    {
+      "node": "XP.XCOUNT.XF7.XF.XM.XN.x",
+      "unit": "V",
+      "initial": 0.0119320506172904,
+      "final": 0.0185082783092541,
+      "delta": 0.0065762276919637
+    },
+    {
+      "node": "XP.XCOUNT.XF6.XF.XM.XN.x",
+      "unit": "V",
+      "initial": 0.0119320506205762,
+      "final": 0.0185082783113216,
+      "delta": 0.006576227690745401
+    },
+    {
+      "node": "XP.XCOUNT.XF5.XF.XM.XN.x",
+      "unit": "V",
+      "initial": 0.0119320507113967,
+      "final": 0.0185082783680235,
+      "delta": 0.0065762276566268
+    },
+    {
+      "node": "XP.XCOUNT.XF4.XF.XM.XN.x",
+      "unit": "V",
+      "initial": 0.0119320531928005,
+      "final": 0.0185082799177293,
+      "delta": 0.006576226724928802
+    },
+    {
+      "node": "XP.XCOUNT.XF11.XF.XM.XN.x",
+      "unit": "V",
+      "initial": 0.0119320554347462,
+      "final": 0.0185082813178904,
+      "delta": 0.0065762258831442
+    },
+    {
+      "node": "XP.XCOUNT.XF3.XF.XM.XN.x",
+      "unit": "V",
+      "initial": 0.0119321188133157,
+      "final": 0.0185083208982368,
+      "delta": 0.006576202084921099
+    },
+    {
+      "node": "XP.XCOUNT.XF12.XF.XM.XN.x",
+      "unit": "V",
+      "initial": 0.0119324687462841,
+      "final": 0.0185085394418808,
+      "delta": 0.0065760706955967
+    },
+    {
+      "node": "XP.XCOUNT.XF2.XF.XM.XN.x",
+      "unit": "V",
+      "initial": 0.0119337666644839,
+      "final": 0.0185093499567044,
+      "delta": 0.006575583292220501
+    },
+    {
+      "node": "XP.XCOUNT.XF13.XF.XM.XN.x",
+      "unit": "V",
+      "initial": 0.0119374254860617,
+      "final": 0.0185116351901905,
+      "delta": 0.006574209704128801
+    },
+    {
+      "node": "XP.XCOUNT.XF1.XF.XM.XN.x",
+      "unit": "V",
+      "initial": 0.0119765376438296,
+      "final": 0.0185360720283619,
+      "delta": 0.006559534384532301
+    },
+    {
+      "node": "XP.XDAC.b4",
+      "unit": "V",
+      "initial": 0.0719620566173703,
+      "final": 0.0669301322718782,
+      "delta": -0.0050319243454921
+    },
+    {
+      "node": "XP.XDAC.b0",
+      "unit": "V",
+      "initial": 0.0719550123061932,
+      "final": 0.0669231104974169,
+      "delta": -0.005031901808776301
+    },
+    {
+      "node": "XP.XDAC.b3",
+      "unit": "V",
+      "initial": 0.0719578089366045,
+      "final": 0.0669259681805871,
+      "delta": -0.005031840756017397
+    },
+    {
+      "node": "XP.XDAC.vd",
+      "unit": "V",
+      "initial": 0.0630147007772382,
+      "final": 0.0583560544809836,
+      "delta": -0.0046586462962546
+    },
+    {
+      "node": "XP.vc1",
+      "unit": "V",
+      "initial": 0.657945310539925,
+      "final": 0.657684886324801,
+      "delta": -0.0002604242151239555
+    },
+    {
+      "node": "XP.ctrl",
+      "unit": "V",
+      "initial": 0.69059828030828,
+      "final": 0.690339998440422,
+      "delta": -0.0002582818678579235
+    },
+    {
+      "node": "XP.XD.XF0.din",
+      "unit": "V",
+      "initial": 0.00120386461736695,
+      "final": 0.000957715568032493,
+      "delta": -0.00024614904933445685
+    },
+    {
+      "node": "XP.XD.fb",
+      "unit": "V",
+      "initial": 0.00112128262285427,
+      "final": 0.000875300451351842,
+      "delta": -0.000245982171502428
+    },
+    {
+      "node": "XP.data",
+      "unit": "V",
+      "initial": 0.527829683354773,
+      "final": 0.527804642616246,
+      "delta": -2.5040738526938e-05
+    }
+  ],
+  "all_entries": [
+    {
+      "node": "out",
+      "unit": "V",
+      "initial": 0.936911631352049,
+      "final": 0.936902846958915,
+      "delta": -8.78439313400925e-06
+    },
+    {
+      "node": "ref",
+      "unit": "V",
+      "initial": 0.0,
+      "final": 0.0,
+      "delta": 0.0
+    },
+    {
+      "node": "vdd",
+      "unit": "V",
+      "initial": 1.2,
+      "final": 1.2,
+      "delta": 0.0
+    },
+    {
+      "node": "XP.acqclk",
+      "unit": "V",
+      "initial": 1.1929585054575,
+      "final": 1.19295814868272,
+      "delta": -3.5677477994155993e-07
+    },
+    {
+      "node": "XP.acquired",
+      "unit": "V",
+      "initial": 1.2,
+      "final": 1.2,
+      "delta": 0.0
+    },
+    {
+      "node": "XP.amp_good",
+      "unit": "V",
+      "initial": 1.20000001081678,
+      "final": 1.20000001005364,
+      "delta": -7.631399956409268e-10
+    },
+    {
+      "node": "XP.b0",
+      "unit": "V",
+      "initial": 1.19966853885121,
+      "final": 1.19966859859214,
+      "delta": 5.974092998073388e-08
+    },
+    {
+      "node": "XP.b1",
+      "unit": "V",
+      "initial": 1.19949395733385,
+      "final": 1.19949406859974,
+      "delta": 1.1126589005705512e-07
+    },
+    {
+      "node": "XP.b2",
+      "unit": "V",
+      "initial": 1.19940750114805,
+      "final": 1.19940779120339,
+      "delta": 2.900553399687311e-07
+    },
+    {
+      "node": "XP.b3",
+      "unit": "V",
+      "initial": 0.00978123630408755,
+      "final": 0.00978088344472874,
+      "delta": -3.528593588101453e-07
+    },
+    {
+      "node": "XP.b4",
+      "unit": "V",
+      "initial": 1.20045329802704,
+      "final": 1.20045335998786,
+      "delta": 6.196082003029346e-08
+    },
+    {
+      "node": "XP.b5",
+      "unit": "V",
+      "initial": 0.0175965710015334,
+      "final": 0.0175957432971961,
+      "delta": -8.277043372986737e-07
+    },
+    {
+      "node": "XP.b6",
+      "unit": "V",
+      "initial": 0.0192796602006535,
+      "final": 0.0192786995180846,
+      "delta": -9.606825689019438e-07
+    },
+    {
+      "node": "XP.b7",
+      "unit": "V",
+      "initial": 0.0200503473221238,
+      "final": 0.0200493194006385,
+      "delta": -1.0279214852984553e-06
+    },
+    {
+      "node": "XP.clk",
+      "unit": "V",
+      "initial": -0.0143258269447802,
+      "final": -0.0143241442290329,
+      "delta": 1.6827157472993487e-06
+    },
+    {
+      "node": "XP.clock_b",
+      "unit": "V",
+      "initial": 1.22499851554146,
+      "final": 1.22499839345479,
+      "delta": -1.220866701068246e-07
+    },
+    {
+      "node": "XP.clock_mux",
+      "unit": "V",
+      "initial": 0.495050848505162,
+      "final": 0.495042992749968,
+      "delta": -7.855755194019487e-06
+    },
+    {
+      "node": "XP.count_clock",
+      "unit": "V",
+      "initial": 7.61146956763432e-05,
+      "final": 7.61116377215051e-05,
+      "delta": -3.0579548381058207e-09
+    },
+    {
+      "node": "XP.ctrl",
+      "unit": "V",
+      "initial": 0.69059828030828,
+      "final": 0.690339998440422,
+      "delta": -0.0002582818678579235
+    },
+    {
+      "node": "XP.d1",
+      "unit": "V",
+      "initial": 1.2,
+      "final": 1.2,
+      "delta": 0.0
+    },
+    {
+      "node": "XP.d2",
+      "unit": "V",
+      "initial": 1.2,
+      "final": 1.2,
+      "delta": 0.0
+    },
+    {
+      "node": "XP.d5",
+      "unit": "V",
+      "initial": 1.2,
+      "final": 1.2,
+      "delta": 0.0
+    },
+    {
+      "node": "XP.data",
+      "unit": "V",
+      "initial": 0.527829683354773,
+      "final": 0.527804642616246,
+      "delta": -2.5040738526938e-05
+    },
+    {
+      "node": "XP.en",
+      "unit": "V",
+      "initial": 1.2,
+      "final": 1.2,
+      "delta": 0.0
+    },
+    {
+      "node": "XP.hn",
+      "unit": "V",
+      "initial": 0.45219572585011,
+      "final": 0.452197352737213,
+      "delta": 1.6268871030344911e-06
+    },
+    {
+      "node": "XP.hp",
+      "unit": "V",
+      "initial": 0.601905187891055,
+      "final": 0.601898379071098,
+      "delta": -6.808819956960477e-06
+    },
+    {
+      "node": "XP.phase_good",
+      "unit": "V",
+      "initial": 1.19999996675541,
+      "final": 1.19999996679984,
+      "delta": 4.443001522247414e-11
+    },
+    {
+      "node": "XP.preset",
+      "unit": "V",
+      "initial": 0.0003617545799421,
+      "final": 0.000361238335404088,
+      "delta": -5.162445380119574e-07
+    },
+    {
+      "node": "XP.pulse",
+      "unit": "V",
+      "initial": -2.29731013714028e-06,
+      "final": -2.11038025408802e-06,
+      "delta": 1.8692988305225976e-07
+    },
+    {
+      "node": "XP.q0",
+      "unit": "V",
+      "initial": 5.27652880216786e-08,
+      "final": 5.15672214399861e-08,
+      "delta": -1.1980665816925011e-09
+    },
+    {
+      "node": "XP.q1",
+      "unit": "V",
+      "initial": 0.412048539668169,
+      "final": 0.412032824773776,
+      "delta": -1.571489439300411e-05
+    },
+    {
+      "node": "XP.q2",
+      "unit": "V",
+      "initial": 9.2984975032454e-09,
+      "final": 1.00643666906713e-08,
+      "delta": 7.658691874258998e-10
+    },
+    {
+      "node": "XP.q3",
+      "unit": "V",
+      "initial": 9.27916015888171e-09,
+      "final": 1.00970298616121e-08,
+      "delta": 8.178697027303901e-10
+    },
+    {
+      "node": "XP.q4",
+      "unit": "V",
+      "initial": 9.28011210115677e-09,
+      "final": 1.00976269119619e-08,
+      "delta": 8.175148108051298e-10
+    },
+    {
+      "node": "XP.q5",
+      "unit": "V",
+      "initial": 9.28021521818583e-09,
+      "final": 1.00976566839437e-08,
+      "delta": 8.174414657578693e-10
+    },
+    {
+      "node": "XP.q6",
+      "unit": "V",
+      "initial": 9.28021250293319e-09,
+      "final": 1.00976597914027e-08,
+      "delta": 8.174472884695095e-10
+    },
+    {
+      "node": "XP.q7",
+      "unit": "V",
+      "initial": 9.2802286074025e-09,
+      "final": 1.00976598119706e-08,
+      "delta": 8.174312045681001e-10
+    },
+    {
+      "node": "XP.q8",
+      "unit": "V",
+      "initial": 9.28022473797897e-09,
+      "final": 1.00976598632357e-08,
+      "delta": 8.174351252567289e-10
+    },
+    {
+      "node": "XP.q9",
+      "unit": "V",
+      "initial": 9.28020922742084e-09,
+      "final": 1.00976594494518e-08,
+      "delta": 8.174502220309592e-10
+    },
+    {
+      "node": "XP.q10",
+      "unit": "V",
+      "initial": 9.28016654147277e-09,
+      "final": 1.00976595548042e-08,
+      "delta": 8.1749301333143e-10
+    },
+    {
+      "node": "XP.q11",
+      "unit": "V",
+      "initial": 9.2885288021998e-09,
+      "final": 1.00976598108539e-08,
+      "delta": 8.091310086540988e-10
+    },
+    {
+      "node": "XP.q12",
+      "unit": "V",
+      "initial": 9.07470768698341e-09,
+      "final": 1.0097659656404e-08,
+      "delta": 1.0229519694205901e-09
+    },
+    {
+      "node": "XP.q13",
+      "unit": "V",
+      "initial": 8.97219052356293e-09,
+      "final": 1.00976598490303e-08,
+      "delta": 1.12546932546737e-09
+    },
+    {
+      "node": "XP.qx1",
+      "unit": "V",
+      "initial": 1.08426479179226e-08,
+      "final": 1.07887054690775e-08,
+      "delta": -5.39424488450994e-11
+    },
+    {
+      "node": "XP.refb",
+      "unit": "V",
+      "initial": 0.000305790898177755,
+      "final": 0.000305780498657152,
+      "delta": -1.0399520603010266e-08
+    },
+    {
+      "node": "XP.s0",
+      "unit": "V",
+      "initial": 1.2,
+      "final": 1.2,
+      "delta": 0.0
+    },
+    {
+      "node": "XP.sn",
+      "unit": "V",
+      "initial": 0.834273533600248,
+      "final": 0.834259551138002,
+      "delta": -1.3982462246042715e-05
+    },
+    {
+      "node": "XP.sp",
+      "unit": "V",
+      "initial": 0.615041392289847,
+      "final": 0.615045209811115,
+      "delta": 3.817521267990287e-06
+    },
+    {
+      "node": "XP.VFIX_acquired:p",
+      "unit": "A",
+      "initial": 1.1365333796673e-05,
+      "final": 1.25436513277652e-05,
+      "delta": 1.1783175310922008e-06
+    },
+    {
+      "node": "XP.VFIX_d1:p",
+      "unit": "A",
+      "initial": 2.63586841293912e-09,
+      "final": 1.2068899937136e-08,
+      "delta": 9.43303152419688e-09
+    },
+    {
+      "node": "XP.VFIX_d2:p",
+      "unit": "A",
+      "initial": 2.70276429114406e-09,
+      "final": 1.26641116333644e-08,
+      "delta": 9.96134734222034e-09
+    },
+    {
+      "node": "XP.VFIX_d5:p",
+      "unit": "A",
+      "initial": 3.48489707348407e-09,
+      "final": 2.00182456761093e-08,
+      "delta": 1.653334860262523e-08
+    },
+    {
+      "node": "XP.VFIX_en:p",
+      "unit": "A",
+      "initial": 1.06152029780568e-06,
+      "final": 7.75758958731938e-07,
+      "delta": -2.8576133907374187e-07
+    },
+    {
+      "node": "XP.VFIX_s0:p",
+      "unit": "A",
+      "initial": -1.5946377269888e-07,
+      "final": 1.23588665378369e-07,
+      "delta": 2.83052438077249e-07
+    },
+    {
+      "node": "XP.vc1",
+      "unit": "V",
+      "initial": 0.657945310539925,
+      "final": 0.657684886324801,
+      "delta": -0.0002604242151239555
+    },
+    {
+      "node": "XP.vmid",
+      "unit": "V",
+      "initial": 0.600329115121389,
+      "final": 0.600329393448998,
+      "delta": 2.78327609071205e-07
+    },
+    {
+      "node": "XP.vn",
+      "unit": "V",
+      "initial": 1.39060470720996,
+      "final": 1.39059133190279,
+      "delta": -1.3375307170049311e-05
+    },
+    {
+      "node": "XP.vp",
+      "unit": "V",
+      "initial": 1.28122754331872,
+      "final": 1.28122670724427,
+      "delta": -8.360744498947525e-07
+    },
+    {
+      "node": "XP.XCOARSE0.clkb",
+      "unit": "V",
+      "initial": 1.19999818258516,
+      "final": 1.19999859232312,
+      "delta": 4.097379600054296e-07
+    },
+    {
+      "node": "XP.XCOARSE0.qm",
+      "unit": "V",
+      "initial": 1.19999789958421,
+      "final": 1.19999798024558,
+      "delta": 8.066137002771256e-08
+    },
+    {
+      "node": "XP.XCOARSE0.resetb",
+      "unit": "V",
+      "initial": 1.19999402608353,
+      "final": 1.19999409067497,
+      "delta": 6.459143997439298e-08
+    },
+    {
+      "node": "XP.XCOARSE0.XM.qb",
+      "unit": "V",
+      "initial": -3.57308514168989e-05,
+      "final": -3.53408480367353e-05,
+      "delta": 3.9000338016360235e-07
+    },
+    {
+      "node": "XP.XCOARSE0.XM.XN.x",
+      "unit": "V",
+      "initial": -2.54451226972289e-05,
+      "final": -2.49543415034337e-05,
+      "delta": 4.907811937951991e-07
+    },
+    {
+      "node": "XP.XCOARSE0.XM.x",
+      "unit": "V",
+      "initial": 1.20010801798056,
+      "final": 1.20010810100462,
+      "delta": 8.30240598492793e-08
+    },
+    {
+      "node": "XP.XCOARSE0.XS.qb",
+      "unit": "V",
+      "initial": -0.000113523371683991,
+      "final": -0.000113495089391731,
+      "delta": 2.8282292260009404e-08
+    },
+    {
+      "node": "XP.XCOARSE0.XS.XN.x",
+      "unit": "V",
+      "initial": -5.84877562267496e-05,
+      "final": -5.84692491368009e-05,
+      "delta": 1.850708994869776e-08
+    },
+    {
+      "node": "XP.XCOARSE0.XS.x",
+      "unit": "V",
+      "initial": 1.20019281680725,
+      "final": 1.20019283641191,
+      "delta": 1.96046601175226e-08
+    },
+    {
+      "node": "XP.XCOARSE1.clkb",
+      "unit": "V",
+      "initial": 1.19998496583423,
+      "final": 1.19998496299241,
+      "delta": -2.841820112564619e-09
+    },
+    {
+      "node": "XP.XCOARSE1.qm",
+      "unit": "V",
+      "initial": 1.19999357668738,
+      "final": 1.19999362829902,
+      "delta": 5.161164007283503e-08
+    },
+    {
+      "node": "XP.XCOARSE1.resetb",
+      "unit": "V",
+      "initial": 1.19998932313805,
+      "final": 1.19998943050134,
+      "delta": 1.0736329003613321e-07
+    },
+    {
+      "node": "XP.XCOARSE1.XM.qb",
+      "unit": "V",
+      "initial": -6.0113036922018e-05,
+      "final": -5.94672421182009e-05,
+      "delta": 6.457948038170994e-07
+    },
+    {
+      "node": "XP.XCOARSE1.XM.XN.x",
+      "unit": "V",
+      "initial": -4.28010615288403e-05,
+      "final": -4.19811691162629e-05,
+      "delta": 8.198924125773957e-07
+    },
+    {
+      "node": "XP.XCOARSE1.XM.x",
+      "unit": "V",
+      "initial": 1.20022269730045,
+      "final": 1.20022282765731,
+      "delta": 1.3035685997309088e-07
+    },
+    {
+      "node": "XP.XCOARSE1.XS.qb",
+      "unit": "V",
+      "initial": -0.000196785024309957,
+      "final": -0.000196766587234142,
+      "delta": 1.8437075815006237e-08
+    },
+    {
+      "node": "XP.XCOARSE1.XS.XN.x",
+      "unit": "V",
+      "initial": -0.000102735078376612,
+      "final": -0.0001027225374353,
+      "delta": 1.254094131200676e-08
+    },
+    {
+      "node": "XP.XCOARSE1.XS.x",
+      "unit": "V",
+      "initial": 1.20035442242503,
+      "final": 1.20035445196436,
+      "delta": 2.9539330093086846e-08
+    },
+    {
+      "node": "XP.XCOARSE2.clkb",
+      "unit": "V",
+      "initial": 1.19996724587698,
+      "final": 1.19996726418396,
+      "delta": 1.8306980154036978e-08
+    },
+    {
+      "node": "XP.XCOARSE2.qm",
+      "unit": "V",
+      "initial": 1.19998667324555,
+      "final": 1.1999873146929,
+      "delta": 6.414473501248352e-07
+    },
+    {
+      "node": "XP.XCOARSE2.resetb",
+      "unit": "V",
+      "initial": 1.19998294942846,
+      "final": 1.19998349174686,
+      "delta": 5.423183999653247e-07
+    },
+    {
+      "node": "XP.XCOARSE2.XM.qb",
+      "unit": "V",
+      "initial": -8.98426814024754e-05,
+      "final": -8.86921074529279e-05,
+      "delta": 1.1505739495475033e-06
+    },
+    {
+      "node": "XP.XCOARSE2.XM.XN.x",
+      "unit": "V",
+      "initial": -6.45778930272084e-05,
+      "final": -6.31907696147597e-05,
+      "delta": 1.3871234124487094e-06
+    },
+    {
+      "node": "XP.XCOARSE2.XM.x",
+      "unit": "V",
+      "initial": 1.20053171645773,
+      "final": 1.20053197995236,
+      "delta": 2.6349462989294636e-07
+    },
+    {
+      "node": "XP.XCOARSE2.XS.qb",
+      "unit": "V",
+      "initial": -0.000301158073082098,
+      "final": -0.000298820987841716,
+      "delta": 2.337085240381961e-06
+    },
+    {
+      "node": "XP.XCOARSE2.XS.XN.x",
+      "unit": "V",
+      "initial": -0.000155283192986291,
+      "final": -0.000152468378452352,
+      "delta": 2.814814533938986e-06
+    },
+    {
+      "node": "XP.XCOARSE2.XS.x",
+      "unit": "V",
+      "initial": 1.20070202414069,
+      "final": 1.20070253633469,
+      "delta": 5.121939998797842e-07
+    },
+    {
+      "node": "XP.XCOARSE3.clkb",
+      "unit": "V",
+      "initial": 1.20009072288986,
+      "final": 1.20009073233387,
+      "delta": 9.444010018455629e-09
+    },
+    {
+      "node": "XP.XCOARSE3.qm",
+      "unit": "V",
+      "initial": -2.64976592346896e-05,
+      "final": -2.64984754903622e-05,
+      "delta": -8.162556725977853e-10
+    },
+    {
+      "node": "XP.XCOARSE3.resetb",
+      "unit": "V",
+      "initial": 1.19997823195965,
+      "final": 1.19997645846973,
+      "delta": -1.773489920031679e-06
+    },
+    {
+      "node": "XP.XCOARSE3.XM.qb",
+      "unit": "V",
+      "initial": 1.20040613587638,
+      "final": 1.20040608386881,
+      "delta": -5.20075700283229e-08
+    },
+    {
+      "node": "XP.XCOARSE3.XM.XN.x",
+      "unit": "V",
+      "initial": -3.46689706849743e-06,
+      "final": -3.51896319544066e-06,
+      "delta": -5.20661269432301e-08
+    },
+    {
+      "node": "XP.XCOARSE3.XM.x",
+      "unit": "V",
+      "initial": 0.0100591129774736,
+      "final": 0.0100586685576307,
+      "delta": -4.4441984290051473e-07
+    },
+    {
+      "node": "XP.XCOARSE3.XS.qb",
+      "unit": "V",
+      "initial": 1.20067167546598,
+      "final": 1.20067161570432,
+      "delta": -5.976166006504968e-08
+    },
+    {
+      "node": "XP.XCOARSE3.XS.XN.x",
+      "unit": "V",
+      "initial": 1.11103741323551e-05,
+      "final": 1.10555558892006e-05,
+      "delta": -5.481824315449975e-08
+    },
+    {
+      "node": "XP.XCOARSE3.XS.x",
+      "unit": "V",
+      "initial": 0.0095008449367561,
+      "final": 0.0095003694722904,
+      "delta": -4.7546446570005674e-07
+    },
+    {
+      "node": "XP.XCOARSE4.clkb",
+      "unit": "V",
+      "initial": 1.19997886004022,
+      "final": 1.19997887752929,
+      "delta": 1.7489069970011428e-08
+    },
+    {
+      "node": "XP.XCOARSE4.qm",
+      "unit": "V",
+      "initial": 1.19998632037618,
+      "final": 1.19998699163537,
+      "delta": 6.712591900104314e-07
+    },
+    {
+      "node": "XP.XCOARSE4.resetb",
+      "unit": "V",
+      "initial": 1.1999817596424,
+      "final": 1.19998176183561,
+      "delta": 2.193209835965604e-09
+    },
+    {
+      "node": "XP.XCOARSE4.XM.qb",
+      "unit": "V",
+      "initial": -4.98764224729339e-05,
+      "final": -4.97602861529753e-05,
+      "delta": 1.161363199586005e-07
+    },
+    {
+      "node": "XP.XCOARSE4.XM.XN.x",
+      "unit": "V",
+      "initial": -3.93026158966196e-05,
+      "final": -3.92517721354305e-05,
+      "delta": 5.0843761189099505e-08
+    },
+    {
+      "node": "XP.XCOARSE4.XM.x",
+      "unit": "V",
+      "initial": 1.20138658741122,
+      "final": 1.20138657019239,
+      "delta": -1.7218829917453604e-08
+    },
+    {
+      "node": "XP.XCOARSE4.XS.qb",
+      "unit": "V",
+      "initial": -0.000235149584396769,
+      "final": -0.000235118999922732,
+      "delta": 3.0584474036997105e-08
+    },
+    {
+      "node": "XP.XCOARSE4.XS.XN.x",
+      "unit": "V",
+      "initial": -0.000120659892290711,
+      "final": -0.000120642568407395,
+      "delta": 1.7323883315996814e-08
+    },
+    {
+      "node": "XP.XCOARSE4.XS.x",
+      "unit": "V",
+      "initial": 1.20134144564808,
+      "final": 1.2013414069974,
+      "delta": -3.865067998987115e-08
+    },
+    {
+      "node": "XP.XCOARSE5.clkb",
+      "unit": "V",
+      "initial": 1.20039260646589,
+      "final": 1.20039260566728,
+      "delta": -7.986100669654661e-10
+    },
+    {
+      "node": "XP.XCOARSE5.qm",
+      "unit": "V",
+      "initial": -2.5514233285708e-05,
+      "final": -2.55091512525919e-05,
+      "delta": 5.082033116099953e-09
+    },
+    {
+      "node": "XP.XCOARSE5.resetb",
+      "unit": "V",
+      "initial": 1.19998443885025,
+      "final": 1.19998444168522,
+      "delta": 2.834969814458077e-09
+    },
+    {
+      "node": "XP.XCOARSE5.XM.qb",
+      "unit": "V",
+      "initial": 1.20106462327085,
+      "final": 1.2010645890761,
+      "delta": -3.419474992050198e-08
+    },
+    {
+      "node": "XP.XCOARSE5.XM.XN.x",
+      "unit": "V",
+      "initial": 4.87376112589718e-05,
+      "final": 4.87385131174304e-05,
+      "delta": 9.018584585997625e-10
+    },
+    {
+      "node": "XP.XCOARSE5.XM.x",
+      "unit": "V",
+      "initial": 0.0166790112201183,
+      "final": 0.0166781066781056,
+      "delta": -9.045420126981008e-07
+    },
+    {
+      "node": "XP.XCOARSE5.XS.qb",
+      "unit": "V",
+      "initial": 1.20186938289782,
+      "final": 1.20186935944324,
+      "delta": -2.3454580055926044e-08
+    },
+    {
+      "node": "XP.XCOARSE5.XS.XN.x",
+      "unit": "V",
+      "initial": 6.43415296646835e-05,
+      "final": 6.4340561884185e-05,
+      "delta": -9.677804985077764e-10
+    },
+    {
+      "node": "XP.XCOARSE5.XS.x",
+      "unit": "V",
+      "initial": 0.0149611873692167,
+      "final": 0.0149603397688013,
+      "delta": -8.476004153996908e-07
+    },
+    {
+      "node": "XP.XCOARSE6.clkb",
+      "unit": "V",
+      "initial": 1.20050330454877,
+      "final": 1.20050329943901,
+      "delta": -5.109760170540767e-09
+    },
+    {
+      "node": "XP.XCOARSE6.qm",
+      "unit": "V",
+      "initial": -2.14666239742388e-05,
+      "final": -2.14631187520453e-05,
+      "delta": 3.5052221934976245e-09
+    },
+    {
+      "node": "XP.XCOARSE6.resetb",
+      "unit": "V",
+      "initial": 1.19999094983726,
+      "final": 1.19999095445441,
+      "delta": 4.617149995667091e-09
+    },
+    {
+      "node": "XP.XCOARSE6.XM.qb",
+      "unit": "V",
+      "initial": 1.20127380870836,
+      "final": 1.20127377245078,
+      "delta": -3.625758004943691e-08
+    },
+    {
+      "node": "XP.XCOARSE6.XM.XN.x",
+      "unit": "V",
+      "initial": 6.93312151626345e-05,
+      "final": 6.93239121025208e-05,
+      "delta": -7.303060113695117e-09
+    },
+    {
+      "node": "XP.XCOARSE6.XM.x",
+      "unit": "V",
+      "initial": 0.0178560136093643,
+      "final": 0.017854998074548,
+      "delta": -1.0155348162989297e-06
+    },
+    {
+      "node": "XP.XCOARSE6.XS.qb",
+      "unit": "V",
+      "initial": 1.20225655337228,
+      "final": 1.20225649123695,
+      "delta": -6.213532999232996e-08
+    },
+    {
+      "node": "XP.XCOARSE6.XS.XN.x",
+      "unit": "V",
+      "initial": 8.40354832976159e-05,
+      "final": 8.40357076915821e-05,
+      "delta": 2.2439396620400984e-10
+    },
+    {
+      "node": "XP.XCOARSE6.XS.x",
+      "unit": "V",
+      "initial": 0.0157495761851937,
+      "final": 0.015748610116356,
+      "delta": -9.66068837697509e-07
+    },
+    {
+      "node": "XP.XCOARSE7.clkb",
+      "unit": "V",
+      "initial": 1.20056797392354,
+      "final": 1.20056796675277,
+      "delta": -7.170769977804525e-09
+    },
+    {
+      "node": "XP.XCOARSE7.qm",
+      "unit": "V",
+      "initial": -1.83193553525875e-05,
+      "final": -1.83159739745323e-05,
+      "delta": 3.3813780552009688e-09
+    },
+    {
+      "node": "XP.XCOARSE7.resetb",
+      "unit": "V",
+      "initial": 1.19999545716706,
+      "final": 1.19999546309094,
+      "delta": 5.9238800531602465e-09
+    },
+    {
+      "node": "XP.XCOARSE7.XM.qb",
+      "unit": "V",
+      "initial": 1.20138962890711,
+      "final": 1.20138958390965,
+      "delta": -4.4997459980322674e-08
+    },
+    {
+      "node": "XP.XCOARSE7.XM.XN.x",
+      "unit": "V",
+      "initial": 8.16650746942463e-05,
+      "final": 8.16575809107041e-05,
+      "delta": -7.493783542200541e-09
+    },
+    {
+      "node": "XP.XCOARSE7.XM.x",
+      "unit": "V",
+      "initial": 0.0183202602193867,
+      "final": 0.0183191914866381,
+      "delta": -1.068732748601281e-06
+    },
+    {
+      "node": "XP.XCOARSE7.XS.qb",
+      "unit": "V",
+      "initial": 1.20247212813521,
+      "final": 1.20247205694576,
+      "delta": -7.118944989059628e-08
+    },
+    {
+      "node": "XP.XCOARSE7.XS.XN.x",
+      "unit": "V",
+      "initial": 9.5552073855688e-05,
+      "final": 9.55509577241381e-05,
+      "delta": -1.116131549894683e-09
+    },
+    {
+      "node": "XP.XCOARSE7.XS.x",
+      "unit": "V",
+      "initial": 0.0159934525348274,
+      "final": 0.0159924449765946,
+      "delta": -1.007558232801048e-06
+    },
+    {
+      "node": "XP.XCOUNT.clkb",
+      "unit": "V",
+      "initial": 1.20000616966297,
+      "final": 1.20000616964,
+      "delta": -2.297007029028464e-11
+    },
+    {
+      "node": "XP.XCOUNT.gclk",
+      "unit": "V",
+      "initial": 5.79297994086396e-07,
+      "final": 5.78958628960575e-07,
+      "delta": -3.3936512582101474e-10
+    },
+    {
+      "node": "XP.XCOUNT.qb0",
+      "unit": "V",
+      "initial": 1.19999990250931,
+      "final": 1.19999991172438,
+      "delta": 9.215070040369255e-09
+    },
+    {
+      "node": "XP.XCOUNT.qb1",
+      "unit": "V",
+      "initial": 1.19999996456938,
+      "final": 1.19999996444903,
+      "delta": -1.2034995222620637e-10
+    },
+    {
+      "node": "XP.XCOUNT.qb2",
+      "unit": "V",
+      "initial": 1.19999996175422,
+      "final": 1.19999995844092,
+      "delta": -3.313300078744419e-09
+    },
+    {
+      "node": "XP.XCOUNT.qb3",
+      "unit": "V",
+      "initial": 1.19999997514227,
+      "final": 1.19999995852869,
+      "delta": -1.661358006721514e-08
+    },
+    {
+      "node": "XP.XCOUNT.qb4",
+      "unit": "V",
+      "initial": 1.1999999614936,
+      "final": 1.19999995852884,
+      "delta": -2.964760215107276e-09
+    },
+    {
+      "node": "XP.XCOUNT.qb5",
+      "unit": "V",
+      "initial": 1.19999996149361,
+      "final": 1.19999995852882,
+      "delta": -2.964790191128941e-09
+    },
+    {
+      "node": "XP.XCOUNT.qb6",
+      "unit": "V",
+      "initial": 1.19999996149337,
+      "final": 1.19999995852883,
+      "delta": -2.9645401689037953e-09
+    },
+    {
+      "node": "XP.XCOUNT.qb7",
+      "unit": "V",
+      "initial": 1.19999996149344,
+      "final": 1.19999995852883,
+      "delta": -2.9646101129543467e-09
+    },
+    {
+      "node": "XP.XCOUNT.qb8",
+      "unit": "V",
+      "initial": 1.19999996149343,
+      "final": 1.19999995852883,
+      "delta": -2.964600120947125e-09
+    },
+    {
+      "node": "XP.XCOUNT.qb9",
+      "unit": "V",
+      "initial": 1.1999999614936,
+      "final": 1.19999995852883,
+      "delta": -2.9647702071144977e-09
+    },
+    {
+      "node": "XP.XCOUNT.qb10",
+      "unit": "V",
+      "initial": 1.19999996149626,
+      "final": 1.19999995852883,
+      "delta": -2.9674300794368946e-09
+    },
+    {
+      "node": "XP.XCOUNT.qb11",
+      "unit": "V",
+      "initial": 1.19999995853727,
+      "final": 1.19999995852883,
+      "delta": -8.440137477805365e-12
+    },
+    {
+      "node": "XP.XCOUNT.qb12",
+      "unit": "V",
+      "initial": 1.19999995853434,
+      "final": 1.19999995852883,
+      "delta": -5.510036871214652e-12
+    },
+    {
+      "node": "XP.XCOUNT.qb13",
+      "unit": "V",
+      "initial": 1.1999999585416,
+      "final": 1.19999995852883,
+      "delta": -1.2770007273843476e-11
+    },
+    {
+      "node": "XP.XCOUNT.safe_gate",
+      "unit": "V",
+      "initial": 2.07685468769998e-06,
+      "final": 2.07530482404908e-06,
+      "delta": -1.5498636508999702e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF0.XF.clkb",
+      "unit": "V",
+      "initial": 1.20000009256162,
+      "final": 1.2000000923868,
+      "delta": -1.7482015834957565e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF0.XF.qm",
+      "unit": "V",
+      "initial": 3.25247996599225e-08,
+      "final": 3.30894683999201e-08,
+      "delta": 5.646687399975946e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF0.XF.resetb",
+      "unit": "V",
+      "initial": 9.35081178938242e-09,
+      "final": 7.85247482826625e-09,
+      "delta": -1.4983369611161712e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF0.XF.XM.qb",
+      "unit": "V",
+      "initial": 1.19999996067846,
+      "final": 1.19999997942527,
+      "delta": 1.874681010427537e-08
+    },
+    {
+      "node": "XP.XCOUNT.XF0.XF.XM.XN.x",
+      "unit": "V",
+      "initial": 0.926196220532789,
+      "final": 0.936248724710542,
+      "delta": 0.010052504177752941
+    },
+    {
+      "node": "XP.XCOUNT.XF0.XF.XM.x",
+      "unit": "V",
+      "initial": 1.19999987546608,
+      "final": 1.19999988339874,
+      "delta": 7.932660084364329e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF0.XF.XS.qb",
+      "unit": "V",
+      "initial": 1.19999998981994,
+      "final": 1.19999999136437,
+      "delta": 1.5444299172884257e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF0.XF.XS.XN.x",
+      "unit": "V",
+      "initial": 0.0117170280271241,
+      "final": 0.018374181812493,
+      "delta": 0.006657153785368899
+    },
+    {
+      "node": "XP.XCOUNT.XF0.XF.XS.x",
+      "unit": "V",
+      "initial": 9.5041756477537e-08,
+      "final": 9.21696087097125e-08,
+      "delta": -2.8721477678245055e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF1.XF.clkb",
+      "unit": "V",
+      "initial": 1.05451782492129e-08,
+      "final": 1.03810377593961e-08,
+      "delta": -1.641404898168003e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF1.XF.qm",
+      "unit": "V",
+      "initial": 5.60007594604737e-08,
+      "final": 5.54926888223521e-08,
+      "delta": -5.080706381215976e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF1.XF.resetb",
+      "unit": "V",
+      "initial": 9.83440604946045e-09,
+      "final": 9.25317719954027e-09,
+      "delta": -5.812288499201801e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF1.XF.XM.qb",
+      "unit": "V",
+      "initial": 1.19999998901288,
+      "final": 1.19999998756036,
+      "delta": -1.4525201041948321e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF1.XF.XM.XN.x",
+      "unit": "V",
+      "initial": 0.0119765376438296,
+      "final": 0.0185360720283619,
+      "delta": 0.006559534384532301
+    },
+    {
+      "node": "XP.XCOUNT.XF1.XF.XM.x",
+      "unit": "V",
+      "initial": 1.10338301817697e-07,
+      "final": 1.09492063257256e-07,
+      "delta": -8.462385604410001e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF1.XF.XS.qb",
+      "unit": "V",
+      "initial": 1.19999999393955,
+      "final": 1.19999998810974,
+      "delta": -5.829809968105337e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF1.XF.XS.XN.x",
+      "unit": "V",
+      "initial": 0.0117233708059974,
+      "final": 0.0183781323439327,
+      "delta": 0.006654761537935301
+    },
+    {
+      "node": "XP.XCOUNT.XF1.XF.XS.x",
+      "unit": "V",
+      "initial": 6.66699722817583e-08,
+      "final": 6.58290950933829e-08,
+      "delta": -8.408771883754071e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF2.XF.clkb",
+      "unit": "V",
+      "initial": 6.95365429461538e-09,
+      "final": 6.9464633990945e-09,
+      "delta": -7.190895520879984e-12
+    },
+    {
+      "node": "XP.XCOUNT.XF2.XF.qm",
+      "unit": "V",
+      "initial": 3.62863400210353e-08,
+      "final": 3.54857856568654e-08,
+      "delta": -8.005543641699027e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF2.XF.resetb",
+      "unit": "V",
+      "initial": 9.74744808312772e-09,
+      "final": 9.41094138736782e-09,
+      "delta": -3.3650669575989854e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF2.XF.XM.qb",
+      "unit": "V",
+      "initial": 1.1999999881487,
+      "final": 1.19999998912865,
+      "delta": 9.799498990048505e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF2.XF.XM.XN.x",
+      "unit": "V",
+      "initial": 0.0119337666644839,
+      "final": 0.0185093499567044,
+      "delta": 0.006575583292220501
+    },
+    {
+      "node": "XP.XCOUNT.XF2.XF.XM.x",
+      "unit": "V",
+      "initial": 7.77053788916098e-08,
+      "final": 7.61474698681041e-08,
+      "delta": -1.5579090235057009e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF2.XF.XS.qb",
+      "unit": "V",
+      "initial": 1.19999999516763,
+      "final": 1.19999998908718,
+      "delta": -6.080449921341824e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF2.XF.XS.XN.x",
+      "unit": "V",
+      "initial": 0.0117238139890974,
+      "final": 0.0183784068156335,
+      "delta": 0.006654592826536101
+    },
+    {
+      "node": "XP.XCOUNT.XF2.XF.XS.x",
+      "unit": "V",
+      "initial": 3.97377614866053e-08,
+      "final": 3.85322594843511e-08,
+      "delta": -1.205502002254204e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF3.XF.clkb",
+      "unit": "V",
+      "initial": 7.15203253810696e-09,
+      "final": 7.15968068773937e-09,
+      "delta": 7.648149632410344e-12
+    },
+    {
+      "node": "XP.XCOUNT.XF3.XF.qm",
+      "unit": "V",
+      "initial": 3.65773528260454e-08,
+      "final": 3.57919659021429e-08,
+      "delta": -7.853869239024982e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF3.XF.resetb",
+      "unit": "V",
+      "initial": 9.72964181139489e-09,
+      "final": 9.41583658446091e-09,
+      "delta": -3.138052269339796e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF3.XF.XM.qb",
+      "unit": "V",
+      "initial": 1.1999999889845,
+      "final": 1.19999998913183,
+      "delta": 1.4732992603683215e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF3.XF.XM.XN.x",
+      "unit": "V",
+      "initial": 0.0119321188133157,
+      "final": 0.0185083208982368,
+      "delta": 0.006576202084921099
+    },
+    {
+      "node": "XP.XCOUNT.XF3.XF.XM.x",
+      "unit": "V",
+      "initial": 7.81182629105426e-08,
+      "final": 7.65926818780008e-08,
+      "delta": -1.5255810325418001e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF3.XF.XS.qb",
+      "unit": "V",
+      "initial": 1.19999998731788,
+      "final": 1.19999998909385,
+      "delta": 1.775970037698471e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF3.XF.XS.XN.x",
+      "unit": "V",
+      "initial": 0.0117238309302211,
+      "final": 0.0183784177109959,
+      "delta": 0.006654586780774798
+    },
+    {
+      "node": "XP.XCOUNT.XF3.XF.XS.x",
+      "unit": "V",
+      "initial": 3.71095735100998e-08,
+      "final": 3.89255121728089e-08,
+      "delta": 1.8159386627090964e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF4.XF.clkb",
+      "unit": "V",
+      "initial": 7.08129095481089e-09,
+      "final": 7.16363220362938e-09,
+      "delta": 8.234124881848988e-11
+    },
+    {
+      "node": "XP.XCOUNT.XF4.XF.qm",
+      "unit": "V",
+      "initial": 3.65788920549705e-08,
+      "final": 3.5793166733182e-08,
+      "delta": -7.857253217884978e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF4.XF.resetb",
+      "unit": "V",
+      "initial": 9.72948774632448e-09,
+      "final": 9.4160285039465e-09,
+      "delta": -3.1345924237797986e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF4.XF.XM.qb",
+      "unit": "V",
+      "initial": 1.19999998898617,
+      "final": 1.19999998913218,
+      "delta": 1.4600987086055284e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF4.XF.XM.XN.x",
+      "unit": "V",
+      "initial": 0.0119320531928005,
+      "final": 0.0185082799177293,
+      "delta": 0.006576226724928802
+    },
+    {
+      "node": "XP.XCOUNT.XF4.XF.XM.x",
+      "unit": "V",
+      "initial": 7.81202050758409e-08,
+      "final": 7.65933110596297e-08,
+      "delta": -1.5268940162112018e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF4.XF.XS.qb",
+      "unit": "V",
+      "initial": 1.19999998731862,
+      "final": 1.19999998909427,
+      "delta": 1.775650071422774e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF4.XF.XS.XN.x",
+      "unit": "V",
+      "initial": 0.011723831611595,
+      "final": 0.0183784181249248,
+      "delta": 0.006654586513329801
+    },
+    {
+      "node": "XP.XCOUNT.XF4.XF.XS.x",
+      "unit": "V",
+      "initial": 3.71481718440782e-08,
+      "final": 3.89266735143787e-08,
+      "delta": 1.7785016703004976e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF5.XF.clkb",
+      "unit": "V",
+      "initial": 7.15816047686692e-09,
+      "final": 7.16379700591575e-09,
+      "delta": 5.636529048830435e-12
+    },
+    {
+      "node": "XP.XCOUNT.XF5.XF.qm",
+      "unit": "V",
+      "initial": 3.6578849431097e-08,
+      "final": 3.57931277439028e-08,
+      "delta": -7.857216871942021e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF5.XF.resetb",
+      "unit": "V",
+      "initial": 9.72951079443766e-09,
+      "final": 9.41603405339068e-09,
+      "delta": -3.134767410469807e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF5.XF.XM.qb",
+      "unit": "V",
+      "initial": 1.19999998898617,
+      "final": 1.19999998913224,
+      "delta": 1.460698229038826e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF5.XF.XM.XN.x",
+      "unit": "V",
+      "initial": 0.0119320507113967,
+      "final": 0.0185082783680235,
+      "delta": 0.0065762276566268
+    },
+    {
+      "node": "XP.XCOUNT.XF5.XF.XM.x",
+      "unit": "V",
+      "initial": 7.81200596691685e-08,
+      "final": 7.65931767935205e-08,
+      "delta": -1.526882875648003e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF5.XF.XS.qb",
+      "unit": "V",
+      "initial": 1.19999998731863,
+      "final": 1.1999999890943,
+      "delta": 1.7756700554372173e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF5.XF.XS.XN.x",
+      "unit": "V",
+      "initial": 0.0117238316354013,
+      "final": 0.0183784181396858,
+      "delta": 0.006654586504284502
+    },
+    {
+      "node": "XP.XCOUNT.XF5.XF.XS.x",
+      "unit": "V",
+      "initial": 3.71487135479645e-08,
+      "final": 3.8926613489615e-08,
+      "delta": 1.7778999416505e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF6.XF.clkb",
+      "unit": "V",
+      "initial": 7.15814075129289e-09,
+      "final": 7.16380392641146e-09,
+      "delta": 5.663175118570486e-12
+    },
+    {
+      "node": "XP.XCOUNT.XF6.XF.qm",
+      "unit": "V",
+      "initial": 3.65788122920004e-08,
+      "final": 3.57931345932308e-08,
+      "delta": -7.856776987696013e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF6.XF.resetb",
+      "unit": "V",
+      "initial": 9.72951368967078e-09,
+      "final": 9.41603406758527e-09,
+      "delta": -3.1347962208550885e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF6.XF.XM.qb",
+      "unit": "V",
+      "initial": 1.19999998898616,
+      "final": 1.19999998913224,
+      "delta": 1.4608003695570915e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF6.XF.XM.XN.x",
+      "unit": "V",
+      "initial": 0.0119320506205762,
+      "final": 0.0185082783113216,
+      "delta": 0.006576227690745401
+    },
+    {
+      "node": "XP.XCOUNT.XF6.XF.XM.x",
+      "unit": "V",
+      "initial": 7.81199416724523e-08,
+      "final": 7.65931846201293e-08,
+      "delta": -1.5267570523230016e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF6.XF.XS.qb",
+      "unit": "V",
+      "initial": 1.19999998731863,
+      "final": 1.1999999890943,
+      "delta": 1.7756700554372173e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF6.XF.XS.XN.x",
+      "unit": "V",
+      "initial": 0.011723831636252,
+      "final": 0.018378418140211,
+      "delta": 0.006654586503959
+    },
+    {
+      "node": "XP.XCOUNT.XF6.XF.XS.x",
+      "unit": "V",
+      "initial": 3.71488415674676e-08,
+      "final": 3.89266228841532e-08,
+      "delta": 1.7777813166855987e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF7.XF.clkb",
+      "unit": "V",
+      "initial": 7.15811084894206e-09,
+      "final": 7.16380399307467e-09,
+      "delta": 5.6931441326101974e-12
+    },
+    {
+      "node": "XP.XCOUNT.XF7.XF.qm",
+      "unit": "V",
+      "initial": 3.65788446075564e-08,
+      "final": 3.57931355893624e-08,
+      "delta": -7.857090181939975e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF7.XF.resetb",
+      "unit": "V",
+      "initial": 9.72950312294169e-09,
+      "final": 9.41603371688281e-09,
+      "delta": -3.134694060588796e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF7.XF.XM.qb",
+      "unit": "V",
+      "initial": 1.19999998898612,
+      "final": 1.19999998913224,
+      "delta": 1.4612000498459565e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF7.XF.XM.XN.x",
+      "unit": "V",
+      "initial": 0.0119320506172904,
+      "final": 0.0185082783092541,
+      "delta": 0.0065762276919637
+    },
+    {
+      "node": "XP.XCOUNT.XF7.XF.XM.x",
+      "unit": "V",
+      "initial": 7.81200372694262e-08,
+      "final": 7.65931858991176e-08,
+      "delta": -1.5268513703086034e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF7.XF.XS.qb",
+      "unit": "V",
+      "initial": 1.19999998731863,
+      "final": 1.19999998909431,
+      "delta": 1.775680047444439e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF7.XF.XS.XN.x",
+      "unit": "V",
+      "initial": 0.0117238316362976,
+      "final": 0.0183784181402268,
+      "delta": 0.006654586503929199
+    },
+    {
+      "node": "XP.XCOUNT.XF7.XF.XS.x",
+      "unit": "V",
+      "initial": 3.71489255280496e-08,
+      "final": 3.89266244308328e-08,
+      "delta": 1.7776989027832008e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF8.XF.clkb",
+      "unit": "V",
+      "initial": 7.15810930128548e-09,
+      "final": 7.16380389455359e-09,
+      "delta": 5.694593268110139e-12
+    },
+    {
+      "node": "XP.XCOUNT.XF8.XF.qm",
+      "unit": "V",
+      "initial": 3.65788450806854e-08,
+      "final": 3.57931349960042e-08,
+      "delta": -7.857100846811972e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF8.XF.resetb",
+      "unit": "V",
+      "initial": 9.72949439360187e-09,
+      "final": 9.41603380352612e-09,
+      "delta": -3.134605900757505e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF8.XF.XM.qb",
+      "unit": "V",
+      "initial": 1.19999998898613,
+      "final": 1.19999998913224,
+      "delta": 1.4611001297737403e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF8.XF.XM.XN.x",
+      "unit": "V",
+      "initial": 0.011932050615981,
+      "final": 0.0185082783084345,
+      "delta": 0.0065762276924534995
+    },
+    {
+      "node": "XP.XCOUNT.XF8.XF.XM.x",
+      "unit": "V",
+      "initial": 7.81200375364129e-08,
+      "final": 7.65931847045168e-08,
+      "delta": -1.5268528318961014e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF8.XF.XS.qb",
+      "unit": "V",
+      "initial": 1.19999998731863,
+      "final": 1.1999999890943,
+      "delta": 1.7756700554372173e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF8.XF.XS.XN.x",
+      "unit": "V",
+      "initial": 0.0117238316362016,
+      "final": 0.0183784181401742,
+      "delta": 0.0066545865039725986
+    },
+    {
+      "node": "XP.XCOUNT.XF8.XF.XS.x",
+      "unit": "V",
+      "initial": 3.71488863683816e-08,
+      "final": 3.89266231214629e-08,
+      "delta": 1.777736753081303e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF9.XF.clkb",
+      "unit": "V",
+      "initial": 7.15813428357259e-09,
+      "final": 7.16380413077073e-09,
+      "delta": 5.6698471981399104e-12
+    },
+    {
+      "node": "XP.XCOUNT.XF9.XF.qm",
+      "unit": "V",
+      "initial": 3.65788560493693e-08,
+      "final": 3.57931349303264e-08,
+      "delta": -7.857211190429021e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF9.XF.resetb",
+      "unit": "V",
+      "initial": 9.72948394820684e-09,
+      "final": 9.41603405819487e-09,
+      "delta": -3.1344989001196984e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF9.XF.XM.qb",
+      "unit": "V",
+      "initial": 1.19999998898616,
+      "final": 1.19999998913224,
+      "delta": 1.4608003695570915e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF9.XF.XM.XN.x",
+      "unit": "V",
+      "initial": 0.0119320505942408,
+      "final": 0.0185082782948564,
+      "delta": 0.006576227700615599
+    },
+    {
+      "node": "XP.XCOUNT.XF9.XF.XM.x",
+      "unit": "V",
+      "initial": 7.81200681082613e-08,
+      "final": 7.65931865835802e-08,
+      "delta": -1.526881524681102e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF9.XF.XS.qb",
+      "unit": "V",
+      "initial": 1.19999998731863,
+      "final": 1.19999998909431,
+      "delta": 1.775680047444439e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF9.XF.XS.XN.x",
+      "unit": "V",
+      "initial": 0.0117238316376274,
+      "final": 0.0183784181410687,
+      "delta": 0.0066545865034413
+    },
+    {
+      "node": "XP.XCOUNT.XF9.XF.XS.x",
+      "unit": "V",
+      "initial": 3.71487210130241e-08,
+      "final": 3.89266232819087e-08,
+      "delta": 1.7779022688846e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF10.XF.clkb",
+      "unit": "V",
+      "initial": 7.15813630325309e-09,
+      "final": 7.16380373948905e-09,
+      "delta": 5.66743623595951e-12
+    },
+    {
+      "node": "XP.XCOUNT.XF10.XF.qm",
+      "unit": "V",
+      "initial": 3.65787657216337e-08,
+      "final": 3.57931350795053e-08,
+      "delta": -7.856306421283972e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF10.XF.resetb",
+      "unit": "V",
+      "initial": 9.72948936071413e-09,
+      "final": 9.41603391247497e-09,
+      "delta": -3.1345544823916043e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF10.XF.XM.qb",
+      "unit": "V",
+      "initial": 1.19999998898617,
+      "final": 1.19999998913224,
+      "delta": 1.460698229038826e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF10.XF.XM.XN.x",
+      "unit": "V",
+      "initial": 0.0119320503632623,
+      "final": 0.0185082781506325,
+      "delta": 0.006576227787370199
+    },
+    {
+      "node": "XP.XCOUNT.XF10.XF.XM.x",
+      "unit": "V",
+      "initial": 7.81198079745948e-08,
+      "final": 7.65931859939577e-08,
+      "delta": -1.5266219806370945e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF10.XF.XS.qb",
+      "unit": "V",
+      "initial": 1.19999998731863,
+      "final": 1.1999999890943,
+      "delta": 1.7756700554372173e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF10.XF.XS.XN.x",
+      "unit": "V",
+      "initial": 0.0117238317932018,
+      "final": 0.0183784182379603,
+      "delta": 0.006654586444758501
+    },
+    {
+      "node": "XP.XCOUNT.XF10.XF.XS.x",
+      "unit": "V",
+      "initial": 3.71487598696523e-08,
+      "final": 3.89266234236607e-08,
+      "delta": 1.7778635540084012e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF11.XF.clkb",
+      "unit": "V",
+      "initial": 7.15820565836303e-09,
+      "final": 7.16380395511322e-09,
+      "delta": 5.598296750190529e-12
+    },
+    {
+      "node": "XP.XCOUNT.XF11.XF.qm",
+      "unit": "V",
+      "initial": 3.65788511695715e-08,
+      "final": 3.57931346862359e-08,
+      "delta": -7.857164833355947e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF11.XF.resetb",
+      "unit": "V",
+      "initial": 9.72949888656545e-09,
+      "final": 9.41603394074191e-09,
+      "delta": -3.1346494582353965e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF11.XF.XM.qb",
+      "unit": "V",
+      "initial": 1.19999998898623,
+      "final": 1.19999998913224,
+      "delta": 1.4600987086055284e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF11.XF.XM.XN.x",
+      "unit": "V",
+      "initial": 0.0119320554347462,
+      "final": 0.0185082813178904,
+      "delta": 0.0065762258831442
+    },
+    {
+      "node": "XP.XCOUNT.XF11.XF.XM.x",
+      "unit": "V",
+      "initial": 7.81200544123797e-08,
+      "final": 7.65931848925956e-08,
+      "delta": -1.5268695197840964e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF11.XF.XS.qb",
+      "unit": "V",
+      "initial": 1.1999999873185,
+      "final": 1.19999998909431,
+      "delta": 1.7758099435383201e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF11.XF.XS.XN.x",
+      "unit": "V",
+      "initial": 0.0117238394465018,
+      "final": 0.0183784230040892,
+      "delta": 0.0066545835575873985
+    },
+    {
+      "node": "XP.XCOUNT.XF11.XF.XS.x",
+      "unit": "V",
+      "initial": 3.71481305918671e-08,
+      "final": 3.89266231161778e-08,
+      "delta": 1.7784925243106969e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF12.XF.clkb",
+      "unit": "V",
+      "initial": 7.16321745906387e-09,
+      "final": 7.1638039911824e-09,
+      "delta": 5.865321185306741e-13
+    },
+    {
+      "node": "XP.XCOUNT.XF12.XF.qm",
+      "unit": "V",
+      "initial": 3.65830136509241e-08,
+      "final": 3.57931109162774e-08,
+      "delta": -7.89902734646701e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF12.XF.resetb",
+      "unit": "V",
+      "initial": 9.73247792191423e-09,
+      "final": 9.41601441130672e-09,
+      "delta": -3.164635106075109e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF12.XF.XM.qb",
+      "unit": "V",
+      "initial": 1.19999998898973,
+      "final": 1.19999998913232,
+      "delta": 1.4259016190010243e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF12.XF.XM.XN.x",
+      "unit": "V",
+      "initial": 0.0119324687462841,
+      "final": 0.0185085394418808,
+      "delta": 0.0065760706955967
+    },
+    {
+      "node": "XP.XCOUNT.XF12.XF.XM.x",
+      "unit": "V",
+      "initial": 7.81323374142055e-08,
+      "final": 7.65931360211044e-08,
+      "delta": -1.5392013931010947e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF12.XF.XS.qb",
+      "unit": "V",
+      "initial": 1.19999999498279,
+      "final": 1.19999998909436,
+      "delta": -5.8884299658501504e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF12.XF.XS.XN.x",
+      "unit": "V",
+      "initial": 0.0117241465116495,
+      "final": 0.0183786142259597,
+      "delta": 0.0066544677143102
+    },
+    {
+      "node": "XP.XCOUNT.XF12.XF.XS.x",
+      "unit": "V",
+      "initial": 3.7169607700272e-08,
+      "final": 3.89265885216447e-08,
+      "delta": 1.7569808213727002e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF13.XF.clkb",
+      "unit": "V",
+      "initial": 7.16376453404955e-09,
+      "final": 7.16380419402648e-09,
+      "delta": 3.965997693000204e-14
+    },
+    {
+      "node": "XP.XCOUNT.XF13.XF.qm",
+      "unit": "V",
+      "initial": 3.65767029689154e-08,
+      "final": 3.57925507263304e-08,
+      "delta": -7.841522425849995e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF13.XF.resetb",
+      "unit": "V",
+      "initial": 9.79026223670277e-09,
+      "final": 9.41556861080757e-09,
+      "delta": -3.746936258952001e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF13.XF.XM.qb",
+      "unit": "V",
+      "initial": 1.1999999897004,
+      "final": 1.19999998913322,
+      "delta": -5.671798586348586e-10
+    },
+    {
+      "node": "XP.XCOUNT.XF13.XF.XM.XN.x",
+      "unit": "V",
+      "initial": 0.0119374254860617,
+      "final": 0.0185116351901905,
+      "delta": 0.006574209704128801
+    },
+    {
+      "node": "XP.XCOUNT.XF13.XF.XM.x",
+      "unit": "V",
+      "initial": 7.81105496302623e-08,
+      "final": 7.65922580460234e-08,
+      "delta": -1.518291584238895e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF13.XF.XS.qb",
+      "unit": "V",
+      "initial": 1.19999999156164,
+      "final": 1.19999998909651,
+      "delta": -2.4651298780042907e-09
+    },
+    {
+      "node": "XP.XCOUNT.XF13.XF.XS.XN.x",
+      "unit": "V",
+      "initial": 0.0117359091237989,
+      "final": 0.0183859396363892,
+      "delta": 0.0066500305125902996
+    },
+    {
+      "node": "XP.XCOUNT.XF13.XF.XS.x",
+      "unit": "V",
+      "initial": 4.01131648022236e-08,
+      "final": 3.8925634023612e-08,
+      "delta": -1.187530778611604e-09
+    },
+    {
+      "node": "XP.XCOUNT.XG.n",
+      "unit": "V",
+      "initial": 1.20000136648585,
+      "final": 1.20000137158657,
+      "delta": 5.100720068540454e-09
+    },
+    {
+      "node": "XP.XCOUNT.XG.XN.x",
+      "unit": "V",
+      "initial": 0.671714371779477,
+      "final": 0.682644046594154,
+      "delta": 0.010929674814676993
+    },
+    {
+      "node": "XP.XCOUNT.XGE.qb",
+      "unit": "V",
+      "initial": 1.20000167187292,
+      "final": 1.20000167394597,
+      "delta": 2.0730499539212133e-09
+    },
+    {
+      "node": "XP.XCOUNT.XGE.x",
+      "unit": "V",
+      "initial": 4.36253603219951e-06,
+      "final": 4.36358763246279e-06,
+      "delta": 1.051600263280346e-09
+    },
+    {
+      "node": "XP.XCP.gate",
+      "unit": "V",
+      "initial": 9.32871501989687e-08,
+      "final": 1.67010769867362e-07,
+      "delta": 7.37236196683933e-08
+    },
+    {
+      "node": "XP.XCP.gateb",
+      "unit": "V",
+      "initial": 1.20004648452421,
+      "final": 1.20004641862363,
+      "delta": -6.5900580104028e-08
+    },
+    {
+      "node": "XP.XCP.mir",
+      "unit": "V",
+      "initial": 0.805895019121708,
+      "final": 0.805896286204963,
+      "delta": 1.2670832549854794e-06
+    },
+    {
+      "node": "XP.XCP.nb",
+      "unit": "V",
+      "initial": 0.581901607127275,
+      "final": 0.581901609777663,
+      "delta": 2.6503880201644847e-09
+    },
+    {
+      "node": "XP.XCP.ng",
+      "unit": "V",
+      "initial": 0.000631663094720955,
+      "final": 0.000631664293428476,
+      "delta": 1.198707520939403e-09
+    },
+    {
+      "node": "XP.XCP.tail",
+      "unit": "V",
+      "initial": 0.26008883700028,
+      "final": 0.26008220947794,
+      "delta": -6.627522340041381e-06
+    },
+    {
+      "node": "XP.XCP.XG.x",
+      "unit": "V",
+      "initial": 2.26176410585448e-08,
+      "final": 2.055873809634e-08,
+      "delta": -2.0589029622047986e-09
+    },
+    {
+      "node": "XP.XCPULSE.d1",
+      "unit": "V",
+      "initial": 1.20004342990747,
+      "final": 1.20004343081676,
+      "delta": 9.092899766471874e-10
+    },
+    {
+      "node": "XP.XCPULSE.d2",
+      "unit": "V",
+      "initial": 2.22046353026189e-06,
+      "final": 2.21330685296709e-06,
+      "delta": -7.156677294800059e-09
+    },
+    {
+      "node": "XP.XCPULSE.d3",
+      "unit": "V",
+      "initial": 1.20000032026909,
+      "final": 1.20000029082719,
+      "delta": -2.944190002907021e-08
+    },
+    {
+      "node": "XP.XCPULSE.d4",
+      "unit": "V",
+      "initial": 7.90709478213992e-08,
+      "final": 7.58349409930237e-08,
+      "delta": -3.2360068283754967e-09
+    },
+    {
+      "node": "XP.XCPULSE.d5",
+      "unit": "V",
+      "initial": 1.19999998057278,
+      "final": 1.1999999810525,
+      "delta": 4.797200414685676e-10
+    },
+    {
+      "node": "XP.XCPULSE.d6",
+      "unit": "V",
+      "initial": 1.37391011152703e-08,
+      "final": 1.36772834590312e-08,
+      "delta": -6.181765623910053e-11
+    },
+    {
+      "node": "XP.XCPULSE.d7",
+      "unit": "V",
+      "initial": 1.19999996457776,
+      "final": 1.19999997332949,
+      "delta": 8.751730007361402e-09
+    },
+    {
+      "node": "XP.XCPULSE.d8",
+      "unit": "V",
+      "initial": 1.16919333767215e-08,
+      "final": 1.17001424280429e-08,
+      "delta": 8.209051321399959e-12
+    },
+    {
+      "node": "XP.XCPULSE.d9",
+      "unit": "V",
+      "initial": 1.19999996365067,
+      "final": 1.19999996365057,
+      "delta": -9.992007221626409e-14
+    },
+    {
+      "node": "XP.XCPULSE.d10",
+      "unit": "V",
+      "initial": 1.1929616998886e-08,
+      "final": 1.19364047959681e-08,
+      "delta": 6.787797082100388e-12
+    },
+    {
+      "node": "XP.XCPULSE.d11",
+      "unit": "V",
+      "initial": 1.19999996452868,
+      "final": 1.19999996362755,
+      "delta": -9.011300594607974e-10
+    },
+    {
+      "node": "XP.XCPULSE.d12",
+      "unit": "V",
+      "initial": 1.33286708848276e-08,
+      "final": 1.49545057433733e-08,
+      "delta": 1.6258348585457024e-09
+    },
+    {
+      "node": "XP.XCPULSE.d13",
+      "unit": "V",
+      "initial": 1.19999996832547,
+      "final": 1.19999996369685,
+      "delta": -4.628620153823704e-09
+    },
+    {
+      "node": "XP.XCPULSE.d14",
+      "unit": "V",
+      "initial": 1.15546016345519e-08,
+      "final": 1.19430204094671e-08,
+      "delta": 3.8841877491519973e-10
+    },
+    {
+      "node": "XP.XCPULSE.d15",
+      "unit": "V",
+      "initial": 1.19999996363693,
+      "final": 1.19999996362691,
+      "delta": -1.0019984841846963e-11
+    },
+    {
+      "node": "XP.XCPULSE.d16",
+      "unit": "V",
+      "initial": 1.21634807326164e-08,
+      "final": 1.21618022005718e-08,
+      "delta": -1.6785320446004349e-12
+    },
+    {
+      "node": "XP.XCPULSE.d17",
+      "unit": "V",
+      "initial": 1.19999996374387,
+      "final": 1.19999996374349,
+      "delta": -3.801403636316536e-13
+    },
+    {
+      "node": "XP.XCPULSE.d18",
+      "unit": "V",
+      "initial": 1.14621457119982e-08,
+      "final": 1.14620855374098e-08,
+      "delta": -6.017458840046077e-14
+    },
+    {
+      "node": "XP.XCPULSE.d19",
+      "unit": "V",
+      "initial": 1.19999996371009,
+      "final": 1.19999996370588,
+      "delta": -4.209965709378594e-12
+    },
+    {
+      "node": "XP.XCPULSE.d20",
+      "unit": "V",
+      "initial": 1.20917492045095e-08,
+      "final": 1.2169288364558e-08,
+      "delta": 7.753916004849936e-11
+    },
+    {
+      "node": "XP.XCPULSE.d21",
+      "unit": "V",
+      "initial": 1.1999999637012,
+      "final": 1.19999996388389,
+      "delta": 1.8269008528193353e-10
+    },
+    {
+      "node": "XP.XCPULSE.d22",
+      "unit": "V",
+      "initial": 1.21412313547078e-08,
+      "final": 1.06801101672259e-08,
+      "delta": -1.4611211874818998e-09
+    },
+    {
+      "node": "XP.XCPULSE.d23",
+      "unit": "V",
+      "initial": 1.19999996407516,
+      "final": 1.1999999790783,
+      "delta": 1.5003140063640785e-08
+    },
+    {
+      "node": "XP.XCPULSE.d24",
+      "unit": "V",
+      "initial": 1.14592141800575e-08,
+      "final": 9.1466776296288e-09,
+      "delta": -2.3125365504287005e-09
+    },
+    {
+      "node": "XP.XCPULSE.d24b",
+      "unit": "V",
+      "initial": 1.1999999817942,
+      "final": 1.19999998161891,
+      "delta": -1.7529000473359702e-10
+    },
+    {
+      "node": "XP.XCPULSE.en_hold",
+      "unit": "V",
+      "initial": 1.20000144367572,
+      "final": 1.2000014436699,
+      "delta": -5.820011139689996e-12
+    },
+    {
+      "node": "XP.XCPULSE.enabled",
+      "unit": "V",
+      "initial": 2.80522884288619e-08,
+      "final": 2.64041084680738e-08,
+      "delta": -1.6481799607881023e-09
+    },
+    {
+      "node": "XP.XCPULSE.held",
+      "unit": "V",
+      "initial": 3.22379254723325e-07,
+      "final": 3.20521549428468e-07,
+      "delta": -1.8577052948570173e-09
+    },
+    {
+      "node": "XP.XCPULSE.raw",
+      "unit": "V",
+      "initial": 1.44603415329353e-06,
+      "final": 1.44581282891272e-06,
+      "delta": -2.213243808099954e-10
+    },
+    {
+      "node": "XP.XCPULSE.refb",
+      "unit": "V",
+      "initial": 1.20002005564578,
+      "final": 1.20002005407927,
+      "delta": -1.5665100328021708e-09
+    },
+    {
+      "node": "XP.XCPULSE.resetb",
+      "unit": "V",
+      "initial": 1.20000002420407,
+      "final": 1.20000002391641,
+      "delta": -2.876601179480076e-10
+    },
+    {
+      "node": "XP.XCPULSE.XE.qb",
+      "unit": "V",
+      "initial": 1.30961149153777e-06,
+      "final": 1.30974484172883e-06,
+      "delta": 1.3335019105999843e-10
+    },
+    {
+      "node": "XP.XCPULSE.XE.XN.x",
+      "unit": "V",
+      "initial": 7.70356489261775e-07,
+      "final": 7.7044373358628e-07,
+      "delta": 8.724432450499686e-11
+    },
+    {
+      "node": "XP.XCPULSE.XE.x",
+      "unit": "V",
+      "initial": 1.20001651705475,
+      "final": 1.2000165150222,
+      "delta": -2.032550128205912e-09
+    },
+    {
+      "node": "XP.XCPULSE.XEN.n",
+      "unit": "V",
+      "initial": 1.20000002793231,
+      "final": 1.20000002632627,
+      "delta": -1.6060399676831594e-09
+    },
+    {
+      "node": "XP.XCPULSE.XEN.XN.x",
+      "unit": "V",
+      "initial": -8.7452553491448e-09,
+      "final": -9.21317310871464e-09,
+      "delta": -4.679177595698402e-10
+    },
+    {
+      "node": "XP.XCPULSE.XP.n",
+      "unit": "V",
+      "initial": 1.20000001537248,
+      "final": 1.20000001510836,
+      "delta": -2.641198371122755e-10
+    },
+    {
+      "node": "XP.XCPULSE.XP.XN.x",
+      "unit": "V",
+      "initial": 9.24604209655014e-09,
+      "final": 9.25655839754179e-09,
+      "delta": 1.0516300991649492e-11
+    },
+    {
+      "node": "XP.XCPULSE.XRESET.n",
+      "unit": "V",
+      "initial": 1.19999973540631,
+      "final": 1.19999974449878,
+      "delta": 9.092469888116739e-09
+    },
+    {
+      "node": "XP.XCPULSE.XRESET.XN.x",
+      "unit": "V",
+      "initial": 4.77765676458371e-09,
+      "final": 4.74253852760295e-09,
+      "delta": -3.511823698075995e-11
+    },
+    {
+      "node": "XP.XCPULSE.XS.n",
+      "unit": "V",
+      "initial": 1.20000821366988,
+      "final": 1.20000821215884,
+      "delta": -1.5110399598228241e-09
+    },
+    {
+      "node": "XP.XCPULSE.XS.XN.x",
+      "unit": "V",
+      "initial": -0.100281061382699,
+      "final": -0.100281062707383,
+      "delta": -1.3246840013803052e-09
+    },
+    {
+      "node": "XP.XD.b40",
+      "unit": "V",
+      "initial": 1.202627326312,
+      "final": 1.2026272911265,
+      "delta": -3.518550006909038e-08
+    },
+    {
+      "node": "XP.XD.b41",
+      "unit": "V",
+      "initial": 0.000618723057054446,
+      "final": 0.000618718910339222,
+      "delta": -4.146715224017175e-09
+    },
+    {
+      "node": "XP.XD.cb",
+      "unit": "V",
+      "initial": 0.15754863594723,
+      "final": 0.157528751797904,
+      "delta": -1.988414932602156e-05
+    },
+    {
+      "node": "XP.XD.ck",
+      "unit": "V",
+      "initial": 1.22066308881942,
+      "final": 1.22066137006389,
+      "delta": -1.7187555301223512e-06
+    },
+    {
+      "node": "XP.XD.ct0",
+      "unit": "V",
+      "initial": 1.13423558729872,
+      "final": 1.13423254482871,
+      "delta": -3.042470009928522e-06
+    },
+    {
+      "node": "XP.XD.ct1",
+      "unit": "V",
+      "initial": 0.123723930017837,
+      "final": 0.123736308016005,
+      "delta": 1.2377998168000559e-05
+    },
+    {
+      "node": "XP.XD.d4",
+      "unit": "V",
+      "initial": 1.17872742216224,
+      "final": 1.17872722368218,
+      "delta": -1.984800599430514e-07
+    },
+    {
+      "node": "XP.XD.d4b",
+      "unit": "V",
+      "initial": 0.0100991193879415,
+      "final": 0.0100978425640794,
+      "delta": -1.2768238620997768e-06
+    },
+    {
+      "node": "XP.XD.d6",
+      "unit": "V",
+      "initial": 0.127203956704191,
+      "final": 0.127192023940527,
+      "delta": -1.1932763663985435e-05
+    },
+    {
+      "node": "XP.XD.d8",
+      "unit": "V",
+      "initial": 0.179129214749639,
+      "final": 0.179149588406991,
+      "delta": 2.0373657351996366e-05
+    },
+    {
+      "node": "XP.XD.d8b",
+      "unit": "V",
+      "initial": 0.984913434323848,
+      "final": 0.984910225446802,
+      "delta": -3.208877046079195e-06
+    },
+    {
+      "node": "XP.XD.d12",
+      "unit": "V",
+      "initial": 3.74344100525641e-06,
+      "final": 3.73951044503574e-06,
+      "delta": -3.930560220669847e-09
+    },
+    {
+      "node": "XP.XD.eb0",
+      "unit": "V",
+      "initial": 0.00539149807325315,
+      "final": 0.00539154930016995,
+      "delta": 5.122691680049807e-08
+    },
+    {
+      "node": "XP.XD.eb1",
+      "unit": "V",
+      "initial": 1.21111100521096,
+      "final": 1.21111062305443,
+      "delta": -3.821565299766405e-07
+    },
+    {
+      "node": "XP.XD.eb2",
+      "unit": "V",
+      "initial": 1.17304193477188,
+      "final": 1.17304198541921,
+      "delta": 5.064733010762268e-08
+    },
+    {
+      "node": "XP.XD.eb3",
+      "unit": "V",
+      "initial": 1.20484989629331,
+      "final": 1.20484994805626,
+      "delta": 5.176294992637054e-08
+    },
+    {
+      "node": "XP.XD.eb4",
+      "unit": "V",
+      "initial": 1.20489578985272,
+      "final": 1.20489584350959,
+      "delta": 5.3656870058205186e-08
+    },
+    {
+      "node": "XP.XD.eb5",
+      "unit": "V",
+      "initial": 1.20484989629331,
+      "final": 1.20484994805626,
+      "delta": 5.176294992637054e-08
+    },
+    {
+      "node": "XP.XD.es0",
+      "unit": "V",
+      "initial": 1.20083275501328,
+      "final": 1.20083276357919,
+      "delta": 8.565909981328446e-09
+    },
+    {
+      "node": "XP.XD.es1",
+      "unit": "V",
+      "initial": 0.00430327407156543,
+      "final": 0.004303115996803,
+      "delta": -1.5807476242985646e-07
+    },
+    {
+      "node": "XP.XD.es2",
+      "unit": "V",
+      "initial": -0.0074535760668126,
+      "final": -0.00745384871453903,
+      "delta": -2.726477264305971e-07
+    },
+    {
+      "node": "XP.XD.es3",
+      "unit": "V",
+      "initial": 0.000368082932729692,
+      "final": 0.000368091662134778,
+      "delta": 8.729405086044424e-09
+    },
+    {
+      "node": "XP.XD.es4",
+      "unit": "V",
+      "initial": 0.000375223744899048,
+      "final": 0.000375228596151803,
+      "delta": 4.851252755034511e-09
+    },
+    {
+      "node": "XP.XD.es5",
+      "unit": "V",
+      "initial": 0.000368082932729692,
+      "final": 0.000368091662134402,
+      "delta": 8.72940471004311e-09
+    },
+    {
+      "node": "XP.XD.fab",
+      "unit": "V",
+      "initial": 0.0181508865523758,
+      "final": 0.018151746661898,
+      "delta": 8.601095222021682e-07
+    },
+    {
+      "node": "XP.XD.fb",
+      "unit": "V",
+      "initial": 0.00112128262285427,
+      "final": 0.000875300451351842,
+      "delta": -0.000245982171502428
+    },
+    {
+      "node": "XP.XD.load",
+      "unit": "V",
+      "initial": 0.00164631843581832,
+      "final": 0.00164633387116387,
+      "delta": 1.5435345550101828e-08
+    },
+    {
+      "node": "XP.XD.loadb",
+      "unit": "V",
+      "initial": 1.17111792406658,
+      "final": 1.17111795949889,
+      "delta": 3.5432309974936516e-08
+    },
+    {
+      "node": "XP.XD.mux",
+      "unit": "V",
+      "initial": 1.08666263840698,
+      "final": 1.08666072029036,
+      "delta": -1.9181166199810917e-06
+    },
+    {
+      "node": "XP.XD.ob",
+      "unit": "V",
+      "initial": 0.135994111206802,
+      "final": 0.13599896812263,
+      "delta": 4.8569158279943014e-06
+    },
+    {
+      "node": "XP.XD.q0",
+      "unit": "V",
+      "initial": 1.1881441505793,
+      "final": 1.18814462070393,
+      "delta": 4.7012462989215464e-07
+    },
+    {
+      "node": "XP.XD.qb0",
+      "unit": "V",
+      "initial": 0.0469045162906405,
+      "final": 0.0469061071461247,
+      "delta": 1.590855484200071e-06
+    },
+    {
+      "node": "XP.XD.r0",
+      "unit": "V",
+      "initial": 0.00112794062632139,
+      "final": 0.00112798154068838,
+      "delta": 4.0914366990088893e-08
+    },
+    {
+      "node": "XP.XD.r1",
+      "unit": "V",
+      "initial": 0.00108944963857559,
+      "final": 0.00108946301546121,
+      "delta": 1.3376885620031143e-08
+    },
+    {
+      "node": "XP.XD.r2",
+      "unit": "V",
+      "initial": 0.00108951521424785,
+      "final": 0.00108953123310969,
+      "delta": 1.6018861840076323e-08
+    },
+    {
+      "node": "XP.XD.r3",
+      "unit": "V",
+      "initial": 0.00108950989103657,
+      "final": 0.00108952593632647,
+      "delta": 1.6045289899903684e-08
+    },
+    {
+      "node": "XP.XD.r4",
+      "unit": "V",
+      "initial": 0.00035760944430901,
+      "final": 0.000357708306061486,
+      "delta": 9.88617524759895e-08
+    },
+    {
+      "node": "XP.XD.r5",
+      "unit": "V",
+      "initial": 0.00032594605482049,
+      "final": 0.000325956349962279,
+      "delta": 1.0295141788987244e-08
+    },
+    {
+      "node": "XP.XD.r6",
+      "unit": "V",
+      "initial": 0.000325744642082509,
+      "final": 0.000325858673637886,
+      "delta": 1.1403155537696979e-07
+    },
+    {
+      "node": "XP.XD.resetb",
+      "unit": "V",
+      "initial": 1.19960057005701,
+      "final": 1.19960055108279,
+      "delta": -1.8974219972989204e-08
+    },
+    {
+      "node": "XP.XD.sb3",
+      "unit": "V",
+      "initial": 1.20003186320164,
+      "final": 1.20003222408633,
+      "delta": 3.6088468990946865e-07
+    },
+    {
+      "node": "XP.XD.sb5",
+      "unit": "V",
+      "initial": 1.20003402285052,
+      "final": 1.20003406300608,
+      "delta": 4.0155559988264145e-08
+    },
+    {
+      "node": "XP.XD.XD4.a",
+      "unit": "V",
+      "initial": 1.23421814179596,
+      "final": 1.23421676397658,
+      "delta": -1.377819379921874e-06
+    },
+    {
+      "node": "XP.XD.XD4.b",
+      "unit": "V",
+      "initial": 1.28167993133376,
+      "final": 1.28167757347963,
+      "delta": -2.3578541299418276e-06
+    },
+    {
+      "node": "XP.XD.XD4.n1",
+      "unit": "V",
+      "initial": 0.689304762812568,
+      "final": 0.689300971099864,
+      "delta": -3.791712704037664e-06
+    },
+    {
+      "node": "XP.XD.XD4.n2",
+      "unit": "V",
+      "initial": 0.00514606796362487,
+      "final": 0.00514593012731654,
+      "delta": -1.3783630832975985e-07
+    },
+    {
+      "node": "XP.XD.XD4.p0",
+      "unit": "V",
+      "initial": 1.24880662517746,
+      "final": 1.24880570078935,
+      "delta": -9.243881100573503e-07
+    },
+    {
+      "node": "XP.XD.XD6.clkb",
+      "unit": "V",
+      "initial": 0.00187982756677886,
+      "final": 0.00187981907843816,
+      "delta": -8.488340700035096e-09
+    },
+    {
+      "node": "XP.XD.XD6.d0",
+      "unit": "V",
+      "initial": -0.000102556827897096,
+      "final": -0.000102554502271774,
+      "delta": 2.3256253219987874e-09
+    },
+    {
+      "node": "XP.XD.XD6.ob",
+      "unit": "V",
+      "initial": 0.323809292619751,
+      "final": 0.323815870700905,
+      "delta": 6.578081154007265e-06
+    },
+    {
+      "node": "XP.XD.XD6.q0",
+      "unit": "V",
+      "initial": 0.0426809279005601,
+      "final": 0.0426827889538942,
+      "delta": 1.8610533340998603e-06
+    },
+    {
+      "node": "XP.XD.XD6.q1",
+      "unit": "V",
+      "initial": 1.19458645369963,
+      "final": 1.19458628273184,
+      "delta": -1.709677899253137e-07
+    },
+    {
+      "node": "XP.XD.XD6.X0.qm",
+      "unit": "V",
+      "initial": 1.17553130088229,
+      "final": 1.17553096712722,
+      "delta": -3.3375507002553206e-07
+    },
+    {
+      "node": "XP.XD.XD6.X0.XM.fb",
+      "unit": "V",
+      "initial": 0.00408003550232725,
+      "final": 0.00408000082373655,
+      "delta": -3.467859070044321e-08
+    },
+    {
+      "node": "XP.XD.XD6.X0.XM.x",
+      "unit": "V",
+      "initial": 0.00710630233415487,
+      "final": 0.0071062377455242,
+      "delta": -6.458863066952092e-08
+    },
+    {
+      "node": "XP.XD.XD6.X0.XS.fb",
+      "unit": "V",
+      "initial": 0.828659847154815,
+      "final": 0.82864359587829,
+      "delta": -1.6251276525047764e-05
+    },
+    {
+      "node": "XP.XD.XD6.X0.XS.x",
+      "unit": "V",
+      "initial": 1.13270675685581,
+      "final": 1.13270567436947,
+      "delta": -1.0824863401204254e-06
+    },
+    {
+      "node": "XP.XD.XD6.X1.qm",
+      "unit": "V",
+      "initial": 0.00420592255929291,
+      "final": 0.00420602768081598,
+      "delta": 1.0512152307049633e-07
+    },
+    {
+      "node": "XP.XD.XD6.X1.XM.fb",
+      "unit": "V",
+      "initial": 1.18336696238975,
+      "final": 1.1833666328826,
+      "delta": -3.2950715000978903e-07
+    },
+    {
+      "node": "XP.XD.XD6.X1.XM.x",
+      "unit": "V",
+      "initial": 1.16949442831866,
+      "final": 1.16949380890717,
+      "delta": -6.194114898772085e-07
+    },
+    {
+      "node": "XP.XD.XD6.X1.XS.fb",
+      "unit": "V",
+      "initial": 0.001156975414217,
+      "final": 0.00115703503264884,
+      "delta": 5.961843183997957e-08
+    },
+    {
+      "node": "XP.XD.XD6.X1.XS.x",
+      "unit": "V",
+      "initial": 0.00957095003891312,
+      "final": 0.00957121745425661,
+      "delta": 2.6741534349047913e-07
+    },
+    {
+      "node": "XP.XD.XD6.XN.p",
+      "unit": "V",
+      "initial": 1.17454561654459,
+      "final": 1.17454424488739,
+      "delta": -1.371657200044396e-06
+    },
+    {
+      "node": "XP.XD.XD8.a",
+      "unit": "V",
+      "initial": -0.0530637028320683,
+      "final": -0.0530627579301992,
+      "delta": 9.449018691029543e-07
+    },
+    {
+      "node": "XP.XD.XD8.b",
+      "unit": "V",
+      "initial": 0.217462585571016,
+      "final": 0.217481869018537,
+      "delta": 1.9283447521001307e-05
+    },
+    {
+      "node": "XP.XD.XD8.n1",
+      "unit": "V",
+      "initial": -0.00721783121210671,
+      "final": -0.00721809660558451,
+      "delta": -2.653934777999828e-07
+    },
+    {
+      "node": "XP.XD.XD8.n2",
+      "unit": "V",
+      "initial": 0.566604956280216,
+      "final": 0.566604184212093,
+      "delta": -7.720681229894666e-07
+    },
+    {
+      "node": "XP.XD.XD8.p0",
+      "unit": "V",
+      "initial": 1.31677728172228,
+      "final": 1.31677673519998,
+      "delta": -5.465223000822306e-07
+    },
+    {
+      "node": "XP.XD.XD12.clkb",
+      "unit": "V",
+      "initial": -0.00125958324000656,
+      "final": -0.00125961463037753,
+      "delta": -3.139037096987034e-08
+    },
+    {
+      "node": "XP.XD.XD12.d0",
+      "unit": "V",
+      "initial": 0.845008246404102,
+      "final": 0.845023990043622,
+      "delta": 1.5743639520060526e-05
+    },
+    {
+      "node": "XP.XD.XD12.ob",
+      "unit": "V",
+      "initial": 1.19763199259489,
+      "final": 1.1976319585233,
+      "delta": -3.4071589993800444e-08
+    },
+    {
+      "node": "XP.XD.XD12.q0",
+      "unit": "V",
+      "initial": 1.0960022520159,
+      "final": 1.09599888220107,
+      "delta": -3.3698148300675967e-06
+    },
+    {
+      "node": "XP.XD.XD12.q1",
+      "unit": "V",
+      "initial": -0.0492283836400076,
+      "final": -0.0492277761411971,
+      "delta": 6.074988105064794e-07
+    },
+    {
+      "node": "XP.XD.XD12.X0.qm",
+      "unit": "V",
+      "initial": 0.00783535720505505,
+      "final": 0.00783557041299832,
+      "delta": 2.1320794326915027e-07
+    },
+    {
+      "node": "XP.XD.XD12.X0.XM.fb",
+      "unit": "V",
+      "initial": 1.19673648875103,
+      "final": 1.1967364365991,
+      "delta": -5.215192988572426e-08
+    },
+    {
+      "node": "XP.XD.XD12.X0.XM.x",
+      "unit": "V",
+      "initial": 1.19429862000442,
+      "final": 1.19429853761237,
+      "delta": -8.239205007143369e-08
+    },
+    {
+      "node": "XP.XD.XD12.X0.XS.fb",
+      "unit": "V",
+      "initial": 0.159571817541355,
+      "final": 0.159595095071402,
+      "delta": 2.327753004699451e-05
+    },
+    {
+      "node": "XP.XD.XD12.X0.XS.x",
+      "unit": "V",
+      "initial": 0.0223701636530445,
+      "final": 0.0223708151360674,
+      "delta": 6.514830229002733e-07
+    },
+    {
+      "node": "XP.XD.XD12.X1.qm",
+      "unit": "V",
+      "initial": 1.19820151688804,
+      "final": 1.19820150017794,
+      "delta": -1.6710099970396186e-08
+    },
+    {
+      "node": "XP.XD.XD12.X1.XM.fb",
+      "unit": "V",
+      "initial": -0.000399768251358704,
+      "final": -0.000399807718634473,
+      "delta": -3.946727576904004e-08
+    },
+    {
+      "node": "XP.XD.XD12.X1.XM.x",
+      "unit": "V",
+      "initial": -0.000828311182022296,
+      "final": -0.000828338289605322,
+      "delta": -2.7107583026029537e-08
+    },
+    {
+      "node": "XP.XD.XD12.X1.XS.fb",
+      "unit": "V",
+      "initial": 1.19751539863572,
+      "final": 1.19751530116476,
+      "delta": -9.747096019196988e-08
+    },
+    {
+      "node": "XP.XD.XD12.X1.XS.x",
+      "unit": "V",
+      "initial": 1.1943871526309,
+      "final": 1.19438706222328,
+      "delta": -9.040762005696479e-08
+    },
+    {
+      "node": "XP.XD.XD12.XN.p",
+      "unit": "V",
+      "initial": 0.97484755261805,
+      "final": 0.974857856205469,
+      "delta": 1.0303587419047133e-05
+    },
+    {
+      "node": "XP.XD.XF0.din",
+      "unit": "V",
+      "initial": 0.00120386461736695,
+      "final": 0.000957715568032493,
+      "delta": -0.00024614904933445685
+    },
+    {
+      "node": "XP.XD.XF0.XF.qb",
+      "unit": "V",
+      "initial": 1.19486239618283,
+      "final": 1.19486225635725,
+      "delta": -1.3982558000336098e-07
+    },
+    {
+      "node": "XP.XD.XF0.XF.XF.a",
+      "unit": "V",
+      "initial": 0.00173773851309566,
+      "final": 0.00173772302103289,
+      "delta": -1.5492062769998163e-08
+    },
+    {
+      "node": "XP.XD.XF0.XF.XF.b",
+      "unit": "V",
+      "initial": 1.05465397517029,
+      "final": 1.0546482167419,
+      "delta": -5.758428389901482e-06
+    },
+    {
+      "node": "XP.XD.XF0.XF.XF.n1",
+      "unit": "V",
+      "initial": 0.00111816212496018,
+      "final": 0.0011181518483549,
+      "delta": -1.0276605280070891e-08
+    },
+    {
+      "node": "XP.XD.XF0.XF.XF.n2",
+      "unit": "V",
+      "initial": 0.640624058521371,
+      "final": 0.640623088977007,
+      "delta": -9.695443640156398e-07
+    },
+    {
+      "node": "XP.XD.XF0.XF.XF.p0",
+      "unit": "V",
+      "initial": 1.20101634621493,
+      "final": 1.20101615491382,
+      "delta": -1.9130110984200144e-07
+    },
+    {
+      "node": "XP.XD.XF1.din",
+      "unit": "V",
+      "initial": 0.00164863728235615,
+      "final": 0.00164870344316916,
+      "delta": 6.616081300999874e-08
+    },
+    {
+      "node": "XP.XD.XF1.XF.qb",
+      "unit": "V",
+      "initial": 1.19485552072296,
+      "final": 1.19485541633767,
+      "delta": -1.0438529018941267e-07
+    },
+    {
+      "node": "XP.XD.XF1.XF.XF.a",
+      "unit": "V",
+      "initial": 0.00173235214482615,
+      "final": 0.00173232803644533,
+      "delta": -2.4108380819887892e-08
+    },
+    {
+      "node": "XP.XD.XF1.XF.XF.b",
+      "unit": "V",
+      "initial": 1.05475654074926,
+      "final": 1.05475619431412,
+      "delta": -3.464351401305521e-07
+    },
+    {
+      "node": "XP.XD.XF1.XF.XF.n1",
+      "unit": "V",
+      "initial": 0.00111475394644174,
+      "final": 0.00111474122584272,
+      "delta": -1.2720599020096465e-08
+    },
+    {
+      "node": "XP.XD.XF1.XF.XF.n2",
+      "unit": "V",
+      "initial": 0.640615894507973,
+      "final": 0.640614996817789,
+      "delta": -8.976901839652385e-07
+    },
+    {
+      "node": "XP.XD.XF1.XF.XF.p0",
+      "unit": "V",
+      "initial": 1.20081800889075,
+      "final": 1.20081798720711,
+      "delta": -2.168363999466294e-08
+    },
+    {
+      "node": "XP.XD.XF2.din",
+      "unit": "V",
+      "initial": 0.00160288062458809,
+      "final": 0.00160289122829091,
+      "delta": 1.0603702820096914e-08
+    },
+    {
+      "node": "XP.XD.XF2.XF.qb",
+      "unit": "V",
+      "initial": 1.19485511482657,
+      "final": 1.19485501106686,
+      "delta": -1.0375970993514727e-07
+    },
+    {
+      "node": "XP.XD.XF2.XF.XF.a",
+      "unit": "V",
+      "initial": 0.00173249962195996,
+      "final": 0.00173247528404431,
+      "delta": -2.433791565004985e-08
+    },
+    {
+      "node": "XP.XD.XF2.XF.XF.b",
+      "unit": "V",
+      "initial": 1.054755848061,
+      "final": 1.05475566462935,
+      "delta": -1.834316498694477e-07
+    },
+    {
+      "node": "XP.XD.XF2.XF.XF.n1",
+      "unit": "V",
+      "initial": 0.00111483819211639,
+      "final": 0.00111482604636669,
+      "delta": -1.2145749700041494e-08
+    },
+    {
+      "node": "XP.XD.XF2.XF.XF.n2",
+      "unit": "V",
+      "initial": 0.64061540694231,
+      "final": 0.640614508680821,
+      "delta": -8.982614889685436e-07
+    },
+    {
+      "node": "XP.XD.XF2.XF.XF.p0",
+      "unit": "V",
+      "initial": 1.20082113873704,
+      "final": 1.20082111462422,
+      "delta": -2.411281996295145e-08
+    },
+    {
+      "node": "XP.XD.XF3.din",
+      "unit": "V",
+      "initial": 0.00160296833123765,
+      "final": 0.0016029884947539,
+      "delta": 2.0163516250117433e-08
+    },
+    {
+      "node": "XP.XD.XF3.XF.qb",
+      "unit": "V",
+      "initial": 1.19485511323126,
+      "final": 1.19485500944185,
+      "delta": -1.0378940995536823e-07
+    },
+    {
+      "node": "XP.XD.XF3.XF.XF.a",
+      "unit": "V",
+      "initial": 0.00173249924862264,
+      "final": 0.00173247500143539,
+      "delta": -2.424718724999657e-08
+    },
+    {
+      "node": "XP.XD.XF3.XF.XF.b",
+      "unit": "V",
+      "initial": 1.05475585222306,
+      "final": 1.05475566923014,
+      "delta": -1.8299291992818212e-07
+    },
+    {
+      "node": "XP.XD.XF3.XF.XF.n1",
+      "unit": "V",
+      "initial": 0.00111483796090111,
+      "final": 0.00111482586220531,
+      "delta": -1.2098695799985654e-08
+    },
+    {
+      "node": "XP.XD.XF3.XF.XF.n2",
+      "unit": "V",
+      "initial": 0.640615406653387,
+      "final": 0.640614508406314,
+      "delta": -8.982470730556358e-07
+    },
+    {
+      "node": "XP.XD.XF3.XF.XF.p0",
+      "unit": "V",
+      "initial": 1.20082112657072,
+      "final": 1.20082110505109,
+      "delta": -2.151963007790414e-08
+    },
+    {
+      "node": "XP.XD.XF4.din",
+      "unit": "V",
+      "initial": 0.00160295757578287,
+      "final": 0.00160297778908563,
+      "delta": 2.02133027598847e-08
+    },
+    {
+      "node": "XP.XD.XF4.XF.qb",
+      "unit": "V",
+      "initial": 1.19489001533088,
+      "final": 1.19488994330868,
+      "delta": -7.202219998170278e-08
+    },
+    {
+      "node": "XP.XD.XF4.XF.XF.a",
+      "unit": "V",
+      "initial": 0.00173580876562673,
+      "final": 0.00173578611282252,
+      "delta": -2.2652804209906743e-08
+    },
+    {
+      "node": "XP.XD.XF4.XF.XF.b",
+      "unit": "V",
+      "initial": 1.05475750541026,
+      "final": 1.05475730143395,
+      "delta": -2.0397631006474626e-07
+    },
+    {
+      "node": "XP.XD.XF4.XF.XF.n1",
+      "unit": "V",
+      "initial": 0.00111642368836095,
+      "final": 0.00111641159955998,
+      "delta": -1.2088800969804747e-08
+    },
+    {
+      "node": "XP.XD.XF4.XF.XF.n2",
+      "unit": "V",
+      "initial": 0.640615242464155,
+      "final": 0.640614345442469,
+      "delta": -8.970216860415547e-07
+    },
+    {
+      "node": "XP.XD.XF4.XF.XF.p0",
+      "unit": "V",
+      "initial": 1.20082112603699,
+      "final": 1.20082110451126,
+      "delta": -2.152573008729064e-08
+    },
+    {
+      "node": "XP.XD.XF5.dclose",
+      "unit": "V",
+      "initial": 1.20001270379588,
+      "final": 1.20001271548966,
+      "delta": 1.1693779944366156e-08
+    },
+    {
+      "node": "XP.XD.XF5.din",
+      "unit": "V",
+      "initial": -0.000699660251996847,
+      "final": -0.000699648918129075,
+      "delta": 1.1333867771926888e-08
+    },
+    {
+      "node": "XP.XD.XF5.dopen",
+      "unit": "V",
+      "initial": 2.5128383021687e-06,
+      "final": 2.51660872725772e-06,
+      "delta": 3.770425089020244e-09
+    },
+    {
+      "node": "XP.XD.XF5.XEN.n",
+      "unit": "V",
+      "initial": 1.20079387605013,
+      "final": 1.20079389532308,
+      "delta": 1.9272949902671144e-08
+    },
+    {
+      "node": "XP.XD.XF5.XEN.XN.x",
+      "unit": "V",
+      "initial": 0.909566866297277,
+      "final": 0.919699298763671,
+      "delta": 0.010132432466393948
+    },
+    {
+      "node": "XP.XD.XF5.XF.qb",
+      "unit": "V",
+      "initial": 1.19490710950218,
+      "final": 1.19490701763102,
+      "delta": -9.187116001285744e-08
+    },
+    {
+      "node": "XP.XD.XF5.XF.XF.a",
+      "unit": "V",
+      "initial": 0.00174050667382038,
+      "final": 0.00174047958745798,
+      "delta": -2.7086362400187067e-08
+    },
+    {
+      "node": "XP.XD.XF5.XF.XF.b",
+      "unit": "V",
+      "initial": 1.05468653023067,
+      "final": 1.05468599885159,
+      "delta": -5.313790800709484e-07
+    },
+    {
+      "node": "XP.XD.XF5.XF.XF.n1",
+      "unit": "V",
+      "initial": 0.00111934620543922,
+      "final": 0.00111933119852955,
+      "delta": -1.5006909669795787e-08
+    },
+    {
+      "node": "XP.XD.XF5.XF.XF.n2",
+      "unit": "V",
+      "initial": 0.640629153592366,
+      "final": 0.640628264711412,
+      "delta": -8.888809540641418e-07
+    },
+    {
+      "node": "XP.XD.XF5.XF.XF.p0",
+      "unit": "V",
+      "initial": 1.20097710838621,
+      "final": 1.20097707789935,
+      "delta": -3.048685992546041e-08
+    },
+    {
+      "node": "XP.XD.XF6.dclose",
+      "unit": "V",
+      "initial": 1.20001440470428,
+      "final": 1.20001440395854,
+      "delta": -7.457399142651866e-10
+    },
+    {
+      "node": "XP.XD.XF6.din",
+      "unit": "V",
+      "initial": -0.00069971333585853,
+      "final": -0.000699866902889732,
+      "delta": -1.5356703120196404e-07
+    },
+    {
+      "node": "XP.XD.XF6.dopen",
+      "unit": "V",
+      "initial": 3.94526721646756e-06,
+      "final": 3.94514245532554e-06,
+      "delta": -1.2476114202004496e-10
+    },
+    {
+      "node": "XP.XD.XF6.XEN.n",
+      "unit": "V",
+      "initial": 1.20079379832106,
+      "final": 1.20079381367719,
+      "delta": 1.5356130145249836e-08
+    },
+    {
+      "node": "XP.XD.XF6.XEN.XN.x",
+      "unit": "V",
+      "initial": 0.909566852939326,
+      "final": 0.919699288198529,
+      "delta": 0.010132435259202932
+    },
+    {
+      "node": "XP.XD.XF6.XF.qb",
+      "unit": "V",
+      "initial": 1.19490711430534,
+      "final": 1.19490704864347,
+      "delta": -6.566186994128032e-08
+    },
+    {
+      "node": "XP.XD.XF6.XF.XF.a",
+      "unit": "V",
+      "initial": 0.00174050728072729,
+      "final": 0.00174048434338477,
+      "delta": -2.2937342519921064e-08
+    },
+    {
+      "node": "XP.XD.XF6.XF.XF.b",
+      "unit": "V",
+      "initial": 1.05468645457019,
+      "final": 1.05468591890274,
+      "delta": -5.356674499523706e-07
+    },
+    {
+      "node": "XP.XD.XF6.XF.XF.n1",
+      "unit": "V",
+      "initial": 0.00111934763556739,
+      "final": 0.00111933340910367,
+      "delta": -1.4226463720175969e-08
+    },
+    {
+      "node": "XP.XD.XF6.XF.XF.n2",
+      "unit": "V",
+      "initial": 0.640629158955574,
+      "final": 0.640628270697578,
+      "delta": -8.882579960456383e-07
+    },
+    {
+      "node": "XP.XD.XF6.XF.XF.p0",
+      "unit": "V",
+      "initial": 1.20097708665711,
+      "final": 1.20097705522227,
+      "delta": -3.143483984224815e-08
+    },
+    {
+      "node": "XP.XD.XPRE.a",
+      "unit": "V",
+      "initial": 0.950372936826679,
+      "final": 0.950354733873089,
+      "delta": -1.8202953590007453e-05
+    },
+    {
+      "node": "XP.XD.XPRE.b",
+      "unit": "V",
+      "initial": 0.69063829671043,
+      "final": 0.690656132173587,
+      "delta": 1.7835463157034326e-05
+    },
+    {
+      "node": "XP.XD.XPRE.dn",
+      "unit": "V",
+      "initial": 0.893839262255372,
+      "final": 0.893837188077218,
+      "delta": -2.07417815401012e-06
+    },
+    {
+      "node": "XP.XD.XPRE.n1",
+      "unit": "V",
+      "initial": 0.247142376182132,
+      "final": 0.247145683172235,
+      "delta": 3.306990103008056e-06
+    },
+    {
+      "node": "XP.XD.XPRE.n2",
+      "unit": "V",
+      "initial": 0.0278859314574624,
+      "final": 0.0278914177010439,
+      "delta": 5.486243581501182e-06
+    },
+    {
+      "node": "XP.XD.XPRE.p0",
+      "unit": "V",
+      "initial": 0.856693408081398,
+      "final": 0.856700060635786,
+      "delta": 6.65255438792034e-06
+    },
+    {
+      "node": "XP.XD.XRL.a",
+      "unit": "V",
+      "initial": 0.00192957337985191,
+      "final": 0.00192954276041576,
+      "delta": -3.061943615019838e-08
+    },
+    {
+      "node": "XP.XD.XRL.b",
+      "unit": "V",
+      "initial": 1.05476311640921,
+      "final": 1.05476274937028,
+      "delta": -3.6703892991596376e-07
+    },
+    {
+      "node": "XP.XD.XRL.n1",
+      "unit": "V",
+      "initial": 0.00120054445243488,
+      "final": 0.00120052827936338,
+      "delta": -1.6173071499875e-08
+    },
+    {
+      "node": "XP.XD.XRL.n2",
+      "unit": "V",
+      "initial": 0.640984122887311,
+      "final": 0.640983239552542,
+      "delta": -8.833347689973792e-07
+    },
+    {
+      "node": "XP.XD.XRL.p0",
+      "unit": "V",
+      "initial": 1.20091050288683,
+      "final": 1.20091047994408,
+      "delta": -2.2942750144139268e-08
+    },
+    {
+      "node": "XP.XD.XSEB0.x",
+      "unit": "V",
+      "initial": 0.00272238212453295,
+      "final": 0.00272240859156425,
+      "delta": 2.6467031299676896e-08
+    },
+    {
+      "node": "XP.XD.XSEB1.x",
+      "unit": "V",
+      "initial": 8.52965703310638e-06,
+      "final": 8.52787336125949e-06,
+      "delta": -1.7836718468900988e-09
+    },
+    {
+      "node": "XP.XD.XSEB2.x",
+      "unit": "V",
+      "initial": 8.5223216928787e-06,
+      "final": 8.5205371793306e-06,
+      "delta": -1.784513548098681e-09
+    },
+    {
+      "node": "XP.XD.XSEB3.x",
+      "unit": "V",
+      "initial": 8.52499528937625e-06,
+      "final": 8.52321130290208e-06,
+      "delta": -1.7839864741697455e-09
+    },
+    {
+      "node": "XP.XD.XSEB4.x",
+      "unit": "V",
+      "initial": 8.52499715005845e-06,
+      "final": 8.52321175428645e-06,
+      "delta": -1.7853957720004288e-09
+    },
+    {
+      "node": "XP.XD.XSEB5.x",
+      "unit": "V",
+      "initial": 8.52499528937625e-06,
+      "final": 8.52321130299775e-06,
+      "delta": -1.7839863785007622e-09
+    },
+    {
+      "node": "XP.XDAC.b0",
+      "unit": "V",
+      "initial": 0.0719550123061932,
+      "final": 0.0669231104974169,
+      "delta": -0.005031901808776301
+    },
+    {
+      "node": "XP.XDAC.b1",
+      "unit": "V",
+      "initial": 2.26708466554317e-06,
+      "final": 2.24633987956332e-06,
+      "delta": -2.074478597985005e-08
+    },
+    {
+      "node": "XP.XDAC.b2",
+      "unit": "V",
+      "initial": 2.57079919490446e-06,
+      "final": 2.54669307160984e-06,
+      "delta": -2.4106123294619857e-08
+    },
+    {
+      "node": "XP.XDAC.b3",
+      "unit": "V",
+      "initial": 0.0719578089366045,
+      "final": 0.0669259681805871,
+      "delta": -0.005031840756017397
+    },
+    {
+      "node": "XP.XDAC.b4",
+      "unit": "V",
+      "initial": 0.0719620566173703,
+      "final": 0.0669301322718782,
+      "delta": -0.0050319243454921
+    },
+    {
+      "node": "XP.XDAC.b5",
+      "unit": "V",
+      "initial": 6.29103959991907e-06,
+      "final": 6.22252196644455e-06,
+      "delta": -6.85176334745199e-08
+    },
+    {
+      "node": "XP.XDAC.r0",
+      "unit": "V",
+      "initial": 2.34420447709383e-05,
+      "final": 2.32089757251484e-05,
+      "delta": -2.330690457899012e-07
+    },
+    {
+      "node": "XP.XDAC.r1",
+      "unit": "V",
+      "initial": 3.92530649624466e-05,
+      "final": 3.88850031634e-05,
+      "delta": -3.680617990466003e-07
+    },
+    {
+      "node": "XP.XDAC.r2",
+      "unit": "V",
+      "initial": 6.56900899261145e-05,
+      "final": 6.52450890908387e-05,
+      "delta": -4.4500083527580466e-07
+    },
+    {
+      "node": "XP.XDAC.r3",
+      "unit": "V",
+      "initial": 0.000113265519545742,
+      "final": 0.000112803712726412,
+      "delta": -4.618068193299954e-07
+    },
+    {
+      "node": "XP.XDAC.r4",
+      "unit": "V",
+      "initial": 0.000200321462716101,
+      "final": 0.000199835696337548,
+      "delta": -4.857663785530052e-07
+    },
+    {
+      "node": "XP.XDAC.v0",
+      "unit": "V",
+      "initial": 1.52620491588601e-05,
+      "final": 1.50658965737936e-05,
+      "delta": -1.9615258506649905e-07
+    },
+    {
+      "node": "XP.XDAC.v1",
+      "unit": "V",
+      "initial": 1.80010554181274e-05,
+      "final": 1.75168861850259e-05,
+      "delta": -4.841692331014983e-07
+    },
+    {
+      "node": "XP.XDAC.v2",
+      "unit": "V",
+      "initial": 2.34132806141945e-05,
+      "final": 2.28480136745702e-05,
+      "delta": -5.652669396243005e-07
+    },
+    {
+      "node": "XP.XDAC.v3",
+      "unit": "V",
+      "initial": 3.43044924442816e-05,
+      "final": 3.38569927752844e-05,
+      "delta": -4.4749966899720216e-07
+    },
+    {
+      "node": "XP.XDAC.v4",
+      "unit": "V",
+      "initial": 5.15671146048183e-05,
+      "final": 5.10943854267408e-05,
+      "delta": -4.7272917807750215e-07
+    },
+    {
+      "node": "XP.XDAC.v5",
+      "unit": "V",
+      "initial": 7.92287267093543e-05,
+      "final": 7.85024265972151e-05,
+      "delta": -7.263001121391935e-07
+    },
+    {
+      "node": "XP.XDAC.vd",
+      "unit": "V",
+      "initial": 0.0630147007772382,
+      "final": 0.0583560544809836,
+      "delta": -0.0046586462962546
+    },
+    {
+      "node": "XP.XDET.env",
+      "unit": "V",
+      "initial": 0.830312836405111,
+      "final": 0.830301995236808,
+      "delta": -1.084116830296633e-05
+    },
+    {
+      "node": "XP.XDET.envref",
+      "unit": "V",
+      "initial": 0.635967367951612,
+      "final": 0.635967362842296,
+      "delta": -5.109315970308614e-09
+    },
+    {
+      "node": "XP.XDET.lower_ok",
+      "unit": "V",
+      "initial": 1.19999876095242,
+      "final": 1.19999885174853,
+      "delta": 9.079610996387544e-08
+    },
+    {
+      "node": "XP.XDET.threshold",
+      "unit": "V",
+      "initial": 0.688182507593318,
+      "final": 0.688182807276378,
+      "delta": 2.996830600343614e-07
+    },
+    {
+      "node": "XP.XDET.upper_ok",
+      "unit": "V",
+      "initial": 1.19999462640702,
+      "final": 1.1999946251403,
+      "delta": -1.2667200621763186e-09
+    },
+    {
+      "node": "XP.XDET.wh",
+      "unit": "V",
+      "initial": 0.607080834061864,
+      "final": 0.607078562525374,
+      "delta": -2.271536490017212e-06
+    },
+    {
+      "node": "XP.XDET.window_ok",
+      "unit": "V",
+      "initial": 1.20000002816846,
+      "final": 1.2000000258577,
+      "delta": -2.3107600277683105e-09
+    },
+    {
+      "node": "XP.XDET.wl",
+      "unit": "V",
+      "initial": 0.486013067527515,
+      "final": 0.486011025207577,
+      "delta": -2.0423199380004142e-06
+    },
+    {
+      "node": "XP.XDET.XA.inv",
+      "unit": "V",
+      "initial": -9.05759896720402e-07,
+      "final": -9.190246576635e-07,
+      "delta": -1.3264760943097928e-08
+    },
+    {
+      "node": "XP.XDET.XA.left",
+      "unit": "V",
+      "initial": 0.374581050121695,
+      "final": 0.374589613683317,
+      "delta": 8.563561621988125e-06
+    },
+    {
+      "node": "XP.XDET.XA.nb",
+      "unit": "V",
+      "initial": 0.661989374936285,
+      "final": 0.661989213063061,
+      "delta": -1.6187322393612646e-07
+    },
+    {
+      "node": "XP.XDET.XA.sense",
+      "unit": "V",
+      "initial": 1.16907434806421,
+      "final": 1.16907035465616,
+      "delta": -3.993408050018132e-06
+    },
+    {
+      "node": "XP.XDET.XA.tail",
+      "unit": "V",
+      "initial": 0.140662629450945,
+      "final": 0.140657581362118,
+      "delta": -5.048088826981045e-06
+    },
+    {
+      "node": "XP.XDET.XG.n",
+      "unit": "V",
+      "initial": 2.60280117425313e-08,
+      "final": 2.59622386225618e-08,
+      "delta": -6.577311996950073e-11
+    },
+    {
+      "node": "XP.XDET.XG.XN.x",
+      "unit": "V",
+      "initial": 1.39754825276925e-08,
+      "final": 1.40506942579216e-08,
+      "delta": 7.521173022909909e-11
+    },
+    {
+      "node": "XP.XDET.XH.inv",
+      "unit": "V",
+      "initial": -9.67814980375192e-05,
+      "final": -9.67707630198993e-05,
+      "delta": 1.0735017619910412e-08
+    },
+    {
+      "node": "XP.XDET.XH.left",
+      "unit": "V",
+      "initial": 0.543226556089105,
+      "final": 0.543227847135686,
+      "delta": 1.2910465809756744e-06
+    },
+    {
+      "node": "XP.XDET.XH.nb",
+      "unit": "V",
+      "initial": 0.664415641885048,
+      "final": 0.664415494696753,
+      "delta": -1.4718829499660302e-07
+    },
+    {
+      "node": "XP.XDET.XH.sense",
+      "unit": "V",
+      "initial": 1.16157768943715,
+      "final": 1.1615791795238,
+      "delta": 1.4900866500688892e-06
+    },
+    {
+      "node": "XP.XDET.XH.tail",
+      "unit": "V",
+      "initial": 0.0461160802165547,
+      "final": 0.0461145553071452,
+      "delta": -1.52490940950184e-06
+    },
+    {
+      "node": "XP.XDET.XL.inv",
+      "unit": "V",
+      "initial": -2.55381176166384e-05,
+      "final": -2.55245864067644e-05,
+      "delta": 1.353120987399907e-08
+    },
+    {
+      "node": "XP.XDET.XL.left",
+      "unit": "V",
+      "initial": 0.617798837270073,
+      "final": 0.617802327302935,
+      "delta": 3.4900328620413035e-06
+    },
+    {
+      "node": "XP.XDET.XL.nb",
+      "unit": "V",
+      "initial": 0.664890093042341,
+      "final": 0.664889934120095,
+      "delta": -1.5892224602964689e-07
+    },
+    {
+      "node": "XP.XDET.XL.sense",
+      "unit": "V",
+      "initial": 1.16480012725421,
+      "final": 1.16479984429981,
+      "delta": -2.8295439991055105e-07
+    },
+    {
+      "node": "XP.XDET.XL.tail",
+      "unit": "V",
+      "initial": 0.0278373206414805,
+      "final": 0.0278359533381794,
+      "delta": -1.3673033010981606e-06
+    },
+    {
+      "node": "XP.XDET.XW.n",
+      "unit": "V",
+      "initial": 3.78967078848373e-07,
+      "final": 3.82930091196648e-07,
+      "delta": 3.963012348274971e-09
+    },
+    {
+      "node": "XP.XDET.XW.XN.x",
+      "unit": "V",
+      "initial": 2.56598112812886e-07,
+      "final": 2.56488492929421e-07,
+      "delta": -1.0961988346501219e-10
+    },
+    {
+      "node": "XP.XLF.enb",
+      "unit": "V",
+      "initial": 0.0027246515485958,
+      "final": 0.00272491849242262,
+      "delta": 2.66943826819719e-07
+    },
+    {
+      "node": "XP.XR.ob",
+      "unit": "V",
+      "initial": 0.00437246997502349,
+      "final": 0.00437256866753716,
+      "delta": 9.869251367013165e-08
+    },
+    {
+      "node": "XP.XR.qb",
+      "unit": "V",
+      "initial": 1.27051765701992,
+      "final": 1.27051459733121,
+      "delta": -3.0596887099498815e-06
+    },
+    {
+      "node": "XP.XR.XFF.a",
+      "unit": "V",
+      "initial": 0.728581157889483,
+      "final": 0.728560577491517,
+      "delta": -2.0580397965930253e-05
+    },
+    {
+      "node": "XP.XR.XFF.b",
+      "unit": "V",
+      "initial": 1.26828995221406,
+      "final": 1.26828675088679,
+      "delta": -3.2013272699416007e-06
+    },
+    {
+      "node": "XP.XR.XFF.n1",
+      "unit": "V",
+      "initial": 0.545283844781583,
+      "final": 0.545276428980502,
+      "delta": -7.415801080989937e-06
+    },
+    {
+      "node": "XP.XR.XFF.n2",
+      "unit": "V",
+      "initial": 0.229429636986809,
+      "final": 0.229451119083788,
+      "delta": 2.1482096979025256e-05
+    },
+    {
+      "node": "XP.XR.XFF.p0",
+      "unit": "V",
+      "initial": 1.26229496262638,
+      "final": 1.26229063873617,
+      "delta": -4.323890209878556e-06
+    },
+    {
+      "node": "XP.XREF.a",
+      "unit": "V",
+      "initial": 1.20000120589138,
+      "final": 1.20000120556624,
+      "delta": -3.2514013703632827e-10
+    },
+    {
+      "node": "XP.XREF.b",
+      "unit": "V",
+      "initial": 5.21255397457103e-06,
+      "final": 5.20950941228079e-06,
+      "delta": -3.0445622902395297e-09
+    },
+    {
+      "node": "XP.XREF.c",
+      "unit": "V",
+      "initial": 1.20003233630912,
+      "final": 1.20003233696875,
+      "delta": 6.596299062522348e-10
+    },
+    {
+      "node": "XP.XRX.g0",
+      "unit": "V",
+      "initial": 0.671737820261925,
+      "final": 0.671735965762721,
+      "delta": -1.8544992039792874e-06
+    },
+    {
+      "node": "XP.XS.refb",
+      "unit": "V",
+      "initial": 1.20179411070987,
+      "final": 1.20179407422044,
+      "delta": -3.6489429922070826e-08
+    },
+    {
+      "node": "XP.XV.XBN.MP0:int_d",
+      "unit": "V",
+      "initial": 0.0354601148015558,
+      "final": 0.0354587681965667,
+      "delta": -1.3466049890997756e-06
+    },
+    {
+      "node": "XP.XV.XBN.MP0:int_s",
+      "unit": "V",
+      "initial": 1.1999924978382,
+      "final": 1.19999249936595,
+      "delta": 1.5277501486110623e-09
+    },
+    {
+      "node": "XP.XV.XBN.MP1:int_d",
+      "unit": "V",
+      "initial": 0.0343224013028273,
+      "final": 0.0343210983869961,
+      "delta": -1.3029158311972378e-06
+    },
+    {
+      "node": "XP.XV.XBN.MP1:int_s",
+      "unit": "V",
+      "initial": 1.19998724081921,
+      "final": 1.19998724180646,
+      "delta": 9.872500594809708e-10
+    },
+    {
+      "node": "XP.XV.XBN.MP2:int_d",
+      "unit": "V",
+      "initial": 0.0337504089174387,
+      "final": 0.0337491492416063,
+      "delta": -1.259675832400442e-06
+    },
+    {
+      "node": "XP.XV.XBN.MP2:int_s",
+      "unit": "V",
+      "initial": 1.19997954687571,
+      "final": 1.19997955215489,
+      "delta": 5.279179982053961e-09
+    },
+    {
+      "node": "XP.XV.XBN.MP3:int_d",
+      "unit": "V",
+      "initial": 1.31251522162042,
+      "final": 1.31250936253372,
+      "delta": -5.859086699810945e-06
+    },
+    {
+      "node": "XP.XV.XBN.MP3:int_s",
+      "unit": "V",
+      "initial": 1.21712496964423,
+      "final": 1.21712407013057,
+      "delta": -8.995136600020714e-07
+    },
+    {
+      "node": "XP.XV.XBN.MP4:int_d",
+      "unit": "V",
+      "initial": 0.0334558406652249,
+      "final": 0.0334545701856843,
+      "delta": -1.270479540599334e-06
+    },
+    {
+      "node": "XP.XV.XBN.MP4:int_s",
+      "unit": "V",
+      "initial": 1.19997931050153,
+      "final": 1.19997931051227,
+      "delta": 1.074007549561884e-11
+    },
+    {
+      "node": "XP.XV.XBN.MP5:int_d",
+      "unit": "V",
+      "initial": 1.29652453109088,
+      "final": 1.29651897126977,
+      "delta": -5.559821109946128e-06
+    },
+    {
+      "node": "XP.XV.XBN.MP5:int_s",
+      "unit": "V",
+      "initial": 1.2147223426399,
+      "final": 1.21472151327857,
+      "delta": -8.293613300569547e-07
+    },
+    {
+      "node": "XP.XV.XBN.MP6:int_d",
+      "unit": "V",
+      "initial": 1.29384315502085,
+      "final": 1.29383762806185,
+      "delta": -5.526959000023979e-06
+    },
+    {
+      "node": "XP.XV.XBN.MP6:int_s",
+      "unit": "V",
+      "initial": 1.21433432140889,
+      "final": 1.21433350124019,
+      "delta": -8.201687000664037e-07
+    },
+    {
+      "node": "XP.XV.XBN.MP7:int_d",
+      "unit": "V",
+      "initial": 1.29173865007445,
+      "final": 1.29173320152977,
+      "delta": -5.448544680097811e-06
+    },
+    {
+      "node": "XP.XV.XBN.MP7:int_s",
+      "unit": "V",
+      "initial": 1.21403432563352,
+      "final": 1.21403351930396,
+      "delta": -8.063295600102549e-07
+    },
+    {
+      "node": "XP.XV.XBN.x0",
+      "unit": "V",
+      "initial": 0.0353143141307824,
+      "final": 0.0353129743735813,
+      "delta": -1.3397572010964698e-06
+    },
+    {
+      "node": "XP.XV.XBN.x1",
+      "unit": "V",
+      "initial": 0.034182207333782,
+      "final": 0.0341809112330418,
+      "delta": -1.2961007401987579e-06
+    },
+    {
+      "node": "XP.XV.XBN.x2",
+      "unit": "V",
+      "initial": 0.0336165431608062,
+      "final": 0.0336152716122153,
+      "delta": -1.2715485908990076e-06
+    },
+    {
+      "node": "XP.XV.XBN.x3",
+      "unit": "V",
+      "initial": 1.33547477615582,
+      "final": 1.33546778473182,
+      "delta": -6.9914240001800465e-06
+    },
+    {
+      "node": "XP.XV.XBN.x4",
+      "unit": "V",
+      "initial": 0.0333223851806088,
+      "final": 0.0333211300906983,
+      "delta": -1.2550899105012725e-06
+    },
+    {
+      "node": "XP.XV.XBN.x5",
+      "unit": "V",
+      "initial": 1.31716304780627,
+      "final": 1.31715641472954,
+      "delta": -6.63307672987834e-06
+    },
+    {
+      "node": "XP.XV.XBN.x6",
+      "unit": "V",
+      "initial": 1.31407781021871,
+      "final": 1.31407121865443,
+      "delta": -6.59156427995633e-06
+    },
+    {
+      "node": "XP.XV.XBN.x7",
+      "unit": "V",
+      "initial": 1.31165597973757,
+      "final": 1.3116494808802,
+      "delta": -6.498857370029754e-06
+    },
+    {
+      "node": "XP.XV.XBP.MP0:int_d",
+      "unit": "V",
+      "initial": -0.02401592434902,
+      "final": -0.0240143780119067,
+      "delta": 1.5463371133006554e-06
+    },
+    {
+      "node": "XP.XV.XBP.MP0:int_s",
+      "unit": "V",
+      "initial": 1.19999249768601,
+      "final": 1.19999249921358,
+      "delta": 1.527570070436468e-09
+    },
+    {
+      "node": "XP.XV.XBP.MP1:int_d",
+      "unit": "V",
+      "initial": -0.0235375349689696,
+      "final": -0.0235360158275924,
+      "delta": 1.5191413772000506e-06
+    },
+    {
+      "node": "XP.XV.XBP.MP1:int_s",
+      "unit": "V",
+      "initial": 1.19998723904678,
+      "final": 1.1999872400332,
+      "delta": 9.86419834703156e-10
+    },
+    {
+      "node": "XP.XV.XBP.MP2:int_d",
+      "unit": "V",
+      "initial": -0.0233275582805016,
+      "final": -0.0233260427878974,
+      "delta": 1.5154926042010297e-06
+    },
+    {
+      "node": "XP.XV.XBP.MP2:int_s",
+      "unit": "V",
+      "initial": 1.19997954589645,
+      "final": 1.19997954819163,
+      "delta": 2.2951800460191407e-09
+    },
+    {
+      "node": "XP.XV.XBP.MP3:int_d",
+      "unit": "V",
+      "initial": 1.21253545365152,
+      "final": 1.2125382295543,
+      "delta": 2.7759027798612834e-06
+    },
+    {
+      "node": "XP.XV.XBP.MP3:int_s",
+      "unit": "V",
+      "initial": 1.20047007573362,
+      "final": 1.20047054758921,
+      "delta": 4.718555899341226e-07
+    },
+    {
+      "node": "XP.XV.XBP.MP4:int_d",
+      "unit": "V",
+      "initial": -0.0231948078336017,
+      "final": -0.023193306949807,
+      "delta": 1.5008837946986486e-06
+    },
+    {
+      "node": "XP.XV.XBP.MP4:int_s",
+      "unit": "V",
+      "initial": 1.19997930790612,
+      "final": 1.19997930952187,
+      "delta": 1.615749978256531e-09
+    },
+    {
+      "node": "XP.XV.XBP.MP5:int_d",
+      "unit": "V",
+      "initial": 1.22874331739675,
+      "final": 1.22874555977351,
+      "delta": 2.242376760053233e-06
+    },
+    {
+      "node": "XP.XV.XBP.MP5:int_s",
+      "unit": "V",
+      "initial": 1.2027598269586,
+      "final": 1.20276022958874,
+      "delta": 4.0263014011721054e-07
+    },
+    {
+      "node": "XP.XV.XBP.MP6:int_d",
+      "unit": "V",
+      "initial": 1.23132674450205,
+      "final": 1.23132891646763,
+      "delta": 2.1719655800556126e-06
+    },
+    {
+      "node": "XP.XV.XBP.MP6:int_s",
+      "unit": "V",
+      "initial": 1.20313688764387,
+      "final": 1.20313728086439,
+      "delta": 3.932205201451211e-07
+    },
+    {
+      "node": "XP.XV.XBP.MP7:int_d",
+      "unit": "V",
+      "initial": 1.23191057965225,
+      "final": 1.23191279246476,
+      "delta": 2.2128125098941354e-06
+    },
+    {
+      "node": "XP.XV.XBP.MP7:int_s",
+      "unit": "V",
+      "initial": 1.20322721239726,
+      "final": 1.20322761150441,
+      "delta": 3.991071499953591e-07
+    },
+    {
+      "node": "XP.XV.XBP.x0",
+      "unit": "V",
+      "initial": -0.0243004956542754,
+      "final": -0.0242989227146691,
+      "delta": 1.5729396063007828e-06
+    },
+    {
+      "node": "XP.XV.XBP.x1",
+      "unit": "V",
+      "initial": -0.0238148801171278,
+      "final": -0.0238133343868385,
+      "delta": 1.5457302892998848e-06
+    },
+    {
+      "node": "XP.XV.XBP.x2",
+      "unit": "V",
+      "initial": -0.0235985568787259,
+      "final": -0.0235970156855762,
+      "delta": 1.5411931497018305e-06
+    },
+    {
+      "node": "XP.XV.XBP.x3",
+      "unit": "V",
+      "initial": 1.20824956685265,
+      "final": 1.20825311637599,
+      "delta": 3.5495233399185366e-06
+    },
+    {
+      "node": "XP.XV.XBP.x4",
+      "unit": "V",
+      "initial": -0.0234649261902664,
+      "final": -0.0234633992986839,
+      "delta": 1.5268915825004947e-06
+    },
+    {
+      "node": "XP.XV.XBP.x5",
+      "unit": "V",
+      "initial": 1.22656053956428,
+      "final": 1.22656349872817,
+      "delta": 2.9591638899262307e-06
+    },
+    {
+      "node": "XP.XV.XBP.x6",
+      "unit": "V",
+      "initial": 1.22946974626208,
+      "final": 1.22947262875541,
+      "delta": 2.8824933300253264e-06
+    },
+    {
+      "node": "XP.XV.XBP.x7",
+      "unit": "V",
+      "initial": 1.23011712601161,
+      "final": 1.23012005649162,
+      "delta": 2.930480009988301e-06
+    },
+    {
+      "node": "XP.XV.XL.nb",
+      "unit": "V",
+      "initial": 0.72560870341339,
+      "final": 0.725608699685791,
+      "delta": -3.727599007241622e-09
+    },
+    {
+      "node": "XP.XV.XL.nfilt",
+      "unit": "V",
+      "initial": 0.725629215598387,
+      "final": 0.725622726971336,
+      "delta": -6.488627050993401e-06
+    },
+    {
+      "node": "XP.XV.XL.s3",
+      "unit": "V",
+      "initial": 0.49349516568575,
+      "final": 0.493484420079896,
+      "delta": -1.0745605854012297e-05
+    },
+    {
+      "node": "XP.XV.XL.s4",
+      "unit": "V",
+      "initial": 0.00169330644049784,
+      "final": 0.00169323198351302,
+      "delta": -7.445698481985813e-08
+    },
+    {
+      "node": "XP.XV.XL.s5",
+      "unit": "V",
+      "initial": 0.492535635028423,
+      "final": 0.492524285578603,
+      "delta": -1.1349449820008406e-05
+    },
+    {
+      "node": "XP.XV.XL.s6",
+      "unit": "V",
+      "initial": 0.492672672740754,
+      "final": 0.492661553708963,
+      "delta": -1.1119031791018141e-05
+    },
+    {
+      "node": "XP.XV.XL.s7",
+      "unit": "V",
+      "initial": 0.492723250611874,
+      "final": 0.492713101301535,
+      "delta": -1.014931033899158e-05
+    },
+    {
+      "node": "XP.XV.XL.tail",
+      "unit": "V",
+      "initial": 0.637459153872495,
+      "final": 0.637455861754666,
+      "delta": -3.2921178290123976e-06
+    },
+    {
+      "node": "XP.XV.XL.XN.LW:1",
+      "unit": "A",
+      "initial": 0.0094667481405354,
+      "final": 0.00946642120602536,
+      "delta": -3.269345100406773e-07
+    },
+    {
+      "node": "XP.XV.XL.XN.sn",
+      "unit": "V",
+      "initial": 0.194374077089983,
+      "final": 0.194365498414681,
+      "delta": -8.57867530199008e-06
+    },
+    {
+      "node": "XP.XV.XL.XN.sp",
+      "unit": "V",
+      "initial": -3.21982956787775e-15,
+      "final": 4.0438947621551e-15,
+      "delta": 7.26372433003285e-15
+    },
+    {
+      "node": "XP.XV.XL.XN.x",
+      "unit": "V",
+      "initial": 1.13541377022695,
+      "final": 1.13541600071487,
+      "delta": 2.2304879199186445e-06
+    },
+    {
+      "node": "XP.XV.XL.XP.LW:1",
+      "unit": "A",
+      "initial": -0.00659171553250743,
+      "final": -0.0065914039235129,
+      "delta": 3.1160899453038654e-07
+    },
+    {
+      "node": "XP.XV.XL.XP.sn",
+      "unit": "V",
+      "initial": -0.0807814241491635,
+      "final": -0.0807764799454474,
+      "delta": 4.944203716106266e-06
+    },
+    {
+      "node": "XP.XV.XL.XP.sp",
+      "unit": "V",
+      "initial": -3.21982956787775e-15,
+      "final": 4.0438947621551e-15,
+      "delta": 7.26372433003285e-15
+    },
+    {
+      "node": "XP.XV.XL.XP.x",
+      "unit": "V",
+      "initial": 1.24497152006803,
+      "final": 1.24496939413737,
+      "delta": -2.1259306599574757e-06
+    },
+    {
+      "node": "XP.vco_vdd",
+      "unit": "V",
+      "initial": 1.2,
+      "final": 1.2,
+      "delta": 0.0
+    },
+    {
+      "node": "XP.rx_vdd",
+      "unit": "V",
+      "initial": 1.2,
+      "final": 1.2,
+      "delta": 0.0
+    },
+    {
+      "node": "XP.rt_vdd",
+      "unit": "V",
+      "initial": 1.2,
+      "final": 1.2,
+      "delta": 0.0
+    }
+  ],
+  "reset_latch_comparison": {
+    "source": "research/runs/spectre_cmos_v14_full/rt4fineaudit01/chain_rt4_fine_edges_tt/result.json",
+    "source_sha256": "ec2d3c8032e8812844eda964883bf32628fa1553162098da6d20bca89994012f",
+    "shared_dependencies_sha256": {
+      "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+      "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+      "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903"
+    },
+    "condition": "TT27/1.2V, same MOS reset counter disabled and reset high; actualLC core baseline vs fresh-PSS RT4 local chain.",
+    "rows": [
+      {
+        "node": "XP.XCOUNT.XF0.XF.XM.XN.x",
+        "core_v": 0.936248724710542,
+        "source_v": 0.942394147438112,
+        "delta_to_source_v": 0.006145422727570016,
+        "pins": {
+          "a": {
+            "core": 1.19999988339874,
+            "source": 1.19999580925654
+          },
+          "b": {
+            "core": 7.85247482826625e-09,
+            "source": 1.07176086932893e-08
+          },
+          "y": {
+            "core": 1.19999997942527,
+            "source": 1.20000020824511
+          }
+        },
+        "pin_match_max_v": 4.07414220005009e-06,
+        "endpoint_pins_match": true
+      },
+      {
+        "node": "XP.XCOUNT.XF0.XF.XS.XN.x",
+        "core_v": 0.018374181812493,
+        "source_v": 0.0353744514787229,
+        "delta_to_source_v": 0.017000269666229903,
+        "pins": {
+          "a": {
+            "core": 9.21696087097125e-08,
+            "source": -6.41300656488522e-07
+          },
+          "b": {
+            "core": 7.85247482826625e-09,
+            "source": 1.07176086932893e-08
+          },
+          "y": {
+            "core": 1.19999999136437,
+            "source": 1.20000007947279
+          }
+        },
+        "pin_match_max_v": 7.334702651982345e-07,
+        "endpoint_pins_match": true
+      },
+      {
+        "node": "XP.XCOUNT.XF1.XF.XM.XN.x",
+        "core_v": 0.0185360720283619,
+        "source_v": 0.0353746159056978,
+        "delta_to_source_v": 0.0168385438773359,
+        "pins": {
+          "a": {
+            "core": 1.09492063257256e-07,
+            "source": 2.53995203504985e-07
+          },
+          "b": {
+            "core": 9.25317719954027e-09,
+            "source": 7.62447743635285e-09
+          },
+          "y": {
+            "core": 1.19999998756036,
+            "source": 1.2000000002001
+          }
+        },
+        "pin_match_max_v": 1.4450314024772899e-07,
+        "endpoint_pins_match": true
+      },
+      {
+        "node": "XP.XCOUNT.XF1.XF.XS.XN.x",
+        "core_v": 0.0183781323439327,
+        "source_v": 0.0353745935608671,
+        "delta_to_source_v": 0.0169964612169344,
+        "pins": {
+          "a": {
+            "core": 6.58290950933829e-08,
+            "source": 1.9804456138341e-07
+          },
+          "b": {
+            "core": 9.25317719954027e-09,
+            "source": 7.62447743635285e-09
+          },
+          "y": {
+            "core": 1.19999998810974,
+            "source": 1.19999999599441
+          }
+        },
+        "pin_match_max_v": 1.3221546629002712e-07,
+        "endpoint_pins_match": true
+      },
+      {
+        "node": "XP.XCOUNT.XF2.XF.XM.XN.x",
+        "core_v": 0.0185093499567044,
+        "source_v": 0.0353745874783806,
+        "delta_to_source_v": 0.016865237521676197,
+        "pins": {
+          "a": {
+            "core": 7.61474698681041e-08,
+            "source": 7.88728602921524e-08
+          },
+          "b": {
+            "core": 9.41094138736782e-09,
+            "source": 8.34329956562643e-09
+          },
+          "y": {
+            "core": 1.19999998912865,
+            "source": 1.19999999225269
+          }
+        },
+        "pin_match_max_v": 3.1240401376919635e-09,
+        "endpoint_pins_match": true
+      },
+      {
+        "node": "XP.XCOUNT.XF2.XF.XS.XN.x",
+        "core_v": 0.0183784068156335,
+        "source_v": 0.0353745680449762,
+        "delta_to_source_v": 0.016996161229342697,
+        "pins": {
+          "a": {
+            "core": 3.85322594843511e-08,
+            "source": 4.06629104742322e-08
+          },
+          "b": {
+            "core": 9.41094138736782e-09,
+            "source": 8.34329956562643e-09
+          },
+          "y": {
+            "core": 1.19999998908718,
+            "source": 1.19999999246926
+          }
+        },
+        "pin_match_max_v": 3.382079949432182e-09,
+        "endpoint_pins_match": true
+      },
+      {
+        "node": "XP.XCOUNT.XF3.XF.XM.XN.x",
+        "core_v": 0.0185083208982368,
+        "source_v": 0.0353745866774893,
+        "delta_to_source_v": 0.0168662657792525,
+        "pins": {
+          "a": {
+            "core": 7.65926818780008e-08,
+            "source": 7.39097753160137e-08
+          },
+          "b": {
+            "core": 9.41583658446091e-09,
+            "source": 8.35923285061289e-09
+          },
+          "y": {
+            "core": 1.19999998913183,
+            "source": 1.19999999275979
+          }
+        },
+        "pin_match_max_v": 3.6279599324728906e-09,
+        "endpoint_pins_match": true
+      },
+      {
+        "node": "XP.XCOUNT.XF3.XF.XS.XN.x",
+        "core_v": 0.0183784177109959,
+        "source_v": 0.0353745674093278,
+        "delta_to_source_v": 0.016996149698331905,
+        "pins": {
+          "a": {
+            "core": 3.89255121728089e-08,
+            "source": 3.68447003460866e-08
+          },
+          "b": {
+            "core": 9.41583658446091e-09,
+            "source": 8.35923285061289e-09
+          },
+          "y": {
+            "core": 1.19999998909385,
+            "source": 1.19999999276489
+          }
+        },
+        "pin_match_max_v": 3.6710401385420255e-09,
+        "endpoint_pins_match": true
+      },
+      {
+        "node": "XP.XCOUNT.XF4.XF.XM.XN.x",
+        "core_v": 0.0185082799177293,
+        "source_v": 0.035374586618437,
+        "delta_to_source_v": 0.0168663067007077,
+        "pins": {
+          "a": {
+            "core": 7.65933110596297e-08,
+            "source": 7.40009239758481e-08
+          },
+          "b": {
+            "core": 9.4160285039465e-09,
+            "source": 8.35874513476924e-09
+          },
+          "y": {
+            "core": 1.19999998913218,
+            "source": 1.19999999276964
+          }
+        },
+        "pin_match_max_v": 3.637460110894608e-09,
+        "endpoint_pins_match": true
+      },
+      {
+        "node": "XP.XCOUNT.XF4.XF.XS.XN.x",
+        "core_v": 0.0183784181249248,
+        "source_v": 0.035374567482243,
+        "delta_to_source_v": 0.016996149357318198,
+        "pins": {
+          "a": {
+            "core": 3.89266735143787e-08,
+            "source": 3.6930887663384e-08
+          },
+          "b": {
+            "core": 9.4160285039465e-09,
+            "source": 8.35874513476924e-09
+          },
+          "y": {
+            "core": 1.19999998909427,
+            "source": 1.19999999276958
+          }
+        },
+        "pin_match_max_v": 3.675309834250129e-09,
+        "endpoint_pins_match": true
+      },
+      {
+        "node": "XP.XCOUNT.XF5.XF.XM.XN.x",
+        "core_v": 0.0185082783680235,
+        "source_v": 0.0353745867498001,
+        "delta_to_source_v": 0.016866308381776596,
+        "pins": {
+          "a": {
+            "core": 7.65931767935205e-08,
+            "source": 7.40044924077803e-08
+          },
+          "b": {
+            "core": 9.41603405339068e-09,
+            "source": 8.35872449555202e-09
+          },
+          "y": {
+            "core": 1.19999998913224,
+            "source": 1.19999999276944
+          }
+        },
+        "pin_match_max_v": 3.637200096662241e-09,
+        "endpoint_pins_match": true
+      },
+      {
+        "node": "XP.XCOUNT.XF5.XF.XS.XN.x",
+        "core_v": 0.0183784181396858,
+        "source_v": 0.0353745675519977,
+        "delta_to_source_v": 0.0169961494123119,
+        "pins": {
+          "a": {
+            "core": 3.8926613489615e-08,
+            "source": 3.69337514744998e-08
+          },
+          "b": {
+            "core": 9.41603405339068e-09,
+            "source": 8.35872449555202e-09
+          },
+          "y": {
+            "core": 1.1999999890943,
+            "source": 1.19999999276944
+          }
+        },
+        "pin_match_max_v": 3.6751399701273613e-09,
+        "endpoint_pins_match": true
+      },
+      {
+        "node": "XP.XCOUNT.XF6.XF.XM.XN.x",
+        "core_v": 0.0185082783113216,
+        "source_v": 0.0353745871270795,
+        "delta_to_source_v": 0.0168663088157579,
+        "pins": {
+          "a": {
+            "core": 7.65931846201293e-08,
+            "source": 7.40044845831857e-08
+          },
+          "b": {
+            "core": 9.41603406758527e-09,
+            "source": 8.35872276889267e-09
+          },
+          "y": {
+            "core": 1.19999998913224,
+            "source": 1.19999999276943
+          }
+        },
+        "pin_match_max_v": 3.6371901046550192e-09,
+        "endpoint_pins_match": true
+      },
+      {
+        "node": "XP.XCOUNT.XF6.XF.XS.XN.x",
+        "core_v": 0.018378418140211,
+        "source_v": 0.035374567810087,
+        "delta_to_source_v": 0.016996149669876,
+        "pins": {
+          "a": {
+            "core": 3.89266228841532e-08,
+            "source": 3.6933734413203e-08
+          },
+          "b": {
+            "core": 9.41603406758527e-09,
+            "source": 8.35872276889267e-09
+          },
+          "y": {
+            "core": 1.1999999890943,
+            "source": 1.19999999276943
+          }
+        },
+        "pin_match_max_v": 3.6751299781201396e-09,
+        "endpoint_pins_match": true
+      },
+      {
+        "node": "XP.XCOUNT.XF7.XF.XM.XN.x",
+        "core_v": 0.0185082783092541,
+        "source_v": 0.0353745867312155,
+        "delta_to_source_v": 0.016866308421961396,
+        "pins": {
+          "a": {
+            "core": 7.65931858991176e-08,
+            "source": 7.40044853754363e-08
+          },
+          "b": {
+            "core": 9.41603371688281e-09,
+            "source": 8.35872281783654e-09
+          },
+          "y": {
+            "core": 1.19999998913224,
+            "source": 1.19999999276943
+          }
+        },
+        "pin_match_max_v": 3.6371901046550192e-09,
+        "endpoint_pins_match": true
+      },
+      {
+        "node": "XP.XCOUNT.XF7.XF.XS.XN.x",
+        "core_v": 0.0183784181402268,
+        "source_v": 0.0353745675559728,
+        "delta_to_source_v": 0.016996149415746,
+        "pins": {
+          "a": {
+            "core": 3.89266244308328e-08,
+            "source": 3.69337351502854e-08
+          },
+          "b": {
+            "core": 9.41603371688281e-09,
+            "source": 8.35872281783654e-09
+          },
+          "y": {
+            "core": 1.19999998909431,
+            "source": 1.19999999276943
+          }
+        },
+        "pin_match_max_v": 3.675119986112918e-09,
+        "endpoint_pins_match": true
+      },
+      {
+        "node": "XP.XCOUNT.XF8.XF.XM.XN.x",
+        "core_v": 0.0185082783084345,
+        "source_v": 0.0353745867113787,
+        "delta_to_source_v": 0.0168663084029442,
+        "pins": {
+          "a": {
+            "core": 7.65931847045168e-08,
+            "source": 7.40044823221405e-08
+          },
+          "b": {
+            "core": 9.41603380352612e-09,
+            "source": 8.358723132164e-09
+          },
+          "y": {
+            "core": 1.19999998913224,
+            "source": 1.19999999276943
+          }
+        },
+        "pin_match_max_v": 3.6371901046550192e-09,
+        "endpoint_pins_match": true
+      },
+      {
+        "node": "XP.XCOUNT.XF8.XF.XS.XN.x",
+        "core_v": 0.0183784181401742,
+        "source_v": 0.0353745675143768,
+        "delta_to_source_v": 0.0169961493742026,
+        "pins": {
+          "a": {
+            "core": 3.89266231214629e-08,
+            "source": 3.69337349392372e-08
+          },
+          "b": {
+            "core": 9.41603380352612e-09,
+            "source": 8.358723132164e-09
+          },
+          "y": {
+            "core": 1.1999999890943,
+            "source": 1.19999999276943
+          }
+        },
+        "pin_match_max_v": 3.6751299781201396e-09,
+        "endpoint_pins_match": true
+      },
+      {
+        "node": "XP.XCOUNT.XF9.XF.XM.XN.x",
+        "core_v": 0.0185082782948564,
+        "source_v": 0.0353745866557869,
+        "delta_to_source_v": 0.016866308360930497,
+        "pins": {
+          "a": {
+            "core": 7.65931865835802e-08,
+            "source": 7.40044835232165e-08
+          },
+          "b": {
+            "core": 9.41603405819487e-09,
+            "source": 8.35872251434495e-09
+          },
+          "y": {
+            "core": 1.19999998913224,
+            "source": 1.19999999276943
+          }
+        },
+        "pin_match_max_v": 3.6371901046550192e-09,
+        "endpoint_pins_match": true
+      },
+      {
+        "node": "XP.XCOUNT.XF9.XF.XS.XN.x",
+        "core_v": 0.0183784181410687,
+        "source_v": 0.0353745673318017,
+        "delta_to_source_v": 0.016996149190733,
+        "pins": {
+          "a": {
+            "core": 3.89266232819087e-08,
+            "source": 3.69337346065886e-08
+          },
+          "b": {
+            "core": 9.41603405819487e-09,
+            "source": 8.35872251434495e-09
+          },
+          "y": {
+            "core": 1.19999998909431,
+            "source": 1.19999999276943
+          }
+        },
+        "pin_match_max_v": 3.675119986112918e-09,
+        "endpoint_pins_match": true
+      },
+      {
+        "node": "XP.XCOUNT.XF10.XF.XM.XN.x",
+        "core_v": 0.0185082781506325,
+        "source_v": 0.0353745867344421,
+        "delta_to_source_v": 0.016866308583809598,
+        "pins": {
+          "a": {
+            "core": 7.65931859939577e-08,
+            "source": 7.40044828003944e-08
+          },
+          "b": {
+            "core": 9.41603391247497e-09,
+            "source": 8.35872322691685e-09
+          },
+          "y": {
+            "core": 1.19999998913224,
+            "source": 1.19999999276943
+          }
+        },
+        "pin_match_max_v": 3.6371901046550192e-09,
+        "endpoint_pins_match": true
+      },
+      {
+        "node": "XP.XCOUNT.XF10.XF.XS.XN.x",
+        "core_v": 0.0183784182379603,
+        "source_v": 0.0353745674846693,
+        "delta_to_source_v": 0.016996149246709,
+        "pins": {
+          "a": {
+            "core": 3.89266234236607e-08,
+            "source": 3.69337345461564e-08
+          },
+          "b": {
+            "core": 9.41603391247497e-09,
+            "source": 8.35872322691685e-09
+          },
+          "y": {
+            "core": 1.1999999890943,
+            "source": 1.19999999276943
+          }
+        },
+        "pin_match_max_v": 3.6751299781201396e-09,
+        "endpoint_pins_match": true
+      },
+      {
+        "node": "XP.XCOUNT.XF11.XF.XM.XN.x",
+        "core_v": 0.0185082813178904,
+        "source_v": 0.0353745866763656,
+        "delta_to_source_v": 0.016866305358475202,
+        "pins": {
+          "a": {
+            "core": 7.65931848925956e-08,
+            "source": 7.40044843316565e-08
+          },
+          "b": {
+            "core": 9.41603394074191e-09,
+            "source": 8.35872245740713e-09
+          },
+          "y": {
+            "core": 1.19999998913224,
+            "source": 1.19999999276943
+          }
+        },
+        "pin_match_max_v": 3.6371901046550192e-09,
+        "endpoint_pins_match": true
+      },
+      {
+        "node": "XP.XCOUNT.XF11.XF.XS.XN.x",
+        "core_v": 0.0183784230040892,
+        "source_v": 0.0353745674998164,
+        "delta_to_source_v": 0.0169961444957272,
+        "pins": {
+          "a": {
+            "core": 3.89266231161778e-08,
+            "source": 3.69337344354906e-08
+          },
+          "b": {
+            "core": 9.41603394074191e-09,
+            "source": 8.35872245740713e-09
+          },
+          "y": {
+            "core": 1.19999998909431,
+            "source": 1.19999999276943
+          }
+        },
+        "pin_match_max_v": 3.675119986112918e-09,
+        "endpoint_pins_match": true
+      },
+      {
+        "node": "XP.XCOUNT.XF12.XF.XM.XN.x",
+        "core_v": 0.0185085394418808,
+        "source_v": 0.0353745866265931,
+        "delta_to_source_v": 0.016866047184712303,
+        "pins": {
+          "a": {
+            "core": 7.65931360211044e-08,
+            "source": 7.40044834461433e-08
+          },
+          "b": {
+            "core": 9.41601441130672e-09,
+            "source": 8.35872330940028e-09
+          },
+          "y": {
+            "core": 1.19999998913232,
+            "source": 1.19999999276943
+          }
+        },
+        "pin_match_max_v": 3.6371099465526413e-09,
+        "endpoint_pins_match": true
+      },
+      {
+        "node": "XP.XCOUNT.XF12.XF.XS.XN.x",
+        "core_v": 0.0183786142259597,
+        "source_v": 0.0353745673764071,
+        "delta_to_source_v": 0.016995953150447402,
+        "pins": {
+          "a": {
+            "core": 3.89265885216447e-08,
+            "source": 3.69337346276483e-08
+          },
+          "b": {
+            "core": 9.41601441130672e-09,
+            "source": 8.35872330940028e-09
+          },
+          "y": {
+            "core": 1.19999998909436,
+            "source": 1.19999999276943
+          }
+        },
+        "pin_match_max_v": 3.67507002607681e-09,
+        "endpoint_pins_match": true
+      },
+      {
+        "node": "XP.XCOUNT.XF13.XF.XM.XN.x",
+        "core_v": 0.0185116351901905,
+        "source_v": 0.0353745867009869,
+        "delta_to_source_v": 0.0168629515107964,
+        "pins": {
+          "a": {
+            "core": 7.65922580460234e-08,
+            "source": 7.40044816193086e-08
+          },
+          "b": {
+            "core": 9.41556861080757e-09,
+            "source": 8.3587226900223e-09
+          },
+          "y": {
+            "core": 1.19999998913322,
+            "source": 1.19999999276943
+          }
+        },
+        "pin_match_max_v": 3.63620999976888e-09,
+        "endpoint_pins_match": true
+      },
+      {
+        "node": "XP.XCOUNT.XF13.XF.XS.XN.x",
+        "core_v": 0.0183859396363892,
+        "source_v": 0.0353745673337241,
+        "delta_to_source_v": 0.0169886276973349,
+        "pins": {
+          "a": {
+            "core": 3.8925634023612e-08,
+            "source": 3.69337346195646e-08
+          },
+          "b": {
+            "core": 9.41556861080757e-09,
+            "source": 8.3587226900223e-09
+          },
+          "y": {
+            "core": 1.19999998909651,
+            "source": 1.19999999276943
+          }
+        },
+        "pin_match_max_v": 3.672919968167321e-09,
+        "endpoint_pins_match": true
+      }
+    ],
+    "all_endpoint_pins_match": true,
+    "max_endpoint_pin_difference_v": 4.07414220005009e-06
+  },
+  "interpretation": "Stable external observer frequency does not establish stability of every internal voltage. Slow NAND-stack nodes are one initial-state concern; this does not prove the cause of shooting failure.",
+  "limitations": [
+    "Endpoint separation3us is not a one-period norm and does not give a unique settling time constant.",
+    "Local-chain PSS operates with a different RF source and retimer. Only identical reset-latch cells with checked pins are compared; no fast-clock gate state is assumed transferable.",
+    "Physical612 entries comprise601 voltages plus11 currents, including two inductor currents. TextIC does not preserve every simulator-private charge/history state.",
+    "No state is changed by this analyzer. A constructed seed would require fresh transient and PSS verification."
+  ],
+  "pss_convergence_proven": false,
+  "random_jitter_measured": false,
+  "main_dut_modified": false
+}

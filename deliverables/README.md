@@ -1,3 +1,9 @@
+本次快照：[第35次汇报](../reports/2026-10-04T0653.yaml)。固定控制后保留约99.3%输出参考PM，直接耦合得到证据；RT4代回实际LC从旧初态滑相，不能直接采用局部63.275 fs方案。工作点匹配、逐模块噪声和完整PLL验证继续。
+
+- [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
+- [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)
+- [内部状态与PSS诊断](integration/cmos_v14_full/CORE_STATE_DIAGNOSIS.md)
+
 本次快照：[第34次汇报](../reports/2026-10-04T0619.yaml)。局部4倍CMOS链暂定63.275 fs，自身六沿检查通过；真实LC发现约−28.8 dBc参考调制，固定控制隔离与MOS补偿候选已准备。完整PLL RMS仍未知，功耗优化暂缓。
 
 - [噪声／抖动当前证据](integration/cmos_v14_full/NOISE_PROGRESS.md)

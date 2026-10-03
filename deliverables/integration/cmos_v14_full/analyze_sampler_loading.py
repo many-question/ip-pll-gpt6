@@ -44,6 +44,29 @@ for case in protocol['cases']:
 out=dict(scope=__doc__,fixture=fixture,cases=rows,complete=len(rows)==len(protocol['cases']),
     full_pll_acceptance=False,random_jitter_measured=False,main_dut_modified=False)
 available={x['case'].replace('samplerload_','').replace('_tt',''):x for x in rows if x.get('valid_for_diagnosis')}
+if 'clocked' in available:
+    cached=ROOT/'research/runs/spectre_cmos_v14_full/coretripsupply01/core_pulsetrip_supply_noise_tt/tstab_last_two_periods.npz'
+    with np.load(cached) as z:original={k:z[k] for k in ['time','XP.vp','XP.vn','out','source_sha256']}
+    source=json.loads((H/'results/core_reference_modulation.json').read_text())
+    assert str(original['source_sha256'])==source['raw_source_sha256']
+    ot=original['time'];start=ot[-1]-500e-9;fits={}
+    for name,y,threshold in [('rf',original['XP.vp']-original['XP.vn'],0.),('output',original['out'],.6)]:
+        e=cross(ot,y,threshold);e=e[e>=start];fits[name]=fit_edges(e)
+    clamped=available['clocked']
+    out['clocked_clamp_comparison']=dict(unclamped_raw_sha256=str(original['source_sha256']),
+        method='Both500ns windows use the same consecutive-edge7-harmonic fit with quadratic drift; not carrier-FFT versus edge-fit comparison.',
+        unclamped_fits=fits,
+        rf24_pm_ratio_clamped_to_unclamped=clamped['rf_fit']['harmonics'][0]['pm_peak_rad']/fits['rf']['harmonics'][0]['pm_peak_rad'],
+        output24_pm_ratio_clamped_to_unclamped=clamped['output_fit']['harmonics'][0]['pm_peak_rad']/fits['output']['harmonics'][0]['pm_peak_rad'],
+        rf_carrier_change_hz=clamped['rf_fit']['carrier_hz']-fits['rf']['carrier_hz'],
+        conclusion='Substantial reference-rate PM remaining with idealconstantVCTRL proves a directpath exists in this diagnostic boundary. Static mean frequency changes; this does not isolate one sampling device or quantify every path in the closed loop.',
+        limitations='The unclamped data are initialized transient, not validPSS; no circuitstep/PVT/noise or fullPLL acceptance. Residual fit RMS is deterministic modeling residual, never random jitter.')
+    for label,key in [('rf','rf_fit'),('output','output_fit')]:
+        first=complex(*fits[label]['harmonics'][0]['pm_phasor_absolute_time_rad'])
+        second=complex(*clamped[key]['harmonics'][0]['pm_phasor_absolute_time_rad'])
+        out['clocked_clamp_comparison'][label+'24_complex_pm_change_fraction']=float(abs(second-first)/abs(first))
+        out['clocked_clamp_comparison'][label+'24_pm_phase_change_rad']=float(np.angle(second/first))
+    out['clocked_clamp_comparison']['phasor_scope']='Absolute simulator-time reference; both external forcing phases match modulo24MHz. Difference includes changed carrier and loading operating point, not solely the removed control path.'
 if all(x in available for x in ['clocked','track','hold','track_vm','track_vp']):
     split=available['hold']['rf_hz']-available['track']['rf_hz']
     kvco=(available['track_vp']['rf_hz']-available['track_vm']['rf_hz'])/.02

@@ -1,0 +1,136 @@
+{
+  "scope": "Compare actualLC candidate frequency and phase histories; not noise spectra.",
+  "cases": [
+    {
+      "variant": "base",
+      "source": "research/runs/spectre_cmos_v14_full/corenoisecand01/core_noisecand_base_tt/result.json",
+      "source_sha256": "329eacc2f352e90d79fcdabf3c23dc965c1fa91aa143defefcfca75e88e68233",
+      "functional_stationarity_passed": true,
+      "windows": [
+        {
+          "window_us": [
+            0.05,
+            0.25
+          ],
+          "observations": 4,
+          "mean_rf_mhz": 3936.0000043912546,
+          "mean_out_mhz": 984.000047592376,
+          "mean_reference_sampled_control_v": 0.6431462395236871
+        },
+        {
+          "window_us": [
+            0.25,
+            0.5
+          ],
+          "observations": 6,
+          "mean_rf_mhz": 3936.000039790998,
+          "mean_out_mhz": 984.0000088455866,
+          "mean_reference_sampled_control_v": 0.6431259815364979
+        },
+        {
+          "window_us": [
+            0.5,
+            1
+          ],
+          "observations": 12,
+          "mean_rf_mhz": 3936.000027818666,
+          "mean_out_mhz": 984.0000059462797,
+          "mean_reference_sampled_control_v": 0.643091480613479
+        },
+        {
+          "window_us": [
+            1,
+            2
+          ],
+          "observations": 24,
+          "mean_rf_mhz": 3935.999988102695,
+          "mean_out_mhz": 983.9999970550169,
+          "mean_reference_sampled_control_v": 0.6430251377076446
+        },
+        {
+          "window_us": [
+            2,
+            3
+          ],
+          "observations": 24,
+          "mean_rf_mhz": 3935.9999752562667,
+          "mean_out_mhz": 983.9999936436053,
+          "mean_reference_sampled_control_v": 0.6429431774712676
+        }
+      ],
+      "max_mean_divider_ratio_error": 5.262976261466434e-07,
+      "integrated_rf_cycle_error_rad": -7.572544712597046e-05,
+      "caution": "Per-reference interpolated crossing counts, not instantaneousRF or randomnoise. Control is sampled at reference rise, not continuous meanVCTRL."
+    },
+    {
+      "variant": "rt4",
+      "source": "research/runs/spectre_cmos_v14_full/corenoisecand01/core_noisecand_rt4_tt/result.json",
+      "source_sha256": "292a85e08917a13196061ee1a2744ca72d7037668a0fe3743c050f3165960d15",
+      "functional_stationarity_passed": false,
+      "windows": [
+        {
+          "window_us": [
+            0.05,
+            0.25
+          ],
+          "observations": 4,
+          "mean_rf_mhz": 3943.7097182723564,
+          "mean_out_mhz": 985.9267101697658,
+          "mean_reference_sampled_control_v": 0.6620511695959103
+        },
+        {
+          "window_us": [
+            0.25,
+            0.5
+          ],
+          "observations": 6,
+          "mean_rf_mhz": 3943.966145003852,
+          "mean_out_mhz": 985.9913113660798,
+          "mean_reference_sampled_control_v": 0.666483237839342
+        },
+        {
+          "window_us": [
+            0.5,
+            1
+          ],
+          "observations": 12,
+          "mean_rf_mhz": 3944.081053904068,
+          "mean_out_mhz": 986.0202452098708,
+          "mean_reference_sampled_control_v": 0.6694621979789691
+        },
+        {
+          "window_us": [
+            1,
+            2
+          ],
+          "observations": 24,
+          "mean_rf_mhz": 3944.0590241066907,
+          "mean_out_mhz": 986.0147532349652,
+          "mean_reference_sampled_control_v": 0.670049732569369
+        },
+        {
+          "window_us": [
+            2,
+            3
+          ],
+          "observations": 24,
+          "mean_rf_mhz": 3944.01772366894,
+          "mean_out_mhz": 986.0044346492112,
+          "mean_reference_sampled_control_v": 0.6692682301129068
+        }
+      ],
+      "max_mean_divider_ratio_error": 4.8305749360544326e-06,
+      "integrated_rf_cycle_error_rad": 146.98735439535645,
+      "caution": "Per-reference interpolated crossing counts, not instantaneousRF or randomnoise. Control is sampled at reference rise, not continuous meanVCTRL."
+    }
+  ],
+  "condition": "Same TT27/1.2V/Q5/coarse23/10fF/real sampledloop, 3us/1ps/2ns observerstrobes; same inputstate, independent physical output-size/CF changes.",
+  "interpretation": "A correct output/RF divider ratio with sustained RF frequency error is a failed near-lock operating point, not evidence of missed output edges. Static loading pull, reference coupling and nonlinear capture remain to be isolated.",
+  "limitations": [
+    "Initial state is held common across circuit changes; failure from this seed does not prove no valid locked solution or failure after a new FLL capture.",
+    "The original-source local-chain noise numbers exclude feedback of retimer loading on the actual oscillator.",
+    "Sparse observer data cannot measure RF amplitude, edge slew, reference spurs or average supply power."
+  ],
+  "full_pll_acceptance": false,
+  "random_jitter_measured": false
+}

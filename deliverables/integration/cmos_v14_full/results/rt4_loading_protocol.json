@@ -1,0 +1,92 @@
+{
+  "scope": "Prepare actualLC RT4 loading/control probes after its near-lock failure.\n\nNo dispatch or adoption is implied. Three clamped control values measure the\nloaded frequency curve before choosing a new physical handoff operating point.\n",
+  "run": "rt4load01",
+  "status": "prepared_not_run",
+  "cases": [
+    {
+      "case": "rt4load_nominal_tt",
+      "control_v": 0.6579988674567703,
+      "delta_from_baseline_v": 0.0,
+      "tb_sha256": "3bd16127b53bb6da576e78422b36471fa71db0cb01b33b0df97095f9789be6ed",
+      "seed_sha256": "8f0641b8cdc7d94466d1d55436a13282d7cadc9fc5abf1d12fe271406267e353"
+    },
+    {
+      "case": "rt4load_minus25m_tt",
+      "control_v": 0.6329988674567703,
+      "delta_from_baseline_v": -0.025,
+      "tb_sha256": "ae69794890bf88681c130009a81be71d83baa5c643cb6594728d02884b0fdf5d",
+      "seed_sha256": "abd3d1407762e073ac366b8abdbaeb747ffbb69ff6482114a67111277ba75913"
+    },
+    {
+      "case": "rt4load_minus50m_tt",
+      "control_v": 0.6079988674567702,
+      "delta_from_baseline_v": -0.05,
+      "tb_sha256": "3d05d08a9dce0707742f0db331f122a78b68fada2098144f2f9b965c1993663c",
+      "seed_sha256": "d1b6ef5b2e629623121030ef79f010528e417ed45ba9296fb0a6a3bae901a202"
+    }
+  ],
+  "baseline_clamped_run": "samplerload01",
+  "baseline_clamped_case": "samplerload_clocked_tt",
+  "original_seed_sha256": "8f0641b8cdc7d94466d1d55436a13282d7cadc9fc5abf1d12fe271406267e353",
+  "original_core_sha256": "fbeb935df1fc747f158a3eb8ac23296aeabb90c8a1a6e1b2e8850746f6fa1e36",
+  "rt4_core_sha256": "dac5476318f5830e7c5b7af8c3c0ef91d38ef48235d947f9835fbab88fffda93",
+  "triggering_result": {
+    "variant": "rt4",
+    "case": "core_noisecand_rt4_tt",
+    "source": "research/runs/spectre_cmos_v14_full/corenoisecand01/core_noisecand_rt4_tt/result.json",
+    "source_sha256": "292a85e08917a13196061ee1a2744ca72d7037668a0fe3743c050f3165960d15",
+    "passed": false,
+    "stationarity": {
+      "phase_pp_rad": 48.23390163947248,
+      "phase_drift_rad_per_us": 50.36372855911558,
+      "max_rf_cycles_error": 0.34200515149498756,
+      "max_out_cycles_error": 0.08540502225719138,
+      "mean_output_mhz": 986.0044346492114,
+      "ctrl_range_v": [
+        0.6547078712209802,
+        0.6939045685214762
+      ],
+      "observed_final_window_us": 0.958000000000072,
+      "passed": false,
+      "criteria": "Last1us: phase pp<.02rad, drift<.01rad/us, cycles/ref errors<.001, ctrl0.2..1V; functional stationarity, not jitter.",
+      "measurement_limit": "Sparse GHz voltage/current samples are not used for RF swing or average power.",
+      "end_us": 3.0,
+      "final_state": {
+        "XP.en": 1.2
+      }
+    },
+    "coarse23_held": true,
+    "supply_ranges_v": {
+      "XP.vco_vdd": [
+        1.2,
+        1.2
+      ],
+      "XP.rx_vdd": [
+        1.2,
+        1.2
+      ],
+      "XP.rt_vdd": [
+        1.2,
+        1.2
+      ]
+    },
+    "bias_filter_last1us_range_v": [
+      0.7236962450307254,
+      0.7271301763454765
+    ],
+    "bias_filter_last1us_drift_v_per_us": 1.979910115990668e-06,
+    "output_change_from_base_mhz": 2.0044410056059405,
+    "mean_sampled_control_change_v": 0.03136303432300125
+  },
+  "condition": "TT27/1.2V/coarse23/CF10/RT4/continuousclockbank/10fF/Q5.750ns/1ps/traponly/reltol1e-5,24MHz normalreference, last500ns dense. IdealexternalVCTRL clamp.",
+  "hypothesis": "Retimer scaling changes actualRF receiver loading and possibly LC operating frequency. Correct M4 but ~+8MHz RF mismatch from the old seed requires matching operating point before accepting/rejecting RT4 in the real loop.",
+  "interpretation": "Nominal control compares directly against the completed baseline clamp. Two lowercontrols measure the RT4loaded curve; infer a possible frequency-matched control only when the target is bracketed, then verify in a released actualclosedloop trial.",
+  "launch_gate": "Review samplerload01 and actualLC four-way first. Use a released slot within18threads and4long+1short. No automatic launch; do not overlap a finite pipeline replacement.",
+  "limitations": [
+    "Not a closed-loop locking result or a random-jitter measurement.",
+    "Common inherited voltages are near-lock test seeds, not native state continuation.",
+    "Changing control alone may not recover phase capture; an FLL retune or clock-loading isolation may still be needed."
+  ],
+  "main_dut_modified": false,
+  "full_pll_acceptance": false
+}
