@@ -5,8 +5,9 @@ native continuation of cold capture. Only its own subsequent native branches
 preserve simulator history. Never join these to the 64 us cold trajectory.
 """
 from pathlib import Path
-import hashlib,json
+import hashlib,json,contextlib,io
 import numpy as np
+from virtuoso_bridge.spectre.parsers import parse_psf_ascii_directory
 from analyze import loop
 H=Path(__file__).resolve().parent;ROOT=H.parents[3];R=ROOT/'research/runs/spectre_cmos_v14_full'
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
@@ -28,7 +29,22 @@ for label,runs in [('strict',['repairstrict02']),('retention',['repairretain01',
  for j,rec in zip(jobs,records):
   assert rec['remote_inputs_match'] and rec['local_outputs_sha256']
   assert all(rec['inputs_sha256'][k]==v and sha(j/'inputs'/k)==v for k,v in expected.items())
-  with np.load(j/'waveforms.npz') as z:datasets.append({k:z[k] for k in z.files if k!='units'})
+  wave=j/'waveforms.npz'
+  if not wave.exists():
+   # The runner intentionally marks a native-checkpoint stop incomplete. Its
+   # raw prefix is usable only as the parent of the matching resumed segment.
+   assert j!=jobs[-1] and list((j/'checkpoints').glob('*.json'))
+   wave=j/'checkpoint_waveforms.npz'
+   raw=j/'repair_retain_tt.raw'/'tran.tran.tran'
+   assert raw.is_file()
+   with contextlib.redirect_stdout(io.StringIO()),contextlib.redirect_stderr(io.StringIO()):
+    data=parse_psf_ascii_directory(raw.parent)
+   data={k:np.atleast_1d(v) for k,v in data.items() if k!='units' and np.asarray(v).dtype.kind in 'biufc'}
+   np.savez_compressed(wave,**data)
+   row.setdefault('checkpoint_prefixes',[]).append(dict(raw=raw.relative_to(ROOT).as_posix(),raw_sha256=sha(raw),waveform_sha256=sha(wave),scope='Incomplete native parent prefix; not a standalone acceptance run.'))
+  else:
+   assert sha(wave)==rec['local_outputs_sha256']['waveforms.npz']
+  with np.load(wave) as z:datasets.append({k:z[k] for k in z.files if k!='units'})
   sources[(j/'result.json').relative_to(ROOT).as_posix()]=sha(j/'result.json')
   native=rec.get('native_state')
   if native:

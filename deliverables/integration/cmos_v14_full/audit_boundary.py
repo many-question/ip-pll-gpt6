@@ -3,7 +3,7 @@ from pathlib import Path
 from collections import Counter
 import re,json,hashlib,argparse
 H=Path(__file__).resolve().parent;D=H.parents[1]
-def audit(top):
+def audit(top,includes=()):
     available={p.name:p for p in (D/'blocks').rglob('*.scs')}
     files={};defs={}
     def read(name):
@@ -19,6 +19,7 @@ def audit(top):
                 assert current not in defs,('Duplicate definition',current,name)
                 defs[current]=(p,lines);current=None
             elif current is not None:lines.append((no,line))
+    for name in includes:read(name)
     read(top+'.scs');counts=Counter();seen=Counter();probes=[];violations=[]
     def expand(name,path):
         seen[name]+=1
@@ -44,4 +45,5 @@ def audit(top):
     print(top,dict(counts),'violations',violations)
     return result
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('top');audit(p.parse_args().top)
+    p=argparse.ArgumentParser();p.add_argument('top');p.add_argument('--include',nargs='*',default=[])
+    a=p.parse_args();audit(a.top,a.include)

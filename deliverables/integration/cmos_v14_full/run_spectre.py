@@ -35,6 +35,7 @@ def main():
     parser.add_argument('--timeout',type=int,default=3600,help='Per-job wall-clock limit in seconds')
     parser.add_argument('--snapshot-run',help='Replay immutable inputs from a prior local run instead of current design files')
     parser.add_argument('--native-state',help='Locally recovered native .srf checkpoint under project research/; requires --snapshot-run and exactly one case')
+    parser.add_argument('--pss-state',help='Recovered converged PSS state under project research/. Checks PSS consistency; caller must compare physical dependency hashes.')
     parser.add_argument('--tran-stop',help='Override transient stop for a native-checkpoint continuation, e.g.10u')
     parser.add_argument('--transient-reltol',help='Explicit numerical comparison on a native continuation, e.g.1e-5')
     parser.add_argument('--transient-maxstep',help='Explicit numerical comparison on a native continuation, e.g.1p')
@@ -46,6 +47,7 @@ def main():
     args=parser.parse_args()
     if args.native_state:
         assert args.snapshot_run and args.cases and len(args.cases)==1
+    if args.pss_state:assert not args.native_state and args.cases and len(args.cases)==1
     if args.dense_output:assert args.native_state
     if args.extra_save:
         import re
@@ -117,6 +119,20 @@ def main():
         body=re.sub(r'writepss="[^"]+"','writepss="'+pss_state_remote+'"',body)
         has_final_state='writefinal=' in body
         native_state_info=None
+        periodic_state_info=None
+        if args.pss_state:
+            periodic=Path(args.pss_state).resolve()
+            assert periodic.is_relative_to((ROOT/'research').resolve()) and periodic.is_file()
+            assert re.search(r'^pss .*\bpss\b',body,re.M)
+            periodic_remote=REMOTE+'/'+args.run_id+'_'+case+'.readpss.state'
+            ssh=['C:/Windows/System32/OpenSSH/ssh.exe','-F',str(Path.home()/'.virtuoso-bridge/ssh_config_ipv6'),'-o','BatchMode=yes','thu-xia-v6']
+            subprocess.run(['C:/Windows/System32/OpenSSH/scp.exe','-F',str(Path.home()/'.virtuoso-bridge/ssh_config_ipv6'),'-o','BatchMode=yes',str(periodic),'thu-xia-v6:'+periodic_remote],check=True,capture_output=True,timeout=300)
+            digest=hashlib.sha256(periodic.read_bytes()).hexdigest()
+            assert subprocess.check_output(ssh+['sha256sum '+shlex.quote(periodic_remote)],timeout=60).decode().split()[0]==digest
+            periodic_state_info=dict(local=periodic.relative_to(ROOT).as_posix(),remote=periodic_remote,sha256=digest,remote_hash_match=True,checkpss='yes')
+            body=re.sub(r'\s+readic="[^"]+"','',body)
+            body=re.sub(r'\btstab=\S+','tstab=0',body)
+            body=re.sub(r'^(pss .*)$',lambda m:m[0]+' readpss="'+periodic_remote+'" checkpss=yes',body,flags=re.M)
         if args.native_state:
             native=Path(args.native_state).resolve()
             assert native.is_relative_to((ROOT/'research').resolve()) and native.suffix=='.srf' and native.is_file()
@@ -154,7 +170,7 @@ def main():
         # Persist recovery provenance before the potentially hours-long SSH call.
         # The local client may disappear while the remote simulator keeps running.
         launch=dict(case=case,time=datetime.datetime.now().astimezone().isoformat(),
-            initial_states=initial_states,native_state=native_state_info,
+            initial_states=initial_states,native_state=native_state_info,periodic_state=periodic_state_info,
             numerical_overrides=dict(reltol=args.transient_reltol,maxstep=args.transient_maxstep,dense_output=args.dense_output,extra_save=args.extra_save),
             inputs_sha256={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in files},
             threads=args.threads,mode=args.mode,wall_timeout_s=args.timeout)
@@ -185,6 +201,7 @@ def main():
              'ok':result.ok,'errors':result.errors,'metadata':result.metadata,
              'initial_states':initial_states,
              'native_state':native_state_info,
+             'periodic_state':periodic_state_info,
              'numerical_overrides':dict(reltol=args.transient_reltol,maxstep=args.transient_maxstep,dense_output=args.dense_output,extra_save=args.extra_save),
              'inputs_sha256':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in files}}
         work.mkdir(parents=True,exist_ok=True)

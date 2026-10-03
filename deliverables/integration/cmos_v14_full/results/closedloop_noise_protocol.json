@@ -1,0 +1,51 @@
+{
+  "created": "2026-10-03T13:30:47.240896+08:00",
+  "scope": "Closed-loop device-noise fixture derived from pll_capture_v14.\n\nRetains the actual analog feedback loop, physical bias, full divider bank,\nretimer, detector, CP timing, disconnected physical DAC and quiet counter load.\nFLL/configuration/supervision are replaced by fixed acquired-state control pins.\nThis is a locked-core approximation, NOT full-PLL noise acceptance.\n",
+  "source_top": "share/deliverables/blocks/cmos_v14_full/pll_capture_v14.scs",
+  "source_top_sha256": "ebab43f8233c8b8cc7bdef02fba6a1718a070e8f886f3b522449612feb5e6139",
+  "state_source": "research/runs/spectre_cmos_v14_full/repaircold01/repair_capture_tt/final.ic",
+  "state_source_sha256": "87602eeaccac8819cd1605cae70266faa3c4ed3ab959eb267e2156bbfbd556f8",
+  "condition": "TT27/1.2V/ideal24MHz reference/K41/M4/984MHz/10fF/Q5RLC/coarse23/DAC38",
+  "included": [
+    "VCO and physical bias",
+    "reference buffer and sampler",
+    "CP and physical pulse timing",
+    "loop RC and precharge switches",
+    "full programmable divider bank",
+    "RF receiver and retimer/output",
+    "physical validity detector",
+    "disabled physical DAC",
+    "quiet physical counter clock load"
+  ],
+  "excluded": [
+    "FLL/configuration/supervisor/watchdog noise and changing state",
+    "their reference-input loading",
+    "dynamic counter activity",
+    "finite output impedance/noise of static control bits",
+    "external reference and supply noise",
+    "PEX"
+  ],
+  "gates": [
+    "converged periodic solution and correct 4MHz fundamental,984MHz output",
+    "compare analog operating point and reference edge against full-DUT transient",
+    "full10kHz-492MHz PSD/slew^2 integration",
+    "edge-position and finite-neighborhood alias checks",
+    "numerical step/sideband convergence",
+    "separate per-module noise-on validation"
+  ],
+  "full_pll_acceptance": false,
+  "probe_is_not_integral": true,
+  "environment_verification": {
+    "time": "2026-10-03T14:15:20.125200+08:00",
+    "host": "thu-xia",
+    "user": "jielu",
+    "spectre_version": "21.1.0.509.isr12 64bit",
+    "pdk_model_master_sha256": "d44aa9da7ba670f0b4cfb0198b019dc73abf8bae21b15f45ce5a30c7cb5973ff",
+    "scope": "Master model file hash rechecked via SSH; no PDK source copied into deliverables."
+  },
+  "one_shot_continuation": {
+    "script": "continue_closedloop_noise.py",
+    "session": 39202,
+    "scope": "Wait for probe, gate on validated periodic/noise result and identical dependencies, then one full-band run; not a recurring automation."
+  }
+}

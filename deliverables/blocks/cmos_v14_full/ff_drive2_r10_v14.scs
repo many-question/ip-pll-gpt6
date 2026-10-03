@@ -1,0 +1,13 @@
+simulator lang=spectre
+subckt ff_drive2_r10_v14 (d ck qb vdd vss)
+MP0 (p0 d vdd vdd) pch w=2.0u l=180n ad=2.0u*240n as=2.0u*240n pd=2*(2.0u+240n) ps=2*(2.0u+240n)
+MPC0 (b ck p0 vdd) pch w=2.0u l=180n ad=2.0u*240n as=2.0u*240n pd=2*(2.0u+240n) ps=2*(2.0u+240n)
+MN0 (b dn vss vss) nch w=0.8u l=180n ad=0.8u*240n as=0.8u*240n pd=2*(0.8u+240n) ps=2*(0.8u+240n)
+MP1 (a ck vdd vdd) pch w=2.0u l=180n ad=2.0u*240n as=2.0u*240n pd=2*(2.0u+240n) ps=2*(2.0u+240n)
+MN1 (a b n1 vss) nch w=1.6u l=180n ad=1.6u*240n as=1.6u*240n pd=2*(1.6u+240n) ps=2*(1.6u+240n)
+MNC1 (n1 ck vss vss) nch w=1.6u l=180n ad=1.6u*240n as=1.6u*240n pd=2*(1.6u+240n) ps=2*(1.6u+240n)
+MP2 (qb a vdd vdd) pch w=4.0u l=180n ad=4.0u*240n as=4.0u*240n pd=2*(4.0u+240n) ps=2*(4.0u+240n)
+MNC2 (qb ck n2 vss) nch w=3.2u l=180n ad=3.2u*240n as=3.2u*240n pd=2*(3.2u+240n) ps=2*(3.2u+240n)
+MN2 (n2 a vss vss) nch w=3.2u l=180n ad=3.2u*240n as=3.2u*240n pd=2*(3.2u+240n) ps=2*(3.2u+240n)
+RD (d dn) resistor r=10000
+ends ff_drive2_r10_v14

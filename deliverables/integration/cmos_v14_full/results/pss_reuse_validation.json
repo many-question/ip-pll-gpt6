@@ -1,0 +1,29 @@
+{
+  "scope": "Validate checked PSS state reuse against a fresh analytic RC fixture run.",
+  "condition": "Same RC calibration:1kohm/20fF,27C,984MHz sine,164MHz PSS,sampleratio6,full10kHz-492MHz sampled integral.",
+  "cases": [
+    {
+      "run": "psstest01",
+      "source_result": "research/runs/spectre_cmos_v14_full/psstest01/noise_reuse_fixture/result.json",
+      "source_sha256": "87e7a0c6a1239203ecc6b03d4c0d81eb196118b5f8fa32ab4f43dfe592c005f5",
+      "periodic_state": null,
+      "jitter_fs": 147.78052655685013
+    },
+    {
+      "run": "psstest02",
+      "source_result": "research/runs/spectre_cmos_v14_full/psstest02/noise_reuse_fixture/result.json",
+      "source_sha256": "8c692fbfc8485b611c3f9a1e74d59bd08eb18432c0377afef2915e225ff8acd0",
+      "periodic_state": {
+        "local": "research/runs/spectre_cmos_v14_full/psstest01/noise_reuse_fixture/periodic.state",
+        "remote": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/psstest02_noise_reuse_fixture.readpss.state",
+        "sha256": "a4401a14759a59041989bdc51cd590fda69b3e5e8af364b0fc33b261ddf72d42",
+        "remote_hash_match": true,
+        "checkpss": "yes"
+      },
+      "jitter_fs": 147.78052655685548
+    }
+  ],
+  "max_relative_psd_change": 8.903988657493755e-14,
+  "passed": true,
+  "not_pll_performance": true
+}

@@ -78,3 +78,10 @@ python share/deliverables/integration/cmos_v14_full/analyze_capture.py repaircol
 最新候选 `bank_split_clock_v14` 将模三和环形支路的时钟驱动分开，并在 ÷10 时关闭未使用的末两级环时钟；60 ns 独立 SS 检查已完成，三个档位仍未通过。后续须检查分支时钟偏斜和锁存有效窗口，不能据降低时钟负载就认定时序恢复。它与全部诊断候选均未接入完整捕获 DUT。
 
 独立候选未改动完整捕获修复版。所有已完成对照和失败记录见 [SS 诊断结果](results/ss_clock_repair.json)，原始输入和波形留在本项目 `research/runs/spectre_cmos_v14_full/`。
+
+
+## 2026-10-03 后续：SS时序修复与闭环抖动验证
+
+完成37例短仿真；尾级数据隔离、预分频末级驱动及CMOS时钟树修复使独立候选在SS60的÷6/10/14通过。理想RF下三角六档18例全部通过；实际RF接收器下SS÷4/6/10仍失败，当前完整pll_capture_v14保持原版。详见[SS_TIMING.md](SS_TIMING.md)。
+
+真实模拟反馈核心PSS稳定段发现滑相，已停止并检查参考负载裁剪；固定慢控制的近似边界、全频带积分及周期解复用检查见[NOISE_PROGRESS.md](NOISE_PROGRESS.md)。尚未产生新的整机RMS结论。严格独立复位和32µs周期保持任务继续，不重复启动。
