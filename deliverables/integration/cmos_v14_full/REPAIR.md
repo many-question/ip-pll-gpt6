@@ -23,17 +23,39 @@
 
 ## 完整 PLL 复位仿真
 
-`repaircold01/repair_capture_tt` 已启动，尚无完成或锁定结论。该测试为 TT27、1.2 V、24 MHz、K41/M4、10 fF、Q5 RLC，计划运行 64 µs；maxstep=4 ps、reltol=1e−4。供电从开始即为 DC 1.2 V；实际执行复位和配置，仅用初始 10 µV 差分扰动启动确定性振荡。没有读取旧电路的原生状态，也没有构造近锁定初态。这不是供电爬升验收。
+`repaircold01/repair_capture_tt` 已于 2026-10-03 08:15 零错误完成 64 µs，并回收完整轨迹、终态及输入／原始输出 SHA256。原本地回收进程已退出，本轮从原远端目录恢复数据，没有重新仿真。该测试为 TT27、1.2 V、24 MHz、K41/M4、10 fF、Q5 RLC；maxstep=4 ps、reltol=1e−4。供电从开始即为 DC 1.2 V；实际执行复位和配置，仅用初始 10 µV 差分扰动启动确定性振荡。没有读取旧电路的原生状态，也没有构造近锁定初态。这不是供电爬升验收。
 
-先判断真实 FLL 最终码、交接前 RF 余差、qualified 与外部相位／频率稳定性是否一致。首次交接预计约 53 µs；若首次捕获失败，64 µs 不足以覆盖 21.33 µs 超时，须以同一电路的原生状态继续观察。4 ps 功能筛选通过后再作严格数值复核和长时间保持检查。
+**在上述精度与单一条件下，既定功能捕获筛选通过。** FLL 在 53.585638 µs 交接，粗调 23／DAC 38；交接前 RF 平均 3935.978936 MHz，余差 −21.064 kHz。细调实际测得 DAC38 的计数为 5248，与目标相等；末次试探 DAC37 为 5246，因此最终正确返回此前测过的 DAC38。qualified 在 56.502408 µs 建立，之后保持至结束，未出现 restart。
+
+末 1 µs 输出平均 **984.000069593 MHz**，相位峰峰 **0.003284 rad**，漂移 **−0.000184 rad/µs**；RF／输出每参考周期误差分别不超过 0.000388／0.000106，控制采样值 0.676228…0.676393 V。它们是确定性锁定检查，不是 RMS 抖动。
+
+末 1 µs 全部 PLL 供电积分得到 **5.622531 mW**，高于 4 mW。0–64 µs 总能量 **379.562894 nJ**，100 ns 分窗最大平均 **6.454578 mW**，不等于瞬时峰值，也不包含电源爬升。末 1 µs 尚不是完整 32 µs 控制周期平均。
+
+![完整复位捕获](results/figures/repaircold01_reset_capture.png)
+
+证据：[捕获结果](results/capture_repaircold01.json)、[实际 DUT 一致性](results/capture_repair_consistency.json)。原始文件位于 `research/runs/spectre_cmos_v14_full/repaircold01/repair_capture_tt/`。
+
+### 数值复核与保持测试
+
+原 64 µs 仿真正常结束时没有留下原生 `.srf`。因此先使用**实际终态**的电压／电流建立独立同 DUT 检查：不修改任何 DUT 初值，但这仍是文本初态初始化，不能把它接成连续 100 µs 的冷启动轨迹。`repairstrict01` 在直接初始化并改用 1 ps／reltol=1e−5 后出现相位扰动与监督重启，已主动停止并保留负面证据；不能单据这一轨迹区分初始化效应和数值精度影响。
+
+`repairretain01` 在原 4 ps／reltol=1e−4 下建立保持轨迹，约 1.45 µs 保存并回收原生状态。从同一个原生状态分出 `repairretain02`（到 36 µs）与 `repairstrict02`（1 ps／reltol=1e−5）。**原生严格分支也出现相位偏移和重启**：观测到交接后 RF 误差最高约 +1.221 MHz，1.752305 µs 出现 restart；1.83164 µs 主动停止。同状态的原精度分支在已观察时段仍保持，长期测试尚在运行。故不能把严格分支的问题仅归因于文本初始化，4 ps 捕获尚无数值收敛证明。见 [负面精度诊断](results/precision_diagnostics.json)。这些是已观测到的重启事件，不是完成的 6 µs 保持测试。
+
+已新启动 `repaircoldstrict01/repair_capture_strict_tt`，同一 DUT、相同外部复位／配置和 10 µV 启振扰动，**从头以 1 ps／reltol=1e−5 完整运行 64 µs**，同时收紧 vabstol/iabstol；没有读取文本或原生初态。该测试将判断严格精度下 FLL 是否能重新选择适合的交接码并自主捕获，目前待完成。改变数值参数的瞬态扰动不能直接判定严格精度下的完整复位必然失败。
+
+![严格精度切换诊断](results/figures/precision_restart.png)
+
+供电积分器的文本初态中保留了 `XE:idt0` 偏移，所有功耗采用能量端点差，偏移抵消；不把绝对初始积分值当成消耗能量。保持测试拟取 4–36 µs 的完整 32 µs 周期平均，另列末 1 µs 窗口和内部步长上的边沿测量。见 [状态来源与协议](results/repair_retention_protocol.json)、[保持分析入口](analyze_repair_retention.py)。
 
 ```powershell
-python share/deliverables/integration/cmos_v14_full/monitor_jobs.py repaircold01
-# 等最终结果及 hash 回收完成后运行：
 python share/deliverables/integration/cmos_v14_full/analyze_capture.py repaircold01 --case repair_capture_tt --fine-window 128
+python share/deliverables/integration/cmos_v14_full/monitor_jobs.py repaircoldstrict01 repairretain02
+# 等最终结果及 hash 回收完成后运行：
+python share/deliverables/integration/cmos_v14_full/analyze_repair_retention.py
+python share/deliverables/integration/cmos_v14_full/analyze_capture.py repaircoldstrict01 --case repair_capture_strict_tt --fine-window 128 --precision strict
 ```
 
-本版整机功耗、抖动与启动能量尚无有效最终结果。旧版 5.616 mW 和局部链 141.281 fs 保留原条件，不移植为修复版指标。用户确认的全部 PLL 功耗边界、10 kHz–输出频率一半的抖动频带、33 个频点及全部 REQ 均保持。
+本版已有上述短窗功耗和复位能量结果，整机抖动及长期功耗仍待验证。旧版局部链 141.281 fs 保留原条件，不移植为修复版指标。用户确认的全部 PLL 功耗边界、10 kHz–输出频率一半的抖动频带、33 个频点及全部 REQ 均保持。
 
 ## SS 分频定位
 
@@ -47,4 +69,12 @@ python share/deliverables/integration/cmos_v14_full/analyze_capture.py repaircol
 
 ![SS 时钟与状态波形](results/figures/ss_clock_diagnosis.png)
 
-这些观察把下一步定位到预充电、采样窗口和数据传播时间，而不是继续无差别放大器件。独立候选未改动完整捕获修复版。所有已完成对照和失败记录见 [SS 诊断结果](results/ss_clock_repair.json)，原始输入和波形留在本项目 `research/runs/spectre_cmos_v14_full/`。
+本轮进一步移除五个实际内部时钟驱动器，以理想 20 ps、50% 占空比互补 RF÷2 时钟做**混合诊断**：静态 ÷6 恢复为 648 MHz；静态 ÷10／÷14 仍失败。主锁存节点在时钟关闭时尚未稳定，数据推迟或丢失。一次针对传输门／节点负载的尺寸对照仍失败，保留负结果。
+
+改用单相 CMOS 环形存储后，在同样理想内部时钟下，÷10／÷14 分别得到 **312.000010 MHz／216.000000 MHz**，均通过周期与完整摆幅筛选。这些理想内部时钟不能进入正式 PLL，也不计为功耗／噪声达标。下一实际器件候选保留静态模三计数器、改用单相环形存储，并缩短 CMOS 时钟链；首先验证 SS 三个失败档位，再扩展到其余档位与角。
+
+物理时钟的三组新对照进一步表明：缩短时钟链后仍出现摆幅坍塌；增强预分频缓冲的负载会损害上游预分频输出；另一占空时间整形候选虽恢复全摆幅，仍仅 ÷14 通过。只用理想 q1 替代预分频器、保留实际后续时钟树时，也仅 ÷14 通过。这把剩余问题进一步定位到实际时钟边沿／采样窗口及其负载，不能只归因于预分频器或宣称只需恢复 50% 占空比。
+
+最新候选 `bank_split_clock_v14` 将模三和环形支路的时钟驱动分开，并在 ÷10 时关闭未使用的末两级环时钟；60 ns 独立 SS 检查已完成，三个档位仍未通过。后续须检查分支时钟偏斜和锁存有效窗口，不能据降低时钟负载就认定时序恢复。它与全部诊断候选均未接入完整捕获 DUT。
+
+独立候选未改动完整捕获修复版。所有已完成对照和失败记录见 [SS 诊断结果](results/ss_clock_repair.json)，原始输入和波形留在本项目 `research/runs/spectre_cmos_v14_full/`。

@@ -151,6 +151,14 @@ def main():
             digest=hashlib.sha256(local_state.read_bytes()).hexdigest();assert proof==digest
             initial_states[dest]={'source':name,'sha256':digest,'remote_hash_match':True}
             netlist.write_text(netlist.read_text().replace('readic="'+name+'"','readic="'+dest+'"'),encoding='utf-8',newline='\n')
+        # Persist recovery provenance before the potentially hours-long SSH call.
+        # The local client may disappear while the remote simulator keeps running.
+        launch=dict(case=case,time=datetime.datetime.now().astimezone().isoformat(),
+            initial_states=initial_states,native_state=native_state_info,
+            numerical_overrides=dict(reltol=args.transient_reltol,maxstep=args.transient_maxstep,dense_output=args.dense_output,extra_save=args.extra_save),
+            inputs_sha256={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in files},
+            threads=args.threads,mode=args.mode,wall_timeout_s=args.timeout)
+        (work/'launch.json').write_text(json.dumps(launch,indent=2)+'\n',encoding='utf-8',newline='\n')
         print('START',case,flush=True)
         with (work/'runner.log').open('w',encoding='utf-8') as log:
             with contextlib.redirect_stdout(log),contextlib.redirect_stderr(log):

@@ -1,0 +1,78 @@
+simulator lang=spectre
+include "ff_fbdelay50_v14.scs"
+include "ring_inv_static_v14.scs"
+subckt ff_static_fast_v14 (d clk clkb q vdd vss)
+XM (d clkb clk qm vdd vss) ring_inv_latch_v14
+XS (qm clk clkb q vdd vss) ring_inv_latch_v14
+ends ff_static_fast_v14
+subckt nor_fast_v14 (a b out vdd vss)
+MP0 (p a vdd vdd) pch w=8u l=180n ad=8u*240n as=8u*240n pd=2*(8u+240n) ps=2*(8u+240n)
+MP1 (out b p vdd) pch w=8u l=180n ad=8u*240n as=8u*240n pd=2*(8u+240n) ps=2*(8u+240n)
+MN0 (out a vss vss) nch w=2u l=180n ad=2u*240n as=2u*240n pd=2*(2u+240n) ps=2*(2u+240n)
+MN1 (out b vss vss) nch w=2u l=180n ad=2u*240n as=2u*240n pd=2*(2u+240n) ps=2*(2u+240n)
+ends nor_fast_v14
+// Self-recovering state cycle00->10->01->00;11 returns to01.
+subckt div3_fast_v14 (clk out vdd vss)
+XC (clk clkb vdd vss) pll_inv wn=4u wp=8u
+XN (q0 q1 d0 vdd vss) nor_fast_v14
+X0 (d0 clk clkb q0 vdd vss) ff_static_fast_v14
+X1 (q0 clk clkb q1 vdd vss) ff_static_fast_v14
+XB0 (q1 ob vdd vss) pll_inv wn=0.5u wp=1u
+XB1 (ob out vdd vss) pll_inv wn=2u wp=4u
+ends div3_fast_v14
+subckt bank_clock_isolation_v14 (clk reset s0 s1 s2 s3 s4 s5 q1 out fllclk ck ckb vdd vss)
+XPRE (q0 clk q0 vdd vss) ff_fbdelay50_v14
+XPB0 (q0 qb0 vdd vss) pll_inv wn=0.8u wp=0.5u
+XPB1 (qb0 q1 vdd vss) pll_inv wn=2u wp=4u
+XD4 (d4b q1 d4b vdd vss) pll_tspc_inv
+XB40 (d4b b40 vdd vss) pll_inv wn=0.8u wp=1.6u
+XB41 (b40 b41 vdd vss) pll_inv wn=2u wp=4u
+XB42 (b41 d4 vdd vss) pll_inv wn=6u wp=12u
+XFAC0 (d4 fab vdd vss) pll_inv wn=0.5u wp=1u
+XFAC1 (fab fllclk vdd vss) pll_inv wn=2u wp=4u
+XD8 (d8b d4 d8b vdd vss) pll_tspc_inv
+XB8 (d8b d8 vdd vss) pll_inv wn=2u wp=4u
+XD12 (d4 d12 vdd vss) div3_fast_v14
+XEN0 (s1 s3 er0 vdd vss) tx_or
+XEN1 (er0 s5 er1 vdd vss) tx_or
+XEN (reset er1 run vdd vss) tx_or
+XD6 (ck d6 vdd vss) div3_fast_v14
+XRL (reset ck loadb vdd vss) pll_tspc_inv
+XRLI (loadb load vdd vss) pll_inv wn=0.8u wp=2u
+XRK (load loadb vdd vss) pll_inv wn=0.4u wp=0.8u ln=1u
+XF0 (fb ck ckb load loadb vdd r0 vdd vss) ring_inv_sync_v14
+XF1 (r0 ck ckb load loadb vdd r1 vdd vss) ring_inv_sync_v14
+XF2 (r1 ck ckb load loadb vdd r2 vdd vss) ring_inv_sync_v14
+XF3 (r2 ck ckb load loadb s5 r3 vdd vss) ring_inv_sync_v14
+XF4 (r3 ck ckb load loadb vss r4 vdd vss) ring_inv_sync_v14
+XF5 (r4 ck ckb load loadb vss r5 vdd vss) ring_inv_sync_v14
+XF6 (r5 ck ckb load loadb vss r6 vdd vss) ring_inv_sync_v14
+XSI3 (s3 sb3 vdd vss) pll_inv
+XSI5 (s5 sb5 vdd vss) pll_inv
+XT5 (r4 fb s3 sb3 vdd vss) pll_tg wn=2u wp=4u
+XT7 (r6 fb s5 sb5 vdd vss) pll_tg wn=2u wp=4u
+RFB (fb vss) resistor r=10Meg
+XRI (reset resetb vdd vss) pll_inv
+XSEB0 (s0 resetb eb0 vdd vss) pll_nand2
+XSE0 (eb0 es0 vdd vss) pll_inv
+XMX0 (d4 mux es0 eb0 vdd vss) pll_tg wn=1u wp=2u
+XSEB1 (s1 resetb eb1 vdd vss) pll_nand2
+XSE1 (eb1 es1 vdd vss) pll_inv
+XMX1 (d6 mux es1 eb1 vdd vss) pll_tg wn=1u wp=2u
+XSEB2 (s2 resetb eb2 vdd vss) pll_nand2
+XSE2 (eb2 es2 vdd vss) pll_inv
+XMX2 (d8 mux es2 eb2 vdd vss) pll_tg wn=1u wp=2u
+XSEB3 (s3 resetb eb3 vdd vss) pll_nand2
+XSE3 (eb3 es3 vdd vss) pll_inv
+XMX3 (r0 mux es3 eb3 vdd vss) pll_tg wn=1u wp=2u
+XSEB4 (s4 resetb eb4 vdd vss) pll_nand2
+XSE4 (eb4 es4 vdd vss) pll_inv
+XMX4 (d12 mux es4 eb4 vdd vss) pll_tg wn=1u wp=2u
+XSEB5 (s5 resetb eb5 vdd vss) pll_nand2
+XSE5 (eb5 es5 vdd vss) pll_inv
+XMX5 (r0 mux es5 eb5 vdd vss) pll_tg wn=1u wp=2u
+MMUTE (mux reset vss vss) nch w=2u l=180n ad=2u*240n as=2u*240n pd=2*(2u+240n) ps=2*(2u+240n)
+RKEEP (mux vss) resistor r=10Meg
+XO0 (mux ob vdd vss) pll_inv wn=1u wp=2u
+XO1 (ob out vdd vss) pll_inv wn=2u wp=4u
+ends bank_clock_isolation_v14

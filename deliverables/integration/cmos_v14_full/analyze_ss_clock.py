@@ -14,7 +14,7 @@ def load(job):
 
 def signals(d,start,end):
     t=d['time'];s=(t>=start*1e-9)&(t<end*1e-9);tt=t[s];out={}
-    for k in ['q1','XD.ci','XD.gn','XD.cb','XD.ck','XD.ckb','XD.run','XD.load','XD.loadb',
+    for k in ['q1','XD.ci','XD.gn','XD.cb','XD.ck','XD.ckb','ck','ckb','XD.run','XD.load','XD.loadb',
               'XD.r0','XD.r1','XD.r2','XD.r3','XD.r4','XD.r5','XD.r6','XD.d6','predata','data']:
         if k not in d:continue
         y=d[k][s];out[k]=dict(min_v=float(min(y)),max_v=float(max(y)),
@@ -36,10 +36,16 @@ for run in sorted(R.glob('bankdiag*'))+sorted(R.glob('bankclk*')):
             source_sha256=hashlib.sha256(rp.read_bytes()).hexdigest(),inputs_sha256=rec['inputs_sha256'],
             reset_window=signals(d,2,7),steady_window=signals(d,float(t[-1]*1e9-10),float(t[-1]*1e9)),
             scope='MOS divider bank and retimer, ideal20ps RF,1.2V,10fF; not PLL capture/noise.')
-        if rp.parent.name.startswith('bankclk'):
-            d={k:v[t>=60e-9] for k,v in d.items() if len(v)==len(t)}
+        if rp.parent.name.startswith('bankclkideal'):
+            row['scope']='Hybrid diagnostic: ideal complementary 20ps RF/2 internal clocks replace five MOS clock drivers. Storage/data path, prescaler and retimer remain MOS. Not all-transistor PLL or power/noise acceptance.'
+        if rp.parent.name.startswith('bankclkidealq1'):
+            row['scope']='Hybrid diagnostic: ideal20ps50percent RF/2 q1 replaces the RF prescaler and its two output buffers. Actual CMOS clock tree, static /3, single-phase ring and retimer remain. Not all-transistor PLL or power/noise acceptance.'
+        if rp.parent.name.startswith('bankclk') and t[-1]>=59.9e-9:
+            d={k:v[t>=t[-1]-40e-9] for k,v in d.items() if len(v)==len(t)}
             row['divider']=divider(d,m)
             row['divider']['scope']='MOS divider bank plus retimer, ideal20ps RF,1.2V,10fF; final40ns. Not PLL power.'
+            if rp.parent.name.startswith('bankclkideal'):
+                row['divider']['scope']=row['scope']+' Final40ns.'
         rows.append(row)
 out=dict(scope=__doc__,rows=rows,
     interpretation='Baseline SS/6 clock amplitude collapses. SS/10 and/14 load correct reset state, then lose the circulating pattern. Separate two-buffer candidate tests clock-path causality; no fullPLL substitution yet.')

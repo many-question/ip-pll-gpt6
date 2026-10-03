@@ -14,6 +14,7 @@ parser=argparse.ArgumentParser()
 parser.add_argument('runs',nargs='+')
 parser.add_argument('--case',default='complete_k41_tt')
 parser.add_argument('--fine-window',type=int,choices=[32,64,128,256],default=32)
+parser.add_argument('--precision',choices=['functional','strict'],default='functional')
 args=parser.parse_args()
 case=args.case;runs=args.runs
 assert re.fullmatch(r'[A-Za-z0-9_]+',case)
@@ -31,7 +32,8 @@ def inputs(rec):return {k:v for k,v in rec['inputs_sha256'].items() if k!=case+'
 assert all(inputs(x)==inputs(records[0]) for x in records)
 for job in jobs:
     tb=(job/'inputs'/(case+'.scs')).read_text()
-    assert re.search(r'\breltol=1e-4\b',tb) and re.search(r'\bmaxstep=4p\b',tb),'Reset trajectory numerical settings changed'
+    wanted_tol,wanted_step=('1e-5','1p') if args.precision=='strict' else ('1e-4','4p')
+    assert re.search(r'\breltol='+wanted_tol+r'\b',tb) and re.search(r'\bmaxstep='+wanted_step+r'\b',tb),'Reset trajectory numerical settings changed'
 assert 'recover=' not in (jobs[0]/'inputs'/(case+'.scs')).read_text()
 assert 'readic=' not in (jobs[0]/'inputs'/(case+'.scs')).read_text()
 assert datasets[0]['time'][0]==0
@@ -62,7 +64,7 @@ for k in ['cfg_ready','qualified','range_error','frequency_good','XP.XC.acquired
     e=cross(t,d[k]);logic[k]=dict(first_rising_us=float(e[0]*1e6) if len(e) else None,final_v=float(d[k][-1]),final_1us_all_high=bool(np.all(d[k][t>t[-1]-1e-6]>.6)))
 tb=(jobs[0]/'inputs'/(case+'.scs')).read_text()
 corner=re.search(r'section=(tt|ss|ff)\b',tb)[1];temp=float(re.search(r'\btemp=([-+0-9.]+)',tb)[1])
-result=dict(scope='Complete physical programmable PLL, independent reset/application sequence; native recovery preserves all states. Initial10uV differential VCO perturbation seeds deterministic oscillation. No constructed near-lock initial state. Supply is alreadyDC1.2V: this is reset acquisition, not a power-rail ramp/startup qualification.',condition=f'{corner.upper()}{temp:g},1.2V,24MHz,10fF,K41/M4,Q5 RLC,4ps/reltol1e-4. Functional result; strict numerics and random noise remain separate.',
+result=dict(scope='Complete physical programmable PLL, independent reset/application sequence; native recovery preserves all states. Initial10uV differential VCO perturbation seeds deterministic oscillation. No constructed near-lock initial state. Supply is alreadyDC1.2V: this is reset acquisition, not a power-rail ramp/startup qualification.',condition=f'{corner.upper()}{temp:g},1.2V,24MHz,10fF,K41/M4,Q5 RLC,maxstep={wanted_step}/reltol={wanted_tol}. Deterministic capture screen at stated precision; random noise is separate.',
     sources={str((j/'result.json').relative_to(ROOT)):hashlib.sha256((j/'result.json').read_bytes()).hexdigest() for j in jobs},
     boundaries=boundaries,circuit_hashes_identical=True,final_simulator_completed=True,stationarity=loop(d),logic=logic,digital_events=events,
     joined_waveform=str((dest/'waveforms.npz').relative_to(ROOT)),joined_waveform_sha256=hashlib.sha256((dest/'waveforms.npz').read_bytes()).hexdigest())

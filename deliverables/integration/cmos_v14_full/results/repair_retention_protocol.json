@@ -1,0 +1,23 @@
+{
+  "scope": "Same-DUT numerical/retention checks initialized from the actual cold result.\n\nThis imports terminal voltages/currents, not a native continuation. Do not join\nthese trajectories to the cold run or claim uninterrupted observer history.\n",
+  "source": "research/runs/spectre_cmos_v14_full/repaircold01/repair_capture_tt/final.ic",
+  "source_sha256": "87602eeaccac8819cd1605cae70266faa3c4ed3ab959eb267e2156bbfbd556f8",
+  "state_sha256": "570a71d6cd0f71b91428bf9225333523e464f2ab7b05fb8d8259f4d46e2290c2",
+  "removed_observer_nodes": [
+    "energy_nj",
+    "obsctrl",
+    "obscycles",
+    "obsdivcycles",
+    "obsphase",
+    "power_mw"
+  ],
+  "changed_DUT_initial_values": [],
+  "reference_phase": "64us is exactly1536 reference periods; retain1ns reference delay in the new time origin.",
+  "acceptance": "Last1us existing stationarity criteria, qualified/frequency_good high, range_error low, no restart. Retention36us covers at least one32us control/divider period after initialization.",
+  "power": "Internal-timestep supply/branch energy integration; average8..36us plus full4..36us32us cycle for retention, not sparse RF current averaging.",
+  "retained_observer_state_nodes": [
+    "XE:idt0"
+  ],
+  "energy_offset_note": "Text IC filtering reset named observation nodes but retained XE:idt0. Only endpoint differences are used for energy/power. The IC header is shorthand and does not imply all simulator observer history was reset.",
+  "followup": "Direct text strict initialization and native precision-change probes both restarted; deliberately stopped and not retention passes. Fresh strict reset64us is running as repaircoldstrict01. Original4ps retention continues natively in repairretain02."
+}

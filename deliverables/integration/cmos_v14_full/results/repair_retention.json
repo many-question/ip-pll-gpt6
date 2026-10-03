@@ -1,0 +1,24 @@
+{
+  "scope": "Analyze recovered same-DUT native precision and retention branches.\n\nThe root retention run uses the actual cold terminal voltages/currents, not a\nnative continuation of cold capture. Only its own subsequent native branches\npreserve simulator history. Never join these to the 64 us cold trajectory.\n",
+  "cases": [
+    {
+      "kind": "strict",
+      "runs": [
+        "repairstrict02"
+      ],
+      "status": "observed_restart_then_deliberately_stopped",
+      "scope": "Analyze recovered same-DUT native precision and retention branches.\n\nThe root retention run uses the actual cold terminal voltages/currents, not a\nnative continuation of cold capture. Only its own subsequent native branches\npreserve simulator history. Never join these to the 64 us cold trajectory.\n",
+      "diagnostic": "results/precision_diagnostics.json",
+      "note": "Not a completed retention test. Strict independent reset followup is repaircoldstrict01."
+    },
+    {
+      "kind": "retention",
+      "runs": [
+        "repairretain01",
+        "repairretain02"
+      ],
+      "status": "pending",
+      "scope": "Analyze recovered same-DUT native precision and retention branches.\n\nThe root retention run uses the actual cold terminal voltages/currents, not a\nnative continuation of cold capture. Only its own subsequent native branches\npreserve simulator history. Never join these to the 64 us cold trajectory.\n"
+    }
+  ]
+}

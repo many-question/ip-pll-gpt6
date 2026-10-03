@@ -1,0 +1,676 @@
+{
+  "scope": "Complete physical programmable PLL, independent reset/application sequence; native recovery preserves all states. Initial10uV differential VCO perturbation seeds deterministic oscillation. No constructed near-lock initial state. Supply is alreadyDC1.2V: this is reset acquisition, not a power-rail ramp/startup qualification.",
+  "condition": "TT27,1.2V,24MHz,10fF,K41/M4,Q5 RLC,4ps/reltol1e-4. Functional result; strict numerics and random noise remain separate.",
+  "sources": {
+    "research\\runs\\spectre_cmos_v14_full\\repaircold01\\repair_capture_tt\\result.json": "caab9aa96c569676df0e3131688b837b48b60bf62be5849fcb450dad9a062ac6"
+  },
+  "boundaries": [],
+  "circuit_hashes_identical": true,
+  "final_simulator_completed": true,
+  "stationarity": {
+    "phase_pp_rad": 0.0032839241257640595,
+    "phase_drift_rad_per_us": -0.00018405465656384424,
+    "max_rf_cycles_error": 0.00038769279490225017,
+    "max_out_cycles_error": 0.0001060950817191042,
+    "mean_output_mhz": 984.0000695926938,
+    "ctrl_range_v": [
+      0.6762280279702453,
+      0.6763934733131564
+    ],
+    "observed_final_window_us": 0.9580000000021006,
+    "passed": true,
+    "criteria": "Last1us: phase pp<.02rad, drift<.01rad/us, cycles/ref errors<.001, ctrl0.2..1V; functional stationarity, not jitter.",
+    "measurement_limit": "Sparse GHz voltage/current samples are not used for RF swing or average power.",
+    "end_us": 63.99999999997539,
+    "final_state": {
+      "cfg_ready": 1.200003146679937,
+      "qualified": 1.200002527147389,
+      "range_error": 1.47928780482035e-06,
+      "frequency_good": 1.200005173602671,
+      "phase_good": 1.199999459037268,
+      "amp_good": 1.200000029293389,
+      "XP.en": 1.203976057219181,
+      "XP.XC.acquired": 1.195162114360907,
+      "XP.XV.XL.nb": 0.725608728098993
+    },
+    "final_1us_total_supply_power_mw": 5.62253080079037,
+    "power_method": "Internal-timestep integration of complete external1.2V supply; power=delta(nJ)/delta(us). Does not assume sparse sampled current is accurate.",
+    "whole_run_energy_nj": 379.5628940158614,
+    "final_1us_phase_held_high_fraction": 1.0,
+    "final_1us_qualified_high_fraction": 1.0,
+    "first_qualified_us": 56.5024077880292
+  },
+  "logic": {
+    "cfg_ready": {
+      "first_rising_us": 0.7520763902953742,
+      "final_v": 1.200003146679937,
+      "final_1us_all_high": true
+    },
+    "qualified": {
+      "first_rising_us": 56.5024077880292,
+      "final_v": 1.200002527147389,
+      "final_1us_all_high": true
+    },
+    "range_error": {
+      "first_rising_us": null,
+      "final_v": 1.47928780482035e-06,
+      "final_1us_all_high": false
+    },
+    "frequency_good": {
+      "first_rising_us": 55.16899709118562,
+      "final_v": 1.200005173602671,
+      "final_1us_all_high": true
+    },
+    "XP.XC.acquired": {
+      "first_rising_us": 53.58563782388823,
+      "final_v": 1.195162114360907,
+      "final_1us_all_high": true
+    },
+    "XP.en": {
+      "first_rising_us": 53.587017690544684,
+      "final_v": 1.203976057219181,
+      "final_1us_all_high": true
+    },
+    "XP.restart": {
+      "first_rising_us": null,
+      "final_v": 3.642331954059308e-06,
+      "final_1us_all_high": false
+    }
+  },
+  "digital_events": [
+    {
+      "time_us": 1.086000000000005,
+      "state": 1,
+      "coarse": 0,
+      "dac": 11,
+      "rf_cycles_per_ref": 171.9594820428456
+    },
+    {
+      "time_us": 2.4200000000000177,
+      "state": 2,
+      "coarse": 0,
+      "dac": 11,
+      "rf_cycles_per_ref": 171.973373669809
+    },
+    {
+      "time_us": 2.544000000000028,
+      "state": 3,
+      "coarse": 0,
+      "dac": 11,
+      "rf_cycles_per_ref": 171.9783107734056
+    },
+    {
+      "time_us": 2.586000000000031,
+      "state": 0,
+      "coarse": 0,
+      "dac": 11,
+      "rf_cycles_per_ref": 171.9788055534973
+    },
+    {
+      "time_us": 2.590000000000031,
+      "state": 0,
+      "coarse": 128,
+      "dac": 11,
+      "rf_cycles_per_ref": 171.9788055534973
+    },
+    {
+      "time_us": 2.920000000000056,
+      "state": 1,
+      "coarse": 128,
+      "dac": 11,
+      "rf_cycles_per_ref": 135.5172422777487
+    },
+    {
+      "time_us": 4.252000000000156,
+      "state": 2,
+      "coarse": 128,
+      "dac": 11,
+      "rf_cycles_per_ref": 135.5140093001319
+    },
+    {
+      "time_us": 4.378000000000164,
+      "state": 3,
+      "coarse": 128,
+      "dac": 11,
+      "rf_cycles_per_ref": 135.509273213389
+    },
+    {
+      "time_us": 4.4220000000001685,
+      "state": 0,
+      "coarse": 64,
+      "dac": 11,
+      "rf_cycles_per_ref": 135.5107818457727
+    },
+    {
+      "time_us": 4.752000000000194,
+      "state": 1,
+      "coarse": 64,
+      "dac": 11,
+      "rf_cycles_per_ref": 150.9156357936408
+    },
+    {
+      "time_us": 6.086000000000293,
+      "state": 2,
+      "coarse": 64,
+      "dac": 11,
+      "rf_cycles_per_ref": 150.9061250184604
+    },
+    {
+      "time_us": 6.2120000000003035,
+      "state": 3,
+      "coarse": 64,
+      "dac": 11,
+      "rf_cycles_per_ref": 150.9022462306239
+    },
+    {
+      "time_us": 6.254000000000306,
+      "state": 0,
+      "coarse": 32,
+      "dac": 11,
+      "rf_cycles_per_ref": 150.9030086942366
+    },
+    {
+      "time_us": 6.586000000000332,
+      "state": 1,
+      "coarse": 32,
+      "dac": 11,
+      "rf_cycles_per_ref": 160.4625802592382
+    },
+    {
+      "time_us": 7.920000000000309,
+      "state": 2,
+      "coarse": 32,
+      "dac": 11,
+      "rf_cycles_per_ref": 160.4554642705662
+    },
+    {
+      "time_us": 8.044000000000265,
+      "state": 3,
+      "coarse": 32,
+      "dac": 11,
+      "rf_cycles_per_ref": 160.4620185543172
+    },
+    {
+      "time_us": 8.08600000000025,
+      "state": 0,
+      "coarse": 16,
+      "dac": 11,
+      "rf_cycles_per_ref": 160.457759126446
+    },
+    {
+      "time_us": 8.420000000000135,
+      "state": 1,
+      "coarse": 16,
+      "dac": 11,
+      "rf_cycles_per_ref": 165.8590057715701
+    },
+    {
+      "time_us": 9.75199999999967,
+      "state": 2,
+      "coarse": 16,
+      "dac": 11,
+      "rf_cycles_per_ref": 165.8717381333845
+    },
+    {
+      "time_us": 9.877999999999627,
+      "state": 3,
+      "coarse": 16,
+      "dac": 11,
+      "rf_cycles_per_ref": 165.8695575988531
+    },
+    {
+      "time_us": 9.919999999999613,
+      "state": 0,
+      "coarse": 24,
+      "dac": 11,
+      "rf_cycles_per_ref": 165.8728709337811
+    },
+    {
+      "time_us": 10.2519999999995,
+      "state": 1,
+      "coarse": 24,
+      "dac": 11,
+      "rf_cycles_per_ref": 163.035305663725
+    },
+    {
+      "time_us": 11.58599999999903,
+      "state": 2,
+      "coarse": 24,
+      "dac": 11,
+      "rf_cycles_per_ref": 163.0417630919037
+    },
+    {
+      "time_us": 11.711999999998989,
+      "state": 3,
+      "coarse": 24,
+      "dac": 11,
+      "rf_cycles_per_ref": 163.0395201647771
+    },
+    {
+      "time_us": 11.75199999999897,
+      "state": 0,
+      "coarse": 20,
+      "dac": 11,
+      "rf_cycles_per_ref": 163.0377849408687
+    },
+    {
+      "time_us": 12.08599999999886,
+      "state": 1,
+      "coarse": 20,
+      "dac": 11,
+      "rf_cycles_per_ref": 164.4777888751196
+    },
+    {
+      "time_us": 13.419999999998389,
+      "state": 2,
+      "coarse": 20,
+      "dac": 11,
+      "rf_cycles_per_ref": 164.4883919645945
+    },
+    {
+      "time_us": 13.54399999999835,
+      "state": 3,
+      "coarse": 20,
+      "dac": 11,
+      "rf_cycles_per_ref": 164.485269585748
+    },
+    {
+      "time_us": 13.58599999999833,
+      "state": 0,
+      "coarse": 22,
+      "dac": 11,
+      "rf_cycles_per_ref": 164.4854459266135
+    },
+    {
+      "time_us": 13.91999999999822,
+      "state": 1,
+      "coarse": 22,
+      "dac": 11,
+      "rf_cycles_per_ref": 163.8099381499705
+    },
+    {
+      "time_us": 15.25199999999775,
+      "state": 2,
+      "coarse": 22,
+      "dac": 11,
+      "rf_cycles_per_ref": 163.8179939470574
+    },
+    {
+      "time_us": 15.377999999997808,
+      "state": 3,
+      "coarse": 22,
+      "dac": 11,
+      "rf_cycles_per_ref": 163.8192068228673
+    },
+    {
+      "time_us": 15.41999999999783,
+      "state": 0,
+      "coarse": 21,
+      "dac": 11,
+      "rf_cycles_per_ref": 163.8129262892544
+    },
+    {
+      "time_us": 15.751999999997999,
+      "state": 1,
+      "coarse": 21,
+      "dac": 11,
+      "rf_cycles_per_ref": 164.2048039152869
+    },
+    {
+      "time_us": 17.08599999999866,
+      "state": 2,
+      "coarse": 21,
+      "dac": 11,
+      "rf_cycles_per_ref": 164.2075816501747
+    },
+    {
+      "time_us": 17.21199999999873,
+      "state": 3,
+      "coarse": 21,
+      "dac": 11,
+      "rf_cycles_per_ref": 164.2088851937151
+    },
+    {
+      "time_us": 17.25199999999875,
+      "state": 0,
+      "coarse": 23,
+      "dac": 32,
+      "rf_cycles_per_ref": 164.2111538430909
+    },
+    {
+      "time_us": 17.58599999999891,
+      "state": 1,
+      "coarse": 23,
+      "dac": 32,
+      "rf_cycles_per_ref": 163.7868947805109
+    },
+    {
+      "time_us": 22.92000000000157,
+      "state": 2,
+      "coarse": 23,
+      "dac": 32,
+      "rf_cycles_per_ref": 163.8092081172508
+    },
+    {
+      "time_us": 23.04400000000163,
+      "state": 3,
+      "coarse": 23,
+      "dac": 32,
+      "rf_cycles_per_ref": 163.8045507025236
+    },
+    {
+      "time_us": 23.086000000001658,
+      "state": 0,
+      "coarse": 23,
+      "dac": 48,
+      "rf_cycles_per_ref": 163.8074597029918
+    },
+    {
+      "time_us": 23.420000000001817,
+      "state": 1,
+      "coarse": 23,
+      "dac": 48,
+      "rf_cycles_per_ref": 164.4605292944616
+    },
+    {
+      "time_us": 28.752000000004482,
+      "state": 2,
+      "coarse": 23,
+      "dac": 48,
+      "rf_cycles_per_ref": 164.4805389971443
+    },
+    {
+      "time_us": 28.87800000000454,
+      "state": 3,
+      "coarse": 23,
+      "dac": 48,
+      "rf_cycles_per_ref": 164.4809178670112
+    },
+    {
+      "time_us": 28.92000000000456,
+      "state": 0,
+      "coarse": 23,
+      "dac": 40,
+      "rf_cycles_per_ref": 164.4796227469342
+    },
+    {
+      "time_us": 29.25200000000473,
+      "state": 1,
+      "coarse": 23,
+      "dac": 40,
+      "rf_cycles_per_ref": 164.0566627579392
+    },
+    {
+      "time_us": 34.586000000000496,
+      "state": 2,
+      "coarse": 23,
+      "dac": 40,
+      "rf_cycles_per_ref": 164.0699063235661
+    },
+    {
+      "time_us": 34.71200000000035,
+      "state": 3,
+      "coarse": 23,
+      "dac": 40,
+      "rf_cycles_per_ref": 164.0696645554854
+    },
+    {
+      "time_us": 34.7520000000003,
+      "state": 0,
+      "coarse": 23,
+      "dac": 36,
+      "rf_cycles_per_ref": 164.067218403361
+    },
+    {
+      "time_us": 35.0859999999999,
+      "state": 1,
+      "coarse": 23,
+      "dac": 36,
+      "rf_cycles_per_ref": 163.9249676285253
+    },
+    {
+      "time_us": 40.419999999993514,
+      "state": 2,
+      "coarse": 23,
+      "dac": 36,
+      "rf_cycles_per_ref": 163.9319151422242
+    },
+    {
+      "time_us": 40.54399999999338,
+      "state": 3,
+      "coarse": 23,
+      "dac": 36,
+      "rf_cycles_per_ref": 163.9343734871363
+    },
+    {
+      "time_us": 40.585999999993334,
+      "state": 0,
+      "coarse": 23,
+      "dac": 38,
+      "rf_cycles_per_ref": 163.9326773440989
+    },
+    {
+      "time_us": 40.919999999992925,
+      "state": 1,
+      "coarse": 23,
+      "dac": 38,
+      "rf_cycles_per_ref": 163.9913716473384
+    },
+    {
+      "time_us": 46.25199999998655,
+      "state": 2,
+      "coarse": 23,
+      "dac": 38,
+      "rf_cycles_per_ref": 163.999846230261
+    },
+    {
+      "time_us": 46.3779999999864,
+      "state": 3,
+      "coarse": 23,
+      "dac": 38,
+      "rf_cycles_per_ref": 163.9977782227797
+    },
+    {
+      "time_us": 46.41999999998635,
+      "state": 0,
+      "coarse": 23,
+      "dac": 37,
+      "rf_cycles_per_ref": 163.9979146976839
+    },
+    {
+      "time_us": 46.75199999998596,
+      "state": 1,
+      "coarse": 23,
+      "dac": 37,
+      "rf_cycles_per_ref": 163.959318176494
+    },
+    {
+      "time_us": 52.08599999997958,
+      "state": 2,
+      "coarse": 23,
+      "dac": 37,
+      "rf_cycles_per_ref": 163.9632941377349
+    },
+    {
+      "time_us": 52.211999999979426,
+      "state": 3,
+      "coarse": 23,
+      "dac": 37,
+      "rf_cycles_per_ref": 163.9636843172484
+    },
+    {
+      "time_us": 52.25199999997938,
+      "state": 4,
+      "coarse": 23,
+      "dac": 38,
+      "rf_cycles_per_ref": 163.9632379580289
+    },
+    {
+      "time_us": 53.585999999977794,
+      "state": 5,
+      "coarse": 23,
+      "dac": 38,
+      "rf_cycles_per_ref": 163.9990680499468
+    }
+  ],
+  "joined_waveform": "research\\runs\\spectre_cmos_v14_full\\capture_joined_repaircold01\\waveforms.npz",
+  "joined_waveform_sha256": "40bf8b47846649cb184e5ae52a201c5283cfea036db9542edc93ea126dad30da",
+  "functional_capture_screen_passed": true,
+  "fll_measurements": [
+    {
+      "eval_time_us": 2.544000000000028,
+      "coarse": 0,
+      "dac": 11,
+      "captured_count": 1375,
+      "target_count": 1312,
+      "rf_mhz_before_eval": 4127.260512470994,
+      "frequency_window_note": "Reference-cycle observations within late measurement interval, excludingdrain; not a direct count-window timing measurement."
+    },
+    {
+      "eval_time_us": 4.378000000000164,
+      "coarse": 128,
+      "dac": 11,
+      "captured_count": 1084,
+      "target_count": 1312,
+      "rf_mhz_before_eval": 3252.3537257748458,
+      "frequency_window_note": "Reference-cycle observations within late measurement interval, excludingdrain; not a direct count-window timing measurement."
+    },
+    {
+      "eval_time_us": 6.2120000000003035,
+      "coarse": 64,
+      "dac": 11,
+      "captured_count": 1207,
+      "target_count": 1312,
+      "rf_mhz_before_eval": 3621.844802321173,
+      "frequency_window_note": "Reference-cycle observations within late measurement interval, excludingdrain; not a direct count-window timing measurement."
+    },
+    {
+      "eval_time_us": 8.044000000000265,
+      "coarse": 32,
+      "dac": 11,
+      "captured_count": 1284,
+      "target_count": 1312,
+      "rf_mhz_before_eval": 3851.020566809319,
+      "frequency_window_note": "Reference-cycle observations within late measurement interval, excludingdrain; not a direct count-window timing measurement."
+    },
+    {
+      "eval_time_us": 9.877999999999627,
+      "coarse": 16,
+      "dac": 11,
+      "captured_count": 1327,
+      "target_count": 1312,
+      "rf_mhz_before_eval": 3980.7944554722962,
+      "frequency_window_note": "Reference-cycle observations within late measurement interval, excludingdrain; not a direct count-window timing measurement."
+    },
+    {
+      "eval_time_us": 11.711999999998989,
+      "coarse": 24,
+      "dac": 11,
+      "captured_count": 1305,
+      "target_count": 1312,
+      "rf_mhz_before_eval": 3912.943812637122,
+      "frequency_window_note": "Reference-cycle observations within late measurement interval, excludingdrain; not a direct count-window timing measurement."
+    },
+    {
+      "eval_time_us": 13.54399999999835,
+      "coarse": 20,
+      "dac": 11,
+      "captured_count": 1316,
+      "target_count": 1312,
+      "rf_mhz_before_eval": 3947.636190844266,
+      "frequency_window_note": "Reference-cycle observations within late measurement interval, excludingdrain; not a direct count-window timing measurement."
+    },
+    {
+      "eval_time_us": 15.377999999997808,
+      "coarse": 22,
+      "dac": 11,
+      "captured_count": 1310,
+      "target_count": 1312,
+      "rf_mhz_before_eval": 3931.5511150018515,
+      "frequency_window_note": "Reference-cycle observations within late measurement interval, excludingdrain; not a direct count-window timing measurement."
+    },
+    {
+      "eval_time_us": 17.21199999999873,
+      "coarse": 21,
+      "dac": 11,
+      "captured_count": 1313,
+      "target_count": 1312,
+      "rf_mhz_before_eval": 3940.998368917869,
+      "frequency_window_note": "Reference-cycle observations within late measurement interval, excludingdrain; not a direct count-window timing measurement."
+    },
+    {
+      "eval_time_us": 23.04400000000163,
+      "coarse": 23,
+      "dac": 32,
+      "captured_count": 5241,
+      "target_count": 5248,
+      "rf_mhz_before_eval": 3931.3978814985135,
+      "frequency_window_note": "Reference-cycle observations within late measurement interval, excludingdrain; not a direct count-window timing measurement."
+    },
+    {
+      "eval_time_us": 28.87800000000454,
+      "coarse": 23,
+      "dac": 48,
+      "captured_count": 5263,
+      "target_count": 5248,
+      "rf_mhz_before_eval": 3947.515572856749,
+      "frequency_window_note": "Reference-cycle observations within late measurement interval, excludingdrain; not a direct count-window timing measurement."
+    },
+    {
+      "eval_time_us": 34.71200000000035,
+      "coarse": 23,
+      "dac": 40,
+      "captured_count": 5250,
+      "target_count": 5248,
+      "rf_mhz_before_eval": 3937.679495191947,
+      "frequency_window_note": "Reference-cycle observations within late measurement interval, excludingdrain; not a direct count-window timing measurement."
+    },
+    {
+      "eval_time_us": 40.54399999999338,
+      "coarse": 23,
+      "dac": 36,
+      "captured_count": 5246,
+      "target_count": 5248,
+      "rf_mhz_before_eval": 3934.431526880765,
+      "frequency_window_note": "Reference-cycle observations within late measurement interval, excludingdrain; not a direct count-window timing measurement."
+    },
+    {
+      "eval_time_us": 46.3779999999864,
+      "coarse": 23,
+      "dac": 38,
+      "captured_count": 5248,
+      "target_count": 5248,
+      "rf_mhz_before_eval": 3936.0134818468223,
+      "frequency_window_note": "Reference-cycle observations within late measurement interval, excludingdrain; not a direct count-window timing measurement."
+    },
+    {
+      "eval_time_us": 52.211999999979426,
+      "coarse": 23,
+      "dac": 37,
+      "captured_count": 5246,
+      "target_count": 5248,
+      "rf_mhz_before_eval": 3935.134415611262,
+      "frequency_window_note": "Reference-cycle observations within late measurement interval, excludingdrain; not a direct count-window timing measurement."
+    }
+  ],
+  "pre_handoff": {
+    "window_us": [
+      52.58563782388823,
+      53.485637823888226
+    ],
+    "rf_mean_mhz": 3935.9789361135654,
+    "rf_error_mhz": -0.021063886434603774,
+    "coarse": 23,
+    "dac": 38
+  },
+  "reset_trajectory_energy": {
+    "total_nj": 379.5628940158614,
+    "mean_supply_mw": 5.930670219000115,
+    "maximum_100ns_average_mw": 6.454577571899152,
+    "maximum_window_us": [
+      0.5,
+      0.6
+    ],
+    "boundary": "100ns non-overlapping energy averages, not instantaneous peak current/power. Does not include a power-supply ramp."
+  }
+}

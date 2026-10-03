@@ -1,0 +1,21 @@
+simulator lang=spectre
+// Master input and slave transfer TGs are strengthened; master inverter load
+// and feedback loading are reduced. Slave drive serves the next stage/mux.
+subckt ring_fast_master_v14 (d ck ckb qb vdd vss)
+XT (d x ck ckb vdd vss) pll_tg wn=2u wp=4u
+XO (x qb vdd vss) pll_inv wn=0.8u wp=1.6u
+XFI (qb fb vdd vss) pll_inv wn=0.25u wp=0.5u
+XFB (fb x ckb ck vdd vss) pll_tg wn=0.25u wp=0.5u
+ends ring_fast_master_v14
+subckt ring_fast_slave_v14 (d ck ckb qb vdd vss)
+XT (d x ck ckb vdd vss) pll_tg wn=2u wp=4u
+XO (x qb vdd vss) pll_inv wn=4u wp=8u
+XFI (qb fb vdd vss) pll_inv wn=0.25u wp=0.5u
+XFB (fb x ckb ck vdd vss) pll_tg wn=0.25u wp=0.5u
+ends ring_fast_slave_v14
+subckt ring_datafast_v14 (d clk clkb load loadb init q vdd vss)
+XDATA (d din loadb load vdd vss) pll_tg wn=1u wp=2u
+XINIT (init din load loadb vdd vss) pll_tg wn=1u wp=2u
+XM (din clkb clk qm vdd vss) ring_fast_master_v14
+XS (qm clk clkb q vdd vss) ring_fast_slave_v14
+ends ring_datafast_v14

@@ -37,5 +37,6 @@ for a in [ax[0,0],ax[1,0],ax[2,0],ax[2,1]]:
 fig.suptitle('V14 complete PLL reset acquisition: TT27,1.2V,K41/M4,10fF,Q5 RLC\n'
              'DC supply; no rail ramp. Functional capture screen: '+str(r['functional_capture_screen_passed']),fontsize=13)
 out=H/'results/figures';out.mkdir(exist_ok=True)
-fig.savefig(out/'complete_reset_capture.png',dpi=160);plt.close(fig)
+filename='complete_reset_capture.png' if name=='completecold05' else f'{name}_reset_capture.png'
+fig.savefig(out/filename,dpi=160);plt.close(fig)
 print('Plotted completed reset trajectory')
