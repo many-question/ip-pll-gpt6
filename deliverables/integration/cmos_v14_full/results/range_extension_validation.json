@@ -1,0 +1,82 @@
+{
+  "cases": [
+    {
+      "case": "range48_c0_v10_ss",
+      "source_result": "research/runs/spectre_cmos_v14_full/range48_01/range48_c0_v10_ss/result.json",
+      "source_sha256": "f79559c00f8faaea8e16f7dbfdf1130130c08bfb2c420a4508eed642e61a417b",
+      "corner": "ss",
+      "code": 0,
+      "ctrl_v": 1,
+      "rf_mhz": 4166.027543894659,
+      "rf_half_window_mhz": [
+        4165.193019285077,
+        4166.893200712946
+      ],
+      "output_mhz": 1039.4104228076174,
+      "oscillator_endpoint_covered": true,
+      "divider_frequency_ratio_ok": false,
+      "differential_swing_pp_v": 1.8250190574498424,
+      "partial_fixture_power_mw": {
+        "total": 5.135002433633684,
+        "vco": 3.446439093896251,
+        "rx": 0.7445856522769633,
+        "rt": 0.11978500448531203,
+        "other": 0.8241926829751574
+      },
+      "dense_power_crosscheck_mw": 5.135002660727834
+    },
+    {
+      "case": "range48_c255_v02_ss",
+      "source_result": "research/runs/spectre_cmos_v14_full/range48_01/range48_c255_v02_ss/result.json",
+      "source_sha256": "c4909a59d2549bf5f87808a77c8cf436d0c72117b1559f9896cd99cb6701471e",
+      "corner": "ss",
+      "code": 255,
+      "ctrl_v": 0.2,
+      "rf_mhz": 2670.322980450288,
+      "rf_half_window_mhz": [
+        2669.504566846716,
+        2671.215007268642
+      ],
+      "output_mhz": null,
+      "oscillator_endpoint_covered": true,
+      "divider_frequency_ratio_ok": false,
+      "differential_swing_pp_v": 1.320303979075881,
+      "partial_fixture_power_mw": {
+        "total": 7.228398952758818,
+        "vco": 5.027720989724848,
+        "rx": 0.47987089936424676,
+        "rt": 0.08853294563828383,
+        "other": 1.6322741180314393
+      },
+      "dense_power_crosscheck_mw": 7.228399044607551
+    },
+    {
+      "case": "range48_c255_v02_tt",
+      "source_result": "research/runs/spectre_cmos_v14_full/range48_01/range48_c255_v02_tt/result.json",
+      "source_sha256": "33db34bc7b61d892992cd36b42fb0d87e980999444186f5b4c523d7815f29979",
+      "corner": "tt",
+      "code": 255,
+      "ctrl_v": 0.2,
+      "rf_mhz": 2664.687831078589,
+      "rf_half_window_mhz": [
+        2663.3362894105944,
+        2666.1558637959024
+      ],
+      "output_mhz": 190.32045982239964,
+      "oscillator_endpoint_covered": true,
+      "divider_frequency_ratio_ok": true,
+      "differential_swing_pp_v": 1.4623975915639864,
+      "partial_fixture_power_mw": {
+        "total": 7.83564789897988,
+        "vco": 5.365303343744383,
+        "rx": 0.4894811979941548,
+        "rt": 0.06871070201031498,
+        "other": 1.9121526552310266
+      },
+      "dense_power_crosscheck_mw": 7.835647955051113
+    }
+  ],
+  "expected": 6,
+  "full_pll_acceptance": false,
+  "scope": "Loaded VCO with original MOS bank,unit capacitor4.8fF,external coarse/control; endpoints only. No intermediate-code continuity, FLL or fullPLL jitter/power signoff."
+}

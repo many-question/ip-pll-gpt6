@@ -1,0 +1,74 @@
+{
+  "scope": "Prepare PSS only from a completed, stationary physical-register core.\n\nThe full PLL is unchanged. Reference loading remains an approximation and\nother slow controls remain fixed ideal pins. This cannot sign off PLL RMS.\n",
+  "source_result": "research/runs/spectre_cmos_v14_full/coressettle01/core_register_settle_tt/result.json",
+  "source_sha256": "30a0435f8d3c9d2e815bd6295ec1505c92c4cb1cc4873ea9abce76600d2155c8",
+  "source_ic_sha256": "a2010e5636522eea0b545500817f201cc7ae1be3492e28799c07dc7923b09ab0",
+  "filtered_ic_sha256": "ad44fe32d5e0747da8618319f0f5aa615529bed268c7834c0dcb6ec82ede9f46",
+  "preflight": {
+    "source_result": "research/runs/spectre_cmos_v14_full/coressettle01/core_register_settle_tt/result.json",
+    "source_sha256": "30a0435f8d3c9d2e815bd6295ec1505c92c4cb1cc4873ea9abce76600d2155c8",
+    "stationarity": {
+      "phase_pp_rad": 0.0010013567048118288,
+      "phase_drift_rad_per_us": 0.0010243995637005028,
+      "max_rf_cycles_error": 1.6331645412037687e-05,
+      "max_out_cycles_error": 6.845531061117072e-06,
+      "mean_output_mhz": 984.0000434440476,
+      "ctrl_range_v": [
+        0.6423389505557647,
+        0.6424591187813723
+      ],
+      "observed_final_window_us": 0.958000000000072,
+      "passed": true,
+      "criteria": "Last1us: phase pp<.02rad, drift<.01rad/us, cycles/ref errors<.001, ctrl0.2..1V; functional stationarity, not jitter.",
+      "measurement_limit": "Sparse GHz voltage/current samples are not used for RF swing or average power.",
+      "end_us": 5.0,
+      "final_state": {
+        "XP.en": 1.2
+      }
+    },
+    "coarse_ranges": {
+      "b0": [
+        1.198255834635884,
+        1.21325940139499
+      ],
+      "b1": [
+        1.197180698632108,
+        1.212250680474651
+      ],
+      "b2": [
+        1.19585608381515,
+        1.210634630913721
+      ],
+      "b3": [
+        -0.01187514405113616,
+        0.01744269633698912
+      ],
+      "b4": [
+        1.193485988687289,
+        1.207152489717946
+      ],
+      "b5": [
+        -0.01450220487766757,
+        0.02218268252237652
+      ],
+      "b6": [
+        -0.01426356817870461,
+        0.02331583129729376
+      ],
+      "b7": [
+        -0.01399491904977612,
+        0.02371992859777711
+      ]
+    },
+    "coarse23_held": true,
+    "preflight_passed": true,
+    "full_pll_jitter_fs": null,
+    "scope": "Same-core text terminal restart, not native continuous trajectory. Stationarity screen only; fullDUT equivalence and periodic/noise validation remain."
+  },
+  "pss_fund_hz": 4000000,
+  "pss_tstab_ns": 250,
+  "harmonics": 4095,
+  "maxsideband": 4095,
+  "condition": "TT27/1.2V/K41/M4/10fF/Q5; coarse23 physical8DFF,additionalref1.9pF. FullDUT equivalence not established.",
+  "full_pll_acceptance": false
+}

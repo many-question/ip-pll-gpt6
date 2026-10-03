@@ -17,8 +17,179 @@
         "repairretain01",
         "repairretain02"
       ],
-      "status": "pending",
-      "scope": "Analyze recovered same-DUT native precision and retention branches.\n\nThe root retention run uses the actual cold terminal voltages/currents, not a\nnative continuation of cold capture. Only its own subsequent native branches\npreserve simulator history. Never join these to the 64 us cold trajectory.\n"
+      "status": "completed",
+      "scope": "Analyze recovered same-DUT native precision and retention branches.\n\nThe root retention run uses the actual cold terminal voltages/currents, not a\nnative continuation of cold capture. Only its own subsequent native branches\npreserve simulator history. Never join these to the 64 us cold trajectory.\n",
+      "checkpoint_prefixes": [
+        {
+          "raw": "research/runs/spectre_cmos_v14_full/repairretain01/repair_retain_tt/repair_retain_tt.raw/tran.tran.tran",
+          "raw_sha256": "92ad7c97ede8e1062af394e30cb5e733c756c06a49ee12f4b286414505a581e1",
+          "waveform_sha256": "71485cc546a581d63e3cee9daffd7074c9d8e3286cbab000b9042952e62faf86",
+          "scope": "Incomplete native parent prefix; not a standalone acceptance run."
+        }
+      ],
+      "sources": {
+        "research/runs/spectre_cmos_v14_full/repairretain01/repair_retain_tt/result.json": "a66442b2a9e692597bca337c109f000364e0c25d07ab983cddb1d7c8ace74a8f",
+        "research/runs/spectre_cmos_v14_full/repairretain02/repair_retain_tt/result.json": "e02af3fa79d0b92c2fea01f9d71a0a491b15842fe2c4a040c6fe881795fde1c9"
+      },
+      "stationarity": {
+        "phase_pp_rad": 0.005260177050345205,
+        "phase_drift_rad_per_us": 0.0021512365914814185,
+        "max_rf_cycles_error": 0.00048669366520925905,
+        "max_out_cycles_error": 0.00011716422159224749,
+        "mean_output_mhz": 984.0002519059926,
+        "ctrl_range_v": [
+          0.6746862581029744,
+          0.6748143250852202
+        ],
+        "observed_final_window_us": 0.9579999999988615,
+        "passed": true,
+        "criteria": "Last1us: phase pp<.02rad, drift<.01rad/us, cycles/ref errors<.001, ctrl0.2..1V; functional stationarity, not jitter.",
+        "measurement_limit": "Sparse GHz voltage/current samples are not used for RF swing or average power.",
+        "end_us": 35.999999999998806,
+        "final_state": {
+          "cfg_ready": 1.200003162724925,
+          "qualified": 1.200002560298602,
+          "range_error": 1.465305615664669e-06,
+          "frequency_good": 1.200005314714282,
+          "phase_good": 1.19999950102957,
+          "amp_good": 1.200000030545427,
+          "XP.en": 1.203970639215258,
+          "XP.XC.acquired": 1.195168479106755,
+          "XP.XV.XL.nb": 0.7256087325482351
+        },
+        "final_1us_total_supply_power_mw": 5.6559266574500535,
+        "power_method": "Internal-timestep integration of complete external1.2V supply; power=delta(nJ)/delta(us). Does not assume sparse sampled current is accurate.",
+        "whole_run_energy_nj": 204.1235166321123,
+        "final_1us_phase_held_high_fraction": 1.0,
+        "final_1us_qualified_high_fraction": 1.0,
+        "first_qualified_us": null
+      },
+      "native_state": {
+        "local": "research/runs/spectre_cmos_v14_full/repairretain01/repair_retain_tt/checkpoints/20261003T121558.srf",
+        "remote": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/repairretain02_repair_retain_tt.recover.srf",
+        "sha256": "167c323f8f374910e269474421130982ac7bb6a613512d68a3f1a8d0718b130c",
+        "remote_hash_match": true,
+        "source_snapshot": "repairretain01"
+      },
+      "dut_dependency_hashes_verified": true,
+      "time_range_us": [
+        0.0,
+        35.999999999998806
+      ],
+      "ever_restart": false,
+      "whole_window_qualified_high": true,
+      "logic_high_fraction": {
+        "qualified": 1.0,
+        "frequency_good": 1.0,
+        "cfg_ready": 1.0,
+        "range_error": 0.0,
+        "XP.en": 1.0,
+        "XP.XC.acquired": 1.0
+      },
+      "held_state_screen_passed": true,
+      "power_windows": {
+        "last_1us": {
+          "window_us": [
+            34.99999999999881,
+            35.999999999998806
+          ],
+          "power_mw": {
+            "total": 5.655926657449884,
+            "vco": 3.728280061861408,
+            "rx": 0.7145816720483096,
+            "rt": 0.13116702640129976,
+            "other": 1.0818978971388669
+          },
+          "qualified_all_high": true,
+          "frequency_good_all_high": true
+        },
+        "full_32us_control_period": {
+          "window_us": [
+            4.0,
+            36.0
+          ],
+          "power_mw": {
+            "total": 5.667114058742668,
+            "vco": 3.7281573479054373,
+            "rx": 0.7145798826870918,
+            "rt": 0.13116691797724336,
+            "other": 1.093209910172896
+          },
+          "qualified_all_high": true,
+          "frequency_good_all_high": true
+        }
+      },
+      "power_boundary": "Internal-step energy endpoint differences of all PLL supply. Text seed retained XE:idt0 offset; the offset cancels. No absolute initial energy is treated as consumed DUT energy.",
+      "edge_statistics": {
+        "reference": {
+          "rise_ns": {
+            "mean": 0.199786649726511,
+            "minimum": 0.199657043346423,
+            "maximum": 0.1999360403121984
+          },
+          "fall_ns": {
+            "mean": 0.1822689324372784,
+            "minimum": 0.1820923109968923,
+            "maximum": 0.1823935421302997
+          },
+          "period_ns": {
+            "mean": 41.66667188622823,
+            "minimum": 41.66656643015977,
+            "maximum": 41.66671984119608
+          },
+          "duty_percent": {
+            "mean": 50.006239101247495,
+            "minimum": 50.00600922770071,
+            "maximum": 50.00652421764781
+          }
+        },
+        "rfclock": {
+          "rise_ns": {
+            "mean": 0.04174150536704407,
+            "minimum": 0.04000483281365327,
+            "maximum": 0.04387461317786065
+          },
+          "fall_ns": {
+            "mean": 0.0420356591371315,
+            "minimum": 0.03984067087602897,
+            "maximum": 0.0442186409287549
+          },
+          "period_ns": {
+            "mean": 0.25406983126458527,
+            "minimum": 0.252539642979022,
+            "maximum": 0.2564314077242334
+          },
+          "duty_percent": {
+            "mean": 49.591630120501364,
+            "minimum": 49.25725486946627,
+            "maximum": 49.85843197143902
+          }
+        },
+        "output": {
+          "rise_ns": {
+            "mean": 0.13064314319289486,
+            "minimum": 0.1305678685897577,
+            "maximum": 0.1308353141674318
+          },
+          "fall_ns": {
+            "mean": 0.21334483471852522,
+            "minimum": 0.2131951910475625,
+            "maximum": 0.2134988474734672
+          },
+          "period_ns": {
+            "mean": 1.0162614368436216,
+            "minimum": 1.012628233374661,
+            "maximum": 1.021093913144543
+          },
+          "duty_percent": {
+            "mean": 43.985710334033506,
+            "minimum": 43.89822343794146,
+            "maximum": 44.23872604138231
+          }
+        }
+      },
+      "edge_boundary": "Internal-step held edge observers sampled every2ns; not random jitter or a uniformly weighted census of every RF cycle.",
+      "numerical_scope": "4ps/reltol1e-4 same-DUT terminal-state retention; not uninterrupted cold-to100us capture."
     }
   ]
 }

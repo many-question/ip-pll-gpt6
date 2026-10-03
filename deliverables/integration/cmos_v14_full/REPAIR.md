@@ -39,13 +39,13 @@
 
 原 64 µs 仿真正常结束时没有留下原生 `.srf`。因此先使用**实际终态**的电压／电流建立独立同 DUT 检查：不修改任何 DUT 初值，但这仍是文本初态初始化，不能把它接成连续 100 µs 的冷启动轨迹。`repairstrict01` 在直接初始化并改用 1 ps／reltol=1e−5 后出现相位扰动与监督重启，已主动停止并保留负面证据；不能单据这一轨迹区分初始化效应和数值精度影响。
 
-`repairretain01` 在原 4 ps／reltol=1e−4 下建立保持轨迹，约 1.45 µs 保存并回收原生状态。从同一个原生状态分出 `repairretain02`（到 36 µs）与 `repairstrict02`（1 ps／reltol=1e−5）。**原生严格分支也出现相位偏移和重启**：观测到交接后 RF 误差最高约 +1.221 MHz，1.752305 µs 出现 restart；1.83164 µs 主动停止。同状态的原精度分支在已观察时段仍保持，长期测试尚在运行。故不能把严格分支的问题仅归因于文本初始化，4 ps 捕获尚无数值收敛证明。见 [负面精度诊断](results/precision_diagnostics.json)。这些是已观测到的重启事件，不是完成的 6 µs 保持测试。
+`repairretain01` 在原 4 ps／reltol=1e−4 下建立保持轨迹，约 1.45 µs 保存并回收原生状态。从同一个原生状态分出 `repairretain02`（到 36 µs）与 `repairstrict02`（1 ps／reltol=1e−5）。**原生严格分支也出现相位偏移和重启**：观测到交接后 RF 误差最高约 +1.221 MHz，1.752305 µs 出现 restart；1.83164 µs 主动停止。同状态的原精度分支现已完成36µs保持，未出现重启，结果见下节。故不能把严格分支的问题仅归因于文本初始化，4 ps 捕获尚无数值收敛证明。见 [负面精度诊断](results/precision_diagnostics.json)。这些是已观测到的重启事件，不是完成的 6 µs 保持测试。
 
 已新启动 `repaircoldstrict01/repair_capture_strict_tt`，同一 DUT、相同外部复位／配置和 10 µV 启振扰动，**从头以 1 ps／reltol=1e−5 完整运行 64 µs**，同时收紧 vabstol/iabstol；没有读取文本或原生初态。该测试将判断严格精度下 FLL 是否能重新选择适合的交接码并自主捕获，目前待完成。改变数值参数的瞬态扰动不能直接判定严格精度下的完整复位必然失败。
 
 ![严格精度切换诊断](results/figures/precision_restart.png)
 
-供电积分器的文本初态中保留了 `XE:idt0` 偏移，所有功耗采用能量端点差，偏移抵消；不把绝对初始积分值当成消耗能量。保持测试拟取 4–36 µs 的完整 32 µs 周期平均，另列末 1 µs 窗口和内部步长上的边沿测量。见 [状态来源与协议](results/repair_retention_protocol.json)、[保持分析入口](analyze_repair_retention.py)。
+供电积分器的文本初态中保留了 `XE:idt0` 偏移，所有功耗采用能量端点差，偏移抵消；不把绝对初始积分值当成消耗能量。保持测试已完成，使用 4–36 µs 的完整 32 µs 周期平均，另列末 1 µs 窗口和内部步长上的边沿测量。见 [状态来源与协议](results/repair_retention_protocol.json)、[保持分析入口](analyze_repair_retention.py)。
 
 ```powershell
 python share/deliverables/integration/cmos_v14_full/analyze_capture.py repaircold01 --case repair_capture_tt --fine-window 128
@@ -55,7 +55,7 @@ python share/deliverables/integration/cmos_v14_full/analyze_repair_retention.py
 python share/deliverables/integration/cmos_v14_full/analyze_capture.py repaircoldstrict01 --case repair_capture_strict_tt --fine-window 128 --precision strict
 ```
 
-本版已有上述短窗功耗和复位能量结果，整机抖动及长期功耗仍待验证。旧版局部链 141.281 fs 保留原条件，不移植为修复版指标。用户确认的全部 PLL 功耗边界、10 kHz–输出频率一半的抖动频带、33 个频点及全部 REQ 均保持。
+本版已有短窗功耗、复位能量及完整32µs周期功耗结果；整机抖动及严格捕获仍待验证。旧版局部链 141.281 fs 保留原条件，不移植为修复版指标。用户确认的全部 PLL 功耗边界、10 kHz–输出频率一半的抖动频带、33 个频点及全部 REQ 均保持。
 
 ## SS 分频定位
 
@@ -84,4 +84,22 @@ python share/deliverables/integration/cmos_v14_full/analyze_capture.py repaircol
 
 完成37例短仿真；尾级数据隔离、预分频末级驱动及CMOS时钟树修复使独立候选在SS60的÷6/10/14通过。理想RF下三角六档18例全部通过；实际RF接收器下SS÷4/6/10仍失败，当前完整pll_capture_v14保持原版。详见[SS_TIMING.md](SS_TIMING.md)。
 
-真实模拟反馈核心PSS稳定段发现滑相，已停止并检查参考负载裁剪；固定慢控制的近似边界、全频带积分及周期解复用检查见[NOISE_PROGRESS.md](NOISE_PROGRESS.md)。尚未产生新的整机RMS结论。严格独立复位和32µs周期保持任务继续，不重复启动。
+真实模拟反馈核心PSS稳定段发现滑相，已停止并检查参考负载裁剪；固定慢控制的近似边界、全频带积分及周期解复用检查见[NOISE_PROGRESS.md](NOISE_PROGRESS.md)。尚未产生新的整机RMS结论。严格独立复位继续；32µs周期保持已完成，不重复启动。
+
+## 36µs保持与完整控制周期功耗（2026-10-03）
+
+`repairretain02`零错误完成，完整DUT依赖、原生状态和原始波形SHA核对通过。保持轨迹0–36µs未出现restart，qualified全程高。末1µs输出平均984.000252MHz，相位峰峰0.005260rad、漂移0.002151rad/µs，功能稳定性筛选通过。
+
+| 供电边界 | 4–36µs平均（mW） |
+|---|---:|
+| 全部PLL | **5.667114** |
+| VCO及其物理偏置 | 3.728157 |
+| RF接收器 | 0.714580 |
+| 重定时／输出链 | 0.131167 |
+| 其余电路 | 1.093210 |
+
+功耗超过4mW约41.7%。以内部仿真步长积分的能量端点差计算，包含完整32µs控制周期；末1µs为5.655927mW。该轨迹仍是实际64µs终态的文本初始化，再从自身原生状态续算；不能表述为冷启动连续到100µs，也不证明1ps数值收敛。条件为TT27、1.2V、K41/M4、10fF、Q5，4ps/reltol1e-4。
+
+![36µs保持及供电](results/figures/repair_retention.png)
+
+[可复核结果](results/repair_retention.json)，原始数据位于项目`research/runs/spectre_cmos_v14_full/repairretain01`与`repairretain02`。原生前段仅用作续算父段，未当作独立通过测试。

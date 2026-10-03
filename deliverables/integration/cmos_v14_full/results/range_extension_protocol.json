@@ -1,0 +1,24 @@
+{
+  "scope": "First loaded-VCO low-range candidate, without changing the complete PLL.\n\nIncrease only the switched capacitor unit from 4.4 fF to 4.8 fF. Keep its MOS\nswitch sizes, bias, provisional Q5 RLC and actual interface load. External\ncoarse/control clamps exclude FLL and control-output impedance/noise.\n",
+  "cases": [
+    "range48_c255_v02_ss",
+    "range48_c0_v10_ss",
+    "range48_c255_v02_tt",
+    "range48_c0_v10_tt",
+    "range48_c255_v02_ff",
+    "range48_c0_v10_ff"
+  ],
+  "source_tb_sha256": {
+    "range_c255_v02_ss.scs": "2c9eb8c78f851cd50a26deed5706ee580700ca94c017b17f7f9f189c8bcf6a63",
+    "range_c0_v10_ss.scs": "4efb5b0e6c35ce242c7fc91e8846ea3373b8b08ac665481056d896524567d0d2",
+    "range_c255_v02_tt.scs": "af4773b5f6c89b591ad5b455a5ef166917a44278e8dd292add0320659f231839",
+    "range_c0_v10_tt.scs": "abbfb101769ac45ada6a980b85a1f632319ad0727ceca720a3626d5f083e30cf",
+    "range_c255_v02_ff.scs": "fb97d4a46a5ec4c31f0972259355dd329de19e5eeeebd5b52dfbf234ebb4126c",
+    "range_c0_v10_ff.scs": "9db028202ddd7f81a2773a8580d3bf15ca29dc49d3aec8a969aaf409ec7255a7"
+  },
+  "target_rf_mhz": [
+    2688,
+    3936
+  ],
+  "condition": "TT27/SS60/FF0,1.2V,400ns/last60ns,1ps/reltol1e-5,10fF; original bank retained; endpoint oscillator frequency does not establish PLL lock."
+}

@@ -1,0 +1,14 @@
+{
+  "scope": "Move mode gating to a lightly loaded first stage and taper the clock drive.\n\nThe restored prescaler gives full-swing q1 in SS, but the old CI->8/8 NAND\nchain suppresses its short low pulse (GN remains above0.77V). Test a direct\nNAND followed by3 or5 inverters. The selected clock has the same polarity;\nthe unselected clock now parks low. Reset enables the clock for initialization.\nMode/reset behavior and all modes still need regression before full adoption.\n",
+  "cases": [
+    "banktap4_m6_ss",
+    "banktap4_m4_ss",
+    "banktap4_m10_ss",
+    "banktap6_m6_ss",
+    "banktap6_m4_ss",
+    "banktap6_m10_ss"
+  ],
+  "source_sha256": "364db03c7c13e001544c3aca67feb7ed969deb1c2106d4d662b1e644ab2dd415",
+  "run": "banktaper02",
+  "adopted_in_full_pll": false
+}

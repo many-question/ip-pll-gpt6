@@ -1,0 +1,359 @@
+{
+  "cases": [
+    {
+      "case": "bankckbase_m4_ss",
+      "passed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/bankckbuf01/bankckbase_m4_ss/result.json",
+      "source_sha256": "f0610fad46c89436fe0ba20a713290d82fb49142d85db55a36b5f8cb02f79595",
+      "output": {
+        "m": 4,
+        "rf_mhz": 3936.0208718090444,
+        "output_mhz": 984.0020905166124,
+        "edges": 79,
+        "max_period_error": 0.000593785445216044,
+        "duty_mean_percent": 62.17713467372372,
+        "duty_range_percent": [
+          61.726333398022874,
+          62.4960932936525
+        ],
+        "every_cycle_full_swing": true,
+        "passed": true,
+        "power_mw": 1.5970599360721895,
+        "scope": "SS60/1.2V/10fF;200ns,last80ns,1ps/reltol1e-5;actualreceiver,SS tank replay,quiet counter load. Optional twoMOS inverter clock buffer; not complete PLL."
+      },
+      "prescaler": {
+        "mhz": 1968.0456556784613,
+        "max_period_error": 0.0035093036788074183,
+        "every_cycle_full_swing": true,
+        "range_v": [
+          0.01517502352100636,
+          1.226197098213897
+        ],
+        "passed": true
+      },
+      "edges": {
+        "clk": {
+          "rise_ps": 50.5826697013698,
+          "fall_ps": 51.58645746601455
+        },
+        "q1": {
+          "rise_ps": 112.02361141993687,
+          "fall_ps": 147.72366414321866
+        }
+      }
+    },
+    {
+      "case": "bankckboost_m4_ss",
+      "passed": false,
+      "source_result": "research/runs/spectre_cmos_v14_full/bankckbuf01/bankckboost_m4_ss/result.json",
+      "source_sha256": "5a2dcaafa2285cc1dc4cdbdaef787e1e054f421eea1d647de1f4fab565493c2d",
+      "output": {
+        "m": 4,
+        "rf_mhz": 3936.0061181283468,
+        "output_mhz": 0.0,
+        "edges": 0,
+        "max_period_error": null,
+        "duty_mean_percent": null,
+        "duty_range_percent": null,
+        "every_cycle_full_swing": false,
+        "passed": false,
+        "power_mw": 0.9246793711386604,
+        "scope": "SS60/1.2V/10fF;200ns,last80ns,1ps/reltol1e-5;actualreceiver,SS tank replay,quiet counter load. Optional twoMOS inverter clock buffer; not complete PLL."
+      },
+      "prescaler": {
+        "mhz": 1968.1706035785246,
+        "max_period_error": 0.0005259755087207996,
+        "every_cycle_full_swing": false,
+        "range_v": [
+          -0.02343515322269165,
+          0.7679258046956973
+        ],
+        "passed": false
+      },
+      "edges": {
+        "clk": {
+          "rise_ps": 51.080023537931666,
+          "fall_ps": 52.50215605837572
+        },
+        "q1": {
+          "rise_ps": null,
+          "fall_ps": null
+        }
+      }
+    },
+    {
+      "case": "bankckbuflarge_m10_ss",
+      "passed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/bankckbuf01/bankckbuflarge_m10_ss/result.json",
+      "source_sha256": "b1a70904504033f91514380331709a00f51f5d5e2bfc99a46094026f94e00637",
+      "output": {
+        "m": 10,
+        "rf_mhz": 3120.0192024928247,
+        "output_mhz": 312.00148826511463,
+        "edges": 25,
+        "max_period_error": 0.00012811456007644217,
+        "duty_mean_percent": 41.97724066543253,
+        "duty_range_percent": [
+          40.119816757952776,
+          43.91384813124527
+        ],
+        "every_cycle_full_swing": true,
+        "passed": true,
+        "power_mw": 3.8867395668013502,
+        "scope": "SS60/1.2V/10fF;200ns,last80ns,1ps/reltol1e-5;actualreceiver,SS tank replay,quiet counter load. Optional twoMOS inverter clock buffer; not complete PLL."
+      },
+      "prescaler": {
+        "mhz": 1560.0078522201143,
+        "max_period_error": 0.001167413480931856,
+        "every_cycle_full_swing": true,
+        "range_v": [
+          -0.001923444610058925,
+          1.225876982769239
+        ],
+        "passed": true
+      },
+      "edges": {
+        "clk": {
+          "rise_ps": 50.82998269776142,
+          "fall_ps": 43.23649356990536
+        },
+        "rxclk": {
+          "rise_ps": 59.85407096419559,
+          "fall_ps": 62.00366389605086
+        },
+        "q1": {
+          "rise_ps": 119.69702747515657,
+          "fall_ps": 147.6544175042508
+        }
+      }
+    },
+    {
+      "case": "bankckbuflarge_m4_ss",
+      "passed": false,
+      "source_result": "research/runs/spectre_cmos_v14_full/bankckbuf01/bankckbuflarge_m4_ss/result.json",
+      "source_sha256": "7b2433e65dc1e9650317fe1c0b49f6396060dc82f8378786d6b944eb3745b4d5",
+      "output": {
+        "m": 4,
+        "rf_mhz": 3936.011678577236,
+        "output_mhz": 209.9207475506378,
+        "edges": 17,
+        "max_period_error": 8.24522235627713,
+        "duty_mean_percent": 50.40591827000343,
+        "duty_range_percent": [
+          23.26177025333538,
+          83.48943113920521
+        ],
+        "every_cycle_full_swing": true,
+        "passed": false,
+        "power_mw": 2.1877731679486128,
+        "scope": "SS60/1.2V/10fF;200ns,last80ns,1ps/reltol1e-5;actualreceiver,SS tank replay,quiet counter load. Optional twoMOS inverter clock buffer; not complete PLL."
+      },
+      "prescaler": {
+        "mhz": 776.3796976595676,
+        "max_period_error": 10.060726557525072,
+        "every_cycle_full_swing": false,
+        "range_v": [
+          -0.007521328191526813,
+          1.226707241925054
+        ],
+        "passed": false
+      },
+      "edges": {
+        "clk": {
+          "rise_ps": 51.44476491803398,
+          "fall_ps": 44.1814644651895
+        },
+        "rxclk": {
+          "rise_ps": 57.34638651775681,
+          "fall_ps": 60.20948780978989
+        },
+        "q1": {
+          "rise_ps": 124.850702059326,
+          "fall_ps": 150.0350688886953
+        }
+      }
+    },
+    {
+      "case": "bankckbuflarge_m6_ss",
+      "passed": false,
+      "source_result": "research/runs/spectre_cmos_v14_full/bankckbuf01/bankckbuflarge_m6_ss/result.json",
+      "source_sha256": "bf3d29dfb19707a738432deb529b852fac4d23ffffaf105e35e225647f50d2fa",
+      "output": {
+        "m": 6,
+        "rf_mhz": 3888.015501259094,
+        "output_mhz": 0.0,
+        "edges": 0,
+        "max_period_error": null,
+        "duty_mean_percent": null,
+        "duty_range_percent": null,
+        "every_cycle_full_swing": false,
+        "passed": false,
+        "power_mw": 2.1385951494540665,
+        "scope": "SS60/1.2V/10fF;200ns,last80ns,1ps/reltol1e-5;actualreceiver,SS tank replay,quiet counter load. Optional twoMOS inverter clock buffer; not complete PLL."
+      },
+      "prescaler": {
+        "mhz": 739.6073990789276,
+        "max_period_error": 7.044665670323505,
+        "every_cycle_full_swing": false,
+        "range_v": [
+          -0.003309670343408858,
+          1.23735962278589
+        ],
+        "passed": false
+      },
+      "edges": {
+        "clk": {
+          "rise_ps": 51.62811423309567,
+          "fall_ps": 44.04558507271135
+        },
+        "rxclk": {
+          "rise_ps": 57.42321519531555,
+          "fall_ps": 60.21349425025608
+        },
+        "q1": {
+          "rise_ps": 119.74423976247768,
+          "fall_ps": 151.5522656305809
+        }
+      }
+    },
+    {
+      "case": "bankckbufsmall_m10_ss",
+      "passed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/bankckbuf01/bankckbufsmall_m10_ss/result.json",
+      "source_sha256": "b12d0f742afe8aed4cae1a085bb602d70b9444f7259b1984c40d5056fbde8dd2",
+      "output": {
+        "m": 10,
+        "rf_mhz": 3120.014659628371,
+        "output_mhz": 312.0008500511068,
+        "edges": 25,
+        "max_period_error": 0.00022479425279620102,
+        "duty_mean_percent": 41.42935657605688,
+        "duty_range_percent": [
+          40.42997136970502,
+          42.463622685632494
+        ],
+        "every_cycle_full_swing": true,
+        "passed": true,
+        "power_mw": 3.331006473923641,
+        "scope": "SS60/1.2V/10fF;200ns,last80ns,1ps/reltol1e-5;actualreceiver,SS tank replay,quiet counter load. Optional twoMOS inverter clock buffer; not complete PLL."
+      },
+      "prescaler": {
+        "mhz": 1559.9933379587587,
+        "max_period_error": 0.0020198926664840577,
+        "every_cycle_full_swing": true,
+        "range_v": [
+          -0.0005401558033352203,
+          1.226274455060943
+        ],
+        "passed": true
+      },
+      "edges": {
+        "clk": {
+          "rise_ps": 59.65685895970623,
+          "fall_ps": 50.41244522644739
+        },
+        "rxclk": {
+          "rise_ps": 53.0631903726738,
+          "fall_ps": 54.29957959059759
+        },
+        "q1": {
+          "rise_ps": 119.93081471399107,
+          "fall_ps": 149.5796558272162
+        }
+      }
+    },
+    {
+      "case": "bankckbufsmall_m4_ss",
+      "passed": false,
+      "source_result": "research/runs/spectre_cmos_v14_full/bankckbuf01/bankckbufsmall_m4_ss/result.json",
+      "source_sha256": "e2799561cd2c8166b3d895d3074ec8bf0c79777853f37a650a13ae494f7053f9",
+      "output": {
+        "m": 4,
+        "rf_mhz": 3936.0359610994124,
+        "output_mhz": 275.53124744697044,
+        "edges": 22,
+        "max_period_error": 6.503364725353467,
+        "duty_mean_percent": 60.39773088182665,
+        "duty_range_percent": [
+          27.028346527823356,
+          90.13979944817703
+        ],
+        "every_cycle_full_swing": true,
+        "passed": false,
+        "power_mw": 1.6949607056745564,
+        "scope": "SS60/1.2V/10fF;200ns,last80ns,1ps/reltol1e-5;actualreceiver,SS tank replay,quiet counter load. Optional twoMOS inverter clock buffer; not complete PLL."
+      },
+      "prescaler": {
+        "mhz": 864.0228654904928,
+        "max_period_error": 8.136396761551996,
+        "every_cycle_full_swing": false,
+        "range_v": [
+          -0.01551025151981719,
+          1.232410884174423
+        ],
+        "passed": false
+      },
+      "edges": {
+        "clk": {
+          "rise_ps": 59.80362274196314,
+          "fall_ps": 50.706187419037974
+        },
+        "rxclk": {
+          "rise_ps": 49.74712733071686,
+          "fall_ps": 51.05800949923845
+        },
+        "q1": {
+          "rise_ps": 137.2510600735062,
+          "fall_ps": 153.1173377133305
+        }
+      }
+    },
+    {
+      "case": "bankckbufsmall_m6_ss",
+      "passed": false,
+      "source_result": "research/runs/spectre_cmos_v14_full/bankckbuf01/bankckbufsmall_m6_ss/result.json",
+      "source_sha256": "6c03b4f55808fb3fb5075251da2fe89b635d7255e9c3b0fdf157a445192a78cd",
+      "output": {
+        "m": 6,
+        "rf_mhz": 3888.0116597318474,
+        "output_mhz": 138.8763566538952,
+        "edges": 4,
+        "max_period_error": 5.354982627843327,
+        "duty_mean_percent": 63.169917089766436,
+        "duty_range_percent": [
+          38.92684928728672,
+          81.00182194758287
+        ],
+        "every_cycle_full_swing": true,
+        "passed": false,
+        "power_mw": 1.7617355435323903,
+        "scope": "SS60/1.2V/10fF;200ns,last80ns,1ps/reltol1e-5;actualreceiver,SS tank replay,quiet counter load. Optional twoMOS inverter clock buffer; not complete PLL."
+      },
+      "prescaler": {
+        "mhz": 598.0513944857831,
+        "max_period_error": 9.452730291600894,
+        "every_cycle_full_swing": false,
+        "range_v": [
+          -0.01427227332724035,
+          1.238552399728841
+        ],
+        "passed": false
+      },
+      "edges": {
+        "clk": {
+          "rise_ps": 60.09653681838567,
+          "fall_ps": 50.60432022702618
+        },
+        "rxclk": {
+          "rise_ps": 49.89338719251892,
+          "fall_ps": 51.16914115419601
+        },
+        "q1": {
+          "rise_ps": 126.64423317226347,
+          "fall_ps": 152.27419924518094
+        }
+      }
+    }
+  ],
+  "expected": 8
+}

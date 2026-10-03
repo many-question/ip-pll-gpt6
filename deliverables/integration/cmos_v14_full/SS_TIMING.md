@@ -40,9 +40,9 @@
 
 因此`bank_preboost50_v14`尚未正式代回PLL，SS修复缺口仍未关闭。后续10/25/35kΩ各测SS÷4/6共六例全部失败；恢复原预分频动态级及仅增强静态输出驱动各测÷4/6/10的六例亦全部失败，见`results/ss_feedback_validation.json`、`ss_restore_validation.json`。
 
-为核对实验边界，原版`cmos_even_bank_acq_v14`在同样TT RF波形驱动SS接收器下也测了÷4/6/10，三例均失败（÷4约986.217MHz但存在异常周期，÷6/10无持续输出）。因此不能将前述接口失败全部归因于新候选，或据此推翻之前实际SS VCO近锁定通过的结论。已经启动`ssinterfacedense01`：从先前完整SS近锁定终态，以相同1ps精度保留100ns/末50ns密集波形。原始网表依赖逐项hash与之前通过的SS版本相符；文本终态重启仍需核对自身稳定性，不能冒充新的复位捕获。
+为核对实验边界，原版`cmos_even_bank_acq_v14`在同样TT RF波形驱动SS接收器下也测了÷4/6/10，三例均失败（÷4约986.217MHz但存在异常周期，÷6/10无持续输出）。因此不能将前述接口失败全部归因于新候选，或据此推翻之前实际SS VCO近锁定通过的结论。已完成`ssinterfacedense01`：从先前完整SS近锁定终态，以相同1ps精度保留100ns/末50ns密集波形。原始网表依赖逐项hash与之前通过的SS版本相符；本次只用于RF形状提取，不能冒充新的复位捕获或锁定验收。
 
-本轮共76例SS定向/回归已完成；完整PVT、失配、噪声及PEX未验收。下一步用实际SS RF形状及原版/候选同条件对照检查裕量，再决定电路改动。
+上述阶段共76例SS定向/回归已完成；后续实验见下节。完整PVT、失配、噪声及PEX未验收。
 
 ## 复现与证据
 
@@ -52,3 +52,31 @@
 - 原始数据：项目`research/runs/spectre_cmos_v14_full/{bankwindow01,banktaper01,banktail01,bankdrive02}/`；每例保留冻结输入、最终日志和PSF/NPZ。
 
 - 实际RF接收回归：`build_ss_rf_regression.py`、`analyze_ss_rf.py`及`results/ss_rf_validation.json`；延迟对照：`build_ss_feedback_screen.py`、`analyze_ss_feedback.py`。
+
+## 实际SS形状与充分稳定后的电平诊断（2026-10-03）
+
+`ssinterfacedense01`零错误完成，相同旧整机SS终态100ns/末50ns密集波形已回收。最后64个RF周期平均，20次谐波拟合得到SS电压形状；vp约0.749–1.569V、vn约0.691–1.663V，平均形状拟合RMS误差约12µV。逐周期最大偏差约27/33mV，不是完全静止正弦。重放源按各档频率缩放，为零阻抗、无噪声的外部测试刺激，仍不包含LC负载反作用。见`results/ss_waveform_replay.json`。
+
+六例60ns SS形状对照后，将原版／候选÷4以及两档两级CMOS时钟缓冲对照统一延长到200ns，检查末80ns。后者共八例均零错误完成：
+
+- 原版÷4恢复正确工作：输出984.002091MHz、q1约1968.045656MHz，q1与输出逐周期电平通过。这说明此前短窗口的接口失败不能直接作为持续稳态失效结论。
+- 预分频末级加倍候选：q1虽然仍约1968.170604MHz，最高仅0.768V，d4停在高电平、最终输出停在低电平。频率正确不足以证明时钟有效，分析已增加q1逐周期高低电平门槛。
+- 在实际RF接收器后加两级小／大静态CMOS缓冲，÷10两例通过，但÷4/÷6四例均失败；单独加时钟驱动没有解决高RF端的动态时序与电平问题。
+
+![原版与候选的内部电平](results/figures/ss_prescaler_level.png)
+
+后续单变量实验只改变XPB0 NMOS宽度，保持PMOS、动态预分频级、RF反馈、时钟树和尾级隔离不变。增大NMOS会同时增加上游负载和改变反相器阈值，不能视为单纯提高驱动。当前仍不将任何候选代入主PLL；结果与下一组原预分频恢复对照见`results/ss_level_validation.json`。
+
+复现入口：`build_ss_waveform_replay.py`、`build_ss_clock_buffer.py`、`analyze_ss_clock_buffer.py`、`build_ss_level_restore.py`、`build_ss_settled_restore.py`及`analyze_ss_level.py`。原始数据分别在`research/runs/spectre_cmos_v14_full/{ssinterfacedense01,banksswave01,bankckbuf01,banklevel01}/`。
+
+### 门控与脉冲传播的后续对照
+
+增加恢复级NMOS的六例均失败。恢复原动态预分频器、保留后级修复的三例中，÷4通过；÷6/÷10的q1频率和逐周期电平通过，但后级时钟仍失败。÷6时原门控节点GN最低约0.779V、CK停在高电平，因此问题已定位到门控和后续脉冲传播，而非只有最前端÷2频率错误。
+
+随后四级／六级渐进驱动的六例中，÷4两例通过，÷6/÷10四例失败。六级链的GN恢复约1.12V峰值，但短脉冲仍在后级消失。保持每级总栅宽、重新分配P/N比例的两例亦失败；其中GN到CT2已传播，但CB高电平延长到约417ps（周期514ps），最终CK仅约0.679V。
+
+最后只保留前三级的P/N调整、末两级恢复原比例，`bankmixskew_m6_ss`重新出现输出，但仅约460.713MHz，目标为648MHz，判为失败。逐周期检查显示CT1最低峰值约0.870V、CK最低峰值约0.872V，尽管全窗最大值达到电源轨，仍有不合格周期。**全窗最大摆幅与平均频率都不能代替逐周期时序验证。**
+
+这轮共有32例新的SS独立短测试（6形状＋8时钟缓冲＋6恢复级尺寸＋3原动态级恢复＋6渐进驱动＋2P/N比例＋1混合比例），全部已回收0error，功能失败保留。当前完整PLL和分频器未被这些候选修改。后续应围绕每周期低电平脉冲的传播裕量收敛候选，仍需六档、实际LC、角落及整机代回验证。候选时钟未选时停泊电平由高变低，模式切换与复位也须回归；用户放宽的是外部输出占空比，此处检查的是内部逻辑工作窗口。
+
+新入口：`build_ss_clock_taper.py`、`build_ss_clock_skew.py`、`build_ss_clock_mixed.py`；`analyze_ss_level.py`默认汇总`banklevel01`、`bankssorig01`、`banktaper02`、`bankskew01`、`bankmix01`。结果为`results/ss_level_validation.json`，所有相应原始输入和波形在本项目research目录。

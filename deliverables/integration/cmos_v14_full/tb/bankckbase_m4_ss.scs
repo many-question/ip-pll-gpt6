@@ -1,0 +1,40 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=ss
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "cells.scs"
+include "digital_cells_v2.scs"
+include "fll_circuit.scs"
+include "rf_light24s12_v14.scs"
+include "cmos_even_bank_acq_v14.scs"
+include "rtcomb_v13.scs"
+include "rt_light24s12_out083_v14.scs"
+simulatorOptions options temp=60 reltol=1e-5 vabstol=1e-7 iabstol=1e-13
+VDD (vdd 0) vsource dc=1.2
+ahdl_include "tank_replay_ss_v14.va"
+XRF (vp vn 0) tank_replay_ss_v14 frequency=3936M
+XRX (vp clk vdd 0) rf_light24s12_v14
+VRST (reset 0) vsource type=pwl wave=[0 1.2 8n 1.2 8.01n 0]
+VS0 (s0 0) vsource dc=1.2
+VS1 (s1 0) vsource dc=0
+VS2 (s2 0) vsource dc=0
+VS3 (s3 0) vsource dc=0
+VS4 (s4 0) vsource dc=0
+VS5 (s5 0) vsource dc=0
+XD (clk reset s0 s1 s2 s3 s4 s5 q1 predata acqclk vdd 0) cmos_even_bank_acq_v14
+XR (predata clk data vdd 0) rt_light24s12_out083_v14
+CL (data 0) capacitor c=10f
+// Same clock mux/buffers/counter input load, counter held reset in quiet phase.
+XACQ0 (acqclk clock_mux 0 vdd vdd 0) pll_tg wn=1u wp=2u
+XACQ1 (data clock_mux vdd 0 vdd 0) pll_tg wn=1u wp=2u
+XACB0 (clock_mux clock_b vdd 0) pll_inv wn=1u wp=2u
+XACB1 (clock_b count_clock vdd 0) pll_inv wn=2u wp=4u
+XCOUNT (count_clock 0 vdd q0 qx1 q2 q3 q4 q5 q6 q7 q8 q9 q10 q11 q12 q13 vdd 0) tx_fll_counter
+
+tran tran stop=200n outputstart=120n maxstep=1p method=traponly errpreset=conservative
+save predata acqclk clk q1 data reset VDD:p XD.d4 XD.d6 XD.d8 XD.d12 XD.ck XD.ckb XD.load XD.fb XD.XD6.q0 XD.XD6.q1 XD.XD6.d0 XD.mux XD.r0 XD.r1 XD.r2 XD.r3 XD.r4 XD.r5 XD.r6
+saveOptions options save=selected
+save XD.q0 XD.qb0
+save vp vn clock_mux count_clock
+save XRX.g0 XD.XPRE.a XD.XPRE.b XD.XPRE.dn

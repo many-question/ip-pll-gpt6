@@ -70,6 +70,7 @@ for label,runs in [('strict',['repairstrict02']),('retention',['repairretain01',
    native_state=records[-1].get('native_state'),dut_dependency_hashes_verified=True,
    time_range_us=[float(t[0]*1e6),float(t[-1]*1e6)])
  row['ever_restart']=bool(np.any(d['XP.restart']>.6))
+ row['whole_window_qualified_high']=bool(np.all(d['qualified']>1))
  late=t>=t[-1]-1e-6
  row['logic_high_fraction']={k:float(np.mean(d[k][late]>.6)) for k in ['qualified','frequency_good','cfg_ready','range_error','XP.en','XP.XC.acquired']}
  row['held_state_screen_passed']=bool(row['stationarity']['passed'] and not row['ever_restart'] and
@@ -93,6 +94,19 @@ for label,runs in [('strict',['repairstrict02']),('retention',['repairretain01',
   row['edge_statistics'][block]={q:dict(mean=float(np.mean(d[block+'_'+q][late])),minimum=float(min(d[block+'_'+q][late])),maximum=float(max(d[block+'_'+q][late]))) for q in ['rise_ns','fall_ns','period_ns','duty_percent']}
  row['edge_boundary']='Internal-step held edge observers sampled every2ns; not random jitter or a uniformly weighted census of every RF cycle.'
  row['numerical_scope']='Native1ps/reltol1e-5 branch after terminal-state initialization has settled. Does not revalidate 64us FLL search at strict precision.' if label=='strict' else '4ps/reltol1e-4 same-DUT terminal-state retention; not uninterrupted cold-to100us capture.'
+ if label=='retention':
+  import matplotlib
+  matplotlib.use('Agg')
+  import matplotlib.pyplot as plt
+  fig,ax=plt.subplots(3,1,figsize=(10,7),sharex=True,constrained_layout=True)
+  ax[0].plot(t*1e6,np.unwrap(d['obsphase']),lw=.7);ax[0].set_ylabel('RF phase at ref (rad)')
+  ax[1].plot(t*1e6,d['qualified'],label='qualified');ax[1].plot(t*1e6,d['XP.restart'],label='restart');ax[1].set_ylabel('Logic (V)');ax[1].legend(ncol=2)
+  edges=np.arange(0,36.001,1);energy=np.interp(edges*1e-6,t,d['energy_nj'])
+  ax[2].stairs(np.diff(energy),edges,label='1 us energy differences');ax[2].axhline(4,color='#b91c1c',ls='--',label='4 mW limit')
+  ax[2].set_ylabel('Total supply (mW)');ax[2].set_xlabel('Time from terminal-state initialization (us)');ax[2].legend(ncol=2)
+  for a in ax:a.grid(alpha=.2);a.axvspan(4,36,color='#10b981',alpha=.07)
+  fig.suptitle('Complete capture V14: TT 27 C, 1.2 V, 984 MHz, 10 fF, Q5 RLC\n4 ps / reltol 1e-4; 32 us control-period power = '+format(row['power_windows']['full_32us_control_period']['power_mw']['total'],'.6f')+' mW')
+  fig.savefig(H/'results/figures/repair_retention.png',dpi=150);plt.close(fig)
 out=dict(scope=__doc__,cases=rows)
 (H/'results/repair_retention.json').write_text(json.dumps(out,indent=2)+'\n')
 for row in rows:print(row['kind'],row['status'],row.get('held_state_screen_passed'))

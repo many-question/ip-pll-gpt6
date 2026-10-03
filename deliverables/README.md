@@ -1,10 +1,18 @@
 # 交付物索引
 
+2026-10-03（第27份快照）：完整V14完成36µs终态保持，32µs控制周期总功耗5.667mW超限。SS已定位电平恢复和门控负载问题，独立候选继续验证；严格复位、完整噪声与频率范围尚未验收。
+
+- [最新指标与模块状态](integration/cmos_v14_full/STATUS.md)
+- [完整保持与功耗](integration/cmos_v14_full/REPAIR.md)
+- [SS时序与电平诊断](integration/cmos_v14_full/SS_TIMING.md)
+- [抖动验证进展](integration/cmos_v14_full/NOISE_PROGRESS.md)
+- [第27份完整状态快照](../reports/2026-10-03T1826.yaml)
+
 2026-10-03（第26份快照）：补SS实际接口与闭环抖动验证。新分频候选理想RF三角六档18例全通过，但MOS接收器下SS仍有三档失败，尚未代回PLL。核心PSS稳定段滑相，已保留负结果并补参考负载及实际粗调DFF驱动；整机抖动仍未知。严格捕获/周期功耗继续。
 
 - [SS时序修复与实际RF回归](integration/cmos_v14_full/SS_TIMING.md)
 - [抖动验证进展与前置问题](integration/cmos_v14_full/NOISE_PROGRESS.md)
-- [第26份完整状态快照](../reports/cp_pulse_timing.yaml)
+- [第26份完整状态快照](../reports/2026-10-03T1456.yaml)
 
 2026-10-03（第25份快照）：按用户要求梳理12条需求、14个模块及系统验证覆盖。电路已补齐，完整严格捕获、SS分频、低端范围、整机噪声与功耗/面积验收仍有缺口；本次没有新增性能通过结论。
 

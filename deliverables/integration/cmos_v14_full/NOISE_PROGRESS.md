@@ -18,7 +18,7 @@
 4. `analyze_core_preflight.py`先检查实际工作点与相位稳定性；`analyze_closedloop_noise.py`再检查PSS最终0error、周期谐波/端点、输出边沿、噪声贡献求和和单位。原一次性继续脚本已记录`probe_failed_no_band_launched`，没有启动完整频带任务。
 5. 待工作点、周期轨迹验证通过后，先做六频点归因探测，再做10kHz–492MHz、20点/dec全频带PSD/slew²积分。六点本身不积分；自动Jee可能截断到PSS基频一半，不能作为项目全频带RMS。完整积分后仍需边沿位置、谐波邻近有限频率、步长/边带收敛及各模块单独noise-on对照。
 
-当前另一个工作点差异是粗调码的驱动边界：完整DUT通过八个`tx_dff_r0`输出驱动MOS电容开关，固定理想电压会移除输出阻抗及RF回灌。新`pll_noise_register_core_v14`保留相同八个MOS DFF、实际refb时钟和D=q保持反馈，以实际64µs终态初始化每级9个内部节点。用1.9pF诊断补载补偿其余参考负载，`coreregister01`正在跑2µs/1ps严格瞬态。它仍省略其它慢控制和部分负载，不是完整PLL；先验稳态和实际DUT一致性，再进入PSS。
+当前另一个工作点差异是粗调码的驱动边界：完整DUT通过八个`tx_dff_r0`输出驱动MOS电容开关，固定理想电压会移除输出阻抗及RF回灌。新`pll_noise_register_core_v14`保留相同八个MOS DFF、实际refb时钟和D=q保持反馈，以实际64µs终态初始化每级9个内部节点。用1.9pF诊断补载补偿其余参考负载，`coreregister01`已零错误完成2µs/1ps严格瞬态；参考边沿恢复到198.7/176.3ps，粗调码23保持，但末1µs相位峰峰3.108rad、漂移2.559rad/µs，尚未稳态。它仍省略其它慢控制和部分负载，不是完整PLL；先验稳态和实际DUT一致性，再进入PSS。
 
 周期解复用流程已准备：读取旧PSS状态使用`checkpss=yes`，本地/远程SHA匹配；不跳过周期解有效性检查。已完成两次相同RC校准（新求解与复用状态），PSD最大相对差约8.9e-14，见`results/pss_reuse_validation.json`。这是测量流程校验，不是PLL性能。
 
@@ -31,3 +31,11 @@
 - `results/chain_noise_validation.json`、`chain_alias_validation.json`与`vco_noise_validation.json`保留此前各自边界的局部噪声证据。
 
 诊断证据：`results/core_preflight_validation.json`；原始稳定段953,481,254字节，SHA256 `c9436fa4e0eccc1a41a8395785a6babd0c41c54ec98c54088c03a49d541a3852`，本地与远程一致。4ps对照原始波形SHA256 `fdb5e67388361dc99c16e97f9a882b27c60898b57d7703c0a8d08cbf2e61eb2f`亦已核对。
+
+下一稳定性测试`coressettle01/core_register_settle_tt`沿用同一物理寄存器核心和1.9pF补载，从上述2µs文本终态启动5µs/1ps瞬态。零电流VA观察器只在TB读取内部求解步长上的相位与周期计数，2ns稀疏电压数据不用于GHz边沿或功耗。该测试已零错误完成并通过稳态筛选，不拼接为原生连续7µs，也不作为PNoise或整机RMS结果。分析入口`analyze_core_settle.py`会检查末1µs稳态和粗调码保持，再决定是否进入PSS。
+
+后续实验已串接为一次性有条件流程：`research/continue_register_pipeline.py`等待当前5µs结果和完整hash回收，先执行稳态检查；只有通过才构建`core_register_noise_probe_tt`并运行八线程PSS/PNoise六频点。只有周期、谐波/端点、246个输出沿及噪声贡献一致性通过，才调用`continue_register_noise.py`复用核验的PSS状态做10kHz–492MHz全频带。失败即停止后续，不反复重启。该流程不是周期任务，状态记录在`research/register_noise_pipeline.json`；八线程仅在当前核心瞬态结束后使用，严格复位8＋噪声8＋短实验1不超过18线程。
+
+5µs严格稳定段末1µs测得：输出984.000043MHz，相位峰峰0.001001rad、漂移0.001024rad/µs，RF／输出每参考周期最大偏差分别1.63e-5／6.85e-6；控制采样0.642339–0.642459V，八个物理粗调DFF全窗保持码23。见`results/core_settle_validation.json`。这一工作点与4ps完整DUT仍有控制电压和裁剪边界差异，不能直接宣称完整DUT等价。
+
+流程已于18:23从核验终态启动`coreregisterprobe01/core_register_noise_probe_tt`：4MHz共同周期、4095谐波/边带、1ps/reltol1e-5，250ns稳定段、六个偏移频点、8请求线程。输入终态SHA为`a2010e5636522eea0b545500817f201cc7ae1be3492e28799c07dc7923b09ab0`，只保留物理XP节点和out，剔除TB观察器状态。`results/register_noise_protocol.json`记录来源和边界。PSS/PNoise尚在运行，六点不会积分为RMS；后续完整频带与逐模块noise-on仍有相应验证门槛。
