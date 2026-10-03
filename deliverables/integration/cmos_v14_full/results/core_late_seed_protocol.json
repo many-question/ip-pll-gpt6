@@ -1,6 +1,6 @@
 {
   "scope": "Prepare an IC-only freshPSS comparison from the newly settled physical baseline.\n\nNo launch is implied. Same4MHz period, tstart, tstab, tolerances, defaultitres\nand device circuit as coretripsupply01; only the saved physical state changes.\n",
-  "status": "prepared_not_run",
+  "status": "running",
   "run": "coretriplate01",
   "case": "core_pulsetrip_late_noise_tt",
   "source_result": "research/runs/spectre_cmos_v14_full/corenoisecand01/core_noisecand_base_tt/result.json",
@@ -39,5 +39,22 @@
   "launch_gate": "First review actualLC four-way loading comparison; use a released long-job slot. No automatic dispatch; do not overlap existing6threadbatch.",
   "acceptance": "ActualPSS convergence, branch/endpoint checks, fresh noise and device sums required; sixoffsetsareonlyaprobenotRMS.",
   "main_dut_modified": false,
-  "full_pll_acceptance": false
+  "full_pll_acceptance": false,
+  "retained_state_entries": 612,
+  "state_entry_units": {
+    "voltages": 601,
+    "branch_currents": 11
+  },
+  "dispatch_review": {
+    "time": "2026-10-04T07:28:22.177979+08:00",
+    "basis": "All four actualLC preflights completed. Baseline is the only passed near-lock case; RT4/both slip and CF40 needs further settling. Use baseline actual final IC only to test sensitivity to initialization; do not adopt a failed candidate.",
+    "replacement_run": "corenoisecand01",
+    "threads": 6,
+    "scope": "Same4long+1short and17requestedthreads; no additional long process. Six PNoise offsets only if validPSS; notRMS."
+  },
+  "run_status": {
+    "session": 88826,
+    "remote_uuid": "f3f911fb",
+    "scope": "Verified live initial transient, no convergence result yet."
+  }
 }

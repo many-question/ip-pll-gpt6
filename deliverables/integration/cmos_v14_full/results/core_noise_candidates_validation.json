@@ -144,10 +144,58 @@
       "bias_filter_last1us_drift_v_per_us": -9.476911311372021e-07,
       "output_change_from_base_mhz": -0.0006546367028477107,
       "mean_sampled_control_change_v": -0.017853074645922562
+    },
+    {
+      "variant": "rt4cf40",
+      "case": "core_noisecand_rt4cf40_tt",
+      "source": "research/runs/spectre_cmos_v14_full/corenoisecand01/core_noisecand_rt4cf40_tt/result.json",
+      "source_sha256": "56df8f900a066690fbd06c367b39d7d32186b825ff1e0f61c75b2496751ab070",
+      "passed": false,
+      "stationarity": {
+        "phase_pp_rad": 53.07115319125016,
+        "phase_drift_rad_per_us": 55.472481267540694,
+        "max_rf_cycles_error": 0.378987343501592,
+        "max_out_cycles_error": 0.09492214007514121,
+        "mean_output_mhz": 986.2038646398207,
+        "ctrl_range_v": [
+          0.646418327849272,
+          0.700445200222997
+        ],
+        "observed_final_window_us": 0.958000000000072,
+        "passed": false,
+        "criteria": "Last1us: phase pp<.02rad, drift<.01rad/us, cycles/ref errors<.001, ctrl0.2..1V; functional stationarity, not jitter.",
+        "measurement_limit": "Sparse GHz voltage/current samples are not used for RF swing or average power.",
+        "end_us": 3.0,
+        "final_state": {
+          "XP.en": 1.2
+        }
+      },
+      "coarse23_held": true,
+      "supply_ranges_v": {
+        "XP.vco_vdd": [
+          1.2,
+          1.2
+        ],
+        "XP.rx_vdd": [
+          1.2,
+          1.2
+        ],
+        "XP.rt_vdd": [
+          1.2,
+          1.2
+        ]
+      },
+      "bias_filter_last1us_range_v": [
+        0.7250605819654485,
+        0.7260760452048297
+      ],
+      "bias_filter_last1us_drift_v_per_us": 3.641419569621774e-06,
+      "output_change_from_base_mhz": 2.2038709962153007,
+      "mean_sampled_control_change_v": 0.030488578487907536
     }
   ],
-  "complete": false,
-  "passed": null,
+  "complete": true,
+  "passed": false,
   "full_pll_acceptance": false,
   "noise_acceptance": false,
   "power_up_acceptance": false,

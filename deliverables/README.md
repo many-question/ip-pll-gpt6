@@ -1,4 +1,4 @@
-本次快照：[第36次汇报](../reports/2026-10-04T0720.yaml)。固定控制下DC保持／跟踪实测频差9.531 MHz，补偿测试已安排有限接续；RT2／RT4 noise-on继续通过。CF40仍欠稳态，完整PLL随机RMS尚未知。
+本次快照：[第37次汇报](../reports/2026-10-04T0744.yaml)。RT2五组noise-on闭合；已启动与实际LC候选一致的新分频器噪声测试，以及基线新初态PSS对照。候选工作点仍待修复，完整PLL随机RMS未知。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

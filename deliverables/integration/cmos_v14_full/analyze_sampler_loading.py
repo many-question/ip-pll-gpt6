@@ -90,5 +90,11 @@ if all(x in available for x in ['clocked','track','hold','track_vm','track_vp'])
             output24_pm_peak_rad=float(abs(kvco)*ripple/(24e6*4)),
             source=source.relative_to(ROOT).as_posix(),source_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),
             note='Static tracking KVCO times measured closed-loop control ripple, divided by offset frequency and M. A first-order scale estimate, not a measured isolated path; dynamic loading, relative phase, AM and loop coupling remain.')
+elif all(x in available for x in ['track','track_vm']):
+    dv=available['track']['control_v']-available['track_vm']['control_v']
+    out['partial_kvco']=dict(method='One-sided static tracking secant; positive control point is still pending.',
+        controls_v=[available['track_vm']['control_v'],available['track']['control_v']],
+        hz_per_v=float((available['track']['rf_hz']-available['track_vm']['rf_hz'])/dv),
+        limitation='Baseline retimer and DCtracking only; not the RT4 clocked tuning curve, not a measured dynamic loop gain.')
 (H/'results/sampler_loading_validation.json').write_text(json.dumps(out,indent=2)+'\n')
 print(json.dumps(out,indent=2))

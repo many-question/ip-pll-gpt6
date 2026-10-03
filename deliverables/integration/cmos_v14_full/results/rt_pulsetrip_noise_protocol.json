@@ -1,0 +1,79 @@
+{
+  "scope": "Match the local noise chain's divider to the current actualLC candidate.\n\nThe earlier scaling/audit runs used cmos_even_bank_acq_v14. ActualLC preflights\nuse bank_pulsetrip_v14, with a continuous ring clock and a changed PB1. Keep\nall other local fixture circuitry unchanged and solve PSS afresh.\n",
+  "status": "running",
+  "cases": [
+    {
+      "factor": 2,
+      "grade": "probe",
+      "case": "chain_rt2_pulsetrip_probe_tt",
+      "run": "rtpulsetripprobe01",
+      "tb_sha256": "545802945c8926b09ea8310799d2dbb1dbc17e8344fb71bbd0fbed3df480bc69",
+      "old_fine_case": "chain_rt2_precision_fine_tt",
+      "old_fine_run": "rt2precision01",
+      "change": "Only divider include and instance type differ from own original fine six-point source."
+    },
+    {
+      "factor": 2,
+      "grade": "band",
+      "case": "chain_rt2_pulsetrip_band_tt",
+      "run": "rt2pulsetripband01",
+      "tb_sha256": "fc62965f9bbe54ae252bdfc2ebf7d551777632c6189a3a79d1ce52155eb3e7b2",
+      "old_fine_case": "chain_rt2_precision_fine_tt",
+      "old_fine_run": "rt2precision01",
+      "change": "Same repaired divider; replace six-offset probe with original full-band grid."
+    },
+    {
+      "factor": 4,
+      "grade": "probe",
+      "case": "chain_rt4_pulsetrip_probe_tt",
+      "run": "rtpulsetripprobe01",
+      "tb_sha256": "3cfe467df71b4976c33e93b47296d0c39a34ac7338e77ca2c6e0732089260f2d",
+      "old_fine_case": "chain_rt4_precision_fine_tt",
+      "old_fine_run": "rt4precision01",
+      "change": "Only divider include and instance type differ from own original fine six-point source."
+    },
+    {
+      "factor": 4,
+      "grade": "band",
+      "case": "chain_rt4_pulsetrip_band_tt",
+      "run": "rt4pulsetripband01",
+      "tb_sha256": "7158639353d64bff6292acbd20df8d7a5c511c401ddf4b6eadf864dc3ce74114",
+      "old_fine_case": "chain_rt4_precision_fine_tt",
+      "old_fine_run": "rt4precision01",
+      "change": "Same repaired divider; replace six-offset probe with original full-band grid."
+    }
+  ],
+  "old_bank_sha256": "34a80ae697397ff60cc61ba9cfc51513716c39afd3df68f4ea0a9c950ca0ff6f",
+  "current_bank_sha256": "8d41f4865a829f5a6d203fda5fa63af0243a835d00bbfdafde737988ee1c0f20",
+  "actual_core_sha256": "fbeb935df1fc747f158a3eb8ac23296aeabb90c8a1a6e1b2e8850746f6fa1e36",
+  "matched_offsets_hz": [
+    10000.0,
+    100000.0,
+    1000000.0,
+    10000000.0,
+    100000000.0,
+    491990000.0
+  ],
+  "condition": "TT27/1.2V/984MHz/10fF, noiseless zeroimpedance measuredRF replay, .5ps/767sidebands/maxacfreq504GHz, freshPSS. Quiet counter retained. RealLC excluded.",
+  "reason": "Old divider noise does not establish the noise of the repaired continuous-clock divider now used in actualLC integration.",
+  "launch_gate": "Finite runner waits forRT2audit terminal, re-analyzes all six edges and five freshnoise groups. Only if complete andpassed: two updated-bank probes reuse its1threadlongslot. No automatic band jobs.",
+  "limitations": [
+    "Retimer-loading interaction with the noisy actualLC is still excluded.",
+    "Five noise-only gates validated on the old divider must not be labeled validation of this new circuit.",
+    "Six offsets compare spectra, not integratedRMS.",
+    "Exact harmonic flicker, numerical allband/edges and PVT remain."
+  ],
+  "main_dut_modified": false,
+  "full_pll_acceptance": false,
+  "dispatch_review": {
+    "time": "2026-10-04T07:33:49.432281+08:00",
+    "basis": "Verified exact fixture difference: original local noise uses oldbank, actualLC uses repairedcontinuousbank. Prioritize identical-bank comparison before oldbank fullband refinement. Existing RT2audit must complete and all gates pass; bounded two-case probe only.",
+    "replacement_run": "rt2fineaudit01",
+    "threads": 1
+  },
+  "run_status": {
+    "session": 32326,
+    "first_remote_uuid": "db2fef14",
+    "scope": "RT2audit passed all fivegroups and sixedges; two new-bank probes started07:34. No noise result yet."
+  }
+}

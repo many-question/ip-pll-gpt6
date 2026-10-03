@@ -54,6 +54,11 @@ if base:
             timing_psd_s2_per_hz=st.tolist(),max_relative_difference=err,excluded_fraction=excluded,
             passed=bool(err<protocol['noise_gate_relative_limit'] and excluded<1e-8)))
     out['complete']=len(out['gate_rows'])==5
-    if out['complete']:out['passed']=out['edge_passed'] and all(x['passed'] for x in out['gate_rows'])
+    if out['complete']:
+        isolated_sum=np.sum([x['timing_psd_s2_per_hz'] for x in out['gate_rows']],axis=0)
+        closure=float(max(abs(isolated_sum/ref-1)))
+        out['isolated_sum_to_all_noise_ratio']=(isolated_sum/ref).tolist()
+        out['isolated_sum_max_relative_error']=closure
+        out['passed']=bool(out['edge_passed'] and all(x['passed'] for x in out['gate_rows']) and closure<protocol['noise_gate_relative_limit'])
 (H/f'results/rt{factor}_fine_audit_validation.json').write_text(json.dumps(out,indent=2)+'\n')
 print(json.dumps({k:v for k,v in out.items() if k not in ['edge_rows','gate_rows']},indent=2))

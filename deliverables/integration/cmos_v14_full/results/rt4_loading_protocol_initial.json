@@ -11,18 +11,18 @@
       "seed_sha256": "8f0641b8cdc7d94466d1d55436a13282d7cadc9fc5abf1d12fe271406267e353"
     },
     {
-      "case": "rt4load_minus100m_tt",
-      "control_v": 0.5579988674567703,
-      "delta_from_baseline_v": -0.1,
-      "tb_sha256": "0cbb136f55ed2f42aea740c34cc32967ef08f8d8ed8d6ebec204102c93dd63e0",
-      "seed_sha256": "f01d787c42d30b3187228d8edc29d4163f4facf065632b8e8a7d12d3fa105f43"
+      "case": "rt4load_minus25m_tt",
+      "control_v": 0.6329988674567703,
+      "delta_from_baseline_v": -0.025,
+      "tb_sha256": "ae69794890bf88681c130009a81be71d83baa5c643cb6594728d02884b0fdf5d",
+      "seed_sha256": "abd3d1407762e073ac366b8abdbaeb747ffbb69ff6482114a67111277ba75913"
     },
     {
-      "case": "rt4load_minus250m_tt",
-      "control_v": 0.4079988674567703,
-      "delta_from_baseline_v": -0.25,
-      "tb_sha256": "72f0d0e287a927704dc8a961a1391c0ca48985def7f777f8e7531d592e42ae3d",
-      "seed_sha256": "bc9fbaafadf3b0cd091f2ceb314e461fe38faabae075710230747914b30ea90d"
+      "case": "rt4load_minus50m_tt",
+      "control_v": 0.6079988674567702,
+      "delta_from_baseline_v": -0.05,
+      "tb_sha256": "3d05d08a9dce0707742f0db331f122a78b68fada2098144f2f9b965c1993663c",
+      "seed_sha256": "d1b6ef5b2e629623121030ef79f010528e417ed45ba9296fb0a6a3bae901a202"
     }
   ],
   "baseline_clamped_run": "samplerload01",
@@ -88,26 +88,5 @@
     "Changing control alone may not recover phase capture; an FLL retune or clock-loading isolation may still be needed."
   ],
   "main_dut_modified": false,
-  "full_pll_acceptance": false,
-  "span_revision": {
-    "time": "2026-10-04T07:31:39.236938+08:00",
-    "superseded_protocol": "share/deliverables/integration/cmos_v14_full/results/rt4_loading_protocol_initial.json",
-    "superseded_unrun_cases": [
-      "rt4load_minus25m_tt",
-      "rt4load_minus50m_tt"
-    ],
-    "evidence": [
-      {
-        "source": "research/runs/spectre_cmos_v14_full/samplerload01/samplerload_track_vm_tt/result.json",
-        "sha256": "58712ae17ebc8bbd171421ca8c78806a27bfaeff0f6347fd0c5df6c48db5b2ee"
-      },
-      {
-        "source": "research/runs/spectre_cmos_v14_full/samplerload01/samplerload_track_tt/result.json",
-        "sha256": "1a7aca2b194063165e1812a08bd1a1535e5757882ff453c11a3507f37307c695"
-      }
-    ],
-    "baseline_one_sided_kvco_hz_per_v": 37159404.17957303,
-    "rationale": "Measured baseline statictracking secant~37MHz/V suggests the original50mV span changes frequency only~1.86MHz, smaller than the observed~8MHz RT4nearlock mismatch. Widen probes to100/250mV below nominal; this is experimental range selection, not extrapolated RT4 performance.",
-    "unchanged": "Nominal A/B case, RT4 circuit, supply, load, duration, initial-state provenance, and in-range interpolation-only acceptance remain unchanged."
-  }
+  "full_pll_acceptance": false
 }

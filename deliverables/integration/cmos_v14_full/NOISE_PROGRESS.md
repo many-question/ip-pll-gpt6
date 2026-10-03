@@ -12,9 +12,9 @@
 | FF及两级输出整体2倍 | 90.867 fs | 20.410 GV/s | 0.01275 dB | 0.00958 dB，通过 |
 | 整体4倍 | 63.275 fs | 30.934 GV/s | 0.01455 dB | 0.03047 dB，通过 |
 
-候选完整频带采用fresh PSS、1 ps／383边带／20点每十倍频；自身精度检查为0.5 ps／767边带／maxacfreq 504 GHz。六点精度和六沿三点不等于全频带、谐波附近积分或PVT关闭。fresh-PSS独立noise-on：RT2通过ff,buffers,rx,divider共4/5组；RT4通过ff,buffers共2/5组。仍是1MHz/100MHz/491.99MHz三点归因，未替代全带/PVT/实际LC。
+候选完整频带采用fresh PSS、1 ps／383边带／20点每十倍频；自身精度检查为0.5 ps／767边带／maxacfreq 504 GHz。六点精度和六沿三点不等于全频带、谐波附近积分或PVT关闭。旧分频器局部链RT2五组fresh noise-on全部完成并通过，独立PSD相加对全噪声最大相对差4.44e-16；六沿三点最大差0.009579dB。RT4通过ff,buffers,rx共3/5组，仍继续。范围为1MHz/100MHz/491.99MHz，不是全带或完整PLL。
 
-已准备两档RT尺寸的0.5ps/767边带/maxacfreq504GHz全频带精度TB及分析，保留10kHz–492MHz原对数网格和端点，增加164/328/492MHz附近1/10/100/1k/10kHz距离共25点。尚未运行，须对应noise-on完成审阅并释放槽位；不静默删掉连续闪烁噪声的谐波邻域。见[完整频带协议](results/rt_fullband_precision_protocol.json)。
+已准备两档RT尺寸的0.5ps/767边带/maxacfreq504GHz全频带精度TB及分析，保留10kHz–492MHz原对数网格和端点，增加164/328/492MHz附近1/10/100/1k/10kHz距离共25点。旧分频器的这项加密暂缓，优先实测与实际LC一致的新分频器负载；不静默删掉连续闪烁噪声的谐波邻域。见[完整频带协议](results/rt_fullband_precision_protocol.json)。
 
 4倍的暂定RSS贡献：FF50.491 fs、末级输出24.911 fs、前级19.505 fs、RX19.802 fs、分频1.747 fs、辅助负载7.586 fs。分量以方差相加。等效边沿电压RMS由原1.688 mV升到4倍1.957 mV，因此当前时间噪声改善来自更大斜率；此代数分解不能证明尺寸以外的唯一因果机制。见[尺寸数据](results/rt_noise_scaling_validation.json)、[斜率诊断](NOISE_SLEW_DIAGNOSIS.md)、[2倍审计](results/rt2_fine_audit_validation.json)、[4倍审计](results/rt4_fine_audit_validation.json)。
 
@@ -34,7 +34,7 @@ sampled edge-crossing电压PSD除以对应沿斜率平方后积分；自动Jee�
 
 24 MHz调制已出现在LC差分端，折合确定性时间峰值11.159 ps；输出11.654 ps，两者时间波形相关系数0.99534。参考保持／跟踪半周期的RF频差约10.229 MHz。采样负载切换是待证假设，控制纹波、电荷注入和其他直接参考耦合仍未分开。**这些ps量级周期扰动不是随机RMS，不计入排除spur的200 fs指标。** 详细证据、来源和图见[参考负载诊断](REFERENCE_LOADING_DIAGNOSIS.md)。
 
-`samplerload01`五个实际MOS实验将控制端钳到实测均值0.657999 V，分别采用正常参考、DC跟踪、DC保持及跟踪状态控制±10 mV。每例750 ns／1 ps，末500 ns密集保存；检验参考负载频差和KVCO。有限接续只接替分频短批次的1线程，进度以[结果](results/sampler_loading_validation.json)为准。互补MOS dummy采样40／80／120 fF已审阅并安排有限接续，**等待现有KVCO两点完成且全部诊断通过后启动，尚无补偿结果**；不采用CML或新增DLL。见[候选协议](results/sampler_dummy_protocol.json)。
+`samplerload01`五个实际MOS实验将控制端钳到实测均值0.657999 V，分别采用正常参考、DC跟踪、DC保持及跟踪状态控制±10 mV。每例750 ns／1 ps，末500 ns密集保存；检验参考负载频差和KVCO。有限接续只接替分频短批次的1线程，进度以[结果](results/sampler_loading_validation.json)为准。互补MOS dummy采样40／80／120 fF已在固定控制五例通过后接替启动，**尚无补偿结果**；不采用CML或新增DLL。见[候选协议](results/sampler_dummy_protocol.json)。
 
 ## VCO偏置噪声优化
 
@@ -50,11 +50,13 @@ sampled edge-crossing电压PSD除以对应沿斜率平方后积分；自动Jee�
 
 修正供电轨迹相邻周期保存电压最大差0.829 mV、主要时钟共同提前约0.021 ps；分频沿数相同，未覆盖隐藏状态，也不是随机jitter。安静shooting边界+134.023 ns仅为待检假设，尚未应用。见[周期漂移](results/core_period_drift.json)、[边界](results/core_boundary_diagnosis.json)。
 
-释放的6线程继续真实LC四组3 µs／1 ps近锁定比较。原尺寸基线通过：983.999994 MHz、相位漂移−8.18e-5 rad/µs。**RT4完成但失败**：输出986.004435 MHz、RF3944.017724 MHz、相位漂移+50.3637 rad/µs，分频比仍正确。共同初态与固定慢控制不能证明重新FLL捕获一定失败；先测加载频率曲线，再验证交接，RT4未采用。CF40实际LC近锁定3µs完成0error，末窗输出983.999339MHz、相位峰峰0.015177rad、漂移−0.015315rad/µs；漂移超出0.01rad/µs门限，稳态筛选未通过。需要延长稳定过程后再测噪声，不能判作没有锁定解；RT4+CF40仍运行。见[实际LC候选审阅](ACTUAL_LC_CANDIDATE_REVIEW.md)。
+真实LC四组3 µs／1 ps近锁定比较均已完成。原尺寸基线通过：983.999994 MHz、相位漂移−8.18e-5 rad/µs。**RT4完成但失败**：输出986.004435 MHz、RF3944.017724 MHz、相位漂移+50.3637 rad/µs，分频比仍正确。共同初态与固定慢控制不能证明重新FLL捕获一定失败；先测加载频率曲线，再验证交接，RT4未采用。CF40实际LC近锁定3µs完成0error，末窗输出983.999339MHz、相位峰峰0.015177rad、漂移−0.015315rad/µs；漂移超出0.01rad/µs门限，稳态筛选未通过。需要延长稳定过程后再测噪声，不能判作没有锁定解；RT4+CF40也已完成，RF3944.816010MHz／输出986.203865MHz／漂移+55.472481rad/µs，仍滑相。见[实际LC候选审阅](ACTUAL_LC_CANDIDATE_REVIEW.md)。
 
-基线终态仅更换readic的PSS仍已准备、未运行。新内部状态审计发现，同相位3 µs前后35个节点变化>1 mV；外部稳定不证明内部周期稳定。612个状态条目准确为601个电压和11个电流，包含两个电感电流。两个端点不能区分初始化跳变与后续慢变，未证明shooting根因，也未修改初态，见[完整状态诊断](CORE_STATE_DIAGNOSIS.md)。
+基线终态仅更换readic的PSS已接替六线程启动，尚无收敛结论。新内部状态审计发现，同相位3 µs前后35个节点变化>1 mV；外部稳定不证明内部周期稳定。612个状态条目准确为601个电压和11个电流，包含两个电感电流。两个端点不能区分初始化跳变与后续慢变，未证明shooting根因，没有人为修正或移植内部节点，见[完整状态诊断](CORE_STATE_DIAGNOSIS.md)。
 
-固定控制端第一例已完成：相同边沿拟合下，LC／输出24 MHz PM幅度仍保留99.863%／99.332%。直接参考耦合路径得到证据，但载波均值也改变约1.299 MHz，不能把该比例解释为某个器件的贡献。DC保持／跟踪均已通过，频差9.531425 MHz；KVCO继续，详见[参考负载诊断](REFERENCE_LOADING_DIAGNOSIS.md)。这些确定性调制不计入随机RMS。
+固定控制端第一例已完成：相同边沿拟合下，LC／输出24 MHz PM幅度仍保留99.863%／99.332%。直接参考耦合路径得到证据，但载波均值也改变约1.299 MHz，不能把该比例解释为某个器件的贡献。固定控制五例均已通过，频差9.531425 MHz、静态中心差分KVCO37.915054 MHz/V；dummy已启动，详见[参考负载诊断](REFERENCE_LOADING_DIAGNOSIS.md)。这些确定性调制不计入随机RMS。
+
+核对出既有141.281/90.867/63.275fs局部尺寸结果使用旧cmos_even_bank_acq_v14，而实际LC候选使用修复后的bank_pulsetrip_v14，时钟活动和加载不同。新RT2/RT4六点测试只替换分频include/实例，其余物理依赖、TT27/1.2V/984MHz/10fF和0.5ps/767边带条件保持，已接替RT2审计单线程启动。旧分频器全带加密暂缓；旧归因证据不直接转移给新电路。见[电路对应关系](NOISE_CIRCUIT_MAPPING.md)。
 
 ## 接续工作
 
