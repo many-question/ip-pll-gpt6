@@ -33,3 +33,9 @@
 使用 `analyze_closedloop_noise.py coretripnoise01 coretripsupply01 --output core_supply_noise_validation.json`。该分析器要求完成日志与 fresh PSS，通过周期及噪声门槛后才允许计算足够密的全带积分；失败结果保留但不产生 RMS。全频带、边沿、数值、逐模块 noise-on 及完整控制边界仍需补齐。
 
 以后由瞬态生成 PSS 初态时，应保持相关电流探针的保存配置一致，并核查保留下来的理想电压约束节点有完整初值。补齐理想电源节点不授权猜测电容、锁存或电感等动态状态。
+
+## 后续结果：初态尖峰与周期收敛须分开（04:49）
+
+补齐三个电源初值后，coretripsupply01已去除初始化尖峰，但周期残差3.7e6→75.3k→340k→2.1e6，未收敛；在四个残差后主动停止并回收。最后250ns各运行分支沿数正确、已检查电压端点差最大0.429mV，仍不是有效周期解。仅收紧线性求解itres=1e-6的同电路对照coretriplinear01已启动，最终准确度要求保持。新对照依据本地Spectre21.1 PSS帮助中itres的定义；它收紧每次Newton线性方程解的残差，未改变物理电路或最终周期误差门槛。线性求解误差是否为原因仍是假设。
+
+证据：[修正初态后仍未收敛的审计](results/core_supply_trial_audit.json)、[单参数线性求解对照](results/core_linear_precision_protocol.json)。停止后先出现SPECTRE-25再出现SPECTRE-18；周期状态无效，PNoise没有运行。

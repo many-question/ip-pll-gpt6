@@ -2,6 +2,7 @@
   "scope": "Conditional local-chain jitter comparison, not full-PLL acceptance.",
   "condition": "TT27/1.2V/984MHz/10fF; external noiseless measured3.936GHz RF replay; actual RX, full divider and quiet counter load.1ps/383sidebands,20points/dec.",
   "baseline_provisional_fs": 141.28105534877187,
+  "baseline_slew_v_per_s": 11949500000.0,
   "baseline_source": "research\\runs\\spectre_cmos_v14_full\\chainnoisefine01\\chain_noise_fine_tt\\result.json",
   "band_hz": [
     10000.0,
@@ -57,7 +58,11 @@
       },
       "exact_harmonic_flicker_warning": true,
       "noise_consistent_scope": "Device PSD sum agrees with output PSD only; not an independent noise-on or reuse validation.",
-      "pending": "Finite-offset harmonic integration, all-edge, maxacfreq/step/sideband, fresh-PSS noise-on and full-PLL/PVT checks remain."
+      "pending": "Finite-offset harmonic integration, all-edge, full-band numerical convergence, fresh-PSS noise-on and full-PLL/PVT checks remain.",
+      "matched_offset_precision_passed": true,
+      "matched_offset_precision_evidence": "share/deliverables/integration/cmos_v14_full/results/rt2_precision_validation.json",
+      "matched_offset_max_psd_delta_db": 0.012745926191811559,
+      "full_band_numerical_convergence_proven": false
     },
     {
       "case": "chain_rtscale4_tt",
@@ -108,7 +113,11 @@
       },
       "exact_harmonic_flicker_warning": true,
       "noise_consistent_scope": "Device PSD sum agrees with output PSD only; not an independent noise-on or reuse validation.",
-      "pending": "Finite-offset harmonic integration, all-edge, maxacfreq/step/sideband, fresh-PSS noise-on and full-PLL/PVT checks remain."
+      "pending": "Finite-offset harmonic integration, all-edge, full-band numerical convergence, fresh-PSS noise-on and full-PLL/PVT checks remain.",
+      "matched_offset_precision_passed": true,
+      "matched_offset_precision_evidence": "share/deliverables/integration/cmos_v14_full/results/rt4_precision_validation.json",
+      "matched_offset_max_psd_delta_db": 0.014552987513794871,
+      "full_band_numerical_convergence_proven": false
     }
   ],
   "main_dut_modified": false,

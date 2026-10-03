@@ -8,9 +8,9 @@
 
 | 配置 | 10kHz–492MHz 暂定RMS | 输出上升沿斜率 | 状态 |
 |---|---:|---:|---|
-| 原局部链 | 141.281fs | 11.952GV/s | 有独立noise-on、部分边沿和精度对照；谐波邻近积分仍有缺口 |
+| 原局部链 | 141.281fs | 11.950GV/s | 有独立noise-on、部分边沿和精度对照；谐波邻近积分仍有缺口 |
 | FF及两级输出整体2倍 | 90.867fs | 20.410GV/s | 新求解PSS及全频带PNoise完成0error；新求解总噪声/FF三点及匹配六点精度通过；六沿/五组noise-on进行中 |
-| 整体4倍 | 63.275fs | 30.934GV/s | 全频带0error完成；仍待自身精度／边沿／noise-on／PVT |
+| 整体4倍 | 63.275fs | 30.934GV/s | 全频带0error；六点精度通过，边沿／noise-on进行中，PVT待验 |
 
 2倍候选的暂定RSS贡献：FF70.029fs、输出末级43.727fs、前级29.074fs、RX18.773fs、输出到静默计数器的传输门15.384fs、分频树1.723fs。这些贡献按方差相加，不能线性相加。夹具总功耗约1.815mW，不是全部PLL功耗。2倍候选周期轨迹有6个正确输出上升沿，各公开节点谐波和端点检查通过。
 
@@ -38,7 +38,7 @@
 - `coreregisterprobe01`的250ns稳定段后PSS失败，2个error，PNoise跳过。文本重启相位峰峰0.173352rad；最后250ns公开输出／÷2／÷8／÷12沿数246／492／123／82正确。Newton从内部锁存开始产生非物理越轨，未证明基频错误。
 - `coregear01`将稳定段延至2µs并使用Gear2，仍发散；10次残差报告后精确SIGINT停止并保留3.24GB稳定段。最后两周期的÷12内部fb端点相差约5.8µV，但首个迭代报告约1.197V差异，提示需继续核查初始向量与求解流程；不据此直接认定模拟器bug。
 - `corerestart01`的skipdc／tstart对照仍发散，已SIGINT停止。残差先从338k到333k，随后升到721k／2.44M；保存的最后250ns沿数246／492／123／82仍正确，但RF和输出端点尚有明显差异。停止后另记录SPECTRE-18，不描述为此前自行崩溃。没有PNoise；详见[失败审计](results/core_restart_failure.json)。动态节点只是待检假设，尚未证明唯一原因。
-- `coretripsettle01`将独立诊断核心分频器替换为连续时钟`bank_pulsetrip_v14`，其余VCO CF10pF、基线RT和主环不变；剔除旧分频／输出的文本初态后，在真实LC／采样反馈下重跑3µs/1ps。新连续时钟分频器接入真实LC／采样环的独立核心后，3µs严格瞬态通过：末窗输出984.000049MHz、相位峰峰0.001121rad、漂移0.001112rad/µs，粗调23保持。新核心PSS发现三个电源探针节点缺失初值；只补三个1.2V初值的A/B已去除209A数值初始化尖峰。原coretripnoise01在首轮后主动停止，未据此判为电路收敛失败。修正后的coretripsupply01已启动，尚无有效噪声结果。见[初始化修复](CORE_INITIALIZATION.md)。证据：[真实LC瞬态](results/core_pulsetrip_settle_validation.json)、[新PSS协议](results/core_pulsetrip_noise_protocol.json)。
+- `coretripsettle01`将独立诊断核心分频器替换为连续时钟`bank_pulsetrip_v14`，其余VCO CF10pF、基线RT和主环不变；剔除旧分频／输出的文本初态后，在真实LC／采样反馈下重跑3µs/1ps。新连续时钟分频器接入真实LC／采样环的独立核心后，3µs严格瞬态通过：末窗输出984.000049MHz、相位峰峰0.001121rad、漂移0.001112rad/µs，粗调23保持。新核心PSS发现三个电源探针节点缺失初值；只补三个1.2V初值的A/B已去除209A数值初始化尖峰。原coretripnoise01在首轮后主动停止，未据此判为电路收敛失败。补齐三个电源初值后，coretripsupply01已去除初始化尖峰，但周期残差3.7e6→75.3k→340k→2.1e6，未收敛；在四个残差后主动停止并回收。最后250ns各运行分支沿数正确、已检查电压端点差最大0.429mV，仍不是有效周期解。仅收紧线性求解itres=1e-6的同电路对照coretriplinear01已启动，最终准确度要求保持。见[初始化修复](CORE_INITIALIZATION.md)。证据：[真实LC瞬态](results/core_pulsetrip_settle_validation.json)、[新PSS协议](results/core_pulsetrip_noise_protocol.json)。
 
 失败证据：[首轮PSS审计](results/register_pss_failure.json)、[Gear2审计](results/gear_pss_failure.json)，新测试 [协议](results/core_restart_protocol.json)。失败生成的周期状态明确无效，不得复用。此前两条有限自动流程均已停止，没有自动启动完整频带。
 
@@ -65,10 +65,18 @@ RF频率变化+0.00433%、载波幅度+0.193%，相近工作点成立。1MHz滤�
 
 ![VCO滤波候选与1MHz器件噪声组成](results/figures/vco_bias_noise.png)
 
-局部输出链：4倍尺寸候选已完成，局部积分暂算63.275fs；仍待自身数值、边沿、noise-on和PVT核查。2倍候选已通过1ps/383与0.5ps/767/maxacfreq504GHz的匹配六频点复核，最大PSD差0.01275dB；六输出沿及五组fresh-PSS独立noise-on正在运行。精度、边沿和归因检查都不能代替全频带/PVT或整机验收。
+局部输出链：4倍局部63.275fs对应的匹配六点精度已通过：1ps/383对0.5ps/767/maxacfreq504GHz，最大PSD差0.01455dB。其自身六输出沿和五组fresh-PSS noise-on已开始；全带数值、谐波邻近、实际LC及PVT仍未关闭。2倍候选已通过1ps/383与0.5ps/767/maxacfreq504GHz的匹配六频点复核，最大PSD差0.01275dB；六输出沿及五组fresh-PSS独立noise-on正在运行。精度、边沿和归因检查都不能代替全频带/PVT或整机验收。
 
 运行条件见[精度协议](results/rt2_precision_protocol.json)、[边沿和noise-on协议](results/rt2_fine_audit_protocol.json)、[真实LC诊断核心协议](results/core_pulsetrip_protocol.json)。线程请求总数不超过18；每个有限接续任务仅使用其前序任务释放的线程。
 
 4倍尺寸的[匹配精度对照](results/rt4_precision_protocol.json)接续在尾管试验释放的1线程内运行，之后仍需它自身的边沿、noise-on及实际LC/PVT验证。
 
 4倍方案的六边沿和五组独立noise-on输入已准备，有限接续脚本只在它自身的精度门槛通过且前序释放线程后启动；不借用2倍结果替代4倍验证。见[4倍后续协议](results/rt4_fine_audit_protocol.json)。
+
+## 本轮新增证据
+
+4倍局部63.275fs对应的匹配六点精度已通过：1ps/383对0.5ps/767/maxacfreq504GHz，最大PSD差0.01455dB。其自身六输出沿和五组fresh-PSS noise-on已开始；全带数值、谐波邻近、实际LC及PVT仍未关闭。
+
+尺寸与斜率的分解显示：基线到4倍，输出沿斜率11.950→30.934GV/s，等效边沿电压RMS却由1.688→1.957mV。当前测量中时间噪声改善来自斜率平方分母增加；不是电压噪声下降的证据。尺寸同时影响再生和负载，不能把代数分解当独立因果试验。见[边沿诊断](NOISE_SLEW_DIAGNOSIS.md)。
+
+真实LC四组同条件3µs近锁定对照已准备：基线、RT4、CF40、RT4+CF40。有限接续等待2倍审计释放同一个1线程，仅验证负载反馈与功能稳定；不是噪声或供电启动验收。见[实际LC候选协议](results/core_noise_candidates_protocol.json)。

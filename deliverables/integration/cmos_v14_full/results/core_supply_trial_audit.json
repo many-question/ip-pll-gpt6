@@ -1,0 +1,154 @@
+{
+  "scope": "Audit the stopped supply-corrected shooting trial and its saved stable segment.",
+  "source_result": "research/runs/spectre_cmos_v14_full/coretripsupply01/core_pulsetrip_supply_noise_tt/result.json",
+  "source_sha256": "299c15a747839910f17dbfbe90eaedc2d74bc518698b64f11bc11fd8e68bd199",
+  "cancellation": {
+    "stopped": true,
+    "signal": "SIGINT",
+    "pid": 81305,
+    "netlist": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/dfab83b7/core_pulsetrip_supply_noise_tt.scs",
+    "time": "2026-10-04T04:49:30.382126+08:00",
+    "reason": "Controlled linear-solver diagnosis: after corrected supply IC removed initialization impulse, norms3.7e6,75.3e3,340e3,2.1e6 show growing later mismatch and no convergence. Preserve outputs; exact same physical circuit/IC/accuracy next onlyitres1e-6. Stoppedafter4norms,notclaimofmathematicalnonexistenceorcompletedmaxiterationsfailure."
+  },
+  "convergence_history": [
+    "Conv norm = 3.7e+06, max dI(VDD:p) = -5.72045 mA, took 5.30471 ks.",
+    "Conv norm = 75.3e+03, max dV(XP.XD.d8) = -17.3302 mV, took 2.37023 ks.",
+    "Conv norm = 340e+03, max dV(XP.data) = 85.497 mV, took 2.26911 ks.",
+    "Conv norm = 2.1e+06, max dI(VDD:p) = -3.44665 mA, took 2.25926 ks."
+  ],
+  "raw_tstab": {
+    "path": "research/runs/spectre_cmos_v14_full/coretripsupply01/core_pulsetrip_supply_noise_tt/core_pulsetrip_supply_noise_tt.raw/pss.tran.pss",
+    "bytes": 1975257054,
+    "sha256": "99808f9e36ad6289a1d22f118cbd15531a1b61e60725ae88d485e6c93ac6e6e1"
+  },
+  "last_saved_period_us": [
+    4.0,
+    4.25
+  ],
+  "branches": {
+    "out": {
+      "rising_edges": 246,
+      "expected": 246,
+      "max_period_fraction_error": 0.00428439944703185
+    },
+    "XP.refb": {
+      "rising_edges": 6,
+      "expected": 6,
+      "max_period_fraction_error": 6.452413403579271e-08
+    },
+    "XP.clk": {
+      "rising_edges": 984,
+      "expected": 984,
+      "max_period_fraction_error": 0.007100948999219314
+    },
+    "XP.q1": {
+      "rising_edges": 492,
+      "expected": 492,
+      "max_period_fraction_error": 0.0074957547261012
+    },
+    "XP.data": {
+      "rising_edges": 246,
+      "expected": 246,
+      "max_period_fraction_error": 0.0070381718799212845
+    },
+    "XP.XD.d8": {
+      "rising_edges": 123,
+      "expected": 123,
+      "max_period_fraction_error": 0.0037347758518975205
+    },
+    "XP.XD.d12": {
+      "rising_edges": 82,
+      "expected": 82,
+      "max_period_fraction_error": 0.0028525690655516467
+    },
+    "XP.XD.d6": {
+      "rising_edges": 164,
+      "expected": 164,
+      "max_period_fraction_error": 0.004538839188212851
+    },
+    "XP.XD.ck": {
+      "rising_edges": 492,
+      "expected": 492,
+      "max_period_fraction_error": 0.008291523184390748
+    }
+  },
+  "endpoint_delta_v": {
+    "out": 0.00012023573216679573,
+    "XP.vp": -0.0001818565086939561,
+    "XP.vn": 0.00019997747659705745,
+    "XP.ctrl": -1.8302957898286287e-05,
+    "XP.refb": 9.703753759711777e-08,
+    "XP.clk": -1.0631398610140216e-05,
+    "XP.q1": 0.00023916171127585928,
+    "XP.data": 0.000429388970772715,
+    "XP.XD.d8": -0.00041183240049710856,
+    "XP.XD.d12": 5.608280147727295e-08,
+    "XP.XD.d6": 0.00027248193647830266,
+    "XP.XD.ck": 1.486836476405351e-05,
+    "XP.XD.load": -1.8701669754787528e-07,
+    "XP.XD.loadb": 5.021473755029149e-06
+  },
+  "ranges_v": {
+    "out": [
+      -0.03787834242794078,
+      1.209954966430979
+    ],
+    "XP.vp": [
+      0.7539682406121342,
+      1.578024218069263
+    ],
+    "XP.vn": [
+      0.684234677597446,
+      1.677603171581539
+    ],
+    "XP.ctrl": [
+      0.6321356753862865,
+      0.69595661858717
+    ],
+    "XP.refb": [
+      -0.01297005253153476,
+      1.221979525358109
+    ],
+    "XP.clk": [
+      -0.02455922668313133,
+      1.246988354906375
+    ],
+    "XP.q1": [
+      -0.02591981394185889,
+      1.22952330237339
+    ],
+    "XP.data": [
+      -0.03174481928915088,
+      1.25465366680711
+    ],
+    "XP.XD.d8": [
+      -0.03480962521369785,
+      1.24396795646037
+    ],
+    "XP.XD.d12": [
+      -0.03242388216819257,
+      1.238619828475758
+    ],
+    "XP.XD.d6": [
+      -0.03255354017750031,
+      1.238802616106684
+    ],
+    "XP.XD.ck": [
+      -0.02540197568048198,
+      1.249818001124218
+    ],
+    "XP.XD.load": [
+      -0.01784259341935623,
+      0.004535048178923244
+    ],
+    "XP.XD.loadb": [
+      1.082109411967434,
+      1.216452765561343
+    ]
+  },
+  "segmentation_fault_after_stop": true,
+  "pnoise_ran": false,
+  "periodic_state_valid": false,
+  "full_pll_acceptance": false,
+  "interpretation": "Three-node IC correction removes the initial impulse, but subsequent shooting norms75.3k,340k,2.1M do not converge in the observed trial. Deliberately stoppedafter4norms,notproofperiodicsolutiondoesnotexist. Tightitres-onlycomparisonisrunning; finalaccuracyunchanged."
+}

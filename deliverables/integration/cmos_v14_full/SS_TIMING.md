@@ -114,3 +114,7 @@
 `banktripcorner01`已启动17例：5个SS低RF端及6档TT/FF高RF端。新测量除分频比例外，还直接核对冻结刺激中的绝对RF频率、每个接收器周期和输出绝对频率，避免输入漏沿被相对分频比掩盖。原SS高端6例在加强判据下仍全通过。所有角落暂固定同一实测SS波形形状，属于受控接口比较，不等于各角落实际VCO或完整PVT。
 
 结果见[低RF与角落](results/bank_pulsetrip_corner_validation.json)、[17例预定协议](results/bank_pulsetrip_corner_protocol.json)。只把完成且通过检查的案例计为通过，运行中案例保持待定。
+
+## SS全部规划端点通过
+
+新增5个低RF端全部完成并通过，与原6个高端组合，六个分频模式的11个不同SS规划端点均通过固定400–600ns接口筛选。M14只有一个规划频点，因此不重复计数。保持实际MOS接收器／分频／原RT／10fF和同一SS波形重放。TT/FF高端回归继续；这不证明所有中间频点、实际LC或完整PVT。详见[端点覆盖计数与输入SHA](results/bank_pulsetrip_coverage.json)。

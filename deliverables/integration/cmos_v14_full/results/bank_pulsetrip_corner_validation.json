@@ -2,6 +2,292 @@
   "cases": [
     {
       "run": "banktripcorner01",
+      "case": "banktripcorner_m10_ss_lo",
+      "passed": true,
+      "source": "research/runs/spectre_cmos_v14_full/banktripcorner01/banktripcorner_m10_ss_lo/result.json",
+      "source_sha256": "38a82f3984031c67fa057a92483d131608327fd7059564dd8d957fa84e96ba57",
+      "output": {
+        "m": 10,
+        "rf_mhz": 2880.0028452433007,
+        "output_mhz": 288.0000043471559,
+        "edges": 57,
+        "max_period_error": 7.848843214919299e-06,
+        "duty_mean_percent": 38.058240606651886,
+        "duty_range_percent": [
+          38.053291375152554,
+          38.06287649619187
+        ],
+        "every_cycle_full_swing": true,
+        "passed": true,
+        "power_mw": 2.4904551838267475,
+        "scope": "Actual SS receiver, measured SS tank waveform replay; quiet counter load; 60C/1.2V/10fF,600ns/fixedwindow400-600ns,1ps/reltol1e-5. The stimulus shape is held constant across corners; not full PLL or jitter."
+      },
+      "stages": {
+        "clk": {
+          "range_v": [
+            -0.02335372569114372,
+            1.244259149734426
+          ],
+          "mhz": 2880.0028452433007,
+          "all_cycle_swing": true,
+          "min_cycle_peak_v": 1.239763307324099,
+          "max_cycle_trough_v": -0.01669508150986229
+        },
+        "XD.q0": {
+          "range_v": [
+            -0.09420532944448172,
+            1.217901286038364
+          ],
+          "mhz": 1440.001864821163,
+          "all_cycle_swing": true,
+          "min_cycle_peak_v": 1.21562593176292,
+          "max_cycle_trough_v": -0.09339600178342686
+        },
+        "XD.qb0": {
+          "range_v": [
+            -0.01664665894430689,
+            0.9997817239864959
+          ],
+          "mhz": 1440.0144937520495,
+          "all_cycle_swing": false,
+          "min_cycle_peak_v": 0.9927475346930509,
+          "max_cycle_trough_v": -0.01323344607535117
+        },
+        "q1": {
+          "range_v": [
+            -0.03177382186579876,
+            1.228674165099121
+          ],
+          "mhz": 1439.985405228239,
+          "all_cycle_swing": true,
+          "min_cycle_peak_v": 1.222451005886763,
+          "max_cycle_trough_v": -0.02360209135531295
+        },
+        "XD.d4": {
+          "range_v": [
+            -0.0318796929716963,
+            1.247476591830141
+          ],
+          "mhz": 720.0021610234751,
+          "all_cycle_swing": true,
+          "min_cycle_peak_v": 1.246760552891624,
+          "max_cycle_trough_v": -0.03103042533929098
+        },
+        "predata": {
+          "range_v": [
+            -0.03286108493300448,
+            1.250997321943428
+          ],
+          "mhz": 288.0041083439375,
+          "all_cycle_swing": true,
+          "min_cycle_peak_v": 1.250411840523318,
+          "max_cycle_trough_v": -0.03263039562682982
+        },
+        "data": {
+          "range_v": [
+            -0.0380162907344023,
+            1.22171102635133
+          ],
+          "mhz": 288.0000043471559,
+          "all_cycle_swing": true,
+          "min_cycle_peak_v": 1.221701864733786,
+          "max_cycle_trough_v": -0.03795741698190598
+        },
+        "XD.ct0": {
+          "range_v": [
+            -0.01520343482863002,
+            1.168050862589417
+          ],
+          "mhz": 1439.9467357611954,
+          "all_cycle_swing": true,
+          "min_cycle_peak_v": 1.150602635699289,
+          "max_cycle_trough_v": -0.01416251336267829
+        },
+        "XD.ct1": {
+          "range_v": [
+            0.01309027419614721,
+            1.238226812281112
+          ],
+          "mhz": 1439.969606472368,
+          "all_cycle_swing": true,
+          "min_cycle_peak_v": 1.237556793926602,
+          "max_cycle_trough_v": 0.01824876282391476
+        },
+        "XD.cb": {
+          "range_v": [
+            -0.02632118932624289,
+            1.153966304981047
+          ],
+          "mhz": 1439.9438916980848,
+          "all_cycle_swing": true,
+          "min_cycle_peak_v": 1.139598034372449,
+          "max_cycle_trough_v": -0.02595040577274563
+        },
+        "XD.ck": {
+          "range_v": [
+            -0.0319039540749258,
+            1.253448039090061
+          ],
+          "mhz": 1439.9800549123179,
+          "all_cycle_swing": true,
+          "min_cycle_peak_v": 1.251117496437604,
+          "max_cycle_trough_v": -0.0299323361285673
+        }
+      },
+      "q1_max_period_error": 0.0037033932492205324,
+      "q1_passed": true,
+      "nominal_rf_mhz": 2880.0,
+      "rf_max_period_error": 0.0013680962504605265,
+      "rf_clock_passed": true,
+      "corner": "ss",
+      "temperature_c": 60.0,
+      "absolute_output_frequency_passed": true
+    },
+    {
+      "run": "banktripcorner01",
+      "case": "banktripcorner_m12_ss_lo",
+      "passed": true,
+      "source": "research/runs/spectre_cmos_v14_full/banktripcorner01/banktripcorner_m12_ss_lo/result.json",
+      "source_sha256": "911589893cfc399f8028db7c86c78af4b13da5f5ed078aa992c836a4c3767db4",
+      "output": {
+        "m": 12,
+        "rf_mhz": 2880.000636598497,
+        "output_mhz": 240.00000829647053,
+        "edges": 48,
+        "max_period_error": 1.8308598452865255e-06,
+        "duty_mean_percent": 65.67531073609928,
+        "duty_range_percent": [
+          65.61065186864397,
+          65.73727432495691
+        ],
+        "every_cycle_full_swing": true,
+        "passed": true,
+        "power_mw": 2.4901654711375167,
+        "scope": "Actual SS receiver, measured SS tank waveform replay; quiet counter load; 60C/1.2V/10fF,600ns/fixedwindow400-600ns,1ps/reltol1e-5. The stimulus shape is held constant across corners; not full PLL or jitter."
+      },
+      "stages": {
+        "clk": {
+          "range_v": [
+            -0.02286840477401749,
+            1.24432296906158
+          ],
+          "mhz": 2880.000636598497,
+          "all_cycle_swing": true,
+          "min_cycle_peak_v": 1.239418201949087,
+          "max_cycle_trough_v": -0.01633490782293337
+        },
+        "XD.q0": {
+          "range_v": [
+            -0.09416216461042567,
+            1.217494602339007
+          ],
+          "mhz": 1439.9999107630274,
+          "all_cycle_swing": true,
+          "min_cycle_peak_v": 1.215490334466543,
+          "max_cycle_trough_v": -0.09342452697652649
+        },
+        "XD.qb0": {
+          "range_v": [
+            -0.01644768022823044,
+            0.9995640804918989
+          ],
+          "mhz": 1440.0150835573843,
+          "all_cycle_swing": false,
+          "min_cycle_peak_v": 0.9932766285222954,
+          "max_cycle_trough_v": -0.01323679584495905
+        },
+        "q1": {
+          "range_v": [
+            -0.03177070213430457,
+            1.22860266879348
+          ],
+          "mhz": 1439.9840764919,
+          "all_cycle_swing": true,
+          "min_cycle_peak_v": 1.222443582179886,
+          "max_cycle_trough_v": -0.02371821006019597
+        },
+        "XD.d4": {
+          "range_v": [
+            -0.03187902701636759,
+            1.247501302017526
+          ],
+          "mhz": 720.0013527885076,
+          "all_cycle_swing": true,
+          "min_cycle_peak_v": 1.246758731741014,
+          "max_cycle_trough_v": -0.03104904414323023
+        },
+        "predata": {
+          "range_v": [
+            -0.02566620884831976,
+            1.260406347849829
+          ],
+          "mhz": 240.00245028239667,
+          "all_cycle_swing": true,
+          "min_cycle_peak_v": 1.260132278877581,
+          "max_cycle_trough_v": -0.02540635697336903
+        },
+        "data": {
+          "range_v": [
+            -0.03800586990485338,
+            1.220812338474961
+          ],
+          "mhz": 240.00000829647053,
+          "all_cycle_swing": true,
+          "min_cycle_peak_v": 1.220576386120399,
+          "max_cycle_trough_v": -0.03794872136173909
+        },
+        "XD.ct0": {
+          "range_v": [
+            -0.01507210567311205,
+            1.167779603358402
+          ],
+          "mhz": 1439.9426936277532,
+          "all_cycle_swing": true,
+          "min_cycle_peak_v": 1.15125236784382,
+          "max_cycle_trough_v": -0.01417433304681479
+        },
+        "XD.ct1": {
+          "range_v": [
+            0.01296949178788482,
+            1.238122266365294
+          ],
+          "mhz": 1439.96888598151,
+          "all_cycle_swing": true,
+          "min_cycle_peak_v": 1.237529530445178,
+          "max_cycle_trough_v": 0.01771785837592286
+        },
+        "XD.cb": {
+          "range_v": [
+            -0.02623149116351223,
+            1.153998148552032
+          ],
+          "mhz": 1439.9398128852163,
+          "all_cycle_swing": true,
+          "min_cycle_peak_v": 1.141844578313404,
+          "max_cycle_trough_v": -0.0258851971915097
+        },
+        "XD.ck": {
+          "range_v": [
+            -0.03109556972441901,
+            1.253917496346323
+          ],
+          "mhz": 1439.978741811179,
+          "all_cycle_swing": true,
+          "min_cycle_peak_v": 1.252500706366695,
+          "max_cycle_trough_v": -0.03010556292189915
+        }
+      },
+      "q1_max_period_error": 0.0034568264020249373,
+      "q1_passed": true,
+      "nominal_rf_mhz": 2880.0,
+      "rf_max_period_error": 0.0006951509559864899,
+      "rf_clock_passed": true,
+      "corner": "ss",
+      "temperature_c": 60.0,
+      "absolute_output_frequency_passed": true
+    },
+    {
+      "run": "banktripcorner01",
       "case": "banktripcorner_m4_ss_lo",
       "passed": true,
       "source": "research/runs/spectre_cmos_v14_full/banktripcorner01/banktripcorner_m4_ss_lo/result.json",

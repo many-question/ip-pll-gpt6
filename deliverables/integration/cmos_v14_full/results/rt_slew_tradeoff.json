@@ -1,0 +1,49 @@
+{
+  "scope": "Separate measured edge-slope conversion from equivalent output voltage noise.\n\nThis is an algebraic decomposition of the sampled edge PSD, not an independent\nexperiment holding slope or transistor noise fixed. Local-chain limits remain.\n",
+  "cases": [
+    {
+      "factor": 1,
+      "provisional_jitter_fs": 141.28105534877187,
+      "edge_slew_gv_per_s": 11.9495,
+      "equivalent_edge_voltage_rms_mv": 1.6882379708901498
+    },
+    {
+      "factor": 2,
+      "provisional_jitter_fs": 90.8673733618266,
+      "edge_slew_gv_per_s": 20.4099,
+      "equivalent_edge_voltage_rms_mv": 1.8545940035775448,
+      "precision_max_delta_db": 0.012745926191811559,
+      "voltage_variance_change_db": 0.8163037460979601,
+      "inverse_slope_squared_change_db": -4.649822865452893,
+      "timing_variance_change_db": -3.833519119354932
+    },
+    {
+      "factor": 4,
+      "provisional_jitter_fs": 63.27537133010213,
+      "edge_slew_gv_per_s": 30.9341,
+      "equivalent_edge_voltage_rms_mv": 1.9573666642625125,
+      "precision_max_delta_db": 0.014552987513794871,
+      "voltage_variance_change_db": 1.2847704733332177,
+      "inverse_slope_squared_change_db": -8.261755030863103,
+      "timing_variance_change_db": -6.976984557529885
+    }
+  ],
+  "band_hz": [
+    10000.0,
+    492000000.0
+  ],
+  "condition": "TT27/1.2V/984MHz/10fF,noiselessmeasuredRFreplay. SameactualRX/fullbank/quietload,onlyFFandtwooutputstagewidthsscaled.",
+  "equation": "integral(S_t df)=integral(S_v df)/slope^2; equivalent sigma_v=sigma_t*slope at the chosen edge.",
+  "evidence_hashes": {
+    "chain_noise_validation.json": "fff4221a7db438efba9665176831815557489b730e44ec5c0b851cef37ef683c",
+    "rt_noise_scaling_validation.json": "7000ec279591d400190f61b1b211206d35dc8623e3006c2f2184e8cbdb287523"
+  },
+  "observation": "Equivalent sampled edge voltage noise rises slightly while edge slope rises substantially; timing noise falls.",
+  "interpretation": "In this edge measurement, improvement is explained by the larger slope denominator, not by a reduction of integrated output voltage PSD. Width changes affect both regeneration/loading and noise transfer, so this is not an isolated causal experiment.",
+  "limitations": [
+    "Baselinefullband0.5ps/767;candidatefullband1ps/383. Ownmatchedsixpointprecisionchecks<.02dBbutnotfullbandconvergenceproof.",
+    "Equivalent edge voltage RMS is a sampled-noise normalization, not broadband voltage RMS at arbitrary time.",
+    "Otheredges,independentnoiseon,harmonicneighborhoods,actualLC,PVTandfullPLLremain."
+  ],
+  "full_pll_acceptance": false
+}

@@ -1,0 +1,16 @@
+{
+  "scope": "Prepare a one-parameter shooting linear-solver diagnostic, not a launched retry.\n\nSpectre21.1 pss help states that itres controls the iterative linear equation\nresidual at each Newton iteration; tightening can improve Newton convergence\nwithout relaxing the final circuit accuracy. This is a hypothesis to test only\nafter reviewing the current supply-corrected run, not proof of its root cause.\n",
+  "status": "prepared_not_run",
+  "run": "coretriplinear01",
+  "case": "core_pulsetrip_linear_noise_tt",
+  "source_tb_sha256": "872a44614d2a60e8ed38a9bddb5edb68a977c6915de4ea23963f008ef6d0e698",
+  "candidate_tb_sha256": "c1a7b8be16c7e37434b9fbe224e3c0d7d275e132871322b21d649247edc15361",
+  "local_help_sha256": "8a17351524d67f6b60cc9cb0898b4d9a6b40c668426d00de120c8d008113f04a",
+  "change": "Only set PSS itres=1e-6. Identicalphysicalcore,correctedIC,timing,saves,method,maxstep,reltol,abstol,steadyratioand10iterations.",
+  "default_evidence": "LocalSpectre21.1 pss help: default shooting APS itres1e-3. This default is documented, not measured from a detailed run annotation.",
+  "hypothesis": "Weak phase/slow-bias modes may amplify linear-solver error in shooting corrections; tighter GMRES residual could improve contraction. Not established.",
+  "required_launch_gate": "Review actual iterations and terminal/stopped status of coretripsupply01 first; do not duplicate an active6thread core job.",
+  "acceptance": "Same residual and periodic/noise gates as source; no residual tolerance relaxation.6pointsnotRMS.",
+  "full_pll_acceptance": false,
+  "main_dut_modified": false
+}

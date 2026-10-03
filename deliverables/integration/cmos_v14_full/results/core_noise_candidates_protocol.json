@@ -1,0 +1,57 @@
+{
+  "scope": "Prepare controlled real-LC loading tests for the two demonstrated noise candidates.\n\nThese are near-lock functional/stationarity preflights, not noise or power-up\nacceptance. Baseline, RT4, CF40 and their combination share a corrected analog\nseed and identical measurement topology. No candidate is adopted in main PLL.\n",
+  "status": "prepared_not_run",
+  "run": "corenoisecand01",
+  "cases": [
+    {
+      "case": "core_noisecand_base_tt",
+      "variant": "base",
+      "rt_width_scale": 1,
+      "bias_cf_pf": 10,
+      "core": "pll_noise_pulsetrip_core_v14",
+      "core_sha256": "fbeb935df1fc747f158a3eb8ac23296aeabb90c8a1a6e1b2e8850746f6fa1e36",
+      "tb_sha256": "9e17bb71a3d1976ffa49f63dc59aa69f542341bcdbd9288471dd3cef2ca59311"
+    },
+    {
+      "case": "core_noisecand_rt4_tt",
+      "variant": "rt4",
+      "rt_width_scale": 4,
+      "bias_cf_pf": 10,
+      "core": "pll_noise_rt4_core_v14",
+      "core_sha256": "dac5476318f5830e7c5b7af8c3c0ef91d38ef48235d947f9835fbab88fffda93",
+      "tb_sha256": "76ae7ec2c4354250d92d3cac5635a3f8693ccdf8430d98e035bd1325d520260b"
+    },
+    {
+      "case": "core_noisecand_cf40_tt",
+      "variant": "cf40",
+      "rt_width_scale": 1,
+      "bias_cf_pf": 40,
+      "core": "pll_noise_cf40_core_v14",
+      "core_sha256": "677a806e40e56bdabfb5bd5866ff235d00659ca9aed6c10624245b2a1bebf86d",
+      "tb_sha256": "6cf3409f6e70255194daf111b2d53eb3770399849fd11d2121031356939288a0"
+    },
+    {
+      "case": "core_noisecand_rt4cf40_tt",
+      "variant": "rt4cf40",
+      "rt_width_scale": 4,
+      "bias_cf_pf": 40,
+      "core": "pll_noise_rt4cf40_core_v14",
+      "core_sha256": "09283ffacf056809b493bf45f0e5ab54960886f4e092c1d3d09fd567aca8bc78",
+      "tb_sha256": "a6430c69cba7d6b54429fcd3f568c45e55d18f9c762e92fdb7b8d41d2f4c454d"
+    }
+  ],
+  "source_core_sha256": "fbeb935df1fc747f158a3eb8ac23296aeabb90c8a1a6e1b2e8850746f6fa1e36",
+  "seed_sha256": "954139915dc28cbab2f73f5e1772612450515ee235bb522d4b7794c315f1329b",
+  "condition": "TT27/1.2V/984MHz/10fF,Q5actualLC,realRFreceiver/continuousdivider/sampledloop. Static slow-control boundary;3us/1ps/1e-5/traponly;2ns sparse observer strobes.",
+  "required_launch_gate": "RT4 own matched precision screen must pass. Use only a released long-job slot within18threads/4long+1short; do not overlap an existing replacement pipeline.",
+  "acceptance": "Same predeclared last1us observer criteria as coretripsettle01, coarse23 held, matching source hashes. Compare candidates against baseline under the same probes and seed.",
+  "limitations": [
+    "No random-jitter result: this transient has no device noise.",
+    "2ns strobes are only for observer envelopes, notGHz waveform swing, edge slope, spectrum, or power.",
+    "Reusing initial voltages across capacitance/device changes is a near-lock perturbation test, not native state continuation or cold power-up.",
+    "CF40 long bias time constant means3us stationarity alone is insufficient for final settling/noise acceptance.",
+    "Source CF10 and original RT remain in the currently running supply-corrected PSS."
+  ],
+  "main_dut_modified": false,
+  "full_pll_acceptance": false
+}
