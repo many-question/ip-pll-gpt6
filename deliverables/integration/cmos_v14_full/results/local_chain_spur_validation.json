@@ -1,0 +1,374 @@
+{
+  "scope": "Measure local deterministic divider/retimer lines; no complete-PLL spur claim.",
+  "cases": [
+    {
+      "run": "chainnoisefine01",
+      "case": "chain_noise_fine_tt",
+      "factor": 1,
+      "precision": "fine",
+      "source_result": "research/runs/spectre_cmos_v14_full/chainnoisefine01/chain_noise_fine_tt/result.json",
+      "source_sha256": "9fefc48202620b1e331ddbddbc958b0f30bbf7aad7e954966b205b13e97cb5cc",
+      "fd_sha256": "2dea4c8f44f240b2b9b53182a5fb5d4ee8c3c61a84f0a01b4bbcc67c2d38e714",
+      "td_sha256": "b1bbdf1fbd5a0d33d54eaf0f9c5658c0459bce85a34d6146b14e5492cc91fb43",
+      "metric": {
+        "carrier_hz": 984000000.0,
+        "carrier_amplitude_v": 0.6840706509952024,
+        "offset_band_hz": [
+          10000.0,
+          492000000.0
+        ],
+        "lines": [
+          {
+            "frequency_hz": 492000000.0,
+            "offset_hz": -492000000.0,
+            "amplitude_ratio": 0.0002573280434475101,
+            "dbc": -71.79025764144818
+          },
+          {
+            "frequency_hz": 656000000.0,
+            "offset_hz": -328000000.0,
+            "amplitude_ratio": 0.0003060103129815917,
+            "dbc": -70.28527873863479
+          },
+          {
+            "frequency_hz": 820000000.0,
+            "offset_hz": -164000000.0,
+            "amplitude_ratio": 8.717108486058372e-07,
+            "dbc": -121.19255098208012
+          },
+          {
+            "frequency_hz": 1148000000.0,
+            "offset_hz": 164000000.0,
+            "amplitude_ratio": 9.206072970396044e-07,
+            "dbc": -120.71851174131808
+          },
+          {
+            "frequency_hz": 1312000000.0,
+            "offset_hz": 328000000.0,
+            "amplitude_ratio": 0.0002623762619772901,
+            "dbc": -71.62150919070022
+          },
+          {
+            "frequency_hz": 1476000000.0,
+            "offset_hz": 492000000.0,
+            "amplitude_ratio": 0.0002052977052865656,
+            "dbc": -73.75231809850649
+          }
+        ],
+        "largest_line": {
+          "frequency_hz": 656000000.0,
+          "offset_hz": -328000000.0,
+          "amplitude_ratio": 0.0003060103129815917,
+          "dbc": -70.28527873863479
+        },
+        "normalization": "20log10(abs(Vline)/abs(Vcarrier)); single spectral line, no sum of two sidebands."
+      },
+      "td_fd_carrier_normalized_line_error": 1.1657215486958125e-09,
+      "td_fd_strong_line_max_delta_db": 3.859078619119255e-05,
+      "quadrature_consistent": true,
+      "full_pll_acceptance": false
+    },
+    {
+      "run": "rt2precision01",
+      "case": "chain_rt2_precision_coarse_tt",
+      "factor": 2,
+      "precision": "coarse",
+      "source_result": "research/runs/spectre_cmos_v14_full/rt2precision01/chain_rt2_precision_coarse_tt/result.json",
+      "source_sha256": "ff81a0482fb2becc8c95bec40821c93e8577417e32d880facaeb83993b46c96e",
+      "fd_sha256": "4e1895a402d3233f47c1f524c2ef4dbc9f481f432c0134fdcb2c9bd27c554ff2",
+      "td_sha256": "4ff34a5af8e28b2a9f7255c91b13e79336cdaa13d948e9ccee0898ad6ee1ff52",
+      "metric": {
+        "carrier_hz": 984000000.0,
+        "carrier_amplitude_v": 0.7174337905075283,
+        "offset_band_hz": [
+          10000.0,
+          492000000.0
+        ],
+        "lines": [
+          {
+            "frequency_hz": 492000000.0,
+            "offset_hz": -492000000.0,
+            "amplitude_ratio": 0.00020533695870745929,
+            "dbc": -73.75065749401918
+          },
+          {
+            "frequency_hz": 656000000.0,
+            "offset_hz": -328000000.0,
+            "amplitude_ratio": 0.0002500120532689918,
+            "dbc": -72.04078106319714
+          },
+          {
+            "frequency_hz": 820000000.0,
+            "offset_hz": -164000000.0,
+            "amplitude_ratio": 4.055250660464642e-06,
+            "dbc": -107.8396459260126
+          },
+          {
+            "frequency_hz": 1148000000.0,
+            "offset_hz": 164000000.0,
+            "amplitude_ratio": 3.873917382566197e-06,
+            "dbc": -108.23699291073882
+          },
+          {
+            "frequency_hz": 1312000000.0,
+            "offset_hz": 328000000.0,
+            "amplitude_ratio": 0.00023365904219114795,
+            "dbc": -72.62834815774218
+          },
+          {
+            "frequency_hz": 1476000000.0,
+            "offset_hz": 492000000.0,
+            "amplitude_ratio": 0.0001858044874131225,
+            "dbc": -74.61887602910554
+          }
+        ],
+        "largest_line": {
+          "frequency_hz": 656000000.0,
+          "offset_hz": -328000000.0,
+          "amplitude_ratio": 0.0002500120532689918,
+          "dbc": -72.04078106319714
+        },
+        "normalization": "20log10(abs(Vline)/abs(Vcarrier)); single spectral line, no sum of two sidebands."
+      },
+      "td_fd_carrier_normalized_line_error": 5.5206516883453925e-08,
+      "td_fd_strong_line_max_delta_db": 0.0025811484494546277,
+      "quadrature_consistent": true,
+      "full_pll_acceptance": false
+    },
+    {
+      "run": "rt2precision01",
+      "case": "chain_rt2_precision_fine_tt",
+      "factor": 2,
+      "precision": "fine",
+      "source_result": "research/runs/spectre_cmos_v14_full/rt2precision01/chain_rt2_precision_fine_tt/result.json",
+      "source_sha256": "f2ace29b8298229507bacf8d245b8cf123ea0216cbd97be0b0fe07746f014f86",
+      "fd_sha256": "effc8fe7bd8c30cc90d9de85d103f6c919cb15f0b5c76cafe31fafa954a44814",
+      "td_sha256": "eb1206fc490d4548cccb98f822644ebd94199f329487ccf64aec675fc55eca54",
+      "metric": {
+        "carrier_hz": 984000000.0,
+        "carrier_amplitude_v": 0.717434493295381,
+        "offset_band_hz": [
+          10000.0,
+          492000000.0
+        ],
+        "lines": [
+          {
+            "frequency_hz": 492000000.0,
+            "offset_hz": -492000000.0,
+            "amplitude_ratio": 0.00020539086746282825,
+            "dbc": -73.74837741717747
+          },
+          {
+            "frequency_hz": 656000000.0,
+            "offset_hz": -328000000.0,
+            "amplitude_ratio": 0.00025016603331842155,
+            "dbc": -72.03543315294706
+          },
+          {
+            "frequency_hz": 820000000.0,
+            "offset_hz": -164000000.0,
+            "amplitude_ratio": 4.014442439121393e-06,
+            "dbc": -107.92749529626279
+          },
+          {
+            "frequency_hz": 1148000000.0,
+            "offset_hz": 164000000.0,
+            "amplitude_ratio": 3.835373899937856e-06,
+            "dbc": -108.32384582979195
+          },
+          {
+            "frequency_hz": 1312000000.0,
+            "offset_hz": 328000000.0,
+            "amplitude_ratio": 0.00023385549733116677,
+            "dbc": -72.62104833015943
+          },
+          {
+            "frequency_hz": 1476000000.0,
+            "offset_hz": 492000000.0,
+            "amplitude_ratio": 0.00018572946387071092,
+            "dbc": -74.62238389812396
+          }
+        ],
+        "largest_line": {
+          "frequency_hz": 656000000.0,
+          "offset_hz": -328000000.0,
+          "amplitude_ratio": 0.00025016603331842155,
+          "dbc": -72.03543315294706
+        },
+        "normalization": "20log10(abs(Vline)/abs(Vcarrier)); single spectral line, no sum of two sidebands."
+      },
+      "td_fd_carrier_normalized_line_error": 2.1890402163489504e-09,
+      "td_fd_strong_line_max_delta_db": 1.7739610940773893e-05,
+      "quadrature_consistent": true,
+      "full_pll_acceptance": false
+    },
+    {
+      "run": "rt4precision01",
+      "case": "chain_rt4_precision_coarse_tt",
+      "factor": 4,
+      "precision": "coarse",
+      "source_result": "research/runs/spectre_cmos_v14_full/rt4precision01/chain_rt4_precision_coarse_tt/result.json",
+      "source_sha256": "9ae819dd5ae64d4f8cf86875552406e36d52f5ab759ddb6c9eb54e8f0081ebde",
+      "fd_sha256": "e89cc2bcf4b354a20c86b9a46e481a2140914784a8f15e433ddcbd2ab4066ff2",
+      "td_sha256": "95903e16b415f4a60834e7156fed6402d058db049e64bac5c121fe5dcdb86073",
+      "metric": {
+        "carrier_hz": 984000000.0,
+        "carrier_amplitude_v": 0.7224263486342397,
+        "offset_band_hz": [
+          10000.0,
+          492000000.0
+        ],
+        "lines": [
+          {
+            "frequency_hz": 492000000.0,
+            "offset_hz": -492000000.0,
+            "amplitude_ratio": 9.144488015893231e-05,
+            "dbc": -80.77681209811286
+          },
+          {
+            "frequency_hz": 656000000.0,
+            "offset_hz": -328000000.0,
+            "amplitude_ratio": 0.00011819164778099189,
+            "dbc": -78.54826425095473
+          },
+          {
+            "frequency_hz": 820000000.0,
+            "offset_hz": -164000000.0,
+            "amplitude_ratio": 6.1172663106384204e-06,
+            "dbc": -104.26885224806854
+          },
+          {
+            "frequency_hz": 1148000000.0,
+            "offset_hz": 164000000.0,
+            "amplitude_ratio": 5.84140700424564e-06,
+            "dbc": -104.66965065849692
+          },
+          {
+            "frequency_hz": 1312000000.0,
+            "offset_hz": 328000000.0,
+            "amplitude_ratio": 0.00011381430830697265,
+            "dbc": -78.8760627327828
+          },
+          {
+            "frequency_hz": 1476000000.0,
+            "offset_hz": 492000000.0,
+            "amplitude_ratio": 8.707419210466436e-05,
+            "dbc": -81.20221092679768
+          }
+        ],
+        "largest_line": {
+          "frequency_hz": 656000000.0,
+          "offset_hz": -328000000.0,
+          "amplitude_ratio": 0.00011819164778099189,
+          "dbc": -78.54826425095473
+        },
+        "normalization": "20log10(abs(Vline)/abs(Vcarrier)); single spectral line, no sum of two sidebands."
+      },
+      "td_fd_carrier_normalized_line_error": 1.1690558959282686e-08,
+      "td_fd_strong_line_max_delta_db": 0.0010805283249838784,
+      "quadrature_consistent": true,
+      "full_pll_acceptance": false
+    },
+    {
+      "run": "rt4precision01",
+      "case": "chain_rt4_precision_fine_tt",
+      "factor": 4,
+      "precision": "fine",
+      "source_result": "research/runs/spectre_cmos_v14_full/rt4precision01/chain_rt4_precision_fine_tt/result.json",
+      "source_sha256": "16a5d5a9b10b08af5f9fd56ee38357f919b59426586eb8755ba43979f92b977f",
+      "fd_sha256": "b0f6a9f65a813d6cb582b85f3b463d0dcf5bffd9a186e501b976fed82b3b7a2b",
+      "td_sha256": "d470f247eb70aa364092b4f468392f1d48a12e8a7a4c3741ef1878fadf6bf4ff",
+      "metric": {
+        "carrier_hz": 984000000.0,
+        "carrier_amplitude_v": 0.7224274733071826,
+        "offset_band_hz": [
+          10000.0,
+          492000000.0
+        ],
+        "lines": [
+          {
+            "frequency_hz": 492000000.0,
+            "offset_hz": -492000000.0,
+            "amplitude_ratio": 9.154579102922845e-05,
+            "dbc": -80.76723236636116
+          },
+          {
+            "frequency_hz": 656000000.0,
+            "offset_hz": -328000000.0,
+            "amplitude_ratio": 0.00011837255436457654,
+            "dbc": -78.53497961268847
+          },
+          {
+            "frequency_hz": 820000000.0,
+            "offset_hz": -164000000.0,
+            "amplitude_ratio": 6.298755431184361e-06,
+            "dbc": -104.01490508319817
+          },
+          {
+            "frequency_hz": 1148000000.0,
+            "offset_hz": 164000000.0,
+            "amplitude_ratio": 5.944038573793432e-06,
+            "dbc": -104.51836761775152
+          },
+          {
+            "frequency_hz": 1312000000.0,
+            "offset_hz": 328000000.0,
+            "amplitude_ratio": 0.00011390033092416885,
+            "dbc": -78.86950028253887
+          },
+          {
+            "frequency_hz": 1476000000.0,
+            "offset_hz": 492000000.0,
+            "amplitude_ratio": 8.701613751859895e-05,
+            "dbc": -81.20800396248586
+          }
+        ],
+        "largest_line": {
+          "frequency_hz": 656000000.0,
+          "offset_hz": -328000000.0,
+          "amplitude_ratio": 0.00011837255436457654,
+          "dbc": -78.53497961268847
+        },
+        "normalization": "20log10(abs(Vline)/abs(Vcarrier)); single spectral line, no sum of two sidebands."
+      },
+      "td_fd_carrier_normalized_line_error": 2.759163688894001e-09,
+      "td_fd_strong_line_max_delta_db": 0.0002754221452245124,
+      "quadrature_consistent": true,
+      "full_pll_acceptance": false
+    }
+  ],
+  "numerical_comparisons": [
+    {
+      "factor": 2,
+      "fine_minus_coarse_line_db": [
+        0.0022800768417141626,
+        0.00534791025008019,
+        -0.08784937025019701,
+        -0.08685291905312909,
+        0.0072998275827558246,
+        -0.003507869018420706
+      ],
+      "max_strong_line_delta_db": 0.0072998275827558246,
+      "strong_lines_converged": true
+    },
+    {
+      "factor": 4,
+      "fine_minus_coarse_line_db": [
+        0.009579731751699683,
+        0.013284638266256366,
+        0.25394716487036817,
+        0.15128304074539756,
+        0.0065624502439334265,
+        -0.005793035688185455
+      ],
+      "max_strong_line_delta_db": 0.013284638266256366,
+      "strong_lines_converged": true
+    }
+  ],
+  "full_pll_acceptance": false,
+  "requirement_met": null,
+  "condition": "TT27/1.2V/984MHz/10fF,noiselessRFreplay,actualRX/fullbank/retimer/quietcounter;fund164MHz.",
+  "limitation": "Only intrinsic local164MHz-grid lines are represented. No24MHz reference, LC sampled loop, or slow-control modulation; cannot test completePLLREQ07 or establish absence of lower-offset lines.",
+  "criterion_status": "10kHz-fout/2 range proposed, not confirmed; no change to hardREQ07.",
+  "tests": "Analytic AM/PM/one-sideband controls; successful freshPSS; direct time-domain quadrature; own coarse/fine matched circuits."
+}

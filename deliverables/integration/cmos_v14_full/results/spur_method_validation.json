@@ -1,0 +1,42 @@
+{
+  "scope": "Analytic AM/PM/one-sideband and pure-clock controls for spur measurement.",
+  "method": "Uniform coherent FFT independently checked by nonuniform-capable time quadrature and exact analytic sideband ratios.",
+  "cases": [
+    {
+      "fixture": "pure_smooth_clock",
+      "expected_largest_line_dbc": null,
+      "measured_largest_line_dbc": -289.75885873113646,
+      "largest_offset_hz": 4000000.0,
+      "quadrature_vs_fft_carrier_normalized_error": 3.228604226415842e-15,
+      "passed": true
+    },
+    {
+      "fixture": "am",
+      "expected_largest_line_dbc": -66.02059991327963,
+      "measured_largest_line_dbc": -66.02059991326988,
+      "largest_offset_hz": 24000000.0,
+      "quadrature_vs_fft_carrier_normalized_error": 4.297032022738956e-15,
+      "passed": true
+    },
+    {
+      "fixture": "pm",
+      "expected_largest_line_dbc": -66.02059882754331,
+      "measured_largest_line_dbc": -66.02059882753422,
+      "largest_offset_hz": -24000000.0,
+      "quadrature_vs_fft_carrier_normalized_error": 4.303131735742053e-15,
+      "passed": true
+    },
+    {
+      "fixture": "single_upper_sideband",
+      "expected_largest_line_dbc": -60.0,
+      "measured_largest_line_dbc": -59.99999999999553,
+      "largest_offset_hz": 24000000.0,
+      "quadrature_vs_fft_carrier_normalized_error": 3.1883255167495964e-15,
+      "passed": true
+    }
+  ],
+  "noncoherent_window_rejected": true,
+  "passed": true,
+  "full_pll_acceptance": false,
+  "requirement_band_status": "Proposed10kHz-fout/2 single-sideband range awaiting user confirmation; fixture tests are independent of that decision."
+}

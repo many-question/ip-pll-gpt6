@@ -1,0 +1,37 @@
+{
+  "scope": "Record the deliberately stopped, tighter-itres comparison with its input proof.",
+  "source_result": "research/runs/spectre_cmos_v14_full/coretriplinear01/core_pulsetrip_linear_noise_tt/result.json",
+  "source_sha256": "d5ac0fdaaf23824e6c8c9bbd2a11759ca4a69c9eefc09867520aa136b051737b",
+  "only_itres_changed": true,
+  "previous_convergence_history": [
+    "Conv norm = 3.7e+06, max dI(VDD:p) = -5.72045 mA, took 5.30471 ks.",
+    "Conv norm = 75.3e+03, max dV(XP.XD.d8) = -17.3302 mV, took 2.37023 ks.",
+    "Conv norm = 340e+03, max dV(XP.data) = 85.497 mV, took 2.26911 ks.",
+    "Conv norm = 2.1e+06, max dI(VDD:p) = -3.44665 mA, took 2.25926 ks."
+  ],
+  "convergence_history": [
+    "Conv norm = 3.7e+06, max dI(VDD:p) = -5.72045 mA, took 5.12424 ks.",
+    "Conv norm = 75.3e+03, max dV(XP.XD.d8) = -17.3302 mV, took 2.26986 ks.",
+    "Conv norm = 340e+03, max dV(XP.data) = 85.6604 mV, took 2.27546 ks.",
+    "Conv norm = 1.23e+06, max dI(VDD:p) = 2.56734 mA, took 2.27582 ks."
+  ],
+  "cancellation": {
+    "stopped": true,
+    "signal": "SIGINT",
+    "pid": 111326,
+    "netlist": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/d40c1326/core_pulsetrip_linear_noise_tt.scs",
+    "time": "2026-10-04T05:29:03.734898+08:00",
+    "reason": "Stopped after four observed norms 3.7e6,75.3e3,340e3,1.23e6: tighter itres did not restore contraction in this window. Preserve negative evidence; not a completed max-iteration failure. Release same six-thread slot for four actual-LC candidate preflights."
+  },
+  "raw_tstab": {
+    "path": "research/runs/spectre_cmos_v14_full/coretriplinear01/core_pulsetrip_linear_noise_tt/core_pulsetrip_linear_noise_tt.raw/pss.tran.pss",
+    "bytes": 1975257054,
+    "sha256": "7d9c8683d9b8b2f37e8189779e40024c429896cca3191b1cb3778f60bf141c6e"
+  },
+  "pnoise_ran": false,
+  "periodic_state_valid": false,
+  "segmentation_fault_after_stop": false,
+  "interpretation": "The first three printed norms remain3.7M,75.3k,340k; fourth1.23M vs2.1M prior. Tighter linear residual did not restore contraction in the observed four iterations. Deliberately stopped; no claim of mathematical nonexistence or exhausting maximum iterations.",
+  "next": "Six-thread slot reassigned to four physical near-lock candidate comparisons; no automatic further PSS retry or fullband run.",
+  "full_pll_acceptance": false
+}

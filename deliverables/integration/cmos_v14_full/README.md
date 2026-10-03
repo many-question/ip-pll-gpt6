@@ -84,3 +84,5 @@ python share/deliverables/integration/cmos_v14_full/analyze.py
 `audit_full_runs.py` 核对12个当前完整顶层测试的冻结电路依赖，确认使用同一物理DUT，且未在TB覆盖顶层参数。设计身份SHA256为 `073af75f1427df72ace6ffcad017ccf292c7c566864d33352c869b3e85238da5`；该审计不把尚未完成的仿真升级为功能证据，详见 `results/full_dut_consistency.json`。
 
 已完成结果、输入与原始文件 hash 分别见 `results/validation.json`、`results/raw_manifest.json`。原始数据留在当前项目 `research/runs/spectre_cmos_v14_full/`；所有试验使用唯一 run-id 和不可变输入快照。
+
+最新噪声／抖动状态见[噪声进展](NOISE_PROGRESS.md)，离散杂散方法与局部结果见[杂散记录](SPUR_METHOD_NOTES.md)。05:29单变量itres试验已停止并保存负结果；实际LC的基线／RT4／CF40／组合四组有限比较开始。REQ-07按DEC-0008恢复研究，积分频带提案待确认；以上历史暂缓说明不代表当前优先级。

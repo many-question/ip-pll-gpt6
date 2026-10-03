@@ -39,3 +39,7 @@
 补齐三个电源初值后，coretripsupply01已去除初始化尖峰，但周期残差3.7e6→75.3k→340k→2.1e6，未收敛；在四个残差后主动停止并回收。最后250ns各运行分支沿数正确、已检查电压端点差最大0.429mV，仍不是有效周期解。仅收紧线性求解itres=1e-6的同电路对照coretriplinear01已启动，最终准确度要求保持。新对照依据本地Spectre21.1 PSS帮助中itres的定义；它收紧每次Newton线性方程解的残差，未改变物理电路或最终周期误差门槛。线性求解误差是否为原因仍是假设。
 
 证据：[修正初态后仍未收敛的审计](results/core_supply_trial_audit.json)、[单参数线性求解对照](results/core_linear_precision_protocol.json)。停止后先出现SPECTRE-25再出现SPECTRE-18；周期状态无效，PNoise没有运行。
+
+## 05:29 的后续结果
+
+收紧itres仍未恢复迭代收缩，在四次范数后主动停止并完整回收。新四次为3.7M／75.3k／340k／1.23M，无PNoise。冻结输入证实单变量变化；本次没有停止后的SPECTRE-18。见[审计](results/core_linear_trial_audit.json)和[逐周期漂移](results/core_period_drift.json)。6线程已转入四组真实LC候选短时对照，尚未启动另一次PSS。
