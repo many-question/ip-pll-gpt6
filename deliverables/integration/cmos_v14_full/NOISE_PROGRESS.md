@@ -2,7 +2,11 @@
 
 验收口径保持 **RMS <200fs，10kHz–输出频率一半，排除离散杂散**。K41/M4时上限492MHz。本页没有新增整机RMS通过结论。
 
-## 已启动的器件噪声测试
+## 当前优先级与结果
+
+2026-10-04：用户要求优先解决噪声/抖动，暂缓功耗优化；见[DEC-0007](../../../reports/decisions/DEC-0007.md)。上一轮`coreregisterprobe01`已失败，PNoise被跳过，无闭环RMS。失败周期状态不可复用。现有`coregear01`在相同物理电路上采用2µs稳定段和Gear2，8线程；局部`chainrtscale01`比较重定时/输出整体2倍、4倍尺寸，1线程顺序执行。两者尚未代回主PLL。
+
+## 器件噪声测试边界
 
 `pll_noise_core_v14`从当前`pll_capture_v14`生成，采用TT27、1.2V、理想24MHz参考、粗调23/DAC38、984MHz/10fF、Q5 πRLC。保留真实VCO及偏置、亚采样反馈、CP及MOS脉冲电路、环路RC和预置开关、RF接收、完整可编程分频树、重定时/输出、有效性检测，以及关闭状态的实际DAC和静默计数器输入负载。
 
@@ -38,4 +42,21 @@
 
 5µs严格稳定段末1µs测得：输出984.000043MHz，相位峰峰0.001001rad、漂移0.001024rad/µs，RF／输出每参考周期最大偏差分别1.63e-5／6.85e-6；控制采样0.642339–0.642459V，八个物理粗调DFF全窗保持码23。见`results/core_settle_validation.json`。这一工作点与4ps完整DUT仍有控制电压和裁剪边界差异，不能直接宣称完整DUT等价。
 
-流程已于18:23从核验终态启动`coreregisterprobe01/core_register_noise_probe_tt`：4MHz共同周期、4095谐波/边带、1ps/reltol1e-5，250ns稳定段、六个偏移频点、8请求线程。输入终态SHA为`a2010e5636522eea0b545500817f201cc7ae1be3492e28799c07dc7923b09ab0`，只保留物理XP节点和out，剔除TB观察器状态。`results/register_noise_protocol.json`记录来源和边界。PSS/PNoise尚在运行，六点不会积分为RMS；后续完整频带与逐模块noise-on仍有相应验证门槛。
+流程已于18:23从核验终态启动`coreregisterprobe01/core_register_noise_probe_tt`：4MHz共同周期、4095谐波/边带、1ps/reltol1e-5，250ns稳定段、六个偏移频点、8请求线程。输入终态SHA为`a2010e5636522eea0b545500817f201cc7ae1be3492e28799c07dc7923b09ab0`，只保留物理XP节点和out，剔除TB观察器状态。`results/register_noise_protocol.json`记录来源和边界。该任务随后于19:22由Spectre以2个error结束，六点PNoise未执行；后续完整频带与逐模块noise-on仍有相应验证门槛。
+
+
+## 失败诊断与恢复实验（2026-10-04）
+
+`coreregisterprobe01`的初态来源和物理依赖SHA一致。重启稳定段到501ns，参考采样相位峰峰0.173352rad；末200ns输出983.928515MHz，仍有衰减中的相位扰动。最后250ns的输出／÷2／÷8／÷12边沿数分别246／492／123／82，与共同周期相容；这不是错误基频的证据。首次周期残差最大节点为÷12内部锁存，随后Newton迭代在未使用支路复位锁存`XRL`产生非物理电压并发散。尚不能把它确定为唯一电路根因。
+
+[失败审计](results/register_pss_failure.json)由`analyze_register_failure.py`复现。读取PSF时按时间记录合并tstab边界重复信号块，避免独立追加列导致一行错位。原始失败PSF、日志和2.9GB未收敛状态均保留在项目research，未收敛状态明确禁止复用。
+
+`build_noise_recovery.py`仅延长稳定段、改用Gear2并增加内部节点观察，不放松残差或更改电路。`continue_gear_noise.py`是本次实验的有限接续程序：等待既有probe完成，周期轨迹、谐波、246个边沿、器件PSD求和及状态SHA均通过才启动一次全频带，失败则停止。进度在`research/gear_noise_pipeline.json`。即使完成，全频带仍需逐模块noise-on、不同边沿、maxacfreq/步长/边带、谐波邻近积分及完整DUT边界核查。
+
+局部尺寸对照保留RF接收器、完整分频树、重定时和实际静默计数负载，以外部无噪声实测RF重放驱动。基线局部141.281fs中，FF约99.376fs、输出末级82.143fs、前一级45.047fs（各自RSS贡献，不能线性相加）。`build_rt_noise_scaling.py`整体放大FF和两级缓冲，连同扩散寄生、时钟及数据负载一起计算。其结果入口是`analyze_rt_noise_scaling.py`；功耗只记录，不作为本轮改善门槛。仍需noise-on核查和闭环代回。
+
+参考方法与当前测量限制见[方法核查](NOISE_METHOD_NOTES.md)。
+
+![PSS失败轨迹与迭代残差](results/figures/register_pss_failure.png)
+
+当前2倍候选的PSS已在8轮Newton后经有限差分修正收敛，PNoise全频带扫描进行中；4倍候选顺序排队。`research/continue_rt2_gates.py`等待2倍完整结果，通过周期和噪声数据检查后以同一有效PSS状态逐个只开启FF、缓冲、RF接收、分频和辅助负载噪声，在1/10/100MHz对照全噪声下的器件贡献。三频点不积分为RMS；状态记于`research/rt2_noise_pipeline.json`。

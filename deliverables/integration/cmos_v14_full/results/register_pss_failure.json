@@ -1,0 +1,120 @@
+{
+  "scope": "Audit the failed physical-register core PSS; no noise result is fabricated.",
+  "source_result": "research/runs/spectre_cmos_v14_full/coreregisterprobe01/core_register_noise_probe_tt/result.json",
+  "source_sha256": "d2366073072137e9209090ad741cd6debc1cd620fba241da96fc8f434dbc3005",
+  "raw_sha256": "c9d2dcd2b6a75c633673b056315d757c7c6dcc2091294fa2f82499981bbcf06f",
+  "simulator_errors": [
+    "ERROR (SPCRTRF-15044): pss analysis did not converge.",
+    "ERROR (SPCRTRF-15025): The 'pn' analysis cannot run and was skipped because the PSS analysis 'pss' did not reach a steady state. Consider changing the convergence parameters for PSS analysis `pss'."
+  ],
+  "convergence_history": [
+    "Conv norm = 5.5e+06, max dV(XP.XD.XD12.X0.XM.fb) = 1.19659 V, took 2.29485 ks.",
+    "Conv norm = 43.8e+03, max dI(XP.VRT:p) = -66.3238 uA, took 2.45937 ks.",
+    "Conv norm = 5.92e+06, max dV(XP.XD.XRL.a) = 3.41313 V, took 2.00459 ks.",
+    "Conv norm = 1.32e+06, max dV(XP.data) = 486.874 mV, took 2.00307 ks.",
+    "Conv norm = 2.75e+06, max dV(XP.data) = 960.312 mV, took 1.99987 ks.",
+    "Conv norm = 6.03e+06, max dI(VDD:p) = -71.8785 mA, took 1.79459 ks.",
+    "Conv norm = 3.88e+06, max dV(XP.XD.XPRE.b) = 1.31782 V, took 1.80146 ks.",
+    "Conv norm = 7.93e+06, max dV(XP.XD.d4) = 5.27832 V, took 1.94871 ks.",
+    "Conv norm = 7.71e+06, max dV(XP.XD.b41) = 6.57671 V, took 1.90681 ks.",
+    "Conv norm = 6.34e+06, max dI(VDD:p) = 82.6766 mA, took 1.87614 ks.",
+    "Conv norm = 4.98e+06, max dV(XP.XR.XFF.b) = -6.12434 V, took 1.85659 ks.",
+    "Conv norm = 10.1e+06, max dI(VDD:p) = -244.015 mA, took 1.87739 ks."
+  ],
+  "tstab_time_ns": [
+    0.0,
+    500.99999999999994
+  ],
+  "reference_edge_times_ns": [
+    1.4171165793468656,
+    43.083772854586215,
+    84.75043944647284,
+    126.41710610906897,
+    168.08377565948217,
+    209.75044368448775,
+    251.41711322312486,
+    293.0837839479054,
+    334.7504500301931,
+    376.41711771754746,
+    418.0837832892622,
+    459.7504495156612
+  ],
+  "phase_change_rad": [
+    0.0,
+    -0.12763929898442328,
+    -0.15382375375546076,
+    -0.1321251182494798,
+    -0.09174074663437537,
+    -0.05029869831886202,
+    -0.016814284471479368,
+    0.005433116117053771,
+    0.016701590839971914,
+    0.019528119656243348,
+    0.01664882926795741,
+    0.010890119940313525
+  ],
+  "phase_pp_rad": 0.1733518734117041,
+  "period_checks": {
+    "out": {
+      "last200ns_mhz": 983.9285148582694,
+      "edges_last250ns": 246,
+      "expected_edges": 246,
+      "endpoint_v": [
+        0.7907900189877494,
+        0.7996717536264175
+      ]
+    },
+    "XP.q1": {
+      "last200ns_mhz": 1967.8733954036823,
+      "edges_last250ns": 492,
+      "expected_edges": 492,
+      "endpoint_v": [
+        0.3669394061260112,
+        0.3803433247251685
+      ]
+    },
+    "XP.data": {
+      "last200ns_mhz": 983.9247714734294,
+      "edges_last250ns": 246,
+      "expected_edges": 246,
+      "endpoint_v": [
+        0.6503579493767054,
+        0.671706667299375
+      ]
+    },
+    "XP.XD.d8": {
+      "last200ns_mhz": 491.9726013454276,
+      "edges_last250ns": 123,
+      "expected_edges": 123,
+      "endpoint_v": [
+        0.08649594368155247,
+        0.07668037422786686
+      ]
+    },
+    "XP.XD.d12": {
+      "last200ns_mhz": 327.9779516997547,
+      "edges_last250ns": 82,
+      "expected_edges": 82,
+      "endpoint_v": [
+        1.906031385729522e-05,
+        2.148259541905812e-05
+      ]
+    }
+  },
+  "coarse23_held": true,
+  "repeated_boundary_fields_coalesced": 18,
+  "observations": [
+    "Text restart has a decaying phase disturbance; prior-transient stationarity does not validate this PSS start.",
+    "Saved public divider outputs have the expected edge counts over the final250ns; no evidence here establishes a wrong fundamental.",
+    "Newton initially reduces the norm, then generates nonphysical voltages in the inactive reset latch and subsequently other nodes.",
+    "A file named periodic.state exists despite failed convergence and is explicitly invalid for reuse."
+  ],
+  "hypotheses": [
+    "Longer same-analysis stabilization may reduce the restart disturbance.",
+    "Inactive dynamic storage nodes may impair shooting conditioning; added observations test this, not yet proved.",
+    "Gear2 is a numerical convergence experiment, not a circuit repair or a noise-performance result."
+  ],
+  "pnoise_ran": false,
+  "full_pll_jitter_fs": null,
+  "full_pll_acceptance": false
+}

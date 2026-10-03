@@ -1,0 +1,28 @@
+{
+  "scope": "Noise-first CMOS retimer/output sizing experiment, not a main-DUT change.\n\nTT27,1.2V,984MHz/10fF; actual RX and full divider, external measured RF replay.\nBaseline attribution has the output buffers and retimer dominating local jitter.\nScale their widths and diffusions together; retain actual clock/data loading.\nPower is recorded but is not an optimization gate in this experiment.\n",
+  "cases": [
+    {
+      "case": "chain_rtscale2_tt",
+      "factor": 2,
+      "netlist_sha256": "2be7e9fb5a930c7decda8b85adc3555d4b867eebc33d27c06212690722a43882"
+    },
+    {
+      "case": "chain_rtscale4_tt",
+      "factor": 4,
+      "netlist_sha256": "d4c5e392e55d47ef956b80a2d9ac80c1d6c49695aabedf63345da1df96ef154e"
+    }
+  ],
+  "full_pll_acceptance": false,
+  "main_dut_modified": false,
+  "band_hz": [
+    10000.0,
+    492000000.0
+  ],
+  "pending": [
+    "PSS functional checks",
+    "actual device PSD integral",
+    "noise-on attribution",
+    "alias/edge/step convergence",
+    "closed-loop loading and PVT"
+  ]
+}

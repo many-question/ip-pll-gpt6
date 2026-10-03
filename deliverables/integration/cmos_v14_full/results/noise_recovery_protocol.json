@@ -1,0 +1,17 @@
+{
+  "scope": "PSS convergence diagnostic; same circuit, longer settling and Gear2.\n\nThe previous 5us transient's text state is only a seed. Its PSS restart\nshowed a decaying phase transient, and the Newton iterations then diverged.\nThis experiment does not relax periodic residual tolerances or change the DUT.\nThe failed periodic.state must NOT be reused.\n",
+  "source_result": "research/runs/spectre_cmos_v14_full/coreregisterprobe01/core_register_noise_probe_tt/result.json",
+  "source_sha256": "d2366073072137e9209090ad741cd6debc1cd620fba241da96fc8f434dbc3005",
+  "changes": [
+    "tstab250ns->2us",
+    "traponly->gear2only for both tstab and shooting",
+    "maxperiods12->20",
+    "observe inactive reset latch and div12 internal state"
+  ],
+  "physical_dependencies_unchanged": true,
+  "relaxed_residual_tolerance": false,
+  "previous_periodic_state_valid": false,
+  "full_pll_acceptance": false,
+  "case": "core_register_noise_gear_tt",
+  "netlist_sha256": "ede18b9e7390ba7bc8f329b8f984985431edbcf452ca44f1362010d57912934c"
+}

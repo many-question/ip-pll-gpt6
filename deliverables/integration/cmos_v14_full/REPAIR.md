@@ -103,3 +103,8 @@ python share/deliverables/integration/cmos_v14_full/analyze_capture.py repaircol
 ![36µs保持及供电](results/figures/repair_retention.png)
 
 [可复核结果](results/repair_retention.json)，原始数据位于项目`research/runs/spectre_cmos_v14_full/repairretain01`与`repairretain02`。原生前段仅用作续算父段，未当作独立通过测试。
+
+
+## 2026-10-04优先级
+
+按用户决定，近期先恢复闭环噪声测量并优化器件抖动，暂缓功耗优化及新增无关SS/范围扫描；4mW需求保留。严格复位原任务继续。上一轮PSS收敛失败已回收；同电路更长稳定段/Gear2诊断与局部CMOS输出尺寸对照已运行，见[噪声进展](NOISE_PROGRESS.md)。三角六个4.8fF候选端点已完成，主DUT未更改。

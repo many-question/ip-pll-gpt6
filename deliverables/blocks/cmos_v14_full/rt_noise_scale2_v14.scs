@@ -1,0 +1,6 @@
+simulator lang=spectre
+subckt rt_noise_scale2_v14 (data clk out vdd vss)
+XFF (data clk qb vdd vss) rtcomb_ff_v13 scale=2.4
+X0 (qb ob vdd vss) pll_inv wn=6u wp=1u
+X1 (ob out vdd vss) pll_inv wn=1.6u wp=6u
+ends rt_noise_scale2_v14
