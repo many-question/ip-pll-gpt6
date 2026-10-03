@@ -1,0 +1,74 @@
+simulator lang=spectre
+include "cells.scs"
+include "digital_cells_v2.scs"
+include "fll_circuit.scs"
+include "fll_best128_v14.scs"
+include "pll_config.scs"
+include "pll_supervisor_capture_v14.scs"
+include "frequency_watchdog.scs"
+include "cp_timing.scs"
+include "pll_control_capture_v14.scs"
+include "lc_vco_physical_v14.scs"
+include "cp_physical_v14.scs"
+include "sampler_bias_v5.scs"
+include "loop_filter_v5.scs"
+include "rf_light24s12_v14.scs"
+include "bank_pulsetrip_v14.scs"
+include "rtcomb_v13.scs"
+include "rt_light24s12_out083_v14.scs"
+include "validity_physical_v14.scs"
+// Programmable K9..41 physical PLL; functional coverage is recorded separately.
+subckt pll_noise_pulsetrip_core_v14 (ref out vdd vss)
+parameters bias_r=2500 cp_bias_r=24000 rlf=100k ref_load=0
+VVCO (vco_vdd vdd) vsource dc=0
+VRX (rx_vdd vdd) vsource dc=0
+VRT (rt_vdd vdd) vsource dc=0
+XV (vp vn ctrl b0 b1 b2 b3 b4 b5 b6 b7 vco_vdd vss) lc_vco_physical_v14 bias_r=bias_r
+XBM (vdd vss vmid) tx_bias_mid_v5
+CCP (vp sp) capacitor c=120f
+CCN (vn sn) capacitor c=120f
+RBP (sp vmid) resistor r=10k
+RBN (sn vmid) resistor r=10k
+XREF (ref refb vdd vss) tx_reference_buffer
+CR (refb vss) capacitor c=60f
+CREFLOAD (refb vss) capacitor c=ref_load
+XS (refb sp sn hp hn vdd vss) tx_sampler
+XCP (hp hn pulse en ctrl vdd vss) cp_physical_v14 bias_r=cp_bias_r
+XLF (ctrl vc1 en preset vdd vss) tx_loop_filter_v5 rlf=rlf
+XRX (vp clk rx_vdd vss) rf_light24s12_v14
+XD (clk divider_reset s0 s1 s2 s3 s4 s5 q1 data acqclk vdd vss) bank_pulsetrip_v14
+XR (data clk out rt_vdd vss) rt_light24s12_out083_v14
+XDET (vp hp hn amp_good phase_good vdd vss) validity_physical_v14
+// Diagnostic acquired state: coarse23, DAC38, M4; ideal static controls.
+VFIX_en (en vss) vsource dc=1.2
+VFIX_divider_reset (divider_reset vss) vsource dc=0
+VFIX_acquired (acquired vss) vsource dc=1.2
+VFIX_acquired_b (acquired_b vss) vsource dc=0
+XCOARSE0 (b0 refb vss b0 vdd vss) tx_dff_r0
+XCOARSE1 (b1 refb vss b1 vdd vss) tx_dff_r0
+XCOARSE2 (b2 refb vss b2 vdd vss) tx_dff_r0
+XCOARSE3 (b3 refb vss b3 vdd vss) tx_dff_r0
+XCOARSE4 (b4 refb vss b4 vdd vss) tx_dff_r0
+XCOARSE5 (b5 refb vss b5 vdd vss) tx_dff_r0
+XCOARSE6 (b6 refb vss b6 vdd vss) tx_dff_r0
+XCOARSE7 (b7 refb vss b7 vdd vss) tx_dff_r0
+VFIX_d0 (d0 vss) vsource dc=0
+VFIX_d1 (d1 vss) vsource dc=1.2
+VFIX_d2 (d2 vss) vsource dc=1.2
+VFIX_d3 (d3 vss) vsource dc=0
+VFIX_d4 (d4 vss) vsource dc=0
+VFIX_d5 (d5 vss) vsource dc=1.2
+VFIX_s0 (s0 vss) vsource dc=1.2
+VFIX_s1 (s1 vss) vsource dc=0
+VFIX_s2 (s2 vss) vsource dc=0
+VFIX_s3 (s3 vss) vsource dc=0
+VFIX_s4 (s4 vss) vsource dc=0
+VFIX_s5 (s5 vss) vsource dc=0
+XCPULSE (refb en vss pulse vdd vss) tx_cp_timing
+XDAC (d0 d1 d2 d3 d4 d5 acquired preset vdd vss) tx_fll_dac
+XACQ0 (acqclk clock_mux acquired_b acquired vdd vss) pll_tg wn=1u wp=2u
+XACQ1 (out clock_mux acquired acquired_b vdd vss) pll_tg wn=1u wp=2u
+XACB0 (clock_mux clock_b vdd vss) pll_inv wn=1u wp=2u
+XACB1 (clock_b count_clock vdd vss) pll_inv wn=2u wp=4u
+XCOUNT (count_clock vss vdd q0 qx1 q2 q3 q4 q5 q6 q7 q8 q9 q10 q11 q12 q13 vdd vss) tx_fll_counter
+ends pll_noise_pulsetrip_core_v14

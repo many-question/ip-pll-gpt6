@@ -1,0 +1,32 @@
+{
+  "scope": "Measure extracted bias gate charging, not oscillator/PLL power-up.",
+  "source_result": "research/runs/spectre_cmos_v14_full/vcobiasstart01/vco_bias_gate_start_tt/result.json",
+  "source_sha256": "bc513f0c6b81153444e09d3594a0b3083d47ce40b5032bec621ce3af41e93bfb",
+  "cases": [
+    {
+      "filter_pf": 10,
+      "nfilt_final_v": 0.7256069295964327,
+      "nb_final_v": 0.7256069301734824,
+      "gate_charge_time_after_ramp_us": {
+        "0.9": 27.115451167430226,
+        "0.99": 55.73266917012962,
+        "0.999": 84.36928615642742
+      },
+      "final_1us_gate_drift_v": 1.1605575389594947e-09
+    },
+    {
+      "filter_pf": 40,
+      "nfilt_final_v": 0.7255499829895361,
+      "nb_final_v": 0.7256068969234902,
+      "gate_charge_time_after_ramp_us": {
+        "0.9": 96.20650956011106,
+        "0.99": 193.668100577469,
+        "0.999": 288.58840805590347
+      },
+      "final_1us_gate_drift_v": 1.347025474718322e-06
+    }
+  ],
+  "full_pll_acceptance": false,
+  "oscillator_startup_verified": false,
+  "limitation": "Static tail clamp replaces RF drain waveform. Times are relative to each400us terminal gate level; not a lock-time or oscillator-startup result."
+}

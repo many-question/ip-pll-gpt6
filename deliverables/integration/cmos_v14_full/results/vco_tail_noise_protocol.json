@@ -1,0 +1,18 @@
+{
+  "scope": "Target measured tail flicker noise, preserving the nominal MT W/L ratio.\n\nThis candidate is separate from the main PLL. Only MT dimensions and its\ndeclared diffusion geometry change relative to the CF40pF noise fixture.\n",
+  "planned_run": "vcotail2_01",
+  "case": "vco_bias_cf40_tail2_tt",
+  "base_core_sha256": "8f08e05ef88fced58bd0925d4b7c15ce12a7aad647ff46ee099d9c36f9fa3a63",
+  "measured_cf40_mt_flicker_fraction_at_1mhz": 0.17009482529400244,
+  "geometric_hypothesis": "Gate area x4 may reduce intrinsic flicker noise. Actual model, capacitance, drain swing and operating-point changes require simulation; W/L preservation is not a guarantee of equal current.",
+  "condition": "Same fresh autonomous PSS and six offsets as vcocf40_01, TT27/1.2V/Q5/10fF/fixedM4/static reference.",
+  "source_state_reused": false,
+  "main_dut_modified": false,
+  "full_pll_acceptance": false,
+  "pending": [
+    "Check exact physical delta",
+    "Compare carrier, current, frequency and periodic solution",
+    "Measure thermal/flicker output contributions",
+    "Bias startup and actual PLL/PVT"
+  ]
+}

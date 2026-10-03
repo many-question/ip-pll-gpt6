@@ -1,0 +1,9 @@
+{
+  "scope": "Extract actual MOS bias charging; static tail clamp is a diagnostic boundary.\n\nBoth bias references and mirror gates retain their devices/geometry. The RF\ntail voltage is held at its measured CF40 mean instead of simulating hundreds\nof microseconds of RF. This does not prove oscillator or PLL power-up.\n",
+  "run": "vcobiasstart01",
+  "case": "vco_bias_gate_start_tt",
+  "conditions": "TT27,0-to1.2V in10ns at100ns,coarse23 bias boost,400us/50ns maxstep,actual MOS reference/mirror gates.",
+  "static_tail_clamp_v": 0.6378933201848205,
+  "full_pll_acceptance": false,
+  "oscillator_startup_verified": false
+}

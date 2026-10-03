@@ -1,0 +1,113 @@
+{
+  "scope": "Retain failed skipdc/tstart experiment without treating Newton excursions as device stress.",
+  "source_result": "research/runs/spectre_cmos_v14_full/corerestart01/core_register_noise_restart_tt/result.json",
+  "source_sha256": "a87bc003077de7ba37c99c79d8c14ee37c1f8530929f10e0f35a201f0b16ec53",
+  "stopped": {
+    "stopped": true,
+    "signal": "SIGINT",
+    "pid": 451727,
+    "netlist": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/d7cf09bc/core_register_noise_restart_tt.scs",
+    "time": "2026-10-04T03:11:27.362424+08:00",
+    "reason": "skipdc/tstart phase diagnostic still diverges: norms338k,333k,721k and subsequent nonphysical2.57V gate/over2V internal junction voltages during Newton. Preserve tstab and reject any unconverged periodic state; move to physical inactive-dynamic-node repair."
+  },
+  "convergence_history": [
+    "Conv norm = 5.52e+06, max dV(XP.rt_vdd) = 1.2 V, took 2.74621 ks.",
+    "Conv norm = 338e+03, max dI(XP.VVCO:p) = 586.208 uA, took 3.4032 ks.",
+    "Conv norm = 333e+03, max dV(XP.XD.XRL.n2) = 73.2513 mV, took 3.35479 ks.",
+    "Conv norm = 721e+03, max dV(XP.XD.XD12.X1.XS.fb) = -204.098 mV, took 3.21132 ks.",
+    "Conv norm = 2.44e+06, max dV(XP.XD.XD12.X1.XS.fb) = -749.784 mV, took 3.18008 ks."
+  ],
+  "stabilization_saved_us": [
+    5.0,
+    5.500000000000001
+  ],
+  "last_saved_period_us": [
+    5.250000000000001,
+    5.500000000000001
+  ],
+  "edge_counts": {
+    "out": 246,
+    "XP.q1": 492,
+    "XP.XD.d8": 123,
+    "XP.XD.d12": 82
+  },
+  "endpoint_delta_v": {
+    "out": 0.06278924144368692,
+    "XP.vp": -0.056259308666656294,
+    "XP.vn": 0.0888400060078205,
+    "XP.ctrl": -0.0019995687716710675,
+    "XP.refb": 6.661986319276807e-05,
+    "XP.q1": 0.11756465470036875,
+    "XP.XD.d8": 0.0003522078958542174,
+    "XP.XD.d12": 0.003299122971321289,
+    "XP.XD.XRL.a": -0.001640217158132451,
+    "XP.XD.XRL.b": 2.961224011709812e-05,
+    "XP.XD.load": 1.3109020202684007e-07,
+    "XP.XD.loadb": 0.0004584635479057443,
+    "XP.XD.ck": 4.869242829830256e-06
+  },
+  "observed_stabilization_ranges_v": {
+    "out": [
+      -0.03781104653927232,
+      1.20977439715553
+    ],
+    "XP.vp": [
+      0.7538054986317889,
+      1.578001664529798
+    ],
+    "XP.vn": [
+      0.6840981249243395,
+      1.677648768431265
+    ],
+    "XP.ctrl": [
+      0.6430754966301265,
+      0.7113452109351559
+    ],
+    "XP.refb": [
+      -0.01308691131317856,
+      1.222041021394428
+    ],
+    "XP.q1": [
+      -0.009331658040737564,
+      1.223130768901747
+    ],
+    "XP.XD.d8": [
+      -0.03478299355140761,
+      1.24396337938516
+    ],
+    "XP.XD.d12": [
+      -0.03240603661580466,
+      1.238608709766209
+    ],
+    "XP.XD.XRL.a": [
+      0.6378843381167802,
+      0.6395314219359848
+    ],
+    "XP.XD.XRL.b": [
+      0.05940545749405612,
+      0.05944652290355097
+    ],
+    "XP.XD.load": [
+      1.199995986774368,
+      1.20000570302698
+    ],
+    "XP.XD.loadb": [
+      0.01390236840285037,
+      0.01436358312637773
+    ],
+    "XP.XD.ck": [
+      1.199945313439204,
+      1.200031282880388
+    ]
+  },
+  "segmentation_fault_after_stop": true,
+  "pnoise_ran": false,
+  "periodic_state_valid": false,
+  "full_pll_acceptance": false,
+  "conclusions": [
+    "Skipping DC and changing absolute shooting phase did not resolve divergence.",
+    "Simulator logged SPECTRE-25 after owned SIGINT, then SPECTRE-18; this is not evidence of an earlier spontaneous crash.",
+    "Over-voltage warnings during failed Newton iterations are not an accepted operating trajectory or reliability result.",
+    "A physical continuous-clock divider candidate is undergoing real-LC transient validation; floating dynamic nodes remain a hypothesis, not an established root cause."
+  ]
+}

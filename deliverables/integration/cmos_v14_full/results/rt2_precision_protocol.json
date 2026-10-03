@@ -1,0 +1,31 @@
+{
+  "scope": "Prepare fresh-PSS, matched-offset numerical checks of the 2x local chain.\n\nThis is a numerical screen, not an integrated-jitter measurement. The point\n491.99 MHz deliberately avoids the exact third harmonic of the 164 MHz PSS.\n",
+  "source_sha256": "6c5db39a7cd71afb51938b9ff0d013ddac5af0cdaa5514c7158e826afeedaa49",
+  "run": "rt2precision01",
+  "cases": [
+    {
+      "case": "chain_rt2_precision_coarse_tt",
+      "sha256": "1b283735e14ab1ccd443b05bb85e2ff91cc5785c426c13529f21e6397f7ecae2",
+      "pss": "pss pss fund=164M harms=383 tstab=300n maxstep=1p method=traponly errpreset=conservative maxperiods=30 saveinit=no writefinal=\"__FINAL_STATE__\" writepss=\"__PERIODIC_STATE__\"",
+      "pnoise": "pn pnoise values=[10k 100k 1M 10M 100M 491.99M] pnoisemethod=fullspectrum noisetype=sampled measurement=[edge] sampleratio=6 maxsideband=383"
+    },
+    {
+      "case": "chain_rt2_precision_fine_tt",
+      "sha256": "d50d0b37b43fa9fc839f1cbbd95b83710a9aeff48cabf0461d66229615da7a6a",
+      "pss": "pss pss fund=164M harms=767 tstab=300n maxstep=0.5p maxacfreq=504G method=traponly errpreset=conservative maxperiods=30 saveinit=no writefinal=\"__FINAL_STATE__\" writepss=\"__PERIODIC_STATE__\"",
+      "pnoise": "pn pnoise values=[10k 100k 1M 10M 100M 491.99M] pnoisemethod=fullspectrum noisetype=sampled measurement=[edge] sampleratio=6 maxsideband=767"
+    }
+  ],
+  "full_pll_acceptance": false,
+  "offsets_hz": [
+    10000.0,
+    100000.0,
+    1000000.0,
+    10000000.0,
+    100000000.0,
+    491990000.0
+  ],
+  "pointwise_pass_limit_db": 0.2,
+  "condition": "TT27/1.2V/984MHz/10fF, noiseless measured RF replay; all device noise; fresh PSS in both cases.",
+  "limitation": "Combined step/sideband/maxacfreq screen. A failure needs individual-parameter diagnosis; six points do not establish a full-band RMS value."
+}

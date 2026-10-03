@@ -7,6 +7,8 @@ H=Path(__file__).resolve().parent;ROOT=H.parents[3];R=ROOT/'research/runs/spectr
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 rows=[]
 parser=argparse.ArgumentParser();parser.add_argument('runs',nargs='*');parser.add_argument('--output',default='ss_level_validation.json')
+parser.add_argument('--expected-start-ns',type=float,default=120)
+parser.add_argument('--expected-stop-ns',type=float,default=200)
 args=parser.parse_args()
 assert Path(args.output).name==args.output and args.output.endswith('.json')
 runs=args.runs or ['banklevel01','bankssorig01','banktaper02','bankskew01','bankmix01']
@@ -19,7 +21,7 @@ for run in runs:
   if not r['ok'] or 'spectre completes with 0 errors' not in (j/'spectre.out').read_text():continue
   assert sha(j/'waveforms.npz')==r['local_outputs_sha256']['waveforms.npz']
   with np.load(j/'waveforms.npz') as z:d={k:z[k] for k in z.files}
-  t=d['time'];assert t[0]>=119.999e-9 and t[-1]>=199.999e-9
+  t=d['time'];assert abs(t[0]*1e9-args.expected_start_ns)<.002 and abs(t[-1]*1e9-args.expected_stop_ns)<.002
   v=divider(d,int(j.name.split('_')[1][1:]));fr=v['rf_mhz']*1e6;stages={}
   keys=['clk','XD.q0','XD.qb0','q1','XD.d4','predata','data']+[k for k in ['XD.gn','XD.ct0','XD.ct1','XD.ct2','XD.cb','XD.ck'] if k in d]
   for k in keys:
@@ -30,7 +32,7 @@ for run in runs:
     max_cycle_trough_v=float(max(min(c) for c in cycles)) if cycles else None)
   e=cross(t,d['q1']);err=float(max(abs(np.diff(e)*fr/2-1))) if len(e)>2 else None
   qpass=bool(len(e)>2 and abs(stages['q1']['mhz']*2/v['rf_mhz']-1)<.001 and err<.02 and stages['q1']['all_cycle_swing'])
-  v['scope']='Actual SS receiver, measured SS tank waveform replay; quiet counter load; SS60/1.2V/10fF,200ns/last80ns,1ps/reltol1e-5. Not full PLL or jitter.'
+  v['scope']=f'Actual SS receiver, measured SS tank waveform replay; quiet counter load; SS60/1.2V/10fF,{args.expected_stop_ns:g}ns/fixedwindow{args.expected_start_ns:g}-{args.expected_stop_ns:g}ns,1ps/reltol1e-5. Not full PLL or jitter.'
   row.update(output=v,stages=stages,q1_max_period_error=err,q1_passed=qpass,passed=bool(v['passed'] and qpass))
 out=H/'results'/args.output;out.write_text(json.dumps(dict(cases=rows),indent=2)+'\n')
 for r in rows:

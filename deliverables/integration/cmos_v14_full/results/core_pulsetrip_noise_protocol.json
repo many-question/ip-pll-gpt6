@@ -1,0 +1,19 @@
+{
+  "scope": "Prepare fresh PSS only after the real-LC candidate passes transient preflight.",
+  "planned_run": "coretripnoise01",
+  "case": "core_pulsetrip_noise_probe_tt",
+  "source_validation_sha256": "48e714c66dd6fff66914f3397b0bf572fd76a1b59fc421c76c4437e2c18e3585",
+  "source_state_sha256": "d60321642ce8a693b11b47c264b5a868d19e9456abf0a67b46df95765233cf1d",
+  "seed_sha256": "188f32b489092f681b4448e92da86ff18fb3f667ea613058eb3e3fc0df761be9",
+  "condition": "TT27/1.2V/984MHz/10fF, real LC Q5 and sampled loop, physical continuous-clock divider; fixed slow-control boundary, CF10pF and baseline retimer.",
+  "solver": "Fresh4MHz PSS,1us stabilization,1ps/1e-5,traponly matches source transient; tstart3us matches source phase.4095harms/sidebands,10iterations maximum.",
+  "hypothesis": "Changes both physical dynamic-node clocking and uses matched-source integration. Not a one-variable solver benchmark.",
+  "full_pll_acceptance": false,
+  "main_dut_modified": false,
+  "gates": [
+    "Source preflight passed",
+    "PSS actual convergence, no failed-state reuse",
+    "All active branches periodic in250ns,246output rising edges",
+    "Device PSD sums and noise-on before any jitter claim"
+  ]
+}

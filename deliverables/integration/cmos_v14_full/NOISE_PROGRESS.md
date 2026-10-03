@@ -10,7 +10,7 @@
 |---|---:|---:|---|
 | 原局部链 | 141.281fs | 11.952GV/s | 有独立noise-on、部分边沿和精度对照；谐波邻近积分仍有缺口 |
 | FF及两级输出整体2倍 | 90.867fs | 20.410GV/s | 新求解PSS及全频带PNoise完成0error；新求解总噪声和FF-only三点复核通过；仍待后续验证 |
-| 整体4倍 | 未完成 | 未验收 | PSS已收敛，全频带PNoise运行中 |
+| 整体4倍 | 63.275fs | 30.934GV/s | 全频带0error完成；仍待自身精度／边沿／noise-on／PVT |
 
 2倍候选的暂定RSS贡献：FF70.029fs、输出末级43.727fs、前级29.074fs、RX18.773fs、输出到静默计数器的传输门15.384fs、分频树1.723fs。这些贡献按方差相加，不能线性相加。夹具总功耗约1.815mW，不是全部PLL功耗。2倍候选周期轨迹有6个正确输出上升沿，各公开节点谐波和端点检查通过。
 
@@ -37,7 +37,8 @@
 - `coressettle01`的5µs／1ps严格瞬态通过末1µs稳态筛选：输出984.000043MHz，参考采样相位峰峰0.001001rad、漂移0.001024rad/µs，粗调23保持。它使用前次文本初态，不是原生连续7µs；也不证明PSS重启后已稳态。
 - `coreregisterprobe01`的250ns稳定段后PSS失败，2个error，PNoise跳过。文本重启相位峰峰0.173352rad；最后250ns公开输出／÷2／÷8／÷12沿数246／492／123／82正确。Newton从内部锁存开始产生非物理越轨，未证明基频错误。
 - `coregear01`将稳定段延至2µs并使用Gear2，仍发散；10次残差报告后精确SIGINT停止并保留3.24GB稳定段。最后两周期的÷12内部fb端点相差约5.8µV，但首个迭代报告约1.197V差异，提示需继续核查初始向量与求解流程；不据此直接认定模拟器bug。
-- `corerestart01`保持物理电路和初态，改为`skipdc=yes`、`tstart=5µs`、250ns稳定段，避开参考跳变启动shooting；继续1ps／reltol1e-5／Gear2，最多8次迭代。正在运行，尚无闭环PNoise。
+- `corerestart01`的skipdc／tstart对照仍发散，已SIGINT停止。残差先从338k到333k，随后升到721k／2.44M；保存的最后250ns沿数246／492／123／82仍正确，但RF和输出端点尚有明显差异。停止后另记录SPECTRE-18，不描述为此前自行崩溃。没有PNoise；详见[失败审计](results/core_restart_failure.json)。动态节点只是待检假设，尚未证明唯一原因。
+- `coretripsettle01`将独立诊断核心分频器替换为连续时钟`bank_pulsetrip_v14`，其余VCO CF10pF、基线RT和主环不变；剔除旧分频／输出的文本初态后，在真实LC／采样反馈下重跑3µs/1ps。新连续时钟分频器接入真实LC／采样环的独立核心后，3µs严格瞬态通过：末窗输出984.000049MHz、相位峰峰0.001121rad、漂移0.001112rad/µs，粗调23保持。新fresh PSS／六点噪声探针coretripnoise01已启动，尚无结果。证据：[真实LC瞬态](results/core_pulsetrip_settle_validation.json)、[新PSS协议](results/core_pulsetrip_noise_protocol.json)。
 
 失败证据：[首轮PSS审计](results/register_pss_failure.json)、[Gear2审计](results/gear_pss_failure.json)，新测试 [协议](results/core_restart_protocol.json)。失败生成的周期状态明确无效，不得复用。此前两条有限自动流程均已停止，没有自动启动完整频带。
 
@@ -51,3 +52,21 @@
 方法与来源：[NOISE_METHOD_NOTES](NOISE_METHOD_NOTES.md)。现有输入、原始输出、失败证据及有限接续状态均保存在项目目录，可据`research/v14_capture_repair_active.json`恢复工作；服务器不是唯一状态源。
 
 ![局部CMOS链尺寸对照，暂定结果](results/figures/rt_noise_scaling.png)
+
+## VCO偏置滤波与当前接续验证（2026-10-04）
+
+`vcocf40_01`完成0error；冻结输入比较确认只将CF10pF→40pF，R1MΩ、MOS尺寸和夹具不变。TT27／1.2V／Q5、粗调23／控制0.679V、真实固定M4／10fF负载、参考保持DC0，仅开启VCO噪声；新求解自主PSS、0.5ps／255边带。六偏移点10k／100k／1M／10M／100M／492MHz的相噪改变量为−6.679／−7.442／−0.865／−0.016／−0.007／−0.006dB。
+
+RF频率变化+0.00433%、载波幅度+0.193%，相近工作点成立。1MHz滤波电阻输出PSD比原来低约11.4倍；其余噪声占比随之提高，尾管闪烁项占17.0%、沟道热噪声14.5%。器件内各噪声项相加和所有器件之和均与输出PSD相符。尾管W300µm/L1µm→W600µm/L2µm的独立候选已准备，保持名义W/L但不假定电流不变，需实测确认。
+
+尾管W300µm/L1µm→600µm/2µm试验已完成：1MHz相噪降低0.662dB，但10kHz恶化1.610dB，RF频率−0.956%、载波幅度+9.81%，未通过相近工作点判据，不采用，也不把变化全归因于同工作点尺寸降噪。详见[尾管对照](results/vco_tail_noise_validation.json)。低频变差和工作点变化均保留，后续须先匹配频率/幅度或在真实闭环内比较，不能仅凭1MHz单点挑选方案。
+
+**六频点不积分为RMS；不把自由振荡VCO噪声写成PLL抖动。** 10kHz点接近工具估计的自由振荡线宽，保留线性化边界。CF的名义偏置RC由10µs到40µs。抽取MOS偏置子电路已测得CF10/40pF栅电压达到终态99%约需55.73／193.67µs；尾端为实测均值的静态钳位，仍不等于真实VCO／PLL上电启动。当前DC供电后的复位捕获不能替代供电爬升验证。证据：[VCO候选](results/vco_bias_noise_validation.json)、[尾管计划](results/vco_tail_noise_protocol.json)、[偏置充电诊断](results/vco_bias_startup_validation.json)。
+
+![VCO滤波候选与1MHz器件噪声组成](results/figures/vco_bias_noise.png)
+
+局部输出链：4倍尺寸候选已完成，局部积分暂算63.275fs；仍待自身数值、边沿、noise-on和PVT核查。2倍的匹配六频点精度对照`rt2precision01`在跑；通过0.2dB差异门槛后，有限接续任务才运行六输出沿与五组独立noise-on，均重新求解PSS。精度、边沿和归因检查都不能代替全频带/PVT或整机验收。
+
+运行条件见[精度协议](results/rt2_precision_protocol.json)、[边沿和noise-on协议](results/rt2_fine_audit_protocol.json)、[真实LC诊断核心协议](results/core_pulsetrip_protocol.json)。线程请求总数不超过18；每个有限接续任务仅使用其前序任务释放的线程。
+
+4倍尺寸的[匹配精度对照](results/rt4_precision_protocol.json)接续在尾管试验释放的1线程内运行，之后仍需它自身的边沿、noise-on及实际LC/PVT验证。

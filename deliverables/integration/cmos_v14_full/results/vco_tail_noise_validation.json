@@ -1,0 +1,420 @@
+{
+  "scope": "Fresh-PSS six-offset VCO candidate comparison; no integrated or PLL jitter.",
+  "variant": "tail2",
+  "condition": "TT27/1.2V/Q5RLC,coarse23/control0.679V,actualfixedM4/10fF,referenceDC0,onlyXVnoise;0.5ps/255sidebands.",
+  "physical_change_verified": "Only MT W300um/L1um -> W600um/L2um and its diffusion geometry; CF40pF and other circuitry unchanged.",
+  "baseline": {
+    "run": "vcocf40_01",
+    "case": "vco_bias_cf40_tt",
+    "source_result": "research/runs/spectre_cmos_v14_full/vcocf40_01/vco_bias_cf40_tt/result.json",
+    "source_sha256": "13259f90fec5155af955c3937549835c3e940f05f1b3f40c0105bdfd424f75bc",
+    "pnoise_sha256": "88e0b9f14e693c565918d8fc361258e9c2547703d8079626fae36f2ca01f3730",
+    "pss_fresh": true,
+    "simulator_completed": true,
+    "frequency_hz": 3934229027.131235,
+    "rf_carrier_peak_v": 0.817124894941165,
+    "carrier_td_relative_error": -5.7931383001808e-07,
+    "dominant_harmonics": {
+      "vp": 4,
+      "vn": 4,
+      "clk": 4,
+      "q1": 2,
+      "data": 1,
+      "out": 1
+    },
+    "endpoint_max_v": 5.3848789058896784e-06,
+    "periodic_passed": true,
+    "offsets_hz": [
+      10000.0,
+      100000.0,
+      1000000.0,
+      10000000.0,
+      100000000.0,
+      492000000.0
+    ],
+    "ssb_pm_dbc_per_hz": [
+      -46.7826108752931,
+      -83.31010892105256,
+      -110.19207294149052,
+      -131.33172916300725,
+      -151.56183943616415,
+      -165.91943180588802
+    ],
+    "device_sum_relative_error": 5.551115123125783e-16,
+    "excluded_noise_fraction": 0.0,
+    "bias_resistor_ssb_pm_psd": [
+      1.808714951778087e-05,
+      2.0554779493012725e-09,
+      2.0560843318700173e-13,
+      2.0058794811677905e-17,
+      1.8499209801780722e-21,
+      1.3083385995230509e-24
+    ],
+    "bias_resistor_fraction_1mhz": 0.021490584014205942,
+    "selected_device_components": {
+      "XV.XL.MT": {
+        "component_sum_relative_error": 2.220446049250313e-16,
+        "fraction_of_output_psd": {
+          "id": [
+            0.0006629510170805752,
+            0.029800489646837243,
+            0.14536904731285147,
+            0.18847058506933054,
+            0.19143359642471583,
+            0.14520031749285278
+          ],
+          "fn": [
+            0.04987353963843325,
+            0.27967110849955973,
+            0.17009482529400244,
+            0.027020693768920818,
+            0.003388879071921534,
+            0.00046423572240192004
+          ],
+          "total": [
+            0.05054447596791024,
+            0.3098305481227803,
+            0.31721485542979483,
+            0.21776131042745214,
+            0.19712785254563223,
+            0.14740905438420907
+          ]
+        }
+      },
+      "XV.XL.MN0": {
+        "component_sum_relative_error": 2.220446049250313e-16,
+        "fraction_of_output_psd": {
+          "id": [
+            0.0005878421739759436,
+            0.026427604386797192,
+            0.12894411032306108,
+            0.168021088868708,
+            0.1772221490621353,
+            0.184554888719044
+          ],
+          "fn": [
+            0.010809567141967366,
+            0.06085662840041783,
+            0.03914727365965597,
+            0.009185700262699195,
+            0.004037934791134505,
+            0.00333102966286771
+          ],
+          "total": [
+            0.011410576592317468,
+            0.08787614829960308,
+            0.17098004491270422,
+            0.18098278678118687,
+            0.18522433918991868,
+            0.1918021542851866
+          ]
+        }
+      },
+      "XV.XL.MN1": {
+        "component_sum_relative_error": 2.220446049250313e-16,
+        "fraction_of_output_psd": {
+          "id": [
+            0.0007979204654938912,
+            0.03586748559111729,
+            0.17502333958712413,
+            0.22904392045709748,
+            0.24182649930642652,
+            0.2624154306707924
+          ],
+          "fn": [
+            0.0025477558551055663,
+            0.014983417614732219,
+            0.013019868437160525,
+            0.007197161551765999,
+            0.00631746017184264,
+            0.006229547511757636
+          ],
+          "total": [
+            0.0033710084086039866,
+            0.05198956559686973,
+            0.19359923285560837,
+            0.2435070890004333,
+            0.2557866774724138,
+            0.2765806461307428
+          ]
+        }
+      }
+    },
+    "vco_supply_power_mw": 3.7332883702674837,
+    "nfilt_range_v": [
+      0.7253747892881682,
+      0.7263049120739248
+    ],
+    "top_contributors_at_1mhz": [
+      {
+        "device": "XV.XL.MT",
+        "fraction": 0.31721485542979483
+      },
+      {
+        "device": "XV.XL.MN1",
+        "fraction": 0.19359923285560837
+      },
+      {
+        "device": "XV.XL.MN0",
+        "fraction": 0.17098004491270422
+      },
+      {
+        "device": "XV.XL.XN.RW",
+        "fraction": 0.09715003739866518
+      },
+      {
+        "device": "XV.XL.XP.RW",
+        "fraction": 0.08952370259134121
+      },
+      {
+        "device": "XV.XL.XN.RSN",
+        "fraction": 0.022731038909120465
+      },
+      {
+        "device": "XV.XL.RF",
+        "fraction": 0.021490584014205942
+      },
+      {
+        "device": "XV.XL.XP.RSN",
+        "fraction": 0.021320058249812646
+      },
+      {
+        "device": "XV.XL.MA4",
+        "fraction": 0.010177915601825297
+      },
+      {
+        "device": "XV.XBN.MP7",
+        "fraction": 0.008255288310669805
+      },
+      {
+        "device": "XV.XBP.MP7",
+        "fraction": 0.0069293039071638635
+      },
+      {
+        "device": "XV.XBP.M4",
+        "fraction": 0.0057941258930971525
+      }
+    ]
+  },
+  "candidate": {
+    "run": "vcotail2_01",
+    "case": "vco_bias_cf40_tail2_tt",
+    "source_result": "research/runs/spectre_cmos_v14_full/vcotail2_01/vco_bias_cf40_tail2_tt/result.json",
+    "source_sha256": "7e5ba29c01e304d3f88b2c5fe1e05c12ea0ce6f6d144bb81d8a8bde9d3b77e6b",
+    "pnoise_sha256": "5d87ebfaa3a8109ec10544b4af778b7245a7ccdae84fd63179580051c870e09e",
+    "pss_fresh": true,
+    "simulator_completed": true,
+    "frequency_hz": 3896621715.449202,
+    "rf_carrier_peak_v": 0.8972729273843271,
+    "carrier_td_relative_error": -1.649971640427239e-07,
+    "dominant_harmonics": {
+      "vp": 4,
+      "vn": 4,
+      "clk": 4,
+      "q1": 2,
+      "data": 1,
+      "out": 1
+    },
+    "endpoint_max_v": 3.4901116469643334e-06,
+    "periodic_passed": true,
+    "offsets_hz": [
+      10000.0,
+      100000.0,
+      1000000.0,
+      10000000.0,
+      100000000.0,
+      492000000.0
+    ],
+    "ssb_pm_dbc_per_hz": [
+      -45.17299955841452,
+      -83.04080398352163,
+      -110.85426368977194,
+      -131.81252500251648,
+      -152.02898132199846,
+      -166.60398031776808
+    ],
+    "device_sum_relative_error": 4.440892098500626e-16,
+    "excluded_noise_fraction": 0.0,
+    "bias_resistor_ssb_pm_psd": [
+      2.732545441645441e-05,
+      3.016978644018199e-09,
+      3.0178684609986716e-13,
+      2.96016777588738e-17,
+      2.7748560584382068e-21,
+      2.243011421888888e-24
+    ],
+    "bias_resistor_fraction_1mhz": 0.036738944531303566,
+    "selected_device_components": {
+      "XV.XL.MT": {
+        "component_sum_relative_error": 4.440892098500626e-16,
+        "fraction_of_output_psd": {
+          "id": [
+            0.0004774895673804692,
+            0.029215856120955355,
+            0.17656359625328605,
+            0.2178630849705164,
+            0.21814315889285074,
+            0.1489591302431956
+          ],
+          "fn": [
+            0.013501980673388368,
+            0.10303578242099096,
+            0.077648201640974,
+            0.011856752211608082,
+            0.0014697831046758347,
+            0.0002055379395999432
+          ],
+          "total": [
+            0.013982432634587047,
+            0.1324328966393246,
+            0.2553072170586984,
+            0.23107148770110716,
+            0.22096632504206823,
+            0.15008829017197656
+          ]
+        }
+      },
+      "XV.XL.MN0": {
+        "component_sum_relative_error": 4.440892098500626e-16,
+        "fraction_of_output_psd": {
+          "id": [
+            0.0003122786588793424,
+            0.019117633481110417,
+            0.11560647577107276,
+            0.14449716995795858,
+            0.15277899209481446,
+            0.16992151208536574
+          ],
+          "fn": [
+            0.00778640987616414,
+            0.0594928581486988,
+            0.04691666355877679,
+            0.009987882430174205,
+            0.0038627393629407404,
+            0.003120186922060714
+          ],
+          "total": [
+            0.008107532725464606,
+            0.07915185323056273,
+            0.16579751644926077,
+            0.15858924085215487,
+            0.16095781355697703,
+            0.17754915462313117
+          ]
+        }
+      },
+      "XV.XL.MN1": {
+        "component_sum_relative_error": 2.220446049250313e-16,
+        "fraction_of_output_psd": {
+          "id": [
+            0.0004747114364503978,
+            0.02905455199093173,
+            0.17570982691113765,
+            0.22059781623843894,
+            0.23169286084923404,
+            0.2562896758949763
+          ],
+          "fn": [
+            0.0032056375691269755,
+            0.025343628577233216,
+            0.023183534795110542,
+            0.008777935749640479,
+            0.006627028305524805,
+            0.006893900683435694
+          ],
+          "total": [
+            0.00369660005880841,
+            0.05539274468302347,
+            0.20490786445764525,
+            0.23692344565216317,
+            0.24621994687124632,
+            0.2714883024043343
+          ]
+        }
+      }
+    },
+    "vco_supply_power_mw": 4.001016549419989,
+    "nfilt_range_v": [
+      0.7251170452175693,
+      0.7261827769530421
+    ],
+    "top_contributors_at_1mhz": [
+      {
+        "device": "XV.XL.MT",
+        "fraction": 0.2553072170586984
+      },
+      {
+        "device": "XV.XL.MN1",
+        "fraction": 0.20490786445764525
+      },
+      {
+        "device": "XV.XL.MN0",
+        "fraction": 0.16579751644926077
+      },
+      {
+        "device": "XV.XL.XN.RW",
+        "fraction": 0.10428153546604967
+      },
+      {
+        "device": "XV.XL.XP.RW",
+        "fraction": 0.09723717395154
+      },
+      {
+        "device": "XV.XL.RF",
+        "fraction": 0.036738944531303566
+      },
+      {
+        "device": "XV.XL.XN.RSN",
+        "fraction": 0.02403651961139822
+      },
+      {
+        "device": "XV.XL.XP.RSN",
+        "fraction": 0.02287065030781285
+      },
+      {
+        "device": "XV.XL.MA4",
+        "fraction": 0.01659813206134063
+      },
+      {
+        "device": "XV.XBN.MP7",
+        "fraction": 0.011826082455191109
+      },
+      {
+        "device": "XV.XBP.MP7",
+        "fraction": 0.008611836518980778
+      },
+      {
+        "device": "XV.XBP.MP6",
+        "fraction": 0.007080895105616166
+      }
+    ]
+  },
+  "ssb_pm_change_db": [
+    1.6096113168785848,
+    0.2693049375309329,
+    -0.662190748281418,
+    -0.4807958395092271,
+    -0.4671418858343088,
+    -0.6845485118800525
+  ],
+  "relative_rf_frequency_change": -0.009559004171512453,
+  "relative_carrier_change": 0.09808541257200698,
+  "bias_resistor_psd_ratio": [
+    1.5107662149633736,
+    1.4677747552795561,
+    1.4677746502031401,
+    1.4757455787742633,
+    1.4999862632895276,
+    1.7143967339239001
+  ],
+  "comparable_operating_point": false,
+  "main_dut_modified": false,
+  "full_pll_jitter_fs": null,
+  "full_pll_acceptance": false,
+  "remaining": [
+    "Actual bias power-up/settling;RC time constant10us->40us",
+    "Active sampling/fullprogrammable load",
+    "Closed-loop/PVT validation"
+  ],
+  "limitation": "Six offsets do not establish an integrated free-running or PLL jitter. Near-carrier free-running linearized noise retains linewidth limitations."
+}

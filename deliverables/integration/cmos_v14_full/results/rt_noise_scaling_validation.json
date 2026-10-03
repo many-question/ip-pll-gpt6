@@ -58,6 +58,57 @@
       "exact_harmonic_flicker_warning": true,
       "noise_consistent_scope": "Device PSD sum agrees with output PSD only; not an independent noise-on or reuse validation.",
       "pending": "Finite-offset harmonic integration, all-edge, maxacfreq/step/sideband, fresh-PSS noise-on and full-PLL/PVT checks remain."
+    },
+    {
+      "case": "chain_rtscale4_tt",
+      "factor": 4,
+      "source_result": "research/runs/spectre_cmos_v14_full/chainrtscale01/chain_rtscale4_tt/result.json",
+      "source_sha256": "0c0f6a8134eb93842a97523aa580556927993eeb4934141fde3e84f10dc01602",
+      "simulator_completed": true,
+      "full_pll_acceptance": false,
+      "other_physical_dependencies_match_baseline": true,
+      "periodic_passed": true,
+      "dominant_harmonics": {
+        "vp": 24,
+        "clk": 24,
+        "q1": 12,
+        "data": 6,
+        "out": 6,
+        "acqclk": 6,
+        "XD.d8": 3,
+        "XD.d12": 2
+      },
+      "output_edges": 6,
+      "endpoint_max_v": 0.0,
+      "output_range_v": [
+        -0.08349833387791271,
+        1.22644515853462
+      ],
+      "power_mw": {
+        "VDD:p": 2.146198571348057,
+        "VRX:p": 0.9189515153886324,
+        "VRT:p": 0.4080428870143847
+      },
+      "provisional_jitter_fs": 63.27537133010213,
+      "vs_baseline_ratio": 0.44786876183716284,
+      "slew_v_per_s": 30934100000.0,
+      "device_sum_relative_error": 9.548096516445094e-16,
+      "noise_consistent": true,
+      "provisional_group_jitter_fs": {
+        "XR.X1": 24.910655926676192,
+        "XR.XFF": 50.491209730596196,
+        "XD": 1.7465402654592594,
+        "XRX": 19.802434226972277,
+        "XCOUNT": 0.01635756141306508,
+        "XACB1": 0.09672245230582788,
+        "XACB0": 0.8188571971270271,
+        "XACQ1": 7.585964288747516,
+        "XACQ0": 0.009544154881577168,
+        "XR.X0": 19.50527310243698
+      },
+      "exact_harmonic_flicker_warning": true,
+      "noise_consistent_scope": "Device PSD sum agrees with output PSD only; not an independent noise-on or reuse validation.",
+      "pending": "Finite-offset harmonic integration, all-edge, maxacfreq/step/sideband, fresh-PSS noise-on and full-PLL/PVT checks remain."
     }
   ],
   "main_dut_modified": false,

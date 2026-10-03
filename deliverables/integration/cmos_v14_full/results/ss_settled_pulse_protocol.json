@@ -1,0 +1,28 @@
+{
+  "scope": "Longer, fixed-window SS validation of the isolated PB1 threshold candidate.\n\nThe original120-200ns M6 acceptance failed. A diagnostic window sensitivity\ncheck found correct output after140ns, unlike the old failed clock trees.\nPreserve that failure and run new independent600ns tests, last200ns, for all\nsix modes at their highest planned RF frequency. No hindsight window trimming\nis allowed for acceptance of this new run.\n",
+  "source_tb_sha256": "8a1d50791e91b5966d6736c5611993c5813c3c7a170e05869033237c27569855",
+  "cases": [
+    "banktripsettled_m4_ss",
+    "banktripsettled_m6_ss",
+    "banktripsettled_m8_ss",
+    "banktripsettled_m10_ss",
+    "banktripsettled_m12_ss",
+    "banktripsettled_m14_ss"
+  ],
+  "run": "banktripsettled01",
+  "condition": "SS60/1.2V/10fF, actual MOS RX, measuredSS RF waveform replay,600ns/fixedlast200ns,1ps/reltol1e-5",
+  "main_dut_modified": false,
+  "prior_failure_not_reclassified": true,
+  "gates": [
+    "Nominal output and every-cycle period/range",
+    "RF/2 ratio and every-cycle swing",
+    "No isolated late-window substitution for failing last200ns"
+  ],
+  "remaining": [
+    "TT/FF and temperature matrix",
+    "plannedRF low/intermediate endpoints",
+    "reset/mode changes",
+    "actualLC loading",
+    "noise/fullPLL"
+  ]
+}
