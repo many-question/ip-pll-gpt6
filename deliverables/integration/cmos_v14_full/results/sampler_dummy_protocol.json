@@ -1,6 +1,6 @@
 {
   "scope": "Prepare MOS dummy-sampler candidates; no launch or adoption is implied.\n\nDirect periodic loading is supported by the saved trajectory but still awaits\nthe externalVCTRL clamp control. This prepares a bounded40/80/120f sweep for\nthe released short slot only after those controls have been reviewed.\n",
-  "status": "prepared_not_run",
+  "status": "reviewed_waiting_predecessor_release",
   "run": "samplerdummy01",
   "cases": [
     {
@@ -25,7 +25,7 @@
   "exact_core_reversal_verified": true,
   "physical_change": "Two additional complementary-clocked MOS transmission gates and dummy capacitors. Main holdcapacitors/switches/inverter unchanged; inverter/refclock loading increases physically.",
   "acceptance_boundary": "Same clamped-control750ns diagnostic as samplerload_clocked_tt, not closed-loopPLL/noise acceptance.",
-  "launch_gate": "Review samplerload01 fixedcontrol evidence first; no automatic dispatch. Reuse its1threadshortslot only once released.",
+  "launch_gate": "Clocked, DC track and DC hold reviewed; wait for samplerload01 finite runner to finish, validate all five, then run three dummy values in its released one-thread short slot.",
   "limitations": [
     "Dummy values are explicit trial parameters, not extracted replicas of CP/detector input capacitance.",
     "Mismatch, extra device noise, charge injection, changed reference slew, VCO load/range, and closed-loop capture remain to be verified.",
@@ -34,5 +34,27 @@
   "source": "Gao etal.,JSSC2010,DOI10.1109/JSSC.2010.2053094,SectionIII.A: complementary dummy sampling can compensate switched capacitive loading; applicabilityhereisahypothesis.",
   "source_url": "https://ris.utwente.nl/ws/files/6782511/Gao_IEEE_JSSC_sept_2010.pdf",
   "main_dut_modified": false,
-  "full_pll_acceptance": false
+  "full_pll_acceptance": false,
+  "dispatch_review": {
+    "time": "2026-10-04T07:14:57.686506+08:00",
+    "reviewed_cases": [
+      {
+        "case": "samplerload_clocked_tt",
+        "source_sha256": "e0c6b1de4488b49b0d2d87d643a07594efcba015e214c7ba0125ddc3877502c6",
+        "valid_for_diagnosis": true
+      },
+      {
+        "case": "samplerload_track_tt",
+        "source_sha256": "1a7aca2b194063165e1812a08bd1a1535e5757882ff453c11a3507f37307c695",
+        "valid_for_diagnosis": true
+      },
+      {
+        "case": "samplerload_hold_tt",
+        "source_sha256": "d7d37c05b78ff32e221b9a33c184769c297817c8c91a6a248fdb577a27adb817",
+        "valid_for_diagnosis": true
+      }
+    ],
+    "hold_minus_track_rf_hz": 9531424.746851444,
+    "decision": "Three completed main controls justify a finite compensation trial. Remaining KVCO probes must finish and all five validity gates pass before the one-thread short slot is reused. No main-DUT adoption."
+  }
 }

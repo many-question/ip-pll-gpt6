@@ -67,16 +67,20 @@ if 'clocked' in available:
         out['clocked_clamp_comparison'][label+'24_complex_pm_change_fraction']=float(abs(second-first)/abs(first))
         out['clocked_clamp_comparison'][label+'24_pm_phase_change_rad']=float(np.angle(second/first))
     out['clocked_clamp_comparison']['phasor_scope']='Absolute simulator-time reference; both external forcing phases match modulo24MHz. Difference includes changed carrier and loading operating point, not solely the removed control path.'
-if all(x in available for x in ['clocked','track','hold','track_vm','track_vp']):
+if all(x in available for x in ['clocked','track','hold']):
     split=available['hold']['rf_hz']-available['track']['rf_hz']
-    kvco=(available['track_vp']['rf_hz']-available['track_vm']['rf_hz'])/.02
     # Symmetric square frequency modulation is only an approximation, not a model fit.
     beta_pred=2*abs(split)/(np.pi*24e6*4)
-    out['comparison']=dict(hold_minus_track_rf_hz=float(split),track_kvco_hz_per_v=float(kvco),
+    out['comparison']=dict(hold_minus_track_rf_hz=float(split),
         clocked_output24_pm_peak_rad=available['clocked']['output_fit']['harmonics'][0]['pm_peak_rad'],
         square_fm_predicted_output24_pm_peak_rad=float(beta_pred),
         square_fm_predicted_single_sideband_dbc=float(20*np.log10(max(beta_pred/2,1e-300))),
+        square_fm_prediction_to_observed_pm_ratio=float(beta_pred/available['clocked']['output_fit']['harmonics'][0]['pm_peak_rad']),
+        dc_loading_split_last_two_windows_hz=[float(h-l) for h,l in zip(available['hold']['rf_last_two_windows_hz'],available['track']['rf_last_two_windows_hz'])],
         interpretation='Constantcontrol removes LF modulation. Direct reference/sampling loading is implicated only if measured clocked modulation remains and the DC loading split predicts its scale; other direct reference paths are still included.')
+if all(x in available for x in ['clocked','track','hold','track_vm','track_vp']):
+    kvco=(available['track_vp']['rf_hz']-available['track_vm']['rf_hz'])/.02
+    out['comparison']['track_kvco_hz_per_v']=float(kvco)
     source=H/'results/core_reference_modulation.json'
     if source.exists():
         previous=json.loads(source.read_text())

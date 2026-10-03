@@ -20,6 +20,6 @@
 
 已准备`rt4load01`三个真实MOS、固定VCTRL测试：0.657999、0.632999、0.607999 V，正常24 MHz参考，每例750 ns，末500 ns密集保存。名义控制点直接对比原尺寸`samplerload_clocked_tt`；两档较低电压测RT4加载曲线。只有目标被实测曲线包围时才插值得出新的试验控制点，随后仍须实际闭环验证。**尚未运行**，待现有固定控制实验和四组LC结果审阅、释放资源后决定，不自动修改主PLL。
 
-同批CF40及RT4+CF40仍运行。CF40的偏置时间常数较长，即使3 µs短时通过，也不能证明最终偏置或上电过程。
+同批CF40已完成0 error。末约1 µs平均输出983.999339 MHz、相位峰峰0.015177 rad、漂移−0.015315 rad/µs；频率和相位峰峰检查通过，但漂移超出0.01 rad/µs门限，稳态筛选仍失败。波形显示初始频偏衰减，不能只凭接近984 MHz就用于噪声验收，也不能把这个3 µs结果判作无法锁定。RT4+CF40仍运行。CF40的偏置时间常数较长，进一步近锁定延长观察与最终偏置／上电验证仍有必要。
 
 证据：[四组结果](results/core_noise_candidates_validation.json)、[逐参考区间动态](results/core_candidate_dynamics.json)、[RT4加载协议](results/rt4_loading_protocol.json)。复现入口：`analyze_core_noise_candidates.py`、`analyze_core_candidate_dynamics.py`，新试验完成后用`analyze_rt4_loading.py`。

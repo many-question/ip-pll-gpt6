@@ -1,0 +1,69 @@
+{
+  "scope": "Prepare fresh-PSS full-band numerical checks; no launch or adoption.\n\nThe original 10kHz..492MHz logarithmic grid and exact endpoint are retained.\nAdditional finite harmonic-neighbour points expose, rather than hide, the\nknown shifted flicker poles. No physical low-frequency cutoff is assumed.\n",
+  "status": "prepared_not_run",
+  "cases": [
+    {
+      "factor": 2,
+      "case": "chain_rt2_fullband_fine_tt",
+      "run": "rt2fullband01",
+      "source_case": "chain_rtscale2_tt",
+      "source_run": "chainrtscale01",
+      "source_tb_sha256": "6c5db39a7cd71afb51938b9ff0d013ddac5af0cdaa5514c7158e826afeedaa49",
+      "tb_sha256": "1a3c4bf58f5eddf49714d41d6ab6f6a2d0c39a3b7501a03b862846484776b0c0"
+    },
+    {
+      "factor": 4,
+      "case": "chain_rt4_fullband_fine_tt",
+      "run": "rt4fullband01",
+      "source_case": "chain_rtscale4_tt",
+      "source_run": "chainrtscale01",
+      "source_tb_sha256": "2ad70241e3d80554fbdeced1a0a2758c609dd6ac7873b5fbf5fd1b45e6925adc",
+      "tb_sha256": "ab8d93fec70eb0262c12297961f252bd7d58a01d618196a0fb894e7002a2d206"
+    }
+  ],
+  "band_hz": [
+    10000.0,
+    492000000.0
+  ],
+  "harmonic_neighbour_offsets_hz": [
+    163990000,
+    163999000,
+    163999900,
+    163999990,
+    163999999,
+    164000001,
+    164000010,
+    164000100,
+    164001000,
+    164010000,
+    327990000,
+    327999000,
+    327999900,
+    327999990,
+    327999999,
+    328000001,
+    328000010,
+    328000100,
+    328001000,
+    328010000,
+    491990000,
+    491999000,
+    491999900,
+    491999990,
+    491999999
+  ],
+  "pointwise_limit_db": 0.2,
+  "integrated_rms_relative_limit": 0.02,
+  "condition": "TT27/1.2V/984MHz/10fF, same noiseless RF replay and MOS dependencies as own scaling result; .5ps/767sidebands/maxacfreq504GHz vs1ps/383.",
+  "launch_gate": "Review and complete the corresponding five fresh noise-on groups first; reuse its released one-thread long slot. No automatic launch or duplicate jobs.",
+  "acceptance": "Identical frequency grid, physical hashes, branch periods/endpoints, device sums, finite PSD values and convergence log must pass. Full-grid numerical agreement is not physical closure of exact-harmonic flicker singularities.",
+  "unchanged_requirement": "Random RMS<200fs from10kHz to492MHz at984MHz output; exclude discrete spurs, not continuous device noise.",
+  "limitations": [
+    "A logarithmic-grid RMS remains provisional until the harmonic-pole treatment is physically justified.",
+    "Finite neighbours down to1Hz distance do not integrate through zero distance or establish a physical cutoff.",
+    "This local chain excludes the noisy actualLC, PLL transfer and external source/supply noise.",
+    "Only the first edge is integrated; previous six-edge three-point screens do not establish all-edge full-band equality."
+  ],
+  "main_dut_modified": false,
+  "full_pll_acceptance": false
+}

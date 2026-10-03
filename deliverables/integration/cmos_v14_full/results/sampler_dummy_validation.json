@@ -1,0 +1,19 @@
+{
+  "scope": "Compare complementary MOS sampling loads in the fixed-control diagnostic.\n\nOnly deterministic reference modulation is measured. No random-jitter result,\naccepted spur limit, closed-loop capture or main-DUT adoption is implied.\n",
+  "run": "samplerdummy01",
+  "baseline_source": "research/runs/spectre_cmos_v14_full/samplerload01/samplerload_clocked_tt/result.json",
+  "baseline_sha256": "e0c6b1de4488b49b0d2d87d643a07594efcba015e214c7ba0125ddc3877502c6",
+  "cases": [],
+  "complete": false,
+  "full_pll_acceptance": false,
+  "random_jitter_measured": false,
+  "main_dut_modified": false,
+  "condition": "TT27/1.2V/coarse23/CF10/baselineRT/continuousclockbank/10fF/Q5.750ns/1ps/traponly/reltol1e-5,last500nsdense,staticcontrolboundary.",
+  "interpretation": "Rank only valid diagnostic cases by measured reference-PM amplitude. Added load shifts the carrier and reference slew; a reduction is not an isolated mechanism contribution or closed-loop performance proof.",
+  "pending": [
+    "Actual loop retuning/capture and loading effects",
+    "Fresh PSS device noise including new MOS switches",
+    "Independent timestep, PVT and mismatch",
+    "Spur-line spectrum at the confirmed acceptance boundary"
+  ]
+}

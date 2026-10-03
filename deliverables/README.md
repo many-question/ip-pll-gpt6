@@ -1,4 +1,4 @@
-本次快照：[第35次汇报](../reports/2026-10-04T0653.yaml)。固定控制后保留约99.3%输出参考PM，直接耦合得到证据；RT4代回实际LC从旧初态滑相，不能直接采用局部63.275 fs方案。工作点匹配、逐模块噪声和完整PLL验证继续。
+本次快照：[第36次汇报](../reports/2026-10-04T0720.yaml)。固定控制下DC保持／跟踪实测频差9.531 MHz，补偿测试已安排有限接续；RT2／RT4 noise-on继续通过。CF40仍欠稳态，完整PLL随机RMS尚未知。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)
