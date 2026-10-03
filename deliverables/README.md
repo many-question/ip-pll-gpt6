@@ -1,3 +1,8 @@
+本次快照：[第34次汇报](../reports/2026-10-04T0619.yaml)。局部4倍CMOS链暂定63.275 fs，自身六沿检查通过；真实LC发现约−28.8 dBc参考调制，固定控制隔离与MOS补偿候选已准备。完整PLL RMS仍未知，功耗优化暂缓。
+
+- [噪声／抖动当前证据](integration/cmos_v14_full/NOISE_PROGRESS.md)
+- [参考采样负载诊断](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)
+
 本次快照：[第28次汇报](../reports/2026-10-04T0045.yaml)：噪声优先，PSS失败审计与恢复、CMOS输出链尺寸实验；功耗优化暂缓。
 
 # 交付物索引

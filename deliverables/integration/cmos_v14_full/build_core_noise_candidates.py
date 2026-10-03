@@ -57,7 +57,7 @@ out=dict(scope=__doc__,status='prepared_not_run',run='corenoisecand01',cases=row
                  '2ns strobes are only for observer envelopes, notGHz waveform swing, edge slope, spectrum, or power.',
                  'Reusing initial voltages across capacitance/device changes is a near-lock perturbation test, not native state continuation or cold power-up.',
                  'CF40 long bias time constant means3us stationarity alone is insufficient for final settling/noise acceptance.',
-                 'Source CF10 and original RT remain in the currently running supply-corrected PSS.'],
+                 'Source CF10 and original RT are the unchanged baseline; completed/failed PSS trials are documented separately and are not candidate-noise acceptance.'],
     main_dut_modified=False,full_pll_acceptance=False)
 (H/'results/core_noise_candidates_protocol.json').write_text(json.dumps(out,indent=2)+'\n')
 print(' '.join(x['case'] for x in rows))

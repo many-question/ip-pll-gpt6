@@ -1,0 +1,38 @@
+{
+  "scope": "Prepare MOS dummy-sampler candidates; no launch or adoption is implied.\n\nDirect periodic loading is supported by the saved trajectory but still awaits\nthe externalVCTRL clamp control. This prepares a bounded40/80/120f sweep for\nthe released short slot only after those controls have been reviewed.\n",
+  "status": "prepared_not_run",
+  "run": "samplerdummy01",
+  "cases": [
+    {
+      "case": "samplerdummy_c40_tt",
+      "cdummy_f": 4.0000000000000006e-14,
+      "tb_sha256": "39e258ce3416ddad92c006f493bf97eb222ecc476d5a64384d9a70601666eb0a"
+    },
+    {
+      "case": "samplerdummy_c80_tt",
+      "cdummy_f": 8.000000000000001e-14,
+      "tb_sha256": "24b8434b0d5620ecd482b87404f60c84a77c2f6b93be17764416f899966dd467"
+    },
+    {
+      "case": "samplerdummy_c120_tt",
+      "cdummy_f": 1.2000000000000002e-13,
+      "tb_sha256": "83d42136d1c5a12dfc56d30a2ba4862d05dc544dcf4532c00fd4b723e415ff16"
+    }
+  ],
+  "original_core_sha256": "fbeb935df1fc747f158a3eb8ac23296aeabb90c8a1a6e1b2e8850746f6fa1e36",
+  "candidate_core_sha256": "a11a1a858c248fbb39816b0a90f14e9980a8ffad5ff1eb8a08ecaaf8c6b61124",
+  "sampler_sha256": "9f306e92a0e3200ec65ffefec5d013b78e7e57995fa8e7a0c10ecc18eef43c10",
+  "exact_core_reversal_verified": true,
+  "physical_change": "Two additional complementary-clocked MOS transmission gates and dummy capacitors. Main holdcapacitors/switches/inverter unchanged; inverter/refclock loading increases physically.",
+  "acceptance_boundary": "Same clamped-control750ns diagnostic as samplerload_clocked_tt, not closed-loopPLL/noise acceptance.",
+  "launch_gate": "Review samplerload01 fixedcontrol evidence first; no automatic dispatch. Reuse its1threadshortslot only once released.",
+  "limitations": [
+    "Dummy values are explicit trial parameters, not extracted replicas of CP/detector input capacitance.",
+    "Mismatch, extra device noise, charge injection, changed reference slew, VCO load/range, and closed-loop capture remain to be verified.",
+    "No CML buffer or new main architecture has been adopted."
+  ],
+  "source": "Gao etal.,JSSC2010,DOI10.1109/JSSC.2010.2053094,SectionIII.A: complementary dummy sampling can compensate switched capacitive loading; applicabilityhereisahypothesis.",
+  "source_url": "https://ris.utwente.nl/ws/files/6782511/Gao_IEEE_JSSC_sept_2010.pdf",
+  "main_dut_modified": false,
+  "full_pll_acceptance": false
+}

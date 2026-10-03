@@ -1,0 +1,82 @@
+{
+  "scope": "Prepare five physical loading/KVCO diagnostics with an external control clamp.\n\nActual core circuitry is unchanged. Constant VCTRL intentionally removes the\nloop-filter frequency-modulation path; changing reference DC/clocking then\ntests the aggregate direct reference/sampling disturbance. It does not uniquely\nisolate the sampling switch from all other reference-driven loads.\n",
+  "status": "prepared_not_run",
+  "run": "samplerload01",
+  "cases": [
+    {
+      "case": "samplerload_clocked_tt",
+      "reference": "clocked",
+      "control_v": 0.6579988674567703,
+      "delta_control_v": 0,
+      "changed_seed_nodes": [
+        "ref",
+        "XP.ctrl"
+      ],
+      "tb_sha256": "e495d7a9786cafe33accfcd3bcf7dd7b0897bf7ebbd8e21ff0c8d262110ccd8c",
+      "seed_sha256": "8f0641b8cdc7d94466d1d55436a13282d7cadc9fc5abf1d12fe271406267e353"
+    },
+    {
+      "case": "samplerload_track_tt",
+      "reference": "low",
+      "control_v": 0.6579988674567703,
+      "delta_control_v": 0,
+      "changed_seed_nodes": [
+        "ref",
+        "XP.ctrl"
+      ],
+      "tb_sha256": "3b81fb1897fddcd704a0379e75d6a922c8eb9dc3c8b8ecc0d072b28f649bec2c",
+      "seed_sha256": "8f0641b8cdc7d94466d1d55436a13282d7cadc9fc5abf1d12fe271406267e353"
+    },
+    {
+      "case": "samplerload_hold_tt",
+      "reference": "high",
+      "control_v": 0.6579988674567703,
+      "delta_control_v": 0,
+      "changed_seed_nodes": [
+        "ref",
+        "XP.ctrl"
+      ],
+      "tb_sha256": "fbfa2450ceaeee3cb812de42ba62e7cd2f007a615a9fb9b628d37c1e13bfe961",
+      "seed_sha256": "d9e0d1d9e6da7307dc7b60ef97fa0bac816ca957a7cb74c56018e753a206e8cb"
+    },
+    {
+      "case": "samplerload_track_vm_tt",
+      "reference": "low",
+      "control_v": 0.6479988674567703,
+      "delta_control_v": -0.01,
+      "changed_seed_nodes": [
+        "ref",
+        "XP.ctrl"
+      ],
+      "tb_sha256": "1f5e420f9c6d1920df686fb4edee708f802bc33a0a986d75f4ad0fc6ddabea61",
+      "seed_sha256": "3c3106ae739838677d327675ae4508a169c54e5c95324425eaf14c96db14d0cf"
+    },
+    {
+      "case": "samplerload_track_vp_tt",
+      "reference": "low",
+      "control_v": 0.6679988674567703,
+      "delta_control_v": 0.01,
+      "changed_seed_nodes": [
+        "ref",
+        "XP.ctrl"
+      ],
+      "tb_sha256": "5702f89b50129e68c18a1969630a0c4225a90e47b7f0834bddb12fb2344f882e",
+      "seed_sha256": "8af3006f297387da6be919e276e3d4cf1c2d70951025825687fef4ef56eb3612"
+    }
+  ],
+  "source_core_sha256": "fbeb935df1fc747f158a3eb8ac23296aeabb90c8a1a6e1b2e8850746f6fa1e36",
+  "source_seed_sha256": "954139915dc28cbab2f73f5e1772612450515ee235bb522d4b7794c315f1329b",
+  "raw_measured_mean_source_sha256": "99808f9e36ad6289a1d22f118cbd15531a1b61e60725ae88d485e6c93ac6e6e1",
+  "baseline_control_v": 0.6579988674567703,
+  "condition": "TT27/1.2V/coarse23/CF10/baselineRT/continuousclockbank/10fF/Q5.750ns/1ps/traponly/reltol1e-5,last500nsdense,staticcontrolboundary.",
+  "gate": "Only after banktripcorner01 all17cases completed and released its1thread short-job slot. No overlap with its last remote Spectre process.",
+  "measurements": [
+    "RFmean and separate last250ns windows from differential zero crossings.",
+    "Clockedcase referencehigh/low cycle frequency and harmonic least-squares edge-phase modulation.",
+    "Track/hold frequency difference; +/-10mV tracking KVCO derivative."
+  ],
+  "interpretation": "Large track/hold frequency split with clampedVCTRL supports switched-loading diagnosis; it is not final spur/noise acceptance or proof of a sole path.",
+  "main_dut_modified": false,
+  "full_pll_acceptance": false,
+  "random_jitter_measured": false
+}

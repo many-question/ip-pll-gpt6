@@ -1,0 +1,17 @@
+simulator lang=spectre
+// Experimental complementary loading compensation. Main sample path is unchanged.
+// Dummy C is a tunable surrogate for hold C plus physical downstream gate load.
+// Not a matched-layout or measured-parasitic value; noise/settling must be tested.
+subckt sampler_dummy_v14 (ref vp vn hp hn vdd vss)
+parameters cdummy=80f
+XI (ref refb vdd vss) pll_inv wn=8u wp=20u
+XSP (vp hp refb ref vdd vss) pll_tg wn=4u wp=8u
+XSN (vn hn refb ref vdd vss) pll_tg wn=4u wp=8u
+CP (hp vss) capacitor c=40f
+CN (hn vss) capacitor c=40f
+// Same physical TGs, opposite clock polarity; no ideal internal sources.
+XDP (vp hpd ref refb vdd vss) pll_tg wn=4u wp=8u
+XDN (vn hnd ref refb vdd vss) pll_tg wn=4u wp=8u
+CDP (hpd vss) capacitor c=cdummy
+CDN (hnd vss) capacitor c=cdummy
+ends sampler_dummy_v14

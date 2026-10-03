@@ -118,3 +118,8 @@
 ## SS全部规划端点通过
 
 新增5个低RF端全部完成并通过，与原6个高端组合，六个分频模式的11个不同SS规划端点均通过固定400–600ns接口筛选。M14只有一个规划频点，因此不重复计数。保持实际MOS接收器／分频／原RT／10fF和同一SS波形重放。TT/FF高端回归继续；这不证明所有中间频点、实际LC或完整PVT。详见[端点覆盖计数与输入SHA](results/bank_pulsetrip_coverage.json)。
+# 2026-10-04：连续时钟候选端口回归补齐
+
+新增`banktripcorner01`已完成17/17并通过：五个SS60低RF、六档TT27高RF、六档FF0高RF；结合此前六档SS高RF，共11个不同SS规划端点通过。固定测量窗口400–600 ns，1.2 V／10 fF，使用同一实测SS形状的零阻抗RF重放、真实角落MOS接收器／分频／原重定时／静默计数器负载。输入和原始结果已回收并核对SHA。见[覆盖清单](results/bank_pulsetrip_coverage.json)和[新增批次测量](results/bank_pulsetrip_corner_validation.json)。
+
+此结果没有覆盖实际LC加载反作用、所有中间频点、模式切换、失配或完整PLL。主DUT仍未采用候选；严格实际LC核心M4的独立近锁定基线通过，不代替其他模式或PVT。下文历史失败和时序诊断保留各自条件。

@@ -1,0 +1,72 @@
+{
+  "scope": "Localize deterministic24MHz modulation along an actualLC core trajectory.\n\nFundamental-band analytic phase is a deterministic waveform diagnostic, not\nsampled device-noise jitter. Agreement upstream/downstream supports localization\nbut does not establish a unique physical coupling mechanism.\n",
+  "raw_source_sha256": "99808f9e36ad6289a1d22f118cbd15531a1b61e60725ae88d485e6c93ac6e6e1",
+  "interval_us": [
+    4.0,
+    4.25
+  ],
+  "cases": [
+    {
+      "node": "rf_differential",
+      "carrier_hz": 3936000000.0,
+      "mean_fundamental_amplitude_v": 0.8455553733675897,
+      "pm24_peak_rad": 0.2759696902679487,
+      "pm24_angle_rad": 3.1127057216112384,
+      "am24_peak_fraction": 0.05035047307571009,
+      "equivalent_deterministic_time24_peak_ps": 11.159029560387031,
+      "fundamental_phase_equivalent_time_pp_ps": 29.15693407532973
+    },
+    {
+      "node": "XP.clk",
+      "carrier_hz": 3936000000.0,
+      "mean_fundamental_amplitude_v": 0.7167296704645945,
+      "pm24_peak_rad": 0.27913754340094177,
+      "pm24_angle_rad": -3.1295768587336847,
+      "am24_peak_fraction": 0.009059338630121046,
+      "equivalent_deterministic_time24_peak_ps": 11.287123941765332,
+      "fundamental_phase_equivalent_time_pp_ps": 29.54301524900712
+    },
+    {
+      "node": "out",
+      "carrier_hz": 984000000.0,
+      "mean_fundamental_amplitude_v": 0.6846421315268054,
+      "pm24_peak_rad": 0.0720540214392706,
+      "pm24_angle_rad": -3.0828332432376158,
+      "am24_peak_fraction": 0.0005843826608509068,
+      "equivalent_deterministic_time24_peak_ps": 11.654221221249307,
+      "fundamental_phase_equivalent_time_pp_ps": 31.118552361697716
+    }
+  ],
+  "rf_to_output_time24_ratio": 1.044375871412702,
+  "equivalent_phase_waveform_correlation": 0.9953407789524795,
+  "control_peak_to_peak_v": 0.06381463988258396,
+  "control24_peak_v": 0.001466401526306075,
+  "rf_frequency_away_from_reference_edges": {
+    "reference_high_holding": {
+      "cycles": 396,
+      "mean_rf_hz": 3941182182.3830147
+    },
+    "reference_low_tracking": {
+      "cycles": 398,
+      "mean_rf_hz": 3930953126.4119067
+    }
+  },
+  "holding_minus_tracking_rf_hz": 10229055.97110796,
+  "square_frequency_modulation_approximation_dbc": -29.39171101512606,
+  "square_fm_design_estimate": {
+    "target_single_sideband_dbc": -60.0,
+    "reference_hz": 24000000.0,
+    "divider": 4,
+    "maximum_rf_hold_track_split_hz": 301592.89474462013,
+    "required_split_reduction_factor": 33.91676710344791,
+    "note": "First-order symmetric square-FM estimate for this one mechanism only. No margin for charge injection, AM, other lines or PVT; not an accepted circuit result."
+  },
+  "hypothesis": "Large reference-rate PM already present at differentialLC nodes. Sampler switched loading is a candidate; control ripple, input coupling, and detector loading are not yet causally separated.",
+  "limitations": [
+    "Analytic phase retains the carrier fundamental band and excludes waveform harmonics; it is not threshold-crossing random jitter.",
+    "The physical transient has small drift and no convergedPSS; no completePLL acceptance claim.",
+    "Ideal external supply excludes shared supply impedance; static control boundary excludes fullslowlogic."
+  ],
+  "random_jitter_measured": false,
+  "full_pll_acceptance": false
+}

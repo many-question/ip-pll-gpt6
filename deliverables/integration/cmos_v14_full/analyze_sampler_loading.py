@@ -1,0 +1,67 @@
+"""Analyze fixed-control reference/LC loading probes, never call them PLL jitter."""
+from pathlib import Path
+import hashlib,json
+import numpy as np
+from noise_utils import cross
+from reference_modulation_utils import fit_edges,analytic_control
+H=Path(__file__).resolve().parent;ROOT=H.parents[3]
+protocol=json.loads((H/'results/sampler_loading_protocol.json').read_text());R=ROOT/'research/runs/spectre_cmos_v14_full'/protocol['run']
+fixture=analytic_control();assert fixture['passed'];rows=[]
+for case in protocol['cases']:
+    j=R/case['case'];p=j/'result.json'
+    if not p.exists():continue
+    r=json.loads(p.read_text())
+    if not r.get('local_outputs_sha256'):continue
+    row=dict(case=case['case'],reference=case['reference'],control_v=case['control_v'],valid_for_diagnosis=False,
+        source_result=p.relative_to(ROOT).as_posix(),source_sha256=hashlib.sha256(p.read_bytes()).hexdigest());rows.append(row)
+    if not r['ok'] or 'spectre completes with 0 errors' not in (j/'spectre.out').read_text():continue
+    assert r['remote_inputs_match'] and r['inputs_sha256']['pll_noise_pulsetrip_core_v14.scs']==protocol['source_core_sha256']
+    assert r['inputs_sha256'][j.name+'.ic']==case['seed_sha256']
+    wp=j/'waveforms.npz';assert hashlib.sha256(wp.read_bytes()).hexdigest()==r['local_outputs_sha256']['waveforms.npz']
+    with np.load(wp) as z:d={k:z[k] for k in z.files}
+    t=d['time'];assert 249.99e-9<t[0]<250.01e-9 and abs(t[-1]-750e-9)<1e-14
+    rf=cross(t,d['XP.vp']-d['XP.vn'],0);oe=cross(t,d['out']);fr=float(1/np.mean(np.diff(rf)));fo=float(1/np.mean(np.diff(oe)))
+    parts=[]
+    for start,end in [(250e-9,500e-9),(500e-9,750e-9)]:
+        e=rf[(rf>=start)&(rf<end)];parts.append(float(1/np.mean(np.diff(e))))
+    coarse=all(np.all(d[f'XP.b{i}']>.9) if 23&(1<<i) else np.all(d[f'XP.b{i}']<.3) for i in range(8))
+    clamp=float(max(abs(d['XP.ctrl']-case['control_v'])));frequency_drift_ppm=float(abs(parts[1]-parts[0])/np.mean(parts)*1e6)
+    row.update(rf_hz=fr,output_hz=fo,coarse23_held=bool(coarse),control_clamp_max_error_v=clamp,
+        rf_last_two_windows_hz=parts,last_two_window_difference_ppm=frequency_drift_ppm,
+        rf_differential_swing_pp_v=float(np.ptp(d['XP.vp']-d['XP.vn'])),rf_fit=fit_edges(rf),output_fit=fit_edges(oe),
+        valid_for_diagnosis=bool(coarse and clamp<1e-9 and frequency_drift_ppm<100 and abs(fo*4/fr-1)<.001))
+    if case['reference']=='clocked':
+        mid=(rf[1:]+rf[:-1])/2;periods=np.diff(rf)
+        re=np.sort(np.r_[cross(t,d['XP.refb']),cross(t,1.2-d['XP.refb'])])
+        assert len(re)>10
+        distance=np.min(abs(mid[:,None]-re[None,:]),axis=1)
+        level=np.interp(mid,t,d['XP.refb']);halves={}
+        for name,mask in [('holding',level>.9),('tracking',level<.3)]:
+            good=mask&(distance>2e-9)&(mid>t[0]+2e-9)&(mid<t[-1]-2e-9)
+            halves[name]=dict(cycles=int(sum(good)),rf_hz=float(1/np.mean(periods[good])))
+        row['frequency_away_from_reference_edges']=halves
+        row['clocked_hold_minus_track_rf_hz']=halves['holding']['rf_hz']-halves['tracking']['rf_hz']
+out=dict(scope=__doc__,fixture=fixture,cases=rows,complete=len(rows)==len(protocol['cases']),
+    full_pll_acceptance=False,random_jitter_measured=False,main_dut_modified=False)
+available={x['case'].replace('samplerload_','').replace('_tt',''):x for x in rows if x.get('valid_for_diagnosis')}
+if all(x in available for x in ['clocked','track','hold','track_vm','track_vp']):
+    split=available['hold']['rf_hz']-available['track']['rf_hz']
+    kvco=(available['track_vp']['rf_hz']-available['track_vm']['rf_hz'])/.02
+    # Symmetric square frequency modulation is only an approximation, not a model fit.
+    beta_pred=2*abs(split)/(np.pi*24e6*4)
+    out['comparison']=dict(hold_minus_track_rf_hz=float(split),track_kvco_hz_per_v=float(kvco),
+        clocked_output24_pm_peak_rad=available['clocked']['output_fit']['harmonics'][0]['pm_peak_rad'],
+        square_fm_predicted_output24_pm_peak_rad=float(beta_pred),
+        square_fm_predicted_single_sideband_dbc=float(20*np.log10(max(beta_pred/2,1e-300))),
+        interpretation='Constantcontrol removes LF modulation. Direct reference/sampling loading is implicated only if measured clocked modulation remains and the DC loading split predicts its scale; other direct reference paths are still included.')
+    source=H/'results/core_reference_modulation.json'
+    if source.exists():
+        previous=json.loads(source.read_text())
+        ripple=previous['control24_peak_v']
+        out['comparison']['linear_control_ripple_estimate']=dict(
+            control24_peak_v=ripple,tracking_kvco_hz_per_v=float(kvco),
+            output24_pm_peak_rad=float(abs(kvco)*ripple/(24e6*4)),
+            source=source.relative_to(ROOT).as_posix(),source_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),
+            note='Static tracking KVCO times measured closed-loop control ripple, divided by offset frequency and M. A first-order scale estimate, not a measured isolated path; dynamic loading, relative phase, AM and loop coupling remain.')
+(H/'results/sampler_loading_validation.json').write_text(json.dumps(out,indent=2)+'\n')
+print(json.dumps(out,indent=2))
