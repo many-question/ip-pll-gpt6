@@ -10,3 +10,11 @@
 工具实测校准仍见 `results/noise_measurement_fixture.json`、`results/pss_reuse_validation.json`。局部链在精确 PSS 谐波处存在 flicker 警告，邻近有限频率检查也未完全关闭；现有 logarithmic-grid 积分仅为暂定数值。用户排除的是离散杂散，这不授权删除谐波邻近的随机噪声。
 
 当前的 Gear2、2µs稳定段属于数值收敛诊断；相位瞬态、Newton异常电压和无噪声仿真中的边沿变化都不能算作随机抖动。
+
+
+## 2026-10-04：复用与初态恢复的实测限制
+
+- 本地Spectre帮助说明`readpss`检查电路方程残差，`checkpss=yes`会在必要时重求；这并不替代噪声对照。当前MOS局部链复用前后波形近似相同，但1／10／100MHz全噪声PSD比达2.592／4.564／5.049。RC校准通过不能推及MOS；当前流程暂用新求解PSS作性能依据。详见`results/rt_noise_controls.json`，保留冲突结果，不归因于电路尺寸。
+- [Cadence：Transient results as starting point in PSS](https://community.cadence.com/cadence_technology_forums/f/rf-design/28744/transient-results-as-starting-point-in-pss)建议文本writefinal／readic配合skipdc=yes，并允许未保存状态重新稳定。新核心测试采用此建议；不是已证明的修复。
+- 本地`research/spectre_help/pss.txt`还建议避开强非线性跳变启动shooting。新核心使用与5µs终态匹配的`tstart=5u`，250ns稳定后在5.25µs启动求解；原默认从参考起跳相位开始。物理电路和容差未变。
+- [Cadence：reuse PSS results to run standalone Pnoise](https://community.cadence.com/cadence_technology_forums/f/custom-ic-design/62486/reuse-pss-results-to-run-standalone-pnoise/)确认该功能的正常用途；它不是对本项目当前版本／模型／配置噪声一致性的担保。当前实测差异的底层原因尚未确定。

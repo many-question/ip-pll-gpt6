@@ -1,0 +1,537 @@
+{
+  "scope": "Separate fresh/reused PSS and noise-on contributions at three offsets.\n\nThese points diagnose the measurement flow. They are never a jitter integral.\nKeep the original failed gate results; this audit adds an independent control.\n",
+  "offsets_hz": [
+    1000000.0,
+    10000000.0,
+    100000000.0
+  ],
+  "fresh_fullband_source": {
+    "run": "chainrtscale01",
+    "case": "chain_rtscale2_tt",
+    "source_result": "research/runs/spectre_cmos_v14_full/chainrtscale01/chain_rtscale2_tt/result.json",
+    "source_sha256": "84ff2c708b7da21d67dbf21c203b76b9fe739027cc73ac31cd2fbe7387c28e96",
+    "pnoise_sha256": "cfe7b4fc1b1ea02c6ea145a62807bb256d7a71641f256fe81ee6d600329b345a",
+    "slew_v_per_s": 20409900000.0,
+    "event_time_s": 6.98488e-10,
+    "timing_psd_s2_per_hz": [
+      3.5158480715134853e-35,
+      1.8540163016996423e-35,
+      1.657801168572979e-35
+    ],
+    "group_timing_psd": {
+      "ff": [
+        2.0368754311260607e-35,
+        1.0952136320989702e-35,
+        9.854964774129188e-36
+      ],
+      "buffers": [
+        1.1465880071140272e-35,
+        6.140415190007683e-36,
+        5.538470476698218e-36
+      ],
+      "rx": [
+        2.321452746617479e-36,
+        9.018622703409912e-37,
+        6.95650136836451e-37
+      ],
+      "divider": [
+        8.628681182489106e-39,
+        6.19194697459988e-39,
+        6.00275187288165e-39
+      ],
+      "aux": [
+        9.937649049339851e-37,
+        5.39557288683443e-37,
+        4.829235461930599e-37
+      ]
+    },
+    "physical_inputs": {
+      "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+      "cmos_even_bank_acq_v14.scs": "34a80ae697397ff60cc61ba9cfc51513716c39afd3df68f4ea0a9c950ca0ff6f",
+      "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+      "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+      "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+      "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+      "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+      "rt_noise_scale2_v14.scs": "6e1b4d92d8fda5c472514c6b82edbcee28646a3d272eefda822cd142c19ee821",
+      "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+      "tank_replay_full_v14.va": "9582047b1de62cbb9dee8d4bdf60017efb61752d754751218fa5e820f4800897"
+    },
+    "pss_reused": false
+  },
+  "reused_all_noise": {
+    "run": "rtcontrolreuse01",
+    "case": "chain_rt2_control_tt",
+    "source_result": "research/runs/spectre_cmos_v14_full/rtcontrolreuse01/chain_rt2_control_tt/result.json",
+    "source_sha256": "c8a8968406b9d55d9b15cc3552089c44b33a099e0a93494b23145ec7b102a754",
+    "pnoise_sha256": "ea55a6bdf861c0caf195fbf7ce6490c49e69f0d1ff6d82589d17604cfa0ab2ba",
+    "slew_v_per_s": 20409900000.0,
+    "event_time_s": 6.98488e-10,
+    "timing_psd_s2_per_hz": [
+      9.114143908139773e-35,
+      8.461288884467714e-35,
+      8.37103049815504e-35
+    ],
+    "group_timing_psd": {
+      "ff": [
+        4.86438339512302e-35,
+        4.846440618732873e-35,
+        4.843438803767956e-35
+      ],
+      "buffers": [
+        2.9687254550111454e-35,
+        2.4195534681505496e-35,
+        2.352424620188563e-35
+      ],
+      "rx": [
+        3.6610622785419264e-36,
+        2.8054860218012598e-36,
+        2.6045468311510277e-36
+      ],
+      "divider": [
+        6.874654591109798e-39,
+        5.04105049755691e-39,
+        4.70733419310151e-39
+      ],
+      "aux": [
+        9.142413646923083e-36,
+        9.142420903544061e-36,
+        9.142416576641039e-36
+      ]
+    },
+    "physical_inputs": {
+      "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+      "cmos_even_bank_acq_v14.scs": "34a80ae697397ff60cc61ba9cfc51513716c39afd3df68f4ea0a9c950ca0ff6f",
+      "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+      "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+      "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+      "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+      "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+      "rt_noise_scale2_v14.scs": "6e1b4d92d8fda5c472514c6b82edbcee28646a3d272eefda822cd142c19ee821",
+      "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+      "tank_replay_full_v14.va": "9582047b1de62cbb9dee8d4bdf60017efb61752d754751218fa5e820f4800897"
+    },
+    "pss_reused": true
+  },
+  "reused_to_fresh_psd_ratio": [
+    2.5923031151389773,
+    4.563761859435083,
+    5.0494779813436566
+  ],
+  "reused_isolated_controls": [
+    {
+      "group": "ff",
+      "max_relative_difference_to_reused_all": 8.881784197001252e-16,
+      "passed": true,
+      "evidence": {
+        "run": "rtgates2_01_ff",
+        "case": "chain_rt2_only_ff_tt",
+        "source_result": "research/runs/spectre_cmos_v14_full/rtgates2_01_ff/chain_rt2_only_ff_tt/result.json",
+        "source_sha256": "77906d6a3cbafb2459f2422b9aa39e345a90eeb7340ab4a447f82f1ea28c56cc",
+        "pnoise_sha256": "e183dfeff9ad9c15ee457ed0d26f9c252401901e6683a738a4eb5ded9136fd2d",
+        "slew_v_per_s": 20409900000.0,
+        "event_time_s": 6.98488e-10,
+        "timing_psd_s2_per_hz": [
+          4.864383395123018e-35,
+          4.846440618732877e-35,
+          4.843438803767953e-35
+        ],
+        "group_timing_psd": {
+          "ff": [
+            4.86438339512302e-35,
+            4.846440618732873e-35,
+            4.843438803767956e-35
+          ],
+          "buffers": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rx": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "divider": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "aux": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "physical_inputs": {
+          "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+          "cmos_even_bank_acq_v14.scs": "34a80ae697397ff60cc61ba9cfc51513716c39afd3df68f4ea0a9c950ca0ff6f",
+          "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+          "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+          "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+          "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+          "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+          "rt_noise_scale2_v14.scs": "6e1b4d92d8fda5c472514c6b82edbcee28646a3d272eefda822cd142c19ee821",
+          "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+          "tank_replay_full_v14.va": "9582047b1de62cbb9dee8d4bdf60017efb61752d754751218fa5e820f4800897"
+        },
+        "pss_reused": true
+      }
+    },
+    {
+      "group": "buffers",
+      "max_relative_difference_to_reused_all": 6.661338147750939e-16,
+      "passed": true,
+      "evidence": {
+        "run": "rtgates2_01_buffers",
+        "case": "chain_rt2_only_buffers_tt",
+        "source_result": "research/runs/spectre_cmos_v14_full/rtgates2_01_buffers/chain_rt2_only_buffers_tt/result.json",
+        "source_sha256": "0c5a323715db1b3ca51fcebb6c0af1e63c6a5e8e6f9972f1cd6c734d7c572fea",
+        "pnoise_sha256": "0f7f8ee461f29457e0c5c3ca71fe014e0fb3e2261ed6a0c45669c511c062690a",
+        "slew_v_per_s": 20409900000.0,
+        "event_time_s": 6.98488e-10,
+        "timing_psd_s2_per_hz": [
+          2.968725455011143e-35,
+          2.4195534681505486e-35,
+          2.352424620188563e-35
+        ],
+        "group_timing_psd": {
+          "ff": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "buffers": [
+            2.9687254550111454e-35,
+            2.4195534681505496e-35,
+            2.352424620188563e-35
+          ],
+          "rx": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "divider": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "aux": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "physical_inputs": {
+          "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+          "cmos_even_bank_acq_v14.scs": "34a80ae697397ff60cc61ba9cfc51513716c39afd3df68f4ea0a9c950ca0ff6f",
+          "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+          "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+          "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+          "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+          "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+          "rt_noise_scale2_v14.scs": "6e1b4d92d8fda5c472514c6b82edbcee28646a3d272eefda822cd142c19ee821",
+          "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+          "tank_replay_full_v14.va": "9582047b1de62cbb9dee8d4bdf60017efb61752d754751218fa5e820f4800897"
+        },
+        "pss_reused": true
+      }
+    },
+    {
+      "group": "rx",
+      "max_relative_difference_to_reused_all": 4.440892098500626e-16,
+      "passed": true,
+      "evidence": {
+        "run": "rtgates2_01_rx",
+        "case": "chain_rt2_only_rx_tt",
+        "source_result": "research/runs/spectre_cmos_v14_full/rtgates2_01_rx/chain_rt2_only_rx_tt/result.json",
+        "source_sha256": "1ddae4b6450639bdf2b3912a7e77801916123da1da72537a2f3a9ccd52ea5c8e",
+        "pnoise_sha256": "7874e1382dd5ebc7d76a1a10bb56f28b99a53105ac8b33c77c24a1662171121e",
+        "slew_v_per_s": 20409900000.0,
+        "event_time_s": 6.98488e-10,
+        "timing_psd_s2_per_hz": [
+          3.661062278541928e-36,
+          2.8054860218012585e-36,
+          2.604546831151029e-36
+        ],
+        "group_timing_psd": {
+          "ff": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "buffers": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rx": [
+            3.6610622785419264e-36,
+            2.8054860218012598e-36,
+            2.6045468311510277e-36
+          ],
+          "divider": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "aux": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "physical_inputs": {
+          "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+          "cmos_even_bank_acq_v14.scs": "34a80ae697397ff60cc61ba9cfc51513716c39afd3df68f4ea0a9c950ca0ff6f",
+          "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+          "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+          "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+          "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+          "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+          "rt_noise_scale2_v14.scs": "6e1b4d92d8fda5c472514c6b82edbcee28646a3d272eefda822cd142c19ee821",
+          "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+          "tank_replay_full_v14.va": "9582047b1de62cbb9dee8d4bdf60017efb61752d754751218fa5e820f4800897"
+        },
+        "pss_reused": true
+      }
+    },
+    {
+      "group": "divider",
+      "max_relative_difference_to_reused_all": 5.551115123125783e-16,
+      "passed": true,
+      "evidence": {
+        "run": "rtgates2_01_divider",
+        "case": "chain_rt2_only_divider_tt",
+        "source_result": "research/runs/spectre_cmos_v14_full/rtgates2_01_divider/chain_rt2_only_divider_tt/result.json",
+        "source_sha256": "e1b2982991b0d839c364bb5297e4e383a5227e1f7f916245ee8022ef609039d6",
+        "pnoise_sha256": "160848c7b4d71f8a574a7fc99fb4c76a4623c38e5642ead9856270b883c8b5ca",
+        "slew_v_per_s": 20409900000.0,
+        "event_time_s": 6.98488e-10,
+        "timing_psd_s2_per_hz": [
+          6.874654591109798e-39,
+          5.04105049755691e-39,
+          4.7073341931015073e-39
+        ],
+        "group_timing_psd": {
+          "ff": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "buffers": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rx": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "divider": [
+            6.874654591109798e-39,
+            5.04105049755691e-39,
+            4.70733419310151e-39
+          ],
+          "aux": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "physical_inputs": {
+          "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+          "cmos_even_bank_acq_v14.scs": "34a80ae697397ff60cc61ba9cfc51513716c39afd3df68f4ea0a9c950ca0ff6f",
+          "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+          "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+          "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+          "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+          "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+          "rt_noise_scale2_v14.scs": "6e1b4d92d8fda5c472514c6b82edbcee28646a3d272eefda822cd142c19ee821",
+          "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+          "tank_replay_full_v14.va": "9582047b1de62cbb9dee8d4bdf60017efb61752d754751218fa5e820f4800897"
+        },
+        "pss_reused": true
+      }
+    },
+    {
+      "group": "aux",
+      "max_relative_difference_to_reused_all": 4.440892098500626e-16,
+      "passed": true,
+      "evidence": {
+        "run": "rtgates2_01_aux",
+        "case": "chain_rt2_only_aux_tt",
+        "source_result": "research/runs/spectre_cmos_v14_full/rtgates2_01_aux/chain_rt2_only_aux_tt/result.json",
+        "source_sha256": "692bdfa2643bf4c10c63575052bb5c12d7c536e3c08dbe7d1bf13a3165dcf221",
+        "pnoise_sha256": "dbe9777e1351d5cd9104c41c072b13650cea68d685ad1641b9f3b97401bc2148",
+        "slew_v_per_s": 20409900000.0,
+        "event_time_s": 6.98488e-10,
+        "timing_psd_s2_per_hz": [
+          9.142413646923081e-36,
+          9.142420903544061e-36,
+          9.142416576641043e-36
+        ],
+        "group_timing_psd": {
+          "ff": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "buffers": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rx": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "divider": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "aux": [
+            9.142413646923083e-36,
+            9.142420903544061e-36,
+            9.142416576641039e-36
+          ]
+        },
+        "physical_inputs": {
+          "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+          "cmos_even_bank_acq_v14.scs": "34a80ae697397ff60cc61ba9cfc51513716c39afd3df68f4ea0a9c950ca0ff6f",
+          "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+          "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+          "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+          "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+          "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+          "rt_noise_scale2_v14.scs": "6e1b4d92d8fda5c472514c6b82edbcee28646a3d272eefda822cd142c19ee821",
+          "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+          "tank_replay_full_v14.va": "9582047b1de62cbb9dee8d4bdf60017efb61752d754751218fa5e820f4800897"
+        },
+        "pss_reused": true
+      }
+    }
+  ],
+  "fresh_three_point_control": {
+    "run": "rtfresh01",
+    "case": "chain_rt2_fresh_control_tt",
+    "source_result": "research/runs/spectre_cmos_v14_full/rtfresh01/chain_rt2_fresh_control_tt/result.json",
+    "source_sha256": "94ce5238c4eb758baf2643a5e9c2ab7749905b65ec43f63c6f3b44268d6a5881",
+    "pnoise_sha256": "d4ee071243585c866c79788d6063867215ab5ba2d32b32df5663d22b3e46f5f2",
+    "slew_v_per_s": 20409900000.0,
+    "event_time_s": 6.98488e-10,
+    "timing_psd_s2_per_hz": [
+      3.5158480715135484e-35,
+      1.8540163016999654e-35,
+      1.657801168573505e-35
+    ],
+    "group_timing_psd": {
+      "ff": [
+        2.0368754311260656e-35,
+        1.0952136320988394e-35,
+        9.854964774128115e-36
+      ],
+      "buffers": [
+        1.14658800711403e-35,
+        6.140415190007963e-36,
+        5.5384704766981595e-36
+      ],
+      "rx": [
+        2.3214527466180195e-36,
+        9.018622703449504e-37,
+        6.956501368416316e-37
+      ],
+      "divider": [
+        8.628681182501466e-39,
+        6.191946974901134e-39,
+        6.002751874083521e-39
+      ],
+      "aux": [
+        9.937649049339856e-37,
+        5.3955728868345475e-37,
+        4.8292354619306375e-37
+      ]
+    },
+    "physical_inputs": {
+      "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+      "cmos_even_bank_acq_v14.scs": "34a80ae697397ff60cc61ba9cfc51513716c39afd3df68f4ea0a9c950ca0ff6f",
+      "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+      "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+      "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+      "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+      "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+      "rt_noise_scale2_v14.scs": "6e1b4d92d8fda5c472514c6b82edbcee28646a3d272eefda822cd142c19ee821",
+      "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+      "tank_replay_full_v14.va": "9582047b1de62cbb9dee8d4bdf60017efb61752d754751218fa5e820f4800897"
+    },
+    "pss_reused": false
+  },
+  "fresh_ff_only": {
+    "run": "rtfresh01",
+    "case": "chain_rt2_fresh_ff_tt",
+    "source_result": "research/runs/spectre_cmos_v14_full/rtfresh01/chain_rt2_fresh_ff_tt/result.json",
+    "source_sha256": "2f691b891da088b8c5ecf0f40558cdb2c9e75771380bf21f4cec7bccc0609581",
+    "pnoise_sha256": "cb97a8e66f489633375cc146abe4a45b68c39a60602d7a0167dec31fb57c755b",
+    "slew_v_per_s": 20409900000.0,
+    "event_time_s": 6.98488e-10,
+    "timing_psd_s2_per_hz": [
+      2.0368754311260658e-35,
+      1.0952136320988394e-35,
+      9.854964774128115e-36
+    ],
+    "group_timing_psd": {
+      "ff": [
+        2.0368754311260656e-35,
+        1.0952136320988394e-35,
+        9.854964774128115e-36
+      ],
+      "buffers": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rx": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "divider": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "aux": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "physical_inputs": {
+      "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+      "cmos_even_bank_acq_v14.scs": "34a80ae697397ff60cc61ba9cfc51513716c39afd3df68f4ea0a9c950ca0ff6f",
+      "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+      "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+      "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+      "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+      "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+      "rt_noise_scale2_v14.scs": "6e1b4d92d8fda5c472514c6b82edbcee28646a3d272eefda822cd142c19ee821",
+      "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+      "tank_replay_full_v14.va": "9582047b1de62cbb9dee8d4bdf60017efb61752d754751218fa5e820f4800897"
+    },
+    "pss_reused": false
+  },
+  "observations": [
+    "All-noise reuse itself disagrees with the fresh full-band source.",
+    "The original RC reuse calibration does not establish MOS reuse validity.",
+    "Do not use reused-state MOS noise for performance acceptance until resolved."
+  ],
+  "fresh_control_passed": true,
+  "fresh_ff_gate_passed": true,
+  "full_band_integral": false,
+  "full_pll_acceptance": false,
+  "fresh_control_passed_max_relative_error": 3.1730174043786974e-13,
+  "fresh_ff_gate_passed_max_relative_error": 1.1945999744966684e-13
+}

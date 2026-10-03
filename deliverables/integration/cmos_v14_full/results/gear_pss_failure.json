@@ -1,0 +1,86 @@
+{
+  "scope": "Gear2/2us failed PSS diagnosis, actual saved tstab endpoints; no noise result.",
+  "source_result": "research/runs/spectre_cmos_v14_full/coregear01/core_register_noise_gear_tt/result.json",
+  "source_sha256": "3aa381ac6f80fa681e867d73290f8dc6b39f6e298ac2bac1a4f06fb59fe52de9",
+  "stopped": {
+    "stopped": true,
+    "signal": "SIGINT",
+    "pid": 321113,
+    "netlist": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/264c6413/core_register_noise_gear_tt.scs",
+    "time": "2026-10-04T02:08:47.626910+08:00",
+    "reason": "Gear2 and2us tstab still diverge after10residual reports, nonphysical13V/15V Newton excursions. Preserve finished tstab and reject periodic state; diagnose all-state periodicity before next PSS."
+  },
+  "convergence_history": [
+    "Conv norm = 5.5e+06, max dV(XP.XD.XD12.X0.XM.fb) = 1.19656 V, took 11.6245 ks.",
+    "Conv norm = 430e+03, max dV(XP.data) = 112.723 mV, took 3.07532 ks.",
+    "Conv norm = 1.89e+06, max dV(XP.data) = 469.361 mV, took 5.2782 ks.",
+    "Conv norm = 4.24e+06, max dV(XP.data) = 968.776 mV, took 5.27637 ks.",
+    "Conv norm = 5.63e+06, max dV(XP.XR.XFF.b) = -2.60127 V, took 2.55243 ks.",
+    "Conv norm = 5.54e+06, max dV(XP.XD.q0) = 2.74384 V, took 2.52039 ks.",
+    "Conv norm = 7.56e+06, max dV(XP.XD.d4) = 3.5678 V, took 4.44077 ks.",
+    "Conv norm = 8.08e+06, max dV(XP.clk) = 13.2576 V, took 2.1699 ks.",
+    "Conv norm = 5.38e+06, max dV(XP.acqclk) = -7.62947 V, took 2.15127 ks.",
+    "Conv norm = 7.16e+06, max dV(XP.XD.XGN.x) = -15.5029 V, took 1.99445 ks."
+  ],
+  "endpoints_at_us": [
+    2.001,
+    2.251
+  ],
+  "endpoint_voltage_v": {
+    "XP.vp": [
+      1.413673184530333,
+      1.412464669400455
+    ],
+    "XP.vn": [
+      1.177654778890757,
+      1.180265859544964
+    ],
+    "XP.refb": [
+      0.0001695525797646649,
+      0.0001703951063924535
+    ],
+    "XP.ctrl": [
+      0.692882211121192,
+      0.6930067592579935
+    ],
+    "out": [
+      0.7847044092302471,
+      0.786829077330094
+    ],
+    "XP.XD.d12": [
+      1.860968947463433e-05,
+      1.919075910307371e-05
+    ],
+    "XP.XD.XD12.X0.XM.fb": [
+      1.196875552630571,
+      1.196881387946432
+    ],
+    "XP.XD.XRL.a": [
+      0.6281165364330341,
+      0.6265023568478221
+    ],
+    "XP.XD.XRL.b": [
+      0.05962264782723093,
+      0.05965432189994828
+    ],
+    "XP.XD.load": [
+      1.19999871551417,
+      1.199998707620847
+    ],
+    "XP.XD.loadb": [
+      0.01741287288326871,
+      0.01797545895621765
+    ],
+    "XP.XD.ck": [
+      1.19998876758129,
+      1.199989004514555
+    ]
+  },
+  "observations": [
+    "Longer stabilization and Gear2 did not cure shooting divergence.",
+    "Public endpoints and div12 internal fb are close despite the large first reported Newton norm.",
+    "Readic used default skipdc=no and shooting starts at the reference onset phase; controlled restart/phase experiment is warranted."
+  ],
+  "pnoise_ran": false,
+  "full_pll_acceptance": false
+}

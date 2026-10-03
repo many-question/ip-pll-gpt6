@@ -1,0 +1,26 @@
+{
+  "scope": "Prepare a single-change VCO bias-noise candidate, not main-DUT adoption.\n\nExisting fine six-offset VCO-only noise attributes about20% of the1MHz output\nnoise variance to the1Mohm bias filter resistor. Increase only its shunt C from\n10pF to40pF. High-frequency RC filtering predicts16x reduction of this resistor's\ngate-voltage PSD; actual oscillator contribution and startup must be simulated.\n",
+  "case": "vco_bias_cf40_tt",
+  "planned_run": "vcocf40_01",
+  "source_core_sha256": "8edc1b766e04d51405ffd185294fa1c7d6e7f2d2f8ef14f56753c1e84eaeb8b4",
+  "source_vco_sha256": "c34bae69f93d9600f602bfb7e80f56ffe051458e8984da02604eb6ef07e727ce",
+  "status": "prepared_not_run",
+  "change": "Only bias filter CF10pF->40pF; R1Mohm and all transistor sizes unchanged.",
+  "conditions": "TT27/1.2V/Q5RLC,coarse23/control0.679V,actual fixedM4 chain/10fF,referenceDC0,onlyXVnoise;0.5ps/255sidebands,fresh autonomousPSS.",
+  "offsets_hz": [
+    10000.0,
+    100000.0,
+    1000000.0,
+    10000000.0,
+    100000000.0,
+    492000000.0
+  ],
+  "hypothesis": "At high offsets, resistor contribution falls roughly16x if loading and operating point are unchanged. No simulated improvement yet.",
+  "risks": [
+    "Bias RC nominal time constant increases10us->40us; power-up settling must be checked.",
+    "No integrated free-running or PLL jitter can be inferred from six frequency points.",
+    "FixedM4/static-reference fixture omits full programmable and active sampling loads."
+  ],
+  "main_dut_modified": false,
+  "full_pll_acceptance": false
+}

@@ -1,0 +1,26 @@
+{
+  "scope": "Test a continuously running CMOS clock tree now that power is deferred.\n\nPrevious SS failures included pulse loss across the stacked NAND and following\nsix stages. Remove mode gating from the fast clock, retain real transistor\nclock loads, and compare four balanced/skewed inverters at fixed input widths.\nAll divider modes remain present. No ideal internal clocks or sources.\nThis is a standalone candidate; reset/mode, LC loading and PVT need regression.\n",
+  "cases": [
+    "bankungatedbal_m6_ss",
+    "bankungatedbal_m10_ss",
+    "bankungatedbal_m14_ss",
+    "bankungatedskew_m6_ss",
+    "bankungatedskew_m10_ss",
+    "bankungatedskew_m14_ss"
+  ],
+  "source_sha256": "db96608479d73eeffad2c18c7ed6483b42e46b31f56a0a2d132f449b142c80c6",
+  "run": "bankungated01",
+  "main_dut_modified": false,
+  "condition": "SS60/1.2V/10fF, actual RF receiver, measured SS tank waveform replay,200ns,last80ns,1ps/reltol1e-5",
+  "hypotheses": [
+    "Removing mode NAND reduces pulse distortion and removes a source of inactive dynamic storage.",
+    "Alternating P/N skew at identical stage input-width sums may restore a more useful clock window."
+  ],
+  "not_proven": [
+    "All6modes",
+    "mode/reset transitions",
+    "LC backaction",
+    "TT/FF/temperature matrix",
+    "noise"
+  ]
+}

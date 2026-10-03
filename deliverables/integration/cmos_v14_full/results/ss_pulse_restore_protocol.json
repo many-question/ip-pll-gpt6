@@ -1,0 +1,26 @@
+{
+  "scope": "Two causal SS checks at the prescaler-to-clock-tree interface.\n\nThe original dynamic prescaler remains unchanged. At SS/3.888GHz, qb0 reaches\nonly about0.907V, q1 high time is322ps/514ps, and the first clock-tree inverter\ncannot restore a full pulse. Test qb0 pull-up and q1 switching threshold\nseparately, using the same ungated balanced tree and actual receiver/load.\n",
+  "source_sha256": "8c06afc4e9f624287304f51e2894817106e71d436241d21caefbfa6a4dff7cfb",
+  "cases": [
+    "bankpulsepull_m6_ss",
+    "bankpulsetrip_m6_ss"
+  ],
+  "run": "bankpulse01",
+  "main_dut_modified": false,
+  "condition": "Actual MOS receiver with measured SS RF waveform replay;3.888GHz,M6,SS60/1.2V/10fF,200ns,last80ns,1ps/reltol1e-5.",
+  "changes": {
+    "pulsepull": [
+      "XPB0 (q0 qb0 vdd vss) pll_inv wn=0.8u wp=0.5u",
+      "XPB0 (q0 qb0 vdd vss) pll_inv wn=0.8u wp=1u"
+    ],
+    "pulsetrip": [
+      "XPB1 (qb0 q1 vdd vss) pll_inv wn=2u wp=4u",
+      "XPB1 (qb0 q1 vdd vss) pll_inv wn=3u wp=3u"
+    ]
+  },
+  "not_acceptance": [
+    "No LC backaction",
+    "No noise",
+    "No full PVT or mode/reset regression"
+  ]
+}

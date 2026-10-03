@@ -1,0 +1,29 @@
+simulator lang=spectre
+// Pi winding includes metal loss, winding capacitance and lossy substrate.
+// Q and geometry provisional. Resistive MOS reference, no internal ideal current source.
+subckt lc_core_cf40_v14 (vp vn b3 b4 b5 b6 b7 vdd vss)
+parameters tank_c=750f tank_l=2n tank_r=7 ibias=80u core_w=20u cscale=1 boost_unit=5u bias_r=1500
+XP (vdd vp vss) tx_inductor_pi ls=tank_l rs=tank_r cw=20f*cscale cox=80f*cscale csub=50f*cscale
+XN (vdd vn vss) tx_inductor_pi ls=tank_l rs=tank_r cw=20f*cscale cox=80f*cscale csub=50f*cscale
+CP (vp vss) capacitor c=tank_c
+CN (vn vss) capacitor c=tank_c
+MN0 (vp vn tail vss) nch w=core_w l=180n ad=core_w*240n as=core_w*240n pd=2*(core_w+240n) ps=2*(core_w+240n)
+MN1 (vn vp tail vss) nch w=core_w l=180n ad=core_w*240n as=core_w*240n pd=2*(core_w+240n) ps=2*(core_w+240n)
+MT (tail nfilt vss vss) nch w=300u l=1u ad=300u*240n as=300u*240n pd=2*(300u+240n) ps=2*(300u+240n)
+MR (nb nb vss vss) nch w=20u l=1u ad=20u*240n as=20u*240n pd=2*(20u+240n) ps=2*(20u+240n)
+RREF (vdd nb) resistor r=bias_r
+RF (nb nfilt) resistor r=1Meg
+CF (nfilt vss) capacitor c=40p
+// Upper five coarse bits add a gradual tail-current slope.
+// Source gating leaves every mirror gate on the quiet, continuously filtered bias.
+MA3 (tail nfilt s3 vss) nch w=boost_unit*1 l=1u ad=boost_unit*1*240n as=boost_unit*1*240n pd=2*(boost_unit*1+240n) ps=2*(boost_unit*1+240n)
+ME3 (s3 b3 vss vss) nch w=boost_unit*4*1 l=180n ad=boost_unit*4*1*240n as=boost_unit*4*1*240n pd=2*(boost_unit*4*1+240n) ps=2*(boost_unit*4*1+240n)
+MA4 (tail nfilt s4 vss) nch w=boost_unit*2 l=1u ad=boost_unit*2*240n as=boost_unit*2*240n pd=2*(boost_unit*2+240n) ps=2*(boost_unit*2+240n)
+ME4 (s4 b4 vss vss) nch w=boost_unit*4*2 l=180n ad=boost_unit*4*2*240n as=boost_unit*4*2*240n pd=2*(boost_unit*4*2+240n) ps=2*(boost_unit*4*2+240n)
+MA5 (tail nfilt s5 vss) nch w=boost_unit*4 l=1u ad=boost_unit*4*240n as=boost_unit*4*240n pd=2*(boost_unit*4+240n) ps=2*(boost_unit*4+240n)
+ME5 (s5 b5 vss vss) nch w=boost_unit*4*4 l=180n ad=boost_unit*4*4*240n as=boost_unit*4*4*240n pd=2*(boost_unit*4*4+240n) ps=2*(boost_unit*4*4+240n)
+MA6 (tail nfilt s6 vss) nch w=boost_unit*8 l=1u ad=boost_unit*8*240n as=boost_unit*8*240n pd=2*(boost_unit*8+240n) ps=2*(boost_unit*8+240n)
+ME6 (s6 b6 vss vss) nch w=boost_unit*4*8 l=180n ad=boost_unit*4*8*240n as=boost_unit*4*8*240n pd=2*(boost_unit*4*8+240n) ps=2*(boost_unit*4*8+240n)
+MA7 (tail nfilt s7 vss) nch w=boost_unit*16 l=1u ad=boost_unit*16*240n as=boost_unit*16*240n pd=2*(boost_unit*16+240n) ps=2*(boost_unit*16+240n)
+ME7 (s7 b7 vss vss) nch w=boost_unit*4*16 l=180n ad=boost_unit*4*16*240n as=boost_unit*4*16*240n pd=2*(boost_unit*4*16+240n) ps=2*(boost_unit*4*16+240n)
+ends lc_core_cf40_v14

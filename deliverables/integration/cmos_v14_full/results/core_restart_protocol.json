@@ -1,0 +1,18 @@
+{
+  "scope": "Controlled PSS restart test. Same physical register core and 5us source IC; no relaxed tolerances.",
+  "changes": [
+    "skipdc=yes avoids forced DC reconstruction of the text state",
+    "tstart=5us matches source IC absolute time",
+    "250ns stabilization starts shooting away from reference rise at5.251us",
+    "Retain Gear2/1ps/reltol1e-5; limit8iterations"
+  ],
+  "source_ic_sha256": "ad44fe32d5e0747da8618319f0f5aa615529bed268c7834c0dcb6ec82ede9f46",
+  "netlist_sha256": "f39afd30108ea235950b005f551aceed8dd80d7a39f9bcdd9218082ebf35af04",
+  "case": "core_register_noise_restart_tt",
+  "source_refs": [
+    "https://community.cadence.com/cadence_technology_forums/f/rf-design/28744/transient-results-as-starting-point-in-pss",
+    "research/spectre_help/pss.txt"
+  ],
+  "full_pll_acceptance": false,
+  "main_dut_modified": false
+}

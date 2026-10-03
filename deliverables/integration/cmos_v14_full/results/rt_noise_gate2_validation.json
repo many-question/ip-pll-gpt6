@@ -1,0 +1,156 @@
+{
+  "scope": "Validate isolated device-noise attribution on a completed sizing candidate.\n\nThree frequencies are attribution tests, not jitter integrals. Physical circuit,\nstimulus, PSS settings and source state are checked before each isolated run.\n",
+  "source_case": "chain_rtscale2_tt",
+  "groups": {
+    "ff": [
+      "XR.XFF"
+    ],
+    "buffers": [
+      "XR.X0",
+      "XR.X1"
+    ],
+    "rx": [
+      "XRX"
+    ],
+    "divider": [
+      "XD"
+    ],
+    "aux": [
+      "XACQ0",
+      "XACQ1",
+      "XACB0",
+      "XACB1",
+      "XCOUNT"
+    ]
+  },
+  "cases": [
+    {
+      "group": "ff",
+      "source_result": "research/runs/spectre_cmos_v14_full/rtgates2_01_ff/chain_rt2_only_ff_tt/result.json",
+      "source_sha256": "77906d6a3cbafb2459f2422b9aa39e345a90eeb7340ab4a447f82f1ea28c56cc",
+      "offsets_hz": [
+        1000000.0,
+        10000000.0,
+        100000000.0
+      ],
+      "timing_psd_s2_per_hz": [
+        4.864383395123018e-35,
+        4.846440618732877e-35,
+        4.843438803767953e-35
+      ],
+      "reference_group_psd": [
+        2.036875431126061e-35,
+        1.0952136320989701e-35,
+        9.854964774129189e-36
+      ],
+      "max_relative_error": 3.9147195497671703,
+      "max_excluded_noise_fraction": 0.0,
+      "device_sum_relative_error": 8.881784197001252e-16,
+      "passed": false,
+      "full_band_integral": false
+    },
+    {
+      "group": "buffers",
+      "source_result": "research/runs/spectre_cmos_v14_full/rtgates2_01_buffers/chain_rt2_only_buffers_tt/result.json",
+      "source_sha256": "0c5a323715db1b3ca51fcebb6c0af1e63c6a5e8e6f9972f1cd6c734d7c572fea",
+      "offsets_hz": [
+        1000000.0,
+        10000000.0,
+        100000000.0
+      ],
+      "timing_psd_s2_per_hz": [
+        2.968725455011143e-35,
+        2.4195534681505486e-35,
+        2.352424620188563e-35
+      ],
+      "reference_group_psd": [
+        1.1465880071140273e-35,
+        6.140415190007683e-36,
+        5.5384704766982183e-36
+      ],
+      "max_relative_error": 3.247426487305156,
+      "max_excluded_noise_fraction": 0.0,
+      "device_sum_relative_error": 6.661338147750939e-16,
+      "passed": false,
+      "full_band_integral": false
+    },
+    {
+      "group": "rx",
+      "source_result": "research/runs/spectre_cmos_v14_full/rtgates2_01_rx/chain_rt2_only_rx_tt/result.json",
+      "source_sha256": "1ddae4b6450639bdf2b3912a7e77801916123da1da72537a2f3a9ccd52ea5c8e",
+      "offsets_hz": [
+        1000000.0,
+        10000000.0,
+        100000000.0
+      ],
+      "timing_psd_s2_per_hz": [
+        3.661062278541928e-36,
+        2.8054860218012585e-36,
+        2.604546831151029e-36
+      ],
+      "reference_group_psd": [
+        2.3214527466174785e-36,
+        9.018622703409912e-37,
+        6.95650136836451e-37
+      ],
+      "max_relative_error": 2.744047033463553,
+      "max_excluded_noise_fraction": 0.0,
+      "device_sum_relative_error": 5.551115123125783e-16,
+      "passed": false,
+      "full_band_integral": false
+    },
+    {
+      "group": "divider",
+      "source_result": "research/runs/spectre_cmos_v14_full/rtgates2_01_divider/chain_rt2_only_divider_tt/result.json",
+      "source_sha256": "e1b2982991b0d839c364bb5297e4e383a5227e1f7f916245ee8022ef609039d6",
+      "offsets_hz": [
+        1000000.0,
+        10000000.0,
+        100000000.0
+      ],
+      "timing_psd_s2_per_hz": [
+        6.874654591109798e-39,
+        5.04105049755691e-39,
+        4.7073341931015073e-39
+      ],
+      "reference_group_psd": [
+        8.628681182489105e-39,
+        6.19194697459988e-39,
+        6.00275187288165e-39
+      ],
+      "max_relative_error": 0.2158039691149638,
+      "max_excluded_noise_fraction": 0.0,
+      "device_sum_relative_error": 6.661338147750939e-16,
+      "passed": false,
+      "full_band_integral": false
+    },
+    {
+      "group": "aux",
+      "source_result": "research/runs/spectre_cmos_v14_full/rtgates2_01_aux/chain_rt2_only_aux_tt/result.json",
+      "source_sha256": "692bdfa2643bf4c10c63575052bb5c12d7c536e3c08dbe7d1bf13a3165dcf221",
+      "offsets_hz": [
+        1000000.0,
+        10000000.0,
+        100000000.0
+      ],
+      "timing_psd_s2_per_hz": [
+        9.142413646923081e-36,
+        9.142420903544061e-36,
+        9.142416576641043e-36
+      ],
+      "reference_group_psd": [
+        9.937649049339851e-37,
+        5.39557288683443e-37,
+        4.829235461930598e-37
+      ],
+      "max_relative_error": 17.9313953496609,
+      "max_excluded_noise_fraction": 0.0,
+      "device_sum_relative_error": 4.440892098500626e-16,
+      "passed": false,
+      "full_band_integral": false
+    }
+  ],
+  "completed": true,
+  "passed": false,
+  "full_pll_acceptance": false
+}

@@ -1,12 +1,15 @@
 """Accept completed level-restoration experiments only, including all-cycle swing."""
 from pathlib import Path
-import hashlib,json,sys
+import hashlib,json,sys,argparse
 import numpy as np
 from analyze import cross,divider
 H=Path(__file__).resolve().parent;ROOT=H.parents[3];R=ROOT/'research/runs/spectre_cmos_v14_full'
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 rows=[]
-runs=sys.argv[1:] or ['banklevel01','bankssorig01','banktaper02','bankskew01','bankmix01']
+parser=argparse.ArgumentParser();parser.add_argument('runs',nargs='*');parser.add_argument('--output',default='ss_level_validation.json')
+args=parser.parse_args()
+assert Path(args.output).name==args.output and args.output.endswith('.json')
+runs=args.runs or ['banklevel01','bankssorig01','banktaper02','bankskew01','bankmix01']
 for run in runs:
  for p in sorted((R/run).glob('*/result.json')):
   j=p.parent;r=json.loads(p.read_text())
@@ -29,6 +32,6 @@ for run in runs:
   qpass=bool(len(e)>2 and abs(stages['q1']['mhz']*2/v['rf_mhz']-1)<.001 and err<.02 and stages['q1']['all_cycle_swing'])
   v['scope']='Actual SS receiver, measured SS tank waveform replay; quiet counter load; SS60/1.2V/10fF,200ns/last80ns,1ps/reltol1e-5. Not full PLL or jitter.'
   row.update(output=v,stages=stages,q1_max_period_error=err,q1_passed=qpass,passed=bool(v['passed'] and qpass))
-out=H/'results/ss_level_validation.json';out.write_text(json.dumps(dict(cases=rows),indent=2)+'\n')
+out=H/'results'/args.output;out.write_text(json.dumps(dict(cases=rows),indent=2)+'\n')
 for r in rows:
  if r['run']==runs[-1]:print(r['case'],r['passed'],r.get('output',{}).get('output_mhz'),r.get('stages',{}).get('q1'))

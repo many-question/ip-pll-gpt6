@@ -80,3 +80,12 @@
 这轮共有32例新的SS独立短测试（6形状＋8时钟缓冲＋6恢复级尺寸＋3原动态级恢复＋6渐进驱动＋2P/N比例＋1混合比例），全部已回收0error，功能失败保留。当前完整PLL和分频器未被这些候选修改。后续应围绕每周期低电平脉冲的传播裕量收敛候选，仍需六档、实际LC、角落及整机代回验证。候选时钟未选时停泊电平由高变低，模式切换与复位也须回归；用户放宽的是外部输出占空比，此处检查的是内部逻辑工作窗口。
 
 新入口：`build_ss_clock_taper.py`、`build_ss_clock_skew.py`、`build_ss_clock_mixed.py`；`analyze_ss_level.py`默认汇总`banklevel01`、`bankssorig01`、`banktaper02`、`bankskew01`、`bankmix01`。结果为`results/ss_level_validation.json`，所有相应原始输入和波形在本项目research目录。
+
+
+### 连续时钟与恢复级脉宽对照（2026-10-04）
+
+`bankungated01`移除模式门控，保留实际原动态预分频及所有真实时钟负载，比较四级平衡／交替偏置反相器。SS60、1.2V、10fF、实测SS RF形状重放，M6／10／14六例200ns均完成0error，功能均失败；最后一例M14仅108MHz而非216MHz，其余输出停滞。每例q1的频率与逐周期高低电平通过，因此不能把失败归于q1计数错误。
+
+平衡M6最后20ns：qb0峰值约0.907V，q1高电平321.44–322.91ps（周期514.40ps），10–90%上升／下降中位约113／145ps；CT0峰值仅约0.847V，下一阶段无有效周期。简单移除门控不足以解决脉冲恢复。`build_ss_pulse_restore.py`准备两项单独因果对照：XPB0的P宽0.5→1µm，或保持XPB1总宽6µm而将N/P由2/4→3/3µm。动态÷2不改，不以平均频率取代逐周期电平检查。新候选尚未验证，不能代回。
+
+证据：`results/ss_ungated_clock_validation.json`；新协议：`results/ss_pulse_restore_protocol.json`。有限接续程序 `research/continue_ss_pulse.py` 仅在现有 fresh-noise 两例完成后顺序运行这两例，不增加18线程资源上限。

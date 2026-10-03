@@ -7,7 +7,60 @@
     10000.0,
     492000000.0
   ],
-  "cases": [],
+  "cases": [
+    {
+      "case": "chain_rtscale2_tt",
+      "factor": 2,
+      "source_result": "research/runs/spectre_cmos_v14_full/chainrtscale01/chain_rtscale2_tt/result.json",
+      "source_sha256": "84ff2c708b7da21d67dbf21c203b76b9fe739027cc73ac31cd2fbe7387c28e96",
+      "simulator_completed": true,
+      "full_pll_acceptance": false,
+      "other_physical_dependencies_match_baseline": true,
+      "periodic_passed": true,
+      "dominant_harmonics": {
+        "vp": 24,
+        "clk": 24,
+        "q1": 12,
+        "data": 6,
+        "out": 6,
+        "acqclk": 6,
+        "XD.d8": 3,
+        "XD.d12": 2
+      },
+      "output_edges": 6,
+      "endpoint_max_v": 0.0,
+      "output_range_v": [
+        -0.0600345522498944,
+        1.223348235325995
+      ],
+      "power_mw": {
+        "VDD:p": 1.814519621687093,
+        "VRX:p": 0.7846945490082213,
+        "VRT:p": 0.22445066740095784
+      },
+      "provisional_jitter_fs": 90.8673733618266,
+      "vs_baseline_ratio": 0.643167430604959,
+      "slew_v_per_s": 20409900000.0,
+      "device_sum_relative_error": 1.3366432010055e-15,
+      "noise_consistent": true,
+      "provisional_group_jitter_fs": {
+        "XD": 1.7234380390514328,
+        "XRX": 18.773046092396335,
+        "XCOUNT": 0.02944125292745693,
+        "XACB1": 0.191290731212186,
+        "XACB0": 1.8260508372138278,
+        "XACQ1": 15.38435092258609,
+        "XACQ0": 0.017662482256819878,
+        "XR.X1": 43.727151219401115,
+        "XR.XFF": 70.02895735986331,
+        "XR.X0": 29.074265852779767
+      },
+      "exact_harmonic_flicker_warning": true,
+      "noise_consistent_scope": "Device PSD sum agrees with output PSD only; not an independent noise-on or reuse validation.",
+      "pending": "Finite-offset harmonic integration, all-edge, maxacfreq/step/sideband, fresh-PSS noise-on and full-PLL/PVT checks remain."
+    }
+  ],
   "main_dut_modified": false,
-  "selection_rule": "Noise/performance first; recorded power is not an optimization gate. No automatic main-DUT adoption."
+  "selection_rule": "Noise/performance first; recorded power is not an optimization gate. No automatic main-DUT adoption.",
+  "reuse_caution": "This MOS circuit currently fails fresh-vs-readpss noise consistency. Original full-band sizing runs solve PSS fresh. See rt_noise_controls.json; RC calibration alone is insufficient."
 }

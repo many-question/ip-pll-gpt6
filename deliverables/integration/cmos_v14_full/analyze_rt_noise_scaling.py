@@ -42,12 +42,14 @@ for factor in [2,4]:
         device_sum_relative_error=err,noise_consistent=err<1e-7,
         provisional_group_jitter_fs={k:float(np.sqrt(np.trapezoid(v,f))*1e15) for k,v in groups.items()},
         exact_harmonic_flicker_warning='SPCRTRF-15037' in log,
-        pending='Finite-offset harmonic integration, all-edge, step/sideband, noise-on and full-PLL/PVT checks remain.')
+        noise_consistent_scope='Device PSD sum agrees with output PSD only; not an independent noise-on or reuse validation.',
+        pending='Finite-offset harmonic integration, all-edge, maxacfreq/step/sideband, fresh-PSS noise-on and full-PLL/PVT checks remain.')
     spectra[case+'_f']=f;spectra[case+'_st']=st
     for k,v in groups.items():spectra[case+'_'+k+'_st']=v
 out=dict(scope=__doc__,condition='TT27/1.2V/984MHz/10fF; external noiseless measured3.936GHz RF replay; actual RX, full divider and quiet counter load.1ps/383sidebands,20points/dec.',
     baseline_provisional_fs=b['jitter_fs'],baseline_source=b['source_result'],band_hz=[1e4,492e6],cases=rows,main_dut_modified=False,
-    selection_rule='Noise/performance first; recorded power is not an optimization gate. No automatic main-DUT adoption.')
+    selection_rule='Noise/performance first; recorded power is not an optimization gate. No automatic main-DUT adoption.',
+    reuse_caution='This MOS circuit currently fails fresh-vs-readpss noise consistency. Original full-band sizing runs solve PSS fresh. See rt_noise_controls.json; RC calibration alone is insufficient.')
 (H/'results/rt_noise_scaling_validation.json').write_text(json.dumps(out,indent=2)+'\n')
 if spectra:np.savez_compressed(H/'results/rt_noise_scaling_spectra.npz',**spectra)
 for row in rows:print(row['case'],row.get('periodic_passed'),row.get('provisional_jitter_fs'),row.get('provisional_group_jitter_fs'))
