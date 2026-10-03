@@ -1,0 +1,21 @@
+{
+  "scope": "Isolate missing voltage-probe supply IC nodes with matched short transients.\n\nThe settled source transient did not save supply probe currents. Those zero-V\nprobe supply nodes are absent in its IC file, but the PSS fixture preserves\nthem when currents are saved. Both tests have identical observation topology;\nonly three derived 1.2 V IC entries differ. This is not a PSS/noise result.\n",
+  "run": "coreseedcheck01",
+  "cases": [
+    "core_seed_original_tt",
+    "core_seed_complete_tt"
+  ],
+  "source_seed_sha256": "188f32b489092f681b4448e92da86ff18fb3f667ea613058eb3e3fc0df761be9",
+  "complete_seed_sha256": "954139915dc28cbab2f73f5e1772612450515ee235bb522d4b7794c315f1329b",
+  "added_nodes": [
+    "XP.vco_vdd",
+    "XP.rx_vdd",
+    "XP.rt_vdd"
+  ],
+  "added_voltage_v": 1.2,
+  "condition": "Same TT27/1.2V/realLC core and current probes,10ns/1ps,skipdc; time0 equivalent to settled3us reference phase.",
+  "hypothesis": "Unseeded retained supply nodes default to0 and cause initialization impulses. The test can isolate the impulse, but not prove it caused PSS failure.",
+  "full_pll_acceptance": false,
+  "noise_acceptance": false,
+  "main_dut_modified": false
+}

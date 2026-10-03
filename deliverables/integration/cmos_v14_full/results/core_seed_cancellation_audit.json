@@ -1,0 +1,35 @@
+{
+  "scope": "Audit a deliberate stop after one PSS norm, distinct from convergence failure.",
+  "source_result": "research/runs/spectre_cmos_v14_full/coretripnoise01/core_pulsetrip_noise_probe_tt/result.json",
+  "source_sha256": "58b80a142b9a927c5622061668e45ee97b28e70b61ab08c1914eca85ff0d723d",
+  "cancellation": {
+    "stopped": true,
+    "signal": "SIGINT",
+    "pid": 63989,
+    "netlist": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/b17f987e/core_pulsetrip_noise_probe_tt.scs",
+    "time": "2026-10-04T04:09:14.264093+08:00",
+    "reason": "Found missing IC voltages for retained zero-V probe supply nodes: source transient eliminated XP.vco_vdd/rx_vdd/rt_vdd, current-probed PSS retains them. Initial209A artifact and first norm5.52e6 at rt_vdd1.2V. Stop controlled experiment after first norm; preserve tstab and isolate three-node IC correction before further expensive PSS. Convergence failure is not established by this cancellation."
+  },
+  "shooting_norms": [
+    "Conv norm = 5.52e+06, max dV(XP.rt_vdd) = 1.2 V, took 5.22423 ks."
+  ],
+  "log_sha256": "7befd6b9b33bbaea0e040ef63cbc700533ccd728008e537470490bac4e599e73",
+  "returned_status": false,
+  "returncode": 134,
+  "fatal_after_stop": true,
+  "pss_convergence_failure_established": false,
+  "valid_periodic_state": false,
+  "pnoise_completed": false,
+  "recovered_tstab": {
+    "path": "research/runs/spectre_cmos_v14_full/coretripnoise01/core_pulsetrip_noise_probe_tt/core_pulsetrip_noise_probe_tt.raw/pss.tran.pss",
+    "bytes": 1926846302,
+    "sha256": "a7f82f14c4fb72b9e6c7fd18fcff1be6d88c8528490a9ecd9cb104ba0937b2e5"
+  },
+  "controlled_followup": {
+    "evidence": "share/deliverables/integration/cmos_v14_full/results/core_seed_probe_validation.json",
+    "sha256": "3d8ced8f31e1e9ff166fe36a571e0bceb089ccb3cfb139fb0bbaf7100de63925",
+    "initialization_artifact_removed": true
+  },
+  "interpretation": "Stopped after first norm to isolate missing supply IC entries. The subsequent SPECTRE-18 followed the explicit SIGINT. This is not proof that the physical candidate cannot converge. Three-node A/B removes the initial artifact; corrected PSS is a separate pending experiment.",
+  "full_pll_acceptance": false
+}

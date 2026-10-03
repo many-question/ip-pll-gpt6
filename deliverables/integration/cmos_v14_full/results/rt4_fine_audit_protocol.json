@@ -1,0 +1,47 @@
+{
+  "scope": "Prepare six-edge and five isolated-noise checks; each solves PSS fresh.\n\nLaunch only after the matched-offset numerical screen passes. These sparse\npoints check measurement consistency and attribution, not integrated RMS.\n",
+  "factor": 4,
+  "run": "rt4fineaudit01",
+  "cases": [
+    "chain_rt4_fine_edges_tt",
+    "chain_rt4_fine_only_ff_tt",
+    "chain_rt4_fine_only_buffers_tt",
+    "chain_rt4_fine_only_rx_tt",
+    "chain_rt4_fine_only_divider_tt",
+    "chain_rt4_fine_only_aux_tt"
+  ],
+  "groups": {
+    "ff": [
+      "XR.XFF"
+    ],
+    "buffers": [
+      "XR.X0",
+      "XR.X1"
+    ],
+    "rx": [
+      "XRX"
+    ],
+    "divider": [
+      "XD"
+    ],
+    "aux": [
+      "XACQ0",
+      "XACQ1",
+      "XACB0",
+      "XACB1",
+      "XCOUNT"
+    ]
+  },
+  "offsets_hz": [
+    1000000.0,
+    100000000.0,
+    491990000.0
+  ],
+  "launch_gate": "rt4_precision_validation.json passed=true; no overlapping replacement of its single thread.",
+  "noise_gate_relative_limit": 0.001,
+  "edge_spread_limit_db": 0.2,
+  "condition": "Same TT27/1.2V/984MHz/10fF local-chain candidate, 0.5ps/767sidebands/maxacfreq504GHz.",
+  "full_band_integral": false,
+  "full_pll_acceptance": false,
+  "main_dut_modified": false
+}

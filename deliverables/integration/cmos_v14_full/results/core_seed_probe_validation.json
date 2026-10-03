@@ -1,0 +1,140 @@
+{
+  "scope": "Isolate three missing supply IC values; no inference of PSS or PLL acceptance.",
+  "cases": [
+    {
+      "kind": "original",
+      "source_result": "research/runs/spectre_cmos_v14_full/coreseedcheck01/core_seed_original_tt/result.json",
+      "source_sha256": "19ccb6e84828dc97b128966909327f370ec2f711173089a57ad3cec894352cee",
+      "supply_nodes": {
+        "XP.vco_vdd": {
+          "initial_v": 0.0,
+          "minimum_v": 0.0,
+          "maximum_v": 1.2
+        },
+        "XP.rx_vdd": {
+          "initial_v": 0.0,
+          "minimum_v": 0.0,
+          "maximum_v": 1.2
+        },
+        "XP.rt_vdd": {
+          "initial_v": 0.0,
+          "minimum_v": 0.0,
+          "maximum_v": 1.2
+        }
+      },
+      "currents": {
+        "VDD:p": {
+          "peak_absolute_a": 209.3639773755478,
+          "first10ps_peak_a": 209.3639773755478,
+          "after100ps_peak_a": 0.02195294097842108,
+          "first10ps_charge_c": -1.8344742731155526e-13
+        },
+        "XP.VVCO:p": {
+          "peak_absolute_a": 126.8440464065243,
+          "first10ps_peak_a": 126.8440464065243,
+          "after100ps_peak_a": 0.008277279447275375,
+          "first10ps_charge_c": -1.091481863560021e-13
+        },
+        "XP.VRX:p": {
+          "peak_absolute_a": 73.49615627718852,
+          "first10ps_peak_a": 73.49615627718852,
+          "after100ps_peak_a": 0.002601048944414178,
+          "first10ps_charge_c": -4.939635283402602e-14
+        },
+        "XP.VRT:p": {
+          "peak_absolute_a": 17.39522956250564,
+          "first10ps_peak_a": 17.39522956250564,
+          "after100ps_peak_a": 0.0006299395496827942,
+          "first10ps_charge_c": -1.0156094541460883e-14
+        }
+      },
+      "out_range_v": [
+        -0.03785628023691288,
+        1.214508074445047
+      ],
+      "internal_output_stage_range_v": {
+        "XP.XR.qb": [
+          -0.1296966462452165,
+          1.901095901945135
+        ],
+        "XP.XR.ob": [
+          -0.07292795420623527,
+          1.277255853975505
+        ]
+      },
+      "simulator_completed": true
+    },
+    {
+      "kind": "complete",
+      "source_result": "research/runs/spectre_cmos_v14_full/coreseedcheck01/core_seed_complete_tt/result.json",
+      "source_sha256": "dda04ef745895513045572629c5f49c3135085f8f185f667086305ad0e204df3",
+      "supply_nodes": {
+        "XP.vco_vdd": {
+          "initial_v": 1.2,
+          "minimum_v": 1.2,
+          "maximum_v": 1.2
+        },
+        "XP.rx_vdd": {
+          "initial_v": 1.2,
+          "minimum_v": 1.2,
+          "maximum_v": 1.2
+        },
+        "XP.rt_vdd": {
+          "initial_v": 1.2,
+          "minimum_v": 1.2,
+          "maximum_v": 1.2
+        }
+      },
+      "currents": {
+        "VDD:p": {
+          "peak_absolute_a": 0.02200101772019692,
+          "first10ps_peak_a": 0.005660681437888322,
+          "after100ps_peak_a": 0.02200101772019692,
+          "first10ps_charge_c": -5.091302011044181e-14
+        },
+        "XP.VVCO:p": {
+          "peak_absolute_a": 0.007995630150901689,
+          "first10ps_peak_a": 0.002981873695510197,
+          "after100ps_peak_a": 0.007995630150901689,
+          "first10ps_charge_c": -2.2965456351760824e-14
+        },
+        "XP.VRX:p": {
+          "peak_absolute_a": 0.002606828239646013,
+          "first10ps_peak_a": 0.001171042128382838,
+          "after100ps_peak_a": 0.002606828239646013,
+          "first10ps_charge_c": -8.530571726969998e-15
+        },
+        "XP.VRT:p": {
+          "peak_absolute_a": 0.0005865681310947805,
+          "first10ps_peak_a": 0.0002357500971437736,
+          "after100ps_peak_a": 0.0005865681310947805,
+          "first10ps_charge_c": -2.3032117979936888e-15
+        }
+      },
+      "out_range_v": [
+        -0.03783536284271051,
+        1.209877285691745
+      ],
+      "internal_output_stage_range_v": {
+        "XP.XR.qb": [
+          -0.1291690410061918,
+          1.351887448708839
+        ],
+        "XP.XR.ob": [
+          -0.07195640147606167,
+          1.27723408589357
+        ]
+      },
+      "simulator_completed": true
+    }
+  ],
+  "complete": true,
+  "three_node_ic_correction_verified": true,
+  "initialization_artifact_removed": true,
+  "pss_convergence_proven": false,
+  "full_pll_acceptance": false,
+  "vdd_peak_reduction_ratio": 9516.10421109528,
+  "original_supplies_initially_zero": true,
+  "corrected_supplies_initially_1p2v": true,
+  "interpretation": "Only three IC values change. This diagnoses restart initialization and the probe-observation topology; it does not establish that this was the only cause of prior shooting divergence."
+}

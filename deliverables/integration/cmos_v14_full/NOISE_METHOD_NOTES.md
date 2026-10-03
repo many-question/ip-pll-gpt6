@@ -18,3 +18,7 @@
 - [Cadence：Transient results as starting point in PSS](https://community.cadence.com/cadence_technology_forums/f/rf-design/28744/transient-results-as-starting-point-in-pss)建议文本writefinal／readic配合skipdc=yes，并允许未保存状态重新稳定。新核心测试采用此建议；不是已证明的修复。
 - 本地`research/spectre_help/pss.txt`还建议避开强非线性跳变启动shooting。新核心使用与5µs终态匹配的`tstart=5u`，250ns稳定后在5.25µs启动求解；原默认从参考起跳相位开始。物理电路和容差未变。
 - [Cadence：reuse PSS results to run standalone Pnoise](https://community.cadence.com/cadence_technology_forums/f/custom-ic-design/62486/reuse-pss-results-to-run-standalone-pnoise/)确认该功能的正常用途；它不是对本项目当前版本／模型／配置噪声一致性的担保。当前实测差异的底层原因尚未确定。
+
+## 电流观测对初态节点集合的影响
+
+实际A/B已确认：瞬态中未保存支路电流时被消除的零伏探针电源节点，在PSS保存电流后重新保留。原readic缺少三个电压条目，skipdc初始化为0V；只补三个1.2V条目即可去除209A数值尖峰。详见[初始化修复](CORE_INITIALIZATION.md)。该实验只证明初始化原因，修正后的PSS仍须独立收敛；不把尖峰当正常功耗。

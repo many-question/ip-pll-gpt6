@@ -1,0 +1,36 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "cells.scs"
+include "digital_cells_v2.scs"
+include "fll_circuit.scs"
+include "rf_light24s12_v14.scs"
+include "cmos_even_bank_acq_v14.scs"
+include "rtcomb_v13.scs"
+include "rt_noise_scale4_v14.scs"
+simulatorOptions options reltol=1e-5 vabstol=1e-7 iabstol=1e-13 temp=27 noiseon_inst=[XR.XFF] noiseon_type=all
+VDD (vdd 0) vsource dc=1.2
+ahdl_include "tank_replay_full_v14.va"
+XRF (vp vn 0) tank_replay_full_v14
+VRX (rx_vdd vdd) vsource dc=0
+VRT (rt_vdd vdd) vsource dc=0
+XRX (vp clk rx_vdd 0) rf_light24s12_v14
+VRST (reset 0) vsource type=pwl wave=[0 1.2 20n 1.2 20.01n 0]
+XD (clk reset vdd 0 0 0 0 0 q1 data acqclk vdd 0) cmos_even_bank_acq_v14
+XR (data clk out rt_vdd 0) rt_noise_scale4_v14
+CL (out 0) capacitor c=10f
+// Same clock mux/buffers/counter input load, counter held reset in quiet phase.
+XACQ0 (acqclk clock_mux 0 vdd vdd 0) pll_tg wn=1u wp=2u
+XACQ1 (out clock_mux vdd 0 vdd 0) pll_tg wn=1u wp=2u
+XACB0 (clock_mux clock_b vdd 0) pll_inv wn=1u wp=2u
+XACB1 (clock_b count_clock vdd 0) pll_inv wn=2u wp=4u
+XCOUNT (count_clock 0 vdd q0 qx1 q2 q3 q4 q5 q6 q7 q8 q9 q10 q11 q12 q13 vdd 0) tx_fll_counter
+// Full divider-tree period is24 RF cycles; output has6 rising edges.
+pss pss fund=164M harms=767 tstab=300n maxstep=0.5p maxacfreq=504G method=traponly errpreset=conservative maxperiods=30 saveinit=no writefinal="__FINAL_STATE__" writepss="__PERIODIC_STATE__"
+pn pnoise values=[1M 100M 491.99M] pnoisemethod=fullspectrum noisetype=sampled measurement=[edge] sampleratio=6 maxsideband=767
+edge jitterevent trigger=[out] triggerthresh=0.6 triggernum=1 triggerdir=rise target=[out] jittercal=[Jee]
+save vp vn clk q1 data out acqclk XD.d8 XD.d12 VDD:p VRX:p VRT:p
+saveOptions options save=selected
+save XR.qb XR.ob

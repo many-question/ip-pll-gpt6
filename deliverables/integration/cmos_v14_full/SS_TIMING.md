@@ -108,3 +108,9 @@
 条件：SS60／1.2V／10fF、真实MOS接收器、无噪声零阻抗实测SS形状重放、1ps／reltol1e-5。逐周期q1高低电平、分频比及输出周期均纳入判据。未覆盖TT/FF、低端RF、中间频点、模式切换、噪声或实际LC负载反作用；主PLL未改。真实LC TT/M4独立核心3µs稳定性已通过；这是另一个工作点，尚不能替代上述SS各档的实际LC验证。
 
 证据：[固定窗口结果](results/ss_settled_pulse_validation.json)、[预先记录的协议](results/ss_settled_pulse_protocol.json)、[旧窗口敏感性](results/ss_window_sensitivity.json)。
+
+## 补低RF和角落接口（2026-10-04）
+
+`banktripcorner01`已启动17例：5个SS低RF端及6档TT/FF高RF端。新测量除分频比例外，还直接核对冻结刺激中的绝对RF频率、每个接收器周期和输出绝对频率，避免输入漏沿被相对分频比掩盖。原SS高端6例在加强判据下仍全通过。所有角落暂固定同一实测SS波形形状，属于受控接口比较，不等于各角落实际VCO或完整PVT。
+
+结果见[低RF与角落](results/bank_pulsetrip_corner_validation.json)、[17例预定协议](results/bank_pulsetrip_corner_protocol.json)。只把完成且通过检查的案例计为通过，运行中案例保持待定。

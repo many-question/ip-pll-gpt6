@@ -1,0 +1,186 @@
+{
+  "scope": "Check corner and low-RF coverage before adopting the repaired physical bank.\n\nHold the measured SS waveform shape fixed while changing device corner and\nfrequency. These are controlled receiver/bank interface tests, not simulations\nof each corner's actual VCO. All use a predeclared 400-600 ns acceptance window.\n",
+  "run": "banktripcorner01",
+  "cases": [
+    {
+      "case": "banktripcorner_m4_ss_lo",
+      "corner": "ss",
+      "temp_c": 60,
+      "m": 4,
+      "rf_mhz": 2688,
+      "expected_output_mhz": 672.0,
+      "endpoint": "lo",
+      "source_tb_sha256": "9f04313d818dc540586de3f4908b3102ff728a73d5fba567409d70815b9cb7db"
+    },
+    {
+      "case": "banktripcorner_m6_ss_lo",
+      "corner": "ss",
+      "temp_c": 60,
+      "m": 6,
+      "rf_mhz": 2736,
+      "expected_output_mhz": 456.0,
+      "endpoint": "lo",
+      "source_tb_sha256": "9c7f7da3a15ddccf6e655852fd508799023f5b1e0ebd6038fbe46b08b12babdd"
+    },
+    {
+      "case": "banktripcorner_m8_ss_lo",
+      "corner": "ss",
+      "temp_c": 60,
+      "m": 8,
+      "rf_mhz": 2688,
+      "expected_output_mhz": 336.0,
+      "endpoint": "lo",
+      "source_tb_sha256": "619d040da069b74e96efcfacca980003ef44478d5db083a049379352f16ab742"
+    },
+    {
+      "case": "banktripcorner_m10_ss_lo",
+      "corner": "ss",
+      "temp_c": 60,
+      "m": 10,
+      "rf_mhz": 2880,
+      "expected_output_mhz": 288.0,
+      "endpoint": "lo",
+      "source_tb_sha256": "39382d8094f2c412a68c24a909ac2eb311a6c07223c6c728cb068956d0b9d1e1"
+    },
+    {
+      "case": "banktripcorner_m12_ss_lo",
+      "corner": "ss",
+      "temp_c": 60,
+      "m": 12,
+      "rf_mhz": 2880,
+      "expected_output_mhz": 240.0,
+      "endpoint": "lo",
+      "source_tb_sha256": "812870a31884ee7143d1fb0992221ef8f2608d5664f69ef32837a673b5001295"
+    },
+    {
+      "case": "banktripcorner_m4_tt_hi",
+      "corner": "tt",
+      "temp_c": 27,
+      "m": 4,
+      "rf_mhz": 3936,
+      "expected_output_mhz": 984.0,
+      "endpoint": "hi",
+      "source_tb_sha256": "9f04313d818dc540586de3f4908b3102ff728a73d5fba567409d70815b9cb7db"
+    },
+    {
+      "case": "banktripcorner_m6_tt_hi",
+      "corner": "tt",
+      "temp_c": 27,
+      "m": 6,
+      "rf_mhz": 3888,
+      "expected_output_mhz": 648.0,
+      "endpoint": "hi",
+      "source_tb_sha256": "9c7f7da3a15ddccf6e655852fd508799023f5b1e0ebd6038fbe46b08b12babdd"
+    },
+    {
+      "case": "banktripcorner_m8_tt_hi",
+      "corner": "tt",
+      "temp_c": 27,
+      "m": 8,
+      "rf_mhz": 3456,
+      "expected_output_mhz": 432.0,
+      "endpoint": "hi",
+      "source_tb_sha256": "619d040da069b74e96efcfacca980003ef44478d5db083a049379352f16ab742"
+    },
+    {
+      "case": "banktripcorner_m10_tt_hi",
+      "corner": "tt",
+      "temp_c": 27,
+      "m": 10,
+      "rf_mhz": 3120,
+      "expected_output_mhz": 312.0,
+      "endpoint": "hi",
+      "source_tb_sha256": "39382d8094f2c412a68c24a909ac2eb311a6c07223c6c728cb068956d0b9d1e1"
+    },
+    {
+      "case": "banktripcorner_m12_tt_hi",
+      "corner": "tt",
+      "temp_c": 27,
+      "m": 12,
+      "rf_mhz": 3168,
+      "expected_output_mhz": 264.0,
+      "endpoint": "hi",
+      "source_tb_sha256": "812870a31884ee7143d1fb0992221ef8f2608d5664f69ef32837a673b5001295"
+    },
+    {
+      "case": "banktripcorner_m14_tt_hi",
+      "corner": "tt",
+      "temp_c": 27,
+      "m": 14,
+      "rf_mhz": 3024,
+      "expected_output_mhz": 216.0,
+      "endpoint": "hi",
+      "source_tb_sha256": "292c347a5d1edffa20fbe352950c98a6a4a2ab7b73f95b061ce5804cbd4757a3"
+    },
+    {
+      "case": "banktripcorner_m4_ff_hi",
+      "corner": "ff",
+      "temp_c": 0,
+      "m": 4,
+      "rf_mhz": 3936,
+      "expected_output_mhz": 984.0,
+      "endpoint": "hi",
+      "source_tb_sha256": "9f04313d818dc540586de3f4908b3102ff728a73d5fba567409d70815b9cb7db"
+    },
+    {
+      "case": "banktripcorner_m6_ff_hi",
+      "corner": "ff",
+      "temp_c": 0,
+      "m": 6,
+      "rf_mhz": 3888,
+      "expected_output_mhz": 648.0,
+      "endpoint": "hi",
+      "source_tb_sha256": "9c7f7da3a15ddccf6e655852fd508799023f5b1e0ebd6038fbe46b08b12babdd"
+    },
+    {
+      "case": "banktripcorner_m8_ff_hi",
+      "corner": "ff",
+      "temp_c": 0,
+      "m": 8,
+      "rf_mhz": 3456,
+      "expected_output_mhz": 432.0,
+      "endpoint": "hi",
+      "source_tb_sha256": "619d040da069b74e96efcfacca980003ef44478d5db083a049379352f16ab742"
+    },
+    {
+      "case": "banktripcorner_m10_ff_hi",
+      "corner": "ff",
+      "temp_c": 0,
+      "m": 10,
+      "rf_mhz": 3120,
+      "expected_output_mhz": 312.0,
+      "endpoint": "hi",
+      "source_tb_sha256": "39382d8094f2c412a68c24a909ac2eb311a6c07223c6c728cb068956d0b9d1e1"
+    },
+    {
+      "case": "banktripcorner_m12_ff_hi",
+      "corner": "ff",
+      "temp_c": 0,
+      "m": 12,
+      "rf_mhz": 3168,
+      "expected_output_mhz": 264.0,
+      "endpoint": "hi",
+      "source_tb_sha256": "812870a31884ee7143d1fb0992221ef8f2608d5664f69ef32837a673b5001295"
+    },
+    {
+      "case": "banktripcorner_m14_ff_hi",
+      "corner": "ff",
+      "temp_c": 0,
+      "m": 14,
+      "rf_mhz": 3024,
+      "expected_output_mhz": 216.0,
+      "endpoint": "hi",
+      "source_tb_sha256": "292c347a5d1edffa20fbe352950c98a6a4a2ab7b73f95b061ce5804cbd4757a3"
+    }
+  ],
+  "candidate": "bank_pulsetrip_v14",
+  "condition": "1.2V/10fF, actual MOS RX/bank/baselineRT/quietcounter load, noiseless zero-impedance SS-shaped RF replay.",
+  "solver": "600ns, fixed400-600ns window,1ps/reltol1e-5",
+  "full_pll_acceptance": false,
+  "main_dut_modified": false,
+  "limitations": [
+    "Same replay shape is not proof of each corner VCO amplitude/common-mode/loading.",
+    "Three paired corners and selected endpoints do not establish fullPVT or all33PLLchannels.",
+    "No reset/mode-change or random-jitter result from these steady windows."
+  ]
+}

@@ -1,10 +1,13 @@
 """Audit fresh-PSS edge dependence and five independent device-noise gates."""
 from pathlib import Path
-import hashlib,json
+import argparse,hashlib,json
 import numpy as np
 from noise_utils import parse,header,devices,cross
 H=Path(__file__).resolve().parent; ROOT=H.parents[3]
-protocol=json.loads((H/'results/rt2_fine_audit_protocol.json').read_text())
+parser=argparse.ArgumentParser()
+parser.add_argument('--factor',type=int,choices=[2,4],default=2)
+factor=parser.parse_args().factor
+protocol=json.loads((H/f'results/rt{factor}_fine_audit_protocol.json').read_text())
 R=ROOT/'research/runs/spectre_cmos_v14_full'/protocol['run']; freq=np.array(protocol['offsets_hz'])
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 def read(case):
@@ -39,7 +42,7 @@ if base:
     spread=np.ptp(10*np.log10(np.array([x['psd_s2_per_hz'] for x in out['edge_rows']])),axis=0)
     out['edge_spread_db']=spread.tolist();out['edge_passed']=bool(max(spread)<protocol['edge_spread_limit_db'])
     for group,names in protocol['groups'].items():
-        info=read(f'chain_rt2_fine_only_{group}_tt')
+        info=read(f'chain_rt{factor}_fine_only_{group}_tt')
         if info is None:continue
         gj,gr,graw=info
         assert deps=={k:v for k,v in gr['inputs_sha256'].items() if k!=gj.name+'.scs'}
@@ -52,5 +55,5 @@ if base:
             passed=bool(err<protocol['noise_gate_relative_limit'] and excluded<1e-8)))
     out['complete']=len(out['gate_rows'])==5
     if out['complete']:out['passed']=out['edge_passed'] and all(x['passed'] for x in out['gate_rows'])
-(H/'results/rt2_fine_audit_validation.json').write_text(json.dumps(out,indent=2)+'\n')
+(H/f'results/rt{factor}_fine_audit_validation.json').write_text(json.dumps(out,indent=2)+'\n')
 print(json.dumps({k:v for k,v in out.items() if k not in ['edge_rows','gate_rows']},indent=2))
