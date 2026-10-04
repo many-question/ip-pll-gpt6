@@ -149,10 +149,23 @@
       "max_relative_difference": 1.6653345369377348e-15,
       "excluded_fraction": 0.0,
       "passed": true
+    },
+    {
+      "group": "aux",
+      "source_result": "research/runs/spectre_cmos_v14_full/rt4pulsetripaudit01/chain_rt4_pulsetrip_only_aux_tt/result.json",
+      "source_sha256": "636c1cb4f50b72d68c48d8e0ec3c9ed5c63240b53bcefa3687f92154bea4bdfc",
+      "timing_psd_s2_per_hz": [
+        2.0884095472896126e-37,
+        1.1777994902728281e-37,
+        1.1679865320077345e-37
+      ],
+      "max_relative_difference": 8.881784197001252e-16,
+      "excluded_fraction": 0.0,
+      "passed": true
     }
   ],
-  "complete": false,
-  "passed": null,
+  "complete": true,
+  "passed": true,
   "full_band_integral": false,
   "full_pll_acceptance": false,
   "source_result": "research/runs/spectre_cmos_v14_full/rt4pulsetripaudit01/chain_rt4_pulsetrip_edges_tt/result.json",
@@ -175,6 +188,12 @@
     "max_difference_db": 7.754639322219026e-11,
     "passed": true
   },
+  "isolated_sum_to_all_noise_ratio": [
+    1.0000000000000016,
+    1.000000000000001,
+    1.0000000000000018
+  ],
+  "isolated_sum_max_relative_error": 1.7763568394002505e-15,
   "periodic_case_checks": [
     {
       "case": "chain_rt4_pulsetrip_edges_tt",
@@ -334,6 +353,38 @@
         "convergence failure"
       ],
       "log_sha256": "057b70475ba1864da096feeb49348aadb4d7acc8ff6fc45d34d1c40e59fc52a9",
+      "diagnostic_note": "Wrapper error labels are retained. Acceptance uses actual completed Spectre log, periodic waveform and finite PSD checks; no source manifest is edited."
+    },
+    {
+      "case": "chain_rt4_pulsetrip_only_aux_tt",
+      "expected_harmonics": {
+        "vp": 24,
+        "clk": 24,
+        "q1": 12,
+        "data": 6,
+        "out": 6,
+        "acqclk": 6,
+        "XD.d8": 3,
+        "XD.d12": 2
+      },
+      "actual_harmonics": {
+        "vp": 24,
+        "clk": 24,
+        "q1": 12,
+        "data": 6,
+        "out": 6,
+        "acqclk": 6,
+        "XD.d8": 3,
+        "XD.d12": 2
+      },
+      "endpoint_max_v": 0.0,
+      "simulator_returncode": 0,
+      "simulator_zero_errors": true,
+      "pss_achieved": true,
+      "wrapper_error_labels": [
+        "convergence failure"
+      ],
+      "log_sha256": "9c5fae7ac61aef2a73aac5cfd6e2f2801216f907a9705f46a4acac9a55dd035e",
       "diagnostic_note": "Wrapper error labels are retained. Acceptance uses actual completed Spectre log, periodic waveform and finite PSD checks; no source manifest is edited."
     }
   ]

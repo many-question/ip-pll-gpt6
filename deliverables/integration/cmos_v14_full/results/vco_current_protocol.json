@@ -1,0 +1,35 @@
+{
+  "scope": "Single-parameter stronger VCO bias experiment; power optimization is deferred.",
+  "run": "vcocurrent01",
+  "case": "vco_bias_r2000_tt",
+  "time": "2026-10-04T13:28:43.391390+08:00",
+  "source_case": "vco_bias_cf40_tt",
+  "source_run": "vcocf40_01",
+  "source_tb_sha256": "d0796de5416326390fec2a91b2b28d94dc5f620d89e893dfa662acc841a6a690",
+  "candidate_tb_sha256": "148b73e908bbbfd30848c7f76efb951145afb4a6c6c6408fdd23ff9cc1e11afc",
+  "physical_change": "Only external VCO bias_r parameter2500ohm->2000ohm. CF40/MOS sizes/Q5RLC and all other physical dependencies unchanged.",
+  "hypothesis": "Higher current may raise oscillation amplitude and improve timing noise. Measure actual PM PSD, current, amplitude and RF change; do not assume improvement.",
+  "condition": "TT27/1.2V/Q5RLC/coarse23/ctrl.679V/CF40/static-reference/fixedM4/10fF/onlyXVnoise/freshPSS .5ps255sidebands.",
+  "offsets_hz": [
+    10000.0,
+    100000.0,
+    1000000.0,
+    10000000.0,
+    100000000.0,
+    492000000.0
+  ],
+  "checks": [
+    "Fresh converged PSS and correct RF/M4 harmonics",
+    "Independent time-domain carrier and SSB normalization",
+    "Device PSD sum closure and excluded-noise check",
+    "Compare actual RF frequency, waveform amplitudes, terminal ranges, supply current and high-offset PSD"
+  ],
+  "limitations": [
+    "Sixpoints are not integrated jitter.",
+    "Fixed-control frequency changes are retained, not silently retuned. A promising result requires target-frequency rematch.",
+    "Larger swing/current can change device operation; inspect before adopting.",
+    "No power saving claim; fullPLL noise/PVT/startup remain unverified."
+  ],
+  "main_dut_modified": false,
+  "full_pll_acceptance": false
+}

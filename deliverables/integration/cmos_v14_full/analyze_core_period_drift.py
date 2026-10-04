@@ -11,6 +11,7 @@ from array import array
 import argparse,hashlib,json,re
 import numpy as np
 from noise_utils import cross
+from psf_trace_units import trace_units
 
 H=Path(__file__).resolve().parent;ROOT=H.parents[3]
 parser=argparse.ArgumentParser()
@@ -28,15 +29,7 @@ source=j/(args.snapshot or j.name+'.raw')/'pss.tran.pss'
 audit=json.loads((H/'results'/args.audit).read_text())
 cache=j/('tstab_'+args.snapshot+'_last_two_periods.npz' if args.snapshot else 'tstab_last_two_periods.npz')
 period=250e-9
-units={};in_trace=False
-with source.open() as f:
-    for line in f:
-        if line.strip()=='TRACE':in_trace=True;continue
-        if line.strip()=='VALUE':break
-        if in_trace:
-            m=re.fullmatch(r'"([^"]+)" "([VI])"\s*',line)
-            assert m,line
-            units[m[1]]=m[2]
+units={k:('I' if u=='A' else 'V') for k,u in trace_units(source).items()}
 with source.open('rb') as f:
     f.seek(max(0,source.stat().st_size-1024*1024))
     tail=f.read()
@@ -83,15 +76,22 @@ if not cache.exists():
     else:flush()
     assert digest.hexdigest()==audit['raw_tstab']['sha256']
     data={k:np.asarray(v) for k,v in cols.items()}
-    assert np.all(np.diff(data['time'])>0) and data['time'][0]<=start
+    assert np.all(np.diff(data['time'])>0)
+    # A live initialization snapshot can begin exactly two periods before
+    # the intended stop while its final sample is still buffered. Do not
+    # extrapolate that missing fraction or call it two complete periods.
+    assert data['time'][0]<=start or (args.snapshot and data['time'][0]-start<2e-12)
     np.savez_compressed(cache,**data,source_sha256=digest.hexdigest(),duplicates=duplicates)
 with np.load(cache) as z:data={k:z[k] for k in z.files}
 assert str(data['source_sha256'])==audit['raw_tstab']['sha256']
-t=data['time'];grid=np.linspace(start,start+period,250001)
+t=data['time'];nominal_start=start
+start=max(start,float(t[0]));first_stop=end-period
+assert first_stop>start and first_stop+period<=t[-1]
+grid=np.linspace(start,first_stop,int(np.ceil((first_stop-start)/1e-12))+1)
 rows=[]
 for k,unit in units.items():
     y=data[k];a=np.interp(grid,t,y);b=np.interp(grid+period,t,y);delta=b-a
-    edges1=cross(t,y);edges1=edges1[(edges1>=start)&(edges1<start+period)]
+    edges1=cross(t,y);edges1=edges1[(edges1>=start)&(edges1<first_stop)]
     edges2=cross(t,y);edges2=edges2[(edges2>=start+period)&(edges2<end)]
     row=dict(node=k,unit=unit,range=[float(min(a.min(),b.min())),float(max(a.max(),b.max()))],
         difference_mean=float(np.mean(delta)),difference_rms=float(np.sqrt(np.mean(delta**2))),
@@ -104,8 +104,10 @@ for k,unit in units.items():
             peak_to_peak=float(np.ptp(shifts)*1e12))
     rows.append(row)
 out=dict(scope=__doc__,source=source.relative_to(ROOT).as_posix(),source_sha256=str(data['source_sha256']),
-    intervals_us=[[start*1e6,(start+period)*1e6],[(start+period)*1e6,end*1e6]],
-    comparison_grid_step_ps=1.,rows=rows,periodic_state_valid=False,random_jitter_measured=False,
+    intervals_us=[[start*1e6,first_stop*1e6],[(start+period)*1e6,end*1e6]],
+    comparison_grid_step_ps=float(grid[1]-grid[0])*1e12,rows=rows,periodic_state_valid=False,random_jitter_measured=False,
+    missing_boundary_duration_s=float(start-nominal_start),
+    full_two_periods_available=bool(start==nominal_start),
     full_pll_acceptance=False,
     snapshot_incomplete_tail_records=incomplete_tail,
     last_complete_sample_s=end,

@@ -1,0 +1,37 @@
+{
+  "scope": "Integrate the verified new divider and RT4 in a separate complete-PLL candidate.",
+  "run": "rt4bankcold01",
+  "case": "rt4bank_capture_tt",
+  "time": "2026-10-04T13:47:51.921139+08:00",
+  "source_top_sha256": "ebab43f8233c8b8cc7bdef02fba6a1718a070e8f886f3b522449612feb5e6139",
+  "candidate_top_sha256": "001c6a40a24142fbc6d3aa006e233edb38810b703166af04968cff4bf8b9b3c8",
+  "source_tb_sha256": "dc01776c58a6b1af0bb730e6d9ce71bc2f19f48fbf7c9dbf9d45e9013e9896a1",
+  "candidate_tb_sha256": "28c62ffe25f726720abf72f37adb1f626c79a20344a51a5e375df1b9ec70dffc",
+  "warm_capture_validation_sha256": "649f80b2d30b05a0897715f009da5626c114fdc641849567556311cb8542b59c",
+  "noise_gate_validation_sha256": "cadf7c2b46783b72b3343edc481f1ba830c238b05a57412b1c34a99c32ac3c4e",
+  "changed_modules": [
+    "cmos_even_bank_acq_v14 -> bank_pulsetrip_v14",
+    "rt_light24s12_out083_v14 -> rt_noise_scale4_v14"
+  ],
+  "retained": "All actual control/FLL/watchdog/reference/sampler/CP/loopfilter/VCO/bias circuits and all external reset/apply/K41 stimuli from original full PLL.",
+  "condition": "Complete transistor PLL candidate,TT27/1.2V/24MHz/K41/M4/10fF/Q5RLC/CF10,64us independent reset,4ps/1e-4/trap. DCsupply established and10uV differential oscillator seed as before.",
+  "native_checkpoints_s": [
+    8e-06,
+    1.6e-05,
+    3.2e-05,
+    4.8e-05,
+    6.4e-05
+  ],
+  "native_savefile": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/rt4bankcold01_rt4bank_capture_tt.srf",
+  "expected_cost": "Same original4ps64us fullPLL with8threads took8h11m; runtime is not guaranteed. Use released fourthlongslot,8threads,total<=18/fourlong+oneshort.",
+  "analysis_command": "analyze_capture.py rt4bankcold01 --case rt4bank_capture_tt --fine-window 128 --precision functional",
+  "limitations": [
+    "Functional4psscreen only; not numerical convergence or randomjitter.",
+    "WarmRT4capture doesnotprove independentreset/FLLhandoff.",
+    "Reference24MHz/oneTTfrequency only; other33points/PVT/recovery unverified.",
+    "No CF40/biasR2000/4.8fF/dummy adoption.",
+    "The original mainDUT remains unchanged; this separate candidate must pass integration before adoption."
+  ],
+  "main_dut_modified": false,
+  "full_pll_acceptance": false
+}

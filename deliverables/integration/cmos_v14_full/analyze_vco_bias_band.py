@@ -22,6 +22,7 @@ def canonical_tb(s):
     s=s.replace('lc_vco_cf40_v14','lc_vco_physical_v14')
     s=s.replace('values=[10k 100k 1M 10M 100M 492M]','start=10k stop=492M dec=20')
     s=re.sub(r'maxstep=\S+','maxstep=STEP',s)
+    s=re.sub(r'\bharms=\S+','harms=HARMS',s)
     s=re.sub(r'maxsideband=\S+','maxsideband=SIDES',s)
     return re.sub(r'writefinal="[^"]+"','writefinal="STATE"',s)
 
@@ -41,7 +42,7 @@ def verify_physical(a,b):
     assert dep(a)==dep(b),'Unexpected physical dependency change'
     assert canonical_tb((a/'inputs'/(a.name+'.scs')).read_text())==canonical_tb((b/'inputs'/(b.name+'.scs')).read_text())
 
-def read(j):
+def read(j,min_points=90):
     r=json.loads((j/'result.json').read_text());log=(j/'spectre.out').read_text()
     assert r['ok'] and r['remote_inputs_match'] and not r.get('periodic_state')
     assert 'spectre completes with 0 errors' in log and 'steady-state solution was achieved' in log
@@ -49,7 +50,7 @@ def read(j):
     raw=j/(j.name+'.raw');fp=raw/'pn.pm.pnoise'
     pn=parse(fp);fd=parse(raw/'pss.fd.pss');td=parse(raw/'pss.td.pss')
     f=pn['relative frequency'];fc=float(fd['freq'][4]);t=td['time'];T=t[-1]-t[0]
-    assert len(f)>=90 and np.all(np.diff(f)>0) and abs(f[0]/1e4-1)<1e-8 and abs(f[-1]/492e6-1)<1e-8
+    assert len(f)>=min_points and np.all(np.diff(f)>0) and abs(f[0]/1e4-1)<1e-8 and abs(f[-1]/492e6-1)<1e-8
     peak=float(abs(fd['vp'][4]-fd['vn'][4]));cp=peak**2/2
     timepeak=float(abs(2/T*np.trapezoid((td['vp']-td['vn'])*np.exp(-2j*np.pi*4*(t-t[0])/T),t)))
     harmonics={k:int(round(fd['freq'][1+np.argmax(abs(fd[k][1:]))]/fd['freq'][1])) for k in ['vp','vn','clk','q1','data','out']}
@@ -115,13 +116,31 @@ def main():
         common_upper_offset_hz=upper,normalization='S_t=2 L_SSB/(2*pi*fRF)^2; RFcarrier/4 is fixture output, not PLL prediction.',
         full_pll_jitter_fs=None,full_pll_acceptance=False,main_dut_modified=False,limitations=p['limitations'])
     lookup={x['variant']:x for x in rows}
+    if 'cf10_fine' in lookup:
+        coarse=R/'vconoise01/vco_noise_coarse_tt';verify_physical(coarse,jobs['cf10_fine'])
+        cr,cs=read(coarse);fs=spectra['cf10_fine']
+        assert np.allclose(cs['f'],fs['f'],rtol=1e-12,atol=0),'Different sweep grid beyond ASCII roundoff'
+        delta=10*np.log10(fs['L']/cs['L']);fr=lookup['cf10_fine']['rf_hz']/cr['rf_hz']-1
+        hi=min(upper,cr['rf_hz']/8);rms=[]
+        for lo in p['high_offset_integrals']['lower_bounds_hz']:
+            v0=2*integral(cs['f'],cs['L'],lo,hi)/(2*np.pi*cr['rf_hz'])**2
+            v1=2*integral(fs['f'],fs['L'],lo,hi)/(2*np.pi*lookup['cf10_fine']['rf_hz'])**2
+            rms.append(float(np.sqrt(v1/v0)-1))
+        lim=p['numerical_limits']
+        out['baseline_full_grid_precision']=dict(coarse_source=cr['source_result'],coarse_source_sha256=cr['source_sha256'],
+            fine_source=lookup['cf10_fine']['source_result'],fine_source_sha256=lookup['cf10_fine']['source_sha256'],
+            common_upper_hz=hi,ssb_pm_change_db=delta.tolist(),max_absolute_psd_change_db=float(max(abs(delta))),
+            frequency_grid_max_relative_difference=float(max(abs(fs['f']/cs['f']-1))),
+            relative_rf_change=fr,relative_high_band_rms_changes=rms,
+            passed=bool(max(abs(delta))<lim['max_phase_noise_delta_db'] and abs(fr)<lim['max_relative_rf_frequency_change'] and max(abs(x) for x in rms)<lim['max_high_band_rms_relative_change']))
     for label,a,b in [('candidate_comparison','cf10_fine','cf40_fine'),('precision','cf40_fine','cf40_finer')]:
         if a not in lookup or b not in lookup:continue
         verify_physical(jobs[a],jobs[b]);sa=spectra[a];sb=spectra[b]
-        assert np.array_equal(sa['f'],sb['f'])
+        assert np.allclose(sa['f'],sb['f'],rtol=1e-12,atol=0),'Different sweep grid beyond ASCII roundoff'
         delta=10*np.log10(sb['L']/sa['L']);fr=lookup[b]['rf_hz']/lookup[a]['rf_hz']-1
         rms=[y['timing_rms_fs']/x['timing_rms_fs']-1 for x,y in zip(lookup[a]['cumulative_high_offset_bands'],lookup[b]['cumulative_high_offset_bands'])]
-        out[label]=dict(ssb_pm_change_db=delta.tolist(),max_absolute_psd_change_db=float(max(abs(delta))),relative_rf_change=fr,relative_high_band_rms_changes=rms)
+        out[label]=dict(ssb_pm_change_db=delta.tolist(),max_absolute_psd_change_db=float(max(abs(delta))),relative_rf_change=fr,relative_high_band_rms_changes=rms,
+            frequency_grid_max_relative_difference=float(max(abs(sb['f']/sa['f']-1))))
         if label=='precision':
             lim=p['numerical_limits'];out[label]['passed']=bool(max(abs(delta))<lim['max_phase_noise_delta_db'] and abs(fr)<lim['max_relative_rf_frequency_change'] and max(abs(x) for x in rms)<lim['max_high_band_rms_relative_change'])
     (H/'results/vco_bias_band_validation.json').write_text(json.dumps(out,indent=2)+'\n')

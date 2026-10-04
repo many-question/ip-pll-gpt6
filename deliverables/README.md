@@ -1,4 +1,4 @@
-本次快照：[第44次汇报](../reports/2026-10-04T1322.yaml)。噪声归因复核、实际周期状态和VCO偏置滤波验证继续推进；整机抖动仍未验收。
+本次快照：[第45次汇报](../reports/2026-10-04T1406.yaml)。数字五组噪声归因闭合、VCO滤波实测和完整RT4候选继续推进；整机抖动未验收。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

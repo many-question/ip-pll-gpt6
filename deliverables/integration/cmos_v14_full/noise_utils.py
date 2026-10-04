@@ -25,6 +25,26 @@ def devices(p,n):
     for k,v in cols.items():assert len(v)==n and np.all(np.isfinite(v)) and min(v)>=0,k
     return {k:np.asarray(v) for k,v in cols.items()}
 
+
+def selected_device_components(p,names,n):
+    """Return actual Spectre noise component PSDs, checking device-sum closure."""
+    s=p.read_text();types={}
+    for typename,body in re.findall(r'"([^\"]+)" STRUCT\((.*?)\) PROP\(',s,re.S):
+        fields=re.findall(r'^"([^\"]+)" FLOAT DOUBLE PROP\(',body,re.M)
+        if 'total' in fields:types[typename]=fields
+    traces=dict(re.findall(r'^"([^\"]+)" "([^\"]+)"$',s.split('\nTRACE\n',1)[1].split('\nVALUE\n',1)[0],re.M))
+    values={name:[] for name in names}
+    for name,body in re.findall(r'^"([^\"]+)" \(\n(.*?)\n\)',s.split('\nVALUE\n',1)[1],re.M|re.S):
+        if name in values:values[name].append(np.fromstring(body,sep=' '))
+    result={}
+    for name,rows in values.items():
+        fields=types[traces[name]];a=np.asarray(rows)
+        assert a.shape==(n,len(fields)) and np.all(np.isfinite(a)) and np.all(a>=0)
+        total=a[:,fields.index('total')];terms=a[:,[i for i,k in enumerate(fields) if k!='total']]
+        assert max(abs(terms.sum(axis=1)/total-1))<1e-6
+        result[name]={k:a[:,i] for i,k in enumerate(fields)}
+    return result
+
 def stream_selected(p,keys):
     """Read tstab records, coalescing repeated values at a segment boundary.
 
