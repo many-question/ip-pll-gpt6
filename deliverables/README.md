@@ -1,4 +1,4 @@
-本次快照：[第42次汇报](../reports/2026-10-04T1155.yaml)。新RT4六沿噪声一致性通过，VCO高偏移噪声集中于1–10MHz；实际Gear2暖启动已审阅，整机RMS仍未知。
+本次快照：[第43次汇报](../reports/2026-10-04T1245.yaml)。密集周期检查发现共同RF漂移，继续隔离数值网格因素；RT4实际撤钳位捕获已启动，整机抖动仍未知。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

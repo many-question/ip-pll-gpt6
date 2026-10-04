@@ -1,0 +1,90 @@
+{
+  "scope": "Diagnose common RF phase drift without treating an aligned waveform as periodic proof.",
+  "source_result": "research/runs/spectre_cmos_v14_full/coregeardense01/core_gear_dense_period_tt/result.json",
+  "source_sha256": "11d22ec023874572a4f897977125ab10493500c430257b01810507b657036a0a",
+  "common_rf_displacement_ps": {
+    "mean": -0.11396727602111505,
+    "peak_abs": 0.19105664543886378,
+    "first_quarter_mean": -0.174356718731467,
+    "last_quarter_mean": -0.06113765268567275
+  },
+  "rows": [
+    {
+      "node": "XP.vp",
+      "raw_peak_v": 0.002745632572942469,
+      "raw_rms_v": 0.0008957813085346829,
+      "rf_aligned_peak_v": 6.534306392447231e-05,
+      "rf_aligned_rms_v": 5.215885378751256e-06,
+      "rms_reduction_fraction": 0.9941772781715178
+    },
+    {
+      "node": "XP.vn",
+      "raw_peak_v": 0.0026522432327014123,
+      "raw_rms_v": 0.0010180143901056893,
+      "rf_aligned_peak_v": 8.006763500711944e-05,
+      "rf_aligned_rms_v": 6.539111717640428e-06,
+      "rms_reduction_fraction": 0.9935766018818638
+    },
+    {
+      "node": "XP.clk",
+      "raw_peak_v": 0.005497984680118306,
+      "raw_rms_v": 0.0017227300404935733,
+      "rf_aligned_peak_v": 0.00022748878369208136,
+      "rf_aligned_rms_v": 1.401706144575846e-05,
+      "rms_reduction_fraction": 0.9918634602542007
+    },
+    {
+      "node": "XP.q1",
+      "raw_peak_v": 0.002567567577790253,
+      "raw_rms_v": 0.0008142681099398716,
+      "rf_aligned_peak_v": 6.128474170638554e-05,
+      "rf_aligned_rms_v": 4.06967622217327e-06,
+      "rms_reduction_fraction": 0.995002043955186
+    },
+    {
+      "node": "XP.data",
+      "raw_peak_v": 0.0050878642722329,
+      "raw_rms_v": 0.0008261903644800773,
+      "rf_aligned_peak_v": 0.00014899582691940694,
+      "rf_aligned_rms_v": 7.5670357410280305e-06,
+      "rms_reduction_fraction": 0.990841050602436
+    },
+    {
+      "node": "out",
+      "raw_peak_v": 0.0022823292948137563,
+      "raw_rms_v": 0.0004905988670671746,
+      "rf_aligned_peak_v": 0.00010499861531062908,
+      "rf_aligned_rms_v": 3.2623984568054773e-06,
+      "rms_reduction_fraction": 0.9933501712380457
+    },
+    {
+      "node": "XP.XR.ob",
+      "raw_peak_v": 0.009456355253418813,
+      "raw_rms_v": 0.0008837103674837517,
+      "rf_aligned_peak_v": 0.0005294569620300782,
+      "rf_aligned_rms_v": 9.922599793704327e-06,
+      "rms_reduction_fraction": 0.988771660762612
+    },
+    {
+      "node": "XP.XD.d8",
+      "raw_peak_v": 0.005432458024103248,
+      "raw_rms_v": 0.0005904942773198953,
+      "rf_aligned_peak_v": 0.00018617962685971157,
+      "rf_aligned_rms_v": 5.190922860144615e-06,
+      "rms_reduction_fraction": 0.9912091902334687
+    },
+    {
+      "node": "XP.XD.d12",
+      "raw_peak_v": 0.004244349865672348,
+      "raw_rms_v": 0.00044672721935145855,
+      "rf_aligned_peak_v": 0.00012792627794239175,
+      "rf_aligned_rms_v": 3.916576492861377e-06,
+      "rms_reduction_fraction": 0.9912327337059351
+    }
+  ],
+  "raw_period_gate_remains_failed": true,
+  "random_jitter_measured": false,
+  "periodic_state_valid": false,
+  "interpretation": "Time warping uses measured paired RF edges to expose the part of fast-node waveform mismatch explained by common RF drift. The forced reference is not warped physically; aligned residuals cannot pass the original periodic gate or establish jitter.",
+  "limitation": "Sub-ps timing and residual voltage depend on1psGear2 integration and linear interpolation; this is mechanism diagnosis, not a precision noise measurement."
+}

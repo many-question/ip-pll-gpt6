@@ -1,0 +1,72 @@
+{
+  "scope": "Compare independent whole-PLL reset captures while keeping functional and precision claims separate.",
+  "physical_and_stimulus_dependencies_identical": true,
+  "only_solver_precision_changed": true,
+  "cases": [
+    {
+      "run": "repaircold01",
+      "source_result": "research/runs/spectre_cmos_v14_full/repaircold01/repair_capture_tt/result.json",
+      "source_result_sha256": "caab9aa96c569676df0e3131688b837b48b60bf62be5849fcb450dad9a062ac6",
+      "analysis_source": "share/deliverables/integration/cmos_v14_full/results/capture_repaircold01.json",
+      "analysis_sha256": "4a0a9ce98f4e78e57f48ed3aa43d0fd06d407ffd5e1fd6ba6ad8317ab75e120b",
+      "condition": "TT27,1.2V,24MHz,10fF,K41/M4,Q5 RLC,4ps/reltol1e-4. Functional result; strict numerics and random noise remain separate.",
+      "functional_capture_passed": true,
+      "handoff_us": 53.58563782388823,
+      "first_qualified_us": 56.5024077880292,
+      "final_coarse": 23,
+      "final_dac": 38,
+      "final_output_mhz": 984.0000695926938,
+      "final_phase_pp_rad": 0.0032839241257640595,
+      "final_phase_drift_rad_per_us": -0.00018405465656384424,
+      "sampled_control_range_v": [
+        0.6762280279702453,
+        0.6763934733131564
+      ],
+      "sampled_control_midrange_v": 0.6763107506417008,
+      "final1us_mean_supply_mw": 5.62253080079037,
+      "locked_observation_us": 7.497592211970797
+    },
+    {
+      "run": "repaircoldstrict01",
+      "source_result": "research/runs/spectre_cmos_v14_full/repaircoldstrict01/repair_capture_strict_tt/result.json",
+      "source_result_sha256": "fe7411db3a726b77554d0b3043ef2f1cfa0542774830e0e878d5019ca205310c",
+      "analysis_source": "share/deliverables/integration/cmos_v14_full/results/capture_repaircoldstrict01.json",
+      "analysis_sha256": "8089bc7417d686d39a94c5109804e3fe51a5c0e4c90bedb4f0f65e541c467953",
+      "condition": "TT27,1.2V,24MHz,10fF,K41/M4,Q5 RLC,maxstep=1p/reltol=1e-5. Deterministic capture screen at stated precision; random noise is separate.",
+      "functional_capture_passed": true,
+      "handoff_us": 53.585649573725426,
+      "first_qualified_us": 56.50240779608426,
+      "final_coarse": 23,
+      "final_dac": 36,
+      "final_output_mhz": 984.0001041802752,
+      "final_phase_pp_rad": 0.004128641185905946,
+      "final_phase_drift_rad_per_us": -4.466243153878963e-05,
+      "sampled_control_range_v": [
+        0.6416414348216496,
+        0.6418206029360722
+      ],
+      "sampled_control_midrange_v": 0.641731018878861,
+      "final1us_mean_supply_mw": 5.6181237427081365,
+      "locked_observation_us": 7.497592203915737
+    }
+  ],
+  "both_functional_capture_passed": true,
+  "same_final_codes": false,
+  "strict_minus_4ps": {
+    "handoff_us": 1.1749837199204194e-05,
+    "qualified_us": 8.055060618517018e-09,
+    "output_hz": 34.58758146734908,
+    "sampled_control_midrange_v": -0.034579731762839794,
+    "final1us_supply_mw": -0.004407058082233739
+  },
+  "precision_convergence_accepted": false,
+  "random_jitter_measured": false,
+  "full_requirement_acceptance": false,
+  "interpretation": "Independent reset captures show function at two solver settings. Locked output frequency alone cannot prove operating-point or noise convergence; control voltage, timing,energy and waveforms need separate comparison. The final1us is shorter than the32uswatchdogperiod.",
+  "limitations": [
+    "SingleTT27/1.2V/K41/M4/10fF/24MHz/Q5condition; not33codes,PVT or reference/load range.",
+    "Supply alreadyDC1.2V and10uV initialdifferential perturbation; not railramp or stochasticstartup.",
+    "2nsstrobe waveforms cannot establishGHz slew,swing,randomjitter or instantaneous power; energy uses continuous source-current integration.",
+    "Sameeventobserver used inboth; detailed no-observer periodic/noise analysis is separate."
+  ]
+}

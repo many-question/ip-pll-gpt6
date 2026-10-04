@@ -39,7 +39,7 @@ def main():
     parser.add_argument('--tran-stop',help='Override transient stop for a native-checkpoint continuation, e.g.10u')
     parser.add_argument('--transient-reltol',help='Explicit numerical comparison on a native continuation, e.g.1e-5')
     parser.add_argument('--transient-maxstep',help='Explicit numerical comparison on a native continuation, e.g.1p')
-    parser.add_argument('--dense-output',action='store_true',help='Native continuation only: retain every accepted transient point for waveform/current checks')
+    parser.add_argument('--dense-output',action='store_true',help='Native continuation only: retain every accepted transient point, including when the source used skipcount')
     parser.add_argument('--extra-save',nargs='+',help='Additional node/current observations; no DUT change')
     select=parser.add_mutually_exclusive_group(required=True)
     select.add_argument('--cases',nargs='+')
@@ -117,6 +117,9 @@ def main():
         pss_state_remote=REMOTE+'/'+args.run_id+'_'+case+'.periodic.state'
         has_pss_state='writepss=' in body
         body=re.sub(r'writepss="[^"]+"','writepss="'+pss_state_remote+'"',body)
+        # A continuation must never overwrite its predecessor's native checkpoint.
+        native_save_remote=REMOTE+'/'+args.run_id+'_'+case+'.srf'
+        body=re.sub(r'savefile="[^"]+"','savefile="'+native_save_remote+'"',body)
         has_final_state='writefinal=' in body
         native_state_info=None
         periodic_state_info=None
@@ -149,7 +152,9 @@ def main():
             if args.tran_stop:body=re.sub(r'(?<=\bstop=)\S+',args.tran_stop,body)
             if args.transient_reltol:body=re.sub(r'(?<=\breltol=)\S+',args.transient_reltol,body)
             if args.transient_maxstep:body=re.sub(r'(?<=\bmaxstep=)\S+',args.transient_maxstep,body)
-            if args.dense_output:body=body.replace('strobeoutput=strobeonly','strobeoutput=all')
+            if args.dense_output:
+                body=body.replace('strobeoutput=strobeonly','strobeoutput=all')
+                body=re.sub(r'\bskipcount=[0-9]+','skipcount=0',body)
             netlist.write_text(body,encoding='utf-8',newline='\n')
         if args.extra_save:body+='\nsave '+' '.join(args.extra_save)+'\n'
         netlist.write_text(body,encoding='utf-8',newline='\n')
