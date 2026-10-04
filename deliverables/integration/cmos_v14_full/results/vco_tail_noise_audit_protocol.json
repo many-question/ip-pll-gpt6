@@ -1,0 +1,148 @@
+{
+  "scope": "Four fresh-PSS isolated noise-on checks of the measured MT560 candidate.",
+  "time": "2026-10-04T16:56:23.035692+08:00",
+  "cases": [
+    {
+      "group": "tail_bias",
+      "run": "vcotailaudit01",
+      "case": "vco_tail560_only_tail_bias_tt",
+      "tb_sha256": "386928c3c091fd23579c7cf7cf6647eacd7aac7f474e8f0f9f802255ebc170e4"
+    },
+    {
+      "group": "cross_pair",
+      "run": "vcotailaudit01",
+      "case": "vco_tail560_only_cross_pair_tt",
+      "tb_sha256": "ae45e50cd719e500644ce34266ea8c35a77deabfbf92fda7055c7c0a60a8e1f3"
+    },
+    {
+      "group": "inductor",
+      "run": "vcotailaudit01",
+      "case": "vco_tail560_only_inductor_tt",
+      "tb_sha256": "a9cdbd2ab69ec718a6963d2eb5c67081bec7f5bbca6948d2a7af1a92e4d8627f"
+    },
+    {
+      "group": "cap_bank",
+      "run": "vcotailaudit01",
+      "case": "vco_tail560_only_cap_bank_tt",
+      "tb_sha256": "5288a30d0645c8d3d844d155667ddc48a80b1fa28244967b5abe2dc824cb9cba"
+    }
+  ],
+  "group_instances": {
+    "tail_bias": [
+      "XV.XL.MT",
+      "XV.XL.MR",
+      "XV.XL.RREF",
+      "XV.XL.RF",
+      "XV.XL.MA3",
+      "XV.XL.MA4",
+      "XV.XL.MA5",
+      "XV.XL.MA6",
+      "XV.XL.MA7",
+      "XV.XL.ME3",
+      "XV.XL.ME4",
+      "XV.XL.ME5",
+      "XV.XL.ME6",
+      "XV.XL.ME7"
+    ],
+    "cross_pair": [
+      "XV.XL.MN0",
+      "XV.XL.MN1"
+    ],
+    "inductor": [
+      "XV.XL.XP",
+      "XV.XL.XN"
+    ],
+    "cap_bank": [
+      "XV.XBP",
+      "XV.XBN",
+      "XV.CVP",
+      "XV.CVN"
+    ]
+  },
+  "positive_sources": {
+    "tail_bias": [
+      "XV.XL.ME7",
+      "XV.XL.ME6",
+      "XV.XL.ME5",
+      "XV.XL.ME4",
+      "XV.XL.ME3",
+      "XV.XL.MT",
+      "XV.XL.MA7",
+      "XV.XL.MA6",
+      "XV.XL.MA5",
+      "XV.XL.MR",
+      "XV.XL.MA4",
+      "XV.XL.MA3",
+      "XV.XL.RF",
+      "XV.XL.RREF"
+    ],
+    "cross_pair": [
+      "XV.XL.MN1",
+      "XV.XL.MN0"
+    ],
+    "inductor": [
+      "XV.XL.XN.RSN",
+      "XV.XL.XN.RW",
+      "XV.XL.XP.RSN",
+      "XV.XL.XP.RW"
+    ],
+    "cap_bank": [
+      "XV.XBN.MP7",
+      "XV.XBN.MP6",
+      "XV.XBN.MP5",
+      "XV.XBN.MP4",
+      "XV.XBN.MP3",
+      "XV.XBN.MP2",
+      "XV.XBN.MP1",
+      "XV.XBN.MP0",
+      "XV.XBP.MP7",
+      "XV.XBP.MP6",
+      "XV.XBP.MP5",
+      "XV.XBP.MP4",
+      "XV.XBP.MP3",
+      "XV.XBP.MP2",
+      "XV.XBP.MP1",
+      "XV.XBP.MP0",
+      "XV.XBN.M0",
+      "XV.XBP.M0",
+      "XV.XBN.M7",
+      "XV.XBN.M6",
+      "XV.XBN.M5",
+      "XV.XBN.M4",
+      "XV.XBP.M7",
+      "XV.XBP.M6",
+      "XV.XBP.M5",
+      "XV.XBP.M4",
+      "XV.XBN.M3",
+      "XV.XBN.M2",
+      "XV.XBN.M1",
+      "XV.XBP.M3",
+      "XV.XBP.M2",
+      "XV.XBP.M1"
+    ]
+  },
+  "source_validation_sha256": "d3b8f0302b78ff7131ea6de401f5bc4969d337829bdc718e9fb2f134b6705877",
+  "source_validation": "vco_tail_band_validation.json",
+  "source_run": "vcotailband01",
+  "source_case": "vco_tail560_band_finer_tt",
+  "source_tb_sha256": "4115bb16b296a6bfb7f998aac9a19e832119512bdec427c6c52a0f7275a21338",
+  "condition": "TT27/1.2V/Q5RLC/CF40/MT560um2um/c21/control0.7411690577974029V/staticreference/fixedM4/10fF;freshPSS .25ps/127harms/511sidebands;onlyXVnoise.",
+  "offsets_hz": [
+    1000000.0,
+    10000000.0,
+    100000000.0
+  ],
+  "limits": {
+    "max_relative_rf_change": 1e-05,
+    "max_group_psd_difference_db": 0.1,
+    "max_closure_relative_error": 0.001
+  },
+  "main_dut_modified": false,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "Three noise offsets only, no RMS integral.",
+    "All cases recompute PSS. No readpss noise reuse.",
+    "Free VCO with static reference and fixed M4 chain, not the locked PLL or active sampler.",
+    "This validates attribution at the candidate operating point. It does not cure the prior frequency-match failure against CF40."
+  ]
+}

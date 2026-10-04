@@ -1,0 +1,65 @@
+{
+  "scope": "Measure charge partition across the CP pulse; this does not identify leakage.\n\nCurrent is positive into the ideal control clamp. Displacement current and\nmirror settling are included; pulse-low charge is not classified as DC leakage.\n",
+  "condition": "TT27/1.2V, actual reference buffer, sampler, CP, pulser, bias and validity detector; noiseless RF replay 3.936GHz, 24MHz reference, clamp 0.668428925600659V.",
+  "cases": [
+    {
+      "case": "frontend_gain_p180_tt",
+      "phase_deg": 180.0,
+      "source_result": "research/runs/spectre_cmos_v14_full/frontendgain01/frontend_gain_p180_tt/result.json",
+      "source_sha256": "4c9b9dcb56c283fd89f1bb763c8cc773eb58b187e920278a6695654596605ff7",
+      "td_sha256": "370448d27804e99a5b5dcd2d35e385b0793a724056ef929c7d575387f371a25d",
+      "period_s": 4.166666666666666e-08,
+      "pulse_duty": 0.04275946275872798,
+      "mean_current_a": 1.3761198725283683e-07,
+      "total_charge_c": 5.733832802201534e-15,
+      "pulse_high_charge_c": -4.136973175126185e-17,
+      "pulse_low_charge_c": 5.775202533952795e-15,
+      "mean_current_pulse_high_a": -2.3219972796024454e-08,
+      "mean_current_pulse_low_a": 1.4479627159785838e-07,
+      "pulse_weighted_common_mode_v": 0.48718918304304454,
+      "pulse_weighted_differential_v": -0.0417000041757151
+    },
+    {
+      "case": "frontend_root1_tt",
+      "phase_deg": 198.24160283551652,
+      "source_result": "research/runs/spectre_cmos_v14_full/frontendroot01/frontend_root1_tt/result.json",
+      "source_sha256": "144acc2a0cf97c97ec79fae3e9436b1321053c0133fe14b1c0b2246bd1365b2f",
+      "td_sha256": "c0a28e894667a3b11ec459c96fc626e37957bf55cb4d47d7d40e0fce5b7c43e2",
+      "period_s": 4.166666666666666e-08,
+      "pulse_duty": 0.04275946275872806,
+      "mean_current_a": -1.1446878717730813e-08,
+      "total_charge_c": -4.769532799054505e-16,
+      "pulse_high_charge_c": -1.2721024353224144e-16,
+      "pulse_low_charge_c": -3.497430363732087e-16,
+      "mean_current_pulse_high_a": -7.140047249893493e-08,
+      "mean_current_pulse_low_a": -8.768781248177908e-09,
+      "pulse_weighted_common_mode_v": 0.4677627768015269,
+      "pulse_weighted_differential_v": 0.0210819550544484
+    },
+    {
+      "case": "frontend_local1_lo_tt",
+      "phase_deg": 209.11956071579468,
+      "source_result": "research/runs/spectre_cmos_v14_full/frontendlocal01/frontend_local1_lo_tt/result.json",
+      "source_sha256": "779207351df85843ece7c265ab62753ef515f221973cec0a486e9449cddd06ff",
+      "td_sha256": "f118105c39781cf0ce6fce68318cab5f97fdab90e92fb26d13c895a99382983a",
+      "period_s": 4.166666666666666e-08,
+      "pulse_duty": 0.04275946275872806,
+      "mean_current_a": -8.206172531304031e-08,
+      "total_charge_c": -3.4192385547100125e-15,
+      "pulse_high_charge_c": -1.8938273270265712e-16,
+      "pulse_low_charge_c": -3.229855822007356e-15,
+      "mean_current_pulse_high_a": -1.0629660177234122e-07,
+      "mean_current_pulse_low_a": -8.0979165332442e-08,
+      "pulse_weighted_common_mode_v": 0.4579344037961864,
+      "pulse_weighted_differential_v": 0.054297356332627535
+    }
+  ],
+  "figure": "share/deliverables/integration/cmos_v14_full/figures/frontend_charge_partition.png",
+  "full_pll_acceptance": false,
+  "observation": "At phase 180 deg, net charge is positive while charge within the nominal pulse is negative. Internal CP currents and node voltages are required before assigning a cause.",
+  "limitations": [
+    "Pulse threshold is 0.6 V, not a transistor conduction criterion.",
+    "Pulse-low charge is not proof of DC leakage. Mirror dynamics and displacement currents are not separated.",
+    "These are deterministic PSS waveforms, not noise or jitter measurements."
+  ]
+}

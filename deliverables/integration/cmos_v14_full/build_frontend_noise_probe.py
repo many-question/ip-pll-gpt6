@@ -9,6 +9,8 @@ import argparse,datetime,hashlib,json,re
 H=Path(__file__).resolve().parent
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 GROUPS=dict(reference=['XREF'],sampler=['XS'],charge_pump=['XCP'],pulser=['XT'],bias=['XBM','RBP','RBN'],validity=['XDET'])
+CP_OBSERVATIONS=['XCP.nb','XCP.ng','XCP.tail','XCP.mir','XCP.gate','XCP.gateb',
+                 'XCP.MT:d','XCP.MIP:d','XCP.MIN:d','XCP.MPO:d','XCP.MPD:d']
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--round',type=int,choices=[1,2,3],required=True)
@@ -19,6 +21,7 @@ def main():
     source=H/'tb'/(center['case']+'.scs');body=source.read_text();assert 'pnoise' not in body
     if a.group!='all':
         body,n=re.subn(r'^(simulatorOptions options .*)$',lambda m:m[0]+' noiseon_inst=['+' '.join(GROUPS[a.group])+'] noiseon_type=all',body,flags=re.M);assert n==1
+    body+='\nsave '+' '.join(CP_OBSERVATIONS)+'\n'
     body+='\npn pnoise oprobe=VO values=[10k 1M 10M] maxsideband=4095 pnoisemethod=fullspectrum\n'
     case=f'frontend_noise_r{a.round}_{a.group}_tt';dst=H/'tb'/(case+'.scs');assert not dst.exists()
     dst.write_text(body,encoding='utf-8',newline='\n')
@@ -27,7 +30,7 @@ def main():
            source_run=f'frontendlocal0{a.round}',source_tb_sha256=sha(source),tb_sha256=sha(dst),
            condition=v['condition'],control_clamp_v=v['control_clamp_v'],kphi_magnitude_a_per_rf_rad=v['kphi_magnitude_a_per_rf_rad'],
            noise_offsets_hz=[1e4,1e6,1e7],group_instances=GROUPS,balanced_phase_limit_rad=.0005,
-           fresh_pss=True,main_dut_modified=False,full_pll_acceptance=False,
+           fresh_pss=True,extra_observations=CP_OBSERVATIONS,main_dut_modified=False,full_pll_acceptance=False,
            time=datetime.datetime.now().astimezone().isoformat(),
            limitations=v['limitations']+['Current-noise points use a noiseless control clamp. Frequency-dependent loop impedance and LC loading are excluded.',
            'Static Kphi supplies a low-frequency equivalent phase-noise estimate only, not an exact dynamic transfer.',

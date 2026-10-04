@@ -1,0 +1,75 @@
+{
+  "scope": "Check isolated VCO groups against all-noise contributions and sum closure.",
+  "protocol_sha256": "2b215429cd083c19f6818ed8a2c99da8b7c0c8eac6e9d37cb14ebee94212d232",
+  "condition": "TT27/1.2V/Q5RLC/CF40/MT560um2um/c21/control0.7411690577974029V/staticreference/fixedM4/10fF;freshPSS .25ps/127harms/511sidebands;onlyXVnoise.",
+  "offsets_hz": [
+    1000000.0,
+    10000000.0,
+    100000000.0
+  ],
+  "cases": [
+    {
+      "group": "tail_bias",
+      "case": "vco_tail560_only_tail_bias_tt",
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/vcotailaudit01/vco_tail560_only_tail_bias_tt/result.json",
+      "source_sha256": "f79a9be47a4119e2440e2ddf9226e30131d93ec8d3d5f5c2667d2fb19b203820",
+      "simulation_passed": true,
+      "physical_comparison_verified": true,
+      "rf_hz": 3934162613.8161,
+      "relative_rf_change": -2.4295767619975095e-08,
+      "periodic_passed": true,
+      "endpoint_max_v": 4.613843906930981e-08,
+      "dominant_harmonics": {
+        "vp": 4,
+        "vn": 4,
+        "clk": 4,
+        "q1": 2,
+        "data": 1,
+        "out": 1
+      },
+      "rf_carrier_peak_v": 0.8439858160763664,
+      "psd_comparison_db": [
+        1.659111283106621e-05,
+        1.4039122595037938e-05,
+        1.35936463276483e-05
+      ],
+      "passed": true,
+      "timing_psd_s2_per_hz": [
+        5.7911135246371e-33,
+        3.859661281344522e-35,
+        3.5304469314203214e-37
+      ],
+      "excluded_noise_fraction": 0.0,
+      "device_sum_relative_error": 2.220446049250313e-16,
+      "noise_sha256": "69aa44db0877b0ea702830ac704f685a0f0c9a1285df8e677d27f1046d178e57",
+      "td_sha256": "31b4fd1c3c96d9ee4b3de2bdb36299cc4360ad07999002ed781d81143d287240",
+      "fd_sha256": "d0a36100b1ec514af7b746117c202531d1d88d0ea5ef54c85cc2e471b64a01b9"
+    },
+    {
+      "group": "cross_pair",
+      "case": "vco_tail560_only_cross_pair_tt",
+      "completed": false
+    },
+    {
+      "group": "inductor",
+      "case": "vco_tail560_only_inductor_tt",
+      "completed": false
+    },
+    {
+      "group": "cap_bank",
+      "case": "vco_tail560_only_cap_bank_tt",
+      "completed": false
+    }
+  ],
+  "complete": false,
+  "passed": false,
+  "integrated_jitter_fs": null,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "Three noise offsets only, no RMS integral.",
+    "All cases recompute PSS. No readpss noise reuse.",
+    "Free VCO with static reference and fixed M4 chain, not the locked PLL or active sampler.",
+    "This validates attribution at the candidate operating point. It does not cure the prior frequency-match failure against CF40."
+  ]
+}

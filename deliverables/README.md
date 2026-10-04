@@ -1,4 +1,4 @@
-本次快照：[第49次汇报](../reports/2026-10-04T1650.yaml)。VCO尾管候选的高偏移RMS由165.6fs降至154.5fs，但载频/精度限制仍需处理；当前采样前端已找到待细化的负反馈工作区。整机<200fs仍未知。
+本次快照：[第50次汇报](../reports/2026-10-04T1719.yaml)。VCO基线六点精度检查通过，独立noise-on已开始验证器件归因；前端重新定位实测平衡点并发现需检查的脉冲外电荷。整机<200fs仍未验证。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

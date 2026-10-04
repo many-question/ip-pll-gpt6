@@ -7,9 +7,10 @@ sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--round',type=int,choices=[1,2,3],default=1)
-    ap.add_argument('--half-width-deg',type=float,default=5.);a=ap.parse_args()
+    ap.add_argument('--half-width-deg',type=float,default=5.);ap.add_argument('--source-validation',help='An explicit measured-bracket JSON basename under results/');a=ap.parse_args()
     assert 0<a.half_width_deg<=15
-    proof=H/'results'/('frontend_gain_validation.json' if a.round==1 else f'frontend_local_gain{a.round-1}_validation.json')
+    if a.source_validation:assert Path(a.source_validation).name==a.source_validation and a.source_validation.endswith('.json')
+    proof=H/'results'/(a.source_validation or ('frontend_gain_validation.json' if a.round==1 else f'frontend_local_gain{a.round-1}_validation.json'))
     v=json.loads(proof.read_text());assert v['complete'] and v['periodic_all_passed']
     assert v['unique_negative_feedback_branch'];phase=v['proposed_phase_deg'];assert phase is not None
     # An immutable protocol records the exact previous validation used to pick

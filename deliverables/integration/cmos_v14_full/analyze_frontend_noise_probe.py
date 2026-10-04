@@ -4,12 +4,16 @@ import argparse,hashlib,json,re
 import numpy as np
 from analyze_frontend_gain import measurement
 from noise_utils import parse,devices,selected_device_components
+from build_frontend_noise_probe import CP_OBSERVATIONS
 
 H=Path(__file__).resolve().parent;ROOT=H.parents[3];R=ROOT/'research/runs/spectre_cmos_v14_full'
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 
 def normalize(s):
     s=re.sub(r'^pn pnoise .*\n','',s,flags=re.M).strip()
+    observation_line='save '+' '.join(CP_OBSERVATIONS)
+    assert s.splitlines().count(observation_line)<=1
+    s='\n'.join(line for line in s.splitlines() if line!=observation_line).strip()
     s=re.sub(r'\s+noiseon_inst=\[[^]]+\]\s+noiseon_type=all','',s)
     return re.sub(r'\b(writefinal|writepss)="[^"]+"',r'\1="STATE"',s)
 
