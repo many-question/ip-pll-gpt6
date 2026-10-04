@@ -67,3 +67,11 @@
 下一项控制使用实际RT4晶体管电路：[协议](results/retimer_transient_noise_protocol.json)。物理电路、理想时钟/数据和10fF负载与已验证的TT sampled-PNoise一致。先保存100ns无噪声原生瞬态状态，再运行0.5ps/0.25ps无噪声对照；只有两个数值底噪均低于5fs才开启器件噪声。噪声分支比较80/160GHz源带宽、0.5/0.25ps步长和两个种子。测量取200ns之后2048个相邻输出上升沿，与细步长无噪声边沿逐一配对；以边沿序号均匀采样做单边频谱积分。实际FFT格点单元覆盖5.044921875–492MHz，PNoise也积分到同一频带。该短记录不能覆盖10kHz，也不能代替完整PLL。
 
 边沿频谱算法已通过[独立解析校验](results/retimer_transient_noise_spectral_selfcheck.json)：已知正弦和Nyquist分量的总方差误差约7e−15；2048组白噪声样本的平均方差误差−0.0462%，落在统计误差内。该结果验证单边谱归一化和Nyquist计数，不是器件噪声测试结果。实际RT4结果只以已完成的运行及独立验证文件为准。
+
+## RT4首次开启噪声后的数值恢复事件
+
+80GHz源带宽、0.5ps步长、种子11的首例实际MOS噪声已完成。5.044921875–492MHz的诊断RMS为48.9816fs，比同带PNoise的53.3243fs低8.1438%；这个数值虽然落在原10%幅度比较门限内，**仍未通过**，因为日志记录了Newton灾难恢复和跳过时间断点。零终态错误数不能抵消这些数值异常。分析器现将它们作为独立验收失败条件，保留原始数据及计算值，不将该结果用于指标达标声明。见[冻结的首例结果](results/retimer_transient_noise_first_on_validation.json)。
+
+[时间定位](results/retimer_transient_noise_recovery_diagnosis.json)发现，打印的五个跳过断点均与6.25ps候选噪声更新网格在日志舍入精度内重合，其中四个距理想时钟转折点约38–56ps。这支持先检查噪声生成与求解器交互的假设，不能证明内部实现或排除其它根因。打印次数受到日志抑制限制，不是实际事件总数。既有160GHz及0.25ps对照继续检查此问题，不再只按RMS是否接近判定。
+
+本机21.1帮助列出 `trannoisemethod=default/adaptive`。[Cadence关于该选项的说明](https://community.cadence.com/cadence_technology_forums/f/custom-ic-design/55346/spectre-what-is-the-purpose-of-the-trannoisemethod-parameter)针对相近21.1版本指出当时尚未完整公开其细节。因此该选项至多是后续单独数值试验的候选，不能预先声称能修复本例，也不能绕过物理电路相同、数值底噪和噪声幅度交叉核对。访问日期：2026-10-04。

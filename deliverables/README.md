@@ -1,4 +1,4 @@
-本次快照：[第61次汇报](../reports/2026-10-04T2326.yaml)。前端三组独立noise-on通过，采样器器件归因完成；RC精度控制通过3%门限，实际CMOS瞬态抖动交叉验证通过无噪声底噪检查。整环抖动仍未验收。
+本次快照：[第62次汇报](../reports/2026-10-04T2335.yaml)。首次实际RT4瞬态噪声得到约49fs的带内诊断值，但发生数值恢复，未予验收；已补上日志异常判据并定位到噪声更新网格线索。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

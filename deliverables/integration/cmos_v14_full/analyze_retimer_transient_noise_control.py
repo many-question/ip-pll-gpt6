@@ -49,7 +49,14 @@ def main():
         r = json.loads(rp.read_text())
         if not r.get('local_outputs_sha256'):
             continue
-        assert r['ok'] and r['remote_inputs_match'] and 'spectre completes with 0 errors' in (j/'spectre.out').read_text()
+        log = (j/'spectre.out').read_text()
+        assert r['ok'] and r['remote_inputs_match'] and 'spectre completes with 0 errors' in log
+        # A zero terminal error count does not certify the recovered trajectory.
+        # Preserve its measured jitter for diagnosis but exclude it from acceptance.
+        recovery = dict(newton_failures_reported=log.count('Newton iteration fails to converge'),
+            skipped_breakpoints_reported=log.count('SPECTRE-17087'),
+            counts_may_be_suppressed='Further occurrences of this' in log)
+        clean = not (recovery['newton_failures_reported'] or recovery['skipped_breakpoints_reported'])
         assert all(sha(j/'inputs'/k)==v for k, v in r['inputs_sha256'].items())
         assert {k:v for k,v in r['inputs_sha256'].items() if k!=c['case']+'.scs'}==p['dependencies_sha256']
         body = (j/'inputs'/(c['case']+'.scs')).read_text(); assert physical(body)==physical(reference)
@@ -69,10 +76,16 @@ def main():
         edge_sets[c['run']] = e
         row.update(completed=True, source_result=rp.relative_to(ROOT).as_posix(), source_sha256=sha(rp),
                    raw_cache_sha256=sha(cache), source_bandwidth_hz=c['noisefmax'], maxstep=c['maxstep'],
-                   seed=c['noiseseed'], native_sha256=native['sha256'])
+                   seed=c['noiseseed'], native_sha256=native['sha256'],
+                   simulator_log_sha256=sha(j/'spectre.out'), numerical_recovery=recovery,
+                   numerically_clean=clean, eligible_for_noise_acceptance=clean)
     complete = all(c['completed'] for c in rows)
-    out = dict(scope=__doc__, protocol_sha256=sha(pp), condition=p['condition'], cases=rows, complete=complete,
+    out = dict(scope=__doc__, protocol_sha256=sha(pp), source_pnoise_condition=p['condition'],
+               condition='TT27/1.2V/actualRT4/984MHz/10fF; ideal3.936GHzclock and984MHzdata. Native transient branches; noise bandwidth and step are listed per case.',
+               cases=rows, complete=complete,
                passed=False, full_pll_acceptance=False, main_dut_modified=False, limitations=p['limitations'])
+    out['limitations'] = out['limitations'] + [
+        'Newton disaster recovery or skipped breakpoints invalidate noise acceptance even when Spectre finishes with zero terminal errors; the measured numbers remain diagnostic.']
     base_name = 'rttrannoiseoff025'
     if base_name in edge_sets:
         base = edge_sets[base_name]; base = base[base>=p['measurement_start_s']][:p['edge_count']]
@@ -105,7 +118,8 @@ def main():
             changes = dict(bandwidth_160g_vs_80g=rms('160g05')/rms('80g05')-1,
                 step_025_vs_05_at_160g=rms('160g025')/rms('160g05')-1,
                 seed29_vs_11=rms('160g025s29')/rms('160g025')-1)
-            checks = dict(noiseless_schedule=all(r['noiseless_schedule_rms_fs']<p['gate']['noiseless_edge_rms_fs'] for r in rows[:2]),
+            checks = dict(no_solver_recovery=all(r['numerically_clean'] for r in rows),
+                noiseless_schedule=all(r['noiseless_schedule_rms_fs']<p['gate']['noiseless_edge_rms_fs'] for r in rows[:2]),
                 deterministic_step_floor=rms('off05')<p['gate']['noiseless_step_difference_rms_fs'],
                 finer_seed11=abs(byrun['rttrannoise160g025']['rms_relative_to_pnoise'])<p['gate']['noise_rms_relative_pnoise_error'],
                 finer_seed29=abs(byrun['rttrannoise160g025s29']['rms_relative_to_pnoise'])<p['gate']['noise_rms_relative_pnoise_error'],

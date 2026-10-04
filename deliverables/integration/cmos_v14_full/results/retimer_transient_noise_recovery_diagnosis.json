@@ -1,0 +1,66 @@
+{
+  "scope": "Locate reported RT4 solver recovery events against source time grids.",
+  "validation_sha256": "60175b4594fd26aec087fb9cdcd27497a0707dd0126650705ac90226b8625712",
+  "source_result_sha256": "132bb95025db2887b88468924036fbe8bae50156f015971c0096cb2966e0e733",
+  "simulator_log_sha256": "ba8ae5848d500198181773596060784ce7c8505042b2b2abe2d5b2f9ed712e40",
+  "source_bandwidth_hz": 80000000000.0,
+  "candidate_noise_update_grid_s": 6.25e-12,
+  "events": [
+    {
+      "logged_time_s": 1.0373800000000001e-07,
+      "printed_resolution_s": 1.0000000000000002e-12,
+      "noise_grid_distance_s": 5.000000000138018e-13,
+      "noise_grid_within_rounding": true,
+      "clock_breakpoint_distance_s": 4.756910569104076e-11,
+      "data_breakpoint_distance_s": 3.946341463416221e-11
+    },
+    {
+      "logged_time_s": 1.89106e-07,
+      "printed_resolution_s": 1.0000000000000002e-12,
+      "noise_grid_distance_s": 2.500000000069009e-13,
+      "noise_grid_within_rounding": true,
+      "clock_breakpoint_distance_s": 4.542276422763556e-11,
+      "data_breakpoint_distance_s": 4.1609756097567414e-11
+    },
+    {
+      "logged_time_s": 2.7651200000000003e-07,
+      "printed_resolution_s": 1.0000000000000002e-12,
+      "noise_grid_distance_s": 4.999999999608623e-13,
+      "noise_grid_within_rounding": true,
+      "clock_breakpoint_distance_s": 3.7796747967434544e-11,
+      "data_breakpoint_distance_s": 4.923577235776843e-11
+    },
+    {
+      "logged_time_s": 3.1714400000000005e-07,
+      "printed_resolution_s": 1.0000000000000002e-12,
+      "noise_grid_distance_s": 2.500000000598405e-13,
+      "noise_grid_within_rounding": true,
+      "clock_breakpoint_distance_s": 5.62032520324576e-11,
+      "data_breakpoint_distance_s": 3.0829268292745373e-11
+    },
+    {
+      "logged_time_s": 3.2533100000000004e-07,
+      "printed_resolution_s": 1.0000000000000002e-12,
+      "noise_grid_distance_s": 2.4999999995396137e-13,
+      "noise_grid_within_rounding": true,
+      "clock_breakpoint_distance_s": 7.15447154527097e-13,
+      "data_breakpoint_distance_s": 8.774796747973007e-11
+    }
+  ],
+  "all_printed_events_on_grid_within_rounding": true,
+  "printed_counts_are_lower_bounds": true,
+  "observed_band_rms_fs": 48.98164378280104,
+  "reference_pnoise_rms_fs": 53.32428886728135,
+  "observed_rms_relative_error": -0.0814384059633445,
+  "accepted": false,
+  "inference": "Printed skipped breakpoints align with the candidate noise-source update grid. This suggests investigating noise generation/solver interaction before blaming device sizing. Alignment alone does not prove the internal algorithm or the physical root cause.",
+  "next_checks": [
+    "Complete the already owned source-bandwidth and timestep controls; inspect recovery events in every case.",
+    "If recovery persists, use a separate controlled tolerance or noise-algorithm experiment with the physical DUT fixed; recheck noise-off floor and PNoise agreement."
+  ],
+  "limitations": [
+    "Only five warnings are printed before suppression; their timing is rounded.",
+    "A zero terminal error count and an RMS within the original10% comparison gate do not clear numerical recovery.",
+    "No full10kHz-fOUT/2 or fullPLL jitter acceptance."
+  ]
+}
