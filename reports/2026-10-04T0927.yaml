@@ -1,0 +1,623 @@
+schema: chip-report/0.1
+report:
+  seq: 39
+  time: '2026-10-04T09:27:40+08:00'
+  trigger: proactive
+  covers_since: '2026-10-04T08:24:14+08:00'
+overall:
+  phase: 识别数值振铃并继续实际噪声验证
+  summary: 新分频器RT4六点噪声改善保持；已识别随步长移动的梯形法电流振铃，开始方法单变量PSS验证。RT4真实加载失谐及LF初态失配已量化，CF40延长稳定检查继续。整机随机RMS仍未知，功耗优化暂缓。
+  since_last:
+  - 修复后分频器RT2/RT4六偏移点均完成；周期、支路、六沿、端点及器件PSD求和通过。RT4相对RT2低2.895–3.194dB；RT4新旧分频器变化−0.0080至+0.0117dB，RT2最大+0.0250dB。新RT4全带10k–492MHz及25个谐波邻近点正在运行，尚无RMS结果。
+  - 四组20ns实际MOS数值对照完成：梯形1ps/0.5ps的RX电流高频峰由约505GHz移到997GHz；Gear2没有相应分量。按0.125ps重采样，RT电流100–1500GHz能量占比分别0.4933%、2.3397%、0.0008335%、0.0008134%。这是确定性数值振铃证据，不是器件噪声或抖动。
+  - 仅改变周期边界的PSS五轮残差7.68M/262k/335k/1.17M/4.87M，仍无周期解。09:05精确SIGINT后SPECTRE18，2.187GB稳定段已回收并校验；保留负结果，不证明无周期解。
+  - 已准备并排定方法单变量PSS：只改tstab及shooting积分方法为gear2only，其他电路、实际初态、1ps及容差保持；接替RT4边界点的长槽位。当前状态：running。六点不能积分为RMS，收敛后仍须步长与器件PSD复核。
+  - RT4四控制点完成，0.2V点有效性True、RF3936.871922MHz；目标包围状态False。实际触发器D接口码23/24对照已启动，保留同接口控制，不外推或改写动态状态冒充捕获。
+  - 40/80/120fF互补采样负载均完成，固定控制输出24MHz确定性PM降低14.327/13.484/8.287dB。40fF在0.657999/0.85/1V的RF为3.913863/3.924146/3.937316GHz，插值预测0.985014V，尚未实测回代。优先噪声，本轮不继续扩大杂散支线。
+  - 调谐扫描残留LF储能：RT4下调100/250mV后C1与控制相差35.357/88.432mV；40fF上调至0.85V后差−67.980mV。钳位频率有效，但撤钳位前必须实际预充或稳定，不能直接据此判闭环失败。
+  - CF40已使用自身真实3us终态启动额外6us实际闭环稳定检查，尚无完成结果；先前只有相位漂移未通过门限，独立VCO低偏移改善不能替代实际PLL噪声。
+  - 严格64us完整PLL在2026-10-04T09:17:29.662197+08:00观测到54.790us，coarse23/DAC36/state5、主环已接管、qualified仍低；只是进度，不是最终锁定结果。
+  route_confidence: medium
+  route_confidence_reason: 局部器件噪声和数值振铃有独立对照；真实LC周期解、整机RMS及候选闭环工作点仍未关闭。此信心针对诊断方向，不代表指标达标。
+levels:
+  survey:
+    maturity: 3
+    note: 保护文档与已确认需求保持；使用安装Spectre帮助中梯形振铃和Gear人工阻尼的说明，配合实测方法/步长矩阵选择一次对照。功耗及后端暂缓，杂散频带仍待确认。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_39.md
+    - share/deliverables/integration/cmos_v14_full/CORE_METHOD_DIAGNOSIS.md
+    - share/deliverables/integration/cmos_v14_full/results/core_method_probe_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/core_quiet_trial_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/core_gear_trial_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt_pulsetrip_noise_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_loading_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/sampler_tuning_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/core_cf40_settle_protocol.json
+  modeling:
+    maturity: 3
+    note: 四组20ns实际MOS数值对照完成：梯形1ps/0.5ps的RX电流高频峰由约505GHz移到997GHz；Gear2没有相应分量。按0.125ps重采样，RT电流100–1500GHz能量占比分别0.4933%、2.3397%、0.0008335%、0.0008134%。这是确定性数值振铃证据，不是器件噪声或抖动。调谐扫描残留LF储能：RT4下调100/250mV后C1与控制相差35.357/88.432mV；40fF上调至0.85V后差−67.980mV。钳位频率有效，但撤钳位前必须实际预充或稳定，不能直接据此判闭环失败。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_39.md
+    - share/deliverables/integration/cmos_v14_full/CORE_METHOD_DIAGNOSIS.md
+    - share/deliverables/integration/cmos_v14_full/results/core_method_probe_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/core_quiet_trial_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/core_gear_trial_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt_pulsetrip_noise_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_loading_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/sampler_tuning_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/core_cf40_settle_protocol.json
+  architecture:
+    maturity: 2
+    note: 主PLL及各候选的采用状态保持。修复后分频器RT2/RT4六偏移点均完成；周期、支路、六沿、端点及器件PSD求和通过。RT4相对RT2低2.895–3.194dB；RT4新旧分频器变化−0.0080至+0.0117dB，RT2最大+0.0250dB。新RT4全带10k–492MHz及25个谐波邻近点正在运行，尚无RMS结果。RT4四控制点完成，0.2V点有效性True、RF3936.871922MHz；目标包围状态False。实际触发器D接口码23/24对照已启动，保留同接口控制，不外推或改写动态状态冒充捕获。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_39.md
+    - share/deliverables/integration/cmos_v14_full/CORE_METHOD_DIAGNOSIS.md
+    - share/deliverables/integration/cmos_v14_full/results/core_method_probe_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/core_quiet_trial_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/core_gear_trial_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt_pulsetrip_noise_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_loading_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/sampler_tuning_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/core_cf40_settle_protocol.json
+  blocks:
+  - name: reference_buffer
+    role: 24 MHz 参考整形
+    stage: circuit
+    maturity: 2
+    note: MOS接入完整DUT。新36µs保持测试参考10–90%边沿约199.8/182.3ps；裁剪噪声核心恢复同型粗调DFF及1.9pF补载后约198.7/176.3ps。独立输入范围、噪声和完整PVT尚未验收。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/results/full_metrics.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_completecold05.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_diagnosis.json
+    - share/deliverables/integration/cmos_v14_full/results/full_dut_consistency.json
+    - share/deliverables/integration/cmos_v14_full/results/bank_tb_consistency.json
+    - share/deliverables/integration/cmos_v14_full/results/chain_noise_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/chain_probe_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/chain_alias_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/vco_noise_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/raw_manifest.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_repaircold01.json
+    - share/deliverables/integration/cmos_v14_full/results/precision_diagnostics.json
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_PROGRESS.md
+    - share/deliverables/integration/cmos_v14_full/results/core_preflight_validation.json
+    - share/deliverables/integration/cmos_v14_full/REPAIR.md
+    - share/deliverables/integration/cmos_v14_full/SS_TIMING.md
+    - share/deliverables/integration/cmos_v14_full/results/repair_retention.json
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_38.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_39.md
+    blockers: []
+  - name: subsampling_detector
+    role: 直接采样差分 VCO 并鉴相
+    stage: circuit
+    maturity: 2
+    note: 主MOS采样器已实现，五个负载隔离对照已通过。40/80/120fF互补采样负载均完成，固定控制输出24MHz确定性PM降低14.327/13.484/8.287dB。40fF在0.657999/0.85/1V的RF为3.913863/3.924146/3.937316GHz，插值预测0.985014V，尚未实测回代。优先噪声，本轮不继续扩大杂散支线。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/results/full_metrics.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_completecold05.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_diagnosis.json
+    - share/deliverables/integration/cmos_v14_full/results/full_dut_consistency.json
+    - share/deliverables/integration/cmos_v14_full/results/bank_tb_consistency.json
+    - share/deliverables/integration/cmos_v14_full/results/chain_noise_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/chain_probe_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/chain_alias_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/vco_noise_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/raw_manifest.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_repaircold01.json
+    - share/deliverables/integration/cmos_v14_full/results/precision_diagnostics.json
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_PROGRESS.md
+    - share/deliverables/integration/cmos_v14_full/results/core_preflight_validation.json
+    - share/deliverables/integration/cmos_v14_full/REPAIR.md
+    - share/deliverables/integration/cmos_v14_full/SS_TIMING.md
+    - share/deliverables/integration/cmos_v14_full/results/repair_retention.json
+    - share/deliverables/integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md
+    - share/deliverables/integration/cmos_v14_full/results/sampler_loading_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/sampler_dummy_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/sampler_loading_validation.json
+    - share/deliverables/integration/cmos_v14_full/analyze_sampler_dummy.py
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_38.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_39.md
+    blockers: []
+  - name: transconductor_charge_pump
+    role: 采样误差转电流及增益控制
+    stage: circuit
+    maturity: 2
+    note: MOS CP及电阻馈电偏置，实际MOS脉冲下参与完整TT保持。CP增益、失配、逐模块闭环noise-on和全PVT尚未完成。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/results/full_metrics.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_completecold05.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_diagnosis.json
+    - share/deliverables/integration/cmos_v14_full/results/full_dut_consistency.json
+    - share/deliverables/integration/cmos_v14_full/results/bank_tb_consistency.json
+    - share/deliverables/integration/cmos_v14_full/results/chain_noise_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/chain_probe_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/chain_alias_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/vco_noise_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/raw_manifest.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_repaircold01.json
+    - share/deliverables/integration/cmos_v14_full/results/precision_diagnostics.json
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_PROGRESS.md
+    - share/deliverables/integration/cmos_v14_full/results/core_preflight_validation.json
+    - share/deliverables/integration/cmos_v14_full/REPAIR.md
+    - share/deliverables/integration/cmos_v14_full/SS_TIMING.md
+    - share/deliverables/integration/cmos_v14_full/results/repair_retention.json
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_38.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_39.md
+    blockers: []
+  - name: passive_loop_filter
+    role: 环路滤波与稳定性
+    stage: circuit
+    maturity: 2
+    note: R/C网络与MOS预置开关，参与完整TT捕获及36µs保持。工艺无源几何、容差、面积和PEX未完成；核心稳定段漂移不当作随机抖动。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/README.md
+    - share/deliverables/integration/cmos_v14_full/results/validation.json
+    - share/deliverables/integration/cmos_v14_full/results/raw_manifest.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_repaircold01.json
+    - share/deliverables/integration/cmos_v14_full/results/precision_diagnostics.json
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_PROGRESS.md
+    - share/deliverables/integration/cmos_v14_full/results/core_preflight_validation.json
+    - share/deliverables/integration/cmos_v14_full/REPAIR.md
+    - share/deliverables/integration/cmos_v14_full/SS_TIMING.md
+    - share/deliverables/integration/cmos_v14_full/results/repair_retention.json
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_38.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_39.md
+    blockers: []
+  - name: lc_vco_and_cap_bank
+    role: 2.688–3.936 GHz 振荡、粗调和模拟细调
+    stage: circuit
+    maturity: 2
+    note: 实际MOS偏置、PDK变容、暂定Q5 RLC；CF40及4.8fF尚未采用。四组20ns实际MOS数值对照完成：梯形1ps/0.5ps的RX电流高频峰由约505GHz移到997GHz；Gear2没有相应分量。按0.125ps重采样，RT电流100–1500GHz能量占比分别0.4933%、2.3397%、0.0008335%、0.0008134%。这是确定性数值振铃证据，不是器件噪声或抖动。已准备并排定方法单变量PSS：只改tstab及shooting积分方法为gear2only，其他电路、实际初态、1ps及容差保持；接替RT4边界点的长槽位。当前状态：running。六点不能积分为RMS，收敛后仍须步长与器件PSD复核。CF40已使用自身真实3us终态启动额外6us实际闭环稳定检查，尚无完成结果；先前只有相位漂移未通过门限，独立VCO低偏移改善不能替代实际PLL噪声。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/results/full_metrics.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_completecold05.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_diagnosis.json
+    - share/deliverables/integration/cmos_v14_full/results/full_dut_consistency.json
+    - share/deliverables/integration/cmos_v14_full/results/bank_tb_consistency.json
+    - share/deliverables/integration/cmos_v14_full/results/chain_noise_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/chain_probe_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/chain_alias_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/vco_noise_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/raw_manifest.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_repaircold01.json
+    - share/deliverables/integration/cmos_v14_full/results/precision_diagnostics.json
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/results/core_preflight_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/core_register_protocol.json
+    - share/deliverables/integration/cmos_v14_full/REPAIR.md
+    - share/deliverables/integration/cmos_v14_full/SS_TIMING.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_PROGRESS.md
+    - share/deliverables/integration/cmos_v14_full/results/repair_retention.json
+    - share/deliverables/integration/cmos_v14_full/results/range_extension_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/vco_bias_noise_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/vco_bias_noise_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/vco_tail_noise_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/figures/vco_bias_noise.png
+    - share/deliverables/integration/cmos_v14_full/results/vco_tail_noise_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/vco_bias_startup_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/core_reference_modulation.json
+    - share/deliverables/integration/cmos_v14_full/results/core_noise_candidates_validation.json
+    - share/deliverables/integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md
+    - share/deliverables/integration/cmos_v14_full/results/sampler_loading_validation.json
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_38.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_39.md
+    blockers: []
+  - name: auxiliary_fll
+    role: 启动捕获和正确谐波选择
+    stage: circuit
+    maturity: 3
+    note: 最佳实测码算法为MOS；TT27/SS60/FF0独立数字功能TB通过，完整4ps复位已有粗调23/DAC38交接。36µs保持未重启；全程1ps复位64µs仍在运行，33点及完整角落捕获未验收。
+    artifacts:
+    - share/deliverables/blocks/cmos_v14_full/fll_best128_v14.v
+    - share/deliverables/blocks/cmos_v14_full/fll_best128_v14.scs
+    - share/deliverables/integration/cmos_v14_full/results/capture_repair_units.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_repair_consistency.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_repaircold01.json
+    - share/deliverables/integration/cmos_v14_full/results/precision_diagnostics.json
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/REPAIR.md
+    - share/deliverables/integration/cmos_v14_full/SS_TIMING.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_PROGRESS.md
+    - share/deliverables/integration/cmos_v14_full/results/repair_retention.json
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_38.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_39.md
+    blockers: []
+  - name: programmable_even_divider
+    role: 可编程÷4/6/8/10/12/14 CMOS分频
+    stage: circuit
+    maturity: 2
+    note: 新候选尚未采用到主PLL。连续时钟分频候选新增端口批次17/17完成并通过，含五个SS低RF、六个TT高RF及六个FF高RF；结合此前SS高RF，共11个不同SS规划端点通过。固定SS形状零阻抗RF重放，不替代实际LC全频率/PVT/整机。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/results/bank_tb_consistency.json
+    - share/deliverables/integration/cmos_v14_full/results/ss_clock_repair.json
+    - share/deliverables/integration/cmos_v14_full/results/figures/ss_clock_diagnosis.png
+    - share/deliverables/integration/cmos_v14_full/REPAIR.md
+    - share/deliverables/integration/cmos_v14_full/results/capture_repaircold01.json
+    - share/deliverables/integration/cmos_v14_full/results/precision_diagnostics.json
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/SS_TIMING.md
+    - share/deliverables/integration/cmos_v14_full/results/ss_window_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/ss_candidate_regression.json
+    - share/deliverables/integration/cmos_v14_full/results/ss_rf_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/ss_feedback_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/ss_restore_validation.json
+    - share/deliverables/integration/cmos_v14_full/NOISE_PROGRESS.md
+    - share/deliverables/integration/cmos_v14_full/results/repair_retention.json
+    - share/deliverables/integration/cmos_v14_full/results/ss_waveform_replay.json
+    - share/deliverables/integration/cmos_v14_full/results/ss_clock_buffer_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/ss_level_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/ss_clock_taper_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/ss_ungated_clock_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/ss_pulse_restore_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/ss_settled_pulse_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/ss_window_sensitivity.json
+    - share/deliverables/integration/cmos_v14_full/results/core_pulsetrip_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/bank_pulsetrip_corner_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/bank_pulsetrip_corner_validation.json
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_38.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_39.md
+    blockers:
+    - 实际LC全模式、整机代回、重配置与完整PVT仍未完成。
+  - name: output_retimer
+    role: 利用 VCO 派生时钟重定时
+    stage: circuit
+    maturity: 2
+    note: MOS实现；旧局部原/RT2/RT4暂定141.281/90.867/63.275fs保留原边界；旧RT2/RT4五组fresh noise-on已闭合。修复后分频器RT2/RT4六偏移点均完成；周期、支路、六沿、端点及器件PSD求和通过。RT4相对RT2低2.895–3.194dB；RT4新旧分频器变化−0.0080至+0.0117dB，RT2最大+0.0250dB。新RT4全带10k–492MHz及25个谐波邻近点正在运行，尚无RMS结果。RT4四控制点完成，0.2V点有效性True、RF3936.871922MHz；目标包围状态False。实际触发器D接口码23/24对照已启动，保留同接口控制，不外推或改写动态状态冒充捕获。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/results/full_metrics.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_completecold05.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_diagnosis.json
+    - share/deliverables/integration/cmos_v14_full/results/full_dut_consistency.json
+    - share/deliverables/integration/cmos_v14_full/results/bank_tb_consistency.json
+    - share/deliverables/integration/cmos_v14_full/results/chain_noise_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/chain_probe_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/chain_alias_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/vco_noise_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/raw_manifest.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_repaircold01.json
+    - share/deliverables/integration/cmos_v14_full/results/precision_diagnostics.json
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_PROGRESS.md
+    - share/deliverables/integration/cmos_v14_full/results/core_preflight_validation.json
+    - share/deliverables/integration/cmos_v14_full/REPAIR.md
+    - share/deliverables/integration/cmos_v14_full/SS_TIMING.md
+    - share/deliverables/integration/cmos_v14_full/results/repair_retention.json
+    - share/deliverables/integration/cmos_v14_full/build_rt_noise_scaling.py
+    - share/deliverables/integration/cmos_v14_full/results/rt_noise_scaling_protocol.json
+    - share/deliverables/integration/cmos_v14_full/analyze_rt_noise_scaling.py
+    - share/deliverables/integration/cmos_v14_full/run_rt_noise_gates.py
+    - share/deliverables/integration/cmos_v14_full/results/rt_noise_scaling_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/rt_noise_controls.json
+    - share/deliverables/integration/cmos_v14_full/results/rt2_precision_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt2_fine_audit_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt2_precision_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fine_audit_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_precision_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/rt_slew_tradeoff.json
+    - share/deliverables/integration/cmos_v14_full/results/core_noise_candidates_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt2_fine_audit_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/local_chain_spur_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fine_audit_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/core_noise_candidates_validation.json
+    - share/deliverables/integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md
+    - share/deliverables/integration/cmos_v14_full/results/core_candidate_dynamics.json
+    - share/deliverables/integration/cmos_v14_full/results/rt_fullband_precision_protocol.json
+    - share/deliverables/integration/cmos_v14_full/NOISE_CIRCUIT_MAPPING.md
+    - share/deliverables/integration/cmos_v14_full/results/rt_pulsetrip_noise_protocol.json
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_38.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_39.md
+    blockers: []
+  - name: output_buffer
+    role: 驱动片内轻负载
+    stage: circuit
+    maturity: 2
+    note: MOS实现；旧局部原/RT2/RT4暂定141.281/90.867/63.275fs保留原边界；旧RT2/RT4五组fresh noise-on已闭合。修复后分频器RT2/RT4六偏移点均完成；周期、支路、六沿、端点及器件PSD求和通过。RT4相对RT2低2.895–3.194dB；RT4新旧分频器变化−0.0080至+0.0117dB，RT2最大+0.0250dB。新RT4全带10k–492MHz及25个谐波邻近点正在运行，尚无RMS结果。RT4四控制点完成，0.2V点有效性True、RF3936.871922MHz；目标包围状态False。实际触发器D接口码23/24对照已启动，保留同接口控制，不外推或改写动态状态冒充捕获。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/results/full_metrics.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_completecold05.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_diagnosis.json
+    - share/deliverables/integration/cmos_v14_full/results/full_dut_consistency.json
+    - share/deliverables/integration/cmos_v14_full/results/bank_tb_consistency.json
+    - share/deliverables/integration/cmos_v14_full/results/chain_noise_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/chain_probe_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/chain_alias_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/vco_noise_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/raw_manifest.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_repaircold01.json
+    - share/deliverables/integration/cmos_v14_full/results/precision_diagnostics.json
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_PROGRESS.md
+    - share/deliverables/integration/cmos_v14_full/results/core_preflight_validation.json
+    - share/deliverables/integration/cmos_v14_full/REPAIR.md
+    - share/deliverables/integration/cmos_v14_full/SS_TIMING.md
+    - share/deliverables/integration/cmos_v14_full/results/repair_retention.json
+    - share/deliverables/integration/cmos_v14_full/build_rt_noise_scaling.py
+    - share/deliverables/integration/cmos_v14_full/results/rt_noise_scaling_protocol.json
+    - share/deliverables/integration/cmos_v14_full/analyze_rt_noise_scaling.py
+    - share/deliverables/integration/cmos_v14_full/run_rt_noise_gates.py
+    - share/deliverables/integration/cmos_v14_full/results/rt_noise_scaling_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/rt_noise_controls.json
+    - share/deliverables/integration/cmos_v14_full/results/rt2_precision_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt2_fine_audit_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt2_precision_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fine_audit_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_precision_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/rt_slew_tradeoff.json
+    - share/deliverables/integration/cmos_v14_full/results/core_noise_candidates_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt2_fine_audit_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/local_chain_spur_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fine_audit_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/core_noise_candidates_validation.json
+    - share/deliverables/integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md
+    - share/deliverables/integration/cmos_v14_full/results/core_candidate_dynamics.json
+    - share/deliverables/integration/cmos_v14_full/results/rt_fullband_precision_protocol.json
+    - share/deliverables/integration/cmos_v14_full/NOISE_CIRCUIT_MAPPING.md
+    - share/deliverables/integration/cmos_v14_full/results/rt_pulsetrip_noise_protocol.json
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_38.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_39.md
+    blockers: []
+  - name: bias_and_control
+    role: 偏置、频点配置及状态控制
+    stage: circuit
+    maturity: 2
+    note: 电阻馈电MOS基准和镜像，内部无理想电流源，三配对角DC已有检查；参与完整TT保持。电源/温度稳定性、PSRR、噪声、供电启动和失配未全面验收。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/README.md
+    - share/deliverables/integration/cmos_v14_full/results/validation.json
+    - share/deliverables/integration/cmos_v14_full/results/raw_manifest.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_repaircold01.json
+    - share/deliverables/integration/cmos_v14_full/results/precision_diagnostics.json
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_PROGRESS.md
+    - share/deliverables/integration/cmos_v14_full/results/core_preflight_validation.json
+    - share/deliverables/integration/cmos_v14_full/REPAIR.md
+    - share/deliverables/integration/cmos_v14_full/SS_TIMING.md
+    - share/deliverables/integration/cmos_v14_full/results/repair_retention.json
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_38.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_39.md
+    blockers: []
+  - name: rf_clock_receiver
+    role: VCO到CMOS时钟接口
+    stage: circuit
+    maturity: 2
+    note: MOS实现；旧局部原/RT2/RT4暂定141.281/90.867/63.275fs保留原边界；旧RT2/RT4五组fresh noise-on已闭合。修复后分频器RT2/RT4六偏移点均完成；周期、支路、六沿、端点及器件PSD求和通过。RT4相对RT2低2.895–3.194dB；RT4新旧分频器变化−0.0080至+0.0117dB，RT2最大+0.0250dB。新RT4全带10k–492MHz及25个谐波邻近点正在运行，尚无RMS结果。RT4四控制点完成，0.2V点有效性True、RF3936.871922MHz；目标包围状态False。实际触发器D接口码23/24对照已启动，保留同接口控制，不外推或改写动态状态冒充捕获。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/results/full_metrics.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_completecold05.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_diagnosis.json
+    - share/deliverables/integration/cmos_v14_full/results/full_dut_consistency.json
+    - share/deliverables/integration/cmos_v14_full/results/bank_tb_consistency.json
+    - share/deliverables/integration/cmos_v14_full/results/chain_noise_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/chain_probe_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/chain_alias_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/vco_noise_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/raw_manifest.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_repaircold01.json
+    - share/deliverables/integration/cmos_v14_full/results/precision_diagnostics.json
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_PROGRESS.md
+    - share/deliverables/integration/cmos_v14_full/results/core_preflight_validation.json
+    - share/deliverables/integration/cmos_v14_full/REPAIR.md
+    - share/deliverables/integration/cmos_v14_full/SS_TIMING.md
+    - share/deliverables/integration/cmos_v14_full/results/repair_retention.json
+    - share/deliverables/integration/cmos_v14_full/results/rt_noise_scaling_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/rt_noise_controls.json
+    - share/deliverables/integration/cmos_v14_full/results/rt2_precision_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt2_fine_audit_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt2_precision_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fine_audit_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_precision_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/rt_slew_tradeoff.json
+    - share/deliverables/integration/cmos_v14_full/results/core_noise_candidates_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt2_fine_audit_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/local_chain_spur_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fine_audit_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/core_noise_candidates_validation.json
+    - share/deliverables/integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md
+    - share/deliverables/integration/cmos_v14_full/results/core_candidate_dynamics.json
+    - share/deliverables/integration/cmos_v14_full/results/rt_fullband_precision_protocol.json
+    - share/deliverables/integration/cmos_v14_full/NOISE_CIRCUIT_MAPPING.md
+    - share/deliverables/integration/cmos_v14_full/results/rt_pulsetrip_noise_protocol.json
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_38.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_39.md
+    blockers: []
+  - name: cp_pulse_timing
+    role: 参考后CP脉冲、使能与复位
+    stage: circuit
+    maturity: 2
+    note: MOS延迟和锁存，已参与完整TT捕获/保持及旧SS近锁定。脉宽、相位裕量、失配、独立噪声及全PVT仍缺。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/results/full_metrics.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_completecold05.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_diagnosis.json
+    - share/deliverables/integration/cmos_v14_full/results/full_dut_consistency.json
+    - share/deliverables/integration/cmos_v14_full/results/bank_tb_consistency.json
+    - share/deliverables/integration/cmos_v14_full/results/chain_noise_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/chain_probe_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/chain_alias_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/vco_noise_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/raw_manifest.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_repaircold01.json
+    - share/deliverables/integration/cmos_v14_full/results/precision_diagnostics.json
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_PROGRESS.md
+    - share/deliverables/integration/cmos_v14_full/results/core_preflight_validation.json
+    - share/deliverables/integration/cmos_v14_full/REPAIR.md
+    - share/deliverables/integration/cmos_v14_full/SS_TIMING.md
+    - share/deliverables/integration/cmos_v14_full/results/repair_retention.json
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_38.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_39.md
+    blockers: []
+  - name: configuration_and_frequency_supervision
+    role: 频点配置、监督与周期测频
+    stage: circuit
+    maturity: 3
+    note: 全MOS配置、计数、看门狗与监督；新监督三配对角单位TB通过，完整TT保持36µs的qualified全程有效且未重启。实际重配置/失锁恢复/供电启动及完整PVT未验收。 独立诊断核心的复位计数器内部栈有未稳态线索，未证明主PLL功能失败，见完整状态诊断。
+    artifacts:
+    - share/deliverables/blocks/cmos_v14_full/pll_supervisor_capture_v14.v
+    - share/deliverables/blocks/cmos_v14_full/pll_supervisor_capture_v14.scs
+    - share/deliverables/integration/cmos_v14_full/results/capture_repair_units.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_repaircold01.json
+    - share/deliverables/integration/cmos_v14_full/results/precision_diagnostics.json
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/REPAIR.md
+    - share/deliverables/integration/cmos_v14_full/SS_TIMING.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_PROGRESS.md
+    - share/deliverables/integration/cmos_v14_full/results/repair_retention.json
+    - share/deliverables/integration/cmos_v14_full/CORE_STATE_DIAGNOSIS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_38.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_39.md
+    blockers: []
+  - name: phase_and_amplitude_validation
+    role: 锁定判定的物理相位与振幅有效性检测
+    stage: circuit
+    maturity: 2
+    note: MOS包络、窗口比较器及下降沿FF，已有静态三角和动态边界测试；新完整TT保持有效性指示正常。SS动态边界、失配、阈值噪声及误判概率未完成。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/results/full_metrics.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_completecold05.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_diagnosis.json
+    - share/deliverables/integration/cmos_v14_full/results/full_dut_consistency.json
+    - share/deliverables/integration/cmos_v14_full/results/bank_tb_consistency.json
+    - share/deliverables/integration/cmos_v14_full/results/chain_noise_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/chain_probe_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/chain_alias_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/vco_noise_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/raw_manifest.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_repaircold01.json
+    - share/deliverables/integration/cmos_v14_full/results/precision_diagnostics.json
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/REPAIR.md
+    - share/deliverables/integration/cmos_v14_full/SS_TIMING.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_PROGRESS.md
+    - share/deliverables/integration/cmos_v14_full/results/repair_retention.json
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_38.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_39.md
+    blockers: []
+  verification:
+    maturity: 3
+    note: 四组20ns实际MOS数值对照完成：梯形1ps/0.5ps的RX电流高频峰由约505GHz移到997GHz；Gear2没有相应分量。按0.125ps重采样，RT电流100–1500GHz能量占比分别0.4933%、2.3397%、0.0008335%、0.0008134%。这是确定性数值振铃证据，不是器件噪声或抖动。仅改变周期边界的PSS五轮残差7.68M/262k/335k/1.17M/4.87M，仍无周期解。09:05精确SIGINT后SPECTRE18，2.187GB稳定段已回收并校验；保留负结果，不证明无周期解。已准备并排定方法单变量PSS：只改tstab及shooting积分方法为gear2only，其他电路、实际初态、1ps及容差保持；接替RT4边界点的长槽位。当前状态：running。六点不能积分为RMS，收敛后仍须步长与器件PSD复核。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_39.md
+    - share/deliverables/integration/cmos_v14_full/CORE_METHOD_DIAGNOSIS.md
+    - share/deliverables/integration/cmos_v14_full/results/core_method_probe_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/core_quiet_trial_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/core_gear_trial_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt_pulsetrip_noise_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_loading_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/sampler_tuning_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/core_cf40_settle_protocol.json
+  integration:
+    maturity: 2
+    note: 主DUT未修改，4ps TT捕获/保持证据保持。严格64us完整PLL在2026-10-04T09:17:29.662197+08:00观测到54.790us，coarse23/DAC36/state5、主环已接管、qualified仍低；只是进度，不是最终锁定结果。CF40已使用自身真实3us终态启动额外6us实际闭环稳定检查，尚无完成结果；先前只有相位漂移未通过门限，独立VCO低偏移改善不能替代实际PLL噪声。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_39.md
+    - share/deliverables/integration/cmos_v14_full/CORE_METHOD_DIAGNOSIS.md
+    - share/deliverables/integration/cmos_v14_full/results/core_method_probe_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/core_quiet_trial_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/core_gear_trial_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt_pulsetrip_noise_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_loading_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/sampler_tuning_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/core_cf40_settle_protocol.json
+spec_status:
+- id: REQ-01
+  current: TSMC180BCDGen2实际MOS、PDK变容；17,644MOS顶层
+  condition: 当前pll_capture_v14，TT27、1.2V、24MHz、K41/M4、10fF、Q5 RLC；4ps/reltol1e-4，DC供电后的独立复位64µs。
+  evidence: circuit_sim
+  status: on_track
+  note: Q5 πRLC电感获准暂代；无PDK电感、版图或PEX签核。
+- id: REQ-02
+  current: 1.2V运行；当前复位测试供电预先建立
+  condition: 当前pll_capture_v14，TT27、1.2V、24MHz、K41/M4、10fF、Q5 RLC；4ps/reltol1e-4，DC供电后的独立复位64µs。
+  evidence: circuit_sim
+  status: on_track
+  note: 供电扫描、爬升和器件端电压可靠性未签核。
+- id: REQ-03
+  current: 24MHz外部准方波，经真实MOS参考缓冲
+  condition: 当前pll_capture_v14，TT27、1.2V、24MHz、K41/M4、10fF、Q5 RLC；4ps/reltol1e-4，DC供电后的独立复位64µs。
+  evidence: circuit_sim
+  status: on_track
+  note: 参考噪声、输入边沿/占空比容差未验收；旧版严格缓冲边沿166.4/151.5ps仅为基线。
+- id: REQ-04
+  current: 4ps独立复位捕获及36µs终态保持通过；1ps复位仍运行
+  condition: TT27/1.2V/24MHz/K41/M4/10fF/Q5；末1µs输出984.000252MHz。
+  evidence: circuit_sim
+  status: at_risk
+  note: 保持根状态来自实际64µs终态文本初始化，随后自身原生续算，不是冷启动连续到100µs；数值收敛尚未证明。 严格64us完整PLL在2026-10-04T09:17:29.662197+08:00观测到54.790us，coarse23/DAC36/state5、主环已接管、qualified仍低；只是进度，不是最终锁定结果。
+- id: REQ-05
+  current: 33点未验收；4.8fF候选三配对角RF端点覆盖
+  condition: 1.2V/Q5/10fF，TT27、SS60、FF0，实际LC及原RF接收/分频负载，固定码0/255及控制1.0/0.2V，400ns/末60ns。
+  evidence: circuit_sim
+  status: at_risk
+  note: 33点完整锁定和4.8fF候选代回未完成。连续时钟分频候选新增端口批次17/17完成并通过，含五个SS低RF、六个TT高RF及六个FF高RF；结合此前SS高RF，共11个不同SS规划端点通过。固定SS形状零阻抗RF重放，不替代实际LC全频率/PVT/整机。
+    严格64us完整PLL在2026-10-04T09:17:29.662197+08:00观测到54.790us，coarse23/DAC36/state5、主环已接管、qualified仍低；只是进度，不是最终锁定结果。
+- id: REQ-06
+  current: null
+  condition: 验收10kHz–fout/2，排除spur；候选局部TT27/1.2V/984MHz/10fF，外部无噪声RF重放。
+  evidence: circuit_sim
+  status: unknown
+  note: 完整PLL RMS未知。修复后分频器RT2/RT4六偏移点均完成；周期、支路、六沿、端点及器件PSD求和通过。RT4相对RT2低2.895–3.194dB；RT4新旧分频器变化−0.0080至+0.0117dB，RT2最大+0.0250dB。新RT4全带10k–492MHz及25个谐波邻近点正在运行，尚无RMS结果。四组20ns实际MOS数值对照完成：梯形1ps/0.5ps的RX电流高频峰由约505GHz移到997GHz；Gear2没有相应分量。按0.125ps重采样，RT电流100–1500GHz能量占比分别0.4933%、2.3397%、0.0008335%、0.0008134%。这是确定性数值振铃证据，不是器件噪声或抖动。已准备并排定方法单变量PSS：只改tstab及shooting积分方法为gear2only，其他电路、实际初态、1ps及容差保持；接替RT4边界点的长槽位。当前状态：running。六点不能积分为RMS，收敛后仍须步长与器件PSD复核。
+- id: REQ-07
+  current: 诊断核心参考线约−28.8 dBc；完整PLL最终值未知
+  condition: TT27/1.2V/Q5/984MHz/10fF，CF10/原RT/连续时钟候选/静态慢控制；coretripsupply01无噪声初始化两个250ns窗口、1ps/reltol1e-5/traponly。
+  evidence: circuit_sim
+  status: at_risk
+  note: 原实际LC诊断核心约−28.8dBc参考线风险保持，未作完整PLL验收。40/80/120fF互补采样负载均完成，固定控制输出24MHz确定性PM降低14.327/13.484/8.287dB。40fF在0.657999/0.85/1V的RF为3.913863/3.924146/3.937316GHz，插值预测0.985014V，尚未实测回代。优先噪声，本轮不继续扩大杂散支线。噪声积分排除离散杂散；杂散验收频带仍待确认。
+- id: REQ-08
+  current: 5.667114 mW
+  condition: 完整修复PLL，TT27/1.2V/K41/M4/10fF/Q5，4ps/reltol1e-4；保持4–36µs完整32µs控制周期的全供电能量差。
+  evidence: circuit_sim
+  status: at_risk
+  note: 超过4mW约41.7%；末1µs5.655927mW。VCO3.728157、RF接收0.714580、重定时/输出0.131167、其余1.093210mW。启动能量另列，未以局部链替代总功耗。 用户2026-10-04要求功耗优化暂缓、先关闭噪声/抖动；≤4mW验收要求没有改变。
+- id: REQ-09
+  current: null
+  condition: 含电感、环路滤波器及隔离，暂不计pad。
+  evidence: none
+  status: unknown
+  note: 无布局/工艺无源几何，不能确认<0.3mm²。
+- id: REQ-10
+  current: 旧三配对角及新SS接口诊断已有；新完整PLL仅TT单点
+  condition: 1.2V，TT27/SS60/FF0为配对角；新增完整TT4ps终态保持36µs。
+  evidence: circuit_sim
+  status: at_risk
+  note: 连续时钟分频候选新增端口批次17/17完成并通过，含五个SS低RF、六个TT高RF及六个FF高RF；结合此前SS高RF，共11个不同SS规划端点通过。固定SS形状零阻抗RF重放，不替代实际LC全频率/PVT/整机。完整系统全PVT/复位/统计/噪声仍缺。
+- id: REQ-11
+  current: 完整TT保持末窗约43.99%
+  condition: TT27/1.2V/K41/M4/10fF；内部边沿观察器，4ps/reltol1e-4。
+  evidence: circuit_sim
+  status: on_track
+  note: 用户已确认不严格、无需刻意优化；未宣称精确50%或全范围通过。
+- id: REQ-12
+  current: 完整TT保持10fF功能通过，边沿约130.6/213.3ps
+  condition: TT27/1.2V/K41/M4/10fF；末1µs内部边沿观察器，4ps/reltol1e-4。
+  evidence: circuit_sim
+  status: on_track
+  note: 10fF为暂定轻负载，输出链增大后反馈加载问题见实际LC RT4负结果；未验证全负载/互连/PEX。
+questions_for_human:
+- q: 杂散<−60dBc是否采用载波两侧偏移10kHz–fOUT/2内所有离散线、逐条单边功率相对载波的口径？已异步提出，尚未收到确认；方法与电路工作继续。
+  blocking: false
+  since: '2026-10-04'
+blocked_on: null
+risks:
+- 真实LC仍无有效PSS/PNoise，整机10kHz–fOUT/2随机RMS未知。
+- Gear2可能引入数值阻尼；周期收敛后仍需频率/摆幅/步长与噪声精度检查。
+- 旧分频器尺寸优化和noise-on不能替代新分频器或实际LC完整PLL，谐波邻近积分仍未闭合。
+- RT4改变工作点；扫点LF储能失配不能作为有效闭环交接。
+- 40fF补偿在预测约0.985V处接近控制上限，未完成闭环/新增器件噪声/PVT。
+- 33频点、严格捕获、输入/负载、恢复和完整PVT仍缺；功耗与后端优化暂缓，目标保持。
+next_steps:
+- 检查方法单变量fresh PSS；若收敛，先查周期、支路、输出沿及PSD，再做步长与全带噪声复核。
+- 完成新分频器RT4全带和谐波邻近检查；六沿/五组独立noise-on测试台已准备但未运行。
+- 完成RT4低控制边界和CF40实际稳定检查；用物理预充/实际调谐匹配再做闭环，不改写动态状态冒充捕获。
+- 继续严格整机64us验证；随机噪声路径跑通后补齐频点/PVT/输入负载和恢复。
+decisions_since_last: []
+resources_note: 严格PLL8线程、CF40稳定6、新RT4全带1、方法PSS2，加RT4码23/24控制1，合计18请求线程、4长+1短。安静边界已停止回收，RT4低控制边界和四组方法对照已完成；无自动连续PSS重试。

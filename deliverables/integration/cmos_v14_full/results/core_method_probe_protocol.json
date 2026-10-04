@@ -1,0 +1,45 @@
+{
+  "scope": "Prepare a20ns warm-transient factorial check, not another long PSS sweep.\n\nTwo integration methods at two maximum steps separate current-waveform method\nand mesh sensitivity. No device, source, seed or accuracy-tolerance changes.\n",
+  "time": "2026-10-04T08:43:36.334608+08:00",
+  "status": "prepared_not_run",
+  "run": "coremethod01",
+  "cases": [
+    {
+      "case": "coremethod_trap_1ps_tt",
+      "method": "traponly",
+      "maxstep_s": 1e-12,
+      "tb_sha256": "882fc8da4aa21a4f09a97fa592f2335fcccc26be19be3197dcff553440fa73b4"
+    },
+    {
+      "case": "coremethod_trap_halfps_tt",
+      "method": "traponly",
+      "maxstep_s": 5e-13,
+      "tb_sha256": "a5a01023f1367e13d9f0e5e7785695dcbd844dfdf9b8a5b1a4e37336c1495310"
+    },
+    {
+      "case": "coremethod_gear_1ps_tt",
+      "method": "gear2only",
+      "maxstep_s": 1e-12,
+      "tb_sha256": "49fedb7dd43f6e42b8223444d3ae30e33a5aaaa7fa208610e52590963b82fbf5"
+    },
+    {
+      "case": "coremethod_gear_halfps_tt",
+      "method": "gear2only",
+      "maxstep_s": 5e-13,
+      "tb_sha256": "740fb9d7ca6d66656d925518491aeb4c27f3c462bed62a4cf2951571a327d91a"
+    }
+  ],
+  "source_tb_sha256": "75720b3db9d4129637b460017cfe5939284587c5b51d64c9104b98bff3374ff0",
+  "seed_sha256": "1f8108ef2d763c99f9c66cb1336c23df4928115d08784e2f0723ea610c563756",
+  "seed_time_alignment": "Localtime0 has the same reference and250ns forcing phase as source3us; actual saved physical state, not coldstart or native continuation.",
+  "evidence": "results/core_current_waveform.json: rapid supply-current content in an otherwise nearly periodic voltage trajectory; full PSS first residual is often a current branch. Origin not proved.",
+  "condition": "Same actualLC diagnostic core, TT27/1.2V/Q5/coarse23/CF10/originalRT/10fF; reltol1e-5/vabstol1e-7/iabstol1e-13.20ns warm transient, last15ns dense.",
+  "measurements": [
+    "Deterministic Hann-window current energy above100GHz and250GHz; interpolation and leakage controls, not noisePSD.",
+    "RF/output frequency, swing and common-time waveforms; mesh and integration-method sensitivity."
+  ],
+  "launch_gate": "Reuse sampler tuning one-thread short slot only after both results complete; do not overlap its finite batch. Four20ns cases bounded, no automatic long PSS.",
+  "limits": "Short trajectories cannot validate PLL lock, fullperiod consistency, lowfrequency noise, PSS orRMS. A method difference alone does not prove which solution is accurate.",
+  "main_dut_modified": false,
+  "full_pll_acceptance": false
+}

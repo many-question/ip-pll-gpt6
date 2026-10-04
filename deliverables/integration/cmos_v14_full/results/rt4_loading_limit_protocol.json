@@ -1,0 +1,26 @@
+{
+  "scope": "Add one measured low-control endpoint after the first RT4 curve misses target.",
+  "time": "2026-10-04T09:05:01.610578+08:00",
+  "status": "prepared_not_run",
+  "run": "rt4loadlimit01",
+  "cases": [
+    {
+      "case": "rt4load_v200_tt",
+      "control_v": 0.2,
+      "tb_sha256": "1d466598281c6535f4351d799eca8d2464278978b055d194be34b46470fe0253",
+      "seed_sha256": "a91e464b525f122ebf368b29214931b4e24587ae6bea0a72a55dd67040885ebf"
+    }
+  ],
+  "rt4_core_sha256": "dac5476318f5830e7c5b7af8c3c0ef91d38ef48235d947f9835fbab88fffda93",
+  "basis_result_sha256": "ad956e84e07e6650c94b3a275ff62e8e53addbc1f356f232ca916c66ad15e129",
+  "reason": "All three original points valid; lowest .407999V gives3.938568GHz, above3.936GHz. Measure .2V rather than extrapolate nonlinear tuning.",
+  "condition": "TT27/1.2V/coarse23/CF10/RT4/continuousclockbank/10fF/Q5.750ns/1ps/traponly/reltol1e-5,24MHz normalreference, last500ns dense. IdealexternalVCTRL clamp.",
+  "launch_gate": "Only released rt4load01 one-thread long slot; no automatic subsequent batch.",
+  "limitations": [
+    "Clamped frequency boundary only, no closed-loop lock or jitter.",
+    "C1 is not precharged; do not release this clamp state as a matched loop seed.",
+    "If .2V still misses target, physically change coarse setting before another lock attempt."
+  ],
+  "main_dut_modified": false,
+  "full_pll_acceptance": false
+}

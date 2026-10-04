@@ -1,0 +1,33 @@
+{
+  "scope": "Prepare one method-only fresh-PSS trial after four measured method/mesh controls.",
+  "time": "2026-10-04T09:16:00.861447+08:00",
+  "status": "prepared_not_run",
+  "run": "coretripgear01",
+  "case": "core_pulsetrip_gear_noise_tt",
+  "source_tb_sha256": "55673a1d06a8c870d8fc98bb0fbf118c863b9ea3c22a69f2862736359ee490d7",
+  "tb_sha256": "ce28c760d11bb4b61568d0cc65b5d4b4581fb2ae1e3505472a2736c012078795",
+  "method_probe_result_sha256": "c55b71806a6d147d6633a9ea82fffe42a7416d40243765a3904a4c8a054b19b4",
+  "quiet_trial_audit_sha256": "35671611a646ce0855ed0d9fbd307198aeb297fb3a91fd46b49c35951fda1d08",
+  "only_change": "Both tstabmethod and shooting method traponly to gear2only. Same1ps,1e-5/1e-7/1e-13,250ns,tstab1.134023us,actual late seed,physical circuit and six PNoise offsets.",
+  "hypothesis": "Current highband peak follows inverse step (~505GHz at1ps,~997GHz at.5ps), whereas Gear2 lacks that component. This supports trapezoidal numerical ringing; its role in PSS failure still needs the method-only trial.",
+  "primary_tool_documentation": {
+    "path": "research/spectre_help/pss.txt",
+    "sha256": "8a17351524d67f6b60cc9cb0898b4d9a6b40c668426d00de120c8d008113f04a",
+    "lines": [
+      214,
+      223,
+      888,
+      903
+    ],
+    "note": "Installed Spectre help permits gear2only and warns both of trapezoidal point-to-point ringing and artificial damping from Gear. No tolerances are relaxed."
+  },
+  "launch_gate": "Reuse rt4loadlimit01 completed one-thread long slot, with2threads using existing spare budget; verify <=18 total and no extra long job. Finite single trial, no automatic retries.",
+  "acceptance": "Fresh PSS achieved plus periodic branch/edge/endpoint and device-PSD checks; six points never integrated as fullband RMS. Follow with independent mesh/noise validation before acceptance.",
+  "limitations": [
+    "Twenty ns method controls are not loop stationarity or random noise.",
+    "Changing method may alter frequency/amplitude and produce artificial damping; convergence alone is not validation.",
+    "Core uses static slow controls; not the complete PLL or all frequency/PVT coverage."
+  ],
+  "main_dut_modified": false,
+  "full_pll_acceptance": false
+}

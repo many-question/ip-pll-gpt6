@@ -1,0 +1,47 @@
+{
+  "scope": "Compare saved voltage/current trajectories and their deterministic high bands.\n\nThis is a numerical diagnostic, not a device-noise spectrum or random jitter.\nInterpolation cannot prove the origin of rapid current variation.\n",
+  "raw_source_sha256": "7bd69cb8f602f58a1d4438cd6eb89de62c48ddcf9219388fdb1a7bc7dc63aeb7",
+  "cache_sha256": "fbace1c641d4425e0852f6431554b0ce591972004426057dbb83de8fda304a4a",
+  "window_s": [
+    4e-06,
+    4.25e-06
+  ],
+  "spectral_window": "Hann, to suppress nonzero endpoint mismatch leakage",
+  "uniform_interpolation_step_ps": 0.25,
+  "rows": [
+    {
+      "node": "XP.vp",
+      "highband_fraction_100_to_500GHz": 1.0538408661734537e-10,
+      "highband_fraction_250_to_500GHz": 7.944634177285932e-12
+    },
+    {
+      "node": "out",
+      "highband_fraction_100_to_500GHz": 8.689034047532769e-11,
+      "highband_fraction_250_to_500GHz": 4.990241288464863e-12
+    },
+    {
+      "node": "VDD:p",
+      "highband_fraction_100_to_500GHz": 0.0005720032346580349,
+      "highband_fraction_250_to_500GHz": 0.000570155889056998
+    },
+    {
+      "node": "XP.VVCO:p",
+      "highband_fraction_100_to_500GHz": 4.389899211689241e-06,
+      "highband_fraction_250_to_500GHz": 4.381730080257136e-06
+    },
+    {
+      "node": "XP.VRX:p",
+      "highband_fraction_100_to_500GHz": 0.003432559230400484,
+      "highband_fraction_250_to_500GHz": 0.0034238575368204602
+    },
+    {
+      "node": "XP.VRT:p",
+      "highband_fraction_100_to_500GHz": 0.0011136698767838116,
+      "highband_fraction_250_to_500GHz": 0.0011057204062078635
+    }
+  ],
+  "figure": "share/deliverables/integration/cmos_v14_full/results/figures/core_current_waveform.png",
+  "interpretation": "Ratios only describe a saved deterministic waveform. Significant current high-band content can motivate a timestep/integration-method control; it does not prove numerical ringing or physical device noise.",
+  "full_pll_acceptance": false,
+  "random_jitter_measured": false
+}

@@ -1,0 +1,26 @@
+# 实际LC核心的积分方法检查
+
+2026-10-04。四组20 ns实际MOS瞬态对照支持**梯形积分的数值振铃**判断；它是否导致此前PSS失败，仍需方法单变量实验验证。这里没有随机噪声源，不产生RMS抖动结论。
+
+电路、实际保存初态、TT27、1.2 V、Q5、粗调23、CF10、原输出尺寸、10 fF及1e−5／1e−7／1e−13容差完全相同，只组合改变积分方法和最大步长。使用5–20 ns轨迹、Hann窗，分别按0.25和0.125 ps重采样。短窗不足一个24 MHz参考周期，其平均RF频率不能作为锁定载波测量。
+
+| 方法／步长 | RX电流100–1500 GHz能量占比 | RT电流同带占比 | RX高频峰 |
+|---|---:|---:|---:|
+| traponly／1 ps | 0.7242% | 0.4933% | 约505 GHz |
+| traponly／0.5 ps | 0.2651% | 2.3397% | 约997 GHz |
+| gear2only／1 ps | 0.0006422% | 0.0008335% | 约110 GHz |
+| gear2only／0.5 ps | 0.0006160% | 0.0008134% | 约110 GHz |
+
+表中占比使用0.125 ps重采样结果。频谱峰来自0.25 ps网格；两网格的宽带占比结论一致。它们是确定性轨迹的归一化频谱能量，**不是器件噪声PSD或噪声贡献百分比**。
+
+关键检查是把上限扩展至1.5 THz：只看100–500 GHz，会因半步长把振铃移至约1 THz而误判改善。RT电流在半步长梯形法下反而具有更大的宽带振铃。峰值随近似1/(2Δt)移动，并在Gear2两步长下消失，为数值振铃提供了直接对照证据。
+
+![方法和步长对照](results/figures/core_method_probe.png)
+
+Spectre安装版本帮助`research/spectre_help/pss.txt`的214–223、888–903行列出两种方法，并指出梯形法可能出现逐点振铃、Gear可能引入人工阻尼。因此不以波形平滑或一次PSS收敛作为精度合格的充分条件。原帮助的SHA保存在[后续试验协议](results/core_gear_trial_protocol.json)，未上传工具文档全文。
+
+后续只把安静边界试验的`tstabmethod`和`method`由traponly改为gear2only；1 ps、容差、250 ns周期、1.134023 µs稳定时间、实际初态和物理电路保持。使用fresh PSS和六个偏移点，取得有效周期解后仍需检查支路／沿／端点、器件PSD和更细步长。六点不能积分为完整RMS。单次任务在RT4边界点释放长槽位后运行，不自动扩展重试。
+
+安静边界对照的完整五轮残差为7.68M、262k、335k、1.17M、4.87M，已于09:05对精确进程发送SIGINT，随后出现SPECTRE-18。2,186,995,038字节稳定段已回收，SHA为`9a9d0bbcc55576c163a0b0925fbdd10bf805390c4c266e3697cf5a5b34c08d35`；没有PNoise或有效周期状态。主动停止不证明周期解不存在。
+
+复现与证据：[短时协议](results/core_method_probe_protocol.json)、[实际数据及源SHA](results/core_method_probe_validation.json)、[分析](analyze_core_method_probe.py)、[作图](plot_core_method_probe.py)、[边界试验完整审计](results/core_quiet_trial_audit.json)。

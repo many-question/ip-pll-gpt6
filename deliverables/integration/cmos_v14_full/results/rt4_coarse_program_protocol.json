@@ -1,0 +1,34 @@
+{
+  "scope": "Physically clock a requested coarse code into existing MOS flops; keep a code23 control.",
+  "time": "2026-10-04T09:25:29.070151+08:00",
+  "status": "prepared_not_run",
+  "run": "rt4program01",
+  "cases": [
+    {
+      "case": "rt4program_c23_tt",
+      "coarse_code": 23,
+      "tb_sha256": "697af132698be32d7b0c0b3dce75808dc14b1345ea61906aea0ddbd1f06c4035"
+    },
+    {
+      "case": "rt4program_c24_tt",
+      "coarse_code": 24,
+      "tb_sha256": "f0e128b3ba3c16cdd98ebc644e0172ced61650c400c0863d6b824001c21a84ee"
+    }
+  ],
+  "original_core_sha256": "dac5476318f5830e7c5b7af8c3c0ef91d38ef48235d947f9835fbab88fffda93",
+  "program_core_sha256": "e54700bcef7b5f2cb4a8305e202b3aae7c6f99e31f3511c4e7856e3896d31e0b",
+  "source_seed_sha256": "8f0641b8cdc7d94466d1d55436a13282d7cadc9fc5abf1d12fe271406267e353",
+  "source_curve_sha256": "d886c2e256a692b39e3ced3d81d9d39ff8b913cb6d3c5a61e0a9fb415f618a44",
+  "control_v": 0.6579988674567703,
+  "condition": "TT27/1.2V/Q5/CF10/RT4/newbank/10fF,750ns/1ps/traponly,last500nsdense, externalcontrolclamp. Same actual source IC in both cases; no dynamic voltage/state editing.",
+  "change": "Expose eight coarse-D inputs instead of self-feedback. Testbench connects constant code23/24 levels; actual tx_dff_r0 instances clock them into b0..b7. Code23 control checks interface loading before attributing a change to the code.",
+  "launch_gate": "Use the released one-thread short control slot only; four existing long jobs total17threads, plus this one gives18. Sequential two-case batch; no automatic next batch.",
+  "limits": [
+    "Not autonomous FLL, cold capture, periodic noise or jitter.",
+    "Changing D interface can alter coarse-Q load; code23 control must match previous nominal RF within250kHz and swing within0.5percent.",
+    "Do not interpolate RF versus discrete coarse code as if it were a continuous control.",
+    "Before releasing the external clamp, physically settle/precharge C1 and check phase capture."
+  ],
+  "main_dut_modified": false,
+  "full_pll_acceptance": false
+}

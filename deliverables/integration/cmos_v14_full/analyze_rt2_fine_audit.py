@@ -6,8 +6,11 @@ from noise_utils import parse,header,devices,cross
 H=Path(__file__).resolve().parent; ROOT=H.parents[3]
 parser=argparse.ArgumentParser()
 parser.add_argument('--factor',type=int,choices=[2,4],default=2)
-factor=parser.parse_args().factor
-protocol=json.loads((H/f'results/rt{factor}_fine_audit_protocol.json').read_text())
+parser.add_argument('--bank',choices=['original','pulsetrip'],default='original')
+args=parser.parse_args();factor=args.factor
+if args.bank=='pulsetrip':assert factor==4
+name=f'rt{factor}_'+('fine' if args.bank=='original' else 'pulsetrip')+'_audit'
+protocol=json.loads((H/f'results/{name}_protocol.json').read_text())
 R=ROOT/'research/runs/spectre_cmos_v14_full'/protocol['run']; freq=np.array(protocol['offsets_hz'])
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 def read(case):
@@ -17,6 +20,9 @@ def read(case):
     if not r.get('local_outputs_sha256'): return None
     assert r['ok'] and r['remote_inputs_match'] and not r.get('periodic_state')
     assert 'spectre completes with 0 errors' in (j/'spectre.out').read_text()
+    if args.bank=='pulsetrip':
+        assert 'The steady-state solution was achieved' in (j/'spectre.out').read_text()
+        assert r['inputs_sha256']['bank_pulsetrip_v14.scs']==protocol['bank_sha256']
     raw=j/(case+'.raw');td=parse(raw/'pss.td.pss');fd=parse(raw/'pss.fd.pss')
     t=td['time'];T=t[-1]-t[0];e=cross(t,td['out'])
     h={k:int(round(fd['freq'][1+np.argmax(abs(fd[k][1:]))]/164e6)) for k in ['vp','clk','q1','data','out']}
@@ -42,7 +48,7 @@ if base:
     spread=np.ptp(10*np.log10(np.array([x['psd_s2_per_hz'] for x in out['edge_rows']])),axis=0)
     out['edge_spread_db']=spread.tolist();out['edge_passed']=bool(max(spread)<protocol['edge_spread_limit_db'])
     for group,names in protocol['groups'].items():
-        info=read(f'chain_rt{factor}_fine_only_{group}_tt')
+        info=read(protocol.get('gate_cases',{}).get(group,f'chain_rt{factor}_fine_only_{group}_tt'))
         if info is None:continue
         gj,gr,graw=info
         assert deps=={k:v for k,v in gr['inputs_sha256'].items() if k!=gj.name+'.scs'}
@@ -60,5 +66,5 @@ if base:
         out['isolated_sum_to_all_noise_ratio']=(isolated_sum/ref).tolist()
         out['isolated_sum_max_relative_error']=closure
         out['passed']=bool(out['edge_passed'] and all(x['passed'] for x in out['gate_rows']) and closure<protocol['noise_gate_relative_limit'])
-(H/f'results/rt{factor}_fine_audit_validation.json').write_text(json.dumps(out,indent=2)+'\n')
+(H/f'results/{name}_validation.json').write_text(json.dumps(out,indent=2)+'\n')
 print(json.dumps({k:v for k,v in out.items() if k not in ['edge_rows','gate_rows']},indent=2))

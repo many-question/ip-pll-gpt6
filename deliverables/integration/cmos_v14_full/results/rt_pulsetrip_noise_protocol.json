@@ -37,10 +37,39 @@
       "grade": "band",
       "case": "chain_rt4_pulsetrip_band_tt",
       "run": "rt4pulsetripband01",
-      "tb_sha256": "7158639353d64bff6292acbd20df8d7a5c511c401ddf4b6eadf864dc3ce74114",
+      "tb_sha256": "793182ad765fff23d7fb11cc3e0cd5065b25ea68fceb54938a7edabc47908777",
       "old_fine_case": "chain_rt4_precision_fine_tt",
       "old_fine_run": "rt4precision01",
-      "change": "Same repaired divider; replace six-offset probe with original full-band grid."
+      "change": "Same repaired physical divider; original full-band grid plus25finite harmonic-neighbour offsets under the same fresh PSS. Exact endpoint retained.",
+      "unrun_log_grid_only_source": "share/deliverables/integration/cmos_v14_full/tb/chain_rt4_pulsetrip_band_logonly_unrun_tt.scs",
+      "unrun_log_grid_only_source_sha256": "7158639353d64bff6292acbd20df8d7a5c511c401ddf4b6eadf864dc3ce74114",
+      "harmonic_neighbour_offsets_hz": [
+        163990000,
+        163999000,
+        163999900,
+        163999990,
+        163999999,
+        164000001,
+        164000010,
+        164000100,
+        164001000,
+        164010000,
+        327990000,
+        327999000,
+        327999900,
+        327999990,
+        327999999,
+        328000001,
+        328000010,
+        328000100,
+        328001000,
+        328010000,
+        491990000,
+        491999000,
+        491999900,
+        491999990,
+        491999999
+      ]
     }
   ],
   "old_bank_sha256": "34a80ae697397ff60cc61ba9cfc51513716c39afd3df68f4ea0a9c950ca0ff6f",
@@ -75,5 +104,30 @@
     "session": 32326,
     "first_remote_uuid": "db2fef14",
     "scope": "RT2audit passed all fivegroups and sixedges; two new-bank probes started07:34. No noise result yet."
+  },
+  "band_selection_review": {
+    "time": "2026-10-04T08:48:45.261684+08:00",
+    "selected_factor": 4,
+    "selected_run": "rt4pulsetripband01",
+    "source_results": [
+      {
+        "path": "research/runs/spectre_cmos_v14_full/rtpulsetripprobe01/chain_rt2_pulsetrip_probe_tt/result.json",
+        "sha256": "b0817d8fd8134a1a084c39d77105079348a245b0e01294ddf4a001cd350ef89d"
+      },
+      {
+        "path": "research/runs/spectre_cmos_v14_full/rtpulsetripprobe01/chain_rt4_pulsetrip_probe_tt/result.json",
+        "sha256": "e5e90c944ac617572104f57ba44ec42eb17ab3e018b7a902050ad10501ebce38"
+      }
+    ],
+    "rt4_minus_rt2_psd_db": [
+      -3.0768013256365245,
+      -2.940717391865833,
+      -2.894823758353099,
+      -3.103286769766287,
+      -3.1882783403216775,
+      -3.194366006528964
+    ],
+    "rationale": "All six matched new-bank offsets favourRT4 by2.895..3.194dB; period and device sums pass. Use the released one-thread probe slot forRT4fullband first.",
+    "limits": "Not actualLC or fullPLL; original-grid RMS remains provisional until shifted flicker poles, all-edge/numerical precision, new noise-only gates and PVT close. No automaticRT2band or main-DUT adoption."
   }
 }

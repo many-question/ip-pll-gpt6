@@ -1,0 +1,22 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt_bbmvar
+simulator lang=spectre insensitive=no
+include "pll_noise_pulsetrip_core_v14.scs"
+simulatorOptions options temp=27 reltol=1e-5 vabstol=1e-7 iabstol=1e-13
+VDD (vdd 0) vsource dc=1.2
+VR (ref 0) vsource type=pulse val0=0 val1=1.2 period=41.6666666666667n width=20.8233333333333n rise=10p fall=10p delay=1n
+XP (ref out vdd 0) pll_noise_pulsetrip_core_v14 ref_load=1.9p
+CL (out 0) capacitor c=10f
+// lcm(24MHz reference, RF/8,RF/12) =>250ns;246 output edges.
+save ref out XP.vp XP.vn XP.ctrl XP.vc1 XP.refb XP.hp XP.hn XP.pulse XP.clk XP.q1 XP.data XP.acqclk XP.XD.d8 XP.XD.d12 XP.preset VDD:p XP.VVCO:p XP.VRX:p XP.VRT:p
+saveOptions options save=selected
+save XP.b0 XP.b1 XP.b2 XP.b3 XP.b4 XP.b5 XP.b6 XP.b7
+save XP.XD.XRL.a XP.XD.XRL.b XP.XD.load XP.XD.loadb XP.XD.XD12.X0.XM.fb XP.XD.ck
+
+save XP.XD.ct0 XP.XD.ct1 XP.XD.cb XP.XD.d6 XP.XD.r0 XP.XD.r4 XP.XD.r6 XP.XD.fb
+
+tran tran stop=20n outputstart=5n skipdc=yes readic="core_pulsetrip_late_seed_tt.ic" maxstep=0.5p method=gear2only errpreset=conservative writefinal="__FINAL_STATE__"

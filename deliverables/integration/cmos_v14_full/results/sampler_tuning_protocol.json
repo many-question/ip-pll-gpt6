@@ -1,0 +1,42 @@
+{
+  "scope": "Measure whether fine tuning can recover the MOS-dummy candidate's RF target.\n\nTwo new control points plus the completed40fF nominal point. Physical circuit\nand coarse23 remain unchanged; only an external clamp and its matching IC vary.\n",
+  "time": "2026-10-04T08:35:50.705713+08:00",
+  "status": "running",
+  "run": "samplertune01",
+  "cases": [
+    {
+      "case": "samplertune_c40_v850_tt",
+      "control_v": 0.85,
+      "tb_sha256": "93917c82229fc30eaba174d18ae2a06d5e1006f56cd643de4400a374169a8061",
+      "seed_sha256": "12ac794cb272fa6718fa252a7325bf6698a786952336dc427b101a51062e600f"
+    },
+    {
+      "case": "samplertune_c40_v1000_tt",
+      "control_v": 1.0,
+      "tb_sha256": "e91dc1adb471d1ae724f3f40ec31f33721bfc829a6d7010b8b4f16b9c261f593",
+      "seed_sha256": "2a3ca83225b4a68ffa99ecf13d39569b4db66dd996c047d1d35ef8690be9f295"
+    }
+  ],
+  "baseline": {
+    "case": "samplerdummy_c40_tt",
+    "source_result": "research/runs/spectre_cmos_v14_full/samplerdummy01/samplerdummy_c40_tt/result.json",
+    "source_sha256": "8cfc86396807b44c5728ee8f1c44cb1471896dca3006e67181a49f571e88cc7d",
+    "control_v": 0.6579988674567703
+  },
+  "core_sha256": "a11a1a858c248fbb39816b0a90f14e9980a8ffad5ff1eb8a08ecaaf8c6b61124",
+  "sampler_sha256": "9f306e92a0e3200ec65ffefec5d013b78e7e57995fa8e7a0c10ecc18eef43c10",
+  "source_seed_sha256": "8f0641b8cdc7d94466d1d55436a13282d7cadc9fc5abf1d12fe271406267e353",
+  "target_rf_hz": 3936000000.0,
+  "selection": "40fF has the lowest measured24MHzPM of three nominal-control cases, but11%window amplitude spread and frequency mismatch remain; not a final optimum.",
+  "condition": "TT27/1.2V/Q5/coarse23/CF10/originalRT/10fF, actualMOS complementary sampler40fF.750ns/1ps/reltol1e-5/traponly,last500nsdense. Externalcontrolclamp.",
+  "hypothesis": "Fine control may recover the22.186MHz deficit to3.936GHz. Its nonlinear curve must be measured; baseline staticKVCO is not extrapolated.",
+  "launch_gate": "Allthree dummy results complete and reviewed; reuse that released one-thread short slot. Existing16+1=17requestedthreads,4long+1short.",
+  "acceptance": "Only interpolate inside a measured monotonic bracket, then simulate the predicted point and actualclosedloop. If target not bracketed, measure a physical coarse retune or isolate loading; no extrapolated locked result.",
+  "limitations": [
+    "ReferencePM changes are deterministic and exclude randomnoise.",
+    "ExtraMOSnoise, mismatch, closedloop capture, PVT and frequency coverage remain.",
+    "No main-DUT adoption or automatic follow-up batch."
+  ],
+  "main_dut_modified": false,
+  "full_pll_acceptance": false
+}

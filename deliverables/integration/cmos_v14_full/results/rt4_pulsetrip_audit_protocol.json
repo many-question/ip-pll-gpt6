@@ -1,0 +1,67 @@
+{
+  "scope": "Prepare fresh-PSS edge and independent noise-on checks for the repaired bank.",
+  "time": "2026-10-04T09:11:52.408940+08:00",
+  "status": "prepared_not_run",
+  "factor": 4,
+  "run": "rt4pulsetripaudit01",
+  "cases": [
+    "chain_rt4_pulsetrip_edges_tt",
+    "chain_rt4_pulsetrip_only_ff_tt",
+    "chain_rt4_pulsetrip_only_buffers_tt",
+    "chain_rt4_pulsetrip_only_rx_tt",
+    "chain_rt4_pulsetrip_only_divider_tt",
+    "chain_rt4_pulsetrip_only_aux_tt"
+  ],
+  "gate_cases": {
+    "ff": "chain_rt4_pulsetrip_only_ff_tt",
+    "buffers": "chain_rt4_pulsetrip_only_buffers_tt",
+    "rx": "chain_rt4_pulsetrip_only_rx_tt",
+    "divider": "chain_rt4_pulsetrip_only_divider_tt",
+    "aux": "chain_rt4_pulsetrip_only_aux_tt"
+  },
+  "groups": {
+    "ff": [
+      "XR.XFF"
+    ],
+    "buffers": [
+      "XR.X0",
+      "XR.X1"
+    ],
+    "rx": [
+      "XRX"
+    ],
+    "divider": [
+      "XD"
+    ],
+    "aux": [
+      "XACQ0",
+      "XACQ1",
+      "XACB0",
+      "XACB1",
+      "XCOUNT"
+    ]
+  },
+  "tb_sha256": {
+    "chain_rt4_pulsetrip_edges_tt": "017eea0c1aa456ff26cde5e16a82378431f70e3255286ec4944203d4c2a3bd79",
+    "chain_rt4_pulsetrip_only_ff_tt": "84cc60177aa8de0d6f152a378018665149b52364024f01b11966ca39a2903b88",
+    "chain_rt4_pulsetrip_only_buffers_tt": "4eaf041f80ff3e9bd2219e4d288c0e712897065a4d68fb39844cf8852fe9652e",
+    "chain_rt4_pulsetrip_only_rx_tt": "595febfc21234bf93fb675d373abd10b2081251058e5ce78030dc69b015f3f78",
+    "chain_rt4_pulsetrip_only_divider_tt": "ec953ab7a941c6c80db8cb846cbafb3b42b424f218c306de8f7c977d1a484a9a",
+    "chain_rt4_pulsetrip_only_aux_tt": "93f37bd32f86e56bf1343dad11dc774c0408b300617e4a036778362ace84e3fd"
+  },
+  "bank_sha256": "8d41f4865a829f5a6d203fda5fa63af0243a835d00bbfdafde737988ee1c0f20",
+  "source_probe_result": "research/runs/spectre_cmos_v14_full/rtpulsetripprobe01/chain_rt4_pulsetrip_probe_tt/result.json",
+  "source_probe_sha256": "e5e90c944ac617572104f57ba44ec42eb17ab3e018b7a902050ad10501ebce38",
+  "offsets_hz": [
+    1000000.0,
+    100000000.0,
+    491990000.0
+  ],
+  "noise_gate_relative_limit": 0.001,
+  "edge_spread_limit_db": 0.2,
+  "condition": "Repairedbank+RT4,TT27/1.2V/984MHz/10fF,noiselesszeroimpedanceRFreplay,.5ps/767/maxac504GHz; fresh PSS for every case.",
+  "launch_gate": "Review new-bank probe and full-band progress; use a released one-thread long slot. No automatic launch or overlap with method controls.",
+  "full_band_integral": false,
+  "full_pll_acceptance": false,
+  "main_dut_modified": false
+}

@@ -10,7 +10,7 @@ include "rf_light24s12_v14.scs"
 include "bank_pulsetrip_v14.scs"
 include "rtcomb_v13.scs"
 include "rt_noise_scale4_v14.scs"
-simulatorOptions options reltol=1e-5 vabstol=1e-7 iabstol=1e-13 temp=27
+simulatorOptions options reltol=1e-5 vabstol=1e-7 iabstol=1e-13 temp=27 noiseon_inst=[XD] noiseon_type=all
 VDD (vdd 0) vsource dc=1.2
 ahdl_include "tank_replay_full_v14.va"
 XRF (vp vn 0) tank_replay_full_v14
@@ -29,11 +29,8 @@ XACB1 (clock_b count_clock vdd 0) pll_inv wn=2u wp=4u
 XCOUNT (count_clock 0 vdd q0 qx1 q2 q3 q4 q5 q6 q7 q8 q9 q10 q11 q12 q13 vdd 0) tx_fll_counter
 // Full divider-tree period is24 RF cycles; output has6 rising edges.
 pss pss fund=164M harms=767 tstab=300n maxstep=0.5p maxacfreq=504G method=traponly errpreset=conservative maxperiods=30 saveinit=no writefinal="__FINAL_STATE__" writepss="__PERIODIC_STATE__"
-pn pnoise start=10k stop=492M dec=20 pnoisemethod=fullspectrum noisetype=sampled measurement=[edge] sampleratio=6 maxsideband=767
+pn pnoise values=[1M 100M 491.99M] pnoisemethod=fullspectrum noisetype=sampled measurement=[edge] sampleratio=6 maxsideband=767
 edge jitterevent trigger=[out] triggerthresh=0.6 triggernum=1 triggerdir=rise target=[out] jittercal=[Jee]
 save vp vn clk q1 data out acqclk XD.d8 XD.d12 VDD:p VRX:p VRT:p
 saveOptions options save=selected
 save XR.qb XR.ob
-
-// Finite offsets around shifted flicker poles; no assumed low-frequency cutoff.
-pnnear pnoise values=[163990000 163999000 163999900 163999990 163999999 164000001 164000010 164000100 164001000 164010000 327990000 327999000 327999900 327999990 327999999 328000001 328000010 328000100 328001000 328010000 491990000 491999000 491999900 491999990 491999999] pnoisemethod=fullspectrum noisetype=sampled measurement=[edge] sampleratio=6 maxsideband=767

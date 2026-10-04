@@ -1,0 +1,34 @@
+{
+  "scope": "Audit the stopped boundary-only PSS trial against its unchanged late-seed source.",
+  "source_result": "research/runs/spectre_cmos_v14_full/coretripquiet01/core_pulsetrip_quiet_noise_tt/result.json",
+  "source_sha256": "364abd21224f2480db10ff9fb7613fa7ce95e197280f679f5dc8bb08d97a61fd",
+  "only_tstab_changed": true,
+  "old_tstab_s": 1e-06,
+  "new_tstab_s": 1.134023e-06,
+  "convergence_history": [
+    "Conv norm = 7.68e+06, max dI(XP.XV.XL.XP.LW:1) = 15.4075 mA, took 5.71043 ks.",
+    "Conv norm = 262e+03, max dI(VDD:p) = -520.297 uA, took 2.37898 ks.",
+    "Conv norm = 335e+03, max dI(VDD:p) = -661.753 uA, took 2.28833 ks.",
+    "Conv norm = 1.17e+06, max dI(XP.VRX:p) = 2.01745 mA, took 2.27773 ks.",
+    "Conv norm = 4.87e+06, max dI(VDD:p) = -7.68584 mA, took 2.27083 ks."
+  ],
+  "cancellation": {
+    "stopped": true,
+    "signal": "SIGINT",
+    "pid": 299401,
+    "netlist": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/5e8c970e/core_pulsetrip_quiet_noise_tt.scs",
+    "time": "2026-10-04T09:05:25.486448+08:00",
+    "reason": "Five complete residuals 7.68M 262k 335k 1.17M 4.87M; boundary-only change has not established convergence and residual rises for three consecutive iterations. Stop this diagnostic, preserve raw and investigate short method controls; not proof periodic solution does not exist."
+  },
+  "raw_tstab": {
+    "path": "research/runs/spectre_cmos_v14_full/coretripquiet01/core_pulsetrip_quiet_noise_tt/core_pulsetrip_quiet_noise_tt.raw/pss.tran.pss",
+    "bytes": 2186995038,
+    "sha256": "9a9d0bbcc55576c163a0b0925fbdd10bf805390c4c266e3697cf5a5b34c08d35"
+  },
+  "periodic_state_valid": false,
+  "pnoise_ran": false,
+  "segmentation_fault_after_stop": true,
+  "interpretation": "Changing only the shooting boundary did not establish convergence: five completed residuals7.68M/262k/335k/1.17M/4.87M. The last three rise consecutively. Deliberately stopped before maximum iterations; this is not proof no periodic solution exists.",
+  "next": "Review short method/mesh controls before another long PSS. CF40 own-state warm settling separately uses the released long slot; not a solver substitute or accepted noise result.",
+  "full_pll_acceptance": false
+}

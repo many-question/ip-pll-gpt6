@@ -51,6 +51,12 @@ for item in p['cases']:
         row.update(provisional_log_grid_rms_fs=float(np.sqrt(np.trapezoid(st,f))*1e15),
             group_provisional_rms_fs={k:float(np.sqrt(np.trapezoid(v,f))*1e15) for k,v in groups.items()},fullband_rms_measured=True,
             physical_pole_integral_closed=False)
+        if item.get('harmonic_neighbour_offsets_hz'):
+            nearpath=raw/'pnnearMedge.0.sample.pnoise';nf,nst,nslew,nerr,ndev=noise(nearpath)
+            assert np.allclose(nf,item['harmonic_neighbour_offsets_hz'],rtol=1e-10,atol=0)
+            row['finite_harmonic_neighbours']=dict(offsets_hz=nf.tolist(),timing_psd_s2_per_hz=nst.tolist(),
+                slew_v_per_s=nslew,device_sum_relative_error=nerr,raw_noise_sha256=sha(nearpath),
+                note='Finite distances down to1Hz from harmonics; no interpolation through a zero-distance singularity and no inferred physical cutoff.')
 out=dict(scope=__doc__,cases=rows,probe_complete=sum(x['grade']=='probe' for x in rows)==2,
     full_pll_acceptance=False,old_noise_only_gates_apply=False,main_dut_modified=False,limitations=p['limitations'])
 (H/'results/rt_pulsetrip_noise_validation.json').write_text(json.dumps(out,indent=2)+'\n')

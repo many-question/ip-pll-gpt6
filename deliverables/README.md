@@ -1,4 +1,4 @@
-本次快照：[第38次汇报](../reports/2026-10-04T0824.yaml)。新分频器RT2六点噪声保持，旧RT4五组noise-on闭合；完整PLL RMS仍待周期状态与全带验证。
+本次快照：[第39次汇报](../reports/2026-10-04T0927.yaml)。新分频器RT4噪声改善保持；已识别数值振铃并排定单变量PSS，整机RMS仍未验证。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)
