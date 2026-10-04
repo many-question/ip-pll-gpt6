@@ -1,4 +1,4 @@
-本次快照：[第51次汇报](../reports/2026-10-04T1808.yaml)。VCO四组独立噪声归因全部通过，前端实测平衡点与局部鉴相增益通过；正在取得前端噪声和VCO同载频对照。整机<200fs仍未验证，功耗优化后置。
+本次快照：[第52次汇报](../reports/2026-10-04T1847.yaml)。RT4在SS60和FF0的完整频带噪声精度检查通过，分别约87.37fs和38.84fs；VCO同载频对照通过，六点定时噪声PSD降低0.36–1.10dB，已补跑密集谱。CP尾部端电流已与内部电阻性电流区分。整机抖动仍未验收。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

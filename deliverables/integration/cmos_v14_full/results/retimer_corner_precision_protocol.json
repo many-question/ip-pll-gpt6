@@ -1,0 +1,60 @@
+{
+  "scope": "Refine the SS60/FF0 standalone RT4 full-band noise cases without circuit edits.",
+  "time": "2026-10-04T18:15:02.764100+08:00",
+  "cases": [
+    {
+      "run": "rtcornerprecision01",
+      "case": "retimer_standalone_refined_ss",
+      "corner": "ss",
+      "temp_c": 60,
+      "source_result": "research/runs/spectre_cmos_v14_full/rtstandalonepvt01/retimer_standalone_band_finer_ss/result.json",
+      "source_sha256": "f28fa196e225eb2c162aec99fa2a2ed25b6bf0009f371b29ca05ea30ffb4744c",
+      "source_tb_sha256": "63f319abd07c2fdea8884dfa22be66490e44884346722c0182d90cb05d95dac7",
+      "tb_sha256": "6d4aa39cbc7a1fc56deba867547051e54c7fb6ae8bc503a2ba6ea0895c60fb10",
+      "physical_dependencies_sha256": {
+        "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+        "rt_noise_scale4_v14.scs": "839d4bdb3d8b2dc60dcdad1f3a49010f82d6cb4ff08d10325b8c5c636c65e5c6",
+        "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd"
+      }
+    },
+    {
+      "run": "rtcornerprecision01",
+      "case": "retimer_standalone_refined_ff",
+      "corner": "ff",
+      "temp_c": 0,
+      "source_result": "research/runs/spectre_cmos_v14_full/rtstandalonepvt01/retimer_standalone_band_finer_ff/result.json",
+      "source_sha256": "13e31c6a0b5db64d4706c903d73479ccbee44086f8c69a21a4243dfffdf8dad3",
+      "source_tb_sha256": "153d4c929aa64e6c7af78faa8a8dd6255cdccb602749f33fff7aa7148b78306c",
+      "tb_sha256": "fecf323706f189b986301e6081db14d88ea57be6c3fff000247cc6d230fc97e8",
+      "physical_dependencies_sha256": {
+        "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+        "rt_noise_scale4_v14.scs": "839d4bdb3d8b2dc60dcdad1f3a49010f82d6cb4ff08d10325b8c5c636c65e5c6",
+        "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd"
+      }
+    }
+  ],
+  "source_validation": "retimer_standalone_pvt_validation.json",
+  "source_validation_sha256": "34206d0e9b82019f5c08293b89ad7630294ac71d5df6b75463d19c27da882620",
+  "numerical_changes": {
+    "harms=256": "harms=512",
+    "maxstep=0.25p": "maxstep=0.125p",
+    "maxacfreq=1008G": "maxacfreq=2016G",
+    "maxsideband=256": "maxsideband=512"
+  },
+  "condition": "ActualRT4+two buffers, SS60/FF0,1.2V/984MHz/10fF,ideal3.936GHzclock and984MHzdata/10psedges/delay30ps;freshPSS,10kHz-492MHz95point noise.",
+  "precision_limits": {
+    "max_psd_change_db": 0.1,
+    "max_relative_rms_change": 0.01
+  },
+  "integration_band_hz": [
+    10000.0,
+    492000000.0
+  ],
+  "main_dut_modified": false,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "Two paired corners, not all process/temperature/voltage/frequency/load combinations.",
+    "Ideal clock/data exclude RF receiver, divider, LC and closed-loop correlations.",
+    "Numerical precision within this fixture is not complete PLL jitter acceptance."
+  ]
+}

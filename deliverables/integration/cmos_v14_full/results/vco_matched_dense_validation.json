@@ -1,0 +1,34 @@
+{
+  "scope": "Validate matched dense VCO spectra and same-workpoint numerical convergence.",
+  "condition": "TT27/1.2V/Q5RLC/CF40/staticreference/fixedM4/10fF/onlyXVnoise. Baseline originaltail/c23/control.679V; candidateMT560um2um/c21/control.7530325672469256V. All freshPSS.",
+  "protocol_sha256": "fb17ef5382db3bd4ea6fa678eca697a9728b31c1d2b6c506dfce2295e87951ed",
+  "cases": [
+    {
+      "case": "vco_matched_dense_candidate_025_tt",
+      "variant": "candidate_025",
+      "completed": false
+    },
+    {
+      "case": "vco_matched_dense_baseline_0125_tt",
+      "variant": "baseline_0125",
+      "completed": false
+    },
+    {
+      "case": "vco_matched_dense_candidate_0125_tt",
+      "variant": "candidate_0125",
+      "completed": false
+    }
+  ],
+  "complete": false,
+  "precision_checks": {},
+  "both_full_grid_precision_passed": false,
+  "full_pll_jitter_fs": null,
+  "full_pll_acceptance": false,
+  "main_dut_modified": false,
+  "limitations": [
+    "Full-grid precision is checked at each design and exact control value; no changed-bias run counts as a pure numerical check.",
+    "Only offsets>=1MHz are integrated to the commonminimum fRF/8. Freeoscillator low offsets are not lockedPLL jitter.",
+    "Tail dimensions, coarse code, control, amplitude and current differ; matched-carrier comparison is not a pure area experiment.",
+    "Active reference, programmablebank,RT4,completePLL andPVT remain outside this fixture."
+  ]
+}
