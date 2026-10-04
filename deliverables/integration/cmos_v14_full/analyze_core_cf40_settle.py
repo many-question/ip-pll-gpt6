@@ -25,5 +25,6 @@ out=dict(scope=__doc__,source_result=rp.relative_to(ROOT).as_posix(),source_sha2
     windows=windows,coarse23_held=bool(coarse),supply_ranges_v=supplies,bias_last1us_range_v=[float(min(bias)),float(max(bias))],
     bias_last1us_drift_v_per_us=float(np.polyfit((t[ix]-t[ix][0])*1e6,bias,1)[0]),
     preflight_passed=bool(windows[-1]['passed'] and coarse and good),full_pll_acceptance=False,random_jitter_measured=False,
+    first_window_note='The first1us includes the first observer update, where cycle counts remain zero until a second reference arrives. Its failed raw count check and944.4MHz average are not an actual frequency drop. Final five windows contain complete reference intervals; the last-window gate is unchanged.',
     interpretation='Functional warm stationarity only; no PSS, lowfrequency noise or completePLL acceptance.')
 (H/'results/core_cf40_settle_validation.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))

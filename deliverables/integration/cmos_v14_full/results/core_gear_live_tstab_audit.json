@@ -1,0 +1,71 @@
+{
+  "scope": "Read-only recovery of an unchanged on-disk PSS initialization trace while iterations continue; stable hash does not prove a complete trailing record.",
+  "time": "2026-10-04T09:53:03.665685+08:00",
+  "run": "coretripgear01",
+  "case": "core_pulsetrip_gear_noise_tt",
+  "remote_dir": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/1a0ebf2a",
+  "launch_sha256": "fd6aa0e3e2b0e041ce075da130bc65b621a3baa7586eca61c58471a4a2277fc6",
+  "remote_inputs_verified": true,
+  "snapshot_stable_before_and_after": true,
+  "process_pids_before": [
+    350576
+  ],
+  "process_pids_after": [
+    350576
+  ],
+  "raw_tstab": {
+    "path": "research/runs/spectre_cmos_v14_full/coretripgear01/core_pulsetrip_gear_noise_tt/live_tstab/pss.tran.pss",
+    "bytes": 2529026048,
+    "sha256": "15cd767a40bca3f249a951bbcd2fcd90e31a0a4527fe37896bd2211ccb710a4a"
+  },
+  "periodic_state_valid": false,
+  "random_jitter_measured": false,
+  "limitation": "Initialization file only, captured with unchanged hash while the same job continues PSS. No result.json or final periodic/noise acceptance is fabricated.",
+  "record_completeness_audit": {
+    "checked": "2026-10-04T10:08:29.342777+08:00",
+    "incomplete_final_record": [
+      {
+        "time_s": 4.384023e-06,
+        "missing_signals": [
+          "VDD:p",
+          "XP.VRT:p",
+          "XP.VVCO:p",
+          "XP.XD.XD12.X0.XM.fb",
+          "XP.XD.cb",
+          "XP.XD.ck",
+          "XP.XD.ct0",
+          "XP.XD.ct1",
+          "XP.XD.d12",
+          "XP.XD.d6",
+          "XP.XD.d8",
+          "XP.XD.r0",
+          "XP.acqclk",
+          "XP.b0",
+          "XP.b1",
+          "XP.b2",
+          "XP.b3",
+          "XP.b4",
+          "XP.b5",
+          "XP.b6",
+          "XP.b7",
+          "XP.clk",
+          "XP.ctrl",
+          "XP.data",
+          "XP.hn",
+          "XP.hp",
+          "XP.preset",
+          "XP.pulse",
+          "XP.q1",
+          "XP.refb",
+          "XP.vc1",
+          "XP.vn",
+          "XP.vp",
+          "out",
+          "ref"
+        ]
+      }
+    ],
+    "last_complete_sample_s": 4.384022182742564e-06,
+    "action": "Preserve original raw and hash; exclude the single incomplete final record. Analyze exactly two250ns windows ending at the last complete sample. No extrapolation."
+  }
+}

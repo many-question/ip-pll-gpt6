@@ -1,0 +1,79 @@
+{
+  "scope": "Reduce only the analytic linear-RC calibration grid; preserve MOS full-band tests.",
+  "time": "2026-10-04T10:17:09.286521+08:00",
+  "status": "prepared_not_run",
+  "run": "corecal6_01",
+  "cases": [
+    {
+      "case": "noise_core_cal6_core",
+      "maxstep_s": 1e-12,
+      "maxacfreq_hz": null,
+      "tb_sha256": "f5d37f850245e08ae38b327490bed4605718b4f06b9cf82abdef0a9af1ff4112"
+    },
+    {
+      "case": "noise_core_cal6_fine",
+      "maxstep_s": 2.5e-13,
+      "maxacfreq_hz": 1000000000000.0,
+      "tb_sha256": "6883d5ac1c49efef0b2d46555a4e37df37977bb904fd2b3e8929768fde8aae30"
+    }
+  ],
+  "source_tb_sha256": "41bac02ebbb0395ab74ea35ed93300b8c517964bb4e557f890aaca6fd5e9839a",
+  "fund_hz": 4000000.0,
+  "sample_ratio": 246,
+  "sample_frequency_hz": 984000000.0,
+  "resistance_ohm": 1000.0,
+  "capacitance_f": 2e-14,
+  "temperature_k": 300.15,
+  "condition": "Same1kohm/20fF linearRC/noiseless984MHz sine. Driven4MHz PSS/246outputrises,gear2only,10kHz\u2013492MHz explicit sampledPSD/slope2 integral.",
+  "limits": {
+    "period_relative": 1e-08,
+    "endpoint_v": 0.001,
+    "rms_relative_to_analytic": 0.005,
+    "core_to_fine_rms_relative": 0.005,
+    "core_to_fine_psd_db": 0.1,
+    "clipped_vs_auto_jee_relative": 0.015,
+    "point_psd_db_to_analytic": 0.1
+  },
+  "launch_gate": "After rt4c24tune01 single point completes and is collected, reuse the one-thread shortslot. Two sequential RC cases; no further automatic batch.",
+  "analytic": "Stationary RC covariance sigma2*rho^abs(k),sigma2=kT/C,rho=exp[-1/(fsRC)]. One-sided sampledSv=2*kT/(Cfs)*(1-rho2)/(1-2rho*cos(2pif/fs)+rho2). Divide by analytic sine output zero-crossing slope squared.",
+  "limitations": [
+    "Linear thermal-noise normalization only; not realPLL RMS, MOS/readpss accuracy or nonidentical-edge covariance.",
+    "This does not resolve shifted1/f poles or validate omitted fullPLLcontrolnoise.",
+    "Core-to-fine changes grid andmaxacfreq together, so a difference diagnoses combinednumericalaccuracy,notuniquecausality.",
+    "Sparse fixture frequency controls are not a replacement for the actual-MOS full-band integral or harmonic-neighbour checks."
+  ],
+  "evidence_sources": [
+    {
+      "path": "research/spectre_help/pnoise.txt",
+      "sha256": "54c0ec48a1cc3171e3fc4791baa6efd48bf1c8341b02ece360f8d47cf8210908",
+      "supports": "sampleratio is samplefrequency/PSSfund; parameter semantics only."
+    },
+    {
+      "url": "https://community.cadence.com/cadence_technology_forums/f/rf-design/49427/sampled-pnoise-on-multi-phase-switched-cap-circuit/1379074",
+      "accessed": "2026-10-04",
+      "supports": "Cadence staff identifies sampled(jitter) for21.1; linked support-note details require access and were not read."
+    },
+    {
+      "url": "https://support1.cadence.com/public/docs/content/20483291.html",
+      "accessed": "2026-10-04",
+      "status": "403; no content used"
+    }
+  ],
+  "main_dut_modified": false,
+  "full_pll_acceptance": false,
+  "offsets_hz": [
+    10000.0,
+    1000000.0,
+    2000000.0,
+    10000000.0,
+    100000000.0,
+    492000000.0
+  ],
+  "output": "core_noise_calibration_sparse_validation.json",
+  "original_protocol_sha256": "f4cc5c6622c3b428fa9a2f22959635b235a6a91e8bb1e217cb62431a833d0e68",
+  "original_cancellation_sha256": "5fd274c0f57e4a8b25e9c2344ec92ad397206e88f7f9b275df0417c2f45c6686",
+  "analytic_rho": 8.554427701941785e-23,
+  "analytic_relative_psd_ripple_bound": 3.421771080776714e-22,
+  "change": "Only the frequency grid changes from dec20 to six explicit controls. Both band endpoints and2MHz automatic-Jee boundary are measured. Fresh PSS remains mandatory.",
+  "why_sparse_suffices_for_this_fixture": "Exact stationaryRC sampled covariance has rho~8.55e-23; its PSD relative ripple is bounded above by4e-22. Trapezoidal integration of this known flat thermal-noise fixture calibrates normalization. This argument does not apply to MOS flicker or arbitrary colored noise."
+}

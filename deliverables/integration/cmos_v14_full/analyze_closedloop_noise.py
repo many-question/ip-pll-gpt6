@@ -29,7 +29,7 @@ for run in args.runs or ['corenoiseprobe01']:
   if not rec.get('local_outputs_sha256'):continue
   assert rec['remote_inputs_match']
   log=(j/'spectre.out').read_text(errors='replace')
-  row=dict(run=run,case=j.name,source_result=rp.relative_to(ROOT).as_posix(),source_sha256=hashlib.sha256(rp.read_bytes()).hexdigest(),simulator_completed='spectre completes with 0 errors' in log,warnings=[x.strip() for x in log.splitlines() if 'WARNING (' in x],full_pll_acceptance=False);rows.append(row)
+  row=dict(run=run,case=j.name,source_result=rp.relative_to(ROOT).as_posix(),source_sha256=hashlib.sha256(rp.read_bytes()).hexdigest(),simulator_completed=bool(rec['ok'] and 'spectre completes with 0 errors' in log),warnings=[x.strip() for x in log.splitlines() if 'WARNING (' in x],full_pll_acceptance=False);rows.append(row)
   row['pss_converged']='pss: The steady-state solution was achieved' in log
   row['periodic_passed']=False
   row['noise_consistent']=False
@@ -56,12 +56,17 @@ for run in args.runs or ['corenoiseprobe01']:
       max_period_fraction_error=float(max(abs(pt*count/T-1))),
       passed=bool(len(edges)==count and max(abs(pt*count/T-1))<.02 and min(td[k])<.2 and max(td[k])>1))
   coarse_held=all(np.all(td[f'XP.b{i}']>.9) if 23&(1<<i) else np.all(td[f'XP.b{i}']<.3) for i in range(8))
+  control_in_range=bool(np.all(td['XP.ctrl']>=.2) and np.all(td['XP.ctrl']<=1.0))
   row.update(period_ns=float(T*1e9),output_edges=len(e),dominant_harmonics=harmonic,endpoint_max_v=endpoint,
-   endpoint_errors_v=endpoints,branch_edges=branch_edges,coarse23_held=bool(coarse_held),
+   endpoint_errors_v=endpoints,branch_edges=branch_edges,coarse23_held=bool(coarse_held),control_within_preflight_working_range=control_in_range,
    periodic_passed=bool(abs(T*4e6-1)<1e-7 and harmonic==expected and len(e)==246 and max(abs(period*984e6-1))<.02 and endpoint<1e-3 and coarse_held and all(v['passed'] for v in branch_edges.values())),
    analog_ranges_v={k:[float(min(td[k])),float(max(td[k]))] for k in ['XP.ctrl','XP.vc1','XP.hp','XP.hn','XP.vp','XP.vn','XP.preset']},
    period_power_mw=float(-1.2*np.trapezoid(td['VDD:p'],t)/T*1e3))
   p=raw/'pnMedge.0.sample.pnoise';d=parse(p);f=d['freq'];slew=float(re.search(r'"slew rate event_1"\s+([0-9.eE+\-]+)',p.read_text())[1]);sv=d['out']**2;st=sv/slew**2
+  sample_ratio=float(re.search(r'"sample ratio factor"\s+([0-9.eE+\-]+)',p.read_text())[1])
+  row['sample_ratio_factor']=sample_ratio
+  row['sample_rate_hz']=sample_ratio/T
+  row['sampling_ratio_correct']=bool(sample_ratio==246 and abs(sample_ratio/T/984e6-1)<1e-7)
   assert slew>0 and np.all(np.diff(f)>0) and np.all(np.isfinite(st))
   dev=contributions(p,len(f));err=float(max(abs(sum(dev.values())-sv)/np.maximum(sv,1e-300)))
   grouped={}
@@ -74,7 +79,7 @@ for run in args.runs or ['corenoiseprobe01']:
   row['offsets_at_pss_harmonics_hz']=f[np.abs(f/(1/T)-np.round(f/(1/T)))<1e-9].tolist()
   row['harmonic_pole_integral_closed']=False
   row['noise_interpretation']='Exact-PSS-harmonic offsets are retained and identified. No assumed physical low-frequency cutoff and no exclusion of continuous noise as a discrete spur.'
-  row['probe_passed']=row['periodic_passed'] and row['noise_consistent']
+  row['probe_passed']=row['periodic_passed'] and row['noise_consistent'] and control_in_range and row['sampling_ratio_correct']
   key=run+'_'+j.name
   spectra[key+'_f']=f;spectra[key+'_st']=st
   for k,v in grouped.items():spectra[key+'_'+k+'_st']=v

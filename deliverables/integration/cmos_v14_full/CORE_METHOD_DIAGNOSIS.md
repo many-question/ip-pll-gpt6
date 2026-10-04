@@ -24,3 +24,8 @@ Spectre安装版本帮助`research/spectre_help/pss.txt`的214–223、888–903
 安静边界对照的完整五轮残差为7.68M、262k、335k、1.17M、4.87M，已于09:05对精确进程发送SIGINT，随后出现SPECTRE-18。2,186,995,038字节稳定段已回收，SHA为`9a9d0bbcc55576c163a0b0925fbdd10bf805390c4c266e3697cf5a5b34c08d35`；没有PNoise或有效周期状态。主动停止不证明周期解不存在。
 
 复现与证据：[短时协议](results/core_method_probe_protocol.json)、[实际数据及源SHA](results/core_method_probe_validation.json)、[分析](analyze_core_method_probe.py)、[作图](plot_core_method_probe.py)、[边界试验完整审计](results/core_quiet_trial_audit.json)。
+
+
+## 第40次实际轨迹更新
+
+Gear2实际LC初始化快照已校验2,529,026,048字节及SHA。末两250ns输出各246沿，但共同提前0.867613ps，C1同相位终值增加0.739400mV，显示残余确定性漂移；不是随机抖动。当前完整残差历史：Conv norm = 7.77e+06, max dI(XP.XV.XL.XP.LW:1) = 15.5452 mA, took 2.93894 ks.；Conv norm = 611e+03, max dV(XP.XR.ob) = -182.96 mV, took 1.84923 ks.尚无有效周期解。 识别到运行中PSF末记录被缓存截断：稳定文件哈希不代表记录完整。保留原始文件，舍弃唯一不完整记录，截止最后完整点4.384022182742564us，仍比较整两个250ns。用既有完整原始文件回归，全部原测量行和时间窗完全一致。见[最新审阅](NOISE_REVIEW_40.md)。

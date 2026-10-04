@@ -1,0 +1,62 @@
+{
+  "scope": "Check4MHz PSS/sampleratio246 using analytic sampled RC noise, not PLL performance.",
+  "time": "2026-10-04T09:40:49.419543+08:00",
+  "status": "prepared_not_run",
+  "run": "corecal01",
+  "cases": [
+    {
+      "case": "noise_core_cal_core",
+      "maxstep_s": 1e-12,
+      "maxacfreq_hz": null,
+      "tb_sha256": "b73ca45991e9a5a25ddea102a9e1850b45437638d2b2e4da7f066a7a9336990f"
+    },
+    {
+      "case": "noise_core_cal_fine",
+      "maxstep_s": 2.5e-13,
+      "maxacfreq_hz": 1000000000000.0,
+      "tb_sha256": "70a14369e9152e160f5f736e438fb1e94cff6aec57150d59738e07c5f8c7bc65"
+    }
+  ],
+  "source_tb_sha256": "41bac02ebbb0395ab74ea35ed93300b8c517964bb4e557f890aaca6fd5e9839a",
+  "fund_hz": 4000000.0,
+  "sample_ratio": 246,
+  "sample_frequency_hz": 984000000.0,
+  "resistance_ohm": 1000.0,
+  "capacitance_f": 2e-14,
+  "temperature_k": 300.15,
+  "condition": "Same1kohm/20fF linearRC/noiseless984MHz sine. Driven4MHz PSS/246outputrises,gear2only,10kHz\u2013492MHz explicit sampledPSD/slope2 integral.",
+  "limits": {
+    "period_relative": 1e-08,
+    "endpoint_v": 0.001,
+    "rms_relative_to_analytic": 0.005,
+    "core_to_fine_rms_relative": 0.005,
+    "core_to_fine_psd_db": 0.1,
+    "clipped_vs_auto_jee_relative": 0.015
+  },
+  "launch_gate": "Finite two-case calibration after both rt4program01 cases complete; reuse one-thread shortslot, no overlap beyond18threads.",
+  "analytic": "Stationary RC covariance sigma2*rho^abs(k),sigma2=kT/C,rho=exp[-1/(fsRC)]. One-sided sampledSv=2*kT/(Cfs)*(1-rho2)/(1-2rho*cos(2pif/fs)+rho2). Divide by analytic sine output zero-crossing slope squared.",
+  "limitations": [
+    "Linear thermal-noise normalization only; not realPLL RMS, MOS/readpss accuracy or nonidentical-edge covariance.",
+    "This does not resolve shifted1/f poles or validate omitted fullPLLcontrolnoise.",
+    "Core-to-fine changes grid andmaxacfreq together, so a difference diagnoses combinednumericalaccuracy,notuniquecausality."
+  ],
+  "evidence_sources": [
+    {
+      "path": "research/spectre_help/pnoise.txt",
+      "sha256": "54c0ec48a1cc3171e3fc4791baa6efd48bf1c8341b02ece360f8d47cf8210908",
+      "supports": "sampleratio is samplefrequency/PSSfund; parameter semantics only."
+    },
+    {
+      "url": "https://community.cadence.com/cadence_technology_forums/f/rf-design/49427/sampled-pnoise-on-multi-phase-switched-cap-circuit/1379074",
+      "accessed": "2026-10-04",
+      "supports": "Cadence staff identifies sampled(jitter) for21.1; linked support-note details require access and were not read."
+    },
+    {
+      "url": "https://support1.cadence.com/public/docs/content/20483291.html",
+      "accessed": "2026-10-04",
+      "status": "403; no content used"
+    }
+  ],
+  "main_dut_modified": false,
+  "full_pll_acceptance": false
+}

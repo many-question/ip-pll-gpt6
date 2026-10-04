@@ -1,0 +1,28 @@
+{
+  "scope": "Review intentional interruption of over-dense analyticRC calibration, not a circuit failure.",
+  "time": "2026-10-04T10:18:34.963542+08:00",
+  "source_result": "research/runs/spectre_cmos_v14_full/corecal01/noise_core_cal_core/result.json",
+  "source_sha256": "e8d99f500c658f795495da827cc41050cc20744bd21fa78d67c6eb86292838b2",
+  "cancellation": {
+    "stopped": true,
+    "signal": "SIGINT",
+    "pid": 378087,
+    "netlist": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/08d5a6ce/noise_core_cal_core.scs",
+    "time": "2026-10-04T10:15:30.211488+08:00",
+    "reason": "Stop the over-dense linearRC calibration after15min PNoise with no completed noise output; preserve convergedPSS and inputs. Replace with six explicit frequency controls including2MHz/492MHz against the exact analytic stationaryRC covariance. Not a simulation or circuit failure; no accepted noise result. ActualMOS fullband jobs continue unchanged."
+  },
+  "pss_achieved": true,
+  "pnoise_started": true,
+  "pnoise_completed": false,
+  "stop_frequency_hz": 25118.9,
+  "convergence_history": [
+    "Conv norm = 11.3e+06, max dI(VI:p) = -49.7361 uA, took 4.58 s.",
+    "Conv norm = 2.19, max dI(VI:p) = -17.2821 pA, took 1.97 s.",
+    "Conv norm = 0, max dval(0) = 0 , took 1.87 s."
+  ],
+  "fine_case_run": false,
+  "noise_accepted": false,
+  "full_pll_acceptance": false,
+  "replacement_protocol": "core_noise_calibration_sparse_protocol.json",
+  "reason": "After approximately15min PNoise reached25.1189kHz on a10k..492MHz dec20 grid. Six-frequency thermalRC calibration plus analytic covariance is sufficient for this flat fixture; actualMOS band remains unchanged."
+}

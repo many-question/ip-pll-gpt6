@@ -1,4 +1,4 @@
-本次快照：[第39次汇报](../reports/2026-10-04T0927.yaml)。新分频器RT4噪声改善保持；已识别数值振铃并排定单变量PSS，整机RMS仍未验证。
+本次快照：[第40次汇报](../reports/2026-10-04T1020.yaml)。CF40暖启动稳态通过、RT4物理粗调验证完成；新输出链噪声和实际LC周期解继续，整机RMS仍未知。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

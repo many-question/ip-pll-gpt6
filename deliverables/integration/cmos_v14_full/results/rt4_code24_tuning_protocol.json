@@ -1,0 +1,32 @@
+{
+  "scope": "Measure one physical fine-control point after admitting coarse-code24.",
+  "time": "2026-10-04T10:05:34.737170+08:00",
+  "status": "prepared_not_run",
+  "run": "rt4c24tune01",
+  "case": "rt4c24_v750_tt",
+  "control_v": 0.75,
+  "tb_sha256": "ac92b376a2200e2fe800dd112d6b7c236be5f2aefef7bc2daf01b4e91a657bb7",
+  "seed_sha256": "755022b7ef377c8b3d35985fbe186cd1aa0c4179ab3a8d900ec243b23087b087",
+  "original_seed_sha256": "8f0641b8cdc7d94466d1d55436a13282d7cadc9fc5abf1d12fe271406267e353",
+  "source_validation_sha256": "4cf918091fcff0c3047655f4784f336066bd684a4460f408cd68002f810d5809",
+  "baseline_result": "research/runs/spectre_cmos_v14_full/rt4program01/rt4program_c24_tt/result.json",
+  "baseline_result_sha256": "80ae80b74644a660d537b9f0a07153f182538c1864f5ecd10bf4aee509a5124a",
+  "target_rf_hz": 3936000000.0,
+  "coarse_code": 24,
+  "condition": "TT27/1.2V/Q5/CF10/RT4/repaired divider/10fF;750ns/1ps traponly,last500ns dense. Actual MOS flops program code24.",
+  "change": "Only prescribed external-control clamp and its own initial voltage change to .75V. All other dynamic state entries, including C1 and coarse flops, remain from the common physical source.",
+  "limits": {
+    "window_rf_drift_ppm": 100,
+    "divider_relative": 0.001,
+    "clamp_error_v": 1e-09
+  },
+  "launch_gate": "After intentional cancellation and collection of over-dense corecal01, verify no calibration process remains, then reuse its one-thread shortslot for this single point. No automatic additional tuning.",
+  "limitations": [
+    "Frequency bracket only; no closed-loop capture or random-noise result.",
+    "C1 is not artificially precharged. Its physical settling must be checked before releasing the clamp.",
+    "Interpolation is only allowed inside measured same-code control bounds and is not a simulated operating point."
+  ],
+  "main_dut_modified": false,
+  "full_pll_acceptance": false,
+  "dispatch_review": "Original finite waiter stopped on predecessor cancellation; explicitly reviewed cancellation is not a circuit failure. Current shortslot is free; manual single-case dispatch authorized by project task."
+}

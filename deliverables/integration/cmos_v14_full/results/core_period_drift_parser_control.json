@@ -1,0 +1,744 @@
+{
+  "scope": "Measure successive transient-period mismatch without interpreting it as noise.\n\nThe source audit identifies either a completed/stopped run's initial transient\nor an independently hash-verified stable snapshot from a still-running job.\nThis compares the last two 250 ns periods at identical forcing phases, not a\nvalid PSS solution. Unsaved internal states and eventual PSS convergence remain\noutside this check.\n",
+  "source": "research/runs/spectre_cmos_v14_full/coretripsupply01/core_pulsetrip_supply_noise_tt/core_pulsetrip_supply_noise_tt.raw/pss.tran.pss",
+  "source_sha256": "99808f9e36ad6289a1d22f118cbd15531a1b61e60725ae88d485e6c93ac6e6e1",
+  "intervals_us": [
+    [
+      3.75,
+      4.0
+    ],
+    [
+      4.0,
+      4.25
+    ]
+  ],
+  "comparison_grid_step_ps": 1.0,
+  "rows": [
+    {
+      "node": "XP.XD.XRL.a",
+      "unit": "V",
+      "range": [
+        -0.0492983812960036,
+        1.2793832686820443
+      ],
+      "difference_mean": -1.4107164184541858e-07,
+      "difference_rms": 0.00018376823911651593,
+      "difference_peak": 0.0006014604741699792,
+      "endpoint_difference": 1.8307002562479267e-07,
+      "first_period_edges": 492,
+      "second_period_edges": 492,
+      "matched_edge_shift_ps": {
+        "mean": -0.02098001358445542,
+        "min": -0.02367945386187994,
+        "max": -0.018616367782743035,
+        "peak_to_peak": 0.005063086079136903
+      }
+    },
+    {
+      "node": "XP.XD.XRL.b",
+      "unit": "V",
+      "range": [
+        0.9290744673468737,
+        1.3332170472674278
+      ],
+      "difference_mean": 4.396016513071661e-08,
+      "difference_rms": 5.1926209125017166e-05,
+      "difference_peak": 0.0001692602250940034,
+      "endpoint_difference": 1.8753774688740066e-06,
+      "first_period_edges": 0,
+      "second_period_edges": 0
+    },
+    {
+      "node": "XP.XD.load",
+      "unit": "V",
+      "range": [
+        -0.017839907221514587,
+        0.004534520553724044
+      ],
+      "difference_mean": 6.65802953393221e-10,
+      "difference_rms": 4.185343173864049e-06,
+      "difference_peak": 1.4604780488368906e-05,
+      "endpoint_difference": -1.8701669754787528e-07,
+      "first_period_edges": 0,
+      "second_period_edges": 0
+    },
+    {
+      "node": "XP.XD.loadb",
+      "unit": "V",
+      "range": [
+        1.0821211324854703,
+        1.216451126448761
+      ],
+      "difference_mean": 1.6333218919061355e-08,
+      "difference_rms": 1.9595932801148628e-05,
+      "difference_peak": 8.96375173438102e-05,
+      "endpoint_difference": 5.021473755029149e-06,
+      "first_period_edges": 0,
+      "second_period_edges": 0
+    },
+    {
+      "node": "XP.XD.r4",
+      "unit": "V",
+      "range": [
+        -0.025933591021564138,
+        0.011405089360973251
+      ],
+      "difference_mean": -2.0853435343483354e-09,
+      "difference_rms": 6.830834595444237e-06,
+      "difference_peak": 3.17905070883319e-05,
+      "endpoint_difference": -2.2734819229411254e-07,
+      "first_period_edges": 0,
+      "second_period_edges": 0
+    },
+    {
+      "node": "XP.XD.r6",
+      "unit": "V",
+      "range": [
+        -0.027367626126149958,
+        0.01292531919793865
+      ],
+      "difference_mean": -2.775831090655121e-09,
+      "difference_rms": 7.471186704171618e-06,
+      "difference_peak": 3.854767881209636e-05,
+      "endpoint_difference": -1.9214731147550526e-07,
+      "first_period_edges": 0,
+      "second_period_edges": 0
+    },
+    {
+      "node": "XP.XD.fb",
+      "unit": "V",
+      "range": [
+        -0.010917053735095753,
+        0.011431853156979912
+      ],
+      "difference_mean": -8.284303617309244e-06,
+      "difference_rms": 9.47878706792198e-06,
+      "difference_peak": 2.8998491193026922e-05,
+      "endpoint_difference": -9.743072492838546e-06,
+      "first_period_edges": 0,
+      "second_period_edges": 0
+    },
+    {
+      "node": "XP.VRX:p",
+      "unit": "I",
+      "range": [
+        -0.0028639444453568094,
+        0.0012297498990954455
+      ],
+      "difference_mean": -1.631790543881517e-08,
+      "difference_rms": 0.00011192686468779458,
+      "difference_peak": 0.0005610223827139165,
+      "endpoint_difference": 4.620144197258239e-05,
+      "first_period_edges": 0,
+      "second_period_edges": 0
+    },
+    {
+      "node": "XP.VRT:p",
+      "unit": "I",
+      "range": [
+        -0.00060798128762187,
+        0.00019924579804962128
+      ],
+      "difference_mean": 2.3381379063676187e-09,
+      "difference_rms": 1.140660751788106e-05,
+      "difference_peak": 5.964490509038079e-05,
+      "endpoint_difference": 2.4617338612234902e-05,
+      "first_period_edges": 0,
+      "second_period_edges": 0
+    },
+    {
+      "node": "XP.clk",
+      "unit": "V",
+      "range": [
+        -0.024555357623866392,
+        1.2469884937995623
+      ],
+      "difference_mean": 3.9588023295424844e-07,
+      "difference_rms": 0.00029700795221224526,
+      "difference_peak": 0.0007276461033428883,
+      "endpoint_difference": -1.0631398610140216e-05,
+      "first_period_edges": 984,
+      "second_period_edges": 984,
+      "matched_edge_shift_ps": {
+        "mean": -0.02103691025519645,
+        "min": -0.023570991292984025,
+        "max": -0.01885052919397854,
+        "peak_to_peak": 0.004720462099005486
+      }
+    },
+    {
+      "node": "XP.q1",
+      "unit": "V",
+      "range": [
+        -0.025913166555549587,
+        1.2295189396060984
+      ],
+      "difference_mean": 1.4781838259961202e-07,
+      "difference_rms": 0.00014026027183469805,
+      "difference_peak": 0.0003211796391367483,
+      "endpoint_difference": 0.00023916171127585928,
+      "first_period_edges": 492,
+      "second_period_edges": 492,
+      "matched_edge_shift_ps": {
+        "mean": -0.021019615514098457,
+        "min": -0.023910058581769922,
+        "max": -0.018155730090202465,
+        "peak_to_peak": 0.005754328491567456
+      }
+    },
+    {
+      "node": "XP.data",
+      "unit": "V",
+      "range": [
+        -0.03174053682294636,
+        1.2546508073180895
+      ],
+      "difference_mean": 1.0397259489619566e-07,
+      "difference_rms": 0.00014247261362851474,
+      "difference_peak": 0.0006393181121167046,
+      "endpoint_difference": 0.000429388970772715,
+      "first_period_edges": 246,
+      "second_period_edges": 246,
+      "matched_edge_shift_ps": {
+        "mean": -0.021024890771594324,
+        "min": -0.0239316291228047,
+        "max": -0.018640835176457423,
+        "peak_to_peak": 0.005290793946347277
+      }
+    },
+    {
+      "node": "XP.acqclk",
+      "unit": "V",
+      "range": [
+        -0.029249127600929833,
+        1.2392841228954057
+      ],
+      "difference_mean": 1.0677491633482724e-09,
+      "difference_rms": 0.00013138546946984042,
+      "difference_peak": 0.0005375097488158065,
+      "endpoint_difference": 6.682231322052701e-06,
+      "first_period_edges": 246,
+      "second_period_edges": 246,
+      "matched_edge_shift_ps": {
+        "mean": -0.021027176434910918,
+        "min": -0.023945938050382667,
+        "max": -0.018828084514942195,
+        "peak_to_peak": 0.005117853535440472
+      }
+    },
+    {
+      "node": "XP.XD.d8",
+      "unit": "V",
+      "range": [
+        -0.03480507879839287,
+        1.2439668480491093
+      ],
+      "difference_mean": 1.7780391995595376e-08,
+      "difference_rms": 0.00010208441985101337,
+      "difference_peak": 0.0007326762192830794,
+      "endpoint_difference": -0.00041183240049710856,
+      "first_period_edges": 123,
+      "second_period_edges": 123,
+      "matched_edge_shift_ps": {
+        "mean": -0.02102804770987226,
+        "min": -0.023875879955315264,
+        "max": -0.018754794989181017,
+        "peak_to_peak": 0.005121084966134247
+      }
+    },
+    {
+      "node": "XP.XD.d12",
+      "unit": "V",
+      "range": [
+        -0.03242153403875381,
+        1.2386185052905556
+      ],
+      "difference_mean": 2.7185806463236195e-08,
+      "difference_rms": 7.677144413736816e-05,
+      "difference_peak": 0.0005219715484977572,
+      "endpoint_difference": 5.608280147727295e-08,
+      "first_period_edges": 82,
+      "second_period_edges": 82,
+      "matched_edge_shift_ps": {
+        "mean": -0.021013821865552427,
+        "min": -0.023243624493815025,
+        "max": -0.018701608943389972,
+        "peak_to_peak": 0.0045420155504250544
+      }
+    },
+    {
+      "node": "XP.XD.XD12.X0.XM.fb",
+      "unit": "V",
+      "range": [
+        -0.04776705888050365,
+        1.2784932893756444
+      ],
+      "difference_mean": -1.424357461411856e-09,
+      "difference_rms": 9.074120434460202e-05,
+      "difference_peak": 0.0008287733308276479,
+      "endpoint_difference": 4.6202210413071043e-07,
+      "first_period_edges": 82,
+      "second_period_edges": 82,
+      "matched_edge_shift_ps": {
+        "mean": -0.020950158135830215,
+        "min": -0.023905026359030284,
+        "max": -0.01855178321458079,
+        "peak_to_peak": 0.005353243144449495
+      }
+    },
+    {
+      "node": "XP.XD.ck",
+      "unit": "V",
+      "range": [
+        -0.025398714499646095,
+        1.249814768127265
+      ],
+      "difference_mean": 3.5191114219134405e-07,
+      "difference_rms": 0.00017719613167846638,
+      "difference_peak": 0.0004873866965843243,
+      "endpoint_difference": 1.486836476405351e-05,
+      "first_period_edges": 492,
+      "second_period_edges": 492,
+      "matched_edge_shift_ps": {
+        "mean": -0.021056022874475434,
+        "min": -0.02425823359232117,
+        "max": -0.0188982340895679,
+        "peak_to_peak": 0.0053599995027532685
+      }
+    },
+    {
+      "node": "XP.XD.ct0",
+      "unit": "V",
+      "range": [
+        -0.010886497676909692,
+        1.1644442690081585
+      ],
+      "difference_mean": -7.89177049834541e-08,
+      "difference_rms": 0.00013296292379879154,
+      "difference_peak": 0.00032222287145988737,
+      "endpoint_difference": 1.928916018489879e-05,
+      "first_period_edges": 492,
+      "second_period_edges": 492,
+      "matched_edge_shift_ps": {
+        "mean": -0.02096344920182023,
+        "min": -0.023723724038868185,
+        "max": -0.018720102213727375,
+        "peak_to_peak": 0.00500362182514081
+      }
+    },
+    {
+      "node": "XP.XD.ct1",
+      "unit": "V",
+      "range": [
+        0.01257054067513555,
+        1.2337742325440202
+      ],
+      "difference_mean": 2.4240803096830177e-07,
+      "difference_rms": 0.000139783258687856,
+      "difference_peak": 0.0003204012100485043,
+      "endpoint_difference": -0.00010646301016160875,
+      "first_period_edges": 492,
+      "second_period_edges": 492,
+      "matched_edge_shift_ps": {
+        "mean": -0.021044715703402467,
+        "min": -0.024043437048325792,
+        "max": -0.018758318646241594,
+        "peak_to_peak": 0.005285118402084199
+      }
+    },
+    {
+      "node": "XP.XD.cb",
+      "unit": "V",
+      "range": [
+        -0.023154658834862386,
+        1.1444695044789857
+      ],
+      "difference_mean": -2.380859319333777e-07,
+      "difference_rms": 0.00012969310450467518,
+      "difference_peak": 0.0003117857362918697,
+      "endpoint_difference": 0.00017168722978758155,
+      "first_period_edges": 492,
+      "second_period_edges": 492,
+      "matched_edge_shift_ps": {
+        "mean": -0.02096808321663876,
+        "min": -0.02409206520982766,
+        "max": -0.01848933486351152,
+        "peak_to_peak": 0.005602730346316144
+      }
+    },
+    {
+      "node": "XP.XD.d6",
+      "unit": "V",
+      "range": [
+        -0.032552515009351815,
+        1.2388022090443298
+      ],
+      "difference_mean": 8.84217419954987e-08,
+      "difference_rms": 0.00010862502173778533,
+      "difference_peak": 0.0005300366617006502,
+      "endpoint_difference": 0.00027248193647830266,
+      "first_period_edges": 164,
+      "second_period_edges": 164,
+      "matched_edge_shift_ps": {
+        "mean": -0.021101549062734717,
+        "min": -0.023652437746027263,
+        "max": -0.018893848999999966,
+        "peak_to_peak": 0.004758588746027297
+      }
+    },
+    {
+      "node": "XP.XD.r0",
+      "unit": "V",
+      "range": [
+        -0.028755233792433884,
+        0.007902312599117363
+      ],
+      "difference_mean": 2.4992959939031625e-10,
+      "difference_rms": 6.758234573846059e-06,
+      "difference_peak": 2.955208860268635e-05,
+      "endpoint_difference": -3.7607463159285495e-07,
+      "first_period_edges": 0,
+      "second_period_edges": 0
+    },
+    {
+      "node": "out",
+      "unit": "V",
+      "range": [
+        -0.03787154595445621,
+        1.2099545019317959
+      ],
+      "difference_mean": 6.777394117495767e-08,
+      "difference_rms": 8.446583162912789e-05,
+      "difference_peak": 0.00028141646068435833,
+      "endpoint_difference": 0.00012023573216679573,
+      "first_period_edges": 246,
+      "second_period_edges": 246,
+      "matched_edge_shift_ps": {
+        "mean": -0.020993400123282033,
+        "min": -0.023552864364396308,
+        "max": -0.0186910498306695,
+        "peak_to_peak": 0.00486181453372681
+      }
+    },
+    {
+      "node": "XP.ctrl",
+      "unit": "V",
+      "range": [
+        0.6321356789744542,
+        0.6959711305983785
+      ],
+      "difference_mean": -2.322646673917815e-05,
+      "difference_rms": 2.563137313068432e-05,
+      "difference_peak": 4.4174462013879534e-05,
+      "endpoint_difference": -1.8302957898286287e-05,
+      "first_period_edges": 0,
+      "second_period_edges": 0
+    },
+    {
+      "node": "XP.vc1",
+      "unit": "V",
+      "range": [
+        0.6579856778572124,
+        0.6580272296867665
+      ],
+      "difference_mean": -2.020077613473793e-06,
+      "difference_rms": 2.9382854229851664e-06,
+      "difference_peak": 5.472927921634785e-06,
+      "endpoint_difference": -5.472927921634785e-06,
+      "first_period_edges": 0,
+      "second_period_edges": 0
+    },
+    {
+      "node": "XP.hp",
+      "unit": "V",
+      "range": [
+        0.32233329496539237,
+        0.6034367535493532
+      ],
+      "difference_mean": 9.346032354301502e-06,
+      "difference_rms": 3.267772414822994e-05,
+      "difference_peak": 0.00010864797463266962,
+      "endpoint_difference": -7.986685344185673e-07,
+      "first_period_edges": 312,
+      "second_period_edges": 312,
+      "matched_edge_shift_ps": {
+        "mean": -0.019627424889307608,
+        "min": -0.03051374597306484,
+        "max": 0.017271394976621387,
+        "peak_to_peak": 0.04778514094968622
+      }
+    },
+    {
+      "node": "XP.hn",
+      "unit": "V",
+      "range": [
+        0.3059176127789244,
+        0.6683075190643631
+      ],
+      "difference_mean": -3.6236464230768366e-05,
+      "difference_rms": 6.465190037155665e-05,
+      "difference_peak": 0.00020583117058542433,
+      "endpoint_difference": 4.5530857783637746e-05,
+      "first_period_edges": 486,
+      "second_period_edges": 486,
+      "matched_edge_shift_ps": {
+        "mean": -0.018989575156241625,
+        "min": -0.02800749067862019,
+        "max": -0.0013133430606239547,
+        "peak_to_peak": 0.026694147617996235
+      }
+    },
+    {
+      "node": "XP.pulse",
+      "unit": "V",
+      "range": [
+        -0.044417435045560165,
+        1.2659618679975562
+      ],
+      "difference_mean": -5.492757444361746e-09,
+      "difference_rms": 2.1511753381856264e-06,
+      "difference_peak": 9.38825001677579e-05,
+      "endpoint_difference": 1.5084692318720737e-08,
+      "first_period_edges": 6,
+      "second_period_edges": 6,
+      "matched_edge_shift_ps": {
+        "mean": -0.001065007470635176,
+        "min": -0.0032691472180318175,
+        "max": 0.00015217216889175443,
+        "peak_to_peak": 0.003421319386923572
+      }
+    },
+    {
+      "node": "XP.preset",
+      "unit": "V",
+      "range": [
+        -0.0003935577308470804,
+        0.00045589136048555237
+      ],
+      "difference_mean": -4.795236632133325e-08,
+      "difference_rms": 1.6606975880895855e-07,
+      "difference_peak": 5.048664612552909e-07,
+      "endpoint_difference": -2.1396832714177041e-07,
+      "first_period_edges": 0,
+      "second_period_edges": 0
+    },
+    {
+      "node": "ref",
+      "unit": "V",
+      "range": [
+        0.0,
+        1.2
+      ],
+      "difference_mean": 9.051274884425634e-16,
+      "difference_rms": 1.2760157931040352e-12,
+      "difference_peak": 2.0332910355413958e-10,
+      "endpoint_difference": 0.0,
+      "first_period_edges": 6,
+      "second_period_edges": 6,
+      "matched_edge_shift_ps": {
+        "mean": -1.2352563814125214e-10,
+        "min": -6.88214269644119e-10,
+        "max": 1.5881867761018131e-10,
+        "peak_to_peak": 8.470329472543003e-10
+      }
+    },
+    {
+      "node": "XP.b3",
+      "unit": "V",
+      "range": [
+        -0.01266352348111274,
+        0.016409800835658427
+      ],
+      "difference_mean": -5.030733629408564e-09,
+      "difference_rms": 4.503794396728391e-06,
+      "difference_peak": 1.3287220888089785e-05,
+      "endpoint_difference": -3.3060537537321633e-06,
+      "first_period_edges": 0,
+      "second_period_edges": 0
+    },
+    {
+      "node": "XP.b4",
+      "unit": "V",
+      "range": [
+        1.1950915689460246,
+        1.2121969191973985
+      ],
+      "difference_mean": -1.8487676960048321e-09,
+      "difference_rms": 1.3167742359034143e-06,
+      "difference_peak": 4.666519530127644e-06,
+      "endpoint_difference": -2.5474695810601133e-06,
+      "first_period_edges": 0,
+      "second_period_edges": 0
+    },
+    {
+      "node": "XP.b5",
+      "unit": "V",
+      "range": [
+        -0.01499727908137228,
+        0.022220926295725613
+      ],
+      "difference_mean": -2.6447705615698413e-09,
+      "difference_rms": 6.459509301483906e-06,
+      "difference_peak": 1.4749209764325366e-05,
+      "endpoint_difference": -1.3614950175287743e-06,
+      "first_period_edges": 0,
+      "second_period_edges": 0
+    },
+    {
+      "node": "XP.b6",
+      "unit": "V",
+      "range": [
+        -0.014562761513427017,
+        0.023352705675049334
+      ],
+      "difference_mean": -4.198392179013751e-09,
+      "difference_rms": 6.835690390646845e-06,
+      "difference_peak": 1.433171714450808e-05,
+      "endpoint_difference": -2.784363243614474e-07,
+      "first_period_edges": 0,
+      "second_period_edges": 0
+    },
+    {
+      "node": "XP.b7",
+      "unit": "V",
+      "range": [
+        -0.014160632127729715,
+        0.02376352864934182
+      ],
+      "difference_mean": -4.15812513463847e-09,
+      "difference_rms": 7.011918874388519e-06,
+      "difference_peak": 1.402016300356898e-05,
+      "endpoint_difference": 4.2838313137061323e-07,
+      "first_period_edges": 0,
+      "second_period_edges": 0
+    },
+    {
+      "node": "XP.VVCO:p",
+      "unit": "I",
+      "range": [
+        -0.008032762533182745,
+        0.0019742644245504936
+      ],
+      "difference_mean": 7.237717557742726e-09,
+      "difference_rms": 1.1589602263562091e-05,
+      "difference_peak": 6.076073464036393e-05,
+      "endpoint_difference": -3.1806555435497184e-05,
+      "first_period_edges": 0,
+      "second_period_edges": 0
+    },
+    {
+      "node": "XP.b0",
+      "unit": "V",
+      "range": [
+        1.1833534350849282,
+        1.228886357056492
+      ],
+      "difference_mean": -4.37786754814992e-09,
+      "difference_rms": 9.62666451020202e-07,
+      "difference_peak": 1.4206893760970729e-05,
+      "endpoint_difference": -8.048113100400656e-07,
+      "first_period_edges": 0,
+      "second_period_edges": 0
+    },
+    {
+      "node": "XP.b1",
+      "unit": "V",
+      "range": [
+        1.1844382725816438,
+        1.227954514402639
+      ],
+      "difference_mean": -9.369778202012907e-09,
+      "difference_rms": 1.0944011037994919e-06,
+      "difference_peak": 1.4128650936084952e-05,
+      "endpoint_difference": -1.5058801550171808e-06,
+      "first_period_edges": 0,
+      "second_period_edges": 0
+    },
+    {
+      "node": "XP.b2",
+      "unit": "V",
+      "range": [
+        1.186445663442163,
+        1.2259758278595576
+      ],
+      "difference_mean": -5.441039919349541e-09,
+      "difference_rms": 1.5398641477586615e-06,
+      "difference_peak": 7.04619609903645e-06,
+      "endpoint_difference": -2.5611996750107835e-06,
+      "first_period_edges": 0,
+      "second_period_edges": 0
+    },
+    {
+      "node": "XP.vn",
+      "unit": "V",
+      "range": [
+        0.6842432560551497,
+        1.6775995973756095
+      ],
+      "difference_mean": 1.1424297532491625e-07,
+      "difference_rms": 0.00017564837448442072,
+      "difference_peak": 0.0003292673388963774,
+      "endpoint_difference": 0.00019997747659705745,
+      "first_period_edges": 0,
+      "second_period_edges": 0
+    },
+    {
+      "node": "XP.vp",
+      "unit": "V",
+      "range": [
+        0.7539757075421889,
+        1.5780175572391342
+      ],
+      "difference_mean": -3.360642948385513e-08,
+      "difference_rms": 0.00015478197499011427,
+      "difference_peak": 0.00034450307600519814,
+      "endpoint_difference": -0.0001818565086939561,
+      "first_period_edges": 0,
+      "second_period_edges": 0
+    },
+    {
+      "node": "XP.refb",
+      "unit": "V",
+      "range": [
+        -0.01296918300728964,
+        1.2219777314228324
+      ],
+      "difference_mean": 2.580683106092393e-08,
+      "difference_rms": 9.468084837115633e-07,
+      "difference_peak": 1.9672783178881215e-05,
+      "endpoint_difference": 9.703753759711777e-08,
+      "first_period_edges": 6,
+      "second_period_edges": 6,
+      "matched_edge_shift_ps": {
+        "mean": -0.0009659247328389201,
+        "min": -0.0033137231739140223,
+        "max": 0.0002321778188917121,
+        "peak_to_peak": 0.0035459009928057346
+      }
+    },
+    {
+      "node": "VDD:p",
+      "unit": "I",
+      "range": [
+        -0.022039983163555883,
+        -0.0014499117279874224
+      ],
+      "difference_mean": 8.341242246312568e-08,
+      "difference_rms": 0.0001537971422267384,
+      "difference_peak": 0.000890331657751484,
+      "endpoint_difference": 8.585064656463186e-05,
+      "first_period_edges": 0,
+      "second_period_edges": 0
+    }
+  ],
+  "periodic_state_valid": false,
+  "random_jitter_measured": false,
+  "full_pll_acceptance": false,
+  "snapshot_incomplete_tail_records": [],
+  "last_complete_sample_s": 4.25e-06,
+  "limitations": [
+    "Linear interpolation at1ps is a deterministic trajectory diagnostic, not a femtosecond noise measurement.",
+    "Only saved states are covered; absent internal device/charge states cannot be cleared.",
+    "This is the saved initialization trajectory, not the later growing Newton corrections."
+  ]
+}
