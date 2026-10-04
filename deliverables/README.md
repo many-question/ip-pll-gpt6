@@ -1,4 +1,4 @@
-本次快照：[第57次汇报](../reports/2026-10-04T2048.yaml)。参考基线全谱精度通过，候选继续运行。CP主要频段由输入对管和电流镜的沟道噪声主导，后续需针对增益与动态建立优化；完整PLL抖动仍未验收。
+本次快照：[第58次汇报](../reports/2026-10-04T2124.yaml)。参考缓冲有限驱动功能/数值检查通过；CP实测导通明显晚于使能窗，栅极端口核对失败，先用独立支路探针诊断。整环抖动仍未知。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

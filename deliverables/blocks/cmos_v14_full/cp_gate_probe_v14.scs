@@ -1,0 +1,20 @@
+simulator lang=spectre
+// First simple mirror-loaded NMOS differential transconductor candidate.
+// Resistor-fed MOS bias; no internal ideal current source. PVT is measured, not presumed.
+subckt cp_gate_probe_v14 (hp hn pulse enable out vdd vss)
+parameters bias_r=24000 win=8u
+RREF (vdd nb) resistor r=bias_r
+MB (nb nb vss vss) nch w=10u l=1u ad=2.4p as=2.4p pd=20.48u ps=20.48u
+XG (pulse enable gateb vdd vss) pll_nand2
+XGI (gateb gate vdd vss) pll_inv
+XT (nb ng_tg gate gateb vdd vss) pll_tg wn=1u wp=2u
+MOFF (ng_off gateb vss vss) nch w=1u l=180n ad=.24p as=.24p pd=2.48u ps=2.48u
+MT (tail ng_mt vss vss) nch w=10u l=1u ad=2.4p as=2.4p pd=20.48u ps=20.48u
+MIP (out hp tail vss) nch w=win l=1u ad=win*240n as=win*240n pd=2*(win+240n) ps=2*(win+240n)
+MIN (mir hn tail vss) nch w=win l=1u ad=win*240n as=win*240n pd=2*(win+240n) ps=2*(win+240n)
+MPD (mir mir vdd vdd) pch w=4u l=1u ad=.96p as=.96p pd=8.48u ps=8.48u
+MPO (out mir vdd vdd) pch w=4u l=1u ad=.96p as=.96p pd=8.48u ps=8.48u
+VTG (ng_tg ng) vsource dc=0
+VOFF (ng ng_off) vsource dc=0
+VMT (ng ng_mt) vsource dc=0
+ends cp_gate_probe_v14

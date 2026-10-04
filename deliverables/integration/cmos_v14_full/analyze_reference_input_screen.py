@@ -26,7 +26,13 @@ def main():
             assert {k:v for k,v in r['inputs_sha256'].items() if k!=c['case']+'.scs'}==p['dependencies_sha256']
             tb=H/'tb'/(c['case']+'.scs');assert sha(tb)==c['tb_sha256']
             assert normal((j/'inputs'/tb.name).read_text())==normal(tb.read_text())
-            raw=j/(j.name+'.raw')/'tran.tran';d=parse(raw);t=d['time']
+            # run_spectre names this analysis tran.tran; Spectre appends .tran.
+            raw=j/(j.name+'.raw')/'tran.tran.tran';assert raw.is_file()
+            # The runner already parsed the complete 0.8--1.6 GB ASCII source.
+            # Verify its saved cache, rather than parsing it a second time.
+            cache=j/'waveforms.npz';assert sha(cache)==r['local_outputs_sha256']['waveforms.npz']
+            with np.load(cache) as z:d={k:z[k] for k in z.files}
+            t=d['time'];assert len(t)==r['signals']['time'] and np.all(np.diff(t)>0)
             keep=(t>=p['measurement_window_s'][0])&(t<=p['measurement_window_s'][1]);t=t[keep]
             assert t[0]<=375.01e-9 and t[-1]>=499.99e-9 and max(np.diff(t))<=c['maxstep_ps']*1e-12*1.001
             branches=[]

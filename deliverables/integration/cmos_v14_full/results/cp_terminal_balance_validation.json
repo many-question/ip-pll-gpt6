@@ -1,0 +1,189 @@
+{
+  "scope": "Verify actual CP node-current balances before assigning dynamic charge.",
+  "protocol_sha256": "8ef7c229083612ba53498fcfbb4af1355b644ef54074ba039196f12bfa5a9c5b",
+  "condition": "TT27/1.2V/24MHzref/3.936GHzidealRF/physicalreference+sampler+CP+bias+pulser+validity; externalcontrolclamp,1.9pFrefloadapproximation.",
+  "periodic": {
+    "case": "cp_terminal_balance_tt",
+    "phase_deg": 196.74700280983583,
+    "completed": true,
+    "source_result": "research/runs/spectre_cmos_v14_full/cpterminalbalance01/cp_terminal_balance_tt/result.json",
+    "source_sha256": "9f05729a30f1a914ed98f98f63718af0174a14cc4fbe4659ff7525cae7b6032e",
+    "simulator_completed": true,
+    "pss_converged": true,
+    "periodic_passed": true,
+    "period_s": 4.166666666666666e-08,
+    "endpoint_peak_v": 0.0,
+    "rf_rising_edges": 164,
+    "ref_rising_edges": 1,
+    "pulse_rising_edges": 1,
+    "rf_dominant_harmonic": 164,
+    "mean_clamp_current_a": 6.644318339157156e-12,
+    "pulse_duty": 0.04275946275872806,
+    "mean_held_difference_v": -0.008302452228674975,
+    "hold_range_v": {
+      "hp": [
+        0.3380606865720703,
+        0.6021413968625086
+      ],
+      "hn": [
+        0.3177379828314059,
+        0.669266876868768
+      ]
+    },
+    "amplitude_good_fraction": 1.0,
+    "phase_good_fraction": 1.0,
+    "td_sha256": "0e537439fa512fcfdfecabd3ae065b61fb61a81bad00286c4f542e21fe5b3cd2",
+    "fd_sha256": "58df527b82bdbeee88b943e9cc93793fc721c74a42e35e61b78a77226a011afd"
+  },
+  "terminal_balances_verified": false,
+  "main_dut_modified": false,
+  "noise_measured": false,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "This is the established ideal-RF/control-clamp frontend fixture, not a complete PLL.",
+    "Terminal currents include displacement; retained intrinsic drain currents are separately labelled.",
+    "Charge boundary conventions must be verified against terminal currents before identifying storage capacitance."
+  ],
+  "node_balances": [
+    {
+      "node": "tail",
+      "terminal_terms": [
+        "XCP.MT:d",
+        "XCP.MIP:s",
+        "XCP.MIN:s"
+      ],
+      "relative_mean_absolute_residual": 6.284322253510136e-05,
+      "max_abs_residual_a": 3.994608680489425e-08,
+      "passed": true,
+      "windows": {
+        "gate_on": {
+          "duration_s": 1.806027632398875e-09,
+          "signed_terminal_charge_c": {
+            "XCP.MT:d": 6.721423527676855e-15,
+            "XCP.MIP:s": -3.5138048967551046e-15,
+            "XCP.MIN:s": -3.1812155772706005e-15
+          },
+          "signed_kcl_residual_c": 2.640305365114944e-17
+        },
+        "gate_off": {
+          "duration_s": 3.9860639034267786e-08,
+          "signed_terminal_charge_c": {
+            "XCP.MT:d": 5.7030320127655865e-15,
+            "XCP.MIP:s": -2.7256918668141623e-15,
+            "XCP.MIN:s": -2.9793045271843315e-15
+          },
+          "signed_kcl_residual_c": -1.9643812329068864e-18
+        },
+        "late_off": {
+          "duration_s": 3.48606390343537e-08,
+          "signed_terminal_charge_c": {
+            "XCP.MT:d": 1.5435223721506252e-15,
+            "XCP.MIP:s": -1.6159601649888397e-16,
+            "XCP.MIN:s": -1.3817242501073116e-15
+          },
+          "signed_kcl_residual_c": 2.021055444310849e-19
+        }
+      }
+    },
+    {
+      "node": "mirror",
+      "terminal_terms": [
+        "XCP.MIN:d",
+        "XCP.MPD:d",
+        "XCP.MPD:g",
+        "XCP.MPO:g"
+      ],
+      "relative_mean_absolute_residual": 8.653073287417462e-06,
+      "max_abs_residual_a": 5.197076443348163e-09,
+      "passed": true,
+      "windows": {
+        "gate_on": {
+          "duration_s": 1.806027632398875e-09,
+          "signed_terminal_charge_c": {
+            "XCP.MIN:d": 2.7531232485809842e-16,
+            "XCP.MPD:d": -1.655718155963619e-16,
+            "XCP.MPD:g": -5.1412008720186976e-17,
+            "XCP.MPO:g": -5.832450091356328e-17
+          },
+          "signed_kcl_residual_c": 3.9996279862744815e-21
+        },
+        "gate_off": {
+          "duration_s": 3.9860639034267786e-08,
+          "signed_terminal_charge_c": {
+            "XCP.MIN:d": 5.885223253891267e-15,
+            "XCP.MPD:d": -5.995921920260718e-15,
+            "XCP.MPD:g": 5.1413419322990506e-17,
+            "XCP.MPO:g": 5.83260997576453e-17
+          },
+          "signed_kcl_residual_c": -9.591472888150076e-19
+        },
+        "late_off": {
+          "duration_s": 3.48606390343537e-08,
+          "signed_terminal_charge_c": {
+            "XCP.MIN:d": 3.2680922950462484e-15,
+            "XCP.MPD:d": -4.589264908984136e-15,
+            "XCP.MPD:g": 6.217990675849721e-16,
+            "XCP.MPO:g": 6.984601641109396e-16
+          },
+          "signed_kcl_residual_c": -9.133822419766894e-19
+        }
+      }
+    },
+    {
+      "node": "tail_gate",
+      "terminal_terms": [
+        "XCP.XT.MN:s",
+        "XCP.XT.MP:s",
+        "XCP.MOFF:d",
+        "XCP.MT:g"
+      ],
+      "relative_mean_absolute_residual": 0.03742648961005647,
+      "max_abs_residual_a": 3.025584451305866e-05,
+      "passed": false,
+      "windows": {
+        "gate_on": {
+          "duration_s": 1.806027632398875e-09,
+          "signed_terminal_charge_c": {
+            "XCP.XT.MN:s": -2.318647428661831e-14,
+            "XCP.XT.MP:s": 4.542698921372966e-16,
+            "XCP.MOFF:d": 3.072604685503545e-15,
+            "XCP.MT:g": 1.7868891097565567e-14
+          },
+          "signed_kcl_residual_c": -1.7907086114119014e-15
+        },
+        "gate_off": {
+          "duration_s": 3.9860639034267786e-08,
+          "signed_terminal_charge_c": {
+            "XCP.XT.MN:s": -7.339048204867575e-16,
+            "XCP.XT.MP:s": -5.165218241742335e-16,
+            "XCP.MOFF:d": 1.6525345743600413e-14,
+            "XCP.MT:g": -1.7868891240378746e-14
+          },
+          "signed_kcl_residual_c": -2.5939721414393243e-15
+        },
+        "late_off": {
+          "duration_s": 3.48606390343537e-08,
+          "signed_terminal_charge_c": {
+            "XCP.XT.MN:s": -4.232075595818472e-16,
+            "XCP.XT.MP:s": 5.787956185371506e-16,
+            "XCP.MOFF:d": 9.421108502330509e-16,
+            "XCP.MT:g": -1.0563821877223377e-15
+          },
+          "signed_kcl_residual_c": 4.13167214660168e-17
+        }
+      }
+    }
+  ],
+  "gate_high_resistive_drain_charge_c": {
+    "XCP.MT": 1.2341348712146474e-14,
+    "XCP.MIP": 3.6539051199166145e-16,
+    "XCP.MIN": 2.579478415858965e-16
+  },
+  "gate_high_tail_terminal_charge_c": {
+    "XCP.MT:d": 6.721423527676855e-15,
+    "XCP.MIP:s": -3.5138048967551046e-15,
+    "XCP.MIN:s": -3.1812155772706005e-15
+  },
+  "td_sha256": "0e537439fa512fcfdfecabd3ae065b61fb61a81bad00286c4f542e21fe5b3cd2",
+  "physical_observation_only_change_verified": true
+}

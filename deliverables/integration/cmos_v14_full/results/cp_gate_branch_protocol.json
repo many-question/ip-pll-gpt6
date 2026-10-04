@@ -1,0 +1,46 @@
+{
+  "scope": "Cross-check reported MOS port currents with independent zero-volt branches.\n\nThe initial gate-node sum failed 1e-3 while tail/mirror sums passed. Preserve\nthat result and measure which saved terminal quantity differs from a branch.\n",
+  "time": "2026-10-04T21:23:02.962751+08:00",
+  "run": "cpgatebranch01",
+  "case": "cp_gate_branch_tt",
+  "phase_deg": 196.74700280983583,
+  "condition": "TT27/1.2V/24MHzref/3.936GHzidealRF/physicalreference+sampler+CP+bias+pulser+validity; externalcontrolclamp,1.9pFrefloadapproximation.",
+  "tb_sha256": "e47312dbbd23c3a99c838098c4e88665beb06d885193e15885c0ee2050a69038",
+  "block_sha256": "2b65e3ee24a83cf259978a8ac036d63e3a753c503ced2d1ea9540bff2fc90b24",
+  "baseline_block_sha256": "ea3cd7184cafd899db18d5d9286adca6c2ffb861e9af2504afd1ea9bb702cc76",
+  "dependencies_sha256": {
+    "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+    "cp_timing.scs": "87a42f85028580ab52cc6d08a2514e4295dc93e4be0e019f52cb55964ae50fde",
+    "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+    "sampler_bias_v5.scs": "fe966831e65b04ee641625abc5187748bac130ea8d68babe17f33dc948c9cd67",
+    "tank_replay_phase_v14.va": "fc494076ad067ced3730e38c1ba75a1205bcc03a45eef4062061f08d05cd0bf3",
+    "validity_physical_v14.scs": "4adda2d6a864ac7ae7478c157989ea34d0901f52cf1f7b6bca2ec3238244f27f",
+    "cp_gate_probe_v14.scs": "2b65e3ee24a83cf259978a8ac036d63e3a753c503ced2d1ea9540bff2fc90b24"
+  },
+  "prior_validation_sha256": "70a26c7da9878c241d112f7474290b4464792134b5427bab1c773ac55e4ee930",
+  "baseline_tb_sha256": "c42bae866fa04800f12b5ec75c366543d6d06c06e3680ef32303719c9d81e512",
+  "baseline_case": "cp_terminal_balance_tt",
+  "extra_observations": [
+    "XCP.VTG:p",
+    "XCP.VOFF:p",
+    "XCP.VMT:p",
+    "XCP.ng_tg",
+    "XCP.ng_off",
+    "XCP.ng_mt"
+  ],
+  "diagnostic_limits": {
+    "relative_mean_absolute_kcl": 0.001,
+    "max_probe_voltage_v": 1e-08,
+    "max_clamp_current_change_a": 1e-10
+  },
+  "launch_scope": "One fresh PSS,1thread,1200s guard, verified free long slot.",
+  "no_physical_MOS_geometry_or_excitation_change": true,
+  "main_dut_modified": false,
+  "noise_measured": false,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "Three zero-volt current probes add simulator unknowns; verify unchanged operating point before interpreting them.",
+    "A branch/port disagreement is a measurement/model diagnostic, not evidence that physical KCL is violated.",
+    "No gate-current correction or sign reversal may be selected simply to minimize the residual."
+  ]
+}

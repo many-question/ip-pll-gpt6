@@ -1,0 +1,74 @@
+{
+  "scope": "Instrument actual CP terminal currents to test the dynamic-storage hypothesis.\n\nNo physical device, forcing waveform or solver setting changes. Fresh PSS\nmust be accepted before node-current balances and gate-window charge are read.\n",
+  "time": "2026-10-04T20:56:46.856840+08:00",
+  "run": "cpterminalbalance01",
+  "case": "cp_terminal_balance_tt",
+  "source_validation": "frontend_operating_probe_validation.json",
+  "source_validation_sha256": "d271870f58463c3c2394bc51b3dc963e4f92a2072c81acec03f5768af86e1457",
+  "source_protocol_sha256": "64ff2c1676de4dea31e73b26a8177f63cb7375f19bc9e90b0772a40001be360a",
+  "source_case": "frontend_operating_r2_tt",
+  "source_run": "frontendop01",
+  "source_tb_sha256": "5307fdcba6bba9668a01ca4e1b09b64bdea193802a3d1cd0ccd458f15ea8b80f",
+  "tb_sha256": "c42bae866fa04800f12b5ec75c366543d6d06c06e3680ef32303719c9d81e512",
+  "source_result": "research/runs/spectre_cmos_v14_full/frontendop01/frontend_operating_r2_tt/result.json",
+  "source_result_sha256": "db6f6a8ef610c92dfcfa811e102e06ba6890e48c3ba164c2f6b81d96a94e79a1",
+  "phase_deg": 196.74700280983583,
+  "condition": "TT27/1.2V/24MHzref/3.936GHzidealRF/physicalreference+sampler+CP+bias+pulser+validity; externalcontrolclamp,1.9pFrefloadapproximation.",
+  "extra_observations": [
+    "XCP.MIP:s",
+    "XCP.MIN:s",
+    "XCP.MT:g",
+    "XCP.MPD:g",
+    "XCP.MPO:g",
+    "XCP.XT.MN:s",
+    "XCP.XT.MP:s",
+    "XCP.MOFF:d",
+    "XCP.MIP:qs",
+    "XCP.MIP:qg",
+    "XCP.MIP:qb",
+    "XCP.MIN:qs",
+    "XCP.MIN:qg",
+    "XCP.MIN:qb",
+    "XCP.MT:qs",
+    "XCP.MT:qg",
+    "XCP.MT:qb",
+    "XCP.MPD:qs",
+    "XCP.MPD:qg",
+    "XCP.MPD:qb",
+    "XCP.MPO:qs",
+    "XCP.MPO:qg",
+    "XCP.MPO:qb"
+  ],
+  "kcl_nodes": {
+    "tail": [
+      "XCP.MT:d",
+      "XCP.MIP:s",
+      "XCP.MIN:s"
+    ],
+    "mirror": [
+      "XCP.MIN:d",
+      "XCP.MPD:d",
+      "XCP.MPD:g",
+      "XCP.MPO:g"
+    ],
+    "tail_gate": [
+      "XCP.XT.MN:s",
+      "XCP.XT.MP:s",
+      "XCP.MOFF:d",
+      "XCP.MT:g"
+    ]
+  },
+  "diagnostic_limits": {
+    "relative_mean_absolute_kcl": 0.001,
+    "max_mean_clamp_current_change_a": 1e-10
+  },
+  "launch_scope": "One one-thread fresh PSS;1200s guard; await a verified free resource slot, not submitted.",
+  "main_dut_modified": false,
+  "noise_measured": false,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "This is the established ideal-RF/control-clamp frontend fixture, not a complete PLL.",
+    "Terminal currents include displacement; retained intrinsic drain currents are separately labelled.",
+    "Charge boundary conventions must be verified against terminal currents before identifying storage capacitance."
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "scope": "Validate fresh PSS and three actual-core noise points; never infer full-band RMS.",
+  "condition": "ActualLC/originalRT/CF10/newbank/coarse23/DAC38/M4/TT27/1.2V/Q5/10fF/refload1.9pF; ideal static acquired/FLL controls. No eventobserver/forcedstrobe. PhysicalDAC off-state clamp candidate:seven1um/1umNMOS. Original main andcompleteRT4candidateunchanged. Only XCOUNT uses reset-stack isolation/discharge cells; 28 added MOS.",
+  "source_result": "research/runs/spectre_cmos_v14_full/corecounterclear01/core_counter_clear_noise_tt/result.json",
+  "source_sha256": "963be6618e5eee8f2b3e3d64a4a4eeda27029c707178e8f99b8cdf2029c39d47",
+  "protocol_sha256": "eae511434f69eca30f337c1d60b40bef782aa83a3a2e20139a4284fed9c36877",
+  "log_sha256": "0139daf10049861de6723ff78c022eb24bc4501e18a49db5ef284f4ed6eb71e7",
+  "wrapper_errors": [
+    "Error found by spectre at time = 5.50702 us during periodic steady state",
+    "ERROR (SPECTRE-25): The simulation is stopped either by the user or the",
+    "spectre completes with 1 error, 1 warning, and 11 notices.",
+    "spectre terminated prematurely due to fatal error."
+  ],
+  "simulator_completed": false,
+  "pss_achieved": false,
+  "convergence_norms": [
+    3680000.0,
+    495000.0
+  ],
+  "periodic_checks_passed": false,
+  "noise_points_valid": false,
+  "full_pll_acceptance": false,
+  "integrated_jitter_fs": null,
+  "limitations": [
+    "All612exported states are real, but textreadic cannotretainhiddencharge/history; PSS must solve and validateitsownperiod.",
+    "Gear2 may cause numerical damping; successful PSS stillneedsindependentprecisionchecks.",
+    "Three noise points are not an integrated jitter result or an all246-edge covariance qualification.",
+    "Static slowcontrols omit completeFLL/watchdog dynamics; this is actualperiodiccore evidence,notfullPLLsignoff.",
+    "No MOS readpss reuse: earlier fresh/reused noise discrepancy remains unresolved.",
+    "Previouswaveformdifferencesdo notidentifythecauseofnonconvergence.",
+    "UnitDAC38/threepairedcornersis not all64DACcodes/fullFLLhandoff/PVT.",
+    "Earlyinitializationis sparselysaved;onlylast500nsisavailableforadenseperiodcomparison.",
+    "Unit quiet-reset settling and counter function passed; running-clock stack peak below1mV did not pass.",
+    "Gate order and reset discharge devices change physical parasitics and timing; this is a circuit candidate.",
+    "Text seed contains measured voltages/currents only, not a transferred native or periodic charge state.",
+    "No assumption that eliminating reset-stack drift establishes or repairs the cause of failed shooting."
+  ],
+  "intentional_cancellation": {
+    "stopped": true,
+    "signal": "SIGINT",
+    "pid": 10922,
+    "netlist": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/82f1565e/core_counter_clear_noise_tt.scs",
+    "time": "2026-10-04T20:57:40.600970+08:00",
+    "reason": "Bounded diagnostic stopped after two completed Newton iterations: norms3.68e6 and495e3; second iteration2640s exceeds remaining approximately900s of7200s run budget. Preserve partial evidence; no periodic solution or noise acceptance."
+  },
+  "cancellation_sha256": "6f35b878e5bd93688c57970e23aaad162e2379dfeddc7d25d6dee4d46ce9404b"
+}
