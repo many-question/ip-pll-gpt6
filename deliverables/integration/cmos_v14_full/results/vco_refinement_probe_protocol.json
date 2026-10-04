@@ -1,0 +1,48 @@
+{
+  "scope": "Fresh-PSS sparse numerical checks for both CF40 and the MT560 candidate.\n\nThis checks the existing 100 ppm carrier/.1 dB sampled-noise limits; six\noffsets cannot certify an entire noise integral. No physical circuit changes.\n",
+  "time": "2026-10-04T16:29:44.415448+08:00",
+  "cases": [
+    {
+      "variant": "cf40",
+      "case": "vco_cf40_refined_probe_tt",
+      "run": "vcorefine01",
+      "source_run": "vcobiasband01",
+      "source_case": "vco_band_cf40_finer_tt",
+      "source_tb_sha256": "eba8a06f30be512abae0189603623903dd3498a2ea532a596dcfa4e075cc34d2",
+      "tb_sha256": "af9dc7aaa1101931adc967a213371aab4d53a58cb24b28ec9b3021f771c39c8b"
+    },
+    {
+      "variant": "tail560",
+      "case": "vco_tail560_refined_probe_tt",
+      "run": "vcorefine01",
+      "source_run": "vcotailband01",
+      "source_case": "vco_tail560_band_finer_tt",
+      "source_tb_sha256": "4115bb16b296a6bfb7f998aac9a19e832119512bdec427c6c52a0f7275a21338",
+      "tb_sha256": "d9a7a9415b2a6024cd86fe9b0fc525521f83f0203c0c3860c2963e999aa8d8cc"
+    }
+  ],
+  "condition": "TT27/1.2V/Q5 RLC/static reference/fixed M4/10fF/only XV noise; CF40 c23 ctrl.679V and MT560 c21 ctrl.74116905779740294V.",
+  "fresh_pss": true,
+  "numerical_changes": {
+    "maxstep_s": [
+      2.5e-13,
+      1.25e-13
+    ],
+    "colored_sidebands": [
+      511,
+      1023
+    ]
+  },
+  "limits": {
+    "relative_rf_change": 0.0001,
+    "max_absolute_timing_psd_change_db": 0.1
+  },
+  "main_dut_modified": false,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "Six offsets only; no RMS or full-grid precision acceptance.",
+    "Two operating points retain their previous controls; matching must be rechecked.",
+    "Free VCO below its line width is not a valid locked PLL jitter spectrum.",
+    "No active sampler, complete programmable output chain, or full PLL PVT."
+  ]
+}

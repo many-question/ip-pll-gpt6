@@ -1,0 +1,39 @@
+{
+  "scope": "Measure current balance and local gain; retain failed brackets or nonlinearity.",
+  "round": 1,
+  "condition": "TT27/1.2V/24MHzref/3.936GHzidealRF/physicalreference+sampler+CP+bias+pulser+validity; externalcontrolclamp,1.9pFrefloadapproximation.",
+  "protocol_sha256": "b223356dcffeecea6c5cdd44fa506849a7e64e855306fd30cf4260873fc4cac3",
+  "control_clamp_v": 0.668428925600659,
+  "cases": [
+    {
+      "case": "frontend_local1_lo_tt",
+      "phase_deg": 209.11956071579468,
+      "completed": false
+    },
+    {
+      "case": "frontend_local1_center_tt",
+      "phase_deg": 219.11956071579468,
+      "completed": false
+    },
+    {
+      "case": "frontend_local1_hi_tt",
+      "phase_deg": 229.11956071579468,
+      "completed": false
+    }
+  ],
+  "complete": false,
+  "periodic_all_passed": false,
+  "unique_negative_feedback_branch": false,
+  "proposed_phase_deg": null,
+  "local_gain_verified": false,
+  "balanced_center_verified": false,
+  "integrated_jitter_fs": null,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "Noisy LC and its impedance/backaction are absent; the clamped-current result is module evidence.",
+    "Control logic is represented by1.9pF load; its active noise and exact capacitive loading are excluded.",
+    "The control clamp uses a finite-window mean from a deterministic initialization trace, not an accepted PSS state.",
+    "Four large phase steps locate a branch only; they do not define a local Kphi or permit jitter integration.",
+    "Numerical and PVT checks remain after the operating point is selected."
+  ]
+}

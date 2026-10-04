@@ -1,0 +1,57 @@
+{
+  "scope": "Characterize the current physical reference/sampler/CP bundle before noise.\n\nRF is the same measured, noiseless waveform replay used for the digital chain;\nit is an external fixture and supplies neither LC noise nor source impedance.\nCurrent is measured into an external DC control clamp. No PLL result is implied.\n",
+  "time": "2026-10-04T16:17:29.888191+08:00",
+  "cases": [
+    {
+      "case": "frontend_gain_p0_tt",
+      "phase_deg": 0,
+      "run": "frontendgain01",
+      "tb_sha256": "91137aa4698384adee088bea6b5880d4319b861fe1bf452e0498269fd0118d9e"
+    },
+    {
+      "case": "frontend_gain_p90_tt",
+      "phase_deg": 90,
+      "run": "frontendgain01",
+      "tb_sha256": "13d591632cd884cf42b9e6588676b6f6e5fca1af7b65aedcb4da20faf24b8a85"
+    },
+    {
+      "case": "frontend_gain_p180_tt",
+      "phase_deg": 180,
+      "run": "frontendgain01",
+      "tb_sha256": "90ec86d2c8fb7defeab2ecd6758bed45a32db6b7f4dd61962b4a009b2f2f4c84"
+    },
+    {
+      "case": "frontend_gain_p270_tt",
+      "phase_deg": 270,
+      "run": "frontendgain01",
+      "tb_sha256": "8ab624e6e29ba770edb7052c382db3cdef63ada06db3a8036ff3c968414aa679"
+    }
+  ],
+  "control_clamp_v": 0.668428925600659,
+  "clamp_source": "research/runs/spectre_cmos_v14_full/coredacnoise01/core_dac_discharge_noise_tt/tstab_live_tstab_last_two_periods.npz",
+  "clamp_source_sha256": "62b2ea703d793670c431fbd207dcee70702d9edb6363a8daea55c3b9ba880aa8",
+  "clamp_window_s": [
+    5.499999614983116e-06,
+    5.749999604945738e-06
+  ],
+  "rf_source_original_sha256": "9582047b1de62cbb9dee8d4bdf60017efb61752d754751218fa5e820f4800897",
+  "rf_phase_replay_sha256": "fc494076ad067ced3730e38c1ba75a1205bcc03a45eef4062061f08d05cd0bf3",
+  "rf_source_description": "Same 64-cycle/20-harmonic TT waveform replay as chain_noise_rf_replay.json. New phase parameter only.",
+  "rf_source_protocol_sha256": "5c9fe90c3a58bd25e5d217f10351d0e3459548c75cf01ac8f70fb79f91392d8b",
+  "condition": "TT27/1.2V/24MHzref/3.936GHzidealRF/physicalreference+sampler+CP+bias+pulser+validity; externalcontrolclamp,1.9pFrefloadapproximation.",
+  "current_sign": "VO:p positive means the circuit delivers average current into the control clamp.",
+  "local_zero_selection": "With positive KVCO, choose a negative d(VO:p)/d(RF phase) zero as candidate negative feedback branch. Measure local slope and centre afresh.",
+  "launch_scope": "Four sequential gain-only cases; select and review zero before a local refinement/noise case.",
+  "limits": {
+    "endpoint_peak_v": 0.001
+  },
+  "full_pll_acceptance": false,
+  "main_dut_modified": false,
+  "limitations": [
+    "Noisy LC and its impedance/backaction are absent; the clamped-current result is module evidence.",
+    "Control logic is represented by1.9pF load; its active noise and exact capacitive loading are excluded.",
+    "The control clamp uses a finite-window mean from a deterministic initialization trace, not an accepted PSS state.",
+    "Four large phase steps locate a branch only; they do not define a local Kphi or permit jitter integration.",
+    "Numerical and PVT checks remain after the operating point is selected."
+  ]
+}

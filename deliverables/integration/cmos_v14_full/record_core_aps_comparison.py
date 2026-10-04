@@ -20,7 +20,7 @@ def main():
     assert seed(a)==seed(b) and not b['native_state'] and not b['periodic_state']
     pp=H/'results/core_dac_discharge_noise_protocol.json'; p=json.loads(pp.read_text())
     p.update(run='coredacaps01',status='running',time=datetime.datetime.now().astimezone().isoformat(),
-        source_protocol_sha256=sha(pp),source_result_sha256=sha(source/'result.json'),
+        source_protocol_sha256=sha(pp),source_result=(source/'result.json').relative_to(ROOT).as_posix(),source_result_sha256=sha(source/'result.json'),
         predecessor_cancellation=json.loads((source/'cancellation.json').read_text()),
         predecessor_cancellation_sha256=sha(source/'cancellation.json'),
         command_change='Replace +preset=ax +mt=6 -preset_override with +aps +mt=6; netlist numerical options unchanged.',

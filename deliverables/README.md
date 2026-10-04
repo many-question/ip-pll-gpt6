@@ -1,4 +1,4 @@
-本次快照：[第48次汇报](../reports/2026-10-04T1608.yaml)。独立CMOS重定时/输出模块在TT/SS/FF配对角得到53.9/87.4/38.8fs；TT精度对照通过。重点转向VCO和实际闭环噪声，整个PLL的<200fs尚未验证。
+本次快照：[第49次汇报](../reports/2026-10-04T1650.yaml)。VCO尾管候选的高偏移RMS由165.6fs降至154.5fs，但载频/精度限制仍需处理；当前采样前端已找到待细化的负反馈工作区。整机<200fs仍未知。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

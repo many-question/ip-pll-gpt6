@@ -36,3 +36,10 @@
 首次缓冲器测试使用普通 Spectre 模式，PSS 成功，但 fullspectrum PNoise 被 SPCRTRF-15412 拒绝。改用与实际数字链相同的 AX／APS 系列模式后，两项对照完成；失败输入和日志仍保留。
 
 独立 RT4 的 95 点积分与半步长、更高频率覆盖对照另见 [完整频带结果](results/retimer_standalone_band_validation.json)。理想时钟／数据下约 53.9 fs 的结果仅属于此模块，不可取代含接收器、实际分频器和 LC 的整机结果。
+
+
+## 相同网表不保证相同的有效求解设置（2026-10-04，第49次）
+
+对同一DAC放电核心、同一612项文本初值，AX与APS的tstab日志参数完全相同；进入PSS后，AX实际采用 `steadyratio=0.001, errpreset=moderate, relref=sigglobal`，APS采用 `0.01, conservative, alllocal`。两者显式1ps、Gear2和reltol/vabstol/iabstol相同，但有效PSS默认值不同。首个归一化范数3.69M→369k不能解释为物理误差改善：对应VDD支路误差分别约5.68063/5.6811mA。
+
+因此该试验保留为求解器及实际默认值的联合诊断。必须检查接受的周期波形、实际频率/边沿和噪声，不能按迭代范数的数值大小选择电路。证据：[有效设置快照](results/core_mode_settings_validation.json)、[只读回收入口](record_core_mode_settings.py)。源日志为运行中的部分日志，未宣称PSS或噪声完成。原APS协议中前驱结果路径与hash配对的文字错误也在补充记录中明确更正，冻结协议保留。

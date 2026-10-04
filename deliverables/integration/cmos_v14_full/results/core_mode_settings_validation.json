@@ -1,0 +1,145 @@
+{
+  "scope": "Archive partial APS log and compare effective tstab/PSS options with AX.\n\nNo simulator state is changed. Normalized Newton norms are not a physical\nerror comparison when effective solver defaults differ.\n",
+  "time": "2026-10-04T16:43:52.236120+08:00",
+  "ax_log": "research/runs/spectre_cmos_v14_full/coredacnoise01/core_dac_discharge_noise_tt/spectre.out",
+  "ax_log_sha256": "ea4a8dd088aea452f9ae8a2986d87c864751930f562257be24bca72b197186c3",
+  "aps_log": "research/runs/spectre_cmos_v14_full/coredacaps01/core_dac_discharge_noise_tt/live_settings/spectre.out",
+  "aps_log_sha256": "0f5055d8e8186b6022eda3e37f2bbc138d1c2fe52b4f3b4b297074001ed0feda",
+  "aps_snapshot_sha256": "afa1173d2bdc98406cbc93624880d85e760e9d611b366849ca787f80c65c5590",
+  "source_protocol_sha256": "2ffc2ef0e1db0a49bc888ad8275f095b857e4b6bbc5f40d5bc220a6f5b1257e1",
+  "effective_options": {
+    "ax": {
+      "tstab integration": {
+        "start": "3.5 us",
+        "outputstart": "3.5 us",
+        "stop": "5.5 us",
+        "period": "250 ns",
+        "maxperiods": "10",
+        "step": "2.25 ns",
+        "maxstep": "1 ps",
+        "ic": "all",
+        "useprevic": "no",
+        "skipdc": "yes",
+        "reltol": "10e-06",
+        "abstol(V)": "100 nV",
+        "abstol(I)": "100 fA",
+        "temp": "27 C",
+        "tnom": "27 C",
+        "tempeffects": "all",
+        "method": "gear2only",
+        "lteratio": "3.5",
+        "relref": "sigglobal",
+        "cmin": "0 F",
+        "gmin": "1 pS",
+        "rabsshort": "1 mOhm"
+      },
+      "pss iteration": {
+        "start": "5.5 us",
+        "outputstart": "3.5 us",
+        "stop": "5.75 us",
+        "period": "250 ns",
+        "maxperiods": "10",
+        "steadyratio": "1e-03",
+        "step": "2.25 ns",
+        "maxstep": "1 ps",
+        "ic": "all",
+        "useprevic": "no",
+        "skipdc": "yes",
+        "reltol": "10e-06",
+        "abstol(V)": "100 nV",
+        "abstol(I)": "100 fA",
+        "temp": "27 C",
+        "tnom": "27 C",
+        "tempeffects": "all",
+        "errpreset": "moderate",
+        "method": "gear2only",
+        "lteratio": "3.5",
+        "relref": "sigglobal",
+        "cmin": "0 F",
+        "gmin": "1 pS",
+        "rabsshort": "1 mOhm"
+      }
+    },
+    "aps": {
+      "tstab integration": {
+        "start": "3.5 us",
+        "outputstart": "3.5 us",
+        "stop": "5.5 us",
+        "period": "250 ns",
+        "maxperiods": "10",
+        "step": "2.25 ns",
+        "maxstep": "1 ps",
+        "ic": "all",
+        "useprevic": "no",
+        "skipdc": "yes",
+        "reltol": "10e-06",
+        "abstol(V)": "100 nV",
+        "abstol(I)": "100 fA",
+        "temp": "27 C",
+        "tnom": "27 C",
+        "tempeffects": "all",
+        "method": "gear2only",
+        "lteratio": "3.5",
+        "relref": "sigglobal",
+        "cmin": "0 F",
+        "gmin": "1 pS",
+        "rabsshort": "1 mOhm"
+      },
+      "pss iteration": {
+        "start": "5.5 us",
+        "outputstart": "3.5 us",
+        "stop": "5.75 us",
+        "period": "250 ns",
+        "maxperiods": "10",
+        "steadyratio": "10e-03",
+        "step": "2.25 ns",
+        "maxstep": "1 ps",
+        "ic": "all",
+        "useprevic": "no",
+        "skipdc": "yes",
+        "reltol": "10e-06",
+        "abstol(V)": "100 nV",
+        "abstol(I)": "100 fA",
+        "temp": "27 C",
+        "tnom": "27 C",
+        "tempeffects": "all",
+        "errpreset": "conservative",
+        "method": "gear2only",
+        "lteratio": "3.5",
+        "relref": "alllocal",
+        "cmin": "0 F",
+        "gmin": "1 pS",
+        "rabsshort": "1 mOhm"
+      }
+    }
+  },
+  "differences": {
+    "tstab integration": {},
+    "pss iteration": {
+      "steadyratio": {
+        "ax": "1e-03",
+        "aps": "10e-03"
+      },
+      "errpreset": {
+        "ax": "moderate",
+        "aps": "conservative"
+      },
+      "relref": {
+        "ax": "sigglobal",
+        "aps": "alllocal"
+      }
+    }
+  },
+  "same_explicit_netlist_inputs": true,
+  "effective_pss_settings_identical": false,
+  "raw_newton_norms_directly_comparable": false,
+  "full_pll_acceptance": false,
+  "interpretation": "Retain this as an engine-and-effective-defaults diagnostic. Compare physical residuals and accepted solutions, not the normalized norm alone. No PSS/noise acceptance from a partial log.",
+  "predecessor_reference_correction": {
+    "original_protocol_preserved": true,
+    "original_mislabeled_source_result": "research/runs/spectre_cmos_v14_full/corenativeperiod01/core_plain_warm_tt/result.json",
+    "source_result": "research/runs/spectre_cmos_v14_full/coredacnoise01/core_dac_discharge_noise_tt/result.json",
+    "source_result_sha256": "93b513cef04fabfaa3958a4866de08119d812f82ac94d76c8b1ad2b8752d1d98",
+    "meaning": "The APS protocol copied the seed-producer path but updated its hash to the AX predecessor. This supplement pairs the AX hash with its correct path; physical dependency/seed checks are unchanged."
+  }
+}

@@ -4,6 +4,7 @@ import hashlib,json
 import numpy as np
 from analyze_vco_bias_band import read,integral
 from analyze_vco_tail_adjusted import canonical
+from noise_utils import parse,selected_device_components
 H=Path(__file__).resolve().parent;ROOT=H.parents[3];R=ROOT/'research/runs/spectre_cmos_v14_full'
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 
@@ -22,6 +23,17 @@ def main():
     assert dep(src)==dep(j),'Changed circuit since the matched-frequency probe'
     b,bs=read(base);c,cs=read(j);assert np.allclose(bs['f'],cs['f'],rtol=1e-12,atol=0)
     hi=min(b['rf_hz'],c['rf_hz'])/8;fr=c['rf_hz']/b['rf_hz']-1;bands=[]
+    for job,row,s in [(base,b,bs),(j,c,cs)]:
+        raw=job/(job.name+'.raw');td=parse(raw/'pss.td.pss');t=td['time'];T=t[-1]-t[0]
+        scale=2/(2*np.pi*row['rf_hz'])**2
+        total=scale*integral(s['f'],s['L'],1e6,hi)
+        parts=selected_device_components(raw/'pn.pm.pnoise',['XV.XL.MT','XV.XL.MN0','XV.XL.MN1'],len(s['f']))
+        cp=row['rf_carrier_peak_v']**2/2
+        row.update(vco_supply_power_mw=float(-1.2*np.trapezoid(td['VVCO:p'],t)/T*1e3),
+            selected_component_high_band_variance_fraction={name:{k:scale/cp*integral(s['f'],value,1e6,hi)/total
+                for k,value in terms.items()} for name,terms in parts.items()},
+            top_devices_high_band=sorted([dict(device=name,variance_fraction=scale*integral(s['f'],value,1e6,hi)/total)
+                for name,value in s['parts'].items()],key=lambda x:-x['variance_fraction'])[:12])
     for lo in [1e6,2e6,5e6,10e6,100e6]:
         values=[]
         for row,s in [(b,bs),(c,cs)]:
@@ -34,6 +46,8 @@ def main():
     out=dict(scope=__doc__,condition=p['condition'],protocol_sha256=sha(pp),baseline=b,candidate=c,
         physical_and_numerical_comparison_verified=True,relative_rf_change=fr,frequency_match_limit=1e-4,
         frequency_match_passed=bool(abs(fr)<1e-4),offsets_hz=cs['f'].tolist(),timing_psd_change_db=delta.tolist(),high_offset_bands=bands,
+        relative_vco_supply_current_change=c['vco_supply_power_mw']/b['vco_supply_power_mw']-1,
+        relative_rf_carrier_amplitude_change=c['rf_carrier_peak_v']/b['rf_carrier_peak_v']-1,
         independent_candidate_precision_passed=False,full_pll_jitter_fs=None,full_pll_acceptance=False,main_dut_modified=False,limitations=p['limitations'])
     (H/'results/vco_tail_band_validation.json').write_text(json.dumps(out,indent=2)+'\n')
     print(json.dumps({k:v for k,v in out.items() if k not in ['baseline','candidate','offsets_hz','timing_psd_change_db']},indent=2))

@@ -1,0 +1,45 @@
+{
+  "scope": "Build a measured-branch local phase triplet; never assume its zero is exact.",
+  "round": 1,
+  "time": "2026-10-04T16:48:54.308391+08:00",
+  "cases": [
+    {
+      "case": "frontend_local1_lo_tt",
+      "phase_deg": 209.11956071579468,
+      "run": "frontendlocal01",
+      "tb_sha256": "58ad3d3468db946ca734bb8ef6e3c0bb32fe92c604b6f9ea6a7e3ecbca85310b"
+    },
+    {
+      "case": "frontend_local1_center_tt",
+      "phase_deg": 219.11956071579468,
+      "run": "frontendlocal01",
+      "tb_sha256": "f3ea016749de746727dc68ee26e3d52a176f2c51f9ed51f4a3f1c94bc6932a15"
+    },
+    {
+      "case": "frontend_local1_hi_tt",
+      "phase_deg": 229.11956071579468,
+      "run": "frontendlocal01",
+      "tb_sha256": "fb1ff0bfe22b7b8b370e735d929e1d8d011b55f18f377387c241848d31b0b191"
+    }
+  ],
+  "source_validation": "frontend_gain_validation.json",
+  "source_validation_sha256": "ac0de46b473bf3b1e8e96c80b086c673a72adfe35f00b5f89164921334ef7679",
+  "condition": "TT27/1.2V/24MHzref/3.936GHzidealRF/physicalreference+sampler+CP+bias+pulser+validity; externalcontrolclamp,1.9pFrefloadapproximation.",
+  "control_clamp_v": 0.668428925600659,
+  "proposed_center_deg": 219.11956071579468,
+  "half_width_deg": 10.0,
+  "source_tb_sha256": "91137aa4698384adee088bea6b5880d4319b861fe1bf452e0498269fd0118d9e",
+  "engineering_gates": {
+    "local_half_slope_relative_difference": 0.05,
+    "residual_phase_rad": 0.0005
+  },
+  "full_pll_acceptance": false,
+  "main_dut_modified": false,
+  "limitations": [
+    "Noisy LC and its impedance/backaction are absent; the clamped-current result is module evidence.",
+    "Control logic is represented by1.9pF load; its active noise and exact capacitive loading are excluded.",
+    "The control clamp uses a finite-window mean from a deterministic initialization trace, not an accepted PSS state.",
+    "Four large phase steps locate a branch only; they do not define a local Kphi or permit jitter integration.",
+    "Numerical and PVT checks remain after the operating point is selected."
+  ]
+}
