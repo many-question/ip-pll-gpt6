@@ -1,0 +1,155 @@
+{
+  "scope": "Compare measured current noise using each physical candidate's measured PAC gain.",
+  "baseline_sources": {
+    "noise": "frontend_noise_r2_all_validation.json",
+    "noise_sha256": "30cf61f8ad59c4bfee0d2d4bb6eb29aacf551bcc8f428eceafcba136d2c6306c",
+    "pac": "frontend_phase_transfer_validation.json",
+    "pac_sha256": "65911432cc5b2201d7168c1df0e184be46831ed4c87b376bb1c59fbe8ec4323c"
+  },
+  "candidate_sources": {
+    "noise": "cp_fasttail_noise_r2_all_validation.json",
+    "noise_sha256": "c7c929aaf921316dc901030ff9b897911147660c80bdf11706f59a75a4804884",
+    "pac": "cp_fasttail_phase_transfer_r2_validation.json",
+    "pac_sha256": "adaf4c57f6c907789d6b457539cb14f4293e2f952aeb5323ed3635a3913a36e2"
+  },
+  "baseline_condition": "TT27/1.2V/24MHzref/3.936GHzidealRF/physicalreference+sampler+CP+bias+pulser+validity; externalcontrolclamp,1.9pFrefloadapproximation.",
+  "candidate_condition": "TT27/1.2V/24MHzref/3.936GHzidealRF/physicalreference+sampler+CP+bias+pulser+validity; externalcontrolclamp,1.9pFrefloadapproximation. Physical trial: Tail MT 10um/1um -> 1.8um/0.18um, same nominal W/L; preserve the same three zero-volt branch probes.",
+  "rf_hz": 3936000000.0,
+  "points": [
+    {
+      "offset_hz": 10000.0,
+      "baseline": {
+        "gain_a_per_rf_rad": 4.459041141278479e-07,
+        "current_psd_a2_per_hz": 3.814875303535181e-24,
+        "input_equivalent_phase_psd_rad2_per_hz": 1.9186572012479162e-11,
+        "input_equivalent_timing_asd_fs_per_sqrt_hz": 0.17711842265178157,
+        "input_equivalent_group_phase_psd_rad2_per_hz": {
+          "reference": 1.3594700814436825e-11,
+          "sampler": 3.715016735730574e-12,
+          "charge_pump": 1.4909622785518663e-12,
+          "pulser": 2.066973235582274e-15,
+          "bias": 3.695829241784041e-13,
+          "validity": 1.424228634590945e-14
+        }
+      },
+      "candidate": {
+        "gain_a_per_rf_rad": 4.728051088163956e-07,
+        "current_psd_a2_per_hz": 4.198948870875377e-24,
+        "input_equivalent_phase_psd_rad2_per_hz": 1.8783489016044987e-11,
+        "input_equivalent_timing_asd_fs_per_sqrt_hz": 0.17524804203579977,
+        "input_equivalent_group_phase_psd_rad2_per_hz": {
+          "reference": 1.3610992079622859e-11,
+          "sampler": 3.5565960665047175e-12,
+          "charge_pump": 1.2652121253457732e-12,
+          "pulser": 1.9913762183176668e-16,
+          "bias": 3.380368536172226e-13,
+          "validity": 1.2452753332583495e-14
+        }
+      },
+      "equivalent_noise_psd_change_db": -0.09221122791734036,
+      "equivalent_noise_asd_relative_change": -0.010560056870306367,
+      "current_noise_psd_change_db": 0.41660239638232294,
+      "group_equivalent_psd_change_db": {
+        "reference": 0.005201269783315173,
+        "sampler": -0.1892623071491134,
+        "charge_pump": -0.7130331052331524,
+        "pulser": -10.161815368235356,
+        "bias": -0.38747846603373326,
+        "validity": -0.5831432759278362
+      }
+    },
+    {
+      "offset_hz": 1000000.0,
+      "baseline": {
+        "gain_a_per_rf_rad": 4.465147506089357e-07,
+        "current_psd_a2_per_hz": 6.8581322650622115e-25,
+        "input_equivalent_phase_psd_rad2_per_hz": 3.439808266573804e-12,
+        "input_equivalent_timing_asd_fs_per_sqrt_hz": 0.07499497415829458,
+        "input_equivalent_group_phase_psd_rad2_per_hz": {
+          "reference": 1.3085714404685072e-12,
+          "sampler": 6.788271189668669e-13,
+          "charge_pump": 1.1693695679144658e-12,
+          "pulser": 4.2384962569520235e-16,
+          "bias": 2.7187053393057797e-13,
+          "validity": 1.0745755667692079e-14
+        }
+      },
+      "candidate": {
+        "gain_a_per_rf_rad": 4.7323117656858785e-07,
+        "current_psd_a2_per_hz": 7.256086767232139e-25,
+        "input_equivalent_phase_psd_rad2_per_hz": 3.24008027827772e-12,
+        "input_equivalent_timing_asd_fs_per_sqrt_hz": 0.07278517444677773,
+        "input_equivalent_group_phase_psd_rad2_per_hz": {
+          "reference": 1.3103343096942876e-12,
+          "sampler": 6.601561934715507e-13,
+          "charge_pump": 1.0055366155176381e-12,
+          "pulser": 4.386914517516718e-17,
+          "bias": 2.543946983851121e-13,
+          "validity": 9.614592063957683e-15
+        }
+      },
+      "equivalent_noise_psd_change_db": -0.25978465164816755,
+      "equivalent_noise_asd_relative_change": -0.029465970704283695,
+      "current_noise_psd_change_db": 0.24496610705896868,
+      "group_equivalent_psd_change_db": {
+        "reference": 0.005846751015452893,
+        "sampler": -0.1211248183015341,
+        "charge_pump": -0.6555389783582164,
+        "pulser": -9.850526320472833,
+        "bias": -0.2885408379499578,
+        "validity": -0.4830609919445834
+      }
+    },
+    {
+      "offset_hz": 10000000.0,
+      "baseline": {
+        "gain_a_per_rf_rad": 3.734296381662816e-07,
+        "current_psd_a2_per_hz": 4.779735186705584e-25,
+        "input_equivalent_phase_psd_rad2_per_hz": 3.427569489001066e-12,
+        "input_equivalent_timing_asd_fs_per_sqrt_hz": 0.07486143987193858,
+        "input_equivalent_group_phase_psd_rad2_per_hz": {
+          "reference": 1.1514859739459032e-12,
+          "sampler": 6.322632716394579e-13,
+          "charge_pump": 1.3638015215736672e-12,
+          "pulser": 2.6060227460612968e-15,
+          "bias": 2.6651630644771015e-13,
+          "validity": 1.0896392648268364e-14
+        }
+      },
+      "candidate": {
+        "gain_a_per_rf_rad": 3.9280839682471145e-07,
+        "current_psd_a2_per_hz": 4.964385074308982e-25,
+        "input_equivalent_phase_psd_rad2_per_hz": 3.2173916879428705e-12,
+        "input_equivalent_timing_asd_fs_per_sqrt_hz": 0.07252988846763771,
+        "input_equivalent_group_phase_psd_rad2_per_hz": {
+          "reference": 1.1526687370076216e-12,
+          "sampler": 6.260578576454855e-13,
+          "charge_pump": 1.181721041645685e-12,
+          "pulser": 3.9820081918177916e-16,
+          "bias": 2.469589873173751e-13,
+          "validity": 9.586863507518867e-15
+        }
+      },
+      "equivalent_noise_psd_change_db": -0.2748233274930095,
+      "equivalent_noise_asd_relative_change": -0.03114489125896225,
+      "current_noise_psd_change_db": 0.16461625301632307,
+      "group_equivalent_psd_change_db": {
+        "reference": 0.004458620020414842,
+        "sampler": -0.042834835085149646,
+        "charge_pump": -0.6223620202887171,
+        "pulser": -8.158760529048818,
+        "bias": -0.3309895030380816,
+        "validity": -0.5560620035344839
+      }
+    }
+  ],
+  "main_dut_modified": false,
+  "full_pll_acceptance": false,
+  "integrated_jitter_fs": null,
+  "limitations": [
+    "Each frequency uses its own measured PAC response with no interpolation.",
+    "Ideal RF replay and control clamp exclude noisy LC, loop filtering and full PLL dynamics.",
+    "Three noise frequencies are diagnostic points; no RMS integration or band-wide gain claim.",
+    "Per-group independent noise-on, numerical convergence and PVT require separate evidence."
+  ]
+}

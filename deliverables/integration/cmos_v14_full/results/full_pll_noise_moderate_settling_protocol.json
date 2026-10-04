@@ -1,0 +1,38 @@
+{
+  "scope": "Extend the clean initialization trial at its verified original tolerances.",
+  "time": "2026-10-05T01:10:27.277464+08:00",
+  "run": "pllnoisesettle02",
+  "case": "full_pll_noise_moderate_settling_tt",
+  "source_tb_sha256": "d35a11a813c8e64de0b1d5cd6192e53d0f7a3ab9beb510ab56e44ac1246f29e7",
+  "tb_sha256": "8ec7652be4dd66451d687b69c8da3730124e36ec4165b251aac333a9d8626180",
+  "initialization_validation": "full_pll_warm_noise_method_validation.json",
+  "initialization_validation_sha256": "4a44ce9136b862c4a5c71a01e0521ad97823747eb359e765cfd193698ac2ca46",
+  "text_state": "rt4bank_cold64_warm.ic",
+  "text_state_sha256": "eb39c4f6d6e7fd6eaa6fc8968e0986c1ddaedc279c55c1cd437d9f48a65386df",
+  "condition": "Actual full RT4/newbank PLL,TT27/1.2V/K41/M4/10fF/Q5/CF10; ideal external reference and supply.",
+  "stop_s": 2e-06,
+  "noise_enabled": false,
+  "noise_enable_s": 3e-06,
+  "maxstep_s": 5e-13,
+  "reltol": 1e-05,
+  "vabstol": 1e-06,
+  "iabstol": 1e-12,
+  "measurement_start_s": 1e-06,
+  "source_time_s": 6.4e-05,
+  "checks": {
+    "phase_pp_rad": 0.02,
+    "phase_drift_rad_per_us": 0.01,
+    "rf_cycles_error": 0.001,
+    "out_cycles_error": 0.001
+  },
+  "full_pll_acceptance": false,
+  "physical_dut_modified": false,
+  "limitations": [
+    "Settling/lock screen only; noise remains off throughout this2us analysis.",
+    "Fresh text initialization validated against cold/native physical states but does not preserve complete hidden histories.",
+    "Tighter tolerances can change the numerical operating point; do not infer a device-noise RMS from that motion.",
+    "The2ns saved grid only observes held state/phase values; it cannot resolve GHz edges for jitter."
+  ],
+  "method": "traponly",
+  "reason": "The300ns warm trial and both native step controls were clean at these tolerances. Extend to2us with.5ps. This is a separate moderate-tolerance settling track, not a one-variable comparison against strict Gear2."
+}

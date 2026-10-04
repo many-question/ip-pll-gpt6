@@ -1,0 +1,41 @@
+{
+  "scope": "Isolate integration method after noise-OFF strict Trap exhibited recovery.",
+  "time": "2026-10-05T01:09:32.058464+08:00",
+  "run": "pllnoisegear01",
+  "case": "full_pll_noise_gear_diagnosis_tt",
+  "source_tb_sha256": "05c4de4e4beb3e645840067778c1474c2c6b681996e2d8c025056b46f50f9ad8",
+  "tb_sha256": "9d882ec2940957b4a9259acd7b7d044270657fe78ad26908e2afaee71f2a0c27",
+  "initialization_validation": "full_pll_warm_noise_method_validation.json",
+  "initialization_validation_sha256": "4a44ce9136b862c4a5c71a01e0521ad97823747eb359e765cfd193698ac2ca46",
+  "text_state": "rt4bank_cold64_warm.ic",
+  "text_state_sha256": "eb39c4f6d6e7fd6eaa6fc8968e0986c1ddaedc279c55c1cd437d9f48a65386df",
+  "condition": "Actual full RT4/newbank PLL,TT27/1.2V/K41/M4/10fF/Q5/CF10; ideal external reference and supply.",
+  "stop_s": 2e-06,
+  "noise_enabled": false,
+  "noise_enable_s": 3e-06,
+  "maxstep_s": 5e-13,
+  "reltol": 1e-06,
+  "vabstol": 1e-09,
+  "iabstol": 1e-15,
+  "measurement_start_s": 1e-06,
+  "source_time_s": 6.4e-05,
+  "checks": {
+    "phase_pp_rad": 0.02,
+    "phase_drift_rad_per_us": 0.01,
+    "rf_cycles_error": 0.001,
+    "out_cycles_error": 0.001
+  },
+  "full_pll_acceptance": false,
+  "physical_dut_modified": false,
+  "limitations": [
+    "Settling/lock screen only; noise remains off throughout this2us analysis.",
+    "Fresh text initialization validated against cold/native physical states but does not preserve complete hidden histories.",
+    "Tighter tolerances can change the numerical operating point; do not infer a device-noise RMS from that motion.",
+    "The2ns saved grid only observes held state/phase values; it cannot resolve GHz edges for jitter.",
+    "Gear2 can introduce numerical damping; a clean settled solution still needs step and noise cross-checks."
+  ],
+  "method": "gear2only",
+  "superseded_protocol": "full_pll_noise_settling_protocol.json",
+  "superseded_protocol_sha256": "4d38ed86fcd9e1e6edb0b747e7a993b7374ee0621c4707c0e87d2f007fb8fba0",
+  "reason": "Noise remains OFF. Strict Trap generated XP.data ringing and repeated Newton disaster recoveries starting935.6ps. Change only integration method; do not treat those events as physical jitter."
+}

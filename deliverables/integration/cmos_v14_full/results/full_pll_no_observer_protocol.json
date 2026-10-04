@@ -1,0 +1,49 @@
+{
+  "scope": "Remove nonfunctional VA instruments to test their effect on strict full-PLL solve.",
+  "time": "2026-10-05T01:15:05.531516+08:00",
+  "run": "pllnova01",
+  "case": "full_pll_no_observer_tt",
+  "source_tb_sha256": "05c4de4e4beb3e645840067778c1474c2c6b681996e2d8c025056b46f50f9ad8",
+  "tb_sha256": "d5533d8bbb00b41216a1ef82e76b17adacaeffd65bb7a8d282cf3a507de5ce31",
+  "text_state": "rt4bank_cold64_no_observer.ic",
+  "text_state_sha256": "ad21c3581463ffd1d08d309936888f06e3e9d48dbb822b4dad05670475bd7c74",
+  "source_state_sha256": "eb39c4f6d6e7fd6eaa6fc8968e0986c1ddaedc279c55c1cd437d9f48a65386df",
+  "removed_initialization_entries": [
+    "energy_nj\t532.945343829371",
+    "obsctrl\t0.759181391878473",
+    "obscycles\t163.999906619778",
+    "obsdivcycles\t40.9999820413359",
+    "obsphase\t0.628833440065428",
+    "power_mw\t7.2052448435226",
+    "VAP:p\t-4.38532161120549e-09   #unit A",
+    "VRST:p\t2.44793888145204e-09   #unit A",
+    "XE:e_nj_vss_flow\t0   #unit A",
+    "XE:idt0\t5.32945343829371e-07",
+    "XE:meter_flow\t0.0060043707029355   #unit A",
+    "XE:p_mw_vss_flow\t0   #unit A",
+    "XOBS:cycles_vss_flow\t0   #unit A",
+    "XOBS:divcycles_vss_flow\t0   #unit A",
+    "XOBS:phase_vss_flow\t0   #unit A",
+    "XOBS:sampled_ctrl_vss_flow\t0   #unit A"
+  ],
+  "added_probe_current_a": 0.0060043707029355,
+  "stop_s": 1e-07,
+  "changes": "Replace ideal VA0V supply meter with ideal0V Spectre source. Remove the two nonfunctional measurement modules and their output saves. Actual transistor PLL, ideal external reference, load, supply and strict tolerances are unchanged.",
+  "reason": "Detailed strict noise-OFF trial identifies power_mw in2055of2086 printed failed solution updates in a partial log. Causality requires this observer-removal comparison.",
+  "numerical": {
+    "reltol": 1e-06,
+    "vabstol": 1e-09,
+    "iabstol": 1e-15,
+    "method": "traponly",
+    "maxstep_s": 5e-13
+  },
+  "noise_enabled": false,
+  "physical_dut_modified": false,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "100ns method test, not stationary fullPLL jitter.",
+    "Text initialization is approximate hidden-state reconstruction; check physical node values at t0.",
+    "Removing measurement outputs also changes numerical error scaling; repeat step/noise validation on the corrected testbench.",
+    "No power claim is made from sparse current samples; previous integrated-power evidence retains its original precision/observer conditions."
+  ]
+}

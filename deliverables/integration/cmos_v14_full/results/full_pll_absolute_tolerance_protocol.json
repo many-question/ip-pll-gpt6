@@ -1,0 +1,33 @@
+{
+  "scope": "One-variable5ns absolute-tolerance checks with no VA measurement instruments.",
+  "time": "2026-10-05T01:17:07.888140+08:00",
+  "source_tb_sha256": "d5533d8bbb00b41216a1ef82e76b17adacaeffd65bb7a8d282cf3a507de5ce31",
+  "cases": [
+    {
+      "run": "pllabsoluteiab01",
+      "case": "full_pll_absolute_iab_tt",
+      "tb_sha256": "9ae94780afa0d3990a5a1140898e66848bf14848af276820fd4a5c2f57a97d5d",
+      "change_from_strict": [
+        "iabstol=1e-15",
+        "iabstol=1e-12"
+      ]
+    },
+    {
+      "run": "pllabsolutevab01",
+      "case": "full_pll_absolute_vab_tt",
+      "tb_sha256": "3acc6611851fd5a6099909050438779cb4912e624d60d2356842363beb9eeb5e",
+      "change_from_strict": [
+        "vabstol=1e-9",
+        "vabstol=1e-6"
+      ]
+    }
+  ],
+  "stop_s": 5e-09,
+  "noise_enabled": false,
+  "physical_dut_modified": false,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "Convergence isolation only. A successful5ns run is not a noise-accuracy proof or stationarity result.",
+    "The observation-only supply meter is an ideal0V Spectre source; all actual physical PLL devices remain."
+  ]
+}

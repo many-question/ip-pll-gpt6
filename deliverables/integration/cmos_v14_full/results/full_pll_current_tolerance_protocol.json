@@ -1,0 +1,27 @@
+{
+  "scope": "Bracket viable current tolerance with two bounded5ns checks; not noise signoff.",
+  "time": "2026-10-05T01:23:01.235642+08:00",
+  "source_tb_sha256": "9ae94780afa0d3990a5a1140898e66848bf14848af276820fd4a5c2f57a97d5d",
+  "cases": [
+    {
+      "run": "pllcurrent100fa01",
+      "case": "full_pll_current_100fa_tt",
+      "iabstol": 1e-13,
+      "tb_sha256": "a5926a87b4fb30ec8678bfbdfe35c3855038bd72c88a0456a9de245e3fb728ab"
+    },
+    {
+      "run": "pllcurrent10fa01",
+      "case": "full_pll_current_10fa_tt",
+      "iabstol": 1e-14,
+      "tb_sha256": "c10784993b19f3e675bcb06e3e5b113b711693a4edc2f0fad6810e67c0eb8281"
+    }
+  ],
+  "stop_s": 5e-09,
+  "noise_enabled": false,
+  "physical_dut_modified": false,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "Comparison against the7-thread1pA/noVA case also changes requested thread count because only one resource slot is free. Actual tolerance tables and startup nodes must be checked.",
+    "Use results to select further long controls, never to certify integrated jitter."
+  ]
+}

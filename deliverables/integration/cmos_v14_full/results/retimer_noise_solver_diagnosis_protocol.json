@@ -1,0 +1,36 @@
+{
+  "scope": "Two bounded numerical comparisons, with the physical RT4 and native seed fixed.",
+  "time": "2026-10-04T23:55:38.220513+08:00",
+  "source_validation_sha256": "60175b4594fd26aec087fb9cdcd27497a0707dd0126650705ac90226b8625712",
+  "native_sha256": "5fdb71f18958735fc7b7b3c62c3bfd99139613222a038df7096038f655724b97",
+  "case": "retimer_tran_noise_seed_tt",
+  "native": "research/runs/spectre_cmos_v14_full/rttrannoiseseed01/retimer_tran_noise_seed_tt/checkpoints/at_1e-07s.srf",
+  "source_run": "rttrannoiseseed01",
+  "cases": [
+    {
+      "run": "rtnoisediagadaptive01",
+      "algorithm": "adaptive",
+      "iabstol": 1e-15
+    },
+    {
+      "run": "rtnoisediagiabstol01",
+      "algorithm": "default",
+      "iabstol": 1e-13
+    }
+  ],
+  "fixed": {
+    "stop_s": 1.3e-06,
+    "maxstep_s": 5e-13,
+    "noisefmax_hz": 80000000000.0,
+    "noisefmin_hz": 1000000.0,
+    "noiseseed": 11,
+    "reltol": 1e-06,
+    "vabstol_v": 1e-09,
+    "method": "traponly",
+    "temperature_c": 27,
+    "supply_v": 1.2
+  },
+  "purpose": "Diagnose recovery events only. No circuit change; no jitter acceptance until a clean configuration also passes noise-off, bandwidth, step and seed tests.",
+  "resources": "Two sequential short jobs, one thread,600s client limit each; four existing remote long jobs retained.",
+  "full_pll_acceptance": false
+}

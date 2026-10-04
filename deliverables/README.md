@@ -1,4 +1,4 @@
-本次快照：[第62次汇报](../reports/2026-10-04T2335.yaml)。首次实际RT4瞬态噪声得到约49fs的带内诊断值，但发生数值恢复，未予验收；已补上日志异常判据并定位到噪声更新网格线索。
+本次快照：[第63次汇报](../reports/2026-10-05T0138.yaml)。RT4瞬态噪声方法六项控制通过，完整RT4候选TT复位完成；已隔离整环容差/状态接续问题并启动完整电路noise-off/on配对，全频带PLL抖动尚未得出。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

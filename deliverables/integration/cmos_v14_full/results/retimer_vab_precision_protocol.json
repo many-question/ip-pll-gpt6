@@ -1,0 +1,78 @@
+{
+  "scope": "Verify 100nV RT4 noise numerics with a fresh seed and explicit controls.",
+  "time": "2026-10-05T00:12:52.223507+08:00",
+  "source_protocol": "retimer_transient_noise_protocol.json",
+  "source_protocol_sha256": "d6d4d3e255856f463ea448a68581408cae351b2c32b6da728c4df2b2b2a7d357",
+  "source_seed_tb_sha256": "1fcba3f2ccbab91021dc52bcf0306bf9671fd7bd6ab12c41304c26bde38a79e9",
+  "seed_run": "rtvabseed01",
+  "case": "retimer_tran_noise_vab100_seed_tt",
+  "seed_tb_sha256": "ea0f09ff45dbdfaabed2145a735be7d16f06080b0f18b14aed3ff238220118cf",
+  "cases": [
+    {
+      "run": "rtvaboff05",
+      "noisefmax": 0,
+      "maxstep": ".5p",
+      "noiseseed": 11
+    },
+    {
+      "run": "rtvaboff025",
+      "noisefmax": 0,
+      "maxstep": ".25p",
+      "noiseseed": 11
+    },
+    {
+      "run": "rtvabon80g05",
+      "noisefmax": 80000000000.0,
+      "maxstep": ".5p",
+      "noiseseed": 11
+    },
+    {
+      "run": "rtvabon160g05",
+      "noisefmax": 160000000000.0,
+      "maxstep": ".5p",
+      "noiseseed": 11
+    },
+    {
+      "run": "rtvabon160g025",
+      "noisefmax": 160000000000.0,
+      "maxstep": ".25p",
+      "noiseseed": 11
+    },
+    {
+      "run": "rtvabon160g025s29",
+      "noisefmax": 160000000000.0,
+      "maxstep": ".25p",
+      "noiseseed": 29
+    }
+  ],
+  "fixed": {
+    "reltol": 1e-06,
+    "vabstol_v": 1e-07,
+    "iabstol_a": 1e-15,
+    "method": "traponly",
+    "noisefmin_hz": 1000000.0,
+    "seed_time_s": 1e-07,
+    "stop_s": 1.3e-06
+  },
+  "measurement": {
+    "start_s": 2e-07,
+    "edges": 1024,
+    "band_hz": [
+      5000000.0,
+      492000000.0
+    ]
+  },
+  "gates": {
+    "no_solver_recovery": true,
+    "off_schedule_rms_fs": 5.0,
+    "off_step_rms_fs": 5.0,
+    "rms_relative_pnoise": 0.1,
+    "refinement_rms_change": 0.05
+  },
+  "limitations": [
+    "Same actual RT4, ideal3.936GHz/984MHz inputs,TT27/1.2V/10fF. No fullPLL acceptance.",
+    "1024 edges only resolve the specified high-offset band; no10kHz claim.",
+    "Bandwidth or step failures require further measured refinement; no rescaling to PNoise."
+  ],
+  "full_pll_acceptance": false
+}

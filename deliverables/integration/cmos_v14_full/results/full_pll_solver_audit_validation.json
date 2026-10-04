@@ -1,0 +1,323 @@
+{
+  "scope": "Preserve failed hypotheses and actual tolerance/initialization evidence.",
+  "cases": [
+    {
+      "run": "pllnoisesettle01",
+      "case": "full_pll_noise_settling_tt",
+      "result_collected": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/pllnoisesettle01/full_pll_noise_settling_tt/result.json",
+      "source_sha256": "d193d4e26214810607a8874205270c69e0a374b1bcf128e6a68b56440a5b1df6",
+      "effective": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-09,
+        "abstol(I)": 1e-15,
+        "method": "traponly",
+        "maxstep": 5e-13,
+        "noisefmax": 80000000000.0,
+        "noisefmin": 1000000.0,
+        "trannoisemethod": "default"
+      },
+      "recovery": {
+        "newton_failures_reported": 5,
+        "skipped_breakpoints_reported": 0,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": false,
+        "counts_may_be_suppressed": true
+      },
+      "zero_terminal_errors": false,
+      "log_sha256": "2392e9b1d61102c748e000e2c93c94097450fa7f08ca302e837c71c9ee6ac80c",
+      "errors": [
+        "Error found by spectre at time = 18.8017 ns during transient analysis `tran'.",
+        "ERROR (SPECTRE-25): The simulation is stopped either by the user or the",
+        "spectre completes with 1 error, 3 warnings, and 212 notices.",
+        "spectre terminated prematurely due to fatal error."
+      ],
+      "diagnostic_solution_node_counts": {},
+      "short_convergence_screen_passed": false
+    },
+    {
+      "run": "pllnoisegear01",
+      "case": "full_pll_noise_gear_diagnosis_tt",
+      "result_collected": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/pllnoisegear01/full_pll_noise_gear_diagnosis_tt/result.json",
+      "source_sha256": "ff80bfa029612784fbdebb2e325bc8f32b0f66a0a84ab506c5b367e032289b48",
+      "effective": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-09,
+        "abstol(I)": 1e-15,
+        "method": "gear2only",
+        "maxstep": 5e-13,
+        "noisefmax": 80000000000.0,
+        "noisefmin": 1000000.0,
+        "trannoisemethod": "default"
+      },
+      "recovery": {
+        "newton_failures_reported": 5,
+        "skipped_breakpoints_reported": 0,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": false,
+        "counts_may_be_suppressed": true
+      },
+      "zero_terminal_errors": false,
+      "log_sha256": "a13a0e5d70cbc8a0d04757fb69e174079cad85d422ea63b173b3636f0d232f9d",
+      "errors": [
+        "Error found by spectre at time = 1.94762 ns during transient analysis `tran'.",
+        "ERROR (SPECTRE-25): The simulation is stopped either by the user or the",
+        "spectre completes with 1 error, 3 warnings, and 26 notices.",
+        "spectre terminated prematurely due to fatal error."
+      ],
+      "diagnostic_solution_node_counts": {},
+      "short_convergence_screen_passed": false
+    },
+    {
+      "run": "pllstrictdiag01",
+      "case": "full_pll_strict_diagnostic_tt",
+      "result_collected": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/pllstrictdiag01/full_pll_strict_diagnostic_tt/result.json",
+      "source_sha256": "4803dfd84fc8433fd228a0991c89208e4c1fd0f6fe9c94f087065529da171cad",
+      "effective": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-09,
+        "abstol(I)": 1e-15,
+        "method": "traponly",
+        "maxstep": 5e-13,
+        "noisefmax": 80000000000.0,
+        "noisefmin": 200000000.0,
+        "trannoisemethod": "default"
+      },
+      "recovery": {
+        "newton_failures_reported": 5,
+        "skipped_breakpoints_reported": 0,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": false,
+        "counts_may_be_suppressed": true
+      },
+      "zero_terminal_errors": true,
+      "log_sha256": "4cb7fcde8c02d5c5aeadec05bcd3061b0381395e4c5f408abc33477871d2c074",
+      "errors": [
+        "convergence failure"
+      ],
+      "diagnostic_solution_node_counts": {
+        "power_mw": 2055,
+        "obscycles": 1,
+        "XP.VRT:p": 2,
+        "XP.XV.XBP.x3": 2,
+        "XP.VRX:p": 22,
+        "XP.XV.XBN.x3": 2,
+        "XP.data": 2
+      },
+      "time_range_s": [
+        0.0,
+        5e-09
+      ],
+      "cache_sha256": "a74efa1e3bea7bc275c185b6e2229f5be0fdfc299c2d87894a792c513a7ddba1",
+      "short_convergence_screen_passed": false
+    },
+    {
+      "run": "pllnova01",
+      "case": "full_pll_no_observer_tt",
+      "result_collected": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/pllnova01/full_pll_no_observer_tt/result.json",
+      "source_sha256": "678923f0171744f268a4fa1a8b2e83fedb8cbe8ae197e08b99d05fa906ea4a4f",
+      "effective": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-09,
+        "abstol(I)": 1e-15,
+        "method": "traponly",
+        "maxstep": 5e-13,
+        "noisefmax": 80000000000.0,
+        "noisefmin": 10000000.0,
+        "trannoisemethod": "default"
+      },
+      "recovery": {
+        "newton_failures_reported": 5,
+        "skipped_breakpoints_reported": 0,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": false,
+        "counts_may_be_suppressed": true
+      },
+      "zero_terminal_errors": false,
+      "log_sha256": "077fa88a60f5c4e43e698bb68fa7aa6674a471df039c95b494714cc510670fdb",
+      "errors": [
+        "convergence failure"
+      ],
+      "diagnostic_solution_node_counts": {},
+      "short_convergence_screen_passed": false
+    },
+    {
+      "run": "pllabsoluteiab01",
+      "case": "full_pll_absolute_iab_tt",
+      "result_collected": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/pllabsoluteiab01/full_pll_absolute_iab_tt/result.json",
+      "source_sha256": "4704d063c372ad4cd6aa99b7e83174abd18d5d7a3a8296fdc179969edbd718f0",
+      "effective": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-09,
+        "abstol(I)": 1e-12,
+        "method": "traponly",
+        "maxstep": 5e-13,
+        "noisefmax": 80000000000.0,
+        "noisefmin": 200000000.0,
+        "trannoisemethod": "default"
+      },
+      "recovery": {
+        "newton_failures_reported": 0,
+        "skipped_breakpoints_reported": 0,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": true,
+        "counts_may_be_suppressed": false
+      },
+      "zero_terminal_errors": true,
+      "log_sha256": "2148aa8aa2c375282ddb3b6393cd5fbad46099cb3514d44ad992a5c71cc79060",
+      "errors": [],
+      "diagnostic_solution_node_counts": {},
+      "time_range_s": [
+        0.0,
+        5e-09
+      ],
+      "cache_sha256": "133260d46c16e0bf0a45398aa4bfa2824750f25d3bc0ae46e1e78153fb608e2f",
+      "short_convergence_screen_passed": true
+    },
+    {
+      "run": "pllabsolutevab01",
+      "case": "full_pll_absolute_vab_tt",
+      "result_collected": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/pllabsolutevab01/full_pll_absolute_vab_tt/result.json",
+      "source_sha256": "1eee563dca7066c572ceb31db365234f780875b928ee1bd41bed660e84697377",
+      "effective": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-06,
+        "abstol(I)": 1e-15,
+        "method": "traponly",
+        "maxstep": 5e-13,
+        "noisefmax": 80000000000.0,
+        "noisefmin": 200000000.0,
+        "trannoisemethod": "default"
+      },
+      "recovery": {
+        "newton_failures_reported": 5,
+        "skipped_breakpoints_reported": 0,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": false,
+        "counts_may_be_suppressed": true
+      },
+      "zero_terminal_errors": true,
+      "log_sha256": "16486ec50c0db3e3986de38cdae34d3d9a10268aed59b5954d9363b00a7145b8",
+      "errors": [
+        "convergence failure"
+      ],
+      "diagnostic_solution_node_counts": {},
+      "time_range_s": [
+        0.0,
+        5e-09
+      ],
+      "cache_sha256": "a4b86b905d564df4b6731cce9bc52baa356cf484c4b51cfc63f7e497ee70f45d",
+      "short_convergence_screen_passed": false
+    },
+    {
+      "run": "pllcurrent100fa01",
+      "case": "full_pll_current_100fa_tt",
+      "result_collected": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/pllcurrent100fa01/full_pll_current_100fa_tt/result.json",
+      "source_sha256": "53a5a1c1549faaa7c6c6ef6e9f68a7f6b47b1b3526e521d168896d9b802094d3",
+      "effective": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-09,
+        "abstol(I)": 1e-13,
+        "method": "traponly",
+        "maxstep": 5e-13,
+        "noisefmax": 80000000000.0,
+        "noisefmin": 200000000.0,
+        "trannoisemethod": "default"
+      },
+      "recovery": {
+        "newton_failures_reported": 0,
+        "skipped_breakpoints_reported": 0,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": true,
+        "counts_may_be_suppressed": false
+      },
+      "zero_terminal_errors": true,
+      "log_sha256": "a7e6d498437b5688f96829034f2292c28ff8a2016f6694b921d444c946760dac",
+      "errors": [],
+      "diagnostic_solution_node_counts": {},
+      "time_range_s": [
+        0.0,
+        5e-09
+      ],
+      "cache_sha256": "4495486b65f2f3d834b05768e0d3ddb57d869fc8cae7c710cd319538969054bc",
+      "short_convergence_screen_passed": true
+    },
+    {
+      "run": "pllcurrent10fa01",
+      "case": "full_pll_current_10fa_tt",
+      "result_collected": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/pllcurrent10fa01/full_pll_current_10fa_tt/result.json",
+      "source_sha256": "74e923186d8e6f84f2c857923cf86d2fd6c05c9aaad4e47221a384834c76736f",
+      "effective": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-09,
+        "abstol(I)": 1e-14,
+        "method": "traponly",
+        "maxstep": 5e-13,
+        "noisefmax": 80000000000.0,
+        "noisefmin": 200000000.0,
+        "trannoisemethod": "default"
+      },
+      "recovery": {
+        "newton_failures_reported": 0,
+        "skipped_breakpoints_reported": 0,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": true,
+        "counts_may_be_suppressed": true
+      },
+      "zero_terminal_errors": true,
+      "log_sha256": "abbc4178881d6cbd2aa3a636ea18434deffefbd27a5dd3836024ee0efc5b5ea1",
+      "errors": [
+        "convergence failure"
+      ],
+      "diagnostic_solution_node_counts": {},
+      "time_range_s": [
+        0.0,
+        5e-09
+      ],
+      "cache_sha256": "0ab236572805236aa06f60ace9744b2e13d7f491b303c4cf300d9486ebe88307",
+      "short_convergence_screen_passed": true
+    }
+  ],
+  "local_current_tolerance_edge_comparisons": {
+    "pllcurrent100fa01": {
+      "edges": 4,
+      "maximum_absolute_difference_fs": 0.08625905767588099,
+      "mean_removed_rms_fs": 0.06258310089137963,
+      "scope": "Only1..4.8ns startup edges; not a stationary or broadband jitter floor."
+    },
+    "pllcurrent10fa01": {
+      "edges": 4,
+      "maximum_absolute_difference_fs": 833.2329179825969,
+      "mean_removed_rms_fs": 236.70225339395205,
+      "scope": "Only1..4.8ns startup edges; not a stationary or broadband jitter floor."
+    }
+  },
+  "full_pll_acceptance": false,
+  "noise_measured": false,
+  "findings": [
+    "Changing only integration method did not remove strict noise-OFF Newton recovery.",
+    "Detailed failures often named the power observer, but removing both nonfunctional VA observers did not remove recovery. That symptom did not establish the observer as the root cause.",
+    "In the no-VA5ns pair, current tolerance1pA with voltage tolerance1nV was clean; voltage tolerance1uV with current tolerance1fA was not. Both used reltol1e-6/Trap/.5ps and unchanged physical DUT.",
+    "The corresponding complete-PLL noise pair retains1nV/reltol1e-6 and uses1pA. This is a numerical-repair candidate; longer stability, floor and noise precision still require verification."
+  ],
+  "limitations": [
+    "Printed counts may be suppressed; report them as lower bounds.",
+    "Short or intentionally stopped runs cannot qualify stationary fullPLL jitter.",
+    "100fA/10fA bracketing uses one requested thread instead of seven; it is an additional numerical screen, not a pure thread-invariant precision proof."
+  ]
+}

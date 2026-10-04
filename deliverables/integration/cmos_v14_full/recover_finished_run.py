@@ -10,6 +10,7 @@ H=Path(__file__).resolve().parent;ROOT=H.parents[3]
 REMOTE='/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full'
 p=argparse.ArgumentParser();p.add_argument('run');p.add_argument('case')
 p.add_argument('--supplement-timeout',action='store_true',help='Keep a failed client-timeout result.json and write completed_result.json separately')
+p.add_argument('--periodic',action='store_true',help='Recover completed fresh-PSS analyses; preserve every raw file and its hash')
 a=p.parse_args()
 assert a.run.isalnum() and a.case.replace('_','').isalnum()
 w=ROOT/'research/runs/spectre_cmos_v14_full'/a.run/a.case
@@ -46,6 +47,14 @@ if native:
  assert native['remote'].startswith(REMOTE+'/') and native['sha256']==sha(ROOT/native['local'])
  assert read('sha256sum '+shlex.quote(native['remote'])).decode().split()[0]==native['sha256']
 rawfiles=[a.case+'.raw/tran.tran.tran','spectre.out']
+if a.periodic:
+ assert not launch.get('periodic_state'),'Reused MOS PSS state is not accepted for noise recovery'
+ assert b'The steady-state solution was achieved' in log
+ rawroot=a.case+'.raw'
+ names=read('cd '+shlex.quote(remote)+' && find '+shlex.quote(rawroot)+' -type f -print').decode().splitlines()
+ assert all(x.startswith(rawroot+'/') and '..' not in PurePosixPath(x).parts for x in names)
+ assert rawroot+'/pss.td.pss' in names and rawroot+'/pss.fd.pss' in names
+ rawfiles=sorted(names)+['spectre.out']
 proof=read('cd '+shlex.quote(remote)+' && sha256sum '+' '.join(shlex.quote(x) for x in rawfiles)).decode()
 rawhash={x.split()[1]:x.split()[0] for x in proof.splitlines()}
 archive=w/'recovered_raw.tar.gz';assert not archive.exists()
@@ -55,18 +64,25 @@ with tarfile.open(archive) as tf:tf.extractall(w,filter='data')
 assert all(sha(w/k)==v for k,v in rawhash.items()),'Raw transport hash mismatch'
 after=read('cd '+shlex.quote(remote)+' && sha256sum '+' '.join(shlex.quote(x) for x in rawfiles)).decode()
 assert {x.split()[1]:x.split()[0] for x in after.splitlines()}==rawhash,'Raw files changed during completed-job recovery'
-final=re.search(r'writefinal="([^"]+)"',tb)[1];assert final.startswith(REMOTE+'/')
-blob=read('cat '+shlex.quote(final));fh=read('sha256sum '+shlex.quote(final)).decode().split()[0]
-assert hashlib.sha256(blob).hexdigest()==fh;(w/'final.ic').write_bytes(blob)
-data=parse_psf_ascii_directory(w/(a.case+'.raw'))
+final_match=re.search(r'writefinal="([^"]+)"',tb)
+state_file=None
+if final_match:
+ final=final_match[1];assert final.startswith(REMOTE+'/')
+ blob=read('cat '+shlex.quote(final));fh=read('sha256sum '+shlex.quote(final)).decode().split()[0]
+ assert hashlib.sha256(blob).hexdigest()==fh;(w/'final.ic').write_bytes(blob)
+ state_file=dict(remote=final,collected=True,sha256=fh,remote_hash_match=True)
+# Periodic analyses are consumed from individually hashed raw files, avoiding a
+# mixed-analysis cache whose time/frequency axes could be ambiguous.
+data={} if a.periodic else parse_psf_ascii_directory(w/(a.case+'.raw'))
 data={k:np.atleast_1d(v) for k,v in data.items() if k!='units' and np.asarray(v).dtype.kind in 'biufc'}
-np.savez_compressed(w/'waveforms.npz',**data)
+if data:np.savez_compressed(w/'waveforms.npz',**data)
 rec=dict(case=a.case,time=datetime.datetime.now().astimezone().isoformat(),ok=True,errors=[],
  recovery_note='Original local runner/finalizer processes were absent. Completed remote simulation recovered without rerunning; simulator zero-error status, frozen inputs and raw waveform hashes verified.',
  metadata=dict(spectre_command=cmd),initial_states=launch.get('initial_states',{}),native_state=native,numerical_overrides=launch.get('numerical_overrides',{}),
  transient_noise_overrides=launch.get('transient_noise_overrides',{}),
+ transient_solver_overrides=launch.get('transient_solver_overrides',{}),periodic_state=launch.get('periodic_state'),
  inputs_sha256=local,remote_inputs_sha256=rh,remote_inputs_match=True,
- remote_outputs_sha256=rawhash,state_file=dict(remote=final,collected=True,sha256=fh,remote_hash_match=True),
+ remote_outputs_sha256=rawhash,state_file=state_file,
  signals={k:len(v) for k,v in data.items()},final_values={k:float(v[-1]) for k,v in data.items() if len(v) and np.isrealobj(v) and np.isfinite(v[-1])})
 rec['local_outputs_sha256']={x.name:sha(x) for x in w.iterdir() if x.is_file() and x.name not in ['result.json','finalization.json']}
 if a.supplement_timeout:
@@ -75,4 +91,5 @@ if a.supplement_timeout:
  rec['recovery_note']='Client timed out, but the original remote simulation later completed with zero errors. Original result.json is preserved; completed waveform, state and inputs were recovered without rerunning.'
 target.write_text(json.dumps(rec,indent=2)+'\n')
 if not a.supplement_timeout:(w.parent/'index.json').write_text(json.dumps([rec],indent=2)+'\n')
-print('Recovered',a.run,a.case,len(data),'signals; final time',data['time'][-1])
+print('Recovered',a.run,a.case,len(rawhash),'verified raw files;',
+      'fresh periodic analyses' if a.periodic else 'final time '+str(data['time'][-1]))

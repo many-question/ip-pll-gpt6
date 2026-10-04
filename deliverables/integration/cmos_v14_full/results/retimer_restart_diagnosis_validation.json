@@ -1,0 +1,341 @@
+{
+  "scope": "Audit direct, native and dynamically updated noise activation without adoption.",
+  "protocol_sha256": "7ab6efe68d8dd0e028a0b36deae89e03a614a9c1cd55bdd9dbfc2f798ffdd4c8",
+  "reference_protocol_sha256": "d6d4d3e255856f463ea448a68581408cae351b2c32b6da728c4df2b2b2a7d357",
+  "cases": [
+    {
+      "run": "rttrannoise80g05",
+      "case": "retimer_tran_noise_seed_tt",
+      "condition": "native activation",
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/rttrannoise80g05/retimer_tran_noise_seed_tt/result.json",
+      "source_sha256": "132bb95025db2887b88468924036fbe8bae50156f015971c0096cb2966e0e733",
+      "log_sha256": "ba8ae5848d500198181773596060784ce7c8505042b2b2abe2d5b2f9ed712e40",
+      "recovery": {
+        "newton_failures_reported": 5,
+        "skipped_breakpoints_reported": 5,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": false,
+        "counts_may_be_suppressed": true
+      },
+      "effective_initial": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-09,
+        "abstol(I)": 1e-15,
+        "method": "traponly",
+        "maxstep": 5e-13,
+        "noisefmax": 80000000000.0,
+        "noisefmin": 1000000.0,
+        "trannoisemethod": "default"
+      },
+      "solver_overrides": {},
+      "native_boundary": {
+        "passed": true,
+        "time_s": 1e-07,
+        "expected_output_v": 1.226281149998618,
+        "observed_output_v": 1.226281149998618,
+        "source_cache_sha256": "5a662f4297739c6a3beb5cd892b0c8f30918ed6d728a7cd49f36f9194ca8639d",
+        "maximum_difference_v": 0.0
+      },
+      "band_rms_fs": 48.119196040193685,
+      "rms_relative_to_pnoise": -0.09734786752289404,
+      "cache_sha256": "3037843571a86a45b7726514295f2ab475bb46e842523fc0374813442bdcbb57",
+      "valid_continuation": false
+    },
+    {
+      "run": "rtnoisevabstol01",
+      "case": "retimer_tran_noise_seed_tt",
+      "condition": "native + dynamic1nV to100nV",
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/rtnoisevabstol01/retimer_tran_noise_seed_tt/result.json",
+      "source_sha256": "e222332f66a6e19bcc5e30ee8166fd77801a48e32651520bfa372a00b3b04bef",
+      "log_sha256": "ff036707e34c44ced05a4f115082c4c6b7ba9f70f1b95419d427bc768bf9d4cd",
+      "recovery": {
+        "newton_failures_reported": 0,
+        "skipped_breakpoints_reported": 0,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": true,
+        "counts_may_be_suppressed": false
+      },
+      "effective_initial": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-09,
+        "abstol(I)": 1e-15,
+        "method": "traponly",
+        "maxstep": 5e-13,
+        "noisefmax": 80000000000.0,
+        "noisefmin": 1000000.0,
+        "trannoisemethod": "default"
+      },
+      "solver_overrides": {
+        "dynamic_tolerance": {
+          "parameter": "vabstol",
+          "time_s": 1.005e-07,
+          "value": 1e-07
+        }
+      },
+      "native_boundary": {
+        "passed": false,
+        "time_s": 1e-07,
+        "expected_output_v": 1.226281149998618,
+        "observed_output_v": 0.0,
+        "source_cache_sha256": "5a662f4297739c6a3beb5cd892b0c8f30918ed6d728a7cd49f36f9194ca8639d",
+        "maximum_difference_v": 1.226281149998618
+      },
+      "band_rms_fs": 48.34198946175287,
+      "rms_relative_to_pnoise": -0.09316855918814371,
+      "cache_sha256": "4a607c1d01825dccf5fe728d4176107f4e598c2e9048bb97fd215d1a184ac702",
+      "valid_continuation": false
+    },
+    {
+      "run": "rtvabon80g05",
+      "case": "retimer_tran_noise_vab100_seed_tt",
+      "condition": "native static100nV",
+      "completed": false,
+      "source_result": "research/runs/spectre_cmos_v14_full/rtvabon80g05/retimer_tran_noise_vab100_seed_tt/result.json",
+      "source_sha256": "471d4c4118b536a1cb3897bc8b3eb1344940d75c8d09db1144846d9bf9df9999",
+      "log_sha256": "a27ac5e516d5f2df0781ba98d9d9ce9fc99d41bfb53eccd71f39c1e515b3147d",
+      "recovery": {
+        "newton_failures_reported": 5,
+        "skipped_breakpoints_reported": 5,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": false,
+        "counts_may_be_suppressed": true
+      },
+      "effective_initial": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-07,
+        "abstol(I)": 1e-15,
+        "method": "traponly",
+        "maxstep": 5e-13,
+        "noisefmax": 80000000000.0,
+        "noisefmin": 1000000.0,
+        "trannoisemethod": "default"
+      },
+      "solver_overrides": {},
+      "errors": [
+        "Error found by spectre at time = 589.576 ns during transient analysis `tran'.",
+        "ERROR (SPECTRE-25): The simulation is stopped either by the user or the",
+        "spectre completes with 1 error, 10 warnings, and 56 notices.",
+        "spectre terminated prematurely due to fatal error."
+      ]
+    },
+    {
+      "run": "rtnoisedirect01",
+      "case": "retimer_tran_noise_direct_tt",
+      "condition": "direct noise from t0",
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/rtnoisedirect01/retimer_tran_noise_direct_tt/result.json",
+      "source_sha256": "f21306224546f1abebe201b2c366e2eb8013b3fc715f89ce9dc3abc25b9118cd",
+      "log_sha256": "ad1b3c1369712ee2c71f81eca234d1aedc9f336413c146a4b385bc126a5bd8c0",
+      "recovery": {
+        "newton_failures_reported": 0,
+        "skipped_breakpoints_reported": 0,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": true,
+        "counts_may_be_suppressed": false
+      },
+      "effective_initial": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-09,
+        "abstol(I)": 1e-15,
+        "method": "traponly",
+        "maxstep": 5e-13,
+        "noisefmax": 80000000000.0,
+        "noisefmin": 1000000.0,
+        "trannoisemethod": "default"
+      },
+      "solver_overrides": {},
+      "band_rms_fs": 50.56557558936562,
+      "rms_relative_to_pnoise": -0.05145704018937203,
+      "cache_sha256": "ad5349dfe2bfc2bfa6e403517a09600ac3bef19095566b2879a92c528f7d5d10",
+      "valid_continuation": null
+    },
+    {
+      "run": "rtnoisedynamicnoop01",
+      "case": "retimer_tran_noise_seed_tt",
+      "condition": "native + dynamic1nV to1nV",
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/rtnoisedynamicnoop01/retimer_tran_noise_seed_tt/result.json",
+      "source_sha256": "72efafcda79aa7ce1d1e5c9540f0e1d610b0faed9c24d5ed26f001046a281151",
+      "log_sha256": "43499aec5febefe69023a7a9b0e30e3b67ac2fb36cc7eb9de36285f8d8998334",
+      "recovery": {
+        "newton_failures_reported": 0,
+        "skipped_breakpoints_reported": 0,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": true,
+        "counts_may_be_suppressed": false
+      },
+      "effective_initial": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-09,
+        "abstol(I)": 1e-15,
+        "method": "traponly",
+        "maxstep": 5e-13,
+        "noisefmax": 80000000000.0,
+        "noisefmin": 1000000.0,
+        "trannoisemethod": "default"
+      },
+      "solver_overrides": {
+        "dynamic_tolerance": {
+          "parameter": "vabstol",
+          "time_s": 1.005e-07,
+          "value": 1e-09
+        }
+      },
+      "native_boundary": {
+        "passed": false,
+        "time_s": 1e-07,
+        "expected_output_v": 1.226281149998618,
+        "observed_output_v": 0.0,
+        "source_cache_sha256": "5a662f4297739c6a3beb5cd892b0c8f30918ed6d728a7cd49f36f9194ca8639d",
+        "maximum_difference_v": 1.226281149998618
+      },
+      "band_rms_fs": 48.34198946175287,
+      "rms_relative_to_pnoise": -0.09316855918814371,
+      "cache_sha256": "4a607c1d01825dccf5fe728d4176107f4e598c2e9048bb97fd215d1a184ac702",
+      "valid_continuation": false
+    },
+    {
+      "run": "rtnoiseenableevent01",
+      "case": "retimer_tran_noise_seed_tt",
+      "condition": "native + explicit isnoisy event",
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/rtnoiseenableevent01/retimer_tran_noise_seed_tt/result.json",
+      "source_sha256": "6486eb1516d291087091a66400d49ae2172a8cd722539fc00f971498bb4f943a",
+      "log_sha256": "89e9e3dfd7af6e1a45637151dadc8a3c0312e43f6253b7ba948f5aa02f12a166",
+      "recovery": {
+        "newton_failures_reported": 0,
+        "skipped_breakpoints_reported": 0,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": true,
+        "counts_may_be_suppressed": false
+      },
+      "effective_initial": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-09,
+        "abstol(I)": 1e-15,
+        "method": "traponly",
+        "maxstep": 5e-13,
+        "noisefmax": 80000000000.0,
+        "noisefmin": 1000000.0,
+        "trannoisemethod": "default"
+      },
+      "solver_overrides": {
+        "noise_start_s": 1.005e-07
+      },
+      "native_boundary": {
+        "passed": false,
+        "time_s": 1e-07,
+        "expected_output_v": 1.226281149998618,
+        "observed_output_v": 0.0,
+        "source_cache_sha256": "5a662f4297739c6a3beb5cd892b0c8f30918ed6d728a7cd49f36f9194ca8639d",
+        "maximum_difference_v": 1.226281149998618
+      },
+      "band_rms_fs": 48.34198946175287,
+      "rms_relative_to_pnoise": -0.09316855918814371,
+      "cache_sha256": "4a607c1d01825dccf5fe728d4176107f4e598c2e9048bb97fd215d1a184ac702",
+      "valid_continuation": false
+    },
+    {
+      "run": "rtnoisestart01",
+      "case": "retimer_tran_noise_seed_tt",
+      "condition": "native + explicit100ns analysis start",
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/rtnoisestart01/retimer_tran_noise_seed_tt/result.json",
+      "source_sha256": "677fc03dbd92e4da508c6f24670cd861adf7fc605a81a1737aa154777a876cdc",
+      "log_sha256": "f832b7294853c1ee47fa6da46eb16d33c3aa6fa0c85f319c812556a09186f019",
+      "recovery": {
+        "newton_failures_reported": 5,
+        "skipped_breakpoints_reported": 5,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": false,
+        "counts_may_be_suppressed": true
+      },
+      "effective_initial": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-09,
+        "abstol(I)": 1e-15,
+        "method": "traponly",
+        "maxstep": 5e-13,
+        "noisefmax": 80000000000.0,
+        "noisefmin": 1000000.0,
+        "trannoisemethod": "default"
+      },
+      "solver_overrides": {
+        "start": "100n"
+      },
+      "native_boundary": {
+        "passed": true,
+        "time_s": 1e-07,
+        "expected_output_v": 1.226281149998618,
+        "observed_output_v": 1.226281149998618,
+        "source_cache_sha256": "5a662f4297739c6a3beb5cd892b0c8f30918ed6d728a7cd49f36f9194ca8639d",
+        "maximum_difference_v": 0.0
+      },
+      "band_rms_fs": 48.119196040193685,
+      "rms_relative_to_pnoise": -0.09734786752289404,
+      "cache_sha256": "c65c974f1c9f449673988139e7723481bb175738e22f7bcd3ee78de152f2a9b4",
+      "valid_continuation": false
+    },
+    {
+      "run": "rtnoiseiniton02",
+      "case": "retimer_tran_noise_epsilon_seed_tt",
+      "condition": "native from1e-6-noise seed, restored physical noise scale1",
+      "completed": false,
+      "source_result": "research/runs/spectre_cmos_v14_full/rtnoiseiniton02/retimer_tran_noise_epsilon_seed_tt/result.json",
+      "source_sha256": "fb580163963487c58d9904d8ed677bd04fd30b2b1d2ea7820ca722c365831916",
+      "log_sha256": "1dd22ebe24844f9a7a56be32ff60c9e1ed16e69a2084c32290b9ccdff8040011",
+      "recovery": {
+        "newton_failures_reported": 5,
+        "skipped_breakpoints_reported": 5,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": false,
+        "counts_may_be_suppressed": true
+      },
+      "effective_initial": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-09,
+        "abstol(I)": 1e-15,
+        "method": "traponly",
+        "maxstep": 5e-13,
+        "noisefmax": 80000000000.0,
+        "noisefmin": 1000000.0,
+        "trannoisemethod": "default"
+      },
+      "solver_overrides": {},
+      "errors": [
+        "Error found by spectre at time = 2.26142 us during transient analysis `tran'.",
+        "ERROR (SPECTRE-25): The simulation is stopped either by the user or the",
+        "spectre completes with 1 error, 18 warnings, and 134 notices.",
+        "spectre terminated prematurely due to fatal error."
+      ]
+    }
+  ],
+  "effective_band_hz": [
+    5285156.25,
+    492000000.0
+  ],
+  "pnoise_expected_fs": 53.308682613026605,
+  "physical_dut_modified": false,
+  "noise_method_accepted": false,
+  "full_pll_acceptance": false,
+  "findings": [
+    "Dynamic tolerance/no-op/isnoisy cases start at100ns but clear the output from1.226281V to0V and produce identical caches. Their clean logs do not validate native recovery or a tolerance fix.",
+    "Direct noise fromt0 is clean; normal native activation, static100nV, preinitialized tiny-noise seed and explicit start-time alignment do not resolve the observed recovery problem."
+  ],
+  "limitations": [
+    "Initial parameter tables do not prove dynamic updates; the exact executed parameter schedule is preserved in inputs/launch metadata.",
+    "RNG histories differ for direct and native runs; their individual samples must not be compared for equality.",
+    "A clean trace does not establish correct noise amplitude, source-bandwidth, step or record-length convergence.",
+    "All RMS figures here are diagnostic high-offset values, not fullPLL10kHz acceptance."
+  ]
+}

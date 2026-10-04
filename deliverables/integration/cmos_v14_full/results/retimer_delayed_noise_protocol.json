@@ -1,0 +1,82 @@
+{
+  "scope": "Fresh same-analysis delayed MOS noise: no binary recovery or circuit changes.",
+  "time": "2026-10-05T01:03:07.029216+08:00",
+  "source_tb_sha256": "ce809ac6306dcafa9379fd25f39f6bb6ff90fdc298e35685004073d38a366cbb",
+  "cases": [
+    {
+      "run": "rtdelayoff05",
+      "case": "retimer_delayed_off05_tt",
+      "maxstep": ".5p",
+      "noisefmax": 80000000000.0,
+      "seed": 11,
+      "noise_enabled": false,
+      "tb_sha256": "fbf80aba98fdf09bf84ab7f90d3a6a426db5ac2eb82f8cce9c33613014f296c9"
+    },
+    {
+      "run": "rtdelayoff025",
+      "case": "retimer_delayed_off025_tt",
+      "maxstep": ".25p",
+      "noisefmax": 80000000000.0,
+      "seed": 11,
+      "noise_enabled": false,
+      "tb_sha256": "9785538d973c3ed74f811092006280541db31b8eb54654f00735a811573bad45"
+    },
+    {
+      "run": "rtdelay80g05",
+      "case": "retimer_delayed_80g05_tt",
+      "maxstep": ".5p",
+      "noisefmax": 80000000000.0,
+      "seed": 11,
+      "noise_enabled": true,
+      "tb_sha256": "007ae65e7874f1da679eb7dbef5ea6842480a24fe4a233e4b24903b584975a0e"
+    },
+    {
+      "run": "rtdelay160g05",
+      "case": "retimer_delayed_160g05_tt",
+      "maxstep": ".5p",
+      "noisefmax": 160000000000.0,
+      "seed": 11,
+      "noise_enabled": true,
+      "tb_sha256": "8d9f53730a056a3b88cbe8de47c726f312e1a50b5164db05c2f0bba01a1c41e7"
+    },
+    {
+      "run": "rtdelay160g025",
+      "case": "retimer_delayed_160g025_tt",
+      "maxstep": ".25p",
+      "noisefmax": 160000000000.0,
+      "seed": 11,
+      "noise_enabled": true,
+      "tb_sha256": "a02bfe7bd5c938df0c3a10c3b89b6a9f02d695a0cc00c9579c8b72bf0dce9a0a"
+    },
+    {
+      "run": "rtdelay160g025s29",
+      "case": "retimer_delayed_160g025s29_tt",
+      "maxstep": ".25p",
+      "noisefmax": 160000000000.0,
+      "seed": 29,
+      "noise_enabled": true,
+      "tb_sha256": "bf70ef77dec37d284e83e4dd76cf9477c7bf14cbf04264a308749d3f7ed0a2cd"
+    }
+  ],
+  "output_hz": 984000000.0,
+  "edge_count": 1024,
+  "measurement_start_s": 2e-07,
+  "band_hz": [
+    5000000.0,
+    492000000.0
+  ],
+  "noise_start_s": 1e-07,
+  "stop_s": 1.3e-06,
+  "gate": {
+    "floor_fs": 5,
+    "relative_pnoise_error": 0.1,
+    "refinement_change": 0.1
+  },
+  "full_pll_acceptance": false,
+  "physical_dut_modified": false,
+  "limitations": [
+    "High-offset 1024-edge control only; not the10kHz/fullPLL acceptance.",
+    "No native recovery. Noise activated once in the same fresh transient analysis after100ns.",
+    "Require no numerical recoveries, clean deterministic controls and PNoise/statistical comparison; do not rescale results."
+  ]
+}

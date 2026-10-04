@@ -75,3 +75,25 @@
 [时间定位](results/retimer_transient_noise_recovery_diagnosis.json)发现，打印的五个跳过断点均与6.25ps候选噪声更新网格在日志舍入精度内重合，其中四个距理想时钟转折点约38–56ps。这支持先检查噪声生成与求解器交互的假设，不能证明内部实现或排除其它根因。打印次数受到日志抑制限制，不是实际事件总数。既有160GHz及0.25ps对照继续检查此问题，不再只按RMS是否接近判定。
 
 本机21.1帮助列出 `trannoisemethod=default/adaptive`。[Cadence关于该选项的说明](https://community.cadence.com/cadence_technology_forums/f/custom-ic-design/55346/spectre-what-is-the-purpose-of-the-trannoisemethod-parameter)针对相近21.1版本指出当时尚未完整公开其细节。因此该选项至多是后续单独数值试验的候选，不能预先声称能修复本例，也不能绕过物理电路相同、数值底噪和噪声幅度交叉核对。访问日期：2026-10-04。
+
+## 2026-10-05：原生恢复、动态参数与实际初态核验
+
+后续实测否定了“动态放宽电压容差修好恢复噪声”的解释。三个动态参数试验虽在日志中显示从100ns接续，输出起点却由原生种子的1.226281V变为0V，且波形cache完全相同。它们是**无效的状态接续**，不能作为容差修复或噪声验收证据。普通原生开启噪声、adaptive、Gear2、静态100nV、微小噪声预初始化及显式start均未消除此处的恢复异常。详见[逐例恢复审计](results/retimer_restart_diagnosis_validation.json)。
+
+整环还测到：改变save集合可能改变电路展开并使原生恢复被拒绝；保持原save集合但增加动态参数仍可能清零状态。保留原观察集合且不增加动态参数后，1ps／0.5ps整环接续的53个物理节点起点与64µs冷启动终态完全相等。运行器现在同时核对恢复错误码、日志和数据起始时间、可用的物理起点及**实际生效**的容差；网表中请求的参数不等于恢复后实际采用的参数。
+
+[Cadence关于延迟启用瞬态噪声的说明](https://community.cadence.com/cadence_technology_forums/f/custom-ic-design/49435/transient-simulation---adding-noise-after-steady-state/1379137)支持在同一次新分析中先`isnoisy=0`，稳定后再切换到1；它没有证明在旧原生恢复上新加动态参数也安全。因此新RT4对照从t=0开始，100ns启用噪声，按实际完成的[延迟噪声验证](results/retimer_delayed_noise_validation.json)评估，不再沿用失败的原生noise-on路径。查阅日期2026-10-05。
+
+## 2026-10-05：完整PLL稳定工作点与容差问题
+
+RT4／新分频候选的64µs独立复位已经完成，通过限定TT27/1.2V/K41/M4/10fF/Q5/4ps条件的功能检查；这不是抖动验收。随后1ps／0.5ps、reltol1e-5的250ns无噪声接续均无数值恢复，但工作点仍调整；128沿、19.21875–492MHz的配对边沿差为469.879fs。该量是确定性步长敏感性，不是器件随机抖动。见[整环前置检查](results/full_pll_jitter_preflight2_validation.json)。
+
+用冷启动实测writefinal作新分析的readic，53个物理节点起点最大误差约4e-15V；相同时间窗口的控制电压与有效原生接续相比RMS差约30µV，FLL码值和qualification保留。该[初始化检查](results/full_pll_warm_noise_method_validation.json)允许进一步稳定，仍不把文本IC称为完整历史或新的冷启动证明。
+
+全环reltol1e-6、1nV/1fA的Trap在noise-off时出现恢复异常，Gear2也失败。详细日志多数失败更新指向power_mw观察输出，但去掉两个非功能VA观测器后异常仍在，**未证明观测器是根因**。无VA的5ns单变量对照中，仅把iabstol改为1pA便无恢复；仅把vabstol改为1µV仍失败。见[求解器审计](results/full_pll_solver_audit_validation.json)。新的[完整电路配对协议](results/full_pll_direct_noise_pair_protocol.json)采用1nV/reltol1e-6/1pA，完整FLL、逻辑、偏置和电阻热噪声均保留，只有测量VA被移除，外部串联测量支路改为等效零伏源。
+
+短MOS噪声控制通过后，新完整电路quiet/noise配对可在资源上限内并行；只有两条实际轨迹完成，并通过quiet工作点、共同前段和噪声日志检查后才接受诊断值。2.2µs记录只作5.28515625–492MHz诊断。**10kHz–492MHz的完整RMS仍须更长记录或另一条经过独立校验的方法**；不得把高偏移段、三个噪声点或不同模块的积分数值拼成已完成的整机验收。改变iabstol后的噪声幅度精度、步长和记录长度收敛仍是待完成项。
+
+RT4的六个延迟噪声控制已完成且通过预定门限：80GHz/.5ps为48.6829fs，160GHz/.5ps为52.6064fs，160GHz/.25ps两个种子为52.5946fs和51.3670fs；同频带PNoise为53.3087fs。全部日志无数值恢复。源带宽加倍仍改变RMS约8.06%，半步长变化−0.0225%，第二种子变化−2.334%；通过的是原定10%短方法门限，不能声称1%完整噪声精度。
+
+较宽松设置的完整暖启动在约0.4µs后丢失qualification和acquired、重新进入FLL捕获，已停止并保留原始轨迹；无数值恢复并不等于稳态有效。该观察同时说明不能只检查文本IC起点或300ns短窗。无VA、严格电压精度的新配对仍需独立完成整个窗口验证，不能由旧冷启动或RT4局部结果担保。

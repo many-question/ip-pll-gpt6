@@ -1,0 +1,175 @@
+{
+  "scope": "Check dense complete-PLL continuations before any random-jitter claim.",
+  "condition": "Complete actual transistor PLL with RT4/newbank,TT27/1.2V/K41/M4/10fF/Q5RLC/CF10; actual FLL/control/watchdog retained. Ideal external reference and supply.",
+  "protocol_sha256": "0a49109d704dd35487cdad34e2f16ce961061b90d4be1dcbf1940d5cb6ab34d6",
+  "cases": [
+    {
+      "run": "pllnoisefloor1p03",
+      "maxstep": "1p",
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/pllnoisefloor1p03/rt4bank_capture_tt/result.json",
+      "source_sha256": "acba5493dd610fe47a7b37c65cbe5cd0f55f8b867bfd7d329f186a33d12d615e",
+      "recovery": {
+        "newton_failures_reported": 0,
+        "skipped_breakpoints_reported": 0,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": true,
+        "counts_may_be_suppressed": true
+      },
+      "effective_initial": {
+        "reltol": 1e-05,
+        "abstol(V)": 1e-06,
+        "abstol(I)": 1e-12,
+        "method": "traponly",
+        "maxstep": 1e-12
+      },
+      "native_boundary": {
+        "passed": true,
+        "compared_physical_nodes": 53,
+        "maximum_difference_v": 0.0
+      },
+      "numerically_clean": true,
+      "status_stable": false,
+      "measured_output_mhz": 984.122526251176,
+      "control_range_v": [
+        0.7302866031996833,
+        0.799381236604061
+      ],
+      "raw_cache_sha256": "16be5511467b920030052831e9a1a4ca181dd6b1bda27b4419c954d96b839990",
+      "log_sha256": "675afa2bd86245682fccbc915c815ea8ddd5287856eea0a0b4096d5d5b946efe",
+      "logic": {
+        "qualified": {
+          "min_v": 1.195070278776969,
+          "max_v": 1.204130085154321,
+          "high_time_fraction": 1.0
+        },
+        "frequency_good": {
+          "min_v": 1.193876495133355,
+          "max_v": 1.210784593397883,
+          "high_time_fraction": 1.0
+        },
+        "cfg_ready": {
+          "min_v": 1.194209299245806,
+          "max_v": 1.204853572795096,
+          "high_time_fraction": 1.0
+        },
+        "amp_good": {
+          "min_v": 1.190697367717505,
+          "max_v": 1.207280336157198,
+          "high_time_fraction": 1.0
+        },
+        "phase_good": {
+          "min_v": -0.04693814170447511,
+          "max_v": 1.26626558026486,
+          "high_time_fraction": 0.8272675235647565
+        },
+        "XP.XC.phase_held": {
+          "min_v": -0.00791780427458225,
+          "max_v": 1.254095112787074,
+          "high_time_fraction": 0.5948356204853529
+        },
+        "range_error": {
+          "min_v": -0.006625761980657226,
+          "max_v": 0.005125557800913431,
+          "high_time_fraction": 0.0
+        }
+      }
+    },
+    {
+      "run": "pllnoisefloor05p03",
+      "maxstep": ".5p",
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/pllnoisefloor05p03/rt4bank_capture_tt/result.json",
+      "source_sha256": "1706c3259337a145fcbf9afb8165cddbfa6d2db48bfba01d80c5d250400c2032",
+      "recovery": {
+        "newton_failures_reported": 0,
+        "skipped_breakpoints_reported": 0,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": true,
+        "counts_may_be_suppressed": true
+      },
+      "effective_initial": {
+        "reltol": 1e-05,
+        "abstol(V)": 1e-06,
+        "abstol(I)": 1e-12,
+        "method": "traponly",
+        "maxstep": 5e-13
+      },
+      "native_boundary": {
+        "passed": true,
+        "compared_physical_nodes": 53,
+        "maximum_difference_v": 0.0
+      },
+      "numerically_clean": true,
+      "status_stable": false,
+      "measured_output_mhz": 984.1478783932404,
+      "control_range_v": [
+        0.7296216282478827,
+        0.7989380055561758
+      ],
+      "raw_cache_sha256": "6f568ac7ca50d20eb9155f8a1dd08b327766a8a18c114c635aa27f07cfb2f281",
+      "log_sha256": "f516f19498dd63072f81f13ce641585aaad4108287389f0f43bb57de41888ee6",
+      "logic": {
+        "qualified": {
+          "min_v": 1.195070546013813,
+          "max_v": 1.204927583641179,
+          "high_time_fraction": 1.0
+        },
+        "frequency_good": {
+          "min_v": 1.193876609704814,
+          "max_v": 1.210783660599499,
+          "high_time_fraction": 1.0
+        },
+        "cfg_ready": {
+          "min_v": 1.194209249027612,
+          "max_v": 1.205073998524264,
+          "high_time_fraction": 1.0
+        },
+        "amp_good": {
+          "min_v": 1.190695207877822,
+          "max_v": 1.20728394907453,
+          "high_time_fraction": 1.0
+        },
+        "phase_good": {
+          "min_v": -0.04696138800491844,
+          "max_v": 1.241394439917888,
+          "high_time_fraction": 0.7812090512392735
+        },
+        "XP.XC.phase_held": {
+          "min_v": -0.007915738738526362,
+          "max_v": 1.254100713077535,
+          "high_time_fraction": 0.3170593609423115
+        },
+        "range_error": {
+          "min_v": -0.006626152370147959,
+          "max_v": 0.005283540211720295,
+          "high_time_fraction": 0.0
+        }
+      }
+    }
+  ],
+  "complete": true,
+  "passed": false,
+  "random_noise_measured": false,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "This250ns waveform is a numerical-floor preflight, not the10kHz\u2013492MHz RMS acceptance.",
+    "Only observations and numerical settings change; all circuit devices and startup-state histories are retained.",
+    "A short noise run cannot establish low-offset convergence; future10kHz acceptance requires a separately verified long-record or periodic method.",
+    "Initial coarse4ps operating point can move with tighter integration; the short run is not yet a verified stationary noise operating point."
+  ],
+  "logic_gate_definition": "Use the actual held detector output XP.XC.phase_held: pll_control_capture_v14 XPH samples phase_good on ref_fall and feeds XS. Raw phase_good pulse fraction is diagnostic, not a continuous-high requirement.",
+  "step_difference_rms_fs": 469.8785818712115,
+  "effective_band_hz": [
+    19218750.0,
+    492000000.0
+  ],
+  "checks": {
+    "clean": true,
+    "state": false,
+    "step_floor": false
+  },
+  "difference_note": "Mean removed only; no fitted trend or spur notch. This is deterministic step sensitivity, not device-noise jitter."
+}

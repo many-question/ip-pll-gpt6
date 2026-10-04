@@ -1,0 +1,72 @@
+{
+  "scope": "Prepare matched full-transistor noise-off/on traces after tolerance diagnosis.",
+  "time": "2026-10-05T01:21:22.174811+08:00",
+  "cases": [
+    {
+      "run": "pllnoisedirectoff01",
+      "case": "full_pll_direct_noise_off_tt",
+      "noise_enabled": false,
+      "tb_sha256": "86810a911360e66e2524b48b6d737cfc8f674d688d03513ec07e4a9ef4ea4c7e"
+    },
+    {
+      "run": "pllnoisedirecton01",
+      "case": "full_pll_direct_noise_on_tt",
+      "noise_enabled": true,
+      "tb_sha256": "bdebbbee2791544875f88ec7e238083dd3e461108292b408977d9d21119d3bf7"
+    }
+  ],
+  "source_result": "research/runs/spectre_cmos_v14_full/pllabsoluteiab01/full_pll_absolute_iab_tt/result.json",
+  "source_result_sha256": "4704d063c372ad4cd6aa99b7e83174abd18d5d7a3a8296fdc179969edbd718f0",
+  "source_tb_sha256": "9ae94780afa0d3990a5a1140898e66848bf14848af276820fd4a5c2f57a97d5d",
+  "text_state": "rt4bank_cold64_no_observer.ic",
+  "text_state_sha256": "ad21c3581463ffd1d08d309936888f06e3e9d48dbb822b4dad05670475bd7c74",
+  "condition": "Actual full RT4/newbank PLL with transistor FLL/control/watchdog/bias,TT27/1.2V/24MHzref/K41/M4/10fF/Q5RLC/CF10; ideal external reference and supply.",
+  "output_hz": 984000000.0,
+  "ref_hz": 24000000.0,
+  "stop_s": 2.2e-06,
+  "noise_start_s": 1e-06,
+  "measurement_start_s": 1.1e-06,
+  "edge_count": 1024,
+  "band_hz": [
+    5000000.0,
+    492000000.0
+  ],
+  "maxstep_s": 5e-13,
+  "reltol": 1e-06,
+  "vabstol": 1e-09,
+  "iabstol": 1e-12,
+  "noisefmax_hz": 160000000000.0,
+  "noisefmin_hz": 1000000.0,
+  "seed": 11,
+  "observations": [
+    "out",
+    "ref",
+    "qualified",
+    "range_error",
+    "cfg_ready",
+    "frequency_good",
+    "phase_good",
+    "amp_good",
+    "XP.ctrl",
+    "XP.vp",
+    "XP.vn",
+    "XP.refb",
+    "XP.XC.phase_held",
+    "XP.XC.acquired",
+    "XP.en",
+    "VDD:p",
+    "XP.VVCO:p",
+    "XP.VRX:p",
+    "XP.VRT:p"
+  ],
+  "physical_dut_modified": false,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "This is an initial high-offset complete-circuit diagnostic, not the10kHz/full-band acceptance.",
+    "5ns absolute-current-tolerance comparison validates only short numerical behavior. Require clean whole traces, intact physical initial state, common quiet prefix and stationary noiseless loop.",
+    "Measurement inputs are ideal; actual transistor noise in every PLL device and RLC resistance is enabled together in the on case.",
+    "No functional control is clamped. The two measurement-only VA modules were removed and an ideal0V supply probe substituted.",
+    "No source-amplitude scaling, fitted trend removal or arbitrary spur notches. Paired deterministic edge template removes the measured repeatable component.",
+    "Further timestep, current-tolerance, bandwidth, seed and record-length comparisons remain mandatory even if this pair finishes cleanly."
+  ]
+}

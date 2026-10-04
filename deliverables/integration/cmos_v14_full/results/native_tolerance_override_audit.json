@@ -1,0 +1,84 @@
+{
+  "scope": "Audit effective native-continuation tolerances from completed logs without changing original result manifests.",
+  "cases": [
+    {
+      "run": "numrelax01",
+      "case": "complete_k41_tt",
+      "source_result": "research\\runs\\spectre_cmos_v14_full\\numrelax01\\complete_k41_tt\\result.json",
+      "source_sha256": "bf3f83e0e17ba5cd710999ac5f02b884556eed5fd59570d1d32b0ee0df76e212",
+      "requested": {
+        "reltol": 0.001
+      },
+      "effective": {
+        "reltol": 0.001,
+        "abstol(V)": 1e-06,
+        "abstol(I)": 1e-12,
+        "method": "traponly",
+        "maxstep": 4e-12
+      },
+      "mismatch": {}
+    },
+    {
+      "run": "repairstrict02",
+      "case": "repair_retain_tt",
+      "source_result": "research\\runs\\spectre_cmos_v14_full\\repairstrict02\\repair_retain_tt\\result.json",
+      "source_sha256": "7f02217aabc3ad7a1a2821bd560e13191594259bb66746b8f1b77375f7d2dc1c",
+      "requested": {
+        "reltol": 1e-05
+      },
+      "effective": {
+        "reltol": 1e-05,
+        "abstol(V)": 1e-06,
+        "abstol(I)": 1e-12,
+        "method": "traponly",
+        "maxstep": 1e-12
+      },
+      "mismatch": {}
+    },
+    {
+      "run": "rtnoisediagadaptive01",
+      "case": "retimer_tran_noise_seed_tt",
+      "source_result": "research\\runs\\spectre_cmos_v14_full\\rtnoisediagadaptive01\\retimer_tran_noise_seed_tt\\result.json",
+      "source_sha256": "1eb00476f61febe9f4b951682734a89117cee31c52e8a3a09581ae831a606082",
+      "requested": {
+        "abstol(I)": 1e-15
+      },
+      "effective": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-09,
+        "abstol(I)": 1e-15,
+        "method": "traponly",
+        "maxstep": 5e-13,
+        "noisefmax": 80000000000.0,
+        "noisefmin": 1000000.0,
+        "trannoisemethod": "adaptive"
+      },
+      "mismatch": {}
+    },
+    {
+      "run": "rtnoisediagiabstol01",
+      "case": "retimer_tran_noise_seed_tt",
+      "source_result": "research\\runs\\spectre_cmos_v14_full\\rtnoisediagiabstol01\\retimer_tran_noise_seed_tt\\result.json",
+      "source_sha256": "64ca8eb8f08ebe0addc263c82c3f70ac6a7102f75341edb936a601d12b3b888a",
+      "requested": {
+        "abstol(I)": 1e-13
+      },
+      "effective": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-09,
+        "abstol(I)": 1e-15,
+        "method": "traponly",
+        "maxstep": 5e-13,
+        "noisefmax": 80000000000.0,
+        "noisefmin": 1000000.0,
+        "trannoisemethod": "default"
+      },
+      "mismatch": {
+        "abstol(I)": [
+          1e-13,
+          1e-15
+        ]
+      }
+    }
+  ]
+}

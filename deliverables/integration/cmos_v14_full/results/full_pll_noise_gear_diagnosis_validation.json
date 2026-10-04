@@ -1,0 +1,41 @@
+{
+  "scope": "Require actual full-circuit stationarity and intact physical initialization.",
+  "protocol_sha256": "d2163a67fb18aa807b0fec4b4eeff3800443ed0762c756a1d801d29bc24da34a",
+  "source_result": "research/runs/spectre_cmos_v14_full/pllnoisegear01/full_pll_noise_gear_diagnosis_tt/result.json",
+  "source_sha256": "ff80bfa029612784fbdebb2e325bc8f32b0f66a0a84ab506c5b367e032289b48",
+  "passed": false,
+  "simulator_completed": false,
+  "errors": [
+    "Error found by spectre at time = 1.94762 ns during transient analysis `tran'.",
+    "ERROR (SPECTRE-25): The simulation is stopped either by the user or the",
+    "spectre completes with 1 error, 3 warnings, and 26 notices.",
+    "spectre terminated prematurely due to fatal error."
+  ],
+  "recovery": {
+    "newton_failures_reported": 5,
+    "skipped_breakpoints_reported": 0,
+    "lte_relaxations_reported": 0,
+    "minimum_step_warnings_reported": 0,
+    "numerically_clean": false,
+    "counts_may_be_suppressed": true
+  },
+  "effective": {
+    "reltol": 1e-06,
+    "abstol(V)": 1e-09,
+    "abstol(I)": 1e-15,
+    "method": "gear2only",
+    "maxstep": 5e-13,
+    "noisefmax": 80000000000.0,
+    "noisefmin": 1000000.0,
+    "trannoisemethod": "default"
+  },
+  "log_sha256": "a13a0e5d70cbc8a0d04757fb69e174079cad85d422ea63b173b3636f0d232f9d",
+  "full_pll_acceptance": false,
+  "limitations": [
+    "Settling/lock screen only; noise remains off throughout this2us analysis.",
+    "Fresh text initialization validated against cold/native physical states but does not preserve complete hidden histories.",
+    "Tighter tolerances can change the numerical operating point; do not infer a device-noise RMS from that motion.",
+    "The2ns saved grid only observes held state/phase values; it cannot resolve GHz edges for jitter.",
+    "Gear2 can introduce numerical damping; a clean settled solution still needs step and noise cross-checks."
+  ]
+}

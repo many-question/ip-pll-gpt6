@@ -1,0 +1,69 @@
+{
+  "scope": "Distinguish native noise activation from a dynamic option-update effect.",
+  "time": "2026-10-05T00:23:39.568909+08:00",
+  "source_tb_sha256": "1fcba3f2ccbab91021dc52bcf0306bf9671fd7bd6ab12c41304c26bde38a79e9",
+  "direct_tb_sha256": "ce809ac6306dcafa9379fd25f39f6bb6ff90fdc298e35685004073d38a366cbb",
+  "native_sha256": "5fdb71f18958735fc7b7b3c62c3bfd99139613222a038df7096038f655724b97",
+  "commands": [
+    [
+      "rtnoisedirect01",
+      [
+        "D:\\seed\\ip-pll-gpt6\\share\\deliverables\\integration\\cmos_v14_full\\run_spectre.py",
+        "--mode",
+        "ax",
+        "--threads",
+        "1",
+        "--preset-override",
+        "all",
+        "--timeout",
+        "600",
+        "--run-id",
+        "rtnoisedirect01",
+        "--cases",
+        "retimer_tran_noise_direct_tt"
+      ]
+    ],
+    [
+      "rtnoisedynamicnoop01",
+      [
+        "D:\\seed\\ip-pll-gpt6\\share\\deliverables\\integration\\cmos_v14_full\\run_spectre.py",
+        "--mode",
+        "ax",
+        "--threads",
+        "1",
+        "--preset-override",
+        "all",
+        "--timeout",
+        "600",
+        "--run-id",
+        "rtnoisedynamicnoop01",
+        "--cases",
+        "retimer_tran_noise_seed_tt",
+        "--snapshot-run",
+        "rttrannoiseseed01",
+        "--native-state",
+        "D:\\seed\\ip-pll-gpt6\\research\\runs\\spectre_cmos_v14_full\\rttrannoiseseed01\\retimer_tran_noise_seed_tt\\checkpoints\\at_1e-07s.srf",
+        "--tran-stop",
+        "1.3u",
+        "--transient-maxstep",
+        ".5p",
+        "--transient-noisefmax",
+        "80e9",
+        "--transient-noisefmin",
+        "1e6",
+        "--transient-noiseseed",
+        "11",
+        "--dynamic-tolerance",
+        "vabstol",
+        "--dynamic-tolerance-time",
+        "1.005e-7",
+        "--dynamic-tolerance-value",
+        "1e-9"
+      ]
+    ]
+  ],
+  "physical_dut_modified": false,
+  "full_pll_acceptance": false,
+  "rationale": "Static100nV native noise still failed, while an explicit dynamic100nV trial completed cleanly. Neither its value nor the native mechanism is yet established as the cause.",
+  "limit": "Two diagnostic jobs,one short thread,600s each. A direct run has a different RNG history; compare statistical noise and recovery, not sample equality."
+}

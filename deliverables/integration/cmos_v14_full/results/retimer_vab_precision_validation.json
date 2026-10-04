@@ -1,0 +1,113 @@
+{
+  "scope": "Validate clean 100nV RT4 transient noise against noise-off and PNoise.",
+  "protocol_sha256": "c147055eba15c5f239ef7e525b73d82ea808c34785939c9d4bdd093e428e9bda",
+  "cases": [
+    {
+      "run": "rtvaboff05",
+      "noisefmax": 0,
+      "maxstep": ".5p",
+      "noiseseed": 11,
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/rtvaboff05/retimer_tran_noise_vab100_seed_tt/result.json",
+      "source_sha256": "4717eca074b45ebbaf44466d675f084e026dae659440c342f2da4ab8040468c5",
+      "recovery": {
+        "newton_failures_reported": 0,
+        "skipped_breakpoints_reported": 0,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": true,
+        "counts_may_be_suppressed": false
+      },
+      "effective": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-07,
+        "abstol(I)": 1e-15,
+        "method": "traponly",
+        "maxstep": 5e-13
+      },
+      "numerically_clean": true,
+      "native_sha256": "5478badfd536e6f99661044f03ad63023ab4813ab9428fec5241fc908b24156d",
+      "simulator_log_sha256": "32b65b8ff343baa97e3e70d15bd9957b3179b1b159a0d9103b5d6e15620590fa",
+      "raw_cache_sha256": "45ea809e6e8e1cdc78e7bd0c37739b626fc964367da3e7ba40179ead71bfa991",
+      "band_rms_fs": 2.947934531880058e-07,
+      "band_variance_s2": 8.690318004250898e-44,
+      "variance_block_standard_error_s2": 3.369972250920519e-44,
+      "rms_relative_to_pnoise": -0.9999999944700668,
+      "noise_off_schedule_rms_fs": 2.95434997377282e-07
+    },
+    {
+      "run": "rtvaboff025",
+      "noisefmax": 0,
+      "maxstep": ".25p",
+      "noiseseed": 11,
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/rtvaboff025/retimer_tran_noise_vab100_seed_tt/result.json",
+      "source_sha256": "87d17a5ac77d9fc00b9ee378b5e2c92225425ecc6fc64a16dda6c11540c8a439",
+      "recovery": {
+        "newton_failures_reported": 0,
+        "skipped_breakpoints_reported": 0,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": true,
+        "counts_may_be_suppressed": false
+      },
+      "effective": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-07,
+        "abstol(I)": 1e-15,
+        "method": "traponly",
+        "maxstep": 2.5e-13
+      },
+      "numerically_clean": true,
+      "native_sha256": "5478badfd536e6f99661044f03ad63023ab4813ab9428fec5241fc908b24156d",
+      "simulator_log_sha256": "bd6e224214eec525086d634a9e9cb31babb47874d567b5d7cb477a5f60138c64",
+      "raw_cache_sha256": "82a090569ca4300d5930cc5ff27a74b6510d011c6b77f45889ce1b8594df219c",
+      "band_rms_fs": 0.0,
+      "band_variance_s2": 0.0,
+      "variance_block_standard_error_s2": 0.0,
+      "rms_relative_to_pnoise": -1.0,
+      "noise_off_schedule_rms_fs": 1.5182351501681692e-07
+    },
+    {
+      "run": "rtvabon80g05",
+      "noisefmax": 80000000000.0,
+      "maxstep": ".5p",
+      "noiseseed": 11,
+      "completed": false
+    },
+    {
+      "run": "rtvabon160g05",
+      "noisefmax": 160000000000.0,
+      "maxstep": ".5p",
+      "noiseseed": 11,
+      "completed": false
+    },
+    {
+      "run": "rtvabon160g025",
+      "noisefmax": 160000000000.0,
+      "maxstep": ".25p",
+      "noiseseed": 11,
+      "completed": false
+    },
+    {
+      "run": "rtvabon160g025s29",
+      "noisefmax": 160000000000.0,
+      "maxstep": ".25p",
+      "noiseseed": 29,
+      "completed": false
+    }
+  ],
+  "complete": false,
+  "passed": false,
+  "full_pll_acceptance": false,
+  "effective_band_hz": [
+    5285156.25,
+    492000000.0
+  ],
+  "pnoise_expected_rms_fs": 53.308682613026605,
+  "limitations": [
+    "Same actual RT4, ideal3.936GHz/984MHz inputs,TT27/1.2V/10fF. No fullPLL acceptance.",
+    "1024 edges only resolve the specified high-offset band; no10kHz claim.",
+    "Bandwidth or step failures require further measured refinement; no rescaling to PNoise."
+  ]
+}

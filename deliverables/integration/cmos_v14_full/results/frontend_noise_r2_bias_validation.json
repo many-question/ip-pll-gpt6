@@ -1,0 +1,240 @@
+{
+  "scope": "Attribute actual frontend current noise, with operating-point and sum checks.",
+  "protocol_sha256": "78d5ec0abeadace29925c45a33c2fef44ef469f359b4bd1f91fe7ef5264ff96d",
+  "condition": "TT27/1.2V/24MHzref/3.936GHzidealRF/physicalreference+sampler+CP+bias+pulser+validity; externalcontrolclamp,1.9pFrefloadapproximation.",
+  "group": "bias",
+  "periodic": {
+    "case": "frontend_noise_r2_bias_tt",
+    "phase_deg": 196.74700280983583,
+    "completed": true,
+    "source_result": "research/runs/spectre_cmos_v14_full/frontendnoise2bias/frontend_noise_r2_bias_tt/result.json",
+    "source_sha256": "f1fb5a34cb9e662384ad190979e5bf51a431ec8840002761154b7992d2c1f429",
+    "simulator_completed": true,
+    "pss_converged": true,
+    "periodic_passed": true,
+    "period_s": 4.166666666666666e-08,
+    "endpoint_peak_v": 0.0,
+    "rf_rising_edges": 164,
+    "ref_rising_edges": 1,
+    "pulse_rising_edges": 1,
+    "rf_dominant_harmonic": 164,
+    "mean_clamp_current_a": 6.644318339157156e-12,
+    "pulse_duty": 0.04275946275872806,
+    "mean_held_difference_v": -0.008302452228674975,
+    "hold_range_v": {
+      "hp": [
+        0.3380606865720703,
+        0.6021413968625086
+      ],
+      "hn": [
+        0.3177379828314059,
+        0.669266876868768
+      ]
+    },
+    "amplitude_good_fraction": 1.0,
+    "phase_good_fraction": 1.0,
+    "td_sha256": "96f972bcde23df711b41f5789189111b42ee09cf1de01bbae9f04335d6c64ae0",
+    "fd_sha256": "67831e46f0b32d5d4a2a9556357bcb04a1281857335c47695ded988d3e5c7724"
+  },
+  "noise_valid": true,
+  "integrated_jitter_fs": null,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "Noisy LC and its impedance/backaction are absent; the clamped-current result is module evidence.",
+    "Control logic is represented by1.9pF load; its active noise and exact capacitive loading are excluded.",
+    "The control clamp uses a finite-window mean from a deterministic initialization trace, not an accepted PSS state.",
+    "Four large phase steps locate a branch only; they do not define a local Kphi or permit jitter integration.",
+    "Numerical and PVT checks remain after the operating point is selected.",
+    "The current search target is an engineering precheck; local gain and phase-error acceptance still need actual measurements.",
+    "Current-noise points use a noiseless control clamp. Frequency-dependent loop impedance and LC loading are excluded.",
+    "Static Kphi supplies a low-frequency equivalent phase-noise estimate only, not an exact dynamic transfer.",
+    "No integration of three isolated PSD points. Fresh isolated noise-on must be checked against the all-noise device contributions."
+  ],
+  "balanced_center_verified": true,
+  "linearized_residual_phase_rad": 1.4907807455945154e-05,
+  "offsets_hz": [
+    10000.0,
+    1000000.0,
+    10000000.0
+  ],
+  "current_psd_a2_per_hz": [
+    7.348434984318652e-26,
+    5.420430257079805e-26,
+    3.7165617556310703e-26
+  ],
+  "current_asd_a_per_sqrt_hz": [
+    2.71079969461387e-13,
+    2.328181749150999e-13,
+    1.927838622818588e-13
+  ],
+  "equivalent_rf_phase_psd_rad2_per_hz": [
+    3.6993169466125424e-13,
+    2.728729253335827e-13,
+    1.8709752369147301e-13
+  ],
+  "kphi_magnitude_a_per_rf_rad": 4.4569386603577556e-07,
+  "group_psd_a2_per_hz": {
+    "reference": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "sampler": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "charge_pump": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pulser": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "bias": [
+      7.348434984318648e-26,
+      5.420430257079803e-26,
+      3.7165617556310686e-26
+    ],
+    "validity": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "group_variance_fraction": {
+    "reference": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "sampler": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "charge_pump": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pulser": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "bias": [
+      0.9999999999999996,
+      0.9999999999999996,
+      0.9999999999999996
+    ],
+    "validity": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "device_sum_relative_error": 4.440892098500626e-16,
+  "excluded_noise_fraction": 0.0,
+  "noise_sha256": "aa700263191e44df789ed25574cae194a19fa88322d5163e2768809a27903ce1",
+  "top_devices_at_1mhz": [
+    {
+      "device": "RBN",
+      "fraction": 0.8818884590823589,
+      "psd_a2_per_hz": [
+        4.785475051680003e-26,
+        4.780214886979504e-26,
+        3.415470624161602e-26
+      ]
+    },
+    {
+      "device": "RBP",
+      "fraction": 0.08390608830042674,
+      "psd_a2_per_hz": [
+        4.441409519030976e-27,
+        4.54807099776843e-27,
+        2.988692654994514e-27
+      ]
+    },
+    {
+      "device": "XBM.R1",
+      "fraction": 0.017102726308606885,
+      "psd_a2_per_hz": [
+        1.059409490367774e-26,
+        9.270413516172757e-28,
+        1.110932985007791e-29
+      ]
+    },
+    {
+      "device": "XBM.R0",
+      "fraction": 0.017102726308606885,
+      "psd_a2_per_hz": [
+        1.059409490367774e-26,
+        9.270413516172757e-28,
+        1.110932985007791e-29
+      ]
+    }
+  ],
+  "top_device_components_a2_per_hz": {
+    "RBN": {
+      "rn": [
+        4.785475051680003e-26,
+        4.780214886979504e-26,
+        3.415470624161602e-26
+      ],
+      "total": [
+        4.785475051680003e-26,
+        4.780214886979504e-26,
+        3.415470624161602e-26
+      ]
+    },
+    "RBP": {
+      "rn": [
+        4.441409519030976e-27,
+        4.54807099776843e-27,
+        2.988692654994514e-27
+      ],
+      "total": [
+        4.441409519030976e-27,
+        4.54807099776843e-27,
+        2.988692654994514e-27
+      ]
+    },
+    "XBM.R1": {
+      "rn": [
+        1.059409490367774e-26,
+        9.270413516172757e-28,
+        1.110932985007791e-29
+      ],
+      "total": [
+        1.059409490367774e-26,
+        9.270413516172757e-28,
+        1.110932985007791e-29
+      ]
+    },
+    "XBM.R0": {
+      "rn": [
+        1.059409490367774e-26,
+        9.270413516172757e-28,
+        1.110932985007791e-29
+      ],
+      "total": [
+        1.059409490367774e-26,
+        9.270413516172757e-28,
+        1.110932985007791e-29
+      ]
+    }
+  },
+  "isolated_vs_all_group_check": {
+    "all_result_sha256": "30cf61f8ad59c4bfee0d2d4bb6eb29aacf551bcc8f428eceafcba136d2c6306c",
+    "psd_change_db": [
+      1.928654933106574e-15,
+      1.928654933106574e-15,
+      1.928654933106574e-15
+    ],
+    "passed": true
+  }
+}

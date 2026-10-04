@@ -1,0 +1,40 @@
+{
+  "scope": "Require actual full-circuit stationarity and intact physical initialization.",
+  "protocol_sha256": "4d38ed86fcd9e1e6edb0b747e7a993b7374ee0621c4707c0e87d2f007fb8fba0",
+  "source_result": "research/runs/spectre_cmos_v14_full/pllnoisesettle01/full_pll_noise_settling_tt/result.json",
+  "source_sha256": "d193d4e26214810607a8874205270c69e0a374b1bcf128e6a68b56440a5b1df6",
+  "passed": false,
+  "simulator_completed": false,
+  "errors": [
+    "Error found by spectre at time = 18.8017 ns during transient analysis `tran'.",
+    "ERROR (SPECTRE-25): The simulation is stopped either by the user or the",
+    "spectre completes with 1 error, 3 warnings, and 212 notices.",
+    "spectre terminated prematurely due to fatal error."
+  ],
+  "recovery": {
+    "newton_failures_reported": 5,
+    "skipped_breakpoints_reported": 0,
+    "lte_relaxations_reported": 0,
+    "minimum_step_warnings_reported": 0,
+    "numerically_clean": false,
+    "counts_may_be_suppressed": true
+  },
+  "effective": {
+    "reltol": 1e-06,
+    "abstol(V)": 1e-09,
+    "abstol(I)": 1e-15,
+    "method": "traponly",
+    "maxstep": 5e-13,
+    "noisefmax": 80000000000.0,
+    "noisefmin": 1000000.0,
+    "trannoisemethod": "default"
+  },
+  "log_sha256": "2392e9b1d61102c748e000e2c93c94097450fa7f08ca302e837c71c9ee6ac80c",
+  "full_pll_acceptance": false,
+  "limitations": [
+    "Settling/lock screen only; noise remains off throughout this2us analysis.",
+    "Fresh text initialization validated against cold/native physical states but does not preserve complete hidden histories.",
+    "Tighter tolerances can change the numerical operating point; do not infer a device-noise RMS from that motion.",
+    "The2ns saved grid only observes held state/phase values; it cannot resolve GHz edges for jitter."
+  ]
+}

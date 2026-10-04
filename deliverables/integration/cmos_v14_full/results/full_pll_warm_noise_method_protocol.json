@@ -1,0 +1,30 @@
+{
+  "scope": "Test cold-derived text initialization with delayed noise in one fresh analysis.",
+  "time": "2026-10-05T00:53:24.192952+08:00",
+  "run": "pllwarmnoisemethod01",
+  "case": "full_pll_warm_noise_method_tt",
+  "source_result": "research/runs/spectre_cmos_v14_full/rt4bankcold01/rt4bank_capture_tt/result.json",
+  "source_result_sha256": "8b4eb44bee4d12530961ec3fb1417da382215a84b310ab1ced72e6bc84062d81",
+  "source_capture": "capture_rt4bankcold01.json",
+  "source_capture_sha256": "37810f367412ad4719a3f9c3abc3715cf8aab3f6b95101fae098739f4296755d",
+  "text_state": "rt4bank_cold64_warm.ic",
+  "text_state_sha256": "eb39c4f6d6e7fd6eaa6fc8968e0986c1ddaedc279c55c1cd437d9f48a65386df",
+  "tb_sha256": "d35a11a813c8e64de0b1d5cd6192e53d0f7a3ab9beb510ab56e44ac1246f29e7",
+  "source_time_s": 6.4e-05,
+  "local_stop_s": 3e-07,
+  "noise_enable_s": 1e-06,
+  "noise_enabled_during_this_trial": false,
+  "purpose": "Validate initialization and steady locked circuit before a fresh single-analysis delayed-noise trial. No native binary restore or static-control replacement.",
+  "changes": "Full physical DUT unchanged. External reset/apply are held at their settled zero values. Original explicit VCO startup perturbation is removed and replaced by measured full-circuit text state. Local reference phase matches64us, an integer1536 reference periods.",
+  "reference_native_run": "pllnoisefloor1p03",
+  "reference_native_case": "rt4bank_capture_tt",
+  "full_pll_acceptance": false,
+  "random_jitter_measured": false,
+  "limitations": [
+    "writefinal/readic is an incomplete state, not native recovery: hidden model and observer histories can differ. They must settle and be checked.",
+    "This is a warm method trial and cannot substitute for the independent-reset acquisition already measured.",
+    "The noise-enable event lies after this300ns trial; no RMS noise claim.",
+    "Do not adopt if initial physical state, selected code, qualification or later trajectory differs materially from the measured native reference."
+  ],
+  "primary_method_source": "https://community.cadence.com/cadence_technology_forums/f/custom-ic-design/49435/transient-simulation---adding-noise-after-steady-state/1379137"
+}
