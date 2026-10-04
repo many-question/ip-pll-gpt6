@@ -1,4 +1,4 @@
-本次快照：[第55次汇报](../reports/2026-10-04T2011.yaml)。VCO匹配候选的初步高频段积分由165.55fs降至154.58fs，载频匹配通过，精度复核继续。参考输入负载与核心复位节点诊断已完成；完整PLL抖动仍未验收。
+本次快照：[第56次汇报](../reports/2026-10-04T2030.yaml)。参考路径独立noise-on与全开器件归因一致，CP验证已接续。密集核心波形确认复位节点清除有效，但共同边沿和滤波器漂移仍在；完整PLL抖动仍未验收。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

@@ -1,0 +1,74 @@
+{
+  "scope": "Three-point fresh-PSS current-noise probe at a measured balanced frontend.\n\nGenerate only after the local gain and centre have actually passed. The\nclamped output current PSD is module evidence, not closed-loop PLL jitter.\n",
+  "run": "frontendnoise2charge_pump",
+  "case": "frontend_noise_r2_charge_pump_tt",
+  "group": "charge_pump",
+  "phase_deg": 196.74700280983583,
+  "source_validation": "frontend_local_gain2_validation.json",
+  "source_validation_sha256": "16e3f03a818d0fbd64aac1a407f908c361a9c9f6ec7b01883c1b69dc94623682",
+  "source_case": "frontend_local2_center_tt",
+  "source_run": "frontendlocal02",
+  "source_tb_sha256": "cbafc479225dcbaf0642915bfb4661eca3ad3a075b2205aa8ef4d675d42a0784",
+  "tb_sha256": "9d3157ac3c95e86ecb00e2f5291c53176c2cc37f163499ccada66f7d439f7c96",
+  "condition": "TT27/1.2V/24MHzref/3.936GHzidealRF/physicalreference+sampler+CP+bias+pulser+validity; externalcontrolclamp,1.9pFrefloadapproximation.",
+  "control_clamp_v": 0.668428925600659,
+  "kphi_magnitude_a_per_rf_rad": 4.4569386603577556e-07,
+  "noise_offsets_hz": [
+    10000.0,
+    1000000.0,
+    10000000.0
+  ],
+  "group_instances": {
+    "reference": [
+      "XREF"
+    ],
+    "sampler": [
+      "XS"
+    ],
+    "charge_pump": [
+      "XCP"
+    ],
+    "pulser": [
+      "XT"
+    ],
+    "bias": [
+      "XBM",
+      "RBP",
+      "RBN"
+    ],
+    "validity": [
+      "XDET"
+    ]
+  },
+  "balanced_phase_limit_rad": 0.0005,
+  "fresh_pss": true,
+  "extra_observations": [
+    "XCP.nb",
+    "XCP.ng",
+    "XCP.tail",
+    "XCP.mir",
+    "XCP.gate",
+    "XCP.gateb",
+    "XCP.MT:d",
+    "XCP.MIP:d",
+    "XCP.MIN:d",
+    "XCP.MPO:d",
+    "XCP.MPD:d"
+  ],
+  "main_dut_modified": false,
+  "full_pll_acceptance": false,
+  "time": "2026-10-04T20:21:54.781136+08:00",
+  "limitations": [
+    "Noisy LC and its impedance/backaction are absent; the clamped-current result is module evidence.",
+    "Control logic is represented by1.9pF load; its active noise and exact capacitive loading are excluded.",
+    "The control clamp uses a finite-window mean from a deterministic initialization trace, not an accepted PSS state.",
+    "Four large phase steps locate a branch only; they do not define a local Kphi or permit jitter integration.",
+    "Numerical and PVT checks remain after the operating point is selected.",
+    "The current search target is an engineering precheck; local gain and phase-error acceptance still need actual measurements.",
+    "Current-noise points use a noiseless control clamp. Frequency-dependent loop impedance and LC loading are excluded.",
+    "Static Kphi supplies a low-frequency equivalent phase-noise estimate only, not an exact dynamic transfer.",
+    "No integration of three isolated PSD points. Fresh isolated noise-on must be checked against the all-noise device contributions."
+  ],
+  "all_noise_validation": "frontend_noise_r2_all_validation.json",
+  "all_noise_validation_sha256": "30cf61f8ad59c4bfee0d2d4bb6eb29aacf551bcc8f428eceafcba136d2c6306c"
+}

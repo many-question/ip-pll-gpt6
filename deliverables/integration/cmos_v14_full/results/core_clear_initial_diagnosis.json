@@ -1,0 +1,317 @@
+{
+  "scope": "Diagnose saved warm trajectories; no periodic acceptance or random jitter claim.\n\nCompare the counter-clear candidate with its actual DAC-clear predecessor.\nBoth use the same measured text seed, 1 ps Gear2 and 2 us initialization.\nOnly common observed states are compared; hidden MOS charge is not measured.\n",
+  "condition": "ActualLC/originalRT/CF10/newbank/coarse23/DAC38/M4/TT27/1.2V/Q5/10fF/refload1.9pF; ideal static acquired/FLL controls. No eventobserver/forcedstrobe. PhysicalDAC off-state clamp candidate:seven1um/1umNMOS. Original main andcompleteRT4candidateunchanged. Only XCOUNT uses reset-stack isolation/discharge cells; 28 added MOS.",
+  "source_files_sha256": {
+    "core_dac_initial_period_drift.json": "13d91e40a367be6c09938f779d900e987843ca0637cbd542fbeaf99f3b2d8b8b",
+    "core_clear_initial_period_drift.json": "1d645879ad6c835a17fe24c17297356f6cf670c1d27148c841c082a8ff612254"
+  },
+  "protocols_sha256": {
+    "core_dac_discharge_noise_protocol.json": "85e43bb60af3c384f3b269c75e79eac3ab7f4f124c5e627bf825bc6fb7369c86",
+    "core_counter_clear_noise_protocol.json": "eae511434f69eca30f337c1d60b40bef782aa83a3a2e20139a4284fed9c36877"
+  },
+  "same_seed_and_other_physical_dependencies_verified": true,
+  "cases": [
+    {
+      "source": "research/runs/spectre_cmos_v14_full/coredacnoise01/core_dac_discharge_noise_tt/live_tstab/pss.tran.pss",
+      "source_sha256": "6d5d44b704e8ec356fa4a78a94873f58fc3c3fb004f5dbca74dc7d408b991389",
+      "intervals_us": [
+        [
+          5.25,
+          5.499999604945738
+        ],
+        [
+          5.5,
+          5.749999604945739
+        ]
+      ],
+      "max_common_reset_abs_v": 0.029793415924027275,
+      "max_common_reset_period_difference_v": 0.00011690479883736532,
+      "selected": {
+        "XP.ctrl": {
+          "node": "XP.ctrl",
+          "unit": "V",
+          "range": [
+            0.6425335178920621,
+            0.7062381570364552
+          ],
+          "difference_mean": -8.799113881266767e-06,
+          "difference_rms": 1.6100512747224804e-05,
+          "difference_peak": 3.62997703853285e-05,
+          "endpoint_difference": -5.634853951774765e-06,
+          "first_period_edges": 0,
+          "second_period_edges": 0
+        },
+        "XP.vc1": {
+          "node": "XP.vc1",
+          "unit": "V",
+          "range": [
+            0.668333871678401,
+            0.6684028431868255
+          ],
+          "difference_mean": 1.8735279754953516e-05,
+          "difference_rms": 1.8926910505653483e-05,
+          "difference_peak": 2.3738057293720694e-05,
+          "endpoint_difference": 1.420361133042114e-05,
+          "first_period_edges": 0,
+          "second_period_edges": 0
+        },
+        "VDD:p": {
+          "node": "VDD:p",
+          "unit": "I",
+          "range": [
+            -0.02201936277879543,
+            -0.0020709925471354626
+          ],
+          "difference_mean": 5.121125807041876e-09,
+          "difference_rms": 1.9858687194106916e-06,
+          "difference_peak": 3.971999730434557e-05,
+          "endpoint_difference": 2.9626648415702686e-06,
+          "first_period_edges": 0,
+          "second_period_edges": 0
+        },
+        "out": {
+          "node": "out",
+          "unit": "V",
+          "range": [
+            -0.037803993849489965,
+            1.2099539266129988
+          ],
+          "difference_mean": -4.162371823667862e-08,
+          "difference_rms": 0.00010497412186699175,
+          "difference_peak": 0.0003679856880398624,
+          "endpoint_difference": 0.00015674398024756453,
+          "first_period_edges": 246,
+          "second_period_edges": 246,
+          "matched_edge_shift_ps": {
+            "mean": -0.026062777374359945,
+            "min": -0.0307835827179728,
+            "max": -0.022242305765767776,
+            "peak_to_peak": 0.008541276952205024
+          }
+        },
+        "XP.clk": {
+          "node": "XP.clk",
+          "unit": "V",
+          "range": [
+            -0.02453512699186794,
+            1.2469578630877658
+          ],
+          "difference_mean": 7.459839183303637e-08,
+          "difference_rms": 0.0003685466920557135,
+          "difference_peak": 0.0008830691393037493,
+          "endpoint_difference": -1.4024656486526232e-05,
+          "first_period_edges": 984,
+          "second_period_edges": 984,
+          "matched_edge_shift_ps": {
+            "mean": -0.026112005461580403,
+            "min": -0.030444154593151373,
+            "max": -0.023386333028284904,
+            "peak_to_peak": 0.007057821564866468
+          }
+        }
+      }
+    },
+    {
+      "source": "research/runs/spectre_cmos_v14_full/corecounterclear01/core_counter_clear_noise_tt/tstab_clear_snapshot/pss.tran.pss",
+      "source_sha256": "2edd5a605df4eac47a6f0ff10dc42a593d9abc3dd27e6a6ca74df60ac684becb",
+      "intervals_us": [
+        [
+          5.25,
+          5.499999202399935
+        ],
+        [
+          5.5,
+          5.749999202399936
+        ]
+      ],
+      "max_common_reset_abs_v": 3.6412114943321385e-06,
+      "max_common_reset_period_difference_v": 2.7545618350331643e-07,
+      "selected": {
+        "XP.ctrl": {
+          "node": "XP.ctrl",
+          "unit": "V",
+          "range": [
+            0.6425398133786477,
+            0.7062443548742013
+          ],
+          "difference_mean": -1.0013934053224817e-05,
+          "difference_rms": 1.7480751519061522e-05,
+          "difference_peak": 4.050497984864343e-05,
+          "endpoint_difference": -2.0382219263481716e-06,
+          "first_period_edges": 0,
+          "second_period_edges": 0
+        },
+        "XP.vc1": {
+          "node": "XP.vc1",
+          "unit": "V",
+          "range": [
+            0.6683358453653931,
+            0.6684057580614869
+          ],
+          "difference_mean": 1.922138394695784e-05,
+          "difference_rms": 1.9437463274364394e-05,
+          "difference_peak": 2.4591596772371993e-05,
+          "endpoint_difference": 1.446860923615123e-05,
+          "first_period_edges": 0,
+          "second_period_edges": 0
+        },
+        "VDD:p": {
+          "node": "VDD:p",
+          "unit": "I",
+          "range": [
+            -0.022019501040066752,
+            -0.0020708868789358664
+          ],
+          "difference_mean": 4.1006807929233745e-09,
+          "difference_rms": 2.1120790217357304e-06,
+          "difference_peak": 2.5856142341456213e-05,
+          "endpoint_difference": 3.322249653531402e-06,
+          "first_period_edges": 0,
+          "second_period_edges": 0
+        },
+        "out": {
+          "node": "out",
+          "unit": "V",
+          "range": [
+            -0.037804860950430175,
+            1.2099529208119078
+          ],
+          "difference_mean": 9.108549034197838e-08,
+          "difference_rms": 0.0001122604128022674,
+          "difference_peak": 0.0004016407262963373,
+          "endpoint_difference": 0.00018829939149334063,
+          "first_period_edges": 246,
+          "second_period_edges": 246,
+          "matched_edge_shift_ps": {
+            "mean": -0.027833288119757507,
+            "min": -0.033605727938667625,
+            "max": -0.023180782695941756,
+            "peak_to_peak": 0.010424945242725869
+          }
+        },
+        "XP.clk": {
+          "node": "XP.clk",
+          "unit": "V",
+          "range": [
+            -0.024536224120681516,
+            1.246955097572985
+          ],
+          "difference_mean": 1.868083712731586e-09,
+          "difference_rms": 0.0003937203879824669,
+          "difference_peak": 0.0009645899152361248,
+          "endpoint_difference": -1.4995752215118605e-05,
+          "first_period_edges": 984,
+          "second_period_edges": 984,
+          "matched_edge_shift_ps": {
+            "mean": -0.027794114259390188,
+            "min": -0.03328064177570911,
+            "max": -0.023413821788522148,
+            "peak_to_peak": 0.00986681998718696
+          }
+        }
+      }
+    }
+  ],
+  "common_reset_nodes": [
+    "XP.XCOUNT.XF0.XF.XS.XN.x",
+    "XP.XCOUNT.XF1.XF.XS.XN.x",
+    "XP.XCOUNT.XF2.XF.XS.XN.x",
+    "XP.XCOUNT.XF3.XF.XS.XN.x",
+    "XP.XCOUNT.XF4.XF.XS.XN.x",
+    "XP.XCOUNT.XF5.XF.XS.XN.x"
+  ],
+  "candidate_reset_nodes": [
+    "XP.XCOUNT.XF0.XF.XS.XN.x",
+    "XP.XCOUNT.XF1.XF.XS.XN.x",
+    "XP.XCOUNT.XF2.XF.XS.XN.x",
+    "XP.XCOUNT.XF3.XF.XS.XN.x",
+    "XP.XCOUNT.XF4.XF.XS.XN.x",
+    "XP.XCOUNT.XF5.XF.XS.XN.x",
+    "XP.XCOUNT.XF0.XF.XM.XN.x",
+    "XP.XCOUNT.XF1.XF.XM.XN.x",
+    "XP.XCOUNT.XF2.XF.XM.XN.x",
+    "XP.XCOUNT.XF3.XF.XM.XN.x",
+    "XP.XCOUNT.XF4.XF.XM.XN.x",
+    "XP.XCOUNT.XF5.XF.XM.XN.x",
+    "XP.XCOUNT.XF6.XF.XM.XN.x",
+    "XP.XCOUNT.XF6.XF.XS.XN.x",
+    "XP.XCOUNT.XF7.XF.XM.XN.x",
+    "XP.XCOUNT.XF7.XF.XS.XN.x",
+    "XP.XCOUNT.XF8.XF.XM.XN.x",
+    "XP.XCOUNT.XF8.XF.XS.XN.x",
+    "XP.XCOUNT.XF9.XF.XM.XN.x",
+    "XP.XCOUNT.XF9.XF.XS.XN.x",
+    "XP.XCOUNT.XF10.XF.XM.XN.x",
+    "XP.XCOUNT.XF10.XF.XS.XN.x",
+    "XP.XCOUNT.XF11.XF.XM.XN.x",
+    "XP.XCOUNT.XF11.XF.XS.XN.x",
+    "XP.XCOUNT.XF12.XF.XM.XN.x",
+    "XP.XCOUNT.XF12.XF.XS.XN.x",
+    "XP.XCOUNT.XF13.XF.XM.XN.x",
+    "XP.XCOUNT.XF13.XF.XS.XN.x"
+  ],
+  "candidate_all_saved_reset_max_abs_v": 3.641547978350255e-06,
+  "edge_comparison": [
+    {
+      "signal": "differential_RF",
+      "edges_in_each_interval": 984,
+      "mean_shift_fs": -27.812600714727747,
+      "peak_to_peak_shift_fs": 9.929440285944523,
+      "min_fs": -33.07865067581032,
+      "max_fs": -23.1492103898658
+    },
+    {
+      "signal": "clock",
+      "edges_in_each_interval": 984,
+      "mean_shift_fs": -27.794114259390184,
+      "peak_to_peak_shift_fs": 9.866819987186961,
+      "min_fs": -33.28064177570911,
+      "max_fs": -23.413821788522146
+    },
+    {
+      "signal": "output",
+      "edges_in_each_interval": 246,
+      "mean_shift_fs": -27.833288119757512,
+      "peak_to_peak_shift_fs": 10.424945242725872,
+      "min_fs": -33.60572793866763,
+      "max_fs": -23.180782695941755
+    },
+    {
+      "signal": "reference",
+      "edges_in_each_interval": 6,
+      "mean_shift_fs": 2.9999083548589805e-07,
+      "peak_to_peak_shift_fs": 8.470329472543003e-07,
+      "min_fs": 1.5881867761018131e-07,
+      "max_fs": 1.0058516248644817e-06
+    }
+  ],
+  "slow_control_means": [
+    {
+      "node": "XP.vc1",
+      "first_mean_v": 0.6683577740721697,
+      "second_mean_v": 0.6683769954561166,
+      "mean_change_v": 1.9221383946957873e-05
+    },
+    {
+      "node": "XP.ctrl",
+      "first_mean_v": 0.6684425795777319,
+      "second_mean_v": 0.6684325656436786,
+      "mean_change_v": -1.0013934053231134e-05
+    }
+  ],
+  "actual_saved_step_ps": {
+    "maximum": 1.000000001086395,
+    "median": 0.8514225125443291
+  },
+  "statements": [
+    "Reset-node clearing is observed in the candidate; the common RF/output advance and filter drift persist.",
+    "Shared RF, recovered-clock and output edge shifts support a common trajectory drift rather than extra output-chain random jitter.",
+    "The small initialization-period differences do not establish a shooting solution; Newton updates and hidden charge states are outside this trace.",
+    "These sub-picosecond differences use linear interpolation of a 1ps-limited transient. They are diagnostics, not calibrated jitter accuracy."
+  ],
+  "periodic_state_valid": false,
+  "random_jitter_measured": false,
+  "full_pll_acceptance": false,
+  "main_dut_modified": false,
+  "figure_sha256": "a4e4bfeedd2f6956183efc9d3b9c9abcdcf661c47ebf5c0cefc3ef040ef6d786"
+}
