@@ -1,0 +1,23 @@
+{
+  "scope": "Prepare one boundary-phase comparison from the recovered late-seed trajectory.\n\nOnly tstab changes. This translates the shooting interval, while leaving the\nsame physical seed, 250 ns period, device circuit and accuracy settings.\n",
+  "time": "2026-10-04T08:17:41.823985+08:00",
+  "status": "running",
+  "run": "coretripquiet01",
+  "case": "core_pulsetrip_quiet_noise_tt",
+  "source_tb_sha256": "75720b3db9d4129637b460017cfe5939284587c5b51d64c9104b98bff3374ff0",
+  "candidate_tb_sha256": "55673a1d06a8c870d8fc98bb0fbf118c863b9ea3c22a69f2862736359ee490d7",
+  "predecessor_result": "research/runs/spectre_cmos_v14_full/coretriplate01/core_pulsetrip_late_noise_tt/result.json",
+  "predecessor_result_sha256": "d5b2d67b5b7af10dcbf8fc37980cf4346b3ba32d0b0526dc2efa8afc90066f13",
+  "raw_basis_sha256": "7bd69cb8f602f58a1d4438cd6eb89de62c48ddcf9219388fdb1a7bc7dc63aeb7",
+  "boundary_diagnosis_sha256": "6eae3ff04ac3b241617fc6429006f9826d1d0cb730c21f246d0c59baa67c7d9d",
+  "changed_tstab_s": 1.134023e-06,
+  "shooting_phase_shift_ps": 134023.0,
+  "previous_guarded_max_logic_slew_v_per_s": 25936510880.97304,
+  "selected_guarded_max_logic_slew_v_per_s": 9843564793.921124,
+  "hypothesis": "A boundary away from simultaneous digital switching may improve the Newton map. This does not establish that switching is the only cause; hidden states and slow modes remain.",
+  "evidence": "Installed Spectre21.1 PSS help, research/spectre_help/pss.txt lines580-598; actual late-seed saved transient determines the phase.",
+  "launch_gate": "Predecessor owned Spectre process must be stopped and raw data recovered. Reuse that six-thread long slot within18 requested threads,4long+1short.",
+  "acceptance": "Same periodic/noise gates; six offsets are not RMS. No tolerance relaxation, PSS-period change, hand-edited dynamic state or main-DUT adoption.",
+  "main_dut_modified": false,
+  "full_pll_acceptance": false
+}

@@ -8,6 +8,7 @@ import hashlib,json
 import numpy as np
 from noise_utils import cross
 from reference_modulation_utils import fit_edges,analytic_control
+from loading_timing_utils import loading_timing,analytic_timing_control
 
 H=Path(__file__).resolve().parent;ROOT=H.parents[3]
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
@@ -18,6 +19,27 @@ baseline=next(x for x in loading['cases'] if x['case']=='samplerload_clocked_tt'
 assert baseline['valid_for_diagnosis'] and analytic_control()['passed']
 bp=ROOT/baseline['source_result'];assert sha(bp)==baseline['source_sha256']
 br=json.loads(bp.read_text());vctrl=baseline['control_v']
+timing_control=analytic_timing_control();assert timing_control['passed']
+bwp=bp.parent/'waveforms.npz';assert sha(bwp)==br['local_outputs_sha256']['waveforms.npz']
+with np.load(bwp) as z:
+    bd={k:z[k] for k in ['time','ref','XP.refb','XP.pulse','XP.vp','XP.vn','out']}
+baseline_timing=loading_timing(bd['time'],bd)
+def window_modulation(edges):
+    """Two disjoint six-reference-cycle fits; no random-noise interpretation."""
+    rows=[]
+    for start,end in [(250e-9,500e-9),(500e-9,750e-9)]:
+        fit=fit_edges(edges[(edges>=start)&(edges<end)])
+        h=fit['harmonics'][0]
+        rows.append(dict(window_ns=[start*1e9,end*1e9],carrier_hz=fit['carrier_hz'],
+            pm24_peak_rad=h['pm_peak_rad'],phasor_rad=h['pm_phasor_absolute_time_rad'],
+            residual_time_rms_ps=fit['residual_time_rms_ps']))
+    a,b=[complex(*x['phasor_rad']) for x in rows]
+    scale=(abs(a)+abs(b))/2
+    return dict(windows=rows,amplitude_spread_fraction=abs(abs(a)-abs(b))/scale,
+        complex_change_fraction=abs(a-b)/scale,
+        note='Window sensitivity, including deterministic drift/beat effects; no acceptance tolerance imposed.')
+baseline_windows=dict(rf=window_modulation(cross(bd['time'],bd['XP.vp']-bd['XP.vn'],0)),
+                     output=window_modulation(cross(bd['time'],bd['out'])))
 baseline_deps={k:v for k,v in br['inputs_sha256'].items() if k not in ['samplerload_clocked_tt.scs','pll_noise_pulsetrip_core_v14.scs']}
 rows=[]
 for item in protocol['cases']:
@@ -57,9 +79,14 @@ for item in protocol['cases']:
         rf_last_two_windows_hz=parts,last_two_window_difference_ppm=drift,
         coarse23_held=bool(coarse),control_clamp_max_error_v=clamp,supply_max_error_v=supply,
         divider_relative_error=fo*4/fr-1,rf_fit=fits['rf'],output_fit=fits['output'],modulation_comparison=changes,
+        independent_window_modulation=dict(rf=window_modulation(e),output=window_modulation(oe)),
         rf_differential_swing_pp_v=float(np.ptp(d['XP.vp']-d['XP.vn'])),
+        rf_swing_ratio_to_baseline=float(np.ptp(d['XP.vp']-d['XP.vn'])/baseline['rf_differential_swing_pp_v']),
+        reference_and_cp_timing=loading_timing(t,d),
         valid_for_diagnosis=bool(coarse and clamp<1e-9 and supply<1e-9 and drift<100 and abs(fo*4/fr-1)<.001))
 out=dict(scope=__doc__,run=protocol['run'],baseline_source=baseline['source_result'],baseline_sha256=baseline['source_sha256'],
+    analytic_timing_control=timing_control,baseline_reference_and_cp_timing=baseline_timing,
+    baseline_independent_window_modulation=baseline_windows,
     cases=rows,complete=len(rows)==len(protocol['cases']),full_pll_acceptance=False,random_jitter_measured=False,
     main_dut_modified=False,condition=source_protocol['condition'],
     interpretation='Rank only valid diagnostic cases by measured reference-PM amplitude. Added load shifts the carrier and reference slew; a reduction is not an isolated mechanism contribution or closed-loop performance proof.',
@@ -68,4 +95,6 @@ valid=[x for x in rows if x['valid_for_diagnosis']]
 if valid:
     out['lowest_output24_pm_diagnostic_case']=min(valid,key=lambda x:x['output_fit']['harmonics'][0]['pm_peak_rad'])['case']
 (H/'results/sampler_dummy_validation.json').write_text(json.dumps(out,indent=2)+'\n')
-print(json.dumps(out,indent=2))
+print(json.dumps(dict(complete=out['complete'],cases=[dict(case=x['case'],valid=x['valid_for_diagnosis'],
+    rf_mhz=x.get('rf_hz',0)/1e6,output_pm_change_db=x.get('modulation_comparison',{}).get('output',{}).get('pm24_change_db'),
+    output_windows=x.get('independent_window_modulation',{}).get('output')) for x in rows]),indent=2))

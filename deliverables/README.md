@@ -1,4 +1,4 @@
-本次快照：[第37次汇报](../reports/2026-10-04T0744.yaml)。RT2五组noise-on闭合；已启动与实际LC候选一致的新分频器噪声测试，以及基线新初态PSS对照。候选工作点仍待修复，完整PLL随机RMS未知。
+本次快照：[第38次汇报](../reports/2026-10-04T0824.yaml)。新分频器RT2六点噪声保持，旧RT4五组noise-on闭合；完整PLL RMS仍待周期状态与全带验证。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

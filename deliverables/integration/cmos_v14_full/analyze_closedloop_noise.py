@@ -70,6 +70,10 @@ for run in args.runs or ['corenoiseprobe01']:
    grouped[group]=grouped.get(group,0)+v/slew**2
   assert np.all(np.isfinite(sv)) and np.all(sv>0)
   row.update(offsets_hz=f.tolist(),timing_psd_s2_per_hz=st.tolist(),slew_v_per_s=slew,device_sum_relative_error=err,noise_consistent=bool(err<1e-7),group_psd_s2_per_hz={k:v.tolist() for k,v in grouped.items()},pnoise_sha256=hashlib.sha256(p.read_bytes()).hexdigest())
+  row['exact_harmonic_flicker_warning']='SPCRTRF-15037' in log
+  row['offsets_at_pss_harmonics_hz']=f[np.abs(f/(1/T)-np.round(f/(1/T)))<1e-9].tolist()
+  row['harmonic_pole_integral_closed']=False
+  row['noise_interpretation']='Exact-PSS-harmonic offsets are retained and identified. No assumed physical low-frequency cutoff and no exclusion of continuous noise as a discrete spur.'
   row['probe_passed']=row['periodic_passed'] and row['noise_consistent']
   key=run+'_'+j.name
   spectra[key+'_f']=f;spectra[key+'_st']=st

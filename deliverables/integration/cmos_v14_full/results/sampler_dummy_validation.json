@@ -3,7 +3,713 @@
   "run": "samplerdummy01",
   "baseline_source": "research/runs/spectre_cmos_v14_full/samplerload01/samplerload_clocked_tt/result.json",
   "baseline_sha256": "e0c6b1de4488b49b0d2d87d643a07594efcba015e214c7ba0125ddc3877502c6",
-  "cases": [],
+  "analytic_timing_control": {
+    "expected_rise_ps": 80,
+    "expected_fall_ps": 120,
+    "recovered": {
+      "rising_edges": 12,
+      "falling_edges": 12,
+      "average_period_ns": 41.66666666666667,
+      "mean_rise_10_90_ps": 80.0000000000021,
+      "mean_fall_90_10_ps": 120.00000000000566,
+      "mean_high_width_ns": 20.125000000000014,
+      "measured_min_v": 0.0,
+      "measured_max_v": 1.2
+    },
+    "max_relative_error": 4.707345624410664e-14,
+    "passed": true
+  },
+  "baseline_reference_and_cp_timing": {
+    "reference_buffer": {
+      "rising_edges": 12,
+      "falling_edges": 12,
+      "average_period_ns": 41.66666944601987,
+      "mean_rise_10_90_ps": 198.71190300999535,
+      "mean_fall_90_10_ps": 176.31967254351838,
+      "mean_high_width_ns": 20.84440100333761,
+      "measured_min_v": -0.01400594793861095,
+      "measured_max_v": 1.2223219187892
+    },
+    "cp_pulse": {
+      "rising_edges": 12,
+      "falling_edges": 12,
+      "average_period_ns": 41.666661794114844,
+      "mean_rise_10_90_ps": 64.63474765194692,
+      "mean_fall_90_10_ps": 53.06067846444378,
+      "mean_high_width_ns": 1.7815571947907365,
+      "measured_min_v": -0.04443819146951791,
+      "measured_max_v": 1.265988674561932
+    },
+    "reference_to_buffer_mean_delay_ps": 412.03662934146297,
+    "reference_buffer_to_cp_mean_delay_ps": 2146.670915448912,
+    "scope": "Noiseless transient edge shape/delay; not jitter. Windows can begin or end inside a pulse."
+  },
+  "baseline_independent_window_modulation": {
+    "rf": {
+      "windows": [
+        {
+          "window_ns": [
+            250.0,
+            500.0
+          ],
+          "carrier_hz": 3937308854.43944,
+          "pm24_peak_rad": 0.2742951139986638,
+          "phasor_rad": [
+            -0.2739535262652484,
+            0.013684846012134953
+          ],
+          "residual_time_rms_ps": 0.29979763171765156
+        },
+        {
+          "window_ns": [
+            500.0,
+            750.0
+          ],
+          "carrier_hz": 3937301500.011505,
+          "pm24_peak_rad": 0.2769943061653149,
+          "phasor_rad": [
+            -0.2768561809701439,
+            0.0087464682375855
+          ],
+          "residual_time_rms_ps": 0.28175410696597175
+        }
+      ],
+      "amplitude_spread_fraction": 0.009792287201333122,
+      "complex_change_fraction": 0.020781321943586097,
+      "note": "Window sensitivity, including deterministic drift/beat effects; no acceptance tolerance imposed."
+    },
+    "output": {
+      "windows": [
+        {
+          "window_ns": [
+            250.0,
+            500.0
+          ],
+          "carrier_hz": 984327162.6071787,
+          "pm24_peak_rad": 0.06990736105203786,
+          "phasor_rad": [
+            -0.06990216112691712,
+            -0.0008526423907451227
+          ],
+          "residual_time_rms_ps": 0.35336070441722994
+        },
+        {
+          "window_ns": [
+            500.0,
+            750.0
+          ],
+          "carrier_hz": 984325354.5807436,
+          "pm24_peak_rad": 0.07085615612655315,
+          "phasor_rad": [
+            -0.07082758511432173,
+            -0.002011976119138982
+          ],
+          "residual_time_rms_ps": 0.3350608730472476
+        }
+      ],
+      "amplitude_spread_fraction": 0.013480695758852539,
+      "complex_change_fraction": 0.0210764297116981,
+      "note": "Window sensitivity, including deterministic drift/beat effects; no acceptance tolerance imposed."
+    }
+  },
+  "cases": [
+    {
+      "case": "samplerdummy_c40_tt",
+      "dummy_capacitance_f": 4.0000000000000006e-14,
+      "source_result": "research/runs/spectre_cmos_v14_full/samplerdummy01/samplerdummy_c40_tt/result.json",
+      "source_sha256": "8cfc86396807b44c5728ee8f1c44cb1471896dca3006e67181a49f571e88cc7d",
+      "valid_for_diagnosis": true,
+      "rf_hz": 3913813909.5603013,
+      "output_hz": 978452977.9700963,
+      "rf_frequency_change_from_baseline_hz": -23486596.930511475,
+      "rf_last_two_windows_hz": [
+        3913732286.3679886,
+        3913894892.820467
+      ],
+      "last_two_window_difference_ppm": 41.54680562986838,
+      "coarse23_held": true,
+      "control_clamp_max_error_v": 0.0,
+      "supply_max_error_v": 0.0,
+      "divider_relative_error": -5.104177056569625e-07,
+      "rf_fit": {
+        "carrier_hz": 3913862793.308646,
+        "frequency_drift_hz_per_us": 610516.5886849833,
+        "harmonics": [
+          {
+            "harmonic": 1,
+            "pm_peak_rad": 0.052497758631455047,
+            "equivalent_deterministic_time_peak_ps": 2.1347906732259307,
+            "pm_phasor_absolute_time_rad": [
+              0.031215284455584105,
+              -0.042209248722092675
+            ],
+            "pm_phase_absolute_time_rad": -0.9340254926912624
+          },
+          {
+            "harmonic": 2,
+            "pm_peak_rad": 0.004082035543353641,
+            "equivalent_deterministic_time_peak_ps": 0.16599358968645112,
+            "pm_phasor_absolute_time_rad": [
+              0.0005379507703776431,
+              -0.004046433385816769
+            ],
+            "pm_phase_absolute_time_rad": -1.4386269265495968
+          },
+          {
+            "harmonic": 3,
+            "pm_peak_rad": 0.005595790791786943,
+            "equivalent_deterministic_time_peak_ps": 0.22754956217259775,
+            "pm_phasor_absolute_time_rad": [
+              -0.0031691853533116657,
+              -0.004611847653793688
+            ],
+            "pm_phase_absolute_time_rad": -2.1728686852713075
+          },
+          {
+            "harmonic": 4,
+            "pm_peak_rad": 0.002403585535855672,
+            "equivalent_deterministic_time_peak_ps": 0.09774040107630444,
+            "pm_phasor_absolute_time_rad": [
+              -0.0003687500571662657,
+              -0.0023751309066058807
+            ],
+            "pm_phase_absolute_time_rad": -1.7248212680446453
+          },
+          {
+            "harmonic": 5,
+            "pm_peak_rad": 0.0014280500638394038,
+            "equivalent_deterministic_time_peak_ps": 0.05807082124373656,
+            "pm_phasor_absolute_time_rad": [
+              -0.0013712874844111452,
+              -0.00039861964318015997
+            ],
+            "pm_phase_absolute_time_rad": -2.8586988197908427
+          },
+          {
+            "harmonic": 6,
+            "pm_peak_rad": 0.0016385227259224635,
+            "equivalent_deterministic_time_peak_ps": 0.06662956903977547,
+            "pm_phasor_absolute_time_rad": [
+              -0.0007233645974580977,
+              -0.0014702041975551098
+            ],
+            "pm_phase_absolute_time_rad": -2.0280366934671488
+          },
+          {
+            "harmonic": 7,
+            "pm_peak_rad": 0.0002722577549686077,
+            "equivalent_deterministic_time_peak_ps": 0.01107120248886529,
+            "pm_phasor_absolute_time_rad": [
+              -0.00025910144440585226,
+              8.361056540502185e-05
+            ],
+            "pm_phase_absolute_time_rad": 2.829447571076724
+          }
+        ],
+        "residual_time_rms_ps": 1.5259454419151768,
+        "edges": 1957,
+        "span_us": 0.499768268292487,
+        "note": "Consecutive-edge deterministic harmonic fit with quadratic drift. No random-noise source or random-jitter measurement."
+      },
+      "output_fit": {
+        "carrier_hz": 978465655.2309917,
+        "frequency_drift_hz_per_us": 155108.25367872958,
+        "harmonics": [
+          {
+            "harmonic": 1,
+            "pm_peak_rad": 0.013520499349019999,
+            "equivalent_deterministic_time_peak_ps": 2.199212913568526,
+            "pm_phasor_absolute_time_rad": [
+              0.007296084528015632,
+              -0.011382928147313464
+            ],
+            "pm_phase_absolute_time_rad": -1.0007972260015985
+          },
+          {
+            "harmonic": 2,
+            "pm_peak_rad": 0.0010712218479254224,
+            "equivalent_deterministic_time_peak_ps": 0.1742424492202713,
+            "pm_phasor_absolute_time_rad": [
+              0.00019871540301281103,
+              -0.0010526292966083612
+            ],
+            "pm_phase_absolute_time_rad": -1.3842120950207921
+          },
+          {
+            "harmonic": 3,
+            "pm_peak_rad": 0.0015271631446366787,
+            "equivalent_deterministic_time_peak_ps": 0.24840479793775802,
+            "pm_phasor_absolute_time_rad": [
+              -0.0009794859502157416,
+              -0.0011716802224440571
+            ],
+            "pm_phase_absolute_time_rad": -2.2670868609665233
+          },
+          {
+            "harmonic": 4,
+            "pm_peak_rad": 0.0006506267053154735,
+            "equivalent_deterministic_time_peak_ps": 0.10582942355202628,
+            "pm_phasor_absolute_time_rad": [
+              -6.436661690370057e-05,
+              -0.0006474349761157797
+            ],
+            "pm_phase_absolute_time_rad": -1.6698885960261785
+          },
+          {
+            "harmonic": 5,
+            "pm_peak_rad": 0.0003884260505102917,
+            "equivalent_deterministic_time_peak_ps": 0.0631804761198092,
+            "pm_phasor_absolute_time_rad": [
+              -0.0003836380903279202,
+              -6.079977273452696e-05
+            ],
+            "pm_phase_absolute_time_rad": -2.984417746118024
+          },
+          {
+            "harmonic": 6,
+            "pm_peak_rad": 0.00045180058415103107,
+            "equivalent_deterministic_time_peak_ps": 0.0734888300626833,
+            "pm_phasor_absolute_time_rad": [
+              -0.00018950790175609381,
+              -0.0004101347620127019
+            ],
+            "pm_phase_absolute_time_rad": -2.0036360450556367
+          },
+          {
+            "harmonic": 7,
+            "pm_peak_rad": 7.528647642659914e-05,
+            "equivalent_deterministic_time_peak_ps": 0.012245922794741322,
+            "pm_phasor_absolute_time_rad": [
+              -5.714091319921567e-05,
+              4.902009354838654e-05
+            ],
+            "pm_phase_absolute_time_rad": 2.43254112189074
+          }
+        ],
+        "residual_time_rms_ps": 1.524677707306328,
+        "edges": 489,
+        "span_us": 0.498746501862979,
+        "note": "Consecutive-edge deterministic harmonic fit with quadratic drift. No random-noise source or random-jitter measurement."
+      },
+      "modulation_comparison": {
+        "rf": {
+          "pm24_amplitude_ratio": 0.19047645234290303,
+          "pm24_change_db": -14.40317412676418,
+          "equivalent_deterministic_time24_peak_ps": 2.1347906732259307,
+          "seven_harmonic_deterministic_time_rms_ps": 1.5254755604125247
+        },
+        "output": {
+          "pm24_amplitude_ratio": 0.1921579333329954,
+          "pm24_change_db": -14.326833615445215,
+          "equivalent_deterministic_time24_peak_ps": 2.199212913568526,
+          "seven_harmonic_deterministic_time_rms_ps": 1.5731091863212323
+        }
+      },
+      "independent_window_modulation": {
+        "rf": {
+          "windows": [
+            {
+              "window_ns": [
+                250.0,
+                500.0
+              ],
+              "carrier_hz": 3913729577.6362004,
+              "pm24_peak_rad": 0.04680031531470306,
+              "phasor_rad": [
+                0.034149976564892874,
+                -0.03200075958743631
+              ],
+              "residual_time_rms_ps": 0.31432332238790395
+            },
+            {
+              "window_ns": [
+                500.0,
+                750.0
+              ],
+              "carrier_hz": 3913890846.1583133,
+              "pm24_peak_rad": 0.05218771733279139,
+              "phasor_rad": [
+                0.028607140727934095,
+                -0.04364847465581712
+              ],
+              "residual_time_rms_ps": 0.29630815187568305
+            }
+          ],
+          "amplitude_spread_fraction": 0.10884956239656511,
+          "complex_change_fraction": 0.26062370193831486,
+          "note": "Window sensitivity, including deterministic drift/beat effects; no acceptance tolerance imposed."
+        },
+        "output": {
+          "windows": [
+            {
+              "window_ns": [
+                250.0,
+                500.0
+              ],
+              "carrier_hz": 978432180.1931564,
+              "pm24_peak_rad": 0.012003426129963109,
+              "phasor_rad": [
+                0.008090282375371802,
+                -0.008867331613525544
+              ],
+              "residual_time_rms_ps": 0.3350261700361926
+            },
+            {
+              "window_ns": [
+                500.0,
+                750.0
+              ],
+              "carrier_hz": 978472985.1579382,
+              "pm24_peak_rad": 0.013405822771798463,
+              "phasor_rad": [
+                0.006527381086584429,
+                -0.01170937147499259
+              ],
+              "residual_time_rms_ps": 0.29546486646203224
+            }
+          ],
+          "amplitude_spread_fraction": 0.1103847380343565,
+          "complex_change_fraction": 0.2552953842218415,
+          "note": "Window sensitivity, including deterministic drift/beat effects; no acceptance tolerance imposed."
+        }
+      },
+      "rf_differential_swing_pp_v": 1.7009293773586007,
+      "rf_swing_ratio_to_baseline": 0.9676256644472336,
+      "reference_and_cp_timing": {
+        "reference_buffer": {
+          "rising_edges": 12,
+          "falling_edges": 12,
+          "average_period_ns": 41.66667534596856,
+          "mean_rise_10_90_ps": 199.37695547448288,
+          "mean_fall_90_10_ps": 176.7844107983352,
+          "mean_high_width_ns": 20.844439994263183,
+          "measured_min_v": -0.01401841221770794,
+          "measured_max_v": 1.222532489087625
+        },
+        "cp_pulse": {
+          "rising_edges": 12,
+          "falling_edges": 12,
+          "average_period_ns": 41.666665708587665,
+          "mean_rise_10_90_ps": 64.6322100115804,
+          "mean_fall_90_10_ps": 53.060886504020665,
+          "mean_high_width_ns": 1.7815580411253185,
+          "measured_min_v": -0.04443355727670804,
+          "measured_max_v": 1.265985919068291
+        },
+        "reference_to_buffer_mean_delay_ps": 412.31965511594194,
+        "reference_buffer_to_cp_mean_delay_ps": 2146.826413657565,
+        "scope": "Noiseless transient edge shape/delay; not jitter. Windows can begin or end inside a pulse.",
+        "sampler_inverted_reference": {
+          "rising_edges": 12,
+          "falling_edges": 12,
+          "average_period_ns": 41.6667625419566,
+          "mean_rise_10_90_ps": 64.40559027738419,
+          "mean_fall_90_10_ps": 59.00475591060063,
+          "mean_high_width_ns": 20.817999153112872,
+          "measured_min_v": -0.02351720344218516,
+          "measured_max_v": 1.239132840984667
+        }
+      }
+    },
+    {
+      "case": "samplerdummy_c80_tt",
+      "dummy_capacitance_f": 8.000000000000001e-14,
+      "source_result": "research/runs/spectre_cmos_v14_full/samplerdummy01/samplerdummy_c80_tt/result.json",
+      "source_sha256": "41ba540d6c7f4150f20e8837dadd09722c56f59712d2d423a98cc1088e6d0a78",
+      "valid_for_diagnosis": true,
+      "rf_hz": 3915259224.208828,
+      "output_hz": 978814764.9231427,
+      "rf_frequency_change_from_baseline_hz": -22041282.281984806,
+      "rf_last_two_windows_hz": [
+        3915136576.061594,
+        3915382738.270925
+      ],
+      "last_two_window_difference_ppm": 62.87251188576341,
+      "coarse23_held": true,
+      "control_clamp_max_error_v": 0.0,
+      "supply_max_error_v": 0.0,
+      "divider_relative_error": -4.2019250301450484e-08,
+      "rf_fit": {
+        "carrier_hz": 3915270197.0276747,
+        "frequency_drift_hz_per_us": 1094106.7492819927,
+        "harmonics": [
+          {
+            "harmonic": 1,
+            "pm_peak_rad": 0.059837154884049636,
+            "equivalent_deterministic_time_peak_ps": 2.432368266073089,
+            "pm_phasor_absolute_time_rad": [
+              -0.05495872285541191,
+              -0.023664823826087752
+            ],
+            "pm_phase_absolute_time_rad": -2.734994507807217
+          },
+          {
+            "harmonic": 2,
+            "pm_peak_rad": 0.002595289928619669,
+            "equivalent_deterministic_time_peak_ps": 0.10549801165958023,
+            "pm_phasor_absolute_time_rad": [
+              -0.0013106591747523591,
+              -0.0022400228439085506
+            ],
+            "pm_phase_absolute_time_rad": -2.100195149361242
+          },
+          {
+            "harmonic": 3,
+            "pm_peak_rad": 0.01162621590153018,
+            "equivalent_deterministic_time_peak_ps": 0.47260332928921617,
+            "pm_phasor_absolute_time_rad": [
+              -0.011237355215982297,
+              0.0029817350551027536
+            ],
+            "pm_phase_absolute_time_rad": 2.8822279941501923
+          },
+          {
+            "harmonic": 4,
+            "pm_peak_rad": 0.0013470047984148429,
+            "equivalent_deterministic_time_peak_ps": 0.05475547312136347,
+            "pm_phasor_absolute_time_rad": [
+              -0.0005861839250377631,
+              -0.0012127696949462141
+            ],
+            "pm_phase_absolute_time_rad": -2.021029880998274
+          },
+          {
+            "harmonic": 5,
+            "pm_peak_rad": 0.00458648655674811,
+            "equivalent_deterministic_time_peak_ps": 0.18643975260893822,
+            "pm_phasor_absolute_time_rad": [
+              -0.0027772254132532896,
+              0.0036500517721275174
+            ],
+            "pm_phase_absolute_time_rad": 2.221219841334702
+          },
+          {
+            "harmonic": 6,
+            "pm_peak_rad": 0.001063992418412841,
+            "equivalent_deterministic_time_peak_ps": 0.04325107700900441,
+            "pm_phasor_absolute_time_rad": [
+              -0.0007196576760135832,
+              -0.0007836917096631394
+            ],
+            "pm_phase_absolute_time_rad": -2.313625975278335
+          },
+          {
+            "harmonic": 7,
+            "pm_peak_rad": 0.0023658854982733903,
+            "equivalent_deterministic_time_peak_ps": 0.09617276787831874,
+            "pm_phasor_absolute_time_rad": [
+              -9.045931019497125e-05,
+              0.0023641555160647484
+            ],
+            "pm_phase_absolute_time_rad": 1.609040512854097
+          }
+        ],
+        "residual_time_rms_ps": 0.7440667017764422,
+        "edges": 1957,
+        "span_us": 0.4995837792567251,
+        "note": "Consecutive-edge deterministic harmonic fit with quadratic drift. No random-noise source or random-jitter measurement."
+      },
+      "output_fit": {
+        "carrier_hz": 978817528.5140806,
+        "frequency_drift_hz_per_us": 272716.64366711077,
+        "harmonics": [
+          {
+            "harmonic": 1,
+            "pm_peak_rad": 0.014897386692727197,
+            "equivalent_deterministic_time_peak_ps": 2.4223030975939945,
+            "pm_phasor_absolute_time_rad": [
+              -0.013958361352073012,
+              -0.005205408594683016
+            ],
+            "pm_phase_absolute_time_rad": -2.7846432385543047
+          },
+          {
+            "harmonic": 2,
+            "pm_peak_rad": 0.0006503920179898753,
+            "equivalent_deterministic_time_peak_ps": 0.10575321916000249,
+            "pm_phasor_absolute_time_rad": [
+              -0.00028231100939467985,
+              -0.0005859268478568798
+            ],
+            "pm_phase_absolute_time_rad": -2.0197940788466138
+          },
+          {
+            "harmonic": 3,
+            "pm_peak_rad": 0.002912991764770592,
+            "equivalent_deterministic_time_peak_ps": 0.4736501186825181,
+            "pm_phasor_absolute_time_rad": [
+              -0.0026873598919061915,
+              0.0011241075718076228
+            ],
+            "pm_phase_absolute_time_rad": 2.7454153983341247
+          },
+          {
+            "harmonic": 4,
+            "pm_peak_rad": 0.00040812483741544287,
+            "equivalent_deterministic_time_peak_ps": 0.06636077040002604,
+            "pm_phasor_absolute_time_rad": [
+              -0.0001492065468404935,
+              -0.00037987272775933425
+            ],
+            "pm_phase_absolute_time_rad": -1.945063424378069
+          },
+          {
+            "harmonic": 5,
+            "pm_peak_rad": 0.0011627879841540887,
+            "equivalent_deterministic_time_peak_ps": 0.1890683912525801,
+            "pm_phasor_absolute_time_rad": [
+              -0.00048763023649850184,
+              0.0010556006103378038
+            ],
+            "pm_phase_absolute_time_rad": 2.003539831244624
+          },
+          {
+            "harmonic": 6,
+            "pm_peak_rad": 0.0003609946476660953,
+            "equivalent_deterministic_time_peak_ps": 0.058697439443075636,
+            "pm_phasor_absolute_time_rad": [
+              -0.00024289580597048975,
+              -0.0002670557302989667
+            ],
+            "pm_phase_absolute_time_rad": -2.3088529867447547
+          },
+          {
+            "harmonic": 7,
+            "pm_peak_rad": 0.0006041781155157743,
+            "equivalent_deterministic_time_peak_ps": 0.09823887577724182,
+            "pm_phasor_absolute_time_rad": [
+              0.00015316844280050465,
+              0.0005844404361423505
+            ],
+            "pm_phase_absolute_time_rad": 1.3144836944336484
+          }
+        ],
+        "residual_time_rms_ps": 0.750771022165027,
+        "edges": 490,
+        "span_us": 0.49958380024886195,
+        "note": "Consecutive-edge deterministic harmonic fit with quadratic drift. No random-noise source or random-jitter measurement."
+      },
+      "modulation_comparison": {
+        "rf": {
+          "pm24_amplitude_ratio": 0.21710582085265473,
+          "pm24_change_db": -13.266570649262697,
+          "equivalent_deterministic_time24_peak_ps": 2.432368266073089,
+          "seven_harmonic_deterministic_time_rms_ps": 1.7606500105432972
+        },
+        "output": {
+          "pm24_amplitude_ratio": 0.21172672436424608,
+          "pm24_change_db": -13.48448642851893,
+          "equivalent_deterministic_time24_peak_ps": 2.4223030975939945,
+          "seven_harmonic_deterministic_time_rms_ps": 1.7544696277556648
+        }
+      },
+      "independent_window_modulation": {
+        "rf": {
+          "windows": [
+            {
+              "window_ns": [
+                250.0,
+                500.0
+              ],
+              "carrier_hz": 3915120294.109783,
+              "pm24_peak_rad": 0.060448848049851824,
+              "phasor_rad": [
+                -0.05583187014022102,
+                -0.02317035837443114
+              ],
+              "residual_time_rms_ps": 0.5215096308795782
+            },
+            {
+              "window_ns": [
+                500.0,
+                750.0
+              ],
+              "carrier_hz": 3915406269.134716,
+              "pm24_peak_rad": 0.058041621949505004,
+              "phasor_rad": [
+                -0.053286220453168484,
+                -0.02300888064086541
+              ],
+              "residual_time_rms_ps": 0.46656094013168553
+            }
+          ],
+          "amplitude_spread_fraction": 0.040631556282288005,
+          "complex_change_fraction": 0.043054366134065034,
+          "note": "Window sensitivity, including deterministic drift/beat effects; no acceptance tolerance imposed."
+        },
+        "output": {
+          "windows": [
+            {
+              "window_ns": [
+                250.0,
+                500.0
+              ],
+              "carrier_hz": 978780198.2811159,
+              "pm24_peak_rad": 0.015119102170098684,
+              "phasor_rad": [
+                -0.014244567214717611,
+                -0.005067499905799193
+              ],
+              "residual_time_rms_ps": 0.5453792431320533
+            },
+            {
+              "window_ns": [
+                500.0,
+                750.0
+              ],
+              "carrier_hz": 978851601.4723903,
+              "pm24_peak_rad": 0.014372278955787882,
+              "phasor_rad": [
+                -0.01344497382807237,
+                -0.005078885817325712
+              ],
+              "residual_time_rms_ps": 0.4681901464341038
+            }
+          ],
+          "amplitude_spread_fraction": 0.05064687958308348,
+          "complex_change_fraction": 0.054231061250678995,
+          "note": "Window sensitivity, including deterministic drift/beat effects; no acceptance tolerance imposed."
+        }
+      },
+      "rf_differential_swing_pp_v": 1.6921270075304249,
+      "rf_swing_ratio_to_baseline": 0.9626181673300248,
+      "reference_and_cp_timing": {
+        "reference_buffer": {
+          "rising_edges": 12,
+          "falling_edges": 12,
+          "average_period_ns": 41.66667925215713,
+          "mean_rise_10_90_ps": 199.37407303214982,
+          "mean_fall_90_10_ps": 176.73374378078222,
+          "mean_high_width_ns": 20.844428699831948,
+          "measured_min_v": -0.0139870375912618,
+          "measured_max_v": 1.222443167071291
+        },
+        "cp_pulse": {
+          "rising_edges": 12,
+          "falling_edges": 12,
+          "average_period_ns": 41.66666892458268,
+          "mean_rise_10_90_ps": 64.63505565027015,
+          "mean_fall_90_10_ps": 53.06284563664698,
+          "mean_high_width_ns": 1.781559354427289,
+          "measured_min_v": -0.04443306211367544,
+          "measured_max_v": 1.265984487956034
+        },
+        "reference_to_buffer_mean_delay_ps": 412.3407461089604,
+        "reference_buffer_to_cp_mean_delay_ps": 2146.8020691481656,
+        "scope": "Noiseless transient edge shape/delay; not jitter. Windows can begin or end inside a pulse.",
+        "sampler_inverted_reference": {
+          "rising_edges": 12,
+          "falling_edges": 12,
+          "average_period_ns": 41.66678884265767,
+          "mean_rise_10_90_ps": 64.41752789720104,
+          "mean_fall_90_10_ps": 59.27048466121088,
+          "mean_high_width_ns": 20.817846111655847,
+          "measured_min_v": -0.02645572790116513,
+          "measured_max_v": 1.239066620752468
+        }
+      }
+    }
+  ],
   "complete": false,
   "full_pll_acceptance": false,
   "random_jitter_measured": false,
@@ -15,5 +721,6 @@
     "Fresh PSS device noise including new MOS switches",
     "Independent timestep, PVT and mismatch",
     "Spur-line spectrum at the confirmed acceptance boundary"
-  ]
+  ],
+  "lowest_output24_pm_diagnostic_case": "samplerdummy_c40_tt"
 }

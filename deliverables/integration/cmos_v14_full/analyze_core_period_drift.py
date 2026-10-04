@@ -7,14 +7,22 @@ diagnose unsaved internal states or establish eventual PSS convergence.
 """
 from pathlib import Path
 from array import array
-import hashlib,json,re
+import argparse,hashlib,json,re
 import numpy as np
 from noise_utils import cross
 
 H=Path(__file__).resolve().parent;ROOT=H.parents[3]
-j=ROOT/'research/runs/spectre_cmos_v14_full/coretripsupply01/core_pulsetrip_supply_noise_tt'
+parser=argparse.ArgumentParser()
+parser.add_argument('--run',default='coretripsupply01')
+parser.add_argument('--case',default='core_pulsetrip_supply_noise_tt')
+parser.add_argument('--audit',default='core_supply_trial_audit.json')
+parser.add_argument('--output',default='core_period_drift.json')
+args=parser.parse_args()
+assert all(re.fullmatch(r'[A-Za-z0-9_]+',x) for x in [args.run,args.case])
+assert all(Path(x).name==x and x.endswith('.json') for x in [args.audit,args.output])
+j=ROOT/'research/runs/spectre_cmos_v14_full'/args.run/args.case
 source=j/(j.name+'.raw')/'pss.tran.pss'
-audit=json.loads((H/'results/core_supply_trial_audit.json').read_text())
+audit=json.loads((H/'results'/args.audit).read_text())
 cache=j/'tstab_last_two_periods.npz'
 period=250e-9
 units={};in_trace=False
@@ -83,6 +91,6 @@ out=dict(scope=__doc__,source=source.relative_to(ROOT).as_posix(),source_sha256=
     limitations=['Linear interpolation at1ps is a deterministic trajectory diagnostic, not a femtosecond noise measurement.',
         'Only saved states are covered; absent internal device/charge states cannot be cleared.',
         'This is the saved initialization trajectory, not the later growing Newton corrections.'])
-(H/'results/core_period_drift.json').write_text(json.dumps(out,indent=2)+'\n')
+(H/'results'/args.output).write_text(json.dumps(out,indent=2)+'\n')
 print(json.dumps(dict(intervals_us=out['intervals_us'],largest_voltage_mismatches=sorted(
     [x for x in rows if x['unit']=='V'],key=lambda x:x['difference_peak'],reverse=True)[:8]),indent=2))

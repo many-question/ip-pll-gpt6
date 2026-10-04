@@ -4,10 +4,17 @@ This tests sensitivity to the start phase, not a change in period or accuracy.
 Only saved logic nodes are screened; hidden state sensitivities remain unknown.
 """
 from pathlib import Path
-import hashlib,json
+import argparse,hashlib,json,re
 import numpy as np
 H=Path(__file__).resolve().parent;ROOT=H.parents[3]
-j=ROOT/'research/runs/spectre_cmos_v14_full/coretripsupply01/core_pulsetrip_supply_noise_tt'
+parser=argparse.ArgumentParser()
+parser.add_argument('--run',default='coretripsupply01')
+parser.add_argument('--case',default='core_pulsetrip_supply_noise_tt')
+parser.add_argument('--output',default='core_boundary_diagnosis.json')
+args=parser.parse_args()
+assert all(re.fullmatch(r'[A-Za-z0-9_]+',x) for x in [args.run,args.case])
+assert Path(args.output).name==args.output and args.output.endswith('.json')
+j=ROOT/'research/runs/spectre_cmos_v14_full'/args.run/args.case
 source=j/'tstab_last_two_periods.npz'
 with np.load(source) as z:d={k:z[k] for k in z.files}
 period=250e-9;t=d['time'];begin=float(t[-1]-period)
@@ -32,5 +39,5 @@ out=dict(scope=__doc__,raw_source_sha256=str(d['source_sha256']),
     hypothesis='Starting shooting away from simultaneous divider transitions may improve the Newton map. Selection from the initialization trace does not prove convergence or uniqueness.',
     evidence='Local Spectre21.1 pss help: starting during strong nonlinear switching can degrade convergence; choose a settled switching phase.',
     full_pll_acceptance=False,pss_convergence_proven=False)
-(H/'results/core_boundary_diagnosis.json').write_text(json.dumps(out,indent=2)+'\n')
+(H/'results'/args.output).write_text(json.dumps(out,indent=2)+'\n')
 print(json.dumps({k:v for k,v in out.items() if k not in ['original_nodes','candidate_nodes','saved_logic_nodes']},indent=2))

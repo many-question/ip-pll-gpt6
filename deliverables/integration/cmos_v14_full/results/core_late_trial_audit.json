@@ -1,0 +1,39 @@
+{
+  "scope": "Audit a deliberately stopped IC-only PSS trial, retaining its negative result.",
+  "source_result": "research/runs/spectre_cmos_v14_full/coretriplate01/core_pulsetrip_late_noise_tt/result.json",
+  "source_sha256": "d5b2d67b5b7af10dcbf8fc37980cf4346b3ba32d0b0526dc2efa8afc90066f13",
+  "only_physical_seed_changed": true,
+  "previous_convergence_history": [
+    "Conv norm = 3.7e+06, max dI(VDD:p) = -5.72045 mA, took 5.30471 ks.",
+    "Conv norm = 75.3e+03, max dV(XP.XD.d8) = -17.3302 mV, took 2.37023 ks.",
+    "Conv norm = 340e+03, max dV(XP.data) = 85.497 mV, took 2.26911 ks.",
+    "Conv norm = 2.1e+06, max dI(VDD:p) = -3.44665 mA, took 2.25926 ks."
+  ],
+  "convergence_history": [
+    "Conv norm = 3.71e+06, max dI(VDD:p) = -5.7207 mA, took 5.16529 ks.",
+    "Conv norm = 127e+03, max dI(VDD:p) = 247.852 uA, took 2.3007 ks.",
+    "Conv norm = 335e+03, max dV(XP.data) = 84.4166 mV, took 2.22973 ks.",
+    "Conv norm = 3.19e+06, max dI(VDD:p) = -5.03335 mA, took 2.23878 ks.",
+    "Conv norm = 2.34e+06, max dI(XP.VVCO:p) = 4.64361 mA, took 2.23025 ks."
+  ],
+  "cancellation": {
+    "stopped": true,
+    "signal": "SIGINT",
+    "pid": 239693,
+    "netlist": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/f3f911fb/core_pulsetrip_late_noise_tt.scs",
+    "time": "2026-10-04T08:12:00.159831+08:00",
+    "reason": "Four residuals127k335k3.19M2.34M: later physical seed lowers initial norm but does not restore convergence. Preserve initialization trajectory for phase-boundary diagnosis; no PNoise acceptance."
+  },
+  "raw_tstab": {
+    "path": "research/runs/spectre_cmos_v14_full/coretriplate01/core_pulsetrip_late_noise_tt/core_pulsetrip_late_noise_tt.raw/pss.tran.pss",
+    "bytes": 1975192284,
+    "sha256": "7bd69cb8f602f58a1d4438cd6eb89de62c48ddcf9219388fdb1a7bc7dc63aeb7"
+  },
+  "pnoise_ran": false,
+  "periodic_state_valid": false,
+  "segmentation_fault_after_stop": true,
+  "interpretation": "Complete log: five residuals3.71M/127k/335k/3.19M/2.34M; first essentially unchanged versus prior3.7M. No validPSS; no eventual nonexistence claim.",
+  "next": "Inspect the recovered actual initialization trajectory before selecting a single controlled follow-up. No automatic solver sweep or fullband dispatch.",
+  "full_pll_acceptance": false,
+  "progress_summary_correction": "24-line remote tail omitted first3.71M. Earlier commentary and preserved cancellation reason incorrectly counted four and called127kfirst;29xfirst-residual reduction is withdrawn."
+}
