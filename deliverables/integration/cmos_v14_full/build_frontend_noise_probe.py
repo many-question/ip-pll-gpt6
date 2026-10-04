@@ -19,7 +19,10 @@ def main():
     assert v['complete'] and v['periodic_all_passed'] and v['local_gain_verified'] and v['balanced_center_verified']
     center=v['cases'][1];assert center['amplitude_good_fraction']>.999 and center['phase_good_fraction']>.999
     source=H/'tb'/(center['case']+'.scs');body=source.read_text();assert 'pnoise' not in body
+    allproof=None
     if a.group!='all':
+        allproof=H/'results'/f'frontend_noise_r{a.round}_all_validation.json'
+        allv=json.loads(allproof.read_text());assert allv['noise_valid'] and allv['balanced_center_verified']
         body,n=re.subn(r'^(simulatorOptions options .*)$',lambda m:m[0]+' noiseon_inst=['+' '.join(GROUPS[a.group])+'] noiseon_type=all',body,flags=re.M);assert n==1
     body+='\nsave '+' '.join(CP_OBSERVATIONS)+'\n'
     body+='\npn pnoise oprobe=VO values=[10k 1M 10M] maxsideband=4095 pnoisemethod=fullspectrum\n'
@@ -35,6 +38,7 @@ def main():
            limitations=v['limitations']+['Current-noise points use a noiseless control clamp. Frequency-dependent loop impedance and LC loading are excluded.',
            'Static Kphi supplies a low-frequency equivalent phase-noise estimate only, not an exact dynamic transfer.',
            'No integration of three isolated PSD points. Fresh isolated noise-on must be checked against the all-noise device contributions.'])
+    if allproof is not None:p.update(all_noise_validation=allproof.name,all_noise_validation_sha256=sha(allproof))
     pp=H/'results'/f'frontend_noise_r{a.round}_{a.group}_protocol.json';assert not pp.exists()
     pp.write_text(json.dumps(p,indent=2)+'\n');print(json.dumps(dict(run=p['run'],case=case,phase_deg=center['phase_deg']),indent=2))
 

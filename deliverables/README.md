@@ -1,4 +1,4 @@
-本次快照：[第52次汇报](../reports/2026-10-04T1847.yaml)。RT4在SS60和FF0的完整频带噪声精度检查通过，分别约87.37fs和38.84fs；VCO同载频对照通过，六点定时噪声PSD降低0.36–1.10dB，已补跑密集谱。CP尾部端电流已与内部电阻性电流区分。整机抖动仍未验收。
+本次快照：[第53次汇报](../reports/2026-10-04T1913.yaml)。前端器件噪声与四点相位频响已完成：参考缓冲主导10kHz噪声，1–10MHz由参考缓冲和CP共同占主要贡献。六组独立noise-on已启动，参考缓冲尺寸候选开始独立验证。完整PLL抖动仍未验收。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

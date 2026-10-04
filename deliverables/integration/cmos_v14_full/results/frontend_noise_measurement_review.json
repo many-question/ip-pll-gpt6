@@ -1,0 +1,71 @@
+{
+  "scope": "Join completed frontend noise points to measured PAC gain without integration.",
+  "noise_validation_sha256": "30cf61f8ad59c4bfee0d2d4bb6eb29aacf551bcc8f428eceafcba136d2c6306c",
+  "pac_validation_sha256": "65911432cc5b2201d7168c1df0e184be46831ed4c87b376bb1c59fbe8ec4323c",
+  "condition": "TT27/1.2V/24MHzref/3.936GHzidealRF/physicalreference+sampler+CP+bias+pulser+validity; externalcontrolclamp,1.9pFrefloadapproximation.",
+  "rf_hz": 3936000000.0,
+  "phase_deg": 196.74700280983583,
+  "points": [
+    {
+      "offset_hz": 10000.0,
+      "current_asd_a_per_sqrt_hz": 1.953170577173223e-12,
+      "gain_magnitude_a_per_rf_rad": 4.459041141278479e-07,
+      "gain_phase_relative_static_deg": -0.040993284247450426,
+      "input_equivalent_rf_phase_psd_rad2_per_hz": 1.9186572012479162e-11,
+      "input_equivalent_timing_asd_fs_per_sqrt_hz": 0.17711842265178157,
+      "group_variance_fraction": {
+        "reference": 0.7085528777936297,
+        "sampler": 0.1936258719543171,
+        "charge_pump": 0.07770863276577637,
+        "pulser": 0.00010773019975834618,
+        "bias": 0.01926258239033128,
+        "validity": 0.000742304896187089
+      }
+    },
+    {
+      "offset_hz": 1000000.0,
+      "current_asd_a_per_sqrt_hz": 8.281384102347996e-13,
+      "gain_magnitude_a_per_rf_rad": 4.465147506089357e-07,
+      "gain_phase_relative_static_deg": -4.764229913586512,
+      "input_equivalent_rf_phase_psd_rad2_per_hz": 3.439808266573804e-12,
+      "input_equivalent_timing_asd_fs_per_sqrt_hz": 0.07499497415829458,
+      "group_variance_fraction": {
+        "reference": 0.38041987781252135,
+        "sampler": 0.19734446409799689,
+        "charge_pump": 0.33995196164791125,
+        "pulser": 0.00012321896828202425,
+        "bias": 0.07903653717344329,
+        "validity": 0.0031239402998456396
+      }
+    },
+    {
+      "offset_hz": 10000000.0,
+      "current_asd_a_per_sqrt_hz": 6.913562892391726e-13,
+      "gain_magnitude_a_per_rf_rad": 3.734296381662816e-07,
+      "gain_phase_relative_static_deg": -43.34515411309836,
+      "input_equivalent_rf_phase_psd_rad2_per_hz": 3.427569489001066e-12,
+      "input_equivalent_timing_asd_fs_per_sqrt_hz": 0.07486143987193858,
+      "group_variance_fraction": {
+        "reference": 0.33594825068929335,
+        "sampler": 0.1844640272555715,
+        "charge_pump": 0.39789172063470984,
+        "pulser": 0.0007603121554278973,
+        "bias": 0.07775664572314299,
+        "validity": 0.0031790435418550824
+      }
+    }
+  ],
+  "accepted_pss_snapshot_confirmed": true,
+  "first_noise_point_snapshot_confirmed": true,
+  "snapshot_manifest_sha256": "7517eae99e10d08cf4df0c53de054a3726612e735afbad29d9d1610c93f5a147",
+  "first_point_manifest_sha256": "e239125d6cab9cb32319e9f5915200b4b040955c0a8e4d9c2e014a63a2a7b41c",
+  "integrated_jitter_fs": null,
+  "full_pll_acceptance": false,
+  "main_dut_modified": false,
+  "limitations": [
+    "Inputreferral uses the measured sideband0 current response at each exact frequency, no interpolation.",
+    "This input-equivalent noise is not the closed-loop outputnoise; loopfilter,VCO,coupling and FLL dynamics are absent.",
+    "Three points cannot establish an integrated noise budget or the band-integrated dominant group.",
+    "Fresh per-group noise-on and numerical/PVT checks remain necessary."
+  ]
+}

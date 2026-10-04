@@ -1,0 +1,46 @@
+{
+  "scope": "Probe RF phase to CP baseband current with fresh PSS and four PAC points.\n\nThe external measured-waveform source gains an electrical phase port. One\nvolt on this port adds one RF radian to every harmonic's common phase.\nThe actual frontend and its DC operating point are otherwise unchanged.\n",
+  "run": "frontendpac01",
+  "case": "frontend_phase_transfer_r2_tt",
+  "time": "2026-10-04T18:52:23.524274+08:00",
+  "source_validation": "frontend_local_gain2_validation.json",
+  "source_validation_sha256": "16e3f03a818d0fbd64aac1a407f908c361a9c9f6ec7b01883c1b69dc94623682",
+  "source_result": "research/runs/spectre_cmos_v14_full/frontendlocal02/frontend_local2_center_tt/result.json",
+  "source_sha256": "5dc6b9d127e771483869786484ad9eab5feccc38de137d8145eed9f8d36d546d",
+  "source_tb_sha256": "21984b397de8f1ecddf67c8316a8e26aa4a58f840f153c93afd1f1a499b21c92",
+  "source_va_sha256": "fc494076ad067ced3730e38c1ba75a1205bcc03a45eef4062061f08d05cd0bf3",
+  "phase_deg": 196.74700280983583,
+  "signed_static_gain_a_per_rf_rad": -4.4569386603577556e-07,
+  "condition": "TT27/1.2V/24MHzref/3.936GHzidealRF/physicalreference+sampler+CP+bias+pulser+validity; externalcontrolclamp,1.9pFrefloadapproximation.",
+  "control_clamp_v": 0.668428925600659,
+  "tb_sha256": "c019622678eea22857a5b1bdcdd8181229c2305fed97e070c63101e24564aeb5",
+  "dependencies_sha256": {
+    "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+    "cp_physical_v14.scs": "ea3cd7184cafd899db18d5d9286adca6c2ffb861e9af2504afd1ea9bb702cc76",
+    "cp_timing.scs": "87a42f85028580ab52cc6d08a2514e4295dc93e4be0e019f52cb55964ae50fde",
+    "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+    "sampler_bias_v5.scs": "fe966831e65b04ee641625abc5187748bac130ea8d68babe17f33dc948c9cd67",
+    "validity_physical_v14.scs": "4adda2d6a864ac7ae7478c157989ea34d0901f52cf1f7b6bca2ec3238244f27f",
+    "tank_replay_pm_v14.va": "1c21db0425350f1b2acb0c9a2f83e02f437d3861f816d88024370bca88d9e09b"
+  },
+  "offsets_hz": [
+    10000.0,
+    100000.0,
+    1000000.0,
+    10000000.0
+  ],
+  "phase_port_scale_rf_rad_per_v": 1,
+  "low_frequency_relative_complex_error_limit": 0.02,
+  "balanced_phase_limit_rad": 0.0005,
+  "launch_scope": "One short diagnostic slot, one thread, fresh PSS and four PAC points; 3600s guard.",
+  "main_dut_modified": false,
+  "full_pll_acceptance": false,
+  "noise_measured": false,
+  "limitations": [
+    "RF source is noiseless and zero impedance; actual LC loading/backaction is absent.",
+    "Baseband CP-current response is not full closed-loop PLL phase transfer.",
+    "PAC is a derivative about the measured periodic orbit, not finite one-radian modulation.",
+    "Four points locate dynamic effects; no full-band integration or PVT qualification.",
+    "Only external RF stimulus changes; static gain must agree at10kHz within2% complex error."
+  ]
+}

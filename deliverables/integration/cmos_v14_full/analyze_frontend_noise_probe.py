@@ -61,6 +61,7 @@ def main():
                        top_device_components_a2_per_hz={n:{k:v.tolist() for k,v in values.items()} for n,values in components.items()})
             if a.group!='all':
                 allpath=H/'results'/f'frontend_noise_r{a.round}_all_validation.json';allv=json.loads(allpath.read_text());assert allv['noise_valid']
+                assert allpath.name==p['all_noise_validation'] and sha(allpath)==p['all_noise_validation_sha256']
                 baseline=np.array(allv['group_psd_a2_per_hz'][a.group]);assert np.all(baseline>0)
                 delta=10*np.log10(sv/baseline)
                 out['isolated_vs_all_group_check']=dict(all_result_sha256=sha(allpath),psd_change_db=delta.tolist(),passed=bool(max(abs(delta))<.1))

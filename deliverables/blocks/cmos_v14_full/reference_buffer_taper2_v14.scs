@@ -1,0 +1,8 @@
+simulator lang=spectre
+// Noise candidate; original reference-buffer cell remains unchanged.
+subckt reference_buffer_taper2_v14 (inp out vdd vss)
+X0 (inp a vdd vss) pll_inv wn=8u wp=20u
+X1 (a b vdd vss) pll_inv wn=16u wp=40u
+X2 (b c vdd vss) pll_inv wn=32u wp=80u
+X3 (c out vdd vss) pll_inv wn=64u wp=160u
+ends reference_buffer_taper2_v14
