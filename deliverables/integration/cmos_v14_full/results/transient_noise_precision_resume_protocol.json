@@ -1,0 +1,38 @@
+{
+  "scope": "Run only the three unlaunched RC bandwidth controls with a600s client limit.",
+  "original_protocol_sha256": "db0d0d3d99fdd7fe37fa9d4b76d1b8602aba0eabd4466af5b6a9c3e8ec41f95f",
+  "prior_pipeline_sha256": "d068e4a72dcf708c786c4485ed081f9f12e7f18d3a43edd8bbd8088505083d0d",
+  "completed_first_two_sha256": "503b0bf1799bfb891fa777ff6f91700a7aeca301d3a9335f18039d2f7e1d10d0",
+  "completion_supplement_sha256": "a5835ecdbd728900cb19ef1d5057831f3cf4d174b59cdd279500cce72fff3d9b",
+  "cases": [
+    {
+      "run": "noisercprecision40g1p",
+      "case": "noise_recover_rc_seed",
+      "noisefmax": 40000000000.0,
+      "noisefmin": 1000000.0,
+      "noiseseed": 11,
+      "maxstep": "1p"
+    },
+    {
+      "run": "noisercprecision80g1p",
+      "case": "noise_recover_rc_seed",
+      "noisefmax": 80000000000.0,
+      "noisefmin": 1000000.0,
+      "noiseseed": 11,
+      "maxstep": "1p"
+    },
+    {
+      "run": "noisercprecision80g1ps29",
+      "case": "noise_recover_rc_seed",
+      "noisefmax": 80000000000.0,
+      "noisefmin": 1000000.0,
+      "noiseseed": 29,
+      "maxstep": "1p"
+    }
+  ],
+  "timeout_s": 600,
+  "reason": "The1ps original remote case completed with zero errors in311s, after the300s client wait limit. Inputs/raw/state were recovered and verified; preserve the original failed result. Do not repeat either completed case.",
+  "numerical_parameters_unchanged": true,
+  "no_retries": true,
+  "full_pll_acceptance": false
+}

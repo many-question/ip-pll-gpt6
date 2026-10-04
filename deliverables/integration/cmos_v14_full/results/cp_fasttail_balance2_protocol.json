@@ -1,0 +1,66 @@
+{
+  "scope": "Build measured-current-guided phase brackets for a separate physical CP trial.",
+  "time": "2026-10-04T22:13:16.501164+08:00",
+  "variant": "fasttail",
+  "round": 2,
+  "cases": [
+    {
+      "case": "cp_fasttail_r2_lo_tt",
+      "run": "cpfasttailbalance02",
+      "phase_deg": 193.7559534059941,
+      "tb_sha256": "e902903aabb63210f64e9c1da0e685ea0e00a6f6c79d018de44b8ebd922def53"
+    },
+    {
+      "case": "cp_fasttail_r2_center_tt",
+      "run": "cpfasttailbalance02",
+      "phase_deg": 194.7559534059941,
+      "tb_sha256": "0c8e1a0f15d3d68c5fc65da1dd00bd2e73a800ea523f7908a47bcc1ac178e951"
+    },
+    {
+      "case": "cp_fasttail_r2_hi_tt",
+      "run": "cpfasttailbalance02",
+      "phase_deg": 195.7559534059941,
+      "tb_sha256": "b3630a75d08d429a11eb5b4d735995d2fc10ffd6e4198a4a131e8bfe2b912444"
+    }
+  ],
+  "source_validation": "cp_fasttail_balance1_validation.json",
+  "source_validation_sha256": "bfccdfabef7298727db6d876ed302ef492523571c83178bfc4e6b7c3a24d7ad5",
+  "operating_validation": "cp_fasttail_branch_validation.json",
+  "operating_validation_sha256": "bd4905a0d6ef5bd62421bf026b186da9313ce33322af4020d24b341c998d0dfb",
+  "baseline_gain_validation_sha256": "16e3f03a818d0fbd64aac1a407f908c361a9c9f6ec7b01883c1b69dc94623682",
+  "source_result": "research/runs/spectre_cmos_v14_full/cpfasttailbranch01/cp_fasttail_branch_tt/result.json",
+  "source_result_sha256": "fbaa79f2d3de314c0c8230090e3d35bbd0f09c3578c1d735b8bf75f6dd4465c1",
+  "source_input_sha256": "e40f031d9c2dea505284dc772ac42a425d550d7d5dda0f6cd4df9ed91f2e8f67",
+  "dependencies_sha256": {
+    "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+    "cp_fasttail_probe_v14.scs": "52bb6df281d310e55d402ab4ed8496a4b612a8e8e73d7c7a3875e4c3849d4b12",
+    "cp_timing.scs": "87a42f85028580ab52cc6d08a2514e4295dc93e4be0e019f52cb55964ae50fde",
+    "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+    "sampler_bias_v5.scs": "fe966831e65b04ee641625abc5187748bac130ea8d68babe17f33dc948c9cd67",
+    "tank_replay_phase_v14.va": "fc494076ad067ced3730e38c1ba75a1205bcc03a45eef4062061f08d05cd0bf3",
+    "validity_physical_v14.scs": "4adda2d6a864ac7ae7478c157989ea34d0901f52cf1f7b6bca2ec3238244f27f"
+  },
+  "condition": "TT27/1.2V/24MHzref/3.936GHzidealRF/physicalreference+sampler+CP+bias+pulser+validity; externalcontrolclamp,1.9pFrefloadapproximation. Physical trial: Tail MT 10um/1um -> 1.8um/0.18um, same nominal W/L; preserve the same three zero-volt branch probes.",
+  "control_clamp_v": 0.668428925600659,
+  "proposed_center_deg": 194.7559534059941,
+  "center_method": "Quadratic interpolation of three measured currents.",
+  "half_width_deg": 1,
+  "engineering_gates": {
+    "local_half_slope_relative_difference": 0.05,
+    "residual_phase_rad": 0.0005
+  },
+  "main_dut_modified": false,
+  "noise_measured": false,
+  "full_pll_acceptance": false,
+  "launch_scope": "Three serial fresh PSS cases,1thread each,1200s each; verify a free long slot. No automatic launch.",
+  "limitations": [
+    "The original unprobed fasttail trial remains unlaunched; this is a separate controlled pair with verified measurement branches.",
+    "TG/MOFF reported MOS currents disagreed with independent branch currents in the baseline. Gate KCL must use the branches, without changing signs to fit.",
+    "The exact simulator/model-internal reason for the terminal-report disagreement is not established.",
+    "Equal nominal W/L does not guarantee equal current, output resistance, noise, mismatch or PVT.",
+    "This same-phase operating trial is not rebalanced; improved settling must be followed by actual gain, balance and device-noise measurements.",
+    "Initial center extrapolates baseline gain; a measured bracket and local gain are required.",
+    "Only extra observations are removed relative to the operating trial; all physical circuits, branch probes and solver parameters remain.",
+    "Three DC-average current samples are not a dynamic transfer function or a noise validation."
+  ]
+}

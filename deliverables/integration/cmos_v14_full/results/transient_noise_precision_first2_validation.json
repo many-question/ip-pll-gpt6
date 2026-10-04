@@ -1,0 +1,82 @@
+{
+  "scope": "Audit native RC noise precision without promoting it to a PLL noise result.",
+  "protocol_sha256": "db0d0d3d99fdd7fe37fa9d4b76d1b8602aba0eabd4466af5b6a9c3e8ec41f95f",
+  "condition": "Analytic one-pole resistor/capacitor; R=1kOhm,C=1pF,T=300.15K,1.2V noiseless drive. No PDK/MOS or PLL.",
+  "cases": [
+    {
+      "run": "noisercprecision10g10p",
+      "case": "noise_recover_rc_seed",
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/noisercprecision10g10p/noise_recover_rc_seed/result.json",
+      "source_sha256": "3cd75e01537c6d4c6586a886119533df5465143f387cc5e8c820aae10c4081c1",
+      "noise_bandwidth_hz": 10000000000.0,
+      "maxstep": "10p",
+      "seed": 11,
+      "samples": 480001,
+      "blocks": 48,
+      "mean_v": 1.2000000047845831,
+      "variance_v2": 3.937586212449852e-09,
+      "rms_v": 6.275018894353906e-05,
+      "expected_variance_v2": 4.102033837551527e-09,
+      "kT_over_C_v2": 4.144017973500001e-09,
+      "relative_variance_error": -0.040089290243356945,
+      "relative_variance_standard_error": 0.006555395198517699,
+      "mean_standard_error_v": 3.948686234808384e-07,
+      "mean_check_passed": true,
+      "fine_precision_passed": false,
+      "raw_cache_sha256": "2bde18515f6d2b9b01859d72f7584cdcdc7dcb2896fdf0dd563027312d4ac284"
+    },
+    {
+      "run": "noisercprecision10g1p",
+      "case": "noise_recover_rc_seed",
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/noisercprecision10g1p/noise_recover_rc_seed/completed_result.json",
+      "source_sha256": "a5835ecdbd728900cb19ef1d5057831f3cf4d174b59cdd279500cce72fff3d9b",
+      "noise_bandwidth_hz": 10000000000.0,
+      "maxstep": "1p",
+      "seed": 11,
+      "samples": 480001,
+      "blocks": 48,
+      "mean_v": 1.2000000047847184,
+      "variance_v2": 3.9375552639135046e-09,
+      "rms_v": 6.274994234191379e-05,
+      "expected_variance_v2": 4.102033837551527e-09,
+      "kT_over_C_v2": 4.144017973500001e-09,
+      "relative_variance_error": -0.04009683492425753,
+      "relative_variance_standard_error": 0.00655535718289349,
+      "mean_standard_error_v": 3.948686879895778e-07,
+      "mean_check_passed": true,
+      "fine_precision_passed": false,
+      "raw_cache_sha256": "76fdd87f551d412fc98535b109439a13838c429cce038c6f1eb4f45c69661cf7"
+    },
+    {
+      "run": "noisercprecision40g1p",
+      "case": "noise_recover_rc_seed",
+      "completed": false
+    },
+    {
+      "run": "noisercprecision80g1p",
+      "case": "noise_recover_rc_seed",
+      "completed": false
+    },
+    {
+      "run": "noisercprecision80g1ps29",
+      "case": "noise_recover_rc_seed",
+      "completed": false
+    }
+  ],
+  "complete": false,
+  "precision_passed": false,
+  "full_pll_acceptance": false,
+  "main_dut_modified": false,
+  "limitations": [
+    "This tests source-noise activation and deterministic-state recovery only; it does not validate nonlinear PLL noise or coloured-noise folding.",
+    "Noisefmin is a device-noise spectrum corner, not a highpass measurement cutoff. Resistor source is white in this control.",
+    "Sub-10kHz and10kHz PLL observations need a much longer actual record; this short control cannot validate the full requested jitter band.",
+    "Native recovery is within transient analysis; no transfer to PSS and no readpss reuse.",
+    "The initial10% RC gate only established noise activation. Its systematic deficit is preserved and motivates this tighter control.",
+    "One-microsecond blocks are long relative to the1nsRC time constant; their standard error is an approximate finite-record diagnostic.",
+    "Different bandwidths/seeds need not generate paired random samples. Bandwidth comparison includes sampling uncertainty.",
+    "RC convergence does not establish MOS flicker noise, nonlinear folding, or PLL jitter accuracy."
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "scope": "Check RC source noise after native recovery against thermal-noise variance.",
+  "protocol_sha256": "d694417c4f1a2f92c9bf8013984345f3a60077ce452a8932f68da488088c1efd",
+  "condition": "Analytic one-pole resistor/capacitor; R=1kOhm,C=1pF,T=300.15K,1.2V noiseless drive. No PDK/MOS or PLL.",
+  "cases": [
+    {
+      "run": "noiserecoveroff01",
+      "case": "noise_recover_rc_seed",
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/noiserecoveroff01/noise_recover_rc_seed/result.json",
+      "source_sha256": "cd92a8bf7a67a34d4a8dd5d04e93f86a24d7e403672da1cbd815ae00bd0a1ad0",
+      "valid": true,
+      "noise_bandwidth_hz": 0.0,
+      "samples": 79000,
+      "mean_v": 1.1999999999999997,
+      "variance_v2": 4.930443068303074e-32,
+      "expected_variance_v2": 0.0,
+      "relative_variance_error": null,
+      "rms_v": 2.220460102839741e-16,
+      "mean_standard_error_estimate_v": 0.0,
+      "raw_cache_sha256": "530b0874340c493c372dbc6a4583d53e23d2f4d49279d38164281e6c2c233118"
+    },
+    {
+      "run": "noiserecoveron11",
+      "case": "noise_recover_rc_seed",
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/noiserecoveron11/noise_recover_rc_seed/result.json",
+      "source_sha256": "af2ef0a88c2622f89311c7e5b67e814518fe041ac4210d46b3f4ba4a89a5bb7f",
+      "valid": true,
+      "noise_bandwidth_hz": 10000000000.0,
+      "samples": 79001,
+      "mean_v": 1.19999950114634,
+      "variance_v2": 3.8248270409710025e-09,
+      "expected_variance_v2": 4.102033837551526e-09,
+      "relative_variance_error": -0.06757789125064506,
+      "rms_v": 6.18451860775841e-05,
+      "mean_standard_error_estimate_v": 1.0190630888791368e-06,
+      "raw_cache_sha256": "6ab2046c7b4901401b812688f1b35ab54d450368db0107ec2e8fc931bf8b84bc"
+    },
+    {
+      "run": "noiserecoveron29",
+      "case": "noise_recover_rc_seed",
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/noiserecoveron29/noise_recover_rc_seed/result.json",
+      "source_sha256": "3c9683337e39bacf7442b5c77bcaa5687dcd0ff284b04f6ccae3e66548006c16",
+      "valid": true,
+      "noise_bandwidth_hz": 10000000000.0,
+      "samples": 79001,
+      "mean_v": 1.2000004813730036,
+      "variance_v2": 3.870322044641855e-09,
+      "expected_variance_v2": 4.102033837551526e-09,
+      "relative_variance_error": -0.05648705059146408,
+      "rms_v": 6.221191240141919e-05,
+      "mean_standard_error_estimate_v": 1.0190630888791368e-06,
+      "raw_cache_sha256": "73f3844d5acbe383fc58355730e29f0ad427c608ad8946f86a813d5980336d22"
+    },
+    {
+      "run": "noiserecover20g",
+      "case": "noise_recover_rc_seed",
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/noiserecover20g/noise_recover_rc_seed/result.json",
+      "source_sha256": "18c81d337627f7759c0bb42635d55e6af19bcd12623180fcc54e4965fb903744",
+      "valid": true,
+      "noise_bandwidth_hz": 20000000000.0,
+      "samples": 79000,
+      "mean_v": 1.199999455399059,
+      "variance_v2": 3.972913628793552e-09,
+      "expected_variance_v2": 4.1230245763278126e-09,
+      "relative_variance_error": -0.036407968168833404,
+      "rms_v": 6.303105289294755e-05,
+      "mean_standard_error_estimate_v": 1.0216735795163389e-06,
+      "raw_cache_sha256": "7a747e40e5762ee114717677541b2ba9d1dfead3a5b45b813faaa5be89dbd987"
+    },
+    {
+      "run": "noiserecoverdirect01",
+      "case": "noise_recover_rc_direct",
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/noiserecoverdirect01/noise_recover_rc_direct/result.json",
+      "source_sha256": "35b952131d6a664c17da384856c87fd60cd2c4d8a9d1ba3964dee166cebfe98a",
+      "valid": true,
+      "noise_bandwidth_hz": 10000000000.0,
+      "samples": 79001,
+      "mean_v": 1.2000002425839817,
+      "variance_v2": 3.828277837736883e-09,
+      "expected_variance_v2": 4.102033837551526e-09,
+      "relative_variance_error": -0.0667366508068703,
+      "rms_v": 6.18730784569257e-05,
+      "mean_standard_error_estimate_v": 1.0190630888791375e-06,
+      "raw_cache_sha256": "19bdd5fdc41b314e0dca120a1358505c040dbad66cddcb3e97d65ed9aa5408df"
+    }
+  ],
+  "complete": true,
+  "passed": true,
+  "comparisons": {
+    "noiserecoveron11_vs_direct": {
+      "relative_variance_change": -0.0009013966363321524,
+      "passed": true
+    },
+    "noiserecoveron29_vs_direct": {
+      "relative_variance_change": 0.010982538020235966,
+      "passed": true
+    },
+    "20g_vs_10g": {
+      "relative_variance_change": 0.03871719851283917,
+      "passed": true
+    }
+  },
+  "full_pll_acceptance": false,
+  "main_dut_modified": false,
+  "limitations": [
+    "This tests source-noise activation and deterministic-state recovery only; it does not validate nonlinear PLL noise or coloured-noise folding.",
+    "Noisefmin is a device-noise spectrum corner, not a highpass measurement cutoff. Resistor source is white in this control.",
+    "Sub-10kHz and10kHz PLL observations need a much longer actual record; this short control cannot validate the full requested jitter band.",
+    "Native recovery is within transient analysis; no transfer to PSS and no readpss reuse."
+  ]
+}

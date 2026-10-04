@@ -8,10 +8,20 @@ import numpy as np
 from virtuoso_bridge.spectre.parsers import parse_psf_ascii_directory
 H=Path(__file__).resolve().parent;ROOT=H.parents[3]
 REMOTE='/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full'
-p=argparse.ArgumentParser();p.add_argument('run');p.add_argument('case');a=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('run');p.add_argument('case')
+p.add_argument('--supplement-timeout',action='store_true',help='Keep a failed client-timeout result.json and write completed_result.json separately')
+a=p.parse_args()
 assert a.run.isalnum() and a.case.replace('_','').isalnum()
 w=ROOT/'research/runs/spectre_cmos_v14_full'/a.run/a.case
-assert not (w/'result.json').exists(),'Use existing result manifest; do not overwrite it.'
+original=w/'result.json'
+target=w/('completed_result.json' if a.supplement_timeout else 'result.json')
+original_sha=None
+if a.supplement_timeout:
+ assert original.exists() and not target.exists()
+ old=json.loads(original.read_text())
+ assert not old['ok'] and any('timed out' in x for x in old['errors'])
+ original_sha=hashlib.sha256(original.read_bytes()).hexdigest()
+else:assert not original.exists(),'Use existing result manifest; do not overwrite it.'
 cmd=re.search(r'^\[Command\] (.+)$',(w/'runner.log').read_text(),re.M)[1]
 net=next(x for x in shlex.split(cmd) if x.endswith('.scs'));remote=str(PurePosixPath(net).parent)
 assert re.fullmatch(re.escape(REMOTE)+r'/[a-f0-9]{8}',remote)
@@ -43,6 +53,8 @@ with archive.open('wb') as f:
  subprocess.run(ssh+['tar -czf - -C '+shlex.quote(remote)+' '+shlex.quote(a.case+'.raw')+' spectre.out'],stdout=f,check=True,timeout=300)
 with tarfile.open(archive) as tf:tf.extractall(w,filter='data')
 assert all(sha(w/k)==v for k,v in rawhash.items()),'Raw transport hash mismatch'
+after=read('cd '+shlex.quote(remote)+' && sha256sum '+' '.join(shlex.quote(x) for x in rawfiles)).decode()
+assert {x.split()[1]:x.split()[0] for x in after.splitlines()}==rawhash,'Raw files changed during completed-job recovery'
 final=re.search(r'writefinal="([^"]+)"',tb)[1];assert final.startswith(REMOTE+'/')
 blob=read('cat '+shlex.quote(final));fh=read('sha256sum '+shlex.quote(final)).decode().split()[0]
 assert hashlib.sha256(blob).hexdigest()==fh;(w/'final.ic').write_bytes(blob)
@@ -52,10 +64,15 @@ np.savez_compressed(w/'waveforms.npz',**data)
 rec=dict(case=a.case,time=datetime.datetime.now().astimezone().isoformat(),ok=True,errors=[],
  recovery_note='Original local runner/finalizer processes were absent. Completed remote simulation recovered without rerunning; simulator zero-error status, frozen inputs and raw waveform hashes verified.',
  metadata=dict(spectre_command=cmd),initial_states=launch.get('initial_states',{}),native_state=native,numerical_overrides=launch.get('numerical_overrides',{}),
+ transient_noise_overrides=launch.get('transient_noise_overrides',{}),
  inputs_sha256=local,remote_inputs_sha256=rh,remote_inputs_match=True,
  remote_outputs_sha256=rawhash,state_file=dict(remote=final,collected=True,sha256=fh,remote_hash_match=True),
  signals={k:len(v) for k,v in data.items()},final_values={k:float(v[-1]) for k,v in data.items() if len(v) and np.isrealobj(v) and np.isfinite(v[-1])})
 rec['local_outputs_sha256']={x.name:sha(x) for x in w.iterdir() if x.is_file() and x.name not in ['result.json','finalization.json']}
-(w/'result.json').write_text(json.dumps(rec,indent=2)+'\n')
-(w.parent/'index.json').write_text(json.dumps([rec],indent=2)+'\n')
+if a.supplement_timeout:
+ assert sha(original)==original_sha
+ rec.update(original_client_result_sha256=original_sha,original_client_failure_preserved=True)
+ rec['recovery_note']='Client timed out, but the original remote simulation later completed with zero errors. Original result.json is preserved; completed waveform, state and inputs were recovered without rerunning.'
+target.write_text(json.dumps(rec,indent=2)+'\n')
+if not a.supplement_timeout:(w.parent/'index.json').write_text(json.dumps([rec],indent=2)+'\n')
 print('Recovered',a.run,a.case,len(data),'signals; final time',data['time'][-1])

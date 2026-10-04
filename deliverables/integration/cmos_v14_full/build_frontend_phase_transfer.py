@@ -25,7 +25,8 @@ def main():
     r=json.loads(rp.read_text());src=rp.parent/'inputs'/(c['case']+'.scs')
     old=B/'tank_replay_phase_v14.va';assert sha(old)==r['inputs_sha256'][old.name]
     name='tank_replay_pm_v14';va=B/(name+'.va')
-    case=prefix+'_tt' if args.cp_variant or args.reference_candidate else 'frontend_phase_transfer_r2_tt'
+    case=(f'reference_frontend_r{args.round}_phase_transfer_tt' if args.reference_candidate else
+          (prefix+'_tt' if args.cp_variant else 'frontend_phase_transfer_r2_tt'))
     tb=H/'tb'/(case+'.scs');pp=H/'results'/(prefix+'_protocol.json')
     assert not any(x.exists() for x in [tb,pp])
     a=old.read_text().replace('tank_replay_phase_v14',name)

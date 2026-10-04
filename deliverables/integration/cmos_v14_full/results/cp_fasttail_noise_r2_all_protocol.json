@@ -1,0 +1,75 @@
+{
+  "scope": "Three-point fresh-PSS current-noise probe at a measured balanced frontend.\n\nGenerate only after the local gain and centre have actually passed. The\nclamped output current PSD is module evidence, not closed-loop PLL jitter.\n",
+  "run": "cpfasttailnoise2all",
+  "case": "cp_fasttail_noise_r2_all_tt",
+  "group": "all",
+  "phase_deg": 194.7559534059941,
+  "source_validation": "cp_fasttail_balance2_validation.json",
+  "source_validation_sha256": "86cba9202ece1ed31e84c28257cda5b8c9beaab5e447b2d6c360a1180fb70fc1",
+  "source_case": "cp_fasttail_r2_center_tt",
+  "source_run": "cpfasttailbalance02",
+  "source_tb_sha256": "0c8e1a0f15d3d68c5fc65da1dd00bd2e73a800ea523f7908a47bcc1ac178e951",
+  "tb_sha256": "e6242c1064c2740399d4a075f65ffc87c4ede8322a318fb6873a23a85a703fff",
+  "condition": "TT27/1.2V/24MHzref/3.936GHzidealRF/physicalreference+sampler+CP+bias+pulser+validity; externalcontrolclamp,1.9pFrefloadapproximation. Physical trial: Tail MT 10um/1um -> 1.8um/0.18um, same nominal W/L; preserve the same three zero-volt branch probes.",
+  "control_clamp_v": 0.668428925600659,
+  "kphi_magnitude_a_per_rf_rad": 4.725185436226645e-07,
+  "noise_offsets_hz": [
+    10000.0,
+    1000000.0,
+    10000000.0
+  ],
+  "group_instances": {
+    "reference": [
+      "XREF"
+    ],
+    "sampler": [
+      "XS"
+    ],
+    "charge_pump": [
+      "XCP"
+    ],
+    "pulser": [
+      "XT"
+    ],
+    "bias": [
+      "XBM",
+      "RBP",
+      "RBN"
+    ],
+    "validity": [
+      "XDET"
+    ]
+  },
+  "balanced_phase_limit_rad": 0.0005,
+  "fresh_pss": true,
+  "extra_observations": [
+    "XCP.nb",
+    "XCP.ng",
+    "XCP.tail",
+    "XCP.mir",
+    "XCP.gate",
+    "XCP.gateb",
+    "XCP.MT:d",
+    "XCP.MIP:d",
+    "XCP.MIN:d",
+    "XCP.MPO:d",
+    "XCP.MPD:d"
+  ],
+  "main_dut_modified": false,
+  "full_pll_acceptance": false,
+  "time": "2026-10-04T22:45:10.450705+08:00",
+  "limitations": [
+    "The original unprobed fasttail trial remains unlaunched; this is a separate controlled pair with verified measurement branches.",
+    "TG/MOFF reported MOS currents disagreed with independent branch currents in the baseline. Gate KCL must use the branches, without changing signs to fit.",
+    "The exact simulator/model-internal reason for the terminal-report disagreement is not established.",
+    "Equal nominal W/L does not guarantee equal current, output resistance, noise, mismatch or PVT.",
+    "This same-phase operating trial is not rebalanced; improved settling must be followed by actual gain, balance and device-noise measurements.",
+    "Initial center extrapolates baseline gain; a measured bracket and local gain are required.",
+    "Only extra observations are removed relative to the operating trial; all physical circuits, branch probes and solver parameters remain.",
+    "Three DC-average current samples are not a dynamic transfer function or a noise validation.",
+    "Current-noise points use a noiseless control clamp. Frequency-dependent loop impedance and LC loading are excluded.",
+    "Static Kphi supplies a low-frequency equivalent phase-noise estimate only, not an exact dynamic transfer.",
+    "No integration of three isolated PSD points. Fresh isolated noise-on must be checked against the all-noise device contributions."
+  ],
+  "cp_variant": "fasttail"
+}

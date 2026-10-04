@@ -43,3 +43,21 @@
 对同一DAC放电核心、同一612项文本初值，AX与APS的tstab日志参数完全相同；进入PSS后，AX实际采用 `steadyratio=0.001, errpreset=moderate, relref=sigglobal`，APS采用 `0.01, conservative, alllocal`。两者显式1ps、Gear2和reltol/vabstol/iabstol相同，但有效PSS默认值不同。首个归一化范数3.69M→369k不能解释为物理误差改善：对应VDD支路误差分别约5.68063/5.6811mA。
 
 因此该试验保留为求解器及实际默认值的联合诊断。必须检查接受的周期波形、实际频率/边沿和噪声，不能按迭代范数的数值大小选择电路。证据：[有效设置快照](results/core_mode_settings_validation.json)、[只读回收入口](record_core_mode_settings.py)。源日志为运行中的部分日志，未宣称PSS或噪声完成。原APS协议中前驱结果路径与hash配对的文字错误也在补充记录中明确更正，冻结协议保留。
+
+## 2026-10-04：直接瞬态噪声与状态接续的控制试验
+
+整环周期解尚未通过，新增一条直接瞬态器件噪声路径的前置控制。它没有把失败的 PSS 当作噪声工作点，也没有把原生 tran 状态送入 PSS。入口是 [RC 协议](results/transient_noise_recovery_protocol.json)：先保存无噪声 RC 的原生瞬态状态，分别恢复为无噪声、两个随机种子的噪声，以及加倍源带宽；另跑直接开启噪声的对照。比较均值、热噪声方差和恢复时间。解析方差为
+
+`2 k T / (pi C) * atan(2 pi noisefmax R C)`，是单边热噪声 PSD 经实际 RC 滤波后的积分。
+
+预设方差允许误差为10%，包含有限长度统计波动；此门限用于短方法控制，不是 PLL 抖动的数值精度门限。即使 RC 通过，仍需实际 MOS、PLL 的源带宽、时间步长、记录长度、噪声种子及确定性杂散处理验证。
+
+本机 Spectre 21.1 的 `research/spectre_help/tran.txt` 明确说明 `noisefmax` 开启器件噪声并限制时间步长，`noisefmin` 以下为平坦谱。后者不是测量端的高通截止，不能用它代替10kHz抖动积分下限。当前版本帮助显示默认 `noisefmin=1 Hz`；[Cadence 对默认值的版本说明](https://community.cadence.com/cadence_technology_forums/f/custom-ic-design/63367/transient-simulation-with-noisefmin-blank/)与之相符，不能照搬早期版本“不指定便只有白噪声”的说法。
+
+[Cadence 对瞬态噪声记录长度的说明](https://community.cadence.com/cadence_technology_forums/f/custom-ic-design/41377/transient-noise-analyses-in-cadence/1359627)指出低频成分必须在足够长的记录中观察。项目推算：10kHz一个周期就是100µs；只有一个周期仍不足以给出稳定的统计精度。数微秒试验可先检查高频噪声、数值底噪与方法是否工作，不能据此签核10kHz–fOUT/2的完整指标。
+
+访问日期：2026-10-04。[Cadence 关于 tran/PSS 初态的说明](https://community.cadence.com/cadence_technology_forums/f/rf-design/28744/transient-results-as-starting-point-in-pss)也重新核对过；没有证据表明 `useprevic` 能绕过跨分析原生状态不兼容或本项目MOS `readpss` 噪声差异，因此未增加未经验证的全环PSS重试。
+
+控制实验已经完成：[恢复验证](results/transient_noise_recovery_validation.json)。同种子10GHz恢复与直接仿真的方差差为−0.0901%，但相对上述理想矩形带限解析积分，两个10GHz恢复结果低6.76%和5.65%，20GHz结果低3.64%。10%方法门限通过，只说明恢复开启噪声有效，不能宣称达到1%噪声精度。为分开有限记录、积分步长和源带宽影响，新增[48µs五例精度协议](results/transient_noise_precision_protocol.json)：10GHz的10ps/1ps对照、固定1ps的40/80GHz，以及80GHz第二种子；结果以实际完成的验证文件为准。
+
+上述解析式假定**矩形带限白噪声源**，不能预先把 `noisefmax` 等同于精确矩形滤波器。Cadence 的[2006年瞬态噪声应用说明](https://www.eecis.udel.edu/~vsaxena/courses/ece614/Handouts/Transient%20Noise%20Simulation.pdf)第4–5页给出了分段随机源及其 sinc² 频谱。这是一手历史算法说明，提示源频谱形状也可能产生偏差；它不能证明本项目21.1版本的具体实现，更不能直接校正实测噪声。当前以提高源带宽和减小步长的实际收敛对照判断，不缩放结果来满足解析值。访问日期：2026-10-04。

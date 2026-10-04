@@ -1,0 +1,72 @@
+{
+  "scope": "Three-point fresh-PSS current-noise probe at a measured balanced frontend.\n\nGenerate only after the local gain and centre have actually passed. The\nclamped output current PSD is module evidence, not closed-loop PLL jitter.\n",
+  "run": "referencefrontnoise3all",
+  "case": "reference_frontend_noise_r3_all_tt",
+  "group": "all",
+  "phase_deg": 15.420821749222052,
+  "source_validation": "reference_frontend_balance3_validation.json",
+  "source_validation_sha256": "e3ab3e4d852b11188936138aca73d17c772b0acaddd2450e403c2cd994e28990",
+  "source_case": "reference_frontend_r3_center_tt",
+  "source_run": "referencebalance03",
+  "source_tb_sha256": "f9c14b9fb7a45662469627e5a596b988e40981243945f13524a8bfa27376a50d",
+  "tb_sha256": "02c5e0a78ace6dd080da9e0cedc24ff4d43d5a6af3f4241f13b87c55986a5734",
+  "condition": "TT27/1.2V/24MHz ideal10psreference/3.936GHz ideal measured-waveform RF replay; physical taper2 reference + original sampler/CP/pulser/bias/validity, control clamp and1.9pFcontrol-load approximation.",
+  "control_clamp_v": 0.668428925600659,
+  "kphi_magnitude_a_per_rf_rad": 4.6739863234720286e-07,
+  "noise_offsets_hz": [
+    10000.0,
+    1000000.0,
+    10000000.0
+  ],
+  "group_instances": {
+    "reference": [
+      "XREF"
+    ],
+    "sampler": [
+      "XS"
+    ],
+    "charge_pump": [
+      "XCP"
+    ],
+    "pulser": [
+      "XT"
+    ],
+    "bias": [
+      "XBM",
+      "RBP",
+      "RBN"
+    ],
+    "validity": [
+      "XDET"
+    ]
+  },
+  "balanced_phase_limit_rad": 0.0005,
+  "fresh_pss": true,
+  "extra_observations": [
+    "XCP.nb",
+    "XCP.ng",
+    "XCP.tail",
+    "XCP.mir",
+    "XCP.gate",
+    "XCP.gateb",
+    "XCP.MT:d",
+    "XCP.MIP:d",
+    "XCP.MIN:d",
+    "XCP.MPO:d",
+    "XCP.MPD:d"
+  ],
+  "main_dut_modified": false,
+  "full_pll_acceptance": false,
+  "time": "2026-10-04T22:28:10.651718+08:00",
+  "limitations": [
+    "Only the reference buffer is physically changed; idealRF and outputclamp still exclude LC/closed-loop dynamics.",
+    "Actual nonlinear sampler, pulser and detector loading included; control logic approximated as1.9pF.",
+    "First phase guess uses standalone2pF delay; the actual loaded circuit must be measured.",
+    "Initial15degree triplet brackets the branch; a smaller measured-centered triplet may be needed for accurate gain.",
+    "PSS/gain/mean balance alone do not validate noise or complete PLL jitter; no noise run is embedded here.",
+    "Current-noise points use a noiseless control clamp. Frequency-dependent loop impedance and LC loading are excluded.",
+    "Static Kphi supplies a low-frequency equivalent phase-noise estimate only, not an exact dynamic transfer.",
+    "No integration of three isolated PSD points. Fresh isolated noise-on must be checked against the all-noise device contributions."
+  ],
+  "candidate_block_sha256": "a229c895692d8b34a7e9578e63421380a9d1a9360213c53f6f9c8971eda04bf6"
+}

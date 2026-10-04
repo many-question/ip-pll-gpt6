@@ -1,0 +1,92 @@
+{
+  "scope": "Check a measured frontend PAC gain against its independent static phase sweep.",
+  "protocol_sha256": "1ce58b11ceb3af1ce93ec942f4b401de3a59c4f90896cd0b0d1673742fd6e660",
+  "condition": "TT27/1.2V/24MHzref/3.936GHzidealRF/physicalreference+sampler+CP+bias+pulser+validity; externalcontrolclamp,1.9pFrefloadapproximation. Physical trial: Tail MT 10um/1um -> 1.8um/0.18um, same nominal W/L; preserve the same three zero-volt branch probes.",
+  "periodic": {
+    "case": "cp_fasttail_phase_transfer_r2_tt",
+    "phase_deg": 194.7559534059941,
+    "completed": true,
+    "source_result": "research/runs/spectre_cmos_v14_full/cpfasttailpac02/cp_fasttail_phase_transfer_r2_tt/result.json",
+    "source_sha256": "6b2c08416b1bbf146a7f3419612f709ff85bc7383c4db66d3cc87d1961413a17",
+    "simulator_completed": true,
+    "pss_converged": true,
+    "periodic_passed": true,
+    "period_s": 4.166666666666666e-08,
+    "endpoint_peak_v": 0.0,
+    "rf_rising_edges": 164,
+    "ref_rising_edges": 1,
+    "pulse_rising_edges": 1,
+    "rf_dominant_harmonic": 164,
+    "mean_clamp_current_a": -3.128738900037384e-11,
+    "pulse_duty": 0.0427594627587281,
+    "mean_held_difference_v": -0.011651874395210243,
+    "hold_range_v": {
+      "hp": [
+        0.3376068296397846,
+        0.6023734452006726
+      ],
+      "hn": [
+        0.3199564067957726,
+        0.6698567433418331
+      ]
+    },
+    "amplitude_good_fraction": 1.0,
+    "phase_good_fraction": 1.0,
+    "td_sha256": "63231dfc738cab4a85f86a184e4c45aec15f77260ac1cd0fcb6259f9865363df",
+    "fd_sha256": "3306aeb95be03893edbaad524d51cdec4a70a3546687817fdb72fcb55192da2a"
+  },
+  "transfer_valid": true,
+  "noise_measured": false,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "RF source is noiseless and zero impedance; actual LC loading/backaction is absent.",
+    "Baseband CP-current response is not full closed-loop PLL phase transfer.",
+    "PAC is a derivative about the measured periodic orbit, not finite one-radian modulation.",
+    "Four points locate dynamic effects; no full-band integration or PVT qualification.",
+    "Only external RF stimulus changes; static gain must agree at10kHz within2% complex error."
+  ],
+  "balanced_center_verified": true,
+  "linearized_residual_phase_rad": 6.621409767435237e-05,
+  "pac_sha256": "7ecf3cf5e37c830b77823da059f69e97d51465da771a8b43d8f3f04306b9a9dc",
+  "pac_parent_sha256": "e3bc2e0c5ad426645194ea41f3c4258d8c29e6376be4b096458b2cd144e116cd",
+  "offsets_hz": [
+    10000.0,
+    100000.0,
+    1000000.0,
+    10000000.0
+  ],
+  "signed_static_gain_a_per_rf_rad": -4.725185436226645e-07,
+  "gain_real_a_per_rad": [
+    -4.72805e-07,
+    -4.72946e-07,
+    -4.7177e-07,
+    -3.02246e-07
+  ],
+  "gain_imag_a_per_rad": [
+    3.20777e-10,
+    3.2617000000000025e-09,
+    3.71593e-08,
+    2.5089e-07
+  ],
+  "magnitude_a_per_rad": [
+    4.728051088163956e-07,
+    4.729572471195362e-07,
+    4.7323117656858785e-07,
+    3.9280839682471145e-07
+  ],
+  "magnitude_relative_static_db": [
+    0.005266077320040391,
+    0.008060556321886337,
+    0.01308983161206305,
+    -1.6047618773463121
+  ],
+  "phase_relative_static_deg": [
+    -0.03887261227119635,
+    -0.39513746023436846,
+    -4.5036446393500045,
+    -39.695571135712775
+  ],
+  "low_frequency_complex_relative_error": 0.0009101528757422105,
+  "low_frequency_gain_check_passed": true,
+  "physical_source_verified": true
+}

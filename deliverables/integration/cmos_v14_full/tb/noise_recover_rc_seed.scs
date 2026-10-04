@@ -1,0 +1,9 @@
+simulator lang=spectre
+global 0
+simulatorOptions options temp=27 reltol=1e-6 vabstol=1e-9 iabstol=1e-15
+VD (drive 0) vsource dc=1.2
+R (drive out) resistor r=1k
+C (out 0) capacitor c=1p
+save out
+saveOptions options save=selected
+tran tran stop=2u maxstep=10p strobeperiod=100p strobeoutput=strobeonly method=traponly errpreset=conservative noisefmax=0 noisefmin=1M noiseseed=11 savefile="__NATIVE_SAVE__" savetime=[2u] writefinal="__FINAL_STATE__"

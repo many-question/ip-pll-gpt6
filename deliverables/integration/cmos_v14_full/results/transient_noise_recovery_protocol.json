@@ -1,0 +1,67 @@
+{
+  "scope": "Prepare a finite analytic RC control for enabling noise after native recovery.",
+  "time": "2026-10-04T22:20:14.860182+08:00",
+  "cases": [
+    {
+      "case": "noise_recover_rc_seed",
+      "tb_sha256": "487061ba1960c29de3a68c6326c633ab1d0bd0b4cef76ce9c9407d83600bdff5",
+      "run": "noiserecovercontrol01"
+    },
+    {
+      "case": "noise_recover_rc_direct",
+      "tb_sha256": "c5719f00b578277c2afd6736e50ea8636ac81d5f68ece19e43afd7ae35e0997c",
+      "run": "noiserecoverdirect01"
+    }
+  ],
+  "condition": "Analytic one-pole resistor/capacitor; R=1kOhm,C=1pF,T=300.15K,1.2V noiseless drive. No PDK/MOS or PLL.",
+  "resistance_ohm": 1000.0,
+  "capacitance_f": 1e-12,
+  "temperature_k": 300.15,
+  "measurement_start_s": 2.1e-06,
+  "measurement_stop_s": 1e-05,
+  "saved_time_s": 2e-06,
+  "recovery_cases": [
+    {
+      "run": "noiserecoveroff01",
+      "noisefmax": 0.0,
+      "noisefmin": 1000000.0,
+      "noiseseed": 11
+    },
+    {
+      "run": "noiserecoveron11",
+      "noisefmax": 10000000000.0,
+      "noisefmin": 1000000.0,
+      "noiseseed": 11
+    },
+    {
+      "run": "noiserecoveron29",
+      "noisefmax": 10000000000.0,
+      "noisefmin": 1000000.0,
+      "noiseseed": 29
+    },
+    {
+      "run": "noiserecover20g",
+      "noisefmax": 20000000000.0,
+      "noisefmin": 1000000.0,
+      "noiseseed": 11
+    }
+  ],
+  "gates": {
+    "variance_relative_error": 0.1,
+    "mean_error_sigma": 5.0,
+    "noiseless_rms_v": 1e-09,
+    "direct_vs_recovered_variance_relative_difference": 0.1,
+    "bandwidth_variance_relative_difference": 0.1
+  },
+  "observation": "Variance of uniform100ps samples after2.1us; DC mean removed. Expected one-sided integral of4kTR/(1+(2*pi*f*RC)^2) up to source bandwidth.",
+  "fresh_pss": false,
+  "main_dut_modified": false,
+  "full_pll_acceptance": false,
+  "launch_scope": "One short diagnostic slot, serial1thread cases,each300s guard; source then four native branches and one direct-noise case.",
+  "limitations": [
+    "This tests source-noise activation and deterministic-state recovery only; it does not validate nonlinear PLL noise or coloured-noise folding.",
+    "Noisefmin is a device-noise spectrum corner, not a highpass measurement cutoff. Resistor source is white in this control.",
+    "Sub-10kHz and10kHz PLL observations need a much longer actual record; this short control cannot validate the full requested jitter band.",
+    "Native recovery is within transient analysis; no transfer to PSS and no readpss reuse."
+  ]
+}

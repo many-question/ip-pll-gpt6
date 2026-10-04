@@ -41,6 +41,9 @@ def main():
     parser.add_argument('--transient-maxstep',help='Explicit numerical comparison on a native continuation, e.g.1p')
     parser.add_argument('--dense-output',action='store_true',help='Native continuation only: retain every accepted transient point, including when the source used skipcount')
     parser.add_argument('--extra-save',nargs='+',help='Additional node/current observations; no DUT change')
+    parser.add_argument('--transient-noisefmax',type=float,help='Explicit source-noise bandwidth in Hz on a native transient continuation; zero disables noise')
+    parser.add_argument('--transient-noisefmin',type=float,help='Explicit source-noise low-frequency corner in Hz on a native continuation')
+    parser.add_argument('--transient-noiseseed',type=int,help='Positive reproducible noise seed on a native transient continuation')
     select=parser.add_mutually_exclusive_group(required=True)
     select.add_argument('--cases',nargs='+')
     select.add_argument('--suite',choices=['timing','control','inductor','loop'])
@@ -49,6 +52,13 @@ def main():
         assert args.snapshot_run and args.cases and len(args.cases)==1
     if args.pss_state:assert not args.native_state and args.cases and len(args.cases)==1
     if args.dense_output:assert args.native_state
+    noise_overrides=dict(noisefmax=args.transient_noisefmax,noisefmin=args.transient_noisefmin,noiseseed=args.transient_noiseseed)
+    if any(value is not None for value in noise_overrides.values()):
+        assert args.native_state,'Noise overrides require explicit native continuation provenance.'
+        if args.transient_noisefmax is not None:assert np.isfinite(args.transient_noisefmax) and args.transient_noisefmax>=0
+        if args.transient_noisefmin is not None:assert np.isfinite(args.transient_noisefmin) and args.transient_noisefmin>0
+        if args.transient_noiseseed is not None:assert args.transient_noiseseed>0
+        if args.transient_noisefmax and args.transient_noisefmin:assert args.transient_noisefmin<=args.transient_noisefmax
     if args.extra_save:
         import re
         assert all(re.fullmatch(r'[A-Za-z0-9_.:]+',x) for x in args.extra_save)
@@ -155,6 +165,16 @@ def main():
             if args.dense_output:
                 body=body.replace('strobeoutput=strobeonly','strobeoutput=all')
                 body=re.sub(r'\bskipcount=[0-9]+','skipcount=0',body)
+            for parameter,value in noise_overrides.items():
+                if value is None:continue
+                encoded=str(value) if parameter=='noiseseed' else format(value,'.17g')
+                def change_noise(match):
+                    line=match[0]
+                    if re.search(r'\b'+parameter+r'=\S+',line):
+                        return re.sub(r'\b'+parameter+r'=\S+',parameter+'='+encoded,line)
+                    return line+' '+parameter+'='+encoded
+                body,count=re.subn(r'^tran tran .*$',change_noise,body,flags=re.M)
+                assert count==1,'Expected one native transient analysis.'
             netlist.write_text(body,encoding='utf-8',newline='\n')
         if args.extra_save:body+='\nsave '+' '.join(args.extra_save)+'\n'
         netlist.write_text(body,encoding='utf-8',newline='\n')
@@ -177,6 +197,7 @@ def main():
         launch=dict(case=case,time=datetime.datetime.now().astimezone().isoformat(),
             initial_states=initial_states,native_state=native_state_info,periodic_state=periodic_state_info,
             numerical_overrides=dict(reltol=args.transient_reltol,maxstep=args.transient_maxstep,dense_output=args.dense_output,extra_save=args.extra_save),
+            transient_noise_overrides=noise_overrides,
             inputs_sha256={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in files},
             threads=args.threads,mode=args.mode,wall_timeout_s=args.timeout)
         (work/'launch.json').write_text(json.dumps(launch,indent=2)+'\n',encoding='utf-8',newline='\n')
@@ -208,6 +229,7 @@ def main():
              'native_state':native_state_info,
              'periodic_state':periodic_state_info,
              'numerical_overrides':dict(reltol=args.transient_reltol,maxstep=args.transient_maxstep,dense_output=args.dense_output,extra_save=args.extra_save),
+             'transient_noise_overrides':noise_overrides,
              'inputs_sha256':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in files}}
         work.mkdir(parents=True,exist_ok=True)
         if result.ok:
