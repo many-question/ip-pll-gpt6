@@ -1,0 +1,251 @@
+{
+  "scope": "Prepare finite-driver transient sensitivity cases, without declaring input specs.\n\nThe human input-edge question is still open. The grid below is an explicit\nengineering screening assumption: source 10-90% edges 10/100/1000 ps and\nThevenin resistance 0/50/500 ohm. No source noise or jitter is measured here.\n",
+  "time": "2026-10-04T20:41:21.494069+08:00",
+  "cases": [
+    {
+      "case": "reference_input_screen_coarse_tt",
+      "run": "refinputscreen01",
+      "precision": "coarse",
+      "tb_sha256": "dee7758eb7e090777eff248b7564e18babf9783a2af2eb806fdec51b89d7aa47",
+      "maxstep_ps": 2
+    },
+    {
+      "case": "reference_input_screen_fine_tt",
+      "run": "refinputscreen01",
+      "precision": "fine",
+      "tb_sha256": "d540414b43ee91a5e782263710e0c08a317a83995020978f887e51bb6c166709",
+      "maxstep_ps": 1
+    }
+  ],
+  "branches": [
+    {
+      "tag": "baseline_0",
+      "variant": "baseline",
+      "source_10_90_ps": 10,
+      "source_resistance_ohm": 0,
+      "source_node": "src_baseline_0",
+      "input_node": "src_baseline_0",
+      "output_node": "out_baseline_0",
+      "first_stage_node": "X_baseline_0.a",
+      "input_current": "V_baseline_0:p"
+    },
+    {
+      "tag": "taper2_0",
+      "variant": "taper2",
+      "source_10_90_ps": 10,
+      "source_resistance_ohm": 0,
+      "source_node": "src_taper2_0",
+      "input_node": "src_taper2_0",
+      "output_node": "out_taper2_0",
+      "first_stage_node": "X_taper2_0.a",
+      "input_current": "V_taper2_0:p"
+    },
+    {
+      "tag": "baseline_1",
+      "variant": "baseline",
+      "source_10_90_ps": 10,
+      "source_resistance_ohm": 50,
+      "source_node": "src_baseline_1",
+      "input_node": "in_baseline_1",
+      "output_node": "out_baseline_1",
+      "first_stage_node": "X_baseline_1.a",
+      "input_current": "V_baseline_1:p"
+    },
+    {
+      "tag": "taper2_1",
+      "variant": "taper2",
+      "source_10_90_ps": 10,
+      "source_resistance_ohm": 50,
+      "source_node": "src_taper2_1",
+      "input_node": "in_taper2_1",
+      "output_node": "out_taper2_1",
+      "first_stage_node": "X_taper2_1.a",
+      "input_current": "V_taper2_1:p"
+    },
+    {
+      "tag": "baseline_2",
+      "variant": "baseline",
+      "source_10_90_ps": 10,
+      "source_resistance_ohm": 500,
+      "source_node": "src_baseline_2",
+      "input_node": "in_baseline_2",
+      "output_node": "out_baseline_2",
+      "first_stage_node": "X_baseline_2.a",
+      "input_current": "V_baseline_2:p"
+    },
+    {
+      "tag": "taper2_2",
+      "variant": "taper2",
+      "source_10_90_ps": 10,
+      "source_resistance_ohm": 500,
+      "source_node": "src_taper2_2",
+      "input_node": "in_taper2_2",
+      "output_node": "out_taper2_2",
+      "first_stage_node": "X_taper2_2.a",
+      "input_current": "V_taper2_2:p"
+    },
+    {
+      "tag": "baseline_3",
+      "variant": "baseline",
+      "source_10_90_ps": 100,
+      "source_resistance_ohm": 0,
+      "source_node": "src_baseline_3",
+      "input_node": "src_baseline_3",
+      "output_node": "out_baseline_3",
+      "first_stage_node": "X_baseline_3.a",
+      "input_current": "V_baseline_3:p"
+    },
+    {
+      "tag": "taper2_3",
+      "variant": "taper2",
+      "source_10_90_ps": 100,
+      "source_resistance_ohm": 0,
+      "source_node": "src_taper2_3",
+      "input_node": "src_taper2_3",
+      "output_node": "out_taper2_3",
+      "first_stage_node": "X_taper2_3.a",
+      "input_current": "V_taper2_3:p"
+    },
+    {
+      "tag": "baseline_4",
+      "variant": "baseline",
+      "source_10_90_ps": 100,
+      "source_resistance_ohm": 50,
+      "source_node": "src_baseline_4",
+      "input_node": "in_baseline_4",
+      "output_node": "out_baseline_4",
+      "first_stage_node": "X_baseline_4.a",
+      "input_current": "V_baseline_4:p"
+    },
+    {
+      "tag": "taper2_4",
+      "variant": "taper2",
+      "source_10_90_ps": 100,
+      "source_resistance_ohm": 50,
+      "source_node": "src_taper2_4",
+      "input_node": "in_taper2_4",
+      "output_node": "out_taper2_4",
+      "first_stage_node": "X_taper2_4.a",
+      "input_current": "V_taper2_4:p"
+    },
+    {
+      "tag": "baseline_5",
+      "variant": "baseline",
+      "source_10_90_ps": 100,
+      "source_resistance_ohm": 500,
+      "source_node": "src_baseline_5",
+      "input_node": "in_baseline_5",
+      "output_node": "out_baseline_5",
+      "first_stage_node": "X_baseline_5.a",
+      "input_current": "V_baseline_5:p"
+    },
+    {
+      "tag": "taper2_5",
+      "variant": "taper2",
+      "source_10_90_ps": 100,
+      "source_resistance_ohm": 500,
+      "source_node": "src_taper2_5",
+      "input_node": "in_taper2_5",
+      "output_node": "out_taper2_5",
+      "first_stage_node": "X_taper2_5.a",
+      "input_current": "V_taper2_5:p"
+    },
+    {
+      "tag": "baseline_6",
+      "variant": "baseline",
+      "source_10_90_ps": 1000,
+      "source_resistance_ohm": 0,
+      "source_node": "src_baseline_6",
+      "input_node": "src_baseline_6",
+      "output_node": "out_baseline_6",
+      "first_stage_node": "X_baseline_6.a",
+      "input_current": "V_baseline_6:p"
+    },
+    {
+      "tag": "taper2_6",
+      "variant": "taper2",
+      "source_10_90_ps": 1000,
+      "source_resistance_ohm": 0,
+      "source_node": "src_taper2_6",
+      "input_node": "src_taper2_6",
+      "output_node": "out_taper2_6",
+      "first_stage_node": "X_taper2_6.a",
+      "input_current": "V_taper2_6:p"
+    },
+    {
+      "tag": "baseline_7",
+      "variant": "baseline",
+      "source_10_90_ps": 1000,
+      "source_resistance_ohm": 50,
+      "source_node": "src_baseline_7",
+      "input_node": "in_baseline_7",
+      "output_node": "out_baseline_7",
+      "first_stage_node": "X_baseline_7.a",
+      "input_current": "V_baseline_7:p"
+    },
+    {
+      "tag": "taper2_7",
+      "variant": "taper2",
+      "source_10_90_ps": 1000,
+      "source_resistance_ohm": 50,
+      "source_node": "src_taper2_7",
+      "input_node": "in_taper2_7",
+      "output_node": "out_taper2_7",
+      "first_stage_node": "X_taper2_7.a",
+      "input_current": "V_taper2_7:p"
+    },
+    {
+      "tag": "baseline_8",
+      "variant": "baseline",
+      "source_10_90_ps": 1000,
+      "source_resistance_ohm": 500,
+      "source_node": "src_baseline_8",
+      "input_node": "in_baseline_8",
+      "output_node": "out_baseline_8",
+      "first_stage_node": "X_baseline_8.a",
+      "input_current": "V_baseline_8:p"
+    },
+    {
+      "tag": "taper2_8",
+      "variant": "taper2",
+      "source_10_90_ps": 1000,
+      "source_resistance_ohm": 500,
+      "source_node": "src_taper2_8",
+      "input_node": "in_taper2_8",
+      "output_node": "out_taper2_8",
+      "first_stage_node": "X_taper2_8.a",
+      "input_current": "V_taper2_8:p"
+    }
+  ],
+  "source_protocol_sha256": "9ecc76f6b85b78b1edc0b38ae6faff5b798e83c428b8121d3453d5371b3c6985",
+  "input_load_validation_sha256": "8a400a7bc6431724d4cd509755b56027ee2e09a36eed48f12cca449ac48babfc",
+  "dependencies_sha256": {
+    "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+    "reference_buffer_taper2_v14.scs": "a229c895692d8b34a7e9578e63421380a9d1a9360213c53f6f9c8971eda04bf6"
+  },
+  "condition": "TT27/1.2V/24MHz/2pF output load, 18 electrically separate source/buffer branches sharing an ideal supply.",
+  "input_requirements_confirmed": false,
+  "source_grid_is_screening_assumption": true,
+  "functional_gates": {
+    "expected_edges_each_polarity": 3,
+    "output_low_max_v": 0.2,
+    "output_high_min_v": 1.0
+  },
+  "numerical_limits": {
+    "max_abs_delay_change_ps": 1.0,
+    "max_relative_transition_change": 0.01
+  },
+  "measurement_window_s": [
+    3.75e-07,
+    5e-07
+  ],
+  "main_dut_modified": false,
+  "noise_measured": false,
+  "full_pll_acceptance": false,
+  "launch_scope": "Two serial fresh transient runs, one thread, 900s guard per case. Launch only after an actual resource slot is free; not yet submitted.",
+  "limitations": [
+    "The Thevenin source is a deterministic driver approximation, not a transistor input driver.",
+    "No sampled RF/CP backaction at the output; the 2pF load is the established standalone diagnostic.",
+    "Passing output swing and edge checks does not validate jitter, PVT or supply/load sensitivity."
+  ]
+}

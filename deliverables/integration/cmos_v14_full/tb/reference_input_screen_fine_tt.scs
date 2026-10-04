@@ -1,0 +1,78 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "cells.scs"
+include "reference_buffer_taper2_v14.scs"
+simulatorOptions options temp=27 reltol=1e-5 vabstol=1e-7 iabstol=1e-13
+VDD (vdd 0) vsource dc=1.2
+V_baseline_0 (src_baseline_0 0) vsource type=pulse val0=0 val1=1.2 period=4.1666666666666669e-08 width=2.0820833333333334e-08 rise=1.2499999999999999e-11 fall=1.2499999999999999e-11 delay=1n
+X_baseline_0 (src_baseline_0 out_baseline_0 vdd 0) tx_reference_buffer
+C_baseline_0 (out_baseline_0 0) capacitor c=2p
+V_taper2_0 (src_taper2_0 0) vsource type=pulse val0=0 val1=1.2 period=4.1666666666666669e-08 width=2.0820833333333334e-08 rise=1.2499999999999999e-11 fall=1.2499999999999999e-11 delay=1n
+X_taper2_0 (src_taper2_0 out_taper2_0 vdd 0) reference_buffer_taper2_v14
+C_taper2_0 (out_taper2_0 0) capacitor c=2p
+V_baseline_1 (src_baseline_1 0) vsource type=pulse val0=0 val1=1.2 period=4.1666666666666669e-08 width=2.0820833333333334e-08 rise=1.2499999999999999e-11 fall=1.2499999999999999e-11 delay=1n
+R_baseline_1 (src_baseline_1 in_baseline_1) resistor r=50
+X_baseline_1 (in_baseline_1 out_baseline_1 vdd 0) tx_reference_buffer
+C_baseline_1 (out_baseline_1 0) capacitor c=2p
+V_taper2_1 (src_taper2_1 0) vsource type=pulse val0=0 val1=1.2 period=4.1666666666666669e-08 width=2.0820833333333334e-08 rise=1.2499999999999999e-11 fall=1.2499999999999999e-11 delay=1n
+R_taper2_1 (src_taper2_1 in_taper2_1) resistor r=50
+X_taper2_1 (in_taper2_1 out_taper2_1 vdd 0) reference_buffer_taper2_v14
+C_taper2_1 (out_taper2_1 0) capacitor c=2p
+V_baseline_2 (src_baseline_2 0) vsource type=pulse val0=0 val1=1.2 period=4.1666666666666669e-08 width=2.0820833333333334e-08 rise=1.2499999999999999e-11 fall=1.2499999999999999e-11 delay=1n
+R_baseline_2 (src_baseline_2 in_baseline_2) resistor r=500
+X_baseline_2 (in_baseline_2 out_baseline_2 vdd 0) tx_reference_buffer
+C_baseline_2 (out_baseline_2 0) capacitor c=2p
+V_taper2_2 (src_taper2_2 0) vsource type=pulse val0=0 val1=1.2 period=4.1666666666666669e-08 width=2.0820833333333334e-08 rise=1.2499999999999999e-11 fall=1.2499999999999999e-11 delay=1n
+R_taper2_2 (src_taper2_2 in_taper2_2) resistor r=500
+X_taper2_2 (in_taper2_2 out_taper2_2 vdd 0) reference_buffer_taper2_v14
+C_taper2_2 (out_taper2_2 0) capacitor c=2p
+V_baseline_3 (src_baseline_3 0) vsource type=pulse val0=0 val1=1.2 period=4.1666666666666669e-08 width=2.0708333333333335e-08 rise=1.2500000000000001e-10 fall=1.2500000000000001e-10 delay=1n
+X_baseline_3 (src_baseline_3 out_baseline_3 vdd 0) tx_reference_buffer
+C_baseline_3 (out_baseline_3 0) capacitor c=2p
+V_taper2_3 (src_taper2_3 0) vsource type=pulse val0=0 val1=1.2 period=4.1666666666666669e-08 width=2.0708333333333335e-08 rise=1.2500000000000001e-10 fall=1.2500000000000001e-10 delay=1n
+X_taper2_3 (src_taper2_3 out_taper2_3 vdd 0) reference_buffer_taper2_v14
+C_taper2_3 (out_taper2_3 0) capacitor c=2p
+V_baseline_4 (src_baseline_4 0) vsource type=pulse val0=0 val1=1.2 period=4.1666666666666669e-08 width=2.0708333333333335e-08 rise=1.2500000000000001e-10 fall=1.2500000000000001e-10 delay=1n
+R_baseline_4 (src_baseline_4 in_baseline_4) resistor r=50
+X_baseline_4 (in_baseline_4 out_baseline_4 vdd 0) tx_reference_buffer
+C_baseline_4 (out_baseline_4 0) capacitor c=2p
+V_taper2_4 (src_taper2_4 0) vsource type=pulse val0=0 val1=1.2 period=4.1666666666666669e-08 width=2.0708333333333335e-08 rise=1.2500000000000001e-10 fall=1.2500000000000001e-10 delay=1n
+R_taper2_4 (src_taper2_4 in_taper2_4) resistor r=50
+X_taper2_4 (in_taper2_4 out_taper2_4 vdd 0) reference_buffer_taper2_v14
+C_taper2_4 (out_taper2_4 0) capacitor c=2p
+V_baseline_5 (src_baseline_5 0) vsource type=pulse val0=0 val1=1.2 period=4.1666666666666669e-08 width=2.0708333333333335e-08 rise=1.2500000000000001e-10 fall=1.2500000000000001e-10 delay=1n
+R_baseline_5 (src_baseline_5 in_baseline_5) resistor r=500
+X_baseline_5 (in_baseline_5 out_baseline_5 vdd 0) tx_reference_buffer
+C_baseline_5 (out_baseline_5 0) capacitor c=2p
+V_taper2_5 (src_taper2_5 0) vsource type=pulse val0=0 val1=1.2 period=4.1666666666666669e-08 width=2.0708333333333335e-08 rise=1.2500000000000001e-10 fall=1.2500000000000001e-10 delay=1n
+R_taper2_5 (src_taper2_5 in_taper2_5) resistor r=500
+X_taper2_5 (in_taper2_5 out_taper2_5 vdd 0) reference_buffer_taper2_v14
+C_taper2_5 (out_taper2_5 0) capacitor c=2p
+V_baseline_6 (src_baseline_6 0) vsource type=pulse val0=0 val1=1.2 period=4.1666666666666669e-08 width=1.9583333333333333e-08 rise=1.25e-09 fall=1.25e-09 delay=1n
+X_baseline_6 (src_baseline_6 out_baseline_6 vdd 0) tx_reference_buffer
+C_baseline_6 (out_baseline_6 0) capacitor c=2p
+V_taper2_6 (src_taper2_6 0) vsource type=pulse val0=0 val1=1.2 period=4.1666666666666669e-08 width=1.9583333333333333e-08 rise=1.25e-09 fall=1.25e-09 delay=1n
+X_taper2_6 (src_taper2_6 out_taper2_6 vdd 0) reference_buffer_taper2_v14
+C_taper2_6 (out_taper2_6 0) capacitor c=2p
+V_baseline_7 (src_baseline_7 0) vsource type=pulse val0=0 val1=1.2 period=4.1666666666666669e-08 width=1.9583333333333333e-08 rise=1.25e-09 fall=1.25e-09 delay=1n
+R_baseline_7 (src_baseline_7 in_baseline_7) resistor r=50
+X_baseline_7 (in_baseline_7 out_baseline_7 vdd 0) tx_reference_buffer
+C_baseline_7 (out_baseline_7 0) capacitor c=2p
+V_taper2_7 (src_taper2_7 0) vsource type=pulse val0=0 val1=1.2 period=4.1666666666666669e-08 width=1.9583333333333333e-08 rise=1.25e-09 fall=1.25e-09 delay=1n
+R_taper2_7 (src_taper2_7 in_taper2_7) resistor r=50
+X_taper2_7 (in_taper2_7 out_taper2_7 vdd 0) reference_buffer_taper2_v14
+C_taper2_7 (out_taper2_7 0) capacitor c=2p
+V_baseline_8 (src_baseline_8 0) vsource type=pulse val0=0 val1=1.2 period=4.1666666666666669e-08 width=1.9583333333333333e-08 rise=1.25e-09 fall=1.25e-09 delay=1n
+R_baseline_8 (src_baseline_8 in_baseline_8) resistor r=500
+X_baseline_8 (in_baseline_8 out_baseline_8 vdd 0) tx_reference_buffer
+C_baseline_8 (out_baseline_8 0) capacitor c=2p
+V_taper2_8 (src_taper2_8 0) vsource type=pulse val0=0 val1=1.2 period=4.1666666666666669e-08 width=1.9583333333333333e-08 rise=1.25e-09 fall=1.25e-09 delay=1n
+R_taper2_8 (src_taper2_8 in_taper2_8) resistor r=500
+X_taper2_8 (in_taper2_8 out_taper2_8 vdd 0) reference_buffer_taper2_v14
+C_taper2_8 (out_taper2_8 0) capacitor c=2p
+save src_baseline_0 out_baseline_0 X_baseline_0.a V_baseline_0:p src_taper2_0 out_taper2_0 X_taper2_0.a V_taper2_0:p src_baseline_1 in_baseline_1 out_baseline_1 X_baseline_1.a V_baseline_1:p src_taper2_1 in_taper2_1 out_taper2_1 X_taper2_1.a V_taper2_1:p src_baseline_2 in_baseline_2 out_baseline_2 X_baseline_2.a V_baseline_2:p src_taper2_2 in_taper2_2 out_taper2_2 X_taper2_2.a V_taper2_2:p src_baseline_3 out_baseline_3 X_baseline_3.a V_baseline_3:p src_taper2_3 out_taper2_3 X_taper2_3.a V_taper2_3:p src_baseline_4 in_baseline_4 out_baseline_4 X_baseline_4.a V_baseline_4:p src_taper2_4 in_taper2_4 out_taper2_4 X_taper2_4.a V_taper2_4:p src_baseline_5 in_baseline_5 out_baseline_5 X_baseline_5.a V_baseline_5:p src_taper2_5 in_taper2_5 out_taper2_5 X_taper2_5.a V_taper2_5:p src_baseline_6 out_baseline_6 X_baseline_6.a V_baseline_6:p src_taper2_6 out_taper2_6 X_taper2_6.a V_taper2_6:p src_baseline_7 in_baseline_7 out_baseline_7 X_baseline_7.a V_baseline_7:p src_taper2_7 in_taper2_7 out_taper2_7 X_taper2_7.a V_taper2_7:p src_baseline_8 in_baseline_8 out_baseline_8 X_baseline_8.a V_baseline_8:p src_taper2_8 in_taper2_8 out_taper2_8 X_taper2_8.a V_taper2_8:p
+saveOptions options save=selected
+tran tran stop=500n maxstep=1p method=gear2only errpreset=conservative skipstart=375n writefinal="__FINAL_STATE__"

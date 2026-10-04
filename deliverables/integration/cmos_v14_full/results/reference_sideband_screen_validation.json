@@ -1,0 +1,27 @@
+{
+  "scope": "Compare fresh-PSS sideband trials with a completed 2047-sideband spectrum.",
+  "protocol_sha256": "66c52ea0caa4ce47aa422f7c92599fbb55bec49e7d8d171b9b080d88ec262b68",
+  "condition": "TT27/1.2V/24MHz ideal10psreference/2pF explicitoutputload/actualMOS, freshPSS; standalone referencebuffer only.",
+  "cases": [
+    {
+      "case": "reference_sideband31_tt",
+      "maxsideband": 31,
+      "completed": false
+    },
+    {
+      "case": "reference_sideband127_tt",
+      "maxsideband": 127,
+      "completed": false
+    }
+  ],
+  "complete": false,
+  "full_pll_acceptance": false,
+  "main_dut_modified": false,
+  "baseline_rms_fs": 155.05427850494695,
+  "passed_sideband_counts": [],
+  "limitations": [
+    "A pass applies to this reference-buffer baseline only, not automatically to the resized buffer, nonlinear frontend, VCO or full PLL.",
+    "No PSS state reuse. No relaxation of the 0.1dB full-grid / 1% integrated-RMS comparison.",
+    "The parent precision summary is cumulative; the exact baseline case and raw-file hashes are frozen here."
+  ]
+}
