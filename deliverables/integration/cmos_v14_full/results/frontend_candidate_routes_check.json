@@ -1,0 +1,43 @@
+{
+  "time": "2026-10-04T21:57:02.301001+08:00",
+  "checks": [
+    {
+      "test": "analyze_frontend_phase_transfer",
+      "args": [],
+      "matched_frozen_result": "frontend_phase_transfer_validation.json",
+      "result_sha256": "65911432cc5b2201d7168c1df0e184be46831ed4c87b376bb1c59fbe8ec4323c",
+      "passed": true
+    },
+    {
+      "test": "analyze_frontend_noise_probe",
+      "args": [
+        "--round",
+        "2",
+        "--group",
+        "charge_pump"
+      ],
+      "matched_frozen_result": "frontend_noise_r2_charge_pump_validation.json",
+      "result_sha256": "40e3e2fc2a6e7718cdfdb8cde193ef8da255e9a5e73734d673378a5eea0f299c",
+      "passed": true
+    },
+    {
+      "test": "build_frontend_phase_transfer",
+      "rejected_measured_unbalanced_source": true,
+      "source_sha256": "bad48b1c66c17ce1447b9b328e4a3d157a98b50357ff6e82f48bfa6c0036825c",
+      "passed": true
+    },
+    {
+      "test": "build_frontend_noise_probe",
+      "rejected_measured_unbalanced_source": true,
+      "source_sha256": "bad48b1c66c17ce1447b9b328e4a3d157a98b50357ff6e82f48bfa6c0036825c",
+      "passed": true
+    }
+  ],
+  "limitation": "Candidate positive PAC/noise paths still require a measured balanced candidate and actual simulation.",
+  "scripts_sha256": {
+    "build_frontend_phase_transfer.py": "65f0901a77d10307ae21d16d052554c880707c570ef82a843ee629d4ef83ddd2",
+    "analyze_frontend_phase_transfer.py": "9065903077abb1f304386c2a1857ff007d7ed8363818bceff9a87e12eb37e506",
+    "build_frontend_noise_probe.py": "e5be393941287f304e33bbb930921b93669498973ce85c92fb8eeff92296ad17",
+    "analyze_frontend_noise_probe.py": "3bc6e4e641f74e2488639f6592e93d7db5c4e80ade1f8ca4e691f2e4c4c7cac5"
+  }
+}

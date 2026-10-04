@@ -19,8 +19,10 @@ def normalize(s):
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--round',type=int,choices=[1,2,3],required=True)
-    ap.add_argument('--group',default='all');ap.add_argument('--reference-candidate',action='store_true');a=ap.parse_args()
-    prefix='reference_frontend_noise' if a.reference_candidate else 'frontend_noise'
+    ap.add_argument('--group',default='all');choice=ap.add_mutually_exclusive_group()
+    choice.add_argument('--reference-candidate',action='store_true')
+    choice.add_argument('--cp-variant',choices=['fasttail','mid70']);a=ap.parse_args()
+    prefix=f'cp_{a.cp_variant}_noise' if a.cp_variant else ('reference_frontend_noise' if a.reference_candidate else 'frontend_noise')
     pp=H/'results'/f'{prefix}_r{a.round}_{a.group}_protocol.json'
     if not pp.exists():print('Frontend noise protocol pending');return
     p=json.loads(pp.read_text());assert a.group=='all' or a.group in p['group_instances']
@@ -67,6 +69,7 @@ def main():
                 delta=10*np.log10(sv/baseline)
                 out['isolated_vs_all_group_check']=dict(all_result_sha256=sha(allpath),psd_change_db=delta.tolist(),passed=bool(max(abs(delta))<.1))
     if a.reference_candidate:out['candidate_block_sha256']=p['candidate_block_sha256']
+    if a.cp_variant:out['cp_variant']=p['cp_variant']
     dst=H/'results'/f'{prefix}_r{a.round}_{a.group}_validation.json';dst.write_text(json.dumps(out,indent=2)+'\n')
     print(json.dumps({k:v for k,v in out.items() if k!='top_device_components_a2_per_hz'},indent=2))
 

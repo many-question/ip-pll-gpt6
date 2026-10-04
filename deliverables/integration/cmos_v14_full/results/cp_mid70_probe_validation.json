@@ -1,0 +1,258 @@
+{
+  "scope": "Read controlled CP operating trials with verified gate-current branches.",
+  "protocol_sha256": "634f81f64203952e06773efdbb8c94c99cb2689e78ecc3d483dce85e11833c16",
+  "condition": "TT27/1.2V/24MHzref/3.936GHzidealRF/physicalreference+sampler+CP+bias+pulser+validity; externalcontrolclamp,1.9pFrefloadapproximation.",
+  "physical_change": "Sampler bias resistor pair:100k/100k ->85.7142857k/120k. Original tail10um/1um and same three zero-volt probes.",
+  "periodic": {
+    "case": "cp_mid70_operating_tt",
+    "phase_deg": 196.74700280983583,
+    "completed": true,
+    "source_result": "research/runs/spectre_cmos_v14_full/cpmid70probe01/cp_mid70_operating_tt/result.json",
+    "source_sha256": "781176c7ba4225faf90331cbf0e29096e60c9762c231ebc2908dfe08bea4764f",
+    "simulator_completed": true,
+    "pss_converged": true,
+    "periodic_passed": true,
+    "period_s": 4.166666666666666e-08,
+    "endpoint_peak_v": 0.0,
+    "rf_rising_edges": 164,
+    "ref_rising_edges": 1,
+    "pulse_rising_edges": 1,
+    "rf_dominant_harmonic": 164,
+    "mean_clamp_current_a": 2.4701286597781854e-07,
+    "pulse_duty": 0.04275783214763722,
+    "mean_held_difference_v": -0.05440436650307599,
+    "hold_range_v": {
+      "hp": [
+        0.5419339507245154,
+        0.8498283682575769
+      ],
+      "hn": [
+        0.5886842932656188,
+        0.9147421199176601
+      ]
+    },
+    "amplitude_good_fraction": 1.0,
+    "phase_good_fraction": 0.8660378417490292,
+    "td_sha256": "7952f02862c6574f669324859d4976b79c57747f8aacf4cb5c630896e063fc35",
+    "fd_sha256": "c3b1eb35fa066c965137a38895c8b776411d7355c8c0ac5917cd737cf58ac7dd"
+  },
+  "operating_data_valid": true,
+  "node_balances_verified": true,
+  "measured_center_rebalanced": false,
+  "main_dut_modified": false,
+  "noise_measured": false,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "0.70V is the unloaded divider prediction, not the measured sampled voltage or a changed project requirement.",
+    "RF coupling, sampler loading, reference sensitivity, CP gain, balance and noise all require measurement after this change.",
+    "The same-phase operating trial cannot be treated as a balanced noise comparison.",
+    "The original fasttail change is not included; this isolates midpoint/headroom from tail geometry.",
+    "No extrapolation to full PVT, voltage margin, full PLL or PEX."
+  ],
+  "node_balances": [
+    {
+      "node": "tail",
+      "relative_mean_absolute_residual": 7.400374774149579e-05,
+      "passed": true
+    },
+    {
+      "node": "mirror",
+      "relative_mean_absolute_residual": 5.641736016848612e-05,
+      "passed": true
+    },
+    {
+      "node": "tail_gate",
+      "relative_mean_absolute_residual": 9.527607709051559e-17,
+      "passed": true
+    }
+  ],
+  "probe_voltage_max_v": 0.0,
+  "probe_voltages_verified": true,
+  "gate_high_duration_ns": 1.806436589252055,
+  "input_pair_resistive_charge_c": 1.4558129477095177e-14,
+  "input_pair_charge_outside_gate_high_fraction": 0.8663491793839413,
+  "baseline_outside_fraction": 0.9497307695612509,
+  "tail_resistive_charge_c": 1.4579064042969286e-14,
+  "tail_gate_high_charge_c": 1.441925631291472e-14,
+  "gate_high_gate_branch_charge_c": 1.756667205422136e-14,
+  "baseline_mean_clamp_current_a": 6.644315432614928e-12,
+  "settling_improved": true,
+  "td_sha256": "7952f02862c6574f669324859d4976b79c57747f8aacf4cb5c630896e063fc35",
+  "voltage_ranges_v": {
+    "vmid": [
+      0.6976182418154907,
+      0.6983928380647727,
+      0.6991024844266307
+    ],
+    "sp": [
+      0.3180692630186635,
+      0.6983928326433585,
+      1.08578014164367
+    ],
+    "sn": [
+      0.2564861321732241,
+      0.6980714080342921,
+      1.125806516812076
+    ],
+    "hp": [
+      0.5419339507245154,
+      0.7063064775645823,
+      0.8498283682575769
+    ],
+    "hn": [
+      0.5886842932656188,
+      0.7607108440676582,
+      0.9147421199176601
+    ],
+    "XCP.tail": [
+      0.1814114121056728,
+      0.3838897503963625,
+      0.4906055061816904
+    ]
+  },
+  "samples": [
+    {
+      "after_gate_rise_ns": 0,
+      "values": {
+        "XCP.ng": -0.019814743946451243,
+        "XCP.tail": 0.43812279580167157,
+        "XCP.mir": 0.8228861853745943,
+        "hp": 0.6810517970055276,
+        "hn": 0.7843985477017836,
+        "XCP.MT:id": 6.18206774318007e-12,
+        "XCP.MIP:id": 3.8077526957471525e-10,
+        "XCP.MIN:id": 9.41032293898191e-09
+      }
+    },
+    {
+      "after_gate_rise_ns": 0.2,
+      "values": {
+        "XCP.ng": 0.39123797626172574,
+        "XCP.tail": 0.4901803798076007,
+        "XCP.mir": 0.823486147857456,
+        "hp": 0.6833754946091969,
+        "hn": 0.7869122231730398,
+        "XCP.MT:id": 9.213585891880721e-07,
+        "XCP.MIP:id": 5.282213947454044e-11,
+        "XCP.MIN:id": 1.3830063126270978e-09
+      }
+    },
+    {
+      "after_gate_rise_ns": 0.5,
+      "values": {
+        "XCP.ng": 0.4618230149091528,
+        "XCP.tail": 0.4723167660932351,
+        "XCP.mir": 0.8239550059352139,
+        "hp": 0.6826782585127096,
+        "hn": 0.7857009293568452,
+        "XCP.MT:id": 4.178277280394909e-06,
+        "XCP.MIP:id": 1.0455568352790852e-10,
+        "XCP.MIN:id": 2.656095160588682e-09
+      }
+    },
+    {
+      "after_gate_rise_ns": 1,
+      "values": {
+        "XCP.ng": 0.5101960883263148,
+        "XCP.tail": 0.3597068521068889,
+        "XCP.mir": 0.8238047074405742,
+        "hp": 0.6775173493627582,
+        "hn": 0.7778699344848552,
+        "XCP.MT:id": 9.557566074191364e-06,
+        "XCP.MIP:id": 7.087540562480134e-09,
+        "XCP.MIN:id": 1.3404745571096226e-07
+      }
+    },
+    {
+      "after_gate_rise_ns": 1.5,
+      "values": {
+        "XCP.ng": 0.5330454609298374,
+        "XCP.tail": 0.24475413695138687,
+        "XCP.mir": 0.8087135999969783,
+        "hp": 0.6686506198217927,
+        "hn": 0.754507682121618,
+        "XCP.MT:id": 1.3268832549145471e-05,
+        "XCP.MIP:id": 3.3250471096309486e-07,
+        "XCP.MIN:id": 2.45157364981069e-06
+      }
+    },
+    {
+      "after_gate_rise_ns": 1.8,
+      "values": {
+        "XCP.ng": 0.5124352935645065,
+        "XCP.tail": 0.19705283594580936,
+        "XCP.mir": 0.7772947447235317,
+        "hp": 0.6600415016570921,
+        "hn": 0.7374605539246576,
+        "XCP.MT:id": 9.67846545472445e-06,
+        "XCP.MIP:id": 1.1538997033007653e-06,
+        "XCP.MIN:id": 5.453415005467372e-06
+      }
+    },
+    {
+      "after_gate_rise_ns": 2,
+      "values": {
+        "XCP.ng": 0.004702939233368041,
+        "XCP.tail": 0.18695104719922312,
+        "XCP.mir": 0.747177807209598,
+        "hp": 0.6576149505338945,
+        "hn": 0.7327865839775363,
+        "XCP.MT:id": 1.2511723653812103e-11,
+        "XCP.MIP:id": 1.4517192981462586e-06,
+        "XCP.MIN:id": 6.2324634754465615e-06
+      }
+    },
+    {
+      "after_gate_rise_ns": 2.5,
+      "values": {
+        "XCP.ng": 0.00017450502117102927,
+        "XCP.tail": 0.22620922718951234,
+        "XCP.mir": 0.7061274700924984,
+        "hp": 0.6656487075424898,
+        "hn": 0.7451574945690884,
+        "XCP.MT:id": 1.0980001936343305e-11,
+        "XCP.MIP:id": 5.538588589067361e-07,
+        "XCP.MIN:id": 3.196355864458604e-06
+      }
+    },
+    {
+      "after_gate_rise_ns": 3,
+      "values": {
+        "XCP.ng": 0.00011564451014970451,
+        "XCP.tail": 0.25066810696091807,
+        "XCP.mir": 0.6907977877853831,
+        "hp": 0.6691972375929097,
+        "hn": 0.7519016782730343,
+        "XCP.MT:id": 1.1008561478972188e-11,
+        "XCP.MIP:id": 2.7828706215562544e-07,
+        "XCP.MIN:id": 1.970003982682736e-06
+      }
+    },
+    {
+      "after_gate_rise_ns": 5,
+      "values": {
+        "XCP.ng": 4.3458410471942856e-05,
+        "XCP.tail": 0.299968828635049,
+        "XCP.mir": 0.691395191777055,
+        "hp": 0.6738534487742955,
+        "hn": 0.7624544888034056,
+        "XCP.MT:id": 1.1075862364996104e-11,
+        "XCP.MIP:id": 5.8123991913774014e-08,
+        "XCP.MIN:id": 6.151214176459191e-07
+      }
+    },
+    {
+      "after_gate_rise_ns": 10,
+      "values": {
+        "XCP.ng": 1.4801421087245564e-05,
+        "XCP.tail": 0.34406497603129615,
+        "XCP.mir": 0.7341144598802652,
+        "hp": 0.6766589981943115,
+        "hn": 0.7673904605824441,
+        "XCP.MT:id": 1.1143461116332291e-11,
+        "XCP.MIP:id": 1.2473440922185517e-08,
+        "XCP.MIN:id": 1.6968868470916716e-07
+      }
+    }
+  ]
+}

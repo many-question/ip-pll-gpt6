@@ -1,0 +1,8 @@
+simulator lang=spectre
+// Diagnostic headroom candidate. Same nominal Thevenin R and bypass C as baseline.
+subckt sampler_bias_mid70_v14 (vdd vss vmid)
+parameters rtop=85714.28571428571 rbot=120000 cmid=10p
+R0 (vdd vmid) resistor r=rtop
+R1 (vmid vss) resistor r=rbot
+C0 (vmid vss) capacitor c=cmid
+ends sampler_bias_mid70_v14

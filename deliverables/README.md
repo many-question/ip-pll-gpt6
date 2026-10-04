@@ -1,4 +1,4 @@
-本次快照：[第58次汇报](../reports/2026-10-04T2124.yaml)。参考缓冲有限驱动功能/数值检查通过；CP实测导通明显晚于使能窗，栅极端口核对失败，先用独立支路探针诊断。整环抖动仍未知。
+本次快照：[第59次汇报](../reports/2026-10-04T2204.yaml)。参考缓冲48.906fs完成独立精度复核，CP单独noise-on确认归因；短尾管建立改善但噪声收益待测，0.7V中点方案出现偏流及有效性问题。整环抖动仍未知。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

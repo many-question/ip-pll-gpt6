@@ -1,0 +1,36 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "cells.scs"
+include "reference_buffer_taper2_v14.scs"
+include "digital_cells_v2.scs"
+include "sampler_bias_v5.scs"
+include "cp_physical_v14.scs"
+include "cp_timing.scs"
+include "validity_physical_v14.scs"
+ahdl_include "tank_replay_phase_v14.va"
+simulatorOptions options temp=27 reltol=1e-5 vabstol=1e-7 iabstol=1e-13
+VDD (vdd 0) vsource dc=1.2
+VR (ref 0) vsource type=pulse val0=0 val1=1.2 period=41.6666666666667n width=20.8233333333333n rise=10p fall=10p delay=1n
+XRF (vp vn 0) tank_replay_phase_v14 phase_deg=14.518561525198889
+XBM (vdd 0 vmid) tx_bias_mid_v5
+CCP (vp sp) capacitor c=120f
+CCN (vn sn) capacitor c=120f
+RBP (sp vmid) resistor r=10k
+RBN (sn vmid) resistor r=10k
+XREF (ref refb vdd 0) reference_buffer_taper2_v14
+CR (refb 0) capacitor c=60f
+// Declared control-logic loading approximation, as in the core diagnostic.
+CREFLOAD (refb 0) capacitor c=1.9p
+XS (refb sp sn hp hn vdd 0) tx_sampler
+XCP (hp hn pulse vdd out vdd 0) cp_physical_v14 bias_r=24000
+XT (refb vdd 0 pulse vdd 0) tx_cp_timing
+XDET (vp hp hn amp_good phase_good vdd 0) validity_physical_v14
+VO (out 0) vsource dc=0.66842892560065903
+save ref refb vp vn sp sn hp hn vmid pulse out amp_good phase_good VO:p VDD:p
+saveOptions options save=selected
+pss pss fund=24M harms=4095 tstab=150n maxstep=1p maxacfreq=252G method=gear2only tstabmethod=gear2only errpreset=conservative maxperiods=30 saveinit=no writefinal="__FINAL_STATE__" writepss="__PERIODIC_STATE__"
+
+save XREF.a XREF.b XREF.c

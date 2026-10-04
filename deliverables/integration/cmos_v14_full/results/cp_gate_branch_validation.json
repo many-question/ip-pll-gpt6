@@ -5,10 +5,38 @@
   "periodic": {
     "case": "cp_gate_branch_tt",
     "phase_deg": 196.74700280983583,
-    "completed": false
+    "completed": true,
+    "source_result": "research/runs/spectre_cmos_v14_full/cpgatebranch01/cp_gate_branch_tt/result.json",
+    "source_sha256": "feb2f9da2cb63abd9c63dcc98117b62418fa4b1b5b1c705d10c2ceac733d4ca2",
+    "simulator_completed": true,
+    "pss_converged": true,
+    "periodic_passed": true,
+    "period_s": 4.166666666666666e-08,
+    "endpoint_peak_v": 0.0,
+    "rf_rising_edges": 164,
+    "ref_rising_edges": 1,
+    "pulse_rising_edges": 1,
+    "rf_dominant_harmonic": 164,
+    "mean_clamp_current_a": 6.644315432614928e-12,
+    "pulse_duty": 0.04275946275872806,
+    "mean_held_difference_v": -0.008302452227989513,
+    "hold_range_v": {
+      "hp": [
+        0.3380606865715407,
+        0.602141396861649
+      ],
+      "hn": [
+        0.3177379828302403,
+        0.6692668768675873
+      ]
+    },
+    "amplitude_good_fraction": 1.0,
+    "phase_good_fraction": 1.0,
+    "td_sha256": "2a172d4678640b461f8309c0d377ba55ff9cf920247d04dc4d75b9e01d859bb5",
+    "fd_sha256": "a77c9df7b9b4c32b10f27dba581d42b7a4d3fcb4ca9d28f57f6a11096f81c87a"
   },
-  "branch_kcl_verified": false,
-  "operating_point_unchanged": false,
+  "branch_kcl_verified": true,
+  "operating_point_unchanged": true,
   "terminal_reporting_consistent": false,
   "main_dut_modified": false,
   "noise_measured": false,
@@ -17,5 +45,54 @@
     "Three zero-volt current probes add simulator unknowns; verify unchanged operating point before interpreting them.",
     "A branch/port disagreement is a measurement/model diagnostic, not evidence that physical KCL is violated.",
     "No gate-current correction or sign reversal may be selected simply to minimize the residual."
-  ]
+  ],
+  "branch_kcl_relative_mean_absolute_residual": 9.493287432261003e-17,
+  "maximum_probe_voltage_v": 0.0,
+  "clamp_current_change_a": -2.9065422280687136e-18,
+  "branch_port_comparison": [
+    {
+      "branch": "tg",
+      "relative_mean_absolute_difference": 0.022318603095934336,
+      "mean_signed_difference_a": -2.7134215941331956e-08,
+      "max_absolute_difference_a": 9.925394790519216e-06,
+      "passed": false
+    },
+    {
+      "branch": "off",
+      "relative_mean_absolute_difference": 0.04716585948178388,
+      "mean_signed_difference_a": -7.809811533591369e-08,
+      "max_absolute_difference_a": 3.0255844508994095e-05,
+      "passed": false
+    },
+    {
+      "branch": "tail_gate",
+      "relative_mean_absolute_difference": 2.5327758115958785e-09,
+      "mean_signed_difference_a": -6.791148810546245e-15,
+      "max_absolute_difference_a": 4.235009350123971e-10,
+      "passed": true
+    }
+  ],
+  "td_sha256": "2a172d4678640b461f8309c0d377ba55ff9cf920247d04dc4d75b9e01d859bb5",
+  "physical_waveform_max_abs_changes_v": {
+    "ref": 0.0,
+    "refb": 5.10702591327572e-15,
+    "vp": 0.0,
+    "vn": 0.0,
+    "sp": 7.805978086139476e-13,
+    "sn": 9.106049247975534e-13,
+    "hp": 1.1544099010052378e-12,
+    "hn": 1.5756840276992534e-12,
+    "vmid": 5.341282971471628e-13,
+    "pulse": 1.0763612223740893e-13,
+    "out": 0.0,
+    "amp_good": 1.9984014443252818e-15,
+    "phase_good": 1.9984014443252818e-15,
+    "XCP.ng": 6.442069100387471e-14,
+    "XCP.nb": 1.5432100042289676e-14,
+    "XCP.tail": 9.005018952734645e-13,
+    "XCP.mir": 8.47877323906232e-13,
+    "XCP.gate": 1.5232259897857148e-13,
+    "XCP.gateb": 7.283063041541027e-14
+  },
+  "waveform_comparison_note": "Additional diagnostic comparison, not a retrospective relaxation of any protocol gate."
 }

@@ -1,0 +1,43 @@
+{
+  "scope": "Isolate CP input headroom by shifting only the resistive sampler midpoint.\n\nUse the original tail MOS and the already verified measurement branches.\nThe nominal midpoint moves from 0.60 to 0.70 V at 1.2 V, while the divider's\nThevenin resistance and bypass capacitance remain 50 kohm and 10 pF.\n",
+  "time": "2026-10-04T21:39:08.491677+08:00",
+  "run": "cpmid70probe01",
+  "case": "cp_mid70_operating_tt",
+  "phase_deg": 196.74700280983583,
+  "condition": "TT27/1.2V/24MHzref/3.936GHzidealRF/physicalreference+sampler+CP+bias+pulser+validity; externalcontrolclamp,1.9pFrefloadapproximation.",
+  "tb_sha256": "7fcb72b73b786cbd95e8e8cd398e251987abd8fe112a4ff96df02ea8b85b299e",
+  "block_sha256": "595dea3a42cc0c2a1cf30297cb852eea65fefe402e2f1166256f71ca9fa45087",
+  "dependencies_sha256": {
+    "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+    "cp_timing.scs": "87a42f85028580ab52cc6d08a2514e4295dc93e4be0e019f52cb55964ae50fde",
+    "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+    "tank_replay_phase_v14.va": "fc494076ad067ced3730e38c1ba75a1205bcc03a45eef4062061f08d05cd0bf3",
+    "validity_physical_v14.scs": "4adda2d6a864ac7ae7478c157989ea34d0901f52cf1f7b6bca2ec3238244f27f",
+    "cp_gate_probe_v14.scs": "2b65e3ee24a83cf259978a8ac036d63e3a753c503ced2d1ea9540bff2fc90b24",
+    "sampler_bias_mid70_v14.scs": "595dea3a42cc0c2a1cf30297cb852eea65fefe402e2f1166256f71ca9fa45087"
+  },
+  "baseline_block_sha256": "fe966831e65b04ee641625abc5187748bac130ea8d68babe17f33dc948c9cd67",
+  "baseline_tb_sha256": "e47312dbbd23c3a99c838098c4e88665beb06d885193e15885c0ee2050a69038",
+  "baseline_case": "cp_gate_branch_tt",
+  "branch_validation_sha256": "dee24e76e35c8f918b4cf1f67e59b6f0f908434857b8b36a61e61eef5eafb187",
+  "dynamic_validation_sha256": "4f2033cbc47cefc88147eac585cdb7d6bf7d783dd7317eca61bccdbde313bf16",
+  "only_physical_change": "Sampler bias resistor pair:100k/100k ->85.7142857k/120k. Original tail10um/1um and same three zero-volt probes.",
+  "predicted_nominal_midpoint_v": 0.7,
+  "nominal_thevenin_resistance_ohm": 50000,
+  "bypass_capacitance_f": 1e-11,
+  "diagnostic_limits": {
+    "relative_mean_absolute_kcl": 0.001,
+    "max_probe_voltage_v": 1e-08
+  },
+  "launch_scope": "One fresh PSS,1thread,1200s guard, only after actual resource slot is free.",
+  "main_dut_modified": false,
+  "noise_measured": false,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "0.70V is the unloaded divider prediction, not the measured sampled voltage or a changed project requirement.",
+    "RF coupling, sampler loading, reference sensitivity, CP gain, balance and noise all require measurement after this change.",
+    "The same-phase operating trial cannot be treated as a balanced noise comparison.",
+    "The original fasttail change is not included; this isolates midpoint/headroom from tail geometry.",
+    "No extrapolation to full PVT, voltage margin, full PLL or PEX."
+  ]
+}

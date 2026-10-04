@@ -1,0 +1,48 @@
+{
+  "scope": "Compare accepted same-phase CP operating trials; do not infer noise benefit.",
+  "condition": "TT27/1.2V/24MHzref/3.936GHzidealRF/physicalreference+sampler+CP+bias+pulser+validity; externalcontrolclamp,1.9pFrefloadapproximation.",
+  "cases": [
+    {
+      "label": "Baseline",
+      "validation": "frontend_operating_probe_validation.json",
+      "validation_sha256": "d271870f58463c3c2394bc51b3dc963e4f92a2072c81acec03f5768af86e1457",
+      "source_result": "research/runs/spectre_cmos_v14_full/frontendop01/frontend_operating_r2_tt/result.json",
+      "source_sha256": "db6f6a8ef610c92dfcfa811e102e06ba6890e48c3ba164c2f6b81d96a94e79a1",
+      "source_td_sha256": "338e8782e687783b13f06c88845b13a9ec7e1b0a6831693ae48dbe319fcdc11d",
+      "cache": "research/runs/spectre_cmos_v14_full/frontendop01/frontend_operating_r2_tt/cp_noise_mechanism_traces.npz",
+      "phase_deg": 196.74700280983583,
+      "clamp_current_na": 0.006644318339157156,
+      "phase_good_fraction": 1.0
+    },
+    {
+      "label": "Short tail",
+      "validation": "cp_fasttail_branch_validation.json",
+      "validation_sha256": "bd4905a0d6ef5bd62421bf026b186da9313ce33322af4020d24b341c998d0dfb",
+      "source_result": "research/runs/spectre_cmos_v14_full/cpfasttailbranch01/cp_fasttail_branch_tt/result.json",
+      "source_sha256": "fbaa79f2d3de314c0c8230090e3d35bbd0f09c3578c1d735b8bf75f6dd4465c1",
+      "source_td_sha256": "de4e37d1662f9000dc035371a7cdccc9e6e30ba4754a165711c3e851d2f42f7e",
+      "cache": "research/runs/spectre_cmos_v14_full/cpfasttailbranch01/cp_fasttail_branch_tt/cp_operating_trial_traces.npz",
+      "phase_deg": 196.74700280983583,
+      "clamp_current_na": -16.089631258183754,
+      "phase_good_fraction": 1.0
+    },
+    {
+      "label": "Higher midpoint",
+      "validation": "cp_mid70_probe_validation.json",
+      "validation_sha256": "b58f047906ad561cb9184242d2efdf1d978dbd6311218a663c4e12db61d6614b",
+      "source_result": "research/runs/spectre_cmos_v14_full/cpmid70probe01/cp_mid70_operating_tt/result.json",
+      "source_sha256": "781176c7ba4225faf90331cbf0e29096e60c9762c231ebc2908dfe08bea4764f",
+      "source_td_sha256": "7952f02862c6574f669324859d4976b79c57747f8aacf4cb5c630896e063fc35",
+      "cache": "research/runs/spectre_cmos_v14_full/cpmid70probe01/cp_mid70_operating_tt/cp_operating_trial_traces.npz",
+      "phase_deg": 196.74700280983583,
+      "clamp_current_na": 247.01286597781854,
+      "phase_good_fraction": 0.8660378417490292
+    }
+  ],
+  "figure": "figures/cp_operating_comparison.png",
+  "figure_sha256": "307cf7f6d4597219ca74d6c72e204fc2d85453dfa5332f4912e54417501b1428",
+  "noise_measured": false,
+  "full_pll_acceptance": false,
+  "main_dut_modified": false,
+  "limitation": "The original baseline has no branch probes. The separate branch probe control established unchanged voltages within 1.576e-12 V; candidate variants retain the same three probes."
+}

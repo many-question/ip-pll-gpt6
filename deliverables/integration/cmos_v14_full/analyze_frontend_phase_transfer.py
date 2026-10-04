@@ -1,6 +1,6 @@
 """Check a measured frontend PAC gain against its independent static phase sweep."""
 from pathlib import Path
-import hashlib,json,re
+import argparse,hashlib,json,re
 import numpy as np
 from analyze_frontend_gain import measurement
 from noise_utils import parse
@@ -10,7 +10,13 @@ sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 normal=lambda s:re.sub(r'\b(writefinal|writepss)="[^"]+"',r'\1="STATE"',s).strip()
 
 def main():
-    pp=H/'results/frontend_phase_transfer_protocol.json';p=json.loads(pp.read_text())
+    ap=argparse.ArgumentParser();ap.add_argument('--round',type=int,choices=[1,2,3],default=2)
+    choice=ap.add_mutually_exclusive_group();choice.add_argument('--reference-candidate',action='store_true')
+    choice.add_argument('--cp-variant',choices=['fasttail','mid70']);args=ap.parse_args()
+    assert args.reference_candidate or args.cp_variant or args.round==2
+    prefix=f'cp_{args.cp_variant}_phase_transfer_r{args.round}' if args.cp_variant else (
+        f'reference_frontend_phase_transfer_r{args.round}' if args.reference_candidate else 'frontend_phase_transfer')
+    pp=H/'results'/(prefix+'_protocol.json');p=json.loads(pp.read_text())
     assert sha(H/'results'/p['source_validation'])==p['source_validation_sha256']
     j=ROOT/'research/runs/spectre_cmos_v14_full'/p['run']/p['case']
     row=measurement(j,p['phase_deg'])
@@ -43,7 +49,7 @@ def main():
                        magnitude_a_per_rad=abs(g).tolist(),magnitude_relative_static_db=(20*np.log10(abs(g/k))).tolist(),
                        phase_relative_static_deg=np.angle(g/k,deg=True).tolist(),low_frequency_complex_relative_error=error,
                        low_frequency_gain_check_passed=bool(passed),physical_source_verified=True)
-    (H/'results/frontend_phase_transfer_validation.json').write_text(json.dumps(out,indent=2)+'\n')
+    (H/'results'/(prefix+'_validation.json')).write_text(json.dumps(out,indent=2)+'\n')
     print(json.dumps(out,indent=2))
 
 if __name__=='__main__':main()

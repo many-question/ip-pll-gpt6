@@ -1,0 +1,45 @@
+{
+  "scope": "Measure the phase/current zero and local gain of a physical CP candidate.",
+  "variant": "fasttail",
+  "round": 1,
+  "condition": "TT27/1.2V/24MHzref/3.936GHzidealRF/physicalreference+sampler+CP+bias+pulser+validity; externalcontrolclamp,1.9pFrefloadapproximation. Physical trial: Tail MT 10um/1um -> 1.8um/0.18um, same nominal W/L; preserve the same three zero-volt branch probes.",
+  "protocol_sha256": "14badbaf782e8bd89bce97831aa91f7e18b0544f517a9a2e5cb8b1f49ed24d01",
+  "control_clamp_v": 0.668428925600659,
+  "cases": [
+    {
+      "case": "cp_fasttail_r1_lo_tt",
+      "phase_deg": 179.6786145387222,
+      "completed": false
+    },
+    {
+      "case": "cp_fasttail_r1_center_tt",
+      "phase_deg": 194.6786145387222,
+      "completed": false
+    },
+    {
+      "case": "cp_fasttail_r1_hi_tt",
+      "phase_deg": 209.6786145387222,
+      "completed": false
+    }
+  ],
+  "complete": false,
+  "periodic_all_passed": false,
+  "unique_negative_feedback_branch": false,
+  "proposed_phase_deg": null,
+  "local_gain_verified": false,
+  "balanced_center_verified": false,
+  "noise_measured": false,
+  "integrated_jitter_fs": null,
+  "full_pll_acceptance": false,
+  "main_dut_modified": false,
+  "limitations": [
+    "The original unprobed fasttail trial remains unlaunched; this is a separate controlled pair with verified measurement branches.",
+    "TG/MOFF reported MOS currents disagreed with independent branch currents in the baseline. Gate KCL must use the branches, without changing signs to fit.",
+    "The exact simulator/model-internal reason for the terminal-report disagreement is not established.",
+    "Equal nominal W/L does not guarantee equal current, output resistance, noise, mismatch or PVT.",
+    "This same-phase operating trial is not rebalanced; improved settling must be followed by actual gain, balance and device-noise measurements.",
+    "Initial center extrapolates baseline gain; a measured bracket and local gain are required.",
+    "Only extra observations are removed relative to the operating trial; all physical circuits, branch probes and solver parameters remain.",
+    "Three DC-average current samples are not a dynamic transfer function or a noise validation."
+  ]
+}
