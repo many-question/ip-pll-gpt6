@@ -1,0 +1,78 @@
+{
+  "scope": "Cross-check native RT4 edge jitter against independently converged PNoise.",
+  "protocol_sha256": "d6d4d3e255856f463ea448a68581408cae351b2c32b6da728c4df2b2b2a7d357",
+  "condition": "TT27/1.2V/actualRT4/984MHz output/10fF; noiseless ideal3.936GHzclock+984MHzdata delayed30ps,10psedges. AllRT4MOSnoiseon; freshPSSfund984MHz each.",
+  "cases": [
+    {
+      "run": "rttrannoiseoff05",
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/rttrannoiseoff05/retimer_tran_noise_seed_tt/result.json",
+      "source_sha256": "34c689a937bfac5018cd1650850295d0efec810859753c46c042e1ecd06bc437",
+      "raw_cache_sha256": "7ad4b803f7ec648da1d51417ce8de692772838026d865ba8bf32d6e0d2b45a5b",
+      "source_bandwidth_hz": 0.0,
+      "maxstep": "0.5p",
+      "seed": 11,
+      "native_sha256": "5fdb71f18958735fc7b7b3c62c3bfd99139613222a038df7096038f655724b97",
+      "paired_edges": 2048,
+      "residual_mean_removed": true,
+      "band_variance_s2": 8.755093740990094e-44,
+      "band_rms_fs": 2.958900765654383e-07,
+      "block_variance_standard_error_s2": 1.7856820895549743e-44,
+      "rms_relative_to_pnoise": -0.9999999944511201,
+      "noiseless_schedule_rms_fs": 2.5443594065334535e-07
+    },
+    {
+      "run": "rttrannoiseoff025",
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/rttrannoiseoff025/retimer_tran_noise_seed_tt/result.json",
+      "source_sha256": "793049cca97a55ed1b8c2680716e11380b3e7ff2d3914279ebcbe991fbfc5b56",
+      "raw_cache_sha256": "b9b724a5deb64be7599e916ee54fa4497e7cd453802b797ae3462fe8ee087b3d",
+      "source_bandwidth_hz": 0.0,
+      "maxstep": "0.25p",
+      "seed": 11,
+      "native_sha256": "5fdb71f18958735fc7b7b3c62c3bfd99139613222a038df7096038f655724b97",
+      "paired_edges": 2048,
+      "residual_mean_removed": true,
+      "band_variance_s2": 0.0,
+      "band_rms_fs": 0.0,
+      "block_variance_standard_error_s2": 0.0,
+      "rms_relative_to_pnoise": -1.0,
+      "noiseless_schedule_rms_fs": 2.614086055809745e-07
+    },
+    {
+      "run": "rttrannoise80g05",
+      "completed": false
+    },
+    {
+      "run": "rttrannoise160g05",
+      "completed": false
+    },
+    {
+      "run": "rttrannoise160g025",
+      "completed": false
+    },
+    {
+      "run": "rttrannoise160g025s29",
+      "completed": false
+    }
+  ],
+  "complete": false,
+  "passed": false,
+  "full_pll_acceptance": false,
+  "main_dut_modified": false,
+  "limitations": [
+    "Standalone RT4 only; ideal noiseless sources and10fF, not complete PLL jitter.",
+    "2048 cycles resolve about480kHz; this finite-record comparison excludes offsets below5MHz.",
+    "Noisefmin1MHz is a source spectrum corner, not the analysis highpass cutoff.",
+    "A single short trace has statistical error; report block-variance scatter and two independent noise seeds.",
+    "PNoise comparison is a linearized reference; nonlinear interactions and source-bandwidth convergence must be observed.",
+    "Noise-off subtraction removes the measured deterministic edge schedule; no rescaling or noise inflation."
+  ],
+  "fft_bin_hz": 480468.75,
+  "effective_comparison_band_hz": [
+    5044921.875,
+    492000000.0
+  ],
+  "pnoise_expected_rms_fs": 53.32428886728135,
+  "measurement_edges": 2048
+}

@@ -1,0 +1,96 @@
+{
+  "scope": "Prepare a native-transient device-noise cross-check of the measured TT RT4.",
+  "time": "2026-10-04T23:03:34.512485+08:00",
+  "condition": "TT27/1.2V/actualRT4/984MHz output/10fF; noiseless ideal3.936GHzclock+984MHzdata delayed30ps,10psedges. AllRT4MOSnoiseon; freshPSSfund984MHz each.",
+  "source_validation": "retimer_standalone_band_validation.json",
+  "source_validation_sha256": "0aada4bd15d64bb7074371b7117fcc6b13b932d4c5bfbedc54d513dc8125c728",
+  "source_result": "research/runs/spectre_cmos_v14_full/rtstandaloneband01/retimer_standalone_band_finer_tt/result.json",
+  "source_sha256": "9f21d32c5b74fab56888bd34dc0a2621c4669cd5b5efd5322b00b66e2eac475a",
+  "source_noise_sha256": "a5dfa75097033e47e4fee1bf5f9e66275adf7bcdc311336573e7e496b99ce457",
+  "seed_run": "rttrannoiseseed01",
+  "case": "retimer_tran_noise_seed_tt",
+  "seed_tb_sha256": "108f9cd13e8044e51e3f6d6f2e0cce485e21b39830d34b4a249b03546ddf2628",
+  "seed_time_s": 1e-07,
+  "tran_stop": "2.3u",
+  "measurement_start_s": 2e-07,
+  "edge_count": 2048,
+  "edge_threshold_v": 0.6,
+  "output_hz": 984000000.0,
+  "comparison_band_hz": [
+    5000000.0,
+    492000000.0
+  ],
+  "cases": [
+    {
+      "run": "rttrannoiseoff05",
+      "case": "retimer_tran_noise_seed_tt",
+      "noisefmax": 0.0,
+      "noisefmin": 1000000.0,
+      "noiseseed": 11,
+      "maxstep": "0.5p"
+    },
+    {
+      "run": "rttrannoiseoff025",
+      "case": "retimer_tran_noise_seed_tt",
+      "noisefmax": 0.0,
+      "noisefmin": 1000000.0,
+      "noiseseed": 11,
+      "maxstep": "0.25p"
+    },
+    {
+      "run": "rttrannoise80g05",
+      "case": "retimer_tran_noise_seed_tt",
+      "noisefmax": 80000000000.0,
+      "noisefmin": 1000000.0,
+      "noiseseed": 11,
+      "maxstep": "0.5p"
+    },
+    {
+      "run": "rttrannoise160g05",
+      "case": "retimer_tran_noise_seed_tt",
+      "noisefmax": 160000000000.0,
+      "noisefmin": 1000000.0,
+      "noiseseed": 11,
+      "maxstep": "0.5p"
+    },
+    {
+      "run": "rttrannoise160g025",
+      "case": "retimer_tran_noise_seed_tt",
+      "noisefmax": 160000000000.0,
+      "noisefmin": 1000000.0,
+      "noiseseed": 11,
+      "maxstep": "0.25p"
+    },
+    {
+      "run": "rttrannoise160g025s29",
+      "case": "retimer_tran_noise_seed_tt",
+      "noisefmax": 160000000000.0,
+      "noisefmin": 1000000.0,
+      "noiseseed": 29,
+      "maxstep": "0.25p"
+    }
+  ],
+  "dependencies_sha256": {
+    "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+    "rt_noise_scale4_v14.scs": "839d4bdb3d8b2dc60dcdad1f3a49010f82d6cb4ff08d10325b8c5c636c65e5c6",
+    "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd"
+  },
+  "gate": {
+    "noiseless_edge_rms_fs": 5.0,
+    "noiseless_step_difference_rms_fs": 5.0,
+    "noise_rms_relative_pnoise_error": 0.1,
+    "refined_rms_relative_change": 0.05
+  },
+  "analysis": "Pair2048 consecutive rising output edges after200ns against the0.25ps noiseless run. Uniform edge-index periodogram of timing residuals, exactFFT-bin integration5MHz..492MHz. Compare with the previously verified sampled-PNoise PSD integrated over the identical bin cells. No fictitious interpolation of a short trace to10kHz.",
+  "launch_scope": "After RC precision review passes: one100ns seed and six serial native branches, one short slot, one thread, each1200s client guard; no retries or DUT adoption.",
+  "main_dut_modified": false,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "Standalone RT4 only; ideal noiseless sources and10fF, not complete PLL jitter.",
+    "2048 cycles resolve about480kHz; this finite-record comparison excludes offsets below5MHz.",
+    "Noisefmin1MHz is a source spectrum corner, not the analysis highpass cutoff.",
+    "A single short trace has statistical error; report block-variance scatter and two independent noise seeds.",
+    "PNoise comparison is a linearized reference; nonlinear interactions and source-bandwidth convergence must be observed.",
+    "Noise-off subtraction removes the measured deterministic edge schedule; no rescaling or noise inflation."
+  ]
+}

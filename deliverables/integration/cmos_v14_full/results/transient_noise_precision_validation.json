@@ -52,21 +52,75 @@
     {
       "run": "noisercprecision40g1p",
       "case": "noise_recover_rc_seed",
-      "completed": false
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/noisercprecision40g1p/noise_recover_rc_seed/result.json",
+      "source_sha256": "036e8b13cd3ab85430497f99a1bb56cb959e8dbbaee2cb83f4325d4cb1b4ebb1",
+      "noise_bandwidth_hz": 40000000000.0,
+      "maxstep": "1p",
+      "seed": 11,
+      "samples": 480001,
+      "blocks": 48,
+      "mean_v": 1.199999728534168,
+      "variance_v2": 4.022717056714678e-09,
+      "rms_v": 6.342489303668298e-05,
+      "expected_variance_v2": 4.13352110874049e-09,
+      "kT_over_C_v2": 4.144017973500001e-09,
+      "relative_variance_error": -0.026806214147911955,
+      "relative_variance_standard_error": 0.007203995505278609,
+      "mean_standard_error_v": 3.7160827601436803e-07,
+      "mean_check_passed": true,
+      "fine_precision_passed": true,
+      "raw_cache_sha256": "03e5c5583265ace465a8c17ab4ccdd40e5bdc2b5db5a1d5f7ab55f5cb0ab8e95"
     },
     {
       "run": "noisercprecision80g1p",
       "case": "noise_recover_rc_seed",
-      "completed": false
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/noisercprecision80g1p/noise_recover_rc_seed/result.json",
+      "source_sha256": "92f5c670d8774df3578489188943188f44ba86dd9f9bcb88cf94f324ee067b23",
+      "noise_bandwidth_hz": 80000000000.0,
+      "maxstep": "1p",
+      "seed": 11,
+      "samples": 480001,
+      "blocks": 48,
+      "mean_v": 1.1999993245007234,
+      "variance_v2": 4.022048892389469e-09,
+      "rms_v": 6.341962545134959e-05,
+      "expected_variance_v2": 4.138769520347829e-09,
+      "kT_over_C_v2": 4.144017973500001e-09,
+      "relative_variance_error": -0.028201770450013153,
+      "relative_variance_standard_error": 0.005293642128212548,
+      "mean_standard_error_v": 4.6381265348385376e-07,
+      "mean_check_passed": true,
+      "fine_precision_passed": true,
+      "raw_cache_sha256": "49b6014608e5199563addb300a1d3365992c4f9b9ea73d717efbc03fae3afeb9"
     },
     {
       "run": "noisercprecision80g1ps29",
       "case": "noise_recover_rc_seed",
-      "completed": false
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/noisercprecision80g1ps29/noise_recover_rc_seed/result.json",
+      "source_sha256": "8669a8455de0f2350b9421ef0bbe71d11e52a93848b90b47503091cffcc8cde4",
+      "noise_bandwidth_hz": 80000000000.0,
+      "maxstep": "1p",
+      "seed": 29,
+      "samples": 480001,
+      "blocks": 48,
+      "mean_v": 1.1999997392254143,
+      "variance_v2": 4.0266210020909275e-09,
+      "rms_v": 6.345566170241177e-05,
+      "expected_variance_v2": 4.138769520347829e-09,
+      "kT_over_C_v2": 4.144017973500001e-09,
+      "relative_variance_error": -0.027097067789239038,
+      "relative_variance_standard_error": 0.0054400394464518016,
+      "mean_standard_error_v": 3.874564741737287e-07,
+      "mean_check_passed": true,
+      "fine_precision_passed": true,
+      "raw_cache_sha256": "d02e8364baed9766c5075f0acc1fa28bc3c697679b7f6c07846ed0136a52dcb5"
     }
   ],
-  "complete": false,
-  "precision_passed": false,
+  "complete": true,
+  "precision_passed": true,
   "full_pll_acceptance": false,
   "main_dut_modified": false,
   "limitations": [
@@ -78,5 +132,10 @@
     "One-microsecond blocks are long relative to the1nsRC time constant; their standard error is an approximate finite-record diagnostic.",
     "Different bandwidths/seeds need not generate paired random samples. Bandwidth comparison includes sampling uncertainty.",
     "RC convergence does not establish MOS flicker noise, nonlinear folding, or PLL jitter accuracy."
-  ]
+  ],
+  "comparisons": {
+    "maxstep_1p_vs_10p_at_10g": -7.859773647589385e-06,
+    "bandwidth_80g_vs_40g_at_1p": -0.00016609776819731525,
+    "independent_seed_29_vs_11_at_80g": 0.001136761343232262
+  }
 }

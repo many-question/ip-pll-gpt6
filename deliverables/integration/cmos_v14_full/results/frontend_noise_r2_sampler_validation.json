@@ -1,0 +1,642 @@
+{
+  "scope": "Attribute actual frontend current noise, with operating-point and sum checks.",
+  "protocol_sha256": "161e1ac70451f50998b4c8288fc62eed6ad3befa6397ff14b600d4aab7679860",
+  "condition": "TT27/1.2V/24MHzref/3.936GHzidealRF/physicalreference+sampler+CP+bias+pulser+validity; externalcontrolclamp,1.9pFrefloadapproximation.",
+  "group": "sampler",
+  "periodic": {
+    "case": "frontend_noise_r2_sampler_tt",
+    "phase_deg": 196.74700280983583,
+    "completed": true,
+    "source_result": "research/runs/spectre_cmos_v14_full/frontendnoise2sampler/frontend_noise_r2_sampler_tt/result.json",
+    "source_sha256": "9721d15410353bdf16a814cc9f2d79df5011dbba84eefe76217b6c33f7089fd8",
+    "simulator_completed": true,
+    "pss_converged": true,
+    "periodic_passed": true,
+    "period_s": 4.166666666666666e-08,
+    "endpoint_peak_v": 0.0,
+    "rf_rising_edges": 164,
+    "ref_rising_edges": 1,
+    "pulse_rising_edges": 1,
+    "rf_dominant_harmonic": 164,
+    "mean_clamp_current_a": 6.644318339157156e-12,
+    "pulse_duty": 0.04275946275872806,
+    "mean_held_difference_v": -0.008302452228674975,
+    "hold_range_v": {
+      "hp": [
+        0.3380606865720703,
+        0.6021413968625086
+      ],
+      "hn": [
+        0.3177379828314059,
+        0.669266876868768
+      ]
+    },
+    "amplitude_good_fraction": 1.0,
+    "phase_good_fraction": 1.0,
+    "td_sha256": "11dd16e800e9981cd378c0e7da5f9a15b27bb2acca9e9228d1bb55f723fccb8f",
+    "fd_sha256": "efb0f94a0dc52bc1a8726c812282619a528e89ceb1bacf2d80bc2c0bb80124e5"
+  },
+  "noise_valid": true,
+  "integrated_jitter_fs": null,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "Noisy LC and its impedance/backaction are absent; the clamped-current result is module evidence.",
+    "Control logic is represented by1.9pF load; its active noise and exact capacitive loading are excluded.",
+    "The control clamp uses a finite-window mean from a deterministic initialization trace, not an accepted PSS state.",
+    "Four large phase steps locate a branch only; they do not define a local Kphi or permit jitter integration.",
+    "Numerical and PVT checks remain after the operating point is selected.",
+    "The current search target is an engineering precheck; local gain and phase-error acceptance still need actual measurements.",
+    "Current-noise points use a noiseless control clamp. Frequency-dependent loop impedance and LC loading are excluded.",
+    "Static Kphi supplies a low-frequency equivalent phase-noise estimate only, not an exact dynamic transfer.",
+    "No integration of three isolated PSD points. Fresh isolated noise-on must be checked against the all-noise device contributions."
+  ],
+  "balanced_center_verified": true,
+  "linearized_residual_phase_rad": 1.4907807455945154e-05,
+  "offsets_hz": [
+    10000.0,
+    1000000.0,
+    10000000.0
+  ],
+  "current_psd_a2_per_hz": [
+    7.386585570439896e-25,
+    1.3534144365618837e-25,
+    8.816892017548735e-26
+  ],
+  "current_asd_a_per_sqrt_hz": [
+    8.594524751514708e-13,
+    3.678878139544559e-13,
+    2.969325178815674e-13
+  ],
+  "equivalent_rf_phase_psd_rad2_per_hz": [
+    3.718522547541541e-12,
+    6.813299664006845e-13,
+    4.4385611530310206e-13
+  ],
+  "kphi_magnitude_a_per_rf_rad": 4.4569386603577556e-07,
+  "group_psd_a2_per_hz": {
+    "reference": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "sampler": [
+      7.386585570439896e-25,
+      1.3534144365618837e-25,
+      8.81689201754873e-26
+    ],
+    "charge_pump": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pulser": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "bias": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "validity": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "group_variance_fraction": {
+    "reference": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "sampler": [
+      1.0,
+      1.0,
+      0.9999999999999994
+    ],
+    "charge_pump": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "pulser": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "bias": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "validity": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "device_sum_relative_error": 5.551115123125783e-16,
+  "excluded_noise_fraction": 0.0,
+  "noise_sha256": "a261c226c7a33e50c12c067fb60bd427006545ab1f4379cf7485bf647dee6c87",
+  "top_devices_at_1mhz": [
+    {
+      "device": "XS.XSN.MN",
+      "fraction": 0.29978659020453857,
+      "psd_a2_per_hz": [
+        2.622429825812732e-25,
+        4.057354990704839e-26,
+        2.690196401880225e-26
+      ]
+    },
+    {
+      "device": "XS.XI.MP",
+      "fraction": 0.2403832402581972,
+      "psd_a2_per_hz": [
+        3.264488008428477e-26,
+        3.253381476729679e-26,
+        2.246238992881856e-26
+      ]
+    },
+    {
+      "device": "XS.XI.MN",
+      "fraction": 0.22717073288397197,
+      "psd_a2_per_hz": [
+        2.367955863663679e-25,
+        3.074561494495111e-26,
+        1.958372298019195e-26
+      ]
+    },
+    {
+      "device": "XS.XSP.MN",
+      "fraction": 0.2006168786047473,
+      "psd_a2_per_hz": [
+        1.61918864821045e-25,
+        2.715177797216479e-26,
+        1.629678336682136e-26
+      ]
+    },
+    {
+      "device": "XS.XSN.MP",
+      "fraction": 0.030925758205529022,
+      "psd_a2_per_hz": [
+        4.219039703699285e-26,
+        4.185536761698511e-27,
+        2.83523598860445e-27
+      ]
+    },
+    {
+      "device": "XS.XSP.MP",
+      "fraction": 0.0011167998430159515,
+      "psd_a2_per_hz": [
+        2.865846154025756e-27,
+        1.511493030287834e-28,
+        8.882389224873969e-29
+      ]
+    }
+  ],
+  "top_device_components_a2_per_hz": {
+    "XS.XSN.MN": {
+      "rd": [
+        1.292588167018946e-27,
+        1.294513857152758e-27,
+        9.262217635033362e-28
+      ],
+      "rs": [
+        5.103540085187487e-29,
+        5.113715115787313e-29,
+        3.655178377610158e-29
+      ],
+      "rgbi": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbpd": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbps": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbpb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbdb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbsb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": [
+        3.205453406324918e-26,
+        3.210289770592539e-26,
+        2.296841889175958e-26
+      ],
+      "igs": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "igd": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "igb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "fn": [
+        2.288448249501532e-25,
+        7.125001192812366e-27,
+        2.970771579763234e-27
+      ],
+      "total": [
+        2.622429825812732e-25,
+        4.057354990704839e-26,
+        2.690196401880225e-26
+      ]
+    },
+    "XS.XI.MP": {
+      "rd": [
+        1.713135835065717e-27,
+        1.719518991499392e-27,
+        1.182890148252822e-27
+      ],
+      "rs": [
+        1.232264232038082e-27,
+        1.236898645303861e-27,
+        8.505610933032015e-28
+      ],
+      "rgbi": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbpd": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbps": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbpb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbdb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbsb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": [
+        2.947319938532229e-26,
+        2.957555408232786e-26,
+        2.042854575966225e-26
+      ],
+      "igs": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "igd": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "igb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "fn": [
+        2.262806318586841e-28,
+        1.843048165677481e-30,
+        3.929276002790457e-31
+      ],
+      "total": [
+        3.264488008428477e-26,
+        3.253381476729679e-26,
+        2.246238992881856e-26
+      ]
+    },
+    "XS.XI.MN": {
+      "rd": [
+        5.081102774624095e-31,
+        5.093595159949026e-31,
+        3.58170275476271e-31
+      ],
+      "rs": [
+        1.078248256005798e-27,
+        1.081024412603675e-27,
+        7.583551348220751e-28
+      ],
+      "rgbi": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbpd": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbps": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbpb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbdb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbsb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": [
+        2.31920019181268e-26,
+        2.325461185542043e-26,
+        1.627792759255726e-26
+      ],
+      "igs": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "igd": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "igb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "fn": [
+        2.125248280819579e-25,
+        6.409469317411016e-27,
+        2.547082082537142e-27
+      ],
+      "total": [
+        2.367955863663679e-25,
+        3.074561494495111e-26,
+        1.958372298019195e-26
+      ]
+    },
+    "XS.XSP.MN": {
+      "rd": [
+        1.218526875857994e-28,
+        1.228172272103021e-28,
+        7.897881128802256e-29
+      ],
+      "rs": [
+        6.716948103454932e-28,
+        6.76718122165207e-28,
+        4.358342782547775e-28
+      ],
+      "rgbi": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbpd": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbps": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbpb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbdb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbsb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": [
+        2.251306612853291e-26,
+        2.268177723965298e-26,
+        1.461030084755648e-26
+      ],
+      "igs": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "igd": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "igb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "fn": [
+        1.386122511945807e-25,
+        3.670465383136295e-27,
+        1.171669429722074e-27
+      ],
+      "total": [
+        1.61918864821045e-25,
+        2.715177797216479e-26,
+        1.629678336682136e-26
+      ]
+    },
+    "XS.XSN.MP": {
+      "rd": [
+        3.315920208222942e-28,
+        3.322248735351117e-28,
+        2.373813331485493e-28
+      ],
+      "rs": [
+        1.665472949261357e-30,
+        1.668975507108123e-30,
+        1.192546607304234e-30
+      ],
+      "rgbi": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbpd": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbps": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbpb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbdb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbsb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": [
+        3.59312868121253e-27,
+        3.59996230716038e-27,
+        2.572247357103586e-27
+      ],
+      "igs": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "igd": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "igb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "fn": [
+        3.826401086200877e-26,
+        2.516806054959113e-28,
+        2.441475174501048e-29
+      ],
+      "total": [
+        4.219039703699285e-26,
+        4.185536761698511e-27,
+        2.83523598860445e-27
+      ]
+    },
+    "XS.XSP.MP": {
+      "rd": [
+        8.365190796273e-30,
+        8.490093206860032e-30,
+        5.579815993209057e-30
+      ],
+      "rs": [
+        3.141633301662655e-32,
+        3.185291589233629e-32,
+        2.08797974671764e-32
+      ],
+      "rgbi": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbpd": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbps": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbpb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbdb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rbsb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "id": [
+        1.229352240302052e-28,
+        1.247383809639408e-28,
+        8.195418611937045e-29
+      ],
+      "igs": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "igd": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "igb": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "fn": [
+        2.734514322866261e-27,
+        1.78889759420903e-29,
+        1.269010338693004e-30
+      ],
+      "total": [
+        2.865846154025756e-27,
+        1.511493030287834e-28,
+        8.882389224873969e-29
+      ]
+    }
+  },
+  "isolated_vs_all_group_check": {
+    "all_result_sha256": "30cf61f8ad59c4bfee0d2d4bb6eb29aacf551bcc8f428eceafcba136d2c6306c",
+    "psd_change_db": [
+      0.0,
+      0.0,
+      1.928654933106574e-15
+    ],
+    "passed": true
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "scope": "Separate independently verified sampler noise into clock inverter and switches.",
+  "condition": "TT27/1.2V/24MHzref/3.936GHzidealRF/physicalreference+sampler+CP+bias+pulser+validity; externalcontrolclamp,1.9pFrefloadapproximation.",
+  "isolated_source_sha256": "1b3317008d62e2ae64eb542ed94ca9d1dde314e2994062b6890a083074c7a5e0",
+  "all_source_sha256": "30cf61f8ad59c4bfee0d2d4bb6eb29aacf551bcc8f428eceafcba136d2c6306c",
+  "offsets_hz": [
+    10000.0,
+    1000000.0,
+    10000000.0
+  ],
+  "sampler_current_asd_pa_per_sqrt_hz": [
+    0.8594524751514708,
+    0.3678878139544559,
+    0.2969325178815674
+  ],
+  "group_fraction_of_sampler": {
+    "clock_inverter": [
+      0.36476997914830434,
+      0.4675539731421692,
+      0.4768813412404719
+    ],
+    "nmos_switches": [
+      0.5742326320563534,
+      0.5004034688092859,
+      0.4899543660015662
+    ],
+    "pmos_switches": [
+      0.06099738879534209,
+      0.03204255804854497,
+      0.03316429275796137
+    ]
+  },
+  "component_fraction_within_group": {
+    "clock_inverter": {
+      "flicker": [
+        0.7896034011386386,
+        0.10131748017848788,
+        0.060587646131528505
+      ],
+      "channel_thermal": [
+        0.19546136479501158,
+        0.8348710817715046,
+        0.8730051558310231
+      ],
+      "other": [
+        0.01493523406635014,
+        0.06381143805000769,
+        0.06640719803744836
+      ]
+    },
+    "nmos_switches": {
+      "flicker": [
+        0.8663133622110059,
+        0.15940072811758355,
+        0.09589261865643582
+      ],
+      "channel_thermal": [
+        0.12864806329463344,
+        0.8089244697830889,
+        0.8699029951924515
+      ],
+      "other": [
+        0.0050385744943604125,
+        0.03167480209932743,
+        0.034204386151112647
+      ]
+    },
+    "pmos_switches": {
+      "flicker": [
+        0.9099410488144642,
+        0.062160271095148566,
+        0.008783596482370742
+      ],
+      "channel_thermal": [
+        0.08247611522976434,
+        0.8588817895810824,
+        0.9077110768499401
+      ],
+      "other": [
+        0.0075828359557716,
+        0.07895793932376899,
+        0.08350532666768914
+      ]
+    }
+  },
+  "clock_inverter_fraction_of_all_frontend_variance": [
+    0.0706289052753485,
+    0.09226918826663061,
+    0.08796745272825594
+  ],
+  "conditional_noiseless_clock_inverter_total_asd_change": [
+    -0.0359610512408477,
+    -0.04725091879689047,
+    -0.0449960485569999
+  ],
+  "full_pll_acceptance": false,
+  "main_dut_modified": false,
+  "interpretation": "This fixes the measured physical operating point and suppresses only clock-inverter noise as a mathematical diagnostic. It is not a sizing prediction or integrated jitter.",
+  "next_priority": "Keep the already running reference-buffer and CP candidate comparisons ahead of a new sampler branch; their actual system benefit must be measured first.",
+  "limitations": [
+    "Only10kHz/1MHz/10MHz points; no RMS integration or dominant-contributor claim across the full band.",
+    "Resizing the inverter changes load, timing, coupling and balance. It must not be represented by removing its noise at unchanged gain.",
+    "Ideal RF replay/control clamp still exclude the actual LC and closed-loop noise transfer."
+  ]
+}

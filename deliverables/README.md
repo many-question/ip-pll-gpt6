@@ -1,4 +1,4 @@
-本次快照：[第60次汇报](../reports/2026-10-04T2255.yaml)。参考缓冲与短尾管CP候选均通过加载后的平衡和动态增益检查，进入实际噪声比较；RC原生恢复噪声控制通过粗门限，精度收敛继续。整环抖动仍未知。
+本次快照：[第61次汇报](../reports/2026-10-04T2326.yaml)。前端三组独立noise-on通过，采样器器件归因完成；RC精度控制通过3%门限，实际CMOS瞬态抖动交叉验证通过无噪声底噪检查。整环抖动仍未验收。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)
