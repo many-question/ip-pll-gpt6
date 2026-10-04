@@ -1,0 +1,27 @@
+simulator lang=spectre
+include "reset_clear_cells_v14.scs"
+subckt tff_reset_clear_v14 (clk reset q qb vdd vss)
+XF (qb clk reset q vdd vss) dff_reset_clear_v14
+XI (q qb vdd vss) pll_inv wn=1u wp=2.5u
+ends tff_reset_clear_v14
+
+subckt fll_counter_reset_clear_v14 (clk gate reset q0 q1 q2 q3 q4 q5 q6 q7 q8 q9 q10 q11 q12 q13 vdd vss)
+// Latch the enable while clock is low, then deliver complete pulses.
+XCI (clk clkb vdd vss) pll_inv wn=2u wp=5u
+XGE (gate clkb clk safe_gate vdd vss) pll_latch
+XG (clk safe_gate gclk vdd vss) tx_and
+XF0 (gclk reset q0 qb0 vdd vss) tff_reset_clear_v14
+XF1 (qb0 reset q1 qb1 vdd vss) tff_reset_clear_v14
+XF2 (qb1 reset q2 qb2 vdd vss) tff_reset_clear_v14
+XF3 (qb2 reset q3 qb3 vdd vss) tff_reset_clear_v14
+XF4 (qb3 reset q4 qb4 vdd vss) tff_reset_clear_v14
+XF5 (qb4 reset q5 qb5 vdd vss) tff_reset_clear_v14
+XF6 (qb5 reset q6 qb6 vdd vss) tff_reset_clear_v14
+XF7 (qb6 reset q7 qb7 vdd vss) tff_reset_clear_v14
+XF8 (qb7 reset q8 qb8 vdd vss) tff_reset_clear_v14
+XF9 (qb8 reset q9 qb9 vdd vss) tff_reset_clear_v14
+XF10 (qb9 reset q10 qb10 vdd vss) tff_reset_clear_v14
+XF11 (qb10 reset q11 qb11 vdd vss) tff_reset_clear_v14
+XF12 (qb11 reset q12 qb12 vdd vss) tff_reset_clear_v14
+XF13 (qb12 reset q13 qb13 vdd vss) tff_reset_clear_v14
+ends fll_counter_reset_clear_v14

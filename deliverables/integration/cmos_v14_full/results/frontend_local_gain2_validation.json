@@ -1,0 +1,140 @@
+{
+  "scope": "Measure current balance and local gain; retain failed brackets or nonlinearity.",
+  "round": 2,
+  "condition": "TT27/1.2V/24MHzref/3.936GHzidealRF/physicalreference+sampler+CP+bias+pulser+validity; externalcontrolclamp,1.9pFrefloadapproximation.",
+  "protocol_sha256": "14eceac827bdf2b77053cc4f9a83cc636ce2231d6538695c33b6e47647639634",
+  "control_clamp_v": 0.668428925600659,
+  "cases": [
+    {
+      "case": "frontend_local2_lo_tt",
+      "phase_deg": 196.24700280983583,
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/frontendlocal02/frontend_local2_lo_tt/result.json",
+      "source_sha256": "768e0155ee093115f2ed2bc48a66d0c19d6d85c59dc40bfcfbd8b4c2998b1ef1",
+      "simulator_completed": true,
+      "pss_converged": true,
+      "periodic_passed": true,
+      "period_s": 4.166666666666666e-08,
+      "endpoint_peak_v": 0.0,
+      "rf_rising_edges": 164,
+      "ref_rising_edges": 1,
+      "pulse_rising_edges": 1,
+      "rf_dominant_harmonic": 164,
+      "mean_clamp_current_a": 3.9146637709202896e-09,
+      "pulse_duty": 0.04275946275872798,
+      "mean_held_difference_v": -0.009134885589806048,
+      "hold_range_v": {
+        "hp": [
+          0.3379415990704602,
+          0.6021572394424897
+        ],
+        "hn": [
+          0.3183452950863149,
+          0.6692617159630065
+        ]
+      },
+      "amplitude_good_fraction": 1.0,
+      "phase_good_fraction": 1.0,
+      "td_sha256": "c996f51ff41ba2f6f0ac29ad3575b6b7b773ed8807c874a5bc6902718229446b",
+      "fd_sha256": "633ed56fbaacfd297bebf2027248bff947a48ad1a2ab0b68de7f25778556df7a"
+    },
+    {
+      "case": "frontend_local2_center_tt",
+      "phase_deg": 196.74700280983583,
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/frontendlocal02/frontend_local2_center_tt/result.json",
+      "source_sha256": "5dc6b9d127e771483869786484ad9eab5feccc38de137d8145eed9f8d36d546d",
+      "simulator_completed": true,
+      "pss_converged": true,
+      "periodic_passed": true,
+      "period_s": 4.166666666666666e-08,
+      "endpoint_peak_v": 0.0,
+      "rf_rising_edges": 164,
+      "ref_rising_edges": 1,
+      "pulse_rising_edges": 1,
+      "rf_dominant_harmonic": 164,
+      "mean_clamp_current_a": 6.644318339157156e-12,
+      "pulse_duty": 0.04275946275872806,
+      "mean_held_difference_v": -0.008302452228674975,
+      "hold_range_v": {
+        "hp": [
+          0.3380606865720703,
+          0.6021413968625086
+        ],
+        "hn": [
+          0.3177379828314059,
+          0.669266876868768
+        ]
+      },
+      "amplitude_good_fraction": 1.0,
+      "phase_good_fraction": 1.0,
+      "td_sha256": "c1141913f7a93ea22ba7ae263d9c82a1ea968015be37de1f21ebc1650f01acd0",
+      "fd_sha256": "638a319a47ef8ccc6f5d865e31f19d802c603f489370e84eefe11ce480778fe3"
+    },
+    {
+      "case": "frontend_local2_hi_tt",
+      "phase_deg": 197.24700280983583,
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/frontendlocal02/frontend_local2_hi_tt/result.json",
+      "source_sha256": "bc6a6dc37008318d337e4cc93bb493da1f87ca75704cd468ae6c9b9e5387ca92",
+      "simulator_completed": true,
+      "pss_converged": true,
+      "periodic_passed": true,
+      "period_s": 4.166666666666666e-08,
+      "endpoint_peak_v": 0.0,
+      "rf_rising_edges": 164,
+      "ref_rising_edges": 1,
+      "pulse_rising_edges": 1,
+      "rf_dominant_harmonic": 164,
+      "mean_clamp_current_a": -3.864161647346432e-09,
+      "pulse_duty": 0.04275946275872798,
+      "mean_held_difference_v": -0.007473634590097073,
+      "hold_range_v": {
+        "hp": [
+          0.3381791698992646,
+          0.6021250559424378
+        ],
+        "hn": [
+          0.3171366510828203,
+          0.6692707670186245
+        ]
+      },
+      "amplitude_good_fraction": 1.0,
+      "phase_good_fraction": 1.0,
+      "td_sha256": "0a6b6a0f1b9d74096d00932d6b23b5a333120879cad6e9950dc6bc21de03c863",
+      "fd_sha256": "1d98d9f490f59a2f74902c66fe8e7ba35b9f6ebd16805f3876c64cb21d6b9ab3"
+    }
+  ],
+  "complete": true,
+  "periodic_all_passed": true,
+  "unique_negative_feedback_branch": true,
+  "proposed_phase_deg": 196.74785697126552,
+  "local_gain_verified": true,
+  "balanced_center_verified": true,
+  "integrated_jitter_fs": null,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "Noisy LC and its impedance/backaction are absent; the clamped-current result is module evidence.",
+    "Control logic is represented by1.9pF load; its active noise and exact capacitive loading are excluded.",
+    "The control clamp uses a finite-window mean from a deterministic initialization trace, not an accepted PSS state.",
+    "Four large phase steps locate a branch only; they do not define a local Kphi or permit jitter integration.",
+    "Numerical and PVT checks remain after the operating point is selected.",
+    "The current search target is an engineering precheck; local gain and phase-error acceptance still need actual measurements."
+  ],
+  "proposed_phase_method": "quadratic interpolation of three measured points",
+  "proposed_phase_unverified": true,
+  "bracket_secant_phase_deg": 196.74786107015657,
+  "signed_gain_a_per_rf_rad": -4.4569386603577556e-07,
+  "kphi_magnitude_a_per_rf_rad": 4.4569386603577556e-07,
+  "half_slopes_a_per_rf_rad": [
+    -4.4782604177585554e-07,
+    -4.4356169029569547e-07
+  ],
+  "half_slope_relative_difference": 0.009567893581505513,
+  "center_residual_current_a": 6.644318339157156e-12,
+  "linearized_center_phase_error_rad": -1.4907807455945154e-05,
+  "engineering_gates": {
+    "local_half_slope_relative_difference": 0.05,
+    "residual_phase_rad": 0.0005
+  }
+}

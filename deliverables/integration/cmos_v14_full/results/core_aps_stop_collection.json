@@ -1,0 +1,27 @@
+{
+  "scope": "Verify recovered files after intentional APS stop and initial tar failure.\n\nThe original result/error record is preserved. File recovery is distinct from\nsimulation success: this job has no accepted periodic or noise solution.\n",
+  "time": "2026-10-04T17:33:55.978641+08:00",
+  "original_result": "research/runs/spectre_cmos_v14_full/coredacaps01/core_dac_discharge_noise_tt/result.json",
+  "original_result_sha256": "843392fd8ae4d4c34eb1730b7cbda4b1498e5c465e85457dfe6078e7f4fa9d0c",
+  "original_wrapper_errors": [
+    "Failed to download remote raw results from /home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/aa0d11ed/core_dac_discharge_noise_tt.raw: SSH error:  | Tar error: core_dac_discharge_noise_tt.raw/pss.tran.pss: truncated gzip input\r\ntar.EXE: Error exit delayed from previous errors."
+  ],
+  "recovered_archive_sha256": "b4c835c3d79cfa07b47917d56c96d9ab8bf1ef519bd64bb79125c39fe2f6ec4c",
+  "verified_files": [
+    {
+      "path": "research/runs/spectre_cmos_v14_full/coredacaps01/core_dac_discharge_noise_tt/spectre.out",
+      "size_bytes": 27267,
+      "sha256": "484641957f436eccf9acc097d6e4f4193b3dee99099df98a34d8d5ce72685ca4",
+      "remote_hash_matched": true
+    },
+    {
+      "path": "research/runs/spectre_cmos_v14_full/coredacaps01/core_dac_discharge_noise_tt/core_dac_discharge_noise_tt.raw/pss.tran.pss",
+      "size_bytes": 1580855832,
+      "sha256": "9bfbfc86ee24501caf11b3baef5e1d85f27ca1e5f9dde97ee728423a925c19e4",
+      "remote_hash_matched": true
+    }
+  ],
+  "simulator_periodic_solution_accepted": false,
+  "noise_solution_accepted": false,
+  "full_pll_acceptance": false
+}

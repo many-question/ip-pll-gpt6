@@ -1,0 +1,46 @@
+{
+  "scope": "Build a measured-branch local phase triplet; never assume its zero is exact.",
+  "round": 2,
+  "time": "2026-10-04T17:26:36.241252+08:00",
+  "cases": [
+    {
+      "case": "frontend_local2_lo_tt",
+      "phase_deg": 196.24700280983583,
+      "run": "frontendlocal02",
+      "tb_sha256": "533d05fdbfeb4200b4feda3276697d945801fc28bed3df6dc2913a4082738d67"
+    },
+    {
+      "case": "frontend_local2_center_tt",
+      "phase_deg": 196.74700280983583,
+      "run": "frontendlocal02",
+      "tb_sha256": "cbafc479225dcbaf0642915bfb4661eca3ad3a075b2205aa8ef4d675d42a0784"
+    },
+    {
+      "case": "frontend_local2_hi_tt",
+      "phase_deg": 197.24700280983583,
+      "run": "frontendlocal02",
+      "tb_sha256": "467f3ac00b7c6d7e9fb1ca6e72ea56f4abf0cc6e24f4155fca92fee506ac788c"
+    }
+  ],
+  "source_validation": "frontend_op_search_4.json",
+  "source_validation_sha256": "39ab579a41af7dc6acb9e41afc50776598aba36513f33b30afa3d2b40229c5f3",
+  "condition": "TT27/1.2V/24MHzref/3.936GHzidealRF/physicalreference+sampler+CP+bias+pulser+validity; externalcontrolclamp,1.9pFrefloadapproximation.",
+  "control_clamp_v": 0.668428925600659,
+  "proposed_center_deg": 196.74700280983583,
+  "half_width_deg": 0.5,
+  "source_tb_sha256": "91137aa4698384adee088bea6b5880d4319b861fe1bf452e0498269fd0118d9e",
+  "engineering_gates": {
+    "local_half_slope_relative_difference": 0.05,
+    "residual_phase_rad": 0.0005
+  },
+  "full_pll_acceptance": false,
+  "main_dut_modified": false,
+  "limitations": [
+    "Noisy LC and its impedance/backaction are absent; the clamped-current result is module evidence.",
+    "Control logic is represented by1.9pF load; its active noise and exact capacitive loading are excluded.",
+    "The control clamp uses a finite-window mean from a deterministic initialization trace, not an accepted PSS state.",
+    "Four large phase steps locate a branch only; they do not define a local Kphi or permit jitter integration.",
+    "Numerical and PVT checks remain after the operating point is selected.",
+    "The current search target is an engineering precheck; local gain and phase-error acceptance still need actual measurements."
+  ]
+}

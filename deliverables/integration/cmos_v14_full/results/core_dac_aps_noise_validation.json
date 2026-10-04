@@ -1,0 +1,46 @@
+{
+  "scope": "Validate fresh PSS and three actual-core noise points; never infer full-band RMS.",
+  "condition": "ActualLC/originalRT/CF10/newbank/coarse23/DAC38/M4/TT27/1.2V/Q5/10fF/refload1.9pF; ideal static acquired/FLL controls. No eventobserver/forcedstrobe. PhysicalDAC off-state clamp candidate:seven1um/1umNMOS. Original main andcompleteRT4candidateunchanged.",
+  "source_result": "research/runs/spectre_cmos_v14_full/coredacaps01/core_dac_discharge_noise_tt/result.json",
+  "source_sha256": "843392fd8ae4d4c34eb1730b7cbda4b1498e5c465e85457dfe6078e7f4fa9d0c",
+  "protocol_sha256": "2ffc2ef0e1db0a49bc888ad8275f095b857e4b6bbc5f40d5bc220a6f5b1257e1",
+  "log_sha256": "484641957f436eccf9acc097d6e4f4193b3dee99099df98a34d8d5ce72685ca4",
+  "wrapper_errors": [
+    "Failed to download remote raw results from /home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/aa0d11ed/core_dac_discharge_noise_tt.raw: SSH error:  | Tar error: core_dac_discharge_noise_tt.raw/pss.tran.pss: truncated gzip input\r\ntar.EXE: Error exit delayed from previous errors."
+  ],
+  "simulator_completed": false,
+  "pss_achieved": false,
+  "convergence_norms": [
+    369000.0,
+    76700.0,
+    407000.0,
+    996000.0,
+    1020000.0,
+    1050000.0
+  ],
+  "periodic_checks_passed": false,
+  "noise_points_valid": false,
+  "full_pll_acceptance": false,
+  "integrated_jitter_fs": null,
+  "limitations": [
+    "All612exported states are real, but textreadic cannotretainhiddencharge/history; PSS must solve and validateitsownperiod.",
+    "Gear2 may cause numerical damping; successful PSS stillneedsindependentprecisionchecks.",
+    "Three noise points are not an integrated jitter result or an all246-edge covariance qualification.",
+    "Static slowcontrols omit completeFLL/watchdog dynamics; this is actualperiodiccore evidence,notfullPLLsignoff.",
+    "No MOS readpss reuse: earlier fresh/reused noise discrepancy remains unresolved.",
+    "Previouswaveformdifferencesdo notidentifythecauseofnonconvergence.",
+    "UnitDAC38/threepairedcornersis not all64DACcodes/fullFLLhandoff/PVT.",
+    "Earlyinitializationis sparselysaved;onlylast500nsisavailableforadenseperiodcomparison.",
+    "The predecessor was intentionally interrupted after five noncontracting Newton norms; wrapper crash classification is not evidence of a spontaneous solver failure.",
+    "APS comparison is a numerical-method diagnostic. Neither a mode defect nor improved physical jitter is established by dispatch."
+  ],
+  "intentional_cancellation": {
+    "stopped": true,
+    "signal": "SIGINT",
+    "pid": 236661,
+    "netlist": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/aa0d11ed/core_dac_discharge_noise_tt.scs",
+    "time": "2026-10-04T17:30:09.695346+08:00",
+    "reason": "Intentional stop after five failed shooting trials: norms369k,76.7k,407k,996k,1.02M; latest physical node residual1.59944V. No accepted PSS or noise. Preserve engine/default comparison and redirect finite resource to measured dominant-noise circuit sizing."
+  },
+  "cancellation_sha256": "b73d1bc48db5e1078a0722d93c640a1f745cb103faaa6babb5b4a31a1525a115"
+}

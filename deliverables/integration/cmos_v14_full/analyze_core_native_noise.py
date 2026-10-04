@@ -8,9 +8,11 @@ H=Path(__file__).resolve().parent;ROOT=H.parents[3]
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 
 def main():
-    ap=argparse.ArgumentParser();sel=ap.add_mutually_exclusive_group();sel.add_argument('--dac-discharge',action='store_true');sel.add_argument('--aps',action='store_true');a=ap.parse_args()
-    label='core_dac_aps_noise' if a.aps else 'core_dac_discharge_noise' if a.dac_discharge else 'core_native_noise'
-    pp=H/'results'/(label+'_protocol.json');p=json.loads(pp.read_text())
+    ap=argparse.ArgumentParser();sel=ap.add_mutually_exclusive_group();sel.add_argument('--dac-discharge',action='store_true');sel.add_argument('--aps',action='store_true');sel.add_argument('--counter-clear',action='store_true');a=ap.parse_args()
+    label='core_counter_clear_noise' if a.counter_clear else 'core_dac_aps_noise' if a.aps else 'core_dac_discharge_noise' if a.dac_discharge else 'core_native_noise'
+    pp=H/'results'/(label+'_protocol.json')
+    if not pp.exists():print('Fresh core protocol pending');return
+    p=json.loads(pp.read_text())
     j=ROOT/'research/runs/spectre_cmos_v14_full'/p['run']/p['case'];rp=j/'result.json'
     if not rp.exists() or not json.loads(rp.read_text()).get('local_outputs_sha256'):print('Fresh core PSS/noise pending');return
     r=json.loads(rp.read_text());log=(j/'spectre.out').read_text()

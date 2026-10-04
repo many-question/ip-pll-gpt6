@@ -1,0 +1,24 @@
+simulator lang=spectre
+// Candidate only; original cells are unchanged. Two reset discharge MOS per DFF.
+subckt nand_reset_clear_v14 (a b clear y vdd vss)
+parameters wn=1u wp=1.25u
+MN0 (y b x vss) nch w=wn l=180n ad=wn*240n as=wn*240n pd=2*(wn+240n) ps=2*(wn+240n)
+MN1 (x a vss vss) nch w=wn l=180n ad=wn*240n as=wn*240n pd=2*(wn+240n) ps=2*(wn+240n)
+MP0 (y a vdd vdd) pch w=wp l=180n ad=wp*240n as=wp*240n pd=2*(wp+240n) ps=2*(wp+240n)
+MP1 (y b vdd vdd) pch w=wp l=180n ad=wp*240n as=wp*240n pd=2*(wp+240n) ps=2*(wp+240n)
+MCLR (x clear vss vss) nch w=400n l=1u ad=96f as=96f pd=1.28u ps=1.28u
+ends nand_reset_clear_v14
+
+subckt latch_reset_clear_v14 (d gate gateb resetb reset q vdd vss)
+XT (d x gate gateb vdd vss) pll_tg wn=800n wp=1.6u
+XN (x resetb reset qb vdd vss) nand_reset_clear_v14 wn=1u wp=1.25u
+XO (qb q vdd vss) pll_inv wn=800n wp=2u
+XF (q x gateb gate vdd vss) pll_tg wn=400n wp=800n
+ends latch_reset_clear_v14
+
+subckt dff_reset_clear_v14 (d clk reset q vdd vss)
+XC (clk clkb vdd vss) pll_inv wn=2u wp=5u
+XR (reset resetb vdd vss) pll_inv wn=1u wp=2.5u
+XM (d clkb clk resetb reset qm vdd vss) latch_reset_clear_v14
+XS (qm clk clkb resetb reset q vdd vss) latch_reset_clear_v14
+ends dff_reset_clear_v14

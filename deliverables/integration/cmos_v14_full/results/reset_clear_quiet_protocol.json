@@ -1,0 +1,68 @@
+{
+  "scope": "Separate quiet-reset settling from the already measured clock kickback.\n\nThe failed 1mV peak gate under a running clock remains in the original unit\nrecord. This changes only clock start time, never the device or that gate.\n",
+  "time": "2026-10-04T17:46:19.851675+08:00",
+  "cases": [
+    {
+      "run": "resetclearquiet01",
+      "case": "reset_clear_quiet_tt",
+      "corner": "tt",
+      "temp_c": 27,
+      "tb_sha256": "2057054bae1807962e0ec49256b23962fa4e086a2f4a7a2fb9b419fd789e8da7",
+      "source_case": "reset_clear_dff_tt",
+      "source_tb_sha256": "04d3e70c509e552ca5502b84339002651c20d0ddf70b47cda1ce9229954fbcd8"
+    },
+    {
+      "run": "resetclearquiet01",
+      "case": "reset_clear_quiet_ss",
+      "corner": "ss",
+      "temp_c": 60,
+      "tb_sha256": "875c933f3e2299bc2bc96065504c24847f1d7b38a0ad156b2156f96d7444d7be",
+      "source_case": "reset_clear_dff_ss",
+      "source_tb_sha256": "e1604875fb638cddf39493da08279c5281f2c391dfbcf20f06f10d9f5ac44175"
+    },
+    {
+      "run": "resetclearquiet01",
+      "case": "reset_clear_quiet_ff",
+      "corner": "ff",
+      "temp_c": 0,
+      "tb_sha256": "088b25396087748623a78b9b0c3e6c8c37705a880fd27ba347d4a1340647fdd4",
+      "source_case": "reset_clear_dff_ff",
+      "source_tb_sha256": "a59709c0e89dbd02c9bd80ea040469a889c9bbf8c0145c39df65515a90f2a615"
+    }
+  ],
+  "condition": "1.2V/984MHz clock/10ps clock and data edges/2fF per output; TT27,SS60,FF0; deterministic 29.5mV initial stack node voltage. Clock held low until3.2ns; reset held high until3.0ns. Stack settling measured1..2ns before clock starts.",
+  "original_sources_sha256": {
+    "share/deliverables/blocks/transistor_v1/cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+    "share/deliverables/blocks/transistor_v2/digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f"
+  },
+  "candidate_sha256": "8052f995dee9aead87cbce1e1217d0fc0f39f1f5685a2c3a9da097eb05752882",
+  "sample_delay_s": 6.097560975609755e-10,
+  "input_guard_s": 1.5e-10,
+  "engineering_reset_deadline_s": 1e-09,
+  "engineering_stack_clear_limit_v": 0.001,
+  "main_dut_modified": false,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "One resettable DFF per variant; not the 14-bit counter or complete PLL.",
+    "Three paired PVT points, not a full PVT grid or recovery/removal sweep.",
+    "Deterministic initial-state experiment, no random noise or power-up ramp.",
+    "Eliminating this weakly constrained node does not establish the cause of whole-core PSS failure.",
+    "Quiet-reset settling is a different measurement condition from the preserved running-clock peak failure. Both remain relevant.",
+    "This does not reproduce every capacitively coupled input in the whole PLL."
+  ],
+  "circuit_change": "Resetb moves to upper NAND NMOS; data to lower NMOS. A reset-controlled 0.4um/1um NMOS discharges the isolated stack node.",
+  "prelaunch_revision": {
+    "time": "2026-10-04T17:40:13.227575+08:00",
+    "rejected_unrun_source": "research/reset_clear_direct_clamp_unrun.scs",
+    "rejected_sha256": "f182e06b47cc4139e4f3bb882fbc1acd4229542b0b46444f5a59ad093a3c7a18",
+    "reason": "Direct stack clamp with data on upper NMOS would contend with the reset pullup when data is high. Swap NAND NMOS inputs so resetb on upper NMOS isolates output before adding reset discharge. No simulation of rejected draft."
+  },
+  "source_protocol_sha256": "b98ce3a8b505c631dd891ae0d9562010365c4cfd4adaed7e8af206c54efc6111",
+  "source_running_clock_validation_sha256": "8b8e7f3d3a991f9af52ec48559557e0fa360dc057cd77c1a48a2c89238a264ba",
+  "controlled_fixture_change": {
+    "clock_delay_s": [
+      2e-10,
+      3.2e-09
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "scope": "Re-match tail560 to the newly measured .125ps CF40 carrier, without relaxing gates.",
+  "time": "2026-10-04T17:56:07.808584+08:00",
+  "run": "vcotailrefmatch01",
+  "case": "vco_tail560_refined_match_tt",
+  "source_run": "vcorefine01",
+  "source_case": "vco_tail560_refined_probe_tt",
+  "baseline_case": "vco_cf40_refined_probe_tt",
+  "source_validation": "vco_refinement_probe_validation.json",
+  "source_validation_sha256": "dd55f3c22480ec886af984d788bad0ef9c3ef3fe920c5f0e74dacaed6ad44966",
+  "target_rf_hz": 3934802461.041516,
+  "proposed_control_v": 0.7530325672469256,
+  "previous_control_v": 0.7411690577974029,
+  "proposal_slope_hz_per_v": 51072429.83115362,
+  "slope_sources": [
+    {
+      "path": "vco_tail_matched_noise_validation.json",
+      "sha256": "603bdb1fb0a45719f651bdfae8d804ecbcfe3c2271a3ff1678bcbf23f52546dc"
+    },
+    {
+      "path": "vco_tail_matched2_noise_validation.json",
+      "sha256": "90098201c43a426a7d287b02d2879ea6b641e5b64b1aa3ba5528960b0e45edba"
+    }
+  ],
+  "source_tb_sha256": "d9a7a9415b2a6024cd86fe9b0fc525521f83f0203c0c3860c2963e999aa8d8cc",
+  "tb_sha256": "d26ceb2ae12cdef69a3cee54e9ac7e3e1ab2d9eb25367199c457ea6f64e932aa",
+  "relative_rf_match_limit": 0.0001,
+  "condition": "TT27/1.2V/Q5RLC/CF40/MT560um2um/c21/fixedM4/10fF/staticreference,onlyXVnoise. FreshPSS .125ps/127harms/1023sidebands.",
+  "main_dut_modified": false,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "Old .5ps local tuning slope only proposes a new control; the frequency match must be measured at .125ps.",
+    "Six offsets cannot establish a complete integrated jitter result or full-grid precision.",
+    "The original154ppm mismatch is preserved; the100ppm gate is unchanged.",
+    "Tail dimensions, coarse code and control differ from the CF40 baseline; not a pure area effect.",
+    "Free VCO with static reference, not a locked complete PLL."
+  ]
+}

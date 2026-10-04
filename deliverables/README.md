@@ -1,4 +1,4 @@
-本次快照：[第50次汇报](../reports/2026-10-04T1719.yaml)。VCO基线六点精度检查通过，独立noise-on已开始验证器件归因；前端重新定位实测平衡点并发现需检查的脉冲外电荷。整机<200fs仍未验证。
+本次快照：[第51次汇报](../reports/2026-10-04T1808.yaml)。VCO四组独立噪声归因全部通过，前端实测平衡点与局部鉴相增益通过；正在取得前端噪声和VCO同载频对照。整机<200fs仍未验证，功耗优化后置。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

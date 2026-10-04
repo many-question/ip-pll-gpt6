@@ -1,0 +1,52 @@
+{
+  "scope": "Physical reset-only discharge of the observed weak NAND stack node.\n\nUnit comparison only: no claim that this causes or fixes whole-core PSS.\n",
+  "time": "2026-10-04T17:38:47.407159+08:00",
+  "cases": [
+    {
+      "run": "resetclearunit01",
+      "case": "reset_clear_dff_tt",
+      "corner": "tt",
+      "temp_c": 27,
+      "tb_sha256": "04d3e70c509e552ca5502b84339002651c20d0ddf70b47cda1ce9229954fbcd8"
+    },
+    {
+      "run": "resetclearunit01",
+      "case": "reset_clear_dff_ss",
+      "corner": "ss",
+      "temp_c": 60,
+      "tb_sha256": "e1604875fb638cddf39493da08279c5281f2c391dfbcf20f06f10d9f5ac44175"
+    },
+    {
+      "run": "resetclearunit01",
+      "case": "reset_clear_dff_ff",
+      "corner": "ff",
+      "temp_c": 0,
+      "tb_sha256": "a59709c0e89dbd02c9bd80ea040469a889c9bbf8c0145c39df65515a90f2a615"
+    }
+  ],
+  "condition": "1.2V/984MHz clock/10ps clock and data edges/2fF per output; TT27,SS60,FF0; deterministic 29.5mV initial stack node voltage.",
+  "original_sources_sha256": {
+    "share/deliverables/blocks/transistor_v1/cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+    "share/deliverables/blocks/transistor_v2/digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f"
+  },
+  "candidate_sha256": "8052f995dee9aead87cbce1e1217d0fc0f39f1f5685a2c3a9da097eb05752882",
+  "sample_delay_s": 6.097560975609755e-10,
+  "input_guard_s": 1.5e-10,
+  "engineering_reset_deadline_s": 1e-09,
+  "engineering_stack_clear_limit_v": 0.001,
+  "main_dut_modified": false,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "One resettable DFF per variant; not the 14-bit counter or complete PLL.",
+    "Three paired PVT points, not a full PVT grid or recovery/removal sweep.",
+    "Deterministic initial-state experiment, no random noise or power-up ramp.",
+    "Eliminating this weakly constrained node does not establish the cause of whole-core PSS failure."
+  ],
+  "circuit_change": "Resetb moves to upper NAND NMOS; data to lower NMOS. A reset-controlled 0.4um/1um NMOS discharges the isolated stack node.",
+  "prelaunch_revision": {
+    "time": "2026-10-04T17:40:13.227575+08:00",
+    "rejected_unrun_source": "research/reset_clear_direct_clamp_unrun.scs",
+    "rejected_sha256": "f182e06b47cc4139e4f3bb882fbc1acd4229542b0b46444f5a59ad093a3c7a18",
+    "reason": "Direct stack clamp with data on upper NMOS would contend with the reset pullup when data is high. Swap NAND NMOS inputs so resetb on upper NMOS isolates output before adding reset discharge. No simulation of rejected draft."
+  }
+}

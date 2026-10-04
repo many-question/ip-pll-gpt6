@@ -42,7 +42,7 @@ def verify_physical(a,b):
     assert dep(a)==dep(b),'Unexpected physical dependency change'
     assert canonical_tb((a/'inputs'/(a.name+'.scs')).read_text())==canonical_tb((b/'inputs'/(b.name+'.scs')).read_text())
 
-def read(j,min_points=90):
+def read(j,min_points=90,expected_span_hz=(1e4,492e6)):
     r=json.loads((j/'result.json').read_text());log=(j/'spectre.out').read_text()
     assert r['ok'] and r['remote_inputs_match'] and not r.get('periodic_state')
     assert 'spectre completes with 0 errors' in log and 'steady-state solution was achieved' in log
@@ -50,7 +50,8 @@ def read(j,min_points=90):
     raw=j/(j.name+'.raw');fp=raw/'pn.pm.pnoise'
     pn=parse(fp);fd=parse(raw/'pss.fd.pss');td=parse(raw/'pss.td.pss')
     f=pn['relative frequency'];fc=float(fd['freq'][4]);t=td['time'];T=t[-1]-t[0]
-    assert len(f)>=min_points and np.all(np.diff(f)>0) and abs(f[0]/1e4-1)<1e-8 and abs(f[-1]/492e6-1)<1e-8
+    assert len(f)>=min_points and np.all(np.diff(f)>0)
+    assert abs(f[0]/expected_span_hz[0]-1)<1e-8 and abs(f[-1]/expected_span_hz[1]-1)<1e-8
     peak=float(abs(fd['vp'][4]-fd['vn'][4]));cp=peak**2/2
     timepeak=float(abs(2/T*np.trapezoid((td['vp']-td['vn'])*np.exp(-2j*np.pi*4*(t-t[0])/T),t)))
     harmonics={k:int(round(fd['freq'][1+np.argmax(abs(fd[k][1:]))]/fd['freq'][1])) for k in ['vp','vn','clk','q1','data','out']}

@@ -1,0 +1,79 @@
+{
+  "scope": "One physical cross-pair width experiment at unchanged external controls.\n\nThis first probe diagnoses direction and operating-point displacement. It is\nnot an equal-frequency performance claim or a proposed main-DUT replacement.\n",
+  "time": "2026-10-04T17:29:20.352721+08:00",
+  "run": "vcocross80_01",
+  "case": "vco_cross80_probe_tt",
+  "source_run": "vcotailband01",
+  "source_case": "vco_tail560_band_finer_tt",
+  "source_tb_sha256": "4115bb16b296a6bfb7f998aac9a19e832119512bdec427c6c52a0f7275a21338",
+  "tb_sha256": "7558338293ab5bfaef629d4cf9b4c7565c01e62239292999498902b185b7663b",
+  "source_validation": "vco_tail_band_validation.json",
+  "source_validation_sha256": "d3b8f0302b78ff7131ea6de401f5bc4969d337829bdc718e9fb2f134b6705877",
+  "cross_pair_noise_audit": {
+    "group": "cross_pair",
+    "case": "vco_tail560_only_cross_pair_tt",
+    "completed": true,
+    "source_result": "research/runs/spectre_cmos_v14_full/vcotailaudit01/vco_tail560_only_cross_pair_tt/result.json",
+    "source_sha256": "d0baed6a62225eba3a6c1faa8af64e5b3eccf28ae83ac9debb005e3ae68221e9",
+    "simulation_passed": true,
+    "physical_comparison_verified": true,
+    "rf_hz": 3934162613.8161,
+    "relative_rf_change": -2.4295767619975095e-08,
+    "periodic_passed": true,
+    "endpoint_max_v": 4.613843906930981e-08,
+    "dominant_harmonics": {
+      "vp": 4,
+      "vn": 4,
+      "clk": 4,
+      "q1": 2,
+      "data": 1,
+      "out": 1
+    },
+    "rf_carrier_peak_v": 0.8439858160763664,
+    "psd_comparison_db": [
+      -4.7166227038691237e-07,
+      8.038212753751866e-07,
+      9.92516053870599e-07
+    ],
+    "passed": true,
+    "timing_psd_s2_per_hz": [
+      1.1567182371044587e-32,
+      9.831035352082859e-35,
+      9.619370054186202e-37
+    ],
+    "excluded_noise_fraction": 0.0,
+    "device_sum_relative_error": 6.661338147750939e-16,
+    "noise_sha256": "36bd57e0d5b616e15ac687e291efe8fb9050eb516b37842d3664f94ab0cf60c8",
+    "td_sha256": "c21193d506dad5bef91345bc14f47c5027bb5cbb88b66f9d10452aa9199269b9",
+    "fd_sha256": "032e6bfa0410440cb39e6b4daf2505c615685b22d50b0da9c31e7c303c7b4e53"
+  },
+  "physical_change": {
+    "cross_pair_width_um": [
+      120,
+      80
+    ],
+    "cross_pair_length_nm": 180,
+    "geometry_diffusions_follow_width": true
+  },
+  "observations": [
+    "XV.XL.MN0:d",
+    "XV.XL.MN1:d",
+    "XV.XL.MT:d"
+  ],
+  "condition": "TT27/1.2V/Q5RLC/CF40/MT560um2um/c21/control0.7411690577974029V/staticreference/fixedM4/10fF;freshPSS .25ps/127harms/511sidebands;onlyXVnoise. Cross pair W80um vs120um; controls unchanged.",
+  "offsets_hz": [
+    1000000.0,
+    10000000.0,
+    100000000.0
+  ],
+  "engineering_equal_carrier_limit": 0.0001,
+  "main_dut_modified": false,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "Three offsets only, no RMS integration.",
+    "External controls, coarse code, tail and bias are unchanged. Actual current, amplitude and frequency may shift.",
+    "A favorable PSD at a displaced carrier is a diagnostic, not proof of a matched performance improvement.",
+    "Same provisional RLC model and fixed M4 load. No active sampler or full PLL.",
+    "No noise result is available merely because this testbench has been generated."
+  ]
+}

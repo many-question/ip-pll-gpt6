@@ -1,0 +1,30 @@
+{
+  "scope": "Verify expected bus counts after gated pauses, including 14-bit carry/wrap.",
+  "protocol_sha256": "a456029b5a90f012959a332244e44d7fa1b7d34277ba3354e67ea82a6e5932d1",
+  "condition": "1.2V/984MHz/2fF per bit; TT27,SS60,FF0. Gated pauses at all 14 carry boundaries and wrap, then asynchronous reset. 10ps maxstep, 2ns strobe; functional screen only.",
+  "cases": [
+    {
+      "case": "reset_clear_counter_tt",
+      "completed": false
+    },
+    {
+      "case": "reset_clear_counter_ss",
+      "completed": false
+    },
+    {
+      "case": "reset_clear_counter_ff",
+      "completed": false
+    }
+  ],
+  "complete": false,
+  "passed": false,
+  "main_dut_modified": false,
+  "noise_measured": false,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "Bus comparison is after gated-clock pauses, not an asynchronous instantaneous bus guarantee.",
+    "Two-nanosecond strobe data cannot measure clock edges, noise, jitter or average switching power.",
+    "Three paired corners at one supply and clock frequency, not complete PVT or FLL/PLL verification.",
+    "The preserved DFF running-clock test has stack kickback above1mV, although logic passed."
+  ]
+}
