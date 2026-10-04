@@ -1,0 +1,62 @@
+{
+  "scope": "Extend the successful buffer-period calibration to the actual RT4 TSPC retimer.",
+  "time": "2026-10-04T15:49:09.821479+08:00",
+  "cases": [
+    {
+      "case": "retimer_period_ratio1_tt",
+      "run": "rtperiod01",
+      "ratio": 1,
+      "fund_hz": 984000000.0,
+      "harms": 128,
+      "tb_sha256": "82073c4882a1086360d4fd659bfa3522b7e84cde38ae1eba8a5c8a55b7fb523c"
+    },
+    {
+      "case": "retimer_period_ratio6_tt",
+      "run": "rtperiod01",
+      "ratio": 6,
+      "fund_hz": 164000000.0,
+      "harms": 768,
+      "tb_sha256": "cd3b99a77a17df5ff80ae8d5465e73f4ea5d97a79caff72922af64d7939a9d83"
+    }
+  ],
+  "condition": "TT27/1.2V/actualRT4 TSPC+twoinverters/10fF; ideal984MHz data delayed30ps and3.936GHz clock,10ps edges. FreshPSS ratio1vs6/.5ps/maxac504GHz.",
+  "offsets_hz": [
+    10000.0,
+    1000000.0,
+    100000000.0,
+    163999999,
+    164000001,
+    327999999,
+    328000001,
+    491990000,
+    491999999,
+    492000000
+  ],
+  "comparison_limits": {
+    "max_timing_psd_delta_db": 0.1,
+    "max_relative_slew_difference": 0.005,
+    "max_waveform_difference_v": 0.001
+  },
+  "limitations": [
+    "Same physical 984MHz buffer repeated over a six-cycle superperiod; it does not prove equivalence for genuinely different edge positions in the divider.",
+    "Sparse finite points are not a jitter integral and do not supply a physical 1/f low-frequency cutoff.",
+    "A failure must be investigated as numerical/measurement evidence before it is attributed to MOS geometry.",
+    "Ideal clock/data exclude input jitter, realRF receiver, programmable-divider loading and fullPLL."
+  ],
+  "full_pll_acceptance": false,
+  "main_dut_modified": false,
+  "dispatch_failures": [],
+  "required_mode": "ax +mt=1 -preset_override",
+  "source_buffer_validation_sha256": "8ffd5ff333f29942c3534ad2bb3e4a59d99bdb37046f8bfe70d2f9287692aa69",
+  "source_protocol_sha256": "df1095d2eb3b78ff121fb66e9261eed306d3e4b8fa7711b99597d37f4d911b77",
+  "waveform_nodes": [
+    "XR.qb",
+    "XR.ob",
+    "XR.XFF.a",
+    "XR.XFF.b",
+    "out"
+  ],
+  "clock_node": "clk",
+  "clock_ratio": 4,
+  "reason": "Buffer-only calibration does not cover the dynamic/regenerative TSPC stages that dominate the measured digital-chain noise."
+}

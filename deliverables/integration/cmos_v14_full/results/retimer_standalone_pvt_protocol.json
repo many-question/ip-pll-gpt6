@@ -1,0 +1,40 @@
+{
+  "scope": "Paired SS/60C and FF/0C device-noise checks of the standalone RT4 module.",
+  "time": "2026-10-04T15:56:25.500286+08:00",
+  "cases": [
+    {
+      "case": "retimer_standalone_band_finer_ss",
+      "corner": "ss",
+      "temp_c": 60,
+      "run": "rtstandalonepvt01",
+      "tb_sha256": "63f319abd07c2fdea8884dfa22be66490e44884346722c0182d90cb05d95dac7"
+    },
+    {
+      "case": "retimer_standalone_band_finer_ff",
+      "corner": "ff",
+      "temp_c": 0,
+      "run": "rtstandalonepvt01",
+      "tb_sha256": "153d4c929aa64e6c7af78faa8a8dd6255cdccb602749f33fff7aa7148b78306c"
+    }
+  ],
+  "source_validation_sha256": "0aada4bd15d64bb7074371b7117fcc6b13b932d4c5bfbedc54d513dc8125c728",
+  "source_tb_sha256": "2950e2cedf80635512bed26335055dbcc5e359d00881069c6734a56ba3ebcbcb",
+  "condition": "1.2V/984MHzoutput/10fF/actualRT4; ideal3.936GHzclock+984MHzdata delayed30ps/10psedges. SS60 andFF0 pairings, freshPSSfund984MHz/.25ps/256sidebands/maxac1008GHz.",
+  "integration_band_hz": [
+    10000.0,
+    492000000.0
+  ],
+  "launch_scope": "Two sequential one-thread cases; no automatic additional sweep.",
+  "limits": {
+    "endpoint_peak_v": 0.001,
+    "low_max_v": 0.2,
+    "high_min_v": 1.0
+  },
+  "limitations": [
+    "Only SS60/TT27/FF0 at1.2V/984MHz/10fF. Not all nine process-temperature combinations or voltage/load/frequency corners.",
+    "Ideal clock/data exclude receiver/divider/LC and PLL interactions.",
+    "Independent numerical precision comparison completed at TT only; SS/FF precision not separately established."
+  ],
+  "full_pll_acceptance": false,
+  "main_dut_modified": false
+}

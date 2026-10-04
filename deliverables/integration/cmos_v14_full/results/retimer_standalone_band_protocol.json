@@ -1,0 +1,50 @@
+{
+  "scope": "Dense standalone RT4 noise and an independent numerical precision comparison.",
+  "time": "2026-10-04T15:51:54.549475+08:00",
+  "cases": [
+    {
+      "case": "retimer_standalone_band_fine_tt",
+      "grade": "fine",
+      "run": "rtstandaloneband01",
+      "tb_sha256": "50c05903e1704f49e3f8c6ec4c50cedab221d8316b7e1fff488201989f9dd814"
+    },
+    {
+      "case": "retimer_standalone_band_finer_tt",
+      "grade": "finer",
+      "run": "rtstandaloneband01",
+      "tb_sha256": "2950e2cedf80635512bed26335055dbcc5e359d00881069c6734a56ba3ebcbcb"
+    }
+  ],
+  "condition": "TT27/1.2V/actualRT4/984MHz output/10fF; noiseless ideal3.936GHzclock+984MHzdata delayed30ps,10psedges. AllRT4MOSnoiseon; freshPSSfund984MHz each.",
+  "limitations": [
+    "Standalone ideal drive does not include noisy RF receiver/divider/LC, loading correlations or closed-loop transfer.",
+    "Two numerical settings establish only this fixture precision, not PVT/MC/all33frequencies.",
+    "No noise integral for an unmeasured harmonic pole is discarded: physical output fundamental984MHz lies outside10k..492MHz."
+  ],
+  "full_pll_acceptance": false,
+  "main_dut_modified": false,
+  "required_mode": "ax +mt=1 -preset_override",
+  "source_buffer_validation_sha256": "8ffd5ff333f29942c3534ad2bb3e4a59d99bdb37046f8bfe70d2f9287692aa69",
+  "source_protocol_sha256": "5df6bb238b33087803ddc062cd9dcf9b8fbfaf033531d4c2d4f36e486ae9b30d",
+  "waveform_nodes": [
+    "XR.qb",
+    "XR.ob",
+    "XR.XFF.a",
+    "XR.XFF.b",
+    "out"
+  ],
+  "clock_node": "clk",
+  "clock_ratio": 4,
+  "source_validation_sha256": "4120a11d1a97fa0ce8c9b3a17b85623a52dbeec8aae116345f8383d23fb9cbba",
+  "source_tb_sha256": "82073c4882a1086360d4fd659bfa3522b7e84cde38ae1eba8a5c8a55b7fb523c",
+  "integration_band_hz": [
+    10000.0,
+    492000000.0
+  ],
+  "grid_points_per_decade": 20,
+  "precision_limits": {
+    "max_timing_psd_delta_db": 0.1,
+    "max_relative_rms_change": 0.01
+  },
+  "launch_scope": "Two sequential one-thread short-slot jobs only; no auto circuit changes."
+}

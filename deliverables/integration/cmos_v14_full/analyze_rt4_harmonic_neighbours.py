@@ -35,7 +35,7 @@ def main():
     rows=[]
     for harmonic in [164e6,328e6,492e6]:
         for side in [-1,1]:
-            index=np.flatnonzero((side*(b['f']-harmonic)>0)&(side*(b['f']-harmonic)<=1e4))
+            index=np.flatnonzero((side*(b['f']-harmonic)>0)&(side*(b['f']-harmonic)<=1e4+1e-6))
             if harmonic==492e6 and side==1:assert len(index)==0;continue
             index=index[np.argsort(abs(b['f'][index]-harmonic))];delta=abs(b['f'][index]-harmonic);s=b['st'][index]
             # Subtracting a ~500MHz carrier magnifies ASCII frequency roundoff.

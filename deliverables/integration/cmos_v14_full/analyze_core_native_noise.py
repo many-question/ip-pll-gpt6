@@ -8,8 +8,8 @@ H=Path(__file__).resolve().parent;ROOT=H.parents[3]
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--dac-discharge',action='store_true');a=ap.parse_args()
-    label='core_dac_discharge_noise' if a.dac_discharge else 'core_native_noise'
+    ap=argparse.ArgumentParser();sel=ap.add_mutually_exclusive_group();sel.add_argument('--dac-discharge',action='store_true');sel.add_argument('--aps',action='store_true');a=ap.parse_args()
+    label='core_dac_aps_noise' if a.aps else 'core_dac_discharge_noise' if a.dac_discharge else 'core_native_noise'
     pp=H/'results'/(label+'_protocol.json');p=json.loads(pp.read_text())
     j=ROOT/'research/runs/spectre_cmos_v14_full'/p['run']/p['case'];rp=j/'result.json'
     if not rp.exists() or not json.loads(rp.read_text()).get('local_outputs_sha256'):print('Fresh core PSS/noise pending');return
@@ -25,6 +25,9 @@ def main():
         convergence_norms=[float(x) for x in re.findall(r'Conv norm = ([0-9.eE+-]+)',log)],
         periodic_checks_passed=False,noise_points_valid=False,full_pll_acceptance=False,
         integrated_jitter_fs=None,limitations=p['limitations'])
+    cancellation=j/'cancellation.json'
+    if cancellation.exists():
+        out.update(intentional_cancellation=json.loads(cancellation.read_text()),cancellation_sha256=sha(cancellation))
     if out['simulator_completed'] and out['pss_achieved']:
         raw=j/(j.name+'.raw');tp=raw/'pss.td.pss';units=trace_units(tp)
         td,duplicates=stream_selected(tp,list(units));fd=parse(raw/'pss.fd.pss')

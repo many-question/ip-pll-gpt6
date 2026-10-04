@@ -1,0 +1,87 @@
+{
+  "scope": "Assess paired-corner functionality and integrated noise of standalone RT4.",
+  "condition": "1.2V/984MHzoutput/10fF/actualRT4; ideal3.936GHzclock+984MHzdata delayed30ps/10psedges. SS60 andFF0 pairings, freshPSSfund984MHz/.25ps/256sidebands/maxac1008GHz.",
+  "protocol_sha256": "ec4fd50ec99f059ec1aebfb2c67361cf9e336c0a52f97140bea63ce309b641e4",
+  "source_tt_validation_sha256": "0aada4bd15d64bb7074371b7117fcc6b13b932d4c5bfbedc54d513dc8125c728",
+  "integration_band_hz": [
+    10000.0,
+    492000000.0
+  ],
+  "tt_rms_fs": 53.89287963423955,
+  "cases": [
+    {
+      "case": "retimer_standalone_band_finer_ss",
+      "corner": "ss",
+      "temp_c": 60,
+      "source_result": "research/runs/spectre_cmos_v14_full/rtstandalonepvt01/retimer_standalone_band_finer_ss/result.json",
+      "source_sha256": "f28fa196e225eb2c162aec99fa2a2ed25b6bf0009f371b29ca05ea30ffb4744c",
+      "simulator_completed": true,
+      "pss_converged": true,
+      "function_passed": true,
+      "noise_valid": true,
+      "integrated_jitter_fs": 87.40625669433703,
+      "output_rising_edges": 1,
+      "rf_clock_rising_edges": 4,
+      "endpoint_peak_v": 0.0,
+      "output_10_90_percentile_v": [
+        0.002042834881014872,
+        1.219645844454835
+      ],
+      "dominant_output_harmonic": 1,
+      "powerlaw_rms_fs": 87.40506059742268,
+      "group_rms_fs": {
+        "retimer_ff": 77.61472617233045,
+        "first_buffer": 26.193231121445702,
+        "last_buffer": 30.491353428948166
+      },
+      "slew_v_per_s": 29217600000.0,
+      "device_sum_relative_error": 1.1102230246251565e-15,
+      "exact_harmonic_flicker_warning": false,
+      "noise_sha256": "3045c8431ce22e5a37d9a95235f22b9980d444535e8b432b751f739d5039c3d2",
+      "td_sha256": "7cdb6979ee90b8e275a124968c5f997da5715619db99cd5bf382592cc05c64b4",
+      "relative_to_tt_rms": 0.6218516673732455
+    },
+    {
+      "case": "retimer_standalone_band_finer_ff",
+      "corner": "ff",
+      "temp_c": 0,
+      "source_result": "research/runs/spectre_cmos_v14_full/rtstandalonepvt01/retimer_standalone_band_finer_ff/result.json",
+      "source_sha256": "13e31c6a0b5db64d4706c903d73479ccbee44086f8c69a21a4243dfffdf8dad3",
+      "simulator_completed": true,
+      "pss_converged": true,
+      "function_passed": true,
+      "noise_valid": true,
+      "integrated_jitter_fs": 38.83822211201414,
+      "output_rising_edges": 1,
+      "rf_clock_rising_edges": 4,
+      "endpoint_peak_v": 0.0,
+      "output_10_90_percentile_v": [
+        0.00017891248073180867,
+        1.206328222662281
+      ],
+      "dominant_output_harmonic": 1,
+      "powerlaw_rms_fs": 38.83756971611302,
+      "group_rms_fs": {
+        "retimer_ff": 32.25055206333445,
+        "first_buffer": 14.51135922783977,
+        "last_buffer": 16.053966543907066
+      },
+      "slew_v_per_s": 51415400000.0,
+      "device_sum_relative_error": 1.1102230246251565e-15,
+      "exact_harmonic_flicker_warning": false,
+      "noise_sha256": "4504797bbd865788229f20456f8acefc5a51e38d2188e6fab02b37860784e8e1",
+      "td_sha256": "19173d50bc3c28445b779855db6ed1904ef4fc4d359ae46aabd1a7e7a059ce51",
+      "relative_to_tt_rms": -0.2793440919171222
+    }
+  ],
+  "function_all_passed": true,
+  "noise_all_valid": true,
+  "independent_corner_precision_passed": false,
+  "full_pll_acceptance": false,
+  "full_pll_jitter_fs": null,
+  "limitations": [
+    "Only SS60/TT27/FF0 at1.2V/984MHz/10fF. Not all nine process-temperature combinations or voltage/load/frequency corners.",
+    "Ideal clock/data exclude receiver/divider/LC and PLL interactions.",
+    "Independent numerical precision comparison completed at TT only; SS/FF precision not separately established."
+  ]
+}

@@ -1,4 +1,4 @@
-本次快照：[第47次汇报](../reports/2026-10-04T1528.yaml)。尾管候选通过等频率六点噪声对照，1MHz改善约0.78dB；完整频谱扫描已启动。DAC关断状态在实际核心中改善，但闭环PSS及整机抖动尚未验收。
+本次快照：[第48次汇报](../reports/2026-10-04T1608.yaml)。独立CMOS重定时/输出模块在TT/SS/FF配对角得到53.9/87.4/38.8fs；TT精度对照通过。重点转向VCO和实际闭环噪声，整个PLL的<200fs尚未验证。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

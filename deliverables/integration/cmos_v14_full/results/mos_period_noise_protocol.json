@@ -1,0 +1,56 @@
+{
+  "scope": "Same MOS buffer, fresh PSS with one versus six physical clock periods.\n\nThis calibrates sampled-noise handling in a cyclostationary MOS circuit,\nincluding finite neighbours of the artificial 164/328/492 MHz harmonics.\nIt is neither a divider noise result nor a full PLL measurement.\n",
+  "time": "2026-10-04T15:42:37.014984+08:00",
+  "cases": [
+    {
+      "case": "mos_period_ratio1_tt",
+      "run": "mosperiodax01",
+      "ratio": 1,
+      "fund_hz": 984000000.0,
+      "harms": 128,
+      "tb_sha256": "054e05eda927d655a6eb7dde01cd6f7e0c8a65ba04621dd480f522c80d66b90d"
+    },
+    {
+      "case": "mos_period_ratio6_tt",
+      "run": "mosperiodax01",
+      "ratio": 6,
+      "fund_hz": 164000000.0,
+      "harms": 768,
+      "tb_sha256": "05d7bb7993f37694fd6e81b4f99256672fca698e58179044683c112ded362d3c"
+    }
+  ],
+  "condition": "TT27/1.2V/984MHz ideal10ps-edge input/two RT4-sized inverters/10fF. FreshPSS each, .5ps/trap/reltol1e-5/maxacfreq504GHz.",
+  "offsets_hz": [
+    10000.0,
+    1000000.0,
+    100000000.0,
+    163999999,
+    164000001,
+    327999999,
+    328000001,
+    491990000,
+    491999999,
+    492000000
+  ],
+  "comparison_limits": {
+    "max_timing_psd_delta_db": 0.1,
+    "max_relative_slew_difference": 0.005,
+    "max_waveform_difference_v": 0.001
+  },
+  "limitations": [
+    "Same physical 984MHz buffer repeated over a six-cycle superperiod; it does not prove equivalence for genuinely different edge positions in the divider.",
+    "Sparse finite points are not a jitter integral and do not supply a physical 1/f low-frequency cutoff.",
+    "A failure must be investigated as numerical/measurement evidence before it is attributed to MOS geometry."
+  ],
+  "full_pll_acceptance": false,
+  "main_dut_modified": false,
+  "dispatch_failures": [
+    {
+      "run": "mosperiod01",
+      "case": "mos_period_ratio1_tt",
+      "source_sha256": "b7a85512694ac8a1e90b74d214ea72cc80c2c324b0a660c5e97060ed231320f8",
+      "reason": "SPCRTRF-15412: full spectrum pnoise only supported in APS. PSS converged; noPN. Secondcase not launched because first failed."
+    }
+  ],
+  "required_mode": "ax +mt=1 -preset_override (same engine family as digitalchain, fullspectrum requires APS)"
+}
