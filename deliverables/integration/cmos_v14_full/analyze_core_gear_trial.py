@@ -19,6 +19,13 @@ out=dict(scope=__doc__,source_result=rp.relative_to(ROOT).as_posix(),source_sha2
     simulator_completed=bool(r['ok'] and 'spectre completes with 0 errors' in log),pss_achieved='The steady-state solution was achieved' in log,
     random_noise_integral_accepted=False,full_pll_acceptance=False,
     interpretation='Changing methods is verified independently of any convergence improvement. Fresh PSS success alone does not prove numerical accuracy, fullband randomRMS, all246edge equivalence or fullPLLcontrol-noise coverage.')
+if (j/'cancellation.json').exists():
+    out['cancellation']=json.loads((j/'cancellation.json').read_text())
+    out['interpretation']='Method-only trial was deliberately stopped after four residuals7.77M/611k/1.97M/4.81M and growing Newton voltage corrections. No accepted periodic/noise result; not proof no periodic solution exists. PSS-iteration SOA warnings are not evidence of actual transient steady-state terminal stress.'
+proof=H/'results/core_gear_complete_raw_audit.json'
+if proof.exists():
+    a=json.loads(proof.read_text());assert a['source_result_sha256']==sha(rp) and a['remote_hash_match']
+    out['completed_initialization_raw']=a['raw_tstab']
 (H/'results/core_gear_trial_audit.json').write_text(json.dumps(out,indent=2)+'\n')
 subprocess.run([sys.executable,str(H/'analyze_closedloop_noise.py'),p['run'],'--output','core_gear_noise_validation.json'],check=True)
 print(json.dumps(out,indent=2))

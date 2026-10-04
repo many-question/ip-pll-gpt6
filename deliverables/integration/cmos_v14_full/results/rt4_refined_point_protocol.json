@@ -1,0 +1,54 @@
+{
+  "scope": "Use the measured smaller bracket and physical RC settling for RT4 code24.",
+  "time": "2026-10-04T11:02:16.525952+08:00",
+  "status": "prepared_not_run",
+  "run": "rt4match02",
+  "case": "rt4c24_match2_settle_tt",
+  "source_result": "research/runs/spectre_cmos_v14_full/rt4match01/rt4c24_match1_tt/result.json",
+  "source_result_sha256": "d42fa24d9ad78ba3a169d5f7696a3543f73d64853df99e4b389c2e2c6c10a64b",
+  "source_final_ic_sha256": "bb7f2a995bb3471e9919295957fc4a2246b75db318f1c30052b5141b05c1e7e7",
+  "bracket_evidence": [
+    {
+      "path": "share/deliverables/integration/cmos_v14_full/results/rt4_matched_point_validation.json",
+      "sha256": "4a94063cfca3f050626b46654ad48f9e1223614d2c862c2f2361b0a346c9a7b9"
+    },
+    {
+      "path": "share/deliverables/integration/cmos_v14_full/results/rt4_code24_tuning_validation.json",
+      "sha256": "a3cfbf5c4101e7269f18162844e9e5c0fb407ccffc145ee9f3c0c13204d1994f"
+    }
+  ],
+  "bracket_control_v": [
+    0.7132451919672645,
+    0.75
+  ],
+  "bracket_rf_hz": [
+    3935747062.7167068,
+    3937670015.502113
+  ],
+  "control_v": 0.7180797679185412,
+  "target_rf_hz": 3936000000.0,
+  "seed_sha256": "e0530e32985269c702fda2defda9af110303c33485c2104f08b0ba536c8af7a3",
+  "tb_sha256": "a05e6be3074dbb68bdd974eec20c82e7ae3c51dbe26ca8aaec6562eaa1264cb2",
+  "dense_start_s": 2.5e-06,
+  "stop_s": 3e-06,
+  "initial_c1_minus_control_v": -0.0033690686689171745,
+  "nominal_clamped_rc_tau_s": 7.1619724391353e-07,
+  "nominal_rc_residual_prediction_v": -5.109064566168315e-05,
+  "condition": "SameTT27/1.2V/Q5/CF10/RT4/repairedbank/coarse24/10fF.3us/1ps/traponly,final500ns dense. Source750ns and newtime0 share forcingphase modulo250ns.",
+  "change": "Only forced control changed; all612 actual DUT state entries retained.3us permits physical C1 relaxation; RC prediction omits leakage and is not acceptance evidence.",
+  "limits": {
+    "window_rf_drift_ppm": 100,
+    "divider_relative": 0.001,
+    "clamp_error_v": 1e-09,
+    "desired_target_error_hz": 100000.0,
+    "desired_filter_alignment_v": 0.0001
+  },
+  "launch_gate": "Prepared pending completion/collection of noisecorr246_01 in the single shortslot. No automatic clamp release.",
+  "limitations": [
+    "Frequency-matching diagnostic only; no noise, coldcapture or validPLLperiodicstate.",
+    "100kHz frequency and100uV C1 diagnostic targets are working handoff screens, not new project requirements.",
+    "If either handoff target is unmet, refine/physicallysettle before release; no dynamic-state correction."
+  ],
+  "main_dut_modified": false,
+  "full_pll_acceptance": false
+}

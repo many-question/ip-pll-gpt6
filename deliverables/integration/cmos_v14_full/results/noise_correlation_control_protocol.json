@@ -1,0 +1,56 @@
+{
+  "scope": "Expose sampling/correlation errors hidden by a white-noise RC calibration.",
+  "time": "2026-10-04T10:36:00.461097+08:00",
+  "status": "prepared_not_run",
+  "run": "noisecorr01",
+  "cases": [
+    {
+      "case": "noise_corr_ratio1",
+      "fund_hz": 984000000.0,
+      "sample_ratio": 1,
+      "tb_sha256": "051a6378c04e49cacc93de7c27e9b07a799b7efd1f49886f419ac5f8314635e2"
+    },
+    {
+      "case": "noise_corr_ratio6",
+      "fund_hz": 164000000.0,
+      "sample_ratio": 6,
+      "tb_sha256": "a114b499a57d01715038964ad566c79e7265d5dc35bc24aae67b0bde912a5f79"
+    }
+  ],
+  "offsets_hz": [
+    1000000.0,
+    10000000.0,
+    82000000.0,
+    163000000.0,
+    164000000.0,
+    165000000.0,
+    246000000.0,
+    492000000.0
+  ],
+  "resistance_ohm": 1000.0,
+  "capacitance_f": 2e-12,
+  "temperature_k": 300.15,
+  "sample_frequency_hz": 984000000.0,
+  "input_amplitude_v": 0.5,
+  "analytic_rho": 0.6016195072237491,
+  "hypothesis": "sampleratio may normalize amplitude without reconstructing correlations among all events within a long PSS period. The earlier20fF RC is nearly white and cannot distinguish this from a correct full-rate sampled spectrum. This is a hypothesis, not a Spectre bug claim.",
+  "analytic": "RC voltage covariance kT/C*exp(-abs(t)/(RC)). The exact one-sided full-rate sampled PSD is2*kT/(C*fs)*(1-rho^2)/(1-2*rho*cos(2*pi*f/fs)+rho^2),rho=exp(-1/(fsRC)); divide by analytic output sine slew squared.",
+  "alternative_prediction": "If each selected event is sampled only once per PSS period and sampleratio only rescales normalization, use effective fs=fund then divide that sampled voltage PSD bysampleratio. This would repeat folded spectra aroundfund and differ from the full-rate analytic spectrum.",
+  "condition": "Same1kohm/2pF,27C,noiseless984MHz sine,250fs/1THz/383sidebands,Gear2. Only fund andsampleratio change. FreshPSS for eachcase; eight explicitoffsets, no sparse integral reported.",
+  "limits": {
+    "point_psd_error_db": 0.1,
+    "ratio1_to_ratio6_psd_db": 0.1,
+    "period_relative": 1e-08,
+    "endpoint_v": 0.001,
+    "device_sum_relative": 1e-07
+  },
+  "launch_gate": "After current rt4c24tune01 completes and is collected, reuse its one-thread shortslot. Prior RC246 white-noise wrapper stopped while idle; no duplicate calibration. Two finite cases only.",
+  "limitations": [
+    "Linear stationary colored-noise diagnostic, not a transistor noise or PLL result.",
+    "Even agreement cannot by itself validate a genuinely cyclostationary six-/246-phase MOS circuit.",
+    "No numerical RMS is inferred from these eight sparse colored-noise points.",
+    "If the sampling interpretation fails, preserve prior local jitter values as provisional and resolve the measurement before circuit acceptance."
+  ],
+  "main_dut_modified": false,
+  "full_pll_acceptance": false
+}

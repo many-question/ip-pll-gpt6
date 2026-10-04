@@ -1,0 +1,47 @@
+{
+  "scope": "Check the long-period colored-RC PSD against analytic covariance and ratio1.",
+  "source_result": "research/runs/spectre_cmos_v14_full/noisecorr246_01/noise_corr_ratio246_core/result.json",
+  "source_sha256": "922d4122ab070c8dcc6404839ade796dfb4b458205d13a0ad9cd6085122f3bbd",
+  "raw_noise_sha256": "4f4e3d3ad86d2c8d631f1367140c8e191671039e6fec973dc4dea7a1d7bc9998",
+  "complete": true,
+  "passed": true,
+  "periodic_passed": true,
+  "rising_edges": 246,
+  "offsets_hz": [
+    1000000.0,
+    164000000.0,
+    492000000.0
+  ],
+  "slew_v_per_s": 249183000.0,
+  "analytic_slew_v_per_s": 249186465.13020998,
+  "device_sum_relative_error": 1.3322676295501878e-15,
+  "timing_psd_s2_per_hz": [
+    2.7260419038212813e-34,
+    5.688951449136028e-35,
+    1.6843133646047662e-35
+  ],
+  "analytic_psd_s2_per_hz": [
+    2.726288424232593e-34,
+    5.691607016804621e-35,
+    1.687004915048303e-35
+  ],
+  "analytic_error_db": [
+    -0.00039272181962735563,
+    -0.0020267870143177154,
+    -0.006934532172777915
+  ],
+  "ratio246_minus_ratio1_db": [
+    -0.00026709413240303775,
+    -0.0016782730332803707,
+    -0.0059172348311614335
+  ],
+  "max_analytic_error_db": 0.006934532172777915,
+  "max_ratio_psd_difference_db": 0.0059172348311614335,
+  "random_jitter_integral_measured": false,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "Validates only this stationary linear colored-noise example and the selected numerical settings.",
+    "Cannot validate246 non-equivalent transistor output edges, MOS1/f poles or fullPLL jitter.",
+    "No RMS inferred from three sparse colored-noise points. Retain failure if the coarse method differs."
+  ]
+}

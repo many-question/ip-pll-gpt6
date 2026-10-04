@@ -1,4 +1,4 @@
-本次快照：[第40次汇报](../reports/2026-10-04T1020.yaml)。CF40暖启动稳态通过、RT4物理粗调验证完成；新输出链噪声和实际LC周期解继续，整机RMS仍未知。
+本次快照：[第41次汇报](../reports/2026-10-04T1111.yaml)。一沿/六沿/246沿有色RC解析对照通过，RT4细调/滤波稳定继续；实际LC周期解尚未收敛，整机RMS未知。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

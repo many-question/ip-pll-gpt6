@@ -1,0 +1,51 @@
+{
+  "scope": "Validate periodic locked-core results without claiming full-PLL jitter.",
+  "cases": [
+    {
+      "run": "coretripgear01",
+      "case": "core_pulsetrip_gear_noise_tt",
+      "source_result": "research/runs/spectre_cmos_v14_full/coretripgear01/core_pulsetrip_gear_noise_tt/result.json",
+      "source_sha256": "5a51ce9c9f282fb096697b420c5dc16f82bf3692045a329b13f8a4e7e93d13c6",
+      "simulator_completed": false,
+      "warnings": [
+        "WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow.",
+        "WARNING (CMI-2755): XP.XACQ0.MP: Vbd(=2.56001 V) has exceeded vbd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+        "WARNING (CMI-2754): XP.XACQ0.MP: Vgd(=2.56001 V) has exceeded vgd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+        "WARNING (CMI-2682): XP.XD.XD6.X1.XM.XT.MP: The bulk-drain junction forward bias voltage (1.03485 V) exceeds `VjdmFwd' = 918.11 mV.  The results may be inaccurate because Spectre has linearized the junction current model. Check and verify your design if the higher junction forward bias voltage is not expected",
+        "WARNING (CMI-2682): XP.XD.XD6.X0.XS.XO.MP: The bulk-drain junction forward bias voltage (1.03485 V) exceeds `VjdmFwd' = 900.8 mV.  The results may be inaccurate because Spectre has linearized the junction current model. Check and verify your design if the higher junction forward bias voltage is not expected",
+        "WARNING (CMI-2754): XP.XD.XD6.XB0.MP: Vgd(=-2.15896 V) has exceeded vgd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+        "WARNING (CMI-2754): XP.XD.XD6.X1.XS.XFI.MP: Vgd(=-2.67229 V) has exceeded vgd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+        "WARNING (CMI-2754): XP.XD.XD6.X0.XS.XFI.MP: Vgd(=2.17817 V) has exceeded vgd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+        "WARNING (CMI-2751): XP.XD.XFAC1.MP: Vds(=-2.56001 V) has exceeded vds_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+        "WARNING (CMI-2755): XP.XD.XFAC1.MP: Vbd(=2.56001 V) has exceeded vbd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+        "WARNING (CMI-2751): XP.XD.XD6.X0.XS.XO.MN: Vds(=2.23485 V) has exceeded vds_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+        "WARNING (CMI-2755): XP.XD.XD6.X0.XS.XO.MN: Vbd(=-2.23485 V) has exceeded vbd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+        "WARNING (CMI-2752): XP.XD.XD6.XN.MN0: Vgs(=2.23485 V) has exceeded vgs_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+        "WARNING (CMI-2751): XP.XRX.X0.MN: Vds(=1.98877 V) has exceeded vds_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+        "WARNING (CMI-2755): XP.XRX.X0.MN: Vbd(=-1.98877 V) has exceeded vbd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+        "WARNING (CMI-2753): XP.XR.XFF.MNC2: Vgb(=1.98877 V) has exceeded vgb_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+        "WARNING (CMI-2752): XP.XR.XFF.MNC1: Vgs(=1.98877 V) has exceeded vgs_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+        "WARNING (CMI-2753): XP.XR.XFF.MNC1: Vgb(=1.98877 V) has exceeded vgb_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+        "WARNING (CMI-2753): XP.XD.XD6.XN.MN0: Vgb(=2.23485 V) has exceeded vgb_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+        "WARNING (CMI-2754): XP.XD.XD6.XN.MN0: Vgd(=2.20502 V) has exceeded vgd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+        "WARNING (CMI-2682): XP.XD.XFAC1.MN: The bulk-drain junction forward bias voltage (1.36001 V) exceeds `VjdmFwd' = 914.027 mV.  The results may be inaccurate because Spectre has linearized the junction current model. Check and verify your design if the higher junction forward bias voltage is not expected",
+        "WARNING (CMI-2753): XP.XD.XPRE.MNC2: Vgb(=1.98877 V) has exceeded vgb_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+        "WARNING (CMI-2752): XP.XD.XPRE.MNC1: Vgs(=1.98877 V) has exceeded vgs_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+        "WARNING (CMI-2753): XP.XD.XPRE.MNC1: Vgb(=1.98877 V) has exceeded vgb_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+        "WARNING (CMI-2682): XP.XACQ0.MN: The bulk-drain junction forward bias voltage (1.36001 V) exceeds `VjdmFwd' = 929.428 mV.  The results may be inaccurate because Spectre has linearized the junction current model. Check and verify your design if the higher junction forward bias voltage is not expected",
+        "WARNING (CMI-2755): XP.XD.XD6.X1.XM.XT.MN: Vbd(=-2.23485 V) has exceeded vbd_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+        "WARNING (CMI-2751): XP.XD.XD6.X1.XS.XFI.MN: Vds(=2.09822 V) has exceeded vds_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+        "WARNING (CMI-2752): XP.XD.XD6.X0.XS.XFI.MN: Vgs(=2.23485 V) has exceeded vgs_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+        "WARNING (CMI-2751): XP.XD.XFAC1.MP: Vds(=-2.55383 V) has exceeded vds_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance",
+        "WARNING (CMI-2752): XP.XR.XFF.MNC1: Vgs(=1.98876 V) has exceeded vgs_max(=1.98 V). Check and update the settings of the SOA-related model parameters and terminal bias of the instance"
+      ],
+      "full_pll_acceptance": false,
+      "pss_converged": false,
+      "periodic_passed": false,
+      "noise_consistent": false,
+      "probe_passed": false
+    }
+  ],
+  "integration": "10kHz to fout/2, deterministic spur lines excluded; autoJee is not used as the full-band integral",
+  "full_pll_acceptance": false
+}

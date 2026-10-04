@@ -1,0 +1,12 @@
+simulator lang=spectre
+global 0
+// Linear colored-noise calibration only; no PLL performance claim.
+simulatorOptions options temp=27 reltol=1e-5 vabstol=1e-7 iabstol=1e-13
+VI (inp 0) vsource type=sine dc=0.6 ampl=0.5 freq=984M
+R (inp out) resistor r=1k
+C (out 0) capacitor c=2p
+pss pss fund=984000000 harms=383 maxacfreq=1T tstab=100n maxstep=250f method=gear2only tstabmethod=gear2only errpreset=conservative maxperiods=10 saveinit=yes
+pn pnoise values=[1M 10M 82M 163M 164M 165M 246M 492M] pnoisemethod=fullspectrum noisetype=sampled measurement=[edge] sampleratio=1 maxsideband=383
+edge jitterevent trigger=[out] triggerthresh=0.6 triggernum=1 triggerdir=rise target=[out] jittercal=[Jee]
+save inp out
+saveOptions options save=selected

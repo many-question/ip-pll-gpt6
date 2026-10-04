@@ -7,7 +7,7 @@ for run in sys.argv[1:]:
  for log in (R/run).glob('*/runner.log'):
   case=log.parent.name;dirs=re.findall(r'(/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/[a-f0-9]{8})/'+re.escape(case)+r'\.raw',log.read_text(errors='replace'))
   if not dirs:continue
-  folder=dirs[-1];cmd='tail -n 600 '+shlex.quote(folder+'/'+case+'.raw/tran.tran.tran')
+  folder=dirs[-1];cmd='tail -n 3000 '+shlex.quote(folder+'/'+case+'.raw/tran.tran.tran')
   cp=subprocess.run(ssh+[cmd],capture_output=True,text=True,timeout=30)
   records=cp.stdout.split('"time" ')[1:]
   if len(records)<2:print(case,'no complete live record',cp.stderr[:150]);continue

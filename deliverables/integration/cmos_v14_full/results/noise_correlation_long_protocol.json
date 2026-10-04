@@ -1,0 +1,37 @@
+{
+  "scope": "Extend the passed colored-RC control to the actual core's 250 ns PSS period.",
+  "time": "2026-10-04T10:57:56.717001+08:00",
+  "status": "prepared_not_run",
+  "run": "noisecorr246_01",
+  "case": "noise_corr_ratio246_core",
+  "tb_sha256": "cdb5451fed6d4233b863a52162cef803d690b9f25ed5a080fe8c3f8aaab7ff21",
+  "prior_validation_sha256": "5f4f1f0cff6b19b7a0aba5ec5fe1aef6d049e5737609eda7d0b10f3278b8a4c6",
+  "offsets_hz": [
+    1000000.0,
+    164000000.0,
+    492000000.0
+  ],
+  "resistance_ohm": 1000.0,
+  "capacitance_f": 2e-12,
+  "temperature_k": 300.15,
+  "sample_frequency_hz": 984000000.0,
+  "input_amplitude_v": 0.5,
+  "fund_hz": 4000000.0,
+  "sample_ratio": 246,
+  "condition": "Same colored1kohm/2pF/noiseless984MHz source/27C. Fresh4MHz PSS;1ps/Gear2/4095/default maxacfreq matches core numerical settings. Three PSD points only.",
+  "limits": {
+    "point_psd_error_db": 0.1,
+    "ratio1_to_ratio246_psd_db": 0.1,
+    "period_relative": 1e-08,
+    "endpoint_v": 0.001,
+    "device_sum_relative": 1e-07
+  },
+  "launch_gate": "One one-thread shortslot only after the existing RT4 matching case is collected; cap18threads/fourlong+oneshort. No automatic further calibration.",
+  "limitations": [
+    "Validates only this stationary linear colored-noise example and the selected numerical settings.",
+    "Cannot validate246 non-equivalent transistor output edges, MOS1/f poles or fullPLL jitter.",
+    "No RMS inferred from three sparse colored-noise points. Retain failure if the coarse method differs."
+  ],
+  "main_dut_modified": false,
+  "full_pll_acceptance": false
+}
