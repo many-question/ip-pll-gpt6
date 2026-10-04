@@ -58,6 +58,24 @@ def main():
     out=dict(scope=__doc__,condition=p['condition'],protocol_sha256=sha(pp),cases=rows,complete=all(x['completed'] for x in rows),
              precision_checks=checks,both_full_grid_precision_passed=len(checks)==2 and all(x['passed'] for x in checks.values()),
              full_pll_jitter_fs=None,full_pll_acceptance=False,main_dut_modified=False,limitations=p['limitations'])
+    if 'candidate_025' in lookup:
+        # Report the completed coarse pair separately while full-grid precision
+        # remains pending. Do not promote this screen to the refined result.
+        if 'baseline_025' not in lookup:
+            b=p['original_baseline'];j=R/b['run']/b['case'];assert sha(j/'result.json')==b['source_result_sha256']
+            lookup['baseline_025'],spectra['baseline_025']=read(j)
+        b,c=lookup['baseline_025'],lookup['candidate_025'];bs,cs=spectra['baseline_025'],spectra['candidate_025']
+        assert np.allclose(bs['f'],cs['f'],rtol=1e-12,atol=0)
+        hi=min(b['rf_hz'],c['rf_hz'])/8;fr=c['rf_hz']/b['rf_hz']-1
+        bands=[]
+        for lo in p['integration_lower_bounds_hz']:
+            before,after=band(b,bs,lo,hi),band(c,cs,lo,hi)
+            bands.append(dict(lower_hz=lo,upper_hz=hi,baseline=before,candidate=after,relative_rms_change=after['rms_fs']/before['rms_fs']-1))
+        out['screening_comparison_025']=dict(baseline_source=p['original_baseline'],baseline_rf_hz=b['rf_hz'],candidate_rf_hz=c['rf_hz'],
+                relative_rf_error=fr,frequency_match_passed=abs(fr)<p['frequency_match_limit'],high_offset_bands=bands,
+                offsets_hz=bs['f'].tolist(),timing_psd_change_db=(10*np.log10(cs['L']/bs['L'])-20*np.log10(c['rf_hz']/b['rf_hz'])).tolist(),
+                independent_precision_verified=False,full_pll_acceptance=False,
+                qualification='Provisional .25ps/511sideband comparison only; await .125ps/1023sideband results at both exact workpoints.')
     if 'baseline_0125' in lookup and 'candidate_0125' in lookup:
         b,c=lookup['baseline_0125'],lookup['candidate_0125'];bs,cs=spectra['baseline_0125'],spectra['candidate_0125']
         assert np.allclose(bs['f'],cs['f'],rtol=1e-12,atol=0),'Different sweep grid beyond ASCII roundoff'

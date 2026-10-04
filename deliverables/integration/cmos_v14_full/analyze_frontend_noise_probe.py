@@ -19,8 +19,9 @@ def normalize(s):
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--round',type=int,choices=[1,2,3],required=True)
-    ap.add_argument('--group',default='all');a=ap.parse_args()
-    pp=H/'results'/f'frontend_noise_r{a.round}_{a.group}_protocol.json'
+    ap.add_argument('--group',default='all');ap.add_argument('--reference-candidate',action='store_true');a=ap.parse_args()
+    prefix='reference_frontend_noise' if a.reference_candidate else 'frontend_noise'
+    pp=H/'results'/f'{prefix}_r{a.round}_{a.group}_protocol.json'
     if not pp.exists():print('Frontend noise protocol pending');return
     p=json.loads(pp.read_text());assert a.group=='all' or a.group in p['group_instances']
     proof=H/'results'/p['source_validation'];assert sha(proof)==p['source_validation_sha256']
@@ -60,12 +61,13 @@ def main():
                        top_devices_at_1mhz=[dict(device=n,fraction=float(d[n][1]/sv[1]),psd_a2_per_hz=d[n].tolist()) for n in top],
                        top_device_components_a2_per_hz={n:{k:v.tolist() for k,v in values.items()} for n,values in components.items()})
             if a.group!='all':
-                allpath=H/'results'/f'frontend_noise_r{a.round}_all_validation.json';allv=json.loads(allpath.read_text());assert allv['noise_valid']
+                allpath=H/'results'/f'{prefix}_r{a.round}_all_validation.json';allv=json.loads(allpath.read_text());assert allv['noise_valid']
                 assert allpath.name==p['all_noise_validation'] and sha(allpath)==p['all_noise_validation_sha256']
                 baseline=np.array(allv['group_psd_a2_per_hz'][a.group]);assert np.all(baseline>0)
                 delta=10*np.log10(sv/baseline)
                 out['isolated_vs_all_group_check']=dict(all_result_sha256=sha(allpath),psd_change_db=delta.tolist(),passed=bool(max(abs(delta))<.1))
-    dst=H/'results'/f'frontend_noise_r{a.round}_{a.group}_validation.json';dst.write_text(json.dumps(out,indent=2)+'\n')
+    if a.reference_candidate:out['candidate_block_sha256']=p['candidate_block_sha256']
+    dst=H/'results'/f'{prefix}_r{a.round}_{a.group}_validation.json';dst.write_text(json.dumps(out,indent=2)+'\n')
     print(json.dumps({k:v for k,v in out.items() if k!='top_device_components_a2_per_hz'},indent=2))
 
 if __name__=='__main__':main()

@@ -1,0 +1,41 @@
+{
+  "scope": "Verify the substituted frontend topology and measure its phase/current balance.",
+  "round": 1,
+  "condition": "TT27/1.2V/24MHz ideal10psreference/3.936GHz ideal measured-waveform RF replay; physical taper2 reference + original sampler/CP/pulser/bias/validity, control clamp and1.9pFcontrol-load approximation.",
+  "protocol_sha256": "3e36be5a01d039ab4d0648df8c87b2e971792b2db0bcbe7a2488c43d2e14de3e",
+  "candidate_block_sha256": "a229c895692d8b34a7e9578e63421380a9d1a9360213c53f6f9c8971eda04bf6",
+  "control_clamp_v": 0.668428925600659,
+  "cases": [
+    {
+      "case": "reference_frontend_r1_lo_tt",
+      "phase_deg": -0.8933532672964475,
+      "completed": false
+    },
+    {
+      "case": "reference_frontend_r1_center_tt",
+      "phase_deg": 14.106646732703553,
+      "completed": false
+    },
+    {
+      "case": "reference_frontend_r1_hi_tt",
+      "phase_deg": 29.106646732703553,
+      "completed": false
+    }
+  ],
+  "complete": false,
+  "periodic_all_passed": false,
+  "unique_negative_feedback_branch": false,
+  "proposed_phase_deg": null,
+  "local_gain_verified": false,
+  "balanced_center_verified": false,
+  "integrated_jitter_fs": null,
+  "noise_measured": false,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "Only the reference buffer is physically changed; idealRF and outputclamp still exclude LC/closed-loop dynamics.",
+    "Actual nonlinear sampler, pulser and detector loading included; control logic approximated as1.9pF.",
+    "First phase guess uses standalone2pF delay; the actual loaded circuit must be measured.",
+    "Initial15degree triplet brackets the branch; a smaller measured-centered triplet may be needed for accurate gain.",
+    "PSS/gain/mean balance alone do not validate noise or complete PLL jitter; no noise run is embedded here."
+  ]
+}

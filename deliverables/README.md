@@ -1,4 +1,4 @@
-本次快照：[第54次汇报](../reports/2026-10-04T1942.yaml)。参考缓冲尺寸候选完成：RMS由155.3892fs变为48.9105fs，变化-68.524%。NMOS宽度由1/4/16/64µm改为8/16/32/64µm，PMOS同比，L180nm，末级尺寸保持不变。 完整PLL抖动仍待闭环验证。
+本次快照：[第55次汇报](../reports/2026-10-04T2011.yaml)。VCO匹配候选的初步高频段积分由165.55fs降至154.58fs，载频匹配通过，精度复核继续。参考输入负载与核心复位节点诊断已完成；完整PLL抖动仍未验收。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

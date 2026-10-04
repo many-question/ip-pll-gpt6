@@ -1,0 +1,92 @@
+{
+  "scope": "Measure input edge charge from the completed reference-buffer PSS waveforms.\n\nQ/dV is an effective switched input load under these conditions, not a linear\nsmall-signal Cgg. Input-source impedance is zero in the underlying simulations.\n",
+  "condition": "TT27/1.2V/24MHz ideal10psreference/2pF explicitoutputload/actualMOS, freshPSS; standalone referencebuffer only.",
+  "source_validation_sha256": "f2f248d337aa8b1b8883151bfe394d78af87533e78be04d0e03f99fb648dbb40",
+  "cases": [
+    {
+      "variant": "baseline",
+      "source_result": "research/runs/spectre_cmos_v14_full/refbuffernoise01/reference_buffer_baseline_tt/result.json",
+      "source_sha256": "9405d81d20f457cadb16540a9af1e4d057a594e06b4900a442187309e4110d60",
+      "td_sha256": "85db9590ea4f1ba6eec275fbd0b1caccc1e6672ca1f3a6242adadf927c63fdf2",
+      "charge_windows": [
+        {
+          "window_before_ps": 50,
+          "window_after_ps": 200.0,
+          "rising_charge_c": 7.311681840157978e-15,
+          "falling_charge_c": -7.196465662711496e-15
+        },
+        {
+          "window_before_ps": 50,
+          "window_after_ps": 500.00000000000006,
+          "rising_charge_c": 7.378285801445037e-15,
+          "falling_charge_c": -7.371897488402584e-15
+        },
+        {
+          "window_before_ps": 50,
+          "window_after_ps": 1000.0000000000001,
+          "rising_charge_c": 7.37867645963351e-15,
+          "falling_charge_c": -7.373019911167377e-15
+        }
+      ],
+      "input_swing_v": 1.2,
+      "measured_input_rise_10_90_ps": 8.000000000005763,
+      "measured_input_fall_90_10_ps": 7.9999999999999725,
+      "effective_rising_charge_capacitance_ff": 6.148897049694592,
+      "effective_falling_charge_capacitance_ff": 6.144183259306148,
+      "mean_effective_charge_capacitance_ff": 6.14654015450037,
+      "window500ps_to1ns_relative_charge_change": 0.0001522569686513986,
+      "input_peak_current_a": 0.000619464605428315,
+      "illustrative_rc_time_constants_ps": {
+        "50": 0.3073270077250185,
+        "500": 3.0732700772501844
+      }
+    },
+    {
+      "variant": "taper2",
+      "source_result": "research/runs/spectre_cmos_v14_full/refbuffernoise01/reference_buffer_taper2_tt/result.json",
+      "source_sha256": "b236c75280e53e483580e2c59eac74b0fa170c5da154803c813813ea52261a63",
+      "td_sha256": "0ee759115c2cc881205d838736d147df47eb9159ea8016ad282bc23496f3a395",
+      "charge_windows": [
+        {
+          "window_before_ps": 50,
+          "window_after_ps": 200.0,
+          "rising_charge_c": 5.883532095433544e-14,
+          "falling_charge_c": -5.876673570995848e-14
+        },
+        {
+          "window_before_ps": 50,
+          "window_after_ps": 500.00000000000006,
+          "rising_charge_c": 5.88906022339509e-14,
+          "falling_charge_c": -5.886005219450539e-14
+        },
+        {
+          "window_before_ps": 50,
+          "window_after_ps": 1000.0000000000001,
+          "rising_charge_c": 5.88907299624661e-14,
+          "falling_charge_c": -5.886040219881952e-14
+        }
+      ],
+      "input_swing_v": 1.2,
+      "measured_input_rise_10_90_ps": 8.000000000002453,
+      "measured_input_fall_90_10_ps": 7.9999999999999725,
+      "effective_rising_charge_capacitance_ff": 49.07560830205508,
+      "effective_falling_charge_capacitance_ff": 49.05033516568294,
+      "mean_effective_charge_capacitance_ff": 49.06297173386902,
+      "window500ps_to1ns_relative_charge_change": 5.946381307575521e-06,
+      "input_peak_current_a": 0.004840884100454943,
+      "illustrative_rc_time_constants_ps": {
+        "50": 2.453148586693451,
+        "500": 24.531485866934506
+      }
+    }
+  ],
+  "main_dut_modified": false,
+  "finite_source_simulated": false,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "The source is an ideal24MHz1.2V pulse with Spectre rise/fall=10ps: measured10-90%edge is8ps.",
+    "Input current includes nonlinear gate charging and Miller coupling; Q/dV is not a bias-independent capacitance.",
+    "Illustrative50/500ohm RC constants only show scale. They are not simulated pin edges or jitter and do not establish an input specification.",
+    "Real source impedance/noise, finite rise/fall and PVT require independent circuit tests."
+  ]
+}
