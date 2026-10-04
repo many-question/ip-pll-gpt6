@@ -1,0 +1,22 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=ff
+include "cells.scs"
+include "digital_cells_v2.scs"
+include "fll_circuit.scs"
+include "dac_discharge_v14.scs"
+include "loop_filter_v5.scs"
+simulatorOptions options temp=0 reltol=1e-5 vabstol=1e-7 iabstol=1e-13
+VDD (vdd 0) vsource dc=1.2
+VEN (en 0) vsource type=pwl wave=[0 0 1u 0 1.0001u 1.2 4u 1.2 4.0001u 0 5u 0]
+// DAC38, as used by the current periodic-core diagnostic.
+V1 (d1 0) vsource dc=1.2
+V2 (d2 0) vsource dc=1.2
+V5 (d5 0) vsource dc=1.2
+XO (0 d1 d2 0 0 d5 en original vdd 0) tx_fll_dac
+XN (0 d1 d2 0 0 d5 en candidate vdd 0) dac_discharge_v14
+XLO (ctrl_o vc1_o en original vdd 0) tx_loop_filter_v5
+XLN (ctrl_n vc1_n en candidate vdd 0) tx_loop_filter_v5
+save en original candidate ctrl_o ctrl_n vc1_o vc1_n XO.vd XN.vd XO.b0 XN.b0 XO.b3 XN.b3 XO.b4 XN.b4 VDD:p
+saveOptions options save=selected
+tran tran stop=5u maxstep=10p method=gear2only errpreset=conservative writefinal="__FINAL_STATE__"

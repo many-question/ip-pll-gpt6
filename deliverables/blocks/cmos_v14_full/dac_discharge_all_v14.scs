@@ -1,0 +1,37 @@
+simulator lang=spectre
+subckt dac_discharge_all_v14 (d0 d1 d2 d3 d4 d5 enable out vdd vss)
+// Ideal resistor geometry; device output stages and their supply are physical.
+MP (vd enable vdd vdd) pch w=20u l=180n ad=4.8p as=4.8p pd=40.48u ps=40.48u
+// Physical off-state discharge; on only when the header PMOS is off.
+MDIS (vd enable vss vss) nch w=1u l=1u ad=1u*240n as=1u*240n pd=2*(1u+240n) ps=2*(1u+240n)
+XI0 (d0 b0 vd vss) pll_inv wn=2u wp=5u
+XO0 (b0 v0 vd vss) pll_inv wn=5u wp=12.5u
+RB0 (v0 r0) resistor r=10k
+XI1 (d1 b1 vd vss) pll_inv wn=2u wp=5u
+XO1 (b1 v1 vd vss) pll_inv wn=5u wp=12.5u
+RB1 (v1 r1) resistor r=10k
+RS1 (r0 r1) resistor r=5k
+XI2 (d2 b2 vd vss) pll_inv wn=2u wp=5u
+XO2 (b2 v2 vd vss) pll_inv wn=5u wp=12.5u
+RB2 (v2 r2) resistor r=10k
+RS2 (r1 r2) resistor r=5k
+XI3 (d3 b3 vd vss) pll_inv wn=2u wp=5u
+XO3 (b3 v3 vd vss) pll_inv wn=5u wp=12.5u
+RB3 (v3 r3) resistor r=10k
+RS3 (r2 r3) resistor r=5k
+XI4 (d4 b4 vd vss) pll_inv wn=2u wp=5u
+XO4 (b4 v4 vd vss) pll_inv wn=5u wp=12.5u
+RB4 (v4 r4) resistor r=10k
+RS4 (r3 r4) resistor r=5k
+XI5 (d5 b5 vd vss) pll_inv wn=2u wp=5u
+XO5 (b5 v5 vd vss) pll_inv wn=5u wp=12.5u
+RB5 (v5 out) resistor r=10k
+RS5 (r4 out) resistor r=5k
+RT (r0 vss) resistor r=10k
+MDISB0 (b0 enable vss vss) nch w=1u l=1u ad=1u*240n as=1u*240n pd=2*(1u+240n) ps=2*(1u+240n)
+MDISB1 (b1 enable vss vss) nch w=1u l=1u ad=1u*240n as=1u*240n pd=2*(1u+240n) ps=2*(1u+240n)
+MDISB2 (b2 enable vss vss) nch w=1u l=1u ad=1u*240n as=1u*240n pd=2*(1u+240n) ps=2*(1u+240n)
+MDISB3 (b3 enable vss vss) nch w=1u l=1u ad=1u*240n as=1u*240n pd=2*(1u+240n) ps=2*(1u+240n)
+MDISB4 (b4 enable vss vss) nch w=1u l=1u ad=1u*240n as=1u*240n pd=2*(1u+240n) ps=2*(1u+240n)
+MDISB5 (b5 enable vss vss) nch w=1u l=1u ad=1u*240n as=1u*240n pd=2*(1u+240n) ps=2*(1u+240n)
+ends dac_discharge_all_v14

@@ -1,0 +1,195 @@
+{
+  "scope": "Measure on/off DAC behavior and disturbance of the actual precharge filter.",
+  "protocol_sha256": "2d85fcf8656846a05de1688213602a723fb1cf2061fb77fa84c73e0f1b23c064",
+  "condition": "1.2V,DAC38,TT27/SS60/FF0,actual7.162pF+.477pF loopfilter and20u/40u prechargeTGs; acquired rises at1us/falls4us with100ps edges,5us/10ps/Gear2.",
+  "complete": true,
+  "cases": [
+    {
+      "case": "dac_discharge_all_tt",
+      "corner": "tt",
+      "temp_c": 27,
+      "source_result": "research/runs/spectre_cmos_v14_full/dacdischargeall01/dac_discharge_all_tt/result.json",
+      "source_sha256": "6c286bbe66a7d76f3b61b238e9b7f72adc35cb99dd5e99fbab7713f1414d16d3",
+      "waveforms_sha256": "7cb5c067e0f47d398ee6555fbdeb4b2ec66443b0358a19ab025924aa3aafd2f1",
+      "phases": [
+        {
+          "variant": "original",
+          "active_output_v": 0.694652540269196,
+          "initial_ctrl_v": 0.6946525399881681,
+          "recovered_ctrl_v": 0.6946556763294627,
+          "held_final_ctrl_v": 0.6976151075030581,
+          "held_ctrl_drift_v": 0.002962567514889991,
+          "held_ctrl_peak_change_v": 0.038239919798699784,
+          "off_rail_range_v": [
+            0.1298607432479142,
+            0.2469843446294712
+          ],
+          "off_internal_b0_range_v": [
+            0.1413466546700189,
+            0.2605092900881624
+          ],
+          "off_internal_saved_node_peak_v": 0.2605092900881624,
+          "off_rail_last_above_1mv_after_edge_s": 2.999898771073917e-06,
+          "off_rail_below_1mv_before_reenable": false
+        },
+        {
+          "variant": "candidate",
+          "active_output_v": 0.6946525380801774,
+          "initial_ctrl_v": 0.6946525377991529,
+          "recovered_ctrl_v": 0.6946558654287865,
+          "held_final_ctrl_v": 0.6976147749179386,
+          "held_ctrl_drift_v": 0.0029622371187856267,
+          "held_ctrl_peak_change_v": 0.03824137407180139,
+          "off_rail_range_v": [
+            3.090453576906946e-07,
+            3.110760487148399e-07
+          ],
+          "off_internal_b0_range_v": [
+            -2.056893073218188e-08,
+            -2.050528997382013e-08
+          ],
+          "off_internal_saved_node_peak_v": 2.056893073218188e-08,
+          "off_rail_last_above_1mv_after_edge_s": 1.7018771099057133e-08,
+          "off_rail_below_1mv_before_reenable": true
+        }
+      ],
+      "active_dac_max_difference_v": 2.189056491630481e-09,
+      "additional_held_ctrl_peak_difference_v": 4.03797807162487e-05,
+      "checks": {
+        "active_dac_unchanged": true,
+        "off_rail_discharged": true,
+        "held_control_disturbance": true,
+        "off_internal_discharged": true
+      },
+      "working_checks_passed": true
+    },
+    {
+      "case": "dac_discharge_all_ss",
+      "corner": "ss",
+      "temp_c": 60,
+      "source_result": "research/runs/spectre_cmos_v14_full/dacdischargeall01/dac_discharge_all_ss/result.json",
+      "source_sha256": "dbabb14283709162250dc40bd05b236c8341a7ae61e074e1188fbd7699788b93",
+      "waveforms_sha256": "13de9f020efbeca6f4f958d2f5e4392fcb0621c84ccac4e1efd4f8fe773c01a4",
+      "phases": [
+        {
+          "variant": "original",
+          "active_output_v": 0.6898986114510138,
+          "initial_ctrl_v": 0.6898986104877495,
+          "recovered_ctrl_v": 0.6898993374882044,
+          "held_final_ctrl_v": 0.6923550031097846,
+          "held_ctrl_drift_v": 0.0024563926220351195,
+          "held_ctrl_peak_change_v": 0.035604071311926444,
+          "off_rail_range_v": [
+            0.1217191711182238,
+            0.2521676398979046
+          ],
+          "off_internal_b0_range_v": [
+            0.1328375734745948,
+            0.2652678676430654
+          ],
+          "off_internal_saved_node_peak_v": 0.2652678676430654,
+          "off_rail_last_above_1mv_after_edge_s": 2.9998937838464204e-06,
+          "off_rail_below_1mv_before_reenable": false
+        },
+        {
+          "variant": "candidate",
+          "active_output_v": 0.6898986064274039,
+          "initial_ctrl_v": 0.6898986054641381,
+          "recovered_ctrl_v": 0.6898987374905048,
+          "held_final_ctrl_v": 0.6923538420974498,
+          "held_ctrl_drift_v": 0.002455236633311708,
+          "held_ctrl_peak_change_v": 0.03560613838602722,
+          "off_rail_range_v": [
+            5.76741166364272e-07,
+            5.831291304450551e-07
+          ],
+          "off_internal_b0_range_v": [
+            -2.415621838392799e-08,
+            -2.399196336431345e-08
+          ],
+          "off_internal_saved_node_peak_v": 2.960738886643865e-08,
+          "off_rail_last_above_1mv_after_edge_s": 1.981378387157798e-08,
+          "off_rail_below_1mv_before_reenable": true
+        }
+      ],
+      "active_dac_max_difference_v": 5.023648386170976e-09,
+      "additional_held_ctrl_peak_difference_v": 4.134812294187551e-05,
+      "checks": {
+        "active_dac_unchanged": true,
+        "off_rail_discharged": true,
+        "held_control_disturbance": true,
+        "off_internal_discharged": true
+      },
+      "working_checks_passed": true
+    },
+    {
+      "case": "dac_discharge_all_ff",
+      "corner": "ff",
+      "temp_c": 0,
+      "source_result": "research/runs/spectre_cmos_v14_full/dacdischargeall01/dac_discharge_all_ff/result.json",
+      "source_sha256": "35e632d995b81ecb496775997d41724d1df4374f1c14af7701e86bf17ab92690",
+      "waveforms_sha256": "618e2944da46d4ec3f1357391d9117f4ea177c4dbc10db32f181f91ad3ac02a1",
+      "phases": [
+        {
+          "variant": "original",
+          "active_output_v": 0.698098487550243,
+          "initial_ctrl_v": 0.6980984874501822,
+          "recovered_ctrl_v": 0.6980996259420758,
+          "held_final_ctrl_v": 0.7015271972815356,
+          "held_ctrl_drift_v": 0.0034287098313533493,
+          "held_ctrl_peak_change_v": 0.041226613477422736,
+          "off_rail_range_v": [
+            0.131808907669543,
+            0.2365307252402828
+          ],
+          "off_internal_b0_range_v": [
+            0.1434235064508529,
+            0.2503714571202624
+          ],
+          "off_internal_saved_node_peak_v": 0.2503714571202624,
+          "off_rail_last_above_1mv_after_edge_s": 2.9998993626103e-06,
+          "off_rail_below_1mv_before_reenable": false
+        },
+        {
+          "variant": "candidate",
+          "active_output_v": 0.6980984863317091,
+          "initial_ctrl_v": 0.6980984862316473,
+          "recovered_ctrl_v": 0.6980992683479783,
+          "held_final_ctrl_v": 0.7015272016811162,
+          "held_ctrl_drift_v": 0.0034287154494688776,
+          "held_ctrl_peak_change_v": 0.04122714979338338,
+          "off_rail_range_v": [
+            2.058092000620293e-07,
+            2.065148019911295e-07
+          ],
+          "off_internal_b0_range_v": [
+            -9.4537995688661e-09,
+            -9.417153098948658e-09
+          ],
+          "off_internal_saved_node_peak_v": 6.768509710540018e-08,
+          "off_rail_last_above_1mv_after_edge_s": 1.4499362635424046e-08,
+          "off_rail_below_1mv_before_reenable": true
+        }
+      ],
+      "active_dac_max_difference_v": 1.2185410458442902e-09,
+      "additional_held_ctrl_peak_difference_v": 4.031960361283726e-05,
+      "checks": {
+        "active_dac_unchanged": true,
+        "off_rail_discharged": true,
+        "held_control_disturbance": true,
+        "off_internal_discharged": true
+      },
+      "working_checks_passed": true
+    }
+  ],
+  "all_completed_checks_passed": true,
+  "core_pss_fix_proven": false,
+  "full_pll_acceptance": false,
+  "main_dut_modified": false,
+  "limitations": [
+    "Unit functional and loading test only; no proof this fixes corePSS.",
+    "Ideal enable/data stimuli; complete FLL/CP/reference loading and capture must be checked before adoption.",
+    "Three paired corners do not establish allPVT, MonteCarlo or noise.",
+    "No change to original main or currently running complete RT4 candidate."
+  ]
+}

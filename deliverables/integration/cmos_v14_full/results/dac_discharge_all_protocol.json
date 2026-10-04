@@ -1,0 +1,46 @@
+{
+  "scope": "Also discharge the six inverter storage nodes left floating when DAC vd is off.",
+  "run": "dacdischargeall01",
+  "time": "2026-10-04T14:16:00.695607+08:00",
+  "cases": [
+    {
+      "case": "dac_discharge_all_tt",
+      "corner": "tt",
+      "temp_c": 27,
+      "tb_sha256": "826eb7d23c0ae386f4be782729c662922d8b144297a0dd140f15e1a6f2a1aa7a"
+    },
+    {
+      "case": "dac_discharge_all_ss",
+      "corner": "ss",
+      "temp_c": 60,
+      "tb_sha256": "db5b8108e5b950d552b9318b052e80fd13cfc371427e0af9bc84f1035e7a9bf3"
+    },
+    {
+      "case": "dac_discharge_all_ff",
+      "corner": "ff",
+      "temp_c": 0,
+      "tb_sha256": "0963f97275ddcd1b381bc6a3428c261162f4379090d45c0bd85b3c8ceeb7da9e"
+    }
+  ],
+  "hypothesis": "Rail-only discharge leaves low-input inverter b nodes floating. Six further enable-controlled NMOS devices establish their off state.",
+  "source_file": "share/deliverables/blocks/transistor_v2/fll_circuit.scs",
+  "source_sha256": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+  "candidate_sha256": "95734d8a83bdf2f862d5582b8bfbd9af4e023852cca1a53f56da78c1409926d2",
+  "physical_change": "Seven1um/1um PDK NMOS clamps: vd andsix b nodes toground, allgates=enable. No physical changes to active DAC resistors/header/outputstages/filter.",
+  "conditions": "1.2V,DAC38,TT27/SS60/FF0,actual7.162pF+.477pF loopfilter and20u/40u prechargeTGs; acquired rises at1us/falls4us with100ps edges,5us/10ps/Gear2.",
+  "working_limits": {
+    "active_output_difference_v": 0.001,
+    "off_rail_max_v": 0.001,
+    "additional_held_ctrl_difference_v": 0.001,
+    "off_internal_max_v": 0.001
+  },
+  "limitations": [
+    "Unit functional and loading test only; no proof this fixes corePSS.",
+    "Ideal enable/data stimuli; complete FLL/CP/reference loading and capture must be checked before adoption.",
+    "Three paired corners do not establish allPVT, MonteCarlo or noise.",
+    "No change to original main or currently running complete RT4 candidate."
+  ],
+  "main_dut_modified": false,
+  "full_pll_acceptance": false,
+  "candidate_file": "dac_discharge_all_v14.scs"
+}

@@ -1,0 +1,32 @@
+{
+  "scope": "Validate fresh PSS and three actual-core noise points; never infer full-band RMS.",
+  "condition": "ActualLC/originalRT/CF10/newbank/coarse23/DAC38/M4/TT27/1.2V/Q5/10fF/refload1.9pF; ideal static acquired/FLL controls. No eventobserver/forcedstrobe.",
+  "source_result": "research/runs/spectre_cmos_v14_full/corenativenoise01/core_native_noise_tt/result.json",
+  "source_sha256": "e7dd36c6a4321de2cc0198488f0b068f3911db1817c7738216c89d53dbecb7e5",
+  "protocol_sha256": "090dd2635bf6fbb12de98dfb56381c70acd9e3f9d1809532227fa752b043a1a4",
+  "log_sha256": "a230c7b25ee17e178c2dc3d6615c4d5a5f06ac4327607f7087700944b3d11120",
+  "wrapper_errors": [
+    "convergence failure"
+  ],
+  "simulator_completed": false,
+  "pss_achieved": false,
+  "convergence_norms": [
+    3730000.0,
+    499000.0,
+    2220000.0,
+    5500000.0,
+    7260000.0,
+    7620000.0
+  ],
+  "periodic_checks_passed": false,
+  "noise_points_valid": false,
+  "full_pll_acceptance": false,
+  "integrated_jitter_fs": null,
+  "limitations": [
+    "All612exported states are real, but textreadic cannotretainhiddencharge/history; PSS must solve and validateitsownperiod.",
+    "Gear2 may cause numerical damping; successful PSS stillneedsindependentprecisionchecks.",
+    "Three noise points are not an integrated jitter result or an all246-edge covariance qualification.",
+    "Static slowcontrols omit completeFLL/watchdog dynamics; this is actualperiodiccore evidence,notfullPLLsignoff.",
+    "No MOS readpss reuse: earlier fresh/reused noise discrepancy remains unresolved."
+  ]
+}

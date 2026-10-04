@@ -1,4 +1,4 @@
-本次快照：[第45次汇报](../reports/2026-10-04T1406.yaml)。数字五组噪声归因闭合、VCO滤波实测和完整RT4候选继续推进；整机抖动未验收。
+本次快照：[第46次汇报](../reports/2026-10-04T1435.yaml)。DAC关断浮动状态候选三配对角通过，已回代核心；整机抖动尚未验收。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

@@ -1,0 +1,44 @@
+{
+  "scope": "Test a physical switched DAC rail discharge against the unchanged original.",
+  "run": "dacdischarge01",
+  "time": "2026-10-04T14:12:35.299166+08:00",
+  "cases": [
+    {
+      "case": "dac_discharge_tt",
+      "corner": "tt",
+      "temp_c": 27,
+      "tb_sha256": "8c0c470a6a432959dc0aa34d7fb869151a8dd3ce8c95e7caefad65794cd9b0a6"
+    },
+    {
+      "case": "dac_discharge_ss",
+      "corner": "ss",
+      "temp_c": 60,
+      "tb_sha256": "ab09518700d5a0e1d1d22677bf9638b135f8655f18f6157e2aa09d473db3beeb"
+    },
+    {
+      "case": "dac_discharge_ff",
+      "corner": "ff",
+      "temp_c": 0,
+      "tb_sha256": "4b7875cc7d466ed91854ecafa6ec2f2444bdfe8de7c3eaad93ccb64362e583fd"
+    }
+  ],
+  "hypothesis": "The powered-off DAC rail and low-input inverter nodes drift because no intentional discharge path exists. A small enable-controlled NMOS may provide a definite off state without changing active DAC behavior.",
+  "source_file": "share/deliverables/blocks/transistor_v2/fll_circuit.scs",
+  "source_sha256": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+  "candidate_sha256": "8b12b4df7db348d6435fe16388360b35bf1baad7273d118257c89775b0e13d5e",
+  "physical_change": "One1um/1um PDK NMOS from vd to ground, gate=enable. Original DAC and paired physical loopfilter retained in the same TB.",
+  "conditions": "1.2V,DAC38,TT27/SS60/FF0,actual7.162pF+.477pF loopfilter and20u/40u prechargeTGs; acquired rises at1us/falls4us with100ps edges,5us/10ps/Gear2.",
+  "working_limits": {
+    "active_output_difference_v": 0.001,
+    "off_rail_max_v": 0.001,
+    "additional_held_ctrl_difference_v": 0.001
+  },
+  "limitations": [
+    "Unit functional and loading test only; no proof this fixes corePSS.",
+    "Ideal enable/data stimuli; complete FLL/CP/reference loading and capture must be checked before adoption.",
+    "Three paired corners do not establish allPVT, MonteCarlo or noise.",
+    "No change to original main or currently running complete RT4 candidate."
+  ],
+  "main_dut_modified": false,
+  "full_pll_acceptance": false
+}
