@@ -1,4 +1,4 @@
-本次快照：[第43次汇报](../reports/2026-10-04T1245.yaml)。密集周期检查发现共同RF漂移，继续隔离数值网格因素；RT4实际撤钳位捕获已启动，整机抖动仍未知。
+本次快照：[第44次汇报](../reports/2026-10-04T1322.yaml)。噪声归因复核、实际周期状态和VCO偏置滤波验证继续推进；整机抖动仍未验收。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

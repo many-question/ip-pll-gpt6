@@ -136,6 +136,19 @@
       "max_relative_difference": 6.661338147750939e-16,
       "excluded_fraction": 0.0,
       "passed": true
+    },
+    {
+      "group": "divider",
+      "source_result": "research/runs/spectre_cmos_v14_full/rt4pulsetripaudit01/chain_rt4_pulsetrip_only_divider_tt/result.json",
+      "source_sha256": "f425d1e59737a5595148dcbe6762682883031153b842f530e601dda96d3f2366",
+      "timing_psd_s2_per_hz": [
+        1.978237472651338e-38,
+        8.862093113269524e-39,
+        9.106245796381873e-39
+      ],
+      "max_relative_difference": 1.6653345369377348e-15,
+      "excluded_fraction": 0.0,
+      "passed": true
     }
   ],
   "complete": false,
@@ -289,6 +302,38 @@
         "convergence failure"
       ],
       "log_sha256": "ce7fa9440e08bf5c99036e31b60082fb59570a90a33bcbd712b560d3ac49a90b",
+      "diagnostic_note": "Wrapper error labels are retained. Acceptance uses actual completed Spectre log, periodic waveform and finite PSD checks; no source manifest is edited."
+    },
+    {
+      "case": "chain_rt4_pulsetrip_only_divider_tt",
+      "expected_harmonics": {
+        "vp": 24,
+        "clk": 24,
+        "q1": 12,
+        "data": 6,
+        "out": 6,
+        "acqclk": 6,
+        "XD.d8": 3,
+        "XD.d12": 2
+      },
+      "actual_harmonics": {
+        "vp": 24,
+        "clk": 24,
+        "q1": 12,
+        "data": 6,
+        "out": 6,
+        "acqclk": 6,
+        "XD.d8": 3,
+        "XD.d12": 2
+      },
+      "endpoint_max_v": 0.0,
+      "simulator_returncode": 0,
+      "simulator_zero_errors": true,
+      "pss_achieved": true,
+      "wrapper_error_labels": [
+        "convergence failure"
+      ],
+      "log_sha256": "057b70475ba1864da096feeb49348aadb4d7acc8ff6fc45d34d1c40e59fc52a9",
       "diagnostic_note": "Wrapper error labels are retained. Acceptance uses actual completed Spectre log, periodic waveform and finite PSD checks; no source manifest is edited."
     }
   ]

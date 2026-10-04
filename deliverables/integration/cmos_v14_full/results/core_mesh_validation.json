@@ -1,6 +1,6 @@
 {
   "scope": "Compare deterministic drift with independently toggled strobes and event observer.",
-  "complete": false,
+  "complete": true,
   "cases": [
     {
       "case": "core_gear_dense_period_tt",
@@ -2099,6 +2099,708 @@
         "rf": 163.9999752936851,
         "out": 40.99998872574588
       }
+    },
+    {
+      "case": "core_gear_mesh_both_tt",
+      "observer": true,
+      "strobe": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/coremesh01/core_gear_mesh_both_tt/result.json",
+      "source_sha256": "3c1da05adfef7c3c5bfbe8f452d21acc67661c7419759a91c5303d7ce0cc40f8",
+      "physical_dependencies_match": true,
+      "coarse23_held": true,
+      "carrier_screen_passed": true,
+      "dense_periods_passed": true,
+      "all_state_endpoint_screen_passed": true,
+      "branch_counts_passed": true,
+      "rf_fit": {
+        "carrier_hz": 3935999991.8859267,
+        "frequency_drift_hz_per_us": 384.444585950253,
+        "harmonics": [
+          {
+            "harmonic": 1,
+            "pm_peak_rad": 0.27640134796887916,
+            "equivalent_deterministic_time_peak_ps": 11.176483967783774,
+            "pm_phasor_absolute_time_rad": [
+              -0.2762781830029916,
+              0.008250500322944568
+            ],
+            "pm_phase_absolute_time_rad": 3.1117385082261952
+          },
+          {
+            "harmonic": 2,
+            "pm_peak_rad": 0.00741664361455509,
+            "equivalent_deterministic_time_peak_ps": 0.2998972293802775,
+            "pm_phasor_absolute_time_rad": [
+              0.007164541854036551,
+              0.00191727476567113
+            ],
+            "pm_phase_absolute_time_rad": 0.2614792067079843
+          },
+          {
+            "harmonic": 3,
+            "pm_peak_rad": 0.03717844480762301,
+            "equivalent_deterministic_time_peak_ps": 1.5033367072664117,
+            "pm_phasor_absolute_time_rad": [
+              -0.034850372174799624,
+              0.012949452405079633
+            ],
+            "pm_phase_absolute_time_rad": 2.785829980761218
+          },
+          {
+            "harmonic": 4,
+            "pm_peak_rad": 0.0027057655532755345,
+            "equivalent_deterministic_time_peak_ps": 0.10940954358214823,
+            "pm_phasor_absolute_time_rad": [
+              0.0022235235681936395,
+              -0.0015417879786079171
+            ],
+            "pm_phase_absolute_time_rad": -0.6062816950080113
+          },
+          {
+            "harmonic": 5,
+            "pm_peak_rad": 0.014927191046013678,
+            "equivalent_deterministic_time_peak_ps": 0.6035915260029834,
+            "pm_phasor_absolute_time_rad": [
+              -0.010871533518451996,
+              0.010228919370166414
+            ],
+            "pm_phase_absolute_time_rad": 2.386640072847748
+          },
+          {
+            "harmonic": 6,
+            "pm_peak_rad": 0.001475479518245497,
+            "equivalent_deterministic_time_peak_ps": 0.05966205773468536,
+            "pm_phasor_absolute_time_rad": [
+              0.00033894177748334186,
+              -0.0014360216851560413
+            ],
+            "pm_phase_absolute_time_rad": -1.3390100922568091
+          },
+          {
+            "harmonic": 7,
+            "pm_peak_rad": 0.008296652354565828,
+            "equivalent_deterministic_time_peak_ps": 0.33548100509814055,
+            "pm_phasor_absolute_time_rad": [
+              -0.0033181957631715844,
+              0.007604210489576996
+            ],
+            "pm_phase_absolute_time_rad": 1.9822519982191291
+          }
+        ],
+        "residual_time_rms_ps": 0.2555191384918833,
+        "edges": 1968,
+        "span_us": 0.4997456649371187,
+        "note": "Consecutive-edge deterministic harmonic fit with quadratic drift. No random-noise source or random-jitter measurement."
+      },
+      "output_fit": {
+        "carrier_hz": 984000006.2757403,
+        "frequency_drift_hz_per_us": 93.67658904361701,
+        "harmonics": [
+          {
+            "harmonic": 1,
+            "pm_peak_rad": 0.07093428706338385,
+            "equivalent_deterministic_time_peak_ps": 11.47311214312475,
+            "pm_phasor_absolute_time_rad": [
+              -0.07087743816058682,
+              -0.0028393381240592094
+            ],
+            "pm_phase_absolute_time_rad": -3.1015542321771896
+          },
+          {
+            "harmonic": 2,
+            "pm_peak_rad": 0.0020632324067050593,
+            "equivalent_deterministic_time_peak_ps": 0.3337130428660586,
+            "pm_phasor_absolute_time_rad": [
+              0.0020506550687508745,
+              0.000227468136415405
+            ],
+            "pm_phase_absolute_time_rad": 0.11047300161801715
+          },
+          {
+            "harmonic": 3,
+            "pm_peak_rad": 0.010388105749033366,
+            "equivalent_deterministic_time_peak_ps": 1.6802015942840318,
+            "pm_phasor_absolute_time_rad": [
+              -0.010108985404171007,
+              0.0023918936329522717
+            ],
+            "pm_phase_absolute_time_rad": 2.909254882330655
+          },
+          {
+            "harmonic": 4,
+            "pm_peak_rad": 0.0009206823479815759,
+            "equivalent_deterministic_time_peak_ps": 0.14891376602050424,
+            "pm_phasor_absolute_time_rad": [
+              0.0006419988558806462,
+              -0.0006599192791037468
+            ],
+            "pm_phase_absolute_time_rad": -0.7991619255768315
+          },
+          {
+            "harmonic": 5,
+            "pm_peak_rad": 0.004508762901239219,
+            "equivalent_deterministic_time_peak_ps": 0.7292600593342785,
+            "pm_phasor_absolute_time_rad": [
+              -0.0036662914570033916,
+              0.0026243570359032803
+            ],
+            "pm_phase_absolute_time_rad": 2.520336563964055
+          },
+          {
+            "harmonic": 6,
+            "pm_peak_rad": 0.0006172108611990425,
+            "equivalent_deterministic_time_peak_ps": 0.09982942973915625,
+            "pm_phasor_absolute_time_rad": [
+              6.296082852722223e-05,
+              -0.0006139911898824195
+            ],
+            "pm_phase_absolute_time_rad": -1.4686099598385327
+          },
+          {
+            "harmonic": 7,
+            "pm_peak_rad": 0.0026906286251885216,
+            "equivalent_deterministic_time_peak_ps": 0.43518988108959866,
+            "pm_phasor_absolute_time_rad": [
+              -0.001357143035044881,
+              0.002323283276123048
+            ],
+            "pm_phase_absolute_time_rad": 2.099478957389361
+          }
+        ],
+        "residual_time_rms_ps": 0.3658122293927189,
+        "edges": 492,
+        "span_us": 0.4989825796551724,
+        "note": "Consecutive-edge deterministic harmonic fit with quadratic drift. No random-noise source or random-jitter measurement."
+      },
+      "branches": [
+        {
+          "node": "XP.data",
+          "first_edges": 246,
+          "second_edges": 246,
+          "expected": 246,
+          "passed": true,
+          "mean_displacement_ps": 0.0034608463556571895,
+          "max_displacement_ps": 0.008027625585078175,
+          "early_quarter_mean_ps": 0.006388495136244559,
+          "late_quarter_mean_ps": 0.0009230999704213487
+        },
+        {
+          "node": "XP.acqclk",
+          "first_edges": 246,
+          "second_edges": 246,
+          "expected": 246,
+          "passed": true,
+          "mean_displacement_ps": 0.003437210598947192,
+          "max_displacement_ps": 0.008040519279419957,
+          "early_quarter_mean_ps": 0.006368930583590701,
+          "late_quarter_mean_ps": 0.000937152645364784
+        },
+        {
+          "node": "XP.XD.d8",
+          "first_edges": 123,
+          "second_edges": 123,
+          "expected": 123,
+          "passed": true,
+          "mean_displacement_ps": 0.003435901483057432,
+          "max_displacement_ps": 0.007814073332482315,
+          "early_quarter_mean_ps": 0.006363680134528335,
+          "late_quarter_mean_ps": 0.0010010404124319542
+        },
+        {
+          "node": "XP.XD.d6",
+          "first_edges": 164,
+          "second_edges": 164,
+          "expected": 164,
+          "passed": true,
+          "mean_displacement_ps": 0.0034709159407929394,
+          "max_displacement_ps": 0.009003185829441186,
+          "early_quarter_mean_ps": 0.006350180981939701,
+          "late_quarter_mean_ps": 0.0009560512472361378
+        },
+        {
+          "node": "XP.q1",
+          "first_edges": 492,
+          "second_edges": 492,
+          "expected": 492,
+          "passed": true,
+          "mean_displacement_ps": 0.0034423203912683524,
+          "max_displacement_ps": 0.008172679447899883,
+          "early_quarter_mean_ps": 0.006348890453215256,
+          "late_quarter_mean_ps": 0.0009906533888732146
+        },
+        {
+          "node": "XP.clk",
+          "first_edges": 984,
+          "second_edges": 984,
+          "expected": 984,
+          "passed": true,
+          "mean_displacement_ps": 0.0034142352167009418,
+          "max_displacement_ps": 0.00789818227477657,
+          "early_quarter_mean_ps": 0.006376045907924568,
+          "late_quarter_mean_ps": 0.0009865452072017435
+        },
+        {
+          "node": "out",
+          "first_edges": 246,
+          "second_edges": 246,
+          "expected": 246,
+          "passed": true,
+          "mean_displacement_ps": 0.003456637213081483,
+          "max_displacement_ps": 0.008290383993283287,
+          "early_quarter_mean_ps": 0.0064344405152870045,
+          "late_quarter_mean_ps": 0.0011545401598702777
+        },
+        {
+          "node": "ref",
+          "first_edges": 6,
+          "second_edges": 6,
+          "expected": 6,
+          "passed": true,
+          "mean_displacement_ps": 2.2058149668080737e-10,
+          "max_displacement_ps": 2.6469779601696886e-10,
+          "early_quarter_mean_ps": 2.1175823681357508e-10,
+          "late_quarter_mean_ps": 2.1175823681357508e-10
+        },
+        {
+          "node": "XP.XD.d12",
+          "first_edges": 82,
+          "second_edges": 82,
+          "expected": 82,
+          "passed": true,
+          "mean_displacement_ps": 0.003498281165923177,
+          "max_displacement_ps": 0.007964473879025328,
+          "early_quarter_mean_ps": 0.0064126362777752926,
+          "late_quarter_mean_ps": 0.001047811752423152
+        },
+        {
+          "node": "XP.XD.ck",
+          "first_edges": 492,
+          "second_edges": 492,
+          "expected": 492,
+          "passed": true,
+          "mean_displacement_ps": 0.0034354476649270027,
+          "max_displacement_ps": 0.008902372126877656,
+          "early_quarter_mean_ps": 0.00632515686419985,
+          "late_quarter_mean_ps": 0.0009673586541699064
+        },
+        {
+          "node": "XP.refb",
+          "first_edges": 6,
+          "second_edges": 6,
+          "expected": 6,
+          "passed": true,
+          "mean_displacement_ps": 0.0003741950068346933,
+          "max_displacement_ps": 0.0015712131887509026,
+          "early_quarter_mean_ps": 0.00034627283924951115,
+          "late_quarter_mean_ps": 0.00011041535041624874
+        }
+      ],
+      "largest_dense_voltage_mismatches": [
+        {
+          "node": "XP.XR.ob",
+          "peak_v": 0.0005110876849692414,
+          "rms_v": 3.063922969740801e-05
+        },
+        {
+          "node": "XP.XD.XD6.clkb",
+          "peak_v": 0.00033416423123944217,
+          "rms_v": 4.6533329675119625e-05
+        },
+        {
+          "node": "XP.XDAC.b0",
+          "peak_v": 0.00030879454264106515,
+          "rms_v": 0.0003074759543665742
+        },
+        {
+          "node": "XP.XDAC.b4",
+          "peak_v": 0.0003087923527655828,
+          "rms_v": 0.00030747504598436555
+        },
+        {
+          "node": "XP.XDAC.b3",
+          "peak_v": 0.0003087912018582342,
+          "rms_v": 0.00030747324853009126
+        },
+        {
+          "node": "XP.clk",
+          "peak_v": 0.00030737707794031843,
+          "rms_v": 5.870937453269103e-05
+        },
+        {
+          "node": "XP.XD.XD12.X0.XM.fb",
+          "peak_v": 0.0002915154500943151,
+          "rms_v": 1.822938531535618e-05
+        },
+        {
+          "node": "XP.XDAC.vd",
+          "peak_v": 0.00027852582598233977,
+          "rms_v": 0.0002771821038312451
+        },
+        {
+          "node": "XP.data",
+          "peak_v": 0.00023797374169978736,
+          "rms_v": 2.8403385604626953e-05
+        },
+        {
+          "node": "XP.XD.d8",
+          "peak_v": 0.00023377180469991155,
+          "rms_v": 2.0168799025781436e-05
+        },
+        {
+          "node": "XP.XD.d6",
+          "peak_v": 0.00023365595615501555,
+          "rms_v": 2.1411413303683143e-05
+        },
+        {
+          "node": "XP.XD.XRL.a",
+          "peak_v": 0.00022965439430211454,
+          "rms_v": 3.6338097589796396e-05
+        }
+      ],
+      "largest_endpoint_voltage_mismatches": [
+        {
+          "node": "XP.XDAC.b4",
+          "change_v": -0.0009263784015476964
+        },
+        {
+          "node": "XP.XDAC.b0",
+          "change_v": -0.0009263656992591976
+        },
+        {
+          "node": "XP.XDAC.b3",
+          "change_v": -0.0009263655523892023
+        },
+        {
+          "node": "XP.XDAC.vd",
+          "change_v": -0.0008354685772538964
+        },
+        {
+          "node": "XP.XCOUNT.XF0.XF.XS.XN.x",
+          "change_v": 0.0006123676002002011
+        },
+        {
+          "node": "XP.XCOUNT.XF1.XF.XS.XN.x",
+          "change_v": 0.0006122228851866002
+        },
+        {
+          "node": "XP.XCOUNT.XF2.XF.XS.XN.x",
+          "change_v": 0.0006122126847040998
+        },
+        {
+          "node": "XP.XCOUNT.XF3.XF.XS.XN.x",
+          "change_v": 0.0006122123001237011
+        },
+        {
+          "node": "XP.XCOUNT.XF4.XF.XS.XN.x",
+          "change_v": 0.0006122122848765989
+        },
+        {
+          "node": "XP.XCOUNT.XF5.XF.XS.XN.x",
+          "change_v": 0.0006122122842826018
+        },
+        {
+          "node": "XP.XCOUNT.XF8.XF.XS.XN.x",
+          "change_v": 0.0006122122842505996
+        },
+        {
+          "node": "XP.XCOUNT.XF6.XF.XS.XN.x",
+          "change_v": 0.0006122122842482994
+        }
+      ],
+      "all_dense_voltage_rows": [
+        {
+          "node": "XP.XR.ob",
+          "peak_v": 0.0005110876849692414,
+          "rms_v": 3.063922969740801e-05
+        },
+        {
+          "node": "XP.XD.XD6.clkb",
+          "peak_v": 0.00033416423123944217,
+          "rms_v": 4.6533329675119625e-05
+        },
+        {
+          "node": "XP.XDAC.b0",
+          "peak_v": 0.00030879454264106515,
+          "rms_v": 0.0003074759543665742
+        },
+        {
+          "node": "XP.XDAC.b4",
+          "peak_v": 0.0003087923527655828,
+          "rms_v": 0.00030747504598436555
+        },
+        {
+          "node": "XP.XDAC.b3",
+          "peak_v": 0.0003087912018582342,
+          "rms_v": 0.00030747324853009126
+        },
+        {
+          "node": "XP.clk",
+          "peak_v": 0.00030737707794031843,
+          "rms_v": 5.870937453269103e-05
+        },
+        {
+          "node": "XP.XD.XD12.X0.XM.fb",
+          "peak_v": 0.0002915154500943151,
+          "rms_v": 1.822938531535618e-05
+        },
+        {
+          "node": "XP.XDAC.vd",
+          "peak_v": 0.00027852582598233977,
+          "rms_v": 0.0002771821038312451
+        },
+        {
+          "node": "XP.data",
+          "peak_v": 0.00023797374169978736,
+          "rms_v": 2.8403385604626953e-05
+        },
+        {
+          "node": "XP.XD.d8",
+          "peak_v": 0.00023377180469991155,
+          "rms_v": 2.0168799025781436e-05
+        },
+        {
+          "node": "XP.XD.d6",
+          "peak_v": 0.00023365595615501555,
+          "rms_v": 2.1411413303683143e-05
+        },
+        {
+          "node": "XP.XD.XRL.a",
+          "peak_v": 0.00022965439430211454,
+          "rms_v": 3.6338097589796396e-05
+        },
+        {
+          "node": "XP.acqclk",
+          "peak_v": 0.00022634308455138363,
+          "rms_v": 2.5945725759028667e-05
+        },
+        {
+          "node": "XP.XD.ck",
+          "peak_v": 0.00020594964258041637,
+          "rms_v": 3.506017094777626e-05
+        },
+        {
+          "node": "XP.XCOUNT.XF0.XF.XS.XN.x",
+          "peak_v": 0.00020410703861772905,
+          "rms_v": 0.00020142458994057815
+        },
+        {
+          "node": "XP.XCOUNT.XF1.XF.XS.XN.x",
+          "peak_v": 0.0002040404007206502,
+          "rms_v": 0.00020137719776236555
+        },
+        {
+          "node": "XP.XCOUNT.XF2.XF.XS.XN.x",
+          "peak_v": 0.0002040098775942488,
+          "rms_v": 0.00020137386290820406
+        },
+        {
+          "node": "XP.XCOUNT.XF3.XF.XS.XN.x",
+          "peak_v": 0.00020400974735981792,
+          "rms_v": 0.00020137372789852932
+        },
+        {
+          "node": "XP.XCOUNT.XF4.XF.XS.XN.x",
+          "peak_v": 0.00020400974216331844,
+          "rms_v": 0.00020137372278143022
+        },
+        {
+          "node": "XP.XCOUNT.XF5.XF.XS.XN.x",
+          "peak_v": 0.0002040097419675306,
+          "rms_v": 0.00020137372258876166
+        },
+        {
+          "node": "XP.XD.d12",
+          "peak_v": 0.00020184473857690066,
+          "rms_v": 1.5149563105016119e-05
+        },
+        {
+          "node": "XP.vp",
+          "peak_v": 0.00012549591776844782,
+          "rms_v": 2.9880526628296295e-05
+        },
+        {
+          "node": "XP.vn",
+          "peak_v": 0.00011824105812929808,
+          "rms_v": 3.3956450859350726e-05
+        },
+        {
+          "node": "XP.XD.ct1",
+          "peak_v": 0.00011646612851012872,
+          "rms_v": 2.7420850511617187e-05
+        },
+        {
+          "node": "XP.XD.cb",
+          "peak_v": 0.00011317255772858026,
+          "rms_v": 2.542186626685365e-05
+        },
+        {
+          "node": "XP.q1",
+          "peak_v": 0.00011078290161170568,
+          "rms_v": 2.7438970762010254e-05
+        },
+        {
+          "node": "out",
+          "peak_v": 0.0001104137022565066,
+          "rms_v": 1.665468382862667e-05
+        },
+        {
+          "node": "XP.XD.ct0",
+          "peak_v": 0.00010841419674112451,
+          "rms_v": 2.6045390080440956e-05
+        },
+        {
+          "node": "XP.XD.XRL.b",
+          "peak_v": 9.145428939794087e-05,
+          "rms_v": 1.055007245260701e-05
+        },
+        {
+          "node": "XP.pulse",
+          "peak_v": 8.472969599143676e-05,
+          "rms_v": 1.3041845427633344e-06
+        },
+        {
+          "node": "XP.hn",
+          "peak_v": 5.417836645210672e-05,
+          "rms_v": 1.3812203643589355e-05
+        },
+        {
+          "node": "XP.refb",
+          "peak_v": 5.008328855904409e-05,
+          "rms_v": 1.4045182552092954e-06
+        },
+        {
+          "node": "XP.XV.XL.tail",
+          "peak_v": 4.7509009288515536e-05,
+          "rms_v": 1.0143214254083617e-05
+        },
+        {
+          "node": "XP.hp",
+          "peak_v": 3.912333092803699e-05,
+          "rms_v": 6.3022575653743055e-06
+        },
+        {
+          "node": "XP.XD.loadb",
+          "peak_v": 3.579675440201768e-05,
+          "rms_v": 3.900496335931248e-06
+        },
+        {
+          "node": "XP.ctrl",
+          "peak_v": 1.6137374322600095e-05,
+          "rms_v": 6.794913235041193e-06
+        },
+        {
+          "node": "XP.XD.r6",
+          "peak_v": 1.6048905346615174e-05,
+          "rms_v": 1.5265057824428588e-06
+        },
+        {
+          "node": "XP.XD.r4",
+          "peak_v": 1.3810918590968432e-05,
+          "rms_v": 1.3925875184067315e-06
+        },
+        {
+          "node": "XP.XD.r0",
+          "peak_v": 1.3076569752124706e-05,
+          "rms_v": 1.368966507911496e-06
+        },
+        {
+          "node": "XP.b1",
+          "peak_v": 1.2825755683065765e-05,
+          "rms_v": 3.8721567663567237e-07
+        },
+        {
+          "node": "XP.vc1",
+          "peak_v": 1.1325170152010067e-05,
+          "rms_v": 1.0565736572136014e-05
+        },
+        {
+          "node": "XP.b0",
+          "peak_v": 1.0333215227253945e-05,
+          "rms_v": 4.390480961394182e-07
+        },
+        {
+          "node": "XP.b2",
+          "peak_v": 8.007222143557868e-06,
+          "rms_v": 3.8336375952531765e-07
+        },
+        {
+          "node": "XP.XD.fb",
+          "peak_v": 7.189092273290031e-06,
+          "rms_v": 3.0204672334805347e-06
+        },
+        {
+          "node": "XP.XD.load",
+          "peak_v": 6.17362312401587e-06,
+          "rms_v": 8.445670073122302e-07
+        },
+        {
+          "node": "XP.b5",
+          "peak_v": 6.098544179065912e-06,
+          "rms_v": 1.279462226643472e-06
+        },
+        {
+          "node": "XP.b6",
+          "peak_v": 5.822103320909933e-06,
+          "rms_v": 1.3505254128741813e-06
+        },
+        {
+          "node": "XP.b7",
+          "peak_v": 5.737610868482984e-06,
+          "rms_v": 1.3844598720296912e-06
+        },
+        {
+          "node": "XP.b3",
+          "peak_v": 4.908548621368469e-06,
+          "rms_v": 9.010647993095243e-07
+        },
+        {
+          "node": "XP.b4",
+          "peak_v": 2.5537162910982403e-06,
+          "rms_v": 2.870914139397288e-07
+        },
+        {
+          "node": "XP.XV.XL.nfilt",
+          "peak_v": 8.812534160185237e-07,
+          "rms_v": 3.059453996507459e-07
+        },
+        {
+          "node": "XP.preset",
+          "peak_v": 1.86946930947284e-07,
+          "rms_v": 4.0241059977097654e-08
+        },
+        {
+          "node": "XP.XV.XL.nb",
+          "peak_v": 2.3460233755656645e-10,
+          "rms_v": 1.5724570038503986e-10
+        },
+        {
+          "node": "ref",
+          "peak_v": 1.143494345805797e-10,
+          "rms_v": 5.37141974715425e-13
+        },
+        {
+          "node": "XP.rt_vdd",
+          "peak_v": 0.0,
+          "rms_v": 0.0
+        },
+        {
+          "node": "XP.rx_vdd",
+          "peak_v": 0.0,
+          "rms_v": 0.0
+        },
+        {
+          "node": "XP.vco_vdd",
+          "peak_v": 0.0,
+          "rms_v": 0.0
+        }
+      ],
+      "step_count": 691054,
+      "mean_dense_step_ps": 0.7235324591131813,
+      "working_checks_passed": true,
+      "observer_last_counts": {
+        "rf": 163.9999929833266,
+        "out": 40.99999313331023
+      }
     }
   ],
   "periodic_state_valid": false,
@@ -2109,5 +2811,10 @@
     "Allcases use the same text restore; this control cannot independently isolate missing hidden charge/history from ordinary post-restore settling.",
     "Observer inputs draw no current but cross events affect timestep selection. The observer is not part of the physical PLL.",
     "One-mV working gates remain unchanged; deterministic displacement is not random jitter."
-  ]
+  ],
+  "rf_frequency_factorial_effects_hz": {
+    "strobe_without_observer": -102.98508739471436,
+    "observer_without_strobe": -1792.7432069778442,
+    "interaction": 14.51984691619873
+  }
 }
