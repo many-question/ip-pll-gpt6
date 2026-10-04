@@ -1,0 +1,31 @@
+{
+  "scope": "Measure actual device noise at the proposed baseline-frequency tail setting.",
+  "run": "vcotailmatched02",
+  "case": "vco_tail560_matched2_tt",
+  "time": "2026-10-04T15:19:10.005656+08:00",
+  "bracket_validation_sha256": "925a06ca1bb4fe37ce83226dbb3d3883da1f9d777a415506e4e0952e958f12f1",
+  "target_rf_hz": 3934229027.131235,
+  "proposed_control_v": 0.7411690577974029,
+  "coarse_code": 21,
+  "source_tb_sha256": "2ef8245a05f1908cb8eea42515570ce552937003f7466418e84156a3de8735e0",
+  "tb_sha256": "5be8030821b0603d68e9471be237e0ee7c23c9ed3d5368cac8c4ce42acf21ac6",
+  "relative_rf_match_limit": 0.0001,
+  "condition": "TT27/1.2V/Q5RLC/CF40/MT560um2um/c21/interpolatedctrl/staticreference/fixedM4/10fF;freshPSS .5ps/127harms/255sidebands,onlyXVnoise.",
+  "offsets_hz": [
+    10000.0,
+    100000.0,
+    1000000.0,
+    10000000.0,
+    100000000.0,
+    492000000.0
+  ],
+  "main_dut_modified": false,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "Actual RF match must be verified after fresh PSS; interpolation alone is not a match.",
+    "Only six offsets; no integrated RMS.",
+    "Coarse code and control differ to compensate loading; improvements cannot be assigned solely to intrinsic MT area.",
+    "Static-reference fixedM4 load differs from the complete PLL; no adoption or PVT claim."
+  ],
+  "previous_measured_point_sha256": "603bdb1fb0a45719f651bdfae8d804ecbcfe3c2271a3ff1678bcbf23f52546dc"
+}

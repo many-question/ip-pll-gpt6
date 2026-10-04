@@ -1,0 +1,39 @@
+{
+  "scope": "Bracket the enlarged-tail candidate at the baseline's measured RF carrier.\n\nUse coarse21 and two physical varactor controls, with unchanged fine PSS\nsettings. This is a frequency screen; no noise analysis or acceptance claim.\n",
+  "run": "vcotailmatch01",
+  "time": "2026-10-04T15:00:17.453159+08:00",
+  "cases": [
+    {
+      "case": "vco_tail560_c21_v050_tt",
+      "control_v": 0.5,
+      "coarse_code": 21,
+      "tb_sha256": "7fdb2a55e55357612d4a19a4dfd66b2cc4af37f6e720bd8ae9f9738297f7f39d"
+    },
+    {
+      "case": "vco_tail560_c21_v080_tt",
+      "control_v": 0.8,
+      "coarse_code": 21,
+      "tb_sha256": "1d992ea1811424dff441aebfec04874e4539ae375bf701ecf22da86f6f3cbbdf"
+    }
+  ],
+  "source_validation_sha256": "96d930712ff0959d32b6479dc6d5a59781f06a466ddca52b0e727abeaac709a6",
+  "target_rf_hz": 3934229027.131235,
+  "source_tb_sha256": "2ef8245a05f1908cb8eea42515570ce552937003f7466418e84156a3de8735e0",
+  "condition": "TT27/1.2V/Q5RLC/CF40/MT560um2um/staticreference/fixedM4/10fF;freshPSS .5ps maxstep,300ns tstab,harms127. No PNoise.",
+  "physical_change": "Only externally driven coarse code23->21 (b1 low) and varactor control .679->.5 or.8V. Remaining physical circuit unchanged.",
+  "rationale": "The measured tail560 candidate improves six timing PSD points but lowers carrier0.486%. Establish a measured frequency bracket before rerunning noise at a matched carrier.",
+  "limits": {
+    "target_relative_rf_error": 0.0001,
+    "control_v": [
+      0.2,
+      1.0
+    ]
+  },
+  "full_pll_acceptance": false,
+  "main_dut_modified": false,
+  "limitations": [
+    "Independent static tuning screen, not fullPLL capture.",
+    "Changing coarse bits also changes loading; matched frequency does not isolate intrinsic transistor-noise effects.",
+    "Two tuning points are only an interpolation proposal; the proposed matched point requires another actual PSS measurement."
+  ]
+}

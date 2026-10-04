@@ -1,0 +1,46 @@
+{
+  "scope": "Measure a two-point physical tuning bracket; interpolation is a proposal.",
+  "protocol_sha256": "f7d6807b4181dc3ff53e479bf6bb607ac5115be11a713731a74ecbb0ae3e6309",
+  "condition": "TT27/1.2V/Q5RLC/CF40/MT560um2um/staticreference/fixedM4/10fF;freshPSS .5ps maxstep,300ns tstab,harms127. No PNoise.",
+  "cases": [
+    {
+      "case": "vco_tail560_c21_v050_tt",
+      "control_v": 0.5,
+      "coarse_code": 21,
+      "rf_hz": 3925648529.777568,
+      "carrier_peak_v": 0.8449328716117039,
+      "vco_supply_mw": 3.7619960947127247,
+      "endpoint_max_v": 2.731964399593778e-06,
+      "periodic_passed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/vcotailmatch01/vco_tail560_c21_v050_tt/result.json",
+      "source_sha256": "390f7f603023026eb8c14ca4d35b2b431cc439c08174a7c75ed9a7a6409d92be",
+      "raw_fd_sha256": "0dff5dcc81ac981fbbbf3eb024c8733fc9ba5a3bbc197160ff63ce7b31943079"
+    },
+    {
+      "case": "vco_tail560_c21_v080_tt",
+      "control_v": 0.8,
+      "coarse_code": 21,
+      "rf_hz": 3937455915.202093,
+      "carrier_peak_v": 0.8443026262026792,
+      "vco_supply_mw": 3.756441179601149,
+      "endpoint_max_v": 2.4393210749096284e-06,
+      "periodic_passed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/vcotailmatch01/vco_tail560_c21_v080_tt/result.json",
+      "source_sha256": "68eca46352ea0a7aab76bcfa999dcfc78358fa3f841ce3138d4adc2fd8e4aa82",
+      "raw_fd_sha256": "62754c9b0dce32ab164c8aa37fe818a9ebb551b5083115db95e7874f82ef82cf"
+    }
+  ],
+  "complete": true,
+  "target_rf_hz": 3934229027.131235,
+  "frequency_bracketed": true,
+  "proposed_control_v": 0.7180117878385999,
+  "matched_point_measured": false,
+  "noise_measured": false,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "Independent static tuning screen, not fullPLL capture.",
+    "Changing coarse bits also changes loading; matched frequency does not isolate intrinsic transistor-noise effects.",
+    "Two tuning points are only an interpolation proposal; the proposed matched point requires another actual PSS measurement."
+  ],
+  "secant_gain_hz_per_v": 39357951.4150842
+}

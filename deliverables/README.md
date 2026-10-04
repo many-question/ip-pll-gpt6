@@ -1,4 +1,4 @@
-本次快照：[第46次汇报](../reports/2026-10-04T1435.yaml)。DAC关断浮动状态候选三配对角通过，已回代核心；整机抖动尚未验收。
+本次快照：[第47次汇报](../reports/2026-10-04T1528.yaml)。尾管候选通过等频率六点噪声对照，1MHz改善约0.78dB；完整频谱扫描已启动。DAC关断状态在实际核心中改善，但闭环PSS及整机抖动尚未验收。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

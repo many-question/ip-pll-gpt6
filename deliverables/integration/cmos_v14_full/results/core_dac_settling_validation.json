@@ -1,0 +1,216 @@
+{
+  "scope": "Compare measured initialization trajectories before and after DAC discharge.\n\nBoth the physical DAC and stabilization duration changed. This checks the\nresulting trajectory, not causality, a valid periodic solution, or jitter.\n",
+  "before_source": "share/deliverables/integration/cmos_v14_full/results/core_native_initial_period_drift.json",
+  "before_sha256": "4eb945c02e230c55520d1479492e38bc19698af528798633df62ffecea929f60",
+  "after_source": "share/deliverables/integration/cmos_v14_full/results/core_dac_initial_period_drift.json",
+  "after_sha256": "13d91e40a367be6c09938f779d900e987843ca0637cbd542fbeaf99f3b2d8b8b",
+  "condition": "ActualLC/originalRT/CF10/newbank/coarse23/DAC38/M4/TT27/1.2V/Q5/10fF/refload1.9pF; ideal static acquired/FLL controls. No eventobserver/forcedstrobe. PhysicalDAC off-state clamp candidate:seven1um/1umNMOS. Original main andcompleteRT4candidateunchanged.",
+  "intervals_us": [
+    [
+      5.25,
+      5.499999604945738
+    ],
+    [
+      5.5,
+      5.749999604945739
+    ]
+  ],
+  "missing_boundary_duration_s": 3.950542616223073e-13,
+  "before_max_voltage_difference": {
+    "node": "XP.XR.ob",
+    "unit": "V",
+    "range": [
+      -0.07205889836777733,
+      1.2770601388568006
+    ],
+    "difference_mean": -7.316379116387493e-06,
+    "difference_rms": 0.004443356171926967,
+    "difference_peak": 0.06141766845558827,
+    "endpoint_difference": -4.2071578097535416e-05,
+    "first_period_edges": 246,
+    "second_period_edges": 246,
+    "matched_edge_shift_ps": {
+      "mean": -0.14449241328852583,
+      "min": -0.6962909772415401,
+      "max": 1.2523000402875009,
+      "peak_to_peak": 1.9485910175290408
+    }
+  },
+  "after_max_voltage_difference": {
+    "node": "XP.XR.ob",
+    "unit": "V",
+    "range": [
+      -0.07204890381145192,
+      1.277055675331615
+    ],
+    "difference_mean": 8.527494123984131e-08,
+    "difference_rms": 0.00018930259237094564,
+    "difference_peak": 0.0015221841305089745,
+    "endpoint_difference": -1.6797340798560198e-06,
+    "first_period_edges": 246,
+    "second_period_edges": 246,
+    "matched_edge_shift_ps": {
+      "mean": -0.026109511236199087,
+      "min": -0.030276211676633368,
+      "max": -0.023501440570652028,
+      "peak_to_peak": 0.006774771105981341
+    }
+  },
+  "before_control_period_peak_difference_v": 0.002409563863533637,
+  "after_control_period_peak_difference_v": 3.62997703853285e-05,
+  "sampled_off_nodes": {
+    "XP.XDAC.vd": {
+      "node": "XP.XDAC.vd",
+      "unit": "V",
+      "range": [
+        -9.957831681607668e-06,
+        1.3866144858182313e-05
+      ],
+      "difference_mean": 6.71640236163414e-11,
+      "difference_rms": 4.958865932149855e-08,
+      "difference_peak": 3.017878605667741e-07,
+      "endpoint_difference": 4.083239926885672e-09,
+      "first_period_edges": 0,
+      "second_period_edges": 0
+    },
+    "XP.XDAC.b0": {
+      "node": "XP.XDAC.b0",
+      "unit": "V",
+      "range": [
+        -5.299471507677978e-06,
+        6.579143419269979e-06
+      ],
+      "difference_mean": 3.809037958108092e-12,
+      "difference_rms": 6.527777979461013e-08,
+      "difference_peak": 3.5552823438153493e-07,
+      "endpoint_difference": 2.0689999939527574e-09,
+      "first_period_edges": 0,
+      "second_period_edges": 0
+    },
+    "XP.XDAC.b3": {
+      "node": "XP.XDAC.b3",
+      "unit": "V",
+      "range": [
+        -7.96703931919296e-06,
+        1.008022937942236e-05
+      ],
+      "difference_mean": 8.753549322654909e-13,
+      "difference_rms": 9.090686415463503e-08,
+      "difference_peak": 4.7467075439083486e-07,
+      "endpoint_difference": 3.4762350807937377e-09,
+      "first_period_edges": 0,
+      "second_period_edges": 0
+    },
+    "XP.XDAC.b4": {
+      "node": "XP.XDAC.b4",
+      "unit": "V",
+      "range": [
+        -1.1108171102920934e-05,
+        1.4039046733491979e-05
+      ],
+      "difference_mean": 3.097022313054877e-10,
+      "difference_rms": 1.2041707141958124e-07,
+      "difference_peak": 6.107290495606856e-07,
+      "endpoint_difference": 4.692085108877738e-09,
+      "first_period_edges": 0,
+      "second_period_edges": 0
+    }
+  },
+  "off_node_absolute_peak_v": 1.4039046733491979e-05,
+  "coarse23_held": true,
+  "control_range_v": [
+    0.6425335178920621,
+    0.7062381570364552
+  ],
+  "branches": [
+    {
+      "node": "ref",
+      "expected": 6,
+      "first": 6,
+      "second": 6,
+      "passed": true
+    },
+    {
+      "node": "XP.refb",
+      "expected": 6,
+      "first": 6,
+      "second": 6,
+      "passed": true
+    },
+    {
+      "node": "out",
+      "expected": 246,
+      "first": 246,
+      "second": 246,
+      "passed": true
+    },
+    {
+      "node": "XP.clk",
+      "expected": 984,
+      "first": 984,
+      "second": 984,
+      "passed": true
+    },
+    {
+      "node": "XP.q1",
+      "expected": 492,
+      "first": 492,
+      "second": 492,
+      "passed": true
+    },
+    {
+      "node": "XP.data",
+      "expected": 246,
+      "first": 246,
+      "second": 246,
+      "passed": true
+    },
+    {
+      "node": "XP.acqclk",
+      "expected": 246,
+      "first": 246,
+      "second": 246,
+      "passed": true
+    },
+    {
+      "node": "XP.XD.d8",
+      "expected": 123,
+      "first": 123,
+      "second": 123,
+      "passed": true
+    },
+    {
+      "node": "XP.XD.d12",
+      "expected": 82,
+      "first": 82,
+      "second": 82,
+      "passed": true
+    },
+    {
+      "node": "XP.XD.d6",
+      "expected": 164,
+      "first": 164,
+      "second": 164,
+      "passed": true
+    },
+    {
+      "node": "XP.XD.ck",
+      "expected": 492,
+      "first": 492,
+      "second": 492,
+      "passed": true
+    }
+  ],
+  "branch_and_range_checks_passed": true,
+  "dense_period_gate_v": 0.001,
+  "dense_period_gate_passed": false,
+  "periodic_state_valid": false,
+  "random_jitter_measured": false,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "Seven physical clamps and tstab250ns->2us both changed; improvement is not isolated to either cause.",
+    "Only three of six internal DAC b nodes are saved in this core trace; the separate unit bench covers all six.",
+    "Missing incomplete boundary record is not extrapolated; initialization is distinct from later Newton corrections.",
+    "A small deterministic edge displacement is not random jitter."
+  ]
+}

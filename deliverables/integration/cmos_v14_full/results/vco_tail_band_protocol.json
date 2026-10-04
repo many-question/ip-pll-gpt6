@@ -1,0 +1,26 @@
+{
+  "scope": "Promote the measured frequency-matched tail candidate to a dense spectrum.\n\nUse the same .25ps/511-sideband precision as the completed CF40 reference.\nThis launches nothing automatically and does not assume the finer carrier\nstill matches; both frequency and PSD must be checked in the new results.\n",
+  "run": "vcotailband01",
+  "case": "vco_tail560_band_finer_tt",
+  "time": "2026-10-04T15:26:10.649467+08:00",
+  "source_validation_sha256": "90098201c43a426a7d287b02d2879ea6b641e5b64b1aa3ba5528960b0e45edba",
+  "source_tb_sha256": "5be8030821b0603d68e9471be237e0ee7c23c9ed3d5368cac8c4ce42acf21ac6",
+  "tb_sha256": "4115bb16b296a6bfb7f998aac9a19e832119512bdec427c6c52a0f7275a21338",
+  "baseline_run": "vcobiasband01",
+  "baseline_case": "vco_band_cf40_finer_tt",
+  "condition": "TT27/1.2V/Q5RLC/CF40/MT560um2um/c21/control0.7411690577974029V/staticreference/fixedM4/10fF;freshPSS .25ps/127harms/511sidebands;onlyXVnoise.",
+  "measured_prior_frequency_error": -2.22362497357409e-05,
+  "frequency_grid": {
+    "start_hz": 10000.0,
+    "stop_hz": 492000000.0,
+    "points_per_decade": 20
+  },
+  "integration": "Only1MHz to commonminimum RF/8 is a high-offset timing estimate. Neverintegratefreeoscillator10kHzasPLLjitter.",
+  "main_dut_modified": false,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "The new .25ps periodic solution and RF matching need verification.",
+    "No independent .125ps precision case is launched by this builder.",
+    "Active sampler/programmablebank/RT4/fullPLL/PVT remain excluded."
+  ]
+}

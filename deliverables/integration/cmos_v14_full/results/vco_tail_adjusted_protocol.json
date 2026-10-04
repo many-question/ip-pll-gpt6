@@ -1,0 +1,34 @@
+{
+  "scope": "Reduce the enlarged tail width to test its observed operating-point shift.\n\nThe earlier 600um/2um tail increased VCO supply current by about 7.2 percent.\n560um/2um is a measured-current-informed trial, not an assertion of matched\ncurrent or frequency. The base300um/1um and previous600um/2um remain intact.\n",
+  "run": "vcotail560_01",
+  "case": "vco_bias_cf40_tail560_tt",
+  "time": "2026-10-04T14:51:59.621329+08:00",
+  "prior_validation_sha256": "8c1f601d655b697bd35538c24e844f746a5500ae68d1f33a48fe2e79186a4091",
+  "prior_supply_current_ratio": 1.0717137688277008,
+  "inverse_current_width_estimate_um": 559.8509764937637,
+  "selected_width_um": 560,
+  "length_um": 2,
+  "physical_change": "Only MT width/diffusion geometry600um->560um from the earlier600um/2um candidate; CF40, MR and remaining circuits unchanged.",
+  "source_tb_sha256": "556becd86c1aefba1f70de0ec50ca0b46d26a0b9e50c9707da3cb0f4cd04e6bc",
+  "tb_sha256": "2ef8245a05f1908cb8eea42515570ce552937003f7466418e84156a3de8735e0",
+  "core_sha256": "344bf50f76915a97d8d9587f5889c39f05b50582a9e306a4750d34d109db508f",
+  "vco_sha256": "c202fc05cb00d70b93dc5959384c1dda63ce352e544481853456c3ad039ad22f",
+  "condition": "TT27/1.2V/Q5RLC/coarse23/ctrl.679V/CF40/static-reference/fixedM4/10fF/onlyXVnoise/freshPSS .5ps255sidebands.",
+  "hypothesis": "Recover some of the current/carrier shift while retaining a larger tail area. Actual operating point and noise must be measured.",
+  "offsets_hz": [
+    10000.0,
+    100000.0,
+    1000000.0,
+    10000000.0,
+    100000000.0,
+    492000000.0
+  ],
+  "main_dut_modified": false,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "Six offsets do not establish RMS.",
+    "Width estimate uses total VCO supply current, not isolated MT DC current; equal-current matching is not presumed.",
+    "No target-frequency rematch or fullPLL/PVT validation.",
+    "CF40 all-band precision still pending independently."
+  ]
+}

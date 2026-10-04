@@ -142,7 +142,12 @@ def main():
         out[label]=dict(ssb_pm_change_db=delta.tolist(),max_absolute_psd_change_db=float(max(abs(delta))),relative_rf_change=fr,relative_high_band_rms_changes=rms,
             frequency_grid_max_relative_difference=float(max(abs(sb['f']/sa['f']-1))))
         if label=='precision':
-            lim=p['numerical_limits'];out[label]['passed']=bool(max(abs(delta))<lim['max_phase_noise_delta_db'] and abs(fr)<lim['max_relative_rf_frequency_change'] and max(abs(x) for x in rms)<lim['max_high_band_rms_relative_change'])
+            lim=p['numerical_limits']
+            out[label]['checks']=dict(phase_noise=bool(max(abs(delta))<lim['max_phase_noise_delta_db']),
+                rf_frequency=bool(abs(fr)<lim['max_relative_rf_frequency_change']),
+                high_band_rms=bool(max(abs(x) for x in rms)<lim['max_high_band_rms_relative_change']))
+            out[label]['limits']=lim
+            out[label]['passed']=all(out[label]['checks'].values())
     (H/'results/vco_bias_band_validation.json').write_text(json.dumps(out,indent=2)+'\n')
     print(json.dumps(dict(complete=out['complete'],cases=[dict(variant=x['variant'],rf_hz=x['rf_hz'],bands=x['cumulative_high_offset_bands']) for x in rows],precision=out.get('precision')),indent=2))
 
