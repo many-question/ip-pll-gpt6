@@ -1,0 +1,318 @@
+{
+  "scope": "Integrate only high-offset isolated-VCO PM bands to guide the next noise work.",
+  "source_result": "research/runs/spectre_cmos_v14_full/vconoise01/vco_noise_coarse_tt/result.json",
+  "source_result_sha256": "454f0ed05b51911486e94ed20f54feec602e6c3904056f323dc9d25caa79ac27",
+  "raw_pm_psd_sha256": "fee89efda2d825ca509d323fd02b7bf1d014c92cc07a86c613087a069b9c0c12",
+  "source_validation_sha256": "31c5f031e509fbf802ad362e125b0078e27ae4ed627b536a6b1bd75c33dbf761",
+  "condition": "TT27,1.2V,Q5RLC,coarse23,control0.679V,actual fixedM4 chain/10fF,sampler continuously tracking with referenceDC0,onlyXVnoise. Includes physical resistor/MOS bias. Omits unused programmable branches and active24MHz sampling/closed loop.",
+  "rf_hz": 3933961951.065843,
+  "actual_output_hz": 983490487.7664608,
+  "upper_offset_hz": 491745243.8832304,
+  "tool_estimated_linewidth_hz": 26431.3,
+  "minimum_offset_to_tool_linewidth_ratio": 37.833931740020354,
+  "normalization": "S_t=2*L_SSB/(2*pi*fRF)^2. ActualRFcarrier used; an ideal divider preserves time error, but no real divider or closed-loop noise transfer is inferred.",
+  "quadrature": "Trapezoid on measured full-grid PSD with linear-in-frequency interpolation at band boundaries; independent piecewise power-law quadrature is a sensitivity check, not extra simulation convergence.",
+  "disjoint_bands": [
+    {
+      "low_hz": 1000000.0,
+      "high_hz": 2000000.0,
+      "equivalent_timing_rms_fs": 129.75268022270413,
+      "timing_variance_fs2": 16835.75802497532,
+      "loglog_quadrature_rms_fs": 129.16233006403868,
+      "quadrature_rms_difference_percent": 0.45706062934351976,
+      "device_group_rms_fs": {
+        "switched_cap_bank": 28.51338187084386,
+        "tail_and_bias": 82.42930132612464,
+        "cross_coupled_core": 74.6645410576308,
+        "inductor_RLC": 60.44304485052904
+      },
+      "device_group_variance_fraction": {
+        "switched_cap_bank": 0.048290842889669006,
+        "tail_and_bias": 0.40358086086967354,
+        "cross_coupled_core": 0.33112816679098167,
+        "inductor_RLC": 0.217000129449676
+      },
+      "device_group_sum_relative_error": 4.440892098500626e-16
+    },
+    {
+      "low_hz": 2000000.0,
+      "high_hz": 5000000.0,
+      "equivalent_timing_rms_fs": 90.42787776717107,
+      "timing_variance_fs2": 8177.20107747443,
+      "loglog_quadrature_rms_fs": 90.08445199090004,
+      "quadrature_rms_difference_percent": 0.38122646991924913,
+      "device_group_rms_fs": {
+        "switched_cap_bank": 20.593187416559847,
+        "tail_and_bias": 48.67002161646687,
+        "cross_coupled_core": 56.509780046333894,
+        "inductor_RLC": 46.808070505720295
+      },
+      "device_group_variance_fraction": {
+        "switched_cap_bank": 0.05186118868248962,
+        "tail_and_bias": 0.2896799261390989,
+        "cross_coupled_core": 0.39051934893489504,
+        "inductor_RLC": 0.2679395362435165
+      },
+      "device_group_sum_relative_error": 0.0
+    },
+    {
+      "low_hz": 5000000.0,
+      "high_hz": 10000000.0,
+      "equivalent_timing_rms_fs": 49.88480657305453,
+      "timing_variance_fs2": 2488.4939268310645,
+      "loglog_quadrature_rms_fs": 49.71208562415103,
+      "quadrature_rms_difference_percent": 0.34744257203240814,
+      "device_group_rms_fs": {
+        "switched_cap_bank": 11.366416442060086,
+        "tail_and_bias": 24.313355045201966,
+        "cross_coupled_core": 32.229465279128874,
+        "inductor_RLC": 27.00779217863077
+      },
+      "device_group_variance_fraction": {
+        "switched_cap_bank": 0.051917113938411676,
+        "tail_and_bias": 0.23754899587270656,
+        "cross_coupled_core": 0.4174165028006877,
+        "inductor_RLC": 0.293117387388194
+      },
+      "device_group_sum_relative_error": 0.0
+    },
+    {
+      "low_hz": 10000000.0,
+      "high_hz": 100000000.0,
+      "equivalent_timing_rms_fs": 46.28196804976664,
+      "timing_variance_fs2": 2142.0205665596204,
+      "loglog_quadrature_rms_fs": 46.12546747330395,
+      "quadrature_rms_difference_percent": 0.3392932040271912,
+      "device_group_rms_fs": {
+        "switched_cap_bank": 10.132632250225369,
+        "tail_and_bias": 21.480114521698173,
+        "cross_coupled_core": 30.388105141934894,
+        "inductor_RLC": 25.583550892297065
+      },
+      "device_group_variance_fraction": {
+        "switched_cap_bank": 0.04793148951095727,
+        "tail_and_bias": 0.2154019093319599,
+        "cross_coupled_core": 0.4311055405039629,
+        "inductor_RLC": 0.3055610606531197
+      },
+      "device_group_sum_relative_error": 2.220446049250313e-16
+    },
+    {
+      "low_hz": 100000000.0,
+      "high_hz": 491745243.8832304,
+      "equivalent_timing_rms_fs": 13.373750244752287,
+      "timing_variance_fs2": 178.85719560901182,
+      "loglog_quadrature_rms_fs": 13.327863868425776,
+      "quadrature_rms_difference_percent": 0.3442890532159071,
+      "device_group_rms_fs": {
+        "switched_cap_bank": 2.7255919407077966,
+        "tail_and_bias": 5.840059708954795,
+        "cross_coupled_core": 8.950794355569837,
+        "inductor_RLC": 7.5634203361906645
+      },
+      "device_group_variance_fraction": {
+        "switched_cap_bank": 0.041535099563402664,
+        "tail_and_bias": 0.19069010496348573,
+        "cross_coupled_core": 0.4479367985330535,
+        "inductor_RLC": 0.3198379969400581
+      },
+      "device_group_sum_relative_error": 0.0
+    }
+  ],
+  "cumulative_high_offset_bands": [
+    {
+      "low_hz": 1000000.0,
+      "high_hz": 491745243.8832304,
+      "equivalent_timing_rms_fs": 172.69143230470192,
+      "timing_variance_fs2": 29822.330791449447,
+      "loglog_quadrature_rms_fs": 171.9726668982646,
+      "quadrature_rms_difference_percent": 0.41795328257745457,
+      "device_group_rms_fs": {
+        "switched_cap_bank": 38.423779410230054,
+        "tail_and_bias": 101.24229142055151,
+        "cross_coupled_core": 103.97327069070799,
+        "inductor_RLC": 85.35514850948545
+      },
+      "device_group_variance_fraction": {
+        "switched_cap_bank": 0.04950608436646149,
+        "tail_and_bias": 0.34370222917058924,
+        "cross_coupled_core": 0.36249483964622814,
+        "inductor_RLC": 0.24429684681672123
+      },
+      "device_group_sum_relative_error": 0.0
+    },
+    {
+      "low_hz": 2000000.0,
+      "high_hz": 491745243.8832304,
+      "equivalent_timing_rms_fs": 113.95864498349447,
+      "timing_variance_fs2": 12986.572766474126,
+      "loglog_quadrature_rms_fs": 113.54158116095535,
+      "quadrature_rms_difference_percent": 0.3673225423449944,
+      "device_group_rms_fs": {
+        "switched_cap_bank": 25.756045473897018,
+        "tail_and_bias": 58.782751338898954,
+        "cross_coupled_core": 72.35777309160778,
+        "inductor_RLC": 60.26723576101071
+      },
+      "device_group_variance_fraction": {
+        "switched_cap_bank": 0.05108152015025887,
+        "tail_and_bias": 0.2660757319969167,
+        "cross_coupled_core": 0.40315851001835085,
+        "inductor_RLC": 0.27968423783447366
+      },
+      "device_group_sum_relative_error": 2.220446049250313e-16
+    },
+    {
+      "low_hz": 5000000.0,
+      "high_hz": 491745243.8832304,
+      "equivalent_timing_rms_fs": 69.34963366161134,
+      "timing_variance_fs2": 4809.371688999696,
+      "loglog_quadrature_rms_fs": 69.11209852138072,
+      "quadrature_rms_difference_percent": 0.3436954532022307,
+      "device_group_rms_fs": {
+        "switched_cap_bank": 15.469147050819977,
+        "tail_and_bias": 32.964235935684506,
+        "cross_coupled_core": 45.1917258565278,
+        "inductor_RLC": 37.96240563774595
+      },
+      "device_group_variance_fraction": {
+        "switched_cap_bank": 0.049755877888835696,
+        "tail_and_bias": 0.22594237274463705,
+        "cross_coupled_core": 0.4246484193689637,
+        "inductor_RLC": 0.2996533299975636
+      },
+      "device_group_sum_relative_error": 0.0
+    },
+    {
+      "low_hz": 10000000.0,
+      "high_hz": 491745243.8832304,
+      "equivalent_timing_rms_fs": 48.17548922604349,
+      "timing_variance_fs2": 2320.877762168632,
+      "loglog_quadrature_rms_fs": 48.01240157424028,
+      "quadrature_rms_difference_percent": 0.3396781799199111,
+      "device_group_rms_fs": {
+        "switched_cap_bank": 10.492811241300329,
+        "tail_and_bias": 22.259865616607527,
+        "cross_coupled_core": 31.678914970576102,
+        "inductor_RLC": 26.67814467763185
+      },
+      "device_group_variance_fraction": {
+        "switched_cap_bank": 0.04743855516228556,
+        "tail_and_bias": 0.21349750742858095,
+        "cross_coupled_core": 0.4324026323451299,
+        "inductor_RLC": 0.3066613050640034
+      },
+      "device_group_sum_relative_error": 1.1102230246251565e-16
+    },
+    {
+      "low_hz": 100000000.0,
+      "high_hz": 491745243.8832304,
+      "equivalent_timing_rms_fs": 13.373750244752287,
+      "timing_variance_fs2": 178.85719560901182,
+      "loglog_quadrature_rms_fs": 13.327863868425776,
+      "quadrature_rms_difference_percent": 0.3442890532159071,
+      "device_group_rms_fs": {
+        "switched_cap_bank": 2.7255919407077966,
+        "tail_and_bias": 5.840059708954795,
+        "cross_coupled_core": 8.950794355569837,
+        "inductor_RLC": 7.5634203361906645
+      },
+      "device_group_variance_fraction": {
+        "switched_cap_bank": 0.041535099563402664,
+        "tail_and_bias": 0.19069010496348573,
+        "cross_coupled_core": 0.4479367985330535,
+        "inductor_RLC": 0.3198379969400581
+      },
+      "device_group_sum_relative_error": 0.0
+    }
+  ],
+  "top_devices_1mhz_to_upper": [
+    {
+      "device": "XV.XL.MT",
+      "equivalent_rms_fs": 85.94029194973768,
+      "variance_fraction": 0.247657831711925
+    },
+    {
+      "device": "XV.XL.MN1",
+      "equivalent_rms_fs": 77.24042453850085,
+      "variance_fraction": 0.20005422193889746
+    },
+    {
+      "device": "XV.XL.MN0",
+      "equivalent_rms_fs": 69.60142121562889,
+      "variance_fraction": 0.16244061770733062
+    },
+    {
+      "device": "XV.XL.XN.RW",
+      "equivalent_rms_fs": 55.286450313301046,
+      "variance_fraction": 0.10249338355275305
+    },
+    {
+      "device": "XV.XL.XP.RW",
+      "equivalent_rms_fs": 53.28425782213928,
+      "variance_fraction": 0.09520423307993953
+    },
+    {
+      "device": "XV.XL.RF",
+      "equivalent_rms_fs": 51.14730663972485,
+      "variance_fraction": 0.08772107702755767
+    },
+    {
+      "device": "XV.XL.XN.RSN",
+      "equivalent_rms_fs": 26.739821906102545,
+      "variance_fraction": 0.023975928661320093
+    },
+    {
+      "device": "XV.XL.XP.RSN",
+      "equivalent_rms_fs": 25.974594926676264,
+      "variance_fraction": 0.022623301522708552
+    },
+    {
+      "device": "XV.XL.MA4",
+      "equivalent_rms_fs": 15.423389573408747,
+      "variance_fraction": 0.007976604766296067
+    },
+    {
+      "device": "XV.XBN.MP7",
+      "equivalent_rms_fs": 15.132668734547314,
+      "variance_fraction": 0.0076787312377073905
+    },
+    {
+      "device": "XV.XBN.M4",
+      "equivalent_rms_fs": 13.16885928807759,
+      "variance_fraction": 0.0058150671106803435
+    },
+    {
+      "device": "XV.XBP.M4",
+      "equivalent_rms_fs": 13.161174815597166,
+      "variance_fraction": 0.005808282516146361
+    },
+    {
+      "device": "XV.XBP.MP7",
+      "equivalent_rms_fs": 12.532092689551753,
+      "variance_fraction": 0.005266300219047475
+    },
+    {
+      "device": "XV.XBP.MP6",
+      "equivalent_rms_fs": 11.19990604706589,
+      "variance_fraction": 0.004206173432261309
+    },
+    {
+      "device": "XV.XBN.MP6",
+      "equivalent_rms_fs": 10.644615130219108,
+      "variance_fraction": 0.003799429094354247
+    }
+  ],
+  "variance_fraction_1_to_10mhz_within_1mhz_to_upper": 0.9221765133517308,
+  "actual_pll_noise_transfer_measured": false,
+  "full_pll_jitter_fs": null,
+  "full_pll_acceptance": false,
+  "interpretation": "The isolated CF10 VCO has substantial1-10MHz PM noise. Measure actual closed-loop suppression and examine VCO thermal/bias contributions, as well as the digital chain. This is neither a PLL prediction nor an unavoidable PLL jitter floor.",
+  "limitations": [
+    "No10kHz-to-output/2 free-running or PLL totalRMS; offsets below1MHz are excluded, including the problematic close-in linewidth regime.",
+    "Reference held DC0 with sampler tracking, coarse23/control.679V and original fixedM4 loading; differs from active24MHz sampling, RT4 and the repaired full bank.",
+    "Only baseline CF10 dense95point spectrum is integrated. CF40 sixpoint data is not used for sparse numerical integration.",
+    "Sixoffset fine check passed, but full-grid fine Spectre convergence is not closed.Quadrature agreement does not replace it.",
+    "Actual loop bandwidth, peaking, sampler/CP/reference/control noise and inter-module coupling remain unmeasured in the complete PLL."
+  ]
+}

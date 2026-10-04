@@ -5,10 +5,201 @@
     100000000.0,
     491990000.0
   ],
-  "edge_rows": [],
-  "gate_rows": [],
+  "edge_rows": [
+    {
+      "edge": 1,
+      "psd_s2_per_hz": [
+        1.8140963264713634e-35,
+        8.02548731374179e-36,
+        7.930589830918781e-36
+      ],
+      "relative_to_edge1_db": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "slew_v_per_s": 31107100000.0,
+      "raw_noise_sha256": "7fc7548964b6b1f7a2d7d89925d54b492e8e09f01a40de1811d814248631dddb"
+    },
+    {
+      "edge": 2,
+      "psd_s2_per_hz": [
+        1.8286602756664382e-35,
+        8.089854063378226e-36,
+        7.994193575975138e-36
+      ],
+      "relative_to_edge1_db": [
+        0.034726868479502085,
+        0.034692746723423644,
+        0.034691715023608315
+      ],
+      "slew_v_per_s": 30984300000.0,
+      "raw_noise_sha256": "fe921d86dac88d4c204a9b803191bd3c4624e221393d7d3b8469253ffc01bc37"
+    },
+    {
+      "edge": 3,
+      "psd_s2_per_hz": [
+        1.8286221725727496e-35,
+        8.089715437033937e-36,
+        7.994057483843056e-36
+      ],
+      "relative_to_edge1_db": [
+        0.03463637525909952,
+        0.03461832613223148,
+        0.03461778065546034
+      ],
+      "slew_v_per_s": 30984000000.0,
+      "raw_noise_sha256": "56627bb08475c6e50f7186685654fdc359ce2f27f45404f11c91e356ab3115e6"
+    },
+    {
+      "edge": 4,
+      "psd_s2_per_hz": [
+        1.8224188995625014e-35,
+        8.062257592380707e-36,
+        7.966923871896116e-36
+      ],
+      "relative_to_edge1_db": [
+        0.019878667650726586,
+        0.01985257351082706,
+        0.019851784715875474
+      ],
+      "slew_v_per_s": 31037000000.0,
+      "raw_noise_sha256": "fa1874ee69bc528a4b505e050ace3cbf400ab63e70c760e072d6dacf352f298f"
+    },
+    {
+      "edge": 5,
+      "psd_s2_per_hz": [
+        1.816813924717011e-35,
+        8.037501552776646e-36,
+        7.942461759540661e-36
+      ],
+      "relative_to_edge1_db": [
+        0.006501059298375232,
+        0.006496572628460087,
+        0.0064964370865340255
+      ],
+      "slew_v_per_s": 31084000000.0,
+      "raw_noise_sha256": "b02f79b78c7c7721a0301ce48fcebd22dd143a21e54e8c13f47fa86ae57bcd10"
+    },
+    {
+      "edge": 6,
+      "psd_s2_per_hz": [
+        1.8252524746388386e-35,
+        8.07475481226811e-36,
+        7.979272169660752e-36
+      ],
+      "relative_to_edge1_db": [
+        0.026626020364296493,
+        0.026579313981988616,
+        0.02657790126184506
+      ],
+      "slew_v_per_s": 31013700000.0,
+      "raw_noise_sha256": "1cd8f0b70591484bb124343a0addbe53d1a0357e9605ab3d65d9a9796f47a4d9"
+    }
+  ],
+  "gate_rows": [
+    {
+      "group": "ff",
+      "source_result": "research/runs/spectre_cmos_v14_full/rt4pulsetripaudit01/chain_rt4_pulsetrip_only_ff_tt/result.json",
+      "source_sha256": "9e2940ef6dfef02a499c0b44f56d40be870cb3b9ace1c64a675d8299fafbfac1",
+      "timing_psd_s2_per_hz": [
+        1.0963702772353885e-35,
+        5.166140354820202e-36,
+        5.1086996414007724e-36
+      ],
+      "max_relative_difference": 7.771561172376096e-16,
+      "excluded_fraction": 0.0,
+      "passed": true
+    }
+  ],
   "complete": false,
   "passed": null,
   "full_band_integral": false,
-  "full_pll_acceptance": false
+  "full_pll_acceptance": false,
+  "source_result": "research/runs/spectre_cmos_v14_full/rt4pulsetripaudit01/chain_rt4_pulsetrip_edges_tt/result.json",
+  "source_sha256": "b448d593401db967076533cea9f0ba42043853b55492e0ef882c4a289d88870e",
+  "edge_spread_db": [
+    0.034726868479481254,
+    0.03469274672340816,
+    0.034691715023598135
+  ],
+  "edge_passed": true,
+  "fresh_probe_repeat": {
+    "source_result": "research/runs/spectre_cmos_v14_full/rtpulsetripprobe01/chain_rt4_pulsetrip_probe_tt/result.json",
+    "source_sha256": "e5e90c944ac617572104f57ba44ec42eb17ab3e018b7a902050ad10501ebce38",
+    "raw_noise_sha256": "656cbdf2ca03d507a0a850de5ca94bffd72060c38bc72667c104d6b322288dba",
+    "edge1_minus_probe_db": [
+      -2.20348826107482e-12,
+      7.754639322219026e-11,
+      0.0
+    ],
+    "max_difference_db": 7.754639322219026e-11,
+    "passed": true
+  },
+  "periodic_case_checks": [
+    {
+      "case": "chain_rt4_pulsetrip_edges_tt",
+      "expected_harmonics": {
+        "vp": 24,
+        "clk": 24,
+        "q1": 12,
+        "data": 6,
+        "out": 6,
+        "acqclk": 6,
+        "XD.d8": 3,
+        "XD.d12": 2
+      },
+      "actual_harmonics": {
+        "vp": 24,
+        "clk": 24,
+        "q1": 12,
+        "data": 6,
+        "out": 6,
+        "acqclk": 6,
+        "XD.d8": 3,
+        "XD.d12": 2
+      },
+      "endpoint_max_v": 0.0,
+      "simulator_returncode": 0,
+      "simulator_zero_errors": true,
+      "pss_achieved": true,
+      "wrapper_error_labels": [
+        "convergence failure"
+      ],
+      "log_sha256": "9d06d8d52a350d755cfe9d74517ff63536c48f297bf2646cc29d15a92ccbcc73",
+      "diagnostic_note": "Wrapper error labels are retained. Acceptance uses actual completed Spectre log, periodic waveform and finite PSD checks; no source manifest is edited."
+    },
+    {
+      "case": "chain_rt4_pulsetrip_only_ff_tt",
+      "expected_harmonics": {
+        "vp": 24,
+        "clk": 24,
+        "q1": 12,
+        "data": 6,
+        "out": 6,
+        "acqclk": 6,
+        "XD.d8": 3,
+        "XD.d12": 2
+      },
+      "actual_harmonics": {
+        "vp": 24,
+        "clk": 24,
+        "q1": 12,
+        "data": 6,
+        "out": 6,
+        "acqclk": 6,
+        "XD.d8": 3,
+        "XD.d12": 2
+      },
+      "endpoint_max_v": 0.0,
+      "simulator_returncode": 0,
+      "simulator_zero_errors": true,
+      "pss_achieved": true,
+      "wrapper_error_labels": [
+        "convergence failure"
+      ],
+      "log_sha256": "891b175c8b070d0371ac10b2f8fc7bd8dc81e415639d4bf6663eaa05092c9a42",
+      "diagnostic_note": "Wrapper error labels are retained. Acceptance uses actual completed Spectre log, periodic waveform and finite PSD checks; no source manifest is edited."
+    }
+  ]
 }

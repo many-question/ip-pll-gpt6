@@ -1,0 +1,77 @@
+{
+  "scope": "Separate voltage-noise and slew contributions to measured edge-to-edge PSD spread.",
+  "source_result": "research/runs/spectre_cmos_v14_full/rt4pulsetripaudit01/chain_rt4_pulsetrip_edges_tt/result.json",
+  "source_sha256": "b448d593401db967076533cea9f0ba42043853b55492e0ef882c4a289d88870e",
+  "edge_raw_noise_sha256": [
+    "7fc7548964b6b1f7a2d7d89925d54b492e8e09f01a40de1811d814248631dddb",
+    "fe921d86dac88d4c204a9b803191bd3c4624e221393d7d3b8469253ffc01bc37",
+    "56627bb08475c6e50f7186685654fdc359ce2f27f45404f11c91e356ab3115e6",
+    "fa1874ee69bc528a4b505e050ace3cbf400ab63e70c760e072d6dacf352f298f",
+    "b02f79b78c7c7721a0301ce48fcebd22dd143a21e54e8c13f47fa86ae57bcd10",
+    "1cd8f0b70591484bb124343a0addbe53d1a0357e9605ab3d65d9a9796f47a4d9"
+  ],
+  "offsets_hz": [
+    1000000.0,
+    100000000.0,
+    491990000.0
+  ],
+  "timing_psd_spread_db": [
+    0.034726868479502085,
+    0.034692746723423644,
+    0.034691715023608315
+  ],
+  "voltage_noise_psd_spread_db": [
+    0.0005071454140890965,
+    0.0004604390317805416,
+    0.0004590263116372613
+  ],
+  "slew_range_v_per_s": [
+    30984000000.0,
+    31107100000.0
+  ],
+  "slew_timing_psd_spread_db": 0.034440826957600576,
+  "edge_slew_timing_psd_change_db": [
+    -0.0,
+    0.034356726961587675,
+    0.034440826957600576,
+    0.01959578212196212,
+    0.006452500755463547,
+    0.02611887495020812
+  ],
+  "edge_voltage_psd_change_db": [
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.00037014151791444304,
+      0.0003360197618354065,
+      0.0003349880620200361
+    ],
+    [
+      0.0001955483014996513,
+      0.0001774991746309314,
+      0.000176953697859868
+    ],
+    [
+      0.00028288552876535884,
+      0.0002567913888663374,
+      0.00025600259391465044
+    ],
+    [
+      4.8558542911495415e-05,
+      4.4071872996452416e-05,
+      4.393633107008304e-05
+    ],
+    [
+      0.0005071454140890965,
+      0.0004604390317805416,
+      0.0004590263116372613
+    ]
+  ],
+  "decomposition_residual_db": 1.3981871216373065e-15,
+  "interpretation": "At these three offsets the small inter-edge timing-PSD spread can be decomposed exactly into measured voltage-noise PSD and the squared-slew conversion. This does not establish behavior at unmeasured offsets, PVT, or the actualLC/fullPLL.",
+  "full_band_integral": false,
+  "full_pll_acceptance": false
+}

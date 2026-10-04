@@ -3,6 +3,7 @@ from pathlib import Path
 import hashlib,json,re
 import numpy as np
 from analyze import loop
+from psf_trace_units import trace_units
 H=Path(__file__).resolve().parent;ROOT=H.parents[3];sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 p=json.loads((H/'results/core_gear_settle_protocol.json').read_text());j=ROOT/'research/runs/spectre_cmos_v14_full'/p['run']/p['case'];rp=j/'result.json'
 if not rp.exists():print('pending');raise SystemExit(0)
@@ -16,15 +17,7 @@ excluded={p['case']+'.scs','coremethod_gear_1ps_tt.scs','lc_loop_observer.va'}
 assert {k:v for k,v in r['inputs_sha256'].items() if k not in excluded}=={k:v for k,v in old['inputs_sha256'].items() if k not in excluded}
 with np.load(j/'waveforms.npz') as z:d={k:z[k] for k in z.files}
 t=d['time'];assert abs(t[0])<1e-15 and abs(t[-1]-6e-6)<1e-12 and set(p['physical_state_names'])<=set(d)
-units={}
-with (j/(j.name+'.raw')/'tran.tran.tran').open() as f:
-    active=False
-    for line in f:
-        if line.strip()=='TRACE':active=True;continue
-        if line.strip()=='VALUE':break
-        if active:
-            m=re.fullmatch(r'"([^"]+)" "([VI])"\s*',line);assert m,line
-            units[m[1]]='A' if m[2]=='I' else 'V'
+units=trace_units(j/(j.name+'.raw')/'tran.tran.tran')
 assert {n:units[n] for n in p['physical_state_names']}==p['physical_state_units']
 windows=[]
 for end_us in range(1,7):
