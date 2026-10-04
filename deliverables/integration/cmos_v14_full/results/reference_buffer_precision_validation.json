@@ -1,0 +1,34 @@
+{
+  "scope": "Measure standalone reference-buffer transitions and sampled-device edge noise.",
+  "protocol_sha256": "6932a647065ca3a47566763f2cc51e0a8dbabc4a7db498a764901485ea08d275",
+  "condition": "TT27/1.2V/24MHz ideal10psreference/2pF explicitoutputload/actualMOS, freshPSS; standalone referencebuffer only.",
+  "integration_band_hz": [
+    10000.0,
+    12000000.0
+  ],
+  "cases": [
+    {
+      "case": "reference_buffer_baseline_refined_tt",
+      "variant": "baseline",
+      "completed": false
+    },
+    {
+      "case": "reference_buffer_taper2_refined_tt",
+      "variant": "taper2",
+      "completed": false
+    }
+  ],
+  "complete": false,
+  "noise_all_valid": false,
+  "independent_precision_verified": false,
+  "full_pll_acceptance": false,
+  "main_dut_modified": false,
+  "limitations": [
+    "The2pF lumpedload approximates previous1.9pFcontrol+60fFexplicitload and small gate loads; no nonlinear RF-sampler loading.",
+    "Input source is ideal; increased first-stage input capacitance is not loaded onto a finite source impedance.",
+    "Referenceedge jitter10kHz-12MHz is a module diagnostic, not fullPLL10kHz-fOUT/2 acceptance.",
+    "Candidate requires numerical convergence, PVT, rebalance and noisyfrontend verification before adoption.",
+    "Sizing upstream stages changes delay, transitions and dynamiccurrent; it is not a pure flicker-coefficient experiment."
+  ],
+  "baseline_validation_sha256": "f2f248d337aa8b1b8883151bfe394d78af87533e78be04d0e03f99fb648dbb40"
+}

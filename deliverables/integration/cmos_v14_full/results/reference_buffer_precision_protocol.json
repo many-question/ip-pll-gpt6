@@ -1,0 +1,83 @@
+{
+  "scope": "Refine both reference-buffer noise spectra without changing physical inputs.",
+  "time": "2026-10-04T19:41:15.461673+08:00",
+  "cases": [
+    {
+      "variant": "baseline",
+      "case": "reference_buffer_baseline_refined_tt",
+      "subckt": "tx_reference_buffer",
+      "run": "refbufferprecision01",
+      "tb_sha256": "6b5073438c6f812c4b0c453552fa774d59bcbffd960a072f402528dcc7d722e0",
+      "dependencies_sha256": {
+        "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c"
+      },
+      "source_case": "reference_buffer_baseline_tt",
+      "source_result": "research/runs/spectre_cmos_v14_full/refbuffernoise01/reference_buffer_baseline_tt/result.json",
+      "source_sha256": "9405d81d20f457cadb16540a9af1e4d057a594e06b4900a442187309e4110d60"
+    },
+    {
+      "variant": "taper2",
+      "case": "reference_buffer_taper2_refined_tt",
+      "subckt": "reference_buffer_taper2_v14",
+      "run": "refbufferprecision01",
+      "tb_sha256": "0cbfc5f33fd651b082366d2d7ebfe4d583df50ce4ab63bc51af75b5e058b74f2",
+      "dependencies_sha256": {
+        "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+        "reference_buffer_taper2_v14.scs": "a229c895692d8b34a7e9578e63421380a9d1a9360213c53f6f9c8971eda04bf6"
+      },
+      "source_case": "reference_buffer_taper2_tt",
+      "source_result": "research/runs/spectre_cmos_v14_full/refbuffernoise01/reference_buffer_taper2_tt/result.json",
+      "source_sha256": "b236c75280e53e483580e2c59eac74b0fa170c5da154803c813813ea52261a63"
+    }
+  ],
+  "source_noise_validation": "frontend_noise_r2_all_validation.json",
+  "source_noise_validation_sha256": "30cf61f8ad59c4bfee0d2d4bb6eb29aacf551bcc8f428eceafcba136d2c6306c",
+  "condition": "TT27/1.2V/24MHz ideal10psreference/2pF explicitoutputload/actualMOS, freshPSS; standalone referencebuffer only.",
+  "original_nm_widths_um": [
+    1,
+    4,
+    16,
+    64
+  ],
+  "candidate_nm_widths_um": [
+    8,
+    16,
+    32,
+    64
+  ],
+  "pm_to_nm_width_ratio": 2.5,
+  "channel_length_nm": 180,
+  "integration_band_hz": [
+    10000.0,
+    12000000.0
+  ],
+  "numerical_settings": {
+    "maxstep_ps": 0.5,
+    "maxacfreq_ghz": 192,
+    "harms": 2047,
+    "maxsideband": 2047
+  },
+  "main_dut_modified": false,
+  "full_pll_acceptance": false,
+  "launch_scope": "Two serial one-thread eight-MOS diagnostics; fresh PSS each, 7200s per-case guard. Capacity must be checked before launch.",
+  "limitations": [
+    "The2pF lumpedload approximates previous1.9pFcontrol+60fFexplicitload and small gate loads; no nonlinear RF-sampler loading.",
+    "Input source is ideal; increased first-stage input capacitance is not loaded onto a finite source impedance.",
+    "Referenceedge jitter10kHz-12MHz is a module diagnostic, not fullPLL10kHz-fOUT/2 acceptance.",
+    "Candidate requires numerical convergence, PVT, rebalance and noisyfrontend verification before adoption.",
+    "Sizing upstream stages changes delay, transitions and dynamiccurrent; it is not a pure flicker-coefficient experiment."
+  ],
+  "baseline_validation": "reference_buffer_noise_validation.json",
+  "baseline_validation_sha256": "f2f248d337aa8b1b8883151bfe394d78af87533e78be04d0e03f99fb648dbb40",
+  "baseline_protocol_sha256": "9ecc76f6b85b78b1edc0b38ae6faff5b798e83c428b8121d3453d5371b3c6985",
+  "numerical_changes": {
+    "harms=1023": "harms=2047",
+    "maxstep=1p": "maxstep=0.5p",
+    "maxacfreq=96G": "maxacfreq=192G",
+    "maxsideband=1023": "maxsideband=2047"
+  },
+  "precision_limits": {
+    "max_psd_change_db": 0.1,
+    "max_relative_rms_change": 0.01
+  }
+}

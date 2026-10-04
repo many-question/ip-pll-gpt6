@@ -1,4 +1,4 @@
-本次快照：[第53次汇报](../reports/2026-10-04T1913.yaml)。前端器件噪声与四点相位频响已完成：参考缓冲主导10kHz噪声，1–10MHz由参考缓冲和CP共同占主要贡献。六组独立noise-on已启动，参考缓冲尺寸候选开始独立验证。完整PLL抖动仍未验收。
+本次快照：[第54次汇报](../reports/2026-10-04T1942.yaml)。参考缓冲尺寸候选完成：RMS由155.3892fs变为48.9105fs，变化-68.524%。NMOS宽度由1/4/16/64µm改为8/16/32/64µm，PMOS同比，L180nm，末级尺寸保持不变。 完整PLL抖动仍待闭环验证。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

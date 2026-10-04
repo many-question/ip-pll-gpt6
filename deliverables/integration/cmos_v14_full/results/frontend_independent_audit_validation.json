@@ -1,0 +1,41 @@
+{
+  "scope": "Audit six fresh-PSS noise-on groups against the completed all-noise spectrum.\n\nThe sum limit1e-3 is a numerical consistency gate, not a project jitter spec.\nNo sparse spectral integration or circuit adoption is performed here.\n",
+  "condition": "TT27/1.2V/24MHzref/3.936GHzidealRF/physicalreference+sampler+CP+bias+pulser+validity; externalcontrolclamp,1.9pFrefloadapproximation.",
+  "all_noise_validation_sha256": "30cf61f8ad59c4bfee0d2d4bb6eb29aacf551bcc8f428eceafcba136d2c6306c",
+  "groups": [
+    {
+      "group": "reference",
+      "completed": false
+    },
+    {
+      "group": "sampler",
+      "completed": false
+    },
+    {
+      "group": "charge_pump",
+      "completed": false
+    },
+    {
+      "group": "pulser",
+      "completed": false
+    },
+    {
+      "group": "bias",
+      "completed": false
+    },
+    {
+      "group": "validity",
+      "completed": false
+    }
+  ],
+  "complete": false,
+  "passed": false,
+  "relative_sum_error_limit": 0.001,
+  "integrated_jitter_fs": null,
+  "full_pll_acceptance": false,
+  "main_dut_modified": false,
+  "limitations": [
+    "Independent modules verified only at10kHz/1MHz/10MHz, TT27/1.2V and the declared idealRF/clamped platform.",
+    "A passing audit supports device attribution, not integrated fullPLL jitter, numerical convergence or PVT."
+  ]
+}
