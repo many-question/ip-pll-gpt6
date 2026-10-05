@@ -1,0 +1,33 @@
+{
+  "scope": "Measure complete-PLL high-offset random edge noise against a matched quiet trace.",
+  "protocol_sha256": "c98f6ebfc682c4fb3d29c90ff784c8fa55e111c7ed1cd0c22b6bf6ec571ffd49",
+  "condition": "Original complete V14, all actual transistor FLL/control/watchdog/bias,TT27/1.2V/24MHz/K41/M4/10fF/Q5RLC/CF10; original output chain. Ideal external reference and supply.",
+  "cases": [
+    {
+      "run": "pllmainstrictoff01",
+      "case": "full_pll_main_strict_off_tt",
+      "noise_enabled": false,
+      "tb_sha256": "eada9a1b1cf79e53e51d0d40886acfc38e37955a0ea845e6d77ec163bf64c4ed",
+      "completed": false
+    },
+    {
+      "run": "pllmainstricton01",
+      "case": "full_pll_main_strict_on_tt",
+      "noise_enabled": true,
+      "tb_sha256": "6f1b242ce7b532680fa8bb1bad3f3957acb2e71a5804a355b265d40ecd47a0c3",
+      "completed": false
+    }
+  ],
+  "complete": false,
+  "high_offset_diagnostic_valid": false,
+  "full_pll_acceptance": false,
+  "integrated_10khz_jitter_fs": null,
+  "limitations": [
+    "This is an initial high-offset complete-circuit diagnostic, not the10kHz/full-band acceptance.",
+    "5ns absolute-current-tolerance comparison validates only short numerical behavior. Require clean whole traces, intact physical initial state, common quiet prefix and stationary noiseless loop.",
+    "Measurement inputs are ideal; actual transistor noise in every PLL device and RLC resistance is enabled together in the on case.",
+    "No functional control is clamped. The two measurement-only VA modules were removed and an ideal0V supply probe substituted.",
+    "No source-amplitude scaling, fitted trend removal or arbitrary spur notches. Paired deterministic edge template removes the measured repeatable component.",
+    "Further timestep, current-tolerance, bandwidth, seed and record-length comparisons remain mandatory even if this pair finishes cleanly."
+  ]
+}

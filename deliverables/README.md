@@ -1,4 +1,4 @@
-本次快照：[第63次汇报](../reports/2026-10-05T0138.yaml)。RT4瞬态噪声方法六项控制通过，完整RT4候选TT复位完成；已隔离整环容差/状态接续问题并启动完整电路noise-off/on配对，全频带PLL抖动尚未得出。
+本次快照：[第64次汇报](../reports/2026-10-05T1208.yaml)。定位整环在噪声开启前被相位监督重启；已启动原版严格初态噪声基线和RT4渐进精度初始化，完整PLL抖动仍未知。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

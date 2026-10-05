@@ -97,3 +97,16 @@ RT4／新分频候选的64µs独立复位已经完成，通过限定TT27/1.2V/K4
 RT4的六个延迟噪声控制已完成且通过预定门限：80GHz/.5ps为48.6829fs，160GHz/.5ps为52.6064fs，160GHz/.25ps两个种子为52.5946fs和51.3670fs；同频带PNoise为53.3087fs。全部日志无数值恢复。源带宽加倍仍改变RMS约8.06%，半步长变化−0.0225%，第二种子变化−2.334%；通过的是原定10%短方法门限，不能声称1%完整噪声精度。
 
 较宽松设置的完整暖启动在约0.4µs后丢失qualification和acquired、重新进入FLL捕获，已停止并保留原始轨迹；无数值恢复并不等于稳态有效。该观察同时说明不能只检查文本IC起点或300ns短窗。无VA、严格电压精度的新配对仍需独立完成整个窗口验证，不能由旧冷启动或RT4局部结果担保。
+# 2026-10-05：噪声开启前的真实重捕获
+
+`pllnoisedirectoff01/on01` 均已停止并回收；分别止于336.324ns和219.161ns，噪声开启事件原定1µs，实际未到达。两例共同前段的8个观测节点差为零；没有Newton恢复、跳过断点或LTE放宽。因此不能将这次失败归因于随机噪声，更不能从它们报告PLL抖动。
+
+对照含事件观察器的 `pllnoisesettle02`，2ns保存网格显示：phase_held在146–148ns变低；qualified和restart在292–294ns变化；enable在294–296ns关闭；acquired和frequency_good在296–298ns变低。振幅始终有效。旧第63次汇报的“约0.4µs触发重捕获”是进度观察时刻；实际事件应以上述原始轨迹区间为准。
+
+同为0.5ps的原生接续与文本初始化在前250ns的控制电压RMS差约0.641µV，滤波电容电压差约0.0454µV，事件相位差约3.03e−5rad。原生状态接续也出现相同相位演进，故不能只归咎于文本IC隐藏状态丢失。RF误差从约+1.253MHz逐渐下降，但相位已由约0.641rad移到1.650rad；此时慢滤波电压仅从0.77266V移到0.77026V。观察支持“精度突变造成有效频率变化，监督在模拟环路重新平衡前重启”的假设，尚未证明最终细精度锁定点可保持。
+
+为检验该假设，保持全部晶体管、FLL、watchdog及相位判定门限不变，建立4ps到0.5ps的渐进数值初始化实验。动态参数API已在实际MOS反相器验证：日志和接受步长分别核对4/2/0.5ps、reltol和vabstol，噪声在指定6ns开启，零数值恢复。PLL渐进过程不用于测抖动；只有最后固定精度状态经过另一次密集稳态验证后，才可作为噪声工作点。
+
+原版 `pll_capture_v14` 的独立1ps冷启动 `repaircoldstrict01` 已于此前完成，不能继续标记运行中。它与RT4/newbank候选是两个不同电路。本轮使用它自身实际终态准备原版完整PLL的固定0.5ps无噪声基线，达到初始化、日志、逻辑和稳态门限后才自动派发匹配noise-on。此外短200ns全电路噪声开启试验只验证数值方法，不提供积分RMS。三条路径都不钳位内部控制、不抑制重启、不改变电路规格。
+
+证据：[重捕获诊断](results/full_pll_reacquisition_diagnosis.json)、[参数API](results/precision_schedule_probe_validation.json)、[原版配对协议](results/full_pll_main_strict_pair_protocol.json)、[RT4渐进协议](results/full_pll_precision_ramp_protocol.json)、[短噪声开启协议](results/full_pll_noise_activation_probe_protocol.json)。完整10kHz–fOUT/2的随机抖动仍未知。

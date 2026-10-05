@@ -1,6 +1,6 @@
 """Measure complete-PLL high-offset random edge noise against a matched quiet trace."""
 from pathlib import Path
-import hashlib,json
+import argparse,hashlib,json
 import numpy as np
 from noise_utils import cross
 from transient_diagnostics import effective,recovery
@@ -9,7 +9,10 @@ H=Path(__file__).resolve().parent;ROOT=H.parents[3];R=ROOT/'research/runs/spectr
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 
 def main():
-    pp=H/'results/full_pll_direct_noise_pair_protocol.json';p=json.loads(pp.read_text());rows=[];datasets={}
+    cli=argparse.ArgumentParser()
+    cli.add_argument('--protocol',default='full_pll_direct_noise_pair_protocol.json')
+    args=cli.parse_args();assert Path(args.protocol).name==args.protocol and args.protocol.endswith('_protocol.json')
+    pp=H/'results'/args.protocol;p=json.loads(pp.read_text());rows=[];datasets={}
     values={}
     for line in (H/'state_inputs'/p['text_state']).read_text().splitlines():
         if line.strip() and not line.startswith('#'):
@@ -59,6 +62,6 @@ def main():
             quiet_prefix=max(prefix.values())<1e-6,status=all(r['status_stable'] for r in rows),stationary=rows[0]['stationarity']['passed'])
         result.update(diagnostic_band_rms_fs=float(np.sqrt(m['variance'])*1e15),effective_band_hz=[m['lower'],m['upper']],
             block_variance_standard_error_s2=float(np.std(blocks,ddof=1)/4),prefix_max_differences_v=prefix,checks=checks,high_offset_diagnostic_valid=all(checks.values()))
-    (H/'results/full_pll_direct_noise_pair_validation.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))
+    (H/'results'/args.protocol.replace('_protocol.json','_validation.json')).write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))
 
 if __name__=='__main__':main()

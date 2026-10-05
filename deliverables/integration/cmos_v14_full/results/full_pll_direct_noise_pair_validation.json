@@ -1,0 +1,87 @@
+{
+  "scope": "Measure complete-PLL high-offset random edge noise against a matched quiet trace.",
+  "protocol_sha256": "2c13f4b88c871c2d088b54ce61ce266433c0e1557c87a6e5ae796af144ca24be",
+  "condition": "Actual full RT4/newbank PLL with transistor FLL/control/watchdog/bias,TT27/1.2V/24MHzref/K41/M4/10fF/Q5RLC/CF10; ideal external reference and supply.",
+  "cases": [
+    {
+      "run": "pllnoisedirectoff01",
+      "case": "full_pll_direct_noise_off_tt",
+      "noise_enabled": false,
+      "tb_sha256": "86810a911360e66e2524b48b6d737cfc8f674d688d03513ec07e4a9ef4ea4c7e",
+      "completed": false,
+      "source_result": "research/runs/spectre_cmos_v14_full/pllnoisedirectoff01/full_pll_direct_noise_off_tt/result.json",
+      "source_sha256": "64884f8ee264672d7848bc0bc2e38bcf456631269812dca5e4af26d69036c80d",
+      "recovery": {
+        "newton_failures_reported": 0,
+        "skipped_breakpoints_reported": 0,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": true,
+        "counts_may_be_suppressed": false
+      },
+      "effective": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-09,
+        "abstol(I)": 1e-12,
+        "method": "traponly",
+        "maxstep": 5e-13,
+        "noisefmax": 160000000000.0,
+        "noisefmin": 1000000.0,
+        "trannoisemethod": "default"
+      },
+      "log_sha256": "635192e616ae0ac77c57135494ab46dd9e058784ddc02729d11beed7928243fe",
+      "errors": [
+        "Error found by spectre at time = 336.324 ns during transient analysis `tran'.",
+        "ERROR (SPECTRE-25): The simulation is stopped either by the user or the",
+        "spectre completes with 1 error, 1 warning, and 13 notices.",
+        "spectre terminated prematurely due to fatal error."
+      ]
+    },
+    {
+      "run": "pllnoisedirecton01",
+      "case": "full_pll_direct_noise_on_tt",
+      "noise_enabled": true,
+      "tb_sha256": "bdebbbee2791544875f88ec7e238083dd3e461108292b408977d9d21119d3bf7",
+      "completed": false,
+      "source_result": "research/runs/spectre_cmos_v14_full/pllnoisedirecton01/full_pll_direct_noise_on_tt/result.json",
+      "source_sha256": "bbf30d6d70f121061b31465605ffe94a5023af16e3bc9485bd432b639f97768a",
+      "recovery": {
+        "newton_failures_reported": 0,
+        "skipped_breakpoints_reported": 0,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": true,
+        "counts_may_be_suppressed": false
+      },
+      "effective": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-09,
+        "abstol(I)": 1e-12,
+        "method": "traponly",
+        "maxstep": 5e-13,
+        "noisefmax": 160000000000.0,
+        "noisefmin": 1000000.0,
+        "trannoisemethod": "default"
+      },
+      "log_sha256": "e121a5bceefd7aa465cc548f1fed04ac2701d79cb5253032396ca0746bf8e890",
+      "errors": [
+        "Error found by spectre at time = 219.161 ns during transient analysis `tran'.",
+        "ERROR (SPECTRE-25): The simulation is stopped either by the user or the",
+        "spectre completes with 1 error, 1 warning, and 13 notices.",
+        "spectre terminated prematurely due to fatal error."
+      ]
+    }
+  ],
+  "complete": false,
+  "high_offset_diagnostic_valid": false,
+  "full_pll_acceptance": false,
+  "integrated_10khz_jitter_fs": null,
+  "limitations": [
+    "This is an initial high-offset complete-circuit diagnostic, not the10kHz/full-band acceptance.",
+    "5ns absolute-current-tolerance comparison validates only short numerical behavior. Require clean whole traces, intact physical initial state, common quiet prefix and stationary noiseless loop.",
+    "Measurement inputs are ideal; actual transistor noise in every PLL device and RLC resistance is enabled together in the on case.",
+    "No functional control is clamped. The two measurement-only VA modules were removed and an ideal0V supply probe substituted.",
+    "No source-amplitude scaling, fitted trend removal or arbitrary spur notches. Paired deterministic edge template removes the measured repeatable component.",
+    "Further timestep, current-tolerance, bandwidth, seed and record-length comparisons remain mandatory even if this pair finishes cleanly."
+  ]
+}

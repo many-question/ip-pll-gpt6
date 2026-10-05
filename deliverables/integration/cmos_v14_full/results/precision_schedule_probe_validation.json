@@ -1,0 +1,48 @@
+{
+  "scope": "Verify dynamic solver controls against the installed Spectre's log and steps.",
+  "source_result": "research/runs/spectre_cmos_v14_full/pllprecisionprobe01/precision_schedule_probe_tt/result.json",
+  "source_result_sha256": "dae2a9c1f83e1b3bfdd6e5f4d8e217a874b0958c1bec0502581d8423dbd49ddb",
+  "cache_sha256": "d7dfbdaf47a56267639e0c57c0ab8159b927b634e4af8a19e613c7b0a275b962",
+  "log_sha256": "da8d3b2dbca39aa8ec8eb8a3d2380e0d48ea27b76c794eeead91cc8b806dfeb9",
+  "segments": [
+    {
+      "start_s": 0,
+      "stop_s": 2e-09,
+      "maxstep_limit_s": 4e-12,
+      "observed_maximum_step_s": 4.0000000000004e-12,
+      "passed": true
+    },
+    {
+      "start_s": 2e-09,
+      "stop_s": 4e-09,
+      "maxstep_limit_s": 2e-12,
+      "observed_maximum_step_s": 2.000000000001027e-12,
+      "passed": true
+    },
+    {
+      "start_s": 4e-09,
+      "stop_s": 6e-09,
+      "maxstep_limit_s": 5e-13,
+      "observed_maximum_step_s": 5.00000000000567e-13,
+      "passed": true
+    },
+    {
+      "start_s": 6e-09,
+      "stop_s": 8e-09,
+      "maxstep_limit_s": 5e-13,
+      "observed_maximum_step_s": 5.00000000000567e-13,
+      "passed": true
+    }
+  ],
+  "checks": {
+    "completed": true,
+    "clean": true,
+    "steps": true,
+    "reltol": true,
+    "vabstol": true,
+    "delayed_noise": true,
+    "finite": true
+  },
+  "passed": true,
+  "limitation": "Tiny driven real-MOS inverter API check only. Not PLL lock, jitter or precision acceptance."
+}
