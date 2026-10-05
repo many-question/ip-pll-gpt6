@@ -1,4 +1,4 @@
-本次快照：[第67次汇报](../reports/2026-10-05T1517.yaml)。完整原版PLL已跑通150ns原生器件噪声开启试验；全带抖动仍待稳态配对及数值、统计覆盖。
+本次快照：[第68次汇报](../reports/2026-10-05T1612.yaml)。RT4渐进精度在16µs容差切换处触发LTE恢复；已启动分阶段终态生成试验，原版PLL稳态基线继续。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)
