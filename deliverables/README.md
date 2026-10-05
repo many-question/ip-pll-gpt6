@@ -1,4 +1,4 @@
-本次快照：[第70次汇报](../reports/2026-10-05T2034.yaml)。RT4中间精度整环仿真正常完成，完整终态和公共前缀审计通过；已启动独立恒定细精度检查，全带抖动仍未知。
+本次快照：[第71次汇报](../reports/2026-10-05T2132.yaml)。发现并修复SSH重试导致的重复Spectre写入；受损结果已回收隔离，两项原条件验证已在新目录重新启动，全PLL抖动仍未知。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

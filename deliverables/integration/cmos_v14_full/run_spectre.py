@@ -15,7 +15,8 @@ import subprocess
 import tarfile
 from pathlib import Path, PurePosixPath
 import numpy as np
-from virtuoso_bridge.spectre.runner import SpectreSimulator,load_vb_env,spectre_mode_args
+from virtuoso_bridge.spectre.runner import load_vb_env,spectre_mode_args
+from single_launch_transport import ProjectSpectreSimulator as SpectreSimulator
 from virtuoso_bridge.models import ExecutionStatus
 from virtuoso_bridge.spectre.parsers import parse_psf_ascii_directory
 from transient_diagnostics import effective as transient_effective, recovery as transient_recovery
@@ -261,6 +262,8 @@ def main():
         # Persist recovery provenance before the potentially hours-long SSH call.
         # The local client may disappear while the remote simulator keeps running.
         launch=dict(case=case,time=datetime.datetime.now().astimezone().isoformat(),
+            launch_policy=dict(transport_attempts=1,permanent_atomic_directory_claim=True,
+                implementation_sha256=hashlib.sha256((HERE/'single_launch_transport.py').read_bytes()).hexdigest()),
             initial_states=initial_states,native_state=native_state_info,periodic_state=periodic_state_info,
             numerical_overrides=dict(reltol=args.transient_reltol,maxstep=args.transient_maxstep,dense_output=args.dense_output,extra_save=args.extra_save,only_save=args.only_save),
             transient_noise_overrides=noise_overrides,

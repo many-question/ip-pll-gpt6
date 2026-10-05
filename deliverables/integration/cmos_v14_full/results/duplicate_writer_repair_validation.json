@@ -1,0 +1,464 @@
+{
+  "time": "2026-10-05T21:32:16+08:00",
+  "scope": "Infrastructure corruption and transport repair; no new DUT noise measurement.",
+  "source_files": {
+    "duplicate_simulation_probe71.json": {
+      "path": "research/duplicate_simulation_probe71.json",
+      "sha256": "03ed8b4a8028692471dde0b57f039ab57b84cf6dd5b5be53a5ccec6698e002c8"
+    },
+    "duplicate_simulation_cause71.json": {
+      "path": "research/duplicate_simulation_cause71.json",
+      "sha256": "d196a2edf789ef5f825a71acea1099e3011c086441a5370ece2b883c11261f66"
+    },
+    "duplicate_simulation_cancellation71.json": {
+      "path": "research/duplicate_simulation_cancellation71.json",
+      "sha256": "9f0e9843764cabbfbaf1ad6adbfcd08acfa215ac86f2f9d2987f8a31f7eaf995"
+    },
+    "duplicate_simulation_recovery71.json": {
+      "path": "research/duplicate_simulation_recovery71.json",
+      "sha256": "ee6e19b4d8428cb414d9610be87a113c2145b8ae7b5b09721503e555a71f7b29"
+    },
+    "guarded_pair_relaunch71.json": {
+      "path": "research/guarded_pair_relaunch71.json",
+      "sha256": "8d12d41c0b27fc1e8c6b0514245b1ec40d151eea233c80eb35c9b43d700dd9b2"
+    },
+    "guarded_relaunch_at_report71.json": {
+      "path": "research/guarded_relaunch_at_report71.json",
+      "sha256": "1047f0c6b31bdd1284796411315de244395637df1559f86162790707b8919e21"
+    }
+  },
+  "corrupt_runs": [
+    {
+      "run": "pllmainsettledon01",
+      "result": "research/runs/spectre_cmos_v14_full/pllmainsettledon01/full_pll_main_settled_on_tt/result.json",
+      "result_sha256": "ad7877dd2a250799fd0c980f6844913e2f709959dcdedc54ec950ec7da15f945",
+      "case": "full_pll_main_settled_on_tt",
+      "time": "2026-10-05T21:27:40.760392+08:00",
+      "ok": false,
+      "integrity_valid": false,
+      "noise_measured": false,
+      "full_band_acceptance": false,
+      "errors": [
+        "Simultaneous duplicate Spectre processes wrote identical raw/log files; all outputs invalid for DUT conclusions. Owned processes stopped by SIGINT."
+      ],
+      "metadata": {
+        "remote_dir": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/be6e4aaf",
+        "remote_id": "be6e4aaf"
+      },
+      "initial_states": {
+        "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/pllmainsettledon01_full_pll_main_settled_on_tt_main_fine2200_phase_continuous.ic": {
+          "source": "main_fine2200_phase_continuous.ic",
+          "sha256": "2aa316a1a1e9801673e4842f28784f3d4b6feb2d3d3211f984cc7c78b3345cfe",
+          "remote_hash_match": true
+        }
+      },
+      "inputs_sha256": {
+        "full_pll_main_settled_on_tt.scs": "5070a4b9c6ad1bd3c7a7115bb8d49052dff9687d78f9ae9b0ffd3a14a2a785b2",
+        "cap_bank_switched_v4.scs": "82930a36417d5746edad5be73d95ff446cb94a046524d8eb12d6cc3a325caad0",
+        "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+        "cmos_even_bank_acq_v14.scs": "34a80ae697397ff60cc61ba9cfc51513716c39afd3df68f4ea0a9c950ca0ff6f",
+        "cp_physical_v14.scs": "ea3cd7184cafd899db18d5d9286adca6c2ffb861e9af2504afd1ea9bb702cc76",
+        "cp_timing.scs": "87a42f85028580ab52cc6d08a2514e4295dc93e4be0e019f52cb55964ae50fde",
+        "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+        "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+        "fll_best128_v14.scs": "06a2f270b40c57b08b360d95e767d6d6b39a6456a789cef7c6831653608e0ef5",
+        "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+        "frequency_watchdog.scs": "63e1d92d0db21407142630dfe349b3da1afe127e3e04d712e7cf0f51c541d5f2",
+        "inductor_pi.scs": "417db0f24ee5d2a0544eda8a21f670d4b3ba5ba158422c913185ff82ef71438b",
+        "lc_core_physical_v14.scs": "8edc1b766e04d51405ffd185294fa1c7d6e7f2d2f8ef14f56753c1e84eaeb8b4",
+        "lc_vco_physical_v14.scs": "c34bae69f93d9600f602bfb7e80f56ffe051458e8984da02604eb6ef07e727ce",
+        "loop_filter_v5.scs": "827a9a8cd9d91e8bf9af5d38c691f0bfc19416980aa1e6b34eda9d0802bb9499",
+        "main_fine2200_phase_continuous.ic": "2aa316a1a1e9801673e4842f28784f3d4b6feb2d3d3211f984cc7c78b3345cfe",
+        "pll_capture_v14.scs": "ebab43f8233c8b8cc7bdef02fba6a1718a070e8f886f3b522449612feb5e6139",
+        "pll_config.scs": "e9562e3410680ae20236c5e3a96229a0d83723e750753c4ae041ed3e5fd46622",
+        "pll_control_capture_v14.scs": "0dd7b0b2d56f9d4668a0fd51795b80b0742659eb740a0c57ef10b420daf13d86",
+        "pll_supervisor_capture_v14.scs": "f5836cf7d3106842c5f67ede615b0988057a750b42a242a11255b9fb28535bac",
+        "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+        "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+        "rt_light24s12_out083_v14.scs": "06c7d7b838a666815504f42ebf8d2a79aa9f6031c5af2212880d642fad3f8836",
+        "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+        "sampler_bias_v5.scs": "fe966831e65b04ee641625abc5187748bac130ea8d68babe17f33dc948c9cd67",
+        "validity_physical_v14.scs": "4adda2d6a864ac7ae7478c157989ea34d0901f52cf1f7b6bca2ec3238244f27f"
+      },
+      "remote_inputs_match": true,
+      "local_outputs_sha256": {
+        "full_pll_main_settled_on_tt.raw/tran.tran.tran": "259d3845feddc947a31aa9491fdcd0252c87ff777c19d7b26e35bb14db0cfc44",
+        "full_pll_main_settled_on_tt.raw/logFile": "469ef6ed64fe51b0eb2b765a9a8e4c8ea07989e60e3bae24ca64363fb809da19",
+        "spectre.pid": "4777af7a2d58e73ca4eb2ea0ea3b94cc76ad9ba9d76009c990f35629ef5354e6",
+        "full_pll_main_settled_on_tt.raw/logStatus": "7fb7b36a5d0cfd52a1960cbfa4f285255dc4688676f313865b6dea4c8f0e0524",
+        "spectre.out": "e692fca9526fa1986f50f43be5b9fa8dc8359f2d4a03bd7a5ab7d2730f59bc84"
+      },
+      "outputs": {
+        "full_pll_main_settled_on_tt.raw/tran.tran.tran": {
+          "sha256": "259d3845feddc947a31aa9491fdcd0252c87ff777c19d7b26e35bb14db0cfc44",
+          "bytes": 1328687200
+        },
+        "full_pll_main_settled_on_tt.raw/logFile": {
+          "sha256": "469ef6ed64fe51b0eb2b765a9a8e4c8ea07989e60e3bae24ca64363fb809da19",
+          "bytes": 666
+        },
+        "spectre.pid": {
+          "sha256": "4777af7a2d58e73ca4eb2ea0ea3b94cc76ad9ba9d76009c990f35629ef5354e6",
+          "bytes": 6
+        },
+        "full_pll_main_settled_on_tt.raw/logStatus": {
+          "sha256": "7fb7b36a5d0cfd52a1960cbfa4f285255dc4688676f313865b6dea4c8f0e0524",
+          "bytes": 39
+        },
+        "spectre.out": {
+          "sha256": "e692fca9526fa1986f50f43be5b9fa8dc8359f2d4a03bd7a5ab7d2730f59bc84",
+          "bytes": 14136
+        }
+      },
+      "archive": {
+        "path": "research/runs/spectre_cmos_v14_full/pllmainsettledon01/full_pll_main_settled_on_tt/invalid_duplicate_outputs.tar.gz",
+        "bytes": 3832051,
+        "sha256": "739e5d853b22cfa2da47464bbfff83795f5ac81827b11bee99bc5a4a9e07d2a6"
+      },
+      "hashes_stable_during_transfer": true,
+      "terminal_log_not_a_valid_single_process_summary": true,
+      "state_file": {
+        "collected": false,
+        "reusable": false
+      },
+      "incident": "research/duplicate_simulation_cause71.json"
+    },
+    {
+      "run": "pllrt4fineoff01",
+      "result": "research/runs/spectre_cmos_v14_full/pllrt4fineoff01/full_pll_rt4_fine_off_tt/result.json",
+      "result_sha256": "24442519bb0676f60722b1dd1068144cbc9247cb682646293eae301589f74652",
+      "case": "full_pll_rt4_fine_off_tt",
+      "time": "2026-10-05T21:27:43.954518+08:00",
+      "ok": false,
+      "integrity_valid": false,
+      "noise_measured": false,
+      "full_band_acceptance": false,
+      "errors": [
+        "Simultaneous duplicate Spectre processes wrote identical raw/log files; all outputs invalid for DUT conclusions. Owned processes stopped by SIGINT."
+      ],
+      "metadata": {
+        "remote_dir": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/53e3ca81",
+        "remote_id": "53e3ca81"
+      },
+      "initial_states": {
+        "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/pllrt4fineoff01_full_pll_rt4_fine_off_tt_rt4_stage15900_phase_continuous.ic": {
+          "source": "rt4_stage15900_phase_continuous.ic",
+          "sha256": "937da9941740181f7627a6ae6ab70037353c97c8425cabbfb0986f4512ddacc2",
+          "remote_hash_match": true
+        }
+      },
+      "inputs_sha256": {
+        "full_pll_rt4_fine_off_tt.scs": "30605a337fb105de2eb42db1ced0d0fc95ab7769a3f2abb6a9253288865cb0a3",
+        "bank_pulsetrip_v14.scs": "8d41f4865a829f5a6d203fda5fa63af0243a835d00bbfdafde737988ee1c0f20",
+        "cap_bank_switched_v4.scs": "82930a36417d5746edad5be73d95ff446cb94a046524d8eb12d6cc3a325caad0",
+        "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+        "cp_physical_v14.scs": "ea3cd7184cafd899db18d5d9286adca6c2ffb861e9af2504afd1ea9bb702cc76",
+        "cp_timing.scs": "87a42f85028580ab52cc6d08a2514e4295dc93e4be0e019f52cb55964ae50fde",
+        "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+        "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+        "fll_best128_v14.scs": "06a2f270b40c57b08b360d95e767d6d6b39a6456a789cef7c6831653608e0ef5",
+        "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+        "frequency_watchdog.scs": "63e1d92d0db21407142630dfe349b3da1afe127e3e04d712e7cf0f51c541d5f2",
+        "inductor_pi.scs": "417db0f24ee5d2a0544eda8a21f670d4b3ba5ba158422c913185ff82ef71438b",
+        "lc_core_physical_v14.scs": "8edc1b766e04d51405ffd185294fa1c7d6e7f2d2f8ef14f56753c1e84eaeb8b4",
+        "lc_vco_physical_v14.scs": "c34bae69f93d9600f602bfb7e80f56ffe051458e8984da02604eb6ef07e727ce",
+        "loop_filter_v5.scs": "827a9a8cd9d91e8bf9af5d38c691f0bfc19416980aa1e6b34eda9d0802bb9499",
+        "pll_capture_rt4bank_v14.scs": "001c6a40a24142fbc6d3aa006e233edb38810b703166af04968cff4bf8b9b3c8",
+        "pll_config.scs": "e9562e3410680ae20236c5e3a96229a0d83723e750753c4ae041ed3e5fd46622",
+        "pll_control_capture_v14.scs": "0dd7b0b2d56f9d4668a0fd51795b80b0742659eb740a0c57ef10b420daf13d86",
+        "pll_supervisor_capture_v14.scs": "f5836cf7d3106842c5f67ede615b0988057a750b42a242a11255b9fb28535bac",
+        "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+        "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+        "rt4_stage15900_phase_continuous.ic": "937da9941740181f7627a6ae6ab70037353c97c8425cabbfb0986f4512ddacc2",
+        "rt_noise_scale4_v14.scs": "839d4bdb3d8b2dc60dcdad1f3a49010f82d6cb4ff08d10325b8c5c636c65e5c6",
+        "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+        "sampler_bias_v5.scs": "fe966831e65b04ee641625abc5187748bac130ea8d68babe17f33dc948c9cd67",
+        "validity_physical_v14.scs": "4adda2d6a864ac7ae7478c157989ea34d0901f52cf1f7b6bca2ec3238244f27f"
+      },
+      "remote_inputs_match": true,
+      "local_outputs_sha256": {
+        "full_pll_rt4_fine_off_tt.raw/tran.tran.tran": "903982a1bcdd4d1d104ee0bc5477abd6247011d50206b72eef0f8b1a7e4dc9fd",
+        "spectre.pid": "81d96dac3112cef863edff81ab97030b2c7cc22297c6319f1687532c25d16af9",
+        "full_pll_rt4_fine_off_tt.raw/logFile": "469ef6ed64fe51b0eb2b765a9a8e4c8ea07989e60e3bae24ca64363fb809da19",
+        "full_pll_rt4_fine_off_tt.raw/logStatus": "7fb7b36a5d0cfd52a1960cbfa4f285255dc4688676f313865b6dea4c8f0e0524",
+        "spectre.out": "adab97f3b62e38a768da9a0552e14753a5e744cf82d2532afe42896423b78e1e"
+      },
+      "outputs": {
+        "full_pll_rt4_fine_off_tt.raw/tran.tran.tran": {
+          "sha256": "903982a1bcdd4d1d104ee0bc5477abd6247011d50206b72eef0f8b1a7e4dc9fd",
+          "bytes": 249782
+        },
+        "spectre.pid": {
+          "sha256": "81d96dac3112cef863edff81ab97030b2c7cc22297c6319f1687532c25d16af9",
+          "bytes": 6
+        },
+        "full_pll_rt4_fine_off_tt.raw/logFile": {
+          "sha256": "469ef6ed64fe51b0eb2b765a9a8e4c8ea07989e60e3bae24ca64363fb809da19",
+          "bytes": 666
+        },
+        "full_pll_rt4_fine_off_tt.raw/logStatus": {
+          "sha256": "7fb7b36a5d0cfd52a1960cbfa4f285255dc4688676f313865b6dea4c8f0e0524",
+          "bytes": 39
+        },
+        "spectre.out": {
+          "sha256": "adab97f3b62e38a768da9a0552e14753a5e744cf82d2532afe42896423b78e1e",
+          "bytes": 14701
+        }
+      },
+      "archive": {
+        "path": "research/runs/spectre_cmos_v14_full/pllrt4fineoff01/full_pll_rt4_fine_off_tt/invalid_duplicate_outputs.tar.gz",
+        "bytes": 13378,
+        "sha256": "fc47f47f74a3945b81ed5c38cef816ca01400124481bfa89df85f7292a1a9021"
+      },
+      "hashes_stable_during_transfer": true,
+      "terminal_log_not_a_valid_single_process_summary": true,
+      "state_file": {
+        "collected": false,
+        "reusable": false
+      },
+      "incident": "research/duplicate_simulation_cause71.json"
+    }
+  ],
+  "cancellation": {
+    "time": "2026-10-05T21:19:29.722341+08:00",
+    "reason": "Both result sets invalidated by simultaneous independent writers to identical raw/log inodes.",
+    "local_workers_stopped": [
+      {
+        "pid": 85360,
+        "cmdline": [
+          "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+          "research/run_main_strict_noise_pipeline.py",
+          "--protocol",
+          "full_pll_main_settled_pair_protocol.json",
+          "--state",
+          "main_settled_noise_pipeline.json"
+        ]
+      },
+      {
+        "pid": 111740,
+        "cmdline": [
+          "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+          "research/run_main_strict_noise_pipeline.py",
+          "--protocol",
+          "full_pll_rt4_fine_pair_protocol.json",
+          "--state",
+          "rt4_fine_noise_pipeline.json"
+        ]
+      },
+      {
+        "pid": 76520,
+        "cmdline": [
+          "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+          "research/watch_precision_bridge.py",
+          "--resume"
+        ]
+      },
+      {
+        "pid": 105676,
+        "cmdline": [
+          "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+          "D:\\seed\\ip-pll-gpt6\\share\\deliverables\\integration\\cmos_v14_full\\run_spectre.py",
+          "--run-id",
+          "pllmainsettledon01",
+          "--cases",
+          "full_pll_main_settled_on_tt",
+          "--mode",
+          "ax",
+          "--threads",
+          "7",
+          "--preset-override",
+          "all",
+          "--timeout",
+          "172800"
+        ]
+      },
+      {
+        "pid": 100764,
+        "cmdline": [
+          "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+          "D:\\seed\\ip-pll-gpt6\\share\\deliverables\\integration\\cmos_v14_full\\run_spectre.py",
+          "--run-id",
+          "pllrt4fineoff01",
+          "--cases",
+          "full_pll_rt4_fine_off_tt",
+          "--mode",
+          "ax",
+          "--threads",
+          "7",
+          "--preset-override",
+          "all",
+          "--timeout",
+          "172800"
+        ]
+      }
+    ],
+    "remote": [
+      {
+        "identity_verified": true,
+        "signal": "SIGINT",
+        "pid": 450212
+      },
+      {
+        "identity_verified": true,
+        "signal": "SIGINT",
+        "pid": 215502
+      },
+      {
+        "identity_verified": true,
+        "signal": "SIGINT",
+        "pid": 64174
+      },
+      {
+        "identity_verified": true,
+        "signal": "SIGINT",
+        "pid": 64111
+      }
+    ]
+  },
+  "installed_bridge_methods": {
+    "run_command": "6bdb5f05702d5dc08c7a2a8542bd6bcb51986735070c2cb6f38da2c1e08ae0fb",
+    "_run_via_persistent_shell_with_retry": "b712c9637d245bc7a4a242f5728bda47f2c3f91ffcbef064a08172c5459b31ed",
+    "_run_command_once": "a2e150a3c2a773e65658e430ed2aff45be2b9ff52933b410737f8d02bc79d894"
+  },
+  "initial_transport_trigger": "Unknown; retry mechanism and duplicate submissions observed.",
+  "validation": {
+    "time": "2026-10-05T21:27:26.300837+08:00",
+    "checks": {
+      "disconnect_single_attempt": true,
+      "timeout_single_attempt": true,
+      "unknown_launch_refused": true,
+      "concurrent_replay_blocked": true,
+      "completed_replay_blocked": true,
+      "counter_once": true
+    },
+    "remote_test_dir": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/29963d43",
+    "returncodes": [
+      0,
+      73,
+      73
+    ],
+    "proof": {
+      "counter": "once\n",
+      "exit_code": "0\n"
+    },
+    "simulators_launched": 0
+  },
+  "relaunch": [
+    {
+      "run": "pllmainsettledon02",
+      "old_run": "pllmainsettledon01",
+      "case": "full_pll_main_settled_on_tt",
+      "remote_dir": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/0a0a399d",
+      "process": {
+        "threads": 7,
+        "pid": 145568,
+        "netlist": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/0a0a399d/full_pll_main_settled_on_tt.scs"
+      },
+      "launch_policy": {
+        "transport_attempts": 1,
+        "permanent_atomic_directory_claim": true,
+        "implementation_sha256": "94ab71ee37e70e8c59705cf535bc75943c870adbcce2fb276b3a8fb1abdd13da"
+      },
+      "all_remote_input_hashes_match": true,
+      "physical_inputs_unchanged": true,
+      "tb_only_run_path_remapping": true,
+      "inputs": {
+        "cp_physical_v14.scs": "ea3cd7184cafd899db18d5d9286adca6c2ffb861e9af2504afd1ea9bb702cc76",
+        "fll_best128_v14.scs": "06a2f270b40c57b08b360d95e767d6d6b39a6456a789cef7c6831653608e0ef5",
+        "validity_physical_v14.scs": "4adda2d6a864ac7ae7478c157989ea34d0901f52cf1f7b6bca2ec3238244f27f",
+        "sampler_bias_v5.scs": "fe966831e65b04ee641625abc5187748bac130ea8d68babe17f33dc948c9cd67",
+        "cp_timing.scs": "87a42f85028580ab52cc6d08a2514e4295dc93e4be0e019f52cb55964ae50fde",
+        "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+        "full_pll_main_settled_on_tt.scs": "b986ccce972de10f838686ecca47e56f4985a1e4f080def2f621c79e0e0ac826",
+        "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+        "cap_bank_switched_v4.scs": "82930a36417d5746edad5be73d95ff446cb94a046524d8eb12d6cc3a325caad0",
+        "pll_config.scs": "e9562e3410680ae20236c5e3a96229a0d83723e750753c4ae041ed3e5fd46622",
+        "pll_supervisor_capture_v14.scs": "f5836cf7d3106842c5f67ede615b0988057a750b42a242a11255b9fb28535bac",
+        "main_fine2200_phase_continuous.ic": "2aa316a1a1e9801673e4842f28784f3d4b6feb2d3d3211f984cc7c78b3345cfe",
+        "inductor_pi.scs": "417db0f24ee5d2a0544eda8a21f670d4b3ba5ba158422c913185ff82ef71438b",
+        "rt_light24s12_out083_v14.scs": "06c7d7b838a666815504f42ebf8d2a79aa9f6031c5af2212880d642fad3f8836",
+        "pll_control_capture_v14.scs": "0dd7b0b2d56f9d4668a0fd51795b80b0742659eb740a0c57ef10b420daf13d86",
+        "lc_core_physical_v14.scs": "8edc1b766e04d51405ffd185294fa1c7d6e7f2d2f8ef14f56753c1e84eaeb8b4",
+        "cmos_even_bank_acq_v14.scs": "34a80ae697397ff60cc61ba9cfc51513716c39afd3df68f4ea0a9c950ca0ff6f",
+        "loop_filter_v5.scs": "827a9a8cd9d91e8bf9af5d38c691f0bfc19416980aa1e6b34eda9d0802bb9499",
+        "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+        "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+        "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+        "pll_capture_v14.scs": "ebab43f8233c8b8cc7bdef02fba6a1718a070e8f886f3b522449612feb5e6139",
+        "frequency_watchdog.scs": "63e1d92d0db21407142630dfe349b3da1afe127e3e04d712e7cf0f51c541d5f2",
+        "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+        "lc_vco_physical_v14.scs": "c34bae69f93d9600f602bfb7e80f56ffe051458e8984da02604eb6ef07e727ce",
+        "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c"
+      },
+      "exit_marker_exists": false,
+      "claim_exists": true
+    },
+    {
+      "run": "pllrt4fineoff02",
+      "old_run": "pllrt4fineoff01",
+      "case": "full_pll_rt4_fine_off_tt",
+      "remote_dir": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/092b5553",
+      "process": {
+        "threads": 7,
+        "pid": 144705,
+        "netlist": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/092b5553/full_pll_rt4_fine_off_tt.scs"
+      },
+      "launch_policy": {
+        "transport_attempts": 1,
+        "permanent_atomic_directory_claim": true,
+        "implementation_sha256": "94ab71ee37e70e8c59705cf535bc75943c870adbcce2fb276b3a8fb1abdd13da"
+      },
+      "all_remote_input_hashes_match": true,
+      "physical_inputs_unchanged": true,
+      "tb_only_run_path_remapping": true,
+      "inputs": {
+        "cp_physical_v14.scs": "ea3cd7184cafd899db18d5d9286adca6c2ffb861e9af2504afd1ea9bb702cc76",
+        "fll_best128_v14.scs": "06a2f270b40c57b08b360d95e767d6d6b39a6456a789cef7c6831653608e0ef5",
+        "validity_physical_v14.scs": "4adda2d6a864ac7ae7478c157989ea34d0901f52cf1f7b6bca2ec3238244f27f",
+        "rt_noise_scale4_v14.scs": "839d4bdb3d8b2dc60dcdad1f3a49010f82d6cb4ff08d10325b8c5c636c65e5c6",
+        "cp_timing.scs": "87a42f85028580ab52cc6d08a2514e4295dc93e4be0e019f52cb55964ae50fde",
+        "full_pll_rt4_fine_off_tt.scs": "d36d412e2928af3fe4553fcb110b0b50db7eb3abcd7b7dcaa45c9278ad23646c",
+        "sampler_bias_v5.scs": "fe966831e65b04ee641625abc5187748bac130ea8d68babe17f33dc948c9cd67",
+        "rt4_stage15900_phase_continuous.ic": "937da9941740181f7627a6ae6ab70037353c97c8425cabbfb0986f4512ddacc2",
+        "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+        "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+        "pll_config.scs": "e9562e3410680ae20236c5e3a96229a0d83723e750753c4ae041ed3e5fd46622",
+        "pll_supervisor_capture_v14.scs": "f5836cf7d3106842c5f67ede615b0988057a750b42a242a11255b9fb28535bac",
+        "inductor_pi.scs": "417db0f24ee5d2a0544eda8a21f670d4b3ba5ba158422c913185ff82ef71438b",
+        "pll_control_capture_v14.scs": "0dd7b0b2d56f9d4668a0fd51795b80b0742659eb740a0c57ef10b420daf13d86",
+        "lc_core_physical_v14.scs": "8edc1b766e04d51405ffd185294fa1c7d6e7f2d2f8ef14f56753c1e84eaeb8b4",
+        "cap_bank_switched_v4.scs": "82930a36417d5746edad5be73d95ff446cb94a046524d8eb12d6cc3a325caad0",
+        "loop_filter_v5.scs": "827a9a8cd9d91e8bf9af5d38c691f0bfc19416980aa1e6b34eda9d0802bb9499",
+        "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+        "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+        "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+        "pll_capture_rt4bank_v14.scs": "001c6a40a24142fbc6d3aa006e233edb38810b703166af04968cff4bf8b9b3c8",
+        "frequency_watchdog.scs": "63e1d92d0db21407142630dfe349b3da1afe127e3e04d712e7cf0f51c541d5f2",
+        "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+        "bank_pulsetrip_v14.scs": "8d41f4865a829f5a6d203fda5fa63af0243a835d00bbfdafde737988ee1c0f20",
+        "lc_vco_physical_v14.scs": "c34bae69f93d9600f602bfb7e80f56ffe051458e8984da02604eb6ef07e727ce",
+        "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c"
+      },
+      "exit_marker_exists": false,
+      "claim_exists": true
+    }
+  ],
+  "resources": {
+    "time": "2026-10-05T21:29:55.282389+08:00",
+    "jobs": [
+      {
+        "threads": 7,
+        "pid": 144705,
+        "netlist": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/092b5553/full_pll_rt4_fine_off_tt.scs"
+      },
+      {
+        "threads": 7,
+        "pid": 145568,
+        "netlist": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/0a0a399d/full_pll_main_settled_on_tt.scs"
+      }
+    ],
+    "requested_threads": 14
+  },
+  "full_pll_jitter_fs": null,
+  "full_band_acceptance": false
+}
