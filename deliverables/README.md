@@ -1,4 +1,4 @@
-本次快照：[第64次汇报](../reports/2026-10-05T1208.yaml)。定位整环在噪声开启前被相位监督重启；已启动原版严格初态噪声基线和RT4渐进精度初始化，完整PLL抖动仍未知。
+本次快照：[第65次汇报](../reports/2026-10-05T1304.yaml)。修正短噪声试验的有效频带判读，并确认客户端超时后服务器仍运行；完整PLL抖动尚无新验收结果。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

@@ -110,3 +110,12 @@ RT4的六个延迟噪声控制已完成且通过预定门限：80GHz/.5ps为48.6
 原版 `pll_capture_v14` 的独立1ps冷启动 `repaircoldstrict01` 已于此前完成，不能继续标记运行中。它与RT4/newbank候选是两个不同电路。本轮使用它自身实际终态准备原版完整PLL的固定0.5ps无噪声基线，达到初始化、日志、逻辑和稳态门限后才自动派发匹配noise-on。此外短200ns全电路噪声开启试验只验证数值方法，不提供积分RMS。三条路径都不钳位内部控制、不抑制重启、不改变电路规格。
 
 证据：[重捕获诊断](results/full_pll_reacquisition_diagnosis.json)、[参数API](results/precision_schedule_probe_validation.json)、[原版配对协议](results/full_pll_main_strict_pair_protocol.json)、[RT4渐进协议](results/full_pll_precision_ramp_protocol.json)、[短噪声开启协议](results/full_pll_noise_activation_probe_protocol.json)。完整10kHz–fOUT/2的随机抖动仍未知。
+
+
+## 2026-10-05：短记录的实际噪声频带
+
+200ns全PLL短噪声试验的真实Spectre日志显示，请求noisefmin=1MHz被按1/stop提高为5MHz，noisefmax仍为160GHz。本机Spectre帮助说明noisefmin以下的源PSD被保持为常数，并非把低频噪声删除；因此不能把请求值或短记录当成低偏移噪声覆盖。原协议和所有仿真输入未改；日志字节、26项输入哈希及原客户端失败manifest已记录。
+
+分析脚本现在分别输出严格协议匹配与activation_method_passed。严格passed仍会因1MHz/5MHz不符而失败；只有日志明确解释的实际频带，加上完成、初始化、逻辑保持和数值检查全部通过，才可判噪声开启方法通过。覆盖真实日志、缺失解释、错误频带及匹配配置的7项检查通过；这是分析代码验证，不是新电路性能结果。
+
+来源：实际Spectre日志及项目`research/spectre_tran_help.txt`第299–306行。详见[第65次审阅](NOISE_REVIEW_65.md)。
