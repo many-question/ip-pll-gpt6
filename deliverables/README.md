@@ -1,4 +1,4 @@
-本次快照：[第65次汇报](../reports/2026-10-05T1304.yaml)。修正短噪声试验的有效频带判读，并确认客户端超时后服务器仍运行；完整PLL抖动尚无新验收结果。
+本次快照：[第66次汇报](../reports/2026-10-05T1414.yaml)。原版严格无噪声基线完成但末窗漂移略超门限；已量化衰减并启动同精度、相位连续的延长稳定验证。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)
