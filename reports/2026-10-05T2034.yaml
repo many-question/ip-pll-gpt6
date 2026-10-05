@@ -1,0 +1,332 @@
+schema: chip-report/0.1
+report:
+  seq: 70
+  time: '2026-10-05T20:34:15+08:00'
+  trigger: proactive
+  covers_since: '2026-10-05T16:32:12+08:00'
+overall:
+  phase: 完整PLL稳态工作点与原生器件瞬态噪声验证
+  summary: RT4中间精度整环仿真正常完成，完整终态和公共前缀审计通过；已启动独立恒定细精度检查，全带抖动仍未知。
+  since_last:
+  - pllprecisionstage01已实际完成15.9µs，0errors/1warning/29notices，12232493个接受步，墙钟4h14m4s。唯一警告为AHDL环境变量提示；Newton恢复、跳断点、LTE放宽与最小步长警告均为0。条件为完整RT4/newbank晶体管PLL、TT27/1.2V/24MHz/K41/M4/10fF/Q5RLC/CF10，外部供电与参考理想。0–14µs逐步将maxstep由4ps降至0.5ps；15–15.9µs保持0.5ps/reltol1e-5/vabstol100nV/iabstol1pA，始终noise-off。
+  - 7951个2ns采样点、23条已保存信号与旧pllprecisionramp01的有效前缀逐点完全一致；第二套流式解析的时间及7个节点也与缓存完全一致、无重复记录。19个可比较电压初态差为0。qualified最低1.199996V、acquired最低1.188871V、phase_held最低1.199996V、frequency_good最低1.199982V；采样点中未见重捕获，不能由稀疏记录断言连续RF稳态。26项输入以及6289916字节原始波形、16106字节终止日志、280233字节完整终态均已本地回收并逐项核对远端SHA256。writefinal含7863项状态；源状态中reset/apply两项因各自理想0V直流源被合并到地，其余状态名全部保留，未从稀疏波形重建终态。
+  - 20:30:38启动pllrt4fineoff01，远端53e3ca81/PID450212、7线程。完整终态字节不变，参考下次上升沿平移为17.6666666666794ns，维持原参考物理相位。恒定0.5ps/reltol1e-6/vabstol1nV/iabstol1pA/traponly，stop2.2µs，1µs以后保存密集RF/输出。24个物理依赖文件与已审计中间态一致，全部26项远端输入与本地launch哈希一致。rt4_fine_noise_pipeline复用已有分析和派发逻辑，仅在实际完成、数值干净、初始化、逻辑保持与稳态门限全部通过后派发pllrt4fineon01；目前noise-on尚未派发。
+  - 原版V14仍与RT4分开：先前固定细精度quiet末1µs全部门限通过，输出984.000020347MHz、相位峰峰0.005202582rad、漂移−0.001909413rad/µs。原版pllmainsettledon01已在1µs实际开启器件噪声，本次核查至1.202003µs，尚未结束；当前日志无Newton恢复、跳断点或LTE放宽。流水线继续持有该任务，未重复派发，尚无可验收RMS。
+  route_confidence: medium
+  route_confidence_reason: 中间终态获取已通过独立哈希和逐点前缀核验，具备开展恒定细精度初始化验证的条件；全PLL低偏移噪声及最终抖动仍未验证。
+levels:
+  survey:
+    maturity: 3
+    note: 澄清仿真条件：历史“10ps参考”指Spectre pulse的rise/fall参数；从输入波形量得10%–90%上升/下降时间均为8ps。尚未规定真实参考输入边沿或源阻抗，已异步询问；未将示例扫描范围改为规格。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/NOISE_METHOD_NOTES.md
+    - share/deliverables/integration/cmos_v14_full/results/reference_input_load_validation.json
+  modeling:
+    maturity: 3
+    note: 精度逐步调整的15.9µs有效前缀可复现，全部保存量逐点一致。旧16µs同时收紧reltol/vabstol后的LTE失败保留；新的恒定精度分析用于检验启动方式的影响，尚无归因结论。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_precision_stage_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_precision_ramp_failure.json
+  architecture:
+    maturity: 2
+    note: 原架构和全部功能电路不变；原版与RT4候选分开取初态、分开验收。10kHz–fOUT/2、排除离散spur的完整随机RMS<200fs仍未知。短记录、高偏移结果及局部RT4约52fs方法检查均不替代整环验收；功耗与后端优化后置，全部原规格不变。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_METHOD_NOTES.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_reacquisition_diagnosis.json
+    - share/deliverables/integration/cmos_v14_full/results/figures/full_pll_pre_noise_reacquisition.png
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_direct_noise_pair_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/precision_schedule_probe_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_strict_pair_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_precision_ramp_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_noise_activation_probe_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_strict_pair_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_repaircoldstrict01.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_rt4bankcold01.json
+    - share/deliverables/integration/cmos_v14_full/analyze_full_pll_reacquisition.py
+    - share/deliverables/integration/cmos_v14_full/analyze_full_pll_direct_noise_pair.py
+    - share/deliverables/integration/cmos_v14_full/analyze_full_pll_noise_activation_probe.py
+    - share/deliverables/integration/cmos_v14_full/build_full_pll_precision_bridge.py
+  blocks:
+  - name: reference_buffer
+    role: 24 MHz 参考整形
+    stage: circuit
+    maturity: 2
+    note: MOS，主PLL保持原版；taper2三点实际加载前端噪声收益保留为未采用候选。真实输入范围/噪声/全PVT未完成。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    blockers: []
+  - name: subsampling_detector
+    role: 直接采样差分 VCO 并鉴相
+    stage: circuit
+    maturity: 2
+    note: MOS，前端独立noise-on已有三点；实际held节点相位演进已量化，先验证固定精度平衡，再决定器件改动。全范围/失配未完成。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    blockers: []
+  - name: transconductor_charge_pump
+    role: 采样误差转电流及增益控制
+    stage: circuit
+    maturity: 2
+    note: MOS，独立CP噪声归因已有三点；短尾管候选增益归一化收益约0.092/0.260/0.275dB，未采用。全PVT/失配未完成。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    blockers: []
+  - name: passive_loop_filter
+    role: 环路滤波与稳定性
+    stage: circuit
+    maturity: 2
+    note: R/C及实际预置开关；未改变R/C。原版延长稳定后固定0.5ps末1µs稳态门限通过；RT4渐进精度的15.9µs中间态获取完成，单独恒定精度和噪声仍待验证。工艺无源、容差与PEX未验收。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_settled_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_precision_stage_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_fine_pair_protocol.json
+    blockers: []
+  - name: lc_vco_and_cap_bank
+    role: 2.688–3.936 GHz 振荡、粗调和模拟细调
+    stage: circuit
+    maturity: 2
+    note: 实际MOS、PDK变容和获准Q5 RLC；局部CF40/偏置候选未采用。旧RT4在16µs动态收紧容差后的电容阵列PMOS内部节点LTE失败保留，15.9µs中间态已干净完成，恒定细精度复验在运行；尚未认定独立模块电路故障或修复。RF范围、工艺电感及PEX未完成。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_precision_ramp_failure.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_precision_stage_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_fine_pair_protocol.json
+    blockers: []
+  - name: auxiliary_fll
+    role: 启动捕获和正确谐波选择
+    stage: circuit
+    maturity: 3
+    note: 全MOS，三配对角独立逻辑及原版1ps/RT4候选4ps TT独立复位有证据。原版0.5ps稳态quiet通过，短器件噪声方法试验已完成；RT4中间态2ns采样中状态保持，恒定细精度待结果。未钳位acquired或粗细码；33点、完整PVT与全带噪声未闭合。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_noise_activation_probe_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_settled_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_precision_stage_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_fine_pair_protocol.json
+    blockers: []
+  - name: programmable_even_divider
+    role: 可编程÷4/6/8/10/12/14 CMOS分频
+    stage: circuit
+    maturity: 2
+    note: 全CMOS，原版与连续时钟候选分别保留；SS接口及TT/FF端口独立覆盖不外推完整PLL。当前原版噪声与RT4/newbank初始化分开。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    blockers:
+    - 实际LC全模式、整机代回、重配置与完整PVT仍未完成。
+  - name: output_retimer
+    role: 利用 VCO 派生时钟重定时
+    stage: circuit
+    maturity: 3
+    note: CMOS，局部RT4/PNoise及六项瞬态噪声方法对照已完成；约52fs仅5.285–492MHz限定方法值，非完整PLL。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    blockers: []
+  - name: output_buffer
+    role: 驱动片内轻负载
+    stage: circuit
+    maturity: 3
+    note: MOS，原版/RT4各自带10fF。局部输出链证据保留，真实负载/互连/全PVT和PEX未完成。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    blockers: []
+  - name: bias_and_control
+    role: 偏置、频点配置及状态控制
+    stage: circuit
+    maturity: 2
+    note: MOS/电阻基准，完整噪声试验保留实际器件；前端偏置独立noise-on三点已完成。噪声/PVT、启动和PSRR仍需完整闭合。 新增完整原版TT的150ns全器件噪声段状态保持证据，仅为短窗方法检查，不扩展模块PVT或抖动验收。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_noise_activation_probe_validation.json
+    blockers: []
+  - name: rf_clock_receiver
+    role: VCO到CMOS时钟接口
+    stage: circuit
+    maturity: 2
+    note: MOS，既有局部归因与真实RF接口结果保留；全RF范围/PVT/MC和整环噪声未全面验收。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    blockers: []
+  - name: cp_pulse_timing
+    role: 参考后CP脉冲、使能与复位
+    stage: circuit
+    maturity: 2
+    note: MOS时序，原脉冲电路保留；前端单独pulser-noise尚未完成，实际脉宽/PVT/失配仍有缺口。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    blockers: []
+  - name: configuration_and_frequency_supervision
+    role: 频点配置、监督与周期测频
+    stage: circuit
+    maturity: 3
+    note: 全MOS。原版固定细精度延长稳定后末1µs状态/稳态通过；原短噪声开启试验状态保持。RT4中间态采样未见重捕获，后续固定精度及完整噪声待结果。原早期相位保持失败、随后restart和清acquired证据保留，未放宽门限或屏蔽重启；重配置/故障和PVT覆盖未闭合。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_noise_activation_probe_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_settled_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_precision_stage_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_fine_pair_protocol.json
+    blockers: []
+  - name: phase_and_amplitude_validation
+    role: 锁定判定的物理相位与振幅有效性检测
+    stage: circuit
+    maturity: 2
+    note: MOS窗口/包络和下降沿FF。原版TT固定细精度quiet通过、短噪声开启方法试验状态保持；RT4中间态采样phase_held/amp_good保持，恒定细精度复验正在进行。不以稀疏记录证明RF稳态或PVT/失配通过；SS边界仍未全面闭合。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_noise_activation_probe_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_settled_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_precision_stage_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_fine_pair_protocol.json
+    blockers: []
+  verification:
+    maturity: 3
+    note: pllprecisionstage01已实际完成15.9µs，0errors/1warning/29notices，12232493个接受步，墙钟4h14m4s。唯一警告为AHDL环境变量提示；Newton恢复、跳断点、LTE放宽与最小步长警告均为0。条件为完整RT4/newbank晶体管PLL、TT27/1.2V/24MHz/K41/M4/10fF/Q5RLC/CF10，外部供电与参考理想。0–14µs逐步将maxstep由4ps降至0.5ps；15–15.9µs保持0.5ps/reltol1e-5/vabstol100nV/iabstol1pA，始终noise-off。7951个2ns采样点、23条已保存信号与旧pllprecisionramp01的有效前缀逐点完全一致；第二套流式解析的时间及7个节点也与缓存完全一致、无重复记录。19个可比较电压初态差为0。qualified最低1.199996V、acquired最低1.188871V、phase_held最低1.199996V、frequency_good最低1.199982V；采样点中未见重捕获，不能由稀疏记录断言连续RF稳态。26项输入以及6289916字节原始波形、16106字节终止日志、280233字节完整终态均已本地回收并逐项核对远端SHA256。writefinal含7863项状态；源状态中reset/apply两项因各自理想0V直流源被合并到地，其余状态名全部保留，未从稀疏波形重建终态。20:30:38启动pllrt4fineoff01，远端53e3ca81/PID450212、7线程。完整终态字节不变，参考下次上升沿平移为17.6666666666794ns，维持原参考物理相位。恒定0.5ps/reltol1e-6/vabstol1nV/iabstol1pA/traponly，stop2.2µs，1µs以后保存密集RF/输出。24个物理依赖文件与已审计中间态一致，全部26项远端输入与本地launch哈希一致。rt4_fine_noise_pipeline复用已有分析和派发逻辑，仅在实际完成、数值干净、初始化、逻辑保持与稳态门限全部通过后派发pllrt4fineon01；目前noise-on尚未派发。原版V14仍与RT4分开：先前固定细精度quiet末1µs全部门限通过，输出984.000020347MHz、相位峰峰0.005202582rad、漂移−0.001909413rad/µs。原版pllmainsettledon01已在1µs实际开启器件噪声，本次核查至1.202003µs，尚未结束；当前日志无Newton恢复、跳断点或LTE放宽。流水线继续持有该任务，未重复派发，尚无可验收RMS。原RT4动态容差切换在16.0002µs触发LTE恢复的失败证据仍保留。中间态完成只验证了有效前缀重放和终态获取，不能证明旧故障原因已完全定位，也不证明后续恒定细精度或RT4噪声通过。文本IC不恢复隐藏积分历史，后续必须重新检查初始化。两个配对任务均为1024边沿、约5.285–492MHz的高偏移诊断；全PLL10kHz–fOUT/2、排除离散杂散、RMS<200fs仍未知。步长、电流容差、噪声带宽、种子、记录长度与低偏移覆盖尚需验证。
+    artifacts: &id001
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_70.md
+    - share/deliverables/integration/cmos_v14_full/analyze_rt4_precision_stage.py
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_precision_stage_validation.json
+    - share/deliverables/integration/cmos_v14_full/build_rt4_fine_pair.py
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_fine_pair_protocol.json
+    - share/deliverables/integration/cmos_v14_full/state_inputs/rt4_stage15900_phase_continuous.ic
+    - share/deliverables/integration/cmos_v14_full/tb/full_pll_rt4_fine_off_tt.scs
+    - share/deliverables/integration/cmos_v14_full/tb/full_pll_rt4_fine_on_tt.scs
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_settled_pair_validation.json
+  integration:
+    maturity: 2
+    note: 全部14功能模块保持MOS/无源，原版及RT4器件均未修改。20:30:38启动pllrt4fineoff01，远端53e3ca81/PID450212、7线程。完整终态字节不变，参考下次上升沿平移为17.6666666666794ns，维持原参考物理相位。恒定0.5ps/reltol1e-6/vabstol1nV/iabstol1pA/traponly，stop2.2µs，1µs以后保存密集RF/输出。24个物理依赖文件与已审计中间态一致，全部26项远端输入与本地launch哈希一致。rt4_fine_noise_pipeline复用已有分析和派发逻辑，仅在实际完成、数值干净、初始化、逻辑保持与稳态门限全部通过后派发pllrt4fineon01；目前noise-on尚未派发。原版V14仍与RT4分开：先前固定细精度quiet末1µs全部门限通过，输出984.000020347MHz、相位峰峰0.005202582rad、漂移−0.001909413rad/µs。原版pllmainsettledon01已在1µs实际开启器件噪声，本次核查至1.202003µs，尚未结束；当前日志无Newton恢复、跳断点或LTE放宽。流水线继续持有该任务，未重复派发，尚无可验收RMS。原RT4动态容差切换在16.0002µs触发LTE恢复的失败证据仍保留。中间态完成只验证了有效前缀重放和终态获取，不能证明旧故障原因已完全定位，也不证明后续恒定细精度或RT4噪声通过。文本IC不恢复隐藏积分历史，后续必须重新检查初始化。两个配对任务均为1024边沿、约5.285–492MHz的高偏移诊断；全PLL10kHz–fOUT/2、排除离散杂散、RMS<200fs仍未知。步长、电流容差、噪声带宽、种子、记录长度与低偏移覆盖尚需验证。核查实际2项长任务、14请求线程：原版匹配noise-on和RT4恒定细精度quiet。只替换了核实身份的本地保护进程，新增对RT4配对的监测，未停止任何Spectre仿真。保护器及两个流水线均在运行；旧quiet失败流水线保持needs_review。
+    artifacts: *id001
+spec_status:
+- id: REQ-01
+  current: TSMC180BCDGen2实际MOS、PDK变容；17,644MOS顶层
+  condition: 当前pll_capture_v14，TT27、1.2V、24MHz、K41/M4、10fF、Q5 RLC；4ps/reltol1e-4，DC供电后的独立复位64µs。
+  evidence: circuit_sim
+  status: on_track
+  note: Q5 πRLC电感获准暂代；无PDK电感、版图或PEX签核。
+- id: REQ-02
+  current: 1.2V运行；当前复位测试供电预先建立
+  condition: 当前pll_capture_v14，TT27、1.2V、24MHz、K41/M4、10fF、Q5 RLC；4ps/reltol1e-4，DC供电后的独立复位64µs。
+  evidence: circuit_sim
+  status: on_track
+  note: 供电扫描、爬升和器件端电压可靠性未签核。
+- id: REQ-03
+  current: 24MHz外部准方波，经真实MOS参考缓冲
+  condition: 当前pll_capture_v14，TT27、1.2V、24MHz、K41/M4、10fF、Q5 RLC；4ps/reltol1e-4，DC供电后的独立复位64µs。
+  evidence: circuit_sim
+  status: on_track
+  note: 保留实际参考缓冲；参考候选的局部三点收益未合并。实际参考边沿、源阻抗及外部参考噪声未完成。
+- id: REQ-04
+  current: 原版TT1ps独立复位与0.5ps暖启动稳态通过；RT4候选4ps独立复位通过、恒定细精度待结果
+  condition: TT27/1.2V/24MHz/K41/M4/10fF/Q5；两个完整DUT分别验证。
+  evidence: circuit_sim
+  status: at_risk
+  note: 原版与RT4分别验证。原版独立冷复位末窗984.000104MHz、相位峰峰0.004129rad；延长暖启动的固定0.5ps整窗稳态随后通过。旧RT4骤变精度导致相位监督重捕获，之后渐进精度在16µs触发LTE的两类失败均保留。pllprecisionstage01已实际完成15.9µs，0errors/1warning/29notices，12232493个接受步，墙钟4h14m4s。唯一警告为AHDL环境变量提示；Newton恢复、跳断点、LTE放宽与最小步长警告均为0。条件为完整RT4/newbank晶体管PLL、TT27/1.2V/24MHz/K41/M4/10fF/Q5RLC/CF10，外部供电与参考理想。0–14µs逐步将maxstep由4ps降至0.5ps；15–15.9µs保持0.5ps/reltol1e-5/vabstol100nV/iabstol1pA，始终noise-off。20:30:38启动pllrt4fineoff01，远端53e3ca81/PID450212、7线程。完整终态字节不变，参考下次上升沿平移为17.6666666666794ns，维持原参考物理相位。恒定0.5ps/reltol1e-6/vabstol1nV/iabstol1pA/traponly，stop2.2µs，1µs以后保存密集RF/输出。24个物理依赖文件与已审计中间态一致，全部26项远端输入与本地launch哈希一致。rt4_fine_noise_pipeline复用已有分析和派发逻辑，仅在实际完成、数值干净、初始化、逻辑保持与稳态门限全部通过后派发pllrt4fineon01；目前noise-on尚未派发。
+    不将中间态稀疏样本用作整数锁定稳态验收。
+- id: REQ-05
+  current: 33点未验收；4.8fF候选三配对角RF端点覆盖
+  condition: 1.2V/Q5/10fF，TT27、SS60、FF0，实际LC及原RF接收/分频负载，固定码0/255及控制1.0/0.2V，400ns/末60ns。
+  evidence: circuit_sim
+  status: at_risk
+  note: 984MHz完整新候选TT复位功能通过；33频点整环及所有PVT未验收，4.8fF端点候选尚未采用。
+- id: REQ-06
+  current: null
+  condition: 完整PLL；10kHz–fOUT/2，不含离散spur。独立模块条件另列。
+  evidence: circuit_sim
+  status: unknown
+  note: 原版V14仍与RT4分开：先前固定细精度quiet末1µs全部门限通过，输出984.000020347MHz、相位峰峰0.005202582rad、漂移−0.001909413rad/µs。原版pllmainsettledon01已在1µs实际开启器件噪声，本次核查至1.202003µs，尚未结束；当前日志无Newton恢复、跳断点或LTE放宽。流水线继续持有该任务，未重复派发，尚无可验收RMS。20:30:38启动pllrt4fineoff01，远端53e3ca81/PID450212、7线程。完整终态字节不变，参考下次上升沿平移为17.6666666666794ns，维持原参考物理相位。恒定0.5ps/reltol1e-6/vabstol1nV/iabstol1pA/traponly，stop2.2µs，1µs以后保存密集RF/输出。24个物理依赖文件与已审计中间态一致，全部26项远端输入与本地launch哈希一致。rt4_fine_noise_pipeline复用已有分析和派发逻辑，仅在实际完成、数值干净、初始化、逻辑保持与稳态门限全部通过后派发pllrt4fineon01；目前noise-on尚未派发。原RT4动态容差切换在16.0002µs触发LTE恢复的失败证据仍保留。中间态完成只验证了有效前缀重放和终态获取，不能证明旧故障原因已完全定位，也不证明后续恒定细精度或RT4噪声通过。文本IC不恢复隐藏积分历史，后续必须重新检查初始化。两个配对任务均为1024边沿、约5.285–492MHz的高偏移诊断；全PLL10kHz–fOUT/2、排除离散杂散、RMS<200fs仍未知。步长、电流容差、噪声带宽、种子、记录长度与低偏移覆盖尚需验证。
+- id: REQ-07
+  current: 诊断核心参考线约−28.8 dBc；完整PLL最终值未知
+  condition: TT27/1.2V/Q5/984MHz/10fF，CF10/原RT/连续时钟候选/静态慢控制；coretripsupply01无噪声初始化两个250ns窗口、1ps/reltol1e-5/traponly。
+  evidence: circuit_sim
+  status: at_risk
+  note: 原实际LC诊断核心约−28.8dBc参考线风险保持，未作完整PLL验收。40/80/120fF互补采样负载均完成，固定控制输出24MHz确定性PM降低14.327/13.484/8.287dB。40fF在0.657999/0.85/1V的RF为3.913863/3.924146/3.937316GHz，插值预测0.985014V，尚未实测回代。优先噪声，本轮不继续扩大杂散支线。噪声积分排除离散杂散；杂散验收频带仍待确认。
+- id: REQ-08
+  current: 新候选末1µs 8.050093mW；旧主DUT32µs平均5.667114mW
+  condition: 分别为RT4/newbank冷启动末窗和原主DUT完整控制周期，TT27/1.2V/K41/M4/10fF/Q5，4ps/reltol1e-4。
+  evidence: circuit_sim
+  status: at_risk
+  note: 两种电路/窗口不混同；均超4mW。功耗优化后置，原指标不变；新噪声TB不再使用功耗VA。
+- id: REQ-09
+  current: null
+  condition: 含电感、环路滤波器及隔离，暂不计pad。
+  evidence: none
+  status: unknown
+  note: 无布局/工艺无源几何，不能确认<0.3mm²。
+- id: REQ-10
+  current: 旧三配对角及新SS接口诊断已有；新完整PLL仅TT单点
+  condition: 1.2V，TT27/SS60/FF0为配对角；新增完整TT4ps终态保持36µs。
+  evidence: circuit_sim
+  status: at_risk
+  note: 模块三配对角证据保留。原版和RT4完整复位只有TT单点，完整PLL全PVT/噪声/MC未覆盖。
+- id: REQ-11
+  current: 完整TT保持末窗约43.99%
+  condition: TT27/1.2V/K41/M4/10fF；内部边沿观察器，4ps/reltol1e-4。
+  evidence: circuit_sim
+  status: on_track
+  note: 用户已确认不严格、无需刻意优化；未宣称精确50%或全范围通过。
+- id: REQ-12
+  current: 完整TT保持10fF功能通过，边沿约130.6/213.3ps
+  condition: TT27/1.2V/K41/M4/10fF；末1µs内部边沿观察器，4ps/reltol1e-4。
+  evidence: circuit_sim
+  status: on_track
+  note: 10fF仍暂定；新RT4/newbank完整TT复位功能通过。输出边沿和负载扫描、互连、PEX尚未覆盖此新候选，不能套用旧主DUT边沿值。
+questions_for_human:
+- q: 杂散<−60dBc是否采用载波两侧偏移10kHz–fOUT/2内所有离散线、逐条单边功率相对载波的口径？已异步提出，尚未收到确认；方法与电路工作继续。
+  blocking: false
+  since: '2026-10-04'
+- q: 24MHz参考到PLL输入端的10%–90%上升/下降时间、驱动能力或源阻抗是否有预计值？已异步询问，未阻塞现有验证。
+  blocking: false
+  since: '2026-10-04'
+blocked_on: null
+risks:
+- 原RT4动态容差切换在16.0002µs触发LTE恢复的失败证据仍保留。中间态完成只验证了有效前缀重放和终态获取，不能证明旧故障原因已完全定位，也不证明后续恒定细精度或RT4噪声通过。文本IC不恢复隐藏积分历史，后续必须重新检查初始化。两个配对任务均为1024边沿、约5.285–492MHz的高偏移诊断；全PLL10kHz–fOUT/2、排除离散杂散、RMS<200fs仍未知。步长、电流容差、噪声带宽、种子、记录长度与低偏移覆盖尚需验证。
+- 完整PVT、全部33频点、参考杂散、供电爬升、负载与PEX均未闭合；原版和RT4功耗均超4mW，优化后置不代表指标放宽。
+next_steps:
+- 监控pllrt4fineoff01的实际完成、数值恢复、初态和密集稳态门限；流水线只在全部门限通过后派发匹配噪声。若失败，保存完整证据并定位，不放宽门限。
+- 继续现有pllmainsettledon01；完成后回收哈希、核对公共quiet前缀及控制状态，分析限定高偏移配对诊断。
+- 有效配对之后推进步长、电流容差、带宽、种子、记录长度及10kHz覆盖，保留原版/RT4及局部/全PLL证据边界。
+decisions_since_last: []
+resources_note: 2026-10-05T20:31:21.651514+08:00。核查实际2项长任务、14请求线程：原版匹配noise-on和RT4恒定细精度quiet。只替换了核实身份的本地保护进程，新增对RT4配对的监测，未停止任何Spectre仿真。保护器及两个流水线均在运行；旧quiet失败流水线保持needs_review。

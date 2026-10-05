@@ -1,0 +1,150 @@
+{
+  "scope": "Validate the completed intermediate state before a separate constant-fine test.",
+  "time": "2026-10-05T20:29:06.351701+08:00",
+  "run": "pllprecisionstage01",
+  "case": "full_pll_rt4_precision_stage_tt",
+  "protocol_sha256": "333bf9c3bce8ba78040e2e118e2dc957e716d3d69669ef33b0dd8d55d7fef01b",
+  "source_result": "research/runs/spectre_cmos_v14_full/pllprecisionstage01/full_pll_rt4_precision_stage_tt/result.json",
+  "source_result_sha256": "74fad96415a68110fa127c27385be93155f85d067c407dc6b3409af34294cc1b",
+  "condition": "RT4/newbank complete actual transistor PLL,TT27/1.2V/24MHz/K41/M4/10fF/Q5RLC/CF10. Ideal external supply and reference.",
+  "completed": true,
+  "accepted_steps": 12232493,
+  "terminal_summary": "0 errors, 1 warning, 29 notices",
+  "wall_time_s": 15245.770624200115,
+  "input_count": 26,
+  "all_inputs_match": true,
+  "remote_local_output_hashes_match": true,
+  "outputs": {
+    "final.ic": {
+      "sha256": "937da9941740181f7627a6ae6ab70037353c97c8425cabbfb0986f4512ddacc2",
+      "bytes": 280233
+    },
+    "spectre.out": {
+      "sha256": "a08548ab9ce64792e844018fc59b1693d23433d3a61e8d3fd44898fe7c4bf8f1",
+      "bytes": 16106
+    },
+    "full_pll_rt4_precision_stage_tt.raw/tran.tran.tran": {
+      "sha256": "579cb53f8e8b2e81de8368594e5a731ecb1719760de5a33e5bf001476d51f55b",
+      "bytes": 6289916
+    }
+  },
+  "cache_sha256": "46b879cd9aa34cd0bcd4fa103697057330f57bd881ed3f494303152a7041fa9c",
+  "recovery": {
+    "newton_failures_reported": 0,
+    "skipped_breakpoints_reported": 0,
+    "lte_relaxations_reported": 0,
+    "minimum_step_warnings_reported": 0,
+    "numerically_clean": true,
+    "counts_may_be_suppressed": true
+  },
+  "sampled_status_stable": true,
+  "sampled_ranges_v": {
+    "qualified": [
+      1.199996451790532,
+      1.201524519217979
+    ],
+    "XP.XC.acquired": [
+      1.188871330529727,
+      1.210441754602532
+    ],
+    "XP.XC.phase_held": [
+      1.199996209379528,
+      1.211354078121972
+    ],
+    "frequency_good": [
+      1.199982179887125,
+      1.212800379926222
+    ],
+    "amp_good": [
+      1.199998261961908,
+      1.200002950391288
+    ],
+    "cfg_ready": [
+      1.199994998665995,
+      1.201437975140351
+    ],
+    "XP.en": [
+      1.193079015179741,
+      1.205591336813081
+    ],
+    "XP.restart": [
+      -1.041324812345027e-05,
+      0.002162881584285557
+    ],
+    "range_error": [
+      -5.002088309863779e-06,
+      0.002107142370616719
+    ],
+    "XP.vc1": [
+      0.7502471481225783,
+      0.7743308826919599
+    ]
+  },
+  "samples": 7951,
+  "independent_parser_max_differences": {
+    "time": 0.0,
+    "qualified": 0.0,
+    "frequency_good": 0.0,
+    "XP.XC.phase_held": 0.0,
+    "XP.XC.acquired": 0.0,
+    "XP.restart": 0.0,
+    "XP.vc1": 0.0,
+    "XP.ctrl": 0.0
+  },
+  "duplicate_records": 0,
+  "previous_invalid_run": "pllprecisionramp01",
+  "common_valid_prefix_max_differences": {
+    "time": 0.0,
+    "XP.vc1": 0.0,
+    "frequency_good": 0.0,
+    "XP.XC.phase_held": 0.0,
+    "VDD:p": 0.0,
+    "cfg_ready": 0.0,
+    "XP.VVCO:p": 0.0,
+    "ref": 0.0,
+    "phase_good": 0.0,
+    "amp_good": 0.0,
+    "XP.ctrl": 0.0,
+    "XP.vn": 0.0,
+    "XP.hn": 0.0,
+    "XP.hp": 0.0,
+    "XP.VRX:p": 0.0,
+    "XP.VRT:p": 0.0,
+    "out": 0.0,
+    "XP.vp": 0.0,
+    "XP.XC.acquired": 0.0,
+    "qualified": 0.0,
+    "range_error": 0.0,
+    "XP.refb": 0.0,
+    "XP.en": 0.0,
+    "XP.restart": 0.0
+  },
+  "common_prefix_s": [
+    0.0,
+    1.589999999999807e-05
+  ],
+  "compared_voltage_initial_nodes": 19,
+  "initial_maximum_voltage_difference_v": 0.0,
+  "full_final_state_entries": 7863,
+  "source_state_entries": 7865,
+  "all_non_ground_source_state_keys_preserved": true,
+  "omitted_ideal_ground_source_nodes": [
+    "apply",
+    "reset"
+  ],
+  "final_saved_voltage_maximum_difference_v": 3.1086244689504383e-15,
+  "stage_passed": true,
+  "noise_enabled": false,
+  "full_pll_acceptance": false,
+  "integrated_10khz_jitter_fs": null,
+  "observation": "All 7951 sparse samples and 23 saved signals exactly reproduce the valid prefix of the interrupted ramp. No numerical recovery is reported; a complete writefinal state is available.",
+  "next_experiment": "Separate fixed0.5ps/reltol1e-6/vabstol1nV/iabstol1pA test using byte-identical full terminal IC and a phase-continuous reference.",
+  "limitations": [
+    "Warm initialization only; not an independent reset/cold-acquisition result.",
+    "Scheduled precision is never used to measure jitter. A subsequent separate constant-precision settling/noise check is required.",
+    "Final waveform is sparse; only logic and held-node behavior can be accepted from this run. Dense RF/output stationarity must be checked subsequently.",
+    "Stop on actual reentry to acquisition or numerical recovery; do not force qualification.",
+    "Absence of sampled reacquisition is not dense RF stationarity or continuous lock evidence.",
+    "This success does not isolate reltol from vabstol, prove the old dynamic-step failure cause, or establish RT4 jitter."
+  ]
+}
