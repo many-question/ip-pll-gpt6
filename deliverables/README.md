@@ -1,4 +1,4 @@
-本次快照：[第68次汇报](../reports/2026-10-05T1612.yaml)。RT4渐进精度在16µs容差切换处触发LTE恢复；已启动分阶段终态生成试验，原版PLL稳态基线继续。
+本次快照：[第69次汇报](../reports/2026-10-05T1632.yaml)。原版完整晶体管PLL的固定细精度稳态基线通过，匹配noise-on任务已由流水线自动启动；全带抖动仍未知。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)
