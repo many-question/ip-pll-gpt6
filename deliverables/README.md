@@ -1,4 +1,4 @@
-本次快照：[第66次汇报](../reports/2026-10-05T1414.yaml)。原版严格无噪声基线完成但末窗漂移略超门限；已量化衰减并启动同精度、相位连续的延长稳定验证。
+本次快照：[第67次汇报](../reports/2026-10-05T1517.yaml)。完整原版PLL已跑通150ns原生器件噪声开启试验；全带抖动仍待稳态配对及数值、统计覆盖。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

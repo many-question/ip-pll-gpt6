@@ -57,6 +57,7 @@ def main():
             provenance=r['remote_inputs_match'] and not r.get('native_state'),
             noise_configuration=out['noise_band']['requested_configuration_matched'],
             no_replaced_functional_modules=all(not k.endswith('.va') for k in r['inputs_sha256']))
+        checks={k:bool(v) for k,v in checks.items()}
         activation_checks={k:v for k,v in checks.items() if k!='noise_configuration'}
         activation_checks['understood_effective_noise_configuration']=out['noise_band']['activation_configuration_understood']
         out.update(cache_sha256=sha(cache),logic=logic,checks=checks,passed=all(checks.values()),

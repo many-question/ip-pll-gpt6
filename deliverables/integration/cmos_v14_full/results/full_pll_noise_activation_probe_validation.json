@@ -1,0 +1,116 @@
+{
+  "scope": "Validate activation of actual native device noise in the complete original PLL.",
+  "protocol_sha256": "915a7c7bd23b2c09e6cd4df913c78d28c9e99843fdcded964d087d82cad36b06",
+  "source_result": "research/runs/spectre_cmos_v14_full/pllnoiseactivation01/full_pll_noise_activation_probe_tt/completed_result.json",
+  "source_result_sha256": "8522e462eebe77f9ab5110e10e0a028360bdd44bcb74f4162b86e1d043b92f01",
+  "log_sha256": "223585b5d1d3b32ad2b54d11d061e2889f5f4dcf1c4d5395b80b396ec0ef8189",
+  "completed": true,
+  "recovery": {
+    "newton_failures_reported": 0,
+    "skipped_breakpoints_reported": 0,
+    "lte_relaxations_reported": 0,
+    "minimum_step_warnings_reported": 0,
+    "numerically_clean": true,
+    "counts_may_be_suppressed": false
+  },
+  "effective": {
+    "reltol": 1e-06,
+    "abstol(V)": 1e-09,
+    "abstol(I)": 1e-12,
+    "method": "traponly",
+    "maxstep": 5e-13,
+    "noisefmax": 160000000000.0,
+    "noisefmin": 5000000.0,
+    "trannoisemethod": "default"
+  },
+  "noise_activation_log_times_s": [
+    5e-08
+  ],
+  "noise_band": {
+    "requested_min_hz": 1000000.0,
+    "effective_min_hz": 5000000.0,
+    "requested_max_hz": 160000000000.0,
+    "effective_max_hz": 160000000000.0,
+    "duration_floor_hz": 5000000.0,
+    "requested_configuration_matched": false,
+    "documented_duration_floor_applied": true,
+    "activation_configuration_understood": true,
+    "adjustment_notices": [
+      "Specified 'noisefmin' is smaller than 1/stop time. 'noisefmin' has been changed to 5 MHz."
+    ],
+    "low_offset_coverage_established": false,
+    "integrated_jitter_fs": null
+  },
+  "passed": false,
+  "activation_method_passed": true,
+  "full_pll_acceptance": false,
+  "integrated_jitter_fs": null,
+  "limitations": [
+    "Only150ns of actual noise; no low-offset or RMS result.",
+    "Analog state is still settling from a measured1ps cold result. Do not claim stationary noise.",
+    "Independent full quiet/on baseline, tolerance, bandwidth and statistical convergence remain necessary.",
+    "Effective native-noise band differs from the requested protocol; strict protocol pass remains false. The separate activation-method result cannot establish noise-band or jitter acceptance."
+  ],
+  "cache_sha256": "ed10c7c5843a393c40e1d5987233e5304ca2b34815bd158e95d52247467130bc",
+  "logic": {
+    "qualified": {
+      "min_v": 1.197488699176944,
+      "max_v": 1.20419432810202
+    },
+    "frequency_good": {
+      "min_v": 1.192940623165879,
+      "max_v": 1.211945845686433
+    },
+    "amp_good": {
+      "min_v": 1.197625490237298,
+      "max_v": 1.202660156050863
+    },
+    "XP.XC.phase_held": {
+      "min_v": 1.189797817313673,
+      "max_v": 1.214516811066373
+    },
+    "XP.XC.acquired": {
+      "min_v": 1.190655855416673,
+      "max_v": 1.211515733042942
+    },
+    "XP.en": {
+      "min_v": 1.1905811202643,
+      "max_v": 1.21448149062608
+    },
+    "XP.restart": {
+      "min_v": -0.0009457532253088707,
+      "max_v": 0.00307667330508415
+    },
+    "range_error": {
+      "min_v": -0.0007969617067168334,
+      "max_v": 0.002881521825118522
+    }
+  },
+  "checks": {
+    "completed": true,
+    "clean": true,
+    "initialized": true,
+    "activated": true,
+    "states_held": true,
+    "provenance": true,
+    "noise_configuration": false,
+    "no_replaced_functional_modules": true
+  },
+  "activation_method_checks": {
+    "completed": true,
+    "clean": true,
+    "initialized": true,
+    "activated": true,
+    "states_held": true,
+    "provenance": true,
+    "no_replaced_functional_modules": true,
+    "understood_effective_noise_configuration": true
+  },
+  "initial_compared_nodes": 19,
+  "initial_max_delta_v": 0.0,
+  "noise_output_edges": 147,
+  "period_range_ps": [
+    1013.6898365825147,
+    1020.9051954150066
+  ]
+}
