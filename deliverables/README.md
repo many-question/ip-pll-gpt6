@@ -1,4 +1,4 @@
-本次快照：[第72次汇报](../reports/2026-10-05T2151.yaml)。已按用户要求把完整PLL仿真迁至服务器本地SSD；实际进程cwd、TMPDIR及项目写入文件均核验通过，仍为2项任务共14线程。
+本次快照：[第73次汇报](../reports/2026-10-06T0057.yaml)。RT4完整晶体管PLL的恒定细精度quiet基线通过原稳态门限，配对noise-on已自动在SSD启动；原版噪声仿真继续，全带抖动仍未知。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

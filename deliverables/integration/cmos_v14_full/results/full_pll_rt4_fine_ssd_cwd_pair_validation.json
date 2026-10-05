@@ -1,0 +1,70 @@
+{
+  "scope": "Measure complete-PLL high-offset random edge noise against a matched quiet trace.",
+  "protocol_sha256": "193c5ae0d6549817835a642e2d7969a067f3edbf5a4012465433361f0817069b",
+  "condition": "Actual full RT4/newbank PLL with transistor FLL/control/watchdog/bias,TT27/1.2V/24MHzref/K41/M4/10fF/Q5RLC/CF10; ideal external reference and supply.",
+  "cases": [
+    {
+      "run": "pllrt4fineoffssd02",
+      "case": "full_pll_rt4_fine_off_tt",
+      "noise_enabled": false,
+      "tb_sha256": "a0d0b7fafc3adc3b5e294f6469b47e38915e6866cc4a8b11bc8fb79ab1f92871",
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/pllrt4fineoffssd02/full_pll_rt4_fine_off_tt/result.json",
+      "source_sha256": "b1dd4bc72663823b0c003ea224e5e5d6c4c04b3b909d0b158d0bf90f49e20230",
+      "recovery": {
+        "newton_failures_reported": 0,
+        "skipped_breakpoints_reported": 0,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": true,
+        "counts_may_be_suppressed": true
+      },
+      "effective": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-09,
+        "abstol(I)": 1e-12,
+        "method": "traponly",
+        "maxstep": 5e-13,
+        "noisefmax": 160000000000.0,
+        "noisefmin": 1000000.0,
+        "trannoisemethod": "default"
+      },
+      "log_sha256": "ad2c6367456ee3981e377adceece8acfcd1a3a78d032ea852c649d5371c89482",
+      "cache_sha256": "c7e45e86d3629d7042088afcc3246f53b75eb832fcf03099f9778e99518e5f02",
+      "initial_maximum_voltage_difference_v": 0.0,
+      "compared_nodes": 19,
+      "status_stable": true,
+      "stationarity": {
+        "samples": 24,
+        "phase_pp_rad": 0.0055671165627506625,
+        "phase_drift_rad_per_us": -0.0013992259331245575,
+        "maximum_rf_cycles_error": 0.0005444186372187687,
+        "maximum_out_cycles_error": 0.0001448336538487638,
+        "mean_output_mhz": 983.9999200772438,
+        "passed": true
+      }
+    },
+    {
+      "run": "pllrt4fineonssd02",
+      "case": "full_pll_rt4_fine_on_tt",
+      "noise_enabled": true,
+      "tb_sha256": "690c7ac53551d110834b722b11839001593a1759b49ac5c154a5559bb2dc283c",
+      "completed": false
+    }
+  ],
+  "complete": false,
+  "high_offset_diagnostic_valid": false,
+  "full_pll_acceptance": false,
+  "integrated_10khz_jitter_fs": null,
+  "limitations": [
+    "This is an initial high-offset complete-circuit diagnostic, not the10kHz/full-band acceptance.",
+    "5ns absolute-current-tolerance comparison validates only short numerical behavior. Require clean whole traces, intact physical initial state, common quiet prefix and stationary noiseless loop.",
+    "Measurement inputs are ideal; actual transistor noise in every PLL device and RLC resistance is enabled together in the on case.",
+    "No functional control is clamped. The two measurement-only VA modules were removed and an ideal0V supply probe substituted.",
+    "No source-amplitude scaling, fitted trend removal or arbitrary spur notches. Paired deterministic edge template removes the measured repeatable component.",
+    "Further timestep, current-tolerance, bandwidth, seed and record-length comparisons remain mandatory even if this pair finishes cleanly.",
+    "Intermediate-stage2ns samples do not establish RF stationarity. This separate dense fixed-fine quiet check must pass first.",
+    "Full terminal text state copied byte-for-byte with reference phase preserved; hidden integrator history is not restored. Initialization is rechecked.",
+    "The original-V14 quiet pass and running noise pair are separate evidence, not an RT4 pass."
+  ]
+}
