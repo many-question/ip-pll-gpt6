@@ -1,0 +1,824 @@
+{
+  "time": "2026-10-05T21:51:16+08:00",
+  "scope": "Storage migration; no new DUT performance claim.",
+  "before": {
+    "user": "jielu",
+    "paths": [
+      {
+        "realpath": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/0a0a399d",
+        "uid": 528,
+        "exists": true,
+        "df": "Filesystem                             Type 1024-blocks       Used  Available Capacity Mounted on\nthu-qin:/net/thu-qin/disk13/home/jielu nfs4  7690720256 5509909504 1790138368      76% /home/jielu\n",
+        "writable": true,
+        "gid": 503,
+        "mode": "040755",
+        "path": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/0a0a399d"
+      },
+      {
+        "realpath": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/092b5553",
+        "uid": 528,
+        "exists": true,
+        "df": "Filesystem                             Type 1024-blocks       Used  Available Capacity Mounted on\nthu-qin:/net/thu-qin/disk13/home/jielu nfs4  7690720256 5509909504 1790138368      76% /home/jielu\n",
+        "writable": true,
+        "gid": 503,
+        "mode": "040755",
+        "path": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/092b5553"
+      },
+      {
+        "realpath": "/server_local_ssd",
+        "uid": 0,
+        "exists": true,
+        "df": "Filesystem                                   Type 1024-blocks       Used  Available Capacity Mounted on\n/dev/mapper/simulation_data-server_local_ssd xfs   3936348248 1953128900 1983219348      50% /server_local_ssd\n",
+        "writable": true,
+        "gid": 0,
+        "mode": "040777",
+        "path": "/server_local_ssd"
+      },
+      {
+        "realpath": "/server_local_ssd/jielu",
+        "uid": 528,
+        "exists": true,
+        "df": "Filesystem                                   Type 1024-blocks       Used  Available Capacity Mounted on\n/dev/mapper/simulation_data-server_local_ssd xfs   3936348248 1953128900 1983219348      50% /server_local_ssd\n",
+        "writable": true,
+        "gid": 503,
+        "mode": "040755",
+        "path": "/server_local_ssd/jielu"
+      }
+    ],
+    "host": "thu-xia",
+    "processes": [
+      {
+        "cmdline": "/home/cadence/spectre/SPECTRE211Hotfix_crack/tools/spectre/bin/64bit/spectre /home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/092b5553/full_pll_rt4_fine_off_tt.scs +escchars +log /home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/092b5553/spectre.out -format psfascii -raw /home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/092b5553/full_pll_rt4_fine_off_tt.raw +preset=ax +mt=7 -preset_override +lqtimeout 900 -maxw 5 -maxn 5 +logstatus ",
+        "pid": 144705,
+        "cwd": "/home/jielu"
+      },
+      {
+        "cmdline": "/home/cadence/spectre/SPECTRE211Hotfix_crack/tools/spectre/bin/64bit/spectre /home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/0a0a399d/full_pll_main_settled_on_tt.scs +escchars +log /home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/0a0a399d/spectre.out -format psfascii -raw /home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/0a0a399d/full_pll_main_settled_on_tt.raw +preset=ax +mt=7 -preset_override +lqtimeout 900 -maxw 5 -maxn 5 +logstatus ",
+        "pid": 145568,
+        "cwd": "/home/jielu"
+      }
+    ],
+    "cwd": "/home/jielu",
+    "time": "2026-10-05T21:38:11.820359+08:00"
+  },
+  "preflight": {
+    "df": "Filesystem                                   Type 1024-blocks       Used  Available Capacity Mounted on\n/dev/mapper/simulation_data-server_local_ssd xfs   3936348248 1953133956 1983214292      50% /server_local_ssd\n",
+    "realpath": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full",
+    "host": "thu-xia",
+    "root": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full",
+    "user": "jielu",
+    "time": "2026-10-05T21:41:56.975594+08:00"
+  },
+  "active": [
+    {
+      "run": "pllmainsettledonssd02",
+      "old_run": "pllmainsettledon02",
+      "case": "full_pll_main_settled_on_tt",
+      "remote_dir": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/70a37f74",
+      "process": {
+        "threads": 7,
+        "pid": 230088,
+        "netlist": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/70a37f74/full_pll_main_settled_on_tt.scs"
+      },
+      "launch_policy": {
+        "transport_attempts": 1,
+        "permanent_atomic_directory_claim": true,
+        "implementation_sha256": "f2b08724b6a5be96c0d7c4388f9a8add43ebdc579737f7d43b0e65688cabd375"
+      },
+      "all_remote_input_hashes_match": true,
+      "physical_inputs_unchanged": true,
+      "tb_only_path_remapping": true,
+      "realpath": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/70a37f74",
+      "df": "Filesystem                                   Type 1024-blocks       Used  Available Capacity Mounted on\n/dev/mapper/simulation_data-server_local_ssd xfs   3936348248 1953135716 1983212532      50% /server_local_ssd\n",
+      "claim_exists": true,
+      "exit_marker_exists": false,
+      "inputs": {
+        "cp_physical_v14.scs": "ea3cd7184cafd899db18d5d9286adca6c2ffb861e9af2504afd1ea9bb702cc76",
+        "fll_best128_v14.scs": "06a2f270b40c57b08b360d95e767d6d6b39a6456a789cef7c6831653608e0ef5",
+        "validity_physical_v14.scs": "4adda2d6a864ac7ae7478c157989ea34d0901f52cf1f7b6bca2ec3238244f27f",
+        "sampler_bias_v5.scs": "fe966831e65b04ee641625abc5187748bac130ea8d68babe17f33dc948c9cd67",
+        "cp_timing.scs": "87a42f85028580ab52cc6d08a2514e4295dc93e4be0e019f52cb55964ae50fde",
+        "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+        "full_pll_main_settled_on_tt.scs": "0c960ae74d1858b368153ef53305e279fe18f419a23e4d66805cc23aac13d2f6",
+        "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+        "cap_bank_switched_v4.scs": "82930a36417d5746edad5be73d95ff446cb94a046524d8eb12d6cc3a325caad0",
+        "pll_config.scs": "e9562e3410680ae20236c5e3a96229a0d83723e750753c4ae041ed3e5fd46622",
+        "pll_supervisor_capture_v14.scs": "f5836cf7d3106842c5f67ede615b0988057a750b42a242a11255b9fb28535bac",
+        "main_fine2200_phase_continuous.ic": "2aa316a1a1e9801673e4842f28784f3d4b6feb2d3d3211f984cc7c78b3345cfe",
+        "inductor_pi.scs": "417db0f24ee5d2a0544eda8a21f670d4b3ba5ba158422c913185ff82ef71438b",
+        "rt_light24s12_out083_v14.scs": "06c7d7b838a666815504f42ebf8d2a79aa9f6031c5af2212880d642fad3f8836",
+        "pll_control_capture_v14.scs": "0dd7b0b2d56f9d4668a0fd51795b80b0742659eb740a0c57ef10b420daf13d86",
+        "lc_core_physical_v14.scs": "8edc1b766e04d51405ffd185294fa1c7d6e7f2d2f8ef14f56753c1e84eaeb8b4",
+        "cmos_even_bank_acq_v14.scs": "34a80ae697397ff60cc61ba9cfc51513716c39afd3df68f4ea0a9c950ca0ff6f",
+        "loop_filter_v5.scs": "827a9a8cd9d91e8bf9af5d38c691f0bfc19416980aa1e6b34eda9d0802bb9499",
+        "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+        "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+        "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+        "pll_capture_v14.scs": "ebab43f8233c8b8cc7bdef02fba6a1718a070e8f886f3b522449612feb5e6139",
+        "frequency_watchdog.scs": "63e1d92d0db21407142630dfe349b3da1afe127e3e04d712e7cf0f51c541d5f2",
+        "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+        "lc_vco_physical_v14.scs": "c34bae69f93d9600f602bfb7e80f56ffe051458e8984da02604eb6ef07e727ce",
+        "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c"
+      },
+      "write_descriptors": [
+        {
+          "path": "/dev/null",
+          "fd": "3"
+        },
+        {
+          "path": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/70a37f74/spectre.out",
+          "fd": "4"
+        },
+        {
+          "path": "/var/tmp/.cds_l_7464372953514191116",
+          "fd": "5"
+        },
+        {
+          "path": "/var/tmp/.cds_l_229483862528677",
+          "fd": "6"
+        },
+        {
+          "path": "/tmp/.cdsor.229483862528677",
+          "fd": "7"
+        },
+        {
+          "path": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/70a37f74/full_pll_main_settled_on_tt.raw/logFile",
+          "fd": "11"
+        },
+        {
+          "path": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/70a37f74/full_pll_main_settled_on_tt.raw/logStatus",
+          "fd": "12"
+        },
+        {
+          "path": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/70a37f74/full_pll_main_settled_on_tt.raw/tran.tran.tran",
+          "fd": "15"
+        }
+      ],
+      "filesystem": "xfs",
+      "cwd": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/70a37f74",
+      "tmpdir": [
+        "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/70a37f74/tmp"
+      ],
+      "eda_runtime_descriptors": [
+        {
+          "path": "/dev/null",
+          "fd": "3"
+        },
+        {
+          "path": "/var/tmp/.cds_l_7464372953514191116",
+          "fd": "5"
+        },
+        {
+          "path": "/var/tmp/.cds_l_229483862528677",
+          "fd": "6"
+        },
+        {
+          "path": "/tmp/.cdsor.229483862528677",
+          "fd": "7"
+        }
+      ],
+      "project_write_descriptors": [
+        {
+          "path": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/70a37f74/spectre.out",
+          "fd": "4"
+        },
+        {
+          "path": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/70a37f74/full_pll_main_settled_on_tt.raw/logFile",
+          "fd": "11"
+        },
+        {
+          "path": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/70a37f74/full_pll_main_settled_on_tt.raw/logStatus",
+          "fd": "12"
+        },
+        {
+          "path": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/70a37f74/full_pll_main_settled_on_tt.raw/tran.tran.tran",
+          "fd": "15"
+        }
+      ]
+    },
+    {
+      "run": "pllrt4fineoffssd02",
+      "old_run": "pllrt4fineoff02",
+      "case": "full_pll_rt4_fine_off_tt",
+      "remote_dir": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/2d203756",
+      "process": {
+        "threads": 7,
+        "pid": 228865,
+        "netlist": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/2d203756/full_pll_rt4_fine_off_tt.scs"
+      },
+      "launch_policy": {
+        "transport_attempts": 1,
+        "permanent_atomic_directory_claim": true,
+        "implementation_sha256": "f2b08724b6a5be96c0d7c4388f9a8add43ebdc579737f7d43b0e65688cabd375"
+      },
+      "all_remote_input_hashes_match": true,
+      "physical_inputs_unchanged": true,
+      "tb_only_path_remapping": true,
+      "realpath": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/2d203756",
+      "df": "Filesystem                                   Type 1024-blocks       Used  Available Capacity Mounted on\n/dev/mapper/simulation_data-server_local_ssd xfs   3936348248 1953135716 1983212532      50% /server_local_ssd\n",
+      "claim_exists": true,
+      "exit_marker_exists": false,
+      "inputs": {
+        "cp_physical_v14.scs": "ea3cd7184cafd899db18d5d9286adca6c2ffb861e9af2504afd1ea9bb702cc76",
+        "fll_best128_v14.scs": "06a2f270b40c57b08b360d95e767d6d6b39a6456a789cef7c6831653608e0ef5",
+        "validity_physical_v14.scs": "4adda2d6a864ac7ae7478c157989ea34d0901f52cf1f7b6bca2ec3238244f27f",
+        "rt_noise_scale4_v14.scs": "839d4bdb3d8b2dc60dcdad1f3a49010f82d6cb4ff08d10325b8c5c636c65e5c6",
+        "cp_timing.scs": "87a42f85028580ab52cc6d08a2514e4295dc93e4be0e019f52cb55964ae50fde",
+        "full_pll_rt4_fine_off_tt.scs": "0f090c5b114a0da98fe56a2c68b645873366b8b8c91be4c6f8ec1c0aec68e79a",
+        "sampler_bias_v5.scs": "fe966831e65b04ee641625abc5187748bac130ea8d68babe17f33dc948c9cd67",
+        "rt4_stage15900_phase_continuous.ic": "937da9941740181f7627a6ae6ab70037353c97c8425cabbfb0986f4512ddacc2",
+        "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+        "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+        "pll_config.scs": "e9562e3410680ae20236c5e3a96229a0d83723e750753c4ae041ed3e5fd46622",
+        "pll_supervisor_capture_v14.scs": "f5836cf7d3106842c5f67ede615b0988057a750b42a242a11255b9fb28535bac",
+        "inductor_pi.scs": "417db0f24ee5d2a0544eda8a21f670d4b3ba5ba158422c913185ff82ef71438b",
+        "pll_control_capture_v14.scs": "0dd7b0b2d56f9d4668a0fd51795b80b0742659eb740a0c57ef10b420daf13d86",
+        "lc_core_physical_v14.scs": "8edc1b766e04d51405ffd185294fa1c7d6e7f2d2f8ef14f56753c1e84eaeb8b4",
+        "cap_bank_switched_v4.scs": "82930a36417d5746edad5be73d95ff446cb94a046524d8eb12d6cc3a325caad0",
+        "loop_filter_v5.scs": "827a9a8cd9d91e8bf9af5d38c691f0bfc19416980aa1e6b34eda9d0802bb9499",
+        "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+        "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+        "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+        "pll_capture_rt4bank_v14.scs": "001c6a40a24142fbc6d3aa006e233edb38810b703166af04968cff4bf8b9b3c8",
+        "frequency_watchdog.scs": "63e1d92d0db21407142630dfe349b3da1afe127e3e04d712e7cf0f51c541d5f2",
+        "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+        "bank_pulsetrip_v14.scs": "8d41f4865a829f5a6d203fda5fa63af0243a835d00bbfdafde737988ee1c0f20",
+        "lc_vco_physical_v14.scs": "c34bae69f93d9600f602bfb7e80f56ffe051458e8984da02604eb6ef07e727ce",
+        "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c"
+      },
+      "write_descriptors": [
+        {
+          "path": "/dev/null",
+          "fd": "3"
+        },
+        {
+          "path": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/2d203756/spectre.out",
+          "fd": "4"
+        },
+        {
+          "path": "/var/tmp/.cds_l_7464372953514191116",
+          "fd": "5"
+        },
+        {
+          "path": "/var/tmp/.cds_l_229483862528677",
+          "fd": "6"
+        },
+        {
+          "path": "/tmp/.cdsor.229483862528677",
+          "fd": "7"
+        },
+        {
+          "path": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/2d203756/full_pll_rt4_fine_off_tt.raw/logFile",
+          "fd": "10"
+        },
+        {
+          "path": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/2d203756/full_pll_rt4_fine_off_tt.raw/logStatus",
+          "fd": "12"
+        },
+        {
+          "path": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/2d203756/full_pll_rt4_fine_off_tt.raw/tran.tran.tran",
+          "fd": "15"
+        }
+      ],
+      "filesystem": "xfs",
+      "cwd": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/2d203756",
+      "tmpdir": [
+        "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/2d203756/tmp"
+      ],
+      "eda_runtime_descriptors": [
+        {
+          "path": "/dev/null",
+          "fd": "3"
+        },
+        {
+          "path": "/var/tmp/.cds_l_7464372953514191116",
+          "fd": "5"
+        },
+        {
+          "path": "/var/tmp/.cds_l_229483862528677",
+          "fd": "6"
+        },
+        {
+          "path": "/tmp/.cdsor.229483862528677",
+          "fd": "7"
+        }
+      ],
+      "project_write_descriptors": [
+        {
+          "path": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/2d203756/spectre.out",
+          "fd": "4"
+        },
+        {
+          "path": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/2d203756/full_pll_rt4_fine_off_tt.raw/logFile",
+          "fd": "10"
+        },
+        {
+          "path": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/2d203756/full_pll_rt4_fine_off_tt.raw/logStatus",
+          "fd": "12"
+        },
+        {
+          "path": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/2d203756/full_pll_rt4_fine_off_tt.raw/tran.tran.tran",
+          "fd": "15"
+        }
+      ]
+    }
+  ],
+  "resources": {
+    "time": "2026-10-05T21:48:30.303042+08:00",
+    "jobs": [
+      {
+        "threads": 7,
+        "pid": 228865,
+        "netlist": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/2d203756/full_pll_rt4_fine_off_tt.scs"
+      },
+      {
+        "threads": 7,
+        "pid": 230088,
+        "netlist": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/70a37f74/full_pll_main_settled_on_tt.scs"
+      }
+    ],
+    "requested_threads": 14
+  },
+  "partial_runs": [
+    {
+      "run": "pllmainsettledon02",
+      "last_time_s": 1.659999999999999e-07,
+      "noise_turned_on": false,
+      "terminal": [
+        "spectre completes with 1 error, 1 warning, and 13 notices.",
+        "spectre terminated prematurely due to fatal error."
+      ],
+      "newton": 0,
+      "lte": 0,
+      "skipped": 0
+    },
+    {
+      "run": "pllrt4fineoff02",
+      "last_time_s": 1.320000000000001e-07,
+      "noise_turned_on": false,
+      "terminal": [
+        "spectre completes with 1 error, 1 warning, and 15 notices.",
+        "spectre terminated prematurely due to fatal error."
+      ],
+      "newton": 0,
+      "lte": 0,
+      "skipped": 0
+    },
+    {
+      "run": "pllmainsettledonssd01",
+      "last_time_s": 4.4e-08,
+      "noise_turned_on": false,
+      "terminal": [
+        "spectre completes with 1 error, 1 warning, and 13 notices.",
+        "spectre terminated prematurely due to fatal error."
+      ],
+      "newton": 0,
+      "lte": 0,
+      "skipped": 0
+    },
+    {
+      "run": "pllrt4fineoffssd01",
+      "last_time_s": 3.6e-08,
+      "noise_turned_on": false,
+      "terminal": [
+        "spectre completes with 1 error, 1 warning, and 13 notices.",
+        "spectre terminated prematurely due to fatal error."
+      ],
+      "newton": 0,
+      "lte": 0,
+      "skipped": 0
+    }
+  ],
+  "recovered": [
+    {
+      "run": "pllmainsettledon02",
+      "result": "research/runs/spectre_cmos_v14_full/pllmainsettledon02/full_pll_main_settled_on_tt/result.json",
+      "result_sha256": "e9347672872b0688fdf3d7cb0fdaa16f8d2299f0bcac488102a810dcd287aa72",
+      "case": "full_pll_main_settled_on_tt",
+      "time": "2026-10-05T21:42:00.772964+08:00",
+      "ok": false,
+      "integrity_valid": true,
+      "noise_measured": false,
+      "full_band_acceptance": false,
+      "errors": [
+        "Controlled SIGINT for user-required migration from home NFS to local SSD. Partial run, not a DUT or solver failure. No noise measurement."
+      ],
+      "metadata": {
+        "remote_dir": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/0a0a399d",
+        "remote_id": "0a0a399d"
+      },
+      "initial_states": {
+        "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/pllmainsettledon02_full_pll_main_settled_on_tt_main_fine2200_phase_continuous.ic": {
+          "source": "main_fine2200_phase_continuous.ic",
+          "sha256": "2aa316a1a1e9801673e4842f28784f3d4b6feb2d3d3211f984cc7c78b3345cfe",
+          "remote_hash_match": true
+        }
+      },
+      "inputs_sha256": {
+        "full_pll_main_settled_on_tt.scs": "b986ccce972de10f838686ecca47e56f4985a1e4f080def2f621c79e0e0ac826",
+        "cap_bank_switched_v4.scs": "82930a36417d5746edad5be73d95ff446cb94a046524d8eb12d6cc3a325caad0",
+        "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+        "cmos_even_bank_acq_v14.scs": "34a80ae697397ff60cc61ba9cfc51513716c39afd3df68f4ea0a9c950ca0ff6f",
+        "cp_physical_v14.scs": "ea3cd7184cafd899db18d5d9286adca6c2ffb861e9af2504afd1ea9bb702cc76",
+        "cp_timing.scs": "87a42f85028580ab52cc6d08a2514e4295dc93e4be0e019f52cb55964ae50fde",
+        "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+        "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+        "fll_best128_v14.scs": "06a2f270b40c57b08b360d95e767d6d6b39a6456a789cef7c6831653608e0ef5",
+        "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+        "frequency_watchdog.scs": "63e1d92d0db21407142630dfe349b3da1afe127e3e04d712e7cf0f51c541d5f2",
+        "inductor_pi.scs": "417db0f24ee5d2a0544eda8a21f670d4b3ba5ba158422c913185ff82ef71438b",
+        "lc_core_physical_v14.scs": "8edc1b766e04d51405ffd185294fa1c7d6e7f2d2f8ef14f56753c1e84eaeb8b4",
+        "lc_vco_physical_v14.scs": "c34bae69f93d9600f602bfb7e80f56ffe051458e8984da02604eb6ef07e727ce",
+        "loop_filter_v5.scs": "827a9a8cd9d91e8bf9af5d38c691f0bfc19416980aa1e6b34eda9d0802bb9499",
+        "main_fine2200_phase_continuous.ic": "2aa316a1a1e9801673e4842f28784f3d4b6feb2d3d3211f984cc7c78b3345cfe",
+        "pll_capture_v14.scs": "ebab43f8233c8b8cc7bdef02fba6a1718a070e8f886f3b522449612feb5e6139",
+        "pll_config.scs": "e9562e3410680ae20236c5e3a96229a0d83723e750753c4ae041ed3e5fd46622",
+        "pll_control_capture_v14.scs": "0dd7b0b2d56f9d4668a0fd51795b80b0742659eb740a0c57ef10b420daf13d86",
+        "pll_supervisor_capture_v14.scs": "f5836cf7d3106842c5f67ede615b0988057a750b42a242a11255b9fb28535bac",
+        "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+        "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+        "rt_light24s12_out083_v14.scs": "06c7d7b838a666815504f42ebf8d2a79aa9f6031c5af2212880d642fad3f8836",
+        "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+        "sampler_bias_v5.scs": "fe966831e65b04ee641625abc5187748bac130ea8d68babe17f33dc948c9cd67",
+        "validity_physical_v14.scs": "4adda2d6a864ac7ae7478c157989ea34d0901f52cf1f7b6bca2ec3238244f27f"
+      },
+      "remote_inputs_match": true,
+      "local_outputs_sha256": {
+        "full_pll_main_settled_on_tt.raw/tran.tran.tran": "93b437a6c0cd8667e710222cceb9c61b6ad4345d378a12fc1f506d8f1d41480c",
+        "full_pll_main_settled_on_tt.raw/logFile": "d1888c92dc18bb8bdf28e7a291cc252f70bae1d6946f5dbb7fd081df36a6407e",
+        "spectre.pid": "bbab4c82ccd47291e348f17620ce165588843402fd766308fe6874b5a03a6ed2",
+        "full_pll_main_settled_on_tt.raw/logStatus": "42a926786a6b7ef3d47b32a1f92c21f46261d281112af4d6126f70758cbd3983",
+        "spectre.out": "8c39c5918bfa0a633e583a667bf2e707bb1622aeda2c2c5f81d0664d035aeed2"
+      },
+      "outputs": {
+        "full_pll_main_settled_on_tt.raw/tran.tran.tran": {
+          "sha256": "93b437a6c0cd8667e710222cceb9c61b6ad4345d378a12fc1f506d8f1d41480c",
+          "bytes": 69529
+        },
+        "full_pll_main_settled_on_tt.raw/logFile": {
+          "sha256": "d1888c92dc18bb8bdf28e7a291cc252f70bae1d6946f5dbb7fd081df36a6407e",
+          "bytes": 666
+        },
+        "spectre.pid": {
+          "sha256": "bbab4c82ccd47291e348f17620ce165588843402fd766308fe6874b5a03a6ed2",
+          "bytes": 7
+        },
+        "full_pll_main_settled_on_tt.raw/logStatus": {
+          "sha256": "42a926786a6b7ef3d47b32a1f92c21f46261d281112af4d6126f70758cbd3983",
+          "bytes": 39
+        },
+        "spectre.out": {
+          "sha256": "8c39c5918bfa0a633e583a667bf2e707bb1622aeda2c2c5f81d0664d035aeed2",
+          "bytes": 15238
+        }
+      },
+      "archive": {
+        "path": "research/runs/spectre_cmos_v14_full/pllmainsettledon02/full_pll_main_settled_on_tt/interrupted_migration_outputs.tar.gz",
+        "bytes": 26293,
+        "sha256": "65b42f56660f4af9de7fccbd71dd1d12c562d9a5624ad9a31f303f104aacf942"
+      },
+      "hashes_stable_during_transfer": true,
+      "terminal_log_not_a_valid_single_process_summary": false,
+      "state_file": {
+        "collected": false,
+        "reusable": false
+      },
+      "incident": "research/ssd_migration_cancellation72.json"
+    },
+    {
+      "run": "pllrt4fineoff02",
+      "result": "research/runs/spectre_cmos_v14_full/pllrt4fineoff02/full_pll_rt4_fine_off_tt/result.json",
+      "result_sha256": "ba9333f2a5fcf26e9884e260c27fe21d68e144ba0031ac91cb40cfa95af2d8b1",
+      "case": "full_pll_rt4_fine_off_tt",
+      "time": "2026-10-05T21:42:04.076367+08:00",
+      "ok": false,
+      "integrity_valid": true,
+      "noise_measured": false,
+      "full_band_acceptance": false,
+      "errors": [
+        "Controlled SIGINT for user-required migration from home NFS to local SSD. Partial run, not a DUT or solver failure. No noise measurement."
+      ],
+      "metadata": {
+        "remote_dir": "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/092b5553",
+        "remote_id": "092b5553"
+      },
+      "initial_states": {
+        "/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full/pllrt4fineoff02_full_pll_rt4_fine_off_tt_rt4_stage15900_phase_continuous.ic": {
+          "source": "rt4_stage15900_phase_continuous.ic",
+          "sha256": "937da9941740181f7627a6ae6ab70037353c97c8425cabbfb0986f4512ddacc2",
+          "remote_hash_match": true
+        }
+      },
+      "inputs_sha256": {
+        "full_pll_rt4_fine_off_tt.scs": "d36d412e2928af3fe4553fcb110b0b50db7eb3abcd7b7dcaa45c9278ad23646c",
+        "bank_pulsetrip_v14.scs": "8d41f4865a829f5a6d203fda5fa63af0243a835d00bbfdafde737988ee1c0f20",
+        "cap_bank_switched_v4.scs": "82930a36417d5746edad5be73d95ff446cb94a046524d8eb12d6cc3a325caad0",
+        "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+        "cp_physical_v14.scs": "ea3cd7184cafd899db18d5d9286adca6c2ffb861e9af2504afd1ea9bb702cc76",
+        "cp_timing.scs": "87a42f85028580ab52cc6d08a2514e4295dc93e4be0e019f52cb55964ae50fde",
+        "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+        "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+        "fll_best128_v14.scs": "06a2f270b40c57b08b360d95e767d6d6b39a6456a789cef7c6831653608e0ef5",
+        "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+        "frequency_watchdog.scs": "63e1d92d0db21407142630dfe349b3da1afe127e3e04d712e7cf0f51c541d5f2",
+        "inductor_pi.scs": "417db0f24ee5d2a0544eda8a21f670d4b3ba5ba158422c913185ff82ef71438b",
+        "lc_core_physical_v14.scs": "8edc1b766e04d51405ffd185294fa1c7d6e7f2d2f8ef14f56753c1e84eaeb8b4",
+        "lc_vco_physical_v14.scs": "c34bae69f93d9600f602bfb7e80f56ffe051458e8984da02604eb6ef07e727ce",
+        "loop_filter_v5.scs": "827a9a8cd9d91e8bf9af5d38c691f0bfc19416980aa1e6b34eda9d0802bb9499",
+        "pll_capture_rt4bank_v14.scs": "001c6a40a24142fbc6d3aa006e233edb38810b703166af04968cff4bf8b9b3c8",
+        "pll_config.scs": "e9562e3410680ae20236c5e3a96229a0d83723e750753c4ae041ed3e5fd46622",
+        "pll_control_capture_v14.scs": "0dd7b0b2d56f9d4668a0fd51795b80b0742659eb740a0c57ef10b420daf13d86",
+        "pll_supervisor_capture_v14.scs": "f5836cf7d3106842c5f67ede615b0988057a750b42a242a11255b9fb28535bac",
+        "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+        "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+        "rt4_stage15900_phase_continuous.ic": "937da9941740181f7627a6ae6ab70037353c97c8425cabbfb0986f4512ddacc2",
+        "rt_noise_scale4_v14.scs": "839d4bdb3d8b2dc60dcdad1f3a49010f82d6cb4ff08d10325b8c5c636c65e5c6",
+        "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+        "sampler_bias_v5.scs": "fe966831e65b04ee641625abc5187748bac130ea8d68babe17f33dc948c9cd67",
+        "validity_physical_v14.scs": "4adda2d6a864ac7ae7478c157989ea34d0901f52cf1f7b6bca2ec3238244f27f"
+      },
+      "remote_inputs_match": true,
+      "local_outputs_sha256": {
+        "full_pll_rt4_fine_off_tt.raw/tran.tran.tran": "345a9187c386e9cb3a428e567f591e2edfcc986e914a35a2d7ec8f26908ca0c2",
+        "spectre.pid": "bb28d5a87d633b98cbdf0cb64bc24f8246cebd969a3da0acf4259943aef0f957",
+        "full_pll_rt4_fine_off_tt.raw/logFile": "7fb56fac68da292d3335044e8f5fb5fc4a62a292cb39b2e42a0e5d563965033e",
+        "full_pll_rt4_fine_off_tt.raw/logStatus": "e8502718df17ab5429186ba17aafa1e04a64ef1304e53bec21b5b3fdd7e78b57",
+        "spectre.out": "415ecea69ad0fb3e453674400bce000cd6dbfe623ded225626d122b2fd67e54a"
+      },
+      "outputs": {
+        "full_pll_rt4_fine_off_tt.raw/tran.tran.tran": {
+          "sha256": "345a9187c386e9cb3a428e567f591e2edfcc986e914a35a2d7ec8f26908ca0c2",
+          "bytes": 56101
+        },
+        "spectre.pid": {
+          "sha256": "bb28d5a87d633b98cbdf0cb64bc24f8246cebd969a3da0acf4259943aef0f957",
+          "bytes": 7
+        },
+        "full_pll_rt4_fine_off_tt.raw/logFile": {
+          "sha256": "7fb56fac68da292d3335044e8f5fb5fc4a62a292cb39b2e42a0e5d563965033e",
+          "bytes": 666
+        },
+        "full_pll_rt4_fine_off_tt.raw/logStatus": {
+          "sha256": "e8502718df17ab5429186ba17aafa1e04a64ef1304e53bec21b5b3fdd7e78b57",
+          "bytes": 39
+        },
+        "spectre.out": {
+          "sha256": "415ecea69ad0fb3e453674400bce000cd6dbfe623ded225626d122b2fd67e54a",
+          "bytes": 15476
+        }
+      },
+      "archive": {
+        "path": "research/runs/spectre_cmos_v14_full/pllrt4fineoff02/full_pll_rt4_fine_off_tt/interrupted_migration_outputs.tar.gz",
+        "bytes": 22549,
+        "sha256": "356678f22956e97b6ecff45466aeee9366ce25a29e1f21b1ab86fe224fcc5a9b"
+      },
+      "hashes_stable_during_transfer": true,
+      "terminal_log_not_a_valid_single_process_summary": false,
+      "state_file": {
+        "collected": false,
+        "reusable": false
+      },
+      "incident": "research/ssd_migration_cancellation72.json"
+    },
+    {
+      "run": "pllmainsettledonssd01",
+      "result": "research/runs/spectre_cmos_v14_full/pllmainsettledonssd01/full_pll_main_settled_on_tt/result.json",
+      "result_sha256": "1d9b05eb13358110127b1c26df0420424014c5ad9a38c8df614dab80c0cc4bf3",
+      "case": "full_pll_main_settled_on_tt",
+      "time": "2026-10-05T21:47:59.341459+08:00",
+      "ok": false,
+      "integrity_valid": true,
+      "noise_measured": false,
+      "full_band_acceptance": false,
+      "errors": [
+        "Controlled SIGINT for user-required correction of cwd after the Cadence startup script returned it to home. Partial run, not a DUT or solver failure. No noise measurement."
+      ],
+      "metadata": {
+        "remote_dir": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/a5415efa",
+        "remote_id": "a5415efa"
+      },
+      "initial_states": {
+        "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/pllmainsettledonssd01_full_pll_main_settled_on_tt_main_fine2200_phase_continuous.ic": {
+          "source": "main_fine2200_phase_continuous.ic",
+          "sha256": "2aa316a1a1e9801673e4842f28784f3d4b6feb2d3d3211f984cc7c78b3345cfe",
+          "remote_hash_match": true
+        }
+      },
+      "inputs_sha256": {
+        "full_pll_main_settled_on_tt.scs": "54c705d9e9cf9c7401f742a2dcf29bf0cb4c6fb1046fbc83ef4d9b5cdb90ddc9",
+        "cap_bank_switched_v4.scs": "82930a36417d5746edad5be73d95ff446cb94a046524d8eb12d6cc3a325caad0",
+        "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+        "cmos_even_bank_acq_v14.scs": "34a80ae697397ff60cc61ba9cfc51513716c39afd3df68f4ea0a9c950ca0ff6f",
+        "cp_physical_v14.scs": "ea3cd7184cafd899db18d5d9286adca6c2ffb861e9af2504afd1ea9bb702cc76",
+        "cp_timing.scs": "87a42f85028580ab52cc6d08a2514e4295dc93e4be0e019f52cb55964ae50fde",
+        "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+        "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+        "fll_best128_v14.scs": "06a2f270b40c57b08b360d95e767d6d6b39a6456a789cef7c6831653608e0ef5",
+        "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+        "frequency_watchdog.scs": "63e1d92d0db21407142630dfe349b3da1afe127e3e04d712e7cf0f51c541d5f2",
+        "inductor_pi.scs": "417db0f24ee5d2a0544eda8a21f670d4b3ba5ba158422c913185ff82ef71438b",
+        "lc_core_physical_v14.scs": "8edc1b766e04d51405ffd185294fa1c7d6e7f2d2f8ef14f56753c1e84eaeb8b4",
+        "lc_vco_physical_v14.scs": "c34bae69f93d9600f602bfb7e80f56ffe051458e8984da02604eb6ef07e727ce",
+        "loop_filter_v5.scs": "827a9a8cd9d91e8bf9af5d38c691f0bfc19416980aa1e6b34eda9d0802bb9499",
+        "main_fine2200_phase_continuous.ic": "2aa316a1a1e9801673e4842f28784f3d4b6feb2d3d3211f984cc7c78b3345cfe",
+        "pll_capture_v14.scs": "ebab43f8233c8b8cc7bdef02fba6a1718a070e8f886f3b522449612feb5e6139",
+        "pll_config.scs": "e9562e3410680ae20236c5e3a96229a0d83723e750753c4ae041ed3e5fd46622",
+        "pll_control_capture_v14.scs": "0dd7b0b2d56f9d4668a0fd51795b80b0742659eb740a0c57ef10b420daf13d86",
+        "pll_supervisor_capture_v14.scs": "f5836cf7d3106842c5f67ede615b0988057a750b42a242a11255b9fb28535bac",
+        "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+        "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+        "rt_light24s12_out083_v14.scs": "06c7d7b838a666815504f42ebf8d2a79aa9f6031c5af2212880d642fad3f8836",
+        "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+        "sampler_bias_v5.scs": "fe966831e65b04ee641625abc5187748bac130ea8d68babe17f33dc948c9cd67",
+        "validity_physical_v14.scs": "4adda2d6a864ac7ae7478c157989ea34d0901f52cf1f7b6bca2ec3238244f27f"
+      },
+      "remote_inputs_match": true,
+      "local_outputs_sha256": {
+        "full_pll_main_settled_on_tt.raw/tran.tran.tran": "eb2b6969028c5eb0b7f6b6f3767f1c3a6573ce6ec01180b97b173a1a65a697eb",
+        "full_pll_main_settled_on_tt.raw/logFile": "d0b6685f3ffc24954873c64a3a10dd08d4575c650e7f33c9ece2a396557a3134",
+        "spectre.pid": "bfb45edd741bd41f4a19a978e7fc9e14ba63ebb25556e17de8dc9638b973d66e",
+        "full_pll_main_settled_on_tt.raw/logStatus": "c08126c4908d084f50b452985f0d3838ea014ba79efa0acea0eb04b8479d4686",
+        "spectre.out": "a3971aac92d2aff0d3431b3c05faa4c24e154a85b6d5d082b6882bd941b9b356"
+      },
+      "outputs": {
+        "full_pll_main_settled_on_tt.raw/tran.tran.tran": {
+          "sha256": "eb2b6969028c5eb0b7f6b6f3767f1c3a6573ce6ec01180b97b173a1a65a697eb",
+          "bytes": 21313
+        },
+        "full_pll_main_settled_on_tt.raw/logFile": {
+          "sha256": "d0b6685f3ffc24954873c64a3a10dd08d4575c650e7f33c9ece2a396557a3134",
+          "bytes": 666
+        },
+        "spectre.pid": {
+          "sha256": "bfb45edd741bd41f4a19a978e7fc9e14ba63ebb25556e17de8dc9638b973d66e",
+          "bytes": 7
+        },
+        "full_pll_main_settled_on_tt.raw/logStatus": {
+          "sha256": "c08126c4908d084f50b452985f0d3838ea014ba79efa0acea0eb04b8479d4686",
+          "bytes": 39
+        },
+        "spectre.out": {
+          "sha256": "a3971aac92d2aff0d3431b3c05faa4c24e154a85b6d5d082b6882bd941b9b356",
+          "bytes": 15201
+        }
+      },
+      "archive": {
+        "path": "research/runs/spectre_cmos_v14_full/pllmainsettledonssd01/full_pll_main_settled_on_tt/interrupted_migration_outputs.tar.gz",
+        "bytes": 11894,
+        "sha256": "761e4b76a46a41c114d94481a2f492db1a0862b4e859068f089d150f36fe1c96"
+      },
+      "hashes_stable_during_transfer": true,
+      "terminal_log_not_a_valid_single_process_summary": false,
+      "state_file": {
+        "collected": false,
+        "reusable": false
+      },
+      "incident": "research/ssd_cwd_retry_cancellation72.json"
+    },
+    {
+      "run": "pllrt4fineoffssd01",
+      "result": "research/runs/spectre_cmos_v14_full/pllrt4fineoffssd01/full_pll_rt4_fine_off_tt/result.json",
+      "result_sha256": "f00f8bc750be72195cd329d5200a7ab8b88a59fc60f2b4c94dea41c758a01a03",
+      "case": "full_pll_rt4_fine_off_tt",
+      "time": "2026-10-05T21:48:03.242080+08:00",
+      "ok": false,
+      "integrity_valid": true,
+      "noise_measured": false,
+      "full_band_acceptance": false,
+      "errors": [
+        "Controlled SIGINT for user-required correction of cwd after the Cadence startup script returned it to home. Partial run, not a DUT or solver failure. No noise measurement."
+      ],
+      "metadata": {
+        "remote_dir": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/57c44667",
+        "remote_id": "57c44667"
+      },
+      "initial_states": {
+        "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/pllrt4fineoffssd01_full_pll_rt4_fine_off_tt_rt4_stage15900_phase_continuous.ic": {
+          "source": "rt4_stage15900_phase_continuous.ic",
+          "sha256": "937da9941740181f7627a6ae6ab70037353c97c8425cabbfb0986f4512ddacc2",
+          "remote_hash_match": true
+        }
+      },
+      "inputs_sha256": {
+        "full_pll_rt4_fine_off_tt.scs": "4b07f7a94c0076552bb4909e8ce46bd0b4b77d6543808f97045939a6b71abb72",
+        "bank_pulsetrip_v14.scs": "8d41f4865a829f5a6d203fda5fa63af0243a835d00bbfdafde737988ee1c0f20",
+        "cap_bank_switched_v4.scs": "82930a36417d5746edad5be73d95ff446cb94a046524d8eb12d6cc3a325caad0",
+        "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+        "cp_physical_v14.scs": "ea3cd7184cafd899db18d5d9286adca6c2ffb861e9af2504afd1ea9bb702cc76",
+        "cp_timing.scs": "87a42f85028580ab52cc6d08a2514e4295dc93e4be0e019f52cb55964ae50fde",
+        "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+        "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+        "fll_best128_v14.scs": "06a2f270b40c57b08b360d95e767d6d6b39a6456a789cef7c6831653608e0ef5",
+        "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+        "frequency_watchdog.scs": "63e1d92d0db21407142630dfe349b3da1afe127e3e04d712e7cf0f51c541d5f2",
+        "inductor_pi.scs": "417db0f24ee5d2a0544eda8a21f670d4b3ba5ba158422c913185ff82ef71438b",
+        "lc_core_physical_v14.scs": "8edc1b766e04d51405ffd185294fa1c7d6e7f2d2f8ef14f56753c1e84eaeb8b4",
+        "lc_vco_physical_v14.scs": "c34bae69f93d9600f602bfb7e80f56ffe051458e8984da02604eb6ef07e727ce",
+        "loop_filter_v5.scs": "827a9a8cd9d91e8bf9af5d38c691f0bfc19416980aa1e6b34eda9d0802bb9499",
+        "pll_capture_rt4bank_v14.scs": "001c6a40a24142fbc6d3aa006e233edb38810b703166af04968cff4bf8b9b3c8",
+        "pll_config.scs": "e9562e3410680ae20236c5e3a96229a0d83723e750753c4ae041ed3e5fd46622",
+        "pll_control_capture_v14.scs": "0dd7b0b2d56f9d4668a0fd51795b80b0742659eb740a0c57ef10b420daf13d86",
+        "pll_supervisor_capture_v14.scs": "f5836cf7d3106842c5f67ede615b0988057a750b42a242a11255b9fb28535bac",
+        "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+        "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+        "rt4_stage15900_phase_continuous.ic": "937da9941740181f7627a6ae6ab70037353c97c8425cabbfb0986f4512ddacc2",
+        "rt_noise_scale4_v14.scs": "839d4bdb3d8b2dc60dcdad1f3a49010f82d6cb4ff08d10325b8c5c636c65e5c6",
+        "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+        "sampler_bias_v5.scs": "fe966831e65b04ee641625abc5187748bac130ea8d68babe17f33dc948c9cd67",
+        "validity_physical_v14.scs": "4adda2d6a864ac7ae7478c157989ea34d0901f52cf1f7b6bca2ec3238244f27f"
+      },
+      "remote_inputs_match": true,
+      "local_outputs_sha256": {
+        "full_pll_rt4_fine_off_tt.raw/tran.tran.tran": "d87ebfeefb2d2f328b39bc0ea40f96a66ebf49bc4cb1377e2aabbacf04c4e23b",
+        "spectre.pid": "7664f11df4de176d81c527c54a82095c33a4152de9348680d3532595d73fa495",
+        "full_pll_rt4_fine_off_tt.raw/logFile": "28d6ec43a70eab2644097097298bf6384052d5ce0624e73d57d87f38022982aa",
+        "full_pll_rt4_fine_off_tt.raw/logStatus": "6b8b90c6c211810a058cc8e94ae5a9fcb3bd32517cd2c565c34bb6f238585e12",
+        "spectre.out": "52e1688e60233a1b759b7a433fbd7a80317dbbb4e1ab6f6c876739eaaeaa9295"
+      },
+      "outputs": {
+        "full_pll_rt4_fine_off_tt.raw/tran.tran.tran": {
+          "sha256": "d87ebfeefb2d2f328b39bc0ea40f96a66ebf49bc4cb1377e2aabbacf04c4e23b",
+          "bytes": 18157
+        },
+        "spectre.pid": {
+          "sha256": "7664f11df4de176d81c527c54a82095c33a4152de9348680d3532595d73fa495",
+          "bytes": 7
+        },
+        "full_pll_rt4_fine_off_tt.raw/logFile": {
+          "sha256": "28d6ec43a70eab2644097097298bf6384052d5ce0624e73d57d87f38022982aa",
+          "bytes": 666
+        },
+        "full_pll_rt4_fine_off_tt.raw/logStatus": {
+          "sha256": "6b8b90c6c211810a058cc8e94ae5a9fcb3bd32517cd2c565c34bb6f238585e12",
+          "bytes": 39
+        },
+        "spectre.out": {
+          "sha256": "52e1688e60233a1b759b7a433fbd7a80317dbbb4e1ab6f6c876739eaaeaa9295",
+          "bytes": 15171
+        }
+      },
+      "archive": {
+        "path": "research/runs/spectre_cmos_v14_full/pllrt4fineoffssd01/full_pll_rt4_fine_off_tt/interrupted_migration_outputs.tar.gz",
+        "bytes": 10871,
+        "sha256": "7c78e49d611b77d20f3fcbb4810f7147747abae53162e5ad28764d7f2dc78e70"
+      },
+      "hashes_stable_during_transfer": true,
+      "terminal_log_not_a_valid_single_process_summary": false,
+      "state_file": {
+        "collected": false,
+        "reusable": false
+      },
+      "incident": "research/ssd_cwd_retry_cancellation72.json"
+    }
+  ],
+  "sources": {
+    "ssd_location_audit72.json": {
+      "path": "research/ssd_location_audit72.json",
+      "sha256": "3c2103585af2f1a6909f8008f1d0f0ee87d6ecaea57e2285ca91064943cc10b4"
+    },
+    "ssd_root_preflight72.json": {
+      "path": "research/ssd_root_preflight72.json",
+      "sha256": "ac7d7fbb27d16a60018f879c1efef36ae3ae8158f98164d1fea929b1cbd54ed8"
+    },
+    "ssd_migration_cancellation72.json": {
+      "path": "research/ssd_migration_cancellation72.json",
+      "sha256": "64906e7f58aa38b1f2447227398da0d6de7e40af4f203b647f4edcbb396fda62"
+    },
+    "ssd_migration_recovery72.json": {
+      "path": "research/ssd_migration_recovery72.json",
+      "sha256": "8a5182d6c645dcc6cd856c9b007480ec56699c76d0545b4fa8cf5782ff63bb5f"
+    },
+    "ssd_cwd_retry_cancellation72.json": {
+      "path": "research/ssd_cwd_retry_cancellation72.json",
+      "sha256": "e99465895e32ab2893dd2fec901cacceeec1a288574832a344e9a53a15fd81b3"
+    },
+    "ssd_cwd_retry_recovery72.json": {
+      "path": "research/ssd_cwd_retry_recovery72.json",
+      "sha256": "a4ec59b29535408dd92f0be20cbef9d0181767a6b566ed3435815be9c248dad8"
+    },
+    "ssd_partial_runs_review72.json": {
+      "path": "research/ssd_partial_runs_review72.json",
+      "sha256": "db9660b357561de2743b082a5ca7dbf9ee3e38d712b536306dea992e86dda27f"
+    },
+    "ssd_cwd_pair_launch72.json": {
+      "path": "research/ssd_cwd_pair_launch72.json",
+      "sha256": "e7c9b02c7209f55ce9ed4592bc727b0e5f510e85d986339b16c6ee1d06f34763"
+    },
+    "ssd_launch_audit72.json": {
+      "path": "research/ssd_launch_audit72.json",
+      "sha256": "7d7deb569a96eb61df6f7cd32365fbc1d61ddabd5753d37de8d6c8ec694d45b2"
+    }
+  },
+  "implementation": {
+    "research/watch_precision_bridge.py": "aab1c5572de85cf96d42524d9f1efb8d21488e5481b96df49b7ea8854ae30200",
+    "research/run_main_strict_noise_pipeline.py": "8d997d088754bbecbc434d06a31a8a09c1db2ccaf5b5683c18f542a9e3ccd841",
+    "research/snapshot_owned_v14_jobs.py": "59da928823db4bdf542ff69cf2a4ce519269a4eb4a5bf9b01a15cc2d37a61f22",
+    "share/deliverables/integration/cmos_v14_full/run_spectre.py": "3099f7cc190118a8d74cd2b60ccb2491724a195540e3a0cbe614878c867296e4",
+    "share/deliverables/integration/cmos_v14_full/single_launch_transport.py": "f2b08724b6a5be96c0d7c4388f9a8add43ebdc579737f7d43b0e65688cabd375",
+    "share/deliverables/integration/cmos_v14_full/remote_paths.py": "c892a310f9072735816962cc9dec885af9129f281a137a82997da374c3102024"
+  },
+  "all_active_jobs_on_ssd": true,
+  "all_active_jobs_cwd_on_ssd": true,
+  "full_pll_acceptance": false,
+  "integrated_10khz_jitter_fs": null
+}

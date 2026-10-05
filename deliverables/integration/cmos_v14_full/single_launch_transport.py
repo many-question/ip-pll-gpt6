@@ -12,8 +12,7 @@ import shlex
 import subprocess
 from virtuoso_bridge.spectre.runner import SpectreSimulator, SSHRunner
 from virtuoso_bridge.transport.ssh import CommandResult
-
-REMOTE = '/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full'
+from remote_paths import REMOTE
 
 
 def claim_command(command):
@@ -27,9 +26,25 @@ def claim_command(command):
         raise ValueError('Unexpected launch path or PID protocol')
     directory = matches[0]
     claim = shlex.quote(directory + '/.launch_claim')
-    return ('if ! mkdir ' + claim + '; then\n'
+    if re.search(r'\bspectre\s+-64\b', command):
+        # The Cadence startup cshrc changes cwd to home. Set it AFTER sourcing.
+        match = re.search(r'csh -c (.+?) & SPID=', command)
+        if not match:
+            raise ValueError('Missing csh launch body')
+        bodies = shlex.split(match[1])
+        if len(bodies) != 1 or bodies[0].count('; spectre -64 ') != 1:
+            raise ValueError('Unexpected Cadence launch body')
+        body = bodies[0].replace('; spectre -64 ',
+            '; cd ' + shlex.quote(directory) + ' && spectre -64 ', 1)
+        command = command[:match.start(1)] + shlex.quote(body) + command[match.end(1):]
+    return ('cd ' + shlex.quote(directory) + ' || exit 74\n'
+            '[ "$(pwd -P)" = ' + shlex.quote(directory) + ' ] || exit 74\n'
+            '[ "$(stat -f -c %T .)" = xfs ] || exit 74\n'
+            'if ! mkdir ' + claim + '; then\n'
             '  echo "PROJECT_LAUNCH_ALREADY_CLAIMED: inspect existing run; never replay" >&2\n'
-            '  exit 73\nfi\n' + command + '\n'
+            '  exit 73\nfi\n'
+            'mkdir ' + shlex.quote(directory + '/tmp') + ' || exit 74\n'
+            'TMPDIR=' + shlex.quote(directory + '/tmp') + '; export TMPDIR\n' + command + '\n'
             'project_rc=$?\nprintf "%s\\n" "$project_rc" > ' + claim + '/exit_code\n'
             'exit "$project_rc"\n')
 

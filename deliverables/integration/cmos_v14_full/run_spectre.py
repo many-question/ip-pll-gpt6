@@ -17,6 +17,7 @@ from pathlib import Path, PurePosixPath
 import numpy as np
 from virtuoso_bridge.spectre.runner import load_vb_env,spectre_mode_args
 from single_launch_transport import ProjectSpectreSimulator as SpectreSimulator
+from remote_paths import REMOTE
 from virtuoso_bridge.models import ExecutionStatus
 from virtuoso_bridge.spectre.parsers import parse_psf_ascii_directory
 from transient_diagnostics import effective as transient_effective, recovery as transient_recovery
@@ -25,7 +26,6 @@ HERE=Path(__file__).resolve().parent
 DELIVERY=HERE.parents[2]
 ROOT=DELIVERY.parent if DELIVERY.name=='share' and (DELIVERY.parent/'AGENTS.md').exists() else DELIVERY
 BLOCKS=HERE.parents[1]/'blocks/behavioral_va'
-REMOTE='/home/jielu/TSMC180/MP/IP-PLL-GPT6/simulation/cmos_v14_full'
 TX=HERE.parents[1]/'blocks/output_v9'
 
 def main():
@@ -262,6 +262,7 @@ def main():
         # Persist recovery provenance before the potentially hours-long SSH call.
         # The local client may disappear while the remote simulator keeps running.
         launch=dict(case=case,time=datetime.datetime.now().astimezone().isoformat(),
+            remote_work_root=REMOTE,
             launch_policy=dict(transport_attempts=1,permanent_atomic_directory_claim=True,
                 implementation_sha256=hashlib.sha256((HERE/'single_launch_transport.py').read_bytes()).hexdigest()),
             initial_states=initial_states,native_state=native_state_info,periodic_state=periodic_state_info,

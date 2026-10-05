@@ -1,4 +1,4 @@
-本次快照：[第71次汇报](../reports/2026-10-05T2132.yaml)。发现并修复SSH重试导致的重复Spectre写入；受损结果已回收隔离，两项原条件验证已在新目录重新启动，全PLL抖动仍未知。
+本次快照：[第72次汇报](../reports/2026-10-05T2151.yaml)。已按用户要求把完整PLL仿真迁至服务器本地SSD；实际进程cwd、TMPDIR及项目写入文件均核验通过，仍为2项任务共14线程。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)
