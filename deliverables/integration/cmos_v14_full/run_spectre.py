@@ -19,7 +19,11 @@ from virtuoso_bridge.spectre.runner import load_vb_env,spectre_mode_args
 from single_launch_transport import ProjectSpectreSimulator as SpectreSimulator
 from remote_paths import REMOTE
 from virtuoso_bridge.models import ExecutionStatus
-from virtuoso_bridge.spectre.parsers import parse_psf_ascii_directory
+from stream_real_transient import parse_project_directory as parse_psf_ascii_directory
+import virtuoso_bridge.spectre.runner as bridge_runner
+# Process-local parser binding. The installed bridge and launch transport are unchanged.
+# Large pure transients use compact numeric buffers instead of whole-file text/lists.
+bridge_runner.parse_psf_ascii_directory = parse_psf_ascii_directory
 from transient_diagnostics import effective as transient_effective, recovery as transient_recovery
 
 HERE=Path(__file__).resolve().parent
@@ -263,6 +267,7 @@ def main():
         # The local client may disappear while the remote simulator keeps running.
         launch=dict(case=case,time=datetime.datetime.now().astimezone().isoformat(),
             remote_work_root=REMOTE,
+            result_parser_sha256=hashlib.sha256((HERE/'stream_real_transient.py').read_bytes()).hexdigest(),
             launch_policy=dict(transport_attempts=1,permanent_atomic_directory_claim=True,
                 implementation_sha256=hashlib.sha256((HERE/'single_launch_transport.py').read_bytes()).hexdigest()),
             initial_states=initial_states,native_state=native_state_info,periodic_state=periodic_state_info,
