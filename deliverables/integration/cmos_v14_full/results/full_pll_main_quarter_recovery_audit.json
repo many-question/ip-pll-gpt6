@@ -1,0 +1,191 @@
+{
+  "scope": "Audit the completed original-V14 0.25 ps quiet record and settling windows.",
+  "time": "2026-10-06T19:59:08.244227+08:00",
+  "run": "pllmainquarteroffssd01",
+  "case": "full_pll_main_quarter_off_tt",
+  "condition": "Original complete V14, all actual transistor FLL/control/watchdog/bias,TT27/1.2V/24MHz/K41/M4/10fF/Q5RLC/CF10; original output chain. Ideal external reference and supply.",
+  "source_result": "research/runs/spectre_cmos_v14_full/pllmainquarteroffssd01/full_pll_main_quarter_off_tt/result.json",
+  "source_result_sha256": "6e309d52282265cc0275672901c9c34dbb62aaf15c519eb437ec00d1a55c3402",
+  "protocol_sha256": "eaaed967dbdd4b19d7c6b5b950f05d79da72181611ef8405d61db2af66d0529c",
+  "validation_at_audit_sha256": "99e1a48d09a6cc5559aed24a7e4b449ce7c1ac78578ccecf6faa07e401238380",
+  "remote_hash_audit": "research/main_quarter_remote_audit76.json",
+  "remote_hash_audit_sha256": "b50ba7de4504e09e6cf5e5dcfbb23a7fdad2da164d8d7e9d4b5767b493d288ab",
+  "input_count": 26,
+  "all_inputs_match": true,
+  "outputs": {
+    "spectre.out": {
+      "bytes": 15224,
+      "sha256": "67d296251fa64431027644c93949f31ea6e5032d14e4727e8575c89ad7a16191"
+    },
+    "final_state.ic": {
+      "bytes": 279872,
+      "sha256": "9c9b17eddbe39eb679afe00e7ba0e34cbce704356f36cb2c7c33d41e0167ec72"
+    },
+    "full_pll_main_quarter_off_tt.raw/tran.tran.tran": {
+      "bytes": 4033400313,
+      "sha256": "79de7126cb9b4f795ae1e61a0dc1f56385868b8853cb745a2f8de21e86108727"
+    }
+  },
+  "remote_local_raw_log_state_match": true,
+  "cache_sha256": "dfc6735ff4921a727e4cd552b4fcb5b7a402d50fea7b906b8a915e13776266b8",
+  "independent_parser_samples": 5102505,
+  "independent_parser_max_differences": {
+    "time": 0.0,
+    "out": 0.0,
+    "XP.vp": 0.0,
+    "XP.vn": 0.0,
+    "XP.refb": 0.0,
+    "qualified": 0.0,
+    "XP.XC.acquired": 0.0,
+    "XP.XC.phase_held": 0.0,
+    "XP.restart": 0.0,
+    "XP.ctrl": 0.0,
+    "XP.vc1": 0.0
+  },
+  "duplicate_records": 0,
+  "measurement_window_ranges": {
+    "qualified": {
+      "min_v": 1.197759635083164,
+      "max_v": 1.204128949830553
+    },
+    "XP.XC.acquired": {
+      "min_v": 1.186027881556266,
+      "max_v": 1.214953683679997
+    },
+    "XP.XC.phase_held": {
+      "min_v": 1.190702155139017,
+      "max_v": 1.213846891495008
+    },
+    "XP.restart": {
+      "min_v": -0.0008003581817544245,
+      "max_v": 0.002725069630619142
+    },
+    "XP.ctrl": {
+      "min_v": 0.6253450319379332,
+      "max_v": 0.6895142411658134
+    },
+    "XP.vc1": {
+      "min_v": 0.651332163124005,
+      "max_v": 0.651619359569711
+    }
+  },
+  "settling_windows": [
+    {
+      "window_us": [
+        1.0,
+        1.5
+      ],
+      "reference_samples": 12,
+      "phase_pp_rad": 0.007093620225255504,
+      "phase_drift_rad_per_us": -0.012024910776877114,
+      "mean_output_mhz": 983.9992714913826,
+      "control_slope_mv_per_us": 0.029144627926725217,
+      "filter_slope_mv_per_us": -0.3487046671154923
+    },
+    {
+      "window_us": [
+        1.2,
+        2.2
+      ],
+      "reference_samples": 24,
+      "phase_pp_rad": 0.007060303742847496,
+      "phase_drift_rad_per_us": -0.004664553272434024,
+      "mean_output_mhz": 983.9999073346659,
+      "control_slope_mv_per_us": -0.01149411988482381,
+      "filter_slope_mv_per_us": -0.19410201468547808
+    },
+    {
+      "window_us": [
+        1.5,
+        2.0
+      ],
+      "reference_samples": 12,
+      "phase_pp_rad": 0.0024383557958777002,
+      "phase_drift_rad_per_us": -0.0031011422162847005,
+      "mean_output_mhz": 983.9997569470461,
+      "control_slope_mv_per_us": -0.13760905399727083,
+      "filter_slope_mv_per_us": -0.19084935868785546
+    },
+    {
+      "window_us": [
+        1.7,
+        2.2
+      ],
+      "reference_samples": 12,
+      "phase_pp_rad": 0.00471112020563802,
+      "phase_drift_rad_per_us": -0.0067477562315201,
+      "mean_output_mhz": 984.0000351642116,
+      "control_slope_mv_per_us": 0.12903511763887252,
+      "filter_slope_mv_per_us": -0.1456233839073794
+    }
+  ],
+  "final_state_entries": 7859,
+  "all_source_state_keys_preserved": true,
+  "final_state_saved_voltage_differences": {
+    "out": 2.949029909160572e-17,
+    "XP.vp": 0.0,
+    "XP.vn": 4.440892098500626e-16,
+    "XP.refb": 4.0657581468206416e-20,
+    "qualified": 1.9984014443252818e-15,
+    "XP.XC.acquired": 3.9968028886505635e-15,
+    "XP.XC.phase_held": 4.884981308350689e-15,
+    "XP.restart": 0.0,
+    "XP.ctrl": 4.440892098500626e-16,
+    "XP.vc1": 4.440892098500626e-16
+  },
+  "trapezoidal_ringing_reported": true,
+  "ringing_nodes": [
+    "XP.XC.XC.X1.XS.XN.x",
+    "XP.XC.XF.X57.XS.XN.x"
+  ],
+  "quiet_validation": {
+    "run": "pllmainquarteroffssd01",
+    "case": "full_pll_main_quarter_off_tt",
+    "noise_enabled": false,
+    "tb_sha256": "8a65a976352d959c6b8dab3e700af7efbf4a1eccc31fe285b988d75eb4d9ed43",
+    "completed": true,
+    "source_result": "research/runs/spectre_cmos_v14_full/pllmainquarteroffssd01/full_pll_main_quarter_off_tt/result.json",
+    "source_sha256": "6e309d52282265cc0275672901c9c34dbb62aaf15c519eb437ec00d1a55c3402",
+    "recovery": {
+      "newton_failures_reported": 0,
+      "skipped_breakpoints_reported": 0,
+      "lte_relaxations_reported": 0,
+      "minimum_step_warnings_reported": 0,
+      "numerically_clean": true,
+      "counts_may_be_suppressed": false
+    },
+    "effective": {
+      "reltol": 1e-06,
+      "abstol(V)": 1e-09,
+      "abstol(I)": 1e-12,
+      "method": "traponly",
+      "maxstep": 2.5e-13,
+      "noisefmax": 160000000000.0,
+      "noisefmin": 1000000.0,
+      "trannoisemethod": "default"
+    },
+    "log_sha256": "67d296251fa64431027644c93949f31ea6e5032d14e4727e8575c89ad7a16191",
+    "cache_sha256": "dfc6735ff4921a727e4cd552b4fcb5b7a402d50fea7b906b8a915e13776266b8",
+    "initial_maximum_voltage_difference_v": 0.0,
+    "compared_nodes": 19,
+    "status_stable": true,
+    "stationarity": {
+      "samples": 24,
+      "phase_pp_rad": 0.007060303742847496,
+      "phase_drift_rad_per_us": -0.004664553272143393,
+      "maximum_rf_cycles_error": 0.0005241054109319521,
+      "maximum_out_cycles_error": 0.00022333000367780187,
+      "mean_output_mhz": 983.9999073346659,
+      "passed": true
+    }
+  },
+  "recovery_audit_passed": true,
+  "full_pll_acceptance": false,
+  "integrated_10khz_jitter_fs": null,
+  "limitations": [
+    "Recovery audit does not override the quiet stationarity gate.",
+    "Shorter settling windows are diagnostic only; the complete last 1us gate remains unchanged.",
+    "Trapezoidal ringing notices require numerical convergence checks; absence of Newton/LTE recovery alone is insufficient.",
+    "All observations belong to original V14 at the stated condition; they are not RT4 or full PVT/noise acceptance."
+  ]
+}

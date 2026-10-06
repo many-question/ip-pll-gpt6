@@ -1,4 +1,4 @@
-本次快照：[第75次汇报](../reports/2026-10-06T1857.yaml)。RT4候选完整晶体管PLL配对噪声得到100.669fs高偏移诊断值；全带仍未知，原版与RT4各自继续0.25ps步长收敛验证。
+本次快照：[第76次汇报](../reports/2026-10-06T2002.yaml)。原版V14的0.25ps完整quiet已通过回收、初始化和末1µs稳态核验，既有流水线自动启动配对噪声；数值收敛及全带抖动仍未验收。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

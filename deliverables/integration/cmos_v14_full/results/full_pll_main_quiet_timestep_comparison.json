@@ -1,0 +1,72 @@
+{
+  "scope": "Compare original V14 noiseless trajectories at 0.5 ps and 0.25 ps.\n\nEdge differences are deterministic numerical sensitivity, never random jitter.\nNo fit, trend subtraction, or spur notch is applied to the edge differences.\n",
+  "time": "2026-10-06T20:00:19.446537+08:00",
+  "condition": "Original complete V14, all actual transistor FLL/control/watchdog/bias,TT27/1.2V/24MHz/K41/M4/10fF/Q5RLC/CF10; original output chain. Ideal external reference and supply.",
+  "protocol_sha256": [
+    "3f593fe1c0120841c94c286f5431f29f0ef690a47592d7797096594fc2a3456d",
+    "eaaed967dbdd4b19d7c6b5b950f05d79da72181611ef8405d61db2af66d0529c"
+  ],
+  "same_dut_state_reference_and_tolerances": true,
+  "source_tb_diff_only_maxstep": true,
+  "baseline": {
+    "source_result": "research/runs/spectre_cmos_v14_full/pllmainsettledoff01/full_pll_main_settled_off_tt/result.json",
+    "source_result_sha256": "068acb65e2894be57275688b6fced6a46e81e5e824c5b093493f3f05d7a90690",
+    "cache_sha256": "0836ebaecb71a7fe3bef5dd5f6207412602b2bececd039228329bb790c0166f0",
+    "stationarity": {
+      "samples": 24,
+      "phase_pp_rad": 0.005202581582691268,
+      "phase_drift_rad_per_us": -0.0019094129136282435,
+      "maximum_rf_cycles_error": 0.000512013886236673,
+      "maximum_out_cycles_error": 0.00022049804556445451,
+      "mean_output_mhz": 984.0000203473571,
+      "passed": true
+    }
+  },
+  "refined": {
+    "source_result": "research/runs/spectre_cmos_v14_full/pllmainquarteroffssd01/full_pll_main_quarter_off_tt/result.json",
+    "source_result_sha256": "6e309d52282265cc0275672901c9c34dbb62aaf15c519eb437ec00d1a55c3402",
+    "cache_sha256": "dfc6735ff4921a727e4cd552b4fcb5b7a402d50fea7b906b8a915e13776266b8",
+    "stationarity": {
+      "samples": 24,
+      "phase_pp_rad": 0.007060303742847496,
+      "phase_drift_rad_per_us": -0.004664553272143393,
+      "maximum_rf_cycles_error": 0.0005241054109319521,
+      "maximum_out_cycles_error": 0.00022333000367780187,
+      "mean_output_mhz": 983.9999073346659,
+      "passed": true
+    }
+  },
+  "recovery_audit_sha256": "feda16f8cc87146acc8bb81b485eb27acdd7d2ea72a0fd72a2bcd5aba49523a3",
+  "deterministic_edge_sensitivity": {
+    "edge_count": 1024,
+    "edge_threshold_v": 0.6,
+    "difference_order": "0.25 ps minus 0.5 ps, matched rising-edge ordinal",
+    "mean_edge_difference_ps": -0.08764274512064352,
+    "peak_to_peak_difference_ps": 0.13670355071800977,
+    "maximum_absolute_difference_ps": 0.17410716660439582,
+    "mean_removed_difference_rms_fs": 38.38146320802396,
+    "fft_bin_width_hz": 960937.5,
+    "selected_bin_centers_hz": [
+      5765625.0,
+      492000000.0
+    ],
+    "effective_bin_coverage_hz": [
+      5285156.25,
+      492000000.0
+    ],
+    "band_limited_deterministic_difference_rms_fs": 13.01590090612296,
+    "parseval_relative_error": 0.0,
+    "random_jitter": false
+  },
+  "numerical_convergence_established": false,
+  "full_pll_acceptance": false,
+  "integrated_10khz_jitter_fs": null,
+  "limitations": [
+    "Both quiet records pass their complete last 1 us stationarity gates; this does not establish numerical convergence.",
+    "The 0.25 ps log contains internal trapezoidal ringing; integration-method and tolerance checks remain open.",
+    "Quiet-quiet differences include deterministic settling and numerical changes. They are not noise-on/quiet differences or a measured noise floor.",
+    "Effective band denotes selected-bin edges, consistent with the existing protocol; the first selected bin center is 5.765625 MHz, not a directly resolved 5 MHz sample.",
+    "The 0.25 ps noise run must be paired with its own quiet record. Same seed does not ensure the same adaptive stochastic realization.",
+    "No full-band jitter, independent-seed, noise-bandwidth, PVT or duration acceptance follows from this comparison."
+  ]
+}

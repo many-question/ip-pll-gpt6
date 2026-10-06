@@ -1,0 +1,437 @@
+{
+  "time": "2026-10-06T20:02:17+08:00",
+  "scope": "Observed automatic gated activation; no new dispatch in this audit.",
+  "source_live_audit_sha256": "575960c664c034decb26e21acf4e7ca3a078236cd17e11e471eb33f32e581f01",
+  "pipeline_and_guard_states": {
+    "main_quarter_noise_pipeline": {
+      "scope": "Dispatch original full-PLL noise only after its quiet validation succeeds.",
+      "state": "running_noise",
+      "protocol_sha256": "eaaed967dbdd4b19d7c6b5b950f05d79da72181611ef8405d61db2af66d0529c",
+      "noise_wall_timeout_s": 172800,
+      "updated": "2026-10-06T19:51:03.807131+08:00",
+      "quiet_checks": {
+        "completed": true,
+        "clean": true,
+        "status": true,
+        "initialization": true,
+        "stationary": true
+      },
+      "resources_before": {
+        "time": "2026-10-06T19:51:03.787236+08:00",
+        "jobs": [
+          {
+            "threads": 7,
+            "pid": 19151,
+            "netlist": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/full_pll_rt4_quarter_off_tt.scs"
+          }
+        ],
+        "requested_threads": 7
+      }
+    },
+    "rt4_quarter_noise_pipeline": {
+      "scope": "Dispatch original full-PLL noise only after its quiet validation succeeds.",
+      "state": "waiting_quiet",
+      "protocol_sha256": "7a9023dffc673814023586c3d8cd702a4dc5419d67fc78e98db3a2f9b7655acc",
+      "noise_wall_timeout_s": 172800,
+      "updated": "2026-10-06T18:55:56.691662+08:00"
+    },
+    "main_quarter_guard": {
+      "scope": "Bounded guard for the explicitly named precision-bridge runs only.",
+      "state": "monitoring",
+      "events": [],
+      "resumed": true,
+      "jobs": [
+        {
+          "run": "pllmainquarteroffssd01",
+          "case": "full_pll_main_quarter_off_tt",
+          "state": "collected",
+          "ok": true
+        },
+        {
+          "run": "pllmainquarteronssd01",
+          "case": "full_pll_main_quarter_on_tt",
+          "state": "running_or_collecting",
+          "remote_dir": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/a6817745",
+          "last": {
+            "time": 1.040000000000001e-07,
+            "XP.restart": 2.860131454918023e-07,
+            "XP.ctrl": 0.6321258561643776,
+            "XP.XC.phase_held": 1.200000068796771,
+            "qualified": 1.200000061939877,
+            "frequency_good": 1.200001023266682,
+            "XP.XC.acquired": 1.20701004415271
+          },
+          "recent": [
+            {
+              "time": 8.200000000000003e-08,
+              "XP.restart": 4.554103922178286e-06,
+              "XP.ctrl": 0.6810579445632321,
+              "XP.XC.phase_held": 1.199999688866374,
+              "qualified": 1.200002468071096,
+              "frequency_good": 1.200004875605327,
+              "XP.XC.acquired": 1.191905275787835
+            },
+            {
+              "time": 8.400000000000004e-08,
+              "XP.restart": 4.16654321175549e-06,
+              "XP.ctrl": 0.6720858186648061,
+              "XP.XC.phase_held": 1.199999918779722,
+              "qualified": 1.200001334260642,
+              "frequency_good": 1.200002691874391,
+              "XP.XC.acquired": 1.195203642163858
+            },
+            {
+              "time": 8.600000000000004e-08,
+              "XP.restart": 1.854051935267824e-06,
+              "XP.ctrl": 0.6482284319959931,
+              "XP.XC.phase_held": 1.199999883561222,
+              "qualified": 1.200001259238308,
+              "frequency_good": 1.200004756123137,
+              "XP.XC.acquired": 1.198470523920701
+            },
+            {
+              "time": 8.800000000000005e-08,
+              "XP.restart": -3.33591901129482e-07,
+              "XP.ctrl": 0.6363597312897201,
+              "XP.XC.phase_held": 1.19999987488816,
+              "qualified": 1.200000583236897,
+              "frequency_good": 1.200005909995173,
+              "XP.XC.acquired": 1.200337488546097
+            },
+            {
+              "time": 9.000000000000005e-08,
+              "XP.restart": -2.042015375747791e-06,
+              "XP.ctrl": 0.6372671538507024,
+              "XP.XC.phase_held": 1.200000221931304,
+              "qualified": 1.199999023098667,
+              "frequency_good": 1.200004641347105,
+              "XP.XC.acquired": 1.201453517581217
+            },
+            {
+              "time": 9.200000000000006e-08,
+              "XP.restart": -3.584393105102596e-06,
+              "XP.ctrl": 0.6375624405348028,
+              "XP.XC.phase_held": 1.2000004617921,
+              "qualified": 1.199996519336731,
+              "frequency_good": 1.199990613422751,
+              "XP.XC.acquired": 1.202646008781024
+            },
+            {
+              "time": 9.400000000000006e-08,
+              "XP.restart": -4.937593852412559e-07,
+              "XP.ctrl": 0.655309174552862,
+              "XP.XC.phase_held": 1.199999930863838,
+              "qualified": 1.20007540639507,
+              "frequency_good": 1.199997705684257,
+              "XP.XC.acquired": 1.204940702315298
+            },
+            {
+              "time": 9.600000000000007e-08,
+              "XP.restart": -2.751276631901464e-07,
+              "XP.ctrl": 0.6730942108014374,
+              "XP.XC.phase_held": 1.199999647422347,
+              "qualified": 1.199999760661032,
+              "frequency_good": 1.199997304933551,
+              "XP.XC.acquired": 1.204707490043341
+            },
+            {
+              "time": 9.800000000000007e-08,
+              "XP.restart": 6.05587763010436e-07,
+              "XP.ctrl": 0.6870035447810553,
+              "XP.XC.phase_held": 1.199999696111459,
+              "qualified": 1.200000337018027,
+              "frequency_good": 1.199999618359002,
+              "XP.XC.acquired": 1.205420795927241
+            },
+            {
+              "time": 1.000000000000001e-07,
+              "XP.restart": 6.73493153018526e-07,
+              "XP.ctrl": 0.6679824447839809,
+              "XP.XC.phase_held": 1.199999979767006,
+              "qualified": 1.200000471819016,
+              "frequency_good": 1.200001444562145,
+              "XP.XC.acquired": 1.205980410277321
+            },
+            {
+              "time": 1.020000000000001e-07,
+              "XP.restart": 4.689328767352013e-07,
+              "XP.ctrl": 0.6466014484801529,
+              "XP.XC.phase_held": 1.200000048928302,
+              "qualified": 1.200000325944827,
+              "frequency_good": 1.200001598991327,
+              "XP.XC.acquired": 1.206488323797637
+            },
+            {
+              "time": 1.040000000000001e-07,
+              "XP.restart": 2.860131454918023e-07,
+              "XP.ctrl": 0.6321258561643776,
+              "XP.XC.phase_held": 1.200000068796771,
+              "qualified": 1.200000061939877,
+              "frequency_good": 1.200001023266682,
+              "XP.XC.acquired": 1.20701004415271
+            }
+          ],
+          "skipped": 0,
+          "lte": 0,
+          "log_tail": "    tran noise is turning OFF on time 0.000000e+00.\n\n\nOutput and IC/nodeset summary:\n                 save   4       (current)\n                 save   19      (voltage)\n\n....",
+          "completed_clean": false,
+          "newton": 0,
+          "bytes": 45056
+        }
+      ],
+      "updated": "2026-10-06T20:01:45.544115+08:00"
+    },
+    "rt4_quarter_guard": {
+      "scope": "Bounded guard for the explicitly named precision-bridge runs only.",
+      "state": "monitoring",
+      "events": [],
+      "resumed": true,
+      "jobs": [
+        {
+          "run": "pllrt4quarteroffssd01",
+          "case": "full_pll_rt4_quarter_off_tt",
+          "state": "running_or_collecting",
+          "remote_dir": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b",
+          "last": {
+            "XP.XC.phase_held": 1.199999669532857,
+            "time": 5.700000000000007e-07,
+            "qualified": 1.200000280424712,
+            "XP.ctrl": 0.7799563905908636,
+            "frequency_good": 1.199999361820297,
+            "XP.restart": 3.009848419036308e-06,
+            "XP.XC.acquired": 1.205127052805208
+          },
+          "recent": [
+            {
+              "XP.XC.phase_held": 1.20000059649143,
+              "time": 5.480000000000002e-07,
+              "qualified": 1.199997708217105,
+              "XP.ctrl": 0.732631220416252,
+              "frequency_good": 1.199999331052699,
+              "XP.restart": -3.509632987648721e-06,
+              "XP.XC.acquired": 1.193002514146345
+            },
+            {
+              "XP.XC.phase_held": 1.199999913683149,
+              "time": 5.500000000000002e-07,
+              "qualified": 1.199997083030261,
+              "XP.ctrl": 0.744873070589274,
+              "frequency_good": 1.199985034146208,
+              "XP.restart": -2.108355870134909e-06,
+              "XP.XC.acquired": 1.192137024940376
+            },
+            {
+              "XP.XC.phase_held": 1.199999496653527,
+              "time": 5.520000000000003e-07,
+              "qualified": 1.200000322180911,
+              "XP.ctrl": 0.7628740764717411,
+              "frequency_good": 1.199991955886767,
+              "XP.restart": 3.165596528086813e-06,
+              "XP.XC.acquired": 1.191904432584061
+            },
+            {
+              "XP.XC.phase_held": 1.200000155953924,
+              "time": 5.540000000000003e-07,
+              "qualified": 1.200002675325203,
+              "XP.ctrl": 0.7792157299287186,
+              "frequency_good": 1.20000992107024,
+              "XP.restart": 5.501061019842508e-06,
+              "XP.XC.acquired": 1.193485429370022
+            },
+            {
+              "XP.XC.phase_held": 1.199999928101832,
+              "time": 5.560000000000004e-07,
+              "qualified": 1.200001142765662,
+              "XP.ctrl": 0.7605271054420274,
+              "frequency_good": 1.200002731682482,
+              "XP.restart": 1.837906518095926e-06,
+              "XP.XC.acquired": 1.19404513124587
+            },
+            {
+              "XP.XC.phase_held": 1.199999874796182,
+              "time": 5.580000000000004e-07,
+              "qualified": 1.200001084387593,
+              "XP.ctrl": 0.7433409167717961,
+              "frequency_good": 1.200004930226226,
+              "XP.restart": 5.470231009486472e-07,
+              "XP.XC.acquired": 1.194358627785953
+            },
+            {
+              "XP.XC.phase_held": 1.204058756828631,
+              "time": 5.600000000000005e-07,
+              "qualified": 1.201522839745936,
+              "XP.ctrl": 0.734197120251181,
+              "frequency_good": 1.200137809673449,
+              "XP.restart": 0.0001139340328053734,
+              "XP.XC.acquired": 1.197932859542663
+            },
+            {
+              "XP.XC.phase_held": 1.200000232861519,
+              "time": 5.620000000000005e-07,
+              "qualified": 1.200000095621292,
+              "XP.ctrl": 0.7316981013285374,
+              "frequency_good": 1.200001218711676,
+              "XP.restart": 3.963535737424034e-07,
+              "XP.XC.acquired": 1.199483130544194
+            },
+            {
+              "XP.XC.phase_held": 1.20000016674159,
+              "time": 5.640000000000006e-07,
+              "qualified": 1.199999552787741,
+              "XP.ctrl": 0.7310189156016066,
+              "frequency_good": 1.199999444801742,
+              "XP.restart": -2.648721222763768e-06,
+              "XP.XC.acquired": 1.201475277689541
+            },
+            {
+              "XP.XC.phase_held": 1.199999921781178,
+              "time": 5.660000000000006e-07,
+              "qualified": 1.199999528050461,
+              "XP.ctrl": 0.7467168239332685,
+              "frequency_good": 1.199997995098784,
+              "XP.restart": -6.030337832755223e-06,
+              "XP.XC.acquired": 1.20291212430836
+            },
+            {
+              "XP.XC.phase_held": 1.199999710897474,
+              "time": 5.680000000000006e-07,
+              "qualified": 1.19999972922364,
+              "XP.ctrl": 0.7631760272885865,
+              "frequency_good": 1.199997483342003,
+              "XP.restart": -1.374560708322561e-06,
+              "XP.XC.acquired": 1.204378383154787
+            },
+            {
+              "XP.XC.phase_held": 1.199999669532857,
+              "time": 5.700000000000007e-07,
+              "qualified": 1.200000280424712,
+              "XP.ctrl": 0.7799563905908636,
+              "frequency_good": 1.199999361820297,
+              "XP.restart": 3.009848419036308e-06,
+              "XP.XC.acquired": 1.205127052805208
+            }
+          ],
+          "skipped": 0,
+          "lte": 0,
+          "log_tail": "    tran noise is turning OFF on time 0.000000e+00.\n\n\nOutput and IC/nodeset summary:\n                 save   4       (current)\n                 save   19      (voltage)\n\n......9......8....",
+          "completed_clean": false,
+          "newton": 0,
+          "bytes": 229376
+        },
+        {
+          "run": "pllrt4quarteronssd01",
+          "case": "full_pll_rt4_quarter_on_tt",
+          "state": "not_dispatched"
+        }
+      ],
+      "updated": "2026-10-06T20:01:46.663861+08:00"
+    }
+  },
+  "local_workers": [
+    {
+      "pid": 119176,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\run_main_strict_noise_pipeline.py",
+        "--protocol",
+        "full_pll_main_quarter_pair_protocol.json",
+        "--state",
+        "main_quarter_noise_pipeline.json"
+      ],
+      "state": "research/main_quarter_noise_pipeline.json",
+      "log": "research/main_quarter_pipeline74.log",
+      "role": "pipeline",
+      "running": true
+    },
+    {
+      "pid": 123680,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\share\\deliverables\\integration\\cmos_v14_full\\run_spectre.py",
+        "--run-id",
+        "pllrt4quarteroffssd01",
+        "--cases",
+        "full_pll_rt4_quarter_off_tt",
+        "--mode",
+        "ax",
+        "--threads",
+        "7",
+        "--preset-override",
+        "all",
+        "--timeout",
+        "172800"
+      ],
+      "state": null,
+      "log": "research/rt4_quarter_quiet75.log",
+      "running": true,
+      "role": "quiet_runner_expected_to_exit_after_collection"
+    },
+    {
+      "pid": 73168,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\run_main_strict_noise_pipeline.py",
+        "--protocol",
+        "full_pll_rt4_quarter_pair_protocol.json",
+        "--state",
+        "rt4_quarter_noise_pipeline.json"
+      ],
+      "state": "research/rt4_quarter_noise_pipeline.json",
+      "log": "research/rt4_quarter_pipeline75.log",
+      "running": true,
+      "role": "pipeline"
+    },
+    {
+      "pid": 114264,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\watch_main_quarter_pair.py",
+        "--resume"
+      ],
+      "role": "guard",
+      "state": "research/main_quarter_guard.json",
+      "log": "research/watch_main_quarter_pair_resume75.log",
+      "running": true
+    },
+    {
+      "pid": 112844,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\watch_rt4_quarter_pair.py",
+        "--resume"
+      ],
+      "role": "guard",
+      "state": "research/rt4_quarter_guard.json",
+      "log": "research/watch_rt4_quarter_pair_resume75.log",
+      "running": true
+    },
+    {
+      "pid": 119752,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\share\\deliverables\\integration\\cmos_v14_full\\run_spectre.py",
+        "--run-id",
+        "pllmainquarteronssd01",
+        "--cases",
+        "full_pll_main_quarter_on_tt",
+        "--mode",
+        "ax",
+        "--threads",
+        "7",
+        "--preset-override",
+        "all",
+        "--timeout",
+        "172800"
+      ],
+      "state": null,
+      "log": "research/main_quarter_noise_pipeline_noise_on.log",
+      "role": "noise_runner_expected_to_exit_after_collection",
+      "running": true
+    }
+  ],
+  "implementation_manifest": "research/noise_progress_implementation75.json",
+  "implementation_manifest_sha256": "2a69e75fbacfdbf727e3fa46e94a8cf158fc43f613fcb99c831b3fa558090b4e",
+  "all_current_implementation_hashes_match": true,
+  "completed_quiet_source_sha256": "6e309d52282265cc0275672901c9c34dbb62aaf15c519eb437ec00d1a55c3402",
+  "full_pll_acceptance": false
+}
