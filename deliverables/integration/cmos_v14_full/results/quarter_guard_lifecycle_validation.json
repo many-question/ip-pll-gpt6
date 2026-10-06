@@ -1,0 +1,110 @@
+{
+  "time": "2026-10-06T18:58:51.882248+08:00",
+  "reason": "Dedicated quarter-pair wrappers inherited historical pipeline names; RT4 guard exited before its quiet launch was visible. Each wrapper now waits for its own pipeline through launch and collection gaps.",
+  "old_rt4_state": {
+    "scope": "Bounded guard for the explicitly named precision-bridge runs only.",
+    "state": "all_dispatched_jobs_collected",
+    "events": [],
+    "resumed": false,
+    "jobs": [
+      {
+        "run": "pllrt4quarteroffssd01",
+        "case": "full_pll_rt4_quarter_off_tt",
+        "state": "not_dispatched"
+      },
+      {
+        "run": "pllrt4quarteronssd01",
+        "case": "full_pll_rt4_quarter_on_tt",
+        "state": "not_dispatched"
+      }
+    ],
+    "updated": "2026-10-06T18:55:56.793220+08:00"
+  },
+  "tests": [
+    {
+      "name": "launch_race",
+      "passed": true
+    },
+    {
+      "name": "quiet_collection_gap",
+      "passed": true
+    },
+    {
+      "name": "noise_launch_gap",
+      "passed": true
+    },
+    {
+      "name": "active",
+      "passed": true
+    },
+    {
+      "name": "complete",
+      "passed": true
+    },
+    {
+      "name": "missing_pipeline",
+      "passed": true
+    },
+    {
+      "name": "main_wrapper_owns_its_pipeline",
+      "passed": true
+    },
+    {
+      "name": "rt4_wrapper_owns_its_pipeline",
+      "passed": true
+    }
+  ],
+  "remote_simulation_action": "none",
+  "workers": [
+    {
+      "pid": 114264,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\watch_main_quarter_pair.py",
+        "--resume"
+      ],
+      "role": "guard",
+      "state": "research/main_quarter_guard.json",
+      "log": "research/watch_main_quarter_pair_resume75.log",
+      "running": true
+    },
+    {
+      "pid": 112844,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\watch_rt4_quarter_pair.py",
+        "--resume"
+      ],
+      "role": "guard",
+      "state": "research/rt4_quarter_guard.json",
+      "log": "research/watch_rt4_quarter_pair_resume75.log",
+      "running": true
+    }
+  ],
+  "stopped_local_workers": [
+    {
+      "pid": 118700,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\watch_main_quarter_pair.py"
+      ]
+    }
+  ],
+  "verified_at": "2026-10-06T18:59:43.640504+08:00",
+  "implementation_sha256": {
+    "research/watch_precision_bridge.py": "80f4044dc173f04c8319ebb962b21148e286e29ed6565f848a5959d77a04b7e5",
+    "research/watch_main_quarter_pair.py": "78c7197fcd2530e8c008b7e62bae8fed5102055eaf6b64ce3919b7ea3b1fec43",
+    "research/watch_rt4_quarter_pair.py": "70c0d62557e56ed4bdaf7858deb6ff0fc7d2c27562470533f9ec688f4d314347",
+    "research/check_quarter_guard_lifecycle75.py": "2b686c0665fb76f5391bc282d4f1231cf54d7ff75c44b420b408be2ecb0df650"
+  },
+  "completion_logic": "def monitoring_finished(rows,statuses):\n    return (not any(r['state'] not in ('collected','not_dispatched') for r in rows)\n            and bool(statuses) and all(s in ('completed_pending_review','needs_review') for s in statuses))\n",
+  "dedicated_pipeline_names": {
+    "main": [
+      "main_quarter_noise_pipeline.json"
+    ],
+    "rt4": [
+      "rt4_quarter_noise_pipeline.json"
+    ]
+  },
+  "guards_resumed_and_monitoring": true
+}

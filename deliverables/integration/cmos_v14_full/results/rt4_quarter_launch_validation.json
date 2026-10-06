@@ -1,0 +1,395 @@
+{
+  "scope": "SSD launch audit only, not simulation completion.",
+  "time": "2026-10-06T18:57:08.031009+08:00",
+  "resources": {
+    "time": "2026-10-06T18:57:03.562720+08:00",
+    "jobs": [
+      {
+        "threads": 7,
+        "pid": 19151,
+        "netlist": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/full_pll_rt4_quarter_off_tt.scs"
+      },
+      {
+        "threads": 7,
+        "pid": 341794,
+        "netlist": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/full_pll_main_quarter_off_tt.scs"
+      }
+    ],
+    "requested_threads": 14
+  },
+  "active": [
+    {
+      "run": "pllrt4quarteroffssd01",
+      "case": "full_pll_rt4_quarter_off_tt",
+      "threads": 7,
+      "pid": 19151,
+      "remote_dir": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b",
+      "remote_id": "631d406b",
+      "role": "Guarded SSD simulation; no duplicate dispatch."
+    },
+    {
+      "run": "pllmainquarteroffssd01",
+      "case": "full_pll_main_quarter_off_tt",
+      "threads": 7,
+      "pid": 341794,
+      "remote_dir": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17",
+      "remote_id": "f4da7c17",
+      "role": "Guarded SSD simulation; no duplicate dispatch."
+    }
+  ],
+  "audit": [
+    {
+      "run": "pllrt4quarteroffssd01",
+      "case": "full_pll_rt4_quarter_off_tt",
+      "all_remote_input_hashes_match": true,
+      "spectre_log": "\nSpectre (R) Circuit Simulator\nVersion 21.1.0.509.isr12 64bit -- 24 Sep 2022\nCopyright (C) 1989-2022 Cadence Design Systems, Inc. All rights reserved worldwide. Cadence and Spectre are registered trademarks of Cadence Design Systems, Inc. All others are the property of their respective holders.\n\nIncludes RSA BSAFE(R) Cryptographic or Security Protocol Software from RSA Security, Inc.\n\nUser: jielu   Host: thu-xia   HostID: A8C036B8   PID: 19151\nMemory  available: 55.0266 GB  physical: 134.4300 GB\nLinux   : CentOS Linux release 7.6.1810 (Core) \nCPU Type: Intel(R) Xeon(R) Gold 6246R CPU @ 3.40GHz\nAll processors running at 3400.0 MHz\n        Socket: Processors (Hyperthreaded Processor)\n        0:       0 ( 32 ),  2 ( 34 ),  4 ( 36 ),  6 ( 38 ),  8 ( 40 )\n                10 ( 42 ), 12 ( 44 ), 14 ( 46 ), 16 ( 48 ), 18 ( 50 )\n                20 ( 52 ), 22 ( 54 ), 24 ( 56 ), 26 ( 58 ), 28 ( 60 )\n                30 ( 62 )\n        1:       1 ( 33 ),  3 ( 35 ),  5 ( 37 ),  7 ( 39 ),  9 ( 41 )\n                11 ( 43 ), 13 ( 45 ), 15 ( 47 ), 17 ( 49 ), 19 ( 51 )\n                21 ( 53 ), 23 ( 55 ), 25 ( 57 ), 27 ( 59 ), 29 ( 61 )\n                31 ( 63 )\n        \nSystem load averages (1min, 5min, 15min) : 19.5 %, 18.2 %, 19.4 %\nHyperthreading is enabled\nHPC is enabled\n\n\nSimulating `/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/full_pll_rt4_quarter_off_tt.scs' on thu-xia at 6:54:12 PM, Tue Oct 6, 2026 (process id: 19151).\nCurrent working directory: /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b\nCommand line:\n    /home/cadence/spectre/SPECTRE211Hotfix_crack/tools/bin/spectre -64  \\\n        /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/full_pll_rt4_quarter_off_tt.scs  \\\n        +escchars +log  \\\n        /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/spectre.out  \\\n        -format psfascii -raw  \\\n        /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/full_pll_rt4_quarter_off_tt.raw  \\\n        +preset=ax +mt=7 -preset_override +lqtimeout 900 -maxw 5 -maxn  \\\n        5 +logstatus\n\nLicensing Information:\n[18:54:12.050089] Configured Lic search path (21.01-s002): 5280@thu-jin\n\nLicensing Information:\n[18:54:13.031195] Periodic Lic check successful\n\nLoading /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/cmi/lib/64bit/5.0/libinfineon_sh.so ...\nLoading /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/cmi/lib/64bit/5.0/libphilips_o_sh.so ...\nLoading /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/cmi/lib/64bit/5.0/libphilips_sh.so ...\nLoading /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/cmi/lib/64bit/5.0/libsparam_sh.so ...\nLoading /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/cmi/lib/64bit/5.0/libstmodels_sh.so ...\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/full_pll_rt4_quarter_off_tt.scs\n\nNotice from spectre during circuit read-in.\n    Pre_Configuration file used: /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/spectre/etc/configs/preset_over.precfg\n    Pre_Configuration file used: /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/spectre/etc/configs/preset_over.cfg\n    Pre_Configuration file used: /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/spectre/etc/configs/preset_over.cfg\n\nReading file:  /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/spectre/etc/configs/spectre.cfg\nReading file:  /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/spectre/etc/configs/preset_over.precfg\nReading file:  /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/spectre/etc/configs/preset_over.cfg\nReading file:  /home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/pll_capture_rt4bank_v14.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/cells.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/digital_cells_v2.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/fll_circuit.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/fll_best128_v14.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/pll_config.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/pll_supervisor_capture_v14.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/frequency_watchdog.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/cp_timing.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/pll_control_capture_v14.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/lc_vco_physical_v14.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/inductor_pi.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/lc_core_physical_v14.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/cap_bank_switched_v4.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/cp_physical_v14.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/sampler_bias_v5.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/loop_filter_v5.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/rf_light24s12_v14.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/bank_pulsetrip_v14.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/ff_fbdelay50_v14.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/ring_inv_static_v14.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/rtcomb_v13.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/rt_noise_scale4_v14.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/validity_physical_v14.scs\nTime for NDB Parsing: CPU = 552.966 ms, elapsed = 553.143 ms.\nTime accumulated: CPU = 648.982 ms, elapsed = 553.146 ms.\nPeak resident memory used = 68 Mbytes.\n\nReading link:  /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/spectre/etc/ahdl/discipline.h\nReading file:  /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/spectre/etc/ahdl/disciplines.vams\nReading link:  /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/spectre/etc/ahdl/constants.h\nReading file:  /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/spectre/etc/ahdl/constants.vams\n\nWarning from spectre during AHDL read-in.\n    WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow.\n\nCreated directory ./full_pll_rt4_quarter_off_tt.ahdlSimDB/ (775)\nCreated directory ./full_pll_rt4_quarter_off_tt.ahdlSimDB//bsource_4c6fb0.va.bsource_4c6fb0.ahdlcmi/ (775)\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/c5e15b30/full_pll_rt4_fine_on_tt.ahdlSimDB/bsource_4c6fb0.va.bsource_4c6fb0.ahdlcmi/Linux-64/obj/optimize/5.0/libahdlcmi_bsource_4c6fb0.so\nCreated directory ./full_pll_rt4_quarter_off_tt.ahdlSimDB//bsource_4c6fb0.va.bsource_4c6fb0.ahdlcmi/Linux-64/obj/optimize/5.0 \nCopying files from directory /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/c5e15b30/full_pll_rt4_fine_on_tt.ahdlSimDB/bsource_4c6fb0.va.bsource_4c6fb0.ahdlcmi/Linux-64/ to directory ./full_pll_rt4_quarter_off_tt.ahdlSimDB//bsource_4c6fb0.va.bsource_4c6fb0.ahdlcmi/Linux-64/\nFinished copying files from /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/c5e15b30/full_pll_rt4_fine_on_tt.ahdlSimDB/bsource_4c6fb0.va.bsource_4c6fb0.ahdlcmi/Linux-64/ to ./full_pll_rt4_quarter_off_tt.ahdlSimDB//bsource_4c6fb0.va.bsource_4c6fb0.ahdlcmi/Linux-64/.\nThe simulator has reused the existing Verilog-A libraries for this simulation run. If you do not want to use these libraries, set the 'CDS_AHDL_REUSE_LIB' environment variable to 'NO' and rerun the simulation.\nExisting shared object for module bsource_4c6fb0 is up to date.\nInstalled compiled interface for bsource_4c6fb0.\nTime for Elaboration: CPU = 358.882 ms, elapsed = 223.539 ms.\nTime accumulated: CPU = 1.00804 s, elapsed = 776.771 ms.\nPeak resident memory used = 82.1 Mbytes.\n\n\nTime for EDB Visiting: CPU = 249.01 ms, elapsed = 125.956 ms.\nTime accumulated: CPU = 1.25733 s, elapsed = 902.868 ms.\nPeak resident memory used = 131 Mbytes.\n\n\nGlobal user options:\n               temp = 27\n            vabstol = 1e-09\n            iabstol = 1e-12\n               save = selected\n             reltol = 1e-06\n\nScoped user options:\n\nCircuit inventory:\n              nodes 7825\n              bsim4 17617 \n     bsource_4c6fb0 2     \n          capacitor 42    \n           inductor 2     \n           resistor 43    \n            vsource 14    \n\nAnalysis and control statement inventory:\n               tran 1     \n\nOutput statements:\n             .probe 0     \n           .measure 0     \n               save 1     \n\n\nNotice from spectre during initial setup.\n    5 vsources are shorted because their absolute value is less than or equal to 'vabsshort'.\n    Spectre X preset=ax enabled.\n    Spectre X preset_override enabled.\n\nLicensing Information:\n[18:54:14.331465] Periodic Lic check successful\n\n\nNotice from spectre.\n    Multithreading enabled: 7 threads in the system with 64 available processors.\n\nTime for parsing: CPU = 1.46422 s, elapsed = 698.876 ms.\nTime accumulated: CPU = 2.72177 s, elapsed = 1.60185 s.\nPeak resident memory used = 157 Mbytes.\n\n~~~~~~~~~~~~~~~~~~~~~~\nPre-Simulation Summary\n~~~~~~~~~~~~~~~~~~~~~~\n   -   (Spectre X) Multi-threading. The recommended number of threads is [4, 8], consider adding +mt=4 or +mt=8 on command line.\n~~~~~~~~~~~~~~~~~~~~~~\n\n*************************************************\nTransient Analysis `tran': time = (0 s -> 2.2 us)\n*************************************************\n\nNotice from spectre during transient analysis `tran'.\n    tran noise is turning OFF on time 0.000000e+00.\n    The value of parameter 'isnoisy' was set to 0 at time 0 s.\n\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/pllrt4quarteroffssd01_full_pll_rt4_quarter_off_tt_rt4_stage15900_phase_continuous.ic\n\nNotice from spectre during transient analysis `tran'.\n    There are 7863 IC nodes defined.\n\n\nOpening the PSFASCII file /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/full_pll_rt4_quarter_off_tt.raw/tran.tran.tran ...\nImportant parameter values:\n    start = 0 s\n    outputstart = 0 s\n    stop = 2.2 us\n    step = 2.2 ns\n    maxstep = 250 fs\n    ic = all\n    useprevic = no\n    skipdc = yes\n    reltol = 1e-06\n    abstol(V) = 1 nV\n    abstol(I) = 1 pA\n    temp = 27 C\n    tnom = 27 C\n    tempeffects = all\n    errpreset = moderate\n    method = traponly\n    lteratio = 3.5\n    relref = sigglobal\n    cmin = 0 F\n    gmin = 1 pS\n    rabsshort = 1 mOhm\n    trannoisemethod = default\n    noisefmax = 160 GHz\n    noisefmin = 1 MHz\n    noiseseed = 11\n\n\nNotice from spectre during transient analysis `tran'.\n    tran noise is turning OFF on time 0.000000e+00.\n\n\nOutput and IC/nodeset summary:\n                 save   4       (current)\n                 save   19      (voltage)\n\n",
+      "realpath": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b",
+      "claim_exists": true,
+      "df": "Filesystem                                   Type 1024-blocks       Used  Available Capacity Mounted on\n/dev/mapper/simulation_data-server_local_ssd xfs   3936348248 1950458108 1985890140      50% /server_local_ssd\n",
+      "exit_marker_exists": false,
+      "inputs": {
+        "cp_physical_v14.scs": "ea3cd7184cafd899db18d5d9286adca6c2ffb861e9af2504afd1ea9bb702cc76",
+        "fll_best128_v14.scs": "06a2f270b40c57b08b360d95e767d6d6b39a6456a789cef7c6831653608e0ef5",
+        "validity_physical_v14.scs": "4adda2d6a864ac7ae7478c157989ea34d0901f52cf1f7b6bca2ec3238244f27f",
+        "rt_noise_scale4_v14.scs": "839d4bdb3d8b2dc60dcdad1f3a49010f82d6cb4ff08d10325b8c5c636c65e5c6",
+        "cp_timing.scs": "87a42f85028580ab52cc6d08a2514e4295dc93e4be0e019f52cb55964ae50fde",
+        "sampler_bias_v5.scs": "fe966831e65b04ee641625abc5187748bac130ea8d68babe17f33dc948c9cd67",
+        "rt4_stage15900_phase_continuous.ic": "937da9941740181f7627a6ae6ab70037353c97c8425cabbfb0986f4512ddacc2",
+        "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+        "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+        "pll_config.scs": "e9562e3410680ae20236c5e3a96229a0d83723e750753c4ae041ed3e5fd46622",
+        "pll_supervisor_capture_v14.scs": "f5836cf7d3106842c5f67ede615b0988057a750b42a242a11255b9fb28535bac",
+        "inductor_pi.scs": "417db0f24ee5d2a0544eda8a21f670d4b3ba5ba158422c913185ff82ef71438b",
+        "pll_control_capture_v14.scs": "0dd7b0b2d56f9d4668a0fd51795b80b0742659eb740a0c57ef10b420daf13d86",
+        "lc_core_physical_v14.scs": "8edc1b766e04d51405ffd185294fa1c7d6e7f2d2f8ef14f56753c1e84eaeb8b4",
+        "cap_bank_switched_v4.scs": "82930a36417d5746edad5be73d95ff446cb94a046524d8eb12d6cc3a325caad0",
+        "loop_filter_v5.scs": "827a9a8cd9d91e8bf9af5d38c691f0bfc19416980aa1e6b34eda9d0802bb9499",
+        "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+        "full_pll_rt4_quarter_off_tt.scs": "4d0de89677732f1abf027b8cc1a8af40675eaf19b54a4ba3ae3c109a5674e932",
+        "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+        "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+        "pll_capture_rt4bank_v14.scs": "001c6a40a24142fbc6d3aa006e233edb38810b703166af04968cff4bf8b9b3c8",
+        "frequency_watchdog.scs": "63e1d92d0db21407142630dfe349b3da1afe127e3e04d712e7cf0f51c541d5f2",
+        "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+        "bank_pulsetrip_v14.scs": "8d41f4865a829f5a6d203fda5fa63af0243a835d00bbfdafde737988ee1c0f20",
+        "lc_vco_physical_v14.scs": "c34bae69f93d9600f602bfb7e80f56ffe051458e8984da02604eb6ef07e727ce",
+        "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c"
+      },
+      "write_descriptors": [
+        {
+          "path": "/dev/null",
+          "fd": "3"
+        },
+        {
+          "path": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/spectre.out",
+          "fd": "4"
+        },
+        {
+          "path": "/var/tmp/.cds_l_7464372953514191116",
+          "fd": "5"
+        },
+        {
+          "path": "/var/tmp/.cds_l_229483862528677",
+          "fd": "6"
+        },
+        {
+          "path": "/tmp/.cdsor.229483862528677",
+          "fd": "7"
+        },
+        {
+          "path": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/full_pll_rt4_quarter_off_tt.raw/logFile",
+          "fd": "11"
+        },
+        {
+          "path": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/full_pll_rt4_quarter_off_tt.raw/logStatus",
+          "fd": "12"
+        },
+        {
+          "path": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/full_pll_rt4_quarter_off_tt.raw/tran.tran.tran",
+          "fd": "15"
+        }
+      ],
+      "spectre_log_sha256": "b522f77bedcbe035bd1f58606a9d0564316bd81d9ac3f3b38b0da981113624d3",
+      "filesystem": "xfs",
+      "cwd": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b",
+      "tmpdir": [
+        "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b/tmp"
+      ],
+      "effective": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-09,
+        "abstol(I)": 1e-12,
+        "method": "traponly",
+        "maxstep": 2.5e-13,
+        "noisefmax": 160000000000.0,
+        "noisefmin": 1000000.0,
+        "trannoisemethod": "default"
+      }
+    },
+    {
+      "run": "pllmainquarteroffssd01",
+      "case": "full_pll_main_quarter_off_tt",
+      "all_remote_input_hashes_match": true,
+      "spectre_log": "\nSpectre (R) Circuit Simulator\nVersion 21.1.0.509.isr12 64bit -- 24 Sep 2022\nCopyright (C) 1989-2022 Cadence Design Systems, Inc. All rights reserved worldwide. Cadence and Spectre are registered trademarks of Cadence Design Systems, Inc. All others are the property of their respective holders.\n\nIncludes RSA BSAFE(R) Cryptographic or Security Protocol Software from RSA Security, Inc.\n\nUser: jielu   Host: thu-xia   HostID: A8C036B8   PID: 341794\nMemory  available: 54.4554 GB  physical: 134.4300 GB\nLinux   : CentOS Linux release 7.6.1810 (Core) \nCPU Type: Intel(R) Xeon(R) Gold 6246R CPU @ 3.40GHz\nAll processors running at 3400.0 MHz\n        Socket: Processors (Hyperthreaded Processor)\n        0:       0 ( 32 ),  2 ( 34 ),  4 ( 36 ),  6 ( 38 ),  8 ( 40 )\n                10 ( 42 ), 12 ( 44 ), 14 ( 46 ), 16 ( 48 ), 18 ( 50 )\n                20 ( 52 ), 22 ( 54 ), 24 ( 56 ), 26 ( 58 ), 28 ( 60 )\n                30 ( 62 )\n        1:       1 ( 33 ),  3 ( 35 ),  5 ( 37 ),  7 ( 39 ),  9 ( 41 )\n                11 ( 43 ), 13 ( 45 ), 15 ( 47 ), 17 ( 49 ), 19 ( 51 )\n                21 ( 53 ), 23 ( 55 ), 25 ( 57 ), 27 ( 59 ), 29 ( 61 )\n                31 ( 63 )\n        \nSystem load averages (1min, 5min, 15min) : 15.2 %, 14.2 %, 15.6 %\nHyperthreading is enabled\nHPC is enabled\n\n\nSimulating `/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/full_pll_main_quarter_off_tt.scs' on thu-xia at 4:24:41 PM, Tue Oct 6, 2026 (process id: 341794).\nCurrent working directory: /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17\nCommand line:\n    /home/cadence/spectre/SPECTRE211Hotfix_crack/tools/bin/spectre -64  \\\n        /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/full_pll_main_quarter_off_tt.scs  \\\n        +escchars +log  \\\n        /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/spectre.out  \\\n        -format psfascii -raw  \\\n        /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/full_pll_main_quarter_off_tt.raw  \\\n        +preset=ax +mt=7 -preset_override +lqtimeout 900 -maxw 5 -maxn  \\\n        5 +logstatus\n\nLicensing Information:\n[16:24:42.050073] Configured Lic search path (21.01-s002): 5280@thu-jin\n\nLicensing Information:\n[16:24:42.227283] Periodic Lic check successful\n\nLoading /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/cmi/lib/64bit/5.0/libinfineon_sh.so ...\nLoading /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/cmi/lib/64bit/5.0/libphilips_o_sh.so ...\nLoading /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/cmi/lib/64bit/5.0/libphilips_sh.so ...\nLoading /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/cmi/lib/64bit/5.0/libsparam_sh.so ...\nLoading /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/cmi/lib/64bit/5.0/libstmodels_sh.so ...\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/full_pll_main_quarter_off_tt.scs\n\nNotice from spectre during circuit read-in.\n    Pre_Configuration file used: /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/spectre/etc/configs/preset_over.precfg\n    Pre_Configuration file used: /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/spectre/etc/configs/preset_over.cfg\n    Pre_Configuration file used: /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/spectre/etc/configs/preset_over.cfg\n\nReading file:  /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/spectre/etc/configs/spectre.cfg\nReading file:  /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/spectre/etc/configs/preset_over.precfg\nReading file:  /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/spectre/etc/configs/preset_over.cfg\nReading file:  /home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/pll_capture_v14.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/cells.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/digital_cells_v2.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/fll_circuit.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/fll_best128_v14.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/pll_config.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/pll_supervisor_capture_v14.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/frequency_watchdog.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/cp_timing.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/pll_control_capture_v14.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/lc_vco_physical_v14.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/inductor_pi.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/lc_core_physical_v14.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/cap_bank_switched_v4.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/cp_physical_v14.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/sampler_bias_v5.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/loop_filter_v5.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/rf_light24s12_v14.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/cmos_even_bank_acq_v14.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/ff_fbdelay50_v14.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/ring_inv_static_v14.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/rtcomb_v13.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/rt_light24s12_out083_v14.scs\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/validity_physical_v14.scs\nTime for NDB Parsing: CPU = 529.635 ms, elapsed = 525.268 ms.\nTime accumulated: CPU = 627.718 ms, elapsed = 525.27 ms.\nPeak resident memory used = 67.9 Mbytes.\n\nReading link:  /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/spectre/etc/ahdl/discipline.h\nReading file:  /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/spectre/etc/ahdl/disciplines.vams\nReading link:  /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/spectre/etc/ahdl/constants.h\nReading file:  /home/cadence/spectre/SPECTRE211Hotfix_crack/tools.lnx86/spectre/etc/ahdl/constants.vams\n\nWarning from spectre during AHDL read-in.\n    WARNING (VACOMP-2435): The environment variable CDS_AHDLCMI_ENABLE is no longer supported. Therefore, the simulator will use the default compiled C code flow.\n\nCreated directory ./full_pll_main_quarter_off_tt.ahdlSimDB/ (775)\nCreated directory ./full_pll_main_quarter_off_tt.ahdlSimDB//bsource_4c6fb0.va.bsource_4c6fb0.ahdlcmi/ (775)\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/c5e15b30/full_pll_rt4_fine_on_tt.ahdlSimDB/bsource_4c6fb0.va.bsource_4c6fb0.ahdlcmi/Linux-64/obj/optimize/5.0/libahdlcmi_bsource_4c6fb0.so\nCreated directory ./full_pll_main_quarter_off_tt.ahdlSimDB//bsource_4c6fb0.va.bsource_4c6fb0.ahdlcmi/Linux-64/obj/optimize/5.0 \nCopying files from directory /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/c5e15b30/full_pll_rt4_fine_on_tt.ahdlSimDB/bsource_4c6fb0.va.bsource_4c6fb0.ahdlcmi/Linux-64/ to directory ./full_pll_main_quarter_off_tt.ahdlSimDB//bsource_4c6fb0.va.bsource_4c6fb0.ahdlcmi/Linux-64/\nFinished copying files from /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/c5e15b30/full_pll_rt4_fine_on_tt.ahdlSimDB/bsource_4c6fb0.va.bsource_4c6fb0.ahdlcmi/Linux-64/ to ./full_pll_main_quarter_off_tt.ahdlSimDB//bsource_4c6fb0.va.bsource_4c6fb0.ahdlcmi/Linux-64/.\nThe simulator has reused the existing Verilog-A libraries for this simulation run. If you do not want to use these libraries, set the 'CDS_AHDL_REUSE_LIB' environment variable to 'NO' and rerun the simulation.\nExisting shared object for module bsource_4c6fb0 is up to date.\nInstalled compiled interface for bsource_4c6fb0.\nTime for Elaboration: CPU = 340.232 ms, elapsed = 206.608 ms.\nTime accumulated: CPU = 968.163 ms, elapsed = 731.984 ms.\nPeak resident memory used = 81.9 Mbytes.\n\n\nTime for EDB Visiting: CPU = 309.136 ms, elapsed = 155.609 ms.\nTime accumulated: CPU = 1.27755 s, elapsed = 887.719 ms.\nPeak resident memory used = 131 Mbytes.\n\n\nGlobal user options:\n               temp = 27\n            vabstol = 1e-09\n            iabstol = 1e-12\n               save = selected\n             reltol = 1e-06\n\nScoped user options:\n\nCircuit inventory:\n              nodes 7821\n              bsim4 17644 \n     bsource_4c6fb0 2     \n          capacitor 42    \n           inductor 2     \n           resistor 41    \n            vsource 14    \n\nAnalysis and control statement inventory:\n               tran 1     \n\nOutput statements:\n             .probe 0     \n           .measure 0     \n               save 1     \n\n\nNotice from spectre during initial setup.\n    5 vsources are shorted because their absolute value is less than or equal to 'vabsshort'.\n    Spectre X preset=ax enabled.\n    Spectre X preset_override enabled.\n\nLicensing Information:\n[16:24:43.015832] Periodic Lic check successful\n\n\nNotice from spectre.\n    Multithreading enabled: 7 threads in the system with 64 available processors.\n\nTime for parsing: CPU = 1.47908 s, elapsed = 705.718 ms.\nTime accumulated: CPU = 2.75688 s, elapsed = 1.59356 s.\nPeak resident memory used = 156 Mbytes.\n\n~~~~~~~~~~~~~~~~~~~~~~\nPre-Simulation Summary\n~~~~~~~~~~~~~~~~~~~~~~\n   -   (Spectre X) Multi-threading. The recommended number of threads is [4, 8], consider adding +mt=4 or +mt=8 on command line.\n~~~~~~~~~~~~~~~~~~~~~~\n\n*************************************************\nTransient Analysis `tran': time = (0 s -> 2.2 us)\n*************************************************\n\nNotice from spectre during transient analysis `tran'.\n    tran noise is turning OFF on time 0.000000e+00.\n    The value of parameter 'isnoisy' was set to 0 at time 0 s.\n\nReading file:  /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/pllmainquarteroffssd01_full_pll_main_quarter_off_tt_main_fine2200_phase_continuous.ic\n\nNotice from spectre during transient analysis `tran'.\n    There are 7859 IC nodes defined.\n\n\nOpening the PSFASCII file /server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/full_pll_main_quarter_off_tt.raw/tran.tran.tran ...\nImportant parameter values:\n    start = 0 s\n    outputstart = 0 s\n    stop = 2.2 us\n    step = 2.2 ns\n    maxstep = 250 fs\n    ic = all\n    useprevic = no\n    skipdc = yes\n    reltol = 1e-06\n    abstol(V) = 1 nV\n    abstol(I) = 1 pA\n    temp = 27 C\n    tnom = 27 C\n    tempeffects = all\n    errpreset = moderate\n    method = traponly\n    lteratio = 3.5\n    relref = sigglobal\n    cmin = 0 F\n    gmin = 1 pS\n    rabsshort = 1 mOhm\n    trannoisemethod = default\n    noisefmax = 160 GHz\n    noisefmin = 1 MHz\n    noiseseed = 11\n\n\nNotice from spectre during transient analysis `tran'.\n    tran noise is turning OFF on time 0.000000e+00.\n\n\nOutput and IC/nodeset summary:\n                 save   4       (current)\n                 save   19      (voltage)\n\n......9......8......7......6....\n\nNotice from spectre at time = 1 us during transient analysis `tran'.\n    tran noise is turning OFF on time 1.000000e-06.\n\n......9......8......7......6......5......4...\n\nNotice from spectre at time = 1.42753 us during transient analysis `tran'.\n    Found trapezoidal ringing on node XP.XC.XC.X1.XS.XN.x.\n\n......9......8......7......6......5......4......3....",
+      "realpath": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17",
+      "claim_exists": true,
+      "df": "Filesystem                                   Type 1024-blocks       Used  Available Capacity Mounted on\n/dev/mapper/simulation_data-server_local_ssd xfs   3936348248 1950458108 1985890140      50% /server_local_ssd\n",
+      "exit_marker_exists": false,
+      "inputs": {
+        "full_pll_main_quarter_off_tt.scs": "6ff71c630deaf1db16ec9b4abfc8cd89092b906dcaf985dccd82c662ada88f6b",
+        "fll_best128_v14.scs": "06a2f270b40c57b08b360d95e767d6d6b39a6456a789cef7c6831653608e0ef5",
+        "validity_physical_v14.scs": "4adda2d6a864ac7ae7478c157989ea34d0901f52cf1f7b6bca2ec3238244f27f",
+        "sampler_bias_v5.scs": "fe966831e65b04ee641625abc5187748bac130ea8d68babe17f33dc948c9cd67",
+        "cp_timing.scs": "87a42f85028580ab52cc6d08a2514e4295dc93e4be0e019f52cb55964ae50fde",
+        "cp_physical_v14.scs": "ea3cd7184cafd899db18d5d9286adca6c2ffb861e9af2504afd1ea9bb702cc76",
+        "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+        "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+        "cap_bank_switched_v4.scs": "82930a36417d5746edad5be73d95ff446cb94a046524d8eb12d6cc3a325caad0",
+        "pll_config.scs": "e9562e3410680ae20236c5e3a96229a0d83723e750753c4ae041ed3e5fd46622",
+        "pll_supervisor_capture_v14.scs": "f5836cf7d3106842c5f67ede615b0988057a750b42a242a11255b9fb28535bac",
+        "main_fine2200_phase_continuous.ic": "2aa316a1a1e9801673e4842f28784f3d4b6feb2d3d3211f984cc7c78b3345cfe",
+        "inductor_pi.scs": "417db0f24ee5d2a0544eda8a21f670d4b3ba5ba158422c913185ff82ef71438b",
+        "rt_light24s12_out083_v14.scs": "06c7d7b838a666815504f42ebf8d2a79aa9f6031c5af2212880d642fad3f8836",
+        "pll_control_capture_v14.scs": "0dd7b0b2d56f9d4668a0fd51795b80b0742659eb740a0c57ef10b420daf13d86",
+        "lc_core_physical_v14.scs": "8edc1b766e04d51405ffd185294fa1c7d6e7f2d2f8ef14f56753c1e84eaeb8b4",
+        "cmos_even_bank_acq_v14.scs": "34a80ae697397ff60cc61ba9cfc51513716c39afd3df68f4ea0a9c950ca0ff6f",
+        "loop_filter_v5.scs": "827a9a8cd9d91e8bf9af5d38c691f0bfc19416980aa1e6b34eda9d0802bb9499",
+        "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+        "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+        "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+        "pll_capture_v14.scs": "ebab43f8233c8b8cc7bdef02fba6a1718a070e8f886f3b522449612feb5e6139",
+        "frequency_watchdog.scs": "63e1d92d0db21407142630dfe349b3da1afe127e3e04d712e7cf0f51c541d5f2",
+        "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+        "lc_vco_physical_v14.scs": "c34bae69f93d9600f602bfb7e80f56ffe051458e8984da02604eb6ef07e727ce",
+        "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c"
+      },
+      "write_descriptors": [
+        {
+          "path": "/dev/null",
+          "fd": "3"
+        },
+        {
+          "path": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/spectre.out",
+          "fd": "4"
+        },
+        {
+          "path": "/var/tmp/.cds_l_7464372953514191116",
+          "fd": "5"
+        },
+        {
+          "path": "/var/tmp/.cds_l_229483862528677",
+          "fd": "6"
+        },
+        {
+          "path": "/tmp/.cdsor.229483862528677",
+          "fd": "7"
+        },
+        {
+          "path": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/full_pll_main_quarter_off_tt.raw/logFile",
+          "fd": "11"
+        },
+        {
+          "path": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/full_pll_main_quarter_off_tt.raw/logStatus",
+          "fd": "12"
+        },
+        {
+          "path": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/full_pll_main_quarter_off_tt.raw/tran.tran.tran",
+          "fd": "15"
+        }
+      ],
+      "spectre_log_sha256": "cac67bb94aa4277b12b66f22ae2246ee2312dbe8c52d339e0c0d5fe796bf0b6c",
+      "filesystem": "xfs",
+      "cwd": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17",
+      "tmpdir": [
+        "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17/tmp"
+      ],
+      "effective": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-09,
+        "abstol(I)": 1e-12,
+        "method": "traponly",
+        "maxstep": 2.5e-13,
+        "noisefmax": 160000000000.0,
+        "noisefmin": 1000000.0,
+        "trannoisemethod": "default"
+      }
+    }
+  ],
+  "jobs": [
+    {
+      "run": "pllmainquarteroffssd01",
+      "case": "full_pll_main_quarter_off_tt",
+      "state": "running_or_collecting",
+      "remote_dir": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f4da7c17",
+      "last": {
+        "XP.XC.acquired": 1.207947136271332,
+        "XP.XC.phase_held": 1.199999696587387,
+        "frequency_good": 1.199997457328416,
+        "XP.ctrl": 0.6678484824555557,
+        "time": 1.680102240402777e-06,
+        "qualified": 1.19999980472766,
+        "XP.restart": -7.226827020885109e-07
+      },
+      "recent": [
+        {
+          "XP.XC.acquired": 1.207896813875774,
+          "XP.XC.phase_held": 1.199999648292025,
+          "frequency_good": 1.199997387193165,
+          "XP.ctrl": 0.6694296999977876,
+          "time": 1.680099490402776e-06,
+          "qualified": 1.199999833215134,
+          "XP.restart": -7.365994052437758e-07
+        },
+        {
+          "XP.XC.acquired": 1.207901532846403,
+          "XP.XC.phase_held": 1.199999652732538,
+          "frequency_good": 1.199997392692008,
+          "XP.ctrl": 0.6692809170067573,
+          "time": 1.680099740402776e-06,
+          "qualified": 1.199999830446395,
+          "XP.restart": -7.353631327893027e-07
+        },
+        {
+          "XP.XC.acquired": 1.207906225067905,
+          "XP.XC.phase_held": 1.199999657177778,
+          "frequency_good": 1.199997398430399,
+          "XP.ctrl": 0.6691332631381353,
+          "time": 1.680099990402776e-06,
+          "qualified": 1.199999827719529,
+          "XP.restart": -7.341148030063639e-07
+        },
+        {
+          "XP.XC.acquired": 1.207910889803131,
+          "XP.XC.phase_held": 1.199999661622648,
+          "frequency_good": 1.199997404386671,
+          "XP.ctrl": 0.6689867009387865,
+          "time": 1.680100240402776e-06,
+          "qualified": 1.199999825032537,
+          "XP.restart": -7.328564601335624e-07
+        },
+        {
+          "XP.XC.acquired": 1.20791552635657,
+          "XP.XC.phase_held": 1.199999666061286,
+          "frequency_good": 1.19999741053486,
+          "XP.ctrl": 0.6688411909067117,
+          "time": 1.680100490402776e-06,
+          "qualified": 1.199999822383043,
+          "XP.restart": -7.31591697425569e-07
+        },
+        {
+          "XP.XC.acquired": 1.207920134047074,
+          "XP.XC.phase_held": 1.199999670489882,
+          "frequency_good": 1.199997416859699,
+          "XP.ctrl": 0.6686966917991717,
+          "time": 1.680100740402776e-06,
+          "qualified": 1.199999819769474,
+          "XP.restart": -7.303199889385477e-07
+        },
+        {
+          "XP.XC.acquired": 1.207924712185175,
+          "XP.XC.phase_held": 1.199999674903244,
+          "frequency_good": 1.199997423337782,
+          "XP.ctrl": 0.6685531614765118,
+          "time": 1.680100990402776e-06,
+          "qualified": 1.199999817189638,
+          "XP.restart": -7.290445218164415e-07
+        },
+        {
+          "XP.XC.acquired": 1.207929260091309,
+          "XP.XC.phase_held": 1.199999679296907,
+          "frequency_good": 1.199997429948943,
+          "XP.ctrl": 0.6684105558656147,
+          "time": 1.680101240402777e-06,
+          "qualified": 1.199999814641575,
+          "XP.restart": -7.277673044140245e-07
+        },
+        {
+          "XP.XC.acquired": 1.207933777100621,
+          "XP.XC.phase_held": 1.199999683666721,
+          "frequency_good": 1.199997436674465,
+          "XP.ctrl": 0.6682688308858084,
+          "time": 1.680101490402777e-06,
+          "qualified": 1.199999812123445,
+          "XP.restart": -7.264903775770716e-07
+        },
+        {
+          "XP.XC.acquired": 1.207938262558305,
+          "XP.XC.phase_held": 1.199999688007921,
+          "frequency_good": 1.199997443492791,
+          "XP.ctrl": 0.6681279409290908,
+          "time": 1.680101740402777e-06,
+          "qualified": 1.199999809633091,
+          "XP.restart": -7.252159441994948e-07
+        },
+        {
+          "XP.XC.acquired": 1.207942715827933,
+          "XP.XC.phase_held": 1.19999969231601,
+          "frequency_good": 1.199997450383173,
+          "XP.ctrl": 0.6679878401997398,
+          "time": 1.680101990402777e-06,
+          "qualified": 1.199999807168417,
+          "XP.restart": -7.239460300001281e-07
+        },
+        {
+          "XP.XC.acquired": 1.207947136271332,
+          "XP.XC.phase_held": 1.199999696587387,
+          "frequency_good": 1.199997457328416,
+          "XP.ctrl": 0.6678484824555557,
+          "time": 1.680102240402777e-06,
+          "qualified": 1.19999980472766,
+          "XP.restart": -7.226827020885109e-07
+        }
+      ],
+      "skipped": 0,
+      "lte": 0,
+      "log_tail": "    tran noise is turning OFF on time 1.000000e-06.\n\n......9......8......7......6......5......4...\n\nNotice from spectre at time = 1.42753 us during transient analysis `tran'.\n    Found trapezoidal ringing on node XP.XC.XC.X1.XS.XN.x.\n\n......9......8......7......6......5......4......3....",
+      "completed_clean": false,
+      "newton": 0,
+      "bytes": 2286084096
+    },
+    {
+      "run": "pllmainquarteronssd01",
+      "case": "full_pll_main_quarter_on_tt",
+      "state": "not_dispatched"
+    },
+    {
+      "run": "pllrt4quarteroffssd01",
+      "case": "full_pll_rt4_quarter_off_tt",
+      "state": "running_or_collecting",
+      "remote_dir": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/631d406b",
+      "last": {
+        "XP.XC.acquired": 1.19916688514519,
+        "XP.XC.phase_held": 1.20000013057279,
+        "frequency_good": 1.20000525273062,
+        "XP.ctrl": 0.734424900064658,
+        "time": 0.0,
+        "qualified": 1.19999942576108,
+        "XP.restart": 5.78601158998238e-07
+      },
+      "recent": [
+        {
+          "XP.XC.acquired": 1.19916688514519,
+          "XP.XC.phase_held": 1.20000013057279,
+          "frequency_good": 1.20000525273062,
+          "XP.ctrl": 0.734424900064658,
+          "time": 0.0,
+          "qualified": 1.19999942576108,
+          "XP.restart": 5.78601158998238e-07
+        }
+      ],
+      "skipped": 0,
+      "lte": 0,
+      "log_tail": "Notice from spectre during transient analysis `tran'.\n    tran noise is turning OFF on time 0.000000e+00.\n\n\nOutput and IC/nodeset summary:\n                 save   4       (current)\n                 save   19      (voltage)\n",
+      "completed_clean": false,
+      "newton": 0,
+      "bytes": 4096
+    },
+    {
+      "run": "pllrt4quarteronssd01",
+      "case": "full_pll_rt4_quarter_on_tt",
+      "state": "not_dispatched"
+    }
+  ],
+  "ssd_audit_passed": true,
+  "full_pll_acceptance": false
+}
