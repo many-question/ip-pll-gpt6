@@ -1,4 +1,4 @@
-本次快照：[第76次汇报](../reports/2026-10-06T2002.yaml)。原版V14的0.25ps完整quiet已通过回收、初始化和末1µs稳态核验，既有流水线自动启动配对噪声；数值收敛及全带抖动仍未验收。
+本次快照：[第77次汇报](../reports/2026-10-06T2333.yaml)。RT4候选0.25ps完整quiet通过原稳态门限，日志未报告梯形振铃；配对噪声已由既有流水线自动启动，原版与RT4两项0.25ps噪声继续运行。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

@@ -1,0 +1,76 @@
+{
+  "scope": "Compare RT4 candidate noiseless trajectories at 0.5 ps and 0.25 ps.\n\nEdge differences are deterministic numerical sensitivity, never random jitter.\nNo fit, trend subtraction, or spur notch is applied to the edge differences.\n",
+  "time": "2026-10-06T23:33:43.874512+08:00",
+  "condition": "Actual full RT4/newbank PLL with transistor FLL/control/watchdog/bias,TT27/1.2V/24MHzref/K41/M4/10fF/Q5RLC/CF10; ideal external reference and supply.",
+  "protocol_sha256": [
+    "193c5ae0d6549817835a642e2d7969a067f3edbf5a4012465433361f0817069b",
+    "7a9023dffc673814023586c3d8cd702a4dc5419d67fc78e98db3a2f9b7655acc"
+  ],
+  "same_dut_state_reference_and_tolerances": true,
+  "source_tb_diff_only_maxstep": true,
+  "baseline": {
+    "source_result": "research/runs/spectre_cmos_v14_full/pllrt4fineoffssd02/full_pll_rt4_fine_off_tt/result.json",
+    "source_result_sha256": "b1dd4bc72663823b0c003ea224e5e5d6c4c04b3b909d0b158d0bf90f49e20230",
+    "cache_sha256": "c7e45e86d3629d7042088afcc3246f53b75eb832fcf03099f9778e99518e5f02",
+    "log_sha256": "ad2c6367456ee3981e377adceece8acfcd1a3a78d032ea852c649d5371c89482",
+    "ringing_reported": true,
+    "stationarity": {
+      "samples": 24,
+      "phase_pp_rad": 0.0055671165627506625,
+      "phase_drift_rad_per_us": -0.0013992259331245575,
+      "maximum_rf_cycles_error": 0.0005444186372187687,
+      "maximum_out_cycles_error": 0.0001448336538487638,
+      "mean_output_mhz": 983.9999200772438,
+      "passed": true
+    }
+  },
+  "refined": {
+    "source_result": "research/runs/spectre_cmos_v14_full/pllrt4quarteroffssd01/full_pll_rt4_quarter_off_tt/result.json",
+    "source_result_sha256": "aebe4b0d1504c710105821b6cc6dc82259b4e70bacde5a322e3634fe401a34bf",
+    "cache_sha256": "5f82b3b8d04523f7f4c47ac03a3589de4dcb619269a5b2ca5ee4da3bdb27ff4b",
+    "log_sha256": "9e3a344c26622f0fb818c422170ab03bf0373ff4088f7c44ca98583d0f632f17",
+    "ringing_reported": false,
+    "stationarity": {
+      "samples": 24,
+      "phase_pp_rad": 0.00643051777544823,
+      "phase_drift_rad_per_us": -0.0030117694789592135,
+      "maximum_rf_cycles_error": 0.0005560499653256556,
+      "maximum_out_cycles_error": 0.00014764351271878695,
+      "mean_output_mhz": 983.9998537101496,
+      "passed": true
+    }
+  },
+  "recovery_audit_sha256": "356ff9512315d2680de072b084c5f1e0ebbb58dd872b67d0bbe1f2ea00b4d141",
+  "deterministic_edge_sensitivity": {
+    "edge_count": 1024,
+    "edge_threshold_v": 0.6,
+    "difference_order": "0.25 ps minus 0.5 ps, matched rising-edge ordinal",
+    "mean_edge_difference_ps": -0.05619472878981591,
+    "peak_to_peak_difference_ps": 0.080892295925298,
+    "maximum_absolute_difference_ps": 0.10641036878921772,
+    "mean_removed_difference_rms_fs": 22.776602545837708,
+    "fft_bin_width_hz": 960937.5,
+    "selected_bin_centers_hz": [
+      5765625.0,
+      492000000.0
+    ],
+    "effective_bin_coverage_hz": [
+      5285156.25,
+      492000000.0
+    ],
+    "band_limited_deterministic_difference_rms_fs": 7.797340432830133,
+    "parseval_relative_error": 2.220446049250313e-16,
+    "random_jitter": false
+  },
+  "numerical_convergence_established": false,
+  "full_pll_acceptance": false,
+  "integrated_10khz_jitter_fs": null,
+  "limitations": [
+    "Both quiet records pass their complete last 1 us stationarity gates; this does not establish numerical convergence.",
+    "The 0.5 ps log contains internal trapezoidal ringing, whereas the 0.25 ps log reports none; integration-method and tolerance checks remain open.",
+    "Quiet-quiet differences include deterministic settling and numerical changes. They are not noise-on/quiet differences or a measured noise floor.",
+    "Effective band denotes selected-bin edges, consistent with the existing protocol; the first selected bin center is 5.765625 MHz, not a directly resolved 5 MHz sample.",
+    "The 0.25 ps noise run must be paired with its own quiet record. Same seed does not ensure the same adaptive stochastic realization.",
+    "No full-band jitter, independent-seed, noise-bandwidth, PVT or duration acceptance follows from this comparison."
+  ]
+}
