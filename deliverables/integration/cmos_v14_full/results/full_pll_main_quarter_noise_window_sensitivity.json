@@ -1,0 +1,32 @@
+{
+  "time": "2026-10-07T18:48:12.921678+08:00",
+  "scope": "Check finite-window sensitivity without changing the preregistered metric.",
+  "parent_validation_sha256": "8f829551fd1504dc332c3c4b02fd5b0910166c3cb4ab34fe3bb1978b68df7732",
+  "samples": 1024,
+  "band_hz": [
+    5285156.25,
+    492000000.0
+  ],
+  "endpoint_difference_ps": 0.35039236789485645,
+  "methods": [
+    {
+      "window": "rectangular",
+      "band_rms_fs": 172.5074884241091,
+      "noise_energy_normalization": 1.0,
+      "enbw_bins": 1.0
+    },
+    {
+      "window": "symmetric_hann",
+      "band_rms_fs": 175.25975431147356,
+      "noise_energy_normalization": 0.3746337890625,
+      "enbw_bins": 1.501466275659824
+    }
+  ],
+  "full_pll_acceptance": false,
+  "limitations": [
+    "Window dependence includes finite-record weighting and leakage; it does not independently separate physical low-frequency noise from leakage.",
+    "Hann uses sum(w^2) noise-energy normalization; no trend fit or arbitrary notches.",
+    "Only longer records and multiple seeds can constrain this uncertainty; neither value is a 10kHz full-band result.",
+    "Retain the preregistered rectangular result; never select a preferred lower value as acceptance."
+  ]
+}

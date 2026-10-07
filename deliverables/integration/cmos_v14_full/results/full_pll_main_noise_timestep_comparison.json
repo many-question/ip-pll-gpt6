@@ -1,0 +1,91 @@
+{
+  "scope": "Compare independently quiet-subtracted V14 noise records at 0.5 and 0.25 ps.",
+  "time": "2026-10-07T18:49:23.381185+08:00",
+  "physical_inputs_and_initial_state_match": true,
+  "testbench_change": "maxstep only",
+  "records": [
+    {
+      "maxstep_ps": 0.5,
+      "seed": 11,
+      "protocol_sha256": "3f593fe1c0120841c94c286f5431f29f0ef690a47592d7797096594fc2a3456d",
+      "validation_sha256": "b8d507fc233443aebc8d7a24e567ebaa99ffbc995b4c859b28ba67fbdb6e35aa",
+      "band_rms_fs": 195.39040522169282,
+      "band_variance_s2": 3.817741045269733e-26,
+      "block_variance_standard_error_s2": 6.143104414469024e-27,
+      "subbands": [
+        {
+          "center_selection_hz": [
+            5000000.0,
+            20000000.0
+          ],
+          "rms_fs": 123.37133371759924
+        },
+        {
+          "center_selection_hz": [
+            20000000.0,
+            100000000.0
+          ],
+          "rms_fs": 82.14162210332896
+        },
+        {
+          "center_selection_hz": [
+            100000000.0,
+            492000000.0
+          ],
+          "rms_fs": 127.31723523416613
+        }
+      ]
+    },
+    {
+      "maxstep_ps": 0.25,
+      "seed": 11,
+      "protocol_sha256": "eaaed967dbdd4b19d7c6b5b950f05d79da72181611ef8405d61db2af66d0529c",
+      "validation_sha256": "8f829551fd1504dc332c3c4b02fd5b0910166c3cb4ab34fe3bb1978b68df7732",
+      "band_rms_fs": 172.5074884241091,
+      "band_variance_s2": 2.975883356239413e-26,
+      "block_variance_standard_error_s2": 1.8742466108629496e-27,
+      "subbands": [
+        {
+          "center_selection_hz": [
+            5000000.0,
+            20000000.0
+          ],
+          "rms_fs": 94.75316601000385
+        },
+        {
+          "center_selection_hz": [
+            20000000.0,
+            100000000.0
+          ],
+          "rms_fs": 69.89958704784883
+        },
+        {
+          "center_selection_hz": [
+            100000000.0,
+            492000000.0
+          ],
+          "rms_fs": 126.0742591650452
+        }
+      ]
+    }
+  ],
+  "rms_relative_change_percent": -11.711382025959981,
+  "variance_difference_s2": -8.418576890303196e-27,
+  "block_se_quadrature_s2": 6.42265772133313e-27,
+  "descriptive_variance_difference_over_block_se": -1.310762188422487,
+  "effective_band_hz": [
+    5285156.25,
+    492000000.0
+  ],
+  "numerical_convergence_established": false,
+  "full_pll_acceptance": false,
+  "integrated_10khz_jitter_fs": null,
+  "limitations": [
+    "One noise realization at each timestep; identical seed does not ensure identical adaptive noise samples.",
+    "The variance difference divided by block SE is descriptive, not a significance test or confidence interval; blocks may be correlated.",
+    "The 0.25 ps quiet record reports internal trapezoidal ringing; its noisy record does not. Absence of a notice is not proof of convergence.",
+    "Do not subtract the two random noise traces and label the difference a numerical error floor.",
+    "Retain both preregistered rectangular results. Seed, tolerance, integration method, bandwidth and duration convergence remain open.",
+    "No result includes 10 kHz to 5.28515625 MHz or constitutes full-band acceptance."
+  ]
+}
