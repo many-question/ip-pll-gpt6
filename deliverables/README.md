@@ -1,4 +1,4 @@
-本次快照：[第78次汇报](../reports/2026-10-07T1854.yaml)。原版V14的0.25ps完整晶体管配对噪声完成，高偏移诊断172.507488fs；与0.5ps相差11.71%，数值收敛仍未证明。已启动seed29，RT4的seed11继续运行。
+本次快照：[第79次汇报](../reports/2026-10-07T2155.yaml)。RT4候选0.25ps完整晶体管配对噪声完成，高偏移诊断95.862399fs；较0.5ps相差4.77%，仍未证明数值或全带收敛。已启动RT4 seed29，原版seed29继续运行。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)
