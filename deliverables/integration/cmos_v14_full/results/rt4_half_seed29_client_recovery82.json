@@ -1,0 +1,344 @@
+{
+  "time": "2026-10-08T22:14:14+08:00",
+  "source_live_audit": "research/recovery82_live.json",
+  "source_live_audit_sha256": "bcdc8c6c86f41152ba9530bdf89b1f8bc2d04f5aebce95e3499b8d6c7815df77",
+  "incident": "research/rt4_half_seed29_client_loss82_before.json",
+  "incident_sha256": "6f8c7a688bfc5ce1df937ed87dcc16287b5ce156c3ca5d3d38786dd1281057c1",
+  "resource_snapshot": {
+    "time": "2026-10-08T22:12:03.519644+08:00",
+    "jobs": [
+      {
+        "threads": 7,
+        "pid": 47483,
+        "netlist": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/2d3a5661/full_pll_main_half_seed29_on_tt.scs"
+      },
+      {
+        "threads": 7,
+        "pid": 221473,
+        "netlist": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/58110ce2/full_pll_rt4_half_seed29_on_tt.scs"
+      }
+    ],
+    "requested_threads": 14
+  },
+  "jobs": [
+    {
+      "run": "pllmainsettledoff01",
+      "case": "full_pll_main_settled_off_tt",
+      "state": "collected",
+      "ok": true
+    },
+    {
+      "run": "pllmainhalfseed29onssd01",
+      "case": "full_pll_main_half_seed29_on_tt",
+      "state": "running_or_collecting",
+      "remote_dir": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/2d3a5661",
+      "last": {
+        "XP.restart": -5.168838158358608e-05,
+        "frequency_good": 1.199615483628367,
+        "XP.XC.phase_held": 1.199402840008673,
+        "XP.XC.acquired": 1.191584720074018,
+        "XP.ctrl": 0.6552005456733558,
+        "qualified": 1.200326772360956,
+        "time": 1.498710384348652e-06
+      },
+      "skipped": 0,
+      "lte": 0,
+      "log_tail": "                 save   19      (voltage)\n\n......9......8......7......6....\n\nNotice from spectre at time = 1 us during transient analysis `tran'.\n    tran noise is turning ON on time 1.000000e-06.\n\n......9......8......7......6......5......4......",
+      "completed_clean": false,
+      "newton": 0,
+      "bytes": 2536624128
+    },
+    {
+      "run": "pllrt4fineoffssd02",
+      "case": "full_pll_rt4_fine_off_tt",
+      "state": "collected",
+      "ok": true
+    },
+    {
+      "run": "pllrt4halfseed29onssd01",
+      "case": "full_pll_rt4_half_seed29_on_tt",
+      "state": "running_or_collecting",
+      "remote_dir": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/58110ce2",
+      "last": {
+        "XP.restart": -0.0001327860142017411,
+        "frequency_good": 1.199997191501653,
+        "XP.XC.phase_held": 1.199242491716778,
+        "XP.XC.acquired": 1.194157399202537,
+        "XP.ctrl": 0.7443818770759977,
+        "qualified": 1.200167164640807,
+        "time": 1.259217776022845e-06
+      },
+      "skipped": 0,
+      "lte": 0,
+      "log_tail": "        Further occurrences of this notice will be suppressed.\n\n......9......8......7......6....\n\nNotice from spectre at time = 1 us during transient analysis `tran'.\n    tran noise is turning ON on time 1.000000e-06.\n\n......9......8......7......6......5.....",
+      "completed_clean": false,
+      "newton": 0,
+      "bytes": 1306947584
+    }
+  ],
+  "retired_workers": [
+    {
+      "pid": 137352,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\run_main_strict_noise_pipeline.py",
+        "--protocol",
+        "full_pll_rt4_half_seed29_pair_protocol.json",
+        "--state",
+        "rt4_half_seed29_noise_pipeline.json"
+      ],
+      "state": "research/rt4_half_seed29_noise_pipeline.json",
+      "log": "research/rt4_half_seed29_pipeline81.log",
+      "running": false,
+      "checked": "2026-10-08T21:07:36.605774+08:00",
+      "role": "pipeline",
+      "retired_at": "2026-10-08T22:14:14+08:00",
+      "reason": "Local process absent after SSH disconnect; remote simulation still advances. Exact local termination cause unconfirmed."
+    },
+    {
+      "pid": 113668,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\watch_rt4_half_seed29_pair.py"
+      ],
+      "state": "research/rt4_half_seed29_guard.json",
+      "log": "research/rt4_half_seed29_guard81.log",
+      "running": false,
+      "checked": "2026-10-08T21:07:36.605774+08:00",
+      "role": "guard",
+      "retired_at": "2026-10-08T22:14:14+08:00",
+      "reason": "Local process absent after SSH disconnect; remote simulation still advances. Exact local termination cause unconfirmed."
+    },
+    {
+      "pid": 136940,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\share\\deliverables\\integration\\cmos_v14_full\\run_spectre.py",
+        "--run-id",
+        "pllrt4halfseed29onssd01",
+        "--cases",
+        "full_pll_rt4_half_seed29_on_tt",
+        "--mode",
+        "ax",
+        "--threads",
+        "7",
+        "--preset-override",
+        "all",
+        "--timeout",
+        "172800"
+      ],
+      "running": false,
+      "checked": "2026-10-08T21:07:36.605774+08:00",
+      "role": "noise_runner_expected_to_exit_after_collection",
+      "state": null,
+      "log": "research/rt4_half_seed29_noise_pipeline_noise_on.log",
+      "retired_at": "2026-10-08T22:14:14+08:00",
+      "reason": "Local process absent after SSH disconnect; remote simulation still advances. Exact local termination cause unconfirmed."
+    }
+  ],
+  "local_workers": [
+    {
+      "pid": 77052,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\run_main_strict_noise_pipeline.py",
+        "--protocol",
+        "full_pll_main_half_seed29_pair_protocol.json",
+        "--state",
+        "main_half_seed29_noise_pipeline.json"
+      ],
+      "state": "research/main_half_seed29_noise_pipeline.json",
+      "log": "research/main_half_seed29_pipeline80.log",
+      "running": true,
+      "checked": "2026-10-08T22:14:14+08:00",
+      "role": "pipeline"
+    },
+    {
+      "pid": 136752,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\watch_main_half_seed29_pair.py"
+      ],
+      "state": "research/main_half_seed29_guard.json",
+      "log": "research/main_half_seed29_guard80.log",
+      "running": true,
+      "checked": "2026-10-08T22:14:14+08:00",
+      "role": "guard"
+    },
+    {
+      "pid": 134568,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\share\\deliverables\\integration\\cmos_v14_full\\run_spectre.py",
+        "--run-id",
+        "pllmainhalfseed29onssd01",
+        "--cases",
+        "full_pll_main_half_seed29_on_tt",
+        "--mode",
+        "ax",
+        "--threads",
+        "7",
+        "--preset-override",
+        "all",
+        "--timeout",
+        "172800"
+      ],
+      "running": true,
+      "checked": "2026-10-08T22:14:14+08:00",
+      "role": "noise_runner_expected_to_exit_after_collection",
+      "state": null,
+      "log": "research/main_half_seed29_noise_pipeline_noise_on.log"
+    },
+    {
+      "pid": 6184,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\watch_rt4_half_seed29_pair.py",
+        "--resume"
+      ],
+      "role": "guard",
+      "state": "research/rt4_half_seed29_guard.json",
+      "log": "research/rt4_half_seed29_guard_resume82.log",
+      "running": true,
+      "checked": "2026-10-08T22:14:14+08:00"
+    },
+    {
+      "pid": 86480,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\share\\deliverables\\integration\\cmos_v14_full\\recover_rt4_half_seed29_detached.py"
+      ],
+      "role": "detached_collector_pipeline",
+      "state": "research/rt4_half_seed29_noise_pipeline.json",
+      "log": "research/rt4_half_seed29_detached_recovery82b.log",
+      "running": true,
+      "checked": "2026-10-08T22:17:04.856429+08:00"
+    }
+  ],
+  "pipeline_states": {
+    "main_half_seed29_guard": {
+      "scope": "Bounded guard for the explicitly named precision-bridge runs only.",
+      "state": "monitoring",
+      "events": [],
+      "resumed": false,
+      "updated": "2026-10-08T22:16:46.237817+08:00",
+      "read_error": "JSONDecodeError('Unterminated string starting at: line 1 column 10 (char 9)')"
+    },
+    "rt4_half_seed29_guard": {
+      "scope": "Bounded guard for the explicitly named precision-bridge runs only.",
+      "state": "monitoring",
+      "events": [],
+      "resumed": true,
+      "updated": "2026-10-08T22:16:43.944904+08:00"
+    },
+    "main_half_seed29_noise_pipeline": {
+      "scope": "Dispatch original full-PLL noise only after its quiet validation succeeds.",
+      "state": "running_noise",
+      "protocol_sha256": "203469a0d10a5b5e9872c3328ca2b0a1fa35d03c93c3b1c26de0b4983d8ce86a",
+      "noise_wall_timeout_s": 172800,
+      "updated": "2026-10-08T14:04:56.362097+08:00",
+      "quiet_checks": {
+        "completed": true,
+        "clean": true,
+        "status": true,
+        "initialization": true,
+        "stationary": true
+      },
+      "resources_before": {
+        "time": "2026-10-08T14:04:56.351588+08:00",
+        "jobs": [
+          {
+            "threads": 7,
+            "pid": 44307,
+            "netlist": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/6ba05ae6/full_pll_rt4_quarter_seed29_on_tt.scs"
+          }
+        ],
+        "requested_threads": 7
+      }
+    },
+    "rt4_half_seed29_noise_pipeline": {
+      "scope": "Dispatch original full-PLL noise only after its quiet validation succeeds.",
+      "state": "waiting_existing_remote",
+      "protocol_sha256": "4e8d4203fd08c175e4fa3667b0b6862f5c5b1d242ab7d700bb28be635f3b0d15",
+      "noise_wall_timeout_s": 172800,
+      "updated": "2026-10-08T22:16:37.630546+08:00",
+      "quiet_checks": {
+        "completed": true,
+        "clean": true,
+        "status": true,
+        "initialization": true,
+        "stationary": true
+      },
+      "resources_before": {
+        "time": "2026-10-08T17:07:11.475383+08:00",
+        "jobs": [
+          {
+            "threads": 7,
+            "pid": 47483,
+            "netlist": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/2d3a5661/full_pll_main_half_seed29_on_tt.scs"
+          }
+        ],
+        "requested_threads": 7
+      },
+      "noise_returncode": 143,
+      "detached_recovery": {
+        "no_new_simulations": true,
+        "script": "share\\deliverables\\integration\\cmos_v14_full\\recover_rt4_half_seed29_detached.py",
+        "started": "2026-10-08T22:16:36.456547+08:00",
+        "original_client_returncode": 143
+      },
+      "observation": {
+        "live": [
+          221473
+        ],
+        "raw_bytes": 1333239808,
+        "raw_mtime": 1791468885.89111,
+        "log_sha256": "c949ac288504eea9e3840ab8854804d3a11a676f702ad9f42fc1ff333e0e5959",
+        "terminal_errors": null,
+        "exit_code": null
+      }
+    }
+  },
+  "checks": {
+    "gate_tests": [
+      {
+        "name": "live_even_with_footer",
+        "passed": true
+      },
+      {
+        "name": "missing_footer",
+        "passed": true
+      },
+      {
+        "name": "first_terminal_observation",
+        "passed": true
+      },
+      {
+        "name": "changing_waveform",
+        "passed": true
+      },
+      {
+        "name": "stable_terminal",
+        "passed": true
+      },
+      {
+        "name": "stable_no_shell_exit_code",
+        "passed": true
+      },
+      {
+        "name": "previous_still_live",
+        "passed": true
+      }
+    ],
+    "prior_implementation_hashes_verified": 34,
+    "script_sha256": "0bc238c4cbcace6f1cc07eae945443ab40add971365d4b7b73558c8b658754c7",
+    "no_simulator_action": true,
+    "remote_referenced_initial_state_hash_verified": true
+  },
+  "script_sha256": "0bc238c4cbcace6f1cc07eae945443ab40add971365d4b7b73558c8b658754c7",
+  "simulation_action": "none",
+  "no_new_simulations": true,
+  "no_new_measurement": true,
+  "full_pll_acceptance": false,
+  "collector_revision": "Added verification of referenced SSD initial-state file before monitoring and before/after collection. Only local collector replaced while waiting; simulator untouched."
+}

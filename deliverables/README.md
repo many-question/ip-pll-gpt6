@@ -1,4 +1,4 @@
-本次快照：[第81次汇报](../reports/2026-10-08T1708.yaml)。RT4候选0.25ps第二种子完成并独立复核，高偏移诊断103.195977fs；seed11/29相差7.65%，未证明统计或数值收敛。已派发RT4 0.5ps seed29对照，原版0.5ps seed29继续。
+本次快照：[第82次汇报](../reports/2026-10-08T2214.yaml)。RT4本地SSH客户端断连、流水线和保护器退出，远端仿真仍正常推进；已恢复保护器并接入只回收现有任务的独立流水线。两组0.5ps seed29继续，无新增抖动结果。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)
