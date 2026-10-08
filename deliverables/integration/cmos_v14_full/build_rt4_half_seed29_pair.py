@@ -1,0 +1,58 @@
+"""Prepare an independent seed at 0.5 ps; reuse the identical validated quiet case."""
+from pathlib import Path
+import datetime, hashlib, json
+
+H = Path(__file__).resolve().parent
+sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+
+
+def main():
+    parent = H/'results/full_pll_rt4_fine_ssd_cwd_pair_protocol.json'
+    validation = H/'results/full_pll_rt4_fine_ssd_cwd_pair_validation.json'
+    audit = H/'results/full_pll_rt4_noise_recovery_audit.json'
+    p = json.loads(parent.read_text());v = json.loads(validation.read_text());a = json.loads(audit.read_text())
+    assert v['high_offset_diagnostic_valid'] and a['recovery_audit_passed']
+    assert v['protocol_sha256'] == sha(parent) and a['validation_sha256'] == sha(validation)
+    assert sha(H/'state_inputs'/p['text_state']) == p['text_state_sha256']
+    available = {f.name:f for f in (H.parents[1]/'blocks').glob('*/*.scs')}
+    assert all(sha(available[k]) == value for k,value in p['physical_dependency_hashes'].items())
+    trigger = H/'results/full_pll_rt4_quarter_seed29_noise_recovery_audit.json'
+    spread = H/'results/full_pll_rt4_quarter_seed_comparison.json'
+    assert json.loads(trigger.read_text())['recovery_audit_passed']
+    assert not json.loads(spread.read_text())['statistical_convergence_established']
+    quiet = p['cases'][0]
+    assert sha(H/'tb'/(quiet['case']+'.scs')) == quiet['tb_sha256']
+    source = H/'tb'/(p['cases'][1]['case']+'.scs');body = source.read_text()
+    assert sha(source) == p['cases'][1]['tb_sha256'] and body.count('noiseseed=11 ') == 1
+    case = 'full_pll_rt4_half_seed29_on_tt';dest = H/'tb'/(case+'.scs')
+    quarter_path = H/'results/full_pll_rt4_quarter_seed29_pair_protocol.json'
+    quarter = json.loads(quarter_path.read_text())
+    invariant = ['physical_dependency_hashes','text_state_sha256','output_hz','ref_hz','stop_s',
+                 'noise_start_s','measurement_start_s','edge_count','band_hz','reltol','vabstol',
+                 'iabstol','noisefmax_hz','noisefmin_hz','reference_phase_preservation']
+    assert all(p[k] == quarter[k] for k in invariant)
+    quarter_tb = H/'tb'/(quarter['cases'][1]['case']+'.scs')
+    assert sha(quarter_tb) == quarter['cases'][1]['tb_sha256']
+    assert body.count('maxstep=.5p ') == 1
+    assert body.replace('noiseseed=11 ','noiseseed=29 ').replace('maxstep=.5p ','maxstep=.25p ') == quarter_tb.read_text()
+    assert not dest.exists()
+    dest.write_text(body.replace('noiseseed=11 ', 'noiseseed=29 '),encoding='utf-8',newline='\n')
+    assert dest.read_text().replace('noiseseed=29 ', 'noiseseed=11 ') == body
+    p['cases'][1] = dict(run='pllrt4halfseed29onssd01',case=case,noise_enabled=True,tb_sha256=sha(dest))
+    p.update(scope=__doc__,time=datetime.datetime.now().astimezone().isoformat(),seed=29,
+        parent_protocol_sha256=sha(parent),baseline_validation_sha256=sha(validation),
+        baseline_recovery_audit_sha256=sha(audit),comparison_parameter='noise seed only: 11 to 29',
+        quiet_reuse_reason='Exact same DUT, initial state, reference phase, stop, solver and noise-off prefix. The retained quiet deck has seed 11 with isnoisy=0 throughout; seed cannot affect that noise-disabled trace.',
+        convergence_interpretation='One additional independent realization tests seed sensitivity at fixed 0.5 ps; two seeds alone do not establish statistical or numerical convergence.',
+        physical_dut_modified=False,full_pll_acceptance=False)
+    p['trigger_quarter_seed29_audit_sha256'] = sha(trigger)
+    p['trigger_seed_comparison_sha256'] = sha(spread)
+    p['step_comparison_protocol_sha256'] = sha(H/'results/full_pll_rt4_quarter_seed29_pair_protocol.json')
+    p['study_purpose'] = 'Complete the RT4-candidate 2 timestep by 2 seed comparison. Same seed at different adaptive timesteps is not an identical random waveform.'
+    p['limitations'] += ['Seed 29 was fixed before observing its output; retain both seeds regardless of which RMS is lower.']
+    target = H/'results/full_pll_rt4_half_seed29_pair_protocol.json';assert not target.exists()
+    target.write_text(json.dumps(p,indent=2)+'\n')
+    print(target)
+
+
+if __name__ == '__main__': main()
