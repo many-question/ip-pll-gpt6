@@ -1,0 +1,70 @@
+{
+  "scope": "Measure complete-PLL high-offset random edge noise against a matched quiet trace.",
+  "protocol_sha256": "203469a0d10a5b5e9872c3328ca2b0a1fa35d03c93c3b1c26de0b4983d8ce86a",
+  "condition": "Original complete V14, all actual transistor FLL/control/watchdog/bias,TT27/1.2V/24MHz/K41/M4/10fF/Q5RLC/CF10; original output chain. Ideal external reference and supply.",
+  "cases": [
+    {
+      "run": "pllmainsettledoff01",
+      "case": "full_pll_main_settled_off_tt",
+      "noise_enabled": false,
+      "tb_sha256": "649f012cb38be0c17654926f9d2dd22e4e8969bcc1f22b480175c1519c28feeb",
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/pllmainsettledoff01/full_pll_main_settled_off_tt/result.json",
+      "source_sha256": "068acb65e2894be57275688b6fced6a46e81e5e824c5b093493f3f05d7a90690",
+      "recovery": {
+        "newton_failures_reported": 0,
+        "skipped_breakpoints_reported": 0,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": true,
+        "counts_may_be_suppressed": false
+      },
+      "effective": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-09,
+        "abstol(I)": 1e-12,
+        "method": "traponly",
+        "maxstep": 5e-13,
+        "noisefmax": 160000000000.0,
+        "noisefmin": 1000000.0,
+        "trannoisemethod": "default"
+      },
+      "log_sha256": "e055ea3d9d1d1eda004d935406f3e8e7eb7fb362713f9bd0446df50ce46be92f",
+      "cache_sha256": "0836ebaecb71a7fe3bef5dd5f6207412602b2bececd039228329bb790c0166f0",
+      "initial_maximum_voltage_difference_v": 0.0,
+      "compared_nodes": 19,
+      "status_stable": true,
+      "stationarity": {
+        "samples": 24,
+        "phase_pp_rad": 0.005202581582691268,
+        "phase_drift_rad_per_us": -0.0019094129136282435,
+        "maximum_rf_cycles_error": 0.000512013886236673,
+        "maximum_out_cycles_error": 0.00022049804556445451,
+        "mean_output_mhz": 984.0000203473571,
+        "passed": true
+      }
+    },
+    {
+      "run": "pllmainhalfseed29onssd01",
+      "case": "full_pll_main_half_seed29_on_tt",
+      "noise_enabled": true,
+      "tb_sha256": "5ddd25d44dd90b163f4fd920969c7f593215cec6cd59f6903237b586545ccbe5",
+      "completed": false
+    }
+  ],
+  "complete": false,
+  "high_offset_diagnostic_valid": false,
+  "full_pll_acceptance": false,
+  "integrated_10khz_jitter_fs": null,
+  "limitations": [
+    "This is an initial high-offset complete-circuit diagnostic, not the10kHz/full-band acceptance.",
+    "5ns absolute-current-tolerance comparison validates only short numerical behavior. Require clean whole traces, intact physical initial state, common quiet prefix and stationary noiseless loop.",
+    "Measurement inputs are ideal; actual transistor noise in every PLL device and RLC resistance is enabled together in the on case.",
+    "No functional control is clamped. The two measurement-only VA modules were removed and an ideal0V supply probe substituted.",
+    "No source-amplitude scaling, fitted trend removal or arbitrary spur notches. Paired deterministic edge template removes the measured repeatable component.",
+    "Further timestep, current-tolerance, bandwidth, seed and record-length comparisons remain mandatory even if this pair finishes cleanly.",
+    "Source first fine run failed the original full1us stationarity gate. Decaying short-window drift only motivates more settling; it does not override that failure.",
+    "All text terminal states are copied byte-for-byte. Reference delay is translated by the source stop time. Hidden integration history is not restored; fresh initialization must be rechecked.",
+    "Seed 29 was fixed before observing its output; retain both seeds regardless of which RMS is lower."
+  ]
+}
