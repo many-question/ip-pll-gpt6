@@ -1,4 +1,4 @@
-本次快照：[第82次汇报](../reports/2026-10-08T2214.yaml)。RT4本地SSH客户端断连、流水线和保护器退出，远端仿真仍正常推进；已恢复保护器并接入只回收现有任务的独立流水线。两组0.5ps seed29继续，无新增抖动结果。
+本次快照：[第83次汇报](../reports/2026-10-09T0828.yaml)。原版V14的0.5ps seed29完成并独立复核，高偏移诊断163.650060fs；两步长×两种子矩阵齐全，尚未证明数值或统计收敛。已启动仅收紧电流容差至100fA的独立quiet验证，RT4 0.5ps seed29继续。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

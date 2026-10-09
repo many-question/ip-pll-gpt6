@@ -49,11 +49,36 @@
       "case": "full_pll_main_half_seed29_on_tt",
       "noise_enabled": true,
       "tb_sha256": "5ddd25d44dd90b163f4fd920969c7f593215cec6cd59f6903237b586545ccbe5",
-      "completed": false
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/pllmainhalfseed29onssd01/full_pll_main_half_seed29_on_tt/result.json",
+      "source_sha256": "a7017b8cb7e27617141d1994483782b27287c39abbe00e43be12d06f6f93f90b",
+      "recovery": {
+        "newton_failures_reported": 0,
+        "skipped_breakpoints_reported": 0,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": true,
+        "counts_may_be_suppressed": false
+      },
+      "effective": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-09,
+        "abstol(I)": 1e-12,
+        "method": "traponly",
+        "maxstep": 5e-13,
+        "noisefmax": 160000000000.0,
+        "noisefmin": 1000000.0,
+        "trannoisemethod": "default"
+      },
+      "log_sha256": "c04fa5c675d5b4e57863560096c7fded8d6af9709723c1181c6dce6045f22b41",
+      "cache_sha256": "188a62b63a13b75d9fa3770d6bfc54f8da35c093d94b1e08eab7b1df68fd9529",
+      "initial_maximum_voltage_difference_v": 0.0,
+      "compared_nodes": 19,
+      "status_stable": true
     }
   ],
-  "complete": false,
-  "high_offset_diagnostic_valid": false,
+  "complete": true,
+  "high_offset_diagnostic_valid": true,
   "full_pll_acceptance": false,
   "integrated_10khz_jitter_fs": null,
   "limitations": [
@@ -66,5 +91,23 @@
     "Source first fine run failed the original full1us stationarity gate. Decaying short-window drift only motivates more settling; it does not override that failure.",
     "All text terminal states are copied byte-for-byte. Reference delay is translated by the source stop time. Hidden integration history is not restored; fresh initialization must be rechecked.",
     "Seed 29 was fixed before observing its output; retain both seeds regardless of which RMS is lower."
-  ]
+  ],
+  "diagnostic_band_rms_fs": 163.6500598156187,
+  "effective_band_hz": [
+    5285156.25,
+    492000000.0
+  ],
+  "block_variance_standard_error_s2": 2.3446550353383813e-27,
+  "prefix_max_differences_v": {
+    "XP.ctrl": 0.0,
+    "out": 0.0,
+    "qualified": 0.0
+  },
+  "checks": {
+    "clean": true,
+    "initialization": true,
+    "quiet_prefix": true,
+    "status": true,
+    "stationary": true
+  }
 }
