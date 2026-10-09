@@ -1,0 +1,74 @@
+{
+  "scope": "Measure complete-PLL high-offset random edge noise against a matched quiet trace.",
+  "protocol_sha256": "28b0946ef873857bef91aa513a73a5d8da8d668346ee546814f77fe6b07fecff",
+  "condition": "Original complete V14, all actual transistor FLL/control/watchdog/bias,TT27/1.2V/24MHz/K41/M4/10fF/Q5RLC/CF10; original output chain. Ideal external reference and supply.",
+  "cases": [
+    {
+      "run": "pllmainiab100offssd01",
+      "case": "full_pll_main_iab100_off_tt",
+      "noise_enabled": false,
+      "tb_sha256": "81f883d7c6665c1e3083fa676f7022d88124c53a56f40522198c1696a5547f5a",
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/pllmainiab100offssd01/full_pll_main_iab100_off_tt/result.json",
+      "source_sha256": "c47600c94e71cba57f6780730235a5f309d94b19f0c564b55021ffd0dadb956c",
+      "recovery": {
+        "newton_failures_reported": 0,
+        "skipped_breakpoints_reported": 0,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": true,
+        "counts_may_be_suppressed": false
+      },
+      "effective": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-09,
+        "abstol(I)": 1e-13,
+        "method": "traponly",
+        "maxstep": 2.5e-13,
+        "noisefmax": 160000000000.0,
+        "noisefmin": 1000000.0,
+        "trannoisemethod": "default"
+      },
+      "log_sha256": "8c8921dfaceeb1f6f1bd91b4ff935471d209f994f962fc39abd3dc43633baa9f",
+      "cache_sha256": "e12e444327e92bf3b7df141ad9dcd62eb0dbf873b7adaf89de5273927d338538",
+      "initial_maximum_voltage_difference_v": 0.0,
+      "compared_nodes": 19,
+      "status_stable": true,
+      "stationarity": {
+        "samples": 24,
+        "phase_pp_rad": 0.007059909343561932,
+        "phase_drift_rad_per_us": -0.0046639355078192035,
+        "maximum_rf_cycles_error": 0.000524074754139292,
+        "maximum_out_cycles_error": 0.0002233184044371228,
+        "mean_output_mhz": 983.9999073417976,
+        "passed": true
+      }
+    },
+    {
+      "run": "pllmainiab100onssd01",
+      "case": "full_pll_main_iab100_on_tt",
+      "noise_enabled": true,
+      "tb_sha256": "9b838e43f8deb0a00dc54e8d82bf2800368e02e4f45dc289282a60d28834b6a7",
+      "completed": false
+    }
+  ],
+  "complete": false,
+  "high_offset_diagnostic_valid": false,
+  "full_pll_acceptance": false,
+  "integrated_10khz_jitter_fs": null,
+  "limitations": [
+    "This is an initial high-offset complete-circuit diagnostic, not the10kHz/full-band acceptance.",
+    "5ns absolute-current-tolerance comparison validates only short numerical behavior. Require clean whole traces, intact physical initial state, common quiet prefix and stationary noiseless loop.",
+    "Measurement inputs are ideal; actual transistor noise in every PLL device and RLC resistance is enabled together in the on case.",
+    "No functional control is clamped. The two measurement-only VA modules were removed and an ideal0V supply probe substituted.",
+    "No source-amplitude scaling, fitted trend removal or arbitrary spur notches. Paired deterministic edge template removes the measured repeatable component.",
+    "Further timestep, current-tolerance, bandwidth, seed and record-length comparisons remain mandatory even if this pair finishes cleanly.",
+    "Source first fine run failed the original full1us stationarity gate. Decaying short-window drift only motivates more settling; it does not override that failure.",
+    "All text terminal states are copied byte-for-byte. Reference delay is translated by the source stop time. Hidden integration history is not restored; fresh initialization must be rechecked.",
+    "Maximum timestep halving alone does not establish tolerance, method, noise bandwidth, seed or record-length convergence.",
+    "The earlier 100 fA short screen used a different RT4 initialization and cannot validate this whole original-DUT trace.",
+    "A changed settled numerical operating point or failed quiet gate must be diagnosed; do not relax thresholds or reuse the 1 pA quiet.",
+    "No convergence or lower-noise conclusion is established by tightening a tolerance alone.",
+    "Integration method, noise bandwidth and longer low-offset records remain separate subsequent studies."
+  ]
+}

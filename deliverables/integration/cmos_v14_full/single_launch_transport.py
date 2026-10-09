@@ -36,7 +36,13 @@ def claim_command(command):
             raise ValueError('Unexpected Cadence launch body')
         body = bodies[0].replace('; spectre -64 ',
             '; cd ' + shlex.quote(directory) + ' && spectre -64 ', 1)
-        command = command[:match.start(1)] + shlex.quote(body) + command[match.end(1):]
+        # The SSH reader can disappear hours before the solver's final summary.
+        # Keep all solver standard descriptors off that pipe. nohup also protects
+        # the already claimed child from a later terminal/session hangup.
+        console = shlex.quote(directory + '/console.log')
+        command = (command[:match.start()] + 'nohup csh -c ' + shlex.quote(body)
+                   + ' > ' + console + ' 2>&1 < /dev/null & SPID='
+                   + command[match.end():])
     return ('cd ' + shlex.quote(directory) + ' || exit 74\n'
             '[ "$(pwd -P)" = ' + shlex.quote(directory) + ' ] || exit 74\n'
             '[ "$(stat -f -c %T .)" = xfs ] || exit 74\n'

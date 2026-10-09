@@ -1,4 +1,4 @@
-本次快照：[第83次汇报](../reports/2026-10-09T0828.yaml)。原版V14的0.5ps seed29完成并独立复核，高偏移诊断163.650060fs；两步长×两种子矩阵齐全，尚未证明数值或统计收敛。已启动仅收紧电流容差至100fA的独立quiet验证，RT4 0.5ps seed29继续。
+本次快照：[第84次汇报](../reports/2026-10-09T1227.yaml)。原版100fA无噪声全轨迹通过独立复核，配对噪声已由既有流水线启动；RT4 0.5ps seed29旧任务退出141且波形截断，失败数据已回收，修复SSH标准输出依赖后按相同条件重跑。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

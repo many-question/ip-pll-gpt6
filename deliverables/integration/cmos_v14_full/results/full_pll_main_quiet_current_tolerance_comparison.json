@@ -1,0 +1,45 @@
+{
+  "scope": "Compare matched 1 pA and 100 fA quiet records; differences are not random jitter.",
+  "time": "2026-10-09T12:25:31.413204+08:00",
+  "condition": "Original complete V14, all actual transistor FLL/control/watchdog/bias,TT27/1.2V/24MHz/K41/M4/10fF/Q5RLC/CF10; original output chain. Ideal external reference and supply.",
+  "protocol_sha256": [
+    "eaaed967dbdd4b19d7c6b5b950f05d79da72181611ef8405d61db2af66d0529c",
+    "28b0946ef873857bef91aa513a73a5d8da8d668346ee546814f77fe6b07fecff"
+  ],
+  "recovery_audit_sha256": "3d49757c37d5e38dae04ab4062e2c8031a86e7607a72c24cf997499789af5ae1",
+  "same_dut_state_reference_solver_except_iabstol": true,
+  "sources": [
+    {
+      "source_result": "research/runs/spectre_cmos_v14_full/pllmainquarteroffssd01/full_pll_main_quarter_off_tt/result.json",
+      "source_result_sha256": "6e309d52282265cc0275672901c9c34dbb62aaf15c519eb437ec00d1a55c3402",
+      "cache_sha256": "dfc6735ff4921a727e4cd552b4fcb5b7a402d50fea7b906b8a915e13776266b8"
+    },
+    {
+      "source_result": "research/runs/spectre_cmos_v14_full/pllmainiab100offssd01/full_pll_main_iab100_off_tt/result.json",
+      "source_result_sha256": "c47600c94e71cba57f6780730235a5f309d94b19f0c564b55021ffd0dadb956c",
+      "cache_sha256": "e12e444327e92bf3b7df141ad9dcd62eb0dbf873b7adaf89de5273927d338538"
+    }
+  ],
+  "deterministic_edge_sensitivity": {
+    "edge_count": 1024,
+    "difference_order": "100 fA minus 1 pA; same rising-edge ordinal",
+    "mean_edge_difference_fs": 0.015736121018628126,
+    "maximum_absolute_difference_fs": 0.07543188384302127,
+    "peak_to_peak_difference_fs": 0.11000543940933687,
+    "mean_removed_difference_rms_fs": 0.022805441501015856,
+    "band_limited_deterministic_difference_rms_fs": 0.008517065442352291,
+    "selected_bin_centers_hz": [
+      5765625.0,
+      492000000.0
+    ],
+    "parseval_relative_error": 4.440892098500626e-16,
+    "random_jitter": false
+  },
+  "numerical_convergence_established": false,
+  "full_pll_acceptance": false,
+  "limitations": [
+    "Noisy 100 fA record remains pending and must use its own quiet template.",
+    "Quiet edge differences are deterministic sensitivity, not random noise or a noise floor.",
+    "A small quiet difference does not prove stochastic accuracy, solver/bandwidth convergence or 10 kHz acceptance."
+  ]
+}

@@ -1,0 +1,507 @@
+schema: chip-report/0.1
+report:
+  seq: 84
+  time: '2026-10-09T12:27:48+08:00'
+  trigger: proactive
+  covers_since: '2026-10-09T08:28:44+08:00'
+overall:
+  phase: 完整PLL稳态工作点与原生器件瞬态噪声验证
+  summary: 原版100fA无噪声全轨迹通过独立复核，配对噪声已由既有流水线启动；RT4 0.5ps seed29旧任务退出141且波形截断，失败数据已回收，修复SSH标准输出依赖后按相同条件重跑。
+  since_last:
+  - pllmainiab100offssd01在SSDb47d7834正常结束，PID208575已退出、exit_code=0；Oct9 08:24:26–11:44:52，墙钟3h20m26s。Spectre 0errors/1warning/15notices，Newton/LTE/跳断点/最小步长恢复计数均0，无梯形振铃报告。原始波形4031443320字节，26输入、raw/log/完整终态远端本地SHA一致；独立解析5099998时间点、23信号与缓存最大差0、重复记录0。完整7859状态键保留，已保存电压末值差最大5.11e-15V；19初态电压差0，真实锁定状态保持。末1µs含24参考采样，输出983.999907342MHz、相位峰峰0.007059909rad、漂移-0.004663936rad/µs，原门限全部通过。
+  - 与0.25ps/1pA quiet逐项核对，仅iabstol从1e-12变为1e-13；1024匹配边沿最大绝对变化0.075431884fs、去均值RMS 0.022805442fs，所选高偏移频桶内确定性差值RMS
+    0.008517065fs。这些仅为无噪声数值敏感性，不是随机抖动、噪声底或收敛证明；100fA noisy必须与自己的quiet配对。
+  - RT4旧pllrt4halfseed29onssd01/SSD58110ce2/PID221473已退出；远端exit_code=141，缺少Spectre完成摘要。日志报告10488501接受步，完整终态文件存在，但raw在2.199999400442536µs的一条cfg_ready记录处截断，最后完整记录为2.199999177893693µs。约6.046GB
+    raw、日志及终态已完整回收并核验前后SHA稳定，26输入与引用初态匹配；不生成有效result、不计算或纳入步长/种子矩阵RMS。此前SSH已断开；141与SIGPIPE一致，故障注入复现同一机制，但没有内核信号轨迹，根因仍表述为有证据支持的判断。
+  - 启动策略将Spectre子进程stdin指向/dev/null、stdout/stderr指向该SSD目录console.log，并使用nohup；不再让solver标准输出依赖SSH读取端。无EDA仿真的故障注入：关闭读取端后旧方式退出141、新方式退出0且stdout/stderr及完成标志完整；重复派发返回73，永久原子claim保留。仅退休已无效的旧本地保护器6184；未停止任何远端仿真。pllrt4halfseed29onssd02使用原case/TB、DUT、初态、参考相位、容差、带宽、时长和seed29，quiet五项门限重新检查通过。
+  - 2026-10-09T12:26:03.813069+08:00实查原版100fA noisy：SSDa0a68349/PID414952；RT4同条件重跑：SSDf659bace/PID447196。共2长任务/14请求线程，6本地runner/pipeline/guard均核验命令行；输入与引用初态SHA一致，cwd/raw/log/TMPDIR在SSD。已核实RT4新进程fd1/fd2都指向SSD
+    console.log。原版已运行任务保留原启动策略，未重启；其SSH连接及进度继续监视。两个新噪声结果均未完成，RT4矩阵仍缺0.5ps seed29有效值。
+  route_confidence: medium
+  route_confidence_reason: 100fA全quiet通过且确定性变化很小；随机噪声容差与RT4种子矩阵仍待完整记录，低偏移验收缺失。
+levels:
+  survey:
+    maturity: 3
+    note: 澄清仿真条件：历史“10ps参考”指Spectre pulse的rise/fall参数；从输入波形量得10%–90%上升/下降时间均为8ps。尚未规定真实参考输入边沿或源阻抗，已异步询问；未将示例扫描范围改为规格。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/NOISE_METHOD_NOTES.md
+    - share/deliverables/integration/cmos_v14_full/results/reference_input_load_validation.json
+  modeling:
+    maturity: 3
+    note: 原版完整V14，TT27/1.2V/24MHz/K41/M4/10fF/Q5 RLC/CF10；外部参考与供电理想，全部功能控制为实际晶体管。maxstep0.25ps、reltol1e-6、vabstol1nV、iabstol100fA、traponly；2.2µs暖启动，无噪声记录全程关闭噪声。与0.25ps/1pA
+      quiet逐项核对，仅iabstol从1e-12变为1e-13；1024匹配边沿最大绝对变化0.075431884fs、去均值RMS 0.022805442fs，所选高偏移频桶内确定性差值RMS 0.008517065fs。这些仅为无噪声数值敏感性，不是随机抖动、噪声底或收敛证明；100fA
+      noisy必须与自己的quiet配对。已接受高偏移诊断仍为原版0.5ps seed11/29：195.390405/163.650060fs，0.25ps：172.507488/160.410117fs；RT4候选0.5ps
+      seed11：100.669316fs，0.25ps seed11/29：95.862399/103.195977fs。这些是1024边沿、约5.285–492MHz的短记录诊断，RT4候选未采用。最终10kHz至fOUT/2、排除离散杂散、RMS<200fs仍未知；数值容差、方法、带宽、种子、长记录及杂散分类尚未闭合。33频点及完整PVT/MC、真实输入/负载、供电爬升和PEX仍缺失，功耗超4mW、面积未验证；功耗优化与后端后置，指标不变。
+    artifacts: &id001
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_84.md
+    - share/deliverables/integration/cmos_v14_full/single_launch_transport.py
+    - share/deliverables/integration/cmos_v14_full/audit_main_iab100_recovery.py
+    - share/deliverables/integration/cmos_v14_full/compare_main_quiet_current_tolerances.py
+    - share/deliverables/integration/cmos_v14_full/build_rt4_half_seed29_retry_pair.py
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quiet_current_tolerance_comparison.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_pair_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_half_seed29_failed_collection84.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_half_seed29_failure_diagnosis84.json
+    - share/deliverables/integration/cmos_v14_full/results/console_isolation_validation84.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_half_seed29_retry_pair_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/noise_activation84.json
+    - share/deliverables/integration/cmos_v14_full/results/figures/main_iab100_quiet_settling.png
+  architecture:
+    maturity: 2
+    note: 原架构和全部功能电路不变；原版与RT4候选分开取初态、分开验收。10kHz–fOUT/2、排除离散spur的完整随机RMS<200fs仍未知。短记录、高偏移结果及局部RT4约52fs方法检查均不替代整环验收；功耗与后端优化后置，全部原规格不变。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_METHOD_NOTES.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_reacquisition_diagnosis.json
+    - share/deliverables/integration/cmos_v14_full/results/figures/full_pll_pre_noise_reacquisition.png
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_direct_noise_pair_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/precision_schedule_probe_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_strict_pair_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_precision_ramp_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_noise_activation_probe_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_strict_pair_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_repaircoldstrict01.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_rt4bankcold01.json
+    - share/deliverables/integration/cmos_v14_full/analyze_full_pll_reacquisition.py
+    - share/deliverables/integration/cmos_v14_full/analyze_full_pll_direct_noise_pair.py
+    - share/deliverables/integration/cmos_v14_full/analyze_full_pll_noise_activation_probe.py
+    - share/deliverables/integration/cmos_v14_full/build_full_pll_precision_bridge.py
+  blocks:
+  - name: reference_buffer
+    role: 24 MHz 参考整形
+    stage: circuit
+    maturity: 2
+    note: MOS，主PLL保持原版；taper2三点实际加载前端噪声收益保留为未采用候选。真实输入范围/噪声/全PVT未完成。 本轮100fA整环quiet包含本模块，未新增独立模块噪声归因或PVT/全带验收。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_half_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_recovery_audit.json
+    blockers: []
+  - name: subsampling_detector
+    role: 直接采样差分 VCO 并鉴相
+    stage: circuit
+    maturity: 2
+    note: MOS，前端独立noise-on已有三点；实际held节点相位演进已量化，先验证固定精度平衡，再决定器件改动。全范围/失配未完成。 本轮100fA整环quiet包含本模块，未新增独立模块噪声归因或PVT/全带验收。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_half_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_recovery_audit.json
+    blockers: []
+  - name: transconductor_charge_pump
+    role: 采样误差转电流及增益控制
+    stage: circuit
+    maturity: 2
+    note: MOS，独立CP噪声归因已有三点；短尾管候选增益归一化收益约0.092/0.260/0.275dB，未采用。全PVT/失配未完成。 本轮100fA整环quiet包含本模块，未新增独立模块噪声归因或PVT/全带验收。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_half_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_recovery_audit.json
+    blockers: []
+  - name: passive_loop_filter
+    role: 环路滤波与稳定性
+    stage: circuit
+    maturity: 2
+    note: R/C及实际预置开关未改。原版和RT4分别通过固定0.5ps末1µs稳态门限；RT4漂移−0.001399rad/µs。工艺无源、容差与PEX未验收。 本轮100fA整环quiet包含本模块，未新增独立模块噪声归因或PVT/全带验收。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_settled_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_precision_stage_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_fine_pair_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_fine_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_half_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_recovery_audit.json
+    blockers: []
+  - name: lc_vco_and_cap_bank
+    role: 2.688–3.936 GHz 振荡、粗调和模拟细调
+    stage: circuit
+    maturity: 2
+    note: 实际MOS、PDK变容和获准Q5 RLC。RT4恒定细精度2.2µs完成，未出现旧动态收紧容差时的LTE恢复，但未证明旧失败唯一原因；局部CF40/偏置/4.8fF候选未采用。RF范围、工艺电感及PEX未完成。
+      本轮100fA整环quiet包含本模块，未新增独立模块噪声归因或PVT/全带验收。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_precision_ramp_failure.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_precision_stage_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_fine_pair_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_fine_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_half_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_recovery_audit.json
+    blockers: []
+  - name: auxiliary_fll
+    role: 启动捕获和正确谐波选择
+    stage: circuit
+    maturity: 3
+    note: 全MOS，原版1ps/RT4候选4ps TT独立复位证据保留；两者分别通过固定0.5ps暖启动稳态，未钳位acquired或码。RT4完整noise-on已完成高偏移诊断，33点、完整PVT与全带噪声未闭合。
+      本轮100fA整环quiet包含本模块，未新增独立模块噪声归因或PVT/全带验收。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_noise_activation_probe_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_settled_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_precision_stage_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_fine_pair_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_fine_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_half_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_recovery_audit.json
+    blockers: []
+  - name: programmable_even_divider
+    role: 可编程÷4/6/8/10/12/14 CMOS分频
+    stage: circuit
+    maturity: 2
+    note: 全CMOS，原版与连续时钟候选分别保留；SS接口及TT/FF端口独立覆盖不外推完整PLL。原版与RT4/newbank各自独立验证。 本轮100fA整环quiet包含本模块，未新增独立模块噪声归因或PVT/全带验收。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_half_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_recovery_audit.json
+    blockers:
+    - 实际LC全模式、整机代回、重配置与完整PVT仍未完成。
+  - name: output_retimer
+    role: 利用 VCO 派生时钟重定时
+    stage: circuit
+    maturity: 3
+    note: CMOS，局部RT4/PNoise及六项瞬态噪声方法对照已完成；约52fs仅5.285–492MHz限定方法值，非完整PLL。 本轮100fA整环quiet包含本模块，未新增独立模块噪声归因或PVT/全带验收。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_half_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_recovery_audit.json
+    blockers: []
+  - name: output_buffer
+    role: 驱动片内轻负载
+    stage: circuit
+    maturity: 3
+    note: MOS，原版/RT4各自带10fF。局部输出链证据保留，真实负载/互连/全PVT和PEX未完成。 本轮100fA整环quiet包含本模块，未新增独立模块噪声归因或PVT/全带验收。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_half_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_recovery_audit.json
+    blockers: []
+  - name: bias_and_control
+    role: 偏置、频点配置及状态控制
+    stage: circuit
+    maturity: 2
+    note: MOS/电阻基准，完整噪声试验保留实际器件；前端偏置独立noise-on三点已完成。噪声/PVT、启动和PSRR仍需完整闭合。 新增完整原版TT的150ns全器件噪声段状态保持证据，仅为短窗方法检查，不扩展模块PVT或抖动验收。
+      本轮100fA整环quiet包含本模块，未新增独立模块噪声归因或PVT/全带验收。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_noise_activation_probe_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_half_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_recovery_audit.json
+    blockers: []
+  - name: rf_clock_receiver
+    role: VCO到CMOS时钟接口
+    stage: circuit
+    maturity: 2
+    note: MOS，既有局部归因与真实RF接口结果保留；全RF范围/PVT/MC和整环噪声未全面验收。 本轮100fA整环quiet包含本模块，未新增独立模块噪声归因或PVT/全带验收。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_half_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_recovery_audit.json
+    blockers: []
+  - name: cp_pulse_timing
+    role: 参考后CP脉冲、使能与复位
+    stage: circuit
+    maturity: 2
+    note: MOS时序，原脉冲电路保留；前端单独pulser-noise尚未完成，实际脉宽/PVT/失配仍有缺口。 本轮100fA整环quiet包含本模块，未新增独立模块噪声归因或PVT/全带验收。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_half_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_recovery_audit.json
+    blockers: []
+  - name: configuration_and_frequency_supervision
+    role: 频点配置、监督与周期测频
+    stage: circuit
+    maturity: 3
+    note: 全MOS。原版与RT4分别通过固定0.5ps测量窗锁定状态及稳态检查；原版配对器件噪声已完成高偏移诊断，RT4噪声已完成高偏移诊断。保留原早期重捕获失败，不放宽门限或屏蔽重启；重配置、故障和PVT覆盖未闭合。
+      原版0.25ps内部控制节点梯形振铃仍需方法/容差核验。 本轮100fA整环quiet包含本模块，未新增独立模块噪声归因或PVT/全带验收。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_noise_activation_probe_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_settled_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_precision_stage_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_fine_pair_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_fine_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_half_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_recovery_audit.json
+    blockers: []
+  - name: phase_and_amplitude_validation
+    role: 锁定判定的物理相位与振幅有效性检测
+    stage: circuit
+    maturity: 2
+    note: MOS窗口/包络和下降沿FF。原版与RT4分别通过固定细精度测量窗状态及RF稳态门限。RT4旧0.5ps记录存在内部数字节点梯形积分振铃提示，数值与噪声收敛仍需验证；SS边界、PVT和失配未全面闭合。 原版0.25ps内部控制节点梯形振铃仍需方法/容差核验。
+      本轮100fA整环quiet包含本模块，未新增独立模块噪声归因或PVT/全带验收。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_noise_activation_probe_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_settled_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_precision_stage_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_fine_pair_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_fine_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_half_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_recovery_audit.json
+    blockers: []
+  verification:
+    maturity: 3
+    note: 原版完整V14，TT27/1.2V/24MHz/K41/M4/10fF/Q5 RLC/CF10；外部参考与供电理想，全部功能控制为实际晶体管。maxstep0.25ps、reltol1e-6、vabstol1nV、iabstol100fA、traponly；2.2µs暖启动，无噪声记录全程关闭噪声。pllmainiab100offssd01在SSDb47d7834正常结束，PID208575已退出、exit_code=0；Oct9
+      08:24:26–11:44:52，墙钟3h20m26s。Spectre 0errors/1warning/15notices，Newton/LTE/跳断点/最小步长恢复计数均0，无梯形振铃报告。原始波形4031443320字节，26输入、raw/log/完整终态远端本地SHA一致；独立解析5099998时间点、23信号与缓存最大差0、重复记录0。完整7859状态键保留，已保存电压末值差最大5.11e-15V；19初态电压差0，真实锁定状态保持。末1µs含24参考采样，输出983.999907342MHz、相位峰峰0.007059909rad、漂移-0.004663936rad/µs，原门限全部通过。与0.25ps/1pA
+      quiet逐项核对，仅iabstol从1e-12变为1e-13；1024匹配边沿最大绝对变化0.075431884fs、去均值RMS 0.022805442fs，所选高偏移频桶内确定性差值RMS 0.008517065fs。这些仅为无噪声数值敏感性，不是随机抖动、噪声底或收敛证明；100fA
+      noisy必须与自己的quiet配对。RT4旧pllrt4halfseed29onssd01/SSD58110ce2/PID221473已退出；远端exit_code=141，缺少Spectre完成摘要。日志报告10488501接受步，完整终态文件存在，但raw在2.199999400442536µs的一条cfg_ready记录处截断，最后完整记录为2.199999177893693µs。约6.046GB
+      raw、日志及终态已完整回收并核验前后SHA稳定，26输入与引用初态匹配；不生成有效result、不计算或纳入步长/种子矩阵RMS。此前SSH已断开；141与SIGPIPE一致，故障注入复现同一机制，但没有内核信号轨迹，根因仍表述为有证据支持的判断。启动策略将Spectre子进程stdin指向/dev/null、stdout/stderr指向该SSD目录console.log，并使用nohup；不再让solver标准输出依赖SSH读取端。无EDA仿真的故障注入：关闭读取端后旧方式退出141、新方式退出0且stdout/stderr及完成标志完整；重复派发返回73，永久原子claim保留。仅退休已无效的旧本地保护器6184；未停止任何远端仿真。pllrt4halfseed29onssd02使用原case/TB、DUT、初态、参考相位、容差、带宽、时长和seed29，quiet五项门限重新检查通过。已接受高偏移诊断仍为原版0.5ps
+      seed11/29：195.390405/163.650060fs，0.25ps：172.507488/160.410117fs；RT4候选0.5ps seed11：100.669316fs，0.25ps seed11/29：95.862399/103.195977fs。这些是1024边沿、约5.285–492MHz的短记录诊断，RT4候选未采用。最终10kHz至fOUT/2、排除离散杂散、RMS<200fs仍未知；数值容差、方法、带宽、种子、长记录及杂散分类尚未闭合。33频点及完整PVT/MC、真实输入/负载、供电爬升和PEX仍缺失，功耗超4mW、面积未验证；功耗优化与后端后置，指标不变。
+    artifacts: *id001
+  integration:
+    maturity: 2
+    note: 2026-10-09T12:26:03.813069+08:00实查原版100fA noisy：SSDa0a68349/PID414952；RT4同条件重跑：SSDf659bace/PID447196。共2长任务/14请求线程，6本地runner/pipeline/guard均核验命令行；输入与引用初态SHA一致，cwd/raw/log/TMPDIR在SSD。已核实RT4新进程fd1/fd2都指向SSD
+      console.log。原版已运行任务保留原启动策略，未重启；其SSH连接及进度继续监视。两个新噪声结果均未完成，RT4矩阵仍缺0.5ps seed29有效值。已接受高偏移诊断仍为原版0.5ps seed11/29：195.390405/163.650060fs，0.25ps：172.507488/160.410117fs；RT4候选0.5ps
+      seed11：100.669316fs，0.25ps seed11/29：95.862399/103.195977fs。这些是1024边沿、约5.285–492MHz的短记录诊断，RT4候选未采用。最终10kHz至fOUT/2、排除离散杂散、RMS<200fs仍未知；数值容差、方法、带宽、种子、长记录及杂散分类尚未闭合。33频点及完整PVT/MC、真实输入/负载、供电爬升和PEX仍缺失，功耗超4mW、面积未验证；功耗优化与后端后置，指标不变。
+    artifacts: *id001
+spec_status:
+- id: REQ-01
+  current: TSMC180BCDGen2实际MOS、PDK变容；17,644MOS顶层
+  condition: 当前pll_capture_v14，TT27、1.2V、24MHz、K41/M4、10fF、Q5 RLC；4ps/reltol1e-4，DC供电后的独立复位64µs。
+  evidence: circuit_sim
+  status: on_track
+  note: Q5 πRLC电感获准暂代；无PDK电感、版图或PEX签核。
+- id: REQ-02
+  current: 1.2V运行；当前复位测试供电预先建立
+  condition: 当前pll_capture_v14，TT27、1.2V、24MHz、K41/M4、10fF、Q5 RLC；4ps/reltol1e-4，DC供电后的独立复位64µs。
+  evidence: circuit_sim
+  status: on_track
+  note: 供电扫描、爬升和器件端电压可靠性未签核。
+- id: REQ-03
+  current: 24MHz外部准方波，经真实MOS参考缓冲
+  condition: 当前pll_capture_v14，TT27、1.2V、24MHz、K41/M4、10fF、Q5 RLC；4ps/reltol1e-4，DC供电后的独立复位64µs。
+  evidence: circuit_sim
+  status: on_track
+  note: 保留实际参考缓冲；参考候选的局部三点收益未合并。实际参考边沿、源阻抗及外部参考噪声未完成。
+- id: REQ-04
+  current: 原版/RT4独立复位证据保留；两者0.5ps与0.25ps暖启动quiet均通过原稳态门限
+  condition: TT27/1.2V/24MHz/K41/M4/10fF/Q5；两个完整DUT分别验证。
+  evidence: circuit_sim
+  status: at_risk
+  note: 原版100fA完整quiet真实状态与末1µs稳态门限通过；新增noisy及RT4重跑未完成。33频点/完整PVT/冷启动范围覆盖仍未闭合。
+- id: REQ-05
+  current: 33点未验收；4.8fF候选三配对角RF端点覆盖
+  condition: 1.2V/Q5/10fF，TT27、SS60、FF0，实际LC及原RF接收/分频负载，固定码0/255及控制1.0/0.2V，400ns/末60ns。
+  evidence: circuit_sim
+  status: at_risk
+  note: 984MHz完整新候选TT复位功能通过；33频点整环及所有PVT未验收，4.8fF端点候选尚未采用。
+- id: REQ-06
+  current: null
+  condition: 原版完整V14，TT27/1.2V/24MHz/K41/M4/10fF/Q5 RLC/CF10；外部参考与供电理想，全部功能控制为实际晶体管。maxstep0.25ps、reltol1e-6、vabstol1nV、iabstol100fA、traponly；2.2µs暖启动，无噪声记录全程关闭噪声。
+  evidence: circuit_sim
+  status: unknown
+  note: 与0.25ps/1pA quiet逐项核对，仅iabstol从1e-12变为1e-13；1024匹配边沿最大绝对变化0.075431884fs、去均值RMS 0.022805442fs，所选高偏移频桶内确定性差值RMS
+    0.008517065fs。这些仅为无噪声数值敏感性，不是随机抖动、噪声底或收敛证明；100fA noisy必须与自己的quiet配对。RT4旧pllrt4halfseed29onssd01/SSD58110ce2/PID221473已退出；远端exit_code=141，缺少Spectre完成摘要。日志报告10488501接受步，完整终态文件存在，但raw在2.199999400442536µs的一条cfg_ready记录处截断，最后完整记录为2.199999177893693µs。约6.046GB
+    raw、日志及终态已完整回收并核验前后SHA稳定，26输入与引用初态匹配；不生成有效result、不计算或纳入步长/种子矩阵RMS。此前SSH已断开；141与SIGPIPE一致，故障注入复现同一机制，但没有内核信号轨迹，根因仍表述为有证据支持的判断。已接受高偏移诊断仍为原版0.5ps
+    seed11/29：195.390405/163.650060fs，0.25ps：172.507488/160.410117fs；RT4候选0.5ps seed11：100.669316fs，0.25ps seed11/29：95.862399/103.195977fs。这些是1024边沿、约5.285–492MHz的短记录诊断，RT4候选未采用。最终10kHz至fOUT/2、排除离散杂散、RMS<200fs仍未知；数值容差、方法、带宽、种子、长记录及杂散分类尚未闭合。33频点及完整PVT/MC、真实输入/负载、供电爬升和PEX仍缺失，功耗超4mW、面积未验证；功耗优化与后端后置，指标不变。
+- id: REQ-07
+  current: 诊断核心参考线约−28.8 dBc；完整PLL最终值未知
+  condition: TT27/1.2V/Q5/984MHz/10fF，CF10/原RT/连续时钟候选/静态慢控制；coretripsupply01无噪声初始化两个250ns窗口、1ps/reltol1e-5/traponly。
+  evidence: circuit_sim
+  status: at_risk
+  note: 原实际LC诊断核心约−28.8dBc参考线风险保持，未作完整PLL验收。40/80/120fF互补采样负载均完成，固定控制输出24MHz确定性PM降低14.327/13.484/8.287dB。40fF在0.657999/0.85/1V的RF为3.913863/3.924146/3.937316GHz，插值预测0.985014V，尚未实测回代。优先噪声，本轮不继续扩大杂散支线。噪声积分排除离散杂散；杂散验收频带仍待确认。
+- id: REQ-08
+  current: 新候选末1µs 8.050093mW；旧主DUT32µs平均5.667114mW
+  condition: 分别为RT4/newbank冷启动末窗和原主DUT完整控制周期，TT27/1.2V/K41/M4/10fF/Q5，4ps/reltol1e-4。
+  evidence: circuit_sim
+  status: at_risk
+  note: 两种电路/窗口不混同；均超4mW。功耗优化后置，原指标不变；新噪声TB不再使用功耗VA。
+- id: REQ-09
+  current: null
+  condition: 含电感、环路滤波器及隔离，暂不计pad。
+  evidence: none
+  status: unknown
+  note: 无布局/工艺无源几何，不能确认<0.3mm²。
+- id: REQ-10
+  current: 旧三配对角及新SS接口诊断已有；新完整PLL仅TT单点
+  condition: 1.2V，TT27/SS60/FF0为配对角；新增完整TT4ps终态保持36µs。
+  evidence: circuit_sim
+  status: at_risk
+  note: 模块三配对角证据保留。原版和RT4完整复位只有TT单点，完整PLL全PVT/噪声/MC未覆盖。
+- id: REQ-11
+  current: 完整TT保持末窗约43.99%
+  condition: TT27/1.2V/K41/M4/10fF；内部边沿观察器，4ps/reltol1e-4。
+  evidence: circuit_sim
+  status: on_track
+  note: 用户已确认不严格、无需刻意优化；未宣称精确50%或全范围通过。
+- id: REQ-12
+  current: 完整TT保持10fF功能通过，边沿约130.6/213.3ps
+  condition: TT27/1.2V/K41/M4/10fF；末1µs内部边沿观察器，4ps/reltol1e-4。
+  evidence: circuit_sim
+  status: on_track
+  note: 10fF仍暂定；新RT4/newbank完整TT复位功能通过。输出边沿和负载扫描、互连、PEX尚未覆盖此新候选，不能套用旧主DUT边沿值。
+questions_for_human:
+- q: 杂散<−60dBc是否采用载波两侧偏移10kHz–fOUT/2内所有离散线、逐条单边功率相对载波的口径？已异步提出，尚未收到确认；方法与电路工作继续。
+  blocking: false
+  since: '2026-10-04'
+- q: 24MHz参考到PLL输入端的10%–90%上升/下降时间、驱动能力或源阻抗是否有预计值？已异步询问，未阻塞现有验证。
+  blocking: false
+  since: '2026-10-04'
+blocked_on: null
+risks:
+- RT4旧pllrt4halfseed29onssd01/SSD58110ce2/PID221473已退出；远端exit_code=141，缺少Spectre完成摘要。日志报告10488501接受步，完整终态文件存在，但raw在2.199999400442536µs的一条cfg_ready记录处截断，最后完整记录为2.199999177893693µs。约6.046GB
+  raw、日志及终态已完整回收并核验前后SHA稳定，26输入与引用初态匹配；不生成有效result、不计算或纳入步长/种子矩阵RMS。此前SSH已断开；141与SIGPIPE一致，故障注入复现同一机制，但没有内核信号轨迹，根因仍表述为有证据支持的判断。
+- 2026-10-09T12:26:03.813069+08:00实查原版100fA noisy：SSDa0a68349/PID414952；RT4同条件重跑：SSDf659bace/PID447196。共2长任务/14请求线程，6本地runner/pipeline/guard均核验命令行；输入与引用初态SHA一致，cwd/raw/log/TMPDIR在SSD。已核实RT4新进程fd1/fd2都指向SSD
+  console.log。原版已运行任务保留原启动策略，未重启；其SSH连接及进度继续监视。两个新噪声结果均未完成，RT4矩阵仍缺0.5ps seed29有效值。
+- 已接受高偏移诊断仍为原版0.5ps seed11/29：195.390405/163.650060fs，0.25ps：172.507488/160.410117fs；RT4候选0.5ps seed11：100.669316fs，0.25ps
+  seed11/29：95.862399/103.195977fs。这些是1024边沿、约5.285–492MHz的短记录诊断，RT4候选未采用。最终10kHz至fOUT/2、排除离散杂散、RMS<200fs仍未知；数值容差、方法、带宽、种子、长记录及杂散分类尚未闭合。33频点及完整PVT/MC、真实输入/负载、供电爬升和PEX仍缺失，功耗超4mW、面积未验证；功耗优化与后端后置，指标不变。
+next_steps:
+- 跟随现有原版100fA噪声及RT4 0.5ps seed29重跑；不得重复派发。完成后先核验实际进程、完整Spectre终态、raw/final与SHA，再独立测量。
+- 原版100fA noisy使用本次通过的专属quiet；比较1pA基线时保留所有种子和数值设置差异。
+- RT4失败旧轨迹永久排除有效矩阵；仅在同条件重跑完整通过后补齐两步长×两种子证据。
+- 随后推进积分方法、噪声带宽和统计收敛，再扩展10kHz长记录与独立杂散分类；全带<200fs尚未验收。
+decisions_since_last: []
+resources_note: 2026-10-09T12:26:03.813069+08:00实查原版100fA noisy：SSDa0a68349/PID414952；RT4同条件重跑：SSDf659bace/PID447196。共2长任务/14请求线程，6本地runner/pipeline/guard均核验命令行；输入与引用初态SHA一致，cwd/raw/log/TMPDIR在SSD。已核实RT4新进程fd1/fd2都指向SSD
+  console.log。原版已运行任务保留原启动策略，未重启；其SSH连接及进度继续监视。两个新噪声结果均未完成，RT4矩阵仍缺0.5ps seed29有效值。
