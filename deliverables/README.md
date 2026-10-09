@@ -1,4 +1,4 @@
-本次快照：[第84次汇报](../reports/2026-10-09T1227.yaml)。原版100fA无噪声全轨迹通过独立复核，配对噪声已由既有流水线启动；RT4 0.5ps seed29旧任务退出141且波形截断，失败数据已回收，修复SSH标准输出依赖后按相同条件重跑。
+本次快照：[第85次汇报](../reports/2026-10-10T0039.yaml)。SSH连接中断导致两条本地流水线退出，远端原版100fA和RT4 seed29仿真仍正常推进；已恢复两组保护与独立回收，未重启仿真，无新增抖动结果。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

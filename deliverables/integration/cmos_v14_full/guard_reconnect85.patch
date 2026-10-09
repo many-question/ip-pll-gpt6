@@ -1,0 +1,25 @@
+--- research/watch_precision_bridge.py (before 85)
++++ research/watch_precision_bridge.py (85)
+@@ -90,15 +90,19 @@
+                     q=subprocess.run([sys.executable,str(ROOT/'research/stop_owned_v14_job.py'),run,row['case'],reason],capture_output=True,text=True)
+                     state['events'].append(dict(run=run,time=now(),reason=reason,returncode=q.returncode,output=q.stdout,stderr=q.stderr))
+             errors=0
++            if 'read_error' in state:
++                state.setdefault('recovered_read_errors',[]).append(dict(error=state.pop('read_error'),recovered=now()))
++            state['state']='monitoring'
++            state['consecutive_read_errors']=0
+             pipelines=[ROOT/'research'/n for n in PIPELINE_NAMES]
+             statuses=[json.loads(p.read_text()).get('state','') for p in pipelines if p.exists()]
+             if monitoring_finished(rows,statuses):
+                 state['state']='all_dispatched_jobs_collected';state['updated']=now();SP.write_text(json.dumps(state,indent=2)+'\n');return
+         except Exception as e:
+             errors+=1;state['read_error']=repr(e)
+-            if errors>=3:state['state']='read_failed_no_cancellation'
++            state['consecutive_read_errors']=errors
++            if errors>=3:state['state']='read_retrying_no_cancellation'
+         state['updated']=now();SP.write_text(json.dumps(state,indent=2)+'\n')
+-        if errors>=3:return
+-        time.sleep(45)
++        time.sleep(min(300,45*max(1,errors)))
+     state.update(state='bounded_guard_finished',updated=now());SP.write_text(json.dumps(state,indent=2)+'\n')
+ if __name__=='__main__':main()

@@ -1,0 +1,358 @@
+{
+  "time": "2026-10-10T00:39:46+08:00",
+  "source_live_audit": "research/recovery85_live.json",
+  "source_live_audit_sha256": "836fe9a1dec5c9a4afc682a2950802eb1886deccc0b523fb68bccb615e846f51",
+  "incident": "research/client_disconnect85_before.json",
+  "incident_sha256": "582f53edea1e215fcdf953fb9ce6652869da6b42d59b3238f187fb3b8ad3d4d2",
+  "resources": {
+    "time": "2026-10-10T00:37:30.289328+08:00",
+    "jobs": [
+      {
+        "threads": 7,
+        "pid": 414952,
+        "netlist": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/a0a68349/full_pll_main_iab100_on_tt.scs"
+      },
+      {
+        "threads": 7,
+        "pid": 447196,
+        "netlist": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f659bace/full_pll_rt4_half_seed29_on_tt.scs"
+      }
+    ],
+    "requested_threads": 14
+  },
+  "jobs": [
+    {
+      "run": "pllmainiab100offssd01",
+      "case": "full_pll_main_iab100_off_tt",
+      "state": "collected",
+      "ok": true
+    },
+    {
+      "run": "pllmainiab100onssd01",
+      "case": "full_pll_main_iab100_on_tt",
+      "state": "running_or_collecting",
+      "remote_dir": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/a0a68349",
+      "last": {
+        "XP.ctrl": 0.6700616045372639,
+        "time": 1.715865910173925e-06,
+        "frequency_good": 1.201372852766067,
+        "qualified": 1.199881304071602,
+        "XP.restart": -0.000211848939880676,
+        "XP.XC.phase_held": 1.199893454411001,
+        "XP.XC.acquired": 1.20566163180918
+      },
+      "skipped": 0,
+      "lte": 0,
+      "log_tail": "                 save   19      (voltage)\n\n......9......8......7......6....\n\nNotice from spectre at time = 1 us during transient analysis `tran'.\n    tran noise is turning ON on time 1.000000e-06.\n\n......9......8......7......6......5......4......3......",
+      "completed_clean": false,
+      "newton": 0,
+      "bytes": 3640565760
+    },
+    {
+      "run": "pllrt4fineoffssd02",
+      "case": "full_pll_rt4_fine_off_tt",
+      "state": "collected",
+      "ok": true
+    },
+    {
+      "run": "pllrt4halfseed29onssd02",
+      "case": "full_pll_rt4_half_seed29_on_tt",
+      "state": "running_or_collecting",
+      "remote_dir": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/f659bace",
+      "last": {
+        "XP.ctrl": 0.7571996964903492,
+        "time": 1.72672794311158e-06,
+        "frequency_good": 1.19917552866597,
+        "qualified": 1.201139409338089,
+        "XP.restart": 0.0003132369943065699,
+        "XP.XC.phase_held": 1.201566398155054,
+        "XP.XC.acquired": 1.194886887783468
+      },
+      "skipped": 0,
+      "lte": 0,
+      "log_tail": "        Further occurrences of this notice will be suppressed.\n\n......9......8......7......6....\n\nNotice from spectre at time = 1 us during transient analysis `tran'.\n    tran noise is turning ON on time 1.000000e-06.\n\n......9......8......7......6......5......4......3......",
+      "completed_clean": false,
+      "newton": 0,
+      "bytes": 3661967360
+    }
+  ],
+  "local_workers": [
+    {
+      "pid": 140632,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\share\\deliverables\\integration\\cmos_v14_full\\recover_active_noise_detached85.py",
+        "--target",
+        "main_iab100"
+      ],
+      "state": "research/main_iab100_noise_pipeline.json",
+      "log": "research/main_iab100_collector85.log",
+      "role": "collector",
+      "running": true,
+      "checked": "2026-10-10T00:39:46+08:00"
+    },
+    {
+      "pid": 151036,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\share\\deliverables\\integration\\cmos_v14_full\\recover_active_noise_detached85.py",
+        "--target",
+        "rt4_half_seed29_retry"
+      ],
+      "state": "research/rt4_half_seed29_retry_noise_pipeline.json",
+      "log": "research/rt4_half_seed29_retry_collector85.log",
+      "role": "collector",
+      "running": true,
+      "checked": "2026-10-10T00:39:46+08:00"
+    },
+    {
+      "pid": 149912,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\watch_main_iab100_pair.py",
+        "--resume"
+      ],
+      "state": "research/main_iab100_guard.json",
+      "log": "research/main_iab100_guard_resume85.log",
+      "role": "guard",
+      "running": true,
+      "checked": "2026-10-10T00:39:46+08:00"
+    },
+    {
+      "pid": 63872,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\watch_rt4_half_seed29_retry_pair.py",
+        "--resume"
+      ],
+      "state": "research/rt4_half_seed29_retry_guard.json",
+      "log": "research/rt4_half_seed29_retry_guard_resume85.log",
+      "role": "guard",
+      "running": true,
+      "checked": "2026-10-10T00:39:46+08:00"
+    }
+  ],
+  "retired_workers": [
+    {
+      "pid": 140660,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\run_main_iab100_noise_pipeline83.py",
+        "--protocol",
+        "full_pll_main_iab100_pair_protocol.json",
+        "--state",
+        "main_iab100_noise_pipeline.json"
+      ],
+      "state": "research/main_iab100_noise_pipeline.json",
+      "log": "research/main_iab100_pipeline83.log",
+      "running": false,
+      "checked": "2026-10-09T23:36:18.677896+08:00",
+      "role": "pipeline",
+      "exists": false
+    },
+    {
+      "pid": 131596,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\watch_main_iab100_pair.py"
+      ],
+      "state": "research/main_iab100_guard.json",
+      "log": "research/main_iab100_guard83.log",
+      "running": false,
+      "checked": "2026-10-09T23:36:18.677896+08:00",
+      "role": "guard",
+      "exists": false
+    },
+    {
+      "pid": 98856,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\run_main_strict_noise_pipeline.py",
+        "--protocol",
+        "full_pll_rt4_half_seed29_retry_pair_protocol.json",
+        "--state",
+        "rt4_half_seed29_retry_noise_pipeline.json"
+      ],
+      "state": "research/rt4_half_seed29_retry_noise_pipeline.json",
+      "log": "research/rt4_half_seed29_retry_pipeline84.log",
+      "running": false,
+      "checked": "2026-10-09T23:36:18.677896+08:00",
+      "role": "pipeline",
+      "exists": false
+    },
+    {
+      "pid": 137328,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\watch_rt4_half_seed29_retry_pair.py"
+      ],
+      "state": "research/rt4_half_seed29_retry_guard.json",
+      "log": "research/rt4_half_seed29_retry_guard84.log",
+      "running": false,
+      "checked": "2026-10-09T23:36:18.677896+08:00",
+      "role": "guard",
+      "exists": true,
+      "actual_cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\watch_rt4_half_seed29_retry_pair.py"
+      ],
+      "reason": "Local guard restarted to load retry and stale-error clearing fix."
+    },
+    {
+      "pid": 131856,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\share\\deliverables\\integration\\cmos_v14_full\\run_spectre.py",
+        "--run-id",
+        "pllmainiab100onssd01",
+        "--cases",
+        "full_pll_main_iab100_on_tt",
+        "--mode",
+        "ax",
+        "--threads",
+        "7",
+        "--preset-override",
+        "all",
+        "--timeout",
+        "172800"
+      ],
+      "state": null,
+      "log": "research/main_iab100_noise_pipeline_noise_on.log",
+      "role": "noise_runner",
+      "running": false,
+      "checked": "2026-10-09T23:36:18.677896+08:00",
+      "exists": false
+    },
+    {
+      "pid": 142020,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\share\\deliverables\\integration\\cmos_v14_full\\run_spectre.py",
+        "--run-id",
+        "pllrt4halfseed29onssd02",
+        "--cases",
+        "full_pll_rt4_half_seed29_on_tt",
+        "--mode",
+        "ax",
+        "--threads",
+        "7",
+        "--preset-override",
+        "all",
+        "--timeout",
+        "172800"
+      ],
+      "state": null,
+      "log": "research/rt4_half_seed29_retry_noise_pipeline_noise_on.log",
+      "role": "noise_runner",
+      "running": false,
+      "checked": "2026-10-09T23:36:18.677896+08:00",
+      "exists": false
+    }
+  ],
+  "states": {
+    "main_iab100_noise_pipeline": {
+      "state": "waiting_existing_remote",
+      "updated": "2026-10-10T00:39:08.840792+08:00",
+      "consecutive_read_errors": null,
+      "consecutive_errors": 0,
+      "noise_returncode": 1,
+      "observation": {
+        "live": [
+          414952
+        ],
+        "raw_bytes": 3649527808,
+        "raw_mtime": 1791563836.6846676,
+        "log_sha256": "f15ef4a72f306ae3a6b152538e302d0493fe8bab6c741d57598304c91bb80137",
+        "terminal_errors": null,
+        "exit_code": null
+      },
+      "protocol_sha256": "28b0946ef873857bef91aa513a73a5d8da8d668346ee546814f77fe6b07fecff"
+    },
+    "rt4_half_seed29_retry_noise_pipeline": {
+      "state": "waiting_existing_remote",
+      "updated": "2026-10-10T00:39:08.841792+08:00",
+      "consecutive_read_errors": null,
+      "consecutive_errors": 0,
+      "noise_returncode": 1,
+      "observation": {
+        "live": [
+          447196
+        ],
+        "raw_bytes": 3670753280,
+        "raw_mtime": 1791563836.667667,
+        "log_sha256": "b1787bd3de4cd3a6b9a4ede8381295c54c2f952f332c841b0a274ec4cfcb03f0",
+        "terminal_errors": null,
+        "exit_code": null
+      },
+      "protocol_sha256": "e8041d5333542764ced95c80d76c70720edbe79b67f2d31dfafe67e0d47239a2"
+    },
+    "main_iab100_guard": {
+      "state": "monitoring",
+      "updated": "2026-10-10T00:39:23.338494+08:00",
+      "consecutive_read_errors": 0,
+      "consecutive_errors": null,
+      "noise_returncode": null,
+      "observation": null,
+      "protocol_sha256": null
+    },
+    "rt4_half_seed29_retry_guard": {
+      "state": "monitoring",
+      "updated": "2026-10-10T00:39:23.201778+08:00",
+      "consecutive_read_errors": 0,
+      "consecutive_errors": null,
+      "noise_returncode": null,
+      "observation": null,
+      "protocol_sha256": null
+    }
+  },
+  "checks": {
+    "gate_tests": [
+      {
+        "name": "live_even_with_footer",
+        "passed": true
+      },
+      {
+        "name": "missing_footer",
+        "passed": true
+      },
+      {
+        "name": "first_terminal_observation",
+        "passed": true
+      },
+      {
+        "name": "changing_waveform",
+        "passed": true
+      },
+      {
+        "name": "stable_terminal",
+        "passed": true
+      },
+      {
+        "name": "stable_no_shell_exit_code",
+        "passed": true
+      },
+      {
+        "name": "previous_still_live",
+        "passed": true
+      },
+      {
+        "name": "failed_terminal_requires_collection_review",
+        "passed": true
+      },
+      {
+        "name": "guard_three_failed_reads_then_success_clears_stale_error_without_cancellation",
+        "passed": true
+      }
+    ],
+    "collector_sha256": "e8d5c8320aad9b05738407aa68637909ed8c13dbd72bd9ead01dd89aa5447f67",
+    "guard_sha256": "4f21da35fab6e625221e552564e73eae20631dc93f912b815d149c74a25b542d",
+    "no_simulator_action": true
+  },
+  "referenced_initial_states": {
+    "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/pllmainiab100onssd01_full_pll_main_iab100_on_tt_main_fine2200_phase_continuous.ic": "2aa316a1a1e9801673e4842f28784f3d4b6feb2d3d3211f984cc7c78b3345cfe",
+    "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/pllrt4halfseed29onssd02_full_pll_rt4_half_seed29_on_tt_rt4_stage15900_phase_continuous.ic": "937da9941740181f7627a6ae6ab70037353c97c8425cabbfb0986f4512ddacc2"
+  },
+  "no_new_simulations": true,
+  "no_new_measurement": true,
+  "full_pll_acceptance": false
+}
