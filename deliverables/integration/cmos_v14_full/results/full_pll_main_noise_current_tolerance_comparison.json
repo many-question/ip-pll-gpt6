@@ -1,0 +1,79 @@
+{
+  "scope": "Compare original V14 1 pA and 100 fA high-offset noise diagnostics.",
+  "time": "2026-10-11T05:16:45.246440+08:00",
+  "condition": "Original complete V14, all actual transistor FLL/control/watchdog/bias,TT27/1.2V/24MHz/K41/M4/10fF/Q5RLC/CF10; original output chain. Ideal external reference and supply.",
+  "protocol_sha256": [
+    "eaaed967dbdd4b19d7c6b5b950f05d79da72181611ef8405d61db2af66d0529c",
+    "163f59321a2cb06759f8e2bc9def19880e0b76f5b890abce1308d1990010080b"
+  ],
+  "audit_sha256": [
+    "e82588bb0520f020ddb72aa1d6d91f4db36043af4b58ff4b5f19f287be8a2e08",
+    "23c92510bff5eabdfae4fc0bfdd81c66c84da03787831b681925c75e9ddb2ca6"
+  ],
+  "validation": [
+    {
+      "path": "share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_pair_validation.json",
+      "sha256": "8f829551fd1504dc332c3c4b02fd5b0910166c3cb4ab34fe3bb1978b68df7732",
+      "rms_fs": 172.5074884241091
+    },
+    {
+      "path": "share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_retry_pair_validation.json",
+      "sha256": "05e1539f545303d2245e88bf25d2ac2aec62159f02a62d74c9d162cda9e301cf",
+      "rms_fs": 172.50538541576157
+    }
+  ],
+  "sources": [
+    {
+      "run": "pllmainquarteroffssd01",
+      "case": "full_pll_main_quarter_off_tt",
+      "result_sha256": "6e309d52282265cc0275672901c9c34dbb62aaf15c519eb437ec00d1a55c3402",
+      "cache_sha256": "dfc6735ff4921a727e4cd552b4fcb5b7a402d50fea7b906b8a915e13776266b8"
+    },
+    {
+      "run": "pllmainquarteronssd01",
+      "case": "full_pll_main_quarter_on_tt",
+      "result_sha256": "aca9f244f2163874949061f57560db418a3dd52be85debbf49b4f8aff222004c",
+      "cache_sha256": "29948141948dddb8f3328ec0137f108f6cdaa29a79d3050d3ee9f9b8e1a7fe47"
+    },
+    {
+      "run": "pllmainiab100offssd01",
+      "case": "full_pll_main_iab100_off_tt",
+      "result_sha256": "c47600c94e71cba57f6780730235a5f309d94b19f0c564b55021ffd0dadb956c",
+      "cache_sha256": "e12e444327e92bf3b7df141ad9dcd62eb0dbf873b7adaf89de5273927d338538"
+    },
+    {
+      "run": "pllmainiab100onssd02",
+      "case": "full_pll_main_iab100_on_tt",
+      "result_sha256": "8be6a8d0d77797a98ec14911136c5d369880eb0aab177b953704e6597b6a8cdd",
+      "cache_sha256": "260c67d3c13410de855af3b263e64620586b8f369cb515456f6bf790d11e9349"
+    }
+  ],
+  "only_current_tolerance_changed": true,
+  "iabstol_a": [
+    1e-12,
+    1e-13
+  ],
+  "rms_fs": [
+    172.5074884241091,
+    172.50538541576157
+  ],
+  "rms_difference_fs": -0.00210300834754662,
+  "relative_rms_difference_percent": -0.0012190823521662786,
+  "band_filtered_realization_difference_rms_fs": 0.0290314038677745,
+  "band_filtered_realization_correlation": 0.9999999859132588,
+  "edge_count": 1024,
+  "effective_band_hz": [
+    5285156.25,
+    492000000.0
+  ],
+  "comparison_valid": true,
+  "numerical_convergence_established": false,
+  "full_pll_acceptance": false,
+  "integrated_10khz_jitter_fs": null,
+  "limitations": [
+    "Each noisy trace is subtracted from its own matching quiet trace; mean removal only.",
+    "One fixed seed and a finite high-offset record provide a sensitivity observation, not statistical or full numerical convergence.",
+    "Same seed with adaptive timesteps need not mean identical random excitation; realization differences are not an absolute numerical-error floor.",
+    "Low-offset noise, complete discrete-spur classification, bandwidth and record-length convergence remain open."
+  ]
+}

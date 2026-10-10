@@ -1,4 +1,4 @@
-本次快照：[第87次汇报](../reports/2026-10-10T1355.yaml)。RT4候选Gear2无噪声记录正常完成，原始数据独立复核及五项门限通过；现有流水线已启动匹配的Gear2噪声仿真。无噪声方法对照显示确定性差异，尚不能证明含噪声收敛；最终全带抖动仍未验收。
+本次快照：[第88次汇报](../reports/2026-10-11T0517.yaml)。原版V14 100fA完整噪声记录正常完成并通过独立原始数据与FFT复核，高偏移诊断172.505385fs；与1pA结果非常接近，但单种子短记录不构成全带或数值收敛验收。已启动320GHz噪声源带宽的匹配quiet验证，RT4 Gear噪声继续运行。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

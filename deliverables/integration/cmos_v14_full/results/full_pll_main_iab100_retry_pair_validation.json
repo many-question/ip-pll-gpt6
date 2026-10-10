@@ -49,11 +49,36 @@
       "case": "full_pll_main_iab100_on_tt",
       "noise_enabled": true,
       "tb_sha256": "9b838e43f8deb0a00dc54e8d82bf2800368e02e4f45dc289282a60d28834b6a7",
-      "completed": false
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/pllmainiab100onssd02/full_pll_main_iab100_on_tt/result.json",
+      "source_sha256": "8be6a8d0d77797a98ec14911136c5d369880eb0aab177b953704e6597b6a8cdd",
+      "recovery": {
+        "newton_failures_reported": 0,
+        "skipped_breakpoints_reported": 0,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": true,
+        "counts_may_be_suppressed": false
+      },
+      "effective": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-09,
+        "abstol(I)": 1e-13,
+        "method": "traponly",
+        "maxstep": 2.5e-13,
+        "noisefmax": 160000000000.0,
+        "noisefmin": 1000000.0,
+        "trannoisemethod": "default"
+      },
+      "log_sha256": "66f3ea1739b86425dfe0c2ce3964c3e600dd663041d7f801614658ca01fb0c71",
+      "cache_sha256": "260c67d3c13410de855af3b263e64620586b8f369cb515456f6bf790d11e9349",
+      "initial_maximum_voltage_difference_v": 0.0,
+      "compared_nodes": 19,
+      "status_stable": true
     }
   ],
-  "complete": false,
-  "high_offset_diagnostic_valid": false,
+  "complete": true,
+  "high_offset_diagnostic_valid": true,
   "full_pll_acceptance": false,
   "integrated_10khz_jitter_fs": null,
   "limitations": [
@@ -71,5 +96,23 @@
     "No convergence or lower-noise conclusion is established by tightening a tolerance alone.",
     "Integration method, noise bandwidth and longer low-offset records remain separate subsequent studies.",
     "The failed predecessor must not enter the current-tolerance comparison. Retry completion requires the normal clean terminal log and complete raw/state checks."
-  ]
+  ],
+  "diagnostic_band_rms_fs": 172.50538541576157,
+  "effective_band_hz": [
+    5285156.25,
+    492000000.0
+  ],
+  "block_variance_standard_error_s2": 1.873577940683468e-27,
+  "prefix_max_differences_v": {
+    "XP.ctrl": 0.0,
+    "out": 0.0,
+    "qualified": 0.0
+  },
+  "checks": {
+    "clean": true,
+    "initialization": true,
+    "quiet_prefix": true,
+    "status": true,
+    "stationary": true
+  }
 }
