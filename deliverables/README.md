@@ -1,4 +1,4 @@
-本次快照：[第86次汇报](../reports/2026-10-10T0859.yaml)。RT4候选0.5ps seed29重跑正常完成并经独立复算，高偏移诊断为112.993992fs，RT4两步长×两种子矩阵补齐。原版100fA旧传输任务退出141、raw截断，已保留失败证据并派发输入完全相同的SSD隔离传输重跑。全带抖动仍未验收。
+本次快照：[第87次汇报](../reports/2026-10-10T1355.yaml)。RT4候选Gear2无噪声记录正常完成，原始数据独立复核及五项门限通过；现有流水线已启动匹配的Gear2噪声仿真。无噪声方法对照显示确定性差异，尚不能证明含噪声收敛；最终全带抖动仍未验收。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

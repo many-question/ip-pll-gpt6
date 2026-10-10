@@ -1,0 +1,368 @@
+{
+  "scope": "Audit the complete RT4 Gear2 quiet record, without claiming noise acceptance.",
+  "time": "2026-10-10T13:52:27.950720+08:00",
+  "run": "pllrt4gearquarteroffssd01",
+  "case": "full_pll_rt4_gear_quarter_off_tt",
+  "condition": "Actual full RT4/newbank PLL with transistor FLL/control/watchdog/bias,TT27/1.2V/24MHzref/K41/M4/10fF/Q5RLC/CF10; ideal external reference and supply.",
+  "source_result": "research/runs/spectre_cmos_v14_full/pllrt4gearquarteroffssd01/full_pll_rt4_gear_quarter_off_tt/result.json",
+  "source_result_sha256": "96128b009f7fcb127bc8be76e97ddbe6cbad2b8ee2166c2c31ae61a612a33053",
+  "protocol_sha256": "4f3f17cf0ada357126e2be8e1eb2ca2f3aded3da033dd82b81d33d74ef0b0eb6",
+  "validation_at_audit_sha256": "1f96385d0fa62aa34224358872175c85fd7db60a0c1a7b573d483e593b21c8af",
+  "remote_hash_audit": "research/rt4_gear_quiet_remote_audit87.json",
+  "remote_hash_audit_sha256": "44dff6f3d55a130727dca59c2c3475116326a808b14354a1fcfd8743a5da18a0",
+  "remote_terminal_proof": {
+    "files": {
+      "console.log": {
+        "realpath": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/2026da22/console.log",
+        "sha256": "b5bf962402dc4376df4a69b3a895e77400c98f2f6575f3f95c5ebcac16a7c966",
+        "bytes": 14543
+      },
+      "full_pll_rt4_gear_quarter_off_tt.raw/tran.tran.tran": {
+        "realpath": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/2026da22/full_pll_rt4_gear_quarter_off_tt.raw/tran.tran.tran",
+        "sha256": "5c2302ddf4380714e987f25c6fae98f23d2348c33970cff43ea9060847ebb240",
+        "bytes": 4398212984
+      },
+      "spectre.out": {
+        "realpath": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/2026da22/spectre.out",
+        "sha256": "fc301732995d1dac69124317eee4cce09fae5f32f72aafd91e60e0bff0a0b62f",
+        "bytes": 14700
+      },
+      "full_pll_rt4_gear_quarter_off_tt.raw/logStatus": {
+        "realpath": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/2026da22/full_pll_rt4_gear_quarter_off_tt.raw/logStatus",
+        "sha256": "62f841a2de46ff3d69b9744ddfbabaa5fc7018cda599a5451d2c89bfe0c7ef47",
+        "bytes": 79
+      },
+      ".launch_claim/exit_code": {
+        "realpath": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/2026da22/.launch_claim/exit_code",
+        "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "bytes": 2
+      },
+      "full_pll_rt4_gear_quarter_off_tt.raw/logFile": {
+        "realpath": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/2026da22/full_pll_rt4_gear_quarter_off_tt.raw/logFile",
+        "sha256": "a9d280c2fb983b0a021b0c2ae322eb225af0655ec6c290bb48f66fe528385b7c",
+        "bytes": 667
+      },
+      "final_state.ic": {
+        "realpath": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/pllrt4gearquarteroffssd01_full_pll_rt4_gear_quarter_off_tt.final.ic",
+        "sha256": "97f4115ee2fc00ae57d50a09e52aa22646312ed7e4c1a6065aae3030c95ebc9c",
+        "bytes": 280436
+      }
+    },
+    "inputs": {
+      "cp_physical_v14.scs": "ea3cd7184cafd899db18d5d9286adca6c2ffb861e9af2504afd1ea9bb702cc76",
+      "fll_best128_v14.scs": "06a2f270b40c57b08b360d95e767d6d6b39a6456a789cef7c6831653608e0ef5",
+      "validity_physical_v14.scs": "4adda2d6a864ac7ae7478c157989ea34d0901f52cf1f7b6bca2ec3238244f27f",
+      "rt_noise_scale4_v14.scs": "839d4bdb3d8b2dc60dcdad1f3a49010f82d6cb4ff08d10325b8c5c636c65e5c6",
+      "cp_timing.scs": "87a42f85028580ab52cc6d08a2514e4295dc93e4be0e019f52cb55964ae50fde",
+      "sampler_bias_v5.scs": "fe966831e65b04ee641625abc5187748bac130ea8d68babe17f33dc948c9cd67",
+      "rt4_stage15900_phase_continuous.ic": "937da9941740181f7627a6ae6ab70037353c97c8425cabbfb0986f4512ddacc2",
+      "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+      "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+      "pll_config.scs": "e9562e3410680ae20236c5e3a96229a0d83723e750753c4ae041ed3e5fd46622",
+      "pll_supervisor_capture_v14.scs": "f5836cf7d3106842c5f67ede615b0988057a750b42a242a11255b9fb28535bac",
+      "inductor_pi.scs": "417db0f24ee5d2a0544eda8a21f670d4b3ba5ba158422c913185ff82ef71438b",
+      "pll_control_capture_v14.scs": "0dd7b0b2d56f9d4668a0fd51795b80b0742659eb740a0c57ef10b420daf13d86",
+      "lc_core_physical_v14.scs": "8edc1b766e04d51405ffd185294fa1c7d6e7f2d2f8ef14f56753c1e84eaeb8b4",
+      "cap_bank_switched_v4.scs": "82930a36417d5746edad5be73d95ff446cb94a046524d8eb12d6cc3a325caad0",
+      "loop_filter_v5.scs": "827a9a8cd9d91e8bf9af5d38c691f0bfc19416980aa1e6b34eda9d0802bb9499",
+      "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+      "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+      "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+      "pll_capture_rt4bank_v14.scs": "001c6a40a24142fbc6d3aa006e233edb38810b703166af04968cff4bf8b9b3c8",
+      "frequency_watchdog.scs": "63e1d92d0db21407142630dfe349b3da1afe127e3e04d712e7cf0f51c541d5f2",
+      "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+      "bank_pulsetrip_v14.scs": "8d41f4865a829f5a6d203fda5fa63af0243a835d00bbfdafde737988ee1c0f20",
+      "full_pll_rt4_gear_quarter_off_tt.scs": "dc39e4aad6b0dcf4554f11c23b89c124261e6fd4f0604df8541a52b331220114",
+      "lc_vco_physical_v14.scs": "c34bae69f93d9600f602bfb7e80f56ffe051458e8984da02604eb6ef07e727ce",
+      "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c"
+    },
+    "exit_code": "0",
+    "old_pid_exists": false,
+    "time": "2026-10-10T13:49:25.484448+08:00",
+    "remote_dir": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/2026da22",
+    "before_after_identical": true,
+    "local_hashes_match": true
+  },
+  "input_count": 26,
+  "all_inputs_match": true,
+  "outputs": {
+    "console.log": {
+      "bytes": 14543,
+      "sha256": "b5bf962402dc4376df4a69b3a895e77400c98f2f6575f3f95c5ebcac16a7c966"
+    },
+    "full_pll_rt4_gear_quarter_off_tt.raw/tran.tran.tran": {
+      "bytes": 4398212984,
+      "sha256": "5c2302ddf4380714e987f25c6fae98f23d2348c33970cff43ea9060847ebb240"
+    },
+    "spectre.out": {
+      "bytes": 14700,
+      "sha256": "fc301732995d1dac69124317eee4cce09fae5f32f72aafd91e60e0bff0a0b62f"
+    },
+    "full_pll_rt4_gear_quarter_off_tt.raw/logStatus": {
+      "bytes": 79,
+      "sha256": "62f841a2de46ff3d69b9744ddfbabaa5fc7018cda599a5451d2c89bfe0c7ef47"
+    },
+    ".launch_claim/exit_code": {
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "full_pll_rt4_gear_quarter_off_tt.raw/logFile": {
+      "bytes": 667,
+      "sha256": "a9d280c2fb983b0a021b0c2ae322eb225af0655ec6c290bb48f66fe528385b7c"
+    },
+    "final_state.ic": {
+      "bytes": 280436,
+      "sha256": "97f4115ee2fc00ae57d50a09e52aa22646312ed7e4c1a6065aae3030c95ebc9c"
+    }
+  },
+  "remote_local_raw_log_state_match": true,
+  "terminal_summary": "spectre completes with 0 errors, 1 warning, and 15 notices.",
+  "effective_settings": {
+    "reltol": 1e-06,
+    "abstol(V)": 1e-09,
+    "abstol(I)": 1e-12,
+    "method": "gear2only",
+    "maxstep": 2.5e-13,
+    "noisefmax": 160000000000.0,
+    "noisefmin": 1000000.0,
+    "trannoisemethod": "default"
+  },
+  "numerical_diagnostics": {
+    "newton_failures_reported": 0,
+    "skipped_breakpoints_reported": 0,
+    "lte_relaxations_reported": 0,
+    "minimum_step_warnings_reported": 0,
+    "numerically_clean": true,
+    "counts_may_be_suppressed": false
+  },
+  "cache_sha256": "6008231889fcd01389e95acf8ae8a803bcb0c4a11860c99f9d74dd7f51756c42",
+  "independent_parser_samples": 5563186,
+  "independent_parser_max_differences": {
+    "time": 0.0,
+    "XP.restart": 0.0,
+    "XP.hp": 0.0,
+    "XP.hn": 0.0,
+    "XP.vc1": 0.0,
+    "out": 0.0,
+    "ref": 0.0,
+    "qualified": 0.0,
+    "range_error": 0.0,
+    "cfg_ready": 0.0,
+    "frequency_good": 0.0,
+    "phase_good": 0.0,
+    "amp_good": 0.0,
+    "XP.ctrl": 0.0,
+    "XP.vp": 0.0,
+    "XP.vn": 0.0,
+    "XP.refb": 0.0,
+    "XP.XC.phase_held": 0.0,
+    "XP.XC.acquired": 0.0,
+    "XP.en": 0.0,
+    "VDD:p": 0.0,
+    "XP.VVCO:p": 0.0,
+    "XP.VRX:p": 0.0,
+    "XP.VRT:p": 0.0
+  },
+  "duplicate_records": 0,
+  "stop_s": 2.2e-06,
+  "initial_saved_voltage_differences_v": {
+    "XP.restart": 0.0,
+    "XP.hp": 0.0,
+    "XP.hn": 0.0,
+    "XP.vc1": 0.0,
+    "out": 0.0,
+    "ref": 0.0,
+    "qualified": 0.0,
+    "range_error": 0.0,
+    "cfg_ready": 0.0,
+    "frequency_good": 0.0,
+    "phase_good": 0.0,
+    "amp_good": 0.0,
+    "XP.ctrl": 0.0,
+    "XP.vp": 0.0,
+    "XP.vn": 0.0,
+    "XP.refb": 0.0,
+    "XP.XC.phase_held": 0.0,
+    "XP.XC.acquired": 0.0,
+    "XP.en": 0.0
+  },
+  "final_state_entries": 7863,
+  "all_source_state_keys_preserved": true,
+  "final_state_saved_voltage_differences_v": {
+    "XP.restart": 0.0,
+    "XP.hp": 0.0,
+    "XP.hn": 3.885780586188048e-16,
+    "XP.vc1": 0.0,
+    "out": 0.0,
+    "ref": 0.0,
+    "qualified": 0.0,
+    "range_error": 2.9116757561866574e-22,
+    "cfg_ready": 1.9984014443252818e-15,
+    "frequency_good": 0.0,
+    "phase_good": 1.1102230246251565e-15,
+    "amp_good": 5.10702591327572e-15,
+    "XP.ctrl": 1.1102230246251565e-16,
+    "XP.vp": 1.9984014443252818e-15,
+    "XP.vn": 2.220446049250313e-16,
+    "XP.refb": 1.1102230246251565e-15,
+    "XP.XC.phase_held": 3.9968028886505635e-15,
+    "XP.XC.acquired": 1.9984014443252818e-15,
+    "XP.en": 0.0
+  },
+  "final_state_saved_current_differences_a": {
+    "VDD:p": 1.0408340855860843e-17,
+    "XP.VVCO:p": 3.469446951953614e-18,
+    "XP.VRX:p": 4.336808689942018e-19,
+    "XP.VRT:p": 2.168404344971009e-19
+  },
+  "measurement_status_ranges": {
+    "qualified": {
+      "min_v": 1.197757388030914,
+      "max_v": 1.204129750029438
+    },
+    "cfg_ready": {
+      "min_v": 1.197482557068343,
+      "max_v": 1.204599691351723
+    },
+    "frequency_good": {
+      "min_v": 1.193867323270082,
+      "max_v": 1.210786801883285
+    },
+    "phase_good": {
+      "min_v": 1.169404079075459,
+      "max_v": 1.241436301933825
+    },
+    "amp_good": {
+      "min_v": 1.199929098317274,
+      "max_v": 1.200061107421832
+    },
+    "XP.XC.phase_held": {
+      "min_v": 1.190699864914957,
+      "max_v": 1.213847332378229
+    },
+    "XP.XC.acquired": {
+      "min_v": 1.188252789944528,
+      "max_v": 1.211655643037556
+    },
+    "XP.en": {
+      "min_v": 1.191047477722665,
+      "max_v": 1.213934357888954
+    },
+    "XP.restart": {
+      "min_v": -0.0008013439131991101,
+      "max_v": 0.002737814168947982
+    },
+    "range_error": {
+      "min_v": -0.000783835447016505,
+      "max_v": 0.002679185178339613
+    }
+  },
+  "settling_windows": [
+    {
+      "window_us": [
+        1.0,
+        1.5
+      ],
+      "reference_samples": 12,
+      "phase_pp_rad": 0.003317575154964447,
+      "phase_drift_rad_per_us": 0.0015056413089664295,
+      "mean_output_mhz": 984.0001124965465,
+      "max_rf_cycles_error": 0.0002859716357761499,
+      "max_out_cycles_error": 8.384596986843462e-05,
+      "control_slope_mv_per_us": -0.0831371239959896,
+      "filter_slope_mv_per_us": -0.09072607874654791
+    },
+    {
+      "window_us": [
+        1.2,
+        2.2
+      ],
+      "reference_samples": 24,
+      "phase_pp_rad": 0.005334828452732809,
+      "phase_drift_rad_per_us": -0.0009278440871851602,
+      "mean_output_mhz": 983.9999394984209,
+      "max_rf_cycles_error": 0.0005425872709565738,
+      "max_out_cycles_error": 0.00014422783704048925,
+      "control_slope_mv_per_us": -0.017881752416933024,
+      "filter_slope_mv_per_us": -0.05793783209566212
+    },
+    {
+      "window_us": [
+        1.5,
+        2.0
+      ],
+      "reference_samples": 12,
+      "phase_pp_rad": 0.005279146017621583,
+      "phase_drift_rad_per_us": 0.002914008115724791,
+      "mean_output_mhz": 984.0001493614695,
+      "max_rf_cycles_error": 0.0005425872709565738,
+      "max_out_cycles_error": 0.00014422783704048925,
+      "control_slope_mv_per_us": 0.007231278195788373,
+      "filter_slope_mv_per_us": -0.031074680857247117
+    },
+    {
+      "window_us": [
+        1.7,
+        2.2
+      ],
+      "reference_samples": 12,
+      "phase_pp_rad": 0.005279146017621583,
+      "phase_drift_rad_per_us": 0.0032608241852414995,
+      "mean_output_mhz": 984.000288922253,
+      "max_rf_cycles_error": 0.00030862691119182273,
+      "max_out_cycles_error": 8.843679734127363e-05,
+      "control_slope_mv_per_us": -0.19968595062920033,
+      "filter_slope_mv_per_us": -0.05451180631817135
+    }
+  ],
+  "quiet_validation": {
+    "run": "pllrt4gearquarteroffssd01",
+    "case": "full_pll_rt4_gear_quarter_off_tt",
+    "noise_enabled": false,
+    "tb_sha256": "211c9bb846863aea757fd19b2484761670406a9ac37e408390625298581f9a2d",
+    "completed": true,
+    "source_result": "research/runs/spectre_cmos_v14_full/pllrt4gearquarteroffssd01/full_pll_rt4_gear_quarter_off_tt/result.json",
+    "source_sha256": "96128b009f7fcb127bc8be76e97ddbe6cbad2b8ee2166c2c31ae61a612a33053",
+    "recovery": {
+      "newton_failures_reported": 0,
+      "skipped_breakpoints_reported": 0,
+      "lte_relaxations_reported": 0,
+      "minimum_step_warnings_reported": 0,
+      "numerically_clean": true,
+      "counts_may_be_suppressed": false
+    },
+    "effective": {
+      "reltol": 1e-06,
+      "abstol(V)": 1e-09,
+      "abstol(I)": 1e-12,
+      "method": "gear2only",
+      "maxstep": 2.5e-13,
+      "noisefmax": 160000000000.0,
+      "noisefmin": 1000000.0,
+      "trannoisemethod": "default"
+    },
+    "log_sha256": "fc301732995d1dac69124317eee4cce09fae5f32f72aafd91e60e0bff0a0b62f",
+    "cache_sha256": "6008231889fcd01389e95acf8ae8a803bcb0c4a11860c99f9d74dd7f51756c42",
+    "initial_maximum_voltage_difference_v": 0.0,
+    "compared_nodes": 19,
+    "status_stable": true,
+    "stationarity": {
+      "samples": 24,
+      "phase_pp_rad": 0.005334828452732809,
+      "phase_drift_rad_per_us": -0.0009278440871851602,
+      "maximum_rf_cycles_error": 0.0005425872709565738,
+      "maximum_out_cycles_error": 0.00014422783704048925,
+      "mean_output_mhz": 983.9999394984209,
+      "passed": true
+    }
+  },
+  "recovery_audit_passed": true,
+  "full_pll_acceptance": false,
+  "integrated_10khz_jitter_fs": null,
+  "limitations": [
+    "No noise result is produced by this quiet audit.",
+    "The unchanged complete last 1 us gate controls dispatch; shorter windows are diagnostic.",
+    "This method change applies only to the RT4 candidate, not original V14.",
+    "Gear numerical damping, noisy-method sensitivity and full-band noise remain unverified."
+  ]
+}

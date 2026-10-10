@@ -1,0 +1,73 @@
+{
+  "scope": "Measure complete-PLL high-offset random edge noise against a matched quiet trace.",
+  "protocol_sha256": "4f3f17cf0ada357126e2be8e1eb2ca2f3aded3da033dd82b81d33d74ef0b0eb6",
+  "condition": "Actual full RT4/newbank PLL with transistor FLL/control/watchdog/bias,TT27/1.2V/24MHzref/K41/M4/10fF/Q5RLC/CF10; ideal external reference and supply.",
+  "cases": [
+    {
+      "run": "pllrt4gearquarteroffssd01",
+      "case": "full_pll_rt4_gear_quarter_off_tt",
+      "noise_enabled": false,
+      "tb_sha256": "211c9bb846863aea757fd19b2484761670406a9ac37e408390625298581f9a2d",
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/pllrt4gearquarteroffssd01/full_pll_rt4_gear_quarter_off_tt/result.json",
+      "source_sha256": "96128b009f7fcb127bc8be76e97ddbe6cbad2b8ee2166c2c31ae61a612a33053",
+      "recovery": {
+        "newton_failures_reported": 0,
+        "skipped_breakpoints_reported": 0,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": true,
+        "counts_may_be_suppressed": false
+      },
+      "effective": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-09,
+        "abstol(I)": 1e-12,
+        "method": "gear2only",
+        "maxstep": 2.5e-13,
+        "noisefmax": 160000000000.0,
+        "noisefmin": 1000000.0,
+        "trannoisemethod": "default"
+      },
+      "log_sha256": "fc301732995d1dac69124317eee4cce09fae5f32f72aafd91e60e0bff0a0b62f",
+      "cache_sha256": "6008231889fcd01389e95acf8ae8a803bcb0c4a11860c99f9d74dd7f51756c42",
+      "initial_maximum_voltage_difference_v": 0.0,
+      "compared_nodes": 19,
+      "status_stable": true,
+      "stationarity": {
+        "samples": 24,
+        "phase_pp_rad": 0.005334828452732809,
+        "phase_drift_rad_per_us": -0.0009278440871851602,
+        "maximum_rf_cycles_error": 0.0005425872709565738,
+        "maximum_out_cycles_error": 0.00014422783704048925,
+        "mean_output_mhz": 983.9999394984209,
+        "passed": true
+      }
+    },
+    {
+      "run": "pllrt4gearquarteronssd01",
+      "case": "full_pll_rt4_gear_quarter_on_tt",
+      "noise_enabled": true,
+      "tb_sha256": "934ccaad90386b0fce2903b863f4e6b6754cbe2c1f75d8b5c2e28785372ced47",
+      "completed": false
+    }
+  ],
+  "complete": false,
+  "high_offset_diagnostic_valid": false,
+  "full_pll_acceptance": false,
+  "integrated_10khz_jitter_fs": null,
+  "limitations": [
+    "This is an initial high-offset complete-circuit diagnostic, not the10kHz/full-band acceptance.",
+    "5ns absolute-current-tolerance comparison validates only short numerical behavior. Require clean whole traces, intact physical initial state, common quiet prefix and stationary noiseless loop.",
+    "Measurement inputs are ideal; actual transistor noise in every PLL device and RLC resistance is enabled together in the on case.",
+    "No functional control is clamped. The two measurement-only VA modules were removed and an ideal0V supply probe substituted.",
+    "No source-amplitude scaling, fitted trend removal or arbitrary spur notches. Paired deterministic edge template removes the measured repeatable component.",
+    "Further timestep, current-tolerance, bandwidth, seed and record-length comparisons remain mandatory even if this pair finishes cleanly.",
+    "Intermediate-stage2ns samples do not establish RF stationarity. This separate dense fixed-fine quiet check must pass first.",
+    "Full terminal text state copied byte-for-byte with reference phase preserved; hidden integrator history is not restored. Initialization is rechecked.",
+    "The original-V14 quiet pass and running noise pair are separate evidence, not an RT4 pass.",
+    "Maximum timestep halving alone does not establish tolerance, method, noise bandwidth, seed or record-length convergence.",
+    "Both method results and any failure are retained. This study does not resolve bandwidth, low-offset coverage or discrete-spur classification.",
+    "The current-tolerance original-V14 branch is separate; its result cannot validate this RT4 method change."
+  ]
+}
