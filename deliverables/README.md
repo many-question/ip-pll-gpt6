@@ -1,4 +1,4 @@
-本次快照：[第85次汇报](../reports/2026-10-10T0039.yaml)。SSH连接中断导致两条本地流水线退出，远端原版100fA和RT4 seed29仿真仍正常推进；已恢复两组保护与独立回收，未重启仿真，无新增抖动结果。
+本次快照：[第86次汇报](../reports/2026-10-10T0859.yaml)。RT4候选0.5ps seed29重跑正常完成并经独立复算，高偏移诊断为112.993992fs，RT4两步长×两种子矩阵补齐。原版100fA旧传输任务退出141、raw截断，已保留失败证据并派发输入完全相同的SSD隔离传输重跑。全带抖动仍未验收。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

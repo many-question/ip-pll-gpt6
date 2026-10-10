@@ -1,0 +1,215 @@
+{
+  "scope": "Audit the RT4 candidate two-timestep/two-seed high-offset diagnostic matrix.",
+  "time": "2026-10-10T08:58:48.203186+08:00",
+  "physical_inputs_and_initial_state_match": true,
+  "only_changed_parameters": [
+    "maxstep",
+    "noiseseed"
+  ],
+  "records": [
+    {
+      "maxstep_ps": 0.5,
+      "seed": 11,
+      "protocol_sha256": "193c5ae0d6549817835a642e2d7969a067f3edbf5a4012465433361f0817069b",
+      "validation_sha256": "858e02ef963bb05cdd549f9fc24881cb3a4ecae533dd2bc8d9af800eab82955f",
+      "band_rms_fs": 100.66931565433244,
+      "band_variance_s2": 1.0134311114311621e-26,
+      "subbands": [
+        {
+          "center_selection_hz": [
+            5000000.0,
+            20000000.0
+          ],
+          "rms_fs": 66.5077086364564
+        },
+        {
+          "center_selection_hz": [
+            20000000.0,
+            100000000.0
+          ],
+          "rms_fs": 51.322626017736496
+        },
+        {
+          "center_selection_hz": [
+            100000000.0,
+            492000000.0
+          ],
+          "rms_fs": 55.47092810548063
+        }
+      ],
+      "block_variance_standard_error_s2": 1.3676107633279336e-27
+    },
+    {
+      "maxstep_ps": 0.5,
+      "seed": 29,
+      "protocol_sha256": "e8041d5333542764ced95c80d76c70720edbe79b67f2d31dfafe67e0d47239a2",
+      "validation_sha256": "a233002d8a45871dcbe7a43a26972ecac7c1d7186e3047cba026356120c5b7fc",
+      "band_rms_fs": 112.99399152114181,
+      "band_variance_s2": 1.2767642119879867e-26,
+      "subbands": [
+        {
+          "center_selection_hz": [
+            5000000.0,
+            20000000.0
+          ],
+          "rms_fs": 86.66052707353369
+        },
+        {
+          "center_selection_hz": [
+            20000000.0,
+            100000000.0
+          ],
+          "rms_fs": 43.80980050517134
+        },
+        {
+          "center_selection_hz": [
+            100000000.0,
+            492000000.0
+          ],
+          "rms_fs": 57.777993621397876
+        }
+      ],
+      "block_variance_standard_error_s2": 1.9026726510357714e-27
+    },
+    {
+      "maxstep_ps": 0.25,
+      "seed": 11,
+      "protocol_sha256": "7a9023dffc673814023586c3d8cd702a4dc5419d67fc78e98db3a2f9b7655acc",
+      "validation_sha256": "8c008a73daa658c7957304cc152c8d0ce2e5dafa84852337739f5b6af48066a5",
+      "band_rms_fs": 95.86239890498513,
+      "band_variance_s2": 9.189599523818493e-27,
+      "subbands": [
+        {
+          "center_selection_hz": [
+            5000000.0,
+            20000000.0
+          ],
+          "rms_fs": 63.99594823036358
+        },
+        {
+          "center_selection_hz": [
+            20000000.0,
+            100000000.0
+          ],
+          "rms_fs": 45.26552389238234
+        },
+        {
+          "center_selection_hz": [
+            100000000.0,
+            492000000.0
+          ],
+          "rms_fs": 55.18288213443806
+        }
+      ],
+      "block_variance_standard_error_s2": 9.04700633698579e-28
+    },
+    {
+      "maxstep_ps": 0.25,
+      "seed": 29,
+      "protocol_sha256": "e7716c36a24eefc8b448eb8dd6901188c3a70ed3ffcddab75229d628db2369be",
+      "validation_sha256": "4605cd42946bfa75a47ec1e3d5666a5a2fd02e77aa8a5c69f479f42b631fabc0",
+      "band_rms_fs": 103.19597672577272,
+      "band_variance_s2": 1.0649409612386226e-26,
+      "subbands": [
+        {
+          "center_selection_hz": [
+            5000000.0,
+            20000000.0
+          ],
+          "rms_fs": 74.46750761419563
+        },
+        {
+          "center_selection_hz": [
+            20000000.0,
+            100000000.0
+          ],
+          "rms_fs": 42.639764332954606
+        },
+        {
+          "center_selection_hz": [
+            100000000.0,
+            492000000.0
+          ],
+          "rms_fs": 57.322337877532824
+        }
+      ],
+      "block_variance_standard_error_s2": 1.6507019565808443e-27
+    }
+  ],
+  "comparisons": [
+    {
+      "comparison": "seed 11 to 29 at 0.5 ps",
+      "from_record": 0,
+      "to_record": 1,
+      "rms_relative_change_percent": 12.242733336072863,
+      "variance_difference_s2": 2.6333310055682457e-27,
+      "block_se_quadrature_s2": 2.3431863811847966e-27,
+      "descriptive_variance_difference_over_block_se": 1.123824816802128
+    },
+    {
+      "comparison": "seed 11 to 29 at 0.25 ps",
+      "from_record": 2,
+      "to_record": 3,
+      "rms_relative_change_percent": 7.650108806536693,
+      "variance_difference_s2": 1.4598100885677332e-27,
+      "block_se_quadrature_s2": 1.8823655824718105e-27,
+      "descriptive_variance_difference_over_block_se": 0.7755189014085125
+    },
+    {
+      "comparison": "0.5 to 0.25 ps at seed 11",
+      "from_record": 0,
+      "to_record": 2,
+      "rms_relative_change_percent": -4.774957213231479,
+      "variance_difference_s2": -9.447115904931282e-28,
+      "block_se_quadrature_s2": 1.6397690192783322e-27,
+      "descriptive_variance_difference_over_block_se": -0.5761247952525038
+    },
+    {
+      "comparison": "0.5 to 0.25 ps at seed 29",
+      "from_record": 1,
+      "to_record": 3,
+      "rms_relative_change_percent": -8.67127062551447,
+      "variance_difference_s2": -2.1182325074936406e-27,
+      "block_se_quadrature_s2": 2.5189244066583892e-27,
+      "descriptive_variance_difference_over_block_se": -0.8409273822963559
+    }
+  ],
+  "equal_record_summaries": [
+    {
+      "maxstep_ps": 0.5,
+      "seeds": [
+        11,
+        29
+      ],
+      "equal_record_mean_variance_s2": 1.1450976617095744e-26,
+      "equal_record_variance_rms_fs": 107.00923612985817
+    },
+    {
+      "maxstep_ps": 0.25,
+      "seeds": [
+        11,
+        29
+      ],
+      "equal_record_mean_variance_s2": 9.91950456810236e-27,
+      "equal_record_variance_rms_fs": 99.59670962487847
+    }
+  ],
+  "equal_record_rms_step_change_percent": -6.926996933222118,
+  "effective_band_hz": [
+    5285156.25,
+    492000000.0
+  ],
+  "numerical_convergence_established": false,
+  "statistical_convergence_established": false,
+  "full_pll_acceptance": false,
+  "integrated_10khz_jitter_fs": null,
+  "limitations": [
+    "Two seeds per timestep cannot identify a small timestep bias with a reliable population confidence interval.",
+    "Same seed at different adaptive timesteps does not imply identical random waveforms; differences are not numerical error floors.",
+    "Equal-record variance summaries are descriptive, not a replacement for any preregistered individual result or an acceptance metric.",
+    "Block SE comparisons are descriptive only; blocks can be correlated.",
+    "The half-ps quiet and noisy prefixes report five internal trapezoidal-ringing notices; quarter-ps records report none. Absence of notices is not proof of convergence.",
+    "Tolerance, integration method, bandwidth, record length and low-offset coverage remain open.",
+    "Quiet subtraction does not establish complete discrete-spur classification. No 10 kHz full-band claim."
+  ]
+}

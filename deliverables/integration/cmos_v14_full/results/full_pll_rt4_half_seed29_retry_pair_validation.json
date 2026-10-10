@@ -49,11 +49,36 @@
       "case": "full_pll_rt4_half_seed29_on_tt",
       "noise_enabled": true,
       "tb_sha256": "fc8ce710da040cd5159c46cd53de5fe77a70dd53295c91a75b5ea8088dbbdf66",
-      "completed": false
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/pllrt4halfseed29onssd02/full_pll_rt4_half_seed29_on_tt/result.json",
+      "source_sha256": "e3df036c8aa7e9f760d0b6679098f312842871b84b8903f23a5039057f39fa74",
+      "recovery": {
+        "newton_failures_reported": 0,
+        "skipped_breakpoints_reported": 0,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": true,
+        "counts_may_be_suppressed": true
+      },
+      "effective": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-09,
+        "abstol(I)": 1e-12,
+        "method": "traponly",
+        "maxstep": 5e-13,
+        "noisefmax": 160000000000.0,
+        "noisefmin": 1000000.0,
+        "trannoisemethod": "default"
+      },
+      "log_sha256": "f95adb40c95d605511efe30157d0229bab0c20d66e4c461059d4de1e867db5d3",
+      "cache_sha256": "9cffa3cfd171cd0fdd058a471f6ae647d08144c2f4e024dc32eec89358385b59",
+      "initial_maximum_voltage_difference_v": 0.0,
+      "compared_nodes": 19,
+      "status_stable": true
     }
   ],
-  "complete": false,
-  "high_offset_diagnostic_valid": false,
+  "complete": true,
+  "high_offset_diagnostic_valid": true,
   "full_pll_acceptance": false,
   "integrated_10khz_jitter_fs": null,
   "limitations": [
@@ -68,5 +93,23 @@
     "The original-V14 quiet pass and running noise pair are separate evidence, not an RT4 pass.",
     "Seed 29 was fixed before observing its output; retain both seeds regardless of which RMS is lower.",
     "The failed predecessor must not enter the step/seed matrix. Retry completion requires the normal clean terminal log and complete raw/state checks."
-  ]
+  ],
+  "diagnostic_band_rms_fs": 112.99399152114181,
+  "effective_band_hz": [
+    5285156.25,
+    492000000.0
+  ],
+  "block_variance_standard_error_s2": 1.9026726510357714e-27,
+  "prefix_max_differences_v": {
+    "XP.ctrl": 0.0,
+    "out": 0.0,
+    "qualified": 0.0
+  },
+  "checks": {
+    "clean": true,
+    "initialization": true,
+    "quiet_prefix": true,
+    "status": true,
+    "stationary": true
+  }
 }
