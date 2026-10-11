@@ -1,4 +1,4 @@
-本次快照：[第90次汇报](../reports/2026-10-11T1435.yaml)。RT4 Gear完整噪声记录已独立复核，高偏移诊断102.496fs；同条件梯形法为95.862fs，矩形窗差异约6.92%且明显依赖有限记录窗，尚未建立数值收敛。已按原门限派发Gear seed29；原版320GHz噪声继续运行，最终全带抖动仍未知。
+本次快照：[第91次汇报](../reports/2026-10-11T1936.yaml)。两组本地流水线、runner与保护进程消失，服务器原版320GHz和RT4 Gear seed29仿真继续正常推进；已接入两组保护和独立回收，未重启或新增仿真。本轮没有新增抖动结论，最终全带验收仍未知。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

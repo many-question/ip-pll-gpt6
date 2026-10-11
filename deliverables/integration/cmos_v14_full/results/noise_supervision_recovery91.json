@@ -1,0 +1,421 @@
+{
+  "time": "2026-10-11T19:36:14+08:00",
+  "incident": "research/client_loss91_before.json",
+  "incident_sha256": "1591e062888554c285f5301b9116c79e69e7e981288be8a9d303850c33f61abe",
+  "review": "research/noise_supervision_review91.json",
+  "review_sha256": "d5ea5bce5057e1fcadbe70043d131b706c8e8902978dd7b934ddc3ad555da3a1",
+  "live_evidence": "research/supervision91_live.json",
+  "live_sha256": "f7e82c6da3fb7ac0ac81d36c175be0fdc38d934ac50d21f076b4e837f8682fd6",
+  "active": [
+    {
+      "run": "pllrt4gearseed29onssd01",
+      "case": "full_pll_rt4_gear_seed29_on_tt",
+      "threads": 7,
+      "pid": 48240,
+      "remote_dir": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/9063560d",
+      "remote_id": "9063560d",
+      "role": "Guarded SSD simulation; no duplicate dispatch.",
+      "protocol": "share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_seed29_pair_protocol.json",
+      "protocol_sha256": "416f4c98de3824109df6feccfaa5b53f8d443442f9842039e08029b797854c7a"
+    },
+    {
+      "run": "pllmainbw320onssd01",
+      "case": "full_pll_main_bw320_on_tt",
+      "threads": 7,
+      "pid": 164688,
+      "remote_dir": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/6eeceb59",
+      "remote_id": "6eeceb59",
+      "role": "Guarded SSD simulation; no duplicate dispatch.",
+      "protocol": "share/deliverables/integration/cmos_v14_full/results/full_pll_main_bw320_pair_protocol.json",
+      "protocol_sha256": "fde291be069e33323195555b16a667e95f1254821a54e477868fd239b7fae7a1"
+    }
+  ],
+  "resources": {
+    "time": "2026-10-11T19:33:34.665590+08:00",
+    "jobs": [
+      {
+        "threads": 7,
+        "pid": 48240,
+        "netlist": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/9063560d/full_pll_rt4_gear_seed29_on_tt.scs"
+      },
+      {
+        "threads": 7,
+        "pid": 164688,
+        "netlist": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/6eeceb59/full_pll_main_bw320_on_tt.scs"
+      }
+    ],
+    "requested_threads": 14
+  },
+  "checks": [
+    {
+      "run": "pllrt4gearseed29onssd01",
+      "case": "full_pll_rt4_gear_seed29_on_tt",
+      "readic": {
+        "realpath": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/pllrt4gearseed29onssd01_full_pll_rt4_gear_seed29_on_tt_rt4_stage15900_phase_continuous.ic",
+        "sha256": "937da9941740181f7627a6ae6ab70037353c97c8425cabbfb0986f4512ddacc2",
+        "path": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/pllrt4gearseed29onssd01_full_pll_rt4_gear_seed29_on_tt_rt4_stage15900_phase_continuous.ic"
+      },
+      "last": {
+        "XP.restart": -0.0001722887903803265,
+        "XP.XC.phase_held": 1.199735342032032,
+        "frequency_good": 1.199600319683451,
+        "XP.ctrl": 0.7349427774382111,
+        "time": 1.157725149921286e-06,
+        "qualified": 1.200199869042781,
+        "XP.XC.acquired": 1.192096129828821
+      },
+      "raw_bytes": 1188216832,
+      "previous_time_s": 1.152385750103132e-06,
+      "previous_raw_bytes": 1147936768,
+      "noise_on": true,
+      "diagnostics": {
+        "terminal": false,
+        "ringing": false,
+        "newton": false,
+        "lte": false,
+        "skipped": false
+      },
+      "log_sha256": "1c2ce453b8e6f806314609914fc9dba69b0fabcea83174e201b6fae4f80352ea"
+    },
+    {
+      "run": "pllmainbw320onssd01",
+      "case": "full_pll_main_bw320_on_tt",
+      "readic": {
+        "realpath": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/pllmainbw320onssd01_full_pll_main_bw320_on_tt_main_fine2200_phase_continuous.ic",
+        "sha256": "2aa316a1a1e9801673e4842f28784f3d4b6feb2d3d3211f984cc7c78b3345cfe",
+        "path": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/pllmainbw320onssd01_full_pll_main_bw320_on_tt_main_fine2200_phase_continuous.ic"
+      },
+      "last": {
+        "XP.restart": -1.895572523770457e-05,
+        "XP.XC.phase_held": 1.20029276689277,
+        "frequency_good": 1.200806226361607,
+        "XP.ctrl": 0.6294194486837555,
+        "time": 1.348653124977139e-06,
+        "qualified": 1.199964391952716,
+        "XP.XC.acquired": 1.198131943122485
+      },
+      "raw_bytes": 3128823808,
+      "previous_time_s": 1.344743749977395e-06,
+      "previous_raw_bytes": 3093733376,
+      "noise_on": true,
+      "diagnostics": {
+        "terminal": false,
+        "ringing": false,
+        "newton": false,
+        "lte": false,
+        "skipped": false
+      },
+      "log_sha256": "39d974051079590f2cb8e99c1848df449eff34d9661f117306f8cf0a67e8cf76"
+    }
+  ],
+  "local_workers": [
+    {
+      "pid": 197128,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\share\\deliverables\\integration\\cmos_v14_full\\recover_active_noise_detached91.py",
+        "--target",
+        "main_bw320"
+      ],
+      "create_time": 1791718387.0346973,
+      "ppid": 76736,
+      "state": "research/main_bw320_noise_pipeline.json",
+      "log": "research/main_bw320_collector91.log",
+      "role": "collector",
+      "running": true,
+      "checked": "2026-10-11T19:36:14+08:00"
+    },
+    {
+      "pid": 186724,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\share\\deliverables\\integration\\cmos_v14_full\\recover_active_noise_detached91.py",
+        "--target",
+        "rt4_gear_seed29"
+      ],
+      "create_time": 1791718387.0697913,
+      "ppid": 76736,
+      "state": "research/rt4_gear_seed29_noise_pipeline.json",
+      "log": "research/rt4_gear_seed29_collector91.log",
+      "role": "collector",
+      "running": true,
+      "checked": "2026-10-11T19:36:14+08:00"
+    },
+    {
+      "pid": 123580,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\watch_main_bw320_pair.py",
+        "--resume"
+      ],
+      "create_time": 1791718387.1108212,
+      "ppid": 76736,
+      "state": "research/main_bw320_guard.json",
+      "log": "research/main_bw320_guard_resume91.log",
+      "role": "guard",
+      "running": true,
+      "checked": "2026-10-11T19:36:14+08:00"
+    },
+    {
+      "pid": 184496,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\watch_rt4_gear_seed29_pair.py",
+        "--resume"
+      ],
+      "create_time": 1791718387.1435783,
+      "ppid": 76736,
+      "state": "research/rt4_gear_seed29_guard.json",
+      "log": "research/rt4_gear_seed29_guard_resume91.log",
+      "role": "guard",
+      "running": true,
+      "checked": "2026-10-11T19:36:14+08:00"
+    }
+  ],
+  "retired_workers": [
+    {
+      "pid": 170072,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\run_main_iab100_noise_pipeline83.py",
+        "--protocol",
+        "full_pll_main_bw320_pair_protocol.json",
+        "--state",
+        "main_bw320_noise_pipeline.json"
+      ],
+      "state": "research/main_bw320_noise_pipeline.json",
+      "log": "research/main_bw320_pipeline88.log",
+      "role": "pipeline",
+      "running": false,
+      "checked": "2026-10-11T18:24:46.178854+08:00",
+      "ppid": 169240,
+      "create_time": 1791667024.4931493,
+      "exists": false
+    },
+    {
+      "pid": 149424,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\watch_main_bw320_pair.py"
+      ],
+      "state": "research/main_bw320_guard.json",
+      "log": "research/main_bw320_guard88.log",
+      "role": "guard",
+      "running": false,
+      "checked": "2026-10-11T18:24:46.178854+08:00",
+      "ppid": 169240,
+      "create_time": 1791667024.5000184,
+      "exists": false
+    },
+    {
+      "pid": 158320,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\share\\deliverables\\integration\\cmos_v14_full\\run_spectre.py",
+        "--run-id",
+        "pllmainbw320onssd01",
+        "--cases",
+        "full_pll_main_bw320_on_tt",
+        "--mode",
+        "ax",
+        "--threads",
+        "7",
+        "--preset-override",
+        "all",
+        "--timeout",
+        "172800"
+      ],
+      "ppid": 170072,
+      "owner_pid": 170072,
+      "create_time": 1791679543.409806,
+      "state": null,
+      "log": "research/main_bw320_noise_pipeline_noise_on.log",
+      "role": "noise_runner",
+      "running": false,
+      "checked": "2026-10-11T18:24:46.178854+08:00",
+      "exists": false
+    },
+    {
+      "pid": 126144,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\run_rt4_gear_seed29_pipeline90.py",
+        "--protocol",
+        "full_pll_rt4_gear_seed29_pair_protocol.json",
+        "--state",
+        "rt4_gear_seed29_noise_pipeline.json"
+      ],
+      "state": "research/rt4_gear_seed29_noise_pipeline.json",
+      "log": "research/rt4_gear_seed29_pipeline90.log",
+      "ppid": 182136,
+      "create_time": 1791700455.390718,
+      "role": "pipeline",
+      "running": false,
+      "checked": "2026-10-11T18:24:46.178854+08:00",
+      "exists": false
+    },
+    {
+      "pid": 182776,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\watch_rt4_gear_seed29_pair.py"
+      ],
+      "state": "research/rt4_gear_seed29_guard.json",
+      "log": "research/rt4_gear_seed29_guard90.log",
+      "ppid": 182136,
+      "create_time": 1791700455.3977003,
+      "role": "guard",
+      "running": false,
+      "checked": "2026-10-11T18:24:46.178854+08:00",
+      "exists": false
+    },
+    {
+      "pid": 123440,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\share\\deliverables\\integration\\cmos_v14_full\\run_spectre.py",
+        "--run-id",
+        "pllrt4gearseed29onssd01",
+        "--cases",
+        "full_pll_rt4_gear_seed29_on_tt",
+        "--mode",
+        "ax",
+        "--threads",
+        "7",
+        "--preset-override",
+        "all",
+        "--timeout",
+        "172800"
+      ],
+      "ppid": 126144,
+      "owner_pid": 126144,
+      "create_time": 1791700463.3116615,
+      "state": null,
+      "log": "research/rt4_gear_seed29_noise_pipeline_noise_on.log",
+      "role": "noise_runner",
+      "running": false,
+      "checked": "2026-10-11T18:24:46.178854+08:00",
+      "exists": false
+    }
+  ],
+  "states": {
+    "research/main_bw320_noise_pipeline.json": {
+      "state": "waiting_existing_remote",
+      "updated": "2026-10-11T19:35:14.085934+08:00",
+      "observation": {
+        "live": [
+          164688
+        ],
+        "raw_bytes": 3137888256,
+        "raw_mtime": 1791718403.0090868,
+        "log_sha256": "39d974051079590f2cb8e99c1848df449eff34d9661f117306f8cf0a67e8cf76",
+        "terminal_errors": null,
+        "exit_code": null
+      },
+      "protocol_sha256": "fde291be069e33323195555b16a667e95f1254821a54e477868fd239b7fae7a1",
+      "detached_recovery": {
+        "no_new_simulations": true,
+        "script": "share\\deliverables\\integration\\cmos_v14_full\\recover_active_noise_detached91.py",
+        "started": "2026-10-11T19:33:10.364805+08:00",
+        "original_client_returncode": null,
+        "owner_pid": 197128,
+        "owner_create_time": 1791718387.0346973,
+        "incident": "research/client_loss91_before.json"
+      },
+      "consecutive_errors": 0,
+      "consecutive_read_errors": null
+    },
+    "research/rt4_gear_seed29_noise_pipeline.json": {
+      "state": "waiting_existing_remote",
+      "updated": "2026-10-11T19:35:13.874380+08:00",
+      "observation": {
+        "live": [
+          48240
+        ],
+        "raw_bytes": 1198620672,
+        "raw_mtime": 1791718402.8020787,
+        "log_sha256": "1c2ce453b8e6f806314609914fc9dba69b0fabcea83174e201b6fae4f80352ea",
+        "terminal_errors": null,
+        "exit_code": null
+      },
+      "protocol_sha256": "416f4c98de3824109df6feccfaa5b53f8d443442f9842039e08029b797854c7a",
+      "detached_recovery": {
+        "no_new_simulations": true,
+        "script": "share\\deliverables\\integration\\cmos_v14_full\\recover_active_noise_detached91.py",
+        "started": "2026-10-11T19:33:10.364805+08:00",
+        "original_client_returncode": null,
+        "owner_pid": 186724,
+        "owner_create_time": 1791718387.0697913,
+        "incident": "research/client_loss91_before.json"
+      },
+      "consecutive_errors": 0,
+      "consecutive_read_errors": null
+    },
+    "research/main_bw320_guard.json": {
+      "state": "monitoring",
+      "updated": "2026-10-11T19:36:13.690842+08:00",
+      "observation": null,
+      "protocol_sha256": null,
+      "detached_recovery": null,
+      "consecutive_errors": null,
+      "consecutive_read_errors": 0
+    },
+    "research/rt4_gear_seed29_guard.json": {
+      "state": "monitoring",
+      "updated": "2026-10-11T19:36:13.669749+08:00",
+      "observation": null,
+      "protocol_sha256": null,
+      "detached_recovery": null,
+      "consecutive_errors": null,
+      "consecutive_read_errors": 0
+    }
+  },
+  "completion_gate_tests": {
+    "gate_tests": [
+      {
+        "name": "live_even_with_footer",
+        "passed": true
+      },
+      {
+        "name": "missing_footer",
+        "passed": true
+      },
+      {
+        "name": "first_terminal_observation",
+        "passed": true
+      },
+      {
+        "name": "raw_changes",
+        "passed": true
+      },
+      {
+        "name": "log_changes",
+        "passed": true
+      },
+      {
+        "name": "previous_still_live",
+        "passed": true
+      },
+      {
+        "name": "stable_terminal",
+        "passed": true
+      },
+      {
+        "name": "stable_failed_terminal_can_be_archived",
+        "passed": true
+      },
+      {
+        "name": "missing_exit_can_be_archived_but_not_clean",
+        "passed": true
+      }
+    ],
+    "collector_sha256": "8d278cff77841302048c7922de2cb1cfed18a77d61c7afc2c23c898adc31da5d",
+    "guard_sha256": "4f21da35fab6e625221e552564e73eae20631dc93f912b815d149c74a25b542d",
+    "no_simulator_action": true,
+    "zero_exit_required_for_clean_result": true
+  },
+  "local_exit_cause": "unconfirmed",
+  "no_new_simulations": true,
+  "no_new_measurement": true,
+  "full_pll_acceptance": false
+}
