@@ -1,0 +1,77 @@
+{
+  "scope": "Measure complete-PLL high-offset random edge noise against a matched quiet trace.",
+  "protocol_sha256": "fde291be069e33323195555b16a667e95f1254821a54e477868fd239b7fae7a1",
+  "condition": "Original complete V14, all actual transistor FLL/control/watchdog/bias,TT27/1.2V/24MHz/K41/M4/10fF/Q5RLC/CF10; original output chain. Ideal external reference and supply.",
+  "cases": [
+    {
+      "run": "pllmainbw320offssd01",
+      "case": "full_pll_main_bw320_off_tt",
+      "noise_enabled": false,
+      "tb_sha256": "925c3aa27b66634ed3093089811571e518ee504d6c884e4dcce830397a9d6e64",
+      "completed": true,
+      "source_result": "research/runs/spectre_cmos_v14_full/pllmainbw320offssd01/full_pll_main_bw320_off_tt/result.json",
+      "source_sha256": "4c21920b31f82108df1df909e8caa155efcb9fa5691ec416898085545c6bd85a",
+      "recovery": {
+        "newton_failures_reported": 0,
+        "skipped_breakpoints_reported": 0,
+        "lte_relaxations_reported": 0,
+        "minimum_step_warnings_reported": 0,
+        "numerically_clean": true,
+        "counts_may_be_suppressed": false
+      },
+      "effective": {
+        "reltol": 1e-06,
+        "abstol(V)": 1e-09,
+        "abstol(I)": 1e-13,
+        "method": "traponly",
+        "maxstep": 2.5e-13,
+        "noisefmax": 320000000000.0,
+        "noisefmin": 1000000.0,
+        "trannoisemethod": "default"
+      },
+      "log_sha256": "9fba444eca7a2a67e389ae63b4114b7aceef4d0d6fd19b3c440502005979f96e",
+      "cache_sha256": "2194c19e0b0c82023bf69e91e971e24efd1b190107f76157fea6bb1d56c95e3d",
+      "initial_maximum_voltage_difference_v": 0.0,
+      "compared_nodes": 19,
+      "status_stable": true,
+      "stationarity": {
+        "samples": 24,
+        "phase_pp_rad": 0.007058872980393316,
+        "phase_drift_rad_per_us": -0.004663627802855439,
+        "maximum_rf_cycles_error": 0.0005242201073087926,
+        "maximum_out_cycles_error": 0.00022332693220050714,
+        "mean_output_mhz": 983.9999073654251,
+        "passed": true
+      }
+    },
+    {
+      "run": "pllmainbw320onssd01",
+      "case": "full_pll_main_bw320_on_tt",
+      "noise_enabled": true,
+      "tb_sha256": "2bad655db0c6c1427ef1ea759b47e901cdfe356357a72da05fdc20f20fdf3a5e",
+      "completed": false
+    }
+  ],
+  "complete": false,
+  "high_offset_diagnostic_valid": false,
+  "full_pll_acceptance": false,
+  "integrated_10khz_jitter_fs": null,
+  "limitations": [
+    "This is an initial high-offset complete-circuit diagnostic, not the10kHz/full-band acceptance.",
+    "5ns absolute-current-tolerance comparison validates only short numerical behavior. Require clean whole traces, intact physical initial state, common quiet prefix and stationary noiseless loop.",
+    "Measurement inputs are ideal; actual transistor noise in every PLL device and RLC resistance is enabled together in the on case.",
+    "No functional control is clamped. The two measurement-only VA modules were removed and an ideal0V supply probe substituted.",
+    "No source-amplitude scaling, fitted trend removal or arbitrary spur notches. Paired deterministic edge template removes the measured repeatable component.",
+    "Further timestep, current-tolerance, bandwidth, seed and record-length comparisons remain mandatory even if this pair finishes cleanly.",
+    "Source first fine run failed the original full1us stationarity gate. Decaying short-window drift only motivates more settling; it does not override that failure.",
+    "All text terminal states are copied byte-for-byte. Reference delay is translated by the source stop time. Hidden integration history is not restored; fresh initialization must be rechecked.",
+    "Maximum timestep halving alone does not establish tolerance, method, noise bandwidth, seed or record-length convergence.",
+    "The earlier 100 fA short screen used a different RT4 initialization and cannot validate this whole original-DUT trace.",
+    "A changed settled numerical operating point or failed quiet gate must be diagnosed; do not relax thresholds or reuse the 1 pA quiet.",
+    "No convergence or lower-noise conclusion is established by tightening a tolerance alone.",
+    "Integration method, noise bandwidth and longer low-offset records remain separate subsequent studies.",
+    "The failed predecessor must not enter the current-tolerance comparison. Retry completion requires the normal clean terminal log and complete raw/state checks.",
+    "Source-noise bandwidth is different from the measured output-offset integration band; doubling noisefmax does not extend the record to 10 kHz.",
+    "Same seed with changed source bandwidth is not an identical excitation; retain both spectra, all outcomes and finite-record uncertainty."
+  ]
+}

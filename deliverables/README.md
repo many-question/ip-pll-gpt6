@@ -1,4 +1,4 @@
-本次快照：[第88次汇报](../reports/2026-10-11T0517.yaml)。原版V14 100fA完整噪声记录正常完成并通过独立原始数据与FFT复核，高偏移诊断172.505385fs；与1pA结果非常接近，但单种子短记录不构成全带或数值收敛验收。已启动320GHz噪声源带宽的匹配quiet验证，RT4 Gear噪声继续运行。
+本次快照：[第89次汇报](../reports/2026-10-11T0920.yaml)。原版320GHz无噪声记录已完整回收并通过原五门限，现有流水线自动启动匹配噪声；独立审阅发现内部梯形积分振铃，已单独列为数值风险。RT4 Gear噪声继续运行，最终全带抖动仍未知。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)
