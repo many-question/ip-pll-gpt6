@@ -1,0 +1,80 @@
+{
+  "scope": "Compare RT4 traponly and Gear2 high-offset noise diagnostics.",
+  "time": "2026-10-11T14:33:46.245544+08:00",
+  "condition": "Actual full RT4/newbank PLL with transistor FLL/control/watchdog/bias,TT27/1.2V/24MHzref/K41/M4/10fF/Q5RLC/CF10; ideal external reference and supply.",
+  "protocol_sha256": [
+    "7a9023dffc673814023586c3d8cd702a4dc5419d67fc78e98db3a2f9b7655acc",
+    "4f3f17cf0ada357126e2be8e1eb2ca2f3aded3da033dd82b81d33d74ef0b0eb6"
+  ],
+  "audit_sha256": [
+    "73f26ed5eabff387243f118a7000825310bd6dec115e51ff429ae7754822655a",
+    "5b4c8597295c56657d052cffe05f81be66d7bfdd3842cd7104618d230a6617cb"
+  ],
+  "validation": [
+    {
+      "path": "share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_pair_validation.json",
+      "sha256": "8c008a73daa658c7957304cc152c8d0ce2e5dafa84852337739f5b6af48066a5",
+      "rms_fs": 95.86239890498513
+    },
+    {
+      "path": "share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_quarter_pair_validation.json",
+      "sha256": "9249a65df316a34cd0029ed313b55ea002f1d1945762626e5a390a5a524cbc11",
+      "rms_fs": 102.49594520824368
+    }
+  ],
+  "sources": [
+    {
+      "run": "pllrt4quarteroffssd01",
+      "case": "full_pll_rt4_quarter_off_tt",
+      "result_sha256": "aebe4b0d1504c710105821b6cc6dc82259b4e70bacde5a322e3634fe401a34bf",
+      "cache_sha256": "5f82b3b8d04523f7f4c47ac03a3589de4dcb619269a5b2ca5ee4da3bdb27ff4b"
+    },
+    {
+      "run": "pllrt4quarteronssd01",
+      "case": "full_pll_rt4_quarter_on_tt",
+      "result_sha256": "faeb1bac110697618192e3f2181e60b027d2d5f95729b6f9af23ee31c6151aa1",
+      "cache_sha256": "516e768a75d330105bc883a053c2ba858165b1a60b565a4d324a97ca18b32b2c"
+    },
+    {
+      "run": "pllrt4gearquarteroffssd01",
+      "case": "full_pll_rt4_gear_quarter_off_tt",
+      "result_sha256": "96128b009f7fcb127bc8be76e97ddbe6cbad2b8ee2166c2c31ae61a612a33053",
+      "cache_sha256": "6008231889fcd01389e95acf8ae8a803bcb0c4a11860c99f9d74dd7f51756c42"
+    },
+    {
+      "run": "pllrt4gearquarteronssd01",
+      "case": "full_pll_rt4_gear_quarter_on_tt",
+      "result_sha256": "8ca6913cfc3ef0a6ec5ac908fbc0f6e5e9d9d651fc773556bcd308d79a8c981e",
+      "cache_sha256": "3b013373d53c711b83508c92d43c0c3bc68ccb213b837b5d238d0f5ec998623b"
+    }
+  ],
+  "only_integration_method_changed": true,
+  "methods": [
+    "traponly",
+    "gear2only"
+  ],
+  "rms_fs": [
+    95.86239890498514,
+    102.49594520824368
+  ],
+  "rms_difference_fs": 6.633546303258541,
+  "relative_rms_difference_percent": 6.919862614572625,
+  "band_filtered_realization_difference_rms_fs": 51.1809793273181,
+  "band_filtered_realization_correlation": 0.8689386379923855,
+  "edge_count": 1024,
+  "effective_band_hz": [
+    5285156.25,
+    492000000.0
+  ],
+  "comparison_valid": true,
+  "numerical_convergence_established": false,
+  "full_pll_acceptance": false,
+  "integrated_10khz_jitter_fs": null,
+  "limitations": [
+    "Each noisy trace is subtracted from its own matching quiet trace; mean removal only.",
+    "One fixed seed and a finite high-offset record provide a sensitivity observation, not statistical or full numerical convergence.",
+    "Same seed with adaptive timesteps need not mean identical random excitation; realization differences are not an absolute numerical-error floor.",
+    "Low-offset noise, complete discrete-spur classification, bandwidth and record-length convergence remain open.",
+    "Gear artificial damping can bias results; one sample with a smaller RMS does not demonstrate improved physical noise or justify adoption."
+  ]
+}

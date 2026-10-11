@@ -1,0 +1,94 @@
+{
+  "time": "2026-10-11T14:34:55.829760+08:00",
+  "scope": "Audit finite-window dependence of both method records without replacing the primary metric.",
+  "records": [
+    {
+      "method": "traponly",
+      "protocol_sha256": "7a9023dffc673814023586c3d8cd702a4dc5419d67fc78e98db3a2f9b7655acc",
+      "validation_sha256": "8c008a73daa658c7957304cc152c8d0ce2e5dafa84852337739f5b6af48066a5",
+      "sources": [
+        {
+          "run": "pllrt4quarteroffssd01",
+          "result_sha256": "aebe4b0d1504c710105821b6cc6dc82259b4e70bacde5a322e3634fe401a34bf",
+          "cache_sha256": "5f82b3b8d04523f7f4c47ac03a3589de4dcb619269a5b2ca5ee4da3bdb27ff4b"
+        },
+        {
+          "run": "pllrt4quarteronssd01",
+          "result_sha256": "faeb1bac110697618192e3f2181e60b027d2d5f95729b6f9af23ee31c6151aa1",
+          "cache_sha256": "516e768a75d330105bc883a053c2ba858165b1a60b565a4d324a97ca18b32b2c"
+        }
+      ],
+      "endpoint_difference_ps": -0.05936500926324623,
+      "windows": [
+        {
+          "window": "rectangular",
+          "band_rms_fs": 95.86239890498513,
+          "noise_energy_normalization": 1.0,
+          "enbw_bins": 1.0
+        },
+        {
+          "window": "symmetric_hann",
+          "band_rms_fs": 100.39994259862877,
+          "noise_energy_normalization": 0.3746337890625,
+          "enbw_bins": 1.501466275659824
+        }
+      ]
+    },
+    {
+      "method": "gear2only",
+      "protocol_sha256": "4f3f17cf0ada357126e2be8e1eb2ca2f3aded3da033dd82b81d33d74ef0b0eb6",
+      "validation_sha256": "9249a65df316a34cd0029ed313b55ea002f1d1945762626e5a390a5a524cbc11",
+      "sources": [
+        {
+          "run": "pllrt4gearquarteroffssd01",
+          "result_sha256": "96128b009f7fcb127bc8be76e97ddbe6cbad2b8ee2166c2c31ae61a612a33053",
+          "cache_sha256": "6008231889fcd01389e95acf8ae8a803bcb0c4a11860c99f9d74dd7f51756c42"
+        },
+        {
+          "run": "pllrt4gearquarteronssd01",
+          "result_sha256": "8ca6913cfc3ef0a6ec5ac908fbc0f6e5e9d9d651fc773556bcd308d79a8c981e",
+          "cache_sha256": "3b013373d53c711b83508c92d43c0c3bc68ccb213b837b5d238d0f5ec998623b"
+        }
+      ],
+      "endpoint_difference_ps": 0.44403419442486375,
+      "windows": [
+        {
+          "window": "rectangular",
+          "band_rms_fs": 102.49594520824368,
+          "noise_energy_normalization": 1.0,
+          "enbw_bins": 1.0
+        },
+        {
+          "window": "symmetric_hann",
+          "band_rms_fs": 100.46336088444563,
+          "noise_energy_normalization": 0.3746337890625,
+          "enbw_bins": 1.501466275659824
+        }
+      ]
+    }
+  ],
+  "comparison": [
+    {
+      "window": "rectangular",
+      "gear_minus_trap_fs": 6.633546303258555,
+      "relative_difference_percent": 6.919862614572647
+    },
+    {
+      "window": "symmetric_hann",
+      "gear_minus_trap_fs": 0.0634182858168657,
+      "relative_difference_percent": 0.06316565943706998
+    }
+  ],
+  "samples": 1024,
+  "effective_band_hz": [
+    5285156.25,
+    492000000.0
+  ],
+  "full_pll_acceptance": false,
+  "primary_metric_changed": false,
+  "limitations": [
+    "Window dependence mixes finite-record weighting and spectral leakage; it does not separate physical low-frequency noise, integration-method error and leakage.",
+    "The rectangular preregistered result is retained. Hann is only a sensitivity diagnostic with sum(w^2) normalization; no trend fit or spectral notches.",
+    "Changed source realization and Gear damping remain unresolved. More seeds and longer records are required; neither window gives a 10kHz full-band value."
+  ]
+}

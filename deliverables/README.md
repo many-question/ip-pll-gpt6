@@ -1,4 +1,4 @@
-本次快照：[第89次汇报](../reports/2026-10-11T0920.yaml)。原版320GHz无噪声记录已完整回收并通过原五门限，现有流水线自动启动匹配噪声；独立审阅发现内部梯形积分振铃，已单独列为数值风险。RT4 Gear噪声继续运行，最终全带抖动仍未知。
+本次快照：[第90次汇报](../reports/2026-10-11T1435.yaml)。RT4 Gear完整噪声记录已独立复核，高偏移诊断102.496fs；同条件梯形法为95.862fs，矩形窗差异约6.92%且明显依赖有限记录窗，尚未建立数值收敛。已按原门限派发Gear seed29；原版320GHz噪声继续运行，最终全带抖动仍未知。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)
