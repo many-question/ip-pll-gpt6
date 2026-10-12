@@ -1,0 +1,289 @@
+{
+  "time": "2026-10-12T16:01:05+08:00",
+  "worker_review": "research/noise_worker_review92.json",
+  "worker_review_sha256": "ee54a3d958e6765bc0b242d5d3d1562a9fc85165bb2eddbfad23681962d5e8ce",
+  "live_evidence": "research/progress92_confirm_live.json",
+  "live_sha256": "8c29078817eea1da7c7d6504c3f8f71c57fcbda0c04cf8d45c811945afeeb12c",
+  "active": [
+    {
+      "run": "pllmainbw320onssd01",
+      "case": "full_pll_main_bw320_on_tt",
+      "threads": 7,
+      "pid": 164688,
+      "remote_dir": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/6eeceb59",
+      "remote_id": "6eeceb59",
+      "role": "Guarded SSD simulation; no duplicate dispatch.",
+      "protocol": "share/deliverables/integration/cmos_v14_full/results/full_pll_main_bw320_pair_protocol.json",
+      "protocol_sha256": "fde291be069e33323195555b16a667e95f1254821a54e477868fd239b7fae7a1"
+    },
+    {
+      "run": "pllmainringtrapoffssd01",
+      "case": "full_pll_main_ring_trap_off_tt",
+      "threads": 4,
+      "pid": 256862,
+      "remote_dir": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/cc34f46a",
+      "remote_id": "cc34f46a",
+      "role": "Guarded SSD simulation; no duplicate dispatch.",
+      "protocol": "share/deliverables/integration/cmos_v14_full/results/full_pll_main_ringing_diagnostic_protocol.json",
+      "protocol_sha256": "59af8b28dadf04b0d9fd700486a27693bfec50dbfdc31a0c4cdf59380a72d5b9"
+    },
+    {
+      "run": "pllmainringgearoffssd01",
+      "case": "full_pll_main_ring_gear_off_tt",
+      "threads": 4,
+      "pid": 256863,
+      "remote_dir": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/8b5b62e9",
+      "remote_id": "8b5b62e9",
+      "role": "Guarded SSD simulation; no duplicate dispatch.",
+      "protocol": "share/deliverables/integration/cmos_v14_full/results/full_pll_main_ringing_diagnostic_protocol.json",
+      "protocol_sha256": "59af8b28dadf04b0d9fd700486a27693bfec50dbfdc31a0c4cdf59380a72d5b9"
+    }
+  ],
+  "resources": {
+    "time": "2026-10-12T15:58:24.655223+08:00",
+    "jobs": [
+      {
+        "threads": 7,
+        "pid": 164688,
+        "netlist": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/6eeceb59/full_pll_main_bw320_on_tt.scs"
+      },
+      {
+        "threads": 4,
+        "pid": 256862,
+        "netlist": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/cc34f46a/full_pll_main_ring_trap_off_tt.scs"
+      },
+      {
+        "threads": 4,
+        "pid": 256863,
+        "netlist": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/8b5b62e9/full_pll_main_ring_gear_off_tt.scs"
+      }
+    ],
+    "requested_threads": 15
+  },
+  "workers": [
+    {
+      "pid": 197128,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\share\\deliverables\\integration\\cmos_v14_full\\recover_active_noise_detached91.py",
+        "--target",
+        "main_bw320"
+      ],
+      "create_time": 1791718387.0346973,
+      "ppid": 76736,
+      "state": "research/main_bw320_noise_pipeline.json",
+      "log": "research/main_bw320_collector91.log",
+      "role": "collector",
+      "running": true,
+      "checked": "2026-10-12T16:01:05+08:00"
+    },
+    {
+      "pid": 123580,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\watch_main_bw320_pair.py",
+        "--resume"
+      ],
+      "create_time": 1791718387.1108212,
+      "ppid": 76736,
+      "state": "research/main_bw320_guard.json",
+      "log": "research/main_bw320_guard_resume91.log",
+      "role": "guard",
+      "running": true,
+      "checked": "2026-10-12T16:01:05+08:00"
+    },
+    {
+      "pid": 196260,
+      "create_time": 1791791660.5509188,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\share\\deliverables\\integration\\cmos_v14_full\\run_spectre.py",
+        "--run-id",
+        "pllmainringtrapoffssd01",
+        "--cases",
+        "full_pll_main_ring_trap_off_tt",
+        "--mode",
+        "ax",
+        "--threads",
+        "4",
+        "--preset-override",
+        "all",
+        "--timeout",
+        "172800"
+      ],
+      "state": null,
+      "log": "research/pllmainringtrapoffssd01.log",
+      "role": "runner",
+      "running": true,
+      "checked": "2026-10-12T16:01:05+08:00"
+    },
+    {
+      "pid": 204300,
+      "create_time": 1791791660.5579023,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\share\\deliverables\\integration\\cmos_v14_full\\run_spectre.py",
+        "--run-id",
+        "pllmainringgearoffssd01",
+        "--cases",
+        "full_pll_main_ring_gear_off_tt",
+        "--mode",
+        "ax",
+        "--threads",
+        "4",
+        "--preset-override",
+        "all",
+        "--timeout",
+        "172800"
+      ],
+      "state": null,
+      "log": "research/pllmainringgearoffssd01.log",
+      "role": "runner",
+      "running": true,
+      "checked": "2026-10-12T16:01:05+08:00"
+    },
+    {
+      "pid": 175648,
+      "create_time": 1791791660.5639088,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\monitor_main_ringing_diagnostic92.py"
+      ],
+      "state": "research/main_ringing_pipeline.json",
+      "log": "research/main_ringing_monitor92.log",
+      "role": "monitor",
+      "running": true,
+      "checked": "2026-10-12T16:01:05+08:00"
+    },
+    {
+      "pid": 205652,
+      "create_time": 1791791660.5714867,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\watch_main_ringing_diagnostic.py"
+      ],
+      "state": "research/main_ringing_guard.json",
+      "log": "research/main_ringing_guard92.log",
+      "role": "guard",
+      "running": true,
+      "checked": "2026-10-12T16:01:05+08:00"
+    }
+  ],
+  "retired": [
+    {
+      "pid": 186724,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\share\\deliverables\\integration\\cmos_v14_full\\recover_active_noise_detached91.py",
+        "--target",
+        "rt4_gear_seed29"
+      ],
+      "create_time": 1791718387.0697913,
+      "ppid": 76736,
+      "state": "research/rt4_gear_seed29_noise_pipeline.json",
+      "log": "research/rt4_gear_seed29_collector91.log",
+      "role": "collector",
+      "running": false,
+      "checked": "2026-10-12T14:51:29.337264+08:00",
+      "reason": "Collected terminal result; worker exited with completed state."
+    },
+    {
+      "pid": 184496,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\watch_rt4_gear_seed29_pair.py",
+        "--resume"
+      ],
+      "create_time": 1791718387.1435783,
+      "ppid": 76736,
+      "state": "research/rt4_gear_seed29_guard.json",
+      "log": "research/rt4_gear_seed29_guard_resume91.log",
+      "role": "guard",
+      "running": false,
+      "checked": "2026-10-12T14:51:29.337264+08:00",
+      "reason": "Collected terminal result; worker exited with completed state."
+    }
+  ],
+  "checks": [
+    {
+      "run": "pllmainbw320onssd01",
+      "case": "full_pll_main_bw320_on_tt",
+      "last": {
+        "frequency_good": 1.199440836976379,
+        "XP.XC.phase_held": 1.199187900850069,
+        "time": 2.125486537446197e-06,
+        "qualified": 1.199906763065531,
+        "XP.ctrl": 0.6577297363268818,
+        "XP.restart": -0.0002545993817043272,
+        "XP.XC.acquired": 1.203911726200295
+      },
+      "raw_bytes": 10097549312,
+      "previous_time_s": 2.124359421667157e-06,
+      "previous_raw_bytes": 10087428096,
+      "diagnostics": {
+        "newton": 0,
+        "lte": 0,
+        "skipped": 0
+      },
+      "ringing_reported": false,
+      "terminal_footer": false,
+      "exit_marker": false
+    },
+    {
+      "run": "pllmainringtrapoffssd01",
+      "case": "full_pll_main_ring_trap_off_tt",
+      "last": {
+        "frequency_good": 1.199999060705528,
+        "XP.XC.phase_held": 1.19999961426633,
+        "time": 2e-08,
+        "qualified": 1.200000248390029,
+        "XP.ctrl": 0.6852187066924433,
+        "XP.restart": 3.589685720046758e-06,
+        "XP.XC.acquired": 1.192098928707293
+      },
+      "raw_bytes": 16384,
+      "previous_time_s": 1.2e-08,
+      "previous_raw_bytes": 12288,
+      "diagnostics": {
+        "newton": 0,
+        "lte": 0,
+        "skipped": 0
+      },
+      "ringing_reported": false,
+      "terminal_footer": false,
+      "exit_marker": false
+    },
+    {
+      "run": "pllmainringgearoffssd01",
+      "case": "full_pll_main_ring_gear_off_tt",
+      "last": {
+        "frequency_good": 1.199999085581126,
+        "XP.XC.phase_held": 1.199999617107764,
+        "time": 2e-08,
+        "qualified": 1.20000025176706,
+        "XP.ctrl": 0.6853008226976416,
+        "XP.restart": 3.59714768644294e-06,
+        "XP.XC.acquired": 1.192114371564679
+      },
+      "raw_bytes": 16384,
+      "previous_time_s": 1.2e-08,
+      "previous_raw_bytes": 12288,
+      "diagnostics": {
+        "newton": 0,
+        "lte": 0,
+        "skipped": 0
+      },
+      "ringing_reported": false,
+      "terminal_footer": false,
+      "exit_marker": false
+    }
+  ],
+  "referenced_initial_state_hashes": {
+    "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/pllmainbw320onssd01_full_pll_main_bw320_on_tt_main_fine2200_phase_continuous.ic": "2aa316a1a1e9801673e4842f28784f3d4b6feb2d3d3211f984cc7c78b3345cfe",
+    "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/pllmainringtrapoffssd01_full_pll_main_ring_trap_off_tt_main_fine2200_phase_continuous.ic": "2aa316a1a1e9801673e4842f28784f3d4b6feb2d3d3211f984cc7c78b3345cfe",
+    "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/pllmainringgearoffssd01_full_pll_main_ring_gear_off_tt_main_fine2200_phase_continuous.ic": "2aa316a1a1e9801673e4842f28784f3d4b6feb2d3d3211f984cc7c78b3345cfe"
+  },
+  "diagnostic_only": true,
+  "no_new_performance_from_quiet": true,
+  "full_pll_acceptance": false
+}

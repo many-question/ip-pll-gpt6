@@ -1,0 +1,243 @@
+{
+  "scope": "Compare two preregistered seeds across integration methods; no convergence claim.",
+  "time": "2026-10-12T15:56:53.991906+08:00",
+  "condition": "Actual full RT4/newbank PLL with transistor FLL/control/watchdog/bias,TT27/1.2V/24MHzref/K41/M4/10fF/Q5RLC/CF10; ideal external reference and supply.",
+  "records": [
+    {
+      "method": "traponly",
+      "seed": 11,
+      "protocol": "share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_pair_protocol.json",
+      "protocol_sha256": "7a9023dffc673814023586c3d8cd702a4dc5419d67fc78e98db3a2f9b7655acc",
+      "validation_sha256": "8c008a73daa658c7957304cc152c8d0ce2e5dafa84852337739f5b6af48066a5",
+      "audit_sha256": "73f26ed5eabff387243f118a7000825310bd6dec115e51ff429ae7754822655a",
+      "sources": [
+        {
+          "run": "pllrt4quarteroffssd01",
+          "case": "full_pll_rt4_quarter_off_tt",
+          "result_sha256": "aebe4b0d1504c710105821b6cc6dc82259b4e70bacde5a322e3634fe401a34bf",
+          "cache_sha256": "5f82b3b8d04523f7f4c47ac03a3589de4dcb619269a5b2ca5ee4da3bdb27ff4b"
+        },
+        {
+          "run": "pllrt4quarteronssd01",
+          "case": "full_pll_rt4_quarter_on_tt",
+          "result_sha256": "faeb1bac110697618192e3f2181e60b027d2d5f95729b6f9af23ee31c6151aa1",
+          "cache_sha256": "516e768a75d330105bc883a053c2ba858165b1a60b565a4d324a97ca18b32b2c"
+        }
+      ],
+      "endpoint_difference_ps": -0.05936500926324623,
+      "windows": [
+        {
+          "window": "rectangular",
+          "band_rms_fs": 95.86239890498513,
+          "enbw_bins": 1.0
+        },
+        {
+          "window": "symmetric_hann",
+          "band_rms_fs": 100.39994259862877,
+          "enbw_bins": 1.501466275659824
+        }
+      ]
+    },
+    {
+      "method": "traponly",
+      "seed": 29,
+      "protocol": "share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_seed29_pair_protocol.json",
+      "protocol_sha256": "e7716c36a24eefc8b448eb8dd6901188c3a70ed3ffcddab75229d628db2369be",
+      "validation_sha256": "4605cd42946bfa75a47ec1e3d5666a5a2fd02e77aa8a5c69f479f42b631fabc0",
+      "audit_sha256": "164c855ef7020c3b6dfbce456d59263e9a5ae2b467858c8c5206030fce3dad49",
+      "sources": [
+        {
+          "run": "pllrt4quarteroffssd01",
+          "case": "full_pll_rt4_quarter_off_tt",
+          "result_sha256": "aebe4b0d1504c710105821b6cc6dc82259b4e70bacde5a322e3634fe401a34bf",
+          "cache_sha256": "5f82b3b8d04523f7f4c47ac03a3589de4dcb619269a5b2ca5ee4da3bdb27ff4b"
+        },
+        {
+          "run": "pllrt4quarterseed29onssd01",
+          "case": "full_pll_rt4_quarter_seed29_on_tt",
+          "result_sha256": "102d9758363c9261c2eef89aa6cccc2dd8cf920fd08c669a8e333fad7684b964",
+          "cache_sha256": "58c3ffe96ce5e93a84b0144aec8dad8731ff797d3f7c5415378adc0a13ad4628"
+        }
+      ],
+      "endpoint_difference_ps": -0.12672455138135436,
+      "windows": [
+        {
+          "window": "rectangular",
+          "band_rms_fs": 103.19597672577272,
+          "enbw_bins": 1.0
+        },
+        {
+          "window": "symmetric_hann",
+          "band_rms_fs": 112.2860801682378,
+          "enbw_bins": 1.501466275659824
+        }
+      ]
+    },
+    {
+      "method": "gear2only",
+      "seed": 11,
+      "protocol": "share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_quarter_pair_protocol.json",
+      "protocol_sha256": "4f3f17cf0ada357126e2be8e1eb2ca2f3aded3da033dd82b81d33d74ef0b0eb6",
+      "validation_sha256": "9249a65df316a34cd0029ed313b55ea002f1d1945762626e5a390a5a524cbc11",
+      "audit_sha256": "5b4c8597295c56657d052cffe05f81be66d7bfdd3842cd7104618d230a6617cb",
+      "sources": [
+        {
+          "run": "pllrt4gearquarteroffssd01",
+          "case": "full_pll_rt4_gear_quarter_off_tt",
+          "result_sha256": "96128b009f7fcb127bc8be76e97ddbe6cbad2b8ee2166c2c31ae61a612a33053",
+          "cache_sha256": "6008231889fcd01389e95acf8ae8a803bcb0c4a11860c99f9d74dd7f51756c42"
+        },
+        {
+          "run": "pllrt4gearquarteronssd01",
+          "case": "full_pll_rt4_gear_quarter_on_tt",
+          "result_sha256": "8ca6913cfc3ef0a6ec5ac908fbc0f6e5e9d9d651fc773556bcd308d79a8c981e",
+          "cache_sha256": "3b013373d53c711b83508c92d43c0c3bc68ccb213b837b5d238d0f5ec998623b"
+        }
+      ],
+      "endpoint_difference_ps": 0.44403419442486375,
+      "windows": [
+        {
+          "window": "rectangular",
+          "band_rms_fs": 102.49594520824368,
+          "enbw_bins": 1.0
+        },
+        {
+          "window": "symmetric_hann",
+          "band_rms_fs": 100.46336088444563,
+          "enbw_bins": 1.501466275659824
+        }
+      ]
+    },
+    {
+      "method": "gear2only",
+      "seed": 29,
+      "protocol": "share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_seed29_pair_protocol.json",
+      "protocol_sha256": "416f4c98de3824109df6feccfaa5b53f8d443442f9842039e08029b797854c7a",
+      "validation_sha256": "806c7000eac5f8d518f4531750e61818ccbc5fb6e60ebaac4b8c64384ba78a59",
+      "audit_sha256": "aee4f0a63450b5df60c8c61af9aa662d57eb8d60973840b53907ebc4594dcc68",
+      "sources": [
+        {
+          "run": "pllrt4gearquarteroffssd01",
+          "case": "full_pll_rt4_gear_quarter_off_tt",
+          "result_sha256": "96128b009f7fcb127bc8be76e97ddbe6cbad2b8ee2166c2c31ae61a612a33053",
+          "cache_sha256": "6008231889fcd01389e95acf8ae8a803bcb0c4a11860c99f9d74dd7f51756c42"
+        },
+        {
+          "run": "pllrt4gearseed29onssd01",
+          "case": "full_pll_rt4_gear_seed29_on_tt",
+          "result_sha256": "ee8ccfa0c8963803a24db230250f810f2985bd90daabff2d9af8d72aaed4781f",
+          "cache_sha256": "697535048df6a45f433a91313b363e4b06a51ffdbfe2b35a937048459191841b"
+        }
+      ],
+      "endpoint_difference_ps": 0.37464351367429366,
+      "windows": [
+        {
+          "window": "rectangular",
+          "band_rms_fs": 115.19539686639962,
+          "enbw_bins": 1.0
+        },
+        {
+          "window": "symmetric_hann",
+          "band_rms_fs": 112.42305233371643,
+          "enbw_bins": 1.501466275659824
+        }
+      ]
+    }
+  ],
+  "method_comparison": [
+    {
+      "seed": 11,
+      "windows": [
+        {
+          "window": "rectangular",
+          "gear_minus_trap_fs": 6.633546303258555,
+          "relative_difference_percent": 6.919862614572647
+        },
+        {
+          "window": "symmetric_hann",
+          "gear_minus_trap_fs": 0.0634182858168657,
+          "relative_difference_percent": 0.06316565943706998
+        }
+      ]
+    },
+    {
+      "seed": 29,
+      "windows": [
+        {
+          "window": "rectangular",
+          "gear_minus_trap_fs": 11.999420140626896,
+          "relative_difference_percent": 11.627798409732094
+        },
+        {
+          "window": "symmetric_hann",
+          "gear_minus_trap_fs": 0.13697216547862467,
+          "relative_difference_percent": 0.12198499161553134
+        }
+      ]
+    }
+  ],
+  "seed_variance_means": [
+    {
+      "method": "traponly",
+      "windows": [
+        {
+          "window": "rectangular",
+          "mean_variance_rms_fs": 99.59670962487846,
+          "individual_rms_fs": [
+            95.86239890498513,
+            103.19597672577272
+          ]
+        },
+        {
+          "window": "symmetric_hann",
+          "mean_variance_rms_fs": 106.50894862253566,
+          "individual_rms_fs": [
+            100.39994259862877,
+            112.2860801682378
+          ]
+        }
+      ]
+    },
+    {
+      "method": "gear2only",
+      "windows": [
+        {
+          "window": "rectangular",
+          "mean_variance_rms_fs": 109.03072558535645,
+          "individual_rms_fs": [
+            102.49594520824368,
+            115.19539686639962
+          ]
+        },
+        {
+          "window": "symmetric_hann",
+          "mean_variance_rms_fs": 106.61104440025879,
+          "individual_rms_fs": [
+            100.46336088444563,
+            112.42305233371643
+          ]
+        }
+      ]
+    }
+  ],
+  "only_method_or_seed_changed": true,
+  "comparison_valid": true,
+  "primary_metric_changed": false,
+  "numerical_convergence_established": false,
+  "statistical_convergence_established": false,
+  "full_pll_acceptance": false,
+  "integrated_10khz_jitter_fs": null,
+  "effective_band_hz": [
+    5765625.0,
+    492000000.0
+  ],
+  "edge_count": 1024,
+  "limitations": [
+    "Each method uses its own quiet template; only mean removal, no trend fitting, amplitude scaling or spectral notches.",
+    "Two seeds do not establish statistical confidence or full numerical convergence. Mean variances are descriptive, not a confidence interval.",
+    "Adaptive timesteps and method changes need not preserve the same random excitation even with equal seeds.",
+    "Hann uses sum(w^2) energy normalization and is secondary sensitivity evidence; the rectangular preregistered metric remains primary.",
+    "Neither this short record nor the 1MHz source-noise floor can establish 10kHz full-band jitter.",
+    "Gear damping, record length and bandwidth remain unresolved; RT4 is an unadopted candidate."
+  ]
+}
