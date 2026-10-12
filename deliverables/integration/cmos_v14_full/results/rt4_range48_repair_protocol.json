@@ -1,0 +1,129 @@
+{
+  "time": "2026-10-13T07:14:04.330644+08:00",
+  "scope": "Isolated RT4 4.8fF candidate; two endpoint gates before four affected captures.",
+  "candidate_top": "share/deliverables/blocks/cmos_v14_full/pll_capture_rt4bank_range48_v14.scs",
+  "candidate_sha256": "818a458731b1c437199cd271262b392c120218dbabbe8e8eb90c733cd0f514df",
+  "adopted_baseline": {
+    "path": "share/deliverables/integration/cmos_v14_full/results/rt4_adopted_baseline.json",
+    "sha256": "2a13fccffc5e58d91facab7b34f64e8d17c4e1e34dc93a93e0caf5bda310e705"
+  },
+  "baseline_top_sha256": "001c6a40a24142fbc6d3aa006e233edb38810b703166af04968cff4bf8b9b3c8",
+  "change": "Only XV unit_c override4.4fF->4.8fF; no controller, divider, RT4, sampler, Q5, CF10, or bias changes. Candidate not adopted.",
+  "cases": [
+    {
+      "kind": "tuning",
+      "run": "rt4r48lowssd01",
+      "case": "rt4r48_range_c255_v02",
+      "coarse_code": 255,
+      "control_v": 0.2,
+      "m": 14,
+      "stop_s": 4e-07,
+      "output_start_s": 3.4e-07,
+      "tb_sha256": "0ef02fb42d84459b9ba69deb4452e5abc42e7f0845e95ff6a5ffe7a00504bb47",
+      "source_case": "rt4_fast_range_c255_v02",
+      "source_tb_sha256": "819fd55dd7a727b6fe524bbc9453f334ea9657726b64f3e75dd0c1dc716e649b"
+    },
+    {
+      "kind": "tuning",
+      "run": "rt4r48highssd01",
+      "case": "rt4r48_range_c0_v10",
+      "coarse_code": 0,
+      "control_v": 1.0,
+      "m": 4,
+      "stop_s": 4e-07,
+      "output_start_s": 3.4e-07,
+      "tb_sha256": "3252427dee2c85d18c4568401a6fba77aafbc498c3f26f918ef181981bc1ce70",
+      "source_case": "rt4_fast_range_c0_v10",
+      "source_tb_sha256": "0969115fd8efd83e57b80ca9bafa376227be36966b03514f747afd8ff7298530"
+    },
+    {
+      "kind": "capture",
+      "run": "rt4r48k14ssd01",
+      "case": "rt4r48_k14_tt",
+      "k": 14,
+      "m": 8,
+      "target_out_mhz": 336,
+      "target_rf_mhz": 2688.0,
+      "stop_s": 6.4e-05,
+      "tb_sha256": "37e005556848d2eed7c5846a20ae4beadb2e87a4dae77978d0315f4d6b91a2ae",
+      "source_case": "rt4_fast_k14_tt",
+      "source_tb_sha256": "2045d4cee7df05c8979dfe19cbc1b89d90c72ba9f6a32ab93e84c17b628fb802"
+    },
+    {
+      "kind": "capture",
+      "run": "rt4r48k19ssd01",
+      "case": "rt4r48_k19_tt",
+      "k": 19,
+      "m": 6,
+      "target_out_mhz": 456,
+      "target_rf_mhz": 2736.0,
+      "stop_s": 6.4e-05,
+      "tb_sha256": "2bfd54f250fb820a76a64343bf760d255d9d56f0a5155023b85cc9836194e60d",
+      "source_case": "rt4_fast_k19_tt",
+      "source_tb_sha256": "72972fbb319b5631f0ead2acb66a2c075dc1a0b24a69e016d562e02f50b13712"
+    },
+    {
+      "kind": "capture",
+      "run": "rt4r48k28ssd01",
+      "case": "rt4r48_k28_tt",
+      "k": 28,
+      "m": 4,
+      "target_out_mhz": 672,
+      "target_rf_mhz": 2688.0,
+      "stop_s": 6.4e-05,
+      "tb_sha256": "18e9834432f3900d3ac70fa0099c18e4681aa9df1c3c28b0b5ef3475fdcee6ab",
+      "source_case": "rt4_fast_k28_tt",
+      "source_tb_sha256": "a1fe79e921b1132d3fa30837a9f24fc2c609edbea0ffd40feaad0408012afff1"
+    },
+    {
+      "kind": "capture",
+      "run": "rt4r48k41ssd01",
+      "case": "rt4r48_k41_tt",
+      "k": 41,
+      "m": 4,
+      "target_out_mhz": 984,
+      "target_rf_mhz": 3936.0,
+      "stop_s": 6.4e-05,
+      "tb_sha256": "db7c0d8f71a064ab3900c2502f608b35c0887c450479f8be62a2a1b08000bc35",
+      "source_case": "rt4_fast_k41_tt",
+      "source_tb_sha256": "d6a0721d78771547ec615e285b1aec07cc23ebeba03e9087f6509bfb1fa3f408"
+    }
+  ],
+  "mode": "ax",
+  "preset_override": "all",
+  "maxstep_s": 8e-12,
+  "reltol": 0.001,
+  "vabstol": 1e-06,
+  "iabstol": 1e-12,
+  "method": "traponly",
+  "noise": false,
+  "condition": "TT27, 1.2V, 24MHz, 10fF, original selected RT4 physical dependencies including candidate4.8fF bank and Q5 RLC.",
+  "capture_screen": {
+    "window_s": 1e-06,
+    "mean_frequency_relative_error_limit": 0.005,
+    "window_frequency_relative_spread_limit": 0.005,
+    "qualified_high_fraction_min": 0.99,
+    "frequency_good_high_fraction_min": 0.99,
+    "range_error_max_v": 0.2
+  },
+  "capture_initialization": "Independent reset/apply; supply already DC1.2V; 10uV differential seed only. No forced slow controls or near-lock state.",
+  "dispatch_gate": "Only after both400ns endpoints exit0, raw END, complete finite waveforms, local/remote hashes, divider ratio and RF<=2688MHz / >=3936MHz; then four affected64us TT captures. Failure halts queue; never replay.",
+  "target_rf_range_mhz": [
+    2688,
+    3936
+  ],
+  "resource_cap": {
+    "threads": 18,
+    "long_jobs": 4,
+    "short_jobs": 1
+  },
+  "capture_purposes": {
+    "14": "336MHz lowRF/M8 failure repair",
+    "19": "456MHz lowRF/M6 failure repair",
+    "28": "672MHz lowRF/M4 failure repair",
+    "41": "984MHz same candidate capture/coarse-selection check"
+  },
+  "evidence_boundary": "Endpoint fixture is externally clamped, not closed-loop. Old4.8fF fixture uses different divider/retimer. No noise or whole-band acceptance transfer; no33-point/PVT/method/seed matrix.",
+  "source_protocol_sha256": "8b84049a7aafe0534765d01fdda1e66c86e82838a505a9eb57e38d618d490b3f",
+  "full_pll_jitter_acceptance": false
+}
