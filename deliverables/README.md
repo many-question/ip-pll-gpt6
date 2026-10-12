@@ -1,4 +1,4 @@
-本次快照：[第96次汇报](../reports/2026-10-13T0208.yaml)。RT4稀疏AX整环快筛已完成4/7点：216、240MHz通过；336MHz低端调谐饱和未锁定；新增984MHz点正常跑完64us，但输出988.646023MHz（+0.4722%），qualified/frequency_good仍低。此前同电路4ps记录984MHz已锁定；本次FLL粗码22而此前24，属于本次捕获未通过，不能判定高频调谐范围不足。288/456/672MHz继续原队列。
+本次快照：[第97次汇报](../reports/2026-10-13T0617.yaml)。RT4稀疏AX快筛7/7整环与6/6调谐点均已完成：216、240、288MHz锁定通过；336、456、672MHz在低端调谐边界未锁定；984MHz本次捕获未通过。最大输出频率偏差为2.3121%（目标672MHz，实测687.537538MHz）。局部调谐范围2.751809–4.166391GHz，低端覆盖不足。旧984MHz锁定证据保留；本批物理电路未改。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)
