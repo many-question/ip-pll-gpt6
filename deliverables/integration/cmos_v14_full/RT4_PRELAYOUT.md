@@ -16,3 +16,5 @@
 当前选择RT4不等同于所有REQ已通过。占空比沿用用户“无需刻意优化”的安排；33点、PVT、真实输入/负载、全带抖动、杂散、4mW功耗及面积缺口继续保留。此清单是接下来要做的工作，不是已完成记录。
 
 证据：[RT4复位捕获](results/capture_rt4bankcold01.json)、[RT4方法/种子实测矩阵](results/full_pll_rt4_method_seed_matrix.json)、[电容范围候选](results/range_extension_validation.json)、[前次完整状态](../../../reports/2026-10-12T1601.yaml)。
+
+最新执行调整（2026-10-12T17:52:19+08:00）：按用户要求先完成[少量TT代表频点及调谐AX快筛](RT4_FAST_RANGE.md)，不直接铺开33点/角落矩阵。6个调谐点已完成；整环代表点仍运行。

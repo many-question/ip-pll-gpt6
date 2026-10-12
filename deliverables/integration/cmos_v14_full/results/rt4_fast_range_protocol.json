@@ -1,0 +1,191 @@
+{
+  "time": "2026-10-12T17:37:26.154143+08:00",
+  "scope": "Small TT AX screen requested by the user; physical RT4 baseline unchanged.",
+  "selected_baseline": {
+    "path": "share/deliverables/integration/cmos_v14_full/results/rt4_adopted_baseline.json",
+    "sha256": "2a13fccffc5e58d91facab7b34f64e8d17c4e1e34dc93a93e0caf5bda310e705"
+  },
+  "user_instruction": "先跑全频点和调谐范围验证，适度调低精度，Spectre X AX，不要太多点，先快速得到整体结论。",
+  "mode": "ax",
+  "preset_override": "all",
+  "maxstep_s": 8e-12,
+  "reltol": 0.001,
+  "vabstol": 1e-06,
+  "iabstol": 1e-12,
+  "method": "traponly",
+  "noise": false,
+  "condition": "TT27, 1.2V, 24MHz, 10fF, original selected RT4 physical dependencies including 4.4fF bank and Q5 RLC.",
+  "cases": [
+    {
+      "kind": "capture",
+      "run": "rt4fastk14ssd01",
+      "case": "rt4_fast_k14_tt",
+      "k": 14,
+      "m": 8,
+      "target_out_mhz": 336,
+      "target_rf_mhz": 2688.0,
+      "stop_s": 6.4e-05,
+      "tb_sha256": "2045d4cee7df05c8979dfe19cbc1b89d90c72ba9f6a32ab93e84c17b628fb802"
+    },
+    {
+      "kind": "capture",
+      "run": "rt4fastk41ssd01",
+      "case": "rt4_fast_k41_tt",
+      "k": 41,
+      "m": 4,
+      "target_out_mhz": 984,
+      "target_rf_mhz": 3936.0,
+      "stop_s": 6.4e-05,
+      "tb_sha256": "d6a0721d78771547ec615e285b1aec07cc23ebeba03e9087f6509bfb1fa3f408"
+    },
+    {
+      "kind": "capture",
+      "run": "rt4fastk9ssd01",
+      "case": "rt4_fast_k9_tt",
+      "k": 9,
+      "m": 14,
+      "target_out_mhz": 216,
+      "target_rf_mhz": 3024.0,
+      "stop_s": 6.4e-05,
+      "tb_sha256": "304c0b68398544f36c02bd3ab85b92c42a68df1e7787ef847096ef75f06cb206"
+    },
+    {
+      "kind": "capture",
+      "run": "rt4fastk10ssd01",
+      "case": "rt4_fast_k10_tt",
+      "k": 10,
+      "m": 12,
+      "target_out_mhz": 240,
+      "target_rf_mhz": 2880.0,
+      "stop_s": 6.4e-05,
+      "tb_sha256": "840944995a30fc102a6a7d0142f65c8de5f00e43bfcf9b743ff709cf5d814273"
+    },
+    {
+      "kind": "capture",
+      "run": "rt4fastk12ssd01",
+      "case": "rt4_fast_k12_tt",
+      "k": 12,
+      "m": 10,
+      "target_out_mhz": 288,
+      "target_rf_mhz": 2880.0,
+      "stop_s": 6.4e-05,
+      "tb_sha256": "10de4c1e0566a718b2bfcc0a450d02aa7a103106c4d29ca104298753d720268d"
+    },
+    {
+      "kind": "capture",
+      "run": "rt4fastk19ssd01",
+      "case": "rt4_fast_k19_tt",
+      "k": 19,
+      "m": 6,
+      "target_out_mhz": 456,
+      "target_rf_mhz": 2736.0,
+      "stop_s": 6.4e-05,
+      "tb_sha256": "72972fbb319b5631f0ead2acb66a2c075dc1a0b24a69e016d562e02f50b13712"
+    },
+    {
+      "kind": "capture",
+      "run": "rt4fastk28ssd01",
+      "case": "rt4_fast_k28_tt",
+      "k": 28,
+      "m": 4,
+      "target_out_mhz": 672,
+      "target_rf_mhz": 2688.0,
+      "stop_s": 6.4e-05,
+      "tb_sha256": "a1fe79e921b1132d3fa30837a9f24fc2c609edbea0ffd40feaad0408012afff1"
+    },
+    {
+      "kind": "tuning",
+      "run": "rt4rangec255v02ssd01",
+      "case": "rt4_fast_range_c255_v02",
+      "coarse_code": 255,
+      "control_v": 0.2,
+      "m": 14,
+      "stop_s": 4e-07,
+      "output_start_s": 3.4e-07,
+      "tb_sha256": "819fd55dd7a727b6fe524bbc9453f334ea9657726b64f3e75dd0c1dc716e649b"
+    },
+    {
+      "kind": "tuning",
+      "run": "rt4rangec0v10ssd01",
+      "case": "rt4_fast_range_c0_v10",
+      "coarse_code": 0,
+      "control_v": 1.0,
+      "m": 4,
+      "stop_s": 4e-07,
+      "output_start_s": 3.4e-07,
+      "tb_sha256": "0969115fd8efd83e57b80ca9bafa376227be36966b03514f747afd8ff7298530"
+    },
+    {
+      "kind": "tuning",
+      "run": "rt4rangec255v10ssd01",
+      "case": "rt4_fast_range_c255_v10",
+      "coarse_code": 255,
+      "control_v": 1.0,
+      "m": 14,
+      "stop_s": 4e-07,
+      "output_start_s": 3.4e-07,
+      "tb_sha256": "c1b5eec803e0324c748e81438246eb1737a744fbbb520a51bb9683897f7fe331"
+    },
+    {
+      "kind": "tuning",
+      "run": "rt4rangec0v02ssd01",
+      "case": "rt4_fast_range_c0_v02",
+      "coarse_code": 0,
+      "control_v": 0.2,
+      "m": 4,
+      "stop_s": 4e-07,
+      "output_start_s": 3.4e-07,
+      "tb_sha256": "bd3c7e9105d9b235ee27bd072689fb2aa85cf113e25787718d2347eb1cb9097c"
+    },
+    {
+      "kind": "tuning",
+      "run": "rt4rangec127v02ssd01",
+      "case": "rt4_fast_range_c127_v02",
+      "coarse_code": 127,
+      "control_v": 0.2,
+      "m": 4,
+      "stop_s": 4e-07,
+      "output_start_s": 3.4e-07,
+      "tb_sha256": "c8643897a09a3b966ab3f927cb208a525f84ebe54be3c50615b30479664d3717"
+    },
+    {
+      "kind": "tuning",
+      "run": "rt4rangec128v10ssd01",
+      "case": "rt4_fast_range_c128_v10",
+      "coarse_code": 128,
+      "control_v": 1.0,
+      "m": 4,
+      "stop_s": 4e-07,
+      "output_start_s": 3.4e-07,
+      "tb_sha256": "2f0377ed0a4b11dbf85fa79ecd2581bb3c64e300f380b586b39e3b80133483d3"
+    }
+  ],
+  "target_rf_range_mhz": [
+    2688,
+    3936
+  ],
+  "planned_channels": 33,
+  "representative_capture_channels": 7,
+  "capture_initialization": "Independent reset/apply; supply already DC1.2V; 10uV differential seed only. No forced slow controls or near-lock state.",
+  "capture_screen": {
+    "window_s": 1e-06,
+    "mean_frequency_relative_error_limit": 0.005,
+    "window_frequency_relative_spread_limit": 0.005,
+    "qualified_high_fraction_min": 0.99,
+    "frequency_good_high_fraction_min": 0.99,
+    "range_error_max_v": 0.2
+  },
+  "tuning_scope": "Loaded VCO + sampler/RF receiver/new divider/RT4; external coarse and fine voltage clamps; not closed-loop lock. Six points only, not all 256 codes.",
+  "capture_scope": "One point per divider family plus RF/output maximum; K14 and K28 separately check 2.688GHz with M8 and M4. Other 26 channels unsimulated in this screen.",
+  "source_tb_sha256": {
+    "rt4bank_capture_tt.scs": "28c62ffe25f726720abf72f37adb1f626c79a20344a51a5e375df1b9ec70dffc",
+    "range_c255_v02_tt.scs": "af4773b5f6c89b591ad5b455a5ef166917a44278e8dd292add0320659f231839"
+  },
+  "resource_cap": {
+    "threads": 18,
+    "long_jobs": 4,
+    "short_jobs": 1
+  },
+  "no_precision_or_seed_matrix": true,
+  "full_pll_jitter_acceptance": false
+}

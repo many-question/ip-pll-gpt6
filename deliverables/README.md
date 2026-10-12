@@ -1,4 +1,4 @@
-本次快照：[第93次汇报](../reports/2026-10-12T1723.yaml)。用户已选定RT4/newbank为后续开发主方案，接受115.2fs高偏移最差观察值作为阶段依据；不再扩展小积分方法/种子差异。新增RT4精确基线及版图前清单，尚无新增仿真结果，最终指标及功耗/后端暂缓安排保持。 [RT4版图前清单](integration/cmos_v14_full/RT4_PRELAYOUT.md)。
+本次快照：[第94次汇报](../reports/2026-10-12T1752.yaml)。按用户要求启动RT4稀疏AX快速筛查，7个代表输出频点及6个调谐点，8ps/1e-3。六个调谐点已完成：RF端点2.751809–4.166391GHz，低端比2.688GHz高63.809MHz；127/128粗码边界重叠11.790MHz。整环独立复位仍运行，尚无新增整环通过结论。3项无关原版诊断按用户授权停止并保留证据。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)
