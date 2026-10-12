@@ -1,0 +1,850 @@
+schema: chip-report/0.1
+report:
+  seq: 96
+  time: '2026-10-13T02:08:01+08:00'
+  trigger: proactive
+  covers_since: '2026-10-13T00:08:35+08:00'
+overall:
+  phase: RT4稀疏AX快筛：低端覆盖与高端捕获问题定位
+  summary: RT4稀疏AX整环快筛已完成4/7点：216、240MHz通过；336MHz低端调谐饱和未锁定；新增984MHz点正常跑完64us，但输出988.646023MHz（+0.4722%），qualified/frequency_good仍低。此前同电路4ps记录984MHz已锁定；本次FLL粗码22而此前24，属于本次捕获未通过，不能判定高频调谐范围不足。288/456/672MHz继续原队列。
+  since_last:
+  - 新增984MHz独立复位64us完整结果：实际988.646023MHz，未锁定；原始I/O、Spectre终态和SSD哈希已核实。
+  - 与已有同电路成功记录对比：本次FLL粗码22，旧4ps记录24；当前高端问题先列捕获失败，尚未单独定位原因，不加方法/种子矩阵。
+  - 其余3点正常推进，12请求线程；已完成3项原结果保持，RT4物理网表未改。
+  route_confidence: medium
+  route_confidence_reason: 216/240MHz快筛通过；336MHz低端覆盖不足证据明确，984MHz已有成功结果但本次宽精度捕获未成功。需完成小批次后有针对性处理。
+levels:
+  survey:
+    maturity: 3
+    note: 用户确定RT4、少点/低精度AX功能筛查，并授权停止无关旧任务；最终指标及功耗/后端后置不变。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/NOISE_METHOD_NOTES.md
+    - share/deliverables/integration/cmos_v14_full/results/reference_input_load_validation.json
+    - share/reports/decisions/DEC-0010.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_adopted_baseline.json
+    - share/deliverables/integration/cmos_v14_full/RT4_PRELAYOUT.md
+    - share/deliverables/integration/cmos_v14_full/RT4_FAST_RANGE.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review94.json
+    - share/deliverables/integration/cmos_v14_full/results/original_diagnostics_retired94.json
+    - share/deliverables/integration/cmos_v14_full/build_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/analyze_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_k41_capture_review96.json
+  modeling:
+    maturity: 3
+    note: 6点调谐夹具端点2.751809–4.166391GHz，0.2–1.0V；仅127/128码重叠抽查。全带噪声未知，已有最差高偏移115.2fs阶段依据保持。 完整PLL336MHz点RF最低约2.749915GHz、粗码255/细调近下限，支持低端范围不足判断。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_92.md
+    - share/deliverables/integration/cmos_v14_full/audit_rt4_gear_seed29_noise_recovery.py
+    - share/deliverables/integration/cmos_v14_full/compare_rt4_method_seed_matrix.py
+    - share/deliverables/integration/cmos_v14_full/build_main_ringing_diagnostic.py
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_method_seed_matrix.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_seed29_pair_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_seed29_pair_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_ringing_diagnostic_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/main_ringing_launch_review92.json
+    - share/deliverables/integration/cmos_v14_full/tb/full_pll_main_ring_trap_off_tt.scs
+    - share/deliverables/integration/cmos_v14_full/tb/full_pll_main_ring_gear_off_tt.scs
+    - share/deliverables/integration/cmos_v14_full/results/figures/rt4_gear_seed29_noise_pair.png
+    - share/deliverables/integration/cmos_v14_full/results/figures/rt4_method_seed_matrix.png
+    - share/reports/decisions/DEC-0010.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_adopted_baseline.json
+    - share/deliverables/integration/cmos_v14_full/RT4_PRELAYOUT.md
+    - share/deliverables/integration/cmos_v14_full/RT4_FAST_RANGE.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review94.json
+    - share/deliverables/integration/cmos_v14_full/results/original_diagnostics_retired94.json
+    - share/deliverables/integration/cmos_v14_full/build_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/analyze_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_k41_capture_review96.json
+  architecture:
+    maturity: 4
+    note: 继续采用RT4/newbank；4.4fF低频覆盖不足已在336MHz整环验证中出现。本轮等待既有剩余点后做必要修正，不修改需求或自动采用其它电容候选。 新增984MHz AX捕获未通过，粗码22与历史已锁定的24不同；高端可达性历史证据仍成立，尚不改变架构。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_METHOD_NOTES.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_reacquisition_diagnosis.json
+    - share/deliverables/integration/cmos_v14_full/results/figures/full_pll_pre_noise_reacquisition.png
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_direct_noise_pair_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/precision_schedule_probe_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_strict_pair_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_precision_ramp_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_noise_activation_probe_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_strict_pair_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_repaircoldstrict01.json
+    - share/deliverables/integration/cmos_v14_full/results/capture_rt4bankcold01.json
+    - share/deliverables/integration/cmos_v14_full/analyze_full_pll_reacquisition.py
+    - share/deliverables/integration/cmos_v14_full/analyze_full_pll_direct_noise_pair.py
+    - share/deliverables/integration/cmos_v14_full/analyze_full_pll_noise_activation_probe.py
+    - share/deliverables/integration/cmos_v14_full/build_full_pll_precision_bridge.py
+    - share/reports/decisions/DEC-0010.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_adopted_baseline.json
+    - share/deliverables/integration/cmos_v14_full/RT4_PRELAYOUT.md
+    - share/deliverables/integration/cmos_v14_full/RT4_FAST_RANGE.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review94.json
+    - share/deliverables/integration/cmos_v14_full/results/original_diagnostics_retired94.json
+    - share/deliverables/integration/cmos_v14_full/build_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/analyze_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_k41_capture_review96.json
+  blocks:
+  - name: reference_buffer
+    role: 24 MHz 参考整形
+    stage: circuit
+    maturity: 2
+    note: RT4采用现有MOS参考缓冲；taper2未自动合并。真实输入边沿/源阻抗与关键角落未闭合。 本轮随完整RT4验证：216、240MHz快筛通过，336MHz整环低频覆盖失败；没有新增独立模块签核。 新增984MHz AX整环捕获未通过；不据此单独判定本模块失败。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_half_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_quiet_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_bw320_quiet_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_seed29_noise_recovery_audit.json
+    - share/reports/decisions/DEC-0010.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_adopted_baseline.json
+    - share/deliverables/integration/cmos_v14_full/RT4_PRELAYOUT.md
+    - share/deliverables/integration/cmos_v14_full/RT4_FAST_RANGE.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review94.json
+    - share/deliverables/integration/cmos_v14_full/results/original_diagnostics_retired94.json
+    - share/deliverables/integration/cmos_v14_full/build_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/analyze_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_k41_capture_review96.json
+    blockers: []
+  - name: subsampling_detector
+    role: 直接采样差分 VCO 并鉴相
+    stage: circuit
+    maturity: 2
+    note: 现有MOS采样器随RT4采用；TT整环已有证据，角落采样窗口与关键失配待查。 本轮随完整RT4验证：216、240MHz快筛通过，336MHz整环低频覆盖失败；没有新增独立模块签核。 新增984MHz AX整环捕获未通过；不据此单独判定本模块失败。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_half_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_quiet_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_bw320_quiet_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_seed29_noise_recovery_audit.json
+    - share/reports/decisions/DEC-0010.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_adopted_baseline.json
+    - share/deliverables/integration/cmos_v14_full/RT4_PRELAYOUT.md
+    - share/deliverables/integration/cmos_v14_full/RT4_FAST_RANGE.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review94.json
+    - share/deliverables/integration/cmos_v14_full/results/original_diagnostics_retired94.json
+    - share/deliverables/integration/cmos_v14_full/build_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/analyze_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_k41_capture_review96.json
+    blockers: []
+  - name: transconductor_charge_pump
+    role: 采样误差转电流及增益控制
+    stage: circuit
+    maturity: 2
+    note: 现有cp_physical_v14随RT4采用；短尾管等独立候选未合并，失配与角落待查。 本轮随完整RT4验证：216、240MHz快筛通过，336MHz整环低频覆盖失败；没有新增独立模块签核。 新增984MHz AX整环捕获未通过；不据此单独判定本模块失败。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_half_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_quiet_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_bw320_quiet_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_seed29_noise_recovery_audit.json
+    - share/reports/decisions/DEC-0010.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_adopted_baseline.json
+    - share/deliverables/integration/cmos_v14_full/RT4_PRELAYOUT.md
+    - share/deliverables/integration/cmos_v14_full/RT4_FAST_RANGE.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review94.json
+    - share/deliverables/integration/cmos_v14_full/results/original_diagnostics_retired94.json
+    - share/deliverables/integration/cmos_v14_full/build_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/analyze_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_k41_capture_review96.json
+    blockers: []
+  - name: passive_loop_filter
+    role: 环路滤波与稳定性
+    stage: circuit
+    maturity: 2
+    note: 现有tx_loop_filter_v5随RT4采用；稳态TT有效，工艺R/C、容差、尺寸和寄生约束待定。 本轮随完整RT4验证：216、240MHz快筛通过，336MHz整环低频覆盖失败；没有新增独立模块签核。 新增984MHz AX整环捕获未通过；不据此单独判定本模块失败。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_settled_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_precision_stage_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_fine_pair_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_fine_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_half_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_quiet_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_bw320_quiet_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_seed29_noise_recovery_audit.json
+    - share/reports/decisions/DEC-0010.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_adopted_baseline.json
+    - share/deliverables/integration/cmos_v14_full/RT4_PRELAYOUT.md
+    - share/deliverables/integration/cmos_v14_full/RT4_FAST_RANGE.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review94.json
+    - share/deliverables/integration/cmos_v14_full/results/original_diagnostics_retired94.json
+    - share/deliverables/integration/cmos_v14_full/build_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/analyze_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_k41_capture_review96.json
+    blockers: []
+  - name: lc_vco_and_cap_bank
+    role: 2.688–3.936 GHz 振荡、粗调和模拟细调
+    stage: circuit
+    maturity: 2
+    note: RT4保持4.4fF/CF10/Q5；局部范围2.751809–4.166391GHz。新增336MHz完整PLL RF=2.749915GHz，粗码255/控制0.027–0.049V且range_error高，支持低端覆盖不足；127/128边界重叠11.790MHz不代表全码连续。
+      984MHz本次RF为3.954584GHz且range_error低，不能归为高端调谐范围不足；此前同电路已锁定3.936GHz。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_precision_ramp_failure.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_precision_stage_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_fine_pair_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_fine_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_half_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_quiet_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_bw320_quiet_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_seed29_noise_recovery_audit.json
+    - share/reports/decisions/DEC-0010.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_adopted_baseline.json
+    - share/deliverables/integration/cmos_v14_full/RT4_PRELAYOUT.md
+    - share/deliverables/integration/cmos_v14_full/RT4_FAST_RANGE.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review94.json
+    - share/deliverables/integration/cmos_v14_full/results/original_diagnostics_retired94.json
+    - share/deliverables/integration/cmos_v14_full/build_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/analyze_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_k41_capture_review96.json
+    blockers: []
+  - name: auxiliary_fll
+    role: 启动捕获和正确谐波选择
+    stage: circuit
+    maturity: 3
+    note: 现有FLL随RT4采用，TT984MHz复位捕获已有；33点、真实供电启动及角落捕获待验。 新增216、240MHz独立复位捕获通过；336MHz正确报告调谐到边界且不假报qualified。仍需其余代表点及后续切频/恢复验证。 新增984MHz AX记录：FLL置acquired但qualified不置高，粗码22，输出988.646MHz；真实捕获未通过，需结合剩余批次定位。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_noise_activation_probe_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_settled_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_precision_stage_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_fine_pair_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_fine_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_half_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_quiet_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_bw320_quiet_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_seed29_noise_recovery_audit.json
+    - share/reports/decisions/DEC-0010.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_adopted_baseline.json
+    - share/deliverables/integration/cmos_v14_full/RT4_PRELAYOUT.md
+    - share/deliverables/integration/cmos_v14_full/RT4_FAST_RANGE.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review94.json
+    - share/deliverables/integration/cmos_v14_full/results/original_diagnostics_retired94.json
+    - share/deliverables/integration/cmos_v14_full/build_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/analyze_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_k41_capture_review96.json
+    blockers: []
+  - name: programmable_even_divider
+    role: 可编程÷4/6/8/10/12/14 CMOS分频
+    stage: circuit
+    maturity: 2
+    note: bank_pulsetrip_v14随RT4采用；单元六档及接口证据不替代完整33点/切频/角落回归。 本轮随完整RT4验证：216、240MHz快筛通过，336MHz整环低频覆盖失败；没有新增独立模块签核。 新增984MHz AX整环捕获未通过；不据此单独判定本模块失败。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_half_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_quiet_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_bw320_quiet_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_seed29_noise_recovery_audit.json
+    - share/reports/decisions/DEC-0010.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_adopted_baseline.json
+    - share/deliverables/integration/cmos_v14_full/RT4_PRELAYOUT.md
+    - share/deliverables/integration/cmos_v14_full/RT4_FAST_RANGE.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review94.json
+    - share/deliverables/integration/cmos_v14_full/results/original_diagnostics_retired94.json
+    - share/deliverables/integration/cmos_v14_full/build_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/analyze_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_k41_capture_review96.json
+    blockers:
+    - 实际LC全模式、整机代回、重配置与完整PVT仍未完成。
+  - name: output_retimer
+    role: 利用 VCO 派生时钟重定时
+    stage: circuit
+    maturity: 3
+    note: rt_noise_scale4_v14已由用户采用；整环最差高偏移115.2fs作为阶段依据，全频率与关键角落尚未覆盖。 本轮随完整RT4验证：216、240MHz快筛通过，336MHz整环低频覆盖失败；没有新增独立模块签核。 新增984MHz AX整环捕获未通过；不据此单独判定本模块失败。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_half_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_quiet_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_bw320_quiet_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_seed29_noise_recovery_audit.json
+    - share/reports/decisions/DEC-0010.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_adopted_baseline.json
+    - share/deliverables/integration/cmos_v14_full/RT4_PRELAYOUT.md
+    - share/deliverables/integration/cmos_v14_full/RT4_FAST_RANGE.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review94.json
+    - share/deliverables/integration/cmos_v14_full/results/original_diagnostics_retired94.json
+    - share/deliverables/integration/cmos_v14_full/build_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/analyze_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_k41_capture_review96.json
+    blockers: []
+  - name: output_buffer
+    role: 驱动片内轻负载
+    stage: circuit
+    maturity: 3
+    note: 现有RT4输出链/10fF采用；实际负载、边沿及关键角落待定，不沿用原版输出边沿数字。 本轮随完整RT4验证：216、240MHz快筛通过，336MHz整环低频覆盖失败；没有新增独立模块签核。 新增984MHz AX整环捕获未通过；不据此单独判定本模块失败。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_half_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_quiet_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_bw320_quiet_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_seed29_noise_recovery_audit.json
+    - share/reports/decisions/DEC-0010.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_adopted_baseline.json
+    - share/deliverables/integration/cmos_v14_full/RT4_PRELAYOUT.md
+    - share/deliverables/integration/cmos_v14_full/RT4_FAST_RANGE.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review94.json
+    - share/deliverables/integration/cmos_v14_full/results/original_diagnostics_retired94.json
+    - share/deliverables/integration/cmos_v14_full/build_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/analyze_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_k41_capture_review96.json
+    blockers: []
+  - name: bias_and_control
+    role: 偏置、频点配置及状态控制
+    stage: circuit
+    maturity: 2
+    note: 现有MOS/电阻偏置随RT4采用；电源爬升、温度/电压变化、关键失配与功耗分解待验。 本轮随完整RT4验证：216、240MHz快筛通过，336MHz整环低频覆盖失败；没有新增独立模块签核。 新增984MHz AX整环捕获未通过；不据此单独判定本模块失败。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_noise_activation_probe_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_half_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_quiet_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_bw320_quiet_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_seed29_noise_recovery_audit.json
+    - share/reports/decisions/DEC-0010.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_adopted_baseline.json
+    - share/deliverables/integration/cmos_v14_full/RT4_PRELAYOUT.md
+    - share/deliverables/integration/cmos_v14_full/RT4_FAST_RANGE.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review94.json
+    - share/deliverables/integration/cmos_v14_full/results/original_diagnostics_retired94.json
+    - share/deliverables/integration/cmos_v14_full/build_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/analyze_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_k41_capture_review96.json
+    blockers: []
+  - name: rf_clock_receiver
+    role: VCO到CMOS时钟接口
+    stage: circuit
+    maturity: 2
+    note: rf_light24s12_v14随RT4采用；全RF范围、慢热/快冷幅度和时序裕量待查。 本轮随完整RT4验证：216、240MHz快筛通过，336MHz整环低频覆盖失败；没有新增独立模块签核。 新增984MHz AX整环捕获未通过；不据此单独判定本模块失败。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_half_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_quiet_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_bw320_quiet_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_seed29_noise_recovery_audit.json
+    - share/reports/decisions/DEC-0010.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_adopted_baseline.json
+    - share/deliverables/integration/cmos_v14_full/RT4_PRELAYOUT.md
+    - share/deliverables/integration/cmos_v14_full/RT4_FAST_RANGE.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review94.json
+    - share/deliverables/integration/cmos_v14_full/results/original_diagnostics_retired94.json
+    - share/deliverables/integration/cmos_v14_full/build_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/analyze_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_k41_capture_review96.json
+    blockers: []
+  - name: cp_pulse_timing
+    role: 参考后CP脉冲、使能与复位
+    stage: circuit
+    maturity: 2
+    note: 现有MOS脉冲/使能逻辑随RT4采用；角落脉宽和失配待验。 本轮随完整RT4验证：216、240MHz快筛通过，336MHz整环低频覆盖失败；没有新增独立模块签核。 新增984MHz AX整环捕获未通过；不据此单独判定本模块失败。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_half_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_quiet_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_bw320_quiet_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_seed29_noise_recovery_audit.json
+    - share/reports/decisions/DEC-0010.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_adopted_baseline.json
+    - share/deliverables/integration/cmos_v14_full/RT4_PRELAYOUT.md
+    - share/deliverables/integration/cmos_v14_full/RT4_FAST_RANGE.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review94.json
+    - share/deliverables/integration/cmos_v14_full/results/original_diagnostics_retired94.json
+    - share/deliverables/integration/cmos_v14_full/build_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/analyze_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_k41_capture_review96.json
+    blockers: []
+  - name: configuration_and_frequency_supervision
+    role: 频点配置、监督与周期测频
+    stage: circuit
+    maturity: 3
+    note: 现有配置/FLL/监督随RT4采用；补切频、配置边界、失锁重捕获及参考丢失恢复。 新增216、240MHz独立复位捕获通过；336MHz正确报告调谐到边界且不假报qualified。仍需其余代表点及后续切频/恢复验证。 新增984MHz AX记录：FLL置acquired但qualified不置高，粗码22，输出988.646MHz；真实捕获未通过，需结合剩余批次定位。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_noise_activation_probe_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_settled_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_precision_stage_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_fine_pair_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_fine_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_half_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_quiet_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_bw320_quiet_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_seed29_noise_recovery_audit.json
+    - share/reports/decisions/DEC-0010.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_adopted_baseline.json
+    - share/deliverables/integration/cmos_v14_full/RT4_PRELAYOUT.md
+    - share/deliverables/integration/cmos_v14_full/RT4_FAST_RANGE.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review94.json
+    - share/deliverables/integration/cmos_v14_full/results/original_diagnostics_retired94.json
+    - share/deliverables/integration/cmos_v14_full/build_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/analyze_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_k41_capture_review96.json
+    blockers: []
+  - name: phase_and_amplitude_validation
+    role: 锁定判定的物理相位与振幅有效性检测
+    stage: circuit
+    maturity: 2
+    note: 现有MOS有效性检测随RT4采用；SS动态薄弱点和失配待查。原版无关诊断已停止，历史证据保留。 本轮随完整RT4验证：216、240MHz快筛通过，336MHz整环低频覆盖失败；没有新增独立模块签核。 新增984MHz AX记录：FLL置acquired但qualified不置高，粗码22，输出988.646MHz；真实捕获未通过，需结合剩余批次定位。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/STATUS.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_64.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_65.md
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_66.md
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_noise_activation_probe_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_settled_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_precision_stage_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_fine_pair_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_fine_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_quarter_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_half_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_quiet_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_iab100_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_bw320_quiet_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_seed29_noise_recovery_audit.json
+    - share/reports/decisions/DEC-0010.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_adopted_baseline.json
+    - share/deliverables/integration/cmos_v14_full/RT4_PRELAYOUT.md
+    - share/deliverables/integration/cmos_v14_full/RT4_FAST_RANGE.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review94.json
+    - share/deliverables/integration/cmos_v14_full/results/original_diagnostics_retired94.json
+    - share/deliverables/integration/cmos_v14_full/build_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/analyze_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_k41_capture_review96.json
+    blockers: []
+  verification:
+    maturity: 3
+    note: 6/6局部调谐已完成，4/7整环完成：216/240MHz通过，336MHz低端饱和失败，984MHz本次捕获失败。当前实际288/456/672MHz三项运行；4项完整记录终态/哈希/波形核对完成。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_92.md
+    - share/deliverables/integration/cmos_v14_full/audit_rt4_gear_seed29_noise_recovery.py
+    - share/deliverables/integration/cmos_v14_full/compare_rt4_method_seed_matrix.py
+    - share/deliverables/integration/cmos_v14_full/build_main_ringing_diagnostic.py
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_method_seed_matrix.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_seed29_pair_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_seed29_pair_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_ringing_diagnostic_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/main_ringing_launch_review92.json
+    - share/deliverables/integration/cmos_v14_full/tb/full_pll_main_ring_trap_off_tt.scs
+    - share/deliverables/integration/cmos_v14_full/tb/full_pll_main_ring_gear_off_tt.scs
+    - share/deliverables/integration/cmos_v14_full/results/figures/rt4_gear_seed29_noise_pair.png
+    - share/deliverables/integration/cmos_v14_full/results/figures/rt4_method_seed_matrix.png
+    - share/reports/decisions/DEC-0010.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_adopted_baseline.json
+    - share/deliverables/integration/cmos_v14_full/RT4_PRELAYOUT.md
+    - share/deliverables/integration/cmos_v14_full/RT4_FAST_RANGE.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review94.json
+    - share/deliverables/integration/cmos_v14_full/results/original_diagnostics_retired94.json
+    - share/deliverables/integration/cmos_v14_full/build_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/analyze_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_k41_capture_review96.json
+  integration:
+    maturity: 2
+    note: RT4基线的24项物理依赖和哈希已明确；尚无最终工艺无源、尺寸冻结、实际接口及版图约束交付包。功耗约8.05mW高于4mW；功耗和后端继续后置，版图未启动。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/NOISE_REVIEW_92.md
+    - share/deliverables/integration/cmos_v14_full/audit_rt4_gear_seed29_noise_recovery.py
+    - share/deliverables/integration/cmos_v14_full/compare_rt4_method_seed_matrix.py
+    - share/deliverables/integration/cmos_v14_full/build_main_ringing_diagnostic.py
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_seed29_noise_recovery_audit.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_method_seed_matrix.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_seed29_pair_validation.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_rt4_gear_seed29_pair_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/full_pll_main_ringing_diagnostic_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/main_ringing_launch_review92.json
+    - share/deliverables/integration/cmos_v14_full/tb/full_pll_main_ring_trap_off_tt.scs
+    - share/deliverables/integration/cmos_v14_full/tb/full_pll_main_ring_gear_off_tt.scs
+    - share/deliverables/integration/cmos_v14_full/results/figures/rt4_gear_seed29_noise_pair.png
+    - share/deliverables/integration/cmos_v14_full/results/figures/rt4_method_seed_matrix.png
+    - share/reports/decisions/DEC-0010.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_adopted_baseline.json
+    - share/deliverables/integration/cmos_v14_full/RT4_PRELAYOUT.md
+    - share/deliverables/integration/cmos_v14_full/RT4_FAST_RANGE.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review94.json
+    - share/deliverables/integration/cmos_v14_full/results/original_diagnostics_retired94.json
+    - share/deliverables/integration/cmos_v14_full/build_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/analyze_rt4_fast_range.py
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit95.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_review96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_range_completed_audit96.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_fast_k41_capture_review96.json
+spec_status:
+- id: REQ-01
+  current: 已采用RT4/newbank完整MOS顶层，17,617 MOS
+  condition: Actual full RT4/newbank PLL with transistor FLL/control/watchdog/bias,TT27/1.2V/24MHzref/K41/M4/10fF/Q5RLC/CF10; ideal external reference
+    and supply.
+  evidence: circuit_sim
+  status: on_track
+  note: 精确依赖见采用清单；工艺电感/无源及版图仍未闭合。
+- id: REQ-02
+  current: 1.2V运行；当前复位测试供电预先建立
+  condition: RT4/newbank，TT27/1.2V/24MHz/K41/M4/10fF/Q5，64µs独立复位测试；供电预先建立。
+  evidence: circuit_sim
+  status: on_track
+  note: 当前主线已改为RT4；以下历史证据仍受原条件限制。供电扫描、爬升和器件端电压可靠性未签核。
+- id: REQ-03
+  current: 24MHz外部准方波，经真实MOS参考缓冲
+  condition: RT4/newbank，TT27/1.2V/24MHz/K41/M4/10fF/Q5，64µs独立复位测试；供电预先建立。
+  evidence: circuit_sim
+  status: on_track
+  note: 当前主线已改为RT4；以下历史证据仍受原条件限制。保留实际参考缓冲；参考候选的局部三点收益未合并。实际参考边沿、源阻抗及外部参考噪声未完成。
+- id: REQ-04
+  current: 7点快筛完成4点：216/240MHz通过；336MHz实测343.739521MHz，984MHz实测988.646023MHz，后二者未锁定
+  condition: TT27, 1.2V, 24MHz, 10fF, original selected RT4 physical dependencies including 4.4fF bank and Q5 RLC. 64us/8ps/reltol1e-3，噪声关闭。
+  evidence: circuit_sim
+  status: at_risk
+  note: 288/456/672MHz仍运行；本批仅7代表点。984MHz已有旧4ps成功记录，本次AX捕获失败单列。
+- id: REQ-05
+  current: 完整PLL336MHz目标下RF约2.749915GHz，粗码255且控制近下限；局部端点2.751809–4.166391GHz
+  condition: RT4 TT27/1.2V/4.4fF/Q5，整环64us末1us；局部夹具400ns/0.2–1.0V；AX8ps/1e-3
+  evidence: circuit_sim
+  status: at_risk
+  note: 完整PLL未达到2.688GHz低端，差61.915MHz；夹具低端差63.809MHz。证据条件不同但方向一致；全256码连续性未扫描。 新增984MHz AX RF=3.954584GHz，当前是捕获未通过；历史同电路3.936GHz锁定证据保留，不能推为高端范围不足。
+- id: REQ-06
+  current: null
+  condition: Actual full RT4/newbank PLL with transistor FLL/control/watchdog/bias,TT27/1.2V/24MHzref/K41/M4/10fF/Q5RLC/CF10; ideal external reference
+    and supply. 1024边沿，5.28515625–492MHz。
+  evidence: circuit_sim
+  status: unknown
+  note: 用户接受RT4最差观察115.195396866fs作为阶段选择依据。小方法/种子偏差不阻碍推进；10kHz起算全带结果仍未知，最终<200fs目标不变。
+- id: REQ-07
+  current: null
+  condition: TT27/1.2V/Q5/984MHz/10fF，CF10/原RT/连续时钟候选/静态慢控制；coretripsupply01无噪声初始化两个250ns窗口、1ps/reltol1e-5/traponly。
+  evidence: circuit_sim
+  status: at_risk
+  note: 完整RT4杂散尚未测完；历史原版局部核心−28.8dBc仅作风险线索，不能移植为RT4结果。目标<−60dBc保持。
+- id: REQ-08
+  current: RT4复位测试末1µs总供电8.050093mW
+  condition: TT27/1.2V/K41/M4/10fF/Q5，64µs独立复位测试，4ps/reltol1e-4，内部步积分。
+  evidence: circuit_sim
+  status: at_risk
+  note: 超4mW；功耗优化继续后置，但最终版图尺寸定型前需处理或由用户另行决定指标。
+- id: REQ-09
+  current: null
+  condition: 含电感、环路滤波器及隔离，暂不计pad。
+  evidence: none
+  status: unknown
+  note: 无布局/工艺无源几何，不能确认<0.3mm²。
+- id: REQ-10
+  current: RT4完整PLL TT本轮4个代表点结果，PVT覆盖未增加
+  condition: TT27/1.2V/24MHz/10fF；64us/AX8ps/1e-3；旧配对角证据保留原边界。
+  evidence: circuit_sim
+  status: at_risk
+  note: 本轮仅TT快速筛查，不增加PVT覆盖；旧角落证据保持各自局部边界。
+- id: REQ-11
+  current: null
+  condition: TT27/1.2V/K41/M4/10fF；内部边沿观察器，4ps/reltol1e-4。
+  evidence: circuit_sim
+  status: on_track
+  note: 无需刻意优化的用户安排保持；原版43.99%不当作RT4当前测量。
+- id: REQ-12
+  current: RT4 10fF负载下新增216、240MHz独立复位通过，336MHz调谐范围失败
+  condition: RT4 TT27/1.2V/10fF/Q5；64us/AX8ps/1e-3。
+  evidence: circuit_sim
+  status: on_track
+  note: 10fF为暂定；实际负载范围和RT4输出边沿待明确，原版130.6/213.3ps不移植。 984MHz本次宽精度复位未锁定，输出负载仍10fF；历史成功记录保留原条件。
+questions_for_human:
+- q: 杂散<−60dBc是否采用载波两侧偏移10kHz–fOUT/2内所有离散线、逐条单边功率相对载波的口径？已异步提出，尚未收到确认；方法与电路工作继续。
+  blocking: false
+  since: '2026-10-04'
+- q: 24MHz参考到PLL输入端的10%–90%上升/下降时间、驱动能力或源阻抗是否有预计值？已异步询问，未阻塞现有验证。
+  blocking: false
+  since: '2026-10-04'
+blocked_on: null
+risks:
+- RT4 4.4fF低频覆盖不足：336MHz完整PLL未锁定，粗码255、细调近下限，输出偏高2.3034%；其余低RF点仍待结果。
+- 984MHz AX粗码22后未锁定，末段输出988.646MHz；此前4ps粗码24已锁定，当前未隔离因果，不将频率误差<0.5%当锁定。
+- 本轮整环仅完成4/7代表点，不构成全频点/PVT/噪声验收。
+- 当前115.2fs为高偏移单工况最差观察，非10kHz全带或PVT最坏上界；完整RT4杂散仍未知。
+- RT4功耗8.050093mW高于4mW；Q5临时电感、理想R/C及实际接口未定，可能改变最终尺寸和性能。
+- 完整33点、供电启动、切频/恢复、关键角落和失配尚未闭合。
+next_steps:
+- 继续唯一RT4 AX原队列的288/456/672MHz三项；8ps/1e-3不变，不补发已完成点或扩展33点/PVT/方法/种子矩阵。
+- 本批完成后处理336MHz低端覆盖以及984MHz捕获/粗码选择问题；保留原RT4基线与旧984MHz成功证据，只针对必要修正复验受影响代表点。
+- 保留最终10kHz至fOUT/2排除杂散RMS<200fs指标和115.2fs高偏移阶段依据；功耗、版图继续后置。
+- 禁止复用稳态噪声qualified低保护到复位过程；原版3项旧诊断已停止，不重派。
+decisions_since_last: []
+resources_note: 当前实际3项长任务/12请求线程，唯一队列正常；仅分析回收既有记录，未新派仿真。
