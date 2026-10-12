@@ -1,4 +1,4 @@
-本次快照：[第92次汇报](../reports/2026-10-12T1601.yaml)。RT4 Gear seed29完整噪声记录通过独立复核，高偏移诊断115.195fs；两种子矩形窗方法差异6.92%/11.63%，Hann诊断差异0.063%/0.122%，有限记录敏感性仍显著。原版320GHz噪声继续运行，已启动原版内部振铃节点的梯形/Gear无噪声对照；最终全带验收仍未知。
+本次快照：[第93次汇报](../reports/2026-10-12T1723.yaml)。用户已选定RT4/newbank为后续开发主方案，接受115.2fs高偏移最差观察值作为阶段依据；不再扩展小积分方法/种子差异。新增RT4精确基线及版图前清单，尚无新增仿真结果，最终指标及功耗/后端暂缓安排保持。 [RT4版图前清单](integration/cmos_v14_full/RT4_PRELAYOUT.md)。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)
