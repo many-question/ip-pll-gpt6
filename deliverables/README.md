@@ -1,4 +1,4 @@
-本次快照：[第102次汇报](../reports/2026-10-13T2325.yaml)。本地监控和runner消失，远程原984MHz复测候选继续正常运行；已恢复仅监控与回收的唯一所有者，没有重启或新增仿真，没有新增锁定或抖动结论。
+本次快照：[第103次汇报](../reports/2026-10-14T0035.yaml)。本机再次重启后，RT4复测候选远程原任务继续正常运行；回收改为心跳触发的有界入口，不依赖常驻本地进程。无新增电路性能结论。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)
