@@ -1,0 +1,202 @@
+{
+  "time": "2026-10-13T23:25:44+08:00",
+  "incident": "research/client_loss102_before.json",
+  "incident_sha256": "a71a36f9340bd3586cf75b8b5ceeaf561ce2301fc877a263ca5b3851fe6c4394",
+  "live_evidence": "research/heartbeat_recheck_recovered102.json",
+  "live_sha256": "f2e201925ebac02cd2c99758b052b3d753d1d3de37754985bf2f880c4bd039e1",
+  "active": [
+    {
+      "case": "rt4r48_recheck_k41_tt",
+      "run": "rt4recheckk41ssd01",
+      "remote_dir": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/aafa4165",
+      "alive": [
+        {
+          "args": [
+            "/home/cadence/spectre/SPECTRE211Hotfix_crack/tools/spectre/bin/64bit/spectre",
+            "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/aafa4165/rt4r48_recheck_k41_tt.scs",
+            "+escchars",
+            "+log",
+            "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/aafa4165/spectre.out",
+            "-format",
+            "psfascii",
+            "-raw",
+            "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/aafa4165/rt4r48_recheck_k41_tt.raw",
+            "+preset=ax",
+            "+mt=4",
+            "-preset_override",
+            "+lqtimeout",
+            "900",
+            "-maxw",
+            "5",
+            "-maxn",
+            "5",
+            "+logstatus",
+            ""
+          ],
+          "pid": 216552,
+          "cwd": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/aafa4165",
+          "tmpdir": [
+            "TMPDIR=/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/aafa4165/tmp"
+          ]
+        }
+      ],
+      "raw_bytes": 64655360,
+      "last_saved_time_s": 5.998799999997013e-05,
+      "raw_end": false,
+      "exit_marker": null,
+      "remote_inputs_match": true,
+      "effective": {
+        "reltol": 0.001,
+        "abstol(V)": 1e-06,
+        "abstol(I)": 1e-12,
+        "method": "traponly",
+        "maxstep": 8e-12
+      }
+    }
+  ],
+  "resources": {
+    "time": "2026-10-13T23:24:09.144577+08:00",
+    "jobs": [
+      {
+        "threads": 4,
+        "pid": 216552,
+        "netlist": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/aafa4165/rt4r48_recheck_k41_tt.scs"
+      }
+    ],
+    "requested_threads": 4
+  },
+  "worker": {
+    "pid": 45548,
+    "create_time": 1791905021.73587,
+    "cmdline": [
+      "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "D:\\seed\\ip-pll-gpt6\\share\\deliverables\\integration\\cmos_v14_full\\recover_rt4_recheck_detached102.py",
+      "--target",
+      "recheck"
+    ],
+    "state": "research/rt4_recheck_pipeline.json",
+    "role": "collection-only owner; no simulator dispatch",
+    "running": true
+  },
+  "retired_workers": [
+    {
+      "pid": 229072,
+      "create_time": 1791880140.5191133,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\research\\run_rt4_recheck101.py"
+      ],
+      "state": "research/rt4_recheck_pipeline.json",
+      "role": "single K41 recheck candidate owner",
+      "running": true
+    },
+    {
+      "kind": "capture",
+      "run": "rt4recheckk41ssd01",
+      "case": "rt4r48_recheck_k41_tt",
+      "k": 41,
+      "m": 4,
+      "target_out_mhz": 984,
+      "target_rf_mhz": 3936.0,
+      "stop_s": 0.00012,
+      "tb_sha256": "840daa2b240a77ccb2bcfbf4f8389d94f1fad1e84f9f00028b69157e757428e8",
+      "source_case": "rt4_fast_k41_tt",
+      "source_tb_sha256": "d6a0721d78771547ec615e285b1aec07cc23ebeba03e9087f6509bfb1fa3f408",
+      "pid": 223768,
+      "create_time": 1791880142.081006,
+      "cmdline": [
+        "C:\\Users\\jielu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "D:\\seed\\ip-pll-gpt6\\share\\deliverables\\integration\\cmos_v14_full\\run_spectre.py",
+        "--run-id",
+        "rt4recheckk41ssd01",
+        "--cases",
+        "rt4r48_recheck_k41_tt",
+        "--mode",
+        "ax",
+        "--threads",
+        "4",
+        "--preset-override",
+        "all",
+        "--timeout",
+        "172800"
+      ],
+      "threads": 4,
+      "log": "research/rt4recheckk41ssd01.log",
+      "running": true
+    }
+  ],
+  "pipeline_state": "waiting_existing_remote",
+  "completion_checks": {
+    "tests": [
+      {
+        "name": "first observation",
+        "passed": true
+      },
+      {
+        "name": "current running",
+        "passed": true
+      },
+      {
+        "name": "previous running",
+        "passed": true
+      },
+      {
+        "name": "missing footer",
+        "passed": true
+      },
+      {
+        "name": "changed log_sha256",
+        "passed": true
+      },
+      {
+        "name": "changed raw_bytes",
+        "passed": true
+      },
+      {
+        "name": "changed raw_mtime",
+        "passed": true
+      },
+      {
+        "name": "changed exit_code",
+        "passed": true
+      },
+      {
+        "name": "stable terminal",
+        "passed": true
+      },
+      {
+        "name": "complete",
+        "passed": true
+      },
+      {
+        "name": "short_trace",
+        "passed": true
+      },
+      {
+        "name": "missing_exit",
+        "passed": true
+      },
+      {
+        "name": "failed_exit",
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "collector_sha256": "e867994c8a2f7fb1bce974fdc8910ee2e9469119bfbccf0f17681493191ba945",
+    "no_remote_mutations": true,
+    "actual_remote_transfer_tested": false
+  },
+  "log_flags": {
+    "ERROR (": 0,
+    "FATAL (": 0,
+    "Newton iteration fails": 0,
+    "SPECTRE-17087": 0,
+    "SPECTRE-16780": 0,
+    "spectre completes with": 0
+  },
+  "no_new_simulations": true,
+  "no_new_measurement": true,
+  "implementation_hashes_unchanged": 163,
+  "baseline_dependencies_unchanged": 24,
+  "full_pll_acceptance": false
+}

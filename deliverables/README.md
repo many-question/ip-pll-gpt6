@@ -1,4 +1,4 @@
-本次快照：[第101次汇报](../reports/2026-10-13T1633.yaml)。4.8fF RT4候选984MHz已完成64µs，但未锁定：末1µs平均986.999471MHz，qualified/frequency_good均为0；336/456/672MHz三项通过结论保留。细调选中码的早期计数与交接前频率不一致，已启动一个增加交接前复测与逐步修正的独立MOS控制器候选，仅重验984MHz，AX8ps/1e-3。
+本次快照：[第102次汇报](../reports/2026-10-13T2325.yaml)。本地监控和runner消失，远程原984MHz复测候选继续正常运行；已恢复仅监控与回收的唯一所有者，没有重启或新增仿真，没有新增锁定或抖动结论。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

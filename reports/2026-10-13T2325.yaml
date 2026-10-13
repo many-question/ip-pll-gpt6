@@ -1,0 +1,248 @@
+schema: chip-report/0.1
+report:
+  seq: 102
+  time: '2026-10-13T23:25:44+08:00'
+  trigger: proactive
+  covers_since: '2026-10-13T16:33:28+08:00'
+overall:
+  phase: RT4：低端已修正，984MHz交接前复测候选验证中
+  summary: 本地监控和runner消失，远程原984MHz复测候选继续正常运行；已恢复仅监控与回收的唯一所有者，没有重启或新增仿真，没有新增锁定或抖动结论。
+  since_last:
+  - 旧本地PID229072/223768均已不存在，流水线停留在22:27:35的capture_running。系统报告最近启动时间为2026-10-13T22:32:33.323189+08:00，与进程在此后消失一致；未调查重启触发原因。旧交接、流水线和日志已归档并记录哈希。
+  - 23:24实际检查：远程PID216552、SSD目录aafa4165保持，仿真推进到59.988µs/120µs，raw 64655360字节；1长任务、4请求线程。输入哈希、SSD cwd/TMPDIR、AX8ps/1e-3及traponly均核验，无终止摘要、退出标记或新增数值恢复信息。
+  - 新增固定run/case/SSD目录的独立回收器，使用独占claim，复用research/rt4_recheck_pipeline.json记录waiting_existing_remote；原派发owner和runner不重启。该入口无仿真派发或停止动作，读失败退避，48小时有界监控。
+  - 只有原远程进程退出且两次间隔60秒的终态、日志哈希、raw大小及mtime稳定后才回收；核对输入和所有输出在传输前后的哈希，保留已有部分文件，确认PSF END、有限物理波形、60001点及0–120µs。明确退出码0、零错误和final.ic齐全才记为clean结果。
+  - 13项离线检查通过：9项终态门限与4项真实PSF解析/结果生成夹具，覆盖完整、截短、缺退出码及失败退出；真实远程只读预检确认仍在运行，不提前回收。实际完整文件下载尚待仿真结束后检验。
+  route_confidence: medium
+  route_confidence_reason: 本轮恢复回收所有权，电路与指标判断沿用第101次；完整MOS捕获尚未结束。
+levels:
+  survey:
+    maturity: 3
+    note: 保持用户少点、适度精度的TT AX筛查；小方法/种子差异不阻碍开发，本轮不扩展矩阵。
+    artifacts: &id001
+    - share/deliverables/integration/cmos_v14_full/RT4_RANGE48_REPAIR.md
+    - share/deliverables/integration/cmos_v14_full/RT4_RECHECK.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_range48_repair_review101.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_range48_k41_search_review101.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_recheck_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_recheck_logic101.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_range48_k14_review99.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_range48_k19_review100.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_range48_k28_review100.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_range48_k41_review101.json
+  modeling:
+    maturity: 3
+    note: 局部RF端点覆盖目标；原4.8fF三个低端锁定、K41失败。新复测逻辑门级模型通过，未外推实际VCO。
+    artifacts: *id001
+  architecture:
+    maturity: 4
+    note: RT4主架构保持；新控制器是独立修正候选，已采用4.4fF基线不变。
+    artifacts: *id001
+  blocks:
+  - name: reference_buffer
+    role: 24 MHz 参考整形
+    stage: circuit
+    maturity: 2
+    note: 沿用第101次状态：RT4采用现有MOS参考缓冲；taper2未自动合并。真实输入边沿/源阻抗与关键角落未闭合。 本轮该模块未改；新控制器候选不继承已有整环通过结论。 第102次仅恢复回收，没有新增模块性能证据。
+    artifacts: *id001
+    blockers: []
+  - name: subsampling_detector
+    role: 直接采样差分 VCO 并鉴相
+    stage: circuit
+    maturity: 2
+    note: 沿用第101次状态：现有MOS采样器随RT4采用；TT整环已有证据，角落采样窗口与关键失配待查。 本轮该模块未改；新控制器候选不继承已有整环通过结论。 第102次仅恢复回收，没有新增模块性能证据。
+    artifacts: *id001
+    blockers: []
+  - name: transconductor_charge_pump
+    role: 采样误差转电流及增益控制
+    stage: circuit
+    maturity: 2
+    note: 沿用第101次状态：现有cp_physical_v14随RT4采用；短尾管等独立候选未合并，失配与角落待查。 本轮该模块未改；新控制器候选不继承已有整环通过结论。 第102次仅恢复回收，没有新增模块性能证据。
+    artifacts: *id001
+    blockers: []
+  - name: passive_loop_filter
+    role: 环路滤波与稳定性
+    stage: circuit
+    maturity: 2
+    note: 沿用第101次状态：现有tx_loop_filter_v5随RT4采用；稳态TT有效，工艺R/C、容差、尺寸和寄生约束待定。 本轮该模块未改；新控制器候选不继承已有整环通过结论。 第102次仅恢复回收，没有新增模块性能证据。
+    artifacts: *id001
+    blockers: []
+  - name: lc_vco_and_cap_bank
+    role: 2.688–3.936 GHz 振荡、粗调和模拟细调
+    stage: circuit
+    maturity: 2
+    note: 沿用第101次状态：4.8fF三个低端饱和点修正；K41控制电压未贴轨但未锁定。新候选VCO不改；全码重叠待验。 第102次仅恢复回收，没有新增模块性能证据。
+    artifacts: *id001
+    blockers: []
+  - name: auxiliary_fll
+    role: 启动捕获和正确谐波选择
+    stage: circuit
+    maturity: 3
+    note: 沿用第101次状态：原4.8fF的K41最终未锁定；新增独立复测/单步修正MOS控制器，11项门级检查通过，实际完整捕获进行中，未采用。 第102次仅恢复回收，没有新增模块性能证据。
+    artifacts: *id001
+    blockers: []
+  - name: programmable_even_divider
+    role: 可编程÷4/6/8/10/12/14 CMOS分频
+    stage: circuit
+    maturity: 2
+    note: 沿用第101次状态：bank_pulsetrip_v14随RT4采用；单元六档及接口证据不替代完整33点/切频/角落回归。 本轮该模块未改；新控制器候选不继承已有整环通过结论。 第102次仅恢复回收，没有新增模块性能证据。
+    artifacts: *id001
+    blockers:
+    - 实际LC全模式、整机代回、重配置与完整PVT仍未完成。
+  - name: output_retimer
+    role: 利用 VCO 派生时钟重定时
+    stage: circuit
+    maturity: 3
+    note: 沿用第101次状态：RT4电路保持；原4.4fF的115.2fs仅为高偏移阶段依据。候选336/456/672MHz功能通过，候选噪声未测。 本轮该模块未改；新控制器候选不继承已有整环通过结论。 第102次仅恢复回收，没有新增模块性能证据。
+    artifacts: *id001
+    blockers: []
+  - name: output_buffer
+    role: 驱动片内轻负载
+    stage: circuit
+    maturity: 3
+    note: 沿用第101次状态：现有RT4输出链/10fF采用；实际负载、边沿及关键角落待定，不沿用原版输出边沿数字。 本轮该模块未改；新控制器候选不继承已有整环通过结论。 第102次仅恢复回收，没有新增模块性能证据。
+    artifacts: *id001
+    blockers: []
+  - name: bias_and_control
+    role: 偏置、频点配置及状态控制
+    stage: circuit
+    maturity: 2
+    note: 沿用第101次状态：现有MOS/电阻偏置随RT4采用；电源爬升、温度/电压变化、关键失配与功耗分解待验。 本轮该模块未改；新控制器候选不继承已有整环通过结论。 第102次仅恢复回收，没有新增模块性能证据。
+    artifacts: *id001
+    blockers: []
+  - name: rf_clock_receiver
+    role: VCO到CMOS时钟接口
+    stage: circuit
+    maturity: 2
+    note: 沿用第101次状态：rf_light24s12_v14随RT4采用；全RF范围、慢热/快冷幅度和时序裕量待查。 本轮该模块未改；新控制器候选不继承已有整环通过结论。 第102次仅恢复回收，没有新增模块性能证据。
+    artifacts: *id001
+    blockers: []
+  - name: cp_pulse_timing
+    role: 参考后CP脉冲、使能与复位
+    stage: circuit
+    maturity: 2
+    note: 沿用第101次状态：现有MOS脉冲/使能逻辑随RT4采用；角落脉宽和失配待验。 本轮该模块未改；新控制器候选不继承已有整环通过结论。 第102次仅恢复回收，没有新增模块性能证据。
+    artifacts: *id001
+    blockers: []
+  - name: configuration_and_frequency_supervision
+    role: 频点配置、监督与周期测频
+    stage: circuit
+    maturity: 3
+    note: 沿用第101次状态：监督器不改；原K41 acquired后frequency_good始终不成立。新候选要求两次新计数合格后交接；切频/失锁恢复待验。 第102次仅恢复回收，没有新增模块性能证据。
+    artifacts: *id001
+    blockers: []
+  - name: phase_and_amplitude_validation
+    role: 锁定判定的物理相位与振幅有效性检测
+    stage: circuit
+    maturity: 2
+    note: 沿用第101次状态：检测器不改；三个低端qualified持续为高，原K41始终低。没有放宽真实锁定门限。 第102次仅恢复回收，没有新增模块性能证据。
+    artifacts: *id001
+    blockers: []
+  verification:
+    maturity: 3
+    note: 23:24实际检查：远程PID216552、SSD目录aafa4165保持，仿真推进到59.988µs/120µs，raw 64655360字节；1长任务、4请求线程。输入哈希、SSD cwd/TMPDIR、AX8ps/1e-3及traponly均核验，无终止摘要、退出标记或新增数值恢复信息。只有原远程进程退出且两次间隔60秒的终态、日志哈希、raw大小及mtime稳定后才回收；核对输入和所有输出在传输前后的哈希，保留已有部分文件，确认PSF
+      END、有限物理波形、60001点及0–120µs。明确退出码0、零错误和final.ic齐全才记为clean结果。13项离线检查通过：9项终态门限与4项真实PSF解析/结果生成夹具，覆盖完整、截短、缺退出码及失败退出；真实远程只读预检确认仍在运行，不提前回收。实际完整文件下载尚待仿真结束后检验。电路、协议、已采用4.4fF基线和163项既有实现均未改变。第101次仅改4.8fF候选三低端通过、K41失败继续有效；新增控制器仍在验证，不能继承其他版本通过结果或115.2fs高偏移噪声。最终10kHz至fOUT/2排除杂散RMS<200fs不变，功耗和后端后置。
+    artifacts: &id002
+    - share/deliverables/integration/cmos_v14_full/RT4_RECHECK_SUPERVISION102.md
+    - share/deliverables/integration/cmos_v14_full/recover_rt4_recheck_detached102.py
+    - share/deliverables/integration/cmos_v14_full/results/rt4_recheck_supervision102.json
+  integration:
+    maturity: 2
+    note: 旧本地PID229072/223768均已不存在，流水线停留在22:27:35的capture_running。系统报告最近启动时间为2026-10-13T22:32:33.323189+08:00，与进程在此后消失一致；未调查重启触发原因。旧交接、流水线和日志已归档并记录哈希。新增固定run/case/SSD目录的独立回收器，使用独占claim，复用research/rt4_recheck_pipeline.json记录waiting_existing_remote；原派发owner和runner不重启。该入口无仿真派发或停止动作，读失败退避，48小时有界监控。电路、协议、已采用4.4fF基线和163项既有实现均未改变。第101次仅改4.8fF候选三低端通过、K41失败继续有效；新增控制器仍在验证，不能继承其他版本通过结果或115.2fs高偏移噪声。最终10kHz至fOUT/2排除杂散RMS<200fs不变，功耗和后端后置。
+    artifacts: *id002
+spec_status:
+- id: REQ-01
+  current: 已采用RT4/newbank完整MOS顶层，17,617 MOS
+  condition: Actual full RT4/newbank PLL with transistor FLL/control/watchdog/bias,TT27/1.2V/24MHzref/K41/M4/10fF/Q5RLC/CF10;
+    ideal external reference and supply.
+  evidence: circuit_sim
+  status: on_track
+  note: 沿用第101次证据与边界：已采用4.4fF基线17,617 MOS不变；独立复测候选日志清点19,851 MOS，尚未完成模拟验证。工艺无源与版图未闭合。
+- id: REQ-02
+  current: 1.2V运行；当前复位测试供电预先建立
+  condition: 已完成4.8fF四点TT27/1.2V/24MHz/10fF、64µs；新控制器K41同条件120µs在运行，供电预先建立。
+  evidence: circuit_sim
+  status: on_track
+  note: 沿用第101次证据与边界：当前主线已改为RT4；以下历史证据仍受原条件限制。供电扫描、爬升和器件端电压可靠性未签核。
+- id: REQ-03
+  current: 24MHz外部准方波，经真实MOS参考缓冲
+  condition: 已完成4.8fF四点TT27/1.2V/24MHz/10fF、64µs；新控制器K41同条件120µs在运行，供电预先建立。
+  evidence: circuit_sim
+  status: on_track
+  note: 沿用第101次证据与边界：当前主线已改为RT4；以下历史证据仍受原条件限制。保留实际参考缓冲；参考候选的局部三点收益未合并。实际参考边沿、源阻抗及外部参考噪声未完成。
+- id: REQ-04
+  current: 仅改4.8fF：336/456/672MHz通过，984MHz失败；独立复测控制器K41在运行
+  condition: 候选TT27/1.2V/24MHz/10fF，64µs独立复位，AX8ps/1e-3；末1µs平均336.000035/456.000009/672.000067MHz
+  evidence: circuit_sim
+  status: at_risk
+  note: 沿用第101次证据与边界：984MHz末1µs平均986.999471MHz且qualified/frequency_good为0；不同版本不可拼为全频通过。
+- id: REQ-05
+  current: 候选RF端点2.666074–4.158722GHz；336/456/672MHz完整PLL锁定
+  condition: 4.8fF RT4，TT27/1.2V/10fF，AX8ps/1e-3；端点400ns夹具与64µs整环分开
+  evidence: circuit_sim
+  status: at_risk
+  note: 沿用第101次证据与边界：低端三个饱和点已修正；984MHz未锁定且控制电压0.815–0.877V，非低端贴轨现象。全码重叠仍未知。
+- id: REQ-06
+  current: null
+  condition: Actual full RT4/newbank PLL with transistor FLL/control/watchdog/bias,TT27/1.2V/24MHzref/K41/M4/10fF/Q5RLC/CF10;
+    ideal external reference and supply. 1024边沿，5.28515625–492MHz。
+  evidence: circuit_sim
+  status: unknown
+  note: 沿用第101次证据与边界：用户接受RT4最差观察115.195396866fs作为阶段选择依据。小方法/种子偏差不阻碍推进；10kHz起算全带结果仍未知，最终<200fs目标不变。 本4.8fF候选噪声未测，不能继承115.2fs。
+    新控制器候选同样尚无噪声结果。
+- id: REQ-07
+  current: null
+  condition: TT27/1.2V/Q5/984MHz/10fF，CF10/原RT/连续时钟候选/静态慢控制；coretripsupply01无噪声初始化两个250ns窗口、1ps/reltol1e-5/traponly。
+  evidence: circuit_sim
+  status: at_risk
+  note: 沿用第101次证据与边界：完整RT4杂散尚未测完；历史原版局部核心−28.8dBc仅作风险线索，不能移植为RT4结果。目标<−60dBc保持。
+- id: REQ-08
+  current: RT4复位测试末1µs总供电8.050093mW
+  condition: TT27/1.2V/K41/M4/10fF/Q5，64µs独立复位测试，4ps/reltol1e-4，内部步积分。
+  evidence: circuit_sim
+  status: at_risk
+  note: 沿用第101次证据与边界：超4mW；功耗优化继续后置，但最终版图尺寸定型前需处理或由用户另行决定指标。
+- id: REQ-09
+  current: null
+  condition: 含电感、环路滤波器及隔离，暂不计pad。
+  evidence: none
+  status: unknown
+  note: 沿用第101次证据与边界：无布局/工艺无源几何，不能确认<0.3mm²。
+- id: REQ-10
+  current: 原7点TT与4.8fF四点已完成；新控制器仅K41 TT在运行
+  condition: TT27/1.2V/24MHz/10fF；64us/AX8ps/1e-3；旧配对角证据保留原边界。
+  evidence: circuit_sim
+  status: at_risk
+  note: 沿用第101次证据与边界：仍仅TT快速筛查，无新增PVT/温度覆盖；旧角落证据保持局部边界。
+- id: REQ-11
+  current: null
+  condition: TT27/1.2V/K41/M4/10fF；内部边沿观察器，4ps/reltol1e-4。
+  evidence: circuit_sim
+  status: on_track
+  note: 沿用第101次证据与边界：无需刻意优化的用户安排保持；原版43.99%不当作RT4当前测量。
+- id: REQ-12
+  current: 10fF下原基线216/240/288MHz锁定；独立4.8fF候选336/456/672MHz锁定
+  condition: RT4 TT27/1.2V/10fF/Q5；64us/AX8ps/1e-3。
+  evidence: circuit_sim
+  status: on_track
+  note: 沿用第101次证据与边界：4.8fF K41在10fF下未锁定；其他通过证据分版本保留，未签核全频负载。
+questions_for_human:
+- q: 杂散<−60dBc是否采用载波两侧偏移10kHz–fOUT/2内所有离散线、逐条单边功率相对载波的口径？已异步提出，尚未收到确认；方法与电路工作继续。
+  blocking: false
+  since: '2026-10-04'
+- q: 24MHz参考到PLL输入端的10%–90%上升/下降时间、驱动能力或源阻抗是否有预计值？已异步询问，未阻塞现有验证。
+  blocking: false
+  since: '2026-10-04'
+blocked_on: null
+risks:
+- 4.8fF K41捕获失败；独立复测控制器尚无完整PLL通过证据，不能继承旧低端通过或噪声结果。
+- 细调搜索非平稳现象已确认，根因未隔离；复测与单步修正仍可能耗尽预算或遇到非单调调谐，按真实结果判定。
+- 候选尚未采用且噪声/杂散未测；原115.2fs不可继承，全带10kHz至fOUT/2 RMS<200fs目标保持。
+- 稀疏TT验证不覆盖PVT、供电爬升、切频及恢复；功耗8.050093mW历史值高于4mW，面积/无源实现未知，优化与后端后置。
+next_steps:
+- 仅跟随research/rt4_recheck_pipeline.json的detached_recovery及第102次唯一回收器，原派发owner/runner、range48和历史队列不得重启。
+- 继续用research/audit_rt4_recheck101.py UNIQUE.json实查；回收完成后用review_rt4_recheck.py新输出文件检查120µs轨迹、复测计数/DAC、8次预算、交接、qualified/frequency_good和重启。
+- 若再次发生本地进程消失，先核对远端和既有回收claim，不重派仿真。读取失败或本地退出不能当作远程结束。
+- 仅在完整结果提出具体问题后开展少量AX8ps/1e-3 TT定向修正；不扩大矩阵、不强制码、不混合版本通过结论。
+decisions_since_last: []
+resources_note: 23:24实际检查：远程PID216552、SSD目录aafa4165保持，仿真推进到59.988µs/120µs，raw 64655360字节；1长任务、4请求线程。输入哈希、SSD cwd/TMPDIR、AX8ps/1e-3及traponly均核验，无终止摘要、退出标记或新增数值恢复信息。新增固定run/case/SSD目录的独立回收器，使用独占claim，复用research/rt4_recheck_pipeline.json记录waiting_existing_remote；原派发owner和runner不重启。该入口无仿真派发或停止动作，读失败退避，48小时有界监控。
