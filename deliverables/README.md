@@ -1,4 +1,4 @@
-本次快照：[第99次汇报](../reports/2026-10-13T1322.yaml)。独立4.8fF RT4候选的336MHz完整PLL捕获通过：末1µs平均336.000035MHz，粗码249，控制电压0.853–0.879V；约56.504µs起持续qualified至64µs。456/672/984MHz仍由原流水线运行，原4.4fF已采用基线保留。
+本次快照：[第100次汇报](../reports/2026-10-13T1422.yaml)。独立4.8fF RT4候选新增456/672MHz完整PLL捕获通过，末1µs平均456.000009/672.000067MHz；连同此前336MHz，三个低端饱和点均已修正。三项均约56.504µs后持续qualified至64µs，锁定期间最差测频偏差6.821ppm。984MHz仍由原流水线运行，原4.4fF已采用基线保留。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)
