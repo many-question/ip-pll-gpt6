@@ -1,0 +1,111 @@
+{
+  "time": "2026-10-13T16:16:08.382253+08:00",
+  "protocol": "share/deliverables/integration/cmos_v14_full/results/rt4_range48_repair_protocol.json",
+  "protocol_sha256": "b5b5e091888ced47e8e9880d9f535a39b22104fc17737ce85494c7dce4ebee65",
+  "candidate_sha256": "818a458731b1c437199cd271262b392c120218dbabbe8e8eb90c733cd0f514df",
+  "waveforms_path": "research/runs/spectre_cmos_v14_full/rt4r48k41ssd01/rt4r48_k41_tt/waveforms.npz",
+  "waveforms_sha256": "c11ca295920a960446087b7fb677d48da1e8f1acc0223d169518235fcd3bb2d5",
+  "analysis_script_sha256": "15c93f56625c4e862b9a9291e025a843b119c6241207bdf268b678c307b16550",
+  "result": {
+    "kind": "capture",
+    "run": "rt4r48k41ssd01",
+    "case": "rt4r48_k41_tt",
+    "k": 41,
+    "m": 4,
+    "target_out_mhz": 984,
+    "target_rf_mhz": 3936.0,
+    "stop_s": 6.4e-05,
+    "tb_sha256": "db7c0d8f71a064ab3900c2502f608b35c0887c450479f8be62a2a1b08000bc35",
+    "source_case": "rt4_fast_k41_tt",
+    "source_tb_sha256": "d6a0721d78771547ec615e285b1aec07cc23ebeba03e9087f6509bfb1fa3f408",
+    "state": "completed",
+    "source_result": "research/runs/spectre_cmos_v14_full/rt4r48k41ssd01/rt4r48_k41_tt/result.json",
+    "source_result_sha256": "c1741689d9d4f1602475837c67285e32891c649a69bf7935848138fd01c7f0d6",
+    "effective": {
+      "reltol": 0.001,
+      "abstol(V)": 1e-06,
+      "abstol(I)": 1e-12,
+      "method": "traponly",
+      "maxstep": 8e-12
+    },
+    "raw_sha256": "c6916509378894b5e517e57bcb5858a744405748256cac96a41dc27f5593d211",
+    "raw_bytes": 68957609,
+    "numerical_messages": {
+      "newton": 0,
+      "skipped": 0,
+      "lte": 0
+    },
+    "final_time_s": 6.399999999997539e-05,
+    "input_hashes_verified": true,
+    "output_mhz": 986.9994712089392,
+    "rf_mhz": 3947.9975563413464,
+    "output_relative_error": 0.0030482430985154796,
+    "output_relative_spread": 1.4687585041051867e-05,
+    "qualified_fraction": 0.0,
+    "frequency_good_fraction": 0.0,
+    "range_error_max_v": 0.00385466895097158,
+    "control_v": [
+      0.8145789182097576,
+      0.8767335110010459
+    ],
+    "coarse_code_final": 19,
+    "acquired_final": true,
+    "fast_functional_screen_passed": false,
+    "interpretation": "Did not meet quick capture gates within64us; not proof of permanent inability to lock."
+  },
+  "finite_physical_waveforms": true,
+  "points": 32001,
+  "transitions": {
+    "qualified": [],
+    "frequency_good": [],
+    "XP.XC.acquired": [
+      {
+        "time_s": 5.358599999997779e-05,
+        "high": true
+      }
+    ],
+    "range_error": []
+  },
+  "continuous_qualified_start_s": null,
+  "windows": {
+    "last_1us": {
+      "start_s": 6.299999999997539e-05,
+      "end_s": 6.399999999997539e-05,
+      "observer_samples": 24,
+      "output_mhz_min_mean_max": [
+        986.9919749849942,
+        986.9994712089392,
+        987.0064275686746
+      ],
+      "max_absolute_frequency_error_ppm": 3055.312569791191,
+      "mean_frequency_error_ppm": 3048.2430985154797,
+      "qualified_fraction": 0.0,
+      "frequency_good_fraction": 0.0,
+      "range_error_max_v": 0.00385466895097158,
+      "control_v_min_max": [
+        0.8145789182097576,
+        0.8767335110010459
+      ]
+    },
+    "last_4us": {
+      "start_s": 5.999999999997538e-05,
+      "end_s": 6.399999999997539e-05,
+      "observer_samples": 96,
+      "output_mhz_min_mean_max": [
+        986.9891035452604,
+        987.0052936952216,
+        987.1020088603254
+      ],
+      "max_absolute_frequency_error_ppm": 3152.4480287861147,
+      "mean_frequency_error_ppm": 3054.160259371441,
+      "qualified_fraction": 0.0,
+      "frequency_good_fraction": 0.0,
+      "range_error_max_v": 0.004658923647678921,
+      "control_v_min_max": [
+        0.8145789182097576,
+        0.8896890393491871
+      ]
+    }
+  },
+  "boundary": "One TT AX functional capture. Frequency observations are not jitter. No full-band noise, PVT, all-code overlap, other-frequency pass or candidate adoption inferred."
+}

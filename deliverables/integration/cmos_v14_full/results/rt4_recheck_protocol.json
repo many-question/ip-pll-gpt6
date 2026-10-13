@@ -1,0 +1,76 @@
+{
+  "time": "2026-10-13T16:25:45.040604+08:00",
+  "scope": "Independent RT4 range48 candidate with measured, bounded fine recheck.\n\nNo fixed coarse/DAC override. Existing issued circuits and protocols stay intact.\n",
+  "candidate_top": "share/deliverables/blocks/cmos_v14_full/pll_capture_rt4_r48_recheck_v14.scs",
+  "candidate_sha256": "93ff38d6bad4283484e1126d3b92433d9a9f70bfb4d291d882e5ad2061073391",
+  "candidate_adopted": false,
+  "cases": [
+    {
+      "kind": "capture",
+      "run": "rt4recheckk41ssd01",
+      "case": "rt4r48_recheck_k41_tt",
+      "k": 41,
+      "m": 4,
+      "target_out_mhz": 984,
+      "target_rf_mhz": 3936.0,
+      "stop_s": 0.00012,
+      "tb_sha256": "840daa2b240a77ccb2bcfbf4f8389d94f1fad1e84f9f00028b69157e757428e8",
+      "source_case": "rt4_fast_k41_tt",
+      "source_tb_sha256": "d6a0721d78771547ec615e285b1aec07cc23ebeba03e9087f6509bfb1fa3f408"
+    }
+  ],
+  "mode": "ax",
+  "preset_override": "all",
+  "maxstep_s": 8e-12,
+  "reltol": 0.001,
+  "method": "traponly",
+  "noise": false,
+  "capture_screen": {
+    "window_s": 1e-06,
+    "mean_frequency_relative_error_limit": 0.005,
+    "window_frequency_relative_spread_limit": 0.005,
+    "qualified_high_fraction_min": 0.99,
+    "frequency_good_high_fraction_min": 0.99,
+    "range_error_max_v": 0.2
+  },
+  "changes": [
+    "Keep coarse and fine SAR; remeasure selected DAC after32-ref settling.",
+    "Correct by one DAC count according to fresh measured frequency, within11..53.",
+    "Require two consecutive128-ref windows within1 count of target before normal handoff.",
+    "At most8 rechecks; exhausted budget or rail -> range_error, no enable."
+  ],
+  "rationale": "Completed range48 K41 shows stale measured-best DAC46 and RF drift before handoff; causal source remains unresolved. Test recheck/correction directly, no forced code.",
+  "unchanged": "4.8fF analog circuit, Q5/CF10, bias, RT4, divider, sampler, CP, filter, supervisor and original adopted4.4fF baseline.",
+  "mapped": {
+    "name": "fll_recheck128_v14",
+    "cells": 1408,
+    "types": {
+      "$_DFF_PP0_": 44,
+      "$_DFF_PP1_": 20,
+      "$_MUX_": 390,
+      "$_NOT_": 135,
+      "$_AND_": 382,
+      "$_XOR_": 139,
+      "$_OR_": 298
+    },
+    "rtl_sha256": "a8a2934ef3cc1e73a32d21247539a33c160ea682e9adcc86f6e99c44343fb12f"
+  },
+  "condition": "TT27, 1.2V, 24MHz, 10fF, original selected RT4 physical dependencies including candidate4.8fF bank and Q5 RLC.",
+  "capture_initialization": "Independent reset/apply; supply already DC1.2V; 10uV differential seed only. No forced slow controls or near-lock state.",
+  "dispatch_gate": "Mapped-graph directed tests pass; no existing owned Spectre jobs/local range48 workers. One cold K41 capture only. No automatic replay or more cases.",
+  "stop_reason": "120us bounds original search plus at most8 extra6.833us checks and >=10us post-handoff observation.",
+  "resource_cap": {
+    "threads": 18,
+    "long_jobs": 4,
+    "short_jobs": 1
+  },
+  "evidence_boundary": "Unadopted controller/4.8fF candidate. Original three low-end passes do not transfer to modified controller. No jitter or full range acceptance.",
+  "physical_inputs_sha256": {
+    "share/deliverables/blocks/cmos_v14_full/fll_recheck128_v14.v": "a8a2934ef3cc1e73a32d21247539a33c160ea682e9adcc86f6e99c44343fb12f",
+    "share/deliverables/blocks/cmos_v14_full/fll_recheck128_v14_mapped.json": "b1ee8928f034f03ca64d319799b5fa91b4d63284f249f2a094ead77767472aa1",
+    "share/deliverables/blocks/cmos_v14_full/fll_recheck128_v14.scs": "75191c049e782acd4997a2b8b4d20ea11a40cb1b30435b43627e63753eb3bc3f",
+    "share/deliverables/blocks/cmos_v14_full/pll_control_recheck_v14.scs": "45dc7a9e8a9b81633202a2784fcd91adfc4381527eee0b4e1f578f71796d849a",
+    "share/deliverables/blocks/cmos_v14_full/pll_capture_rt4_r48_recheck_v14.scs": "93ff38d6bad4283484e1126d3b92433d9a9f70bfb4d291d882e5ad2061073391",
+    "share/deliverables/integration/cmos_v14_full/tb/rt4r48_recheck_k41_tt.scs": "840daa2b240a77ccb2bcfbf4f8389d94f1fad1e84f9f00028b69157e757428e8"
+  }
+}

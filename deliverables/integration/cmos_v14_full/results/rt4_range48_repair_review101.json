@@ -1,0 +1,535 @@
+{
+  "time": "2026-10-13T16:33:28+08:00",
+  "summary": "4.8fF RT4候选984MHz已完成64µs，但未锁定：末1µs平均986.999471MHz，qualified/frequency_good均为0；336/456/672MHz三项通过结论保留。细调选中码的早期计数与交接前频率不一致，已启动一个增加交接前复测与逐步修正的独立MOS控制器候选，仅重验984MHz，AX8ps/1e-3。",
+  "all_six_original_candidate_jobs_completed": true,
+  "validation_snapshot": {
+    "time": "2026-10-13T16:30:23.888045+08:00",
+    "protocol_sha256": "b5b5e091888ced47e8e9880d9f535a39b22104fc17737ce85494c7dce4ebee65",
+    "cases": [
+      {
+        "kind": "tuning",
+        "run": "rt4r48lowssd01",
+        "case": "rt4r48_range_c255_v02",
+        "coarse_code": 255,
+        "control_v": 0.2,
+        "m": 14,
+        "stop_s": 4e-07,
+        "output_start_s": 3.4e-07,
+        "tb_sha256": "0ef02fb42d84459b9ba69deb4452e5abc42e7f0845e95ff6a5ffe7a00504bb47",
+        "source_case": "rt4_fast_range_c255_v02",
+        "source_tb_sha256": "819fd55dd7a727b6fe524bbc9453f334ea9657726b64f3e75dd0c1dc716e649b",
+        "state": "completed",
+        "source_result": "research/runs/spectre_cmos_v14_full/rt4r48lowssd01/rt4r48_range_c255_v02/result.json",
+        "source_result_sha256": "87b3a024b4b3cc3e5e85f05deef95ab6c4a20f984227fe8267eea48ce55e2f36",
+        "effective": {
+          "reltol": 0.001,
+          "abstol(V)": 1e-06,
+          "abstol(I)": 1e-12,
+          "method": "traponly",
+          "maxstep": 8e-12
+        },
+        "raw_sha256": "1bba35551d2bffb49d390a2d5168aec6d5e893b567b00bce4e0a2e1448493e37",
+        "raw_bytes": 7118653,
+        "numerical_messages": {
+          "newton": 0,
+          "skipped": 0,
+          "lte": 0
+        },
+        "final_time_s": 4e-07,
+        "input_hashes_verified": true,
+        "rf_mhz": 2666.0741315342225,
+        "output_mhz": 190.26725651989227,
+        "differential_swing_pp_v": 1.4698986267446799,
+        "divider_ratio_ok": true,
+        "metadata_excluded_from_finiteness": [
+          "units"
+        ],
+        "finite_waveforms": true,
+        "points": 9872
+      },
+      {
+        "kind": "tuning",
+        "run": "rt4r48highssd01",
+        "case": "rt4r48_range_c0_v10",
+        "coarse_code": 0,
+        "control_v": 1.0,
+        "m": 4,
+        "stop_s": 4e-07,
+        "output_start_s": 3.4e-07,
+        "tb_sha256": "3252427dee2c85d18c4568401a6fba77aafbc498c3f26f918ef181981bc1ce70",
+        "source_case": "rt4_fast_range_c0_v10",
+        "source_tb_sha256": "0969115fd8efd83e57b80ca9bafa376227be36966b03514f747afd8ff7298530",
+        "state": "completed",
+        "source_result": "research/runs/spectre_cmos_v14_full/rt4r48highssd01/rt4r48_range_c0_v10/result.json",
+        "source_result_sha256": "bc26a0ee82240519fcf156c757e5bae09ed74c3535c04e61f674d9eb075b2532",
+        "effective": {
+          "reltol": 0.001,
+          "abstol(V)": 1e-06,
+          "abstol(I)": 1e-12,
+          "method": "traponly",
+          "maxstep": 8e-12
+        },
+        "raw_sha256": "d2573c4ea0c20b177ebb60ac3b4ae80b13400518afc0d902bd2e70c7b5863a7b",
+        "raw_bytes": 8060395,
+        "numerical_messages": {
+          "newton": 0,
+          "skipped": 0,
+          "lte": 0
+        },
+        "final_time_s": 4e-07,
+        "input_hashes_verified": true,
+        "rf_mhz": 4158.721627571749,
+        "output_mhz": 1039.6538199333243,
+        "differential_swing_pp_v": 1.809704918730621,
+        "divider_ratio_ok": true,
+        "metadata_excluded_from_finiteness": [
+          "units"
+        ],
+        "finite_waveforms": true,
+        "points": 11181
+      },
+      {
+        "kind": "capture",
+        "run": "rt4r48k14ssd01",
+        "case": "rt4r48_k14_tt",
+        "k": 14,
+        "m": 8,
+        "target_out_mhz": 336,
+        "target_rf_mhz": 2688.0,
+        "stop_s": 6.4e-05,
+        "tb_sha256": "37e005556848d2eed7c5846a20ae4beadb2e87a4dae77978d0315f4d6b91a2ae",
+        "source_case": "rt4_fast_k14_tt",
+        "source_tb_sha256": "2045d4cee7df05c8979dfe19cbc1b89d90c72ba9f6a32ab93e84c17b628fb802",
+        "state": "completed",
+        "source_result": "research/runs/spectre_cmos_v14_full/rt4r48k14ssd01/rt4r48_k14_tt/result.json",
+        "source_result_sha256": "4277c61702c482a933f7f26013c307c7d1a560b0bc36478a3c3347adbcc0a58f",
+        "effective": {
+          "reltol": 0.001,
+          "abstol(V)": 1e-06,
+          "abstol(I)": 1e-12,
+          "method": "traponly",
+          "maxstep": 8e-12
+        },
+        "raw_sha256": "58574c358a81d6dd549a97574ffea32fea629c2790a50e7de8fa08b79a62585d",
+        "raw_bytes": 68899874,
+        "numerical_messages": {
+          "newton": 0,
+          "skipped": 0,
+          "lte": 0
+        },
+        "final_time_s": 6.399999999997539e-05,
+        "input_hashes_verified": true,
+        "output_mhz": 336.0000353266987,
+        "rf_mhz": 2688.000270458666,
+        "output_relative_error": 1.0513898418551548e-07,
+        "output_relative_spread": 9.814449315724363e-06,
+        "qualified_fraction": 1.0,
+        "frequency_good_fraction": 1.0,
+        "range_error_max_v": 0.002094624657135664,
+        "control_v": [
+          0.8532503893560581,
+          0.8787059879792296
+        ],
+        "coarse_code_final": 249,
+        "acquired_final": true,
+        "fast_functional_screen_passed": true,
+        "metadata_excluded_from_finiteness": [],
+        "finite_waveforms": true,
+        "points": 32001
+      },
+      {
+        "kind": "capture",
+        "run": "rt4r48k19ssd01",
+        "case": "rt4r48_k19_tt",
+        "k": 19,
+        "m": 6,
+        "target_out_mhz": 456,
+        "target_rf_mhz": 2736.0,
+        "stop_s": 6.4e-05,
+        "tb_sha256": "2bfd54f250fb820a76a64343bf760d255d9d56f0a5155023b85cc9836194e60d",
+        "source_case": "rt4_fast_k19_tt",
+        "source_tb_sha256": "72972fbb319b5631f0ead2acb66a2c075dc1a0b24a69e016d562e02f50b13712",
+        "state": "completed",
+        "source_result": "research/runs/spectre_cmos_v14_full/rt4r48k19ssd01/rt4r48_k19_tt/result.json",
+        "source_result_sha256": "3f66ae71cc7f3815f1451c68e678257425a1395cde369eb75bb615e6f6d7a9ec",
+        "effective": {
+          "reltol": 0.001,
+          "abstol(V)": 1e-06,
+          "abstol(I)": 1e-12,
+          "method": "traponly",
+          "maxstep": 8e-12
+        },
+        "raw_sha256": "eacf1f585899b9c617a7fd78806fe080817aa903eeb51745f4b07a8899f5830e",
+        "raw_bytes": 68932662,
+        "numerical_messages": {
+          "newton": 0,
+          "skipped": 0,
+          "lte": 0
+        },
+        "final_time_s": 6.399999999997539e-05,
+        "input_hashes_verified": true,
+        "output_mhz": 456.0000092483788,
+        "rf_mhz": 2736.000050399016,
+        "output_relative_error": 2.0281532453481077e-08,
+        "output_relative_spread": 7.5166474408960265e-06,
+        "qualified_fraction": 1.0,
+        "frequency_good_fraction": 1.0,
+        "range_error_max_v": 0.002082068044764216,
+        "control_v": [
+          0.7274129177270983,
+          0.7557273396491736
+        ],
+        "coarse_code_final": 234,
+        "acquired_final": true,
+        "fast_functional_screen_passed": true,
+        "metadata_excluded_from_finiteness": [],
+        "finite_waveforms": true,
+        "points": 32001
+      },
+      {
+        "kind": "capture",
+        "run": "rt4r48k28ssd01",
+        "case": "rt4r48_k28_tt",
+        "k": 28,
+        "m": 4,
+        "target_out_mhz": 672,
+        "target_rf_mhz": 2688.0,
+        "stop_s": 6.4e-05,
+        "tb_sha256": "18e9834432f3900d3ac70fa0099c18e4681aa9df1c3c28b0b5ef3475fdcee6ab",
+        "source_case": "rt4_fast_k28_tt",
+        "source_tb_sha256": "a1fe79e921b1132d3fa30837a9f24fc2c609edbea0ffd40feaad0408012afff1",
+        "state": "completed",
+        "source_result": "research/runs/spectre_cmos_v14_full/rt4r48k28ssd01/rt4r48_k28_tt/result.json",
+        "source_result_sha256": "32f15bc0e478f3769f001aeff85ef9c776d23a3d2b1eb5c1528173752b307d35",
+        "effective": {
+          "reltol": 0.001,
+          "abstol(V)": 1e-06,
+          "abstol(I)": 1e-12,
+          "method": "traponly",
+          "maxstep": 8e-12
+        },
+        "raw_sha256": "cfd244373eac77219355fdf28b5ef6c6d36e3e8a7fc971e3d9da5d74b400210c",
+        "raw_bytes": 68916193,
+        "numerical_messages": {
+          "newton": 0,
+          "skipped": 0,
+          "lte": 0
+        },
+        "final_time_s": 6.399999999997539e-05,
+        "input_hashes_verified": true,
+        "output_mhz": 672.0000665124462,
+        "rf_mhz": 2688.0002427577856,
+        "output_relative_error": 9.897685449011817e-08,
+        "output_relative_spread": 1.0187793512509794e-05,
+        "qualified_fraction": 1.0,
+        "frequency_good_fraction": 1.0,
+        "range_error_max_v": 0.002095280256980481,
+        "control_v": [
+          0.8448807930725634,
+          0.8703395597616808
+        ],
+        "coarse_code_final": 249,
+        "acquired_final": true,
+        "fast_functional_screen_passed": true,
+        "metadata_excluded_from_finiteness": [],
+        "finite_waveforms": true,
+        "points": 32001
+      },
+      {
+        "kind": "capture",
+        "run": "rt4r48k41ssd01",
+        "case": "rt4r48_k41_tt",
+        "k": 41,
+        "m": 4,
+        "target_out_mhz": 984,
+        "target_rf_mhz": 3936.0,
+        "stop_s": 6.4e-05,
+        "tb_sha256": "db7c0d8f71a064ab3900c2502f608b35c0887c450479f8be62a2a1b08000bc35",
+        "source_case": "rt4_fast_k41_tt",
+        "source_tb_sha256": "d6a0721d78771547ec615e285b1aec07cc23ebeba03e9087f6509bfb1fa3f408",
+        "state": "completed",
+        "source_result": "research/runs/spectre_cmos_v14_full/rt4r48k41ssd01/rt4r48_k41_tt/result.json",
+        "source_result_sha256": "c1741689d9d4f1602475837c67285e32891c649a69bf7935848138fd01c7f0d6",
+        "effective": {
+          "reltol": 0.001,
+          "abstol(V)": 1e-06,
+          "abstol(I)": 1e-12,
+          "method": "traponly",
+          "maxstep": 8e-12
+        },
+        "raw_sha256": "c6916509378894b5e517e57bcb5858a744405748256cac96a41dc27f5593d211",
+        "raw_bytes": 68957609,
+        "numerical_messages": {
+          "newton": 0,
+          "skipped": 0,
+          "lte": 0
+        },
+        "final_time_s": 6.399999999997539e-05,
+        "input_hashes_verified": true,
+        "output_mhz": 986.9994712089392,
+        "rf_mhz": 3947.9975563413464,
+        "output_relative_error": 0.0030482430985154796,
+        "output_relative_spread": 1.4687585041051867e-05,
+        "qualified_fraction": 0.0,
+        "frequency_good_fraction": 0.0,
+        "range_error_max_v": 0.00385466895097158,
+        "control_v": [
+          0.8145789182097576,
+          0.8767335110010459
+        ],
+        "coarse_code_final": 19,
+        "acquired_final": true,
+        "fast_functional_screen_passed": false,
+        "interpretation": "Did not meet quick capture gates within64us; not proof of permanent inability to lock.",
+        "metadata_excluded_from_finiteness": [],
+        "finite_waveforms": true,
+        "points": 32001
+      }
+    ],
+    "endpoint_functional_gate": true,
+    "endpoint_gate_requires_separate_remote_terminal_audit": true,
+    "completed": 6,
+    "expected": 6,
+    "candidate_adopted": false,
+    "full_pll_acceptance": false
+  },
+  "completed_terminal_evidence": [
+    {
+      "case": "rt4r48_range_c255_v02",
+      "run": "rt4r48lowssd01",
+      "remote_dir": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/32068acd",
+      "raw_bytes": 7118653,
+      "last_saved_time_s": 4e-07,
+      "raw_end": true,
+      "exit_marker": "0",
+      "remote_inputs_match": true,
+      "completed_output_hashes": {
+        "rt4r48_range_c255_v02.raw/tran.tran.tran": "1bba35551d2bffb49d390a2d5168aec6d5e893b567b00bce4e0a2e1448493e37",
+        "spectre.out": "446dff2da7a780d003946ee7e64a89e71d76d3b2ee08492f7a24dd32d2b3ea73"
+      },
+      "final_state_sha256": "86bae5292c15411091abdeb32f05e292bfa76bf12202ae2368d840b15def05e3",
+      "effective": {
+        "reltol": 0.001,
+        "abstol(V)": 1e-06,
+        "abstol(I)": 1e-12,
+        "method": "traponly",
+        "maxstep": 8e-12
+      },
+      "terminal": "spectre completes with 0 errors, 1 warning, and 15 notices."
+    },
+    {
+      "case": "rt4r48_range_c0_v10",
+      "run": "rt4r48highssd01",
+      "remote_dir": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/7b1e3b21",
+      "raw_bytes": 8060395,
+      "last_saved_time_s": 4e-07,
+      "raw_end": true,
+      "exit_marker": "0",
+      "remote_inputs_match": true,
+      "completed_output_hashes": {
+        "spectre.out": "ec5325e3243e4237753cfb1434e1c9ef0a01855597dd1410bbd3426d1624c239",
+        "rt4r48_range_c0_v10.raw/tran.tran.tran": "d2573c4ea0c20b177ebb60ac3b4ae80b13400518afc0d902bd2e70c7b5863a7b"
+      },
+      "final_state_sha256": "92be8fae369a8fae723ac327b13bc2beb86be9bd65831fd9507a9afac2e98453",
+      "effective": {
+        "reltol": 0.001,
+        "abstol(V)": 1e-06,
+        "abstol(I)": 1e-12,
+        "method": "traponly",
+        "maxstep": 8e-12
+      },
+      "terminal": "spectre completes with 0 errors, 1 warning, and 15 notices."
+    },
+    {
+      "case": "rt4r48_k14_tt",
+      "run": "rt4r48k14ssd01",
+      "remote_dir": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/4914b73c",
+      "raw_bytes": 68899874,
+      "last_saved_time_s": 6.399999999997539e-05,
+      "raw_end": true,
+      "exit_marker": "0",
+      "remote_inputs_match": true,
+      "completed_output_hashes": {
+        "spectre.out": "2cab15a2b4d4e59b38b7006cb474d016608ab53f725c7b4e2d13c4867096a47f",
+        "rt4r48_k14_tt.raw/tran.tran.tran": "58574c358a81d6dd549a97574ffea32fea629c2790a50e7de8fa08b79a62585d"
+      },
+      "final_state_sha256": "5d46926b93b01a632ccbdaee00ac8004551b62f94fb0e5bbfcacaf3819e72fe8",
+      "effective": {
+        "reltol": 0.001,
+        "abstol(V)": 1e-06,
+        "abstol(I)": 1e-12,
+        "method": "traponly",
+        "maxstep": 8e-12
+      },
+      "terminal": "spectre completes with 0 errors, 1 warning, and 14 notices."
+    },
+    {
+      "case": "rt4r48_k19_tt",
+      "run": "rt4r48k19ssd01",
+      "remote_dir": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/5f980f0e",
+      "raw_bytes": 68932662,
+      "last_saved_time_s": 6.399999999997539e-05,
+      "raw_end": true,
+      "exit_marker": "0",
+      "remote_inputs_match": true,
+      "completed_output_hashes": {
+        "spectre.out": "b49867872d0151db3311f2ad5abc54dadc685f690a834dd023e9b1a8090c0902",
+        "rt4r48_k19_tt.raw/tran.tran.tran": "eacf1f585899b9c617a7fd78806fe080817aa903eeb51745f4b07a8899f5830e"
+      },
+      "final_state_sha256": "7ca790345dabfde03d5f78a2bffc47875ea419ddd51716349618602e844e401d",
+      "effective": {
+        "reltol": 0.001,
+        "abstol(V)": 1e-06,
+        "abstol(I)": 1e-12,
+        "method": "traponly",
+        "maxstep": 8e-12
+      },
+      "terminal": "spectre completes with 0 errors, 1 warning, and 14 notices."
+    },
+    {
+      "case": "rt4r48_k28_tt",
+      "run": "rt4r48k28ssd01",
+      "remote_dir": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/bde08baf",
+      "raw_bytes": 68916193,
+      "last_saved_time_s": 6.399999999997539e-05,
+      "raw_end": true,
+      "exit_marker": "0",
+      "remote_inputs_match": true,
+      "completed_output_hashes": {
+        "spectre.out": "4e91f14f6116f15807db57b243c475fda35f4c84cce428ae97af41c8d0b55bf6",
+        "rt4r48_k28_tt.raw/tran.tran.tran": "cfd244373eac77219355fdf28b5ef6c6d36e3e8a7fc971e3d9da5d74b400210c"
+      },
+      "final_state_sha256": "348950098a49180f1a1dc98ab44e31e66892882477a81664b5fbf0cbb32596f7",
+      "effective": {
+        "reltol": 0.001,
+        "abstol(V)": 1e-06,
+        "abstol(I)": 1e-12,
+        "method": "traponly",
+        "maxstep": 8e-12
+      },
+      "terminal": "spectre completes with 0 errors, 1 warning, and 14 notices."
+    },
+    {
+      "case": "rt4r48_k41_tt",
+      "run": "rt4r48k41ssd01",
+      "remote_dir": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/6412784b",
+      "raw_bytes": 68957609,
+      "last_saved_time_s": 6.399999999997539e-05,
+      "raw_end": true,
+      "exit_marker": "0",
+      "remote_inputs_match": true,
+      "completed_output_hashes": {
+        "rt4r48_k41_tt.raw/tran.tran.tran": "c6916509378894b5e517e57bcb5858a744405748256cac96a41dc27f5593d211",
+        "spectre.out": "765577e035ae1e1473954032d0bf7e5bc18f23ad0bc37044ea631b0d9dcf4022"
+      },
+      "final_state_sha256": "4469187e1473b7077094eba6586a14e7260b5ff173e732ee2831dd7400e5831a",
+      "effective": {
+        "reltol": 0.001,
+        "abstol(V)": 1e-06,
+        "abstol(I)": 1e-12,
+        "method": "traponly",
+        "maxstep": 8e-12
+      },
+      "terminal": "spectre completes with 0 errors, 1 warning, and 14 notices."
+    }
+  ],
+  "capture_details": [
+    {
+      "path": "share/deliverables/integration/cmos_v14_full/results/rt4_range48_k14_review99.json",
+      "sha256": "4898581d4b82f85bf1c3bc8e2fd09d20ab6ceb46cbf2fb0eb8a26070ae4e2a68"
+    },
+    {
+      "path": "share/deliverables/integration/cmos_v14_full/results/rt4_range48_k19_review100.json",
+      "sha256": "41ce05f655c918c91d14571e66752964f3b2ce76197c44a233f4bcec0983509b"
+    },
+    {
+      "path": "share/deliverables/integration/cmos_v14_full/results/rt4_range48_k28_review100.json",
+      "sha256": "0c0230e598e4c6a9823c5a452425cb3e2e0cf2fcdc9d72779dfcd77b8c869b08"
+    },
+    {
+      "path": "share/deliverables/integration/cmos_v14_full/results/rt4_range48_k41_review101.json",
+      "sha256": "0879e41d8228699e54e7e1a8f5bf5876f1ef10d8e945b596858563be67fe1101"
+    }
+  ],
+  "search_review": {
+    "path": "share/deliverables/integration/cmos_v14_full/results/rt4_range48_k41_search_review101.json",
+    "sha256": "a48f262e9c81a71c0850216112bb05a21b551198c3fcbf9a5d939e217a016f89"
+  },
+  "original_queue_audit": {
+    "path": "research/heartbeat_range48_20261013_1616.json",
+    "sha256": "7eb249f929e4bdae65c73f979a2e5966aba93cc6b2590f1dbdc0634eb0430c90"
+  },
+  "new_candidate": {
+    "protocol": "share/deliverables/integration/cmos_v14_full/results/rt4_recheck_protocol.json",
+    "sha256": "9b15d24ec8633b922975ba4cc7aca66e0ecc7509a970e49184c73b6dd586b359",
+    "logic": "share/deliverables/integration/cmos_v14_full/results/rt4_recheck_logic101.json",
+    "logic_sha256": "14fe976e571f4800c9c8887d975680e8c40a655fb619520b882fa84ea775cf17",
+    "adopted": false
+  },
+  "new_launch_audit": {
+    "path": "research/heartbeat_recheck_progress101.json",
+    "sha256": "da1fab1e89f671fb575ab36d4eef31d347319baf5c1b475f526561a6ccb7ce60"
+  },
+  "active": [
+    {
+      "case": "rt4r48_recheck_k41_tt",
+      "run": "rt4recheckk41ssd01",
+      "remote_dir": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/aafa4165",
+      "alive": [
+        {
+          "args": [
+            "/home/cadence/spectre/SPECTRE211Hotfix_crack/tools/spectre/bin/64bit/spectre",
+            "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/aafa4165/rt4r48_recheck_k41_tt.scs",
+            "+escchars",
+            "+log",
+            "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/aafa4165/spectre.out",
+            "-format",
+            "psfascii",
+            "-raw",
+            "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/aafa4165/rt4r48_recheck_k41_tt.raw",
+            "+preset=ax",
+            "+mt=4",
+            "-preset_override",
+            "+lqtimeout",
+            "900",
+            "-maxw",
+            "5",
+            "-maxn",
+            "5",
+            "+logstatus",
+            ""
+          ],
+          "pid": 216552,
+          "cwd": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/aafa4165",
+          "tmpdir": [
+            "TMPDIR=/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/aafa4165/tmp"
+          ]
+        }
+      ],
+      "raw_bytes": 151552,
+      "last_saved_time_s": 1.360000000000001e-07,
+      "raw_end": false,
+      "exit_marker": null,
+      "remote_inputs_match": true,
+      "effective": {
+        "reltol": 0.001,
+        "abstol(V)": 1e-06,
+        "abstol(I)": 1e-12,
+        "method": "traponly",
+        "maxstep": 8e-12
+      }
+    }
+  ],
+  "resources": {
+    "time": "2026-10-13T16:30:25.246549+08:00",
+    "jobs": [
+      {
+        "threads": 4,
+        "pid": 216552,
+        "netlist": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/aafa4165/rt4r48_recheck_k41_tt.scs"
+      }
+    ],
+    "requested_threads": 4
+  },
+  "boundary": "Old4.8fF four captures: three passed, K41 failed. New controller has no completed analog result. Keep adopted4.4fF baseline, old4.8fF and new4.8fF/controller evidence distinct. No full range or noise acceptance."
+}
