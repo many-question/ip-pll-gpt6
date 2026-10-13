@@ -1,4 +1,4 @@
-本次快照：[第98次汇报](../reports/2026-10-13T0719.yaml)。独立RT4 4.8fF候选的两个短端点通过：RF 2.666074–4.158722GHz，低端比2.688GHz目标低21.926MHz。已门控派发336/456/672/984MHz四项AX整环复测，尚未出锁定结果。原4.4fF已采用基线保留。
+本次快照：[第99次汇报](../reports/2026-10-13T1322.yaml)。独立4.8fF RT4候选的336MHz完整PLL捕获通过：末1µs平均336.000035MHz，粗码249，控制电压0.853–0.879V；约56.504µs起持续qualified至64µs。456/672/984MHz仍由原流水线运行，原4.4fF已采用基线保留。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)
