@@ -1,4 +1,4 @@
-本次快照：[第103次汇报](../reports/2026-10-14T0035.yaml)。本机再次重启后，RT4复测候选远程原任务继续正常运行；回收改为心跳触发的有界入口，不依赖常驻本地进程。无新增电路性能结论。
+本次快照：[第104次汇报](../reports/2026-10-14T0636.yaml)。984MHz单步复测候选完整120µs仍未锁定：8次修正耗尽预算，安全禁止交接。已启动仅改变复测步长的独立候选，再验一个K41 TT点。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)

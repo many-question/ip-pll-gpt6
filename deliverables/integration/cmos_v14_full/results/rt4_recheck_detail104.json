@@ -1,0 +1,77 @@
+{
+  "time": "2026-10-14T06:35:25.081522+08:00",
+  "review_sha256": "20a24572aff8f778f6a1a88cfcd9ab307d7a1fad42b54ff5ef8ef0edd5f2966d",
+  "remote_audit": "research/heartbeat_recheck_recovered104.json",
+  "remote_audit_sha256": "87b302402f504cde062868b2f4a9629685251fb0de1bc397574f224770afaac4",
+  "physical_points": 60001,
+  "signals": 64,
+  "finite": true,
+  "metadata_units_excluded": true,
+  "terminal": {
+    "exit_code": "0",
+    "errors": 0,
+    "remote_process_absent": true,
+    "raw_end": true,
+    "hashes": {
+      "rt4r48_recheck_k41_tt.raw/tran.tran.tran": "e170294ce19b4af252332fd1a53ca3aeb08158a1f64a66d267c1da52776cff36",
+      "spectre.out": "6578725578c13d3726ad2bc03839bc5fab15ee3650fd27636bc5f6a33f2ff29c"
+    },
+    "final_ic_sha256": "67671fd49bc72688c21b66de9d4db7e00c3b374d09b47c149f0a481331df0d82"
+  },
+  "recheck_target": 5248,
+  "recheck_dac": [
+    44,
+    43,
+    42,
+    41,
+    40,
+    39,
+    38,
+    37
+  ],
+  "recheck_errors": [
+    18,
+    15,
+    15,
+    13,
+    12,
+    11,
+    10,
+    8
+  ],
+  "recheck_eval_times_s": [
+    5.906599999997123e-05,
+    6.589799999997955e-05,
+    7.273199999999453e-05,
+    7.956400000000951e-05,
+    8.63980000000245e-05,
+    9.323200000003948e-05,
+    0.0001000640000000545,
+    0.0001069000000000695
+  ],
+  "state_transitions": {
+    "qualified": [],
+    "frequency_good": [],
+    "range_error": [
+      {
+        "time_s": 0.0001069200000000695,
+        "high": true
+      }
+    ],
+    "XP.en": [],
+    "XP.restart": [],
+    "XP.XC.acquired": []
+  },
+  "handoff_observed": false,
+  "restart_observed": false,
+  "budget_exhausted": true,
+  "last_1us_output_mhz": {
+    "mean": 985.7750093155191,
+    "minimum": 985.7523843655363,
+    "maximum": 985.7986548937624,
+    "worst_abs_error_ppm": 1827.9013147992628
+  },
+  "conclusion": "Complete120us but failed capture. Eight one-code corrections reduce the error but exhaust budget; range_error asserted at106.920us and enable remains low. Protection works; lock does not.",
+  "inference": "Verification correction span is insufficient in this observed run. Underlying slow frequency motion during SAR remains unisolated. Variable1..4-code corrections are a new hypothesis, not a proven fix.",
+  "boundary": "No locked window; no jitter measurement or pass. No inherited passes from other physical/controller versions."
+}

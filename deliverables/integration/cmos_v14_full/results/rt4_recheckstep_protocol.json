@@ -1,0 +1,74 @@
+{
+  "time": "2026-10-14T06:32:09.826628+08:00",
+  "scope": "Independent bounded 1..4-code correction, prompted by eight exhausted checks.",
+  "candidate_top": "share/deliverables/blocks/cmos_v14_full/pll_capture_rt4_r48_recheckstep_v14.scs",
+  "candidate_sha256": "db9d1137650a9d365887a1c67c2567fc5e5094387cbfb94bf1e332445f9660fd",
+  "candidate_adopted": false,
+  "cases": [
+    {
+      "kind": "capture",
+      "run": "rt4stepk41ssd01",
+      "case": "rt4r48_recheckstep_k41_tt",
+      "k": 41,
+      "m": 4,
+      "target_out_mhz": 984,
+      "target_rf_mhz": 3936.0,
+      "stop_s": 0.00012,
+      "tb_sha256": "438181c948d914e241483e056cfb4d4f5461510537ca45dbb147e3499f8e6f08",
+      "source_case": "rt4_fast_k41_tt",
+      "source_tb_sha256": "d6a0721d78771547ec615e285b1aec07cc23ebeba03e9087f6509bfb1fa3f408"
+    }
+  ],
+  "mode": "ax",
+  "preset_override": "all",
+  "maxstep_s": 8e-12,
+  "reltol": 0.001,
+  "method": "traponly",
+  "noise": false,
+  "capture_screen": {
+    "window_s": 1e-06,
+    "mean_frequency_relative_error_limit": 0.005,
+    "window_frequency_relative_spread_limit": 0.005,
+    "qualified_high_fraction_min": 0.99,
+    "frequency_good_high_fraction_min": 0.99,
+    "range_error_max_v": 0.2
+  },
+  "changes": [
+    "Only the verification DAC update changes: step=max(1,min(4,floor(abs(count-target)/2))). Saturate at11..53; next out-of-range correction at a rail fails.",
+    "Keep SAR,32-ref settle,128-ref measure,two consecutive abs(error)<=1,8 checks,normal handoff and120us duration."
+  ],
+  "rationale": "Completed predecessor: recheck errors18,15,15,13,12,11,10,8 at DAC44..37. One-code corrections exhausted8 checks without handoff. Bounded larger steps test this specific limitation; drifting-plant cause remains unresolved.",
+  "unchanged": "4.8fF analog circuit, Q5/CF10, bias, RT4, divider, sampler, CP, filter, supervisor and original adopted4.4fF baseline.",
+  "mapped": {
+    "name": "fll_recheckstep_v14",
+    "cells": 1550,
+    "types": {
+      "$_DFF_PP0_": 44,
+      "$_DFF_PP1_": 20,
+      "$_MUX_": 406,
+      "$_NOT_": 152,
+      "$_AND_": 437,
+      "$_OR_": 333,
+      "$_XOR_": 158
+    },
+    "rtl_sha256": "61c247943680ecd2ce96ad5cdae6d4a50cba780e2b522f81e033faaf6e45df47"
+  },
+  "condition": "TT27, 1.2V, 24MHz, 10fF, original selected RT4 physical dependencies including candidate4.8fF bank and Q5 RLC.",
+  "capture_initialization": "Independent reset/apply; supply already DC1.2V; 10uV differential seed only. No forced slow controls or near-lock state.",
+  "dispatch_gate": "Mapped-graph tests pass; prior task fully collected and independently reviewed; no owned remote jobs. One new K41 TT capture only.",
+  "stop_reason": "120us bounds original search plus at most8 extra6.833us checks and >=10us post-handoff observation.",
+  "resource_cap": {
+    "threads": 18,
+    "long_jobs": 4,
+    "short_jobs": 1
+  },
+  "evidence_boundary": "Separate4.8fF variable-step controller candidate. No inheritance of functional/noise passes from any earlier version.",
+  "physical_inputs_sha256": {
+    "share/deliverables/blocks/cmos_v14_full/fll_recheckstep_v14.v": "61c247943680ecd2ce96ad5cdae6d4a50cba780e2b522f81e033faaf6e45df47",
+    "share/deliverables/blocks/cmos_v14_full/fll_recheckstep_v14_mapped.json": "4edb4fe55349648b747fd174324d85fd292928eedac91f121b4f1db1818fb70f",
+    "share/deliverables/blocks/cmos_v14_full/fll_recheckstep_v14.scs": "6a5695cf5bf1229bb00a4e72790a99620de154da87f5995363327f4381a0fe5d",
+    "share/deliverables/blocks/cmos_v14_full/pll_control_recheckstep_v14.scs": "f4c86b5c20899e970ff60f7828e5ad5a5ad294363ab133ccc9985649a7f8b4e6",
+    "share/deliverables/blocks/cmos_v14_full/pll_capture_rt4_r48_recheckstep_v14.scs": "db9d1137650a9d365887a1c67c2567fc5e5094387cbfb94bf1e332445f9660fd",
+    "share/deliverables/integration/cmos_v14_full/tb/rt4r48_recheckstep_k41_tt.scs": "438181c948d914e241483e056cfb4d4f5461510537ca45dbb147e3499f8e6f08"
+  }
+}
