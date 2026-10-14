@@ -1,0 +1,80 @@
+{
+  "time": "2026-10-14T21:44:27.613539+08:00",
+  "scope": "Fresh-count bounded bisection after SAR; no forced coarse code or longer budget.",
+  "candidate_top": "share/deliverables/blocks/cmos_v14_full/pll_capture_rt4_r48_rebracket108_v14.scs",
+  "candidate_sha256": "dc734107e36592db18ae5d06e101a926b56d7ddc2cff8b1a7264c7f970c89b62",
+  "candidate_adopted": false,
+  "cases": [
+    {
+      "kind": "capture",
+      "run": "rt4bracket108ssd01",
+      "case": "rt4r48_rebracket108_k41_tt",
+      "k": 41,
+      "m": 4,
+      "target_out_mhz": 984,
+      "target_rf_mhz": 3936.0,
+      "stop_s": 0.00012,
+      "tb_sha256": "686698497f5a05ec2c1ec9300995d285100cca7afc8e2d5ae04e4a90369aafc3",
+      "source_case": "rt4_fast_k41_tt",
+      "source_tb_sha256": "d6a0721d78771547ec615e285b1aec07cc23ebeba03e9087f6509bfb1fa3f408"
+    }
+  ],
+  "mode": "ax",
+  "preset_override": "all",
+  "maxstep_s": 8e-12,
+  "reltol": 0.001,
+  "method": "traponly",
+  "noise": false,
+  "capture_screen": {
+    "window_s": 1e-06,
+    "mean_frequency_relative_error_limit": 0.005,
+    "window_frequency_relative_spread_limit": 0.005,
+    "qualified_high_fraction_min": 0.99,
+    "frequency_good_high_fraction_min": 0.99,
+    "range_error_max_v": 0.2
+  },
+  "changes": [
+    "Keep the complete coarse/fine SAR sequence; discard its stale selected-DAC minimum at verification entry.",
+    "Fresh verification starts at midpoint32 of legal interval11..53. Error>1 narrows the upper bound; error<-1 narrows the lower bound; next trial is the interval midpoint.",
+    "Two consecutive fresh abs(error)<=1 at the same DAC are required; contradictory/empty interval or eight-check exhaustion fails without enable.",
+    "No forced coarse code, unchanged32-ref settle/128-ref measurement/8 checks/120us duration and original analog dependencies."
+  ],
+  "rationale": "Variable-step DAC46..26 remained high through eight checks. Real-bias local probe shows coarse19 low-control RF3932.990MHz and coarse20 conditional endpoints3922.517/3939.166MHz. There is tuning headroom under these local conditions, so test fresh bisection rather than assume code19 impossible or increase time/step gain. Analog monotonicity and bias settling remain to be verified in full MOS.",
+  "unchanged": "4.8fF analog circuit, Q5/CF10, bias, RT4, divider, sampler, CP, filter, supervisor and original adopted4.4fF baseline.",
+  "mapped": {
+    "name": "fll_rebracket108_v14",
+    "cells": 1430,
+    "types": {
+      "$_DFF_PP0_": 44,
+      "$_DFF_PP1_": 12,
+      "$_MUX_": 440,
+      "$_NOT_": 121,
+      "$_AND_": 386,
+      "$_XOR_": 145,
+      "$_OR_": 282
+    },
+    "rtl_sha256": "3fd1d8005ed229fda80af9eb318ad5ece6a6859b2dca6b132227ed1932bad221"
+  },
+  "condition": "TT27, 1.2V, 24MHz, 10fF, original selected RT4 physical dependencies including candidate4.8fF bank and Q5 RLC.",
+  "capture_initialization": "Independent reset/apply; supply already DC1.2V; 10uV differential seed only. No forced slow controls or near-lock state.",
+  "dispatch_gate": "Mapped gate-graph tests pass, prior3us diagnostic fully recovered and audited, no owned remote jobs; one independent K41 TT120us capture only.",
+  "stop_reason": "120us bounds original search plus at most8 extra6.833us checks and >=10us post-handoff observation.",
+  "resource_cap": {
+    "threads": 18,
+    "long_jobs": 4,
+    "short_jobs": 1
+  },
+  "evidence_boundary": "New4.8fF/bisection controller candidate, not adopted. Local fixed-code probes inform this test but are not full PLL capture. No inherited low-frequency or noise pass.",
+  "physical_inputs_sha256": {
+    "share/deliverables/blocks/cmos_v14_full/fll_rebracket108_v14.v": "3fd1d8005ed229fda80af9eb318ad5ece6a6859b2dca6b132227ed1932bad221",
+    "share/deliverables/blocks/cmos_v14_full/fll_rebracket108_v14_mapped.json": "94a4ad65e83b3eaf1b5c37a623602ab0b5ec3949d96073fc07f3c0d4c71a4b8e",
+    "share/deliverables/blocks/cmos_v14_full/fll_rebracket108_v14.scs": "1ade17f13f3ac9def30514b465ff54650e3751d570380ec729f88481952d5f4e",
+    "share/deliverables/blocks/cmos_v14_full/pll_control_rebracket108_v14.scs": "c571e41a0990fe3064c8172eb189662396fe608740b86b505f6002b1ac11343d",
+    "share/deliverables/blocks/cmos_v14_full/pll_capture_rt4_r48_rebracket108_v14.scs": "dc734107e36592db18ae5d06e101a926b56d7ddc2cff8b1a7264c7f970c89b62",
+    "share/deliverables/integration/cmos_v14_full/tb/rt4r48_rebracket108_k41_tt.scs": "686698497f5a05ec2c1ec9300995d285100cca7afc8e2d5ae04e4a90369aafc3"
+  },
+  "predecessor_review_sha256": "543d098ab71e8d8004dfd51b389a9e45df150fc41616a5b4e2211fd8baf42280",
+  "threads": 4,
+  "strobe_period_s": 2e-09,
+  "expected_points": 60001
+}

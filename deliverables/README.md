@@ -1,4 +1,4 @@
-本次快照：[第107次汇报](../reports/2026-10-14T2105.yaml)。短诊断确认VCO对滤波偏置敏感：偏置提高10mV使RF降低19.58–19.88MHz。该幅度足以影响启动选码；已转入恢复真实偏置网络的相邻粗码短验证。
+本次快照：[第108次汇报](../reports/2026-10-14T2149.yaml)。真实偏置网络短诊断显示目标附近有调谐余量；已改用新计数二分细调搜索，并启动唯一984MHz完整MOS验证，捕获结果待定。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)
