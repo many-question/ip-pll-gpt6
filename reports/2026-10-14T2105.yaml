@@ -1,0 +1,245 @@
+schema: chip-report/0.1
+report:
+  seq: 107
+  time: '2026-10-14T21:05:49+08:00'
+  trigger: proactive
+  covers_since: '2026-10-14T20:55:24+08:00'
+overall:
+  phase: RT4：偏置敏感性有证据，真实偏置相邻粗码验证中
+  summary: 短诊断确认VCO对滤波偏置敏感：偏置提高10mV使RF降低19.58–19.88MHz。该幅度足以影响启动选码；已转入恢复真实偏置网络的相邻粗码短验证。
+  since_last:
+  - 固定粗码19：偏置0.728V时，控制0.20/0.48/0.84V对应RF3938.203336/3941.065603/3955.914790MHz；偏置0.738V时，对应3918.535434/3921.487385/3936.034783MHz。六段分频比均通过。低偏置钳位下最低测试控制电压仍比3936MHz目标高2.203MHz，高偏置钳位下0.84V接近目标。
+  - 2.4µs局部试验已正常结束；1201有限点、PSF END、退出码0、零错误、输入/raw/日志/final.ic哈希核验；两次终态观察相隔超过60秒且稳定。Spectre耗时7分52.8秒；请求2线程，工具因电路较小实际关闭多线程。
+  - 这是理想偏置与控制钳位的局部RT4负载夹具，不能直接等同整环自然稳态。控制0.48V、钳位0.728V的3941.066MHz与整环末段3939.186MHz仍相差约1.88MHz；夹具去除了偏置RF纹波且负载/历史不同。因此偏置变化是有量化证据的影响因素，但不能据此断言唯一根因或原粗码19绝对不可锁定。
+  - 新任务rt4freebias107ssd01/rt4_freebias107_tt，仅一个3µs TT短任务、2线程，仍AX8ps/1e-3/traponly/noise-off。恢复原VCO的1MΩ/10pF真实偏置网络，仅初始nfilt=.728V并在t=0释放；依次测试粗码19/控制0.20V、粗码20/控制0.20V、粗码20/控制0.84V，各1µs。比较最后300ns频率和偏置漂移，检查相邻粗码调谐余量。
+  route_confidence: medium
+  route_confidence_reason: 短受控试验已量化偏置引起的频移，支持先核对调谐边界再改FLL；仍需真实偏置网络和完整MOS闭环确认。
+levels:
+  survey:
+    maturity: 3
+    note: 保持用户少点、适度精度的TT AX筛查；小方法/种子差异不阻碍开发，本轮不扩展矩阵。
+    artifacts: &id001
+    - share/deliverables/integration/cmos_v14_full/RT4_BIAS_DIAGNOSIS107.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_biasprobe107_review.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_freebias107_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_freebias107_launch.json
+  modeling:
+    maturity: 3
+    note: 固定粗码19：偏置0.728V时，控制0.20/0.48/0.84V对应RF3938.203336/3941.065603/3955.914790MHz；偏置0.738V时，对应3918.535434/3921.487385/3936.034783MHz。六段分频比均通过。低偏置钳位下最低测试控制电压仍比3936MHz目标高2.203MHz，高偏置钳位下0.84V接近目标。
+      这是理想偏置与控制钳位的局部RT4负载夹具，不能直接等同整环自然稳态。控制0.48V、钳位0.728V的3941.066MHz与整环末段3939.186MHz仍相差约1.88MHz；夹具去除了偏置RF纹波且负载/历史不同。因此偏置变化是有量化证据的影响因素，但不能据此断言唯一根因或原粗码19绝对不可锁定。
+    artifacts: *id001
+  architecture:
+    maturity: 4
+    note: RT4主架构保持；新控制器是独立修正候选，已采用4.4fF基线不变。
+    artifacts: *id001
+  blocks:
+  - name: reference_buffer
+    role: 24 MHz 参考整形
+    stage: circuit
+    maturity: 2
+    note: RT4采用现有MOS参考缓冲；taper2未自动合并。真实输入边沿/源阻抗与关键角落未闭合。 本轮该模块未改；可变步长控制器候选不继承已有整环通过结论。
+    artifacts: *id001
+    blockers: []
+  - name: subsampling_detector
+    role: 直接采样差分 VCO 并鉴相
+    stage: circuit
+    maturity: 2
+    note: 现有MOS采样器随RT4采用；TT整环已有证据，角落采样窗口与关键失配待查。 本轮该模块未改；可变步长控制器候选不继承已有整环通过结论。
+    artifacts: *id001
+    blockers: []
+  - name: transconductor_charge_pump
+    role: 采样误差转电流及增益控制
+    stage: circuit
+    maturity: 2
+    note: 现有cp_physical_v14随RT4采用；短尾管等独立候选未合并，失配与角落待查。 本轮该模块未改；可变步长控制器候选不继承已有整环通过结论。
+    artifacts: *id001
+    blockers: []
+  - name: passive_loop_filter
+    role: 环路滤波与稳定性
+    stage: circuit
+    maturity: 2
+    note: 现有tx_loop_filter_v5随RT4采用；稳态TT有效，工艺R/C、容差、尺寸和寄生约束待定。 本轮该模块未改；可变步长控制器候选不继承已有整环通过结论。
+    artifacts: *id001
+    blockers: []
+  - name: lc_vco_and_cap_bank
+    role: 2.688–3.936 GHz 振荡、粗调和模拟细调
+    stage: circuit
+    maturity: 2
+    note: 短诊断确认VCO对滤波偏置敏感：偏置提高10mV使RF降低19.58–19.88MHz。该幅度足以影响启动选码；已转入恢复真实偏置网络的相邻粗码短验证。 固定粗码19：偏置0.728V时，控制0.20/0.48/0.84V对应RF3938.203336/3941.065603/3955.914790MHz；偏置0.738V时，对应3918.535434/3921.487385/3936.034783MHz。六段分频比均通过。低偏置钳位下最低测试控制电压仍比3936MHz目标高2.203MHz，高偏置钳位下0.84V接近目标。
+      这是理想偏置与控制钳位的局部RT4负载夹具，不能直接等同整环自然稳态。控制0.48V、钳位0.728V的3941.066MHz与整环末段3939.186MHz仍相差约1.88MHz；夹具去除了偏置RF纹波且负载/历史不同。因此偏置变化是有量化证据的影响因素，但不能据此断言唯一根因或原粗码19绝对不可锁定。
+    artifacts: *id001
+    blockers: []
+  - name: auxiliary_fll
+    role: 启动捕获和正确谐波选择
+    stage: circuit
+    maturity: 3
+    note: 可变步长8次预算内仍失败，无PLL交接；本次确认偏置能引起约20MHz条件频移，当前仅诊断，不再盲增步长/预算。
+    artifacts: *id001
+    blockers: []
+  - name: programmable_even_divider
+    role: 可编程÷4/6/8/10/12/14 CMOS分频
+    stage: circuit
+    maturity: 2
+    note: bank_pulsetrip_v14随RT4采用；单元六档及接口证据不替代完整33点/切频/角落回归。 本轮该模块未改；可变步长控制器候选不继承已有整环通过结论。
+    artifacts: *id001
+    blockers:
+    - 实际LC全模式、整机代回、重配置与完整PVT仍未完成。
+  - name: output_retimer
+    role: 利用 VCO 派生时钟重定时
+    stage: circuit
+    maturity: 3
+    note: RT4电路保持；原4.4fF的115.2fs仅为高偏移阶段依据。候选336/456/672MHz功能通过，候选噪声未测。 本轮该模块未改；可变步长控制器候选不继承已有整环通过结论。
+    artifacts: *id001
+    blockers: []
+  - name: output_buffer
+    role: 驱动片内轻负载
+    stage: circuit
+    maturity: 3
+    note: 现有RT4输出链/10fF采用；实际负载、边沿及关键角落待定，不沿用原版输出边沿数字。 本轮该模块未改；可变步长控制器候选不继承已有整环通过结论。
+    artifacts: *id001
+    blockers: []
+  - name: bias_and_control
+    role: 偏置、频点配置及状态控制
+    stage: circuit
+    maturity: 2
+    note: 新任务rt4freebias107ssd01/rt4_freebias107_tt，仅一个3µs TT短任务、2线程，仍AX8ps/1e-3/traponly/noise-off。恢复原VCO的1MΩ/10pF真实偏置网络，仅初始nfilt=.728V并在t=0释放；依次测试粗码19/控制0.20V、粗码20/控制0.20V、粗码20/控制0.84V，各1µs。比较最后300ns频率和偏置漂移，检查相邻粗码调谐余量。
+      本地偏置钳位结果不代表生产偏置电路的噪声或启动保证。
+    artifacts: *id001
+    blockers: []
+  - name: rf_clock_receiver
+    role: VCO到CMOS时钟接口
+    stage: circuit
+    maturity: 2
+    note: rf_light24s12_v14随RT4采用；全RF范围、慢热/快冷幅度和时序裕量待查。 本轮该模块未改；可变步长控制器候选不继承已有整环通过结论。
+    artifacts: *id001
+    blockers: []
+  - name: cp_pulse_timing
+    role: 参考后CP脉冲、使能与复位
+    stage: circuit
+    maturity: 2
+    note: 现有MOS脉冲/使能逻辑随RT4采用；角落脉宽和失配待验。 本轮该模块未改；可变步长控制器候选不继承已有整环通过结论。
+    artifacts: *id001
+    blockers: []
+  - name: configuration_and_frequency_supervision
+    role: 频点配置、监督与周期测频
+    stage: circuit
+    maturity: 3
+    note: 本次无acquired/enable/restart，8次复测耗尽后range_error高；监督器安全禁止PLL使能。
+    artifacts: *id001
+    blockers: []
+  - name: phase_and_amplitude_validation
+    role: 锁定判定的物理相位与振幅有效性检测
+    stage: circuit
+    maturity: 2
+    note: 本次qualified/frequency_good始终低，不能把频率接近目标认作锁定。未更改锁定门限。
+    artifacts: *id001
+    blockers: []
+  verification:
+    maturity: 3
+    note: 2.4µs局部试验已正常结束；1201有限点、PSF END、退出码0、零错误、输入/raw/日志/final.ic哈希核验；两次终态观察相隔超过60秒且稳定。Spectre耗时7分52.8秒；请求2线程，工具因电路较小实际关闭多线程。
+      新任务rt4freebias107ssd01/rt4_freebias107_tt，仅一个3µs TT短任务、2线程，仍AX8ps/1e-3/traponly/noise-off。恢复原VCO的1MΩ/10pF真实偏置网络，仅初始nfilt=.728V并在t=0释放；依次测试粗码19/控制0.20V、粗码20/控制0.20V、粗码20/控制0.84V，各1µs。比较最后300ns频率和偏置漂移，检查相邻粗码调谐余量。
+      这是理想偏置与控制钳位的局部RT4负载夹具，不能直接等同整环自然稳态。控制0.48V、钳位0.728V的3941.066MHz与整环末段3939.186MHz仍相差约1.88MHz；夹具去除了偏置RF纹波且负载/历史不同。因此偏置变化是有量化证据的影响因素，但不能据此断言唯一根因或原粗码19绝对不可锁定。
+    artifacts: *id001
+  integration:
+    maturity: 2
+    note: 新试验仍是外部固定码的局部诊断，没有改完整PLL控制器、没有强制粗码作为修复成功。原4.4fF、仅4.8fF、单步、可变步长及局部夹具证据分开。可变步长完整PLL仍失败，最差测频828.660ppm；旧4.8fF三低端6.821ppm不能继承。115.2fs仅原RT4高偏移阶段依据；最终10kHz至fOUT/2排除杂散RMS<200fs不变，功耗与版图后置。
+    artifacts: *id001
+spec_status:
+- id: REQ-01
+  current: 已采用RT4/newbank完整MOS顶层，17,617 MOS
+  condition: Actual full RT4/newbank PLL with transistor FLL/control/watchdog/bias,TT27/1.2V/24MHzref/K41/M4/10fF/Q5RLC/CF10;
+    ideal external reference and supply.
+  evidence: circuit_sim
+  status: on_track
+  note: 17,617 MOS已采用基线及20,813 MOS失败候选保持原记录；当前局部夹具恢复原VCO真实偏置网络，但外部控制和初始化仍属诊断条件。
+- id: REQ-02
+  current: 1.2V运行；当前复位测试供电预先建立
+  condition: 已完成4.8fF四点TT27/1.2V/24MHz/10fF、64µs；单步控制器K41同条件120µs已完成，可变步长候选已完成但捕获失败，供电预先建立。
+  evidence: circuit_sim
+  status: on_track
+  note: 当前主线已改为RT4；以下历史证据仍受原条件限制。供电扫描、爬升和器件端电压可靠性未签核。
+- id: REQ-03
+  current: 24MHz外部准方波，经真实MOS参考缓冲
+  condition: 已完成4.8fF四点TT27/1.2V/24MHz/10fF、64µs；单步控制器K41同条件120µs已完成，可变步长候选已完成但捕获失败，供电预先建立。
+  evidence: circuit_sim
+  status: on_track
+  note: 当前主线已改为RT4；以下历史证据仍受原条件限制。保留实际参考缓冲；参考候选的局部三点收益未合并。实际参考边沿、源阻抗及外部参考噪声未完成。
+- id: REQ-04
+  current: 984MHz可变步长候选未锁定，末1µs984.796534MHz
+  condition: TT27/1.2V/24MHz/10fF，120µs，AX8ps/1e-3；控制器与4.8fF候选独立
+  evidence: circuit_sim
+  status: at_risk
+  note: 末1µs输出平均984.796534MHz，范围984.774493–984.815402MHz，最大绝对测频偏差828.660ppm；qualified/frequency_good始终低。复测DAC46/42/38/34/32/30/28/26，对应计数误差14/11/8/5/5/4/4/3。106.920µs报range_error，无acquired、enable、HANDOFF或restart。频偏不是抖动。
+    原4.4fF已采用基线、仅4.8fF、单步复测、可变步长四版本分开；三个低端锁定及6.821ppm仅属于原4.8fF控制器。新候选不继承噪声，全频不能拼接。115.2fs仅原RT4高偏移阶段依据；最终10kHz至fOUT/2排除杂散RMS<200fs不变。功耗与版图继续后置。
+- id: REQ-05
+  current: 候选RF端点2.666074–4.158722GHz；336/456/672MHz完整PLL锁定
+  condition: 4.8fF RT4，TT27/1.2V/10fF，AX8ps/1e-3；端点400ns夹具与64µs整环分开
+  evidence: circuit_sim
+  status: at_risk
+  note: 固定粗码19：偏置0.728V时，控制0.20/0.48/0.84V对应RF3938.203336/3941.065603/3955.914790MHz；偏置0.738V时，对应3918.535434/3921.487385/3936.034783MHz。六段分频比均通过。低偏置钳位下最低测试控制电压仍比3936MHz目标高2.203MHz，高偏置钳位下0.84V接近目标。
+    这是理想偏置与控制钳位的局部RT4负载夹具，不能直接等同整环自然稳态。控制0.48V、钳位0.728V的3941.066MHz与整环末段3939.186MHz仍相差约1.88MHz；夹具去除了偏置RF纹波且负载/历史不同。因此偏置变化是有量化证据的影响因素，但不能据此断言唯一根因或原粗码19绝对不可锁定。
+    全码重叠和完整PLL同版本全频通过仍未证明。
+- id: REQ-06
+  current: null
+  condition: Actual full RT4/newbank PLL with transistor FLL/control/watchdog/bias,TT27/1.2V/24MHzref/K41/M4/10fF/Q5RLC/CF10;
+    ideal external reference and supply. 1024边沿，5.28515625–492MHz。
+  evidence: circuit_sim
+  status: unknown
+  note: 用户接受RT4最差观察115.195396866fs作为阶段选择依据。小方法/种子偏差不阻碍推进；10kHz起算全带结果仍未知，最终<200fs目标不变。 本4.8fF候选噪声未测，不能继承115.2fs。
+    新控制器候选同样尚无噪声结果。
+- id: REQ-07
+  current: null
+  condition: TT27/1.2V/Q5/984MHz/10fF，CF10/原RT/连续时钟候选/静态慢控制；coretripsupply01无噪声初始化两个250ns窗口、1ps/reltol1e-5/traponly。
+  evidence: circuit_sim
+  status: at_risk
+  note: 完整RT4杂散尚未测完；历史原版局部核心−28.8dBc仅作风险线索，不能移植为RT4结果。目标<−60dBc保持。
+- id: REQ-08
+  current: RT4复位测试末1µs总供电8.050093mW
+  condition: TT27/1.2V/K41/M4/10fF/Q5，64µs独立复位测试，4ps/reltol1e-4，内部步积分。
+  evidence: circuit_sim
+  status: at_risk
+  note: 超4mW；功耗优化继续后置，但最终版图尺寸定型前需处理或由用户另行决定指标。
+- id: REQ-09
+  current: null
+  condition: 含电感、环路滤波器及隔离，暂不计pad。
+  evidence: none
+  status: unknown
+  note: 无布局/工艺无源几何，不能确认<0.3mm²。
+- id: REQ-10
+  current: 仅TT；可变步长K41捕获失败，偏置钳位短诊断已完成，真实偏置相邻粗码短诊断运行中
+  condition: TT27/1.2V/24MHz/10fF；64us/AX8ps/1e-3；旧配对角证据保留原边界。
+  evidence: circuit_sim
+  status: at_risk
+  note: 仍仅TT快速筛查，无新增PVT/温度覆盖；旧角落证据保持局部边界。
+- id: REQ-11
+  current: null
+  condition: TT27/1.2V/K41/M4/10fF；内部边沿观察器，4ps/reltol1e-4。
+  evidence: circuit_sim
+  status: on_track
+  note: 无需刻意优化的用户安排保持；原版43.99%不当作RT4当前测量。
+- id: REQ-12
+  current: 10fF下原基线216/240/288MHz锁定；独立4.8fF候选336/456/672MHz锁定
+  condition: RT4 TT27/1.2V/10fF/Q5；64us/AX8ps/1e-3。
+  evidence: circuit_sim
+  status: on_track
+  note: 两个局部诊断均10fF，不能替代完整PLL同版本全频负载验证。
+questions_for_human:
+- q: 杂散<−60dBc是否采用载波两侧偏移10kHz–fOUT/2内所有离散线、逐条单边功率相对载波的口径？已异步提出，尚未收到确认；方法与电路工作继续。
+  blocking: false
+  since: '2026-10-04'
+- q: 24MHz参考到PLL输入端的10%–90%上升/下降时间、驱动能力或源阻抗是否有预计值？已异步询问，未阻塞现有验证。
+  blocking: false
+  since: '2026-10-04'
+blocked_on: null
+risks:
+- 这是理想偏置与控制钳位的局部RT4负载夹具，不能直接等同整环自然稳态。控制0.48V、钳位0.728V的3941.066MHz与整环末段3939.186MHz仍相差约1.88MHz；夹具去除了偏置RF纹波且负载/历史不同。因此偏置变化是有量化证据的影响因素，但不能据此断言唯一根因或原粗码19绝对不可锁定。
+- 新试验仍是外部固定码的局部诊断，没有改完整PLL控制器、没有强制粗码作为修复成功。原4.4fF、仅4.8fF、单步、可变步长及局部夹具证据分开。可变步长完整PLL仍失败，最差测频828.660ppm；旧4.8fF三低端6.821ppm不能继承。115.2fs仅原RT4高偏移阶段依据；最终10kHz至fOUT/2排除杂散RMS<200fs不变，功耗与版图后置。
+- 偏置、粗码与细调相互影响；真实滤波网络短记录仍不能证明渐近稳态或闭环捕获。
+next_steps:
+- 当前唯一任务rt4freebias107ssd01，协议rt4_freebias107_protocol.json，流水线research/rt4_freebias107_pipeline.json。原biasprobe106和全部长队列已完成，不重派。
+- 每次先读约定、最新交接/manifest。运行research/audit_rt4_freebias107.py UNIQUE.json和poll_rt4_freebias107.py；使用既有thu-xia通道，runner存活由其回收，消失才接续原目录。18请求线程、4长加1短限制保持，全部在SSD。
+- 正常终态后核验输入/raw/日志/final.ic哈希与1501点0–3µs完整有限波形；调用review_rt4_freebias107.py <本次已含final_state_sha256的审计JSON> <新的输出JSON>，避免审计与runner最后下载阶段竞争造成缺字段，禁止覆盖已有输出。
+- 分析原真实偏置网络下粗码19与20的条件调谐边界、分频和漂移，再决定如何让控制器用新计数自动修正选码；不把局部强制码当完整PLL通过，不直接增加长记录预算或扩展频点/角落/方法/种子矩阵。
+decisions_since_last: []
+resources_note: 2.4µs局部试验已正常结束；1201有限点、PSF END、退出码0、零错误、输入/raw/日志/final.ic哈希核验；两次终态观察相隔超过60秒且稳定。Spectre耗时7分52.8秒；请求2线程，工具因电路较小实际关闭多线程。
+  当前1短任务、2请求线程，无长任务。

@@ -1,0 +1,55 @@
+{
+  "time": "2026-10-14T21:02:51.333042+08:00",
+  "purpose": "One short neighboring-code check with the real VCO bias network restored.",
+  "cases": [
+    {
+      "kind": "diagnostic",
+      "case": "rt4_freebias107_tt",
+      "run": "rt4freebias107ssd01",
+      "stop_s": 3e-06,
+      "tb_sha256": "0152347d736cbededb8a10d921f3ba3dcdbee8e7cf36c7bc9e46bc18382db140"
+    }
+  ],
+  "segments": [
+    {
+      "start_s": 0,
+      "end_s": 1e-06,
+      "coarse": 19,
+      "control_v": 0.2
+    },
+    {
+      "start_s": 1e-06,
+      "end_s": 2e-06,
+      "coarse": 20,
+      "control_v": 0.2
+    },
+    {
+      "start_s": 2e-06,
+      "end_s": 3e-06,
+      "coarse": 20,
+      "control_v": 0.84
+    }
+  ],
+  "mode": "ax",
+  "maxstep_s": 8e-12,
+  "reltol": 0.001,
+  "method": "traponly",
+  "threads": 2,
+  "noise": false,
+  "strobe_period_s": 2e-09,
+  "expected_points": 1501,
+  "initialization": "Only differential10uV seed and nfilt=.728V IC, released at t=0; original1Meg/10p bias network retained. Fixed code/control fixture, no FLL/PLL lock claim.",
+  "analysis": "Last300ns per segment: RF/output crossing observer, divider ratio, nfilt range/drift. Compare target3936MHz and current19/adjacent20 coverage. Short observation is not asymptotic steady-state signoff.",
+  "predecessor_review_sha256": "a5d90d12f15e548ae2743303542131fafecfdaeddcfa5575559f7574fa96825f",
+  "source_fixture_sha256": "3252427dee2c85d18c4568401a6fba77aafbc498c3f26f918ef181981bc1ce70",
+  "physical_inputs_sha256": {
+    "share/deliverables/integration/cmos_v14_full/tb/rt4_freebias107_tt.scs": "0152347d736cbededb8a10d921f3ba3dcdbee8e7cf36c7bc9e46bc18382db140"
+  },
+  "boundary": "Local loaded RT4 VCO fixture; original VCO bias circuit restored, but externally fixed codes/control and warm bias IC. Not full PLL capture or adopted code change. No inherited noise/lock pass.",
+  "resource_cap": {
+    "threads": 18,
+    "long_jobs": 4,
+    "short_jobs": 1
+  },
+  "dispatch_gate": "Previous conditional diagnostic fully collected and independently audited, no owned jobs; one new3us short only."
+}

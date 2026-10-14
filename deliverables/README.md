@@ -1,4 +1,4 @@
-本次快照：[第106次汇报](../reports/2026-10-14T2055.yaml)。984MHz可变步长候选完整120µs仍未捕获：误差14降至3计数后耗尽8次预算，未交接PLL。已转入一个2.4µs局部偏置/调谐诊断。
+本次快照：[第107次汇报](../reports/2026-10-14T2105.yaml)。短诊断确认VCO对滤波偏置敏感：偏置提高10mV使RF降低19.58–19.88MHz。该幅度足以影响启动选码；已转入恢复真实偏置网络的相邻粗码短验证。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)
