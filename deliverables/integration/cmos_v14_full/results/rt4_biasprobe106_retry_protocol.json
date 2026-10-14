@@ -1,0 +1,80 @@
+{
+  "time": "2026-10-14T20:49:52.377590+08:00",
+  "purpose": "One short conditional tuning/bias experiment after the step candidate failed.",
+  "cases": [
+    {
+      "kind": "diagnostic",
+      "case": "rt4_biasprobe106_tt",
+      "run": "rt4biasprobe106ssd02",
+      "stop_s": 2.4e-06,
+      "tb_sha256": "1127c0b36d1fe7544b2afe9fcf1eb704cbb95be2479306c52feb419163c900fc"
+    }
+  ],
+  "segments": [
+    {
+      "start_s": 0.0,
+      "end_s": 4e-07,
+      "control_v": 0.2,
+      "bias_v": 0.728,
+      "coarse": 19
+    },
+    {
+      "start_s": 4e-07,
+      "end_s": 8e-07,
+      "control_v": 0.48,
+      "bias_v": 0.728,
+      "coarse": 19
+    },
+    {
+      "start_s": 8e-07,
+      "end_s": 1.2e-06,
+      "control_v": 0.84,
+      "bias_v": 0.728,
+      "coarse": 19
+    },
+    {
+      "start_s": 1.2e-06,
+      "end_s": 1.6e-06,
+      "control_v": 0.84,
+      "bias_v": 0.738,
+      "coarse": 19
+    },
+    {
+      "start_s": 1.6e-06,
+      "end_s": 2e-06,
+      "control_v": 0.48,
+      "bias_v": 0.738,
+      "coarse": 19
+    },
+    {
+      "start_s": 2e-06,
+      "end_s": 2.4e-06,
+      "control_v": 0.2,
+      "bias_v": 0.738,
+      "coarse": 19
+    }
+  ],
+  "mode": "ax",
+  "maxstep_s": 8e-12,
+  "reltol": 0.001,
+  "method": "traponly",
+  "threads": 2,
+  "noise": false,
+  "bias_choice": "0.728V late and0.738V during SAR bracket observed nfilt in the completed full MOS run; these are controlled interventions, not autonomous bias operating points.",
+  "analysis": "Compare last150ns RF/output observer frequencies at three control levels and two clamped bias levels. Verify divider ratio and within-window drift. No PLL lock inference.",
+  "boundary": "Modified local loaded VCO fixture with ideal bias/control/coarse clamps; no full PLL/controller, no jitter, no adopted circuit modification. Purpose is causal isolation before another long capture.",
+  "physical_inputs_sha256": {
+    "share/deliverables/blocks/cmos_v14_full/lc_core_biasprobe106.scs": "43663dcfa3c5fbd8837c36da909b3f43fdaca63bedaf60d31306ef86accaac99",
+    "share/deliverables/blocks/cmos_v14_full/lc_vco_biasprobe106.scs": "c817741d131e8d56a9c0be19332eaab7a3eb322cd2259850c7426d19c43db804",
+    "share/deliverables/integration/cmos_v14_full/tb/rt4_biasprobe106_tt.scs": "1127c0b36d1fe7544b2afe9fcf1eb704cbb95be2479306c52feb419163c900fc"
+  },
+  "predecessor_review_sha256": "520ad75bc1f9c6ee125cac60645423bd8047d91b4c8f036109f91037a46e7447",
+  "source_fixture_sha256": "3252427dee2c85d18c4568401a6fba77aafbc498c3f26f918ef181981bc1ce70",
+  "resource_cap": {
+    "threads": 18,
+    "long_jobs": 4,
+    "short_jobs": 1
+  },
+  "dispatch_gate": "Prior full capture fully recovered/reviewed; no owned simulations; one new short only.",
+  "transport_repair": "First upload failed before remote directory/launch claim existed. Fresh run02 uses instance SSH config override after bridge .env reload; circuit unchanged."
+}

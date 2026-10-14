@@ -1,0 +1,70 @@
+{
+  "time": "2026-10-14T20:55:24+08:00",
+  "protocol_sha256": "d5d7b6a63855a83621a0d73dbdfb4e30123cac22a2edfd5413e89f8f617ea9ab",
+  "audit": "research/heartbeat_biasprobe_running106.json",
+  "audit_sha256": "2197f4de7bc0dd93024fd6c8caa2645324eef993f56b76f6bd4edd8a821b55e5",
+  "active": {
+    "case": "rt4_biasprobe106_tt",
+    "run": "rt4biasprobe106ssd02",
+    "remote_dir": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/a4a91974",
+    "alive": [
+      {
+        "args": [
+          "/home/cadence/spectre/SPECTRE211Hotfix_crack/tools/spectre/bin/64bit/spectre",
+          "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/a4a91974/rt4_biasprobe106_tt.scs",
+          "+escchars",
+          "+log",
+          "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/a4a91974/spectre.out",
+          "-format",
+          "psfascii",
+          "-raw",
+          "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/a4a91974/rt4_biasprobe106_tt.raw",
+          "+preset=ax",
+          "+mt=2",
+          "-preset_override",
+          "+lqtimeout",
+          "900",
+          "-maxw",
+          "5",
+          "-maxn",
+          "5",
+          "+logstatus",
+          ""
+        ],
+        "pid": 60571,
+        "cwd": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/a4a91974",
+        "tmpdir": [
+          "TMPDIR=/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/a4a91974/tmp"
+        ]
+      }
+    ],
+    "raw_bytes": 61440,
+    "last_saved_time_s": 1.300000000000001e-07,
+    "raw_end": false,
+    "exit_marker": null,
+    "remote_inputs_match": true,
+    "effective": {
+      "reltol": 0.001,
+      "abstol(V)": 1e-06,
+      "abstol(I)": 1e-12,
+      "method": "traponly",
+      "maxstep": 8e-12
+    }
+  },
+  "resources": {
+    "time": "2026-10-14T20:52:57.755956+08:00",
+    "jobs": [
+      {
+        "threads": 2,
+        "pid": 60571,
+        "netlist": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/a4a91974/rt4_biasprobe106_tt.scs"
+      }
+    ],
+    "requested_threads": 2
+  },
+  "transport_note": "首个短诊断在上传前因bridge重载旧SSH配置失败，核验远程目录和launch claim均不存在，未启动Spectre。保留失败记录；新run02在SSH实例构造后覆盖为既有thu-xia通道，并将辅助下载统一到该通道。未改全局SSH配置，未重启原长任务。",
+  "failed_prelaunch_evidence": {
+    "launch_claim_exists": false,
+    "directory_exists": false
+  }
+}
