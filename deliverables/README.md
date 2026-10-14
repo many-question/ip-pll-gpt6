@@ -1,4 +1,4 @@
-本次快照：[第104次汇报](../reports/2026-10-14T0636.yaml)。984MHz单步复测候选完整120µs仍未锁定：8次修正耗尽预算，安全禁止交接。已启动仅改变复测步长的独立候选，再验一个K41 TT点。
+本次快照：[第105次汇报](../reports/2026-10-14T1642.yaml)。原SSH通道断连导致本地runner退出；已通过现有备用通道核验同一服务器并接续原任务的有界监控/回收。远程仿真继续运行，无新增仿真或性能结论。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)
 - [参考负载隔离](integration/cmos_v14_full/REFERENCE_LOADING_DIAGNOSIS.md)
