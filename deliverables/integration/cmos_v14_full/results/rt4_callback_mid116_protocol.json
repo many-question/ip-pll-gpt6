@@ -1,0 +1,85 @@
+{
+  "time": "2026-10-16T06:52:50.832342+08:00",
+  "cases": [
+    {
+      "run": "rt4cbmid116ssd01",
+      "case": "rt4_callback_mid116_tt",
+      "kind": "diagnostic",
+      "stop_s": 7e-06,
+      "strobe_s": 1e-11,
+      "expected_points": 700001,
+      "requested_threads": 2
+    }
+  ],
+  "threads": 2,
+  "mode": "ax",
+  "maxstep_s": 8e-12,
+  "reltol": 0.001,
+  "method": "traponly",
+  "noise": false,
+  "condition": "TT27/1.2V/24MHz/10fF, frozen callback110 geometry and analog parameters.",
+  "purpose": "Measure the actual new-counter sign at fresh-verification starting midpoint DAC32, paired with completed115 DAC49/+6 counts. Determine whether these two physical-DAC points bracket target5248 under matched local conditions, without another coarse-code sweep.",
+  "selection_basis": "DAC32 is the unchanged controller fresh-search midpoint, not a fitted next code inferred from49 without its search bounds.115 measured5254 edges/counts with actual control about.899V and evolving free bias. Only DAC source bits0/4 change; all circuit loading, initial conditions, gate timing and7us record remain identical.",
+  "coarse": 8,
+  "dac": 32,
+  "ideal_unloaded_dac_V": 0.6,
+  "target_count": 5248,
+  "target_rf_Hz": 3936000000.0,
+  "count_gate_half_crossings_s": [
+    1.500005e-06,
+    6.833338333333333e-06
+  ],
+  "measurement_duration_s": 5.333333333333334e-06,
+  "counter_snapshot_window_s": [
+    6.97e-06,
+    7e-06
+  ],
+  "measurement_window_s": [
+    1.500005e-06,
+    6.833338333333333e-06
+  ],
+  "frequency_windows_s": [
+    [
+      1.7e-06,
+      2e-06
+    ],
+    [
+      3.7e-06,
+      4e-06
+    ],
+    [
+      6.5e-06,
+      6.8e-06
+    ]
+  ],
+  "initialization": "Real1Mohm/10pF bias, nfiltIC.728V released at t0. External fixed coarse8/DAC32; counter reset/gate externally timed. Original clock mux/buffers/counter/snapshot retained as MOS subcircuits.",
+  "unchanged": "Frozen callback110 W/L/NF/M, derived geometry, analog component values and full-PLL RTL/netlist. This fixture adds only existing subcircuits and stimuli; no controller threshold/budget change.",
+  "physical_inputs_sha256": {
+    "share/deliverables/blocks/cmos_v14_full/rt4_callback110_after.scs": "260a50e7e62d0d25cfdfb21d6004a22f31ca38544632329448bea811dcd38f62",
+    "share/deliverables/integration/cmos_v14_full/tb/rt4_callback_mid116_tt.scs": "e2f471acbe6d45900f15264ebe4bc0223889fae058c5dceab6182dd4e487d5a4"
+  },
+  "previous_comparison_sha256": "3caeea6d5629869ee62108bb6c10b69e9018d9b6d6236b5e3b0711df7e28d504",
+  "source_tb_sha256": "d719bd7303862723ff3b517e3ea8d99aadd2a1471c6ddd5b4534210dd5cb1022",
+  "completion": "Two independent terminal observations>=60s,exit0/zero errors,PSF END,input/raw/log/final.ic hashes,700001 finite physical points0..7us.",
+  "evidence_boundary": "Fixed-code local warm-bias diagnostic with externally timed gate, not autonomous SAR, coarse correction, two-window handoff, cold-start full-PLL capture, asymptotic steady state or noise. Differences from114 also include actual DAC/filter/disabledCP/counter loading, not bias-only causation.",
+  "resource_cap": {
+    "threads": 18,
+    "long_jobs": 4,
+    "short_jobs": 1
+  },
+  "prior115_protocol_sha256": "67273d6fffddf22f8cb73fb2faf562185f143995c573127a91b644d19f900cfb",
+  "prior115_review_sha256": "3072b51def456fc4def19318f71b32388e98b040908fb0a7bb9cedc69a9f8701",
+  "prior115_input_sha256": "2c10c6c96a0563badd80c44902d6955f2edd3b61f7c6faada0c34bd7116c9a51",
+  "paired_changes": [
+    {
+      "before": "VD0 (d0 0) vsource dc=1.2",
+      "after": "VD0 (d0 0) vsource dc=0"
+    },
+    {
+      "before": "VD4 (d4 0) vsource dc=1.2",
+      "after": "VD4 (d4 0) vsource dc=0"
+    }
+  ],
+  "paired_boundary": "Independent matched local runs at fixed coarse8, DAC49 versus32. Not sequential autonomous bisection: analog state is reinitialized identically, bias still evolves, and the complete FLL FSM is absent. No two-consecutive-window or lock claim.",
+  "next_decision": "After terminal review compare measured sign, actual control/preset, drift and counter-to-edge agreement. A bracket would support local fine authority only; do not mechanically add DAC points or repeat120us capture."
+}
