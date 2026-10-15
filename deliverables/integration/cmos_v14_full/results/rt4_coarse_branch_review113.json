@@ -1,0 +1,53 @@
+{
+  "time": "2026-10-16T03:53:58.294152+08:00",
+  "comparisons": [
+    {
+      "version": "108",
+      "evidence": "share/deliverables/integration/cmos_v14_full/results/rt4_rebracket109_review.json",
+      "sha256": "54129f5cdafbadc0fd159134ae4a7db586254fce2858d3c381f215b9f8604546",
+      "boundary_trial": {
+        "time_s": 1.539799999999782e-05,
+        "coarse": 18,
+        "dac": 11,
+        "measured_count": 1312,
+        "rf_mhz": 3936.6026209967085
+      },
+      "coarse_target_count": 1312,
+      "high_freq": false,
+      "next_trial": {
+        "time_s": 1.723199999999874e-05,
+        "coarse": 17,
+        "dac": 11,
+        "measured_count": 1315,
+        "rf_mhz": 3945.1690643595075
+      },
+      "predicted_next_coarse": 17,
+      "first_fine_coarse": 19
+    },
+    {
+      "version": "109",
+      "evidence": "share/deliverables/integration/cmos_v14_full/results/rt4_recenter109_review113.json",
+      "sha256": "92aa45d7d5bca3d1effa08c6c963ab22658bf01ee3ee01ae8d2581b691e3d03f",
+      "boundary_trial": {
+        "time_s": 1.539799999999782e-05,
+        "coarse": 18,
+        "dac": 11,
+        "measured_count": 1313,
+        "rf_mhz": 3936.4943336768783
+      },
+      "coarse_target_count": 1312,
+      "high_freq": true,
+      "next_trial": {
+        "time_s": 1.723199999999874e-05,
+        "coarse": 19,
+        "dac": 11,
+        "measured_count": 1309,
+        "rf_mhz": 3927.5742797981957
+      },
+      "predicted_next_coarse": 19,
+      "first_fine_coarse": 20
+    }
+  ],
+  "conclusion": "At coarse18, the observed1312 versus1313 count crosses the unchanged measured>1312 comparator. Replaying the unchanged coarse SAR explains the19 versus20 first-fine selection. The physical/numerical cause of the one-count difference is not isolated; observer instantaneous RF is not the averaged acquisition count.",
+  "no_new_simulation": true
+}
