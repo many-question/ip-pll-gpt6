@@ -1,0 +1,246 @@
+schema: chip-report/0.1
+report:
+  seq: 111
+  time: '2026-10-15T22:37:28+08:00'
+  trigger: handoff
+  covers_since: '2026-10-15T20:25:22+08:00'
+overall:
+  phase: RT4：原109远程监控连接受阻，callback110已交付
+  summary: 三轮心跳SSH握手失败，既有备用通道也超时；原109远端状态待核实。最后成功核验为20:24的66.118/120µs。本轮无新增性能结果。
+  since_last:
+  - 审计及有界回收入口均在远端身份验证前超时；未进入仿真控制或回收阶段。
+  - 本地runner69372身份仍匹配，244项原实现依赖哈希一致；未改动、停止或重启仿真。
+  - 记录连接阻塞并请求检查校园网络/VPN或跳板机；保留自动有界重试，恢复后仅接续原任务。
+  route_confidence: medium
+  route_confidence_reason: 正确工艺的callback替代项目240nm几何假设，但局部VCO变化显著，必须重建新版本整环证据；旧控制器捕获风险仍未消除。
+levels:
+  survey:
+    maturity: 3
+    note: 按用户指定更新后的pdk-callback使用正确TSMC180BCD provider；少量TT模块配对，无角落/种子/方法矩阵扩展。
+    artifacts: &id001
+    - share/deliverables/integration/cmos_v14_full/PDK_CALLBACK110.md
+    - share/deliverables/integration/cmos_v14_full/results/pdk_callback110_parameters.json
+    - share/deliverables/integration/cmos_v14_full/results/pdk_callback110_review.json
+    - share/deliverables/integration/cmos_v14_full/results/pdk_callback110_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/pdk_callback110_structure.json
+    - share/deliverables/integration/cmos_v14_full/results/pdk_callback110_terminal.json
+    - share/deliverables/integration/cmos_v14_full/REMOTE_MONITOR111.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_recenter109_connectivity111.json
+    - share/deliverables/integration/cmos_v14_full/REMOTE_MONITOR111.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_recenter109_connectivity111.json
+  modeling:
+    maturity: 3
+    note: 75种实际尺寸逐项callback，21,479个展开MOS保持W/L/NF/M不变，158条特化定义更新AD/AS/PD/PS/NRD/NRS/SA/SB/SD等。PDK默认WPE关闭；是前仿几何而非真实版图提取。
+    artifacts: *id001
+  architecture:
+    maturity: 4
+    note: RT4主架构不变；新增独立callback几何版，当前109完整MOS捕获及采用基线不变。
+    artifacts: *id001
+  blocks:
+  - name: reference_buffer
+    role: 24 MHz 参考整形
+    stage: circuit
+    maturity: 2
+    note: 参考缓冲平均上升沿延时 319.317005→331.173721ps (+3.713%)；24MHz/60fF/TT配对，其他边沿及角落未验。
+    artifacts: *id001
+    blockers: []
+  - name: subsampling_detector
+    role: 直接采样差分 VCO 并鉴相
+    stage: circuit
+    maturity: 2
+    note: 独立callback版已更新本模块所用MOS几何，尺寸和连接不变；原109版本保留。当前模块尚无callback版完整PLL验证。
+    artifacts: *id001
+    blockers: []
+  - name: transconductor_charge_pump
+    role: 采样误差转电流及增益控制
+    stage: circuit
+    maturity: 2
+    note: CP 脉冲有效跨导绝对值 4.417198→3.742814µS (-15.267%)；±10mV/2ns脉冲/.6V输出钳位，非静态OP跨导。
+    artifacts: *id001
+    blockers: []
+  - name: passive_loop_filter
+    role: 环路滤波与稳定性
+    stage: circuit
+    maturity: 2
+    note: 无源R/C保持不变，开关MOS几何随callback版更新；无新增完整环路稳定性结论。
+    artifacts: *id001
+    blockers: []
+  - name: lc_vco_and_cap_bank
+    role: 2.688–3.936 GHz 振荡、粗调和模拟细调
+    stage: circuit
+    maturity: 2
+    note: 局部VCO RF 3930.439959→3824.247638MHz (-2.702%)；400ns暖偏置局部夹具、固定粗码20/控制.48V，非整环锁定或渐近稳态。
+    artifacts: *id001
+    blockers: []
+  - name: auxiliary_fll
+    role: 启动捕获和正确谐波选择
+    stage: circuit
+    maturity: 3
+    note: 独立callback版已更新本模块所用MOS几何，尺寸和连接不变；原109版本保留。当前模块尚无callback版完整PLL验证。
+    artifacts: *id001
+    blockers: []
+  - name: programmable_even_divider
+    role: 可编程÷4/6/8/10/12/14 CMOS分频
+    stage: circuit
+    maturity: 2
+    note: callback版外部3.936GHz驱动链仍观察到÷4，10fF输出；仅TT局部链，不代表整环全频。
+    artifacts: *id001
+    blockers:
+    - 实际LC全模式、整机代回、重配置与完整PVT仍未完成。
+  - name: output_retimer
+    role: 利用 VCO 派生时钟重定时
+    stage: circuit
+    maturity: 3
+    note: callback版外部3.936GHz驱动链仍观察到÷4，10fF输出；仅TT局部链，不代表整环全频。
+    artifacts: *id001
+    blockers: []
+  - name: output_buffer
+    role: 驱动片内轻负载
+    stage: circuit
+    maturity: 3
+    note: callback版外部3.936GHz驱动链仍观察到÷4，10fF输出；仅TT局部链，不代表整环全频。
+    artifacts: *id001
+    blockers: []
+  - name: bias_and_control
+    role: 偏置、频点配置及状态控制
+    stage: circuit
+    maturity: 2
+    note: 独立callback版已更新本模块所用MOS几何，尺寸和连接不变；原109版本保留。当前模块尚无callback版完整PLL验证。
+    artifacts: *id001
+    blockers: []
+  - name: rf_clock_receiver
+    role: VCO到CMOS时钟接口
+    stage: circuit
+    maturity: 2
+    note: callback版外部3.936GHz驱动链仍观察到÷4，10fF输出；仅TT局部链，不代表整环全频。
+    artifacts: *id001
+    blockers: []
+  - name: cp_pulse_timing
+    role: 参考后CP脉冲、使能与复位
+    stage: circuit
+    maturity: 2
+    note: 独立callback版已更新本模块所用MOS几何，尺寸和连接不变；原109版本保留。当前模块尚无callback版完整PLL验证。
+    artifacts: *id001
+    blockers: []
+  - name: configuration_and_frequency_supervision
+    role: 频点配置、监督与周期测频
+    stage: circuit
+    maturity: 3
+    note: 独立callback版已更新本模块所用MOS几何，尺寸和连接不变；原109版本保留。当前模块尚无callback版完整PLL验证。
+    artifacts: *id001
+    blockers: []
+  - name: phase_and_amplitude_validation
+    role: 锁定判定的物理相位与振幅有效性检测
+    stage: circuit
+    maturity: 2
+    note: 独立callback版已更新本模块所用MOS几何，尺寸和连接不变；原109版本保留。当前模块尚无callback版完整PLL验证。
+    artifacts: *id001
+    blockers: []
+  verification:
+    maturity: 3
+    note: 第110次六项callback短模块验证保持原结论。本轮仅核验本地runner身份与244项原实现哈希；SSH连接阻塞，原109当前远程状态和终态尚未核实，没有新增性能验证。
+    artifacts: *id001
+  integration:
+    maturity: 2
+    note: 独立callback110更新版；旧采用4.4fF与当前4.8fF/recenter109输入均保持原样，不继承锁定、调谐范围或噪声结论。 文本网表实现，无OA编辑、版图或PEX完成声明。
+      原109回收当前受SSH连接阻塞，20:24进度仅为历史观察。
+    artifacts: *id001
+spec_status:
+- id: REQ-01
+  current: 独立callback110完整层次21,479个MOS；原采用基线17,617个MOS保留
+  condition: 当前109控制器层次，固定原尺寸；3组小模块TT27/1.2V/AX8ps/1e-3配对
+  evidence: circuit_sim
+  status: on_track
+  note: 75种实际尺寸逐项callback，21,479个展开MOS保持W/L/NF/M不变，158条特化定义更新AD/AS/PD/PS/NRD/NRS/SA/SB/SD等。PDK默认WPE关闭；是前仿几何而非真实版图提取。
+    全MOS连接不变，callback版整环未仿真。
+- id: REQ-02
+  current: 1.2V运行；当前复位测试供电预先建立
+  condition: 109独立候选K41 TT27/1.2V/24MHz/10fF，120µs AX8ps/1e-3运行中；供电预先建立，冷复位。历史证据保持原版本边界。
+  evidence: circuit_sim
+  status: on_track
+  note: 当前主线已改为RT4；以下历史证据仍受原条件限制。供电扫描、爬升和器件端电压可靠性未签核。
+- id: REQ-03
+  current: 24MHz/60fF参考缓冲平均延时319.317→331.174ps
+  condition: TT27/1.2V，300ns paired AX8ps/1e-3/noise-off
+  evidence: circuit_sim
+  status: on_track
+  note: 只比较callback参数前后；真实源阻抗、参考噪声和角落未闭合。
+- id: REQ-04
+  current: 原109捕获仍运行；callback版只有模块结果
+  condition: TT27/1.2V/24MHz/10fF，120µs，AX8ps/1e-3；控制器与4.8fF候选独立
+  evidence: circuit_sim
+  status: at_risk
+  note: 旧108二分候选交接后未锁并重启的结论保留。原109输入未动；callback版未运行完整PLL，不能继承任何旧版本锁定结论。
+- id: REQ-05
+  current: callback局部VCO 3930.439959→3824.247638MHz
+  condition: 固定粗码20/控制.48V，4.8fF，TT27/1.2V，400ns暖偏置夹具末100ns
+  evidence: circuit_sim
+  status: at_risk
+  note: 频率下降2.702%；不是完整范围扫描或稳态。不同版本调谐/锁定点不得拼接。
+- id: REQ-06
+  current: null
+  condition: Actual full RT4/newbank PLL with transistor FLL/control/watchdog/bias,TT27/1.2V/24MHzref/K41/M4/10fF/Q5RLC/CF10;
+    ideal external reference and supply. 1024边沿，5.28515625–492MHz。
+  evidence: circuit_sim
+  status: unknown
+  note: 最终10kHz至fOUT/2排除杂散RMS<200fs不变；115.2fs仅原RT4高偏移阶段依据。callback版无噪声结果，局部频率变化不代表抖动。
+- id: REQ-07
+  current: null
+  condition: TT27/1.2V/Q5/984MHz/10fF，CF10/原RT/连续时钟候选/静态慢控制；coretripsupply01无噪声初始化两个250ns窗口、1ps/reltol1e-5/traponly。
+  evidence: circuit_sim
+  status: at_risk
+  note: 完整RT4杂散尚未测完；历史原版局部核心−28.8dBc仅作风险线索，不能移植为RT4结果。目标<−60dBc保持。
+- id: REQ-08
+  current: RT4复位测试末1µs总供电8.050093mW
+  condition: TT27/1.2V/K41/M4/10fF/Q5，64µs独立复位测试，4ps/reltol1e-4，内部步积分。
+  evidence: circuit_sim
+  status: at_risk
+  note: 超4mW；功耗优化继续后置，但最终版图尺寸定型前需处理或由用户另行决定指标。
+- id: REQ-09
+  current: null
+  condition: 含电感、环路滤波器及隔离，暂不计pad。
+  evidence: none
+  status: unknown
+  note: callback提供默认器件几何来源，仍无布局或真实无源几何，不能确认<0.3mm²；没有开始版图。
+- id: REQ-10
+  current: 三组模块前后TT配对完成；原109整环仍运行
+  condition: TT27/1.2V/AX8ps/1e-3；无新增PVT/温度覆盖。
+  evidence: circuit_sim
+  status: at_risk
+  note: 不扩展角落、方法或噪声种子矩阵，PVT仍未闭合。
+- id: REQ-11
+  current: null
+  condition: TT27/1.2V/K41/M4/10fF；内部边沿观察器，4ps/reltol1e-4。
+  evidence: circuit_sim
+  status: on_track
+  note: 无需刻意优化的用户安排保持；原版43.99%不当作RT4当前测量。
+- id: REQ-12
+  current: callback RF/÷4/RT4链在10fF下通过局部功能
+  condition: 外部3.936GHz正弦驱动，TT27/1.2V，120ns/AX8ps/1e-3
+  evidence: circuit_sim
+  status: on_track
+  note: 只有局部链负载结果；同版本完整PLL全频负载未验证。
+questions_for_human:
+- q: 杂散<−60dBc是否采用载波两侧偏移10kHz–fOUT/2内所有离散线、逐条单边功率相对载波的口径？已异步提出，尚未收到确认；方法与电路工作继续。
+  blocking: false
+  since: '2026-10-04'
+- q: 24MHz参考到PLL输入端的10%–90%上升/下降时间、驱动能力或源阻抗是否有预计值？已异步询问，未阻塞现有验证。
+  blocking: false
+  since: '2026-10-04'
+- q: 请检查当前校园网络/VPN或SSH跳板机连通性；常用及既有备用通道均握手超时，原109远程状态暂无法核实。
+  blocking: true
+  since: '2026-10-15T22:37:28+08:00'
+blocked_on: 原109远程监控和回收受SSH连接阻塞；不代表仿真本身失败。
+risks:
+- 无法将本地runner存活当作远端运行或完成证据；连接恢复前不启动替代仿真，避免重复任务。
+- callback改变局部VCO RF约−2.7%，旧调谐范围/捕获和噪声不能继承。
+- PDK默认单指不共享扩散、WPE关闭，并非实际版图/PEX；改尺寸需要重新callback。
+- 400ns暖偏置VCO仍有漂移，不能认定某一参数是唯一变化根因。
+- 独立callback110更新版；旧采用4.4fF与当前4.8fF/recenter109输入均保持原样，不继承锁定、调谐范围或噪声结论。
+- 最终全带抖动、杂散、功耗、面积及PVT仍未闭合；功耗与后端后置。
+next_steps:
+- 继续通过既有审计/有界回收入口重试连接；确认同一服务器身份后只接续原109目录，不重启任务。
+- 连接恢复后核验实际远端进程、原输入哈希与终态；完整回收通过原协议门限后再独立review。
+- callback110六项已完成，不重跑；原参数与callback参数证据分开，先回收原109再决定必要少量定向验证。
+decisions_since_last: []
+resources_note: 本轮新仿真0。最后远程核验时仅原109请求4线程；当前远端资源未能重新确认。本地runner身份匹配。

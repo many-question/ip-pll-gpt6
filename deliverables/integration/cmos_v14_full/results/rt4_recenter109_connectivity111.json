@@ -1,0 +1,42 @@
+{
+  "time": "2026-10-15T22:37:28+08:00",
+  "status": "waiting_for_connectivity",
+  "run": "rt4center109ssd01",
+  "case": "rt4r48_recenter109_k41_tt",
+  "consecutive_heartbeat_failures": 3,
+  "previous_attempt": "research/heartbeat_recenter110_20261015_2134_transport_issue.json",
+  "attempts": [
+    {
+      "entry": "audit_rt4_recenter109.py",
+      "exit_code": 1,
+      "error": "SSH banner exchange timeout"
+    },
+    {
+      "entry": "poll_rt4_recenter109.py",
+      "exit_code": 1,
+      "error": "SSH banner exchange timeout"
+    },
+    {
+      "entry": "existing thu-xia-v6 identity probe",
+      "exit_code": 1,
+      "error": "SSH banner exchange timeout"
+    }
+  ],
+  "last_successful_remote_audit": "research/pdk_callback110_terminal_b.json",
+  "last_successful_remote_time": "2026-10-15T20:24:19.900210+08:00",
+  "last_successful_saved_time_s": 6.611799999998003e-05,
+  "last_successful_pid": 305678,
+  "last_successful_remote_directory": "/server_local_ssd/jielu/IP-PLL-GPT6/simulation/cmos_v14_full/d5d431b0",
+  "local_runner": {
+    "pid": 69372,
+    "identity_matches": true,
+    "create_time": 1792037314.6791067
+  },
+  "implementation_files_verified": 244,
+  "remote_completion_not_inferred": true,
+  "new_simulations": 0,
+  "simulation_or_ssh_configuration_modified": false,
+  "impact": "Remote status, terminal verification and recovery cannot currently be performed. Local runner presence does not establish remote liveness.",
+  "request": "Check campus network/VPN or the SSH jump-host connectivity; exact fault location is not established.",
+  "next_action": "Continue bounded heartbeat retries of the existing audit/poll; do not restart or cancel any simulation."
+}
