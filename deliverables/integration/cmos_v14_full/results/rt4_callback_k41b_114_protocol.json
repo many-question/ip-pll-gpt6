@@ -1,0 +1,63 @@
+{
+  "time": "2026-10-16T04:52:38.627942+08:00",
+  "cases": [
+    {
+      "run": "rt4cbk41b114ssd01",
+      "case": "rt4_callback_k41b_114_tt",
+      "kind": "diagnostic",
+      "stop_s": 2e-06,
+      "strobe_s": 1e-11,
+      "expected_points": 200001,
+      "requested_threads": 2
+    }
+  ],
+  "threads": 2,
+  "mode": "ax",
+  "maxstep_s": 8e-12,
+  "reltol": 0.001,
+  "method": "traponly",
+  "noise": false,
+  "condition": "TT27/1.2V/24MHz/10fF, callback110 geometry, unchanged4.8fF bank and real RF/4/RT4 load.",
+  "purpose": "Check whether one estimated K41 coarse code has conditional analog tuning around3936MHz before considering full-PLL capture.",
+  "code_selection_hypothesis": "Completed callback114 code9 yielded RF3913.246/3930.074MHz at.20/.84V, both below3936MHz. Test only adjacent code8 with the same two voltages. Codes9 and8 retain the same b3..b7 tail-current enables; only b0 changes. No full-PLL control override.",
+  "segments": [
+    {
+      "start_s": 0,
+      "end_s": 1e-06,
+      "coarse": 8,
+      "control_V": 0.2,
+      "window_s": [
+        7e-07,
+        1e-06
+      ],
+      "target_MHz": 3936
+    },
+    {
+      "start_s": 1.00001e-06,
+      "end_s": 2e-06,
+      "coarse": 8,
+      "control_V": 0.84,
+      "window_s": [
+        1.7e-06,
+        2e-06
+      ],
+      "target_MHz": 3936
+    }
+  ],
+  "initialization": "Real1Mohm/10pF bias network, nfilt initial .728V released at t0; no DC bias clamp. Same coarse code throughout to avoid a coarse-switch transient between the two measurements.",
+  "unchanged": "callback110 MOS W/L/NF/M and all derived parameters, logic and passives; no controller or adopted baseline edit.",
+  "previous_diagnostic_sha256": "60f8dc14d87894247c86c6194557d8b141b11e67a0ee456ef2527c98724bcd34",
+  "source_tb": "share/deliverables/integration/cmos_v14_full/tb/pdkcb110_vco_after.scs",
+  "source_tb_sha256": "d719bd7303862723ff3b517e3ea8d99aadd2a1471c6ddd5b4534210dd5cb1022",
+  "physical_inputs_sha256": {
+    "share/deliverables/blocks/cmos_v14_full/rt4_callback110_after.scs": "260a50e7e62d0d25cfdfb21d6004a22f31ca38544632329448bea811dcd38f62",
+    "share/deliverables/integration/cmos_v14_full/tb/rt4_callback_k41b_114_tt.scs": "8c3a636dcbe042889398eb6de6744ad77ce0885361285f7b74b6ff51c242927d"
+  },
+  "completion": "Two terminal observations >=60s apart; exit0/zero errors, PSF END, input/raw/log/final.ic hashes,200001 finite points0..2us.",
+  "evidence_boundary": "Two externally fixed-code points at warm bias, not hardware-selected code, full-PLL capture, all-code overlap, asymptotic steady state or noise. Failure to bracket in.20..84V does not prove no solution over the full legal control range.",
+  "resource_cap": {
+    "threads": 18,
+    "long_jobs": 4,
+    "short_jobs": 1
+  }
+}

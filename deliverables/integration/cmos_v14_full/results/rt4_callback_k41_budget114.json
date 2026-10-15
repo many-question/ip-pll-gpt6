@@ -1,0 +1,23 @@
+{
+  "time": "2026-10-16T05:04:17.334557+08:00",
+  "reference_Hz": 24000000.0,
+  "reference_cycles": 128,
+  "measurement_window_s": 5.333333333333334e-06,
+  "acquisition_divide": 4,
+  "output_Hz_per_count": 187500.0,
+  "RF_Hz_per_count": 750000.0,
+  "code8_observed_high_margin_MHz": 0.3806580359691907,
+  "margin_in_ideal_counts": 0.5075440479589208,
+  "formula": "T=128/24MHz; delta_f_acq=1/T; delta_f_RF=4/T",
+  "evidence": [
+    {
+      "path": "share/deliverables/integration/cmos_v14_full/results/rt4_callback_k41_comparison114.json",
+      "sha256": "3caeea6d5629869ee62108bb6c10b69e9018d9b6d6236b5e3b0711df7e28d504"
+    },
+    {
+      "path": "share/deliverables/integration/cmos_v14_full/results/rt4_recenter109_protocol.json",
+      "sha256": "eacfe99d1d2a81833f04ffba50252413ef41e27ebfc5e8eb13a98bc2be1dbb70"
+    }
+  ],
+  "interpretation": "The0.381MHz warm-record high-side margin is smaller than the ideal RF-equivalent one-count resolution0.75MHz. This does not simulate the counter, prove false handoff, or prove PLL failure. It explains why count qualification alone cannot certify this local voltage margin. No threshold, budget, hardware or waveform changed."
+}
