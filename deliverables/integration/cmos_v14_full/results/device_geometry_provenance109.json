@@ -1,0 +1,49 @@
+{
+  "time": "2026-10-15T10:54:45.298531+08:00",
+  "trigger": "Preserve user-requested geometry/LDE provenance review already answered in chat.",
+  "scopes": [
+    {
+      "scope": "adopted_rt4",
+      "mos_definition_rows": 94,
+      "explicit_parameter_counts": {
+        "w": 94,
+        "l": 94,
+        "ad": 94,
+        "as": 94,
+        "pd": 94,
+        "ps": 94,
+        "nf": 2
+      },
+      "note": "Definition rows in dependency files, not expanded physical instance counts."
+    },
+    {
+      "scope": "rebracket108_frozen_inputs",
+      "mos_definition_rows": 94,
+      "explicit_parameter_counts": {
+        "w": 94,
+        "l": 94,
+        "ad": 94,
+        "as": 94,
+        "pd": 94,
+        "ps": 94,
+        "nf": 2
+      },
+      "note": "Definition rows in dependency files, not expanded physical instance counts."
+    }
+  ],
+  "findings": [
+    "AD/AS/PD/PS are explicitly supplied by project-owned geometry formulas or equivalent constants.",
+    "Common formula: AD=AS=W*240nm; PD=PS=2*(W+240nm).",
+    "No explicit SA/SB/SD, SCA/SCB/SCC or NRD/NRS on inspected nch/pch definition rows.",
+    "No verified PDK PCell/CDF or extracted-layout provenance for the 240nm assumption was found in the inspected project sources.",
+    "PDK internal/default LDE behavior was not audited by this source review; absence of instance parameters does not prove absence of model effects."
+  ],
+  "follow_up": "Before layout readiness or new physical-accuracy claims, verify actual PDK device netlisting/geometry and multi-finger/shared-diffusion conventions. This review does not modify or restart the current capture.",
+  "sources_sha256": {
+    "share/deliverables/blocks/transistor_v1/cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+    "share/deliverables/blocks/cmos_v14_full/lc_core_physical_v14.scs": "8edc1b766e04d51405ffd185294fa1c7d6e7f2d2f8ef14f56753c1e84eaeb8b4",
+    "share/deliverables/blocks/cmos_v14_full/cp_physical_v14.scs": "ea3cd7184cafd899db18d5d9286adca6c2ffb861e9af2504afd1ea9bb702cc76",
+    "share/deliverables/integration/transistor_v2/build_divider.py": "661dfa6d372e1129c6d800914269b646cf8664bdd39ba4de15f1b421949e1e07"
+  },
+  "circuit_changed": false
+}

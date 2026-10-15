@@ -1,0 +1,80 @@
+{
+  "time": "2026-10-15T12:05:27.891885+08:00",
+  "scope": "One fresh-count coarse adjustment near a fine-DAC rail; unchanged total budget.",
+  "candidate_top": "share/deliverables/blocks/cmos_v14_full/pll_capture_rt4_r48_recenter109_v14.scs",
+  "candidate_sha256": "1654d2bb89fbb62ddd7aee39f8e825169a86afd5fdf974ea330310b2c4c666df",
+  "candidate_adopted": false,
+  "cases": [
+    {
+      "kind": "capture",
+      "run": "rt4center109ssd01",
+      "case": "rt4r48_recenter109_k41_tt",
+      "k": 41,
+      "m": 4,
+      "target_out_mhz": 984,
+      "target_rf_mhz": 3936.0,
+      "stop_s": 0.00012,
+      "tb_sha256": "9ea005bd0a4c486c9a66f835bd93de67ef77ae1eae71247f5ef205331701a0e1",
+      "source_case": "rt4_fast_k41_tt",
+      "source_tb_sha256": "d6a0721d78771547ec615e285b1aec07cc23ebeba03e9087f6509bfb1fa3f408"
+    }
+  ],
+  "mode": "ax",
+  "preset_override": "all",
+  "maxstep_s": 8e-12,
+  "reltol": 0.001,
+  "method": "traponly",
+  "noise": false,
+  "capture_screen": {
+    "window_s": 1e-06,
+    "mean_frequency_relative_error_limit": 0.005,
+    "window_frequency_relative_spread_limit": 0.005,
+    "qualified_high_fraction_min": 0.99,
+    "frequency_good_high_fraction_min": 0.99,
+    "range_error_max_v": 0.2
+  },
+  "changes": [
+    "Original coarse/fine SAR and fresh fine bisection retained.",
+    "At fresh DAC<=15 with positive count error, increment coarse once; at DAC>=49 with negative error, decrement once. Direction is measured, no forced absolute coarse code.",
+    "After a coarse change restart DAC32/bounds11..53, clear previous good count, and consume the same global eight-check budget. At most one coarse correction; bounds/second correction/budget failure never enables PLL.",
+    "Two fresh abs(error)<=1 measurements at the same coarse/DAC are still required. No change to32-ref settle,128-ref count,8-check cap,120us duration,supervisor or analog geometry."
+  ],
+  "rationale": "Bisection108 reached DAC11/coarse19 and two +1 counts, enabled PLL94.588us but never qualified; RF remained high and supervisor restarted115.920us. Test measured-direction adjacent coarse selection for fine tuning headroom; phase capture and bias drift remain unisolated. Four-code edge margin is an explicit candidate assumption, not a proven PVT limit.",
+  "unchanged": "4.8fF analog circuit, Q5/CF10, bias, RT4, divider, sampler, CP, filter, supervisor and original adopted4.4fF baseline.",
+  "mapped": {
+    "name": "fll_recenter109_v14",
+    "cells": 1609,
+    "types": {
+      "$_DFF_PP1_": 12,
+      "$_DFF_PP0_": 45,
+      "$_MUX_": 506,
+      "$_NOT_": 136,
+      "$_AND_": 426,
+      "$_XOR_": 159,
+      "$_OR_": 325
+    },
+    "rtl_sha256": "8ae1fae3680119ab8cbc0dbd77531e1ad1a10678cca6019d1aca073611afc290"
+  },
+  "condition": "TT27, 1.2V, 24MHz, 10fF, original selected RT4 physical dependencies including candidate4.8fF bank and Q5 RLC.",
+  "capture_initialization": "Independent reset/apply; supply already DC1.2V; 10uV differential seed only. No forced slow controls or near-lock state.",
+  "dispatch_gate": "Mapped graph tests pass;108 capture fully recovered, two stable terminal audits and independent failed-capture review; no owned remote jobs; one K41 TT120us only.",
+  "stop_reason": "120us bounds original search plus at most8 extra6.833us checks and >=10us post-handoff observation.",
+  "resource_cap": {
+    "threads": 18,
+    "long_jobs": 4,
+    "short_jobs": 1
+  },
+  "evidence_boundary": "Independent4.8fF/automatic-coarse-recenter candidate, not adopted. No inherited low-frequency or noise result. Geometry AD/AS/PD/PS still uses assumed240nm diffusion, not layout extraction.",
+  "physical_inputs_sha256": {
+    "share/deliverables/blocks/cmos_v14_full/fll_recenter109_v14.v": "8ae1fae3680119ab8cbc0dbd77531e1ad1a10678cca6019d1aca073611afc290",
+    "share/deliverables/blocks/cmos_v14_full/fll_recenter109_v14_mapped.json": "179da79894a3f8de8c3393afef91342ce06b01ba7ce97c00e8540843913d8a1c",
+    "share/deliverables/blocks/cmos_v14_full/fll_recenter109_v14.scs": "2546b05cd4646dae441c1b6ee7bdcfd8f9203323088415665262f9826fea909c",
+    "share/deliverables/blocks/cmos_v14_full/pll_control_recenter109_v14.scs": "97880912c226fdba877eb31742f83873502336b68d2b844436645104276b52b3",
+    "share/deliverables/blocks/cmos_v14_full/pll_capture_rt4_r48_recenter109_v14.scs": "1654d2bb89fbb62ddd7aee39f8e825169a86afd5fdf974ea330310b2c4c666df",
+    "share/deliverables/integration/cmos_v14_full/tb/rt4r48_recenter109_k41_tt.scs": "9ea005bd0a4c486c9a66f835bd93de67ef77ae1eae71247f5ef205331701a0e1"
+  },
+  "predecessor_review_sha256": "867bf2533c9acf9d8c9490b7bb8e47bdad1707afce90ca94bda6fde6d0df1f80",
+  "threads": 4,
+  "strobe_period_s": 2e-09,
+  "expected_points": 60001
+}
