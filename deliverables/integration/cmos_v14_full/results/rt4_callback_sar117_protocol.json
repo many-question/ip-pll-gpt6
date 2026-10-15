@@ -1,0 +1,46 @@
+{
+  "time": "2026-10-16T07:48:54.909183+08:00",
+  "cases": [
+    {
+      "run": "rt4cbsar117ssd01",
+      "case": "rt4_callback_sar117_tt",
+      "kind": "diagnostic",
+      "k": 41,
+      "m": 4,
+      "target_out_mhz": 984,
+      "target_rf_mhz": 3936,
+      "stop_s": 2e-05,
+      "strobe_s": 2e-09,
+      "expected_points": 10001,
+      "requested_threads": 4
+    }
+  ],
+  "threads": 4,
+  "mode": "ax",
+  "maxstep_s": 8e-12,
+  "reltol": 0.001,
+  "method": "traponly",
+  "noise": false,
+  "condition": "TT27/1.2V/24MHz/10fF; frozen full callback110 hierarchy and recenter109 controller.",
+  "purpose": "Observe actual autonomous endpoint/coarse SAR selection and bias evolution from original reset/apply; resolve the missing link between fixed-coarse local bracket and real hardware selection.",
+  "record_budget_basis": "Original109 coarse SAR completed near17.25us.20us includes the endpoint and eight coarse decisions plus entry to fine search. It is a startup prefix, not a120us capture or a shortened capture pass criterion. No eight-check budget increase.",
+  "initialization": "Same109 supplied-DC reset/apply and10uV differential LC seed. No nfilt warm initial condition, readic, forced coarse/DAC, state bypass or controller edit. Supply already1.2V; not a power-ramp test.",
+  "source_tb": "share/deliverables/integration/cmos_v14_full/tb/rt4r48_recenter109_k41_tt.scs",
+  "source_tb_sha256": "9ea005bd0a4c486c9a66f835bd93de67ef77ae1eae71247f5ef205331701a0e1",
+  "source_comparison_sha256": "8300e57ab4e32657865d9e7595f42817c62907f0022cc896df0edde1430b6962",
+  "coarse_target_count": 1312,
+  "physical_inputs_sha256": {
+    "share/deliverables/blocks/cmos_v14_full/rt4_callback110_after.scs": "260a50e7e62d0d25cfdfb21d6004a22f31ca38544632329448bea811dcd38f62",
+    "share/deliverables/integration/cmos_v14_full/tb/rt4_callback_sar117_tt.scs": "f7a6b6a8da6357c8fce867a8e32bf008f898ec3ba64e7f464d08fe0336fad710",
+    "share/deliverables/blocks/interface_v5/lc_loop_observer.va": "9f290fd2983cac41dc0d17a4342daf13dc5f8b0bb9dee94fad1ca143ff87cf07",
+    "share/deliverables/blocks/cmos_v14_full/supply_energy_observer.va": "e3f07b168283a02f1c14ccebe075bdc8370960227c058354d403dde41d5ce54e"
+  },
+  "completion": "Two independent>=60s stable terminal observations,exit0/zero errors,PSF END,input/raw/log/final.ic hashes,10001 finite physical points0..20us.",
+  "analysis": "Decode stable EVAL snapshots, coarse/DAC and measured count; compare each actual SAR transition to unchanged>1312 logic; report first fine-search code,ctrl/nfilt drift,enable/error/restart/qualified without asserting lock.2ns saved output is not edge-resolved; RF/output estimates use existing internal cycle observers.",
+  "evidence_boundary": "Callback full-hardware startup prefix only. Ending20us before full fine/recheck/handoff is intentional and cannot be classified as failed capture merely because enable/qualified remain low. No inherited lock or noise evidence; no forced-code repair.",
+  "resource_cap": {
+    "threads": 18,
+    "long_jobs": 4,
+    "short_jobs": 1
+  }
+}

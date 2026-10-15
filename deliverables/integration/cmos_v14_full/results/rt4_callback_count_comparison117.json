@@ -1,0 +1,98 @@
+{
+  "time": "2026-10-16T07:48:54.895514+08:00",
+  "sources": [
+    {
+      "path": "share/deliverables/integration/cmos_v14_full/results/rt4_callback_mid116_review117.json",
+      "sha256": "4b93162b3613dab59009a3bf62dc9c59d328255644fc3bb081aa9d98656a4059"
+    },
+    {
+      "path": "share/deliverables/integration/cmos_v14_full/results/rt4_callback_margin115_review116.json",
+      "sha256": "3072b51def456fc4def19318f71b32388e98b040908fb0a7bb9cedc69a9f8701"
+    }
+  ],
+  "coarse": 8,
+  "dac": [
+    32,
+    49
+  ],
+  "physical_counts": [
+    5232,
+    5254
+  ],
+  "signed_errors": [
+    -16,
+    6
+  ],
+  "window_rf_MHz": [
+    3924.0309776890876,
+    3940.7164484403033
+  ],
+  "conditional_counter_bracket": true,
+  "both_counter_edge_checks": true,
+  "paired_protocol_sha256": "176fb381ad97cad6a6891fcee202c377b633d5e6bd25e2c3b2f6cd9fc7ebf618",
+  "segment_comparison": [
+    {
+      "window_s": [
+        1.7e-06,
+        2e-06
+      ],
+      "rf_MHz": [
+        3924.699727405951,
+        3941.3823499829
+      ],
+      "ctrl_V": [
+        0.591696432340233,
+        0.8990609361097991
+      ],
+      "nfilt_V": [
+        0.7307210874342397,
+        0.7307240490477529
+      ],
+      "nfilt_difference_uV": 2.9616135132082277,
+      "all100ns_means_bracket_target": true
+    },
+    {
+      "window_s": [
+        3.7e-06,
+        4e-06
+      ],
+      "rf_MHz": [
+        3923.9197172976806,
+        3940.6803739755255
+      ],
+      "ctrl_V": [
+        0.5917040506334733,
+        0.899053058128399
+      ],
+      "nfilt_V": [
+        0.731348551924947,
+        0.731351854427703
+      ],
+      "nfilt_difference_uV": 3.302502756041825,
+      "all100ns_means_bracket_target": true
+    },
+    {
+      "window_s": [
+        6.5e-06,
+        6.8e-06
+      ],
+      "rf_MHz": [
+        3923.454694013136,
+        3940.0693283172077
+      ],
+      "ctrl_V": [
+        0.5917145769821446,
+        0.8990530242914252
+      ],
+      "nfilt_V": [
+        0.7320775092106301,
+        0.7320820328644331
+      ],
+      "nfilt_difference_uV": 4.523653802990246,
+      "all100ns_means_bracket_target": true
+    }
+  ],
+  "conclusion": "Real physical-DAC32/49 measurements bracket target5248 at fixed coarse8 under matched local warm-bias conditions. No missed counter edges observed in either window. No interpolation-based lock code is selected.",
+  "boundary": "Two independent records with evolving bias, external fixed coarse and gate. Not a continuous static tuning curve, autonomous SAR trajectory, consecutive acceptance, full capture, asymptotic steady state or noise.",
+  "next_question": "What coarse code does unchanged callback hardware actually select from reset? Test only20us startup prefix, retaining original initialization and full controller."
+}
