@@ -1,0 +1,3177 @@
+simulator lang=spectre
+// Numerically specialized current hierarchy. External code pins remain programmable.
+// Fixed W/L/NF/M and passive parameters; do not override geometry without regenerating callbacks.
+subckt pll_capture_rt4_r48_recenter109_v14_pdk110_0 (ref reset apply k0 k1 k2 k3 k4 k5 out qualified range_error cfg_ready frequency_good phase_good amp_good vdd vss)
+VVCO (vco_vdd vdd) vsource dc=0
+VRX (rx_vdd vdd) vsource dc=0
+VRT (rt_vdd vdd) vsource dc=0
+XV (vp vn ctrl b0 b1 b2 b3 b4 b5 b6 b7 vco_vdd vss) lc_vco_physical_v14_pdk110_1
+XBM (vdd vss vmid) tx_bias_mid_v5_pdk110_5
+CCP (vp sp) capacitor c=1.2e-13
+CCN (vn sn) capacitor c=1.2e-13
+RBP (sp vmid) resistor r=10000
+RBN (sn vmid) resistor r=10000
+XREF (ref refb vdd vss) tx_reference_buffer_pdk110_6
+CR (refb vss) capacitor c=6.000000000000001e-14
+XS (refb sp sn hp hn vdd vss) tx_sampler_pdk110_11
+XCP (hp hn pulse en ctrl vdd vss) cp_physical_v14_pdk110_14
+XLF (ctrl vc1 en preset vdd vss) tx_loop_filter_v5_pdk110_17
+XRX (vp clk rx_vdd vss) rf_light24s12_v14_pdk110_19
+XD (clk divider_reset s0 s1 s2 s3 s4 s5 q1 data acqclk vdd vss) bank_pulsetrip_v14_pdk110_21
+XR (data clk out rt_vdd vss) rt_noise_scale4_v14_pdk110_49
+XDET (vp hp hn amp_good phase_good vdd vss) validity_physical_v14_pdk110_53
+XC (refb reset apply k0 k1 k2 k3 k4 k5 out acqclk phase_good frequency_good b0 b1 b2 b3 b4 b5 b6 b7 s0 s1 s2 s3 s4 s5 divider_reset en pulse preset qualified range_error cfg_ready cfg_invalid restart count_gate count_reset vdd vss) pll_control_recenter109_v14_pdk110_56
+ends pll_capture_rt4_r48_recenter109_v14_pdk110_0
+
+subckt lc_vco_physical_v14_pdk110_1 (vp vn ctrl b0 b1 b2 b3 b4 b5 b6 b7 vdd vss)
+XL (vp vn b3 b4 b5 b6 b7 vdd vss) lc_core_physical_v14_pdk110_2
+XBP (vp b0 b1 b2 b3 b4 b5 b6 b7 vdd vss) tx_cap_bank_switched_v4_pdk110_4
+XBN (vn b0 b1 b2 b3 b4 b5 b6 b7 vdd vss) tx_cap_bank_switched_v4_pdk110_4
+CVP (vp ctrl) nmoscap lr=2e-06 wr=4.5e-06 mr=1
+CVN (vn ctrl) nmoscap lr=2e-06 wr=4.5e-06 mr=1
+ends lc_vco_physical_v14_pdk110_1
+
+subckt lc_core_physical_v14_pdk110_2 (vp vn b3 b4 b5 b6 b7 vdd vss)
+XP (vdd vp vss) tx_inductor_pi_pdk110_3
+XN (vdd vn vss) tx_inductor_pi_pdk110_3
+CP (vp vss) capacitor c=1e-14
+CN (vn vss) capacitor c=1e-14
+MN0 (vp vn tail vss) nch w=0.00012 l=1.8e-07 ad=5.76e-11 as=5.76e-11 pd=0.00024096 ps=0.00024096 nrd=0.00225 nrs=0.00225 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MN1 (vn vp tail vss) nch w=0.00012 l=1.8e-07 ad=5.76e-11 as=5.76e-11 pd=0.00024096 ps=0.00024096 nrd=0.00225 nrs=0.00225 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MT (tail nfilt vss vss) nch w=0.0003 l=1e-06 ad=1.44e-10 as=1.44e-10 pd=0.00060096 ps=0.00060096 nrd=0.0009 nrs=0.0009 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MR (nb nb vss vss) nch w=2e-05 l=1e-06 ad=9.599999999999999e-12 as=9.599999999999999e-12 pd=4.096e-05 ps=4.096e-05 nrd=0.0135 nrs=0.0135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+RREF (vdd nb) resistor r=2500
+RF (nb nfilt) resistor r=1000000
+CF (nfilt vss) capacitor c=9.999999999999999e-12
+MA3 (tail nfilt s3 vss) nch w=5e-06 l=1e-06 ad=2.4e-12 as=2.4e-12 pd=1.096e-05 ps=1.096e-05 nrd=0.054 nrs=0.054 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ME3 (s3 b3 vss vss) nch w=2e-05 l=1.8e-07 ad=9.599999999999999e-12 as=9.599999999999999e-12 pd=4.096e-05 ps=4.096e-05 nrd=0.0135 nrs=0.0135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MA4 (tail nfilt s4 vss) nch w=9.999999999999999e-06 l=1e-06 ad=4.8e-12 as=4.8e-12 pd=2.096e-05 ps=2.096e-05 nrd=0.027 nrs=0.027 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ME4 (s4 b4 vss vss) nch w=4e-05 l=1.8e-07 ad=1.92e-11 as=1.92e-11 pd=8.096e-05 ps=8.096e-05 nrd=0.00675 nrs=0.00675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MA5 (tail nfilt s5 vss) nch w=2e-05 l=1e-06 ad=9.599999999999999e-12 as=9.599999999999999e-12 pd=4.096e-05 ps=4.096e-05 nrd=0.0135 nrs=0.0135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ME5 (s5 b5 vss vss) nch w=7.999999999999999e-05 l=1.8e-07 ad=3.84e-11 as=3.84e-11 pd=0.00016096 ps=0.00016096 nrd=0.003375 nrs=0.003375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MA6 (tail nfilt s6 vss) nch w=4e-05 l=1e-06 ad=1.92e-11 as=1.92e-11 pd=8.096e-05 ps=8.096e-05 nrd=0.00675 nrs=0.00675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ME6 (s6 b6 vss vss) nch w=0.00016 l=1.8e-07 ad=7.68e-11 as=7.68e-11 pd=0.00032096 ps=0.00032096 nrd=0.0016875 nrs=0.0016875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MA7 (tail nfilt s7 vss) nch w=7.999999999999999e-05 l=1e-06 ad=3.84e-11 as=3.84e-11 pd=0.00016096 ps=0.00016096 nrd=0.003375 nrs=0.003375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ME7 (s7 b7 vss vss) nch w=0.00032 l=1.8e-07 ad=1.536e-10 as=1.536e-10 pd=0.00064096 ps=0.00064096 nrd=0.00084375 nrs=0.00084375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends lc_core_physical_v14_pdk110_2
+
+subckt tx_inductor_pi_pdk110_3 (p n sub)
+RW (p x) resistor r=6.822430344006023
+LW (x n) inductor l=2e-09
+CW (p n) capacitor c=2e-14
+COXP (p sp) capacitor c=8.000000000000001e-14
+COXN (n sn) capacitor c=8.000000000000001e-14
+RSP (sp sub) resistor r=300
+RSN (sn sub) resistor r=300
+CSP (sp sub) capacitor c=5e-14
+CSN (sn sub) capacitor c=5e-14
+ends tx_inductor_pi_pdk110_3
+
+subckt tx_cap_bank_switched_v4_pdk110_4 (tank b0 b1 b2 b3 b4 b5 b6 b7 vdd vss)
+C0 (tank x0) capacitor c=4.8e-15
+M0 (x0 b0 vss vss) nch w=1.2e-06 l=1.8e-07 ad=5.76e-13 as=5.76e-13 pd=3.36e-06 ps=3.36e-06 nrd=0.225 nrs=0.225 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+C1 (tank x1) capacitor c=9.6e-15
+M1 (x1 b1 vss vss) nch w=2.4e-06 l=1.8e-07 ad=1.152e-12 as=1.152e-12 pd=5.76e-06 ps=5.76e-06 nrd=0.1125 nrs=0.1125 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+C2 (tank x2) capacitor c=1.92e-14
+M2 (x2 b2 vss vss) nch w=4.8e-06 l=1.8e-07 ad=2.304e-12 as=2.304e-12 pd=1.056e-05 ps=1.056e-05 nrd=0.05625 nrs=0.05625 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+C3 (tank x3) capacitor c=3.84e-14
+M3 (x3 b3 vss vss) nch w=9.6e-06 l=1.8e-07 ad=4.608e-12 as=4.608e-12 pd=2.016e-05 ps=2.016e-05 nrd=0.028125 nrs=0.028125 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+C4 (tank x4) capacitor c=7.68e-14
+M4 (x4 b4 vss vss) nch w=1.92e-05 l=1.8e-07 ad=9.216e-12 as=9.216e-12 pd=3.936e-05 ps=3.936e-05 nrd=0.0140625 nrs=0.0140625 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+C5 (tank x5) capacitor c=1.536e-13
+M5 (x5 b5 vss vss) nch w=3.84e-05 l=1.8e-07 ad=1.8432e-11 as=1.8432e-11 pd=7.776e-05 ps=7.776e-05 nrd=0.00703125 nrs=0.00703125 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+C6 (tank x6) capacitor c=3.072e-13
+M6 (x6 b6 vss vss) nch w=7.68e-05 l=1.8e-07 ad=3.6864e-11 as=3.6864e-11 pd=0.00015456 ps=0.00015456 nrd=0.00351563 nrs=0.00351563 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+C7 (tank x7) capacitor c=6.144e-13
+M7 (x7 b7 vss vss) nch w=0.0001536 l=1.8e-07 ad=7.3728e-11 as=7.3728e-11 pd=0.00030816 ps=0.00030816 nrd=0.00175781 nrs=0.00175781 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP0 (x0 b0 vdd vdd) pch w=3e-07 l=1.8e-07 ad=2.064e-13 as=2.064e-13 pd=1.88e-06 ps=1.88e-06 nrd=1.03333 nrs=1.03333 sa=5.2e-07 sb=5.2e-07 sd=6.2e-07 sca=0 scb=0 scc=0
+MP1 (x1 b1 vdd vdd) pch w=3e-07 l=1.8e-07 ad=2.064e-13 as=2.064e-13 pd=1.88e-06 ps=1.88e-06 nrd=1.03333 nrs=1.03333 sa=5.2e-07 sb=5.2e-07 sd=6.2e-07 sca=0 scb=0 scc=0
+MP2 (x2 b2 vdd vdd) pch w=3e-07 l=1.8e-07 ad=2.064e-13 as=2.064e-13 pd=1.88e-06 ps=1.88e-06 nrd=1.03333 nrs=1.03333 sa=5.2e-07 sb=5.2e-07 sd=6.2e-07 sca=0 scb=0 scc=0
+MP3 (x3 b3 vdd vdd) pch w=3e-07 l=1.8e-07 ad=2.064e-13 as=2.064e-13 pd=1.88e-06 ps=1.88e-06 nrd=1.03333 nrs=1.03333 sa=5.2e-07 sb=5.2e-07 sd=6.2e-07 sca=0 scb=0 scc=0
+MP4 (x4 b4 vdd vdd) pch w=3e-07 l=1.8e-07 ad=2.064e-13 as=2.064e-13 pd=1.88e-06 ps=1.88e-06 nrd=1.03333 nrs=1.03333 sa=5.2e-07 sb=5.2e-07 sd=6.2e-07 sca=0 scb=0 scc=0
+MP5 (x5 b5 vdd vdd) pch w=3e-07 l=1.8e-07 ad=2.064e-13 as=2.064e-13 pd=1.88e-06 ps=1.88e-06 nrd=1.03333 nrs=1.03333 sa=5.2e-07 sb=5.2e-07 sd=6.2e-07 sca=0 scb=0 scc=0
+MP6 (x6 b6 vdd vdd) pch w=3e-07 l=1.8e-07 ad=2.064e-13 as=2.064e-13 pd=1.88e-06 ps=1.88e-06 nrd=1.03333 nrs=1.03333 sa=5.2e-07 sb=5.2e-07 sd=6.2e-07 sca=0 scb=0 scc=0
+MP7 (x7 b7 vdd vdd) pch w=3e-07 l=1.8e-07 ad=2.064e-13 as=2.064e-13 pd=1.88e-06 ps=1.88e-06 nrd=1.03333 nrs=1.03333 sa=5.2e-07 sb=5.2e-07 sd=6.2e-07 sca=0 scb=0 scc=0
+ends tx_cap_bank_switched_v4_pdk110_4
+
+subckt tx_bias_mid_v5_pdk110_5 (vdd vss vmid)
+R0 (vdd vmid) resistor r=100000
+R1 (vmid vss) resistor r=100000
+C0 (vmid vss) capacitor c=9.999999999999999e-12
+ends tx_bias_mid_v5_pdk110_5
+
+subckt tx_reference_buffer_pdk110_6 (inp out vdd vss)
+X0 (inp a vdd vss) pll_inv_pdk110_7
+X1 (a b vdd vss) pll_inv_pdk110_8
+X2 (b c vdd vss) pll_inv_pdk110_9
+X3 (c out vdd vss) pll_inv_pdk110_10
+ends tx_reference_buffer_pdk110_6
+
+subckt pll_inv_pdk110_7 (a y vdd vss)
+MN (y a vss vss) nch w=1e-06 l=1.8e-07 nf=1 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (y a vdd vdd) pch w=2.5e-06 l=1.8e-07 nf=1 ad=1.2e-12 as=1.2e-12 pd=5.96e-06 ps=5.96e-06 nrd=0.108 nrs=0.108 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_inv_pdk110_7
+
+subckt pll_inv_pdk110_8 (a y vdd vss)
+MN (y a vss vss) nch w=4e-06 l=1.8e-07 nf=1 ad=1.92e-12 as=1.92e-12 pd=8.960000000000001e-06 ps=8.960000000000001e-06 nrd=0.0675 nrs=0.0675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (y a vdd vdd) pch w=9.999999999999999e-06 l=1.8e-07 nf=1 ad=4.8e-12 as=4.8e-12 pd=2.096e-05 ps=2.096e-05 nrd=0.027 nrs=0.027 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_inv_pdk110_8
+
+subckt pll_inv_pdk110_9 (a y vdd vss)
+MN (y a vss vss) nch w=1.6e-05 l=1.8e-07 nf=1 ad=7.68e-12 as=7.68e-12 pd=3.296e-05 ps=3.296e-05 nrd=0.016875 nrs=0.016875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (y a vdd vdd) pch w=4e-05 l=1.8e-07 nf=1 ad=1.92e-11 as=1.92e-11 pd=8.096e-05 ps=8.096e-05 nrd=0.00675 nrs=0.00675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_inv_pdk110_9
+
+subckt pll_inv_pdk110_10 (a y vdd vss)
+MN (y a vss vss) nch w=6.4e-05 l=1.8e-07 nf=1 ad=3.072e-11 as=3.072e-11 pd=0.00012896 ps=0.00012896 nrd=0.00421875 nrs=0.00421875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (y a vdd vdd) pch w=0.00016 l=1.8e-07 nf=1 ad=7.68e-11 as=7.68e-11 pd=0.00032096 ps=0.00032096 nrd=0.0016875 nrs=0.0016875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_inv_pdk110_10
+
+subckt tx_sampler_pdk110_11 (ref vp vn hp hn vdd vss)
+XI (ref refb vdd vss) pll_inv_pdk110_12
+XSP (vp hp refb ref vdd vss) pll_tg_pdk110_13
+XSN (vn hn refb ref vdd vss) pll_tg_pdk110_13
+CP (hp vss) capacitor c=4.000000000000001e-14
+CN (hn vss) capacitor c=4.000000000000001e-14
+ends tx_sampler_pdk110_11
+
+subckt pll_inv_pdk110_12 (a y vdd vss)
+MN (y a vss vss) nch w=8e-06 l=1.8e-07 nf=1 ad=3.84e-12 as=3.84e-12 pd=1.696e-05 ps=1.696e-05 nrd=0.03375 nrs=0.03375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (y a vdd vdd) pch w=2e-05 l=1.8e-07 nf=1 ad=9.599999999999999e-12 as=9.599999999999999e-12 pd=4.096e-05 ps=4.096e-05 nrd=0.0135 nrs=0.0135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_inv_pdk110_12
+
+subckt pll_tg_pdk110_13 (a b on off vdd vss)
+MN (a on b vss) nch w=4e-06 l=1.8e-07 ad=1.92e-12 as=1.92e-12 pd=8.960000000000001e-06 ps=8.960000000000001e-06 nrd=0.0675 nrs=0.0675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (a off b vdd) pch w=8e-06 l=1.8e-07 ad=3.84e-12 as=3.84e-12 pd=1.696e-05 ps=1.696e-05 nrd=0.03375 nrs=0.03375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_tg_pdk110_13
+
+subckt cp_physical_v14_pdk110_14 (hp hn pulse enable out vdd vss)
+RREF (vdd nb) resistor r=24000
+MB (nb nb vss vss) nch w=9.999999999999999e-06 l=1e-06 ad=4.8e-12 as=4.8e-12 pd=2.096e-05 ps=2.096e-05 nrd=0.027 nrs=0.027 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+XG (pulse enable gateb vdd vss) pll_nand2_pdk110_15
+XGI (gateb gate vdd vss) pll_inv_pdk110_7
+XT (nb ng gate gateb vdd vss) pll_tg_pdk110_16
+MOFF (ng gateb vss vss) nch w=1e-06 l=1.8e-07 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MT (tail ng vss vss) nch w=9.999999999999999e-06 l=1e-06 ad=4.8e-12 as=4.8e-12 pd=2.096e-05 ps=2.096e-05 nrd=0.027 nrs=0.027 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MIP (out hp tail vss) nch w=8e-06 l=1e-06 ad=3.84e-12 as=3.84e-12 pd=1.696e-05 ps=1.696e-05 nrd=0.03375 nrs=0.03375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MIN (mir hn tail vss) nch w=8e-06 l=1e-06 ad=3.84e-12 as=3.84e-12 pd=1.696e-05 ps=1.696e-05 nrd=0.03375 nrs=0.03375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MPD (mir mir vdd vdd) pch w=4e-06 l=1e-06 ad=1.92e-12 as=1.92e-12 pd=8.960000000000001e-06 ps=8.960000000000001e-06 nrd=0.0675 nrs=0.0675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MPO (out mir vdd vdd) pch w=4e-06 l=1e-06 ad=1.92e-12 as=1.92e-12 pd=8.960000000000001e-06 ps=8.960000000000001e-06 nrd=0.0675 nrs=0.0675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends cp_physical_v14_pdk110_14
+
+subckt pll_nand2_pdk110_15 (a b y vdd vss)
+MN0 (y a x vss) nch w=1e-06 l=1.8e-07 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MN1 (x b vss vss) nch w=1e-06 l=1.8e-07 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP0 (y a vdd vdd) pch w=1.25e-06 l=1.8e-07 ad=6e-13 as=6e-13 pd=3.46e-06 ps=3.46e-06 nrd=0.216 nrs=0.216 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP1 (y b vdd vdd) pch w=1.25e-06 l=1.8e-07 ad=6e-13 as=6e-13 pd=3.46e-06 ps=3.46e-06 nrd=0.216 nrs=0.216 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_nand2_pdk110_15
+
+subckt pll_tg_pdk110_16 (a b on off vdd vss)
+MN (a on b vss) nch w=1e-06 l=1.8e-07 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (a off b vdd) pch w=2e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_tg_pdk110_16
+
+subckt tx_loop_filter_v5_pdk110_17 (ctrl vc1 enable preset vdd vss)
+R (ctrl vc1) resistor r=100000
+C1 (vc1 vss) capacitor c=7.1619724391353e-12
+C2 (ctrl vss) capacitor c=4.77464829275685e-13
+XI (enable enb vdd vss) pll_inv_pdk110_7
+XP0 (preset ctrl enb enable vdd vss) pll_tg_pdk110_18
+XP1 (preset vc1 enb enable vdd vss) pll_tg_pdk110_18
+ends tx_loop_filter_v5_pdk110_17
+
+subckt pll_tg_pdk110_18 (a b on off vdd vss)
+MN (a on b vss) nch w=2e-05 l=1.8e-07 ad=9.599999999999999e-12 as=9.599999999999999e-12 pd=4.096e-05 ps=4.096e-05 nrd=0.0135 nrs=0.0135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (a off b vdd) pch w=4e-05 l=1.8e-07 ad=1.92e-11 as=1.92e-11 pd=8.096e-05 ps=8.096e-05 nrd=0.00675 nrs=0.00675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_tg_pdk110_18
+
+subckt rf_light24s12_v14_pdk110_19 (rf clk vdd vss)
+C0 (rf g0) capacitor c=4e-12
+R0 (g0 clk) resistor r=20000
+X0 (g0 clk vdd vss) pll_inv_pdk110_20
+ends rf_light24s12_v14_pdk110_19
+
+subckt pll_inv_pdk110_20 (a y vdd vss)
+MN (y a vss vss) nch w=2.4e-05 l=1.8e-07 nf=1 ad=1.152e-11 as=1.152e-11 pd=4.896e-05 ps=4.896e-05 nrd=0.01125 nrs=0.01125 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (y a vdd vdd) pch w=5.999999999999999e-05 l=1.8e-07 nf=1 ad=2.88e-11 as=2.88e-11 pd=0.00012096 ps=0.00012096 nrd=0.0045 nrs=0.0045 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_inv_pdk110_20
+
+subckt bank_pulsetrip_v14_pdk110_21 (clk reset s0 s1 s2 s3 s4 s5 q1 out fllclk vdd vss)
+XPRE (q0 clk q0 vdd vss) ff_fbdelay50_v14_pdk110_22
+XPB0 (q0 qb0 vdd vss) pll_inv_pdk110_23
+XPB1 (qb0 q1 vdd vss) pll_inv_pdk110_24
+XD4 (d4b q1 d4b vdd vss) pll_tspc_inv_pdk110_25
+XB40 (d4b b40 vdd vss) pll_inv_pdk110_26
+XB41 (b40 b41 vdd vss) pll_inv_pdk110_27
+XB42 (b41 d4 vdd vss) pll_inv_pdk110_28
+XFAC0 (d4 fab vdd vss) pll_inv_pdk110_29
+XFAC1 (fab fllclk vdd vss) pll_inv_pdk110_27
+XD8 (d8b d4 d8b vdd vss) pll_tspc_inv_pdk110_25
+XB8 (d8b d8 vdd vss) pll_inv_pdk110_27
+XD12 (d4 d12 vdd vss) div3_fast_v14_pdk110_30
+XCT0 (q1 ct0 vdd vss) pll_inv_pdk110_36
+XCT1 (ct0 ct1 vdd vss) pll_inv_pdk110_37
+XCT2 (ct1 cb vdd vss) pll_inv_pdk110_38
+XCT3 (cb ck vdd vss) pll_inv_pdk110_39
+XD6 (ck d6 vdd vss) div3_fast_v14_pdk110_30
+XRL (reset ck loadb vdd vss) pll_tspc_inv_pdk110_25
+XRLI (loadb load vdd vss) pll_inv_pdk110_40
+XRK (load loadb vdd vss) pll_inv_pdk110_41
+XF0 (fb ck ck load loadb vdd r0 vdd vss) ring_sync_singlephase_v14_pdk110_42
+XF1 (r0 ck ck load loadb vdd r1 vdd vss) ring_sync_singlephase_v14_pdk110_42
+XF2 (r1 ck ck load loadb vdd r2 vdd vss) ring_sync_singlephase_v14_pdk110_42
+XF3 (r2 ck ck load loadb s5 r3 vdd vss) ring_sync_singlephase_v14_pdk110_42
+XF4 (r3 ck ck load loadb vss r4 vdd vss) ring_sync_singlephase_v14_pdk110_42
+XF5 (r4 ck ck load loadb vss s5 r5 vdd vss) ring_tail_singlephase_v14_pdk110_46
+XF6 (r5 ck ck load loadb vss s5 r6 vdd vss) ring_tail_singlephase_v14_pdk110_46
+XSI3 (s3 sb3 vdd vss) pll_inv_pdk110_7
+XSI5 (s5 sb5 vdd vss) pll_inv_pdk110_7
+XT5 (r4 fb s3 sb3 vdd vss) pll_tg_pdk110_43
+XT7 (r6 fb s5 sb5 vdd vss) pll_tg_pdk110_43
+RFB (fb vss) resistor r=10000000
+XRI (reset resetb vdd vss) pll_inv_pdk110_7
+XSEB0 (s0 resetb eb0 vdd vss) pll_nand2_pdk110_15
+XSE0 (eb0 es0 vdd vss) pll_inv_pdk110_7
+XMX0 (d4 mux es0 eb0 vdd vss) pll_tg_pdk110_16
+XSEB1 (s1 resetb eb1 vdd vss) pll_nand2_pdk110_15
+XSE1 (eb1 es1 vdd vss) pll_inv_pdk110_7
+XMX1 (d6 mux es1 eb1 vdd vss) pll_tg_pdk110_16
+XSEB2 (s2 resetb eb2 vdd vss) pll_nand2_pdk110_15
+XSE2 (eb2 es2 vdd vss) pll_inv_pdk110_7
+XMX2 (d8 mux es2 eb2 vdd vss) pll_tg_pdk110_16
+XSEB3 (s3 resetb eb3 vdd vss) pll_nand2_pdk110_15
+XSE3 (eb3 es3 vdd vss) pll_inv_pdk110_7
+XMX3 (r0 mux es3 eb3 vdd vss) pll_tg_pdk110_16
+XSEB4 (s4 resetb eb4 vdd vss) pll_nand2_pdk110_15
+XSE4 (eb4 es4 vdd vss) pll_inv_pdk110_7
+XMX4 (d12 mux es4 eb4 vdd vss) pll_tg_pdk110_16
+XSEB5 (s5 resetb eb5 vdd vss) pll_nand2_pdk110_15
+XSE5 (eb5 es5 vdd vss) pll_inv_pdk110_7
+XMX5 (r0 mux es5 eb5 vdd vss) pll_tg_pdk110_16
+MMUTE (mux reset vss vss) nch w=2e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+RKEEP (mux vss) resistor r=10000000
+XO0 (mux ob vdd vss) pll_inv_pdk110_36
+XO1 (ob out vdd vss) pll_inv_pdk110_27
+ends bank_pulsetrip_v14_pdk110_21
+
+subckt ff_fbdelay50_v14_pdk110_22 (d ck qb vdd vss)
+MP0 (p0 d vdd vdd) pch w=2e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MPC0 (b ck p0 vdd) pch w=2e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MN0 (b dn vss vss) nch w=8e-07 l=1.8e-07 ad=3.84e-13 as=3.84e-13 pd=2.56e-06 ps=2.56e-06 nrd=0.3375 nrs=0.3375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP1 (a ck vdd vdd) pch w=2e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MN1 (a b n1 vss) nch w=1.6e-06 l=1.8e-07 ad=7.68e-13 as=7.68e-13 pd=4.16e-06 ps=4.16e-06 nrd=0.16875 nrs=0.16875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MNC1 (n1 ck vss vss) nch w=1.6e-06 l=1.8e-07 ad=7.68e-13 as=7.68e-13 pd=4.16e-06 ps=4.16e-06 nrd=0.16875 nrs=0.16875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP2 (qb a vdd vdd) pch w=2e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MNC2 (qb ck n2 vss) nch w=1.6e-06 l=1.8e-07 ad=7.68e-13 as=7.68e-13 pd=4.16e-06 ps=4.16e-06 nrd=0.16875 nrs=0.16875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MN2 (n2 a vss vss) nch w=1.6e-06 l=1.8e-07 ad=7.68e-13 as=7.68e-13 pd=4.16e-06 ps=4.16e-06 nrd=0.16875 nrs=0.16875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+RD (d dn) resistor r=50000
+ends ff_fbdelay50_v14_pdk110_22
+
+subckt pll_inv_pdk110_23 (a y vdd vss)
+MN (y a vss vss) nch w=8e-07 l=1.8e-07 nf=1 ad=3.84e-13 as=3.84e-13 pd=2.56e-06 ps=2.56e-06 nrd=0.3375 nrs=0.3375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (y a vdd vdd) pch w=5e-07 l=1.8e-07 nf=1 ad=2.4e-13 as=2.4e-13 pd=1.96e-06 ps=1.96e-06 nrd=0.54 nrs=0.54 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_inv_pdk110_23
+
+subckt pll_inv_pdk110_24 (a y vdd vss)
+MN (y a vss vss) nch w=3e-06 l=1.8e-07 nf=1 ad=1.44e-12 as=1.44e-12 pd=6.96e-06 ps=6.96e-06 nrd=0.09 nrs=0.09 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (y a vdd vdd) pch w=3e-06 l=1.8e-07 nf=1 ad=1.44e-12 as=1.44e-12 pd=6.96e-06 ps=6.96e-06 nrd=0.09 nrs=0.09 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_inv_pdk110_24
+
+subckt pll_tspc_inv_pdk110_25 (d ck qb vdd vss)
+MP0 (p0 d vdd vdd) pch w=2e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MPC0 (b ck p0 vdd) pch w=2e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MN0 (b d vss vss) nch w=8.000000000000001e-07 l=1.8e-07 ad=3.84e-13 as=3.84e-13 pd=2.56e-06 ps=2.56e-06 nrd=0.3375 nrs=0.3375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP1 (a ck vdd vdd) pch w=2e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MN1 (a b n1 vss) nch w=1.6e-06 l=1.8e-07 ad=7.68e-13 as=7.68e-13 pd=4.16e-06 ps=4.16e-06 nrd=0.16875 nrs=0.16875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MNC1 (n1 ck vss vss) nch w=1.6e-06 l=1.8e-07 ad=7.68e-13 as=7.68e-13 pd=4.16e-06 ps=4.16e-06 nrd=0.16875 nrs=0.16875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP2 (qb a vdd vdd) pch w=2e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MNC2 (qb ck n2 vss) nch w=1.6e-06 l=1.8e-07 ad=7.68e-13 as=7.68e-13 pd=4.16e-06 ps=4.16e-06 nrd=0.16875 nrs=0.16875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MN2 (n2 a vss vss) nch w=1.6e-06 l=1.8e-07 ad=7.68e-13 as=7.68e-13 pd=4.16e-06 ps=4.16e-06 nrd=0.16875 nrs=0.16875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_tspc_inv_pdk110_25
+
+subckt pll_inv_pdk110_26 (a y vdd vss)
+MN (y a vss vss) nch w=8e-07 l=1.8e-07 nf=1 ad=3.84e-13 as=3.84e-13 pd=2.56e-06 ps=2.56e-06 nrd=0.3375 nrs=0.3375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (y a vdd vdd) pch w=1.6e-06 l=1.8e-07 nf=1 ad=7.68e-13 as=7.68e-13 pd=4.16e-06 ps=4.16e-06 nrd=0.16875 nrs=0.16875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_inv_pdk110_26
+
+subckt pll_inv_pdk110_27 (a y vdd vss)
+MN (y a vss vss) nch w=2e-06 l=1.8e-07 nf=1 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (y a vdd vdd) pch w=4e-06 l=1.8e-07 nf=1 ad=1.92e-12 as=1.92e-12 pd=8.960000000000001e-06 ps=8.960000000000001e-06 nrd=0.0675 nrs=0.0675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_inv_pdk110_27
+
+subckt pll_inv_pdk110_28 (a y vdd vss)
+MN (y a vss vss) nch w=6e-06 l=1.8e-07 nf=1 ad=2.88e-12 as=2.88e-12 pd=1.296e-05 ps=1.296e-05 nrd=0.045 nrs=0.045 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (y a vdd vdd) pch w=1.2e-05 l=1.8e-07 nf=1 ad=5.76e-12 as=5.76e-12 pd=2.496e-05 ps=2.496e-05 nrd=0.0225 nrs=0.0225 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_inv_pdk110_28
+
+subckt pll_inv_pdk110_29 (a y vdd vss)
+MN (y a vss vss) nch w=5e-07 l=1.8e-07 nf=1 ad=2.4e-13 as=2.4e-13 pd=1.96e-06 ps=1.96e-06 nrd=0.54 nrs=0.54 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (y a vdd vdd) pch w=1e-06 l=1.8e-07 nf=1 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_inv_pdk110_29
+
+subckt div3_fast_v14_pdk110_30 (clk out vdd vss)
+XC (clk clkb vdd vss) pll_inv_pdk110_31
+XN (q0 q1 d0 vdd vss) nor_fast_v14_pdk110_32
+X0 (d0 clk clkb q0 vdd vss) ff_static_fast_v14_pdk110_33
+X1 (q0 clk clkb q1 vdd vss) ff_static_fast_v14_pdk110_33
+XB0 (q1 ob vdd vss) pll_inv_pdk110_29
+XB1 (ob out vdd vss) pll_inv_pdk110_27
+ends div3_fast_v14_pdk110_30
+
+subckt pll_inv_pdk110_31 (a y vdd vss)
+MN (y a vss vss) nch w=4e-06 l=1.8e-07 nf=1 ad=1.92e-12 as=1.92e-12 pd=8.960000000000001e-06 ps=8.960000000000001e-06 nrd=0.0675 nrs=0.0675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (y a vdd vdd) pch w=8e-06 l=1.8e-07 nf=1 ad=3.84e-12 as=3.84e-12 pd=1.696e-05 ps=1.696e-05 nrd=0.03375 nrs=0.03375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_inv_pdk110_31
+
+subckt nor_fast_v14_pdk110_32 (a b out vdd vss)
+MP0 (p a vdd vdd) pch w=8e-06 l=1.8e-07 ad=3.84e-12 as=3.84e-12 pd=1.696e-05 ps=1.696e-05 nrd=0.03375 nrs=0.03375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP1 (out b p vdd) pch w=8e-06 l=1.8e-07 ad=3.84e-12 as=3.84e-12 pd=1.696e-05 ps=1.696e-05 nrd=0.03375 nrs=0.03375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MN0 (out a vss vss) nch w=2e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MN1 (out b vss vss) nch w=2e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends nor_fast_v14_pdk110_32
+
+subckt ff_static_fast_v14_pdk110_33 (d clk clkb q vdd vss)
+XM (d clkb clk qm vdd vss) ring_inv_latch_v14_pdk110_34
+XS (qm clk clkb q vdd vss) ring_inv_latch_v14_pdk110_34
+ends ff_static_fast_v14_pdk110_33
+
+subckt ring_inv_latch_v14_pdk110_34 (d ck ckb qb vdd vss)
+XT (d x ck ckb vdd vss) pll_tg_pdk110_16
+XO (x qb vdd vss) pll_inv_pdk110_27
+XFI (qb fb vdd vss) pll_inv_pdk110_29
+XFB (fb x ckb ck vdd vss) pll_tg_pdk110_35
+ends ring_inv_latch_v14_pdk110_34
+
+subckt pll_tg_pdk110_35 (a b on off vdd vss)
+MN (a on b vss) nch w=5e-07 l=1.8e-07 ad=2.4e-13 as=2.4e-13 pd=1.96e-06 ps=1.96e-06 nrd=0.54 nrs=0.54 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (a off b vdd) pch w=1e-06 l=1.8e-07 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_tg_pdk110_35
+
+subckt pll_inv_pdk110_36 (a y vdd vss)
+MN (y a vss vss) nch w=1e-06 l=1.8e-07 nf=1 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (y a vdd vdd) pch w=2e-06 l=1.8e-07 nf=1 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_inv_pdk110_36
+
+subckt pll_inv_pdk110_37 (a y vdd vss)
+MN (y a vss vss) nch w=3e-06 l=1.8e-07 nf=1 ad=1.44e-12 as=1.44e-12 pd=6.96e-06 ps=6.96e-06 nrd=0.09 nrs=0.09 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (y a vdd vdd) pch w=6e-06 l=1.8e-07 nf=1 ad=2.88e-12 as=2.88e-12 pd=1.296e-05 ps=1.296e-05 nrd=0.045 nrs=0.045 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_inv_pdk110_37
+
+subckt pll_inv_pdk110_38 (a y vdd vss)
+MN (y a vss vss) nch w=8e-06 l=1.8e-07 nf=1 ad=3.84e-12 as=3.84e-12 pd=1.696e-05 ps=1.696e-05 nrd=0.03375 nrs=0.03375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (y a vdd vdd) pch w=1.6e-05 l=1.8e-07 nf=1 ad=7.68e-12 as=7.68e-12 pd=3.296e-05 ps=3.296e-05 nrd=0.016875 nrs=0.016875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_inv_pdk110_38
+
+subckt pll_inv_pdk110_39 (a y vdd vss)
+MN (y a vss vss) nch w=2.4e-05 l=1.8e-07 nf=1 ad=1.152e-11 as=1.152e-11 pd=4.896e-05 ps=4.896e-05 nrd=0.01125 nrs=0.01125 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (y a vdd vdd) pch w=4.8e-05 l=1.8e-07 nf=1 ad=2.304e-11 as=2.304e-11 pd=9.695999999999999e-05 ps=9.695999999999999e-05 nrd=0.005625 nrs=0.005625 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_inv_pdk110_39
+
+subckt pll_inv_pdk110_40 (a y vdd vss)
+MN (y a vss vss) nch w=8e-07 l=1.8e-07 nf=1 ad=3.84e-13 as=3.84e-13 pd=2.56e-06 ps=2.56e-06 nrd=0.3375 nrs=0.3375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (y a vdd vdd) pch w=2e-06 l=1.8e-07 nf=1 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_inv_pdk110_40
+
+subckt pll_inv_pdk110_41 (a y vdd vss)
+MN (y a vss vss) nch w=4e-07 l=1e-06 nf=1 ad=2.164e-13 as=2.164e-13 pd=1.88e-06 ps=1.88e-06 nrd=0.775 nrs=0.775 sa=5.2e-07 sb=5.2e-07 sd=6.2e-07 sca=0 scb=0 scc=0
+MP (y a vdd vdd) pch w=8e-07 l=1e-06 nf=1 ad=3.84e-13 as=3.84e-13 pd=2.56e-06 ps=2.56e-06 nrd=0.3375 nrs=0.3375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_inv_pdk110_41
+
+subckt ring_sync_singlephase_v14_pdk110_42 (d clk clkb load loadb init q vdd vss)
+XDATA (d din loadb load vdd vss) pll_tg_pdk110_43
+XINIT (init din load loadb vdd vss) pll_tg_pdk110_43
+XF (din clk clkb q vdd vss) ff_singlephase_v14_pdk110_44
+ends ring_sync_singlephase_v14_pdk110_42
+
+subckt pll_tg_pdk110_43 (a b on off vdd vss)
+MN (a on b vss) nch w=2e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (a off b vdd) pch w=4e-06 l=1.8e-07 ad=1.92e-12 as=1.92e-12 pd=8.960000000000001e-06 ps=8.960000000000001e-06 nrd=0.0675 nrs=0.0675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_tg_pdk110_43
+
+subckt ff_singlephase_v14_pdk110_44 (d clk clkb q vdd vss)
+XF (d clk qb vdd vss) pll_tspc_inv_pdk110_25
+XO (qb q vdd vss) pll_inv_pdk110_27
+XK (q qb vdd vss) pll_inv_pdk110_45
+ends ff_singlephase_v14_pdk110_44
+
+subckt pll_inv_pdk110_45 (a y vdd vss)
+MN (y a vss vss) nch w=2.4e-07 l=1e-06 nf=1 ad=2.004e-13 as=2.004e-13 pd=1.88e-06 ps=1.88e-06 nrd=1.29167 nrs=1.29167 sa=5.2e-07 sb=5.2e-07 sd=6.2e-07 sca=0 scb=0 scc=0
+MP (y a vdd vdd) pch w=4.8e-07 l=1e-06 nf=1 ad=2.304e-13 as=2.304e-13 pd=1.92e-06 ps=1.92e-06 nrd=0.5625 nrs=0.5625 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_inv_pdk110_45
+
+subckt ring_tail_singlephase_v14_pdk110_46 (d clk clkb load loadb init selected q vdd vss)
+XEN (loadb selected dopen vdd vss) tx_and_pdk110_47
+XI (dopen dclose vdd vss) pll_inv_pdk110_7
+XDATA (d din dopen dclose vdd vss) pll_tg_pdk110_43
+XINIT (init din load loadb vdd vss) pll_tg_pdk110_43
+RKEEP (din vss) resistor r=10000000
+XF (din clk clkb q vdd vss) ff_singlephase_v14_pdk110_44
+ends ring_tail_singlephase_v14_pdk110_46
+
+subckt tx_and_pdk110_47 (a b y vdd vss)
+XN (a b n vdd vss) pll_nand2_pdk110_15
+XI (n y vdd vss) pll_inv_pdk110_48
+ends tx_and_pdk110_47
+
+subckt pll_inv_pdk110_48 (a y vdd vss)
+MN (y a vss vss) nch w=5.000000000000001e-07 l=1.8e-07 nf=1 ad=2.4e-13 as=2.4e-13 pd=1.96e-06 ps=1.96e-06 nrd=0.54 nrs=0.54 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (y a vdd vdd) pch w=1.25e-06 l=1.8e-07 nf=1 ad=6e-13 as=6e-13 pd=3.46e-06 ps=3.46e-06 nrd=0.216 nrs=0.216 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_inv_pdk110_48
+
+subckt rt_noise_scale4_v14_pdk110_49 (data clk out vdd vss)
+XFF (data clk qb vdd vss) rtcomb_ff_v13_pdk110_50
+X0 (qb ob vdd vss) pll_inv_pdk110_51
+X1 (ob out vdd vss) pll_inv_pdk110_52
+ends rt_noise_scale4_v14_pdk110_49
+
+subckt rtcomb_ff_v13_pdk110_50 (d ck qb vdd vss)
+MP0 (p0 d vdd vdd) pch w=9.6e-06 l=1.8e-07 ad=4.608e-12 as=4.608e-12 pd=2.016e-05 ps=2.016e-05 nrd=0.028125 nrs=0.028125 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MPC0 (b ck p0 vdd) pch w=9.6e-06 l=1.8e-07 ad=4.608e-12 as=4.608e-12 pd=2.016e-05 ps=2.016e-05 nrd=0.028125 nrs=0.028125 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MN0 (b d vss vss) nch w=3.840000000000001e-06 l=1.8e-07 ad=1.8432e-12 as=1.8432e-12 pd=8.64e-06 ps=8.64e-06 nrd=0.0703125 nrs=0.0703125 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP1 (a ck vdd vdd) pch w=9.6e-06 l=1.8e-07 ad=4.608e-12 as=4.608e-12 pd=2.016e-05 ps=2.016e-05 nrd=0.028125 nrs=0.028125 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MN1 (a b n1 vss) nch w=1.152e-05 l=1.8e-07 ad=5.5296e-12 as=5.5296e-12 pd=2.4e-05 ps=2.4e-05 nrd=0.0234375 nrs=0.0234375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MNC1 (n1 ck vss vss) nch w=1.152e-05 l=1.8e-07 ad=5.5296e-12 as=5.5296e-12 pd=2.4e-05 ps=2.4e-05 nrd=0.0234375 nrs=0.0234375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP2 (qb a vdd vdd) pch w=1.44e-05 l=1.8e-07 ad=6.912e-12 as=6.912e-12 pd=2.976e-05 ps=2.976e-05 nrd=0.01875 nrs=0.01875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MNC2 (qb ck n2 vss) nch w=7.679999999999999e-06 l=1.8e-07 ad=3.6864e-12 as=3.6864e-12 pd=1.632e-05 ps=1.632e-05 nrd=0.0351562 nrs=0.0351562 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MN2 (n2 a vss vss) nch w=7.679999999999999e-06 l=1.8e-07 ad=3.6864e-12 as=3.6864e-12 pd=1.632e-05 ps=1.632e-05 nrd=0.0351562 nrs=0.0351562 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends rtcomb_ff_v13_pdk110_50
+
+subckt pll_inv_pdk110_51 (a y vdd vss)
+MN (y a vss vss) nch w=1.2e-05 l=1.8e-07 nf=1 ad=5.76e-12 as=5.76e-12 pd=2.496e-05 ps=2.496e-05 nrd=0.0225 nrs=0.0225 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (y a vdd vdd) pch w=2e-06 l=1.8e-07 nf=1 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_inv_pdk110_51
+
+subckt pll_inv_pdk110_52 (a y vdd vss)
+MN (y a vss vss) nch w=3.2e-06 l=1.8e-07 nf=1 ad=1.536e-12 as=1.536e-12 pd=7.36e-06 ps=7.36e-06 nrd=0.08437500000000001 nrs=0.08437500000000001 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (y a vdd vdd) pch w=1.2e-05 l=1.8e-07 nf=1 ad=5.76e-12 as=5.76e-12 pd=2.496e-05 ps=2.496e-05 nrd=0.0225 nrs=0.0225 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_inv_pdk110_52
+
+subckt validity_physical_v14_pdk110_53 (rf hp hn amp_good phase_good vdd vss)
+MD (rf rf env vss) nch w=5e-07 l=1.8e-07 ad=2.4e-13 as=2.4e-13 pd=1.96e-06 ps=1.96e-06 nrd=0.54 nrs=0.54 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+RE (env vss) resistor r=1000000
+CE (env vss) capacitor c=5e-14
+MR (vdd vdd envref vss) nch w=5e-07 l=1.8e-07 ad=2.4e-13 as=2.4e-13 pd=1.96e-06 ps=1.96e-06 nrd=0.54 nrs=0.54 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+RR (envref vss) resistor r=1000000
+RT0 (envref threshold) resistor r=10000000
+RT1 (threshold vdd) resistor r=90000000
+XA (env threshold amp_good vdd vss) cmp_physical_v14_pdk110_54
+RH0 (hn wh) resistor r=1000000
+RH1 (wh vdd) resistor r=9000000
+RL0 (hn wl) resistor r=1000000
+RL1 (wl vss) resistor r=9000000
+XH (wh hp upper_ok vdd vss) cmp_physical_v14_pdk110_54
+XL (hp wl lower_ok vdd vss) cmp_physical_v14_pdk110_54
+XW (upper_ok lower_ok window_ok vdd vss) tx_and_pdk110_47
+XG (window_ok amp_good phase_good vdd vss) tx_and_pdk110_47
+ends validity_physical_v14_pdk110_53
+
+subckt cmp_physical_v14_pdk110_54 (vp vn out vdd vss)
+RB (vdd nb) resistor r=100000
+MB (nb nb vss vss) nch w=1e-06 l=1e-06 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MT (tail nb vss vss) nch w=2e-06 l=1e-06 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (left vp tail vss) nch w=1e-06 l=5.000000000000001e-07 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MN (sense vn tail vss) nch w=1e-06 l=5.000000000000001e-07 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+PL (left left vdd vdd) pch w=2e-06 l=1e-06 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+PR (sense left vdd vdd) pch w=2e-06 l=1e-06 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+XI0 (sense inv vdd vss) pll_inv_pdk110_55
+XI1 (inv out vdd vss) pll_inv_pdk110_7
+ends cmp_physical_v14_pdk110_54
+
+subckt pll_inv_pdk110_55 (a y vdd vss)
+MN (y a vss vss) nch w=5e-07 l=1.8e-07 nf=1 ad=2.4e-13 as=2.4e-13 pd=1.96e-06 ps=1.96e-06 nrd=0.54 nrs=0.54 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (y a vdd vdd) pch w=1.25e-06 l=1.8e-07 nf=1 ad=6e-13 as=6e-13 pd=3.46e-06 ps=3.46e-06 nrd=0.216 nrs=0.216 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_inv_pdk110_55
+
+subckt pll_control_recenter109_v14_pdk110_56 (refclk reset apply k0 k1 k2 k3 k4 k5 outclk acqclk phase_good frequency_good b0 b1 b2 b3 b4 b5 b6 b7 s0 s1 s2 s3 s4 s5 divider_reset enable pulse preset qualified range_error config_ready config_invalid restart count_gate count_reset vdd vss)
+XC (refclk reset apply k0 k1 k2 k3 k4 k5 ak0 ak1 ak2 ak3 ak4 ak5 s0 s1 s2 s3 s4 s5 config_ready config_invalid cfg_reset vdd vss) tx_pll_config_pdk110_57
+XR (cfg_reset restart fll_reset vdd vss) tx_or_pdk110_67
+XDRESET (cfg_reset restart divider_reset vdd vss) tx_or_pdk110_67
+XF (refclk fll_reset ak0 ak1 ak2 ak3 ak4 ak5 m0 m1 m2 m3 m4 m5 m6 m7 m8 m9 m10 m11 m12 m13 b0 b1 b2 b3 b4 b5 b6 b7 d0 d1 d2 d3 d4 d5 fll_gate fll_count_reset acquired range_error state0 state1 state2 vdd vss) tx_fll_recenter109_v14_pdk110_69
+XACQI (acquired acquired_b vdd vss) pll_inv_pdk110_7
+XACQ0 (acqclk clock_mux acquired_b acquired vdd vss) pll_tg_pdk110_16
+XACQ1 (outclk clock_mux acquired acquired_b vdd vss) pll_tg_pdk110_16
+XACB0 (clock_mux clock_b vdd vss) pll_inv_pdk110_36
+XACB1 (clock_b count_clock vdd vss) pll_inv_pdk110_27
+XCOUNT (count_clock count_gate count_reset q0 q1 q2 q3 q4 q5 q6 q7 q8 q9 q10 q11 q12 q13 vdd vss) tx_fll_counter_pdk110_71
+XSN (count_gate q0 q1 q2 q3 q4 q5 q6 q7 q8 q9 q10 q11 q12 q13 m0 m1 m2 m3 m4 m5 m6 m7 m8 m9 m10 m11 m12 m13 vdd vss) tx_fll_snapshot_pdk110_74
+XDAC (d0 d1 d2 d3 d4 d5 acquired preset vdd vss) tx_fll_dac_pdk110_75
+XPHCLK (refclk ref_fall vdd vss) pll_inv_pdk110_7
+XPH (phase_good ref_fall reset phase_held vdd vss) tx_dff_r0_pdk110_58
+XS (refclk reset config_ready acquired range_error phase_held frequency_good enable qualified restart fault vdd vss) tx_pll_supervisor_capture_v14_pdk110_77
+XP (refclk enable fll_reset pulse vdd vss) tx_cp_timing_pdk110_78
+XWG (fll_gate watch_gate acquired count_gate vdd vss) tx_mux_pdk110_64
+XWR (fll_count_reset watch_reset acquired count_reset vdd vss) tx_mux_pdk110_64
+XW (refclk fll_reset acquired ak0 ak1 ak2 ak3 ak4 ak5 m0 m1 m2 m3 m4 m5 m6 m7 m8 m9 m10 m11 m12 m13 watch_gate watch_reset frequency_good watchdog_valid vdd vss) tx_frequency_watchdog_pdk110_80
+ends pll_control_recenter109_v14_pdk110_56
+
+subckt tx_pll_config_pdk110_57 (refclk reset apply cfg_k0 cfg_k1 cfg_k2 cfg_k3 cfg_k4 cfg_k5 active_k0 active_k1 active_k2 active_k3 active_k4 active_k5 select_m0 select_m1 select_m2 select_m3 select_m4 select_m5 ready invalid divider_reset vdd vss)
+X0 (n26 refclk reset invalid vdd vss) tx_dff_r0_pdk110_58
+X1 (n27 refclk reset ready vdd vss) tx_dff_r0_pdk110_58
+X2 (n28 refclk reset n29 vdd vss) tx_dff_r0_pdk110_58
+X3 (n30 refclk reset n31 vdd vss) tx_dff_r0_pdk110_58
+X4 (n32 refclk reset n33 vdd vss) tx_dff_r0_pdk110_58
+X5 (n34 refclk reset n35 vdd vss) tx_dff_r0_pdk110_58
+X6 (n36 refclk reset n37 vdd vss) tx_dff_r0_pdk110_58
+X7 (n38 refclk reset n39 vdd vss) tx_dff_r0_pdk110_58
+X8 (n40 refclk reset active_k0 vdd vss) tx_dff_r0_pdk110_58
+X9 (n41 refclk reset active_k1 vdd vss) tx_dff_r0_pdk110_58
+X10 (n42 refclk reset active_k2 vdd vss) tx_dff_r0_pdk110_58
+X11 (n43 refclk reset active_k3 vdd vss) tx_dff_r0_pdk110_58
+X12 (n44 refclk reset active_k4 vdd vss) tx_dff_r0_pdk110_58
+X13 (n45 refclk reset active_k5 vdd vss) tx_dff_r0_pdk110_58
+X14 (n46 refclk reset n47 vdd vss) tx_dff_r0_pdk110_58
+X15 (n48 refclk reset n49 vdd vss) tx_dff_r0_pdk110_58
+X16 (n50 refclk reset n51 vdd vss) tx_dff_r0_pdk110_58
+X17 (n52 refclk reset n53 vdd vss) tx_dff_r0_pdk110_58
+X18 (apply refclk reset n54 vdd vss) tx_dff_r0_pdk110_58
+X19 (n54 refclk reset n55 vdd vss) tx_dff_r0_pdk110_58
+X20 (n55 refclk reset n56 vdd vss) tx_dff_r0_pdk110_58
+X21 (n57 refclk reset n58 vdd vss) tx_dff_r0_pdk110_58
+X22 (n51 n59 n60 n50 vdd vss) tx_mux_pdk110_64
+X23 (n49 n61 n60 n48 vdd vss) tx_mux_pdk110_64
+X24 (n47 n62 n60 n46 vdd vss) tx_mux_pdk110_64
+X25 (active_k4 n37 n63 n44 vdd vss) tx_mux_pdk110_64
+X26 (active_k3 n35 n63 n43 vdd vss) tx_mux_pdk110_64
+X27 (active_k2 n33 n63 n42 vdd vss) tx_mux_pdk110_64
+X28 (active_k1 n31 n63 n41 vdd vss) tx_mux_pdk110_64
+X29 (active_k0 n29 n63 n40 vdd vss) tx_mux_pdk110_64
+X30 (n37 cfg_k4 n64 n36 vdd vss) tx_mux_pdk110_64
+X31 (n35 cfg_k3 n64 n34 vdd vss) tx_mux_pdk110_64
+X32 (n33 cfg_k2 n64 n32 vdd vss) tx_mux_pdk110_64
+X33 (n31 cfg_k1 n64 n30 vdd vss) tx_mux_pdk110_64
+X34 (n29 cfg_k0 n64 n28 vdd vss) tx_mux_pdk110_64
+X35 (invalid n65 n66 n26 vdd vss) tx_mux_pdk110_64
+X36 (ready n67 n66 n27 vdd vss) tx_mux_pdk110_64
+X37 (n39 cfg_k5 n64 n38 vdd vss) tx_mux_pdk110_64
+X38 (active_k5 n39 n63 n45 vdd vss) tx_mux_pdk110_64
+X39 (n53 n68 n60 n52 vdd vss) tx_mux_pdk110_64
+X40 (n47 n69 vdd vss) pll_inv_pdk110_7
+X41 (n31 n70 vdd vss) pll_inv_pdk110_7
+X42 (n33 n71 vdd vss) pll_inv_pdk110_7
+X43 (n39 n72 vdd vss) pll_inv_pdk110_7
+X44 (n37 n73 vdd vss) pll_inv_pdk110_7
+X45 (active_k1 n74 vdd vss) pll_inv_pdk110_7
+X46 (active_k0 n75 vdd vss) pll_inv_pdk110_7
+X47 (active_k5 n76 vdd vss) pll_inv_pdk110_7
+X48 (active_k3 n77 vdd vss) pll_inv_pdk110_7
+X49 (active_k2 n78 vdd vss) pll_inv_pdk110_7
+X50 (active_k4 n79 vdd vss) pll_inv_pdk110_7
+X51 (n51 n80 vdd vss) pll_inv_pdk110_7
+X52 (n81 n82 vdd vss) pll_inv_pdk110_7
+X53 (n83 n84 vdd vss) pll_inv_pdk110_7
+X54 (n85 n86 vdd vss) pll_inv_pdk110_7
+X55 (n87 n88 vdd vss) pll_inv_pdk110_7
+X56 (n89 n90 vdd vss) pll_inv_pdk110_7
+X57 (n91 n92 vdd vss) pll_inv_pdk110_7
+X58 (n93 n94 vdd vss) pll_inv_pdk110_7
+X59 (n95 n96 vdd vss) pll_inv_pdk110_7
+X60 (n97 n98 vdd vss) pll_inv_pdk110_7
+X61 (n99 n100 vdd vss) pll_inv_pdk110_7
+X62 (n101 n102 vdd vss) pll_inv_pdk110_7
+X63 (n103 n104 vdd vss) pll_inv_pdk110_7
+X64 (n105 n106 vdd vss) pll_inv_pdk110_7
+X65 (n49 n47 n107 vdd vss) tx_xor_pdk110_66
+X66 (n51 n108 n109 vdd vss) tx_xor_pdk110_66
+X67 (n53 n110 n111 vdd vss) tx_xor_pdk110_66
+X68 (n112 n113 n105 vdd vss) tx_or_pdk110_67
+X69 (n114 n115 n113 vdd vss) tx_and_pdk110_47
+X70 (active_k5 n116 n112 vdd vss) tx_or_pdk110_67
+X71 (active_k3 active_k2 n117 vdd vss) tx_and_pdk110_47
+X72 (n118 n119 n103 vdd vss) tx_or_pdk110_67
+X73 (n120 n115 n119 vdd vss) tx_and_pdk110_47
+X74 (n117 n121 n115 vdd vss) tx_or_pdk110_67
+X75 (n122 n123 n121 vdd vss) tx_and_pdk110_47
+X76 (active_k5 n79 n120 vdd vss) tx_and_pdk110_47
+X77 (active_k5 active_k4 n118 vdd vss) tx_and_pdk110_47
+X78 (active_k5 n124 n101 vdd vss) tx_or_pdk110_67
+X79 (n116 n117 n124 vdd vss) tx_and_pdk110_47
+X80 (n116 n125 n126 vdd vss) tx_and_pdk110_47
+X81 (active_k5 n126 n99 vdd vss) tx_or_pdk110_67
+X82 (n127 n128 n125 vdd vss) tx_or_pdk110_67
+X83 (n129 n130 n128 vdd vss) tx_and_pdk110_47
+X84 (n76 active_k4 n116 vdd vss) tx_and_pdk110_47
+X85 (n77 n78 n129 vdd vss) tx_and_pdk110_47
+X86 (active_k3 n131 n127 vdd vss) tx_or_pdk110_67
+X87 (active_k5 n132 n97 vdd vss) tx_or_pdk110_67
+X88 (n116 n133 n132 vdd vss) tx_and_pdk110_47
+X89 (n106 n134 n135 vdd vss) tx_or_pdk110_67
+X90 (n117 n136 n133 vdd vss) tx_or_pdk110_67
+X91 (n114 n137 n138 vdd vss) tx_and_pdk110_47
+X92 (n112 n138 n95 vdd vss) tx_or_pdk110_67
+X93 (n117 active_k1 n137 vdd vss) tx_and_pdk110_47
+X94 (n76 n79 n114 vdd vss) tx_and_pdk110_47
+X95 (active_k5 n139 n93 vdd vss) tx_or_pdk110_67
+X96 (n116 n140 n139 vdd vss) tx_and_pdk110_47
+X97 (n127 n141 n140 vdd vss) tx_or_pdk110_67
+X98 (n129 active_k1 n141 vdd vss) tx_and_pdk110_47
+X99 (n77 active_k2 n131 vdd vss) tx_and_pdk110_47
+X100 (n102 n142 n143 vdd vss) tx_or_pdk110_67
+X101 (n114 n117 n144 vdd vss) tx_and_pdk110_47
+X102 (n112 n144 n91 vdd vss) tx_or_pdk110_67
+X103 (n112 n145 n89 vdd vss) tx_or_pdk110_67
+X104 (n114 n146 n145 vdd vss) tx_and_pdk110_47
+X105 (n117 n123 n146 vdd vss) tx_and_pdk110_47
+X106 (n100 n147 n148 vdd vss) tx_or_pdk110_67
+X107 (active_k1 n149 n123 vdd vss) tx_or_pdk110_67
+X108 (n74 active_k0 n149 vdd vss) tx_and_pdk110_47
+X109 (n112 n150 n87 vdd vss) tx_or_pdk110_67
+X110 (n114 n151 n150 vdd vss) tx_and_pdk110_47
+X111 (n117 n152 n151 vdd vss) tx_or_pdk110_67
+X112 (n122 active_k1 n152 vdd vss) tx_and_pdk110_47
+X113 (active_k3 n78 n122 vdd vss) tx_and_pdk110_47
+X114 (n112 n153 n85 vdd vss) tx_or_pdk110_67
+X115 (n114 n133 n153 vdd vss) tx_and_pdk110_47
+X116 (active_k1 active_k0 n130 vdd vss) tx_and_pdk110_47
+X117 (n96 n154 n155 vdd vss) tx_or_pdk110_67
+X118 (n156 n157 n83 vdd vss) tx_or_pdk110_67
+X119 (n158 n159 n157 vdd vss) tx_and_pdk110_47
+X120 (n160 n161 n159 vdd vss) tx_or_pdk110_67
+X121 (n39 n162 n156 vdd vss) tx_or_pdk110_67
+X122 (n72 n37 n162 vdd vss) tx_and_pdk110_47
+X123 (n31 n163 n164 vdd vss) tx_or_pdk110_67
+X124 (n165 n159 n166 vdd vss) tx_and_pdk110_47
+X125 (n167 n166 n81 vdd vss) tx_or_pdk110_67
+X126 (n168 n164 n161 vdd vss) tx_and_pdk110_47
+X127 (n39 n37 n167 vdd vss) tx_and_pdk110_47
+X128 (n35 n33 n160 vdd vss) tx_and_pdk110_47
+X129 (n70 n29 n163 vdd vss) tx_and_pdk110_47
+X130 (n51 n108 n110 vdd vss) tx_and_pdk110_47
+X131 (n49 n47 n108 vdd vss) tx_and_pdk110_47
+X132 (n92 n169 n170 vdd vss) tx_or_pdk110_67
+X133 (n88 n171 n172 vdd vss) tx_or_pdk110_67
+X134 (n84 n173 n174 vdd vss) tx_or_pdk110_67
+X135 (n175 n176 n66 vdd vss) tx_and_pdk110_47
+X136 (n64 n177 n175 vdd vss) tx_or_pdk110_67
+X137 (n58 n64 n176 vdd vss) tx_or_pdk110_67
+X138 (n178 n58 n179 vdd vss) tx_and_pdk110_47
+X139 (n179 n180 n63 vdd vss) tx_and_pdk110_47
+X140 (n181 n176 n60 vdd vss) tx_and_pdk110_47
+X141 (n64 n182 n181 vdd vss) tx_or_pdk110_67
+X142 (n75 active_k1 n183 vdd vss) tx_or_pdk110_67
+X143 (active_k2 n77 n184 vdd vss) tx_or_pdk110_67
+X144 (active_k4 active_k5 n185 vdd vss) tx_or_pdk110_67
+X145 (n183 n184 n186 vdd vss) tx_or_pdk110_67
+X146 (n186 n185 n187 vdd vss) tx_or_pdk110_67
+X147 (n69 n49 n188 vdd vss) tx_or_pdk110_67
+X148 (n51 n53 n189 vdd vss) tx_or_pdk110_67
+X149 (n188 n189 n190 vdd vss) tx_or_pdk110_67
+X150 (n69 n191 n192 vdd vss) tx_or_pdk110_67
+X151 (n80 n53 n193 vdd vss) tx_or_pdk110_67
+X152 (n192 n193 n182 vdd vss) tx_or_pdk110_67
+X153 (n194 n114 n134 vdd vss) tx_and_pdk110_47
+X154 (n195 n134 n196 vdd vss) tx_or_pdk110_67
+X155 (n149 n122 n194 vdd vss) tx_and_pdk110_47
+X156 (n194 n120 n197 vdd vss) tx_and_pdk110_47
+X157 (n104 n197 n198 vdd vss) tx_or_pdk110_67
+X158 (n75 n74 n199 vdd vss) tx_and_pdk110_47
+X159 (n199 n117 n200 vdd vss) tx_and_pdk110_47
+X160 (n200 n116 n142 vdd vss) tx_and_pdk110_47
+X161 (n201 n142 n202 vdd vss) tx_or_pdk110_67
+X162 (n128 n116 n147 vdd vss) tx_and_pdk110_47
+X163 (n203 n147 n204 vdd vss) tx_or_pdk110_67
+X164 (n130 n122 n136 vdd vss) tx_and_pdk110_47
+X165 (n136 n116 n205 vdd vss) tx_and_pdk110_47
+X166 (n98 n205 n206 vdd vss) tx_or_pdk110_67
+X167 (n207 n117 n208 vdd vss) tx_and_pdk110_47
+X168 (n208 n114 n154 vdd vss) tx_and_pdk110_47
+X169 (n209 n154 n210 vdd vss) tx_or_pdk110_67
+X170 (n75 active_k1 n207 vdd vss) tx_and_pdk110_47
+X171 (n207 n129 n211 vdd vss) tx_and_pdk110_47
+X172 (n211 n116 n212 vdd vss) tx_and_pdk110_47
+X173 (n94 n212 n213 vdd vss) tx_or_pdk110_67
+X174 (n200 n114 n169 vdd vss) tx_and_pdk110_47
+X175 (n214 n169 n215 vdd vss) tx_or_pdk110_67
+X176 (n149 n117 n216 vdd vss) tx_and_pdk110_47
+X177 (n216 n114 n217 vdd vss) tx_and_pdk110_47
+X178 (n90 n217 n218 vdd vss) tx_or_pdk110_67
+X179 (n207 n122 n219 vdd vss) tx_and_pdk110_47
+X180 (n219 n114 n171 vdd vss) tx_and_pdk110_47
+X181 (n220 n171 n221 vdd vss) tx_or_pdk110_67
+X182 (n136 n114 n222 vdd vss) tx_and_pdk110_47
+X183 (n86 n222 n223 vdd vss) tx_or_pdk110_67
+X184 (n71 n35 n168 vdd vss) tx_and_pdk110_47
+X185 (n73 n72 n158 vdd vss) tx_and_pdk110_47
+X186 (n163 n168 n224 vdd vss) tx_and_pdk110_47
+X187 (n224 n158 n173 vdd vss) tx_and_pdk110_47
+X188 (n225 n173 n226 vdd vss) tx_or_pdk110_67
+X189 (n73 n39 n165 vdd vss) tx_and_pdk110_47
+X190 (n224 n165 n227 vdd vss) tx_and_pdk110_47
+X191 (n82 n227 n228 vdd vss) tx_or_pdk110_67
+X192 (n187 n229 vdd vss) pll_inv_pdk110_7
+X193 (ready n230 vdd vss) pll_inv_pdk110_7
+X194 (n56 n231 vdd vss) pll_inv_pdk110_7
+X195 (n190 n180 vdd vss) pll_inv_pdk110_7
+X196 (n182 n177 vdd vss) pll_inv_pdk110_7
+X197 (n232 n233 vdd vss) pll_inv_pdk110_7
+X198 (n196 n198 n234 vdd vss) tx_and_pdk110_47
+X199 (n234 n202 select_m0 vdd vss) tx_and_pdk110_47
+X200 (n234 n204 n235 vdd vss) tx_and_pdk110_47
+X201 (n235 n206 select_m1 vdd vss) tx_and_pdk110_47
+X202 (n234 n210 n236 vdd vss) tx_and_pdk110_47
+X203 (n236 n213 select_m2 vdd vss) tx_and_pdk110_47
+X204 (n234 n215 n237 vdd vss) tx_and_pdk110_47
+X205 (n237 n218 select_m3 vdd vss) tx_and_pdk110_47
+X206 (n234 n221 n238 vdd vss) tx_and_pdk110_47
+X207 (n238 n223 select_m4 vdd vss) tx_and_pdk110_47
+X208 (n234 n229 select_m5 vdd vss) tx_and_pdk110_47
+X209 (reset n230 divider_reset vdd vss) tx_or_pdk110_67
+X210 (n55 n231 n64 vdd vss) tx_and_pdk110_47
+X211 (n226 n228 n232 vdd vss) tx_and_pdk110_47
+X212 (vss n182 n58 n239 vdd vss) tx_mux_pdk110_64
+X213 (n239 vdd n64 n57 vdd vss) tx_mux_pdk110_64
+X214 (nx n69 n182 n240 vdd vss) tx_mux_pdk110_64
+X215 (nx n107 n182 n241 vdd vss) tx_mux_pdk110_64
+X216 (nx n109 n182 n242 vdd vss) tx_mux_pdk110_64
+X217 (nx n111 n182 n243 vdd vss) tx_mux_pdk110_64
+X218 (nx n240 n58 n244 vdd vss) tx_mux_pdk110_64
+X219 (nx n241 n58 n245 vdd vss) tx_mux_pdk110_64
+X220 (nx n242 n58 n246 vdd vss) tx_mux_pdk110_64
+X221 (nx n243 n58 n247 vdd vss) tx_mux_pdk110_64
+X222 (n244 vss n64 n62 vdd vss) tx_mux_pdk110_64
+X223 (n245 vss n64 n61 vdd vss) tx_mux_pdk110_64
+X224 (n246 vss n64 n59 vdd vss) tx_mux_pdk110_64
+X225 (n247 vss n64 n68 vdd vss) tx_mux_pdk110_64
+X226 (n233 nx n182 n248 vdd vss) tx_mux_pdk110_64
+X227 (nx n248 n58 n249 vdd vss) tx_mux_pdk110_64
+X228 (n249 vss n64 n65 vdd vss) tx_mux_pdk110_64
+X229 (n232 nx n182 n250 vdd vss) tx_mux_pdk110_64
+X230 (nx n250 n58 n251 vdd vss) tx_mux_pdk110_64
+X231 (n251 vss n64 n67 vdd vss) tx_mux_pdk110_64
+X232 (n49 n191 vdd vss) pll_inv_pdk110_7
+X233 (n64 n178 vdd vss) pll_inv_pdk110_7
+X234 (n135 n195 vdd vss) pll_inv_pdk110_7
+X235 (n143 n201 vdd vss) pll_inv_pdk110_7
+X236 (n148 n203 vdd vss) pll_inv_pdk110_7
+X237 (n155 n209 vdd vss) pll_inv_pdk110_7
+X238 (n170 n214 vdd vss) pll_inv_pdk110_7
+X239 (n172 n220 vdd vss) pll_inv_pdk110_7
+X240 (n174 n225 vdd vss) pll_inv_pdk110_7
+ends tx_pll_config_pdk110_57
+
+subckt tx_dff_r0_pdk110_58 (d clk reset q vdd vss)
+XC (clk clkb vdd vss) pll_inv_pdk110_59
+XR (reset resetb vdd vss) pll_inv_pdk110_7
+XM (d clkb clk resetb qm vdd vss) tx_latch_r_pdk110_60
+XS (qm clk clkb resetb q vdd vss) tx_latch_r_pdk110_60
+ends tx_dff_r0_pdk110_58
+
+subckt pll_inv_pdk110_59 (a y vdd vss)
+MN (y a vss vss) nch w=2e-06 l=1.8e-07 nf=1 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (y a vdd vdd) pch w=5e-06 l=1.8e-07 nf=1 ad=2.4e-12 as=2.4e-12 pd=1.096e-05 ps=1.096e-05 nrd=0.054 nrs=0.054 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_inv_pdk110_59
+
+subckt tx_latch_r_pdk110_60 (d gate gateb resetb q vdd vss)
+XT (d x gate gateb vdd vss) pll_tg_pdk110_61
+XN (x resetb qb vdd vss) pll_nand2_pdk110_15
+XO (qb q vdd vss) pll_inv_pdk110_62
+XF (q x gateb gate vdd vss) pll_tg_pdk110_63
+ends tx_latch_r_pdk110_60
+
+subckt pll_tg_pdk110_61 (a b on off vdd vss)
+MN (a on b vss) nch w=8.000000000000001e-07 l=1.8e-07 ad=3.84e-13 as=3.84e-13 pd=2.56e-06 ps=2.56e-06 nrd=0.3375 nrs=0.3375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (a off b vdd) pch w=1.6e-06 l=1.8e-07 ad=7.68e-13 as=7.68e-13 pd=4.16e-06 ps=4.16e-06 nrd=0.16875 nrs=0.16875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_tg_pdk110_61
+
+subckt pll_inv_pdk110_62 (a y vdd vss)
+MN (y a vss vss) nch w=8.000000000000001e-07 l=1.8e-07 nf=1 ad=3.84e-13 as=3.84e-13 pd=2.56e-06 ps=2.56e-06 nrd=0.3375 nrs=0.3375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (y a vdd vdd) pch w=2e-06 l=1.8e-07 nf=1 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_inv_pdk110_62
+
+subckt pll_tg_pdk110_63 (a b on off vdd vss)
+MN (a on b vss) nch w=4e-07 l=1.8e-07 ad=2.164e-13 as=2.164e-13 pd=1.88e-06 ps=1.88e-06 nrd=0.775 nrs=0.775 sa=5.2e-07 sb=5.2e-07 sd=6.2e-07 sca=0 scb=0 scc=0
+MP (a off b vdd) pch w=8.000000000000001e-07 l=1.8e-07 ad=3.84e-13 as=3.84e-13 pd=2.56e-06 ps=2.56e-06 nrd=0.3375 nrs=0.3375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_tg_pdk110_63
+
+subckt tx_mux_pdk110_64 (a b s y vdd vss)
+XI (s sb vdd vss) pll_inv_pdk110_48
+XT0 (a z sb s vdd vss) pll_tg_pdk110_65
+XT1 (b z s sb vdd vss) pll_tg_pdk110_65
+XB0 (z zb vdd vss) pll_inv_pdk110_48
+XB1 (zb y vdd vss) pll_inv_pdk110_48
+ends tx_mux_pdk110_64
+
+subckt pll_tg_pdk110_65 (a b on off vdd vss)
+MN (a on b vss) nch w=5.000000000000001e-07 l=1.8e-07 ad=2.4e-13 as=2.4e-13 pd=1.96e-06 ps=1.96e-06 nrd=0.54 nrs=0.54 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (a off b vdd) pch w=1e-06 l=1.8e-07 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_tg_pdk110_65
+
+subckt tx_xor_pdk110_66 (a b y vdd vss)
+XI (a ab vdd vss) pll_inv_pdk110_48
+XM (a ab b y vdd vss) tx_mux_pdk110_64
+ends tx_xor_pdk110_66
+
+subckt tx_or_pdk110_67 (a b y vdd vss)
+XN (a b n vdd vss) pll_nor2_pdk110_68
+XI (n y vdd vss) pll_inv_pdk110_48
+ends tx_or_pdk110_67
+
+subckt pll_nor2_pdk110_68 (a b y vdd vss)
+MP0 (p a vdd vdd) pch w=4e-06 l=1.8e-07 ad=1.92e-12 as=1.92e-12 pd=8.960000000000001e-06 ps=8.960000000000001e-06 nrd=0.0675 nrs=0.0675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP1 (y b p vdd) pch w=4e-06 l=1.8e-07 ad=1.92e-12 as=1.92e-12 pd=8.960000000000001e-06 ps=8.960000000000001e-06 nrd=0.0675 nrs=0.0675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MN0 (y a vss vss) nch w=1e-06 l=1.8e-07 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MN1 (y b vss vss) nch w=1e-06 l=1.8e-07 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_nor2_pdk110_68
+
+subckt tx_fll_recenter109_v14_pdk110_69 (refclk reset target_k0 target_k1 target_k2 target_k3 target_k4 target_k5 measured0 measured1 measured2 measured3 measured4 measured5 measured6 measured7 measured8 measured9 measured10 measured11 measured12 measured13 coarse0 coarse1 coarse2 coarse3 coarse4 coarse5 coarse6 coarse7 dac0 dac1 dac2 dac3 dac4 dac5 count_gate count_reset enable range_error state_out0 state_out1 state_out2 vdd vss)
+X0 (n45 refclk reset dac0 vdd vss) tx_dff_r1_pdk110_70
+X1 (n46 refclk reset dac1 vdd vss) tx_dff_r1_pdk110_70
+X2 (n47 refclk reset dac2 vdd vss) tx_dff_r0_pdk110_58
+X3 (n48 refclk reset dac3 vdd vss) tx_dff_r1_pdk110_70
+X4 (n49 refclk reset dac4 vdd vss) tx_dff_r0_pdk110_58
+X5 (n50 refclk reset n51 vdd vss) tx_dff_r0_pdk110_58
+X6 (n52 refclk reset count_gate vdd vss) tx_dff_r0_pdk110_58
+X7 (n53 refclk reset n54 vdd vss) tx_dff_r0_pdk110_58
+X8 (n55 refclk reset count_reset vdd vss) tx_dff_r1_pdk110_70
+X9 (n56 refclk reset dac5 vdd vss) tx_dff_r0_pdk110_58
+X10 (n57 refclk reset n58 vdd vss) tx_dff_r0_pdk110_58
+X11 (n59 refclk reset n60 vdd vss) tx_dff_r0_pdk110_58
+X12 (n61 refclk reset n62 vdd vss) tx_dff_r0_pdk110_58
+X13 (n63 refclk reset n64 vdd vss) tx_dff_r0_pdk110_58
+X14 (n65 refclk reset n66 vdd vss) tx_dff_r0_pdk110_58
+X15 (n67 refclk reset n68 vdd vss) tx_dff_r0_pdk110_58
+X16 (n69 refclk reset n70 vdd vss) tx_dff_r0_pdk110_58
+X17 (n71 refclk reset n72 vdd vss) tx_dff_r1_pdk110_70
+X18 (n73 refclk reset enable vdd vss) tx_dff_r0_pdk110_58
+X19 (n74 refclk reset n75 vdd vss) tx_dff_r1_pdk110_70
+X20 (n76 refclk reset n77 vdd vss) tx_dff_r1_pdk110_70
+X21 (n78 refclk reset n79 vdd vss) tx_dff_r0_pdk110_58
+X22 (n80 refclk reset n81 vdd vss) tx_dff_r1_pdk110_70
+X23 (n82 refclk reset n83 vdd vss) tx_dff_r0_pdk110_58
+X24 (n84 refclk reset n85 vdd vss) tx_dff_r0_pdk110_58
+X25 (n86 refclk reset range_error vdd vss) tx_dff_r0_pdk110_58
+X26 (n87 refclk reset n88 vdd vss) tx_dff_r0_pdk110_58
+X27 (n89 refclk reset state_out0 vdd vss) tx_dff_r0_pdk110_58
+X28 (n90 refclk reset state_out1 vdd vss) tx_dff_r0_pdk110_58
+X29 (n91 refclk reset state_out2 vdd vss) tx_dff_r0_pdk110_58
+X30 (n92 refclk reset n93 vdd vss) tx_dff_r0_pdk110_58
+X31 (n94 refclk reset n95 vdd vss) tx_dff_r0_pdk110_58
+X32 (n96 refclk reset n97 vdd vss) tx_dff_r0_pdk110_58
+X33 (n98 refclk reset n99 vdd vss) tx_dff_r0_pdk110_58
+X34 (n100 refclk reset n101 vdd vss) tx_dff_r0_pdk110_58
+X35 (n102 refclk reset n103 vdd vss) tx_dff_r0_pdk110_58
+X36 (n104 refclk reset n105 vdd vss) tx_dff_r0_pdk110_58
+X37 (n106 refclk reset n107 vdd vss) tx_dff_r0_pdk110_58
+X38 (n108 refclk reset n109 vdd vss) tx_dff_r0_pdk110_58
+X39 (n110 refclk reset n111 vdd vss) tx_dff_r0_pdk110_58
+X40 (n112 refclk reset n113 vdd vss) tx_dff_r0_pdk110_58
+X41 (n114 refclk reset n115 vdd vss) tx_dff_r0_pdk110_58
+X42 (n116 refclk reset n117 vdd vss) tx_dff_r0_pdk110_58
+X43 (n118 refclk reset coarse0 vdd vss) tx_dff_r0_pdk110_58
+X44 (n119 refclk reset coarse1 vdd vss) tx_dff_r0_pdk110_58
+X45 (n120 refclk reset coarse2 vdd vss) tx_dff_r0_pdk110_58
+X46 (n121 refclk reset coarse3 vdd vss) tx_dff_r0_pdk110_58
+X47 (n122 refclk reset coarse4 vdd vss) tx_dff_r0_pdk110_58
+X48 (n123 refclk reset coarse5 vdd vss) tx_dff_r0_pdk110_58
+X49 (n124 refclk reset coarse6 vdd vss) tx_dff_r0_pdk110_58
+X50 (n125 refclk reset coarse7 vdd vss) tx_dff_r0_pdk110_58
+X51 (n126 refclk reset n127 vdd vss) tx_dff_r1_pdk110_70
+X52 (n128 refclk reset n129 vdd vss) tx_dff_r0_pdk110_58
+X53 (n130 refclk reset n131 vdd vss) tx_dff_r1_pdk110_70
+X54 (n132 refclk reset n133 vdd vss) tx_dff_r0_pdk110_58
+X55 (n134 refclk reset n135 vdd vss) tx_dff_r1_pdk110_70
+X56 (n136 refclk reset n137 vdd vss) tx_dff_r1_pdk110_70
+X57 (n95 n138 n139 n94 vdd vss) tx_mux_pdk110_64
+X58 (n93 n140 n139 n92 vdd vss) tx_mux_pdk110_64
+X59 (state_out1 n141 n142 n90 vdd vss) tx_mux_pdk110_64
+X60 (state_out0 n143 n142 n89 vdd vss) tx_mux_pdk110_64
+X61 (n83 n144 n145 n82 vdd vss) tx_mux_pdk110_64
+X62 (n81 n146 n145 n80 vdd vss) tx_mux_pdk110_64
+X63 (n79 n147 n145 n78 vdd vss) tx_mux_pdk110_64
+X64 (n77 n148 n145 n76 vdd vss) tx_mux_pdk110_64
+X65 (n75 n149 n145 n74 vdd vss) tx_mux_pdk110_64
+X66 (n70 n150 n151 n69 vdd vss) tx_mux_pdk110_64
+X67 (n68 n152 n151 n67 vdd vss) tx_mux_pdk110_64
+X68 (n66 n153 n151 n65 vdd vss) tx_mux_pdk110_64
+X69 (n64 n154 n151 n63 vdd vss) tx_mux_pdk110_64
+X70 (n62 n155 n151 n61 vdd vss) tx_mux_pdk110_64
+X71 (n60 n156 n151 n59 vdd vss) tx_mux_pdk110_64
+X72 (n58 n157 n151 n57 vdd vss) tx_mux_pdk110_64
+X73 (dac4 n158 n159 n49 vdd vss) tx_mux_pdk110_64
+X74 (dac3 n160 n159 n48 vdd vss) tx_mux_pdk110_64
+X75 (dac2 n161 n159 n47 vdd vss) tx_mux_pdk110_64
+X76 (dac1 n162 n159 n46 vdd vss) tx_mux_pdk110_64
+X77 (dac0 n163 n159 n45 vdd vss) tx_mux_pdk110_64
+X78 (n135 n164 n165 n134 vdd vss) tx_mux_pdk110_64
+X79 (n133 n166 n165 n132 vdd vss) tx_mux_pdk110_64
+X80 (n131 n167 n165 n130 vdd vss) tx_mux_pdk110_64
+X81 (n129 n168 n165 n128 vdd vss) tx_mux_pdk110_64
+X82 (n127 n169 n165 n126 vdd vss) tx_mux_pdk110_64
+X83 (coarse6 n170 n171 n124 vdd vss) tx_mux_pdk110_64
+X84 (coarse5 n172 n171 n123 vdd vss) tx_mux_pdk110_64
+X85 (coarse4 n173 n171 n122 vdd vss) tx_mux_pdk110_64
+X86 (coarse3 n174 n171 n121 vdd vss) tx_mux_pdk110_64
+X87 (coarse2 n175 n171 n120 vdd vss) tx_mux_pdk110_64
+X88 (coarse1 n176 n171 n119 vdd vss) tx_mux_pdk110_64
+X89 (coarse0 n177 n171 n118 vdd vss) tx_mux_pdk110_64
+X90 (n117 n178 n179 n116 vdd vss) tx_mux_pdk110_64
+X91 (coarse7 n180 n171 n125 vdd vss) tx_mux_pdk110_64
+X92 (n137 n181 n165 n136 vdd vss) tx_mux_pdk110_64
+X93 (dac5 n182 n183 n56 vdd vss) tx_mux_pdk110_64
+X94 (n51 vdd n184 n50 vdd vss) tx_mux_pdk110_64
+X95 (count_gate n185 n186 n52 vdd vss) tx_mux_pdk110_64
+X96 (n54 vdd n187 n53 vdd vss) tx_mux_pdk110_64
+X97 (count_reset n188 n189 n55 vdd vss) tx_mux_pdk110_64
+X98 (n72 n190 n151 n71 vdd vss) tx_mux_pdk110_64
+X99 (enable n191 n192 n73 vdd vss) tx_mux_pdk110_64
+X100 (n85 n193 n145 n84 vdd vss) tx_mux_pdk110_64
+X101 (range_error n194 n195 n86 vdd vss) tx_mux_pdk110_64
+X102 (n88 n196 n197 n87 vdd vss) tx_mux_pdk110_64
+X103 (state_out2 n198 n142 n91 vdd vss) tx_mux_pdk110_64
+X104 (n97 n199 n139 n96 vdd vss) tx_mux_pdk110_64
+X105 (n115 n200 n201 n114 vdd vss) tx_mux_pdk110_64
+X106 (n202 n111 n203 n110 vdd vss) tx_mux_pdk110_64
+X107 (n204 n109 n203 n108 vdd vss) tx_mux_pdk110_64
+X108 (n205 n107 n203 n106 vdd vss) tx_mux_pdk110_64
+X109 (n206 n105 n203 n104 vdd vss) tx_mux_pdk110_64
+X110 (n207 n103 n203 n102 vdd vss) tx_mux_pdk110_64
+X111 (n208 n101 n203 n100 vdd vss) tx_mux_pdk110_64
+X112 (n209 n99 n203 n98 vdd vss) tx_mux_pdk110_64
+X113 (n210 n113 n203 n112 vdd vss) tx_mux_pdk110_64
+X114 (dac3 n211 vdd vss) pll_inv_pdk110_7
+X115 (n212 n213 vdd vss) pll_inv_pdk110_7
+X116 (n214 n215 vdd vss) pll_inv_pdk110_7
+X117 (n216 n217 vdd vss) pll_inv_pdk110_7
+X118 (n218 n219 vdd vss) pll_inv_pdk110_7
+X119 (n220 n221 vdd vss) pll_inv_pdk110_7
+X120 (n222 n223 vdd vss) pll_inv_pdk110_7
+X121 (target_k0 n224 vdd vss) pll_inv_pdk110_7
+X122 (state_out1 n225 vdd vss) pll_inv_pdk110_7
+X123 (state_out0 n226 vdd vss) pll_inv_pdk110_7
+X124 (n58 n227 vdd vss) pll_inv_pdk110_7
+X125 (n97 n228 vdd vss) pll_inv_pdk110_7
+X126 (state_out2 n229 vdd vss) pll_inv_pdk110_7
+X127 (n107 n230 vdd vss) pll_inv_pdk110_7
+X128 (n88 n231 vdd vss) pll_inv_pdk110_7
+X129 (n232 n233 vdd vss) pll_inv_pdk110_7
+X130 (n234 n235 vdd vss) pll_inv_pdk110_7
+X131 (n236 n237 vdd vss) pll_inv_pdk110_7
+X132 (n238 n239 vdd vss) pll_inv_pdk110_7
+X133 (n240 n241 vdd vss) pll_inv_pdk110_7
+X134 (n117 n242 vdd vss) pll_inv_pdk110_7
+X135 (n243 n244 vdd vss) pll_inv_pdk110_7
+X136 (measured3 n245 vdd vss) pll_inv_pdk110_7
+X137 (measured2 n246 vdd vss) pll_inv_pdk110_7
+X138 (n247 n248 vdd vss) pll_inv_pdk110_7
+X139 (n249 n250 vdd vss) pll_inv_pdk110_7
+X140 (n251 n252 vdd vss) pll_inv_pdk110_7
+X141 (n253 n254 vdd vss) pll_inv_pdk110_7
+X142 (n255 n256 vdd vss) pll_inv_pdk110_7
+X143 (n257 n258 vdd vss) pll_inv_pdk110_7
+X144 (n259 n260 vdd vss) pll_inv_pdk110_7
+X145 (n261 n262 vdd vss) pll_inv_pdk110_7
+X146 (n263 n264 vdd vss) pll_inv_pdk110_7
+X147 (n51 n265 vdd vss) pll_inv_pdk110_7
+X148 (n99 n266 vdd vss) pll_inv_pdk110_7
+X149 (dac0 n267 vdd vss) pll_inv_pdk110_7
+X150 (target_k2 n268 vdd vss) pll_inv_pdk110_7
+X151 (n269 n270 vdd vss) pll_inv_pdk110_7
+X152 (n271 n272 vdd vss) pll_inv_pdk110_7
+X153 (n273 n274 vdd vss) pll_inv_pdk110_7
+X154 (n275 n276 vdd vss) pll_inv_pdk110_7
+X155 (n277 n278 vdd vss) pll_inv_pdk110_7
+X156 (n279 n280 vdd vss) pll_inv_pdk110_7
+X157 (n281 n282 vdd vss) pll_inv_pdk110_7
+X158 (n283 n284 vdd vss) pll_inv_pdk110_7
+X159 (n285 n286 vdd vss) pll_inv_pdk110_7
+X160 (n287 n288 vdd vss) pll_inv_pdk110_7
+X161 (n289 n290 vdd vss) pll_inv_pdk110_7
+X162 (n291 n292 vdd vss) pll_inv_pdk110_7
+X163 (n293 n294 vdd vss) pll_inv_pdk110_7
+X164 (coarse7 n295 vdd vss) pll_inv_pdk110_7
+X165 (coarse0 n296 vdd vss) pll_inv_pdk110_7
+X166 (coarse0 n227 n297 vdd vss) tx_and_pdk110_47
+X167 (coarse1 n298 n299 vdd vss) tx_and_pdk110_47
+X168 (coarse2 n300 n301 vdd vss) tx_and_pdk110_47
+X169 (coarse3 n302 n303 vdd vss) tx_and_pdk110_47
+X170 (coarse4 n304 n305 vdd vss) tx_and_pdk110_47
+X171 (coarse5 n306 n307 vdd vss) tx_and_pdk110_47
+X172 (coarse6 n308 n309 vdd vss) tx_and_pdk110_47
+X173 (coarse7 n310 n311 vdd vss) tx_and_pdk110_47
+X174 (dac0 n227 n312 vdd vss) tx_and_pdk110_47
+X175 (dac1 n298 n313 vdd vss) tx_and_pdk110_47
+X176 (dac2 n300 n314 vdd vss) tx_and_pdk110_47
+X177 (dac3 n302 n315 vdd vss) tx_and_pdk110_47
+X178 (dac4 n304 n316 vdd vss) tx_and_pdk110_47
+X179 (dac5 n306 n317 vdd vss) tx_and_pdk110_47
+X180 (n105 n88 n318 vdd vss) tx_xor_pdk110_66
+X181 (n107 n88 n319 vdd vss) tx_xor_pdk110_66
+X182 (n109 n117 n320 vdd vss) tx_xor_pdk110_66
+X183 (n111 n117 n321 vdd vss) tx_xor_pdk110_66
+X184 (n322 n60 n323 vdd vss) tx_or_pdk110_67
+X185 (n251 n62 n324 vdd vss) tx_or_pdk110_67
+X186 (n325 n64 n326 vdd vss) tx_or_pdk110_67
+X187 (n327 n66 n328 vdd vss) tx_or_pdk110_67
+X188 (n329 n68 n330 vdd vss) tx_or_pdk110_67
+X189 (n331 n70 n332 vdd vss) tx_or_pdk110_67
+X190 (n333 n72 n334 vdd vss) tx_or_pdk110_67
+X191 (n335 n60 n336 vdd vss) tx_or_pdk110_67
+X192 (n337 n62 n338 vdd vss) tx_or_pdk110_67
+X193 (n339 n64 n340 vdd vss) tx_or_pdk110_67
+X194 (n341 n66 n342 vdd vss) tx_or_pdk110_67
+X195 (n343 n68 n344 vdd vss) tx_or_pdk110_67
+X196 (n254 n345 n346 vdd vss) tx_or_pdk110_67
+X197 (n250 n347 n348 vdd vss) tx_or_pdk110_67
+X198 (n349 n350 n351 vdd vss) tx_or_pdk110_67
+X199 (n352 n353 n354 vdd vss) tx_or_pdk110_67
+X200 (dac1 dac0 n355 vdd vss) tx_xor_pdk110_66
+X201 (dac2 n356 n357 vdd vss) tx_xor_pdk110_66
+X202 (dac4 n358 n359 vdd vss) tx_xor_pdk110_66
+X203 (dac5 n360 n361 vdd vss) tx_xor_pdk110_66
+X204 (n362 n363 n364 vdd vss) tx_xor_pdk110_66
+X205 (n365 n366 n367 vdd vss) tx_xor_pdk110_66
+X206 (n368 n369 n370 vdd vss) tx_xor_pdk110_66
+X207 (n371 n372 n373 vdd vss) tx_xor_pdk110_66
+X208 (n374 n375 n376 vdd vss) tx_xor_pdk110_66
+X209 (n377 n378 n379 vdd vss) tx_xor_pdk110_66
+X210 (n380 n381 n212 vdd vss) tx_xor_pdk110_66
+X211 (n382 n383 n216 vdd vss) tx_xor_pdk110_66
+X212 (n384 n385 n214 vdd vss) tx_xor_pdk110_66
+X213 (n386 n387 n218 vdd vss) tx_xor_pdk110_66
+X214 (n388 n389 n220 vdd vss) tx_xor_pdk110_66
+X215 (n213 n390 n391 vdd vss) tx_xor_pdk110_66
+X216 (n217 n392 n393 vdd vss) tx_xor_pdk110_66
+X217 (n215 n394 n395 vdd vss) tx_xor_pdk110_66
+X218 (n219 n396 n397 vdd vss) tx_xor_pdk110_66
+X219 (n221 n398 n399 vdd vss) tx_xor_pdk110_66
+X220 (n223 n400 n401 vdd vss) tx_xor_pdk110_66
+X221 (n402 n403 n404 vdd vss) tx_xor_pdk110_66
+X222 (n246 n405 n406 vdd vss) tx_xor_pdk110_66
+X223 (n245 n407 n408 vdd vss) tx_xor_pdk110_66
+X224 (n409 n410 n411 vdd vss) tx_xor_pdk110_66
+X225 (n412 n413 n414 vdd vss) tx_xor_pdk110_66
+X226 (n415 n416 n417 vdd vss) tx_xor_pdk110_66
+X227 (n418 n419 n420 vdd vss) tx_xor_pdk110_66
+X228 (n421 n422 n423 vdd vss) tx_xor_pdk110_66
+X229 (n424 n425 n426 vdd vss) tx_xor_pdk110_66
+X230 (n427 n428 n429 vdd vss) tx_xor_pdk110_66
+X231 (n430 n431 n432 vdd vss) tx_xor_pdk110_66
+X232 (n433 n434 n435 vdd vss) tx_xor_pdk110_66
+X233 (n436 n437 n438 vdd vss) tx_xor_pdk110_66
+X234 (n439 n440 n441 vdd vss) tx_xor_pdk110_66
+X235 (n442 n443 n444 vdd vss) tx_xor_pdk110_66
+X236 (n445 n446 n447 vdd vss) tx_xor_pdk110_66
+X237 (n448 n449 n450 vdd vss) tx_xor_pdk110_66
+X238 (n451 n452 n453 vdd vss) tx_xor_pdk110_66
+X239 (n454 n455 n456 vdd vss) tx_xor_pdk110_66
+X240 (n457 n458 n459 vdd vss) tx_xor_pdk110_66
+X241 (target_k5 n460 n461 vdd vss) tx_xor_pdk110_66
+X242 (target_k1 target_k0 n462 vdd vss) tx_xor_pdk110_66
+X243 (n463 n464 n465 vdd vss) tx_xor_pdk110_66
+X244 (n466 n467 n468 vdd vss) tx_xor_pdk110_66
+X245 (n469 n470 n471 vdd vss) tx_xor_pdk110_66
+X246 (target_k4 n472 n473 vdd vss) tx_xor_pdk110_66
+X247 (target_k5 n474 n475 vdd vss) tx_xor_pdk110_66
+X248 (n454 n476 n477 vdd vss) tx_xor_pdk110_66
+X249 (n457 n478 n479 vdd vss) tx_xor_pdk110_66
+X250 (target_k5 n480 n481 vdd vss) tx_xor_pdk110_66
+X251 (n482 n449 n483 vdd vss) tx_xor_pdk110_66
+X252 (n484 n485 n486 vdd vss) tx_xor_pdk110_66
+X253 (n487 n488 n489 vdd vss) tx_xor_pdk110_66
+X254 (n490 n491 n492 vdd vss) tx_xor_pdk110_66
+X255 (n479 n493 n494 vdd vss) tx_xor_pdk110_66
+X256 (n481 n495 n496 vdd vss) tx_xor_pdk110_66
+X257 (n497 n498 n499 vdd vss) tx_xor_pdk110_66
+X258 (n500 dac0 n501 vdd vss) tx_xor_pdk110_66
+X259 (n211 n502 n503 vdd vss) tx_xor_pdk110_66
+X260 (n504 n505 n506 vdd vss) tx_xor_pdk110_66
+X261 (n507 n508 n509 vdd vss) tx_xor_pdk110_66
+X262 (n510 n511 n512 vdd vss) tx_xor_pdk110_66
+X263 (n325 n251 n513 vdd vss) tx_xor_pdk110_66
+X264 (n327 n514 n515 vdd vss) tx_xor_pdk110_66
+X265 (n329 n516 n517 vdd vss) tx_xor_pdk110_66
+X266 (n331 n518 n519 vdd vss) tx_xor_pdk110_66
+X267 (n333 n520 n521 vdd vss) tx_xor_pdk110_66
+X268 (n522 n523 n524 vdd vss) tx_xor_pdk110_66
+X269 (coarse1 coarse0 n525 vdd vss) tx_xor_pdk110_66
+X270 (coarse2 n526 n527 vdd vss) tx_xor_pdk110_66
+X271 (coarse3 n528 n529 vdd vss) tx_xor_pdk110_66
+X272 (coarse4 n530 n531 vdd vss) tx_xor_pdk110_66
+X273 (coarse5 n532 n533 vdd vss) tx_xor_pdk110_66
+X274 (coarse6 n534 n535 vdd vss) tx_xor_pdk110_66
+X275 (coarse7 n536 n537 vdd vss) tx_xor_pdk110_66
+X276 (n538 coarse0 n539 vdd vss) tx_xor_pdk110_66
+X277 (n540 n541 n542 vdd vss) tx_xor_pdk110_66
+X278 (n543 n544 n545 vdd vss) tx_xor_pdk110_66
+X279 (n546 n547 n548 vdd vss) tx_xor_pdk110_66
+X280 (n549 n550 n551 vdd vss) tx_xor_pdk110_66
+X281 (n552 n553 n554 vdd vss) tx_xor_pdk110_66
+X282 (n295 n555 n556 vdd vss) tx_xor_pdk110_66
+X283 (n95 n93 n557 vdd vss) tx_xor_pdk110_66
+X284 (n97 n558 n559 vdd vss) tx_xor_pdk110_66
+X285 (n560 n561 n562 vdd vss) tx_xor_pdk110_66
+X286 (n563 n564 n565 vdd vss) tx_xor_pdk110_66
+X287 (n566 n567 n568 vdd vss) tx_xor_pdk110_66
+X288 (n569 n570 n571 vdd vss) tx_xor_pdk110_66
+X289 (n572 n573 n574 vdd vss) tx_xor_pdk110_66
+X290 (n575 n576 n577 vdd vss) tx_xor_pdk110_66
+X291 (n578 n579 n580 vdd vss) tx_xor_pdk110_66
+X292 (dac3 n581 n582 vdd vss) tx_xor_pdk110_66
+X293 (n101 n99 n583 vdd vss) tx_xor_pdk110_66
+X294 (n103 n584 n585 vdd vss) tx_xor_pdk110_66
+X295 (n105 n586 n587 vdd vss) tx_xor_pdk110_66
+X296 (n107 n588 n589 vdd vss) tx_xor_pdk110_66
+X297 (n109 n590 n591 vdd vss) tx_xor_pdk110_66
+X298 (n111 n592 n593 vdd vss) tx_xor_pdk110_66
+X299 (n113 n594 n595 vdd vss) tx_xor_pdk110_66
+X300 (n596 n356 n358 vdd vss) tx_and_pdk110_47
+X301 (dac4 n358 n360 vdd vss) tx_and_pdk110_47
+X302 (n267 n127 n363 vdd vss) tx_and_pdk110_47
+X303 (n355 n129 n597 vdd vss) tx_and_pdk110_47
+X304 (n357 n131 n598 vdd vss) tx_and_pdk110_47
+X305 (n582 n133 n599 vdd vss) tx_and_pdk110_47
+X306 (n359 n135 n600 vdd vss) tx_and_pdk110_47
+X307 (n361 n137 n601 vdd vss) tx_and_pdk110_47
+X308 (n355 n129 n362 vdd vss) tx_xor_pdk110_66
+X309 (n357 n131 n365 vdd vss) tx_xor_pdk110_66
+X310 (n582 n133 n368 vdd vss) tx_xor_pdk110_66
+X311 (n359 n135 n371 vdd vss) tx_xor_pdk110_66
+X312 (n361 n137 n374 vdd vss) tx_xor_pdk110_66
+X313 (n600 n602 n375 vdd vss) tx_or_pdk110_67
+X314 (n598 n603 n369 vdd vss) tx_or_pdk110_67
+X315 (n365 n366 n603 vdd vss) tx_and_pdk110_47
+X316 (n604 n605 n378 vdd vss) tx_or_pdk110_67
+X317 (n606 n372 n605 vdd vss) tx_and_pdk110_47
+X318 (n607 n608 n372 vdd vss) tx_or_pdk110_67
+X319 (n609 n366 n608 vdd vss) tx_and_pdk110_47
+X320 (n374 n371 n606 vdd vss) tx_and_pdk110_47
+X321 (n601 n610 n604 vdd vss) tx_or_pdk110_67
+X322 (n374 n600 n610 vdd vss) tx_and_pdk110_47
+X323 (n368 n365 n609 vdd vss) tx_and_pdk110_47
+X324 (n599 n611 n607 vdd vss) tx_or_pdk110_67
+X325 (n368 n598 n611 vdd vss) tx_and_pdk110_47
+X326 (n371 n372 n602 vdd vss) tx_and_pdk110_47
+X327 (n597 n612 n366 vdd vss) tx_or_pdk110_67
+X328 (n362 n363 n612 vdd vss) tx_and_pdk110_47
+X329 (n75 dac0 n381 vdd vss) tx_and_pdk110_47
+X330 (n77 dac1 n613 vdd vss) tx_and_pdk110_47
+X331 (n79 dac2 n614 vdd vss) tx_and_pdk110_47
+X332 (n81 dac3 n615 vdd vss) tx_and_pdk110_47
+X333 (n83 dac4 n616 vdd vss) tx_and_pdk110_47
+X334 (n85 dac5 n617 vdd vss) tx_and_pdk110_47
+X335 (n75 dac0 n390 vdd vss) tx_xor_pdk110_66
+X336 (n77 dac1 n380 vdd vss) tx_xor_pdk110_66
+X337 (n79 dac2 n382 vdd vss) tx_xor_pdk110_66
+X338 (n81 dac3 n384 vdd vss) tx_xor_pdk110_66
+X339 (n83 dac4 n386 vdd vss) tx_xor_pdk110_66
+X340 (n85 dac5 n388 vdd vss) tx_xor_pdk110_66
+X341 (n616 n618 n389 vdd vss) tx_or_pdk110_67
+X342 (n614 n619 n385 vdd vss) tx_or_pdk110_67
+X343 (n382 n383 n619 vdd vss) tx_and_pdk110_47
+X344 (n620 n621 n222 vdd vss) tx_or_pdk110_67
+X345 (n622 n387 n621 vdd vss) tx_and_pdk110_47
+X346 (n623 n624 n387 vdd vss) tx_or_pdk110_67
+X347 (n625 n383 n624 vdd vss) tx_and_pdk110_47
+X348 (n388 n386 n622 vdd vss) tx_and_pdk110_47
+X349 (n617 n626 n620 vdd vss) tx_or_pdk110_67
+X350 (n388 n616 n626 vdd vss) tx_and_pdk110_47
+X351 (n384 n382 n625 vdd vss) tx_and_pdk110_47
+X352 (n615 n627 n623 vdd vss) tx_or_pdk110_67
+X353 (n384 n614 n627 vdd vss) tx_and_pdk110_47
+X354 (n386 n387 n618 vdd vss) tx_and_pdk110_47
+X355 (n613 n628 n383 vdd vss) tx_or_pdk110_67
+X356 (n380 n381 n628 vdd vss) tx_and_pdk110_47
+X357 (n218 n629 n398 vdd vss) tx_or_pdk110_67
+X358 (n216 n630 n394 vdd vss) tx_or_pdk110_67
+X359 (n217 n392 n630 vdd vss) tx_and_pdk110_47
+X360 (n631 n632 n400 vdd vss) tx_or_pdk110_67
+X361 (n633 n396 n632 vdd vss) tx_and_pdk110_47
+X362 (n634 n635 n396 vdd vss) tx_or_pdk110_67
+X363 (n636 n392 n635 vdd vss) tx_and_pdk110_47
+X364 (n221 n219 n633 vdd vss) tx_and_pdk110_47
+X365 (n220 n637 n631 vdd vss) tx_or_pdk110_67
+X366 (n221 n218 n637 vdd vss) tx_and_pdk110_47
+X367 (n215 n217 n636 vdd vss) tx_and_pdk110_47
+X368 (n214 n638 n634 vdd vss) tx_or_pdk110_67
+X369 (n215 n216 n638 vdd vss) tx_and_pdk110_47
+X370 (n219 n396 n629 vdd vss) tx_and_pdk110_47
+X371 (n212 n639 n392 vdd vss) tx_or_pdk110_67
+X372 (n213 n390 n639 vdd vss) tx_and_pdk110_47
+X373 (n640 n641 n642 vdd vss) tx_and_pdk110_47
+X374 (n643 n644 n645 vdd vss) tx_and_pdk110_47
+X375 (n646 n647 n648 vdd vss) tx_and_pdk110_47
+X376 (n649 n650 n651 vdd vss) tx_and_pdk110_47
+X377 (n652 n653 n654 vdd vss) tx_and_pdk110_47
+X378 (n655 n656 n657 vdd vss) tx_and_pdk110_47
+X379 (n658 n659 n660 vdd vss) tx_and_pdk110_47
+X380 (n661 n662 n663 vdd vss) tx_and_pdk110_47
+X381 (n664 n665 n666 vdd vss) tx_and_pdk110_47
+X382 (n640 n641 n409 vdd vss) tx_xor_pdk110_66
+X383 (n643 n644 n412 vdd vss) tx_xor_pdk110_66
+X384 (n646 n647 n415 vdd vss) tx_xor_pdk110_66
+X385 (n649 n650 n418 vdd vss) tx_xor_pdk110_66
+X386 (n652 n653 n421 vdd vss) tx_xor_pdk110_66
+X387 (n655 n656 n424 vdd vss) tx_xor_pdk110_66
+X388 (n658 n659 n427 vdd vss) tx_xor_pdk110_66
+X389 (n661 n662 n430 vdd vss) tx_xor_pdk110_66
+X390 (n664 n665 n433 vdd vss) tx_xor_pdk110_66
+X391 (n667 n668 n436 vdd vss) tx_xor_pdk110_66
+X392 (n642 n669 n413 vdd vss) tx_or_pdk110_67
+X393 (n409 n410 n669 vdd vss) tx_and_pdk110_47
+X394 (n654 n670 n425 vdd vss) tx_or_pdk110_67
+X395 (n246 n405 n407 vdd vss) tx_and_pdk110_47
+X396 (n648 n671 n419 vdd vss) tx_or_pdk110_67
+X397 (n427 n428 n672 vdd vss) tx_and_pdk110_47
+X398 (n673 n674 n428 vdd vss) tx_or_pdk110_67
+X399 (n675 n422 n674 vdd vss) tx_and_pdk110_47
+X400 (n660 n672 n431 vdd vss) tx_or_pdk110_67
+X401 (n676 n677 n416 vdd vss) tx_or_pdk110_67
+X402 (n678 n410 n677 vdd vss) tx_and_pdk110_47
+X403 (n415 n416 n671 vdd vss) tx_and_pdk110_47
+X404 (n679 n680 n434 vdd vss) tx_or_pdk110_67
+X405 (n681 n422 n680 vdd vss) tx_and_pdk110_47
+X406 (n433 n434 n682 vdd vss) tx_and_pdk110_47
+X407 (n683 n684 n422 vdd vss) tx_or_pdk110_67
+X408 (n685 n410 n684 vdd vss) tx_and_pdk110_47
+X409 (n686 n675 n681 vdd vss) tx_and_pdk110_47
+X410 (n687 n688 n679 vdd vss) tx_or_pdk110_67
+X411 (n686 n673 n688 vdd vss) tx_and_pdk110_47
+X412 (n689 n678 n685 vdd vss) tx_and_pdk110_47
+X413 (n690 n691 n683 vdd vss) tx_or_pdk110_67
+X414 (n689 n676 n691 vdd vss) tx_and_pdk110_47
+X415 (n666 n682 n437 vdd vss) tx_or_pdk110_67
+X416 (n430 n427 n686 vdd vss) tx_and_pdk110_47
+X417 (n663 n692 n687 vdd vss) tx_or_pdk110_67
+X418 (n430 n660 n692 vdd vss) tx_and_pdk110_47
+X419 (n424 n421 n675 vdd vss) tx_and_pdk110_47
+X420 (n657 n693 n673 vdd vss) tx_or_pdk110_67
+X421 (n424 n654 n693 vdd vss) tx_and_pdk110_47
+X422 (n418 n415 n689 vdd vss) tx_and_pdk110_47
+X423 (n651 n694 n690 vdd vss) tx_or_pdk110_67
+X424 (n418 n648 n694 vdd vss) tx_and_pdk110_47
+X425 (n412 n409 n678 vdd vss) tx_and_pdk110_47
+X426 (n645 n695 n676 vdd vss) tx_or_pdk110_67
+X427 (n412 n642 n695 vdd vss) tx_and_pdk110_47
+X428 (n421 n422 n670 vdd vss) tx_and_pdk110_47
+X429 (measured4 n696 n697 vdd vss) tx_and_pdk110_47
+X430 (measured5 n698 n442 vdd vss) tx_xor_pdk110_66
+X431 (measured7 n699 n504 vdd vss) tx_xor_pdk110_66
+X432 (measured12 n700 n566 vdd vss) tx_xor_pdk110_66
+X433 (measured5 n698 n701 vdd vss) tx_and_pdk110_47
+X434 (measured11 n702 n703 vdd vss) tx_and_pdk110_47
+X435 (measured12 n700 n704 vdd vss) tx_and_pdk110_47
+X436 (measured11 n702 n510 vdd vss) tx_xor_pdk110_66
+X437 (n705 n706 n564 vdd vss) tx_or_pdk110_67
+X438 (n707 n708 n508 vdd vss) tx_or_pdk110_67
+X439 (n709 n710 n511 vdd vss) tx_or_pdk110_67
+X440 (n566 n567 n711 vdd vss) tx_and_pdk110_47
+X441 (n712 n713 n561 vdd vss) tx_or_pdk110_67
+X442 (n704 n711 n570 vdd vss) tx_or_pdk110_67
+X443 (n714 n715 n440 vdd vss) tx_or_pdk110_67
+X444 (n569 n566 n716 vdd vss) tx_and_pdk110_47
+X445 (n703 n717 n718 vdd vss) tx_or_pdk110_67
+X446 (n563 n560 n719 vdd vss) tx_and_pdk110_47
+X447 (n720 n721 n707 vdd vss) tx_or_pdk110_67
+X448 (n722 n723 n724 vdd vss) tx_or_pdk110_67
+X449 (n442 n439 n725 vdd vss) tx_and_pdk110_47
+X450 (n701 n726 n727 vdd vss) tx_or_pdk110_67
+X451 (n245 measured2 n728 vdd vss) tx_and_pdk110_47
+X452 (n560 n561 n706 vdd vss) tx_and_pdk110_47
+X453 (target_k4 target_k5 n729 vdd vss) tx_and_pdk110_47
+X454 (target_k1 target_k2 n448 vdd vss) tx_xor_pdk110_66
+X455 (target_k2 target_k3 n451 vdd vss) tx_xor_pdk110_66
+X456 (target_k3 target_k4 n454 vdd vss) tx_xor_pdk110_66
+X457 (target_k4 target_k5 n457 vdd vss) tx_xor_pdk110_66
+X458 (n730 n731 n458 vdd vss) tx_or_pdk110_67
+X459 (n732 n733 n452 vdd vss) tx_or_pdk110_67
+X460 (target_k5 n460 n734 vdd vss) tx_and_pdk110_47
+X461 (n735 n736 n460 vdd vss) tx_or_pdk110_67
+X462 (n737 n455 n736 vdd vss) tx_and_pdk110_47
+X463 (n448 n449 n733 vdd vss) tx_and_pdk110_47
+X464 (n738 n739 n455 vdd vss) tx_or_pdk110_67
+X465 (n740 n449 n739 vdd vss) tx_and_pdk110_47
+X466 (n457 n454 n737 vdd vss) tx_and_pdk110_47
+X467 (n729 n741 n735 vdd vss) tx_or_pdk110_67
+X468 (n457 n730 n741 vdd vss) tx_and_pdk110_47
+X469 (n451 n448 n740 vdd vss) tx_and_pdk110_47
+X470 (n742 n743 n738 vdd vss) tx_or_pdk110_67
+X471 (n451 n732 n743 vdd vss) tx_and_pdk110_47
+X472 (n454 n455 n731 vdd vss) tx_and_pdk110_47
+X473 (target_k5 n744 n263 vdd vss) tx_or_pdk110_67
+X474 (n745 n746 n744 vdd vss) tx_and_pdk110_47
+X475 (n747 target_k4 n745 vdd vss) tx_and_pdk110_47
+X476 (n745 n748 n749 vdd vss) tx_and_pdk110_47
+X477 (target_k5 n749 n261 vdd vss) tx_or_pdk110_67
+X478 (n750 n751 n748 vdd vss) tx_or_pdk110_67
+X479 (n752 target_k1 n751 vdd vss) tx_and_pdk110_47
+X480 (target_k3 n753 n750 vdd vss) tx_or_pdk110_67
+X481 (n754 target_k2 n753 vdd vss) tx_and_pdk110_47
+X482 (target_k0 target_k2 n464 vdd vss) tx_and_pdk110_47
+X483 (target_k1 target_k3 n755 vdd vss) tx_and_pdk110_47
+X484 (target_k2 target_k4 n756 vdd vss) tx_and_pdk110_47
+X485 (target_k3 target_k5 n757 vdd vss) tx_and_pdk110_47
+X486 (target_k0 target_k2 n758 vdd vss) tx_xor_pdk110_66
+X487 (target_k1 target_k3 n463 vdd vss) tx_xor_pdk110_66
+X488 (target_k2 target_k4 n466 vdd vss) tx_xor_pdk110_66
+X489 (target_k3 target_k5 n469 vdd vss) tx_xor_pdk110_66
+X490 (n756 n759 n470 vdd vss) tx_or_pdk110_67
+X491 (target_k4 n472 n474 vdd vss) tx_and_pdk110_47
+X492 (n760 n761 n472 vdd vss) tx_or_pdk110_67
+X493 (n762 n467 n761 vdd vss) tx_and_pdk110_47
+X494 (n763 n764 n765 vdd vss) tx_or_pdk110_67
+X495 (n766 n467 n764 vdd vss) tx_and_pdk110_47
+X496 (n729 n762 n766 vdd vss) tx_and_pdk110_47
+X497 (n729 n760 n763 vdd vss) tx_and_pdk110_47
+X498 (n469 n466 n762 vdd vss) tx_and_pdk110_47
+X499 (n757 n767 n760 vdd vss) tx_or_pdk110_67
+X500 (n469 n756 n767 vdd vss) tx_and_pdk110_47
+X501 (n755 n768 n467 vdd vss) tx_or_pdk110_67
+X502 (n463 n464 n768 vdd vss) tx_and_pdk110_47
+X503 (n466 n467 n759 vdd vss) tx_and_pdk110_47
+X504 (n769 n770 n771 vdd vss) tx_and_pdk110_47
+X505 (n772 n771 n259 vdd vss) tx_or_pdk110_67
+X506 (n742 n773 n770 vdd vss) tx_and_pdk110_47
+X507 (target_k5 n745 n772 vdd vss) tx_or_pdk110_67
+X508 (target_k1 n774 n773 vdd vss) tx_or_pdk110_67
+X509 (target_k1 target_k2 n732 vdd vss) tx_and_pdk110_47
+X510 (target_k3 target_k4 n730 vdd vss) tx_and_pdk110_47
+X511 (n742 n775 n476 vdd vss) tx_or_pdk110_67
+X512 (n457 n478 n776 vdd vss) tx_and_pdk110_47
+X513 (n777 n778 n478 vdd vss) tx_or_pdk110_67
+X514 (n779 n452 n778 vdd vss) tx_and_pdk110_47
+X515 (n729 n776 n480 vdd vss) tx_or_pdk110_67
+X516 (n780 n781 n497 vdd vss) tx_or_pdk110_67
+X517 (n782 n452 n781 vdd vss) tx_and_pdk110_47
+X518 (n783 n779 n782 vdd vss) tx_and_pdk110_47
+X519 (n784 n785 n780 vdd vss) tx_or_pdk110_67
+X520 (n783 n777 n785 vdd vss) tx_and_pdk110_47
+X521 (target_k5 n457 n783 vdd vss) tx_and_pdk110_47
+X522 (target_k5 n729 n784 vdd vss) tx_and_pdk110_47
+X523 (n454 n451 n779 vdd vss) tx_and_pdk110_47
+X524 (n730 n786 n777 vdd vss) tx_or_pdk110_67
+X525 (n454 n742 n786 vdd vss) tx_and_pdk110_47
+X526 (n451 n452 n775 vdd vss) tx_and_pdk110_47
+X527 (n772 n787 n257 vdd vss) tx_or_pdk110_67
+X528 (n769 n746 n787 vdd vss) tx_and_pdk110_47
+X529 (n742 n788 n746 vdd vss) tx_or_pdk110_67
+X530 (target_k0 target_k1 n449 vdd vss) tx_and_pdk110_47
+X531 (n462 target_k2 n789 vdd vss) tx_and_pdk110_47
+X532 (n450 target_k3 n790 vdd vss) tx_and_pdk110_47
+X533 (n453 target_k4 n791 vdd vss) tx_and_pdk110_47
+X534 (n477 target_k5 n792 vdd vss) tx_and_pdk110_47
+X535 (n462 target_k2 n482 vdd vss) tx_xor_pdk110_66
+X536 (n450 target_k3 n484 vdd vss) tx_xor_pdk110_66
+X537 (n453 target_k4 n487 vdd vss) tx_xor_pdk110_66
+X538 (n477 target_k5 n490 vdd vss) tx_xor_pdk110_66
+X539 (n791 n793 n491 vdd vss) tx_or_pdk110_67
+X540 (n789 n794 n485 vdd vss) tx_or_pdk110_67
+X541 (n479 n493 n495 vdd vss) tx_and_pdk110_47
+X542 (n795 n796 n493 vdd vss) tx_or_pdk110_67
+X543 (n797 n488 n796 vdd vss) tx_and_pdk110_47
+X544 (n482 n449 n794 vdd vss) tx_and_pdk110_47
+X545 (n798 n799 n498 vdd vss) tx_or_pdk110_67
+X546 (n800 n488 n799 vdd vss) tx_and_pdk110_47
+X547 (n497 n498 n801 vdd vss) tx_and_pdk110_47
+X548 (n802 n797 n800 vdd vss) tx_and_pdk110_47
+X549 (n802 n795 n798 vdd vss) tx_and_pdk110_47
+X550 (n803 n804 n488 vdd vss) tx_or_pdk110_67
+X551 (n805 n449 n804 vdd vss) tx_and_pdk110_47
+X552 (n481 n479 n802 vdd vss) tx_and_pdk110_47
+X553 (n490 n487 n797 vdd vss) tx_and_pdk110_47
+X554 (n792 n806 n795 vdd vss) tx_or_pdk110_67
+X555 (n490 n791 n806 vdd vss) tx_and_pdk110_47
+X556 (n484 n482 n805 vdd vss) tx_and_pdk110_47
+X557 (n790 n807 n803 vdd vss) tx_or_pdk110_67
+X558 (n484 n789 n807 vdd vss) tx_and_pdk110_47
+X559 (n487 n488 n793 vdd vss) tx_and_pdk110_47
+X560 (n808 n809 n255 vdd vss) tx_or_pdk110_67
+X561 (n810 n358 n809 vdd vss) tx_and_pdk110_47
+X562 (n578 n575 n810 vdd vss) tx_and_pdk110_47
+X563 (dac5 n811 n808 vdd vss) tx_or_pdk110_67
+X564 (n578 dac4 n811 vdd vss) tx_and_pdk110_47
+X565 (n572 n573 n812 vdd vss) tx_and_pdk110_47
+X566 (n813 n576 n253 vdd vss) tx_and_pdk110_47
+X567 (n814 n573 n815 vdd vss) tx_and_pdk110_47
+X568 (dac5 dac4 n813 vdd vss) tx_and_pdk110_47
+X569 (measured8 n816 n705 vdd vss) tx_and_pdk110_47
+X570 (measured9 n817 n720 vdd vss) tx_and_pdk110_47
+X571 (measured10 n818 n709 vdd vss) tx_and_pdk110_47
+X572 (measured8 n816 n560 vdd vss) tx_xor_pdk110_66
+X573 (measured10 n818 n507 vdd vss) tx_xor_pdk110_66
+X574 (n697 n819 n443 vdd vss) tx_or_pdk110_67
+X575 (n820 n821 n505 vdd vss) tx_or_pdk110_67
+X576 (n822 n823 n824 vdd vss) tx_or_pdk110_67
+X577 (n716 n567 n823 vdd vss) tx_and_pdk110_47
+X578 (n507 n508 n710 vdd vss) tx_and_pdk110_47
+X579 (n719 n561 n708 vdd vss) tx_and_pdk110_47
+X580 (n727 n825 n446 vdd vss) tx_or_pdk110_67
+X581 (n725 n440 n825 vdd vss) tx_and_pdk110_47
+X582 (n826 n719 n827 vdd vss) tx_and_pdk110_47
+X583 (n718 n828 n829 vdd vss) tx_or_pdk110_67
+X584 (n826 n707 n828 vdd vss) tx_and_pdk110_47
+X585 (n830 n725 n831 vdd vss) tx_and_pdk110_47
+X586 (n830 n727 n832 vdd vss) tx_and_pdk110_47
+X587 (n833 n834 n822 vdd vss) tx_or_pdk110_67
+X588 (n569 n704 n834 vdd vss) tx_and_pdk110_47
+X589 (n504 n820 n723 vdd vss) tx_and_pdk110_47
+X590 (n333 n520 n523 vdd vss) tx_and_pdk110_47
+X591 (n329 n516 n518 vdd vss) tx_and_pdk110_47
+X592 (n325 n251 n514 vdd vss) tx_and_pdk110_47
+X593 (n835 n516 n249 vdd vss) tx_and_pdk110_47
+X594 (n836 n251 n516 vdd vss) tx_and_pdk110_47
+X595 (n522 n333 n837 vdd vss) tx_and_pdk110_47
+X596 (n327 n325 n836 vdd vss) tx_and_pdk110_47
+X597 (n838 n516 n520 vdd vss) tx_and_pdk110_47
+X598 (coarse2 n526 n528 vdd vss) tx_and_pdk110_47
+X599 (coarse4 n530 n532 vdd vss) tx_and_pdk110_47
+X600 (n839 n530 n534 vdd vss) tx_and_pdk110_47
+X601 (coarse6 n534 n536 vdd vss) tx_and_pdk110_47
+X602 (n840 n526 n530 vdd vss) tx_and_pdk110_47
+X603 (coarse5 coarse4 n839 vdd vss) tx_and_pdk110_47
+X604 (coarse3 coarse2 n840 vdd vss) tx_and_pdk110_47
+X605 (coarse1 coarse0 n526 vdd vss) tx_and_pdk110_47
+X606 (coarse2 n841 n544 vdd vss) tx_or_pdk110_67
+X607 (n540 n541 n841 vdd vss) tx_and_pdk110_47
+X608 (n546 n547 n842 vdd vss) tx_and_pdk110_47
+X609 (n843 n844 n553 vdd vss) tx_or_pdk110_67
+X610 (n845 n547 n844 vdd vss) tx_and_pdk110_47
+X611 (n552 n553 n846 vdd vss) tx_and_pdk110_47
+X612 (coarse6 n846 n555 vdd vss) tx_or_pdk110_67
+X613 (n847 n848 n547 vdd vss) tx_or_pdk110_67
+X614 (n849 n541 n848 vdd vss) tx_and_pdk110_47
+X615 (n549 n546 n845 vdd vss) tx_and_pdk110_47
+X616 (coarse5 n850 n843 vdd vss) tx_or_pdk110_67
+X617 (n549 coarse4 n850 vdd vss) tx_and_pdk110_47
+X618 (n543 n540 n849 vdd vss) tx_and_pdk110_47
+X619 (coarse3 n851 n847 vdd vss) tx_or_pdk110_67
+X620 (n543 coarse2 n851 vdd vss) tx_and_pdk110_47
+X621 (coarse4 n842 n550 vdd vss) tx_or_pdk110_67
+X622 (coarse1 n852 n541 vdd vss) tx_or_pdk110_67
+X623 (n538 coarse0 n852 vdd vss) tx_and_pdk110_47
+X624 (n95 n93 n558 vdd vss) tx_and_pdk110_47
+X625 (n853 n854 n247 vdd vss) tx_or_pdk110_67
+X626 (n855 n856 n854 vdd vss) tx_and_pdk110_47
+X627 (n857 n858 n853 vdd vss) tx_or_pdk110_67
+X628 (n859 n860 n858 vdd vss) tx_and_pdk110_47
+X629 (n861 n862 n856 vdd vss) tx_or_pdk110_67
+X630 (n863 n864 n862 vdd vss) tx_and_pdk110_47
+X631 (n865 n866 n860 vdd vss) tx_or_pdk110_67
+X632 (n867 n868 n866 vdd vss) tx_and_pdk110_47
+X633 (n869 n870 n861 vdd vss) tx_or_pdk110_67
+X634 (n871 n872 n870 vdd vss) tx_and_pdk110_47
+X635 (n873 n874 n864 vdd vss) tx_or_pdk110_67
+X636 (n875 n876 n874 vdd vss) tx_and_pdk110_47
+X637 (n271 n877 n857 vdd vss) tx_or_pdk110_67
+X638 (n272 n273 n877 vdd vss) tx_and_pdk110_47
+X639 (n275 n878 n865 vdd vss) tx_or_pdk110_67
+X640 (n276 n277 n878 vdd vss) tx_and_pdk110_47
+X641 (n280 n282 n879 vdd vss) tx_and_pdk110_47
+X642 (n279 n880 n868 vdd vss) tx_or_pdk110_67
+X643 (n280 n281 n880 vdd vss) tx_and_pdk110_47
+X644 (n283 n881 n869 vdd vss) tx_or_pdk110_67
+X645 (n284 n285 n881 vdd vss) tx_and_pdk110_47
+X646 (n287 n882 n872 vdd vss) tx_or_pdk110_67
+X647 (n288 n289 n882 vdd vss) tx_and_pdk110_47
+X648 (n292 n294 n875 vdd vss) tx_and_pdk110_47
+X649 (n291 n883 n873 vdd vss) tx_or_pdk110_67
+X650 (n292 n293 n883 vdd vss) tx_and_pdk110_47
+X651 (n269 n884 n876 vdd vss) tx_or_pdk110_67
+X652 (n270 measured0 n884 vdd vss) tx_and_pdk110_47
+X653 (measured6 n885 n820 vdd vss) tx_and_pdk110_47
+X654 (measured7 n699 n722 vdd vss) tx_and_pdk110_47
+X655 (measured13 n886 n833 vdd vss) tx_and_pdk110_47
+X656 (measured4 n696 n439 vdd vss) tx_xor_pdk110_66
+X657 (measured6 n885 n445 vdd vss) tx_xor_pdk110_66
+X658 (measured9 n817 n563 vdd vss) tx_xor_pdk110_66
+X659 (measured13 n886 n569 vdd vss) tx_xor_pdk110_66
+X660 (n439 n440 n819 vdd vss) tx_and_pdk110_47
+X661 (n445 n446 n821 vdd vss) tx_and_pdk110_47
+X662 (n829 n887 n567 vdd vss) tx_or_pdk110_67
+X663 (n827 n561 n887 vdd vss) tx_and_pdk110_47
+X664 (n831 n440 n713 vdd vss) tx_and_pdk110_47
+X665 (n724 n832 n712 vdd vss) tx_or_pdk110_67
+X666 (n510 n507 n826 vdd vss) tx_and_pdk110_47
+X667 (n510 n709 n717 vdd vss) tx_and_pdk110_47
+X668 (n563 n705 n721 vdd vss) tx_and_pdk110_47
+X669 (n504 n445 n830 vdd vss) tx_and_pdk110_47
+X670 (n442 n697 n726 vdd vss) tx_and_pdk110_47
+X671 (measured3 n728 n714 vdd vss) tx_or_pdk110_67
+X672 (dac0 n888 n889 vdd vss) tx_and_pdk110_47
+X673 (dac1 n890 n891 vdd vss) tx_and_pdk110_47
+X674 (dac2 n892 n893 vdd vss) tx_and_pdk110_47
+X675 (dac3 n894 n895 vdd vss) tx_and_pdk110_47
+X676 (dac4 n896 n897 vdd vss) tx_and_pdk110_47
+X677 (dac5 n898 n899 vdd vss) tx_and_pdk110_47
+X678 (dac0 n888 n900 vdd vss) tx_xor_pdk110_66
+X679 (dac1 n890 n901 vdd vss) tx_xor_pdk110_66
+X680 (dac2 n892 n902 vdd vss) tx_xor_pdk110_66
+X681 (dac3 n894 n903 vdd vss) tx_xor_pdk110_66
+X682 (dac4 n896 n904 vdd vss) tx_xor_pdk110_66
+X683 (dac5 n898 n905 vdd vss) tx_xor_pdk110_66
+X684 (n906 n907 n908 vdd vss) tx_or_pdk110_67
+X685 (n909 n910 n907 vdd vss) tx_and_pdk110_47
+X686 (n911 n912 n910 vdd vss) tx_or_pdk110_67
+X687 (n913 n914 n912 vdd vss) tx_and_pdk110_47
+X688 (n905 n904 n909 vdd vss) tx_and_pdk110_47
+X689 (n899 n915 n906 vdd vss) tx_or_pdk110_67
+X690 (n905 n897 n915 vdd vss) tx_and_pdk110_47
+X691 (n895 n916 n911 vdd vss) tx_or_pdk110_67
+X692 (n903 n893 n916 vdd vss) tx_and_pdk110_47
+X693 (n891 n917 n914 vdd vss) tx_or_pdk110_67
+X694 (n901 n918 n917 vdd vss) tx_and_pdk110_47
+X695 (n889 n900 n918 vdd vss) tx_or_pdk110_67
+X696 (n575 n576 n919 vdd vss) tx_and_pdk110_47
+X697 (dac4 n919 n579 vdd vss) tx_or_pdk110_67
+X698 (n920 n815 n576 vdd vss) tx_or_pdk110_67
+X699 (dac3 n921 n920 vdd vss) tx_or_pdk110_67
+X700 (n211 dac2 n921 vdd vss) tx_and_pdk110_47
+X701 (dac2 n812 n502 vdd vss) tx_or_pdk110_67
+X702 (dac1 n922 n573 vdd vss) tx_or_pdk110_67
+X703 (n500 dac0 n922 vdd vss) tx_and_pdk110_47
+X704 (dac0 n923 n924 vdd vss) tx_and_pdk110_47
+X705 (dac1 n925 n926 vdd vss) tx_and_pdk110_47
+X706 (dac2 n927 n928 vdd vss) tx_and_pdk110_47
+X707 (dac3 n929 n930 vdd vss) tx_and_pdk110_47
+X708 (dac4 n931 n932 vdd vss) tx_and_pdk110_47
+X709 (dac5 n933 n934 vdd vss) tx_and_pdk110_47
+X710 (dac0 n923 n935 vdd vss) tx_xor_pdk110_66
+X711 (dac1 n925 n936 vdd vss) tx_xor_pdk110_66
+X712 (dac2 n927 n937 vdd vss) tx_xor_pdk110_66
+X713 (dac3 n929 n938 vdd vss) tx_xor_pdk110_66
+X714 (dac4 n931 n939 vdd vss) tx_xor_pdk110_66
+X715 (dac5 n933 n940 vdd vss) tx_xor_pdk110_66
+X716 (n941 n942 n943 vdd vss) tx_or_pdk110_67
+X717 (n944 n945 n942 vdd vss) tx_and_pdk110_47
+X718 (n946 n947 n945 vdd vss) tx_or_pdk110_67
+X719 (n948 n949 n947 vdd vss) tx_and_pdk110_47
+X720 (n940 n939 n944 vdd vss) tx_and_pdk110_47
+X721 (n934 n950 n941 vdd vss) tx_or_pdk110_67
+X722 (n940 n932 n950 vdd vss) tx_and_pdk110_47
+X723 (n938 n937 n948 vdd vss) tx_and_pdk110_47
+X724 (n930 n951 n946 vdd vss) tx_or_pdk110_67
+X725 (n938 n928 n951 vdd vss) tx_and_pdk110_47
+X726 (n926 n952 n949 vdd vss) tx_or_pdk110_67
+X727 (n936 n953 n952 vdd vss) tx_and_pdk110_47
+X728 (n924 n935 n953 vdd vss) tx_or_pdk110_67
+X729 (dac2 n356 n581 vdd vss) tx_and_pdk110_47
+X730 (n813 n358 n377 vdd vss) tx_and_pdk110_47
+X731 (dac3 dac2 n596 vdd vss) tx_and_pdk110_47
+X732 (dac1 dac0 n356 vdd vss) tx_and_pdk110_47
+X733 (n103 n584 n586 vdd vss) tx_and_pdk110_47
+X734 (n107 n588 n590 vdd vss) tx_and_pdk110_47
+X735 (n954 n588 n592 vdd vss) tx_and_pdk110_47
+X736 (n111 n592 n594 vdd vss) tx_and_pdk110_47
+X737 (n955 n584 n588 vdd vss) tx_and_pdk110_47
+X738 (n109 n107 n954 vdd vss) tx_and_pdk110_47
+X739 (n105 n103 n955 vdd vss) tx_and_pdk110_47
+X740 (n101 n99 n584 vdd vss) tx_and_pdk110_47
+X741 (n956 n957 n958 vdd vss) tx_or_pdk110_67
+X742 (n956 n237 n959 vdd vss) tx_or_pdk110_67
+X743 (n956 n960 n961 vdd vss) tx_or_pdk110_67
+X744 (n242 n265 n962 vdd vss) tx_or_pdk110_67
+X745 (n231 n238 n963 vdd vss) tx_or_pdk110_67
+X746 (n962 n963 n956 vdd vss) tx_or_pdk110_67
+X747 (n956 n235 n964 vdd vss) tx_or_pdk110_67
+X748 (n117 n265 n965 vdd vss) tx_or_pdk110_67
+X749 (n965 n966 n967 vdd vss) tx_or_pdk110_67
+X750 (n233 n117 n968 vdd vss) tx_and_pdk110_47
+X751 (n238 n184 n969 vdd vss) tx_and_pdk110_47
+X752 (n968 n970 n971 vdd vss) tx_and_pdk110_47
+X753 (n971 n969 n187 vdd vss) tx_and_pdk110_47
+X754 (n972 n973 n974 vdd vss) tx_and_pdk110_47
+X755 (n974 n184 n151 vdd vss) tx_and_pdk110_47
+X756 (n966 n242 n975 vdd vss) tx_or_pdk110_67
+X757 (n265 n88 n976 vdd vss) tx_or_pdk110_67
+X758 (n975 n976 n977 vdd vss) tx_or_pdk110_67
+X759 (n977 n978 n979 vdd vss) tx_or_pdk110_67
+X760 (n979 n159 n183 vdd vss) tx_and_pdk110_47
+X761 (n962 n980 n972 vdd vss) tx_or_pdk110_67
+X762 (n962 n231 n973 vdd vss) tx_or_pdk110_67
+X763 (n981 n982 n983 vdd vss) tx_and_pdk110_47
+X764 (n984 n985 n986 vdd vss) tx_and_pdk110_47
+X765 (n987 n988 n989 vdd vss) tx_and_pdk110_47
+X766 (n990 n991 n992 vdd vss) tx_and_pdk110_47
+X767 (n993 n994 n995 vdd vss) tx_and_pdk110_47
+X768 (n983 n986 n996 vdd vss) tx_and_pdk110_47
+X769 (n989 n992 n997 vdd vss) tx_and_pdk110_47
+X770 (n996 n997 n998 vdd vss) tx_and_pdk110_47
+X771 (n998 n995 n192 vdd vss) tx_and_pdk110_47
+X772 (n999 n1000 n994 vdd vss) tx_or_pdk110_67
+X773 (n1001 n1002 n982 vdd vss) tx_or_pdk110_67
+X774 (n351 n243 n1003 vdd vss) tx_or_pdk110_67
+X775 (n1004 n1002 n984 vdd vss) tx_or_pdk110_67
+X776 (n1005 n1002 n985 vdd vss) tx_or_pdk110_67
+X777 (n237 n1002 n1006 vdd vss) tx_or_pdk110_67
+X778 (n1007 n1006 n987 vdd vss) tx_or_pdk110_67
+X779 (n1008 n1002 n988 vdd vss) tx_or_pdk110_67
+X780 (n88 n1002 n990 vdd vss) tx_or_pdk110_67
+X781 (n51 n1002 n991 vdd vss) tx_or_pdk110_67
+X782 (n117 n1002 n993 vdd vss) tx_or_pdk110_67
+X783 (n1009 n1010 n1011 vdd vss) tx_and_pdk110_47
+X784 (n1012 n1013 n1014 vdd vss) tx_and_pdk110_47
+X785 (n1011 n1014 n1015 vdd vss) tx_and_pdk110_47
+X786 (n1015 n1016 n1017 vdd vss) tx_and_pdk110_47
+X787 (n1017 n1018 n145 vdd vss) tx_and_pdk110_47
+X788 (n1019 n233 n1013 vdd vss) tx_or_pdk110_67
+X789 (n963 n241 n1009 vdd vss) tx_or_pdk110_67
+X790 (n963 n351 n1010 vdd vss) tx_or_pdk110_67
+X791 (n963 n237 n1012 vdd vss) tx_or_pdk110_67
+X792 (n963 n960 n1020 vdd vss) tx_or_pdk110_67
+X793 (n963 n235 n1021 vdd vss) tx_or_pdk110_67
+X794 (n88 n966 n1022 vdd vss) tx_or_pdk110_67
+X795 (n1001 n1004 n1023 vdd vss) tx_and_pdk110_47
+X796 (n1005 n1024 n1025 vdd vss) tx_and_pdk110_47
+X797 (n1008 n117 n1026 vdd vss) tx_and_pdk110_47
+X798 (n51 n88 n970 vdd vss) tx_and_pdk110_47
+X799 (n1023 n1025 n1027 vdd vss) tx_and_pdk110_47
+X800 (n1026 n970 n1028 vdd vss) tx_and_pdk110_47
+X801 (n1027 n1028 n1029 vdd vss) tx_and_pdk110_47
+X802 (n1029 n184 n195 vdd vss) tx_and_pdk110_47
+X803 (n239 n232 n1001 vdd vss) tx_or_pdk110_67
+X804 (n1007 n1003 n1004 vdd vss) tx_or_pdk110_67
+X805 (n238 n1030 n1007 vdd vss) tx_or_pdk110_67
+X806 (n1031 n240 n1032 vdd vss) tx_or_pdk110_67
+X807 (n1007 n1032 n1005 vdd vss) tx_or_pdk110_67
+X808 (n1007 n237 n1024 vdd vss) tx_or_pdk110_67
+X809 (n238 n235 n1008 vdd vss) tx_or_pdk110_67
+X810 (n1033 n994 n1034 vdd vss) tx_and_pdk110_47
+X811 (n1035 n1036 n1037 vdd vss) tx_and_pdk110_47
+X812 (n1034 n1037 n1038 vdd vss) tx_and_pdk110_47
+X813 (n1038 n1039 n142 vdd vss) tx_and_pdk110_47
+X814 (n1040 n1041 n1035 vdd vss) tx_or_pdk110_67
+X815 (n1042 n1043 n1036 vdd vss) tx_or_pdk110_67
+X816 (n1044 n1045 n1039 vdd vss) tx_or_pdk110_67
+X817 (n1013 n1020 n1046 vdd vss) tx_and_pdk110_47
+X818 (n1021 n1022 n1047 vdd vss) tx_and_pdk110_47
+X819 (n117 n51 n1048 vdd vss) tx_and_pdk110_47
+X820 (n1046 n1047 n1049 vdd vss) tx_and_pdk110_47
+X821 (n1048 n184 n197 vdd vss) tx_and_pdk110_47
+X822 (n1049 n197 n139 vdd vss) tx_and_pdk110_47
+X823 (n1020 n1021 n1050 vdd vss) tx_and_pdk110_47
+X824 (n1022 n117 n1051 vdd vss) tx_and_pdk110_47
+X825 (n51 n184 n1018 vdd vss) tx_and_pdk110_47
+X826 (n1050 n1051 n1016 vdd vss) tx_and_pdk110_47
+X827 (n1016 n1018 n201 vdd vss) tx_and_pdk110_47
+X828 (n184 n1052 n203 vdd vss) tx_or_pdk110_67
+X829 (n1052 n1053 n1054 vdd vss) tx_or_pdk110_67
+X830 (n1054 n1055 n1056 vdd vss) tx_or_pdk110_67
+X831 (n224 target_k1 n1057 vdd vss) tx_or_pdk110_67
+X832 (target_k2 n754 n1058 vdd vss) tx_or_pdk110_67
+X833 (target_k4 target_k5 n1059 vdd vss) tx_or_pdk110_67
+X834 (n1057 n1058 n1060 vdd vss) tx_or_pdk110_67
+X835 (n1060 n1059 n1061 vdd vss) tx_or_pdk110_67
+X836 (n1062 n318 n1063 vdd vss) tx_or_pdk110_67
+X837 (n319 n109 n1064 vdd vss) tx_or_pdk110_67
+X838 (n1065 n1063 n1066 vdd vss) tx_or_pdk110_67
+X839 (n1064 n1067 n1068 vdd vss) tx_or_pdk110_67
+X840 (n1066 n1068 n1069 vdd vss) tx_or_pdk110_67
+X841 (n230 n320 n1070 vdd vss) tx_or_pdk110_67
+X842 (n321 n113 n1071 vdd vss) tx_or_pdk110_67
+X843 (n1070 n1071 n1072 vdd vss) tx_or_pdk110_67
+X844 (n1073 n1072 n1074 vdd vss) tx_or_pdk110_67
+X845 (n99 n1075 n1076 vdd vss) tx_or_pdk110_67
+X846 (n103 n105 n1077 vdd vss) tx_or_pdk110_67
+X847 (n107 n109 n1078 vdd vss) tx_or_pdk110_67
+X848 (n1076 n1077 n1079 vdd vss) tx_or_pdk110_67
+X849 (n1078 n1067 n1080 vdd vss) tx_or_pdk110_67
+X850 (n1079 n1080 n1081 vdd vss) tx_or_pdk110_67
+X851 (n296 n538 n1082 vdd vss) tx_or_pdk110_67
+X852 (n540 n543 n1083 vdd vss) tx_or_pdk110_67
+X853 (n546 n549 n1084 vdd vss) tx_or_pdk110_67
+X854 (n552 n295 n1085 vdd vss) tx_or_pdk110_67
+X855 (n1082 n1083 n1086 vdd vss) tx_or_pdk110_67
+X856 (n1084 n1085 n1087 vdd vss) tx_or_pdk110_67
+X857 (n1086 n1087 n1088 vdd vss) tx_or_pdk110_67
+X858 (n1089 n1090 n1091 vdd vss) tx_or_pdk110_67
+X859 (n1091 n228 n960 vdd vss) tx_or_pdk110_67
+X860 (n227 n60 n1092 vdd vss) tx_or_pdk110_67
+X861 (n62 n64 n1093 vdd vss) tx_or_pdk110_67
+X862 (n66 n68 n1094 vdd vss) tx_or_pdk110_67
+X863 (n70 n72 n1095 vdd vss) tx_or_pdk110_67
+X864 (n1092 n1093 n1096 vdd vss) tx_or_pdk110_67
+X865 (n1094 n1095 n1097 vdd vss) tx_or_pdk110_67
+X866 (n1096 n1097 n980 vdd vss) tx_or_pdk110_67
+X867 (n266 n1075 n1065 vdd vss) tx_or_pdk110_67
+X868 (n1062 n1098 n1099 vdd vss) tx_or_pdk110_67
+X869 (n230 n109 n1100 vdd vss) tx_or_pdk110_67
+X870 (n111 n113 n1067 vdd vss) tx_or_pdk110_67
+X871 (n1065 n1099 n1073 vdd vss) tx_or_pdk110_67
+X872 (n1100 n1067 n1101 vdd vss) tx_or_pdk110_67
+X873 (n1073 n1101 n1102 vdd vss) tx_or_pdk110_67
+X874 (n1103 n229 n1000 vdd vss) tx_or_pdk110_67
+X875 (n1104 n229 n1033 vdd vss) tx_or_pdk110_67
+X876 (state_out0 n225 n1105 vdd vss) tx_or_pdk110_67
+X877 (n1105 state_out2 n1041 vdd vss) tx_or_pdk110_67
+X878 (n226 state_out1 n1104 vdd vss) tx_or_pdk110_67
+X879 (n1104 state_out2 n1043 vdd vss) tx_or_pdk110_67
+X880 (n226 n225 n1106 vdd vss) tx_or_pdk110_67
+X881 (n1106 state_out2 n1002 vdd vss) tx_or_pdk110_67
+X882 (n1031 n350 n1107 vdd vss) tx_or_pdk110_67
+X883 (n405 n715 n410 vdd vss) tx_and_pdk110_47
+X884 (n410 n831 n1108 vdd vss) tx_and_pdk110_47
+X885 (n827 n716 n1109 vdd vss) tx_and_pdk110_47
+X886 (n264 n1110 n1111 vdd vss) tx_or_pdk110_67
+X887 (n788 n745 n1110 vdd vss) tx_and_pdk110_47
+X888 (n262 n1112 n1113 vdd vss) tx_or_pdk110_67
+X889 (n224 target_k1 n1114 vdd vss) tx_and_pdk110_47
+X890 (n268 n754 n752 vdd vss) tx_and_pdk110_47
+X891 (n1114 n752 n1115 vdd vss) tx_and_pdk110_47
+X892 (n1115 n745 n1112 vdd vss) tx_and_pdk110_47
+X893 (n260 n1116 n1117 vdd vss) tx_or_pdk110_67
+X894 (target_k0 n1118 n774 vdd vss) tx_and_pdk110_47
+X895 (target_k2 target_k3 n742 vdd vss) tx_and_pdk110_47
+X896 (n774 n742 n1119 vdd vss) tx_and_pdk110_47
+X897 (n1119 n769 n1116 vdd vss) tx_and_pdk110_47
+X898 (n258 n1120 n1121 vdd vss) tx_or_pdk110_67
+X899 (n268 target_k3 n1122 vdd vss) tx_and_pdk110_47
+X900 (n1123 n747 n769 vdd vss) tx_and_pdk110_47
+X901 (n449 n1122 n788 vdd vss) tx_and_pdk110_47
+X902 (n788 n769 n1120 vdd vss) tx_and_pdk110_47
+X903 (n256 n809 n1124 vdd vss) tx_or_pdk110_67
+X904 (n572 n211 n814 vdd vss) tx_and_pdk110_47
+X905 (n922 n814 n1125 vdd vss) tx_and_pdk110_47
+X906 (n1125 n813 n345 vdd vss) tx_and_pdk110_47
+X907 (n1126 n345 n1127 vdd vss) tx_or_pdk110_67
+X908 (n1128 n251 n1129 vdd vss) tx_and_pdk110_47
+X909 (n329 n331 n838 vdd vss) tx_and_pdk110_47
+X910 (n1129 n836 n1130 vdd vss) tx_and_pdk110_47
+X911 (n838 n837 n835 vdd vss) tx_and_pdk110_47
+X912 (n1130 n835 n347 vdd vss) tx_and_pdk110_47
+X913 (n1131 n347 n1132 vdd vss) tx_or_pdk110_67
+X914 (n290 n288 n1133 vdd vss) tx_and_pdk110_47
+X915 (n286 n284 n871 vdd vss) tx_and_pdk110_47
+X916 (n278 n276 n867 vdd vss) tx_and_pdk110_47
+X917 (n274 n272 n859 vdd vss) tx_and_pdk110_47
+X918 (n884 n875 n1134 vdd vss) tx_and_pdk110_47
+X919 (n1133 n871 n863 vdd vss) tx_and_pdk110_47
+X920 (n879 n867 n1135 vdd vss) tx_and_pdk110_47
+X921 (n1134 n863 n1136 vdd vss) tx_and_pdk110_47
+X922 (n1135 n859 n855 vdd vss) tx_and_pdk110_47
+X923 (n1136 n855 n1137 vdd vss) tx_and_pdk110_47
+X924 (n248 n1137 n236 vdd vss) tx_or_pdk110_67
+X925 (n403 n402 n405 vdd vss) tx_and_pdk110_47
+X926 (n246 n245 n715 vdd vss) tx_and_pdk110_47
+X927 (n1108 n1109 n350 vdd vss) tx_and_pdk110_47
+X928 (n900 n901 n1138 vdd vss) tx_and_pdk110_47
+X929 (n902 n903 n913 vdd vss) tx_and_pdk110_47
+X930 (n1138 n913 n1139 vdd vss) tx_and_pdk110_47
+X931 (n1139 n909 n1140 vdd vss) tx_and_pdk110_47
+X932 (n1141 n1140 n243 vdd vss) tx_or_pdk110_67
+X933 (n935 n936 n1142 vdd vss) tx_and_pdk110_47
+X934 (n1142 n948 n1143 vdd vss) tx_and_pdk110_47
+X935 (n1143 n944 n353 vdd vss) tx_and_pdk110_47
+X936 (n1144 n353 n240 vdd vss) tx_or_pdk110_67
+X937 (n1145 n184 n179 vdd vss) tx_and_pdk110_47
+X938 (n1146 n1147 n1148 vdd vss) tx_and_pdk110_47
+X939 (n1149 n184 n1150 vdd vss) tx_and_pdk110_47
+X940 (n1148 n1150 n171 vdd vss) tx_and_pdk110_47
+X941 (n962 n233 n1146 vdd vss) tx_or_pdk110_67
+X942 (n962 n238 n1147 vdd vss) tx_or_pdk110_67
+X943 (n962 n88 n1149 vdd vss) tx_or_pdk110_67
+X944 (n1151 n1152 n1153 vdd vss) tx_and_pdk110_47
+X945 (n1153 n1014 n1154 vdd vss) tx_and_pdk110_47
+X946 (n1154 n1016 n1155 vdd vss) tx_and_pdk110_47
+X947 (n1155 n1018 n165 vdd vss) tx_and_pdk110_47
+X948 (n963 n244 n1151 vdd vss) tx_or_pdk110_67
+X949 (n963 n1031 n1152 vdd vss) tx_or_pdk110_67
+X950 (n1145 n1156 n1157 vdd vss) tx_and_pdk110_47
+X951 (n1158 n958 n1159 vdd vss) tx_and_pdk110_47
+X952 (n959 n961 n1160 vdd vss) tx_and_pdk110_47
+X953 (n964 n967 n1161 vdd vss) tx_and_pdk110_47
+X954 (n1157 n1159 n1162 vdd vss) tx_and_pdk110_47
+X955 (n1160 n1161 n1163 vdd vss) tx_and_pdk110_47
+X956 (n1162 n1163 n1164 vdd vss) tx_and_pdk110_47
+X957 (n1164 n184 n159 vdd vss) tx_and_pdk110_47
+X958 (n51 n1165 n1145 vdd vss) tx_or_pdk110_67
+X959 (n231 n239 n1019 vdd vss) tx_or_pdk110_67
+X960 (n962 n1019 n1166 vdd vss) tx_or_pdk110_67
+X961 (n1166 n233 n1156 vdd vss) tx_or_pdk110_67
+X962 (n351 n244 n1167 vdd vss) tx_or_pdk110_67
+X963 (n956 n1167 n1158 vdd vss) tx_or_pdk110_67
+X964 (n1031 n241 n957 vdd vss) tx_or_pdk110_67
+X965 (coarse0 coarse1 n1168 vdd vss) tx_or_pdk110_67
+X966 (coarse2 coarse3 n1169 vdd vss) tx_or_pdk110_67
+X967 (coarse4 coarse5 n1170 vdd vss) tx_or_pdk110_67
+X968 (coarse6 coarse7 n1171 vdd vss) tx_or_pdk110_67
+X969 (n1168 n1169 n1172 vdd vss) tx_or_pdk110_67
+X970 (n1170 n1171 n1173 vdd vss) tx_or_pdk110_67
+X971 (n1172 n1173 n1174 vdd vss) tx_or_pdk110_67
+X972 (n1053 n1175 n1176 vdd vss) tx_or_pdk110_67
+X973 (n1177 n1176 n1178 vdd vss) tx_or_pdk110_67
+X974 (n1178 n203 n1179 vdd vss) tx_or_pdk110_67
+X975 (n1180 n1181 n1182 vdd vss) tx_or_pdk110_67
+X976 (n1183 n1184 n1185 vdd vss) tx_or_pdk110_67
+X977 (n1182 n1185 n1186 vdd vss) tx_or_pdk110_67
+X978 (n1187 n1188 n1189 vdd vss) tx_or_pdk110_67
+X979 (n1190 n1191 n1192 vdd vss) tx_or_pdk110_67
+X980 (n1189 n1192 n1193 vdd vss) tx_or_pdk110_67
+X981 (n1194 n1195 n1196 vdd vss) tx_or_pdk110_67
+X982 (n1197 n1198 n1199 vdd vss) tx_or_pdk110_67
+X983 (n1196 n1199 n1200 vdd vss) tx_or_pdk110_67
+X984 (n1201 n1202 n1203 vdd vss) tx_or_pdk110_67
+X985 (n1204 n1205 n1206 vdd vss) tx_or_pdk110_67
+X986 (n1203 n1206 n1207 vdd vss) tx_or_pdk110_67
+X987 (n1208 n1209 n1210 vdd vss) tx_or_pdk110_67
+X988 (n1211 n1212 n1213 vdd vss) tx_or_pdk110_67
+X989 (n1210 n1213 n1214 vdd vss) tx_or_pdk110_67
+X990 (n1215 n1216 n1217 vdd vss) tx_or_pdk110_67
+X991 (n1218 n1219 n1220 vdd vss) tx_or_pdk110_67
+X992 (n1217 n1220 n1221 vdd vss) tx_or_pdk110_67
+X993 (n1222 n1223 n1224 vdd vss) tx_or_pdk110_67
+X994 (n1225 n1226 n1227 vdd vss) tx_or_pdk110_67
+X995 (n1224 n1227 n1228 vdd vss) tx_or_pdk110_67
+X996 (n1229 n1230 n1231 vdd vss) tx_or_pdk110_67
+X997 (n1232 n1233 n1234 vdd vss) tx_or_pdk110_67
+X998 (n1231 n1234 n1235 vdd vss) tx_or_pdk110_67
+X999 (n1052 n1175 n1236 vdd vss) tx_or_pdk110_67
+X1000 (n184 n1053 n1237 vdd vss) tx_or_pdk110_67
+X1001 (n1238 n1055 n1177 vdd vss) tx_or_pdk110_67
+X1002 (n1236 n1237 n1239 vdd vss) tx_or_pdk110_67
+X1003 (n1239 n1177 n1240 vdd vss) tx_or_pdk110_67
+X1004 (n1241 n1242 n1243 vdd vss) tx_or_pdk110_67
+X1005 (n1244 n1245 n1246 vdd vss) tx_or_pdk110_67
+X1006 (n1247 n1243 n1248 vdd vss) tx_or_pdk110_67
+X1007 (n1248 n1246 n1249 vdd vss) tx_or_pdk110_67
+X1008 (n1250 n1251 n1252 vdd vss) tx_or_pdk110_67
+X1009 (n1253 n1242 n1254 vdd vss) tx_or_pdk110_67
+X1010 (n1254 n1252 n1255 vdd vss) tx_or_pdk110_67
+X1011 (n1256 n1257 n1258 vdd vss) tx_or_pdk110_67
+X1012 (n1244 n1251 n1259 vdd vss) tx_or_pdk110_67
+X1013 (n1247 n1258 n1260 vdd vss) tx_or_pdk110_67
+X1014 (n1260 n1259 n1261 vdd vss) tx_or_pdk110_67
+X1015 (n1175 n184 n981 vdd vss) tx_or_pdk110_67
+X1016 (n1262 n1263 n1264 vdd vss) tx_or_pdk110_67
+X1017 (n1055 n203 n189 vdd vss) tx_or_pdk110_67
+X1018 (n1265 n203 n1266 vdd vss) tx_or_pdk110_67
+X1019 (n1238 n1056 n186 vdd vss) tx_or_pdk110_67
+X1020 (state_out0 state_out1 n1103 vdd vss) tx_or_pdk110_67
+X1021 (n1103 state_out2 n1045 vdd vss) tx_or_pdk110_67
+X1022 (n1069 n1044 vdd vss) pll_inv_pdk110_7
+X1023 (n1074 n1042 vdd vss) pll_inv_pdk110_7
+X1024 (n1081 n1040 vdd vss) pll_inv_pdk110_7
+X1025 (n1088 n1267 vdd vss) pll_inv_pdk110_7
+X1026 (n1174 n1268 vdd vss) pll_inv_pdk110_7
+X1027 (n960 n1030 vdd vss) pll_inv_pdk110_7
+X1028 (n1102 n999 vdd vss) pll_inv_pdk110_7
+X1029 (range_error n1269 vdd vss) pll_inv_pdk110_7
+X1030 (n1000 n1175 vdd vss) pll_inv_pdk110_7
+X1031 (n1033 n1052 vdd vss) pll_inv_pdk110_7
+X1032 (n1041 n1053 vdd vss) pll_inv_pdk110_7
+X1033 (n1043 n1238 vdd vss) pll_inv_pdk110_7
+X1034 (n1045 n1055 vdd vss) pll_inv_pdk110_7
+X1035 (n1002 n184 vdd vss) pll_inv_pdk110_7
+X1036 (n1124 n1031 n1270 vdd vss) tx_and_pdk110_47
+X1037 (n1127 n349 n1271 vdd vss) tx_and_pdk110_47
+X1038 (n1270 n1271 n238 vdd vss) tx_or_pdk110_67
+X1039 (n54 n1030 n1272 vdd vss) tx_or_pdk110_67
+X1040 (n1270 n1267 n1273 vdd vss) tx_and_pdk110_47
+X1041 (n1272 n1273 n1274 vdd vss) tx_or_pdk110_67
+X1042 (n1271 n1268 n1275 vdd vss) tx_and_pdk110_47
+X1043 (n1274 n1275 n232 vdd vss) tx_or_pdk110_67
+X1044 (n236 n115 n234 vdd vss) tx_and_pdk110_47
+X1045 (vss target_k0 n1111 n1276 vdd vss) tx_mux_pdk110_64
+X1046 (target_k0 n462 n1111 n1277 vdd vss) tx_mux_pdk110_64
+X1047 (target_k1 n450 n1111 n1278 vdd vss) tx_mux_pdk110_64
+X1048 (target_k2 n453 n1111 n1279 vdd vss) tx_mux_pdk110_64
+X1049 (target_k3 n456 n1111 n1280 vdd vss) tx_mux_pdk110_64
+X1050 (target_k4 n459 n1111 n1281 vdd vss) tx_mux_pdk110_64
+X1051 (target_k5 n461 n1111 n1282 vdd vss) tx_mux_pdk110_64
+X1052 (vss n734 n1111 n1283 vdd vss) tx_mux_pdk110_64
+X1053 (n1276 vss n1113 n1284 vdd vss) tx_mux_pdk110_64
+X1054 (n1277 vss n1113 n1285 vdd vss) tx_mux_pdk110_64
+X1055 (n1278 target_k0 n1113 n1286 vdd vss) tx_mux_pdk110_64
+X1056 (n1279 target_k1 n1113 n1287 vdd vss) tx_mux_pdk110_64
+X1057 (n1280 target_k2 n1113 n1288 vdd vss) tx_mux_pdk110_64
+X1058 (n1281 target_k3 n1113 n1289 vdd vss) tx_mux_pdk110_64
+X1059 (n1282 target_k4 n1113 n1290 vdd vss) tx_mux_pdk110_64
+X1060 (n1283 target_k5 n1113 n1291 vdd vss) tx_mux_pdk110_64
+X1061 (n1284 target_k0 n1117 n1292 vdd vss) tx_mux_pdk110_64
+X1062 (n1285 target_k1 n1117 n1293 vdd vss) tx_mux_pdk110_64
+X1063 (n1286 n758 n1117 n1294 vdd vss) tx_mux_pdk110_64
+X1064 (n1287 n465 n1117 n1295 vdd vss) tx_mux_pdk110_64
+X1065 (n1288 n468 n1117 n1296 vdd vss) tx_mux_pdk110_64
+X1066 (n1289 n471 n1117 n1297 vdd vss) tx_mux_pdk110_64
+X1067 (n1290 n473 n1117 n1298 vdd vss) tx_mux_pdk110_64
+X1068 (n1291 n475 n1117 n1299 vdd vss) tx_mux_pdk110_64
+X1069 (vss n765 n1117 n1300 vdd vss) tx_mux_pdk110_64
+X1070 (n1292 vss n1121 n1301 vdd vss) tx_mux_pdk110_64
+X1071 (n1293 target_k0 n1121 n1302 vdd vss) tx_mux_pdk110_64
+X1072 (n1294 n462 n1121 n1303 vdd vss) tx_mux_pdk110_64
+X1073 (n1295 n450 n1121 n1304 vdd vss) tx_mux_pdk110_64
+X1074 (n1296 n453 n1121 n1305 vdd vss) tx_mux_pdk110_64
+X1075 (n1297 n477 n1121 n1306 vdd vss) tx_mux_pdk110_64
+X1076 (n1298 n479 n1121 n1307 vdd vss) tx_mux_pdk110_64
+X1077 (n1299 n481 n1121 n1308 vdd vss) tx_mux_pdk110_64
+X1078 (n1300 n497 n1121 n1309 vdd vss) tx_mux_pdk110_64
+X1079 (target_k0 n1301 n1061 n1310 vdd vss) tx_mux_pdk110_64
+X1080 (n462 n1302 n1061 n1311 vdd vss) tx_mux_pdk110_64
+X1081 (n483 n1303 n1061 n1312 vdd vss) tx_mux_pdk110_64
+X1082 (n486 n1304 n1061 n1313 vdd vss) tx_mux_pdk110_64
+X1083 (n489 n1305 n1061 n1314 vdd vss) tx_mux_pdk110_64
+X1084 (n492 n1306 n1061 n1315 vdd vss) tx_mux_pdk110_64
+X1085 (n494 n1307 n1061 n1316 vdd vss) tx_mux_pdk110_64
+X1086 (n496 n1308 n1061 n1317 vdd vss) tx_mux_pdk110_64
+X1087 (n499 n1309 n1061 n1318 vdd vss) tx_mux_pdk110_64
+X1088 (n801 vss n1061 n1319 vdd vss) tx_mux_pdk110_64
+X1089 (n1310 vss n117 n640 vdd vss) tx_mux_pdk110_64
+X1090 (n1311 vss n117 n643 vdd vss) tx_mux_pdk110_64
+X1091 (n1312 n1310 n117 n646 vdd vss) tx_mux_pdk110_64
+X1092 (n1313 n1311 n117 n649 vdd vss) tx_mux_pdk110_64
+X1093 (n1314 n1312 n117 n652 vdd vss) tx_mux_pdk110_64
+X1094 (n1315 n1313 n117 n655 vdd vss) tx_mux_pdk110_64
+X1095 (n1316 n1314 n117 n658 vdd vss) tx_mux_pdk110_64
+X1096 (n1317 n1315 n117 n661 vdd vss) tx_mux_pdk110_64
+X1097 (n1318 n1316 n117 n664 vdd vss) tx_mux_pdk110_64
+X1098 (n1319 n1317 n117 n667 vdd vss) tx_mux_pdk110_64
+X1099 (n1031 n1107 n117 n978 vdd vss) tx_mux_pdk110_64
+X1100 (n297 coarse0 n978 n322 vdd vss) tx_mux_pdk110_64
+X1101 (n299 coarse1 n978 n251 vdd vss) tx_mux_pdk110_64
+X1102 (n301 coarse2 n978 n325 vdd vss) tx_mux_pdk110_64
+X1103 (n303 coarse3 n978 n327 vdd vss) tx_mux_pdk110_64
+X1104 (n305 coarse4 n978 n329 vdd vss) tx_mux_pdk110_64
+X1105 (n307 coarse5 n978 n331 vdd vss) tx_mux_pdk110_64
+X1106 (n309 coarse6 n978 n333 vdd vss) tx_mux_pdk110_64
+X1107 (n311 coarse7 n978 n522 vdd vss) tx_mux_pdk110_64
+X1108 (dac0 n312 n978 n335 vdd vss) tx_mux_pdk110_64
+X1109 (dac1 n313 n978 n337 vdd vss) tx_mux_pdk110_64
+X1110 (dac2 n314 n978 n339 vdd vss) tx_mux_pdk110_64
+X1111 (dac3 n315 n978 n341 vdd vss) tx_mux_pdk110_64
+X1112 (dac4 n316 n978 n343 vdd vss) tx_mux_pdk110_64
+X1113 (vss n317 n978 n1320 vdd vss) tx_mux_pdk110_64
+X1114 (n404 measured1 n1107 n269 vdd vss) tx_mux_pdk110_64
+X1115 (n406 measured2 n1107 n293 vdd vss) tx_mux_pdk110_64
+X1116 (n408 measured3 n1107 n291 vdd vss) tx_mux_pdk110_64
+X1117 (n411 n441 n1107 n289 vdd vss) tx_mux_pdk110_64
+X1118 (n414 n444 n1107 n287 vdd vss) tx_mux_pdk110_64
+X1119 (n417 n447 n1107 n285 vdd vss) tx_mux_pdk110_64
+X1120 (n420 n506 n1107 n283 vdd vss) tx_mux_pdk110_64
+X1121 (n423 n562 n1107 n281 vdd vss) tx_mux_pdk110_64
+X1122 (n426 n565 n1107 n279 vdd vss) tx_mux_pdk110_64
+X1123 (n429 n509 n1107 n277 vdd vss) tx_mux_pdk110_64
+X1124 (n432 n512 n1107 n275 vdd vss) tx_mux_pdk110_64
+X1125 (n435 n568 n1107 n273 vdd vss) tx_mux_pdk110_64
+X1126 (n438 n571 n1107 n271 vdd vss) tx_mux_pdk110_64
+X1127 (n322 vdd n1132 n1321 vdd vss) tx_mux_pdk110_64
+X1128 (n252 vdd n1132 n1322 vdd vss) tx_mux_pdk110_64
+X1129 (n513 vdd n1132 n1323 vdd vss) tx_mux_pdk110_64
+X1130 (n515 vdd n1132 n1324 vdd vss) tx_mux_pdk110_64
+X1131 (n517 vdd n1132 n1325 vdd vss) tx_mux_pdk110_64
+X1132 (n519 vdd n1132 n1326 vdd vss) tx_mux_pdk110_64
+X1133 (n521 vdd n1132 n1327 vdd vss) tx_mux_pdk110_64
+X1134 (n524 vdd n1132 n1328 vdd vss) tx_mux_pdk110_64
+X1135 (n539 n525 n1270 n1329 vdd vss) tx_mux_pdk110_64
+X1136 (n542 n527 n1270 n1330 vdd vss) tx_mux_pdk110_64
+X1137 (n545 n529 n1270 n1331 vdd vss) tx_mux_pdk110_64
+X1138 (n548 n531 n1270 n1332 vdd vss) tx_mux_pdk110_64
+X1139 (n551 n533 n1270 n1333 vdd vss) tx_mux_pdk110_64
+X1140 (n554 n535 n1270 n1334 vdd vss) tx_mux_pdk110_64
+X1141 (n556 n537 n1270 n1335 vdd vss) tx_mux_pdk110_64
+X1142 (n267 vss n243 n1336 vdd vss) tx_mux_pdk110_64
+X1143 (n501 vss n243 n1337 vdd vss) tx_mux_pdk110_64
+X1144 (n574 vss n243 n1338 vdd vss) tx_mux_pdk110_64
+X1145 (n503 vss n243 n1339 vdd vss) tx_mux_pdk110_64
+X1146 (n577 vss n243 n1340 vdd vss) tx_mux_pdk110_64
+X1147 (n580 vss n243 n1341 vdd vss) tx_mux_pdk110_64
+X1148 (n1336 vss n351 n1342 vdd vss) tx_mux_pdk110_64
+X1149 (n1337 vss n351 n1343 vdd vss) tx_mux_pdk110_64
+X1150 (n1338 vss n351 n1344 vdd vss) tx_mux_pdk110_64
+X1151 (n1339 vss n351 n1345 vdd vss) tx_mux_pdk110_64
+X1152 (n1340 vss n351 n1346 vdd vss) tx_mux_pdk110_64
+X1153 (n1341 vss n351 n1347 vdd vss) tx_mux_pdk110_64
+X1154 (n1342 vss n236 n1348 vdd vss) tx_mux_pdk110_64
+X1155 (n1343 vss n236 n1349 vdd vss) tx_mux_pdk110_64
+X1156 (n1344 vss n236 n1350 vdd vss) tx_mux_pdk110_64
+X1157 (n1345 vss n236 n1351 vdd vss) tx_mux_pdk110_64
+X1158 (n1346 vss n236 n1352 vdd vss) tx_mux_pdk110_64
+X1159 (n1347 vss n236 n1353 vdd vss) tx_mux_pdk110_64
+X1160 (vss n1348 n960 n1354 vdd vss) tx_mux_pdk110_64
+X1161 (vss n1349 n960 n1355 vdd vss) tx_mux_pdk110_64
+X1162 (vss n1350 n960 n1356 vdd vss) tx_mux_pdk110_64
+X1163 (vss n1351 n960 n1357 vdd vss) tx_mux_pdk110_64
+X1164 (vss n1352 n960 n1358 vdd vss) tx_mux_pdk110_64
+X1165 (vss n1353 n960 n1359 vdd vss) tx_mux_pdk110_64
+X1166 (n1354 vss n234 n1360 vdd vss) tx_mux_pdk110_64
+X1167 (n1355 vss n234 n1361 vdd vss) tx_mux_pdk110_64
+X1168 (n1356 vss n234 n1362 vdd vss) tx_mux_pdk110_64
+X1169 (n1357 vss n234 n1363 vdd vss) tx_mux_pdk110_64
+X1170 (n1358 vss n234 n1364 vdd vss) tx_mux_pdk110_64
+X1171 (n1359 vss n234 n1365 vdd vss) tx_mux_pdk110_64
+X1172 (n1360 n1366 n238 n1367 vdd vss) tx_mux_pdk110_64
+X1173 (n1361 n1368 n238 n1369 vdd vss) tx_mux_pdk110_64
+X1174 (n1362 n1366 n238 n1370 vdd vss) tx_mux_pdk110_64
+X1175 (n1363 n1368 n238 n1371 vdd vss) tx_mux_pdk110_64
+X1176 (n1364 n1366 n238 n1372 vdd vss) tx_mux_pdk110_64
+X1177 (n1365 n1366 n238 n1373 vdd vss) tx_mux_pdk110_64
+X1178 (n1374 n1367 n88 n169 vdd vss) tx_mux_pdk110_64
+X1179 (n1375 n1369 n88 n168 vdd vss) tx_mux_pdk110_64
+X1180 (n1374 n1370 n88 n167 vdd vss) tx_mux_pdk110_64
+X1181 (n1375 n1371 n88 n166 vdd vss) tx_mux_pdk110_64
+X1182 (n1374 n1372 n88 n164 vdd vss) tx_mux_pdk110_64
+X1183 (n1374 n1373 n88 n181 vdd vss) tx_mux_pdk110_64
+X1184 (vdd vss n980 n1374 vdd vss) tx_mux_pdk110_64
+X1185 (n267 vss n240 n1376 vdd vss) tx_mux_pdk110_64
+X1186 (n355 vss n240 n1377 vdd vss) tx_mux_pdk110_64
+X1187 (n357 vss n240 n1378 vdd vss) tx_mux_pdk110_64
+X1188 (n582 vss n240 n1379 vdd vss) tx_mux_pdk110_64
+X1189 (n359 vss n240 n1380 vdd vss) tx_mux_pdk110_64
+X1190 (n361 vss n240 n1381 vdd vss) tx_mux_pdk110_64
+X1191 (vss n1376 n351 n1382 vdd vss) tx_mux_pdk110_64
+X1192 (vss n1377 n351 n1383 vdd vss) tx_mux_pdk110_64
+X1193 (vss n1378 n351 n1384 vdd vss) tx_mux_pdk110_64
+X1194 (vss n1379 n351 n1385 vdd vss) tx_mux_pdk110_64
+X1195 (vss n1380 n351 n1386 vdd vss) tx_mux_pdk110_64
+X1196 (vss n1381 n351 n1387 vdd vss) tx_mux_pdk110_64
+X1197 (n1382 vss n236 n1388 vdd vss) tx_mux_pdk110_64
+X1198 (n1383 vss n236 n1389 vdd vss) tx_mux_pdk110_64
+X1199 (n1384 vss n236 n1390 vdd vss) tx_mux_pdk110_64
+X1200 (n1385 vss n236 n1391 vdd vss) tx_mux_pdk110_64
+X1201 (n1386 vss n236 n1392 vdd vss) tx_mux_pdk110_64
+X1202 (n1387 vss n236 n1393 vdd vss) tx_mux_pdk110_64
+X1203 (vss n1388 n960 n1394 vdd vss) tx_mux_pdk110_64
+X1204 (vss n1389 n960 n1395 vdd vss) tx_mux_pdk110_64
+X1205 (vss n1390 n960 n1396 vdd vss) tx_mux_pdk110_64
+X1206 (vss n1391 n960 n1397 vdd vss) tx_mux_pdk110_64
+X1207 (vss n1392 n960 n1398 vdd vss) tx_mux_pdk110_64
+X1208 (vss n1393 n960 n1399 vdd vss) tx_mux_pdk110_64
+X1209 (n1394 vss n234 n1400 vdd vss) tx_mux_pdk110_64
+X1210 (n1395 vss n234 n1401 vdd vss) tx_mux_pdk110_64
+X1211 (n1396 vss n234 n1402 vdd vss) tx_mux_pdk110_64
+X1212 (n1397 vss n234 n1403 vdd vss) tx_mux_pdk110_64
+X1213 (n1398 vss n234 n1404 vdd vss) tx_mux_pdk110_64
+X1214 (n1399 vss n234 n1405 vdd vss) tx_mux_pdk110_64
+X1215 (vdd vss n232 n1366 vdd vss) tx_mux_pdk110_64
+X1216 (n1400 n1366 n238 n1406 vdd vss) tx_mux_pdk110_64
+X1217 (n1401 n1366 n238 n1407 vdd vss) tx_mux_pdk110_64
+X1218 (n1402 n1368 n238 n1408 vdd vss) tx_mux_pdk110_64
+X1219 (n1403 n1366 n238 n1409 vdd vss) tx_mux_pdk110_64
+X1220 (n1404 n1368 n238 n1410 vdd vss) tx_mux_pdk110_64
+X1221 (n1405 n1368 n238 n1411 vdd vss) tx_mux_pdk110_64
+X1222 (n1374 n1406 n88 n149 vdd vss) tx_mux_pdk110_64
+X1223 (n1374 n1407 n88 n148 vdd vss) tx_mux_pdk110_64
+X1224 (n1375 n1408 n88 n147 vdd vss) tx_mux_pdk110_64
+X1225 (n1374 n1409 n88 n146 vdd vss) tx_mux_pdk110_64
+X1226 (n1375 n1410 n88 n144 vdd vss) tx_mux_pdk110_64
+X1227 (n1375 n1411 n88 n193 vdd vss) tx_mux_pdk110_64
+X1228 (vss n1089 n960 n1412 vdd vss) tx_mux_pdk110_64
+X1229 (vss n557 n960 n1413 vdd vss) tx_mux_pdk110_64
+X1230 (vss n559 n960 n1414 vdd vss) tx_mux_pdk110_64
+X1231 (n1412 vss n234 n1415 vdd vss) tx_mux_pdk110_64
+X1232 (n1413 vss n234 n1416 vdd vss) tx_mux_pdk110_64
+X1233 (n1414 vss n234 n1417 vdd vss) tx_mux_pdk110_64
+X1234 (n1089 vss n232 n1418 vdd vss) tx_mux_pdk110_64
+X1235 (n557 vss n232 n1419 vdd vss) tx_mux_pdk110_64
+X1236 (n559 vss n232 n1420 vdd vss) tx_mux_pdk110_64
+X1237 (n1415 n1418 n238 n1421 vdd vss) tx_mux_pdk110_64
+X1238 (n1416 n1419 n238 n1422 vdd vss) tx_mux_pdk110_64
+X1239 (n1417 n1420 n238 n1423 vdd vss) tx_mux_pdk110_64
+X1240 (n1375 n1421 n88 n140 vdd vss) tx_mux_pdk110_64
+X1241 (n1375 n1422 n88 n138 vdd vss) tx_mux_pdk110_64
+X1242 (n1375 n1423 n88 n199 vdd vss) tx_mux_pdk110_64
+X1243 (vss n236 n960 n1424 vdd vss) tx_mux_pdk110_64
+X1244 (n1424 vss n234 n1425 vdd vss) tx_mux_pdk110_64
+X1245 (n1425 vss n238 n1426 vdd vss) tx_mux_pdk110_64
+X1246 (n1375 n1426 n88 n200 vdd vss) tx_mux_pdk110_64
+X1247 (n966 vdd n88 n196 vdd vss) tx_mux_pdk110_64
+X1248 (vss n60 n980 n1427 vdd vss) tx_mux_pdk110_64
+X1249 (vss n62 n980 n1428 vdd vss) tx_mux_pdk110_64
+X1250 (vss n64 n980 n1429 vdd vss) tx_mux_pdk110_64
+X1251 (vss n66 n980 n1430 vdd vss) tx_mux_pdk110_64
+X1252 (vss n68 n980 n1431 vdd vss) tx_mux_pdk110_64
+X1253 (vss n70 n980 n1432 vdd vss) tx_mux_pdk110_64
+X1254 (vss n72 n980 n1433 vdd vss) tx_mux_pdk110_64
+X1255 (vss vss n980 n1434 vdd vss) tx_mux_pdk110_64
+X1256 (n1427 vss n88 n1435 vdd vss) tx_mux_pdk110_64
+X1257 (n1428 vss n88 n1436 vdd vss) tx_mux_pdk110_64
+X1258 (n1429 vss n88 n1437 vdd vss) tx_mux_pdk110_64
+X1259 (n1430 vss n88 n1438 vdd vss) tx_mux_pdk110_64
+X1260 (n1431 vss n88 n1439 vdd vss) tx_mux_pdk110_64
+X1261 (n1432 vss n88 n1440 vdd vss) tx_mux_pdk110_64
+X1262 (n1433 vss n88 n1441 vdd vss) tx_mux_pdk110_64
+X1263 (n1434 vss n88 n1442 vdd vss) tx_mux_pdk110_64
+X1264 (vss n60 n980 n1443 vdd vss) tx_mux_pdk110_64
+X1265 (vss n62 n980 n1444 vdd vss) tx_mux_pdk110_64
+X1266 (vss n64 n980 n1445 vdd vss) tx_mux_pdk110_64
+X1267 (vss n66 n980 n1446 vdd vss) tx_mux_pdk110_64
+X1268 (vss n68 n980 n1447 vdd vss) tx_mux_pdk110_64
+X1269 (vdd n70 n980 n1448 vdd vss) tx_mux_pdk110_64
+X1270 (vss n72 n980 n1449 vdd vss) tx_mux_pdk110_64
+X1271 (n1443 n1435 n117 n1450 vdd vss) tx_mux_pdk110_64
+X1272 (n1444 n1436 n117 n1451 vdd vss) tx_mux_pdk110_64
+X1273 (n1445 n1437 n117 n1452 vdd vss) tx_mux_pdk110_64
+X1274 (n1446 n1438 n117 n1453 vdd vss) tx_mux_pdk110_64
+X1275 (n1447 n1439 n117 n1454 vdd vss) tx_mux_pdk110_64
+X1276 (n1448 n1440 n117 n1455 vdd vss) tx_mux_pdk110_64
+X1277 (n1449 n1441 n117 n1456 vdd vss) tx_mux_pdk110_64
+X1278 (vss n1442 n117 n1457 vdd vss) tx_mux_pdk110_64
+X1279 (n978 n1165 vdd vss) pll_inv_pdk110_7
+X1280 (vss n1450 n51 n157 vdd vss) tx_mux_pdk110_64
+X1281 (vss n1451 n51 n156 vdd vss) tx_mux_pdk110_64
+X1282 (vss n1452 n51 n155 vdd vss) tx_mux_pdk110_64
+X1283 (vss n1453 n51 n154 vdd vss) tx_mux_pdk110_64
+X1284 (vss n1454 n51 n153 vdd vss) tx_mux_pdk110_64
+X1285 (n1165 n1455 n51 n152 vdd vss) tx_mux_pdk110_64
+X1286 (vss n1456 n51 n150 vdd vss) tx_mux_pdk110_64
+X1287 (n978 n1457 n51 n190 vdd vss) tx_mux_pdk110_64
+X1288 (n980 n966 vdd vss) pll_inv_pdk110_7
+X1289 (n966 vdd n117 n1458 vdd vss) tx_mux_pdk110_64
+X1290 (n1459 n1458 n51 n178 vdd vss) tx_mux_pdk110_64
+X1291 (vss n266 n1102 n1460 vdd vss) tx_mux_pdk110_64
+X1292 (vss n583 n1102 n1461 vdd vss) tx_mux_pdk110_64
+X1293 (vss n585 n1102 n1462 vdd vss) tx_mux_pdk110_64
+X1294 (vss n587 n1102 n1463 vdd vss) tx_mux_pdk110_64
+X1295 (vss n589 n1102 n1464 vdd vss) tx_mux_pdk110_64
+X1296 (vss n591 n1102 n1465 vdd vss) tx_mux_pdk110_64
+X1297 (vss n593 n1102 n1466 vdd vss) tx_mux_pdk110_64
+X1298 (vss n595 n1102 n1467 vdd vss) tx_mux_pdk110_64
+X1299 (vss n266 n1081 n1468 vdd vss) tx_mux_pdk110_64
+X1300 (vss n583 n1081 n1469 vdd vss) tx_mux_pdk110_64
+X1301 (vss n585 n1081 n1470 vdd vss) tx_mux_pdk110_64
+X1302 (vss n587 n1081 n1471 vdd vss) tx_mux_pdk110_64
+X1303 (vss n589 n1081 n1472 vdd vss) tx_mux_pdk110_64
+X1304 (vss n591 n1081 n1473 vdd vss) tx_mux_pdk110_64
+X1305 (vss n593 n1081 n1474 vdd vss) tx_mux_pdk110_64
+X1306 (vss n595 n1081 n1475 vdd vss) tx_mux_pdk110_64
+X1307 (vss n266 n1074 n1476 vdd vss) tx_mux_pdk110_64
+X1308 (vss n583 n1074 n1477 vdd vss) tx_mux_pdk110_64
+X1309 (vss n585 n1074 n1478 vdd vss) tx_mux_pdk110_64
+X1310 (vss n587 n1074 n1479 vdd vss) tx_mux_pdk110_64
+X1311 (vss n589 n1074 n1480 vdd vss) tx_mux_pdk110_64
+X1312 (vss n591 n1074 n1481 vdd vss) tx_mux_pdk110_64
+X1313 (vss n593 n1074 n1482 vdd vss) tx_mux_pdk110_64
+X1314 (vss n595 n1074 n1483 vdd vss) tx_mux_pdk110_64
+X1315 (vss n266 n1069 n1484 vdd vss) tx_mux_pdk110_64
+X1316 (vss n583 n1069 n1485 vdd vss) tx_mux_pdk110_64
+X1317 (vss n585 n1069 n1486 vdd vss) tx_mux_pdk110_64
+X1318 (vss n587 n1069 n1487 vdd vss) tx_mux_pdk110_64
+X1319 (vss n589 n1069 n1488 vdd vss) tx_mux_pdk110_64
+X1320 (vss n591 n1069 n1489 vdd vss) tx_mux_pdk110_64
+X1321 (vss n593 n1069 n1490 vdd vss) tx_mux_pdk110_64
+X1322 (vss n595 n1069 n1491 vdd vss) tx_mux_pdk110_64
+X1323 (vdd vss n1102 n1492 vdd vss) tx_mux_pdk110_64
+X1324 (vss vss n1102 n1493 vdd vss) tx_mux_pdk110_64
+X1325 (n243 n240 n351 n1494 vdd vss) tx_mux_pdk110_64
+X1326 (n1494 vss n236 n1495 vdd vss) tx_mux_pdk110_64
+X1327 (vdd n1495 n960 n1496 vdd vss) tx_mux_pdk110_64
+X1328 (n1496 vss n234 n1497 vdd vss) tx_mux_pdk110_64
+X1329 (n1496 vdd n234 n1498 vdd vss) tx_mux_pdk110_64
+X1330 (n1497 n232 n238 n1499 vdd vss) tx_mux_pdk110_64
+X1331 (n1498 n232 n238 n1500 vdd vss) tx_mux_pdk110_64
+X1332 (vss n1499 n88 n1501 vdd vss) tx_mux_pdk110_64
+X1333 (vss n1500 n88 n1502 vdd vss) tx_mux_pdk110_64
+X1334 (vss n1501 n117 n1503 vdd vss) tx_mux_pdk110_64
+X1335 (vss n1502 n117 n1504 vdd vss) tx_mux_pdk110_64
+X1336 (vss n1503 n51 n1505 vdd vss) tx_mux_pdk110_64
+X1337 (vss n1504 n51 n1506 vdd vss) tx_mux_pdk110_64
+X1338 (vdd vss n1081 n1507 vdd vss) tx_mux_pdk110_64
+X1339 (vss vss n1081 n1508 vdd vss) tx_mux_pdk110_64
+X1340 (vss vss n1074 n1509 vdd vss) tx_mux_pdk110_64
+X1341 (vdd vss n1074 n1510 vdd vss) tx_mux_pdk110_64
+X1342 (vdd vss n1069 n1511 vdd vss) tx_mux_pdk110_64
+X1343 (vss vss n1069 n1512 vdd vss) tx_mux_pdk110_64
+X1344 (vss vdd n240 n1513 vdd vss) tx_mux_pdk110_64
+X1345 (vss vdd n243 n1514 vdd vss) tx_mux_pdk110_64
+X1346 (n1514 n1513 n351 n1515 vdd vss) tx_mux_pdk110_64
+X1347 (n1515 vss n236 n1516 vdd vss) tx_mux_pdk110_64
+X1348 (vdd n1516 n960 n1517 vdd vss) tx_mux_pdk110_64
+X1349 (n1517 vss n234 n1518 vdd vss) tx_mux_pdk110_64
+X1350 (vss vdd n232 n1519 vdd vss) tx_mux_pdk110_64
+X1351 (n1518 n1519 n238 n194 vdd vss) tx_mux_pdk110_64
+X1352 (n1269 vss n1102 n1520 vdd vss) tx_mux_pdk110_64
+X1353 (vss vss n240 n1521 vdd vss) tx_mux_pdk110_64
+X1354 (vss vss n243 n1522 vdd vss) tx_mux_pdk110_64
+X1355 (n1522 n1521 n351 n1523 vdd vss) tx_mux_pdk110_64
+X1356 (n1523 vss n236 n1524 vdd vss) tx_mux_pdk110_64
+X1357 (vss n1524 n960 n1525 vdd vss) tx_mux_pdk110_64
+X1358 (n1525 vss n234 n1526 vdd vss) tx_mux_pdk110_64
+X1359 (vss vss n232 n1527 vdd vss) tx_mux_pdk110_64
+X1360 (n1526 n1527 n238 n1528 vdd vss) tx_mux_pdk110_64
+X1361 (vss n1528 n88 n1529 vdd vss) tx_mux_pdk110_64
+X1362 (vss n1529 n117 n1530 vdd vss) tx_mux_pdk110_64
+X1363 (vss n1530 n51 n1531 vdd vss) tx_mux_pdk110_64
+X1364 (vss n336 n980 n1532 vdd vss) tx_mux_pdk110_64
+X1365 (vss n338 n980 n1533 vdd vss) tx_mux_pdk110_64
+X1366 (vss n340 n980 n1534 vdd vss) tx_mux_pdk110_64
+X1367 (vss n342 n980 n1535 vdd vss) tx_mux_pdk110_64
+X1368 (vss n344 n980 n1536 vdd vss) tx_mux_pdk110_64
+X1369 (vdd n1320 n980 n1537 vdd vss) tx_mux_pdk110_64
+X1370 (n364 vss n240 n1538 vdd vss) tx_mux_pdk110_64
+X1371 (n367 vss n240 n1539 vdd vss) tx_mux_pdk110_64
+X1372 (n370 vss n240 n1540 vdd vss) tx_mux_pdk110_64
+X1373 (n373 vss n240 n1541 vdd vss) tx_mux_pdk110_64
+X1374 (n376 vss n240 n1542 vdd vss) tx_mux_pdk110_64
+X1375 (n379 vss n240 n1543 vdd vss) tx_mux_pdk110_64
+X1376 (n391 vss n243 n1544 vdd vss) tx_mux_pdk110_64
+X1377 (n393 vss n243 n1545 vdd vss) tx_mux_pdk110_64
+X1378 (n395 vss n243 n1546 vdd vss) tx_mux_pdk110_64
+X1379 (n397 vss n243 n1547 vdd vss) tx_mux_pdk110_64
+X1380 (n399 vss n243 n1548 vdd vss) tx_mux_pdk110_64
+X1381 (n401 vss n243 n1549 vdd vss) tx_mux_pdk110_64
+X1382 (n1544 n1538 n351 n1550 vdd vss) tx_mux_pdk110_64
+X1383 (n1545 n1539 n351 n1551 vdd vss) tx_mux_pdk110_64
+X1384 (n1546 n1540 n351 n1552 vdd vss) tx_mux_pdk110_64
+X1385 (n1547 n1541 n351 n1553 vdd vss) tx_mux_pdk110_64
+X1386 (n1548 n1542 n351 n1554 vdd vss) tx_mux_pdk110_64
+X1387 (n1549 n1543 n351 n1555 vdd vss) tx_mux_pdk110_64
+X1388 (n1550 vss n236 n1556 vdd vss) tx_mux_pdk110_64
+X1389 (n1551 vss n236 n1557 vdd vss) tx_mux_pdk110_64
+X1390 (n1552 vss n236 n1558 vdd vss) tx_mux_pdk110_64
+X1391 (n1553 vss n236 n1559 vdd vss) tx_mux_pdk110_64
+X1392 (n1554 vss n236 n1560 vdd vss) tx_mux_pdk110_64
+X1393 (n1555 vss n236 n1561 vdd vss) tx_mux_pdk110_64
+X1394 (vss n1556 n960 n1562 vdd vss) tx_mux_pdk110_64
+X1395 (vss n1557 n960 n1563 vdd vss) tx_mux_pdk110_64
+X1396 (vss n1558 n960 n1564 vdd vss) tx_mux_pdk110_64
+X1397 (vss n1559 n960 n1565 vdd vss) tx_mux_pdk110_64
+X1398 (vss n1560 n960 n1566 vdd vss) tx_mux_pdk110_64
+X1399 (vss n1561 n960 n1567 vdd vss) tx_mux_pdk110_64
+X1400 (n1562 vss n234 n1568 vdd vss) tx_mux_pdk110_64
+X1401 (n1563 vss n234 n1569 vdd vss) tx_mux_pdk110_64
+X1402 (n1564 vss n234 n1570 vdd vss) tx_mux_pdk110_64
+X1403 (n1565 vss n234 n1571 vdd vss) tx_mux_pdk110_64
+X1404 (n1566 vss n234 n1572 vdd vss) tx_mux_pdk110_64
+X1405 (n1567 vss n234 n1573 vdd vss) tx_mux_pdk110_64
+X1406 (vss vss n232 n1368 vdd vss) tx_mux_pdk110_64
+X1407 (n1568 n1368 n238 n1574 vdd vss) tx_mux_pdk110_64
+X1408 (n1569 n1368 n238 n1575 vdd vss) tx_mux_pdk110_64
+X1409 (n1570 n1368 n238 n1576 vdd vss) tx_mux_pdk110_64
+X1410 (n1571 n1368 n238 n1577 vdd vss) tx_mux_pdk110_64
+X1411 (n1572 n1368 n238 n1578 vdd vss) tx_mux_pdk110_64
+X1412 (n1573 n1366 n238 n1579 vdd vss) tx_mux_pdk110_64
+X1413 (n1532 n1574 n88 n1580 vdd vss) tx_mux_pdk110_64
+X1414 (n1533 n1575 n88 n1581 vdd vss) tx_mux_pdk110_64
+X1415 (n1534 n1576 n88 n1582 vdd vss) tx_mux_pdk110_64
+X1416 (n1535 n1577 n88 n1583 vdd vss) tx_mux_pdk110_64
+X1417 (n1536 n1578 n88 n1584 vdd vss) tx_mux_pdk110_64
+X1418 (n1537 n1579 n88 n1585 vdd vss) tx_mux_pdk110_64
+X1419 (vss vss n980 n1375 vdd vss) tx_mux_pdk110_64
+X1420 (n1375 n1580 n117 n1586 vdd vss) tx_mux_pdk110_64
+X1421 (n1375 n1581 n117 n1587 vdd vss) tx_mux_pdk110_64
+X1422 (n1375 n1582 n117 n1588 vdd vss) tx_mux_pdk110_64
+X1423 (n1375 n1583 n117 n1589 vdd vss) tx_mux_pdk110_64
+X1424 (n1375 n1584 n117 n1590 vdd vss) tx_mux_pdk110_64
+X1425 (n1374 n1585 n117 n1591 vdd vss) tx_mux_pdk110_64
+X1426 (vss vss n978 n1592 vdd vss) tx_mux_pdk110_64
+X1427 (vdd vss n978 n1459 vdd vss) tx_mux_pdk110_64
+X1428 (n1592 n1586 n51 n163 vdd vss) tx_mux_pdk110_64
+X1429 (n1592 n1587 n51 n162 vdd vss) tx_mux_pdk110_64
+X1430 (n1592 n1588 n51 n161 vdd vss) tx_mux_pdk110_64
+X1431 (n1592 n1589 n51 n160 vdd vss) tx_mux_pdk110_64
+X1432 (n1592 n1590 n51 n158 vdd vss) tx_mux_pdk110_64
+X1433 (n1459 n1591 n51 n182 vdd vss) tx_mux_pdk110_64
+X1434 (n296 vss n232 n1593 vdd vss) tx_mux_pdk110_64
+X1435 (n1329 vss n232 n1594 vdd vss) tx_mux_pdk110_64
+X1436 (n1330 vss n232 n1595 vdd vss) tx_mux_pdk110_64
+X1437 (n1331 vss n232 n1596 vdd vss) tx_mux_pdk110_64
+X1438 (n1332 vss n232 n1597 vdd vss) tx_mux_pdk110_64
+X1439 (n1333 vss n232 n1598 vdd vss) tx_mux_pdk110_64
+X1440 (n1334 vss n232 n1599 vdd vss) tx_mux_pdk110_64
+X1441 (n1335 vss n232 n1600 vdd vss) tx_mux_pdk110_64
+X1442 (vss n1593 n238 n1601 vdd vss) tx_mux_pdk110_64
+X1443 (vss n1594 n238 n1602 vdd vss) tx_mux_pdk110_64
+X1444 (vss n1595 n238 n1603 vdd vss) tx_mux_pdk110_64
+X1445 (vss n1596 n238 n1604 vdd vss) tx_mux_pdk110_64
+X1446 (vss n1597 n238 n1605 vdd vss) tx_mux_pdk110_64
+X1447 (vss n1598 n238 n1606 vdd vss) tx_mux_pdk110_64
+X1448 (vss n1599 n238 n1607 vdd vss) tx_mux_pdk110_64
+X1449 (vss n1600 n238 n1608 vdd vss) tx_mux_pdk110_64
+X1450 (vss n1601 n88 n1609 vdd vss) tx_mux_pdk110_64
+X1451 (vss n1602 n88 n1610 vdd vss) tx_mux_pdk110_64
+X1452 (vss n1603 n88 n1611 vdd vss) tx_mux_pdk110_64
+X1453 (vss n1604 n88 n1612 vdd vss) tx_mux_pdk110_64
+X1454 (vss n1605 n88 n1613 vdd vss) tx_mux_pdk110_64
+X1455 (vss n1606 n88 n1614 vdd vss) tx_mux_pdk110_64
+X1456 (vss n1607 n88 n1615 vdd vss) tx_mux_pdk110_64
+X1457 (vss n1608 n88 n1616 vdd vss) tx_mux_pdk110_64
+X1458 (n1321 n323 n980 n1617 vdd vss) tx_mux_pdk110_64
+X1459 (n1322 n324 n980 n1618 vdd vss) tx_mux_pdk110_64
+X1460 (n1323 n326 n980 n1619 vdd vss) tx_mux_pdk110_64
+X1461 (n1324 n328 n980 n1620 vdd vss) tx_mux_pdk110_64
+X1462 (n1325 n330 n980 n1621 vdd vss) tx_mux_pdk110_64
+X1463 (n1326 n332 n980 n1622 vdd vss) tx_mux_pdk110_64
+X1464 (n1327 n334 n980 n1623 vdd vss) tx_mux_pdk110_64
+X1465 (n1328 n522 n980 n1624 vdd vss) tx_mux_pdk110_64
+X1466 (n1617 n1609 n117 n1625 vdd vss) tx_mux_pdk110_64
+X1467 (n1618 n1610 n117 n1626 vdd vss) tx_mux_pdk110_64
+X1468 (n1619 n1611 n117 n1627 vdd vss) tx_mux_pdk110_64
+X1469 (n1620 n1612 n117 n1628 vdd vss) tx_mux_pdk110_64
+X1470 (n1621 n1613 n117 n1629 vdd vss) tx_mux_pdk110_64
+X1471 (n1622 n1614 n117 n1630 vdd vss) tx_mux_pdk110_64
+X1472 (n1623 n1615 n117 n1631 vdd vss) tx_mux_pdk110_64
+X1473 (n1624 n1616 n117 n1632 vdd vss) tx_mux_pdk110_64
+X1474 (vss n1625 n51 n177 vdd vss) tx_mux_pdk110_64
+X1475 (vss n1626 n51 n176 vdd vss) tx_mux_pdk110_64
+X1476 (vss n1627 n51 n175 vdd vss) tx_mux_pdk110_64
+X1477 (vss n1628 n51 n174 vdd vss) tx_mux_pdk110_64
+X1478 (vss n1629 n51 n173 vdd vss) tx_mux_pdk110_64
+X1479 (vss n1630 n51 n172 vdd vss) tx_mux_pdk110_64
+X1480 (vss n1631 n51 n170 vdd vss) tx_mux_pdk110_64
+X1481 (n978 n1632 n51 n180 vdd vss) tx_mux_pdk110_64
+X1482 (n1484 n1055 n1180 vdd vss) tx_and_pdk110_47
+X1483 (n1476 n1238 n1181 vdd vss) tx_and_pdk110_47
+X1484 (n1468 n1053 n1183 vdd vss) tx_and_pdk110_47
+X1485 (n1460 n1175 n1184 vdd vss) tx_and_pdk110_47
+X1486 (n1485 n1055 n1187 vdd vss) tx_and_pdk110_47
+X1487 (n1477 n1238 n1188 vdd vss) tx_and_pdk110_47
+X1488 (n1469 n1053 n1190 vdd vss) tx_and_pdk110_47
+X1489 (n1461 n1175 n1191 vdd vss) tx_and_pdk110_47
+X1490 (n1486 n1055 n1194 vdd vss) tx_and_pdk110_47
+X1491 (n1478 n1238 n1195 vdd vss) tx_and_pdk110_47
+X1492 (n1470 n1053 n1197 vdd vss) tx_and_pdk110_47
+X1493 (n1462 n1175 n1198 vdd vss) tx_and_pdk110_47
+X1494 (n1487 n1055 n1201 vdd vss) tx_and_pdk110_47
+X1495 (n1479 n1238 n1202 vdd vss) tx_and_pdk110_47
+X1496 (n1471 n1053 n1204 vdd vss) tx_and_pdk110_47
+X1497 (n1463 n1175 n1205 vdd vss) tx_and_pdk110_47
+X1498 (n1488 n1055 n1208 vdd vss) tx_and_pdk110_47
+X1499 (n1480 n1238 n1209 vdd vss) tx_and_pdk110_47
+X1500 (n1472 n1053 n1211 vdd vss) tx_and_pdk110_47
+X1501 (n1464 n1175 n1212 vdd vss) tx_and_pdk110_47
+X1502 (n1489 n1055 n1215 vdd vss) tx_and_pdk110_47
+X1503 (n1481 n1238 n1216 vdd vss) tx_and_pdk110_47
+X1504 (n1473 n1053 n1218 vdd vss) tx_and_pdk110_47
+X1505 (n1465 n1175 n1219 vdd vss) tx_and_pdk110_47
+X1506 (n1490 n1055 n1222 vdd vss) tx_and_pdk110_47
+X1507 (n1482 n1238 n1223 vdd vss) tx_and_pdk110_47
+X1508 (n1474 n1053 n1225 vdd vss) tx_and_pdk110_47
+X1509 (n1466 n1175 n1226 vdd vss) tx_and_pdk110_47
+X1510 (n1491 n1055 n1229 vdd vss) tx_and_pdk110_47
+X1511 (n1483 n1238 n1230 vdd vss) tx_and_pdk110_47
+X1512 (n1475 n1053 n1232 vdd vss) tx_and_pdk110_47
+X1513 (n1467 n1175 n1233 vdd vss) tx_and_pdk110_47
+X1514 (n1505 n184 n1241 vdd vss) tx_and_pdk110_47
+X1515 (n1511 n1055 n1245 vdd vss) tx_and_pdk110_47
+X1516 (n1493 n1175 n1253 vdd vss) tx_and_pdk110_47
+X1517 (n1507 n1053 n1242 vdd vss) tx_and_pdk110_47
+X1518 (n1510 n1238 n1250 vdd vss) tx_and_pdk110_47
+X1519 (n1492 n1175 n1247 vdd vss) tx_and_pdk110_47
+X1520 (n1506 n184 n1256 vdd vss) tx_and_pdk110_47
+X1521 (n1508 n1053 n1257 vdd vss) tx_and_pdk110_47
+X1522 (n1509 n1238 n1244 vdd vss) tx_and_pdk110_47
+X1523 (n1512 n1055 n1251 vdd vss) tx_and_pdk110_47
+X1524 (n1520 n1175 n1262 vdd vss) tx_and_pdk110_47
+X1525 (n1531 n184 n1263 vdd vss) tx_and_pdk110_47
+X1526 (n1069 n1055 n1265 vdd vss) tx_and_pdk110_47
+X1527 (n68 n306 vdd vss) pll_inv_pdk110_7
+X1528 (n70 n308 vdd vss) pll_inv_pdk110_7
+X1529 (n72 n310 vdd vss) pll_inv_pdk110_7
+X1530 (n60 n298 vdd vss) pll_inv_pdk110_7
+X1531 (n62 n300 vdd vss) pll_inv_pdk110_7
+X1532 (n64 n302 vdd vss) pll_inv_pdk110_7
+X1533 (n66 n304 vdd vss) pll_inv_pdk110_7
+X1534 (n351 n1031 vdd vss) pll_inv_pdk110_7
+X1535 (n346 n1126 vdd vss) pll_inv_pdk110_7
+X1536 (n348 n1131 vdd vss) pll_inv_pdk110_7
+X1537 (n824 n349 vdd vss) pll_inv_pdk110_7
+X1538 (n908 n1141 vdd vss) pll_inv_pdk110_7
+X1539 (n354 n1144 vdd vss) pll_inv_pdk110_7
+X1540 (n943 n352 vdd vss) pll_inv_pdk110_7
+X1541 (n127 n923 vdd vss) pll_inv_pdk110_7
+X1542 (n129 n925 vdd vss) pll_inv_pdk110_7
+X1543 (n131 n927 vdd vss) pll_inv_pdk110_7
+X1544 (n135 n931 vdd vss) pll_inv_pdk110_7
+X1545 (n137 n933 vdd vss) pll_inv_pdk110_7
+X1546 (dac1 n500 vdd vss) pll_inv_pdk110_7
+X1547 (dac5 n578 vdd vss) pll_inv_pdk110_7
+X1548 (measured0 n403 vdd vss) pll_inv_pdk110_7
+X1549 (measured1 n402 vdd vss) pll_inv_pdk110_7
+X1550 (measured4 n641 vdd vss) pll_inv_pdk110_7
+X1551 (measured5 n644 vdd vss) pll_inv_pdk110_7
+X1552 (measured6 n647 vdd vss) pll_inv_pdk110_7
+X1553 (measured7 n650 vdd vss) pll_inv_pdk110_7
+X1554 (measured8 n653 vdd vss) pll_inv_pdk110_7
+X1555 (measured9 n656 vdd vss) pll_inv_pdk110_7
+X1556 (measured10 n659 vdd vss) pll_inv_pdk110_7
+X1557 (measured11 n662 vdd vss) pll_inv_pdk110_7
+X1558 (measured12 n665 vdd vss) pll_inv_pdk110_7
+X1559 (measured13 n668 vdd vss) pll_inv_pdk110_7
+X1560 (n646 n885 vdd vss) pll_inv_pdk110_7
+X1561 (n649 n699 vdd vss) pll_inv_pdk110_7
+X1562 (n652 n816 vdd vss) pll_inv_pdk110_7
+X1563 (n655 n817 vdd vss) pll_inv_pdk110_7
+X1564 (n658 n818 vdd vss) pll_inv_pdk110_7
+X1565 (n664 n700 vdd vss) pll_inv_pdk110_7
+X1566 (target_k3 n754 vdd vss) pll_inv_pdk110_7
+X1567 (target_k4 n1123 vdd vss) pll_inv_pdk110_7
+X1568 (target_k5 n747 vdd vss) pll_inv_pdk110_7
+X1569 (target_k1 n1118 vdd vss) pll_inv_pdk110_7
+X1570 (n643 n698 vdd vss) pll_inv_pdk110_7
+X1571 (n322 n1128 vdd vss) pll_inv_pdk110_7
+X1572 (coarse1 n538 vdd vss) pll_inv_pdk110_7
+X1573 (coarse2 n540 vdd vss) pll_inv_pdk110_7
+X1574 (coarse3 n543 vdd vss) pll_inv_pdk110_7
+X1575 (coarse4 n546 vdd vss) pll_inv_pdk110_7
+X1576 (coarse5 n549 vdd vss) pll_inv_pdk110_7
+X1577 (coarse6 n552 vdd vss) pll_inv_pdk110_7
+X1578 (n93 n1089 vdd vss) pll_inv_pdk110_7
+X1579 (n95 n1090 vdd vss) pll_inv_pdk110_7
+X1580 (n640 n696 vdd vss) pll_inv_pdk110_7
+X1581 (n661 n702 vdd vss) pll_inv_pdk110_7
+X1582 (n667 n886 vdd vss) pll_inv_pdk110_7
+X1583 (n75 n888 vdd vss) pll_inv_pdk110_7
+X1584 (n77 n890 vdd vss) pll_inv_pdk110_7
+X1585 (n79 n892 vdd vss) pll_inv_pdk110_7
+X1586 (n81 n894 vdd vss) pll_inv_pdk110_7
+X1587 (n83 n896 vdd vss) pll_inv_pdk110_7
+X1588 (n85 n898 vdd vss) pll_inv_pdk110_7
+X1589 (n133 n929 vdd vss) pll_inv_pdk110_7
+X1590 (dac2 n572 vdd vss) pll_inv_pdk110_7
+X1591 (dac4 n575 vdd vss) pll_inv_pdk110_7
+X1592 (n101 n1075 vdd vss) pll_inv_pdk110_7
+X1593 (n103 n1062 vdd vss) pll_inv_pdk110_7
+X1594 (n105 n1098 vdd vss) pll_inv_pdk110_7
+X1595 (vss n1186 n1179 n209 vdd vss) tx_mux_pdk110_64
+X1596 (vss n1193 n1179 n208 vdd vss) tx_mux_pdk110_64
+X1597 (vss n1200 n1179 n207 vdd vss) tx_mux_pdk110_64
+X1598 (vss n1207 n1179 n206 vdd vss) tx_mux_pdk110_64
+X1599 (vss n1214 n1179 n205 vdd vss) tx_mux_pdk110_64
+X1600 (vss n1221 n1179 n204 vdd vss) tx_mux_pdk110_64
+X1601 (vss n1228 n1179 n202 vdd vss) tx_mux_pdk110_64
+X1602 (vss n1235 n1179 n210 vdd vss) tx_mux_pdk110_64
+X1603 (vss n1249 n1240 n143 vdd vss) tx_mux_pdk110_64
+X1604 (vss n1255 n1240 n141 vdd vss) tx_mux_pdk110_64
+X1605 (vss n1261 n1240 n198 vdd vss) tx_mux_pdk110_64
+X1606 (vss n1264 n981 n191 vdd vss) tx_mux_pdk110_64
+X1607 (vss n1266 n189 n188 vdd vss) tx_mux_pdk110_64
+X1608 (vss n1238 n186 n185 vdd vss) tx_mux_pdk110_64
+ends tx_fll_recenter109_v14_pdk110_69
+
+subckt tx_dff_r1_pdk110_70 (d clk reset q vdd vss)
+XI (d db vdd vss) pll_inv_pdk110_48
+XF (db clk reset qb vdd vss) tx_dff_r0_pdk110_58
+XO (qb q vdd vss) pll_inv_pdk110_62
+ends tx_dff_r1_pdk110_70
+
+subckt tx_fll_counter_pdk110_71 (clk gate reset q0 q1 q2 q3 q4 q5 q6 q7 q8 q9 q10 q11 q12 q13 vdd vss)
+XCI (clk clkb vdd vss) pll_inv_pdk110_59
+XGE (gate clkb clk safe_gate vdd vss) pll_latch_pdk110_72
+XG (clk safe_gate gclk vdd vss) tx_and_pdk110_47
+XF0 (gclk reset q0 qb0 vdd vss) tx_tff_pdk110_73
+XF1 (qb0 reset q1 qb1 vdd vss) tx_tff_pdk110_73
+XF2 (qb1 reset q2 qb2 vdd vss) tx_tff_pdk110_73
+XF3 (qb2 reset q3 qb3 vdd vss) tx_tff_pdk110_73
+XF4 (qb3 reset q4 qb4 vdd vss) tx_tff_pdk110_73
+XF5 (qb4 reset q5 qb5 vdd vss) tx_tff_pdk110_73
+XF6 (qb5 reset q6 qb6 vdd vss) tx_tff_pdk110_73
+XF7 (qb6 reset q7 qb7 vdd vss) tx_tff_pdk110_73
+XF8 (qb7 reset q8 qb8 vdd vss) tx_tff_pdk110_73
+XF9 (qb8 reset q9 qb9 vdd vss) tx_tff_pdk110_73
+XF10 (qb9 reset q10 qb10 vdd vss) tx_tff_pdk110_73
+XF11 (qb10 reset q11 qb11 vdd vss) tx_tff_pdk110_73
+XF12 (qb11 reset q12 qb12 vdd vss) tx_tff_pdk110_73
+XF13 (qb12 reset q13 qb13 vdd vss) tx_tff_pdk110_73
+ends tx_fll_counter_pdk110_71
+
+subckt pll_latch_pdk110_72 (d gate gateb q vdd vss)
+XT (d x gate gateb vdd vss) pll_tg_pdk110_61
+XI (x qb vdd vss) pll_inv_pdk110_48
+XO (qb q vdd vss) pll_inv_pdk110_62
+XF (q x gateb gate vdd vss) pll_tg_pdk110_63
+ends pll_latch_pdk110_72
+
+subckt tx_tff_pdk110_73 (clk reset q qb vdd vss)
+XF (qb clk reset q vdd vss) tx_dff_r0_pdk110_58
+XI (q qb vdd vss) pll_inv_pdk110_7
+ends tx_tff_pdk110_73
+
+subckt tx_fll_snapshot_pdk110_74 (gate d0 d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 d11 d12 d13 q0 q1 q2 q3 q4 q5 q6 q7 q8 q9 q10 q11 q12 q13 vdd vss)
+XI (gate openb vdd vss) pll_inv_pdk110_12
+XB (openb hold vdd vss) pll_inv_pdk110_12
+XL0 (d0 openb hold q0 vdd vss) pll_latch_pdk110_72
+XL1 (d1 openb hold q1 vdd vss) pll_latch_pdk110_72
+XL2 (d2 openb hold q2 vdd vss) pll_latch_pdk110_72
+XL3 (d3 openb hold q3 vdd vss) pll_latch_pdk110_72
+XL4 (d4 openb hold q4 vdd vss) pll_latch_pdk110_72
+XL5 (d5 openb hold q5 vdd vss) pll_latch_pdk110_72
+XL6 (d6 openb hold q6 vdd vss) pll_latch_pdk110_72
+XL7 (d7 openb hold q7 vdd vss) pll_latch_pdk110_72
+XL8 (d8 openb hold q8 vdd vss) pll_latch_pdk110_72
+XL9 (d9 openb hold q9 vdd vss) pll_latch_pdk110_72
+XL10 (d10 openb hold q10 vdd vss) pll_latch_pdk110_72
+XL11 (d11 openb hold q11 vdd vss) pll_latch_pdk110_72
+XL12 (d12 openb hold q12 vdd vss) pll_latch_pdk110_72
+XL13 (d13 openb hold q13 vdd vss) pll_latch_pdk110_72
+ends tx_fll_snapshot_pdk110_74
+
+subckt tx_fll_dac_pdk110_75 (d0 d1 d2 d3 d4 d5 enable out vdd vss)
+MP (vd enable vdd vdd) pch w=2e-05 l=1.8e-07 ad=9.599999999999999e-12 as=9.599999999999999e-12 pd=4.096e-05 ps=4.096e-05 nrd=0.0135 nrs=0.0135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+XI0 (d0 b0 vd vss) pll_inv_pdk110_59
+XO0 (b0 v0 vd vss) pll_inv_pdk110_76
+RB0 (v0 r0) resistor r=10000
+XI1 (d1 b1 vd vss) pll_inv_pdk110_59
+XO1 (b1 v1 vd vss) pll_inv_pdk110_76
+RB1 (v1 r1) resistor r=10000
+RS1 (r0 r1) resistor r=5000
+XI2 (d2 b2 vd vss) pll_inv_pdk110_59
+XO2 (b2 v2 vd vss) pll_inv_pdk110_76
+RB2 (v2 r2) resistor r=10000
+RS2 (r1 r2) resistor r=5000
+XI3 (d3 b3 vd vss) pll_inv_pdk110_59
+XO3 (b3 v3 vd vss) pll_inv_pdk110_76
+RB3 (v3 r3) resistor r=10000
+RS3 (r2 r3) resistor r=5000
+XI4 (d4 b4 vd vss) pll_inv_pdk110_59
+XO4 (b4 v4 vd vss) pll_inv_pdk110_76
+RB4 (v4 r4) resistor r=10000
+RS4 (r3 r4) resistor r=5000
+XI5 (d5 b5 vd vss) pll_inv_pdk110_59
+XO5 (b5 v5 vd vss) pll_inv_pdk110_76
+RB5 (v5 out) resistor r=10000
+RS5 (r4 out) resistor r=5000
+RT (r0 vss) resistor r=10000
+ends tx_fll_dac_pdk110_75
+
+subckt pll_inv_pdk110_76 (a y vdd vss)
+MN (y a vss vss) nch w=5e-06 l=1.8e-07 nf=1 ad=2.4e-12 as=2.4e-12 pd=1.096e-05 ps=1.096e-05 nrd=0.054 nrs=0.054 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (y a vdd vdd) pch w=1.25e-05 l=1.8e-07 nf=1 ad=6e-12 as=6e-12 pd=2.596e-05 ps=2.596e-05 nrd=0.0216 nrs=0.0216 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_inv_pdk110_76
+
+subckt tx_pll_supervisor_capture_v14_pdk110_77 (refclk reset cfg_ready fll_enable range_error phase_good frequency_good pll_enable qualified restart fault vdd vss)
+X0 (n13 refclk reset n14 vdd vss) tx_dff_r0_pdk110_58
+X1 (n15 refclk reset n16 vdd vss) tx_dff_r0_pdk110_58
+X2 (n17 refclk reset n18 vdd vss) tx_dff_r0_pdk110_58
+X3 (n19 refclk reset restart vdd vss) tx_dff_r0_pdk110_58
+X4 (n20 refclk reset n21 vdd vss) tx_dff_r0_pdk110_58
+X5 (n22 refclk reset n23 vdd vss) tx_dff_r0_pdk110_58
+X6 (n24 refclk reset n25 vdd vss) tx_dff_r0_pdk110_58
+X7 (n26 refclk reset n27 vdd vss) tx_dff_r0_pdk110_58
+X8 (n28 refclk reset qualified vdd vss) tx_dff_r0_pdk110_58
+X9 (n29 refclk reset n30 vdd vss) tx_dff_r0_pdk110_58
+X10 (n31 refclk reset n32 vdd vss) tx_dff_r0_pdk110_58
+X11 (n33 refclk reset n34 vdd vss) tx_dff_r0_pdk110_58
+X12 (n35 refclk reset n36 vdd vss) tx_dff_r0_pdk110_58
+X13 (n37 refclk reset n38 vdd vss) tx_dff_r0_pdk110_58
+X14 (n39 refclk reset n40 vdd vss) tx_dff_r0_pdk110_58
+X15 (n41 refclk reset fault vdd vss) tx_dff_r0_pdk110_58
+X16 (n42 refclk reset n43 vdd vss) tx_dff_r0_pdk110_58
+X17 (n44 refclk reset n45 vdd vss) tx_dff_r0_pdk110_58
+X18 (n46 refclk reset n47 vdd vss) tx_dff_r0_pdk110_58
+X19 (n48 refclk reset n49 vdd vss) tx_dff_r0_pdk110_58
+X20 (n50 refclk reset n51 vdd vss) tx_dff_r0_pdk110_58
+X21 (n52 refclk reset n53 vdd vss) tx_dff_r0_pdk110_58
+X22 (n54 refclk reset n55 vdd vss) tx_dff_r0_pdk110_58
+X23 (n56 refclk reset n57 vdd vss) tx_dff_r0_pdk110_58
+X24 (n58 refclk reset n59 vdd vss) tx_dff_r0_pdk110_58
+X25 (n38 n60 n61 n37 vdd vss) tx_mux_pdk110_64
+X26 (n36 n62 n61 n35 vdd vss) tx_mux_pdk110_64
+X27 (n34 n63 n61 n33 vdd vss) tx_mux_pdk110_64
+X28 (n32 n64 n61 n31 vdd vss) tx_mux_pdk110_64
+X29 (n30 n65 n61 n29 vdd vss) tx_mux_pdk110_64
+X30 (n25 n66 n67 n24 vdd vss) tx_mux_pdk110_64
+X31 (n23 n68 n67 n22 vdd vss) tx_mux_pdk110_64
+X32 (n21 n69 n67 n20 vdd vss) tx_mux_pdk110_64
+X33 (n16 n70 n71 n15 vdd vss) tx_mux_pdk110_64
+X34 (n14 n72 n71 n13 vdd vss) tx_mux_pdk110_64
+X35 (n18 n73 n71 n17 vdd vss) tx_mux_pdk110_64
+X36 (restart n74 n75 n19 vdd vss) tx_mux_pdk110_64
+X37 (n27 n76 n67 n26 vdd vss) tx_mux_pdk110_64
+X38 (qualified n77 n78 n28 vdd vss) tx_mux_pdk110_64
+X39 (n40 n79 n61 n39 vdd vss) tx_mux_pdk110_64
+X40 (fault n80 n81 n41 vdd vss) tx_mux_pdk110_64
+X41 (n14 n82 vdd vss) pll_inv_pdk110_7
+X42 (n30 n83 vdd vss) pll_inv_pdk110_7
+X43 (n43 n84 vdd vss) pll_inv_pdk110_7
+X44 (n36 n85 vdd vss) pll_inv_pdk110_7
+X45 (n59 n86 vdd vss) pll_inv_pdk110_7
+X46 (n25 n87 vdd vss) pll_inv_pdk110_7
+X47 (n23 n88 vdd vss) pll_inv_pdk110_7
+X48 (n21 n89 vdd vss) pll_inv_pdk110_7
+X49 (cfg_ready n90 vdd vss) pll_inv_pdk110_7
+X50 (qualified n91 vdd vss) pll_inv_pdk110_7
+X51 (fll_enable n92 vdd vss) pll_inv_pdk110_7
+X52 (n93 n94 vdd vss) pll_inv_pdk110_7
+X53 (restart n95 vdd vss) pll_inv_pdk110_7
+X54 (range_error n96 vdd vss) pll_inv_pdk110_7
+X55 (n51 n97 n98 vdd vss) tx_and_pdk110_47
+X56 (n47 n99 n100 vdd vss) tx_and_pdk110_47
+X57 (n55 n101 n102 vdd vss) tx_and_pdk110_47
+X58 (n103 n97 n101 vdd vss) tx_and_pdk110_47
+X59 (n104 n97 n105 vdd vss) tx_and_pdk110_47
+X60 (n106 n103 n104 vdd vss) tx_and_pdk110_47
+X61 (n107 n99 n97 vdd vss) tx_and_pdk110_47
+X62 (n57 n55 n106 vdd vss) tx_and_pdk110_47
+X63 (n53 n51 n103 vdd vss) tx_and_pdk110_47
+X64 (n49 n47 n107 vdd vss) tx_and_pdk110_47
+X65 (n45 n43 n99 vdd vss) tx_and_pdk110_47
+X66 (n34 n108 n109 vdd vss) tx_and_pdk110_47
+X67 (n38 n110 n111 vdd vss) tx_and_pdk110_47
+X68 (n112 n108 n110 vdd vss) tx_and_pdk110_47
+X69 (n36 n34 n112 vdd vss) tx_and_pdk110_47
+X70 (n32 n30 n108 vdd vss) tx_and_pdk110_47
+X71 (n16 n14 n113 vdd vss) tx_and_pdk110_47
+X72 (n23 n21 n114 vdd vss) tx_xor_pdk110_66
+X73 (n25 n115 n116 vdd vss) tx_xor_pdk110_66
+X74 (n27 n117 n118 vdd vss) tx_xor_pdk110_66
+X75 (n45 n43 n119 vdd vss) tx_xor_pdk110_66
+X76 (n47 n99 n120 vdd vss) tx_xor_pdk110_66
+X77 (n49 n100 n121 vdd vss) tx_xor_pdk110_66
+X78 (n51 n97 n122 vdd vss) tx_xor_pdk110_66
+X79 (n53 n98 n123 vdd vss) tx_xor_pdk110_66
+X80 (n55 n101 n124 vdd vss) tx_xor_pdk110_66
+X81 (n57 n102 n125 vdd vss) tx_xor_pdk110_66
+X82 (n59 n105 n126 vdd vss) tx_xor_pdk110_66
+X83 (n32 n30 n127 vdd vss) tx_xor_pdk110_66
+X84 (n34 n108 n128 vdd vss) tx_xor_pdk110_66
+X85 (n36 n109 n129 vdd vss) tx_xor_pdk110_66
+X86 (n38 n110 n130 vdd vss) tx_xor_pdk110_66
+X87 (n40 n111 n131 vdd vss) tx_xor_pdk110_66
+X88 (n16 n14 n132 vdd vss) tx_xor_pdk110_66
+X89 (n18 n113 n133 vdd vss) tx_xor_pdk110_66
+X90 (n25 n115 n117 vdd vss) tx_and_pdk110_47
+X91 (n23 n21 n115 vdd vss) tx_and_pdk110_47
+X92 (n134 n78 n71 vdd vss) tx_and_pdk110_47
+X93 (range_error qualified n135 vdd vss) tx_or_pdk110_67
+X94 (n93 n136 n137 vdd vss) tx_or_pdk110_67
+X95 (n138 n135 n139 vdd vss) tx_or_pdk110_67
+X96 (n139 n137 n134 vdd vss) tx_or_pdk110_67
+X97 (n90 n96 n75 vdd vss) tx_or_pdk110_67
+X98 (n140 n141 n142 vdd vss) tx_and_pdk110_47
+X99 (n143 n75 n144 vdd vss) tx_and_pdk110_47
+X100 (n142 n144 n145 vdd vss) tx_and_pdk110_47
+X101 (n145 n146 n67 vdd vss) tx_and_pdk110_47
+X102 (n147 n136 n148 vdd vss) tx_or_pdk110_67
+X103 (n149 n148 n140 vdd vss) tx_or_pdk110_67
+X104 (n90 restart n149 vdd vss) tx_or_pdk110_67
+X105 (n149 n150 n141 vdd vss) tx_or_pdk110_67
+X106 (n90 qualified n151 vdd vss) tx_or_pdk110_67
+X107 (restart n136 n152 vdd vss) tx_or_pdk110_67
+X108 (n151 n152 n143 vdd vss) tx_or_pdk110_67
+X109 (n90 fll_enable n153 vdd vss) tx_or_pdk110_67
+X110 (n153 restart n146 vdd vss) tx_or_pdk110_67
+X111 (n90 range_error n81 vdd vss) tx_or_pdk110_67
+X112 (n81 n95 n78 vdd vss) tx_or_pdk110_67
+X113 (n78 n154 n61 vdd vss) tx_and_pdk110_47
+X114 (n90 n92 n138 vdd vss) tx_or_pdk110_67
+X115 (range_error n91 n155 vdd vss) tx_or_pdk110_67
+X116 (n94 n136 n150 vdd vss) tx_or_pdk110_67
+X117 (n138 n155 n156 vdd vss) tx_or_pdk110_67
+X118 (n156 n150 n154 vdd vss) tx_or_pdk110_67
+X119 (n89 n88 n157 vdd vss) tx_or_pdk110_67
+X120 (n87 n27 n158 vdd vss) tx_or_pdk110_67
+X121 (n157 n158 n159 vdd vss) tx_or_pdk110_67
+X122 (n82 n160 n161 vdd vss) tx_or_pdk110_67
+X123 (n161 n18 n162 vdd vss) tx_or_pdk110_67
+X124 (n84 n163 n164 vdd vss) tx_or_pdk110_67
+X125 (n165 n166 n167 vdd vss) tx_or_pdk110_67
+X126 (n168 n169 n170 vdd vss) tx_or_pdk110_67
+X127 (n171 n172 n173 vdd vss) tx_or_pdk110_67
+X128 (n164 n167 n174 vdd vss) tx_or_pdk110_67
+X129 (n170 n173 n175 vdd vss) tx_or_pdk110_67
+X130 (n174 n175 n176 vdd vss) tx_or_pdk110_67
+X131 (n176 n86 n177 vdd vss) tx_or_pdk110_67
+X132 (n83 n178 n179 vdd vss) tx_or_pdk110_67
+X133 (n180 n85 n181 vdd vss) tx_or_pdk110_67
+X134 (n182 n40 n183 vdd vss) tx_or_pdk110_67
+X135 (n179 n181 n184 vdd vss) tx_or_pdk110_67
+X136 (n184 n183 n185 vdd vss) tx_or_pdk110_67
+X137 (reset n186 vdd vss) pll_inv_pdk110_7
+X138 (n177 n187 vdd vss) pll_inv_pdk110_7
+X139 (n188 n189 vdd vss) pll_inv_pdk110_7
+X140 (phase_good frequency_good n93 vdd vss) tx_and_pdk110_47
+X141 (cfg_ready fll_enable n190 vdd vss) tx_and_pdk110_47
+X142 (n190 n96 n191 vdd vss) tx_and_pdk110_47
+X143 (n191 n95 n192 vdd vss) tx_and_pdk110_47
+X144 (n192 n186 pll_enable vdd vss) tx_and_pdk110_47
+X145 (n91 n187 n193 vdd vss) tx_and_pdk110_47
+X146 (n93 n194 n188 vdd vss) tx_and_pdk110_47
+X147 (n193 n189 n136 vdd vss) tx_and_pdk110_47
+X148 (n84 vss qualified n195 vdd vss) tx_mux_pdk110_64
+X149 (n119 vss qualified n196 vdd vss) tx_mux_pdk110_64
+X150 (n120 vss qualified n197 vdd vss) tx_mux_pdk110_64
+X151 (n121 vss qualified n198 vdd vss) tx_mux_pdk110_64
+X152 (n122 vss qualified n199 vdd vss) tx_mux_pdk110_64
+X153 (n123 vss qualified n200 vdd vss) tx_mux_pdk110_64
+X154 (n124 vss qualified n201 vdd vss) tx_mux_pdk110_64
+X155 (n125 vss qualified n202 vdd vss) tx_mux_pdk110_64
+X156 (n126 vss qualified n203 vdd vss) tx_mux_pdk110_64
+X157 (vss n195 n185 n204 vdd vss) tx_mux_pdk110_64
+X158 (vss n196 n185 n205 vdd vss) tx_mux_pdk110_64
+X159 (vss n197 n185 n206 vdd vss) tx_mux_pdk110_64
+X160 (vss n198 n185 n207 vdd vss) tx_mux_pdk110_64
+X161 (vss n199 n185 n208 vdd vss) tx_mux_pdk110_64
+X162 (vss n200 n185 n209 vdd vss) tx_mux_pdk110_64
+X163 (vss n201 n185 n210 vdd vss) tx_mux_pdk110_64
+X164 (vss n202 n185 n211 vdd vss) tx_mux_pdk110_64
+X165 (vss n203 n185 n212 vdd vss) tx_mux_pdk110_64
+X166 (n204 n195 qualified n213 vdd vss) tx_mux_pdk110_64
+X167 (n205 n196 qualified n214 vdd vss) tx_mux_pdk110_64
+X168 (n206 n197 qualified n215 vdd vss) tx_mux_pdk110_64
+X169 (n207 n198 qualified n216 vdd vss) tx_mux_pdk110_64
+X170 (n208 n199 qualified n217 vdd vss) tx_mux_pdk110_64
+X171 (n209 n200 qualified n218 vdd vss) tx_mux_pdk110_64
+X172 (n210 n201 qualified n219 vdd vss) tx_mux_pdk110_64
+X173 (n211 n202 qualified n220 vdd vss) tx_mux_pdk110_64
+X174 (n212 n203 qualified n221 vdd vss) tx_mux_pdk110_64
+X175 (n195 n213 n93 n222 vdd vss) tx_mux_pdk110_64
+X176 (n196 n214 n93 n223 vdd vss) tx_mux_pdk110_64
+X177 (n197 n215 n93 n224 vdd vss) tx_mux_pdk110_64
+X178 (n198 n216 n93 n225 vdd vss) tx_mux_pdk110_64
+X179 (n199 n217 n93 n226 vdd vss) tx_mux_pdk110_64
+X180 (n200 n218 n93 n227 vdd vss) tx_mux_pdk110_64
+X181 (n201 n219 n93 n228 vdd vss) tx_mux_pdk110_64
+X182 (n202 n220 n93 n229 vdd vss) tx_mux_pdk110_64
+X183 (n203 n221 n93 n230 vdd vss) tx_mux_pdk110_64
+X184 (n222 vss n136 n231 vdd vss) tx_mux_pdk110_64
+X185 (n223 vss n136 n232 vdd vss) tx_mux_pdk110_64
+X186 (n224 vss n136 n233 vdd vss) tx_mux_pdk110_64
+X187 (n225 vss n136 n234 vdd vss) tx_mux_pdk110_64
+X188 (n226 vss n136 n235 vdd vss) tx_mux_pdk110_64
+X189 (n227 vss n136 n236 vdd vss) tx_mux_pdk110_64
+X190 (n228 vss n136 n237 vdd vss) tx_mux_pdk110_64
+X191 (n229 vss n136 n238 vdd vss) tx_mux_pdk110_64
+X192 (n230 vss n136 n239 vdd vss) tx_mux_pdk110_64
+X193 (vss n231 fll_enable n240 vdd vss) tx_mux_pdk110_64
+X194 (vss n232 fll_enable n241 vdd vss) tx_mux_pdk110_64
+X195 (vss n233 fll_enable n242 vdd vss) tx_mux_pdk110_64
+X196 (vss n234 fll_enable n243 vdd vss) tx_mux_pdk110_64
+X197 (vss n235 fll_enable n244 vdd vss) tx_mux_pdk110_64
+X198 (vss n236 fll_enable n245 vdd vss) tx_mux_pdk110_64
+X199 (vss n237 fll_enable n246 vdd vss) tx_mux_pdk110_64
+X200 (vss n238 fll_enable n247 vdd vss) tx_mux_pdk110_64
+X201 (vss n239 fll_enable n248 vdd vss) tx_mux_pdk110_64
+X202 (n240 vss restart n249 vdd vss) tx_mux_pdk110_64
+X203 (n241 vss restart n250 vdd vss) tx_mux_pdk110_64
+X204 (n242 vss restart n251 vdd vss) tx_mux_pdk110_64
+X205 (n243 vss restart n252 vdd vss) tx_mux_pdk110_64
+X206 (n244 vss restart n253 vdd vss) tx_mux_pdk110_64
+X207 (n245 vss restart n254 vdd vss) tx_mux_pdk110_64
+X208 (n246 vss restart n255 vdd vss) tx_mux_pdk110_64
+X209 (n247 vss restart n256 vdd vss) tx_mux_pdk110_64
+X210 (n248 vss restart n257 vdd vss) tx_mux_pdk110_64
+X211 (n249 vss range_error n258 vdd vss) tx_mux_pdk110_64
+X212 (n250 vss range_error n259 vdd vss) tx_mux_pdk110_64
+X213 (n251 vss range_error n260 vdd vss) tx_mux_pdk110_64
+X214 (n252 vss range_error n261 vdd vss) tx_mux_pdk110_64
+X215 (n253 vss range_error n262 vdd vss) tx_mux_pdk110_64
+X216 (n254 vss range_error n263 vdd vss) tx_mux_pdk110_64
+X217 (n255 vss range_error n264 vdd vss) tx_mux_pdk110_64
+X218 (n256 vss range_error n265 vdd vss) tx_mux_pdk110_64
+X219 (n257 vss range_error n266 vdd vss) tx_mux_pdk110_64
+X220 (vss n258 cfg_ready n42 vdd vss) tx_mux_pdk110_64
+X221 (vss n259 cfg_ready n44 vdd vss) tx_mux_pdk110_64
+X222 (vss n260 cfg_ready n46 vdd vss) tx_mux_pdk110_64
+X223 (vss n261 cfg_ready n48 vdd vss) tx_mux_pdk110_64
+X224 (vss n262 cfg_ready n50 vdd vss) tx_mux_pdk110_64
+X225 (vss n263 cfg_ready n52 vdd vss) tx_mux_pdk110_64
+X226 (vss n264 cfg_ready n54 vdd vss) tx_mux_pdk110_64
+X227 (vss n265 cfg_ready n56 vdd vss) tx_mux_pdk110_64
+X228 (vss n266 cfg_ready n58 vdd vss) tx_mux_pdk110_64
+X229 (vss vss n162 n267 vdd vss) tx_mux_pdk110_64
+X230 (vss n267 qualified n268 vdd vss) tx_mux_pdk110_64
+X231 (n268 vss n93 n269 vdd vss) tx_mux_pdk110_64
+X232 (n269 vss n136 n270 vdd vss) tx_mux_pdk110_64
+X233 (vss n270 fll_enable n271 vdd vss) tx_mux_pdk110_64
+X234 (vss n89 n159 n272 vdd vss) tx_mux_pdk110_64
+X235 (vss n114 n159 n273 vdd vss) tx_mux_pdk110_64
+X236 (vss n116 n159 n274 vdd vss) tx_mux_pdk110_64
+X237 (vss n118 n159 n275 vdd vss) tx_mux_pdk110_64
+X238 (n271 n272 restart n276 vdd vss) tx_mux_pdk110_64
+X239 (n271 n273 restart n277 vdd vss) tx_mux_pdk110_64
+X240 (n271 n274 restart n278 vdd vss) tx_mux_pdk110_64
+X241 (n271 n275 restart n279 vdd vss) tx_mux_pdk110_64
+X242 (n276 vss range_error n280 vdd vss) tx_mux_pdk110_64
+X243 (n277 vss range_error n281 vdd vss) tx_mux_pdk110_64
+X244 (n278 vss range_error n282 vdd vss) tx_mux_pdk110_64
+X245 (n279 vss range_error n283 vdd vss) tx_mux_pdk110_64
+X246 (vss n280 cfg_ready n69 vdd vss) tx_mux_pdk110_64
+X247 (vss n281 cfg_ready n68 vdd vss) tx_mux_pdk110_64
+X248 (vss n282 cfg_ready n66 vdd vss) tx_mux_pdk110_64
+X249 (vss n283 cfg_ready n76 vdd vss) tx_mux_pdk110_64
+X250 (vss n82 n162 n284 vdd vss) tx_mux_pdk110_64
+X251 (vss n132 n162 n285 vdd vss) tx_mux_pdk110_64
+X252 (vss n133 n162 n286 vdd vss) tx_mux_pdk110_64
+X253 (vss n284 qualified n287 vdd vss) tx_mux_pdk110_64
+X254 (vss n285 qualified n288 vdd vss) tx_mux_pdk110_64
+X255 (vss n286 qualified n289 vdd vss) tx_mux_pdk110_64
+X256 (n287 vss n93 n290 vdd vss) tx_mux_pdk110_64
+X257 (n288 vss n93 n291 vdd vss) tx_mux_pdk110_64
+X258 (n289 vss n93 n292 vdd vss) tx_mux_pdk110_64
+X259 (n290 vss n136 n293 vdd vss) tx_mux_pdk110_64
+X260 (n291 vss n136 n294 vdd vss) tx_mux_pdk110_64
+X261 (n292 vss n136 n295 vdd vss) tx_mux_pdk110_64
+X262 (vss n293 fll_enable n296 vdd vss) tx_mux_pdk110_64
+X263 (vss n294 fll_enable n297 vdd vss) tx_mux_pdk110_64
+X264 (vss n295 fll_enable n298 vdd vss) tx_mux_pdk110_64
+X265 (n296 vss restart n299 vdd vss) tx_mux_pdk110_64
+X266 (n297 vss restart n300 vdd vss) tx_mux_pdk110_64
+X267 (n298 vss restart n301 vdd vss) tx_mux_pdk110_64
+X268 (n299 vss range_error n302 vdd vss) tx_mux_pdk110_64
+X269 (n300 vss range_error n303 vdd vss) tx_mux_pdk110_64
+X270 (n301 vss range_error n304 vdd vss) tx_mux_pdk110_64
+X271 (vss n302 cfg_ready n72 vdd vss) tx_mux_pdk110_64
+X272 (vss n303 cfg_ready n70 vdd vss) tx_mux_pdk110_64
+X273 (vss n304 cfg_ready n73 vdd vss) tx_mux_pdk110_64
+X274 (vss n83 n185 n305 vdd vss) tx_mux_pdk110_64
+X275 (vss n127 n185 n306 vdd vss) tx_mux_pdk110_64
+X276 (vss n128 n185 n307 vdd vss) tx_mux_pdk110_64
+X277 (vss n129 n185 n308 vdd vss) tx_mux_pdk110_64
+X278 (vss n130 n185 n309 vdd vss) tx_mux_pdk110_64
+X279 (vss n131 n185 n310 vdd vss) tx_mux_pdk110_64
+X280 (n305 vss qualified n311 vdd vss) tx_mux_pdk110_64
+X281 (n306 vss qualified n312 vdd vss) tx_mux_pdk110_64
+X282 (n307 vss qualified n313 vdd vss) tx_mux_pdk110_64
+X283 (n308 vss qualified n314 vdd vss) tx_mux_pdk110_64
+X284 (n309 vss qualified n315 vdd vss) tx_mux_pdk110_64
+X285 (n310 vss qualified n316 vdd vss) tx_mux_pdk110_64
+X286 (vss n311 n93 n317 vdd vss) tx_mux_pdk110_64
+X287 (vss n312 n93 n318 vdd vss) tx_mux_pdk110_64
+X288 (vss n313 n93 n319 vdd vss) tx_mux_pdk110_64
+X289 (vss n314 n93 n320 vdd vss) tx_mux_pdk110_64
+X290 (vss n315 n93 n321 vdd vss) tx_mux_pdk110_64
+X291 (vss n316 n93 n322 vdd vss) tx_mux_pdk110_64
+X292 (n317 vss n136 n323 vdd vss) tx_mux_pdk110_64
+X293 (n318 vss n136 n324 vdd vss) tx_mux_pdk110_64
+X294 (n319 vss n136 n325 vdd vss) tx_mux_pdk110_64
+X295 (n320 vss n136 n326 vdd vss) tx_mux_pdk110_64
+X296 (n321 vss n136 n327 vdd vss) tx_mux_pdk110_64
+X297 (n322 vss n136 n328 vdd vss) tx_mux_pdk110_64
+X298 (vss n323 fll_enable n329 vdd vss) tx_mux_pdk110_64
+X299 (vss n324 fll_enable n330 vdd vss) tx_mux_pdk110_64
+X300 (vss n325 fll_enable n331 vdd vss) tx_mux_pdk110_64
+X301 (vss n326 fll_enable n332 vdd vss) tx_mux_pdk110_64
+X302 (vss n327 fll_enable n333 vdd vss) tx_mux_pdk110_64
+X303 (vss n328 fll_enable n334 vdd vss) tx_mux_pdk110_64
+X304 (n329 vss restart n335 vdd vss) tx_mux_pdk110_64
+X305 (n330 vss restart n336 vdd vss) tx_mux_pdk110_64
+X306 (n331 vss restart n337 vdd vss) tx_mux_pdk110_64
+X307 (n332 vss restart n338 vdd vss) tx_mux_pdk110_64
+X308 (n333 vss restart n339 vdd vss) tx_mux_pdk110_64
+X309 (n334 vss restart n340 vdd vss) tx_mux_pdk110_64
+X310 (n335 vss range_error n341 vdd vss) tx_mux_pdk110_64
+X311 (n336 vss range_error n342 vdd vss) tx_mux_pdk110_64
+X312 (n337 vss range_error n343 vdd vss) tx_mux_pdk110_64
+X313 (n338 vss range_error n344 vdd vss) tx_mux_pdk110_64
+X314 (n339 vss range_error n345 vdd vss) tx_mux_pdk110_64
+X315 (n340 vss range_error n346 vdd vss) tx_mux_pdk110_64
+X316 (vss n341 cfg_ready n65 vdd vss) tx_mux_pdk110_64
+X317 (vss n342 cfg_ready n64 vdd vss) tx_mux_pdk110_64
+X318 (vss n343 cfg_ready n63 vdd vss) tx_mux_pdk110_64
+X319 (vss n344 cfg_ready n62 vdd vss) tx_mux_pdk110_64
+X320 (vss n345 cfg_ready n60 vdd vss) tx_mux_pdk110_64
+X321 (vss n346 cfg_ready n79 vdd vss) tx_mux_pdk110_64
+X322 (vss vdd range_error n347 vdd vss) tx_mux_pdk110_64
+X323 (vss n347 cfg_ready n80 vdd vss) tx_mux_pdk110_64
+X324 (n162 n147 vdd vss) pll_inv_pdk110_7
+X325 (vss n147 qualified n348 vdd vss) tx_mux_pdk110_64
+X326 (n348 vss n93 n349 vdd vss) tx_mux_pdk110_64
+X327 (n349 vdd n136 n350 vdd vss) tx_mux_pdk110_64
+X328 (vss n350 fll_enable n351 vdd vss) tx_mux_pdk110_64
+X329 (n351 n159 restart n352 vdd vss) tx_mux_pdk110_64
+X330 (n352 vss range_error n353 vdd vss) tx_mux_pdk110_64
+X331 (vss n353 cfg_ready n74 vdd vss) tx_mux_pdk110_64
+X332 (vss n162 qualified n354 vdd vss) tx_mux_pdk110_64
+X333 (n185 n194 vdd vss) pll_inv_pdk110_7
+X334 (n194 vdd qualified n355 vdd vss) tx_mux_pdk110_64
+X335 (n354 n355 n93 n356 vdd vss) tx_mux_pdk110_64
+X336 (n356 vss n136 n357 vdd vss) tx_mux_pdk110_64
+X337 (vss n357 fll_enable n358 vdd vss) tx_mux_pdk110_64
+X338 (n358 vss restart n359 vdd vss) tx_mux_pdk110_64
+X339 (n359 vss range_error n360 vdd vss) tx_mux_pdk110_64
+X340 (vss n360 cfg_ready n77 vdd vss) tx_mux_pdk110_64
+X341 (n45 n163 vdd vss) pll_inv_pdk110_7
+X342 (n47 n165 vdd vss) pll_inv_pdk110_7
+X343 (n49 n166 vdd vss) pll_inv_pdk110_7
+X344 (n51 n168 vdd vss) pll_inv_pdk110_7
+X345 (n53 n169 vdd vss) pll_inv_pdk110_7
+X346 (n55 n171 vdd vss) pll_inv_pdk110_7
+X347 (n57 n172 vdd vss) pll_inv_pdk110_7
+X348 (n32 n178 vdd vss) pll_inv_pdk110_7
+X349 (n34 n180 vdd vss) pll_inv_pdk110_7
+X350 (n38 n182 vdd vss) pll_inv_pdk110_7
+X351 (n16 n160 vdd vss) pll_inv_pdk110_7
+ends tx_pll_supervisor_capture_v14_pdk110_77
+
+subckt tx_cp_timing_pdk110_78 (ref enable reset pulse vdd vss)
+XI (ref refb vdd vss) pll_inv_pdk110_7
+XR (reset resetb vdd vss) pll_inv_pdk110_7
+XE (enable refb ref resetb en_hold vdd vss) tx_latch_r_pdk110_60
+XD0 (ref d1 vdd vss) pll_inv_pdk110_79
+XD1 (d1 d2 vdd vss) pll_inv_pdk110_79
+XD2 (d2 d3 vdd vss) pll_inv_pdk110_79
+XD3 (d3 d4 vdd vss) pll_inv_pdk110_79
+XD4 (d4 d5 vdd vss) pll_inv_pdk110_79
+XD5 (d5 d6 vdd vss) pll_inv_pdk110_79
+XD6 (d6 d7 vdd vss) pll_inv_pdk110_79
+XD7 (d7 d8 vdd vss) pll_inv_pdk110_79
+XD8 (d8 d9 vdd vss) pll_inv_pdk110_79
+XD9 (d9 d10 vdd vss) pll_inv_pdk110_79
+XD10 (d10 d11 vdd vss) pll_inv_pdk110_79
+XD11 (d11 d12 vdd vss) pll_inv_pdk110_79
+XD12 (d12 d13 vdd vss) pll_inv_pdk110_79
+XD13 (d13 d14 vdd vss) pll_inv_pdk110_79
+XD14 (d14 d15 vdd vss) pll_inv_pdk110_79
+XD15 (d15 d16 vdd vss) pll_inv_pdk110_79
+XD16 (d16 d17 vdd vss) pll_inv_pdk110_79
+XD17 (d17 d18 vdd vss) pll_inv_pdk110_79
+XD18 (d18 d19 vdd vss) pll_inv_pdk110_79
+XD19 (d19 d20 vdd vss) pll_inv_pdk110_79
+XD20 (d20 d21 vdd vss) pll_inv_pdk110_79
+XD21 (d21 d22 vdd vss) pll_inv_pdk110_79
+XD22 (d22 d23 vdd vss) pll_inv_pdk110_79
+XD23 (d23 d24 vdd vss) pll_inv_pdk110_79
+XN (d24 d24b vdd vss) pll_inv_pdk110_7
+XP (d12 d24b raw vdd vss) tx_and_pdk110_47
+XS (raw ref held vdd vss) tx_and_pdk110_47
+XEN (held en_hold enabled vdd vss) tx_and_pdk110_47
+XRESET (enabled resetb pulse vdd vss) tx_and_pdk110_47
+ends tx_cp_timing_pdk110_78
+
+subckt pll_inv_pdk110_79 (a y vdd vss)
+MN (y a vss vss) nch w=5.000000000000001e-07 l=3.6e-07 nf=1 ad=2.4e-13 as=2.4e-13 pd=1.96e-06 ps=1.96e-06 nrd=0.54 nrs=0.54 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (y a vdd vdd) pch w=1.25e-06 l=3.6e-07 nf=1 ad=6e-13 as=6e-13 pd=3.46e-06 ps=3.46e-06 nrd=0.216 nrs=0.216 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends pll_inv_pdk110_79
+
+subckt tx_frequency_watchdog_pdk110_80 (refclk reset active target_k0 target_k1 target_k2 target_k3 target_k4 target_k5 measured0 measured1 measured2 measured3 measured4 measured5 measured6 measured7 measured8 measured9 measured10 measured11 measured12 measured13 count_gate count_reset frequency_good valid vdd vss)
+X0 (n29 refclk reset count_reset vdd vss) tx_dff_r1_pdk110_70
+X1 (n30 refclk reset count_gate vdd vss) tx_dff_r0_pdk110_58
+X2 (n31 refclk reset frequency_good vdd vss) tx_dff_r0_pdk110_58
+X3 (n32 refclk reset valid vdd vss) tx_dff_r0_pdk110_58
+X4 (n33 refclk reset n34 vdd vss) tx_dff_r0_pdk110_58
+X5 (n35 refclk reset n36 vdd vss) tx_dff_r0_pdk110_58
+X6 (n37 refclk reset n38 vdd vss) tx_dff_r0_pdk110_58
+X7 (n39 refclk reset n40 vdd vss) tx_dff_r0_pdk110_58
+X8 (n41 refclk reset n42 vdd vss) tx_dff_r0_pdk110_58
+X9 (n43 refclk reset n44 vdd vss) tx_dff_r0_pdk110_58
+X10 (n45 refclk reset n46 vdd vss) tx_dff_r0_pdk110_58
+X11 (n47 refclk reset n48 vdd vss) tx_dff_r0_pdk110_58
+X12 (count_reset n49 n50 n29 vdd vss) tx_mux_pdk110_64
+X13 (count_gate n51 n52 n30 vdd vss) tx_mux_pdk110_64
+X14 (frequency_good n53 n54 n31 vdd vss) tx_mux_pdk110_64
+X15 (measured1 n55 vdd vss) pll_inv_pdk110_7
+X16 (measured4 n56 vdd vss) pll_inv_pdk110_7
+X17 (measured3 n57 vdd vss) pll_inv_pdk110_7
+X18 (measured2 n58 vdd vss) pll_inv_pdk110_7
+X19 (measured11 n59 vdd vss) pll_inv_pdk110_7
+X20 (measured13 n60 vdd vss) pll_inv_pdk110_7
+X21 (measured12 n61 vdd vss) pll_inv_pdk110_7
+X22 (n62 n63 vdd vss) pll_inv_pdk110_7
+X23 (n64 n65 vdd vss) pll_inv_pdk110_7
+X24 (n66 n67 vdd vss) pll_inv_pdk110_7
+X25 (n68 n69 vdd vss) pll_inv_pdk110_7
+X26 (n70 n71 vdd vss) pll_inv_pdk110_7
+X27 (n72 n73 vdd vss) pll_inv_pdk110_7
+X28 (n74 n75 vdd vss) pll_inv_pdk110_7
+X29 (target_k1 n76 vdd vss) pll_inv_pdk110_7
+X30 (target_k0 n77 vdd vss) pll_inv_pdk110_7
+X31 (active n78 vdd vss) pll_inv_pdk110_7
+X32 (n79 n80 vdd vss) pll_inv_pdk110_7
+X33 (n81 n82 vdd vss) pll_inv_pdk110_7
+X34 (n38 n83 n84 vdd vss) tx_and_pdk110_47
+X35 (n42 n85 n86 vdd vss) tx_and_pdk110_47
+X36 (n87 n85 n88 vdd vss) tx_and_pdk110_47
+X37 (n46 n88 n89 vdd vss) tx_and_pdk110_47
+X38 (n90 n83 n85 vdd vss) tx_and_pdk110_47
+X39 (n44 n42 n87 vdd vss) tx_and_pdk110_47
+X40 (n40 n38 n90 vdd vss) tx_and_pdk110_47
+X41 (n36 n34 n83 vdd vss) tx_and_pdk110_47
+X42 (n91 n92 n81 vdd vss) tx_or_pdk110_67
+X43 (n93 n94 n92 vdd vss) tx_and_pdk110_47
+X44 (n95 n96 n94 vdd vss) tx_or_pdk110_67
+X45 (n97 n98 n96 vdd vss) tx_and_pdk110_47
+X46 (n99 n100 n93 vdd vss) tx_and_pdk110_47
+X47 (target_k5 n101 n91 vdd vss) tx_or_pdk110_67
+X48 (n99 target_k4 n101 vdd vss) tx_and_pdk110_47
+X49 (n102 n94 n103 vdd vss) tx_and_pdk110_47
+X50 (n104 n103 n79 vdd vss) tx_or_pdk110_67
+X51 (target_k5 target_k4 n104 vdd vss) tx_and_pdk110_47
+X52 (target_k3 target_k2 n95 vdd vss) tx_and_pdk110_47
+X53 (target_k1 n105 n98 vdd vss) tx_or_pdk110_67
+X54 (n76 target_k0 n105 vdd vss) tx_and_pdk110_47
+X55 (measured4 n106 n107 vdd vss) tx_and_pdk110_47
+X56 (measured2 n108 n109 vdd vss) tx_and_pdk110_47
+X57 (measured10 n110 n111 vdd vss) tx_and_pdk110_47
+X58 (n112 n113 n110 vdd vss) tx_and_pdk110_47
+X59 (n114 n106 n115 vdd vss) tx_and_pdk110_47
+X60 (measured6 n115 n116 vdd vss) tx_and_pdk110_47
+X61 (n117 n113 n118 vdd vss) tx_and_pdk110_47
+X62 (measured12 n118 n119 vdd vss) tx_and_pdk110_47
+X63 (n120 n106 n113 vdd vss) tx_and_pdk110_47
+X64 (n121 n112 n117 vdd vss) tx_and_pdk110_47
+X65 (n122 n114 n120 vdd vss) tx_and_pdk110_47
+X66 (n123 n108 n106 vdd vss) tx_and_pdk110_47
+X67 (measured11 measured10 n121 vdd vss) tx_and_pdk110_47
+X68 (measured9 measured8 n112 vdd vss) tx_and_pdk110_47
+X69 (measured7 measured6 n122 vdd vss) tx_and_pdk110_47
+X70 (measured5 measured4 n114 vdd vss) tx_and_pdk110_47
+X71 (measured3 measured2 n123 vdd vss) tx_and_pdk110_47
+X72 (measured8 n113 n124 vdd vss) tx_and_pdk110_47
+X73 (measured1 measured0 n108 vdd vss) tx_and_pdk110_47
+X74 (n125 n77 n126 vdd vss) tx_and_pdk110_47
+X75 (n127 n76 n128 vdd vss) tx_and_pdk110_47
+X76 (n129 n130 n131 vdd vss) tx_and_pdk110_47
+X77 (n132 n133 n134 vdd vss) tx_and_pdk110_47
+X78 (n135 n100 n136 vdd vss) tx_and_pdk110_47
+X79 (n137 n99 n138 vdd vss) tx_and_pdk110_47
+X80 (n125 n77 n139 vdd vss) tx_xor_pdk110_66
+X81 (n127 n76 n140 vdd vss) tx_xor_pdk110_66
+X82 (n129 n130 n141 vdd vss) tx_xor_pdk110_66
+X83 (n132 n133 n142 vdd vss) tx_xor_pdk110_66
+X84 (n135 n100 n143 vdd vss) tx_xor_pdk110_66
+X85 (n137 n99 n144 vdd vss) tx_xor_pdk110_66
+X86 (n145 n146 n147 vdd vss) tx_or_pdk110_67
+X87 (n148 n149 n146 vdd vss) tx_and_pdk110_47
+X88 (n150 n151 n149 vdd vss) tx_or_pdk110_67
+X89 (n152 n153 n151 vdd vss) tx_and_pdk110_47
+X90 (n154 n155 n153 vdd vss) tx_or_pdk110_67
+X91 (n156 n157 n155 vdd vss) tx_and_pdk110_47
+X92 (n158 n159 n150 vdd vss) tx_or_pdk110_67
+X93 (n160 n161 n159 vdd vss) tx_and_pdk110_47
+X94 (n162 n163 n154 vdd vss) tx_or_pdk110_67
+X95 (n164 n165 n163 vdd vss) tx_and_pdk110_47
+X96 (n166 n167 n157 vdd vss) tx_or_pdk110_67
+X97 (n72 n168 n145 vdd vss) tx_or_pdk110_67
+X98 (n73 n74 n168 vdd vss) tx_and_pdk110_47
+X99 (n71 n144 n160 vdd vss) tx_and_pdk110_47
+X100 (n70 n169 n158 vdd vss) tx_or_pdk110_67
+X101 (n71 n138 n169 vdd vss) tx_and_pdk110_47
+X102 (n143 n142 n170 vdd vss) tx_and_pdk110_47
+X103 (n136 n171 n161 vdd vss) tx_or_pdk110_67
+X104 (n143 n134 n171 vdd vss) tx_and_pdk110_47
+X105 (n131 n172 n162 vdd vss) tx_or_pdk110_67
+X106 (n141 n128 n172 vdd vss) tx_and_pdk110_47
+X107 (n126 n173 n165 vdd vss) tx_or_pdk110_67
+X108 (n139 n64 n173 vdd vss) tx_and_pdk110_47
+X109 (n67 n69 n167 vdd vss) tx_and_pdk110_47
+X110 (n66 n174 n166 vdd vss) tx_or_pdk110_67
+X111 (n67 n68 n174 vdd vss) tx_and_pdk110_47
+X112 (measured5 n77 n175 vdd vss) tx_and_pdk110_47
+X113 (measured6 n76 n176 vdd vss) tx_and_pdk110_47
+X114 (measured7 n130 n177 vdd vss) tx_and_pdk110_47
+X115 (measured8 n133 n178 vdd vss) tx_and_pdk110_47
+X116 (measured9 n100 n179 vdd vss) tx_and_pdk110_47
+X117 (measured10 n99 n180 vdd vss) tx_and_pdk110_47
+X118 (measured5 n77 n181 vdd vss) tx_xor_pdk110_66
+X119 (measured6 n76 n182 vdd vss) tx_xor_pdk110_66
+X120 (measured7 n130 n183 vdd vss) tx_xor_pdk110_66
+X121 (measured8 n133 n184 vdd vss) tx_xor_pdk110_66
+X122 (measured9 n100 n185 vdd vss) tx_xor_pdk110_66
+X123 (measured10 n99 n186 vdd vss) tx_xor_pdk110_66
+X124 (n187 n188 n189 vdd vss) tx_or_pdk110_67
+X125 (n190 n191 n188 vdd vss) tx_and_pdk110_47
+X126 (n192 n193 n191 vdd vss) tx_or_pdk110_67
+X127 (n194 n195 n193 vdd vss) tx_and_pdk110_47
+X128 (n196 n197 n195 vdd vss) tx_or_pdk110_67
+X129 (n198 n199 n197 vdd vss) tx_and_pdk110_47
+X130 (n200 n201 n192 vdd vss) tx_or_pdk110_67
+X131 (n202 n203 n201 vdd vss) tx_and_pdk110_47
+X132 (n204 n205 n196 vdd vss) tx_or_pdk110_67
+X133 (n206 n207 n205 vdd vss) tx_and_pdk110_47
+X134 (n208 n209 n199 vdd vss) tx_or_pdk110_67
+X135 (n210 n211 n209 vdd vss) tx_and_pdk110_47
+X136 (measured13 n212 n187 vdd vss) tx_or_pdk110_67
+X137 (n60 measured12 n212 vdd vss) tx_and_pdk110_47
+X138 (measured11 n213 n200 vdd vss) tx_or_pdk110_67
+X139 (n59 n180 n213 vdd vss) tx_and_pdk110_47
+X140 (n185 n184 n214 vdd vss) tx_and_pdk110_47
+X141 (n179 n215 n203 vdd vss) tx_or_pdk110_67
+X142 (n185 n178 n215 vdd vss) tx_and_pdk110_47
+X143 (n183 n182 n206 vdd vss) tx_and_pdk110_47
+X144 (n177 n216 n204 vdd vss) tx_or_pdk110_67
+X145 (n183 n176 n216 vdd vss) tx_and_pdk110_47
+X146 (n181 n56 n217 vdd vss) tx_and_pdk110_47
+X147 (n175 n218 n207 vdd vss) tx_or_pdk110_67
+X148 (n181 measured4 n218 vdd vss) tx_and_pdk110_47
+X149 (measured3 n219 n208 vdd vss) tx_or_pdk110_67
+X150 (n57 measured2 n219 vdd vss) tx_and_pdk110_47
+X151 (measured1 n220 n211 vdd vss) tx_or_pdk110_67
+X152 (n55 measured0 n220 vdd vss) tx_and_pdk110_47
+X153 (n82 n221 n222 vdd vss) tx_or_pdk110_67
+X154 (n223 n224 n225 vdd vss) tx_or_pdk110_67
+X155 (n36 n34 n226 vdd vss) tx_xor_pdk110_66
+X156 (n38 n83 n227 vdd vss) tx_xor_pdk110_66
+X157 (n40 n84 n228 vdd vss) tx_xor_pdk110_66
+X158 (n42 n85 n229 vdd vss) tx_xor_pdk110_66
+X159 (n44 n86 n230 vdd vss) tx_xor_pdk110_66
+X160 (n46 n88 n231 vdd vss) tx_xor_pdk110_66
+X161 (n48 n89 n232 vdd vss) tx_xor_pdk110_66
+X162 (measured1 measured0 n62 vdd vss) tx_xor_pdk110_66
+X163 (measured2 n108 n68 vdd vss) tx_xor_pdk110_66
+X164 (measured3 n109 n66 vdd vss) tx_xor_pdk110_66
+X165 (measured4 n106 n64 vdd vss) tx_xor_pdk110_66
+X166 (measured5 n107 n125 vdd vss) tx_xor_pdk110_66
+X167 (measured6 n115 n127 vdd vss) tx_xor_pdk110_66
+X168 (measured7 n116 n129 vdd vss) tx_xor_pdk110_66
+X169 (measured8 n113 n132 vdd vss) tx_xor_pdk110_66
+X170 (measured9 n124 n135 vdd vss) tx_xor_pdk110_66
+X171 (measured10 n110 n137 vdd vss) tx_xor_pdk110_66
+X172 (measured11 n111 n70 vdd vss) tx_xor_pdk110_66
+X173 (measured12 n118 n74 vdd vss) tx_xor_pdk110_66
+X174 (measured13 n119 n72 vdd vss) tx_xor_pdk110_66
+X175 (n78 n233 n234 vdd vss) tx_or_pdk110_67
+X176 (n234 n235 n50 vdd vss) tx_or_pdk110_67
+X177 (n78 n236 n237 vdd vss) tx_or_pdk110_67
+X178 (n237 n238 n52 vdd vss) tx_or_pdk110_67
+X179 (n78 n239 n54 vdd vss) tx_or_pdk110_67
+X180 (n240 n36 n241 vdd vss) tx_or_pdk110_67
+X181 (n241 n242 n243 vdd vss) tx_or_pdk110_67
+X182 (n243 n244 n245 vdd vss) tx_or_pdk110_67
+X183 (n246 n40 n242 vdd vss) tx_or_pdk110_67
+X184 (n247 n242 n248 vdd vss) tx_or_pdk110_67
+X185 (n248 n244 n249 vdd vss) tx_or_pdk110_67
+X186 (n42 n250 n251 vdd vss) tx_or_pdk110_67
+X187 (n251 n252 n244 vdd vss) tx_or_pdk110_67
+X188 (n253 n244 n254 vdd vss) tx_or_pdk110_67
+X189 (n34 n255 n247 vdd vss) tx_or_pdk110_67
+X190 (n38 n40 n256 vdd vss) tx_or_pdk110_67
+X191 (n42 n44 n257 vdd vss) tx_or_pdk110_67
+X192 (n46 n48 n252 vdd vss) tx_or_pdk110_67
+X193 (n247 n256 n253 vdd vss) tx_or_pdk110_67
+X194 (n257 n252 n258 vdd vss) tx_or_pdk110_67
+X195 (n253 n258 n259 vdd vss) tx_or_pdk110_67
+X196 (n260 n93 n221 vdd vss) tx_and_pdk110_47
+X197 (n261 n221 n262 vdd vss) tx_or_pdk110_67
+X198 (n130 target_k3 n97 vdd vss) tx_and_pdk110_47
+X199 (n100 target_k5 n102 vdd vss) tx_and_pdk110_47
+X200 (n105 n97 n260 vdd vss) tx_and_pdk110_47
+X201 (n260 n102 n263 vdd vss) tx_and_pdk110_47
+X202 (n80 n263 n264 vdd vss) tx_or_pdk110_67
+X203 (measured0 n63 n265 vdd vss) tx_and_pdk110_47
+X204 (n65 n139 n266 vdd vss) tx_and_pdk110_47
+X205 (n140 n141 n164 vdd vss) tx_and_pdk110_47
+X206 (n75 n73 n148 vdd vss) tx_and_pdk110_47
+X207 (n265 n167 n267 vdd vss) tx_and_pdk110_47
+X208 (n266 n164 n156 vdd vss) tx_and_pdk110_47
+X209 (n170 n160 n152 vdd vss) tx_and_pdk110_47
+X210 (n267 n156 n268 vdd vss) tx_and_pdk110_47
+X211 (n152 n148 n269 vdd vss) tx_and_pdk110_47
+X212 (n268 n269 n224 vdd vss) tx_and_pdk110_47
+X213 (n270 n224 n271 vdd vss) tx_or_pdk110_67
+X214 (n58 n57 n210 vdd vss) tx_and_pdk110_47
+X215 (n186 n59 n202 vdd vss) tx_and_pdk110_47
+X216 (n61 n60 n190 vdd vss) tx_and_pdk110_47
+X217 (n220 n210 n272 vdd vss) tx_and_pdk110_47
+X218 (n217 n206 n198 vdd vss) tx_and_pdk110_47
+X219 (n214 n202 n194 vdd vss) tx_and_pdk110_47
+X220 (n272 n198 n273 vdd vss) tx_and_pdk110_47
+X221 (n194 n190 n274 vdd vss) tx_and_pdk110_47
+X222 (n273 n274 n275 vdd vss) tx_and_pdk110_47
+X223 (n276 n275 n277 vdd vss) tx_or_pdk110_67
+X224 (n233 n235 n278 vdd vss) tx_or_pdk110_67
+X225 (n34 n36 n279 vdd vss) tx_or_pdk110_67
+X226 (n279 n256 n280 vdd vss) tx_or_pdk110_67
+X227 (n280 n258 n281 vdd vss) tx_or_pdk110_67
+X228 (n236 n238 n282 vdd vss) tx_or_pdk110_67
+X229 (n245 n239 vdd vss) pll_inv_pdk110_7
+X230 (n249 n233 vdd vss) pll_inv_pdk110_7
+X231 (n281 n235 vdd vss) pll_inv_pdk110_7
+X232 (n254 n236 vdd vss) pll_inv_pdk110_7
+X233 (n259 n238 vdd vss) pll_inv_pdk110_7
+X234 (n262 n264 n283 vdd vss) tx_and_pdk110_47
+X235 (n283 n271 n284 vdd vss) tx_and_pdk110_47
+X236 (n284 n277 n285 vdd vss) tx_and_pdk110_47
+X237 (vss n239 active n32 vdd vss) tx_mux_pdk110_64
+X238 (vss n240 active n33 vdd vss) tx_mux_pdk110_64
+X239 (vss n226 active n35 vdd vss) tx_mux_pdk110_64
+X240 (vss n227 active n37 vdd vss) tx_mux_pdk110_64
+X241 (vss n228 active n39 vdd vss) tx_mux_pdk110_64
+X242 (vss n229 active n41 vdd vss) tx_mux_pdk110_64
+X243 (vss n230 active n43 vdd vss) tx_mux_pdk110_64
+X244 (vss n231 active n45 vdd vss) tx_mux_pdk110_64
+X245 (vss n232 active n47 vdd vss) tx_mux_pdk110_64
+X246 (n285 nx n245 n286 vdd vss) tx_mux_pdk110_64
+X247 (vss n286 active n53 vdd vss) tx_mux_pdk110_64
+X248 (vdd n287 active n49 vdd vss) tx_mux_pdk110_64
+X249 (vss n288 active n51 vdd vss) tx_mux_pdk110_64
+X250 (target_k2 n130 vdd vss) pll_inv_pdk110_7
+X251 (target_k3 n133 vdd vss) pll_inv_pdk110_7
+X252 (target_k4 n100 vdd vss) pll_inv_pdk110_7
+X253 (target_k5 n99 vdd vss) pll_inv_pdk110_7
+X254 (n222 n261 vdd vss) pll_inv_pdk110_7
+X255 (n225 n270 vdd vss) pll_inv_pdk110_7
+X256 (n147 n223 vdd vss) pll_inv_pdk110_7
+X257 (n189 n276 vdd vss) pll_inv_pdk110_7
+X258 (n34 n240 vdd vss) pll_inv_pdk110_7
+X259 (n36 n255 vdd vss) pll_inv_pdk110_7
+X260 (n38 n246 vdd vss) pll_inv_pdk110_7
+X261 (n44 n250 vdd vss) pll_inv_pdk110_7
+X262 (nx n233 n278 n287 vdd vss) tx_mux_pdk110_64
+X263 (nx n238 n282 n288 vdd vss) tx_mux_pdk110_64
+ends tx_frequency_watchdog_pdk110_80

@@ -1,0 +1,2786 @@
+{
+  "time": "2026-10-15T20:11:03.043746+08:00",
+  "scope": "Independent frozen recenter109 complete circuit hierarchy; original files unchanged",
+  "providers": {
+    "nch": {
+      "id": "tsmc180bcd-gen2-2022",
+      "pdk_release": "TSMC 0.18um Gen II BCD 1.6b, T-018-CV-SP-018-K3, 2020-05-20; installed tsmc180bcd_gen2_2022/PDK/TSMC180BCD",
+      "adapter_version": "0.1.0",
+      "payload_sha256": "912e8c471cd9a0c357d6d50faff3faeab89c9bec601f0a5d3c434b8a1e8e7916"
+    },
+    "pch": {
+      "id": "tsmc180bcd-gen2-2022",
+      "pdk_release": "TSMC 0.18um Gen II BCD 1.6b, T-018-CV-SP-018-K3, 2020-05-20; installed tsmc180bcd_gen2_2022/PDK/TSMC180BCD",
+      "adapter_version": "0.1.0",
+      "payload_sha256": "912e8c471cd9a0c357d6d50faff3faeab89c9bec601f0a5d3c434b8a1e8e7916"
+    }
+  },
+  "source_sha256": {
+    "bank_pulsetrip_v14.scs": "8d41f4865a829f5a6d203fda5fa63af0243a835d00bbfdafde737988ee1c0f20",
+    "cap_bank_switched_v4.scs": "82930a36417d5746edad5be73d95ff446cb94a046524d8eb12d6cc3a325caad0",
+    "cells.scs": "3930ec1ae0c83506142914b5662a3f711408cbc2f34ebf5bd7961eb7ae17303c",
+    "cp_physical_v14.scs": "ea3cd7184cafd899db18d5d9286adca6c2ffb861e9af2504afd1ea9bb702cc76",
+    "cp_timing.scs": "87a42f85028580ab52cc6d08a2514e4295dc93e4be0e019f52cb55964ae50fde",
+    "digital_cells_v2.scs": "b26bf1963c99391f35a5c95b379761012975f2b620e46a866f77843db9a1fc6f",
+    "ff_fbdelay50_v14.scs": "3187bf71bba496caa81a28a8effd2c149c9ca276939a8758f463124c7414f235",
+    "fll_circuit.scs": "37b759726f0552cb214067dcb173dba4d71c20b92ef80cde8f843e1e5c2c1903",
+    "fll_recenter109_v14.scs": "2546b05cd4646dae441c1b6ee7bdcfd8f9203323088415665262f9826fea909c",
+    "frequency_watchdog.scs": "63e1d92d0db21407142630dfe349b3da1afe127e3e04d712e7cf0f51c541d5f2",
+    "inductor_pi.scs": "417db0f24ee5d2a0544eda8a21f670d4b3ba5ba158422c913185ff82ef71438b",
+    "lc_core_physical_v14.scs": "8edc1b766e04d51405ffd185294fa1c7d6e7f2d2f8ef14f56753c1e84eaeb8b4",
+    "lc_vco_physical_v14.scs": "c34bae69f93d9600f602bfb7e80f56ffe051458e8984da02604eb6ef07e727ce",
+    "loop_filter_v5.scs": "827a9a8cd9d91e8bf9af5d38c691f0bfc19416980aa1e6b34eda9d0802bb9499",
+    "pll_capture_rt4_r48_recenter109_v14.scs": "1654d2bb89fbb62ddd7aee39f8e825169a86afd5fdf974ea330310b2c4c666df",
+    "pll_config.scs": "e9562e3410680ae20236c5e3a96229a0d83723e750753c4ae041ed3e5fd46622",
+    "pll_control_recenter109_v14.scs": "97880912c226fdba877eb31742f83873502336b68d2b844436645104276b52b3",
+    "pll_supervisor_capture_v14.scs": "f5836cf7d3106842c5f67ede615b0988057a750b42a242a11255b9fb28535bac",
+    "rf_light24s12_v14.scs": "b9b97c23dfacf6d8371622ca8f569771b19067ed42a58375ef9c9ef3f9e762d9",
+    "ring_inv_static_v14.scs": "ab85a5f1c6cf6da53507eb07ce7840dc2fe153d92db8f4e0608d5a733babe164",
+    "rt_noise_scale4_v14.scs": "839d4bdb3d8b2dc60dcdad1f3a49010f82d6cb4ff08d10325b8c5c636c65e5c6",
+    "rtcomb_v13.scs": "b3d737a5e7dca1c57906c6acb4cdd49401483e531323d9b281e214ec8713e5cd",
+    "sampler_bias_v5.scs": "fe966831e65b04ee641625abc5187748bac130ea8d68babe17f33dc948c9cd67",
+    "validity_physical_v14.scs": "4adda2d6a864ac7ae7478c157989ea34d0901f52cf1f7b6bca2ec3238244f27f"
+  },
+  "updated_mos_definition_rows": 158,
+  "source_mos_definition_rows": 94,
+  "specialized_subcircuits": 81,
+  "module_entrypoints": {
+    "XPLL.XV": {
+      "before": "lc_vco_physical_v14_base110_1",
+      "after": "lc_vco_physical_v14_pdk110_1"
+    },
+    "XPLL.XBM": {
+      "before": "tx_bias_mid_v5_base110_5",
+      "after": "tx_bias_mid_v5_pdk110_5"
+    },
+    "XPLL.XREF": {
+      "before": "tx_reference_buffer_base110_6",
+      "after": "tx_reference_buffer_pdk110_6"
+    },
+    "XPLL.XS": {
+      "before": "tx_sampler_base110_11",
+      "after": "tx_sampler_pdk110_11"
+    },
+    "XPLL.XCP": {
+      "before": "cp_physical_v14_base110_14",
+      "after": "cp_physical_v14_pdk110_14"
+    },
+    "XPLL.XLF": {
+      "before": "tx_loop_filter_v5_base110_17",
+      "after": "tx_loop_filter_v5_pdk110_17"
+    },
+    "XPLL.XRX": {
+      "before": "rf_light24s12_v14_base110_19",
+      "after": "rf_light24s12_v14_pdk110_19"
+    },
+    "XPLL.XD": {
+      "before": "bank_pulsetrip_v14_base110_21",
+      "after": "bank_pulsetrip_v14_pdk110_21"
+    },
+    "XPLL.XR": {
+      "before": "rt_noise_scale4_v14_base110_49",
+      "after": "rt_noise_scale4_v14_pdk110_49"
+    },
+    "XPLL.XDET": {
+      "before": "validity_physical_v14_base110_53",
+      "after": "validity_physical_v14_pdk110_53"
+    },
+    "XPLL.XC": {
+      "before": "pll_control_recenter109_v14_base110_56",
+      "after": "pll_control_recenter109_v14_pdk110_56"
+    }
+  },
+  "bundles": {
+    "before": "share\\deliverables\\blocks\\cmos_v14_full\\rt4_callback110_before.scs",
+    "after": "share\\deliverables\\blocks\\cmos_v14_full\\rt4_callback110_after.scs"
+  },
+  "expanded_mos_instances": 21479,
+  "unique_numeric_geometries": 75,
+  "numeric_callback_checks": [
+    {
+      "model": "nch",
+      "w": 2.4e-07,
+      "l": 1e-06,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 7,
+      "example_path": "XPLL.XD.XF0.XF.XK.MN",
+      "callback_values": {
+        "ad": 2.004e-13,
+        "as": 2.004e-13,
+        "pd": 1.88e-06,
+        "ps": 1.88e-06,
+        "nrd": 1.29167,
+        "nrs": 1.29167,
+        "sa": 5.2e-07,
+        "sb": 5.2e-07,
+        "sd": 6.2e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "968d7b821285566ef610d94e35a7177eade521767f8c41f16946276dfca3b8e2"
+    },
+    {
+      "model": "nch",
+      "w": 4e-07,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 278,
+      "example_path": "XPLL.XC.XC.X0.XM.XF.MN",
+      "callback_values": {
+        "ad": 2.164e-13,
+        "as": 2.164e-13,
+        "pd": 1.88e-06,
+        "ps": 1.88e-06,
+        "nrd": 0.775,
+        "nrs": 0.775,
+        "sa": 5.2e-07,
+        "sb": 5.2e-07,
+        "sd": 6.2e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "580f544e52ef25bfd3c3f157b779319d7ad9ac7b558b0619f736358130fcdf3f"
+    },
+    {
+      "model": "nch",
+      "w": 4e-07,
+      "l": 1e-06,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 1,
+      "example_path": "XPLL.XD.XRK.MN",
+      "callback_values": {
+        "ad": 2.164e-13,
+        "as": 2.164e-13,
+        "pd": 1.88e-06,
+        "ps": 1.88e-06,
+        "nrd": 0.775,
+        "nrs": 0.775,
+        "sa": 5.2e-07,
+        "sb": 5.2e-07,
+        "sd": 6.2e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "2bdc8e94c6ff558585dc806dc9151aca02558a92e02bfaf40ea12c2e430723f3"
+    },
+    {
+      "model": "nch",
+      "w": 5e-07,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 6317,
+      "example_path": "XPLL.XD.XFAC0.MN",
+      "callback_values": {
+        "ad": 2.4e-13,
+        "as": 2.4e-13,
+        "pd": 1.96e-06,
+        "ps": 1.96e-06,
+        "nrd": 0.54,
+        "nrs": 0.54,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "2f8dfacc2da2a87ee0865d85c451fa0f62e2234b0b1bdd92631276e73e15ad8b"
+    },
+    {
+      "model": "nch",
+      "w": 5e-07,
+      "l": 3.6e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 24,
+      "example_path": "XPLL.XC.XP.XD0.MN",
+      "callback_values": {
+        "ad": 2.4e-13,
+        "as": 2.4e-13,
+        "pd": 1.96e-06,
+        "ps": 1.96e-06,
+        "nrd": 0.54,
+        "nrs": 0.54,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "6bad04380d9e89d92cbeafc429f24a133750cf62213bf89dcadbed4e41970898"
+    },
+    {
+      "model": "nch",
+      "w": 8e-07,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 583,
+      "example_path": "XPLL.XD.XPRE.MN0",
+      "callback_values": {
+        "ad": 3.84e-13,
+        "as": 3.84e-13,
+        "pd": 2.56e-06,
+        "ps": 2.56e-06,
+        "nrd": 0.3375,
+        "nrs": 0.3375,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "347aef37e8471883beaed15c49d68977b93afda7e417444e24ef23982786708c"
+    },
+    {
+      "model": "nch",
+      "w": 1e-06,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 3246,
+      "example_path": "XPLL.XREF.X0.MN",
+      "callback_values": {
+        "ad": 4.8e-13,
+        "as": 4.8e-13,
+        "pd": 2.96e-06,
+        "ps": 2.96e-06,
+        "nrd": 0.27,
+        "nrs": 0.27,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "c7adc65aba4f61a9730629246613ea76923e2067e73d6899f28b81d4e50608ba"
+    },
+    {
+      "model": "nch",
+      "w": 1e-06,
+      "l": 5e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 6,
+      "example_path": "XPLL.XDET.XA.MP",
+      "callback_values": {
+        "ad": 4.8e-13,
+        "as": 4.8e-13,
+        "pd": 2.96e-06,
+        "ps": 2.96e-06,
+        "nrd": 0.27,
+        "nrs": 0.27,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "05564e3ca27ea7503ffb40cf995b0e4f799e8250f92e8bfdc140aecafae23305"
+    },
+    {
+      "model": "nch",
+      "w": 1e-06,
+      "l": 1e-06,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 3,
+      "example_path": "XPLL.XDET.XA.MB",
+      "callback_values": {
+        "ad": 4.8e-13,
+        "as": 4.8e-13,
+        "pd": 2.96e-06,
+        "ps": 2.96e-06,
+        "nrd": 0.27,
+        "nrs": 0.27,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "941e3b8c4887f6801794ba760c6cdada4991758418f9111f8d405f1b442f8cc3"
+    },
+    {
+      "model": "nch",
+      "w": 1.2e-06,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 2,
+      "example_path": "XPLL.XV.XBP.M0",
+      "callback_values": {
+        "ad": 5.76e-13,
+        "as": 5.76e-13,
+        "pd": 3.36e-06,
+        "ps": 3.36e-06,
+        "nrd": 0.225,
+        "nrs": 0.225,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "44ece45be3c20ef68fa8be15f8b02435a00ac11a5b9a1871434e50232343c6ff"
+    },
+    {
+      "model": "nch",
+      "w": 1.6e-06,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 44,
+      "example_path": "XPLL.XD.XPRE.MN1",
+      "callback_values": {
+        "ad": 7.68e-13,
+        "as": 7.68e-13,
+        "pd": 4.16e-06,
+        "ps": 4.16e-06,
+        "nrd": 0.16875,
+        "nrs": 0.16875,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "76ef1f9533f9df146e3330ed936fbb2ab96a76a3a1b4de331dd5e0b6894c9a43"
+    },
+    {
+      "model": "nch",
+      "w": 2e-06,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 181,
+      "example_path": "XPLL.XD.XB41.MN",
+      "callback_values": {
+        "ad": 9.6e-13,
+        "as": 9.6e-13,
+        "pd": 4.96e-06,
+        "ps": 4.96e-06,
+        "nrd": 0.135,
+        "nrs": 0.135,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "09888d289fc3ec79dea3598f7df93e4e385cc975d16b3dcef8e16d39440f5daf"
+    },
+    {
+      "model": "nch",
+      "w": 2e-06,
+      "l": 1e-06,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 3,
+      "example_path": "XPLL.XDET.XA.MT",
+      "callback_values": {
+        "ad": 9.6e-13,
+        "as": 9.6e-13,
+        "pd": 4.96e-06,
+        "ps": 4.96e-06,
+        "nrd": 0.135,
+        "nrs": 0.135,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "afa9c6f11dd3e7d2b55890b5a0c1acb2ddd3e2c64470a51ccd9d6a5c1a18f0ec"
+    },
+    {
+      "model": "nch",
+      "w": 2.4e-06,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 2,
+      "example_path": "XPLL.XV.XBP.M1",
+      "callback_values": {
+        "ad": 1.152e-12,
+        "as": 1.152e-12,
+        "pd": 5.76e-06,
+        "ps": 5.76e-06,
+        "nrd": 0.1125,
+        "nrs": 0.1125,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "3b4890f6daef31fb4ab0e4c9c03962e7c911e8203ba2a0cf2548a01a73b7da4c"
+    },
+    {
+      "model": "nch",
+      "w": 3e-06,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 2,
+      "example_path": "XPLL.XD.XPB1.MN",
+      "callback_values": {
+        "ad": 1.44e-12,
+        "as": 1.44e-12,
+        "pd": 6.96e-06,
+        "ps": 6.96e-06,
+        "nrd": 0.09,
+        "nrs": 0.09,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "91e8b8c342b3d43a47885c4148ceeee035da5d9f8785e7ad0547c8016e8ab4ec"
+    },
+    {
+      "model": "nch",
+      "w": 3.2e-06,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 1,
+      "example_path": "XPLL.XR.X1.MN",
+      "callback_values": {
+        "ad": 1.536e-12,
+        "as": 1.536e-12,
+        "pd": 7.36e-06,
+        "ps": 7.36e-06,
+        "nrd": 0.084375,
+        "nrs": 0.084375,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "5676b6b5b1422af7737e95f2097848d65a5d9d234705c04edb3e39451128e085"
+    },
+    {
+      "model": "nch",
+      "w": 3.84e-06,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 1,
+      "example_path": "XPLL.XR.XFF.MN0",
+      "callback_values": {
+        "ad": 1.8432e-12,
+        "as": 1.8432e-12,
+        "pd": 8.64e-06,
+        "ps": 8.64e-06,
+        "nrd": 0.0703125,
+        "nrs": 0.0703125,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "3f0d21f20b98369afa8a1a4bcaeaf538e56c2434ed42d8c35722b3f1c3be7b64"
+    },
+    {
+      "model": "nch",
+      "w": 4e-06,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 5,
+      "example_path": "XPLL.XREF.X1.MN",
+      "callback_values": {
+        "ad": 1.92e-12,
+        "as": 1.92e-12,
+        "pd": 8.96e-06,
+        "ps": 8.96e-06,
+        "nrd": 0.0675,
+        "nrs": 0.0675,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "5d7a515b496030e1d39b27054cde86f35fdb5e5c96a38f5408b90d015001950b"
+    },
+    {
+      "model": "nch",
+      "w": 4.8e-06,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 2,
+      "example_path": "XPLL.XV.XBP.M2",
+      "callback_values": {
+        "ad": 2.304e-12,
+        "as": 2.304e-12,
+        "pd": 1.056e-05,
+        "ps": 1.056e-05,
+        "nrd": 0.05625,
+        "nrs": 0.05625,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "10ae7478f1ba46b6a4bb4b8ec1df7b6b8c6fe75f77ae3480aacad7cdbfda616e"
+    },
+    {
+      "model": "nch",
+      "w": 5e-06,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 6,
+      "example_path": "XPLL.XC.XDAC.XO0.MN",
+      "callback_values": {
+        "ad": 2.4e-12,
+        "as": 2.4e-12,
+        "pd": 1.096e-05,
+        "ps": 1.096e-05,
+        "nrd": 0.054,
+        "nrs": 0.054,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "3c88efe00f975f2f688385a3283ca4cef29bbaaef0a4a713d97efff76d492c67"
+    },
+    {
+      "model": "nch",
+      "w": 5e-06,
+      "l": 1e-06,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 1,
+      "example_path": "XPLL.XV.XL.MA3",
+      "callback_values": {
+        "ad": 2.4e-12,
+        "as": 2.4e-12,
+        "pd": 1.096e-05,
+        "ps": 1.096e-05,
+        "nrd": 0.054,
+        "nrs": 0.054,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "3cb451ca9429e1fc4b3b194dce0c77cc6800c0976db3b24ed1172b16dc6f5fa6"
+    },
+    {
+      "model": "nch",
+      "w": 6e-06,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 1,
+      "example_path": "XPLL.XD.XB42.MN",
+      "callback_values": {
+        "ad": 2.88e-12,
+        "as": 2.88e-12,
+        "pd": 1.296e-05,
+        "ps": 1.296e-05,
+        "nrd": 0.045,
+        "nrs": 0.045,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "3f2a46457f57c4ff41e15310a0be5934b224636681a605e00402e0faab6ca3d0"
+    },
+    {
+      "model": "nch",
+      "w": 7.68e-06,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 2,
+      "example_path": "XPLL.XR.XFF.MNC2",
+      "callback_values": {
+        "ad": 3.6864e-12,
+        "as": 3.6864e-12,
+        "pd": 1.632e-05,
+        "ps": 1.632e-05,
+        "nrd": 0.0351562,
+        "nrs": 0.0351562,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "fee432320fe3047d7813e4f5e5c90fd49d63a750d844ac22cf44478698797226"
+    },
+    {
+      "model": "nch",
+      "w": 8e-06,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 4,
+      "example_path": "XPLL.XS.XI.MN",
+      "callback_values": {
+        "ad": 3.84e-12,
+        "as": 3.84e-12,
+        "pd": 1.696e-05,
+        "ps": 1.696e-05,
+        "nrd": 0.03375,
+        "nrs": 0.03375,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "22601b5d8c8062e57d47645bfc7d55ad47f5f7aa29755fc256186ae5641e5df4"
+    },
+    {
+      "model": "nch",
+      "w": 8e-06,
+      "l": 1e-06,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 2,
+      "example_path": "XPLL.XCP.MIP",
+      "callback_values": {
+        "ad": 3.84e-12,
+        "as": 3.84e-12,
+        "pd": 1.696e-05,
+        "ps": 1.696e-05,
+        "nrd": 0.03375,
+        "nrs": 0.03375,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "2b78168288236564cfb92433ae0611cc48ef7fa12721b18297da307dab0587fc"
+    },
+    {
+      "model": "nch",
+      "w": 9.6e-06,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 2,
+      "example_path": "XPLL.XV.XBP.M3",
+      "callback_values": {
+        "ad": 4.608e-12,
+        "as": 4.608e-12,
+        "pd": 2.016e-05,
+        "ps": 2.016e-05,
+        "nrd": 0.028125,
+        "nrs": 0.028125,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "c3b7342d2d9c5fb0723e5efb70745fc575ddecc2ad68bf2a3653abbe6d4d1326"
+    },
+    {
+      "model": "nch",
+      "w": 1e-05,
+      "l": 1e-06,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 3,
+      "example_path": "XPLL.XV.XL.MA4",
+      "callback_values": {
+        "ad": 4.8e-12,
+        "as": 4.8e-12,
+        "pd": 2.096e-05,
+        "ps": 2.096e-05,
+        "nrd": 0.027,
+        "nrs": 0.027,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "188824294bf1d786c903b27cfe74985a980743c59fb991817ebe0a9a8366c83c"
+    },
+    {
+      "model": "nch",
+      "w": 1.152e-05,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 2,
+      "example_path": "XPLL.XR.XFF.MN1",
+      "callback_values": {
+        "ad": 5.5296e-12,
+        "as": 5.5296e-12,
+        "pd": 2.4e-05,
+        "ps": 2.4e-05,
+        "nrd": 0.0234375,
+        "nrs": 0.0234375,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "fc22e4ab63e35b0e9e09267713c13c34cb8518da3bb76425d582ef1e933e55d9"
+    },
+    {
+      "model": "nch",
+      "w": 1.2e-05,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 1,
+      "example_path": "XPLL.XR.X0.MN",
+      "callback_values": {
+        "ad": 5.76e-12,
+        "as": 5.76e-12,
+        "pd": 2.496e-05,
+        "ps": 2.496e-05,
+        "nrd": 0.0225,
+        "nrs": 0.0225,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "398f305a221a0189cd2c243114f8daf81eca72f336a365d57f52484a468a7083"
+    },
+    {
+      "model": "nch",
+      "w": 1.6e-05,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 1,
+      "example_path": "XPLL.XREF.X2.MN",
+      "callback_values": {
+        "ad": 7.68e-12,
+        "as": 7.68e-12,
+        "pd": 3.296e-05,
+        "ps": 3.296e-05,
+        "nrd": 0.016875,
+        "nrs": 0.016875,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "50ef1efcbce6e86d31dcf12106d983580bc0d11938049387af7c14660beed405"
+    },
+    {
+      "model": "nch",
+      "w": 1.92e-05,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 2,
+      "example_path": "XPLL.XV.XBP.M4",
+      "callback_values": {
+        "ad": 9.216e-12,
+        "as": 9.216e-12,
+        "pd": 3.936e-05,
+        "ps": 3.936e-05,
+        "nrd": 0.0140625,
+        "nrs": 0.0140625,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "93b53b65937969a6fe2a852902dd97f99c0cb566be5beb01df834ce0f9f9bde0"
+    },
+    {
+      "model": "nch",
+      "w": 2e-05,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 3,
+      "example_path": "XPLL.XV.XL.ME3",
+      "callback_values": {
+        "ad": 9.6e-12,
+        "as": 9.6e-12,
+        "pd": 4.096e-05,
+        "ps": 4.096e-05,
+        "nrd": 0.0135,
+        "nrs": 0.0135,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "a6f63d97a5d0bf0d13b37d24589050d575a2f527eae7ac9ae7d3c7b7079c0d1b"
+    },
+    {
+      "model": "nch",
+      "w": 2e-05,
+      "l": 1e-06,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 2,
+      "example_path": "XPLL.XV.XL.MR",
+      "callback_values": {
+        "ad": 9.6e-12,
+        "as": 9.6e-12,
+        "pd": 4.096e-05,
+        "ps": 4.096e-05,
+        "nrd": 0.0135,
+        "nrs": 0.0135,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "2df02a1e9e4c56cbf2e9e8eff8e91736843812ce22b9282a07cf78e68aaec44e"
+    },
+    {
+      "model": "nch",
+      "w": 2.4e-05,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 2,
+      "example_path": "XPLL.XRX.X0.MN",
+      "callback_values": {
+        "ad": 1.152e-11,
+        "as": 1.152e-11,
+        "pd": 4.896e-05,
+        "ps": 4.896e-05,
+        "nrd": 0.01125,
+        "nrs": 0.01125,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "f667b08866fddc9a1bb86adbef773889febfad34b4590c23654ad2d9007ef052"
+    },
+    {
+      "model": "nch",
+      "w": 3.84e-05,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 2,
+      "example_path": "XPLL.XV.XBP.M5",
+      "callback_values": {
+        "ad": 1.8432e-11,
+        "as": 1.8432e-11,
+        "pd": 7.776e-05,
+        "ps": 7.776e-05,
+        "nrd": 0.00703125,
+        "nrs": 0.00703125,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "58058d38c836379352954c9d83b93fb9533eff2307933ae9c50abbca7f324618"
+    },
+    {
+      "model": "nch",
+      "w": 4e-05,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 1,
+      "example_path": "XPLL.XV.XL.ME4",
+      "callback_values": {
+        "ad": 1.92e-11,
+        "as": 1.92e-11,
+        "pd": 8.096e-05,
+        "ps": 8.096e-05,
+        "nrd": 0.00675,
+        "nrs": 0.00675,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "de10bb9434286d28689050639dd18a3c8ec425054998ce93ea8a2a4e7e38db45"
+    },
+    {
+      "model": "nch",
+      "w": 4e-05,
+      "l": 1e-06,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 1,
+      "example_path": "XPLL.XV.XL.MA6",
+      "callback_values": {
+        "ad": 1.92e-11,
+        "as": 1.92e-11,
+        "pd": 8.096e-05,
+        "ps": 8.096e-05,
+        "nrd": 0.00675,
+        "nrs": 0.00675,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "76d3ac20c0b04fd59e434c73d0b22b00663c1c539ae432fd77ad62b505dfb24c"
+    },
+    {
+      "model": "nch",
+      "w": 6.4e-05,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 1,
+      "example_path": "XPLL.XREF.X3.MN",
+      "callback_values": {
+        "ad": 3.072e-11,
+        "as": 3.072e-11,
+        "pd": 0.00012896,
+        "ps": 0.00012896,
+        "nrd": 0.00421875,
+        "nrs": 0.00421875,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "cf20c5587beebe41e32fe56387936599946ccc7cd7821010f4f4be92bc81a395"
+    },
+    {
+      "model": "nch",
+      "w": 7.68e-05,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 2,
+      "example_path": "XPLL.XV.XBP.M6",
+      "callback_values": {
+        "ad": 3.6864e-11,
+        "as": 3.6864e-11,
+        "pd": 0.00015456,
+        "ps": 0.00015456,
+        "nrd": 0.00351563,
+        "nrs": 0.00351563,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "98c8e12ae6f8f19d7931366de0a0a48cd89333dfe5df7ee3edd94a447efe304f"
+    },
+    {
+      "model": "nch",
+      "w": 8e-05,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 1,
+      "example_path": "XPLL.XV.XL.ME5",
+      "callback_values": {
+        "ad": 3.84e-11,
+        "as": 3.84e-11,
+        "pd": 0.00016096,
+        "ps": 0.00016096,
+        "nrd": 0.003375,
+        "nrs": 0.003375,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "e7b0084968e16419f062653c1f79135c41a6ef36f7e8ab908a0f5959c2c47bfd"
+    },
+    {
+      "model": "nch",
+      "w": 8e-05,
+      "l": 1e-06,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 1,
+      "example_path": "XPLL.XV.XL.MA7",
+      "callback_values": {
+        "ad": 3.84e-11,
+        "as": 3.84e-11,
+        "pd": 0.00016096,
+        "ps": 0.00016096,
+        "nrd": 0.003375,
+        "nrs": 0.003375,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "b56f384940744ec070f2091c029ad2c13e3c8e19701bef25525974ee85bffc24"
+    },
+    {
+      "model": "nch",
+      "w": 0.00012,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 2,
+      "example_path": "XPLL.XV.XL.MN0",
+      "callback_values": {
+        "ad": 5.76e-11,
+        "as": 5.76e-11,
+        "pd": 0.00024096,
+        "ps": 0.00024096,
+        "nrd": 0.00225,
+        "nrs": 0.00225,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "214d627a92ee81c1f3020efe72d3d9363eec2d964b0bb234aa2ed94c325bb84d"
+    },
+    {
+      "model": "nch",
+      "w": 0.0001536,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 2,
+      "example_path": "XPLL.XV.XBP.M7",
+      "callback_values": {
+        "ad": 7.3728e-11,
+        "as": 7.3728e-11,
+        "pd": 0.00030816,
+        "ps": 0.00030816,
+        "nrd": 0.00175781,
+        "nrs": 0.00175781,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "774c95bc5b7a11a0d9b40c1d121f1b07577830133e0f6ab23479eea5ebf61582"
+    },
+    {
+      "model": "nch",
+      "w": 0.00016,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 1,
+      "example_path": "XPLL.XV.XL.ME6",
+      "callback_values": {
+        "ad": 7.68e-11,
+        "as": 7.68e-11,
+        "pd": 0.00032096,
+        "ps": 0.00032096,
+        "nrd": 0.0016875,
+        "nrs": 0.0016875,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "f6886c79e56e1aed4803f5b424c6f28766eb243a6a593c5e938c6e672039dae8"
+    },
+    {
+      "model": "nch",
+      "w": 0.0003,
+      "l": 1e-06,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 1,
+      "example_path": "XPLL.XV.XL.MT",
+      "callback_values": {
+        "ad": 1.44e-10,
+        "as": 1.44e-10,
+        "pd": 0.00060096,
+        "ps": 0.00060096,
+        "nrd": 0.0009,
+        "nrs": 0.0009,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "379fa7d08ce9beb6c154421941f23ee45b7a36217f0bb1f939cc2cc4c1021a37"
+    },
+    {
+      "model": "nch",
+      "w": 0.00032,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 1,
+      "example_path": "XPLL.XV.XL.ME7",
+      "callback_values": {
+        "ad": 1.536e-10,
+        "as": 1.536e-10,
+        "pd": 0.00064096,
+        "ps": 0.00064096,
+        "nrd": 0.00084375,
+        "nrs": 0.00084375,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "8754a675cea96e6cbb049e6ff620b7f1911cb71cbefc203acca4f3b7b84cdf67"
+    },
+    {
+      "model": "pch",
+      "w": 3e-07,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 16,
+      "example_path": "XPLL.XV.XBP.MP0",
+      "callback_values": {
+        "ad": 2.064e-13,
+        "as": 2.064e-13,
+        "pd": 1.88e-06,
+        "ps": 1.88e-06,
+        "nrd": 1.03333,
+        "nrs": 1.03333,
+        "sa": 5.2e-07,
+        "sb": 5.2e-07,
+        "sd": 6.2e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "587ee9e72b913cf529c26e879d0cea4a5bcbdf680777f3c6223ec8f314a71e72"
+    },
+    {
+      "model": "pch",
+      "w": 4.8e-07,
+      "l": 1e-06,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 7,
+      "example_path": "XPLL.XD.XF0.XF.XK.MP",
+      "callback_values": {
+        "ad": 2.304e-13,
+        "as": 2.304e-13,
+        "pd": 1.92e-06,
+        "ps": 1.92e-06,
+        "nrd": 0.5625,
+        "nrs": 0.5625,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "a214baa64fb37e3bc2b9abd25f7d91a43997d70b1571c586580200eef4355324"
+    },
+    {
+      "model": "pch",
+      "w": 5e-07,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 1,
+      "example_path": "XPLL.XD.XPB0.MP",
+      "callback_values": {
+        "ad": 2.4e-13,
+        "as": 2.4e-13,
+        "pd": 1.96e-06,
+        "ps": 1.96e-06,
+        "nrd": 0.54,
+        "nrs": 0.54,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "fd8ce0f3bae7e54cde0561353931b6aee530fb6ea877e67ccb04c979909b4e06"
+    },
+    {
+      "model": "pch",
+      "w": 8e-07,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 278,
+      "example_path": "XPLL.XC.XC.X0.XM.XF.MP",
+      "callback_values": {
+        "ad": 3.84e-13,
+        "as": 3.84e-13,
+        "pd": 2.56e-06,
+        "ps": 2.56e-06,
+        "nrd": 0.3375,
+        "nrs": 0.3375,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "4996385be1b56cb81a7b170ee6da7259abf2906b2782cf0543c2eff6def7ae56"
+    },
+    {
+      "model": "pch",
+      "w": 8e-07,
+      "l": 1e-06,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 1,
+      "example_path": "XPLL.XD.XRK.MP",
+      "callback_values": {
+        "ad": 3.84e-13,
+        "as": 3.84e-13,
+        "pd": 2.56e-06,
+        "ps": 2.56e-06,
+        "nrd": 0.3375,
+        "nrs": 0.3375,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "9b3cbcf468c99ae9109c16aeb5223ba0dc029a2f190ff72366fcc3952c2e7247"
+    },
+    {
+      "model": "pch",
+      "w": 1e-06,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 1985,
+      "example_path": "XPLL.XD.XFAC0.MP",
+      "callback_values": {
+        "ad": 4.8e-13,
+        "as": 4.8e-13,
+        "pd": 2.96e-06,
+        "ps": 2.96e-06,
+        "nrd": 0.27,
+        "nrs": 0.27,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "450f9a4e0fe1c8397a3cac55536be31a9a80b512ed4975ccf9d34309a72b35ab"
+    },
+    {
+      "model": "pch",
+      "w": 1.25e-06,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 6172,
+      "example_path": "XPLL.XCP.XG.MP0",
+      "callback_values": {
+        "ad": 6e-13,
+        "as": 6e-13,
+        "pd": 3.46e-06,
+        "ps": 3.46e-06,
+        "nrd": 0.216,
+        "nrs": 0.216,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "6c88515270eee10b92b80b3e02f091d3e728637988a66f5849c918c11676e8ef"
+    },
+    {
+      "model": "pch",
+      "w": 1.25e-06,
+      "l": 3.6e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 24,
+      "example_path": "XPLL.XC.XP.XD0.MP",
+      "callback_values": {
+        "ad": 6e-13,
+        "as": 6e-13,
+        "pd": 3.46e-06,
+        "ps": 3.46e-06,
+        "nrd": 0.216,
+        "nrs": 0.216,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "af6cf52e36c66ac31eb45927f1cc4add35103142645cbbaac31b66fe7d39bad3"
+    },
+    {
+      "model": "pch",
+      "w": 1.6e-06,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 279,
+      "example_path": "XPLL.XD.XB40.MP",
+      "callback_values": {
+        "ad": 7.68e-13,
+        "as": 7.68e-13,
+        "pd": 4.16e-06,
+        "ps": 4.16e-06,
+        "nrd": 0.16875,
+        "nrs": 0.16875,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "f6594b6830fcc2f61ab4ae1ec8d6409111fd63b044536c623395c605a69bb875"
+    },
+    {
+      "model": "pch",
+      "w": 2e-06,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 357,
+      "example_path": "XPLL.XCP.XT.MP",
+      "callback_values": {
+        "ad": 9.6e-13,
+        "as": 9.6e-13,
+        "pd": 4.96e-06,
+        "ps": 4.96e-06,
+        "nrd": 0.135,
+        "nrs": 0.135,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "5e09664b930b9d3a3dca09982e03f4a3e05b51bb6da7adc30a2f4980f81c310e"
+    },
+    {
+      "model": "pch",
+      "w": 2e-06,
+      "l": 1e-06,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 6,
+      "example_path": "XPLL.XDET.XA.PL",
+      "callback_values": {
+        "ad": 9.6e-13,
+        "as": 9.6e-13,
+        "pd": 4.96e-06,
+        "ps": 4.96e-06,
+        "nrd": 0.135,
+        "nrs": 0.135,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "c2fb1dac734802575ab187add9074925f91dbf15ab3dd647702284442043df77"
+    },
+    {
+      "model": "pch",
+      "w": 2.5e-06,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 409,
+      "example_path": "XPLL.XREF.X0.MP",
+      "callback_values": {
+        "ad": 1.2e-12,
+        "as": 1.2e-12,
+        "pd": 5.96e-06,
+        "ps": 5.96e-06,
+        "nrd": 0.108,
+        "nrs": 0.108,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "0a11d2c307300cbf5a07a5eea068396c0fc5d089226c6a65bdcbaaabc9991405"
+    },
+    {
+      "model": "pch",
+      "w": 3e-06,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 1,
+      "example_path": "XPLL.XD.XPB1.MP",
+      "callback_values": {
+        "ad": 1.44e-12,
+        "as": 1.44e-12,
+        "pd": 6.96e-06,
+        "ps": 6.96e-06,
+        "nrd": 0.09,
+        "nrs": 0.09,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "74fe1625984474c4c6bf85af7d29723e02726eb59145d907fe6d724778b91b2b"
+    },
+    {
+      "model": "pch",
+      "w": 4e-06,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 1012,
+      "example_path": "XPLL.XD.XB41.MP",
+      "callback_values": {
+        "ad": 1.92e-12,
+        "as": 1.92e-12,
+        "pd": 8.96e-06,
+        "ps": 8.96e-06,
+        "nrd": 0.0675,
+        "nrs": 0.0675,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "ed600a044f952de27bc12f5259233c4b9a61eb544e29221e4a293c33474a877d"
+    },
+    {
+      "model": "pch",
+      "w": 4e-06,
+      "l": 1e-06,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 2,
+      "example_path": "XPLL.XCP.MPD",
+      "callback_values": {
+        "ad": 1.92e-12,
+        "as": 1.92e-12,
+        "pd": 8.96e-06,
+        "ps": 8.96e-06,
+        "nrd": 0.0675,
+        "nrs": 0.0675,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "13a5ac302ad69e3bc36c51424e846be6f8f19384ad3fdef959914183c0270f40"
+    },
+    {
+      "model": "pch",
+      "w": 5e-06,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 138,
+      "example_path": "XPLL.XC.XC.X0.XC.MP",
+      "callback_values": {
+        "ad": 2.4e-12,
+        "as": 2.4e-12,
+        "pd": 1.096e-05,
+        "ps": 1.096e-05,
+        "nrd": 0.054,
+        "nrs": 0.054,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "9d96b0bc64a2fc73302ed6467053d5eb8410e104c2e16f65514a7f3b238ad84b"
+    },
+    {
+      "model": "pch",
+      "w": 6e-06,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 1,
+      "example_path": "XPLL.XD.XCT1.MP",
+      "callback_values": {
+        "ad": 2.88e-12,
+        "as": 2.88e-12,
+        "pd": 1.296e-05,
+        "ps": 1.296e-05,
+        "nrd": 0.045,
+        "nrs": 0.045,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "02c25b01ab00bf82ca02549f06d751c32f50c9fd9e6c89695c5efbd7123eba28"
+    },
+    {
+      "model": "pch",
+      "w": 8e-06,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 8,
+      "example_path": "XPLL.XS.XSP.MP",
+      "callback_values": {
+        "ad": 3.84e-12,
+        "as": 3.84e-12,
+        "pd": 1.696e-05,
+        "ps": 1.696e-05,
+        "nrd": 0.03375,
+        "nrs": 0.03375,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "e1a7e0b826cd7707a7fad5ee2674b2c9b9756a89c9c5fe0ab61d3df664f02d50"
+    },
+    {
+      "model": "pch",
+      "w": 9.6e-06,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 3,
+      "example_path": "XPLL.XR.XFF.MP0",
+      "callback_values": {
+        "ad": 4.608e-12,
+        "as": 4.608e-12,
+        "pd": 2.016e-05,
+        "ps": 2.016e-05,
+        "nrd": 0.028125,
+        "nrs": 0.028125,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "eeb1d3ec6a2ecea8bc2a4b64e18a1c61dc9e1e07e88fd8d4cca90557fb0cc346"
+    },
+    {
+      "model": "pch",
+      "w": 1e-05,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 1,
+      "example_path": "XPLL.XREF.X1.MP",
+      "callback_values": {
+        "ad": 4.8e-12,
+        "as": 4.8e-12,
+        "pd": 2.096e-05,
+        "ps": 2.096e-05,
+        "nrd": 0.027,
+        "nrs": 0.027,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "1d606d6ae09f01992562497dd89c4709f2e1622fb4de0725e56b0eacd0f8a774"
+    },
+    {
+      "model": "pch",
+      "w": 1.2e-05,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 2,
+      "example_path": "XPLL.XD.XB42.MP",
+      "callback_values": {
+        "ad": 5.76e-12,
+        "as": 5.76e-12,
+        "pd": 2.496e-05,
+        "ps": 2.496e-05,
+        "nrd": 0.0225,
+        "nrs": 0.0225,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "c35cc71a7337ca5e896a8638c2ef6ac923fe472daa7850e894b4522f89324908"
+    },
+    {
+      "model": "pch",
+      "w": 1.25e-05,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 6,
+      "example_path": "XPLL.XC.XDAC.XO0.MP",
+      "callback_values": {
+        "ad": 6e-12,
+        "as": 6e-12,
+        "pd": 2.596e-05,
+        "ps": 2.596e-05,
+        "nrd": 0.0216,
+        "nrs": 0.0216,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "72932ec2b6cc5010c3f44bc6e1ddc9af93de87eda6258edc452eee4603adf27f"
+    },
+    {
+      "model": "pch",
+      "w": 1.44e-05,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 1,
+      "example_path": "XPLL.XR.XFF.MP2",
+      "callback_values": {
+        "ad": 6.912e-12,
+        "as": 6.912e-12,
+        "pd": 2.976e-05,
+        "ps": 2.976e-05,
+        "nrd": 0.01875,
+        "nrs": 0.01875,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "617986a36130425729f0b32285e8162a9a357db3db1468d2b561b874bb97e40e"
+    },
+    {
+      "model": "pch",
+      "w": 1.6e-05,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 1,
+      "example_path": "XPLL.XD.XCT2.MP",
+      "callback_values": {
+        "ad": 7.68e-12,
+        "as": 7.68e-12,
+        "pd": 3.296e-05,
+        "ps": 3.296e-05,
+        "nrd": 0.016875,
+        "nrs": 0.016875,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "ea1e758fe391e0b78c316fff0bdab18958c3e50b665bd2cd9b1c8dede46c38d9"
+    },
+    {
+      "model": "pch",
+      "w": 2e-05,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 4,
+      "example_path": "XPLL.XS.XI.MP",
+      "callback_values": {
+        "ad": 9.6e-12,
+        "as": 9.6e-12,
+        "pd": 4.096e-05,
+        "ps": 4.096e-05,
+        "nrd": 0.0135,
+        "nrs": 0.0135,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "64694c5bca9091e15ed68324ec9015bad31760b285782569cd2be67d9c6fc7dc"
+    },
+    {
+      "model": "pch",
+      "w": 4e-05,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 3,
+      "example_path": "XPLL.XREF.X2.MP",
+      "callback_values": {
+        "ad": 1.92e-11,
+        "as": 1.92e-11,
+        "pd": 8.096e-05,
+        "ps": 8.096e-05,
+        "nrd": 0.00675,
+        "nrs": 0.00675,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "7b7527ca3905981183a80306a495757e7ec07e1f597d9dd77e22d4542a5cea06"
+    },
+    {
+      "model": "pch",
+      "w": 4.8e-05,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 1,
+      "example_path": "XPLL.XD.XCT3.MP",
+      "callback_values": {
+        "ad": 2.304e-11,
+        "as": 2.304e-11,
+        "pd": 9.696e-05,
+        "ps": 9.696e-05,
+        "nrd": 0.005625,
+        "nrs": 0.005625,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "3e53382ac2dfa89cb43e8a1b6ffc51449a343794fa46f0cec26fb1de902d2015"
+    },
+    {
+      "model": "pch",
+      "w": 6e-05,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 1,
+      "example_path": "XPLL.XRX.X0.MP",
+      "callback_values": {
+        "ad": 2.88e-11,
+        "as": 2.88e-11,
+        "pd": 0.00012096,
+        "ps": 0.00012096,
+        "nrd": 0.0045,
+        "nrs": 0.0045,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "5ec4de6644f7ddf4fb0694bed644408b565ab2d42f29e73bc9ea44d04e0bb3a4"
+    },
+    {
+      "model": "pch",
+      "w": 0.00016,
+      "l": 1.8e-07,
+      "nf": 1,
+      "m": 1,
+      "instance_count": 1,
+      "example_path": "XPLL.XREF.X3.MP",
+      "callback_values": {
+        "ad": 7.68e-11,
+        "as": 7.68e-11,
+        "pd": 0.00032096,
+        "ps": 0.00032096,
+        "nrd": 0.0016875,
+        "nrs": 0.0016875,
+        "sa": 4.8e-07,
+        "sb": 4.8e-07,
+        "sd": 5.4e-07,
+        "sca": 0.0,
+        "scb": 0.0,
+        "scc": 0.0
+      },
+      "warnings": [],
+      "raw_result_sha256": "8f7c9ab5b1aa59d098099fcea6129cb3aee92477f67aac6e148a6cac5efedd34"
+    }
+  ],
+  "symbolic_reductions": {
+    "decision": "Do not apply symbolic normal-diffusion formulas globally. Numeric callback at W=240nm returns different AD/PD/NRD/SA/SD; specialize each unique geometry instead."
+  },
+  "definition_changes": [
+    {
+      "specialized_subckt": "lc_core_physical_v14_pdk110_2",
+      "before": "MN0 (vp vn tail vss) nch w=0.00012 l=1.8e-07 ad=2.88e-11 as=2.88e-11 pd=0.00024048 ps=0.00024048",
+      "after": "MN0 (vp vn tail vss) nch w=0.00012 l=1.8e-07 ad=5.76e-11 as=5.76e-11 pd=0.00024096 ps=0.00024096 nrd=0.00225 nrs=0.00225 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "lc_core_physical_v14_pdk110_2",
+      "before": "MN1 (vn vp tail vss) nch w=0.00012 l=1.8e-07 ad=2.88e-11 as=2.88e-11 pd=0.00024048 ps=0.00024048",
+      "after": "MN1 (vn vp tail vss) nch w=0.00012 l=1.8e-07 ad=5.76e-11 as=5.76e-11 pd=0.00024096 ps=0.00024096 nrd=0.00225 nrs=0.00225 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "lc_core_physical_v14_pdk110_2",
+      "before": "MT (tail nfilt vss vss) nch w=0.0003 l=1e-06 ad=7.2e-11 as=7.2e-11 pd=0.0006004799999999999 ps=0.0006004799999999999",
+      "after": "MT (tail nfilt vss vss) nch w=0.0003 l=1e-06 ad=1.44e-10 as=1.44e-10 pd=0.00060096 ps=0.00060096 nrd=0.0009 nrs=0.0009 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "lc_core_physical_v14_pdk110_2",
+      "before": "MR (nb nb vss vss) nch w=2e-05 l=1e-06 ad=4.800000000000001e-12 as=4.800000000000001e-12 pd=4.048e-05 ps=4.048e-05",
+      "after": "MR (nb nb vss vss) nch w=2e-05 l=1e-06 ad=9.599999999999999e-12 as=9.599999999999999e-12 pd=4.096e-05 ps=4.096e-05 nrd=0.0135 nrs=0.0135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "lc_core_physical_v14_pdk110_2",
+      "before": "MA3 (tail nfilt s3 vss) nch w=5e-06 l=1e-06 ad=1.2e-12 as=1.2e-12 pd=1.048e-05 ps=1.048e-05",
+      "after": "MA3 (tail nfilt s3 vss) nch w=5e-06 l=1e-06 ad=2.4e-12 as=2.4e-12 pd=1.096e-05 ps=1.096e-05 nrd=0.054 nrs=0.054 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "lc_core_physical_v14_pdk110_2",
+      "before": "ME3 (s3 b3 vss vss) nch w=2e-05 l=1.8e-07 ad=4.800000000000001e-12 as=4.800000000000001e-12 pd=4.048e-05 ps=4.048e-05",
+      "after": "ME3 (s3 b3 vss vss) nch w=2e-05 l=1.8e-07 ad=9.599999999999999e-12 as=9.599999999999999e-12 pd=4.096e-05 ps=4.096e-05 nrd=0.0135 nrs=0.0135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "lc_core_physical_v14_pdk110_2",
+      "before": "MA4 (tail nfilt s4 vss) nch w=9.999999999999999e-06 l=1e-06 ad=2.4e-12 as=2.4e-12 pd=2.048e-05 ps=2.048e-05",
+      "after": "MA4 (tail nfilt s4 vss) nch w=9.999999999999999e-06 l=1e-06 ad=4.8e-12 as=4.8e-12 pd=2.096e-05 ps=2.096e-05 nrd=0.027 nrs=0.027 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "lc_core_physical_v14_pdk110_2",
+      "before": "ME4 (s4 b4 vss vss) nch w=4e-05 l=1.8e-07 ad=9.600000000000001e-12 as=9.600000000000001e-12 pd=8.047999999999999e-05 ps=8.047999999999999e-05",
+      "after": "ME4 (s4 b4 vss vss) nch w=4e-05 l=1.8e-07 ad=1.92e-11 as=1.92e-11 pd=8.096e-05 ps=8.096e-05 nrd=0.00675 nrs=0.00675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "lc_core_physical_v14_pdk110_2",
+      "before": "MA5 (tail nfilt s5 vss) nch w=2e-05 l=1e-06 ad=4.800000000000001e-12 as=4.800000000000001e-12 pd=4.048e-05 ps=4.048e-05",
+      "after": "MA5 (tail nfilt s5 vss) nch w=2e-05 l=1e-06 ad=9.599999999999999e-12 as=9.599999999999999e-12 pd=4.096e-05 ps=4.096e-05 nrd=0.0135 nrs=0.0135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "lc_core_physical_v14_pdk110_2",
+      "before": "ME5 (s5 b5 vss vss) nch w=7.999999999999999e-05 l=1.8e-07 ad=1.92e-11 as=1.92e-11 pd=0.00016048 ps=0.00016048",
+      "after": "ME5 (s5 b5 vss vss) nch w=7.999999999999999e-05 l=1.8e-07 ad=3.84e-11 as=3.84e-11 pd=0.00016096 ps=0.00016096 nrd=0.003375 nrs=0.003375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "lc_core_physical_v14_pdk110_2",
+      "before": "MA6 (tail nfilt s6 vss) nch w=4e-05 l=1e-06 ad=9.600000000000001e-12 as=9.600000000000001e-12 pd=8.047999999999999e-05 ps=8.047999999999999e-05",
+      "after": "MA6 (tail nfilt s6 vss) nch w=4e-05 l=1e-06 ad=1.92e-11 as=1.92e-11 pd=8.096e-05 ps=8.096e-05 nrd=0.00675 nrs=0.00675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "lc_core_physical_v14_pdk110_2",
+      "before": "ME6 (s6 b6 vss vss) nch w=0.00016 l=1.8e-07 ad=3.84e-11 as=3.84e-11 pd=0.00032048 ps=0.00032048",
+      "after": "ME6 (s6 b6 vss vss) nch w=0.00016 l=1.8e-07 ad=7.68e-11 as=7.68e-11 pd=0.00032096 ps=0.00032096 nrd=0.0016875 nrs=0.0016875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "lc_core_physical_v14_pdk110_2",
+      "before": "MA7 (tail nfilt s7 vss) nch w=7.999999999999999e-05 l=1e-06 ad=1.92e-11 as=1.92e-11 pd=0.00016048 ps=0.00016048",
+      "after": "MA7 (tail nfilt s7 vss) nch w=7.999999999999999e-05 l=1e-06 ad=3.84e-11 as=3.84e-11 pd=0.00016096 ps=0.00016096 nrd=0.003375 nrs=0.003375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "lc_core_physical_v14_pdk110_2",
+      "before": "ME7 (s7 b7 vss vss) nch w=0.00032 l=1.8e-07 ad=7.680000000000001e-11 as=7.680000000000001e-11 pd=0.0006404799999999999 ps=0.0006404799999999999",
+      "after": "ME7 (s7 b7 vss vss) nch w=0.00032 l=1.8e-07 ad=1.536e-10 as=1.536e-10 pd=0.00064096 ps=0.00064096 nrd=0.00084375 nrs=0.00084375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "tx_cap_bank_switched_v4_pdk110_4",
+      "before": "M0 (x0 b0 vss vss) nch w=1.2e-06 l=1.8e-07 ad=2.88e-13 as=2.88e-13 pd=2.88e-06 ps=2.88e-06",
+      "after": "M0 (x0 b0 vss vss) nch w=1.2e-06 l=1.8e-07 ad=5.76e-13 as=5.76e-13 pd=3.36e-06 ps=3.36e-06 nrd=0.225 nrs=0.225 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "tx_cap_bank_switched_v4_pdk110_4",
+      "before": "M1 (x1 b1 vss vss) nch w=2.4e-06 l=1.8e-07 ad=5.760000000000001e-13 as=5.760000000000001e-13 pd=5.28e-06 ps=5.28e-06",
+      "after": "M1 (x1 b1 vss vss) nch w=2.4e-06 l=1.8e-07 ad=1.152e-12 as=1.152e-12 pd=5.76e-06 ps=5.76e-06 nrd=0.1125 nrs=0.1125 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "tx_cap_bank_switched_v4_pdk110_4",
+      "before": "M2 (x2 b2 vss vss) nch w=4.8e-06 l=1.8e-07 ad=1.152e-12 as=1.152e-12 pd=1.008e-05 ps=1.008e-05",
+      "after": "M2 (x2 b2 vss vss) nch w=4.8e-06 l=1.8e-07 ad=2.304e-12 as=2.304e-12 pd=1.056e-05 ps=1.056e-05 nrd=0.05625 nrs=0.05625 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "tx_cap_bank_switched_v4_pdk110_4",
+      "before": "M3 (x3 b3 vss vss) nch w=9.6e-06 l=1.8e-07 ad=2.304e-12 as=2.304e-12 pd=1.968e-05 ps=1.968e-05",
+      "after": "M3 (x3 b3 vss vss) nch w=9.6e-06 l=1.8e-07 ad=4.608e-12 as=4.608e-12 pd=2.016e-05 ps=2.016e-05 nrd=0.028125 nrs=0.028125 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "tx_cap_bank_switched_v4_pdk110_4",
+      "before": "M4 (x4 b4 vss vss) nch w=1.92e-05 l=1.8e-07 ad=4.608000000000001e-12 as=4.608000000000001e-12 pd=3.888e-05 ps=3.888e-05",
+      "after": "M4 (x4 b4 vss vss) nch w=1.92e-05 l=1.8e-07 ad=9.216e-12 as=9.216e-12 pd=3.936e-05 ps=3.936e-05 nrd=0.0140625 nrs=0.0140625 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "tx_cap_bank_switched_v4_pdk110_4",
+      "before": "M5 (x5 b5 vss vss) nch w=3.84e-05 l=1.8e-07 ad=9.216000000000001e-12 as=9.216000000000001e-12 pd=7.727999999999999e-05 ps=7.727999999999999e-05",
+      "after": "M5 (x5 b5 vss vss) nch w=3.84e-05 l=1.8e-07 ad=1.8432e-11 as=1.8432e-11 pd=7.776e-05 ps=7.776e-05 nrd=0.00703125 nrs=0.00703125 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "tx_cap_bank_switched_v4_pdk110_4",
+      "before": "M6 (x6 b6 vss vss) nch w=7.68e-05 l=1.8e-07 ad=1.8432e-11 as=1.8432e-11 pd=0.00015408 ps=0.00015408",
+      "after": "M6 (x6 b6 vss vss) nch w=7.68e-05 l=1.8e-07 ad=3.6864e-11 as=3.6864e-11 pd=0.00015456 ps=0.00015456 nrd=0.00351563 nrs=0.00351563 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "tx_cap_bank_switched_v4_pdk110_4",
+      "before": "M7 (x7 b7 vss vss) nch w=0.0001536 l=1.8e-07 ad=3.6864e-11 as=3.6864e-11 pd=0.00030768 ps=0.00030768",
+      "after": "M7 (x7 b7 vss vss) nch w=0.0001536 l=1.8e-07 ad=7.3728e-11 as=7.3728e-11 pd=0.00030816 ps=0.00030816 nrd=0.00175781 nrs=0.00175781 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "tx_cap_bank_switched_v4_pdk110_4",
+      "before": "MP0 (x0 b0 vdd vdd) pch w=3e-07 l=1.8e-07 ad=7.200000000000002e-14 as=7.200000000000002e-14 pd=1.08e-06 ps=1.08e-06",
+      "after": "MP0 (x0 b0 vdd vdd) pch w=3e-07 l=1.8e-07 ad=2.064e-13 as=2.064e-13 pd=1.88e-06 ps=1.88e-06 nrd=1.03333 nrs=1.03333 sa=5.2e-07 sb=5.2e-07 sd=6.2e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "tx_cap_bank_switched_v4_pdk110_4",
+      "before": "MP1 (x1 b1 vdd vdd) pch w=3e-07 l=1.8e-07 ad=7.200000000000002e-14 as=7.200000000000002e-14 pd=1.08e-06 ps=1.08e-06",
+      "after": "MP1 (x1 b1 vdd vdd) pch w=3e-07 l=1.8e-07 ad=2.064e-13 as=2.064e-13 pd=1.88e-06 ps=1.88e-06 nrd=1.03333 nrs=1.03333 sa=5.2e-07 sb=5.2e-07 sd=6.2e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "tx_cap_bank_switched_v4_pdk110_4",
+      "before": "MP2 (x2 b2 vdd vdd) pch w=3e-07 l=1.8e-07 ad=7.200000000000002e-14 as=7.200000000000002e-14 pd=1.08e-06 ps=1.08e-06",
+      "after": "MP2 (x2 b2 vdd vdd) pch w=3e-07 l=1.8e-07 ad=2.064e-13 as=2.064e-13 pd=1.88e-06 ps=1.88e-06 nrd=1.03333 nrs=1.03333 sa=5.2e-07 sb=5.2e-07 sd=6.2e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "tx_cap_bank_switched_v4_pdk110_4",
+      "before": "MP3 (x3 b3 vdd vdd) pch w=3e-07 l=1.8e-07 ad=7.200000000000002e-14 as=7.200000000000002e-14 pd=1.08e-06 ps=1.08e-06",
+      "after": "MP3 (x3 b3 vdd vdd) pch w=3e-07 l=1.8e-07 ad=2.064e-13 as=2.064e-13 pd=1.88e-06 ps=1.88e-06 nrd=1.03333 nrs=1.03333 sa=5.2e-07 sb=5.2e-07 sd=6.2e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "tx_cap_bank_switched_v4_pdk110_4",
+      "before": "MP4 (x4 b4 vdd vdd) pch w=3e-07 l=1.8e-07 ad=7.200000000000002e-14 as=7.200000000000002e-14 pd=1.08e-06 ps=1.08e-06",
+      "after": "MP4 (x4 b4 vdd vdd) pch w=3e-07 l=1.8e-07 ad=2.064e-13 as=2.064e-13 pd=1.88e-06 ps=1.88e-06 nrd=1.03333 nrs=1.03333 sa=5.2e-07 sb=5.2e-07 sd=6.2e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "tx_cap_bank_switched_v4_pdk110_4",
+      "before": "MP5 (x5 b5 vdd vdd) pch w=3e-07 l=1.8e-07 ad=7.200000000000002e-14 as=7.200000000000002e-14 pd=1.08e-06 ps=1.08e-06",
+      "after": "MP5 (x5 b5 vdd vdd) pch w=3e-07 l=1.8e-07 ad=2.064e-13 as=2.064e-13 pd=1.88e-06 ps=1.88e-06 nrd=1.03333 nrs=1.03333 sa=5.2e-07 sb=5.2e-07 sd=6.2e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "tx_cap_bank_switched_v4_pdk110_4",
+      "before": "MP6 (x6 b6 vdd vdd) pch w=3e-07 l=1.8e-07 ad=7.200000000000002e-14 as=7.200000000000002e-14 pd=1.08e-06 ps=1.08e-06",
+      "after": "MP6 (x6 b6 vdd vdd) pch w=3e-07 l=1.8e-07 ad=2.064e-13 as=2.064e-13 pd=1.88e-06 ps=1.88e-06 nrd=1.03333 nrs=1.03333 sa=5.2e-07 sb=5.2e-07 sd=6.2e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "tx_cap_bank_switched_v4_pdk110_4",
+      "before": "MP7 (x7 b7 vdd vdd) pch w=3e-07 l=1.8e-07 ad=7.200000000000002e-14 as=7.200000000000002e-14 pd=1.08e-06 ps=1.08e-06",
+      "after": "MP7 (x7 b7 vdd vdd) pch w=3e-07 l=1.8e-07 ad=2.064e-13 as=2.064e-13 pd=1.88e-06 ps=1.88e-06 nrd=1.03333 nrs=1.03333 sa=5.2e-07 sb=5.2e-07 sd=6.2e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_7",
+      "before": "MN (y a vss vss) nch w=1e-06 l=1.8e-07 nf=1 ad=2.4e-13 as=2.4e-13 pd=2.48e-06 ps=2.48e-06",
+      "after": "MN (y a vss vss) nch w=1e-06 l=1.8e-07 nf=1 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_7",
+      "before": "MP (y a vdd vdd) pch w=2.5e-06 l=1.8e-07 nf=1 ad=6.000000000000001e-13 as=6.000000000000001e-13 pd=5.48e-06 ps=5.48e-06",
+      "after": "MP (y a vdd vdd) pch w=2.5e-06 l=1.8e-07 nf=1 ad=1.2e-12 as=1.2e-12 pd=5.96e-06 ps=5.96e-06 nrd=0.108 nrs=0.108 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_8",
+      "before": "MN (y a vss vss) nch w=4e-06 l=1.8e-07 nf=1 ad=9.600000000000002e-13 as=9.600000000000002e-13 pd=8.48e-06 ps=8.48e-06",
+      "after": "MN (y a vss vss) nch w=4e-06 l=1.8e-07 nf=1 ad=1.92e-12 as=1.92e-12 pd=8.960000000000001e-06 ps=8.960000000000001e-06 nrd=0.0675 nrs=0.0675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_8",
+      "before": "MP (y a vdd vdd) pch w=9.999999999999999e-06 l=1.8e-07 nf=1 ad=2.4e-12 as=2.4e-12 pd=2.048e-05 ps=2.048e-05",
+      "after": "MP (y a vdd vdd) pch w=9.999999999999999e-06 l=1.8e-07 nf=1 ad=4.8e-12 as=4.8e-12 pd=2.096e-05 ps=2.096e-05 nrd=0.027 nrs=0.027 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_9",
+      "before": "MN (y a vss vss) nch w=1.6e-05 l=1.8e-07 nf=1 ad=3.840000000000001e-12 as=3.840000000000001e-12 pd=3.248e-05 ps=3.248e-05",
+      "after": "MN (y a vss vss) nch w=1.6e-05 l=1.8e-07 nf=1 ad=7.68e-12 as=7.68e-12 pd=3.296e-05 ps=3.296e-05 nrd=0.016875 nrs=0.016875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_9",
+      "before": "MP (y a vdd vdd) pch w=4e-05 l=1.8e-07 nf=1 ad=9.600000000000001e-12 as=9.600000000000001e-12 pd=8.047999999999999e-05 ps=8.047999999999999e-05",
+      "after": "MP (y a vdd vdd) pch w=4e-05 l=1.8e-07 nf=1 ad=1.92e-11 as=1.92e-11 pd=8.096e-05 ps=8.096e-05 nrd=0.00675 nrs=0.00675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_10",
+      "before": "MN (y a vss vss) nch w=6.4e-05 l=1.8e-07 nf=1 ad=1.536e-11 as=1.536e-11 pd=0.00012848 ps=0.00012848",
+      "after": "MN (y a vss vss) nch w=6.4e-05 l=1.8e-07 nf=1 ad=3.072e-11 as=3.072e-11 pd=0.00012896 ps=0.00012896 nrd=0.00421875 nrs=0.00421875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_10",
+      "before": "MP (y a vdd vdd) pch w=0.00016 l=1.8e-07 nf=1 ad=3.84e-11 as=3.84e-11 pd=0.00032048 ps=0.00032048",
+      "after": "MP (y a vdd vdd) pch w=0.00016 l=1.8e-07 nf=1 ad=7.68e-11 as=7.68e-11 pd=0.00032096 ps=0.00032096 nrd=0.0016875 nrs=0.0016875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_12",
+      "before": "MN (y a vss vss) nch w=8e-06 l=1.8e-07 nf=1 ad=1.92e-12 as=1.92e-12 pd=1.648e-05 ps=1.648e-05",
+      "after": "MN (y a vss vss) nch w=8e-06 l=1.8e-07 nf=1 ad=3.84e-12 as=3.84e-12 pd=1.696e-05 ps=1.696e-05 nrd=0.03375 nrs=0.03375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_12",
+      "before": "MP (y a vdd vdd) pch w=2e-05 l=1.8e-07 nf=1 ad=4.800000000000001e-12 as=4.800000000000001e-12 pd=4.048e-05 ps=4.048e-05",
+      "after": "MP (y a vdd vdd) pch w=2e-05 l=1.8e-07 nf=1 ad=9.599999999999999e-12 as=9.599999999999999e-12 pd=4.096e-05 ps=4.096e-05 nrd=0.0135 nrs=0.0135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_tg_pdk110_13",
+      "before": "MN (a on b vss) nch w=4e-06 l=1.8e-07 ad=9.600000000000002e-13 as=9.600000000000002e-13 pd=8.48e-06 ps=8.48e-06",
+      "after": "MN (a on b vss) nch w=4e-06 l=1.8e-07 ad=1.92e-12 as=1.92e-12 pd=8.960000000000001e-06 ps=8.960000000000001e-06 nrd=0.0675 nrs=0.0675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_tg_pdk110_13",
+      "before": "MP (a off b vdd) pch w=8e-06 l=1.8e-07 ad=1.92e-12 as=1.92e-12 pd=1.648e-05 ps=1.648e-05",
+      "after": "MP (a off b vdd) pch w=8e-06 l=1.8e-07 ad=3.84e-12 as=3.84e-12 pd=1.696e-05 ps=1.696e-05 nrd=0.03375 nrs=0.03375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "cp_physical_v14_pdk110_14",
+      "before": "MB (nb nb vss vss) nch w=9.999999999999999e-06 l=1e-06 ad=2.4e-12 as=2.4e-12 pd=2.048e-05 ps=2.048e-05",
+      "after": "MB (nb nb vss vss) nch w=9.999999999999999e-06 l=1e-06 ad=4.8e-12 as=4.8e-12 pd=2.096e-05 ps=2.096e-05 nrd=0.027 nrs=0.027 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "cp_physical_v14_pdk110_14",
+      "before": "MOFF (ng gateb vss vss) nch w=1e-06 l=1.8e-07 ad=2.4e-13 as=2.4e-13 pd=2.48e-06 ps=2.48e-06",
+      "after": "MOFF (ng gateb vss vss) nch w=1e-06 l=1.8e-07 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "cp_physical_v14_pdk110_14",
+      "before": "MT (tail ng vss vss) nch w=9.999999999999999e-06 l=1e-06 ad=2.4e-12 as=2.4e-12 pd=2.048e-05 ps=2.048e-05",
+      "after": "MT (tail ng vss vss) nch w=9.999999999999999e-06 l=1e-06 ad=4.8e-12 as=4.8e-12 pd=2.096e-05 ps=2.096e-05 nrd=0.027 nrs=0.027 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "cp_physical_v14_pdk110_14",
+      "before": "MIP (out hp tail vss) nch w=8e-06 l=1e-06 ad=1.92e-12 as=1.92e-12 pd=1.648e-05 ps=1.648e-05",
+      "after": "MIP (out hp tail vss) nch w=8e-06 l=1e-06 ad=3.84e-12 as=3.84e-12 pd=1.696e-05 ps=1.696e-05 nrd=0.03375 nrs=0.03375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "cp_physical_v14_pdk110_14",
+      "before": "MIN (mir hn tail vss) nch w=8e-06 l=1e-06 ad=1.92e-12 as=1.92e-12 pd=1.648e-05 ps=1.648e-05",
+      "after": "MIN (mir hn tail vss) nch w=8e-06 l=1e-06 ad=3.84e-12 as=3.84e-12 pd=1.696e-05 ps=1.696e-05 nrd=0.03375 nrs=0.03375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "cp_physical_v14_pdk110_14",
+      "before": "MPD (mir mir vdd vdd) pch w=4e-06 l=1e-06 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=8.48e-06 ps=8.48e-06",
+      "after": "MPD (mir mir vdd vdd) pch w=4e-06 l=1e-06 ad=1.92e-12 as=1.92e-12 pd=8.960000000000001e-06 ps=8.960000000000001e-06 nrd=0.0675 nrs=0.0675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "cp_physical_v14_pdk110_14",
+      "before": "MPO (out mir vdd vdd) pch w=4e-06 l=1e-06 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=8.48e-06 ps=8.48e-06",
+      "after": "MPO (out mir vdd vdd) pch w=4e-06 l=1e-06 ad=1.92e-12 as=1.92e-12 pd=8.960000000000001e-06 ps=8.960000000000001e-06 nrd=0.0675 nrs=0.0675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_nand2_pdk110_15",
+      "before": "MN0 (y a x vss) nch w=1e-06 l=1.8e-07 ad=2.4e-13 as=2.4e-13 pd=2.48e-06 ps=2.48e-06",
+      "after": "MN0 (y a x vss) nch w=1e-06 l=1.8e-07 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_nand2_pdk110_15",
+      "before": "MN1 (x b vss vss) nch w=1e-06 l=1.8e-07 ad=2.4e-13 as=2.4e-13 pd=2.48e-06 ps=2.48e-06",
+      "after": "MN1 (x b vss vss) nch w=1e-06 l=1.8e-07 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_nand2_pdk110_15",
+      "before": "MP0 (y a vdd vdd) pch w=1.25e-06 l=1.8e-07 ad=3e-13 as=3e-13 pd=2.98e-06 ps=2.98e-06",
+      "after": "MP0 (y a vdd vdd) pch w=1.25e-06 l=1.8e-07 ad=6e-13 as=6e-13 pd=3.46e-06 ps=3.46e-06 nrd=0.216 nrs=0.216 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_nand2_pdk110_15",
+      "before": "MP1 (y b vdd vdd) pch w=1.25e-06 l=1.8e-07 ad=3e-13 as=3e-13 pd=2.98e-06 ps=2.98e-06",
+      "after": "MP1 (y b vdd vdd) pch w=1.25e-06 l=1.8e-07 ad=6e-13 as=6e-13 pd=3.46e-06 ps=3.46e-06 nrd=0.216 nrs=0.216 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_tg_pdk110_16",
+      "before": "MN (a on b vss) nch w=1e-06 l=1.8e-07 ad=2.4e-13 as=2.4e-13 pd=2.48e-06 ps=2.48e-06",
+      "after": "MN (a on b vss) nch w=1e-06 l=1.8e-07 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_tg_pdk110_16",
+      "before": "MP (a off b vdd) pch w=2e-06 l=1.8e-07 ad=4.800000000000001e-13 as=4.800000000000001e-13 pd=4.479999999999999e-06 ps=4.479999999999999e-06",
+      "after": "MP (a off b vdd) pch w=2e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_tg_pdk110_18",
+      "before": "MN (a on b vss) nch w=2e-05 l=1.8e-07 ad=4.800000000000001e-12 as=4.800000000000001e-12 pd=4.048e-05 ps=4.048e-05",
+      "after": "MN (a on b vss) nch w=2e-05 l=1.8e-07 ad=9.599999999999999e-12 as=9.599999999999999e-12 pd=4.096e-05 ps=4.096e-05 nrd=0.0135 nrs=0.0135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_tg_pdk110_18",
+      "before": "MP (a off b vdd) pch w=4e-05 l=1.8e-07 ad=9.600000000000001e-12 as=9.600000000000001e-12 pd=8.047999999999999e-05 ps=8.047999999999999e-05",
+      "after": "MP (a off b vdd) pch w=4e-05 l=1.8e-07 ad=1.92e-11 as=1.92e-11 pd=8.096e-05 ps=8.096e-05 nrd=0.00675 nrs=0.00675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_20",
+      "before": "MN (y a vss vss) nch w=2.4e-05 l=1.8e-07 nf=1 ad=5.76e-12 as=5.76e-12 pd=4.848e-05 ps=4.848e-05",
+      "after": "MN (y a vss vss) nch w=2.4e-05 l=1.8e-07 nf=1 ad=1.152e-11 as=1.152e-11 pd=4.896e-05 ps=4.896e-05 nrd=0.01125 nrs=0.01125 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_20",
+      "before": "MP (y a vdd vdd) pch w=5.999999999999999e-05 l=1.8e-07 nf=1 ad=1.44e-11 as=1.44e-11 pd=0.00012048 ps=0.00012048",
+      "after": "MP (y a vdd vdd) pch w=5.999999999999999e-05 l=1.8e-07 nf=1 ad=2.88e-11 as=2.88e-11 pd=0.00012096 ps=0.00012096 nrd=0.0045 nrs=0.0045 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "bank_pulsetrip_v14_pdk110_21",
+      "before": "MMUTE (mux reset vss vss) nch w=2e-06 l=1.8e-07 ad=4.800000000000001e-13 as=4.800000000000001e-13 pd=4.479999999999999e-06 ps=4.479999999999999e-06",
+      "after": "MMUTE (mux reset vss vss) nch w=2e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "ff_fbdelay50_v14_pdk110_22",
+      "before": "MP0 (p0 d vdd vdd) pch w=2e-06 l=1.8e-07 ad=4.800000000000001e-13 as=4.800000000000001e-13 pd=4.479999999999999e-06 ps=4.479999999999999e-06",
+      "after": "MP0 (p0 d vdd vdd) pch w=2e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "ff_fbdelay50_v14_pdk110_22",
+      "before": "MPC0 (b ck p0 vdd) pch w=2e-06 l=1.8e-07 ad=4.800000000000001e-13 as=4.800000000000001e-13 pd=4.479999999999999e-06 ps=4.479999999999999e-06",
+      "after": "MPC0 (b ck p0 vdd) pch w=2e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "ff_fbdelay50_v14_pdk110_22",
+      "before": "MN0 (b dn vss vss) nch w=8e-07 l=1.8e-07 ad=1.92e-13 as=1.92e-13 pd=2.08e-06 ps=2.08e-06",
+      "after": "MN0 (b dn vss vss) nch w=8e-07 l=1.8e-07 ad=3.84e-13 as=3.84e-13 pd=2.56e-06 ps=2.56e-06 nrd=0.3375 nrs=0.3375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "ff_fbdelay50_v14_pdk110_22",
+      "before": "MP1 (a ck vdd vdd) pch w=2e-06 l=1.8e-07 ad=4.800000000000001e-13 as=4.800000000000001e-13 pd=4.479999999999999e-06 ps=4.479999999999999e-06",
+      "after": "MP1 (a ck vdd vdd) pch w=2e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "ff_fbdelay50_v14_pdk110_22",
+      "before": "MN1 (a b n1 vss) nch w=1.6e-06 l=1.8e-07 ad=3.84e-13 as=3.84e-13 pd=3.68e-06 ps=3.68e-06",
+      "after": "MN1 (a b n1 vss) nch w=1.6e-06 l=1.8e-07 ad=7.68e-13 as=7.68e-13 pd=4.16e-06 ps=4.16e-06 nrd=0.16875 nrs=0.16875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "ff_fbdelay50_v14_pdk110_22",
+      "before": "MNC1 (n1 ck vss vss) nch w=1.6e-06 l=1.8e-07 ad=3.84e-13 as=3.84e-13 pd=3.68e-06 ps=3.68e-06",
+      "after": "MNC1 (n1 ck vss vss) nch w=1.6e-06 l=1.8e-07 ad=7.68e-13 as=7.68e-13 pd=4.16e-06 ps=4.16e-06 nrd=0.16875 nrs=0.16875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "ff_fbdelay50_v14_pdk110_22",
+      "before": "MP2 (qb a vdd vdd) pch w=2e-06 l=1.8e-07 ad=4.800000000000001e-13 as=4.800000000000001e-13 pd=4.479999999999999e-06 ps=4.479999999999999e-06",
+      "after": "MP2 (qb a vdd vdd) pch w=2e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "ff_fbdelay50_v14_pdk110_22",
+      "before": "MNC2 (qb ck n2 vss) nch w=1.6e-06 l=1.8e-07 ad=3.84e-13 as=3.84e-13 pd=3.68e-06 ps=3.68e-06",
+      "after": "MNC2 (qb ck n2 vss) nch w=1.6e-06 l=1.8e-07 ad=7.68e-13 as=7.68e-13 pd=4.16e-06 ps=4.16e-06 nrd=0.16875 nrs=0.16875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "ff_fbdelay50_v14_pdk110_22",
+      "before": "MN2 (n2 a vss vss) nch w=1.6e-06 l=1.8e-07 ad=3.84e-13 as=3.84e-13 pd=3.68e-06 ps=3.68e-06",
+      "after": "MN2 (n2 a vss vss) nch w=1.6e-06 l=1.8e-07 ad=7.68e-13 as=7.68e-13 pd=4.16e-06 ps=4.16e-06 nrd=0.16875 nrs=0.16875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_23",
+      "before": "MN (y a vss vss) nch w=8e-07 l=1.8e-07 nf=1 ad=1.92e-13 as=1.92e-13 pd=2.08e-06 ps=2.08e-06",
+      "after": "MN (y a vss vss) nch w=8e-07 l=1.8e-07 nf=1 ad=3.84e-13 as=3.84e-13 pd=2.56e-06 ps=2.56e-06 nrd=0.3375 nrs=0.3375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_23",
+      "before": "MP (y a vdd vdd) pch w=5e-07 l=1.8e-07 nf=1 ad=1.2e-13 as=1.2e-13 pd=1.48e-06 ps=1.48e-06",
+      "after": "MP (y a vdd vdd) pch w=5e-07 l=1.8e-07 nf=1 ad=2.4e-13 as=2.4e-13 pd=1.96e-06 ps=1.96e-06 nrd=0.54 nrs=0.54 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_24",
+      "before": "MN (y a vss vss) nch w=3e-06 l=1.8e-07 nf=1 ad=7.200000000000001e-13 as=7.200000000000001e-13 pd=6.480000000000001e-06 ps=6.480000000000001e-06",
+      "after": "MN (y a vss vss) nch w=3e-06 l=1.8e-07 nf=1 ad=1.44e-12 as=1.44e-12 pd=6.96e-06 ps=6.96e-06 nrd=0.09 nrs=0.09 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_24",
+      "before": "MP (y a vdd vdd) pch w=3e-06 l=1.8e-07 nf=1 ad=7.200000000000001e-13 as=7.200000000000001e-13 pd=6.480000000000001e-06 ps=6.480000000000001e-06",
+      "after": "MP (y a vdd vdd) pch w=3e-06 l=1.8e-07 nf=1 ad=1.44e-12 as=1.44e-12 pd=6.96e-06 ps=6.96e-06 nrd=0.09 nrs=0.09 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_tspc_inv_pdk110_25",
+      "before": "MP0 (p0 d vdd vdd) pch w=2e-06 l=1.8e-07 ad=4.8e-13 as=4.8e-13 pd=4.48e-06 ps=4.48e-06",
+      "after": "MP0 (p0 d vdd vdd) pch w=2e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_tspc_inv_pdk110_25",
+      "before": "MPC0 (b ck p0 vdd) pch w=2e-06 l=1.8e-07 ad=4.8e-13 as=4.8e-13 pd=4.48e-06 ps=4.48e-06",
+      "after": "MPC0 (b ck p0 vdd) pch w=2e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_tspc_inv_pdk110_25",
+      "before": "MN0 (b d vss vss) nch w=8.000000000000001e-07 l=1.8e-07 ad=1.92e-13 as=1.92e-13 pd=2.08e-06 ps=2.08e-06",
+      "after": "MN0 (b d vss vss) nch w=8.000000000000001e-07 l=1.8e-07 ad=3.84e-13 as=3.84e-13 pd=2.56e-06 ps=2.56e-06 nrd=0.3375 nrs=0.3375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_tspc_inv_pdk110_25",
+      "before": "MP1 (a ck vdd vdd) pch w=2e-06 l=1.8e-07 ad=4.8e-13 as=4.8e-13 pd=4.48e-06 ps=4.48e-06",
+      "after": "MP1 (a ck vdd vdd) pch w=2e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_tspc_inv_pdk110_25",
+      "before": "MN1 (a b n1 vss) nch w=1.6e-06 l=1.8e-07 ad=3.84e-13 as=3.84e-13 pd=3.68e-06 ps=3.68e-06",
+      "after": "MN1 (a b n1 vss) nch w=1.6e-06 l=1.8e-07 ad=7.68e-13 as=7.68e-13 pd=4.16e-06 ps=4.16e-06 nrd=0.16875 nrs=0.16875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_tspc_inv_pdk110_25",
+      "before": "MNC1 (n1 ck vss vss) nch w=1.6e-06 l=1.8e-07 ad=3.84e-13 as=3.84e-13 pd=3.68e-06 ps=3.68e-06",
+      "after": "MNC1 (n1 ck vss vss) nch w=1.6e-06 l=1.8e-07 ad=7.68e-13 as=7.68e-13 pd=4.16e-06 ps=4.16e-06 nrd=0.16875 nrs=0.16875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_tspc_inv_pdk110_25",
+      "before": "MP2 (qb a vdd vdd) pch w=2e-06 l=1.8e-07 ad=4.8e-13 as=4.8e-13 pd=4.48e-06 ps=4.48e-06",
+      "after": "MP2 (qb a vdd vdd) pch w=2e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_tspc_inv_pdk110_25",
+      "before": "MNC2 (qb ck n2 vss) nch w=1.6e-06 l=1.8e-07 ad=3.84e-13 as=3.84e-13 pd=3.68e-06 ps=3.68e-06",
+      "after": "MNC2 (qb ck n2 vss) nch w=1.6e-06 l=1.8e-07 ad=7.68e-13 as=7.68e-13 pd=4.16e-06 ps=4.16e-06 nrd=0.16875 nrs=0.16875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_tspc_inv_pdk110_25",
+      "before": "MN2 (n2 a vss vss) nch w=1.6e-06 l=1.8e-07 ad=3.84e-13 as=3.84e-13 pd=3.68e-06 ps=3.68e-06",
+      "after": "MN2 (n2 a vss vss) nch w=1.6e-06 l=1.8e-07 ad=7.68e-13 as=7.68e-13 pd=4.16e-06 ps=4.16e-06 nrd=0.16875 nrs=0.16875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_26",
+      "before": "MN (y a vss vss) nch w=8e-07 l=1.8e-07 nf=1 ad=1.92e-13 as=1.92e-13 pd=2.08e-06 ps=2.08e-06",
+      "after": "MN (y a vss vss) nch w=8e-07 l=1.8e-07 nf=1 ad=3.84e-13 as=3.84e-13 pd=2.56e-06 ps=2.56e-06 nrd=0.3375 nrs=0.3375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_26",
+      "before": "MP (y a vdd vdd) pch w=1.6e-06 l=1.8e-07 nf=1 ad=3.84e-13 as=3.84e-13 pd=3.68e-06 ps=3.68e-06",
+      "after": "MP (y a vdd vdd) pch w=1.6e-06 l=1.8e-07 nf=1 ad=7.68e-13 as=7.68e-13 pd=4.16e-06 ps=4.16e-06 nrd=0.16875 nrs=0.16875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_27",
+      "before": "MN (y a vss vss) nch w=2e-06 l=1.8e-07 nf=1 ad=4.800000000000001e-13 as=4.800000000000001e-13 pd=4.479999999999999e-06 ps=4.479999999999999e-06",
+      "after": "MN (y a vss vss) nch w=2e-06 l=1.8e-07 nf=1 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_27",
+      "before": "MP (y a vdd vdd) pch w=4e-06 l=1.8e-07 nf=1 ad=9.600000000000002e-13 as=9.600000000000002e-13 pd=8.48e-06 ps=8.48e-06",
+      "after": "MP (y a vdd vdd) pch w=4e-06 l=1.8e-07 nf=1 ad=1.92e-12 as=1.92e-12 pd=8.960000000000001e-06 ps=8.960000000000001e-06 nrd=0.0675 nrs=0.0675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_28",
+      "before": "MN (y a vss vss) nch w=6e-06 l=1.8e-07 nf=1 ad=1.44e-12 as=1.44e-12 pd=1.248e-05 ps=1.248e-05",
+      "after": "MN (y a vss vss) nch w=6e-06 l=1.8e-07 nf=1 ad=2.88e-12 as=2.88e-12 pd=1.296e-05 ps=1.296e-05 nrd=0.045 nrs=0.045 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_28",
+      "before": "MP (y a vdd vdd) pch w=1.2e-05 l=1.8e-07 nf=1 ad=2.88e-12 as=2.88e-12 pd=2.448e-05 ps=2.448e-05",
+      "after": "MP (y a vdd vdd) pch w=1.2e-05 l=1.8e-07 nf=1 ad=5.76e-12 as=5.76e-12 pd=2.496e-05 ps=2.496e-05 nrd=0.0225 nrs=0.0225 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_29",
+      "before": "MN (y a vss vss) nch w=5e-07 l=1.8e-07 nf=1 ad=1.2e-13 as=1.2e-13 pd=1.48e-06 ps=1.48e-06",
+      "after": "MN (y a vss vss) nch w=5e-07 l=1.8e-07 nf=1 ad=2.4e-13 as=2.4e-13 pd=1.96e-06 ps=1.96e-06 nrd=0.54 nrs=0.54 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_29",
+      "before": "MP (y a vdd vdd) pch w=1e-06 l=1.8e-07 nf=1 ad=2.4e-13 as=2.4e-13 pd=2.48e-06 ps=2.48e-06",
+      "after": "MP (y a vdd vdd) pch w=1e-06 l=1.8e-07 nf=1 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_31",
+      "before": "MN (y a vss vss) nch w=4e-06 l=1.8e-07 nf=1 ad=9.600000000000002e-13 as=9.600000000000002e-13 pd=8.48e-06 ps=8.48e-06",
+      "after": "MN (y a vss vss) nch w=4e-06 l=1.8e-07 nf=1 ad=1.92e-12 as=1.92e-12 pd=8.960000000000001e-06 ps=8.960000000000001e-06 nrd=0.0675 nrs=0.0675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_31",
+      "before": "MP (y a vdd vdd) pch w=8e-06 l=1.8e-07 nf=1 ad=1.92e-12 as=1.92e-12 pd=1.648e-05 ps=1.648e-05",
+      "after": "MP (y a vdd vdd) pch w=8e-06 l=1.8e-07 nf=1 ad=3.84e-12 as=3.84e-12 pd=1.696e-05 ps=1.696e-05 nrd=0.03375 nrs=0.03375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "nor_fast_v14_pdk110_32",
+      "before": "MP0 (p a vdd vdd) pch w=8e-06 l=1.8e-07 ad=1.92e-12 as=1.92e-12 pd=1.648e-05 ps=1.648e-05",
+      "after": "MP0 (p a vdd vdd) pch w=8e-06 l=1.8e-07 ad=3.84e-12 as=3.84e-12 pd=1.696e-05 ps=1.696e-05 nrd=0.03375 nrs=0.03375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "nor_fast_v14_pdk110_32",
+      "before": "MP1 (out b p vdd) pch w=8e-06 l=1.8e-07 ad=1.92e-12 as=1.92e-12 pd=1.648e-05 ps=1.648e-05",
+      "after": "MP1 (out b p vdd) pch w=8e-06 l=1.8e-07 ad=3.84e-12 as=3.84e-12 pd=1.696e-05 ps=1.696e-05 nrd=0.03375 nrs=0.03375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "nor_fast_v14_pdk110_32",
+      "before": "MN0 (out a vss vss) nch w=2e-06 l=1.8e-07 ad=4.800000000000001e-13 as=4.800000000000001e-13 pd=4.479999999999999e-06 ps=4.479999999999999e-06",
+      "after": "MN0 (out a vss vss) nch w=2e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "nor_fast_v14_pdk110_32",
+      "before": "MN1 (out b vss vss) nch w=2e-06 l=1.8e-07 ad=4.800000000000001e-13 as=4.800000000000001e-13 pd=4.479999999999999e-06 ps=4.479999999999999e-06",
+      "after": "MN1 (out b vss vss) nch w=2e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_tg_pdk110_35",
+      "before": "MN (a on b vss) nch w=5e-07 l=1.8e-07 ad=1.2e-13 as=1.2e-13 pd=1.48e-06 ps=1.48e-06",
+      "after": "MN (a on b vss) nch w=5e-07 l=1.8e-07 ad=2.4e-13 as=2.4e-13 pd=1.96e-06 ps=1.96e-06 nrd=0.54 nrs=0.54 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_tg_pdk110_35",
+      "before": "MP (a off b vdd) pch w=1e-06 l=1.8e-07 ad=2.4e-13 as=2.4e-13 pd=2.48e-06 ps=2.48e-06",
+      "after": "MP (a off b vdd) pch w=1e-06 l=1.8e-07 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_36",
+      "before": "MN (y a vss vss) nch w=1e-06 l=1.8e-07 nf=1 ad=2.4e-13 as=2.4e-13 pd=2.48e-06 ps=2.48e-06",
+      "after": "MN (y a vss vss) nch w=1e-06 l=1.8e-07 nf=1 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_36",
+      "before": "MP (y a vdd vdd) pch w=2e-06 l=1.8e-07 nf=1 ad=4.800000000000001e-13 as=4.800000000000001e-13 pd=4.479999999999999e-06 ps=4.479999999999999e-06",
+      "after": "MP (y a vdd vdd) pch w=2e-06 l=1.8e-07 nf=1 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_37",
+      "before": "MN (y a vss vss) nch w=3e-06 l=1.8e-07 nf=1 ad=7.200000000000001e-13 as=7.200000000000001e-13 pd=6.480000000000001e-06 ps=6.480000000000001e-06",
+      "after": "MN (y a vss vss) nch w=3e-06 l=1.8e-07 nf=1 ad=1.44e-12 as=1.44e-12 pd=6.96e-06 ps=6.96e-06 nrd=0.09 nrs=0.09 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_37",
+      "before": "MP (y a vdd vdd) pch w=6e-06 l=1.8e-07 nf=1 ad=1.44e-12 as=1.44e-12 pd=1.248e-05 ps=1.248e-05",
+      "after": "MP (y a vdd vdd) pch w=6e-06 l=1.8e-07 nf=1 ad=2.88e-12 as=2.88e-12 pd=1.296e-05 ps=1.296e-05 nrd=0.045 nrs=0.045 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_38",
+      "before": "MN (y a vss vss) nch w=8e-06 l=1.8e-07 nf=1 ad=1.92e-12 as=1.92e-12 pd=1.648e-05 ps=1.648e-05",
+      "after": "MN (y a vss vss) nch w=8e-06 l=1.8e-07 nf=1 ad=3.84e-12 as=3.84e-12 pd=1.696e-05 ps=1.696e-05 nrd=0.03375 nrs=0.03375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_38",
+      "before": "MP (y a vdd vdd) pch w=1.6e-05 l=1.8e-07 nf=1 ad=3.840000000000001e-12 as=3.840000000000001e-12 pd=3.248e-05 ps=3.248e-05",
+      "after": "MP (y a vdd vdd) pch w=1.6e-05 l=1.8e-07 nf=1 ad=7.68e-12 as=7.68e-12 pd=3.296e-05 ps=3.296e-05 nrd=0.016875 nrs=0.016875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_39",
+      "before": "MN (y a vss vss) nch w=2.4e-05 l=1.8e-07 nf=1 ad=5.76e-12 as=5.76e-12 pd=4.848e-05 ps=4.848e-05",
+      "after": "MN (y a vss vss) nch w=2.4e-05 l=1.8e-07 nf=1 ad=1.152e-11 as=1.152e-11 pd=4.896e-05 ps=4.896e-05 nrd=0.01125 nrs=0.01125 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_39",
+      "before": "MP (y a vdd vdd) pch w=4.8e-05 l=1.8e-07 nf=1 ad=1.152e-11 as=1.152e-11 pd=9.648e-05 ps=9.648e-05",
+      "after": "MP (y a vdd vdd) pch w=4.8e-05 l=1.8e-07 nf=1 ad=2.304e-11 as=2.304e-11 pd=9.695999999999999e-05 ps=9.695999999999999e-05 nrd=0.005625 nrs=0.005625 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_40",
+      "before": "MN (y a vss vss) nch w=8e-07 l=1.8e-07 nf=1 ad=1.92e-13 as=1.92e-13 pd=2.08e-06 ps=2.08e-06",
+      "after": "MN (y a vss vss) nch w=8e-07 l=1.8e-07 nf=1 ad=3.84e-13 as=3.84e-13 pd=2.56e-06 ps=2.56e-06 nrd=0.3375 nrs=0.3375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_40",
+      "before": "MP (y a vdd vdd) pch w=2e-06 l=1.8e-07 nf=1 ad=4.800000000000001e-13 as=4.800000000000001e-13 pd=4.479999999999999e-06 ps=4.479999999999999e-06",
+      "after": "MP (y a vdd vdd) pch w=2e-06 l=1.8e-07 nf=1 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_41",
+      "before": "MN (y a vss vss) nch w=4e-07 l=1e-06 nf=1 ad=9.600000000000001e-14 as=9.600000000000001e-14 pd=1.28e-06 ps=1.28e-06",
+      "after": "MN (y a vss vss) nch w=4e-07 l=1e-06 nf=1 ad=2.164e-13 as=2.164e-13 pd=1.88e-06 ps=1.88e-06 nrd=0.775 nrs=0.775 sa=5.2e-07 sb=5.2e-07 sd=6.2e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_41",
+      "before": "MP (y a vdd vdd) pch w=8e-07 l=1e-06 nf=1 ad=1.92e-13 as=1.92e-13 pd=2.08e-06 ps=2.08e-06",
+      "after": "MP (y a vdd vdd) pch w=8e-07 l=1e-06 nf=1 ad=3.84e-13 as=3.84e-13 pd=2.56e-06 ps=2.56e-06 nrd=0.3375 nrs=0.3375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_tg_pdk110_43",
+      "before": "MN (a on b vss) nch w=2e-06 l=1.8e-07 ad=4.800000000000001e-13 as=4.800000000000001e-13 pd=4.479999999999999e-06 ps=4.479999999999999e-06",
+      "after": "MN (a on b vss) nch w=2e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_tg_pdk110_43",
+      "before": "MP (a off b vdd) pch w=4e-06 l=1.8e-07 ad=9.600000000000002e-13 as=9.600000000000002e-13 pd=8.48e-06 ps=8.48e-06",
+      "after": "MP (a off b vdd) pch w=4e-06 l=1.8e-07 ad=1.92e-12 as=1.92e-12 pd=8.960000000000001e-06 ps=8.960000000000001e-06 nrd=0.0675 nrs=0.0675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_45",
+      "before": "MN (y a vss vss) nch w=2.4e-07 l=1e-06 nf=1 ad=5.76e-14 as=5.76e-14 pd=9.600000000000001e-07 ps=9.600000000000001e-07",
+      "after": "MN (y a vss vss) nch w=2.4e-07 l=1e-06 nf=1 ad=2.004e-13 as=2.004e-13 pd=1.88e-06 ps=1.88e-06 nrd=1.29167 nrs=1.29167 sa=5.2e-07 sb=5.2e-07 sd=6.2e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_45",
+      "before": "MP (y a vdd vdd) pch w=4.8e-07 l=1e-06 nf=1 ad=1.152e-13 as=1.152e-13 pd=1.44e-06 ps=1.44e-06",
+      "after": "MP (y a vdd vdd) pch w=4.8e-07 l=1e-06 nf=1 ad=2.304e-13 as=2.304e-13 pd=1.92e-06 ps=1.92e-06 nrd=0.5625 nrs=0.5625 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_48",
+      "before": "MN (y a vss vss) nch w=5.000000000000001e-07 l=1.8e-07 nf=1 ad=1.2e-13 as=1.2e-13 pd=1.48e-06 ps=1.48e-06",
+      "after": "MN (y a vss vss) nch w=5.000000000000001e-07 l=1.8e-07 nf=1 ad=2.4e-13 as=2.4e-13 pd=1.96e-06 ps=1.96e-06 nrd=0.54 nrs=0.54 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_48",
+      "before": "MP (y a vdd vdd) pch w=1.25e-06 l=1.8e-07 nf=1 ad=3e-13 as=3e-13 pd=2.98e-06 ps=2.98e-06",
+      "after": "MP (y a vdd vdd) pch w=1.25e-06 l=1.8e-07 nf=1 ad=6e-13 as=6e-13 pd=3.46e-06 ps=3.46e-06 nrd=0.216 nrs=0.216 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "rtcomb_ff_v13_pdk110_50",
+      "before": "MP0 (p0 d vdd vdd) pch w=9.6e-06 l=1.8e-07 ad=2.304e-12 as=2.304e-12 pd=1.968e-05 ps=1.968e-05",
+      "after": "MP0 (p0 d vdd vdd) pch w=9.6e-06 l=1.8e-07 ad=4.608e-12 as=4.608e-12 pd=2.016e-05 ps=2.016e-05 nrd=0.028125 nrs=0.028125 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "rtcomb_ff_v13_pdk110_50",
+      "before": "MPC0 (b ck p0 vdd) pch w=9.6e-06 l=1.8e-07 ad=2.304e-12 as=2.304e-12 pd=1.968e-05 ps=1.968e-05",
+      "after": "MPC0 (b ck p0 vdd) pch w=9.6e-06 l=1.8e-07 ad=4.608e-12 as=4.608e-12 pd=2.016e-05 ps=2.016e-05 nrd=0.028125 nrs=0.028125 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "rtcomb_ff_v13_pdk110_50",
+      "before": "MN0 (b d vss vss) nch w=3.840000000000001e-06 l=1.8e-07 ad=9.216000000000002e-13 as=9.216000000000002e-13 pd=8.160000000000001e-06 ps=8.160000000000001e-06",
+      "after": "MN0 (b d vss vss) nch w=3.840000000000001e-06 l=1.8e-07 ad=1.8432e-12 as=1.8432e-12 pd=8.64e-06 ps=8.64e-06 nrd=0.0703125 nrs=0.0703125 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "rtcomb_ff_v13_pdk110_50",
+      "before": "MP1 (a ck vdd vdd) pch w=9.6e-06 l=1.8e-07 ad=2.304e-12 as=2.304e-12 pd=1.968e-05 ps=1.968e-05",
+      "after": "MP1 (a ck vdd vdd) pch w=9.6e-06 l=1.8e-07 ad=4.608e-12 as=4.608e-12 pd=2.016e-05 ps=2.016e-05 nrd=0.028125 nrs=0.028125 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "rtcomb_ff_v13_pdk110_50",
+      "before": "MN1 (a b n1 vss) nch w=1.152e-05 l=1.8e-07 ad=2.764800000000001e-12 as=2.764800000000001e-12 pd=2.352e-05 ps=2.352e-05",
+      "after": "MN1 (a b n1 vss) nch w=1.152e-05 l=1.8e-07 ad=5.5296e-12 as=5.5296e-12 pd=2.4e-05 ps=2.4e-05 nrd=0.0234375 nrs=0.0234375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "rtcomb_ff_v13_pdk110_50",
+      "before": "MNC1 (n1 ck vss vss) nch w=1.152e-05 l=1.8e-07 ad=2.764800000000001e-12 as=2.764800000000001e-12 pd=2.352e-05 ps=2.352e-05",
+      "after": "MNC1 (n1 ck vss vss) nch w=1.152e-05 l=1.8e-07 ad=5.5296e-12 as=5.5296e-12 pd=2.4e-05 ps=2.4e-05 nrd=0.0234375 nrs=0.0234375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "rtcomb_ff_v13_pdk110_50",
+      "before": "MP2 (qb a vdd vdd) pch w=1.44e-05 l=1.8e-07 ad=3.456e-12 as=3.456e-12 pd=2.928e-05 ps=2.928e-05",
+      "after": "MP2 (qb a vdd vdd) pch w=1.44e-05 l=1.8e-07 ad=6.912e-12 as=6.912e-12 pd=2.976e-05 ps=2.976e-05 nrd=0.01875 nrs=0.01875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "rtcomb_ff_v13_pdk110_50",
+      "before": "MNC2 (qb ck n2 vss) nch w=7.679999999999999e-06 l=1.8e-07 ad=1.8432e-12 as=1.8432e-12 pd=1.584e-05 ps=1.584e-05",
+      "after": "MNC2 (qb ck n2 vss) nch w=7.679999999999999e-06 l=1.8e-07 ad=3.6864e-12 as=3.6864e-12 pd=1.632e-05 ps=1.632e-05 nrd=0.0351562 nrs=0.0351562 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "rtcomb_ff_v13_pdk110_50",
+      "before": "MN2 (n2 a vss vss) nch w=7.679999999999999e-06 l=1.8e-07 ad=1.8432e-12 as=1.8432e-12 pd=1.584e-05 ps=1.584e-05",
+      "after": "MN2 (n2 a vss vss) nch w=7.679999999999999e-06 l=1.8e-07 ad=3.6864e-12 as=3.6864e-12 pd=1.632e-05 ps=1.632e-05 nrd=0.0351562 nrs=0.0351562 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_51",
+      "before": "MN (y a vss vss) nch w=1.2e-05 l=1.8e-07 nf=1 ad=2.88e-12 as=2.88e-12 pd=2.448e-05 ps=2.448e-05",
+      "after": "MN (y a vss vss) nch w=1.2e-05 l=1.8e-07 nf=1 ad=5.76e-12 as=5.76e-12 pd=2.496e-05 ps=2.496e-05 nrd=0.0225 nrs=0.0225 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_51",
+      "before": "MP (y a vdd vdd) pch w=2e-06 l=1.8e-07 nf=1 ad=4.800000000000001e-13 as=4.800000000000001e-13 pd=4.479999999999999e-06 ps=4.479999999999999e-06",
+      "after": "MP (y a vdd vdd) pch w=2e-06 l=1.8e-07 nf=1 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_52",
+      "before": "MN (y a vss vss) nch w=3.2e-06 l=1.8e-07 nf=1 ad=7.680000000000001e-13 as=7.680000000000001e-13 pd=6.88e-06 ps=6.88e-06",
+      "after": "MN (y a vss vss) nch w=3.2e-06 l=1.8e-07 nf=1 ad=1.536e-12 as=1.536e-12 pd=7.36e-06 ps=7.36e-06 nrd=0.08437500000000001 nrs=0.08437500000000001 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_52",
+      "before": "MP (y a vdd vdd) pch w=1.2e-05 l=1.8e-07 nf=1 ad=2.88e-12 as=2.88e-12 pd=2.448e-05 ps=2.448e-05",
+      "after": "MP (y a vdd vdd) pch w=1.2e-05 l=1.8e-07 nf=1 ad=5.76e-12 as=5.76e-12 pd=2.496e-05 ps=2.496e-05 nrd=0.0225 nrs=0.0225 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "validity_physical_v14_pdk110_53",
+      "before": "MD (rf rf env vss) nch w=5e-07 l=1.8e-07 ad=1.2e-13 as=1.2e-13 pd=1.48e-06 ps=1.48e-06",
+      "after": "MD (rf rf env vss) nch w=5e-07 l=1.8e-07 ad=2.4e-13 as=2.4e-13 pd=1.96e-06 ps=1.96e-06 nrd=0.54 nrs=0.54 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "validity_physical_v14_pdk110_53",
+      "before": "MR (vdd vdd envref vss) nch w=5e-07 l=1.8e-07 ad=1.2e-13 as=1.2e-13 pd=1.48e-06 ps=1.48e-06",
+      "after": "MR (vdd vdd envref vss) nch w=5e-07 l=1.8e-07 ad=2.4e-13 as=2.4e-13 pd=1.96e-06 ps=1.96e-06 nrd=0.54 nrs=0.54 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "cmp_physical_v14_pdk110_54",
+      "before": "MB (nb nb vss vss) nch w=1e-06 l=1e-06 ad=2.4e-13 as=2.4e-13 pd=2.48e-06 ps=2.48e-06",
+      "after": "MB (nb nb vss vss) nch w=1e-06 l=1e-06 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "cmp_physical_v14_pdk110_54",
+      "before": "MT (tail nb vss vss) nch w=2e-06 l=1e-06 ad=4.800000000000001e-13 as=4.800000000000001e-13 pd=4.479999999999999e-06 ps=4.479999999999999e-06",
+      "after": "MT (tail nb vss vss) nch w=2e-06 l=1e-06 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "cmp_physical_v14_pdk110_54",
+      "before": "MP (left vp tail vss) nch w=1e-06 l=5.000000000000001e-07 ad=2.4e-13 as=2.4e-13 pd=2.48e-06 ps=2.48e-06",
+      "after": "MP (left vp tail vss) nch w=1e-06 l=5.000000000000001e-07 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "cmp_physical_v14_pdk110_54",
+      "before": "MN (sense vn tail vss) nch w=1e-06 l=5.000000000000001e-07 ad=2.4e-13 as=2.4e-13 pd=2.48e-06 ps=2.48e-06",
+      "after": "MN (sense vn tail vss) nch w=1e-06 l=5.000000000000001e-07 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "cmp_physical_v14_pdk110_54",
+      "before": "PL (left left vdd vdd) pch w=2e-06 l=1e-06 ad=4.800000000000001e-13 as=4.800000000000001e-13 pd=4.479999999999999e-06 ps=4.479999999999999e-06",
+      "after": "PL (left left vdd vdd) pch w=2e-06 l=1e-06 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "cmp_physical_v14_pdk110_54",
+      "before": "PR (sense left vdd vdd) pch w=2e-06 l=1e-06 ad=4.800000000000001e-13 as=4.800000000000001e-13 pd=4.479999999999999e-06 ps=4.479999999999999e-06",
+      "after": "PR (sense left vdd vdd) pch w=2e-06 l=1e-06 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_55",
+      "before": "MN (y a vss vss) nch w=5e-07 l=1.8e-07 nf=1 ad=1.2e-13 as=1.2e-13 pd=1.48e-06 ps=1.48e-06",
+      "after": "MN (y a vss vss) nch w=5e-07 l=1.8e-07 nf=1 ad=2.4e-13 as=2.4e-13 pd=1.96e-06 ps=1.96e-06 nrd=0.54 nrs=0.54 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_55",
+      "before": "MP (y a vdd vdd) pch w=1.25e-06 l=1.8e-07 nf=1 ad=3e-13 as=3e-13 pd=2.98e-06 ps=2.98e-06",
+      "after": "MP (y a vdd vdd) pch w=1.25e-06 l=1.8e-07 nf=1 ad=6e-13 as=6e-13 pd=3.46e-06 ps=3.46e-06 nrd=0.216 nrs=0.216 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_59",
+      "before": "MN (y a vss vss) nch w=2e-06 l=1.8e-07 nf=1 ad=4.800000000000001e-13 as=4.800000000000001e-13 pd=4.479999999999999e-06 ps=4.479999999999999e-06",
+      "after": "MN (y a vss vss) nch w=2e-06 l=1.8e-07 nf=1 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_59",
+      "before": "MP (y a vdd vdd) pch w=5e-06 l=1.8e-07 nf=1 ad=1.2e-12 as=1.2e-12 pd=1.048e-05 ps=1.048e-05",
+      "after": "MP (y a vdd vdd) pch w=5e-06 l=1.8e-07 nf=1 ad=2.4e-12 as=2.4e-12 pd=1.096e-05 ps=1.096e-05 nrd=0.054 nrs=0.054 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_tg_pdk110_61",
+      "before": "MN (a on b vss) nch w=8.000000000000001e-07 l=1.8e-07 ad=1.92e-13 as=1.92e-13 pd=2.08e-06 ps=2.08e-06",
+      "after": "MN (a on b vss) nch w=8.000000000000001e-07 l=1.8e-07 ad=3.84e-13 as=3.84e-13 pd=2.56e-06 ps=2.56e-06 nrd=0.3375 nrs=0.3375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_tg_pdk110_61",
+      "before": "MP (a off b vdd) pch w=1.6e-06 l=1.8e-07 ad=3.84e-13 as=3.84e-13 pd=3.68e-06 ps=3.68e-06",
+      "after": "MP (a off b vdd) pch w=1.6e-06 l=1.8e-07 ad=7.68e-13 as=7.68e-13 pd=4.16e-06 ps=4.16e-06 nrd=0.16875 nrs=0.16875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_62",
+      "before": "MN (y a vss vss) nch w=8.000000000000001e-07 l=1.8e-07 nf=1 ad=1.92e-13 as=1.92e-13 pd=2.08e-06 ps=2.08e-06",
+      "after": "MN (y a vss vss) nch w=8.000000000000001e-07 l=1.8e-07 nf=1 ad=3.84e-13 as=3.84e-13 pd=2.56e-06 ps=2.56e-06 nrd=0.3375 nrs=0.3375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_62",
+      "before": "MP (y a vdd vdd) pch w=2e-06 l=1.8e-07 nf=1 ad=4.800000000000001e-13 as=4.800000000000001e-13 pd=4.479999999999999e-06 ps=4.479999999999999e-06",
+      "after": "MP (y a vdd vdd) pch w=2e-06 l=1.8e-07 nf=1 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_tg_pdk110_63",
+      "before": "MN (a on b vss) nch w=4e-07 l=1.8e-07 ad=9.600000000000002e-14 as=9.600000000000002e-14 pd=1.28e-06 ps=1.28e-06",
+      "after": "MN (a on b vss) nch w=4e-07 l=1.8e-07 ad=2.164e-13 as=2.164e-13 pd=1.88e-06 ps=1.88e-06 nrd=0.775 nrs=0.775 sa=5.2e-07 sb=5.2e-07 sd=6.2e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_tg_pdk110_63",
+      "before": "MP (a off b vdd) pch w=8.000000000000001e-07 l=1.8e-07 ad=1.92e-13 as=1.92e-13 pd=2.08e-06 ps=2.08e-06",
+      "after": "MP (a off b vdd) pch w=8.000000000000001e-07 l=1.8e-07 ad=3.84e-13 as=3.84e-13 pd=2.56e-06 ps=2.56e-06 nrd=0.3375 nrs=0.3375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_tg_pdk110_65",
+      "before": "MN (a on b vss) nch w=5.000000000000001e-07 l=1.8e-07 ad=1.2e-13 as=1.2e-13 pd=1.48e-06 ps=1.48e-06",
+      "after": "MN (a on b vss) nch w=5.000000000000001e-07 l=1.8e-07 ad=2.4e-13 as=2.4e-13 pd=1.96e-06 ps=1.96e-06 nrd=0.54 nrs=0.54 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_tg_pdk110_65",
+      "before": "MP (a off b vdd) pch w=1e-06 l=1.8e-07 ad=2.4e-13 as=2.4e-13 pd=2.48e-06 ps=2.48e-06",
+      "after": "MP (a off b vdd) pch w=1e-06 l=1.8e-07 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_nor2_pdk110_68",
+      "before": "MP0 (p a vdd vdd) pch w=4e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=8.48e-06 ps=8.48e-06",
+      "after": "MP0 (p a vdd vdd) pch w=4e-06 l=1.8e-07 ad=1.92e-12 as=1.92e-12 pd=8.960000000000001e-06 ps=8.960000000000001e-06 nrd=0.0675 nrs=0.0675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_nor2_pdk110_68",
+      "before": "MP1 (y b p vdd) pch w=4e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=8.48e-06 ps=8.48e-06",
+      "after": "MP1 (y b p vdd) pch w=4e-06 l=1.8e-07 ad=1.92e-12 as=1.92e-12 pd=8.960000000000001e-06 ps=8.960000000000001e-06 nrd=0.0675 nrs=0.0675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_nor2_pdk110_68",
+      "before": "MN0 (y a vss vss) nch w=1e-06 l=1.8e-07 ad=2.4e-13 as=2.4e-13 pd=2.48e-06 ps=2.48e-06",
+      "after": "MN0 (y a vss vss) nch w=1e-06 l=1.8e-07 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_nor2_pdk110_68",
+      "before": "MN1 (y b vss vss) nch w=1e-06 l=1.8e-07 ad=2.4e-13 as=2.4e-13 pd=2.48e-06 ps=2.48e-06",
+      "after": "MN1 (y b vss vss) nch w=1e-06 l=1.8e-07 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "tx_fll_dac_pdk110_75",
+      "before": "MP (vd enable vdd vdd) pch w=2e-05 l=1.8e-07 ad=4.8e-12 as=4.8e-12 pd=4.047999999999999e-05 ps=4.047999999999999e-05",
+      "after": "MP (vd enable vdd vdd) pch w=2e-05 l=1.8e-07 ad=9.599999999999999e-12 as=9.599999999999999e-12 pd=4.096e-05 ps=4.096e-05 nrd=0.0135 nrs=0.0135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_76",
+      "before": "MN (y a vss vss) nch w=5e-06 l=1.8e-07 nf=1 ad=1.2e-12 as=1.2e-12 pd=1.048e-05 ps=1.048e-05",
+      "after": "MN (y a vss vss) nch w=5e-06 l=1.8e-07 nf=1 ad=2.4e-12 as=2.4e-12 pd=1.096e-05 ps=1.096e-05 nrd=0.054 nrs=0.054 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_76",
+      "before": "MP (y a vdd vdd) pch w=1.25e-05 l=1.8e-07 nf=1 ad=3e-12 as=3e-12 pd=2.548e-05 ps=2.548e-05",
+      "after": "MP (y a vdd vdd) pch w=1.25e-05 l=1.8e-07 nf=1 ad=6e-12 as=6e-12 pd=2.596e-05 ps=2.596e-05 nrd=0.0216 nrs=0.0216 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_79",
+      "before": "MN (y a vss vss) nch w=5.000000000000001e-07 l=3.6e-07 nf=1 ad=1.2e-13 as=1.2e-13 pd=1.48e-06 ps=1.48e-06",
+      "after": "MN (y a vss vss) nch w=5.000000000000001e-07 l=3.6e-07 nf=1 ad=2.4e-13 as=2.4e-13 pd=1.96e-06 ps=1.96e-06 nrd=0.54 nrs=0.54 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    },
+    {
+      "specialized_subckt": "pll_inv_pdk110_79",
+      "before": "MP (y a vdd vdd) pch w=1.25e-06 l=3.6e-07 nf=1 ad=3e-13 as=3e-13 pd=2.98e-06 ps=2.98e-06",
+      "after": "MP (y a vdd vdd) pch w=1.25e-06 l=3.6e-07 nf=1 ad=6e-13 as=6e-13 pd=3.46e-06 ps=3.46e-06 nrd=0.216 nrs=0.216 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0"
+    }
+  ],
+  "geometry_policy": {
+    "nf": 1,
+    "m": 1,
+    "w_l_unchanged": true,
+    "vshareSD": "None",
+    "calcDiff": true,
+    "calcParam": true,
+    "wpeflag": "off",
+    "meaning": "PDK default single-finger unshared-diffusion geometry; not actual layout or PEX; WPE distances not invented"
+  },
+  "nmoscap": "Existing PDK nmoscap primitive and its lr/wr/mr remain unchanged",
+  "outputs_sha256": {
+    "before": "d69c8d28579cdb915ad1bb980bae515e5dbfaa1aebe55e3245402447176dd229",
+    "after": "260a50e7e62d0d25cfdfb21d6004a22f31ca38544632329448bea811dcd38f62"
+  }
+}

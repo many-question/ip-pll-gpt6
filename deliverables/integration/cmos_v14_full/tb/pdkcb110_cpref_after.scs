@@ -1,0 +1,22 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt
+simulator lang=spectre insensitive=no
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt_bbmvar
+simulator lang=spectre insensitive=no
+include "rt4_callback110_after.scs"
+simulatorOptions options reltol=1e-3 vabstol=1e-6 iabstol=1e-12 temp=27
+VDD (vdd 0) vsource dc=1.2
+VR (ref 0) vsource type=pulse val0=0 val1=1.2 period=41.6666666666667n width=20.8233333333333n rise=10p fall=10p delay=1n
+VP (pulse 0) vsource type=pulse val0=0 val1=1.2 period=41.6666666666667n width=2n rise=10p fall=10p delay=20n
+VHP (hp 0) vsource type=pwl wave=[0 .61 150n .61 150.01n .59 300n .59]
+VHN (hn 0) vsource dc=.6
+VOUT (cpout 0) vsource dc=.6
+CR (refb 0) capacitor c=60f
+XREF (ref refb vdd 0) tx_reference_buffer_pdk110_6
+XCP (hp hn pulse vdd cpout vdd 0) cp_physical_v14_pdk110_14
+save ref refb pulse hp hn cpout XCP.nb XCP.ng XCP.tail VDD:p VOUT:p
+tran tran stop=3e-07 start=0 strobeperiod=5e-12 maxstep=8p method=traponly errpreset=moderate writefinal="__FINAL_STATE__"
+saveOptions options save=selected

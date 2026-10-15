@@ -1,0 +1,43 @@
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt
+simulator lang=spectre insensitive=no
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt_bbmvar
+simulator lang=spectre insensitive=no
+include "rt4_callback110_after.scs"
+simulatorOptions options reltol=1e-3 vabstol=1e-6 iabstol=1e-12 temp=27
+VDD (vdd 0) vsource dc=1.2
+VC (ctrl 0) vsource dc=.48
+VB0 (b0 0) vsource dc=0
+VB1 (b1 0) vsource dc=0
+VB2 (b2 0) vsource dc=1.2
+VB3 (b3 0) vsource dc=0
+VB4 (b4 0) vsource dc=1.2
+VB5 (b5 0) vsource dc=0
+VB6 (b6 0) vsource dc=0
+VB7 (b7 0) vsource dc=0
+XV (vp vn ctrl b0 b1 b2 b3 b4 b5 b6 b7 vdd 0) lc_vco_physical_v14_pdk110_1
+XBM (vdd 0 vmid) tx_bias_mid_v5_pdk110_5
+CCP (vp sp) capacitor c=120f
+CCN (vn sn) capacitor c=120f
+RBP (sp vmid) resistor r=10k
+RBN (sn vmid) resistor r=10k
+VR (ref 0) vsource type=pulse val0=0 val1=1.2 period=41.6666666666667n width=20.8233333333333n rise=10p fall=10p delay=1n
+CR (refb 0) capacitor c=60f
+VPULSE (pulse 0) vsource type=pulse val0=0 val1=1.2 period=41.6666666666667n width=2n rise=10p fall=10p delay=20n
+VO (cpout 0) vsource dc=.6
+VDRESET (div_reset 0) vsource type=pwl wave=[0 1.2 20n 1.2 20.01n 0]
+CL (out 0) capacitor c=10f
+XREF (ref refb vdd 0) tx_reference_buffer_pdk110_6
+XS (refb sp sn hp hn vdd 0) tx_sampler_pdk110_11
+XCP (hp hn pulse vdd cpout vdd 0) cp_physical_v14_pdk110_14
+XRX (vp clk vdd 0) rf_light24s12_v14_pdk110_19
+XD (clk div_reset vdd 0 0 0 0 0 q1 data acqclk vdd 0) bank_pulsetrip_v14_pdk110_21
+XR (data clk out vdd 0) rt_noise_scale4_v14_pdk110_49
+XDET (vp hp hn amp_good phase_good vdd 0) validity_physical_v14_pdk110_53
+ic vp=1.20001 vn=1.2 XV.XL.nfilt=.728
+save vp vn ctrl clk q1 data out sp sn hp hn ref refb XV.XL.nb XV.XL.nfilt XV.XL.tail VDD:p amp_good phase_good
+tran tran stop=4e-07 start=0 strobeperiod=5e-12 maxstep=8p method=traponly errpreset=moderate writefinal="__FINAL_STATE__"
+saveOptions options save=selected
