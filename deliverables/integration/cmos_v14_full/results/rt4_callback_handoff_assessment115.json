@@ -1,0 +1,124 @@
+{
+  "time": "2026-10-16T05:49:46.905052+08:00",
+  "category": "source-inspected arithmetic and illustrative digital search paths; not analog/RTL simulation",
+  "source_sha256": {
+    "share/deliverables/blocks/cmos_v14_full/fll_recenter109_v14.v": "8ae1fae3680119ab8cbc0dbd77531e1ad1a10678cca6019d1aca073611afc290",
+    "share/deliverables/blocks/cmos_v14_full/rt4_callback110_after.scs": "260a50e7e62d0d25cfdfb21d6004a22f31ca38544632329448bea811dcd38f62",
+    "share/deliverables/integration/cmos_v14_full/results/rt4_callback_k41_comparison114.json": "3caeea6d5629869ee62108bb6c10b69e9018d9b6d6236b5e3b0711df7e28d504",
+    "share/deliverables/integration/cmos_v14_full/results/rt4_callback_k41_budget114.json": "46291463d60be1ce0e548aca80e2784c45680c33a80725d82e8950c82e4c3330"
+  },
+  "ideal_dac": {
+    "formula": "VDD*code/64 for ideal R-2R rail drivers; excludes MOS droop/loading",
+    "vdd_V": 1.2,
+    "code11_V": 0.20625,
+    "code15_V": 0.28125,
+    "code49_V": 0.91875,
+    "code53_V": 0.9937499999999999,
+    "point084_equivalent_code": 44.8
+  },
+  "gate_resolution": {
+    "reference_Hz": 24000000.0,
+    "reference_cycles": 128,
+    "rf_divisor": 4,
+    "duration_s": 5.333333333333334e-06,
+    "rf_one_count_Hz": 750000.0,
+    "previous_local_high_worst_margin_Hz": 380658.0359691907
+  },
+  "coarse_change_bits": {
+    "code9_to8": [
+      0
+    ],
+    "code8_to7": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "tail_control_bits": [
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "consequence": "9-to8 measurement cannot quantify8-to7: b3 also switches a5um tail branch and its20um enable device; both cap-bank and current loading change."
+  },
+  "recenter_predicate": {
+    "low_edge": "DAC<=15 and measured>target",
+    "high_edge": "DAC>=49 and measured<target",
+    "priority": "Recenter test precedes abs(error)<=1 and good_once handoff, so edge error-1/+1 can request recenter instead of acceptance.",
+    "limit": "Once, no wrap, resets DAC32/bounds11..53/good_once but shares8-check total."
+  },
+  "count_budget": {
+    "example_first_edge_path": [
+      32,
+      43,
+      49
+    ],
+    "consumed_checks_if_recenter_on_third": 3,
+    "remaining": 5,
+    "illustration_assumption": "Monotone frequency, one exactly acceptable interior DAC; comparison errors are abstract +/-2 or0, not measured callback counts.",
+    "largest_checks_in_interior_single_acceptable_code_model": 7,
+    "example_success_at40": [
+      [
+        32,
+        -2
+      ],
+      [
+        43,
+        2
+      ],
+      [
+        37,
+        -2
+      ],
+      [
+        40,
+        0
+      ],
+      [
+        40,
+        0
+      ]
+    ],
+    "example_42_needs_more_than5": [
+      [
+        32,
+        -2
+      ],
+      [
+        43,
+        2
+      ],
+      [
+        37,
+        -2
+      ],
+      [
+        40,
+        -2
+      ],
+      [
+        41,
+        -2
+      ],
+      [
+        42,
+        0
+      ],
+      [
+        42,
+        0
+      ]
+    ],
+    "conclusion": "One recenter does not guarantee enough remaining checks for every possible monotone target. Actual slope/tolerance may broaden the acceptable interval. Existing failure-on-budget policy remains unchanged; this is not evidence of an observed callback capture failure."
+  },
+  "decision": "One7us physical-DAC49/coarse8 diagnostic, with free bias and actual gatedRF/4 counter/snapshot. Measure one128-ref-equivalent window and late frequency/bias; do not scan further coarse codes or run a120us full capture yet.",
+  "excluded_claims": [
+    "No predicted steady frequency from old-geometry bias sensitivity",
+    "No claim .84V is legal DAC upper bound",
+    "No proof of actual autonomous recenter or false handoff",
+    "No guarantee every SAR-selected code is repairable in8 checks",
+    "No changes to hardware thresholds,budgets,geometry or adopted baseline"
+  ]
+}

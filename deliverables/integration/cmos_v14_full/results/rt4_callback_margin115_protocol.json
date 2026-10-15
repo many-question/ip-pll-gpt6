@@ -1,0 +1,70 @@
+{
+  "time": "2026-10-16T05:47:34.231730+08:00",
+  "cases": [
+    {
+      "run": "rt4cbmargin115ssd01",
+      "case": "rt4_callback_margin115_tt",
+      "kind": "diagnostic",
+      "stop_s": 7e-06,
+      "strobe_s": 1e-11,
+      "expected_points": 700001,
+      "requested_threads": 2
+    }
+  ],
+  "threads": 2,
+  "mode": "ax",
+  "maxstep_s": 8e-12,
+  "reltol": 0.001,
+  "method": "traponly",
+  "noise": false,
+  "condition": "TT27/1.2V/24MHz/10fF, frozen callback110 geometry and analog parameters.",
+  "purpose": "At the actual high-DAC recenter threshold49 and previously measured coarse8, compare physical RF/4 gated count with target5248 while free bias evolves through one128-reference-cycle measurement. No coarse-code sweep.",
+  "selection_basis": "Prior .84V clamp is nominal ideal DAC44.8, below recenter threshold49 (ideal.91875V). Actual DAC, loop-filter preset switches and disabled CP replace the ideal control clamp. A7us local record covers1.5us settling,5.333333us counting and166.657ns drain/observation, without repeating120us acquisition.",
+  "coarse": 8,
+  "dac": 49,
+  "ideal_unloaded_dac_V": 0.91875,
+  "target_count": 5248,
+  "target_rf_Hz": 3936000000.0,
+  "count_gate_half_crossings_s": [
+    1.500005e-06,
+    6.833338333333333e-06
+  ],
+  "measurement_duration_s": 5.333333333333334e-06,
+  "counter_snapshot_window_s": [
+    6.97e-06,
+    7e-06
+  ],
+  "measurement_window_s": [
+    1.500005e-06,
+    6.833338333333333e-06
+  ],
+  "frequency_windows_s": [
+    [
+      1.7e-06,
+      2e-06
+    ],
+    [
+      3.7e-06,
+      4e-06
+    ],
+    [
+      6.5e-06,
+      6.8e-06
+    ]
+  ],
+  "initialization": "Real1Mohm/10pF bias, nfiltIC.728V released at t0. External fixed coarse8/DAC49; counter reset/gate externally timed. Original clock mux/buffers/counter/snapshot retained as MOS subcircuits.",
+  "unchanged": "Frozen callback110 W/L/NF/M, derived geometry, analog component values and full-PLL RTL/netlist. This fixture adds only existing subcircuits and stimuli; no controller threshold/budget change.",
+  "physical_inputs_sha256": {
+    "share/deliverables/blocks/cmos_v14_full/rt4_callback110_after.scs": "260a50e7e62d0d25cfdfb21d6004a22f31ca38544632329448bea811dcd38f62",
+    "share/deliverables/integration/cmos_v14_full/tb/rt4_callback_margin115_tt.scs": "2c10c6c96a0563badd80c44902d6955f2edd3b61f7c6faada0c34bd7116c9a51"
+  },
+  "previous_comparison_sha256": "3caeea6d5629869ee62108bb6c10b69e9018d9b6d6236b5e3b0711df7e28d504",
+  "source_tb_sha256": "d719bd7303862723ff3b517e3ea8d99aadd2a1471c6ddd5b4534210dd5cb1022",
+  "completion": "Two independent terminal observations>=60s,exit0/zero errors,PSF END,input/raw/log/final.ic hashes,700001 finite physical points0..7us.",
+  "evidence_boundary": "Fixed-code local warm-bias diagnostic with externally timed gate, not autonomous SAR, coarse correction, two-window handoff, cold-start full-PLL capture, asymptotic steady state or noise. Differences from114 also include actual DAC/filter/disabledCP/counter loading, not bias-only causation.",
+  "resource_cap": {
+    "threads": 18,
+    "long_jobs": 4,
+    "short_jobs": 1
+  }
+}
