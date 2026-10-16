@@ -1,0 +1,97 @@
+{
+  "time": "2026-10-17T07:10:38.725719+08:00",
+  "source_review": "share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_review123.json",
+  "source_review_sha256": "7b30cae769dee2e5cc7fb236f72bcc4f3a33768507daa1b0c8e99de2c58d0cd9",
+  "source_waveforms_sha256": "bcdbb0b903d619b9028ab23b9c371582ce7743fafcab68bfd781bf4d3737a808",
+  "spectre_wall_time": "1h54m43s",
+  "terminal": {
+    "exit_code": 0,
+    "errors": 0,
+    "stable_interval_s": 88.900239,
+    "psf_end": true,
+    "raw_sha256": "c08c155f2683503b8e0e6e25473c6d1175522b8e25c0ce817d0d4578838cc20f",
+    "log_sha256": "505815772beec399a53317635b02b22dcae453c2413bcc19214cdd0dcf25ea61",
+    "final_ic_sha256": "7b37b086c6004e8f6cd3731d3f5e7291db43d1f165459dfd59b6ae5364cddf4e",
+    "inputs_sha256": {
+      "rt4_callback_low122_tt.scs": "60b1498e37fb1eb7b1b5cc73b6a04135f52141d626a8ba55a8f8ceda64a7e807",
+      "lc_loop_observer.va": "9f290fd2983cac41dc0d17a4342daf13dc5f8b0bb9dee94fad1ca143ff87cf07",
+      "rt4_callback110_after.scs": "260a50e7e62d0d25cfdfb21d6004a22f31ca38544632329448bea811dcd38f62",
+      "supply_energy_observer.va": "e3f07b168283a02f1c14ccebe075bdc8370960227c058354d403dde41d5ce54e"
+    }
+  },
+  "coarse_codes": [
+    0,
+    128,
+    192,
+    224,
+    240,
+    248,
+    244,
+    242,
+    243
+  ],
+  "counts": [
+    1326,
+    1046,
+    955,
+    917,
+    899,
+    890,
+    895,
+    898,
+    897
+  ],
+  "errors": [
+    430,
+    150,
+    59,
+    21,
+    3,
+    -6,
+    -1,
+    2,
+    1
+  ],
+  "first_fine": {
+    "time_s": 1.725199999999875e-05,
+    "coarse": 245,
+    "dac": 32,
+    "transition_matches": true
+  },
+  "last1us": {
+    "ctrl": {
+      "time_weighted_mean": 0.591238811514909,
+      "min": 0.5817027766034565,
+      "max": 0.6041272910844602,
+      "linear_slope_per_us": -4.454233453244763e-05
+    },
+    "nfilt": {
+      "time_weighted_mean": 0.7294949580178374,
+      "min": 0.7280277082417094,
+      "max": 0.7308156489436894,
+      "linear_slope_per_us": 0.0003518675371875272
+    },
+    "nb": {
+      "time_weighted_mean": 0.7340629092445617,
+      "min": 0.734062555091779,
+      "max": 0.7340633220056159,
+      "linear_slope_per_us": 2.09586312850141e-07
+    },
+    "observer_rf_MHz": {
+      "time_weighted_mean": 2686.1838545692694,
+      "min": 2686.147548232634,
+      "max": 2686.231695696305,
+      "linear_slope_per_us": 0.010356761254507112
+    }
+  },
+  "next_decision": {
+    "single_point": "K28/M4, RF2688MHz, output672MHz",
+    "purpose": "After nine verified autonomous endpoint/coarse decisions, test continuous fine search/fresh rechecks, same-code qualification, physical handoff and sustained post-enable qualification at the low-RF representative point.",
+    "why_full_controller": "Coarse245/DAC32 entry is observed, but no fine EVAL, fresh recheck or handoff has been observed at K28. Fixed-code fixtures cannot answer those questions and would repeat the completed diagnostic pattern.",
+    "why_120us": "Frozen schedule:396ref coarse +840ref fine + up to1312ref fresh +32ref handoff after about0.75us configuration release. Latest enable is about108.25us. A60/80us prefix would censor allowed search paths and require another reset run.120us stays within the existing cap and leaves11.75us on the latest path; actual qualified duration and the21.333us supervisor horizon must be reported.",
+    "unchanged": "One TT AX8ps/1e-3/traponly/noise-off run; all geometry, sizes, analog parameters, controller, eight-check budget and initialization unchanged. No readic, warm bias, forced absolute codes or state continuation.",
+    "limitations": "No prediction of the final DAC or capture success. Single K28 result cannot establish all divider modes/full range, asymptotic stationarity or noise."
+  },
+  "audit_note": "A/B interval56.263073s was below60s and review refused before producing output. A/C interval88.900239s passed. Original audits retained; no waveform or assertion changed.",
+  "full_capture_evaluated": false
+}

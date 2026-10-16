@@ -1,0 +1,44 @@
+{
+  "time": "2026-10-17T07:10:40.020371+08:00",
+  "preserved_manifests": {
+    "rt4_recenter_implementation109.json": 244,
+    "pdk_callback_implementation110.json": 21,
+    "rt4_callback_capture_implementation121.json": 16,
+    "rt4_callback_capture_handoff121.json": 24,
+    "rt4_callback_low_implementation122.json": 14,
+    "rt4_callback_capture_handoff122.json": 19
+  },
+  "baseline24_preserved": true,
+  "tb_changes_from122": [
+    "comment",
+    "stop20us_to120us"
+  ],
+  "no_physical_or_control_changes": true,
+  "coarse_target": 896,
+  "fresh_target": 3584,
+  "record_decision": {
+    "single_point": "K28/M4, RF2688MHz, output672MHz",
+    "purpose": "After nine verified autonomous endpoint/coarse decisions, test continuous fine search/fresh rechecks, same-code qualification, physical handoff and sustained post-enable qualification at the low-RF representative point.",
+    "why_full_controller": "Coarse245/DAC32 entry is observed, but no fine EVAL, fresh recheck or handoff has been observed at K28. Fixed-code fixtures cannot answer those questions and would repeat the completed diagnostic pattern.",
+    "why_120us": "Frozen schedule:396ref coarse +840ref fine + up to1312ref fresh +32ref handoff after about0.75us configuration release. Latest enable is about108.25us. A60/80us prefix would censor allowed search paths and require another reset run.120us stays within the existing cap and leaves11.75us on the latest path; actual qualified duration and the21.333us supervisor horizon must be reported.",
+    "unchanged": "One TT AX8ps/1e-3/traponly/noise-off run; all geometry, sizes, analog parameters, controller, eight-check budget and initialization unchanged. No readic, warm bias, forced absolute codes or state continuation.",
+    "limitations": "No prediction of the final DAC or capture success. Single K28 result cannot establish all divider modes/full range, asymptotic stationarity or noise."
+  },
+  "decoder_regression": {
+    "122_nine_EVAL": true,
+    "121_twenty_EVAL": true
+  },
+  "frequency_denominator_checks": [
+    {
+      "target_MHz": 984,
+      "last1us_observer_max_offset_ppm": 6.72088474562571,
+      "full_capture": true
+    },
+    {
+      "target_MHz": 672,
+      "last1us_observer_max_offset_ppm": 689.4276576271396,
+      "full_capture": false
+    }
+  ],
+  "simulation_dispatched": false
+}
