@@ -1,0 +1,58 @@
+// Selected coarse6/DAC49 boundary diagnostic; not a continuation or full capture.
+simulator lang=spectre
+global 0
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt
+simulator lang=spectre insensitive=no
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=stat_noise
+simulator lang=spectre insensitive=no
+include "/home/process/tsmc180bcd_gen2_2022/PDK/TSMC180BCD/models/spectre/c018bcd_gen2_v1d6.scs" section=tt_bbmvar
+simulator lang=spectre insensitive=no
+include "rt4_callback110_after.scs"
+simulatorOptions options reltol=1e-3 vabstol=1e-6 iabstol=1e-12 temp=27
+VDD (vdd 0) vsource dc=1.2
+VD0 (d0 0) vsource dc=1.2
+VD1 (d1 0) vsource dc=0
+VD2 (d2 0) vsource dc=0
+VD3 (d3 0) vsource dc=0
+VD4 (d4 0) vsource dc=1.2
+VD5 (d5 0) vsource dc=1.2
+XDAC (d0 d1 d2 d3 d4 d5 0 preset vdd 0) tx_fll_dac_pdk110_75
+XLF (ctrl vc1 0 preset vdd 0) tx_loop_filter_v5_pdk110_17
+VB0 (b0 0) vsource dc=0
+VB1 (b1 0) vsource dc=1.2
+VB2 (b2 0) vsource dc=1.2
+VB3 (b3 0) vsource dc=0
+VB4 (b4 0) vsource dc=0
+VB5 (b5 0) vsource dc=0
+VB6 (b6 0) vsource dc=0
+VB7 (b7 0) vsource dc=0
+XV (vp vn ctrl b0 b1 b2 b3 b4 b5 b6 b7 vdd 0) lc_vco_physical_v14_pdk110_1
+XBM (vdd 0 vmid) tx_bias_mid_v5_pdk110_5
+CCP (vp sp) capacitor c=120f
+CCN (vn sn) capacitor c=120f
+RBP (sp vmid) resistor r=10k
+RBN (sn vmid) resistor r=10k
+VR (ref 0) vsource type=pulse val0=0 val1=1.2 period=41.6666666666667n width=20.8233333333333n rise=10p fall=10p delay=1n
+CR (refb 0) capacitor c=60f
+VPULSE (pulse 0) vsource dc=0
+VDRESET (div_reset 0) vsource type=pwl wave=[0 1.2 20n 1.2 20.01n 0]
+CL (out 0) capacitor c=10f
+XREF (ref refb vdd 0) tx_reference_buffer_pdk110_6
+XS (refb sp sn hp hn vdd 0) tx_sampler_pdk110_11
+XCP (hp hn pulse 0 ctrl vdd 0) cp_physical_v14_pdk110_14
+XRX (vp clk vdd 0) rf_light24s12_v14_pdk110_19
+XD (clk div_reset vdd 0 0 0 0 0 q1 data acqclk vdd 0) bank_pulsetrip_v14_pdk110_21
+XR (data clk out vdd 0) rt_noise_scale4_v14_pdk110_49
+XDET (vp hp hn amp_good phase_good vdd 0) validity_physical_v14_pdk110_53
+VG (count_gate 0) vsource type=pwl wave=[0 0 1.5u 0 1.50001u 1.2 6.833333333333333u 1.2 6.833343333333333u 0]
+VCR (count_reset 0) vsource type=pwl wave=[0 1.2 1.458333333333333u 1.2 1.458343333333333u 0]
+XACQ0 (acqclk clock_mux vdd 0 vdd 0) pll_tg_pdk110_16
+XACQ1 (out clock_mux 0 vdd vdd 0) pll_tg_pdk110_16
+XACB0 (clock_mux clock_b vdd 0) pll_inv_pdk110_36
+XACB1 (clock_b count_clock vdd 0) pll_inv_pdk110_27
+XCOUNT (count_clock count_gate count_reset cq0 cq1 cq2 cq3 cq4 cq5 cq6 cq7 cq8 cq9 cq10 cq11 cq12 cq13 vdd 0) tx_fll_counter_pdk110_71
+XSN (count_gate cq0 cq1 cq2 cq3 cq4 cq5 cq6 cq7 cq8 cq9 cq10 cq11 cq12 cq13 m0 m1 m2 m3 m4 m5 m6 m7 m8 m9 m10 m11 m12 m13 vdd 0) tx_fll_snapshot_pdk110_74
+ic vp=1.20001 vn=1.2 XV.XL.nfilt=0.74006129886311578
+save vp vn out acqclk count_clock XCOUNT.gclk count_gate count_reset m0 m1 m2 m3 m4 m5 m6 m7 m8 m9 m10 m11 m12 m13 ctrl vc1 preset XV.XL.nb XV.XL.nfilt b0 b1 b2 b3 b4 b5 b6 b7 d0 d1 d2 d3 d4 d5
+tran tran stop=7e-06 start=0 strobeperiod=1e-11 maxstep=8p method=traponly errpreset=moderate writefinal="__FINAL_STATE__"
+saveOptions options save=selected

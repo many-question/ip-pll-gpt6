@@ -1,0 +1,62 @@
+{
+  "time": "2026-10-16T10:48:22.155633+08:00",
+  "source_review": "share/deliverables/integration/cmos_v14_full/results/rt4_callback_sar117_review118.json",
+  "source_review_sha256": "bb3fcbba27e7709c6eaa22f37693206fc48ebe72857e8ea5605ba9caa03f789c",
+  "eval_words_settled": true,
+  "coarse_target": 1312,
+  "coarse_codes": [
+    0,
+    128,
+    64,
+    32,
+    16,
+    8,
+    4,
+    6,
+    5
+  ],
+  "counts": [
+    1326,
+    1046,
+    1166,
+    1239,
+    1280,
+    1302,
+    1314,
+    1308,
+    1311
+  ],
+  "errors": [
+    14,
+    -266,
+    -146,
+    -73,
+    -32,
+    -10,
+    2,
+    -4,
+    -1
+  ],
+  "first_fine_search": {
+    "time_s": 1.725199999999875e-05,
+    "coarse": 6,
+    "dac": 32,
+    "transition_matches": true
+  },
+  "last_window_s": [
+    1.9e-05,
+    2e-05
+  ],
+  "nfilt_mean_V": 0.7400612988631158,
+  "nfilt_linear_fit_V_per_us": 2.0166568584164468e-05,
+  "nfilt_nb_mean_difference_V": 0.0059921588595803765,
+  "final_observer_rf_MHz": {
+    "mean": 3929.0490312935094,
+    "min": 3928.892598260426,
+    "max": 3929.15174392867,
+    "p2p": 0.2591456682439457
+  },
+  "warning": "2ns saved samples do not resolve RF edges. Observer instantaneous-frequency averages and a sampled bias fit are descriptive, not acquisition counts, asymptotic state or jitter.",
+  "next_test_rationale": "Actual SAR selected coarse6, not the previously externally fixed8. One7us test at DAC49 asks whether the selected code has upper fine authority near the observed startup bias and whether its real count would satisfy the edge need_faster predicate. No other coarse code is swept.",
+  "next_test_boundary": "Initialize only nfilt to the observed19..20us mean, then release. Other states are reinitialized. External fixed6/DAC49 with absent FLL FSM is a conditional fixture, not a continuation of117 or proof of autonomous handoff."
+}
