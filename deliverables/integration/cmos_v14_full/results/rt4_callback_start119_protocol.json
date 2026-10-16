@@ -1,0 +1,84 @@
+{
+  "time": "2026-10-16T11:56:14.237314+08:00",
+  "cases": [
+    {
+      "run": "rt4cbstart119ssd01",
+      "case": "rt4_callback_start119_tt",
+      "kind": "diagnostic",
+      "stop_s": 7e-06,
+      "strobe_s": 1e-11,
+      "expected_points": 700001,
+      "requested_threads": 2
+    }
+  ],
+  "threads": 2,
+  "mode": "ax",
+  "maxstep_s": 8e-12,
+  "reltol": 0.001,
+  "method": "traponly",
+  "noise": false,
+  "condition": "TT27/1.2V/24MHz/10fF, frozen callback110 geometry and analog parameters.",
+  "purpose": "118 selected-coarse6/DAC49 count5265 is above5248. Measure only the frozen recheck starting midpoint32 under the same fixture and released initial bias, to establish whether this actual selected coarse code has conditional fine authority on both sides without borrowing117 observer data.",
+  "selection_basis": "DAC32 is the unchanged fresh-recheck start rule. No fitted/interpolated lock code and no arbitrary coarse/fine sweep.",
+  "coarse": 6,
+  "dac": 32,
+  "ideal_unloaded_dac_V": 0.6,
+  "target_count": 5248,
+  "target_rf_Hz": 3936000000.0,
+  "count_gate_half_crossings_s": [
+    1.500005e-06,
+    6.833338333333333e-06
+  ],
+  "measurement_duration_s": 5.333333333333334e-06,
+  "counter_snapshot_window_s": [
+    6.97e-06,
+    7e-06
+  ],
+  "measurement_window_s": [
+    1.500005e-06,
+    6.833338333333333e-06
+  ],
+  "frequency_windows_s": [
+    [
+      1.7e-06,
+      2e-06
+    ],
+    [
+      3.7e-06,
+      4e-06
+    ],
+    [
+      6.5e-06,
+      6.8e-06
+    ]
+  ],
+  "initialization": "Real1Mohm/10pF, nfiltIC=0.74006129886311578V released at t0, from11719..20us mean. Other states reinitialized, no readic; external6/DAC32 and counter gate.",
+  "unchanged": "Frozen callback110 W/L/NF/M, derived geometry, analog component values and full-PLL RTL/netlist. This fixture adds only existing subcircuits and stimuli; no controller threshold/budget change.",
+  "physical_inputs_sha256": {
+    "share/deliverables/blocks/cmos_v14_full/rt4_callback110_after.scs": "260a50e7e62d0d25cfdfb21d6004a22f31ca38544632329448bea811dcd38f62",
+    "share/deliverables/integration/cmos_v14_full/tb/rt4_callback_start119_tt.scs": "edec705ba246ba0fc332d580d14976399cdf444f1c14e0f5be77a6bc7ece62eb"
+  },
+  "source_tb_sha256": "45abffb5a1dcbe2b63b5246aa6dd50145d37ab3c28667f8d64bcc230f45db7fa",
+  "completion": "Two independent terminal observations>=60s,exit0/zero errors,PSF END,input/raw/log/final.ic hashes,700001 finite physical points0..7us.",
+  "evidence_boundary": "Independent fixedcoarse6/DAC32 fixture; same nfiltIC=.74006129886311578V then released, other states reinitialized. Absent complete FLL FSM, no readic; not autonomous selection/handoff/lock or continuation of117.",
+  "resource_cap": {
+    "threads": 18,
+    "long_jobs": 4,
+    "short_jobs": 1
+  },
+  "paired_boundary": "Matched to118 except VD0/VD4 changing DAC49 to32. Two independent same-initial-condition records, not sequential bisection or a common asymptotic curve. Unmatched to115/116 coarse8 and117 full startup.",
+  "next_decision": "Use real counts, physical edges, ctrl and nfilt trajectories to assess conditional bracketing. Do not interpolate a locking code. Decide whether remaining uncertainty needs actual full-controller capture; no automatic120us replay, budget increase or further mechanical scan.",
+  "source_tb": "share/deliverables/integration/cmos_v14_full/tb/rt4_callback_edge118_tt.scs",
+  "fixture_changes": [
+    {
+      "before": "VD0 (d0 0) vsource dc=1.2",
+      "after": "VD0 (d0 0) vsource dc=0"
+    },
+    {
+      "before": "VD4 (d4 0) vsource dc=1.2",
+      "after": "VD4 (d4 0) vsource dc=0"
+    }
+  ],
+  "paired118_protocol_sha256": "82def01b01e75ddae34efd9872ef366f06ba06f9ddd63bfc233c1d0655bf667a",
+  "paired118_review_sha256": "363bd3b5eac18274e8940b9e8084cac003c03235dcfbe9c73cc826bc1b08b27f"
+}
