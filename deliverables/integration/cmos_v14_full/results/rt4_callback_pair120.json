@@ -1,0 +1,52 @@
+{
+  "time": "2026-10-16T13:03:08.171629+08:00",
+  "sources": {
+    "share/deliverables/integration/cmos_v14_full/results/rt4_callback_start119_review120.json": "def0579d0f441bf87fc23c19e8fb16801e18797e968e4760b4679e3fd1de4a8b",
+    "share/deliverables/integration/cmos_v14_full/results/rt4_callback_edge118_review119.json": "363bd3b5eac18274e8940b9e8084cac003c03235dcfbe9c73cc826bc1b08b27f",
+    "share/deliverables/integration/cmos_v14_full/results/rt4_callback_gate_boundary120_complete.json": "4076dfcb04f5cfffcd6af9a5fa9bd35f7042476be6eac3a29cef5296afd1763e",
+    "share/deliverables/integration/cmos_v14_full/results/rt4_callback_budget120.json": "6c51c30cc6854827426b970d548d68b49d4d4e9129d7810680c37227697d774b"
+  },
+  "coarse": 6,
+  "dacs": [
+    32,
+    49
+  ],
+  "counts": [
+    5243,
+    5265
+  ],
+  "errors": [
+    -5,
+    17
+  ],
+  "target_count": 5248,
+  "window_rf_MHz": [
+    3932.0812597388754,
+    3948.714549017003
+  ],
+  "matched_fixture": "Only VD0 and VD4 changed; independent identical initial-condition experiments. No continuous bisection or shared asymptotic curve.",
+  "maximum_segment_nfilt_mean_difference_uV": 4.367858218778942,
+  "raw_boundary_discrepancy": "119 raw acqclk5242 versus buffered/gated/snapshot5243; fully localized to one181.621ps delayed rising edge crossing the gate opening. All5243 edges matched one-to-one.",
+  "conditional_logic": {
+    "cases": 16,
+    "checks_min": 3,
+    "checks_max": 7,
+    "counterexamples": 2,
+    "coarse_correction_exercised": false
+  },
+  "conclusion": "A local physical count bracket is established at the actual SAR-selected coarse6. No further fixed-code scan is justified by the present question. Continuous recheck, physical handoff, PLL phase acquisition and sustained qualification of callback remain unverified.",
+  "next_experiment_decision": {
+    "complete_callback_capture_needed": true,
+    "dispatched": false,
+    "rationale": "The20us117 prefix never reaches fresh verification or enable; the7us118/119 fixtures disableCP and omitFSM. Conditional digital checks cannot settle evolving-bias or phase-capture behavior.",
+    "candidate": "One independent K41 TT full-hardware cold-reset capture with frozen callback110/recenter109, unchanged8 checks and original120us upper limit. First finalize its protocol, duration justification, integrity checks and live resource audit; do not immediately clone/restart an old120us run.",
+    "rejected_followups": [
+      "Mechanical fixed coarse/fine sweep",
+      "Interpolated forced lock code",
+      "Increasing8-check budget without measured need",
+      "Treating final.ic as exact transient continuation",
+      "Inheriting old109 lock or noise"
+    ]
+  },
+  "evidence_limits": "Local warm-bias fixed-code pair and abstract mapped logic only. No new complete PLL capture, steady-state tuning curve, PVT, power signoff, layout, or noise result."
+}

@@ -1,0 +1,779 @@
+{
+  "category": "Frozen mapped digital gates with conditional artificial count inputs; not MOS/TT capture.", 
+  "original_budget": 8, 
+  "counterexamples": [
+    {
+      "label": "hypothetical_bracket_without_acceptable_integer_code", 
+      "enable": false, 
+      "range_error": true, 
+      "checks": [
+        {
+          "dac": 32, 
+          "error_count": -5, 
+          "coarse": 6, 
+          "cycle": 163
+        }, 
+        {
+          "dac": 43, 
+          "error_count": 2, 
+          "coarse": 6, 
+          "cycle": 327
+        }, 
+        {
+          "dac": 37, 
+          "error_count": -2, 
+          "coarse": 6, 
+          "cycle": 491
+        }, 
+        {
+          "dac": 40, 
+          "error_count": -2, 
+          "coarse": 6, 
+          "cycle": 655
+        }, 
+        {
+          "dac": 41, 
+          "error_count": 2, 
+          "coarse": 6, 
+          "cycle": 819
+        }
+      ], 
+      "cycles": 819
+    }, 
+    {
+      "label": "hypothetical_count_sign_changes_after_first_check", 
+      "enable": false, 
+      "range_error": true, 
+      "checks": [
+        {
+          "dac": 32, 
+          "error_count": -5, 
+          "coarse": 6, 
+          "cycle": 163
+        }, 
+        {
+          "dac": 43, 
+          "error_count": 17, 
+          "coarse": 6, 
+          "cycle": 327
+        }, 
+        {
+          "dac": 37, 
+          "error_count": 17, 
+          "coarse": 6, 
+          "cycle": 491
+        }, 
+        {
+          "dac": 34, 
+          "error_count": 17, 
+          "coarse": 6, 
+          "cycle": 655
+        }, 
+        {
+          "dac": 33, 
+          "error_count": 17, 
+          "coarse": 6, 
+          "cycle": 819
+        }
+      ], 
+      "cycles": 819
+    }
+  ], 
+  "minimum_checks": 3, 
+  "observed_endpoints": {
+    "count": [
+      5243, 
+      5265
+    ], 
+    "error": [
+      -5, 
+      17
+    ], 
+    "coarse": 6, 
+    "dac": [
+      32, 
+      49
+    ]
+  }, 
+  "source_sha256": {
+    "fll_recenter109_v14_mapped.json": "179da79894a3f8de8c3393afef91342ce06b01ba7ce97c00e8540843913d8a1c", 
+    "assess_callback_budget120_py2.py": "89835e529113c142456fdbe3cdbd3abc58d484d6da9451d01027ac3d904a94a3", 
+    "fll_recenter109_v14.v": "8ae1fae3680119ab8cbc0dbd77531e1ad1a10678cca6019d1aca073611afc290"
+  }, 
+  "assumptions": "Stationary monotone response with exactly one acceptable integer DAC in33..48. Unmeasured counts are abstract +/-2 or0, not a fit or prediction. Physical endpoints do not establish these assumptions.", 
+  "passed": true, 
+  "time": "2026-10-16T04:57:18.348946Z", 
+  "maximum_checks": 7, 
+  "boundary": "Verification registers initialized only in DIGITAL unit test; no analog state loading or forced PLL code. No autonomous selection/physical handoff/capture claim. All16 successes keep coarse6; no physical validation of coarse-recenter branch.", 
+  "conditional_success_cases": [
+    {
+      "label": "hypothetical_single_good_dac_33", 
+      "enable": true, 
+      "range_error": false, 
+      "checks": [
+        {
+          "dac": 32, 
+          "error_count": -5, 
+          "coarse": 6, 
+          "cycle": 163
+        }, 
+        {
+          "dac": 43, 
+          "error_count": 2, 
+          "coarse": 6, 
+          "cycle": 327
+        }, 
+        {
+          "dac": 37, 
+          "error_count": 2, 
+          "coarse": 6, 
+          "cycle": 491
+        }, 
+        {
+          "dac": 34, 
+          "error_count": 2, 
+          "coarse": 6, 
+          "cycle": 655
+        }, 
+        {
+          "dac": 33, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 819
+        }, 
+        {
+          "dac": 33, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 983
+        }
+      ], 
+      "cycles": 1015
+    }, 
+    {
+      "label": "hypothetical_single_good_dac_34", 
+      "enable": true, 
+      "range_error": false, 
+      "checks": [
+        {
+          "dac": 32, 
+          "error_count": -5, 
+          "coarse": 6, 
+          "cycle": 163
+        }, 
+        {
+          "dac": 43, 
+          "error_count": 2, 
+          "coarse": 6, 
+          "cycle": 327
+        }, 
+        {
+          "dac": 37, 
+          "error_count": 2, 
+          "coarse": 6, 
+          "cycle": 491
+        }, 
+        {
+          "dac": 34, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 655
+        }, 
+        {
+          "dac": 34, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 819
+        }
+      ], 
+      "cycles": 851
+    }, 
+    {
+      "label": "hypothetical_single_good_dac_35", 
+      "enable": true, 
+      "range_error": false, 
+      "checks": [
+        {
+          "dac": 32, 
+          "error_count": -5, 
+          "coarse": 6, 
+          "cycle": 163
+        }, 
+        {
+          "dac": 43, 
+          "error_count": 2, 
+          "coarse": 6, 
+          "cycle": 327
+        }, 
+        {
+          "dac": 37, 
+          "error_count": 2, 
+          "coarse": 6, 
+          "cycle": 491
+        }, 
+        {
+          "dac": 34, 
+          "error_count": -2, 
+          "coarse": 6, 
+          "cycle": 655
+        }, 
+        {
+          "dac": 35, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 819
+        }, 
+        {
+          "dac": 35, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 983
+        }
+      ], 
+      "cycles": 1015
+    }, 
+    {
+      "label": "hypothetical_single_good_dac_36", 
+      "enable": true, 
+      "range_error": false, 
+      "checks": [
+        {
+          "dac": 32, 
+          "error_count": -5, 
+          "coarse": 6, 
+          "cycle": 163
+        }, 
+        {
+          "dac": 43, 
+          "error_count": 2, 
+          "coarse": 6, 
+          "cycle": 327
+        }, 
+        {
+          "dac": 37, 
+          "error_count": 2, 
+          "coarse": 6, 
+          "cycle": 491
+        }, 
+        {
+          "dac": 34, 
+          "error_count": -2, 
+          "coarse": 6, 
+          "cycle": 655
+        }, 
+        {
+          "dac": 35, 
+          "error_count": -2, 
+          "coarse": 6, 
+          "cycle": 819
+        }, 
+        {
+          "dac": 36, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 983
+        }, 
+        {
+          "dac": 36, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 1147
+        }
+      ], 
+      "cycles": 1179
+    }, 
+    {
+      "label": "hypothetical_single_good_dac_37", 
+      "enable": true, 
+      "range_error": false, 
+      "checks": [
+        {
+          "dac": 32, 
+          "error_count": -5, 
+          "coarse": 6, 
+          "cycle": 163
+        }, 
+        {
+          "dac": 43, 
+          "error_count": 2, 
+          "coarse": 6, 
+          "cycle": 327
+        }, 
+        {
+          "dac": 37, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 491
+        }, 
+        {
+          "dac": 37, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 655
+        }
+      ], 
+      "cycles": 687
+    }, 
+    {
+      "label": "hypothetical_single_good_dac_38", 
+      "enable": true, 
+      "range_error": false, 
+      "checks": [
+        {
+          "dac": 32, 
+          "error_count": -5, 
+          "coarse": 6, 
+          "cycle": 163
+        }, 
+        {
+          "dac": 43, 
+          "error_count": 2, 
+          "coarse": 6, 
+          "cycle": 327
+        }, 
+        {
+          "dac": 37, 
+          "error_count": -2, 
+          "coarse": 6, 
+          "cycle": 491
+        }, 
+        {
+          "dac": 40, 
+          "error_count": 2, 
+          "coarse": 6, 
+          "cycle": 655
+        }, 
+        {
+          "dac": 38, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 819
+        }, 
+        {
+          "dac": 38, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 983
+        }
+      ], 
+      "cycles": 1015
+    }, 
+    {
+      "label": "hypothetical_single_good_dac_39", 
+      "enable": true, 
+      "range_error": false, 
+      "checks": [
+        {
+          "dac": 32, 
+          "error_count": -5, 
+          "coarse": 6, 
+          "cycle": 163
+        }, 
+        {
+          "dac": 43, 
+          "error_count": 2, 
+          "coarse": 6, 
+          "cycle": 327
+        }, 
+        {
+          "dac": 37, 
+          "error_count": -2, 
+          "coarse": 6, 
+          "cycle": 491
+        }, 
+        {
+          "dac": 40, 
+          "error_count": 2, 
+          "coarse": 6, 
+          "cycle": 655
+        }, 
+        {
+          "dac": 38, 
+          "error_count": -2, 
+          "coarse": 6, 
+          "cycle": 819
+        }, 
+        {
+          "dac": 39, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 983
+        }, 
+        {
+          "dac": 39, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 1147
+        }
+      ], 
+      "cycles": 1179
+    }, 
+    {
+      "label": "hypothetical_single_good_dac_40", 
+      "enable": true, 
+      "range_error": false, 
+      "checks": [
+        {
+          "dac": 32, 
+          "error_count": -5, 
+          "coarse": 6, 
+          "cycle": 163
+        }, 
+        {
+          "dac": 43, 
+          "error_count": 2, 
+          "coarse": 6, 
+          "cycle": 327
+        }, 
+        {
+          "dac": 37, 
+          "error_count": -2, 
+          "coarse": 6, 
+          "cycle": 491
+        }, 
+        {
+          "dac": 40, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 655
+        }, 
+        {
+          "dac": 40, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 819
+        }
+      ], 
+      "cycles": 851
+    }, 
+    {
+      "label": "hypothetical_single_good_dac_41", 
+      "enable": true, 
+      "range_error": false, 
+      "checks": [
+        {
+          "dac": 32, 
+          "error_count": -5, 
+          "coarse": 6, 
+          "cycle": 163
+        }, 
+        {
+          "dac": 43, 
+          "error_count": 2, 
+          "coarse": 6, 
+          "cycle": 327
+        }, 
+        {
+          "dac": 37, 
+          "error_count": -2, 
+          "coarse": 6, 
+          "cycle": 491
+        }, 
+        {
+          "dac": 40, 
+          "error_count": -2, 
+          "coarse": 6, 
+          "cycle": 655
+        }, 
+        {
+          "dac": 41, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 819
+        }, 
+        {
+          "dac": 41, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 983
+        }
+      ], 
+      "cycles": 1015
+    }, 
+    {
+      "label": "hypothetical_single_good_dac_42", 
+      "enable": true, 
+      "range_error": false, 
+      "checks": [
+        {
+          "dac": 32, 
+          "error_count": -5, 
+          "coarse": 6, 
+          "cycle": 163
+        }, 
+        {
+          "dac": 43, 
+          "error_count": 2, 
+          "coarse": 6, 
+          "cycle": 327
+        }, 
+        {
+          "dac": 37, 
+          "error_count": -2, 
+          "coarse": 6, 
+          "cycle": 491
+        }, 
+        {
+          "dac": 40, 
+          "error_count": -2, 
+          "coarse": 6, 
+          "cycle": 655
+        }, 
+        {
+          "dac": 41, 
+          "error_count": -2, 
+          "coarse": 6, 
+          "cycle": 819
+        }, 
+        {
+          "dac": 42, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 983
+        }, 
+        {
+          "dac": 42, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 1147
+        }
+      ], 
+      "cycles": 1179
+    }, 
+    {
+      "label": "hypothetical_single_good_dac_43", 
+      "enable": true, 
+      "range_error": false, 
+      "checks": [
+        {
+          "dac": 32, 
+          "error_count": -5, 
+          "coarse": 6, 
+          "cycle": 163
+        }, 
+        {
+          "dac": 43, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 327
+        }, 
+        {
+          "dac": 43, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 491
+        }
+      ], 
+      "cycles": 523
+    }, 
+    {
+      "label": "hypothetical_single_good_dac_44", 
+      "enable": true, 
+      "range_error": false, 
+      "checks": [
+        {
+          "dac": 32, 
+          "error_count": -5, 
+          "coarse": 6, 
+          "cycle": 163
+        }, 
+        {
+          "dac": 43, 
+          "error_count": -2, 
+          "coarse": 6, 
+          "cycle": 327
+        }, 
+        {
+          "dac": 48, 
+          "error_count": 2, 
+          "coarse": 6, 
+          "cycle": 491
+        }, 
+        {
+          "dac": 45, 
+          "error_count": 2, 
+          "coarse": 6, 
+          "cycle": 655
+        }, 
+        {
+          "dac": 44, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 819
+        }, 
+        {
+          "dac": 44, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 983
+        }
+      ], 
+      "cycles": 1015
+    }, 
+    {
+      "label": "hypothetical_single_good_dac_45", 
+      "enable": true, 
+      "range_error": false, 
+      "checks": [
+        {
+          "dac": 32, 
+          "error_count": -5, 
+          "coarse": 6, 
+          "cycle": 163
+        }, 
+        {
+          "dac": 43, 
+          "error_count": -2, 
+          "coarse": 6, 
+          "cycle": 327
+        }, 
+        {
+          "dac": 48, 
+          "error_count": 2, 
+          "coarse": 6, 
+          "cycle": 491
+        }, 
+        {
+          "dac": 45, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 655
+        }, 
+        {
+          "dac": 45, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 819
+        }
+      ], 
+      "cycles": 851
+    }, 
+    {
+      "label": "hypothetical_single_good_dac_46", 
+      "enable": true, 
+      "range_error": false, 
+      "checks": [
+        {
+          "dac": 32, 
+          "error_count": -5, 
+          "coarse": 6, 
+          "cycle": 163
+        }, 
+        {
+          "dac": 43, 
+          "error_count": -2, 
+          "coarse": 6, 
+          "cycle": 327
+        }, 
+        {
+          "dac": 48, 
+          "error_count": 2, 
+          "coarse": 6, 
+          "cycle": 491
+        }, 
+        {
+          "dac": 45, 
+          "error_count": -2, 
+          "coarse": 6, 
+          "cycle": 655
+        }, 
+        {
+          "dac": 46, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 819
+        }, 
+        {
+          "dac": 46, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 983
+        }
+      ], 
+      "cycles": 1015
+    }, 
+    {
+      "label": "hypothetical_single_good_dac_47", 
+      "enable": true, 
+      "range_error": false, 
+      "checks": [
+        {
+          "dac": 32, 
+          "error_count": -5, 
+          "coarse": 6, 
+          "cycle": 163
+        }, 
+        {
+          "dac": 43, 
+          "error_count": -2, 
+          "coarse": 6, 
+          "cycle": 327
+        }, 
+        {
+          "dac": 48, 
+          "error_count": 2, 
+          "coarse": 6, 
+          "cycle": 491
+        }, 
+        {
+          "dac": 45, 
+          "error_count": -2, 
+          "coarse": 6, 
+          "cycle": 655
+        }, 
+        {
+          "dac": 46, 
+          "error_count": -2, 
+          "coarse": 6, 
+          "cycle": 819
+        }, 
+        {
+          "dac": 47, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 983
+        }, 
+        {
+          "dac": 47, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 1147
+        }
+      ], 
+      "cycles": 1179
+    }, 
+    {
+      "label": "hypothetical_single_good_dac_48", 
+      "enable": true, 
+      "range_error": false, 
+      "checks": [
+        {
+          "dac": 32, 
+          "error_count": -5, 
+          "coarse": 6, 
+          "cycle": 163
+        }, 
+        {
+          "dac": 43, 
+          "error_count": -2, 
+          "coarse": 6, 
+          "cycle": 327
+        }, 
+        {
+          "dac": 48, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 491
+        }, 
+        {
+          "dac": 48, 
+          "error_count": 0, 
+          "coarse": 6, 
+          "cycle": 655
+        }
+      ], 
+      "cycles": 687
+    }
+  ], 
+  "conclusion": "Eight-check budget covers all16 stationary single-good-code alternatives tested. Two counterexamples safely error without enable. No measured lock code or guarantee; do not widen budget or mechanically scan fixed codes."
+}
