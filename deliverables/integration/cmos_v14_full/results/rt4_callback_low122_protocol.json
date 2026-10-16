@@ -1,0 +1,49 @@
+{
+  "time": "2026-10-17T04:18:04.955974+08:00",
+  "cases": [
+    {
+      "run": "rt4cblow122ssd01",
+      "case": "rt4_callback_low122_tt",
+      "kind": "diagnostic",
+      "k": 28,
+      "m": 4,
+      "target_out_mhz": 672,
+      "target_rf_mhz": 2688,
+      "stop_s": 2e-05,
+      "strobe_s": 2e-09,
+      "expected_points": 10001,
+      "requested_threads": 4
+    }
+  ],
+  "threads": 4,
+  "mode": "ax",
+  "maxstep_s": 8e-12,
+  "reltol": 0.001,
+  "method": "traponly",
+  "noise": false,
+  "condition": "TT27/1.2V/24MHz/10fF; frozen full callback110 hierarchy and recenter109 controller.",
+  "purpose": "Test autonomous low-RF endpoint/coarse SAR selection from original reset. K41 now passes; only warm fixed-code low-RF coverage exists for callback. Preserve M4 to change target without adding divider-mode uncertainty.",
+  "record_budget_basis": "Same frozen396ref coarse-search maximum;20us covers endpoint/eight coarse evaluations and expected fine entry. Actual state at end is measured. This is not a full-capture pass/fail test.",
+  "initialization": "Same109 supplied-DC reset/apply and10uV differential LC seed. No nfilt warm initial condition, readic, forced coarse/DAC, state bypass or controller edit. Supply already1.2V; not a power-ramp test.",
+  "source_tb": "share/deliverables/integration/cmos_v14_full/tb/rt4_callback_capture121_tt.scs",
+  "source_tb_sha256": "2c8654272cfd40f87a52cfbab6c9d414bd360938a3b74405d990b512cd54391d",
+  "coarse_target_count": 896,
+  "physical_inputs_sha256": {
+    "share/deliverables/blocks/cmos_v14_full/rt4_callback110_after.scs": "260a50e7e62d0d25cfdfb21d6004a22f31ca38544632329448bea811dcd38f62",
+    "share/deliverables/integration/cmos_v14_full/tb/rt4_callback_low122_tt.scs": "6e020a1fc414a51ed49e23b695ad66a3d58c1ea9e96484486d8555d12e799b0c",
+    "share/deliverables/blocks/interface_v5/lc_loop_observer.va": "9f290fd2983cac41dc0d17a4342daf13dc5f8b0bb9dee94fad1ca143ff87cf07",
+    "share/deliverables/blocks/cmos_v14_full/supply_energy_observer.va": "e3f07b168283a02f1c14ccebe075bdc8370960227c058354d403dde41d5ce54e"
+  },
+  "completion": "Two independent>=60s stable terminal observations,exit0/zero errors,PSF END,input/raw/log/final.ic hashes,10001 finite physical points0..20us.",
+  "analysis": "Decode each stable EVAL against the frozen algorithm with coarse target896 and fine/fresh3584. Check actual coarse code/fine entry,ctrl/nfilt,enable/acquired/qualified/frequency_good/range_error/restart.2ns output cannot directly count RF edges. Low qualified at20us is an intentional prefix boundary.",
+  "evidence_boundary": "Callback full-hardware K28 low-RF startup prefix only. Not complete capture, full-band coverage, steady-state tuning or noise. Preserve old121K41 and old109 geometry results separately.",
+  "resource_cap": {
+    "threads": 18,
+    "long_jobs": 4,
+    "short_jobs": 1
+  },
+  "source_capture_review": "share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture121_review122.json",
+  "source_capture_review_sha256": "3f1d059d02399e57e6adef3a0eec733cbce8fbcb46e07bb6c955ed1c73edb435",
+  "fresh_target_count": 3584,
+  "fresh_check_budget": 8
+}

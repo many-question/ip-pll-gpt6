@@ -1,0 +1,365 @@
+schema: chip-report/0.1
+report:
+  seq: 122
+  time: '2026-10-17T04:21:26+08:00'
+  trigger: proactive
+  covers_since: '2026-10-16T14:06:57+08:00'
+overall:
+  phase: callback单K41完整捕获通过，低RF端自主选码前段在途
+  summary: callback121独立120µs完整捕获通过；粗6/DAC45五次复测后交接，90.670–120µs持续qualified。冻结参数启动唯一K28 20µs低RF端自主选码前段；新版本全带噪声与全频覆盖仍未完成。
+  since_last:
+  - 121自然完成，60001有限点、退出0/零错误/PSF END及input/raw/log/final.ic哈希通过，独立稳定终态相隔182.822462秒；Spectre14小时5分22秒。
+  - 20个EVAL全部符合冻结RTL；新误差−12/−2/+7/+1/+1，同粗6/DAC45连续合格，87.754µs使能，无range_error/restart，粗修正未触发。
+  - 使能32.246µs/持续qualified29.330µs均超过一个监督窗口；qualified最差测频18.719ppm，末1µs983.999732MHz/最差6.721ppm。
+  - 末5µsctrl/nfilt仍约−3.073/−.111mV/µs漂移；功能捕获不等于偏置渐近稳态或噪声签核。
+  - 实时零任务后只派发K28/M4 20µs前段；配置/时长外全部冻结，不重新扫描固定码或复制120µs长记录。
+  route_confidence: medium
+  route_confidence_reason: callback版本自身单K41整环捕获已通过，低RF端自主选码、全频与全带噪声等仍待独立证据。
+levels:
+  survey:
+    maturity: 3
+    note: 按用户指定更新后的pdk-callback使用正确TSMC180BCD provider；少量TT模块配对，无角落/种子/方法矩阵扩展。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_CAPTURE122.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture121_review122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture_detail122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_preflight.json
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_PAIR120.md
+    - share/deliverables/integration/cmos_v14_full/PDK_CALLBACK110.md
+  modeling:
+    maturity: 3
+    note: 75种实际尺寸逐项callback，21,479个展开MOS保持W/L/NF/M不变，158条特化定义更新AD/AS/PD/PS/NRD/NRS/SA/SB/SD等。PDK默认WPE关闭；是前仿几何而非真实版图提取。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_CAPTURE122.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture121_review122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture_detail122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_preflight.json
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_PAIR120.md
+    - share/deliverables/integration/cmos_v14_full/PDK_CALLBACK110.md
+  architecture:
+    maturity: 4
+    note: 已选择RT4主架构不变；原4.4fF采用基线保留。原109与callback参数版独立，不能拼接全频通过。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_CAPTURE122.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture121_review122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture_detail122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_preflight.json
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_PAIR120.md
+    - share/deliverables/integration/cmos_v14_full/PDK_CALLBACK110.md
+  blocks:
+  - name: reference_buffer
+    role: 24 MHz 参考整形
+    stage: circuit
+    maturity: 2
+    note: callback121在24MHz理想10ps边沿参考下完成整环捕获。110局部延时319.317→331.174ps；实际参考源条件与噪声未闭合。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_CAPTURE122.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture121_review122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture_detail122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_preflight.json
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_PAIR120.md
+    - share/deliverables/integration/cmos_v14_full/PDK_CALLBACK110.md
+    blockers: []
+  - name: subsampling_detector
+    role: 直接采样差分 VCO 并鉴相
+    stage: circuit
+    maturity: 2
+    note: callback121物理交接后单K41持续qualified29.330µs；鉴相参与整环捕获，未测本版本噪声/杂散。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_CAPTURE122.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture121_review122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture_detail122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_preflight.json
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_PAIR120.md
+    - share/deliverables/integration/cmos_v14_full/PDK_CALLBACK110.md
+    blockers: []
+  - name: transconductor_charge_pump
+    role: 采样误差转电流及增益控制
+    stage: circuit
+    maturity: 2
+    note: callback121实际CP使能后完成捕获；110局部脉冲有效跨导绝对值4.417198→3.742814µS，非静态OP跨导；环路控制仍慢漂移。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_CAPTURE122.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture121_review122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture_detail122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_preflight.json
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_PAIR120.md
+    - share/deliverables/integration/cmos_v14_full/PDK_CALLBACK110.md
+    blockers: []
+  - name: passive_loop_filter
+    role: 环路滤波与稳定性
+    stage: circuit
+    maturity: 2
+    note: 121末5µsctrl时间均值.749742V、斜率−3.073mV/µs，末1µs54.245mVpp；通过有限窗口功能捕获，不能宣称渐近稳态。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_CAPTURE122.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture121_review122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture_detail122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_preflight.json
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_PAIR120.md
+    - share/deliverables/integration/cmos_v14_full/PDK_CALLBACK110.md
+    blockers: []
+  - name: lc_vco_and_cap_bank
+    role: 2.688–3.936 GHz 振荡、粗调和模拟细调
+    stage: circuit
+    maturity: 2
+    note: 121自主粗6/DAC45完成RF3936MHz单点捕获。122仅K28/RF2688MHz自主选码前段在途，原局部频带端点不等于整环全带。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_CAPTURE122.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture121_review122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture_detail122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_preflight.json
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_PAIR120.md
+    - share/deliverables/integration/cmos_v14_full/PDK_CALLBACK110.md
+    blockers: []
+  - name: auxiliary_fll
+    role: 启动捕获和正确谐波选择
+    stage: circuit
+    maturity: 3
+    note: 121全部20个EVAL符合冻结RTL；五次新误差−12/−2/+7/+1/+1，同粗6/DAC45连续合格，32ref交接通过；粗修正分支未触发，八次预算不变。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_CAPTURE122.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture121_review122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture_detail122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_preflight.json
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_PAIR120.md
+    - share/deliverables/integration/cmos_v14_full/PDK_CALLBACK110.md
+    blockers: []
+  - name: programmable_even_divider
+    role: 可编程÷4/6/8/10/12/14 CMOS分频
+    stage: circuit
+    maturity: 2
+    note: 121 K41/M4与10fF完整捕获通过；内部周期观察器测频，2ns保存不能计RF沿。callback其他分频模式仍未有完整捕获证据。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_CAPTURE122.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture121_review122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture_detail122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_preflight.json
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_PAIR120.md
+    - share/deliverables/integration/cmos_v14_full/PDK_CALLBACK110.md
+    blockers:
+    - callback其他分频模式、重配置、全频与PVT仍未验证。
+  - name: output_retimer
+    role: 利用 VCO 派生时钟重定时
+    stage: circuit
+    maturity: 3
+    note: RT4在callback121单K41/M4/10fF整环中持续qualified；旧115.2fs不得移植，新版本噪声未测。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_CAPTURE122.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture121_review122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture_detail122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_preflight.json
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_PAIR120.md
+    - share/deliverables/integration/cmos_v14_full/PDK_CALLBACK110.md
+    blockers: []
+  - name: output_buffer
+    role: 驱动片内轻负载
+    stage: circuit
+    maturity: 3
+    note: callback121在10fF输出负载下末1µs983.999732MHz；仅该负载/频点/TT，未签核全范围驱动。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_CAPTURE122.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture121_review122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture_detail122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_preflight.json
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_PAIR120.md
+    - share/deliverables/integration/cmos_v14_full/PDK_CALLBACK110.md
+    blockers: []
+  - name: bias_and_control
+    role: 偏置、频点配置及状态控制
+    stage: circuit
+    maturity: 2
+    note: 121无暖偏置/readic，从原复位完成捕获；末5µsnfilt均值.739711586V、斜率−.110599mV/µs，仍慢漂移。122保持相同初始化与1MΩ/10pF。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_CAPTURE122.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture121_review122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture_detail122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_preflight.json
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_PAIR120.md
+    - share/deliverables/integration/cmos_v14_full/PDK_CALLBACK110.md
+    blockers: []
+  - name: rf_clock_receiver
+    role: VCO到CMOS时钟接口
+    stage: circuit
+    maturity: 2
+    note: 121完整MOS链K41/M4捕获通过；原118/119局部已核对计数缓冲边沿，119起点差一沿由缓冲延时解释，不作为历史108/109分叉根因证明。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_CAPTURE122.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture121_review122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture_detail122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_preflight.json
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_PAIR120.md
+    - share/deliverables/integration/cmos_v14_full/PDK_CALLBACK110.md
+    blockers: []
+  - name: cp_pulse_timing
+    role: 参考后CP脉冲、使能与复位
+    stage: circuit
+    maturity: 2
+    note: 121于87.754µs实际使能，90.670µs起持续qualified，验证本版本一次物理交接；不是相位/种子扫描。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_CAPTURE122.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture121_review122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture_detail122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_preflight.json
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_PAIR120.md
+    - share/deliverables/integration/cmos_v14_full/PDK_CALLBACK110.md
+    blockers: []
+  - name: configuration_and_frequency_supervision
+    role: 频点配置、监督与周期测频
+    stage: circuit
+    maturity: 3
+    note: 121原复位/配置有效，frequency_good89.336µs后持续高，无range_error/restart；使能后32.246µs超过512ref。122配置K28，实际低端轨迹待完成。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_CAPTURE122.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture121_review122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture_detail122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_preflight.json
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_PAIR120.md
+    - share/deliverables/integration/cmos_v14_full/PDK_CALLBACK110.md
+    blockers: []
+  - name: phase_and_amplitude_validation
+    role: 锁定判定的物理相位与振幅有效性检测
+    stage: circuit
+    maturity: 2
+    note: 121 qualified90.670–120µs持续为高；末1µs相位观察器均值约.76933rad。仍有慢漂移，频偏/相位观测不是抖动测量。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_CAPTURE122.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture121_review122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture_detail122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_preflight.json
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_PAIR120.md
+    - share/deliverables/integration/cmos_v14_full/PDK_CALLBACK110.md
+    blockers: []
+  verification:
+    maturity: 3
+    note: 121单K41 TT功能捕获独立审计通过；122单K28 20µs自主选码前段在途。全频、PVT、噪声、杂散未闭合。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_CAPTURE122.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture121_review122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture_detail122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_preflight.json
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_PAIR120.md
+    - share/deliverables/integration/cmos_v14_full/PDK_CALLBACK110.md
+  integration:
+    maturity: 2
+    note: callback110/recenter109完整电路从原复位完成自主SAR、新复测、32ref交接并持续qualified；仅单K41 TT，仍有偏置/控制慢漂移，无版图/PEX。
+    artifacts:
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_CAPTURE122.md
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture121_review122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_capture_detail122.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_protocol.json
+    - share/deliverables/integration/cmos_v14_full/results/rt4_callback_low122_preflight.json
+    - share/deliverables/integration/cmos_v14_full/CALLBACK_PAIR120.md
+    - share/deliverables/integration/cmos_v14_full/PDK_CALLBACK110.md
+spec_status:
+- id: REQ-01
+  current: 独立callback110完整层次21,479个MOS；原采用基线17,617个MOS保留
+  condition: callback110几何/recenter109，K41/M4，TT27/1.2V/24MHz/10fF，120µs AX8ps/1e-3/traponly/noise-off；原复位、预先供电。
+  evidence: circuit_sim
+  status: on_track
+  note: 75种W/L/model逐项callback，21,479展开MOS尺寸不变；单K41完整捕获通过。WPE默认off，CDF几何不是版图/PEX。
+- id: REQ-02
+  current: 1.2V运行；当前复位测试供电预先建立
+  condition: callback110几何/recenter109，K41/M4，TT27/1.2V/24MHz/10fF，120µs AX8ps/1e-3/traponly/noise-off；原复位、预先供电。
+  evidence: circuit_sim
+  status: on_track
+  note: 本版本单点1.2V捕获通过；不是电源爬升、供电范围或器件可靠性签核。
+- id: REQ-03
+  current: 24MHz/60fF参考缓冲平均延时319.317→331.174ps
+  condition: TT27/1.2V，300ns paired AX8ps/1e-3/noise-off
+  evidence: circuit_sim
+  status: on_track
+  note: 只比较callback参数前后；真实源阻抗、参考噪声和角落未闭合。
+- id: REQ-04
+  current: callback121末1µs输出983.999732MHz；qualified窗口最差测频偏差18.719ppm
+  condition: callback110几何/recenter109，K41/M4，TT27/1.2V/24MHz/10fF，120µs AX8ps/1e-3/traponly/noise-off；原复位、预先供电。
+  evidence: circuit_sim
+  status: on_track
+  note: 本参数版单K41自主捕获通过，持续qualified29.330µs，无error/restart；一次粗修正未触发。其他频点不能继承。
+- id: REQ-05
+  current: callback自身984MHz单点完整捕获通过；672MHz/K28 20µs自主低RF端选码前段在途
+  condition: callback110几何/recenter109，K41/M4，TT27/1.2V/24MHz/10fF，120µs AX8ps/1e-3/traponly/noise-off；原复位、预先供电。
+  evidence: circuit_sim
+  status: at_risk
+  note: 规划216–984MHz不变；局部端点和本次单点不能拼接全频通过。只用少量代表点，未扩33点扫描。
+- id: REQ-06
+  current: null
+  condition: callback121为noise-off功能记录；原115.2fs仅旧RT4高偏移阶段历史证据。
+  evidence: circuit_sim
+  status: unknown
+  note: 最终10kHz至fOUT/2排除杂散RMS<200fs保持；callback未测噪声，18.719ppm与6.721ppm是测频偏差。
+- id: REQ-07
+  current: null
+  condition: callback121未保存边沿分辨率噪声/杂散记录；本轮只TT功能捕获。
+  evidence: circuit_sim
+  status: at_risk
+  note: 目标<−60dBc保持，新版本尚未验证；原局部核心−28.8dBc不移植。
+- id: REQ-08
+  current: RT4复位测试末1µs总供电8.050093mW
+  condition: TT27/1.2V/K41/M4/10fF/Q5，64µs独立复位测试，4ps/reltol1e-4，内部步积分。
+  evidence: circuit_sim
+  status: at_risk
+  note: 超4mW；功耗优化继续后置，但最终版图尺寸定型前需处理或由用户另行决定指标。 此数值属原版历史记录，callback整机功耗没有签核。
+- id: REQ-09
+  current: null
+  condition: 含电感、环路滤波器及隔离，暂不计pad。
+  evidence: none
+  status: unknown
+  note: callback提供默认器件几何来源，仍无布局或真实无源几何，不能确认<0.3mm²；没有开始版图。
+- id: REQ-10
+  current: callback单K41完整捕获TT27°C通过；K28启动前段在途
+  condition: TT27/1.2V/AX8ps/1e-3；无新增PVT/温度覆盖。
+  evidence: circuit_sim
+  status: at_risk
+  note: 温度0–60°C要求不变，未扩PVT/种子/方法矩阵，不能据TT单点签核。
+- id: REQ-11
+  current: null
+  condition: callback110几何/recenter109，K41/M4，TT27/1.2V/24MHz/10fF，120µs AX8ps/1e-3/traponly/noise-off；原复位、预先供电。
+  evidence: circuit_sim
+  status: on_track
+  note: 用户无需刻意优化占空比的安排保持；2ns保存未测本版本精确占空比，原43.99%不移植。
+- id: REQ-12
+  current: callback121完整K41/M4在10fF输出负载下通过功能捕获
+  condition: callback110几何/recenter109，K41/M4，TT27/1.2V/24MHz/10fF，120µs AX8ps/1e-3/traponly/noise-off；原复位、预先供电。
+  evidence: circuit_sim
+  status: on_track
+  note: 本版本单点负载证据已建立；不扩展为全频/全负载/PVT通过。
+questions_for_human:
+- q: 杂散<−60dBc是否采用载波两侧偏移10kHz–fOUT/2内所有离散线、逐条单边功率相对载波的口径？已异步提出，尚未收到确认；方法与电路工作继续。
+  blocking: false
+  since: '2026-10-04'
+- q: 24MHz参考到PLL输入端的10%–90%上升/下降时间、驱动能力或源阻抗是否有预计值？已异步询问，未阻塞现有验证。
+  blocking: false
+  since: '2026-10-04'
+blocked_on: null
+risks:
+- callback121单K41通过但ctrl/nfilt仍慢漂移，不能视为渐近稳态或噪声已达标。
+- 一次粗码修正分支仍未在callback物理捕获触发；不把未触发分支当作修复原因。
+- 低RF端自主选码尚待122；不同版本及局部/完整结果不能拼接全频通过。
+- 全带噪声、杂散、功耗、面积及PVT缺口保持。
+next_steps:
+- 121已完整回收review通过并退役；禁止重启/重复派发/再poll任何已完成任务。
+- 只监控rt4cblow122ssd01；audit_rt4_callback_low122.py UNIQUE.json后运行唯一poll_rt4_callback_low122.py，按真实进程/cwd/TMPDIR/输入/AX核验。runner活着由其回收，消失只接续原目录。
+- 122终态需两次独立>=60秒稳定、退出0/零错误/PSF END、input/raw/log/final.ic哈希及10001点0–20µs有限物理波形，审计含final_state_sha256/completed_output_hashes。
+- review_rt4_callback_low122.py 审计A 审计B 新输出JSON，核对896粗SAR判据与3584细调目标、实际下一码、细调入口、偏置、状态/error/restart；20µs未使能或qualified低不是完整捕获失败。
+- 依据真实低RF端选码结果决定最少必要验证；不机械扫码、不直接复制长记录、不扩33点/PVT/方法/种子、不增120µs或八次预算；新版本噪声单独建立，功耗/后端后置。
+decisions_since_last: []
+resources_note: 121自然完成14h5m22s并退役；核验实时0任务后启动唯一K28 20µs前段、4请求线程，全部计算在SSD。
