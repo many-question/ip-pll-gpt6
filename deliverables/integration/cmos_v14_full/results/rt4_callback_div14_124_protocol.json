@@ -1,0 +1,71 @@
+{
+  "time": "2026-10-17T19:18:39.982553+08:00",
+  "cases": [
+    {
+      "run": "rt4cbdiv14124ssd01",
+      "case": "rt4_callback_div14_124_tt",
+      "kind": "diagnostic",
+      "k": 9,
+      "m": 14,
+      "target_out_mhz": 216,
+      "target_rf_mhz": 3024,
+      "stop_s": 2e-05,
+      "strobe_s": 2e-09,
+      "expected_points": 10001,
+      "requested_threads": 4
+    }
+  ],
+  "threads": 4,
+  "mode": "ax",
+  "maxstep_s": 8e-12,
+  "reltol": 0.001,
+  "method": "traponly",
+  "noise": false,
+  "condition": "TT27/1.2V/24MHz/10fF; frozen full callback110 hierarchy and recenter109 controller.",
+  "purpose": "Check the lowest planned output and maximum divider mode from original reset, including real configuration selection and autonomous coarse SAR. K41/M4 and K28/M4 now have separate capture evidence; neither verifies the M14 path.",
+  "record_budget_basis": "396ref endpoint/coarse schedule reaches fine entry near17.25us.20us covers configuration, output-mode observation and autonomous coarse selection before considering a new full-capture record. No extra fixed-code fixtures.",
+  "initialization": "Same109 supplied-DC reset/apply and10uV differential LC seed. No nfilt warm initial condition, readic, forced coarse/DAC, state bypass or controller edit. Supply already1.2V; not a power-ramp test.",
+  "source_tb": "share/deliverables/integration/cmos_v14_full/tb/rt4_callback_lowcapture123_tt.scs",
+  "source_tb_sha256": "0666cdfd079780187642fad7df173df69e90dd0deef7d1e5d3bc4eb03d77175a",
+  "coarse_target_count": 1008,
+  "physical_inputs_sha256": {
+    "share/deliverables/blocks/cmos_v14_full/rt4_callback110_after.scs": "260a50e7e62d0d25cfdfb21d6004a22f31ca38544632329448bea811dcd38f62",
+    "share/deliverables/integration/cmos_v14_full/tb/rt4_callback_div14_124_tt.scs": "811a15f3a7d60f78f2755aeedead8469e2420d359046fe0c3a81d8b4867aa52c",
+    "share/deliverables/blocks/interface_v5/lc_loop_observer.va": "9f290fd2983cac41dc0d17a4342daf13dc5f8b0bb9dee94fad1ca143ff87cf07",
+    "share/deliverables/blocks/cmos_v14_full/supply_energy_observer.va": "e3f07b168283a02f1c14ccebe075bdc8370960227c058354d403dde41d5ce54e"
+  },
+  "completion": "Two independent>=60s stable terminal observations,exit0/zero errors,PSF END,input/raw/log/final.ic hashes,10001 finite physical points0..20us.",
+  "analysis": "Decode stable EVAL using1008/4032; check actual fine entry,bias,flags/error/restart. After1us check active K9, only s5 high, ready high, invalid/reset low. Last1us reference-interval RF/output observer ratio is compared with14 using0.5% relative mean screen; not exact edge counting or lock acceptance.",
+  "evidence_boundary": "Single K9/M14 20us autonomous startup prefix only. Low qualified is an intentional boundary; no full capture/noise/full-band claim. K28/K41 and old geometry evidence remain separate.",
+  "resource_cap": {
+    "threads": 18,
+    "long_jobs": 4,
+    "short_jobs": 1
+  },
+  "source_capture_review": "share/deliverables/integration/cmos_v14_full/results/rt4_callback_lowcapture123_review124.json",
+  "source_capture_review_sha256": "1f244cb3063e4193a89c02d0f7aa6726a364aa8246774a95a1ca25c5e97d9a73",
+  "fresh_target_count": 4032,
+  "fresh_check_budget": 8,
+  "acquisition_divisor": 4,
+  "output_divisor": 14,
+  "watchdog_output_k": 9,
+  "target_basis": "The acquisition clock is always RF/4, even when output M=14. Coarse target=K*M*8=1008, fine/fresh=4032. The post-acquired watchdog uses final output and K=9. Do not use K*32=288 as the FLL coarse target.",
+  "extra_saved_nodes": [
+    "XP.s0",
+    "XP.s1",
+    "XP.s2",
+    "XP.s3",
+    "XP.s4",
+    "XP.s5",
+    "XP.XC.ak0",
+    "XP.XC.ak1",
+    "XP.XC.ak2",
+    "XP.XC.ak3",
+    "XP.XC.ak4",
+    "XP.XC.ak5",
+    "XP.cfg_invalid",
+    "XP.divider_reset"
+  ],
+  "configuration_check_after_s": 1e-06,
+  "observer_mean_ratio_relative_tolerance": 0.005
+}
