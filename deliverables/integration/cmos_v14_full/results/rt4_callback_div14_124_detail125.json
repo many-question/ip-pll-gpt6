@@ -1,0 +1,131 @@
+{
+  "time": "2026-10-17T21:18:56.104836+08:00",
+  "source_review": "share/deliverables/integration/cmos_v14_full/results/rt4_callback_div14_124_review125.json",
+  "source_review_sha256": "ee41b63714ed22607d1f2f7b4bb694d9b75c819991665045ed7de02f7e2d70b2",
+  "source_waveforms_sha256": "a51e975bfed60f80e9c1cb208e20ad1f9f87520d08f749975593afe83621026b",
+  "spectre_wall_time": "1h55m15s",
+  "terminal": {
+    "exit_code": 0,
+    "errors": 0,
+    "stable_interval_s": 86.191651,
+    "psf_end": true,
+    "raw_sha256": "7b000de3528ae801d104400928ca6a4c9e4ec7855b386aa3c2162f4742a8b628",
+    "log_sha256": "c85bed6bd30b8e18c9aa89877dbc4ff47b44616448c59275fe480bbd980cfee3",
+    "final_ic_sha256": "e1d8a5342e78fa9bb4d089f6e2173fccd7aab1ed7520aff8409c264dd35425d8",
+    "inputs_sha256": {
+      "rt4_callback_div14_124_tt.scs": "90794faabd1d4402691a784c60beef18f0f7f5e9d5d33b3e70114c1b580b3137",
+      "lc_loop_observer.va": "9f290fd2983cac41dc0d17a4342daf13dc5f8b0bb9dee94fad1ca143ff87cf07",
+      "rt4_callback110_after.scs": "260a50e7e62d0d25cfdfb21d6004a22f31ca38544632329448bea811dcd38f62",
+      "supply_energy_observer.va": "e3f07b168283a02f1c14ccebe075bdc8370960227c058354d403dde41d5ce54e"
+    }
+  },
+  "coarse_codes": [
+    0,
+    128,
+    192,
+    160,
+    144,
+    152,
+    156,
+    154,
+    153
+  ],
+  "counts": [
+    1326,
+    1046,
+    955,
+    998,
+    1022,
+    1010,
+    1005,
+    1008,
+    1009
+  ],
+  "errors": [
+    318,
+    38,
+    -53,
+    -10,
+    14,
+    2,
+    -3,
+    0,
+    1
+  ],
+  "first_fine": {
+    "time_s": 1.725199999999875e-05,
+    "coarse": 155,
+    "dac": 32,
+    "transition_matches": true
+  },
+  "configuration": {
+    "after_s": 1e-06,
+    "active_k_values": [
+      9
+    ],
+    "select_values": [
+      32
+    ],
+    "ready_all_high": true,
+    "invalid_max_V": 0.008168007443174917,
+    "divider_reset_max_V": 0.008243591578386339,
+    "matches_expected": true
+  },
+  "output_mode_observer": {
+    "window_s": [
+      1.9e-05,
+      2e-05
+    ],
+    "observer_updates": 24,
+    "valid_updates": 24,
+    "rf_mean_MHz": 3023.068547900446,
+    "output_mean_MHz": 215.9334903088411,
+    "mean_rf_output_ratio": 13.999998534625968,
+    "expected_output_divisor": 14,
+    "acquisition_divisor": 4,
+    "relative_mean_tolerance": 0.005,
+    "ratio_screen_passed": true
+  },
+  "last1us": {
+    "ctrl": {
+      "time_weighted_mean": 0.591494227330763,
+      "min": 0.5795892960936947,
+      "max": 0.6083191313531265,
+      "linear_slope_per_us": -0.0007732416112617815
+    },
+    "nfilt": {
+      "time_weighted_mean": 0.7322941688808196,
+      "min": 0.7308274956202623,
+      "max": 0.733589841544767,
+      "linear_slope_per_us": 3.418867082062133e-05
+    },
+    "nb": {
+      "time_weighted_mean": 0.734064555184297,
+      "min": 0.7340642683110127,
+      "max": 0.7340649225561742,
+      "linear_slope_per_us": -2.0161457512328564e-08
+    },
+    "observer_rf_MHz": {
+      "time_weighted_mean": 3023.0685419510532,
+      "min": 3023.025673727388,
+      "max": 3023.117046274944,
+      "linear_slope_per_us": -0.0495046323251958
+    },
+    "observer_output_MHz": {
+      "time_weighted_mean": 215.9334923141854,
+      "min": 215.92991208085004,
+      "max": 215.9373384341925,
+      "linear_slope_per_us": -0.003617198241269115
+    }
+  },
+  "next_decision": {
+    "single_point": "K9/M14, output216MHz, RF3024MHz",
+    "purpose": "Verify continuous fine SAR/fresh rechecks, same-code consecutive qualification, physical handoff, acquisition RF/4 to final-output supervision transition, and sustained qualification in the largest output-divider mode.",
+    "evidence": "124 independently completed: nine valid endpoint/coarse EVALs; autonomous155/32 entry; K9/s5 configuration and mean RF/output ratio14 verified. No fresh recheck or handoff was observed in20us.",
+    "why_full_controller": "A fixed-code fixture cannot test the actual RF/4 acquisition-to-output/M14 supervision handoff. K41/M4 and K28/M4 captures do not exercise that mode transition. No additional fixed-code points are needed.",
+    "why_120us": "Frozen schedule396ref coarse +840ref fine + up to1312ref fresh +32ref handoff, after about0.75us configuration. Latest enable108.25us;60/80us truncates a legal search path and would require another reset run.120us stays within the existing cap; at latest enable only11.75us remain, shorter than512ref/21.333us. Report actual enable/qualified windows without presuming full horizon or success.",
+    "limits": "One TT AX8ps/1e-3/traponly/noise-off run. No physical/control change, matrix, forced codes, warm nfilt, readic, transient-state continuation, or extra fresh checks. Final DAC and capture result are not predicted."
+  },
+  "full_capture_evaluated": false,
+  "audit_note": "First terminal audit A preceded final.ic collection and is retained but not used for review. Complete B/C audits are86.191651s apart; all original checks retained. Original runner collected naturally."
+}

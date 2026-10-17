@@ -1,0 +1,82 @@
+{
+  "threads": 4,
+  "mode": "ax",
+  "maxstep_s": 8e-12,
+  "reltol": 0.001,
+  "method": "traponly",
+  "noise": false,
+  "condition": "TT27/1.2V/24MHz/10fF; frozen full callback110 hierarchy and recenter109 controller.",
+  "initialization": "Same109 supplied-DC reset/apply and10uV differential LC seed. No nfilt warm initial condition, readic, forced coarse/DAC, state bypass or controller edit. Supply already1.2V; not a power-ramp test.",
+  "resource_cap": {
+    "threads": 18,
+    "long_jobs": 4,
+    "short_jobs": 1
+  },
+  "time": "2026-10-17T21:18:56.135962+08:00",
+  "cases": [
+    {
+      "run": "rt4cbdiv14cap125ssd01",
+      "case": "rt4_callback_div14capture125_tt",
+      "kind": "capture",
+      "k": 9,
+      "m": 14,
+      "target_out_mhz": 216,
+      "target_rf_mhz": 3024,
+      "stop_s": 0.00012,
+      "strobe_s": 2e-09,
+      "expected_points": 60001,
+      "requested_threads": 4
+    }
+  ],
+  "purpose": "Verify continuous fine SAR/fresh rechecks, same-code consecutive qualification, physical handoff, acquisition RF/4 to final-output supervision transition, and sustained qualification in the largest output-divider mode.",
+  "record_budget_basis": {
+    "reference_Hz": 24000000.0,
+    "coarse_iteration_ref": 44,
+    "coarse_iterations_max": 9,
+    "fine_sar_iteration_ref": 140,
+    "fine_sar_iterations": 6,
+    "fresh_iteration_ref": 164,
+    "fresh_budget": 8,
+    "handoff_ref": 32,
+    "configured_release_approx_us": 0.75,
+    "fine_entry_approx_us": 17.25,
+    "fresh_entry_approx_us": 52.25,
+    "latest_enable_approx_us": 108.25,
+    "remaining_at_latest_enable_us": 11.75,
+    "supervisor_horizon_us": 21.333333333333332,
+    "covers_full_supervisor_horizon_at_latest_enable": false
+  },
+  "duration_decision": "Frozen schedule396ref coarse +840ref fine + up to1312ref fresh +32ref handoff, after about0.75us configuration. Latest enable108.25us;60/80us truncates a legal search path and would require another reset run.120us stays within the existing cap; at latest enable only11.75us remain, shorter than512ref/21.333us. Report actual enable/qualified windows without presuming full horizon or success.",
+  "observation_limit": "At latest possible enable near108.25us only11.75us remain, shorter than21.333us supervisor horizon. Report actual enabled/qualified durations and any incomplete horizon; never infer indefinite stability.",
+  "source_tb": "share/deliverables/integration/cmos_v14_full/tb/rt4_callback_div14_124_tt.scs",
+  "source_tb_sha256": "811a15f3a7d60f78f2755aeedead8469e2420d359046fe0c3a81d8b4867aa52c",
+  "source_rtl": "share/deliverables/blocks/cmos_v14_full/fll_recenter109_v14.v",
+  "source_rtl_sha256": "8ae1fae3680119ab8cbc0dbd77531e1ad1a10678cca6019d1aca073611afc290",
+  "coarse_target_count": 1008,
+  "fresh_target_count": 4032,
+  "fresh_check_budget": 8,
+  "capture_screen": {
+    "window_s": 1e-06,
+    "mean_frequency_relative_error_limit": 0.005,
+    "window_frequency_relative_spread_limit": 0.005,
+    "qualified_high_fraction_min": 0.99,
+    "frequency_good_high_fraction_min": 0.99,
+    "range_error_max_v": 0.2
+  },
+  "physical_inputs_sha256": {
+    "share/deliverables/blocks/cmos_v14_full/rt4_callback110_after.scs": "260a50e7e62d0d25cfdfb21d6004a22f31ca38544632329448bea811dcd38f62",
+    "share/deliverables/integration/cmos_v14_full/tb/rt4_callback_div14capture125_tt.scs": "84aadae82bcb718009198181acaaeeedaf60f61d45381a78c69caf3a14dc9b37",
+    "share/deliverables/blocks/interface_v5/lc_loop_observer.va": "9f290fd2983cac41dc0d17a4342daf13dc5f8b0bb9dee94fad1ca143ff87cf07",
+    "share/deliverables/blocks/cmos_v14_full/supply_energy_observer.va": "e3f07b168283a02f1c14ccebe075bdc8370960227c058354d403dde41d5ce54e"
+  },
+  "completion": "Two independent>=60s stable terminal observations,exit0/zero errors,PSF END,input/raw/log/final.ic hashes,60001 finite physical points0..120us; units metadata excluded.",
+  "analysis": "Replay each observed stable EVAL against frozen RTL, partition reset epochs, check<=8 fresh counts, coarse correction direction/priority/number/boundaries, two same-code good counts,HANDOFF32ref,enable/acquired,qualified/frequency_good,error/restart. Report observer update frequency statistics and phase/ctrl/nfilt;2ns output cannot directly count RF edges. Check activeK9, onlys5, ready and invalid/reset after1us; last1us RF/output observer mean ratio14 within0.5%. These checks do not provide precise duty or RF edge counts.",
+  "evidence_boundary": "Independent single K9/M14 TT callback functional capture only. FLL counts RF/4 at1008/4032 targets; post-acquired supervision uses final outputK9. Prior M4 captures remain separate. No full-band/PVT/noise/PEX acceptance; frequency offset is not jitter.",
+  "wall_time_planning": "124 K9 prefix20us took1h55m15s; completed120us callback K28/K41 records11h3m13s/14h5m22s. Roughly12-16h planning only, not guaranteed ETA. Client timeout is not completion.",
+  "source_prefix_review": "share/deliverables/integration/cmos_v14_full/results/rt4_callback_div14_124_review125.json",
+  "source_prefix_review_sha256": "ee41b63714ed22607d1f2f7b4bb694d9b75c819991665045ed7de02f7e2d70b2",
+  "acquisition_divisor": 4,
+  "output_divisor": 14,
+  "configuration_check_after_s": 1e-06,
+  "observer_mean_ratio_relative_tolerance": 0.005
+}

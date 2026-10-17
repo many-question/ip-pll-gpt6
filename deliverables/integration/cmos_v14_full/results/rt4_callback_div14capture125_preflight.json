@@ -1,0 +1,40 @@
+{
+  "time": "2026-10-17T21:18:57.125840+08:00",
+  "preserved_manifests": {
+    "rt4_recenter_implementation109.json": 244,
+    "pdk_callback_implementation110.json": 21,
+    "rt4_callback_capture_implementation121.json": 16,
+    "rt4_callback_capture_handoff121.json": 24,
+    "rt4_callback_low_implementation122.json": 14,
+    "rt4_callback_capture_handoff122.json": 19,
+    "rt4_callback_lowcapture_implementation123.json": 17,
+    "rt4_callback_lowcapture_handoff123.json": 23,
+    "rt4_callback_div14_implementation124.json": 16,
+    "rt4_callback_div14_handoff124.json": 22
+  },
+  "baseline24_preserved": true,
+  "tb_changes_from124": [
+    "comment",
+    "stop20us_to120us"
+  ],
+  "configuration_saves_unchanged": true,
+  "no_physical_or_control_changes": true,
+  "coarse_target": 1008,
+  "fresh_target": 4032,
+  "acquisition_divisor": 4,
+  "output_divisor": 14,
+  "record_decision": {
+    "single_point": "K9/M14, output216MHz, RF3024MHz",
+    "purpose": "Verify continuous fine SAR/fresh rechecks, same-code consecutive qualification, physical handoff, acquisition RF/4 to final-output supervision transition, and sustained qualification in the largest output-divider mode.",
+    "evidence": "124 independently completed: nine valid endpoint/coarse EVALs; autonomous155/32 entry; K9/s5 configuration and mean RF/output ratio14 verified. No fresh recheck or handoff was observed in20us.",
+    "why_full_controller": "A fixed-code fixture cannot test the actual RF/4 acquisition-to-output/M14 supervision handoff. K41/M4 and K28/M4 captures do not exercise that mode transition. No additional fixed-code points are needed.",
+    "why_120us": "Frozen schedule396ref coarse +840ref fine + up to1312ref fresh +32ref handoff, after about0.75us configuration. Latest enable108.25us;60/80us truncates a legal search path and would require another reset run.120us stays within the existing cap; at latest enable only11.75us remain, shorter than512ref/21.333us. Report actual enable/qualified windows without presuming full horizon or success.",
+    "limits": "One TT AX8ps/1e-3/traponly/noise-off run. No physical/control change, matrix, forced codes, warm nfilt, readic, transient-state continuation, or extra fresh checks. Final DAC and capture result are not predicted."
+  },
+  "decoder_regression": {
+    "124_nine_EVAL_and_config_div14": true,
+    "rt4_callback_lowcapture123_tt": 18,
+    "rt4_callback_capture121_tt": 20
+  },
+  "simulation_dispatched": false
+}
