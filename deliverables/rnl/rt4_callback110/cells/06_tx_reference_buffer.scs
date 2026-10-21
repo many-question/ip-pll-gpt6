@@ -6,9 +6,10 @@ X0 (inp a vdd vss) pll_inv_pdk110_7
 X1 (a b vdd vss) pll_inv_pdk110_8
 X2 (b c vdd vss) pll_inv_pdk110_9
 X3 (c out vdd vss) pll_inv_pdk110_10
-// @RNL(author="manual-schematic126") {
+// @RNL(author="functional-compact127") {
 // $CELL = @DEFINE-SYMBOL {
-// @LINE {(-6, 4) (6, 4) (6, -4) (-6, -4) (-6, 4)};
+// @LINE {(-6, -4) (6, -4) (6, 4) (-6, 4) (-6, -4)};
+// @LINE {(-3, -2) (3, 0) (-3, 2) (-3, -2)};
 // (-8, 0) @PIN(terminal="inp", direction="left");
 // @LINE {(-8, 0) (-6, 0)};
 // (-5.4, 0) @TEXT("inp", size=0.7, halign="start");
@@ -24,9 +25,9 @@ X3 (c out vdd vss) pll_inv_pdk110_10
 // };
 // # @SET-SYMBOL $CELL;
 // #X0 @PLACE(0, 0) => @ORIENT("R0");
-// #X1 @PLACE(36, 0) => @ORIENT("R0");
-// #X2 @PLACE(72, 0) => @ORIENT("R0");
-// #X3 @PLACE(108, 0) => @ORIENT("R0");
+// #X1 @PLACE(23, 0) => @ORIENT("R0");
+// #X2 @PLACE(46, 0) => @ORIENT("R0");
+// #X3 @PLACE(69, 0) => @ORIENT("R0");
 // &a @WIRE(mode="straight") {#X0:2 #X1:1};
 // &b @WIRE(mode="straight") {#X1:2 #X2:1};
 // &c @WIRE(mode="straight") {#X2:2 #X3:1};
@@ -37,20 +38,20 @@ X3 (c out vdd vss) pll_inv_pdk110_10
 // &vdd @WIRE(mode="straight") {#X0:3 %t2:p};
 // %t3 = $GROUND @ATTACH &vss => @PLACE(0, -9);
 // &vss @WIRE(mode="straight") {#X0:4 %t3:p};
-// %t4 = $SUPPLY @ATTACH &vdd => @PLACE(36, 9);
+// %t4 = $SUPPLY @ATTACH &vdd => @PLACE(23, 9);
 // &vdd @WIRE(mode="straight") {#X1:3 %t4:p};
-// %t5 = $GROUND @ATTACH &vss => @PLACE(36, -9);
+// %t5 = $GROUND @ATTACH &vss => @PLACE(23, -9);
 // &vss @WIRE(mode="straight") {#X1:4 %t5:p};
-// %t6 = $SUPPLY @ATTACH &vdd => @PLACE(72, 9);
+// %t6 = $SUPPLY @ATTACH &vdd => @PLACE(46, 9);
 // &vdd @WIRE(mode="straight") {#X2:3 %t6:p};
-// %t7 = $GROUND @ATTACH &vss => @PLACE(72, -9);
+// %t7 = $GROUND @ATTACH &vss => @PLACE(46, -9);
 // &vss @WIRE(mode="straight") {#X2:4 %t7:p};
-// %t8 = $IO_PORT @ATTACH &out => @PLACE(119, 0) => @ORIENT("MY");
+// %t8 = $IO_PORT @ATTACH &out => @PLACE(80, 0) => @ORIENT("MY");
 // %t8 @TEXT("out", key="name", size=0.75);
 // &out @WIRE(mode="straight") {#X3:2 %t8:p};
-// %t9 = $SUPPLY @ATTACH &vdd => @PLACE(108, 9);
+// %t9 = $SUPPLY @ATTACH &vdd => @PLACE(69, 9);
 // &vdd @WIRE(mode="straight") {#X3:3 %t9:p};
-// %t10 = $GROUND @ATTACH &vss => @PLACE(108, -9);
+// %t10 = $GROUND @ATTACH &vss => @PLACE(69, -9);
 // &vss @WIRE(mode="straight") {#X3:4 %t10:p};
 // (-16, 28) @TEXT("06  Reference buffer | 4 instances", size=1.2, halign="start");
 // }

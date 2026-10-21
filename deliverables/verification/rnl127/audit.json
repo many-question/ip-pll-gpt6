@@ -1,0 +1,1119 @@
+{
+  "time": "2026-10-21T20:37:35.851765+08:00",
+  "entry": "share/deliverables/rnl/rt4_callback110/top.scs",
+  "top_instance": "XPLL",
+  "top_subckt": "pll_capture_rt4_r48_recenter109_v14_pdk110_0",
+  "source": "share/deliverables/blocks/cmos_v14_full/rt4_callback110_after.scs",
+  "source_sha256": "260a50e7e62d0d25cfdfb21d6004a22f31ca38544632329448bea811dcd38f62",
+  "language": "RNL 0.3",
+  "runtime": "0.1.0-preview.14",
+  "netlist_files": 82,
+  "original_subcircuits": 81,
+  "reachable_viewer_levels": 82,
+  "definition_instances": 2932,
+  "expanded_mos": 21479,
+  "definition_terminals": 15140,
+  "electrical_lines_identical": true,
+  "all_instances_explicitly_placed": true,
+  "all_terminals_explicitly_wired": true,
+  "solver_called": false,
+  "autorouter_called": false,
+  "errors": 0,
+  "warnings": 0,
+  "hints": 0,
+  "unplaced": 0,
+  "missing_includes": [],
+  "unresolved_circuit_subckts": [],
+  "external_primitive_models": [
+    "nch",
+    "pch",
+    "nmoscap"
+  ],
+  "visual_review": [
+    "system signal flow",
+    "logic gate panel",
+    "reference buffer",
+    "LC core",
+    "DAC",
+    "controller with FLL and counter/snapshot"
+  ],
+  "limitations": [
+    "Large synthesized digital cells retain their original hierarchy and use local same-name net tags in numbered 24-cell panels.",
+    "PDK primitive models are represented by explicit symbols; simulation model cards are not distributed.",
+    "No new simulation evidence; previously paused simulation/recovery/heartbeat work is untouched."
+  ],
+  "files": [
+    {
+      "path": "cells/00_pll_capture_rt4_r48_recenter109_v14.scs",
+      "sha256": "a6e72cab11f360bb7a85034a05c23d0b652aaf211bb196718de957066c64c800",
+      "bytes": 24437
+    },
+    {
+      "path": "cells/01_lc_vco_physical_v14.scs",
+      "sha256": "42741d6f106ad2e7228c209705d3d0fa059eb97e7f7725572ded3740fe92dbb1",
+      "bytes": 9198
+    },
+    {
+      "path": "cells/02_lc_core_physical_v14.scs",
+      "sha256": "7a56ea13761a0e08b99e487532d25ae26d3a229abc5f55df370103edc6fcb608",
+      "bytes": 16685
+    },
+    {
+      "path": "cells/03_tx_inductor_pi.scs",
+      "sha256": "d5e8f82fa60d040708e0747f5093fc061c9e0897a6a85109ade2840584a98937",
+      "bytes": 5928
+    },
+    {
+      "path": "cells/04_tx_cap_bank_switched_v4.scs",
+      "sha256": "510ee33212de20da105af643b67b01b28ba36c04cdc419ddd0a475ae8b735f6d",
+      "bytes": 17926
+    },
+    {
+      "path": "cells/05_tx_bias_mid_v5.scs",
+      "sha256": "5b9b72390b22d1cb5dfa331fa4af4b1c8c0dd7ce3218564e8d74caabfac96d3a",
+      "bytes": 2436
+    },
+    {
+      "path": "cells/06_tx_reference_buffer.scs",
+      "sha256": "2271b6274868615a8c8011479df84271eb1d11dce2f574c35fcf219dca990653",
+      "bytes": 2598
+    },
+    {
+      "path": "cells/07_pll_inv.scs",
+      "sha256": "9a90aa6fc721122331bb70ea8d63730d2f46d2f7dbae60c309a5662b7263d01c",
+      "bytes": 2860
+    },
+    {
+      "path": "cells/08_pll_inv.scs",
+      "sha256": "70974b8d45390567a868083fafe72a382344652eb53c12cea99fd6464634036b",
+      "bytes": 2907
+    },
+    {
+      "path": "cells/09_pll_inv.scs",
+      "sha256": "50464af7506b27a26b9b4fd678af2f637053117404d49ea13e093b51decf52a2",
+      "bytes": 2880
+    },
+    {
+      "path": "cells/10_pll_inv.scs",
+      "sha256": "85f1080069584c2e4875e3898e8aa5e7f5d1294d00c523b123222f373c6ad8a4",
+      "bytes": 2899
+    },
+    {
+      "path": "cells/11_tx_sampler.scs",
+      "sha256": "314bf394163a43bc58c4121717caafd27f2589cf6673a20538187433b3a48212",
+      "bytes": 6005
+    },
+    {
+      "path": "cells/12_pll_inv.scs",
+      "sha256": "90f387c392fe9b3d249a9a8fb302c834a6dfa5f21e79f2240ae8b2bd5821c7b3",
+      "bytes": 2901
+    },
+    {
+      "path": "cells/13_pll_tg.scs",
+      "sha256": "afd971e61897c1117acae7a31406c6e3cbbec57e1f89f13c65f3bd725c0d2129",
+      "bytes": 4355
+    },
+    {
+      "path": "cells/14_cp_physical_v14.scs",
+      "sha256": "6056dbf263505ae46e357a0d9ded460365e2e9341f0752f42054b8b1abdf8c71",
+      "bytes": 10951
+    },
+    {
+      "path": "cells/15_pll_nand2.scs",
+      "sha256": "ea320932aca5d1ffced0d28287891331bcfbd534770a16f1b677ac9a4bcc71b2",
+      "bytes": 5195
+    },
+    {
+      "path": "cells/16_pll_tg.scs",
+      "sha256": "ea440dbf6dab5c82fe76bbf7ed254e6e95d13060f1a3a2c3054df80a6e442284",
+      "bytes": 4343
+    },
+    {
+      "path": "cells/17_tx_loop_filter_v5.scs",
+      "sha256": "17c72c5b917316d3ee743defff116636f59ad0313f748c5337f92c4d99f3c3e5",
+      "bytes": 5733
+    },
+    {
+      "path": "cells/18_pll_tg.scs",
+      "sha256": "41be9f9da9fa7414061b7dac97f4cec27a93adde22660e082dd6180177853437",
+      "bytes": 4359
+    },
+    {
+      "path": "cells/19_rf_light24s12_v14.scs",
+      "sha256": "d8f25524e2ab18eac852b72c3e98a8e9bd9449e6a8853139bfacb7bfa1714464",
+      "bytes": 2763
+    },
+    {
+      "path": "cells/20_pll_inv.scs",
+      "sha256": "87694c3c32b77ae925a34a7321d20c0f0e6f41351dba0da4e38a684bfc5895a7",
+      "bytes": 2898
+    },
+    {
+      "path": "cells/21_bank_pulsetrip_v14.scs",
+      "sha256": "74238c2d597ee6445d994f519c2f9a8e43944b1380cf1439f9656bba47ce7ec2",
+      "bytes": 47973
+    },
+    {
+      "path": "cells/22_ff_fbdelay50_v14.scs",
+      "sha256": "3f91690fbf7bedfef39318f04ae686d728112882f99eb6b0a2543fb4675cb069",
+      "bytes": 9048
+    },
+    {
+      "path": "cells/23_pll_inv.scs",
+      "sha256": "146fc81e294093770c25926feb50b001e8029a0ba49ba4e348567642cde98760",
+      "bytes": 2866
+    },
+    {
+      "path": "cells/24_pll_inv.scs",
+      "sha256": "c5889dce0f7a346695a2b19830d671dcbe8b63d0f35ef7b9918d2e53b14ee886",
+      "bytes": 2860
+    },
+    {
+      "path": "cells/25_pll_tspc_inv.scs",
+      "sha256": "3a36dfad790d73c5e853cc442953fb7a97152a6bc814a1ade35259dc26257ff5",
+      "bytes": 8732
+    },
+    {
+      "path": "cells/26_pll_inv.scs",
+      "sha256": "c318ea448419edcc57e797f776769a80d8405f958ceca1940dc3dd0e29ff5329",
+      "bytes": 2876
+    },
+    {
+      "path": "cells/27_pll_inv.scs",
+      "sha256": "e334758689e77a9d80013d37b0e9f16c1fb3d68c2393027908f62397670792f9",
+      "bytes": 2918
+    },
+    {
+      "path": "cells/28_pll_inv.scs",
+      "sha256": "0fb02ff37222d882d845b74b8b2a650c6bcbc70b9ea6e431401a4ad12cf7802b",
+      "bytes": 2873
+    },
+    {
+      "path": "cells/29_pll_inv.scs",
+      "sha256": "48560a88b05941973f63a95523f797e820f9ca0317b7b677f63ee9555f000928",
+      "bytes": 2858
+    },
+    {
+      "path": "cells/30_div3_fast_v14.scs",
+      "sha256": "9bbd2c078e35ceab3523ad7286486c35b664fa02e9263000c3de296246891952",
+      "bytes": 5549
+    },
+    {
+      "path": "cells/31_pll_inv.scs",
+      "sha256": "dbd0ff2243d4bb46d9f1f2b5849c48240e330591540e6f8e8b251e120ec8aa2a",
+      "bytes": 2898
+    },
+    {
+      "path": "cells/32_nor_fast_v14.scs",
+      "sha256": "d7b7634b5d94364fc71f448b4baa9f5c9054d6fbcadbbd784bd7e46cd9365795",
+      "bytes": 5006
+    },
+    {
+      "path": "cells/33_ff_static_fast_v14.scs",
+      "sha256": "b3090404fec2c7fc378298e06252a3fece1a04113e09c2c2b30c02763690300b",
+      "bytes": 3160
+    },
+    {
+      "path": "cells/34_ring_inv_latch_v14.scs",
+      "sha256": "4450488cb3ea365b2e4dddbe4179ecce68e594598a1a07b29d3c9799df3be76c",
+      "bytes": 3889
+    },
+    {
+      "path": "cells/35_pll_tg.scs",
+      "sha256": "53f650501081bb4323cc56c80d30b99c03bcec50fdd676ba9ec17519d290c9b9",
+      "bytes": 4315
+    },
+    {
+      "path": "cells/36_pll_inv.scs",
+      "sha256": "cf73850a56707d8b49714578330a064a1a53aac2358a90f15081347ca2e965be",
+      "bytes": 2886
+    },
+    {
+      "path": "cells/37_pll_inv.scs",
+      "sha256": "330fdf61911804ab0efb900eda9bbf64fd2d761106b8dd7de1121862231df3d2",
+      "bytes": 2864
+    },
+    {
+      "path": "cells/38_pll_inv.scs",
+      "sha256": "de2d428ba54ec49944e327eb40bbe9a6f6cd9d6a630ff24cabb968aeb00ab4fa",
+      "bytes": 2881
+    },
+    {
+      "path": "cells/39_pll_inv.scs",
+      "sha256": "7e6dcd4e164a8d0279ce5ed5123d708827ce1a84f775e9cfc80471c251a1e0ea",
+      "bytes": 2912
+    },
+    {
+      "path": "cells/40_pll_inv.scs",
+      "sha256": "d61865af45c92be14cb1c134df486461f12d485104d0ac5f8e61a649192dfe9f",
+      "bytes": 2894
+    },
+    {
+      "path": "cells/41_pll_inv.scs",
+      "sha256": "3a402436db7e06f3e8d2ac875cead6f21c1ddc5f1374415217c25aa35e5d53da",
+      "bytes": 2864
+    },
+    {
+      "path": "cells/42_ring_sync_singlephase_v14.scs",
+      "sha256": "3ca901c67e4119eab5baf0b8b29c7a2742940df5d5785d35fe90d56f4a1a91e3",
+      "bytes": 4548
+    },
+    {
+      "path": "cells/43_pll_tg.scs",
+      "sha256": "ff0b2b19594a37d8b36076387f4a0aec6885f44c320576add013353993826519",
+      "bytes": 4375
+    },
+    {
+      "path": "cells/44_ff_singlephase_v14.scs",
+      "sha256": "085aaf9eaed5c186121d12d30d7c197c1354dd38eb6322a119fd16c9d782f41c",
+      "bytes": 3075
+    },
+    {
+      "path": "cells/45_pll_inv.scs",
+      "sha256": "4ea20e652f86bb9ac1929973e695c0041910628e0ececbd7e8a457b007a74ba6",
+      "bytes": 2874
+    },
+    {
+      "path": "cells/46_ring_tail_singlephase_v14.scs",
+      "sha256": "73e11e42d78fd3849c1510801e754e696bf618de06d9145557201ec1c29be8a8",
+      "bytes": 6680
+    },
+    {
+      "path": "cells/47_tx_and.scs",
+      "sha256": "ba055f3615ec509e911c3d6b76e27b54271c453166e8e71a76bcffd61efeaaf5",
+      "bytes": 2583
+    },
+    {
+      "path": "cells/48_pll_inv.scs",
+      "sha256": "54ec0cf6a8bf02a40e51c951449b87465acc5a128ecbf2fe95b0a9f176f50ff9",
+      "bytes": 2878
+    },
+    {
+      "path": "cells/49_rt_noise_scale4_v14.scs",
+      "sha256": "26115e8620b8d98dfbb9d5a277ac472d4af4e72b1f6af83db706c3997b9bf28d",
+      "bytes": 2732
+    },
+    {
+      "path": "cells/50_rtcomb_ff_v13.scs",
+      "sha256": "3986d3b98ea6226d1fd46c12d712a26be41e72256c12a7da10edeea6152b1663",
+      "bytes": 8788
+    },
+    {
+      "path": "cells/51_pll_inv.scs",
+      "sha256": "0dabc4b1231c965a1f4f5e64faee1cf166149b79315fb7be1bf83e1770aebe67",
+      "bytes": 2897
+    },
+    {
+      "path": "cells/52_pll_inv.scs",
+      "sha256": "3a4825e264a727d2fcdd536d73b975e3cfa8e85c3fd87fb0ecea930c568209d2",
+      "bytes": 2905
+    },
+    {
+      "path": "cells/53_validity_physical_v14.scs",
+      "sha256": "c1f6e1cfd963590205b9a58a3940c6abbbbed3aa60ff55e6e514726a19642b5f",
+      "bytes": 13193
+    },
+    {
+      "path": "cells/54_cmp_physical_v14.scs",
+      "sha256": "2bbff54a6c42d4853b16894485cd69eda4a57b5660bf2fc5ae97c068b06ea7db",
+      "bytes": 7689
+    },
+    {
+      "path": "cells/55_pll_inv.scs",
+      "sha256": "d407aa0e9f5bab711c2161f32aecf67b5fc39c8a9abd70a40e273e42562ca889",
+      "bytes": 2862
+    },
+    {
+      "path": "cells/56_pll_control_recenter109_v14.scs",
+      "sha256": "18c80750a09369a368c55a8e3f844cd5527df70382a2f73b3c5d61fe52d56b3a",
+      "bytes": 41331
+    },
+    {
+      "path": "cells/57_tx_pll_config.scs",
+      "sha256": "bd721118099c090259b11c1e95429e7725b0b3b1010955888e555a482e4dd6bc",
+      "bytes": 204623
+    },
+    {
+      "path": "cells/58_tx_dff_r0.scs",
+      "sha256": "033ce9a9361d7e5dd99241b5dcff5b757b030d55bbb1c25f60c534876f834d83",
+      "bytes": 4693
+    },
+    {
+      "path": "cells/59_pll_inv.scs",
+      "sha256": "01e4c23fa74e1c62c80b903a1576bbaa9446aa98ef0dbfb7db03e63506a2cc14",
+      "bytes": 2890
+    },
+    {
+      "path": "cells/60_tx_latch_r.scs",
+      "sha256": "e162986e000abd4c34d600f75d2462eba953f8b94da78ecb4e6293fdcee29543",
+      "bytes": 4193
+    },
+    {
+      "path": "cells/61_pll_tg.scs",
+      "sha256": "7a52a3c2136888f5cfc57d03e9ad5802406aa322cb0750654e651ea4ab7c8a23",
+      "bytes": 4349
+    },
+    {
+      "path": "cells/62_pll_inv.scs",
+      "sha256": "2dbd2fdbb4a445a6641b2273ee538ca639d21d68c0774d6b9187295e031d1af9",
+      "bytes": 2910
+    },
+    {
+      "path": "cells/63_pll_tg.scs",
+      "sha256": "a46a47394b9c5e592a37a0ffdeb447104b15ee163a28d2d2176b5ac6b5df5ded",
+      "bytes": 4345
+    },
+    {
+      "path": "cells/64_tx_mux.scs",
+      "sha256": "299e4606c843b6b4d301f3aa724d8d11fccc1fdcaac477d57bbefb585c560748",
+      "bytes": 4395
+    },
+    {
+      "path": "cells/65_pll_tg.scs",
+      "sha256": "49eb350b885dad2c127a0f8350f5b14302ca1298f79a6aa1d7688daec008d9bb",
+      "bytes": 4331
+    },
+    {
+      "path": "cells/66_tx_xor.scs",
+      "sha256": "5e27c2842078d343b6eef5bfcc5e37fc352be6cd01dec11706a00ce9d5b66b0b",
+      "bytes": 2260
+    },
+    {
+      "path": "cells/67_tx_or.scs",
+      "sha256": "ee37b50460db19505612e44cdc77036ac1a1dec64a52b18bb63050f76213cc08",
+      "bytes": 2044
+    },
+    {
+      "path": "cells/68_pll_nor2.scs",
+      "sha256": "33f34964b425dd1cb4b058cca81850cb04fca720f29a360a78767a54ec7f6431",
+      "bytes": 4947
+    },
+    {
+      "path": "cells/69_tx_fll_recenter109_v14.scs",
+      "sha256": "97c2a3be8800c17908120a112a17b80113502466f073a1ef19868c16f930380a",
+      "bytes": 1435712
+    },
+    {
+      "path": "cells/70_tx_dff_r1.scs",
+      "sha256": "184b0664f28c2045bfc7f3648709292c97d8303a97a45de0337b72462f3228b2",
+      "bytes": 3129
+    },
+    {
+      "path": "cells/71_tx_fll_counter.scs",
+      "sha256": "0d965613e4b824ce6d659875faab7c0d27547cd65c9469a9edf9b255a81eb19a",
+      "bytes": 15828
+    },
+    {
+      "path": "cells/72_pll_latch.scs",
+      "sha256": "febce4540bcd3a613b5e4442741e9210b6d197fa9e0dc6e3e2dcbf3993c4f39f",
+      "bytes": 3838
+    },
+    {
+      "path": "cells/73_tx_tff.scs",
+      "sha256": "2d5b114b7a16e8590b9232659aecd211eccbfa9a5f0cad06a9f6e133540685de",
+      "bytes": 2853
+    },
+    {
+      "path": "cells/74_tx_fll_snapshot.scs",
+      "sha256": "60fc5cea70ee8db7ce1004f065124dce24283c9a61d4a078ac9cfae5657a7f11",
+      "bytes": 19315
+    },
+    {
+      "path": "cells/75_tx_fll_dac.scs",
+      "sha256": "6bab62939e6b13ce94126e32d68789116a4dbb2d22ca0df97e85357b4d92cf08",
+      "bytes": 13647
+    },
+    {
+      "path": "cells/76_pll_inv.scs",
+      "sha256": "9cac17c21e44a50a77af241a2829429ad5dcc0da605f320200171b8493924247",
+      "bytes": 2868
+    },
+    {
+      "path": "cells/77_tx_pll_supervisor_capture_v14.scs",
+      "sha256": "723b45bd67e18733c7699202bc757ec5f968f5482985b222651277a5ca060096",
+      "bytes": 328209
+    },
+    {
+      "path": "cells/78_tx_cp_timing.scs",
+      "sha256": "b3130ead33c1a03403f79918073f426733847ccd4d407a56e6e683b6833f9320",
+      "bytes": 15939
+    },
+    {
+      "path": "cells/79_pll_inv.scs",
+      "sha256": "a279c3dd5776ed4e614307de14a1f6a3a5763aa72dda6586870a22a75179661d",
+      "bytes": 2878
+    },
+    {
+      "path": "cells/80_tx_frequency_watchdog.scs",
+      "sha256": "85fd0dee740f114f224f66fd29b4892181b3b41e7ae60e14683f84d53adc287e",
+      "bytes": 220277
+    },
+    {
+      "path": "top.scs",
+      "sha256": "adec722ce70e3840df25d0b80b0ffde9375663c330246b0e2be8bce969d486b5",
+      "bytes": 6829
+    }
+  ],
+  "functional_custom_symbols": 81,
+  "direct_wires_geometry_checked": 378,
+  "symbol_and_font_sizes_preserved": true,
+  "compacted_sheets": 81,
+  "canvas_size_comparison": [
+    {
+      "level": 0,
+      "width_before": 1035.76,
+      "height_before": 1417.24,
+      "width_after": 1035.76,
+      "height_after": 1417.24,
+      "area_reduction_percent": 0.0
+    },
+    {
+      "level": 1,
+      "width_before": 7342.19,
+      "height_before": 3953.33,
+      "width_after": 4278.79,
+      "height_after": 3183.33,
+      "area_reduction_percent": 53.07395559814925
+    },
+    {
+      "level": 2,
+      "width_before": 3025.38,
+      "height_before": 1798.95,
+      "width_after": 2325.38,
+      "height_after": 1728.95,
+      "area_reduction_percent": 26.128427731727655
+    },
+    {
+      "level": 3,
+      "width_before": 4270.56,
+      "height_before": 1294.95,
+      "width_after": 3696.56,
+      "height_after": 1294.95,
+      "area_reduction_percent": 13.440860215053762
+    },
+    {
+      "level": 4,
+      "width_before": 1508.66,
+      "height_before": 1189.09,
+      "width_after": 1508.66,
+      "height_after": 1161.09,
+      "area_reduction_percent": 2.354741861423437
+    },
+    {
+      "level": 5,
+      "width_before": 3495.31,
+      "height_before": 1091.09,
+      "width_after": 2711.31,
+      "height_after": 951.09,
+      "area_reduction_percent": 32.38321515455076
+    },
+    {
+      "level": 6,
+      "width_before": 551.38,
+      "height_before": 776.95,
+      "width_after": 551.38,
+      "height_after": 734.95,
+      "area_reduction_percent": 5.405753265975932
+    },
+    {
+      "level": 7,
+      "width_before": 1994.19,
+      "height_before": 636.95,
+      "width_after": 1448.19,
+      "height_after": 636.95,
+      "area_reduction_percent": 27.379537556601928
+    },
+    {
+      "level": 8,
+      "width_before": 347.65,
+      "height_before": 748.95,
+      "width_after": 347.65,
+      "height_after": 734.95,
+      "area_reduction_percent": 1.8692836637959842
+    },
+    {
+      "level": 9,
+      "width_before": 344.74,
+      "height_before": 748.95,
+      "width_after": 344.74,
+      "height_after": 734.95,
+      "area_reduction_percent": 1.869283663795973
+    },
+    {
+      "level": 10,
+      "width_before": 344.74,
+      "height_before": 748.95,
+      "width_after": 344.74,
+      "height_after": 734.95,
+      "area_reduction_percent": 1.869283663795973
+    },
+    {
+      "level": 11,
+      "width_before": 350.56,
+      "height_before": 748.95,
+      "width_after": 350.56,
+      "height_after": 734.95,
+      "area_reduction_percent": 1.8692836637959842
+    },
+    {
+      "level": 12,
+      "width_before": 1178.28,
+      "height_before": 1392.95,
+      "width_after": 1150.28,
+      "height_after": 1364.95,
+      "area_reduction_percent": 4.338700136371065
+    },
+    {
+      "level": 13,
+      "width_before": 344.74,
+      "height_before": 748.95,
+      "width_after": 344.74,
+      "height_after": 734.95,
+      "area_reduction_percent": 1.869283663795973
+    },
+    {
+      "level": 14,
+      "width_before": 814.91,
+      "height_before": 503.09,
+      "width_after": 688.91,
+      "height_after": 503.09,
+      "area_reduction_percent": 15.461830140751742
+    },
+    {
+      "level": 15,
+      "width_before": 2368.28,
+      "height_before": 1350.95,
+      "width_after": 1990.28,
+      "height_after": 1350.95,
+      "area_reduction_percent": 15.96095056327801
+    },
+    {
+      "level": 16,
+      "width_before": 745.48,
+      "height_before": 1000.95,
+      "width_after": 745.48,
+      "height_after": 930.95,
+      "area_reduction_percent": 6.993356311504073
+    },
+    {
+      "level": 17,
+      "width_before": 814.91,
+      "height_before": 503.09,
+      "width_after": 688.91,
+      "height_after": 503.09,
+      "area_reduction_percent": 15.461830140751742
+    },
+    {
+      "level": 18,
+      "width_before": 1742.15,
+      "height_before": 1336.95,
+      "width_after": 1448.15,
+      "height_after": 1308.95,
+      "area_reduction_percent": 18.616587716621414
+    },
+    {
+      "level": 19,
+      "width_before": 820.74,
+      "height_before": 503.09,
+      "width_after": 694.74,
+      "height_after": 503.09,
+      "area_reduction_percent": 15.35199941516192
+    },
+    {
+      "level": 20,
+      "width_before": 899.63,
+      "height_before": 832.95,
+      "width_after": 759.63,
+      "height_after": 832.95,
+      "area_reduction_percent": 15.56195324744617
+    },
+    {
+      "level": 21,
+      "width_before": 344.74,
+      "height_before": 748.95,
+      "width_after": 344.74,
+      "height_after": 734.95,
+      "area_reduction_percent": 1.869283663795973
+    },
+    {
+      "level": 22,
+      "width_before": 5120.83,
+      "height_before": 9064.95,
+      "width_after": 4742.83,
+      "height_after": 6530.95,
+      "area_reduction_percent": 33.271994238448514
+    },
+    {
+      "level": 23,
+      "width_before": 1663.65,
+      "height_before": 1196.95,
+      "width_after": 1285.66,
+      "height_after": 1168.95,
+      "area_reduction_percent": 24.528306699221837
+    },
+    {
+      "level": 24,
+      "width_before": 350.6,
+      "height_before": 748.95,
+      "width_after": 350.6,
+      "height_after": 734.95,
+      "area_reduction_percent": 1.8692836637959842
+    },
+    {
+      "level": 25,
+      "width_before": 338.91,
+      "height_before": 748.95,
+      "width_after": 338.91,
+      "height_after": 734.95,
+      "area_reduction_percent": 1.869283663795973
+    },
+    {
+      "level": 26,
+      "width_before": 1327.65,
+      "height_before": 1196.95,
+      "width_after": 1047.66,
+      "height_after": 1168.95,
+      "area_reduction_percent": 22.935087589328152
+    },
+    {
+      "level": 27,
+      "width_before": 350.6,
+      "height_before": 748.95,
+      "width_after": 350.6,
+      "height_after": 734.95,
+      "area_reduction_percent": 1.8692836637959842
+    },
+    {
+      "level": 28,
+      "width_before": 338.91,
+      "height_before": 748.95,
+      "width_after": 338.91,
+      "height_after": 734.95,
+      "area_reduction_percent": 1.869283663795973
+    },
+    {
+      "level": 29,
+      "width_before": 344.74,
+      "height_before": 748.95,
+      "width_after": 344.74,
+      "height_after": 734.95,
+      "area_reduction_percent": 1.869283663795973
+    },
+    {
+      "level": 30,
+      "width_before": 350.6,
+      "height_before": 748.95,
+      "width_after": 350.6,
+      "height_after": 734.95,
+      "area_reduction_percent": 1.8692836637959842
+    },
+    {
+      "level": 31,
+      "width_before": 2862.19,
+      "height_before": 1322.95,
+      "width_after": 2106.19,
+      "height_after": 1182.95,
+      "area_reduction_percent": 34.200583195806
+    },
+    {
+      "level": 32,
+      "width_before": 338.91,
+      "height_before": 748.95,
+      "width_after": 338.91,
+      "height_after": 734.95,
+      "area_reduction_percent": 1.869283663795973
+    },
+    {
+      "level": 33,
+      "width_before": 730.91,
+      "height_before": 1000.95,
+      "width_after": 730.91,
+      "height_after": 930.95,
+      "area_reduction_percent": 6.993356311504084
+    },
+    {
+      "level": 34,
+      "width_before": 1102.01,
+      "height_before": 748.95,
+      "width_after": 892.01,
+      "height_after": 748.95,
+      "area_reduction_percent": 19.056088420250273
+    },
+    {
+      "level": 35,
+      "width_before": 1535.93,
+      "height_before": 1307.49,
+      "width_after": 1199.93,
+      "height_after": 1307.49,
+      "area_reduction_percent": 21.875996952986142
+    },
+    {
+      "level": 36,
+      "width_before": 814.91,
+      "height_before": 503.09,
+      "width_after": 688.91,
+      "height_after": 503.09,
+      "area_reduction_percent": 15.461830140751742
+    },
+    {
+      "level": 37,
+      "width_before": 338.91,
+      "height_before": 748.95,
+      "width_after": 338.91,
+      "height_after": 734.95,
+      "area_reduction_percent": 1.869283663795973
+    },
+    {
+      "level": 38,
+      "width_before": 338.91,
+      "height_before": 748.95,
+      "width_after": 338.91,
+      "height_after": 734.95,
+      "area_reduction_percent": 1.869283663795973
+    },
+    {
+      "level": 39,
+      "width_before": 344.74,
+      "height_before": 748.95,
+      "width_after": 344.74,
+      "height_after": 734.95,
+      "area_reduction_percent": 1.869283663795973
+    },
+    {
+      "level": 40,
+      "width_before": 344.74,
+      "height_before": 748.95,
+      "width_after": 344.74,
+      "height_after": 734.95,
+      "area_reduction_percent": 1.869283663795973
+    },
+    {
+      "level": 41,
+      "width_before": 350.6,
+      "height_before": 748.95,
+      "width_after": 350.6,
+      "height_after": 734.95,
+      "area_reduction_percent": 1.8692836637959842
+    },
+    {
+      "level": 42,
+      "width_before": 338.91,
+      "height_before": 748.95,
+      "width_after": 338.91,
+      "height_after": 734.95,
+      "area_reduction_percent": 1.869283663795973
+    },
+    {
+      "level": 43,
+      "width_before": 1172.01,
+      "height_before": 1238.95,
+      "width_after": 920.01,
+      "height_after": 1238.95,
+      "area_reduction_percent": 21.501523024547563
+    },
+    {
+      "level": 44,
+      "width_before": 814.91,
+      "height_before": 503.09,
+      "width_after": 688.91,
+      "height_after": 503.09,
+      "area_reduction_percent": 15.461830140751742
+    },
+    {
+      "level": 45,
+      "width_before": 1064.0,
+      "height_before": 1279.49,
+      "width_after": 896.0,
+      "height_after": 1209.49,
+      "area_reduction_percent": 20.396572483032926
+    },
+    {
+      "level": 46,
+      "width_before": 338.91,
+      "height_before": 748.95,
+      "width_after": 338.91,
+      "height_after": 734.95,
+      "area_reduction_percent": 1.869283663795973
+    },
+    {
+      "level": 47,
+      "width_before": 1942.01,
+      "height_before": 1700.95,
+      "width_after": 1592.01,
+      "height_after": 1672.95,
+      "area_reduction_percent": 19.372026727873358
+    },
+    {
+      "level": 48,
+      "width_before": 1100.97,
+      "height_before": 692.95,
+      "width_after": 890.97,
+      "height_after": 692.95,
+      "area_reduction_percent": 19.074089212240118
+    },
+    {
+      "level": 49,
+      "width_before": 353.48,
+      "height_before": 748.95,
+      "width_after": 353.48,
+      "height_after": 734.95,
+      "area_reduction_percent": 1.8692836637959842
+    },
+    {
+      "level": 50,
+      "width_before": 1602.19,
+      "height_before": 692.95,
+      "width_after": 1266.19,
+      "height_after": 692.95,
+      "area_reduction_percent": 20.971295539230685
+    },
+    {
+      "level": 51,
+      "width_before": 1333.48,
+      "height_before": 1196.95,
+      "width_after": 1053.48,
+      "height_after": 1168.95,
+      "area_reduction_percent": 22.84577469610054
+    },
+    {
+      "level": 52,
+      "width_before": 344.74,
+      "height_before": 748.95,
+      "width_after": 344.74,
+      "height_after": 734.95,
+      "area_reduction_percent": 1.869283663795973
+    },
+    {
+      "level": 53,
+      "width_before": 347.65,
+      "height_before": 748.95,
+      "width_after": 347.65,
+      "height_after": 734.95,
+      "area_reduction_percent": 1.8692836637959842
+    },
+    {
+      "level": 54,
+      "width_before": 3074.05,
+      "height_before": 2344.95,
+      "width_after": 2766.05,
+      "height_after": 2204.95,
+      "area_reduction_percent": 15.391448888579307
+    },
+    {
+      "level": 55,
+      "width_before": 2652.19,
+      "height_before": 1112.95,
+      "width_after": 2148.19,
+      "height_after": 1098.95,
+      "area_reduction_percent": 20.02203732798765
+    },
+    {
+      "level": 56,
+      "width_before": 353.48,
+      "height_before": 748.95,
+      "width_after": 353.48,
+      "height_after": 734.95,
+      "area_reduction_percent": 1.8692836637959842
+    },
+    {
+      "level": 57,
+      "width_before": 6282.88,
+      "height_before": 5409.33,
+      "width_after": 3426.88,
+      "height_after": 4290.95,
+      "area_reduction_percent": 56.73366493975498
+    },
+    {
+      "level": 58,
+      "width_before": 16155.39,
+      "height_before": 9918.95,
+      "width_after": 9351.39,
+      "height_after": 8994.95,
+      "area_reduction_percent": 47.50816251434657
+    },
+    {
+      "level": 59,
+      "width_before": 1172.01,
+      "height_before": 1210.95,
+      "width_after": 1004.01,
+      "height_after": 1182.95,
+      "area_reduction_percent": 16.315139167259062
+    },
+    {
+      "level": 60,
+      "width_before": 338.91,
+      "height_before": 748.95,
+      "width_after": 338.91,
+      "height_after": 734.95,
+      "area_reduction_percent": 1.869283663795973
+    },
+    {
+      "level": 61,
+      "width_before": 1592.01,
+      "height_before": 1307.49,
+      "width_after": 1256.01,
+      "height_after": 1307.49,
+      "area_reduction_percent": 21.105395066613898
+    },
+    {
+      "level": 62,
+      "width_before": 823.65,
+      "height_before": 503.09,
+      "width_after": 697.65,
+      "height_after": 503.09,
+      "area_reduction_percent": 15.297759970861403
+    },
+    {
+      "level": 63,
+      "width_before": 350.6,
+      "height_before": 748.95,
+      "width_after": 350.6,
+      "height_after": 734.95,
+      "area_reduction_percent": 1.8692836637959842
+    },
+    {
+      "level": 64,
+      "width_before": 826.6,
+      "height_before": 503.09,
+      "width_after": 700.6,
+      "height_after": 503.09,
+      "area_reduction_percent": 15.243164771352536
+    },
+    {
+      "level": 65,
+      "width_before": 2290.97,
+      "height_before": 1462.95,
+      "width_after": 1702.97,
+      "height_after": 1462.95,
+      "area_reduction_percent": 25.665984277402142
+    },
+    {
+      "level": 66,
+      "width_before": 814.91,
+      "height_before": 503.09,
+      "width_after": 688.91,
+      "height_after": 503.09,
+      "area_reduction_percent": 15.461830140751742
+    },
+    {
+      "level": 67,
+      "width_before": 1030.97,
+      "height_before": 748.95,
+      "width_after": 862.97,
+      "height_after": 748.95,
+      "area_reduction_percent": 16.295333520859
+    },
+    {
+      "level": 68,
+      "width_before": 1030.97,
+      "height_before": 692.95,
+      "width_after": 862.97,
+      "height_after": 692.95,
+      "area_reduction_percent": 16.29533352085899
+    },
+    {
+      "level": 69,
+      "width_before": 730.91,
+      "height_before": 1000.95,
+      "width_after": 730.91,
+      "height_after": 930.95,
+      "area_reduction_percent": 6.993356311504084
+    },
+    {
+      "level": 70,
+      "width_before": 16161.22,
+      "height_before": 57392.95,
+      "width_after": 9357.22,
+      "height_after": 50140.95,
+      "area_reduction_percent": 49.416752493001106
+    },
+    {
+      "level": 71,
+      "width_before": 1592.01,
+      "height_before": 748.95,
+      "width_after": 1256.01,
+      "height_after": 748.95,
+      "area_reduction_percent": 21.105395066613898
+    },
+    {
+      "level": 72,
+      "width_before": 4270.15,
+      "height_before": 2050.95,
+      "width_after": 3136.15,
+      "height_after": 1742.95,
+      "area_reduction_percent": 37.58577943708949
+    },
+    {
+      "level": 73,
+      "width_before": 1592.01,
+      "height_before": 1307.49,
+      "width_after": 1256.01,
+      "height_after": 1307.49,
+      "area_reduction_percent": 21.105395066613898
+    },
+    {
+      "level": 74,
+      "width_before": 1042.06,
+      "height_before": 817.49,
+      "width_after": 832.06,
+      "height_after": 817.49,
+      "area_reduction_percent": 20.1523904573633
+    },
+    {
+      "level": 75,
+      "width_before": 4263.66,
+      "height_before": 1882.95,
+      "width_after": 3045.66,
+      "height_after": 1672.95,
+      "area_reduction_percent": 36.53372228313637
+    },
+    {
+      "level": 76,
+      "width_before": 3789.27,
+      "height_before": 1655.71,
+      "width_after": 3677.27,
+      "height_after": 1599.71,
+      "area_reduction_percent": 6.2379800346353935
+    },
+    {
+      "level": 77,
+      "width_before": 353.48,
+      "height_before": 748.95,
+      "width_after": 353.48,
+      "height_after": 734.95,
+      "area_reduction_percent": 1.8692836637959842
+    },
+    {
+      "level": 78,
+      "width_before": 16155.39,
+      "height_before": 13278.95,
+      "width_after": 9351.39,
+      "height_after": 12438.95,
+      "area_reduction_percent": 45.777603363426046
+    },
+    {
+      "level": 79,
+      "width_before": 5950.15,
+      "height_before": 2568.95,
+      "width_after": 5166.15,
+      "height_after": 2148.95,
+      "area_reduction_percent": 27.371051460916483
+    },
+    {
+      "level": 80,
+      "width_before": 353.48,
+      "height_before": 748.95,
+      "width_after": 353.48,
+      "height_after": 734.95,
+      "area_reduction_percent": 1.8692836637959842
+    },
+    {
+      "level": 81,
+      "width_before": 16155.39,
+      "height_before": 9918.95,
+      "width_after": 9351.39,
+      "height_after": 8840.95,
+      "area_reduction_percent": 48.406860447385746
+    }
+  ]
+}

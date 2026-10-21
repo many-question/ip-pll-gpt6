@@ -6,31 +6,28 @@ MN0 (y a x vss) nch w=1e-06 l=1.8e-07 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e
 MN1 (x b vss vss) nch w=1e-06 l=1.8e-07 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
 MP0 (y a vdd vdd) pch w=1.25e-06 l=1.8e-07 ad=6e-13 as=6e-13 pd=3.46e-06 ps=3.46e-06 nrd=0.216 nrs=0.216 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
 MP1 (y b vdd vdd) pch w=1.25e-06 l=1.8e-07 ad=6e-13 as=6e-13 pd=3.46e-06 ps=3.46e-06 nrd=0.216 nrs=0.216 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
-// @RNL(author="manual-schematic126") {
+// @RNL(author="functional-compact127") {
 // $CELL = @DEFINE-SYMBOL {
-// @LINE {(-6, 6) (6, 6) (6, -6) (-6, -6) (-6, 6)};
+// @LINE {(-5, -4) (-5, 4) (0, 4) (2.44929e-16, 4) (0.625738, 3.95075) (1.23607, 3.80423) (1.81596, 3.56403) (2.35114, 3.23607) (2.82843, 2.82843) (3.23607, 2.35114) (3.56403, 1.81596) (3.80423, 1.23607) (3.95075, 0.625738) (4, 0) (3.95075, -0.625738) (3.80423, -1.23607) (3.56403, -1.81596) (3.23607, -2.35114) (2.82843, -2.82843) (2.35114, -3.23607) (1.81596, -3.56403) (1.23607, -3.80423) (0.625738, -3.95075) (2.44929e-16, -4) (-5, -4)};
+// @LINE {(6, 0) (5.96593, 0.258819) (5.86603, 0.5) (5.70711, 0.707107) (5.5, 0.866025) (5.25882, 0.965926) (5, 1) (4.74118, 0.965926) (4.5, 0.866025) (4.29289, 0.707107) (4.13397, 0.5) (4.03407, 0.258819) (4, 1.22465e-16) (4.03407, -0.258819) (4.13397, -0.5) (4.29289, -0.707107) (4.5, -0.866025) (4.74118, -0.965926) (5, -1) (5.25882, -0.965926) (5.5, -0.866025) (5.70711, -0.707107) (5.86603, -0.5) (5.96593, -0.258819) (6, -2.44929e-16)};
 // (-8, 2) @PIN(terminal="a", direction="left");
-// @LINE {(-8, 2) (-6, 2)};
-// (-5.4, 2) @TEXT("a", size=0.7, halign="start");
+// @LINE {(-8, 2) (-5, 2)};
 // (-8, -2) @PIN(terminal="b", direction="left");
-// @LINE {(-8, -2) (-6, -2)};
-// (-5.4, -2) @TEXT("b", size=0.7, halign="start");
+// @LINE {(-8, -2) (-5, -2)};
 // (8, 0) @PIN(terminal="y", direction="right");
 // @LINE {(8, 0) (6, 0)};
-// (5.4, 0) @TEXT("y", size=0.7, halign="end");
 // (0, 8) @PIN(terminal="vdd", direction="up");
-// @LINE {(0, 8) (0, 6)};
+// @LINE {(0, 8) (0, 4)};
 // (0, -8) @PIN(terminal="vss", direction="down");
-// @LINE {(0, -8) (0, -6)};
+// @LINE {(0, -8) (0, -4)};
 // ? @TEXT("${name}", key="name", size=1, halign="middle") => @PLACE(8, 9.5);
-// (0, 5.1) @TEXT("NAND2", size=0.85, halign="middle");
 // };
 // # @SET-SYMBOL $CELL;
-// #MP0 @PLACE(-14, 20) => @ORIENT("R0");
+// #MP0 @PLACE(-14, 15) => @ORIENT("R0");
 // #MP0 @SET-SYMBOL $PMOS_4TERM;
 // #MP0 @TEXT("MP0", key="name", dx=5, dy=1.5, size=0.9, halign="start");
 // #MP0 @TEXT("1.25u / 180n", key="model", dx=5, dy=-1.5, size=0.75, halign="start");
-// #MP1 @PLACE(14, 20) => @ORIENT("R0");
+// #MP1 @PLACE(14, 15) => @ORIENT("R0");
 // #MP1 @SET-SYMBOL $PMOS_4TERM;
 // #MP1 @TEXT("MP1", key="name", dx=5, dy=1.5, size=0.9, halign="start");
 // #MP1 @TEXT("1.25u / 180n", key="model", dx=5, dy=-1.5, size=0.75, halign="start");
@@ -42,25 +39,25 @@ MP1 (y b vdd vdd) pch w=1.25e-06 l=1.8e-07 ad=6e-13 as=6e-13 pd=3.46e-06 ps=3.46
 // #MN1 @SET-SYMBOL $NMOS_4TERM;
 // #MN1 @TEXT("MN1", key="name", dx=5, dy=1.5, size=0.9, halign="start");
 // #MN1 @TEXT("1u / 180n", key="model", dx=5, dy=-1.5, size=0.75, halign="start");
-// %y = (0, 10);
-// &y @WIRE(mode="straight") {#MP0:1 (-14, 10) %y (14, 10) #MP1:1};
+// %y = (0, 8);
+// &y @WIRE(mode="straight") {#MP0:1 (-14, 8) %y (14, 8) #MP1:1};
 // &y @WIRE(mode="straight") {%y #MN0:1};
 // $JUNCTION @ATTACH %y;
 // &x @WIRE(mode="straight") {#MN0:3 #MN1:1};
-// %t1 = $IO_PORT @ATTACH &a => @PLACE(-20, 20) => @ORIENT("R0");
+// %t1 = $IO_PORT @ATTACH &a => @PLACE(-20, 15) => @ORIENT("R0");
 // %t1 @TEXT("a", key="name", size=0.75);
 // &a @WIRE(mode="straight") {#MP0:2 %t1:p};
-// %t2 = $SUPPLY @ATTACH &vdd => @PLACE(-14, 25);
+// %t2 = $SUPPLY @ATTACH &vdd => @PLACE(-14, 20);
 // &vdd @WIRE(mode="straight") {#MP0:3 %t2:p};
-// %t3 = $IO_PORT @ATTACH &vdd => @PLACE(-10, 20) => @ORIENT("MY");
+// %t3 = $IO_PORT @ATTACH &vdd => @PLACE(-10, 15) => @ORIENT("MY");
 // %t3 @TEXT("vdd", key="name", size=0.75);
 // &vdd @WIRE(mode="straight") {#MP0:4 %t3:p};
-// %t4 = $IO_PORT @ATTACH &b => @PLACE(8, 20) => @ORIENT("R0");
+// %t4 = $IO_PORT @ATTACH &b => @PLACE(8, 15) => @ORIENT("R0");
 // %t4 @TEXT("b", key="name", size=0.75);
 // &b @WIRE(mode="straight") {#MP1:2 %t4:p};
-// %t5 = $SUPPLY @ATTACH &vdd => @PLACE(14, 25);
+// %t5 = $SUPPLY @ATTACH &vdd => @PLACE(14, 20);
 // &vdd @WIRE(mode="straight") {#MP1:3 %t5:p};
-// %t6 = $IO_PORT @ATTACH &vdd => @PLACE(18, 20) => @ORIENT("MY");
+// %t6 = $IO_PORT @ATTACH &vdd => @PLACE(18, 15) => @ORIENT("MY");
 // %t6 @TEXT("vdd", key="name", size=0.75);
 // &vdd @WIRE(mode="straight") {#MP1:4 %t6:p};
 // %t7 = $IO_PORT @ATTACH &a => @PLACE(-6, 0) => @ORIENT("R0");
@@ -77,9 +74,9 @@ MP1 (y b vdd vdd) pch w=1.25e-06 l=1.8e-07 ad=6e-13 as=6e-13 pd=3.46e-06 ps=3.46
 // %t11 = $IO_PORT @ATTACH &vss => @PLACE(4, -14) => @ORIENT("MY");
 // %t11 @TEXT("vss", key="name", size=0.75);
 // &vss @WIRE(mode="straight") {#MN1:4 %t11:p};
-// %t12 = $IO_PORT @ATTACH &y => @PLACE(-18, 15) => @ORIENT("R0");
+// %t12 = $IO_PORT @ATTACH &y => @PLACE(-18, 10) => @ORIENT("R0");
 // %t12 @TEXT("y", key="name", size=0.75);
-// &y @WIRE(mode="straight") {#MP0:1 (-14, 15) %t12:p};
-// (-25, 44) @TEXT("15  NAND2 | 4 instances", size=1.2, halign="start");
+// &y @WIRE(mode="straight") {#MP0:1 (-14, 10) %t12:p};
+// (-25, 39) @TEXT("15  NAND2 | 4 instances", size=1.2, halign="start");
 // }
 ends pll_nand2_pdk110_15

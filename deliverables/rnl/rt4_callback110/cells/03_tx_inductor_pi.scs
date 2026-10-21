@@ -11,9 +11,22 @@ RSP (sp sub) resistor r=300
 RSN (sn sub) resistor r=300
 CSP (sp sub) capacitor c=5e-14
 CSN (sn sub) capacitor c=5e-14
-// @RNL(author="manual-schematic126") {
+// @RNL(author="functional-compact127") {
 // $CELL = @DEFINE-SYMBOL {
-// @LINE {(-6, 4) (6, 4) (6, -4) (-6, -4) (-6, 4)};
+// @LINE {(-6, -4) (6, -4) (6, 4) (-6, 4) (-6, -4)};
+// @LINE {(-4, 1.5) (-3.96593, 1.68117) (-3.86603, 1.85) (-3.70711, 1.99497) (-3.5, 2.10622) (-3.25882, 2.17615) (-3, 2.2) (-2.74118, 2.17615) (-2.5, 2.10622) (-2.29289, 1.99497) (-2.13397, 1.85) (-2.03407, 1.68117) (-2, 1.5)};
+// @LINE {(-2, 1.5) (-1.96593, 1.68117) (-1.86603, 1.85) (-1.70711, 1.99497) (-1.5, 2.10622) (-1.25882, 2.17615) (-1, 2.2) (-0.741181, 2.17615) (-0.5, 2.10622) (-0.292893, 1.99497) (-0.133975, 1.85) (-0.0340742, 1.68117) (0, 1.5)};
+// @LINE {(0, 1.5) (0.0340742, 1.68117) (0.133975, 1.85) (0.292893, 1.99497) (0.5, 2.10622) (0.741181, 2.17615) (1, 2.2) (1.25882, 2.17615) (1.5, 2.10622) (1.70711, 1.99497) (1.86603, 1.85) (1.96593, 1.68117) (2, 1.5)};
+// @LINE {(-4, 1.5) (-4, 0.5)};
+// @LINE {(2, 1.5) (4, 1.5) (4, 0.5)};
+// @LINE {(-4, 0.5) (-4, -1)};
+// @LINE {(-5.5, -1) (-2.5, -1)};
+// @LINE {(-5.5, -2) (-2.5, -2)};
+// @LINE {(-4, -2) (-4, -3.5)};
+// @LINE {(4, 0.5) (4, -1)};
+// @LINE {(2.5, -1) (5.5, -1)};
+// @LINE {(2.5, -2) (5.5, -2)};
+// @LINE {(4, -2) (4, -3.5)};
 // (-8, 0) @PIN(terminal="p", direction="left");
 // @LINE {(-8, 0) (-6, 0)};
 // (-5.4, 0) @TEXT("p", size=0.7, halign="start");
@@ -26,23 +39,23 @@ CSN (sn sub) capacitor c=5e-14
 // (0, 3.1) @TEXT("Inductor pi", size=0.85, halign="middle");
 // };
 // # @SET-SYMBOL $CELL;
-// #RW @PLACE(-18, 18) => @ORIENT("R90");
+// #RW @PLACE(-18, 16) => @ORIENT("R90");
 // #RW @SET-SYMBOL $RESISTOR;
 // #RW @TEXT("6.8224", key="value", dx=3, dy=-1, size=0.8, halign="start");
 // #RW @TEXT("RW", key="name", dx=3, dy=1, size=0.9, halign="start");
-// #LW @PLACE(12, 18) => @ORIENT("R90");
+// #LW @PLACE(12, 16) => @ORIENT("R90");
 // #LW @SET-SYMBOL $INDUCTOR;
 // #LW @TEXT("2n", key="value", dx=3, dy=-1, size=0.8, halign="start");
 // #LW @TEXT("LW", key="name", dx=3, dy=1, size=0.9, halign="start");
-// #CW @PLACE(-3, 36) => @ORIENT("R90");
+// #CW @PLACE(-3, 34) => @ORIENT("R90");
 // #CW @SET-SYMBOL $CAPACITOR;
 // #CW @TEXT("20f", key="value", dx=3, dy=-1, size=0.8, halign="start");
 // #CW @TEXT("CW", key="name", dx=3, dy=1, size=0.9, halign="start");
-// #COXP @PLACE(-35, 2) => @ORIENT("R0");
+// #COXP @PLACE(-35, 0) => @ORIENT("R0");
 // #COXP @SET-SYMBOL $CAPACITOR;
 // #COXP @TEXT("80f", key="value", dx=3, dy=-1, size=0.8, halign="start");
 // #COXP @TEXT("COXP", key="name", dx=3, dy=1, size=0.9, halign="start");
-// #COXN @PLACE(35, 2) => @ORIENT("R0");
+// #COXN @PLACE(35, 0) => @ORIENT("R0");
 // #COXN @SET-SYMBOL $CAPACITOR;
 // #COXN @TEXT("80f", key="value", dx=3, dy=-1, size=0.8, halign="start");
 // #COXN @TEXT("COXN", key="name", dx=3, dy=1, size=0.9, halign="start");
@@ -63,23 +76,23 @@ CSN (sn sub) capacitor c=5e-14
 // #CSN @TEXT("50f", key="value", dx=3, dy=-1, size=0.8, halign="start");
 // #CSN @TEXT("CSN", key="name", dx=3, dy=1, size=0.9, halign="start");
 // &x @WIRE(mode="straight") {#RW:2 #LW:1};
-// %p = (-35, 18);
+// %p = (-35, 16);
 // &p @WIRE(mode="straight") {#RW:1 %p #COXP:1};
-// &p @WIRE(mode="straight") {%p (-35, 36) #CW:1};
+// &p @WIRE(mode="straight") {%p (-35, 34) #CW:1};
 // $JUNCTION @ATTACH %p;
-// %n = (35, 18);
+// %n = (35, 16);
 // &n @WIRE(mode="straight") {#LW:2 %n #COXN:1};
-// &n @WIRE(mode="straight") {%n (35, 36) #CW:2};
+// &n @WIRE(mode="straight") {%n (35, 34) #CW:2};
 // $JUNCTION @ATTACH %n;
-// %sp = (-35, -5);
+// %sp = (-35, -7);
 // &sp @WIRE(mode="straight") {#COXP:2 %sp};
-// &sp @WIRE(mode="straight") {%sp (-45, -5) #RSP:1};
-// &sp @WIRE(mode="straight") {%sp (-25, -5) #CSP:1};
+// &sp @WIRE(mode="straight") {%sp (-45, -7) #RSP:1};
+// &sp @WIRE(mode="straight") {%sp (-25, -7) #CSP:1};
 // $JUNCTION @ATTACH %sp;
-// %sn = (35, -5);
+// %sn = (35, -7);
 // &sn @WIRE(mode="straight") {#COXN:2 %sn};
-// &sn @WIRE(mode="straight") {%sn (25, -5) #RSN:1};
-// &sn @WIRE(mode="straight") {%sn (45, -5) #CSN:1};
+// &sn @WIRE(mode="straight") {%sn (25, -7) #RSN:1};
+// &sn @WIRE(mode="straight") {%sn (45, -7) #CSN:1};
 // $JUNCTION @ATTACH %sn;
 // %t1 = $IO_PORT @ATTACH &sub => @PLACE(-49, -20) => @ORIENT("R0");
 // %t1 @TEXT("sub", key="name", size=0.75);
@@ -93,12 +106,12 @@ CSN (sn sub) capacitor c=5e-14
 // %t4 = $IO_PORT @ATTACH &sub => @PLACE(41, -20) => @ORIENT("R0");
 // %t4 @TEXT("sub", key="name", size=0.75);
 // &sub @WIRE(mode="straight") {#CSN:2 (45, -20) %t4:p};
-// %t5 = $IO_PORT @ATTACH &p => @PLACE(-23, 18) => @ORIENT("R0");
+// %t5 = $IO_PORT @ATTACH &p => @PLACE(-23, 16) => @ORIENT("R0");
 // %t5 @TEXT("p", key="name", size=0.75);
 // &p @WIRE(mode="straight") {#RW:1 %t5:p};
-// %t6 = $IO_PORT @ATTACH &n => @PLACE(17, 18) => @ORIENT("MY");
+// %t6 = $IO_PORT @ATTACH &n => @PLACE(17, 16) => @ORIENT("MY");
 // %t6 @TEXT("n", key="name", size=0.75);
 // &n @WIRE(mode="straight") {#LW:2 %t6:p};
-// (-53, 58) @TEXT("03  Inductor pi | 9 instances", size=1.2, halign="start");
+// (-53, 56) @TEXT("03  Inductor pi | 9 instances", size=1.2, halign="start");
 // }
 ends tx_inductor_pi_pdk110_3

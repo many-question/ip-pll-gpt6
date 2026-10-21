@@ -5,9 +5,13 @@ subckt tx_bias_mid_v5_pdk110_5 (vdd vss vmid)
 R0 (vdd vmid) resistor r=100000
 R1 (vmid vss) resistor r=100000
 C0 (vmid vss) capacitor c=9.999999999999999e-12
-// @RNL(author="manual-schematic126") {
+// @RNL(author="functional-compact127") {
 // $CELL = @DEFINE-SYMBOL {
-// @LINE {(-6, 4) (6, 4) (6, -4) (-6, -4) (-6, 4)};
+// @LINE {(-6, -4) (6, -4) (6, 4) (-6, 4) (-6, -4)};
+// @LINE {(0, 2) (0, 1.5) (-1, 1) (1, 0.5) (-1, 0) (1, -0.5) (0, -1)};
+// @LINE {(0, 0) (4, 0)};
+// @LINE {(2.9469, 0.575311) (4, 0) (2.9469, -0.575311)};
+// (0, -2.5) @TEXT("VDD / 2", size=0.75, halign="middle");
 // (8, 0) @PIN(terminal="vmid", direction="right");
 // @LINE {(8, 0) (6, 0)};
 // (5.4, 0) @TEXT("vmid", size=0.7, halign="end");
@@ -19,7 +23,7 @@ C0 (vmid vss) capacitor c=9.999999999999999e-12
 // (0, 3.1) @TEXT("Midrail bias", size=0.85, halign="middle");
 // };
 // # @SET-SYMBOL $CELL;
-// #R0 @PLACE(0, 12) => @ORIENT("R0");
+// #R0 @PLACE(0, 9) => @ORIENT("R0");
 // #R0 @SET-SYMBOL $RESISTOR;
 // #R0 @TEXT("100k", key="value", dx=3, dy=-1, size=0.8, halign="start");
 // #R0 @TEXT("R0", key="name", dx=3, dy=1, size=0.9, halign="start");
@@ -31,18 +35,18 @@ C0 (vmid vss) capacitor c=9.999999999999999e-12
 // #C0 @SET-SYMBOL $CAPACITOR;
 // #C0 @TEXT("10p", key="value", dx=3, dy=-1, size=0.8, halign="start");
 // #C0 @TEXT("C0", key="name", dx=3, dy=1, size=0.9, halign="start");
-// %mid = (0, 4);
+// %mid = (0, 2);
 // &vmid @WIRE(mode="straight") {#R0:2 %mid #R1:1};
-// &vmid @WIRE(mode="straight") {%mid (22, 4) #C0:1};
+// &vmid @WIRE(mode="straight") {%mid (22, 2) #C0:1};
 // $JUNCTION @ATTACH %mid;
 // &vss @WIRE(mode="straight") {#R1:2 (0, -12) (22, -12) #C0:2};
-// %t1 = $SUPPLY @ATTACH &vdd => @PLACE(0, 17);
+// %t1 = $SUPPLY @ATTACH &vdd => @PLACE(0, 14);
 // &vdd @WIRE(mode="straight") {#R0:1 %t1:p};
 // %t2 = $GROUND @ATTACH &vss => @PLACE(0, -11);
 // &vss @WIRE(mode="straight") {#R1:2 %t2:p};
-// %t3 = $IO_PORT @ATTACH &vmid => @PLACE(-4, 7) => @ORIENT("R0");
+// %t3 = $IO_PORT @ATTACH &vmid => @PLACE(-4, 4) => @ORIENT("R0");
 // %t3 @TEXT("vmid", key="name", size=0.75);
-// &vmid @WIRE(mode="straight") {#R0:2 (0, 7) %t3:p};
-// (-8, 36) @TEXT("05  Midrail bias | 3 instances", size=1.2, halign="start");
+// &vmid @WIRE(mode="straight") {#R0:2 (0, 4) %t3:p};
+// (-8, 33) @TEXT("05  Midrail bias | 3 instances", size=1.2, halign="start");
 // }
 ends tx_bias_mid_v5_pdk110_5

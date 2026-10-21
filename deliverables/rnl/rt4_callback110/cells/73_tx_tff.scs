@@ -4,9 +4,15 @@ simulator lang=spectre
 subckt tx_tff_pdk110_73 (clk reset q qb vdd vss)
 XF (qb clk reset q vdd vss) tx_dff_r0_pdk110_58
 XI (q qb vdd vss) pll_inv_pdk110_7
-// @RNL(author="manual-schematic126") {
+// @RNL(author="functional-compact127") {
 // $CELL = @DEFINE-SYMBOL {
-// @LINE {(-6, 6) (6, 6) (6, -6) (-6, -6) (-6, 6)};
+// @LINE {(-6, -6) (6, -6) (6, 6) (-6, 6) (-6, -6)};
+// (-2, 1) @TEXT("T", size=1.15, halign="middle");
+// (2, 1) @TEXT("Q", size=1.15, halign="middle");
+// @LINE {(-2, -1) (2, -1)};
+// @LINE {(0.946901, -0.424689) (2, -1) (0.946901, -1.57531)};
+// (0, -3) @TEXT("FF", size=0.8, halign="middle");
+// @LINE {(-6, 3) (-4.5, 2) (-6, 1)};
 // (-8, 2) @PIN(terminal="clk", direction="left");
 // @LINE {(-8, 2) (-6, 2)};
 // (-5.4, 2) @TEXT("clk", size=0.7, halign="start");
@@ -28,9 +34,9 @@ XI (q qb vdd vss) pll_inv_pdk110_7
 // };
 // # @SET-SYMBOL $CELL;
 // #XF @PLACE(0, 0) => @ORIENT("R0");
-// #XI @PLACE(45, 0) => @ORIENT("R0");
-// &q @WIRE(mode="straight") {#XF:4 (25, 0) (25, 0) #XI:1};
-// &qb @WIRE(mode="straight") {#XI:2 (53, -20) (-8, -20) #XF:1};
+// #XI @PLACE(30, 0) => @ORIENT("R0");
+// &q @WIRE(mode="straight") {#XF:4 (16, 0) (16, 0) #XI:1};
+// &qb @WIRE(mode="straight") {#XI:2 (38, -20) (-8, -20) #XF:1};
 // %t1 = $IO_PORT @ATTACH &clk => @PLACE(-11, 0) => @ORIENT("R0");
 // %t1 @TEXT("clk", key="name", size=0.75);
 // &clk @WIRE(mode="straight") {#XF:2 %t1:p};
@@ -41,11 +47,11 @@ XI (q qb vdd vss) pll_inv_pdk110_7
 // &vdd @WIRE(mode="straight") {#XF:5 %t3:p};
 // %t4 = $GROUND @ATTACH &vss => @PLACE(0, -13);
 // &vss @WIRE(mode="straight") {#XF:6 %t4:p};
-// %t5 = $SUPPLY @ATTACH &vdd => @PLACE(45, 9);
+// %t5 = $SUPPLY @ATTACH &vdd => @PLACE(30, 9);
 // &vdd @WIRE(mode="straight") {#XI:3 %t5:p};
-// %t6 = $GROUND @ATTACH &vss => @PLACE(45, -9);
+// %t6 = $GROUND @ATTACH &vss => @PLACE(30, -9);
 // &vss @WIRE(mode="straight") {#XI:4 %t6:p};
-// %t7 = $IO_PORT @ATTACH &q => @PLACE(11, 0) => @ORIENT("MY");
+// %t7 = $IO_PORT @ATTACH &q => @PLACE(10, 0) => @ORIENT("MY");
 // %t7 @TEXT("q", key="name", size=0.75);
 // &q @WIRE(mode="straight") {#XF:4 %t7:p};
 // %t8 = $IO_PORT @ATTACH &qb => @PLACE(-11, 4) => @ORIENT("R0");

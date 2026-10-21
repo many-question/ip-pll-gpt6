@@ -4,50 +4,46 @@ simulator lang=spectre
 subckt tx_and_pdk110_47 (a b y vdd vss)
 XN (a b n vdd vss) pll_nand2_pdk110_15
 XI (n y vdd vss) pll_inv_pdk110_48
-// @RNL(author="manual-schematic126") {
+// @RNL(author="functional-compact127") {
 // $CELL = @DEFINE-SYMBOL {
-// @LINE {(-6, 6) (6, 6) (6, -6) (-6, -6) (-6, 6)};
+// @LINE {(-5, -4) (-5, 4) (0, 4) (2.44929e-16, 4) (0.625738, 3.95075) (1.23607, 3.80423) (1.81596, 3.56403) (2.35114, 3.23607) (2.82843, 2.82843) (3.23607, 2.35114) (3.56403, 1.81596) (3.80423, 1.23607) (3.95075, 0.625738) (4, 0) (3.95075, -0.625738) (3.80423, -1.23607) (3.56403, -1.81596) (3.23607, -2.35114) (2.82843, -2.82843) (2.35114, -3.23607) (1.81596, -3.56403) (1.23607, -3.80423) (0.625738, -3.95075) (2.44929e-16, -4) (-5, -4)};
 // (-8, 2) @PIN(terminal="a", direction="left");
-// @LINE {(-8, 2) (-6, 2)};
-// (-5.4, 2) @TEXT("a", size=0.7, halign="start");
+// @LINE {(-8, 2) (-5, 2)};
 // (-8, -2) @PIN(terminal="b", direction="left");
-// @LINE {(-8, -2) (-6, -2)};
-// (-5.4, -2) @TEXT("b", size=0.7, halign="start");
+// @LINE {(-8, -2) (-5, -2)};
 // (8, 0) @PIN(terminal="y", direction="right");
-// @LINE {(8, 0) (6, 0)};
-// (5.4, 0) @TEXT("y", size=0.7, halign="end");
+// @LINE {(8, 0) (4, 0)};
 // (0, 8) @PIN(terminal="vdd", direction="up");
-// @LINE {(0, 8) (0, 6)};
+// @LINE {(0, 8) (0, 4)};
 // (0, -8) @PIN(terminal="vss", direction="down");
-// @LINE {(0, -8) (0, -6)};
+// @LINE {(0, -8) (0, -4)};
 // ? @TEXT("${name}", key="name", size=1, halign="middle") => @PLACE(8, 9.5);
-// (0, 5.1) @TEXT("AND2", size=0.85, halign="middle");
 // };
 // # @SET-SYMBOL $CELL;
 // #XN @PLACE(0, 0) => @ORIENT("R0");
-// #XI @PLACE(45, 0) => @ORIENT("R0");
+// #XI @PLACE(30, 0) => @ORIENT("R0");
 // %t1 = $IO_PORT @ATTACH &a => @PLACE(-11, 2) => @ORIENT("R0");
 // %t1 @TEXT("a", key="name", size=0.75);
 // &a @WIRE(mode="straight") {#XN:1 %t1:p};
 // %t2 = $IO_PORT @ATTACH &b => @PLACE(-11, -2) => @ORIENT("R0");
 // %t2 @TEXT("b", key="name", size=0.75);
 // &b @WIRE(mode="straight") {#XN:2 %t2:p};
-// %t3 = $IO_PORT @ATTACH &n => @PLACE(11, 0) => @ORIENT("MY");
+// %t3 = $IO_PORT @ATTACH &n => @PLACE(10, 0) => @ORIENT("MY");
 // %t3 @TEXT("n", key="name", size=0.75);
 // &n @WIRE(mode="straight") {#XN:3 %t3:p};
 // %t4 = $SUPPLY @ATTACH &vdd => @PLACE(0, 11);
 // &vdd @WIRE(mode="straight") {#XN:4 %t4:p};
 // %t5 = $GROUND @ATTACH &vss => @PLACE(0, -11);
 // &vss @WIRE(mode="straight") {#XN:5 %t5:p};
-// %t6 = $IO_PORT @ATTACH &n => @PLACE(34, 0) => @ORIENT("R0");
+// %t6 = $IO_PORT @ATTACH &n => @PLACE(20, 0) => @ORIENT("R0");
 // %t6 @TEXT("n", key="name", size=0.75);
 // &n @WIRE(mode="straight") {#XI:1 %t6:p};
-// %t7 = $IO_PORT @ATTACH &y => @PLACE(56, 0) => @ORIENT("MY");
+// %t7 = $IO_PORT @ATTACH &y => @PLACE(41, 0) => @ORIENT("MY");
 // %t7 @TEXT("y", key="name", size=0.75);
 // &y @WIRE(mode="straight") {#XI:2 %t7:p};
-// %t8 = $SUPPLY @ATTACH &vdd => @PLACE(45, 9);
+// %t8 = $SUPPLY @ATTACH &vdd => @PLACE(30, 9);
 // &vdd @WIRE(mode="straight") {#XI:3 %t8:p};
-// %t9 = $GROUND @ATTACH &vss => @PLACE(45, -9);
+// %t9 = $GROUND @ATTACH &vss => @PLACE(30, -9);
 // &vss @WIRE(mode="straight") {#XI:4 %t9:p};
 // (-16, 30) @TEXT("47  AND2 | 2 instances", size=1.2, halign="start");
 // }

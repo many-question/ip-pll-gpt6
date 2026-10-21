@@ -1,3 +1,8 @@
+最新文档更新：[第127次汇报](../reports/2026-10-21T2039.yaml)。RNL 已加入功能符号并收紧排布，仍从同一入口进入。
+
+- [纯 RNL 网表入口](rnl/rt4_callback110/top.scs)。
+- [符号与间距检查](verification/rnl127/README.md)：顶层画布缩小约53%，82层次零错误/警告，电气语句不变。
+
 最新文档交付：[第126次汇报](../reports/2026-10-21T2006.yaml)。当前 RT4/callback110 电路已加入 RNL，仿真任务线保持暂停。
 
 - [纯 RNL 网表入口](rnl/rt4_callback110/top.scs)：打开后进入 XPLL，覆盖全部 81 个子电路。

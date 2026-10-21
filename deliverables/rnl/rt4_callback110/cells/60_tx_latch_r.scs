@@ -6,9 +6,14 @@ XT (d x gate gateb vdd vss) pll_tg_pdk110_61
 XN (x resetb qb vdd vss) pll_nand2_pdk110_15
 XO (qb q vdd vss) pll_inv_pdk110_62
 XF (q x gateb gate vdd vss) pll_tg_pdk110_63
-// @RNL(author="manual-schematic126") {
+// @RNL(author="functional-compact127") {
 // $CELL = @DEFINE-SYMBOL {
-// @LINE {(-6, 10) (6, 10) (6, -10) (-6, -10) (-6, 10)};
+// @LINE {(-6, -10) (6, -10) (6, 10) (-6, 10) (-6, -10)};
+// (-2, 1) @TEXT("D", size=1.15, halign="middle");
+// (2, 1) @TEXT("Q", size=1.15, halign="middle");
+// @LINE {(-2, -1) (2, -1)};
+// @LINE {(0.946901, -0.424689) (2, -1) (0.946901, -1.57531)};
+// (0, -3) @TEXT("LATCH", size=0.8, halign="middle");
 // (-8, 6) @PIN(terminal="d", direction="left");
 // @LINE {(-8, 6) (-6, 6)};
 // (-5.4, 6) @TEXT("d", size=0.7, halign="start");
@@ -33,13 +38,13 @@ XF (q x gateb gate vdd vss) pll_tg_pdk110_63
 // };
 // # @SET-SYMBOL $CELL;
 // #XT @PLACE(0, 0) => @ORIENT("R0");
-// #XN @PLACE(40, 0) => @ORIENT("R0");
-// #XO @PLACE(80, 0) => @ORIENT("R0");
-// #XF @PLACE(40, -35) => @ORIENT("R0");
-// &x @WIRE(mode="straight") {#XT:2 (20, 0) (20, 2) #XN:1};
-// &qb @WIRE(mode="straight") {#XN:3 (60, 0) (60, 0) #XO:1};
-// &q @WIRE(mode="straight") {#XO:2 (88, -20) (32, -20) #XF:1};
-// &x @WIRE(mode="straight") {#XF:2 (55, -35) (55, -55) (20, -55) (20, 0) #XT:2};
+// #XN @PLACE(28, 0) => @ORIENT("R0");
+// #XO @PLACE(56, 0) => @ORIENT("R0");
+// #XF @PLACE(28, -35) => @ORIENT("R0");
+// &x @WIRE(mode="straight") {#XT:2 (14, 0) (14, 2) #XN:1};
+// &qb @WIRE(mode="straight") {#XN:3 (42, 0) (42, 0) #XO:1};
+// &q @WIRE(mode="straight") {#XO:2 (64, -20) (20, -20) #XF:1};
+// &x @WIRE(mode="straight") {#XF:2 (40, -35) (40, -55) (14, -55) (14, 0) #XT:2};
 // %t1 = $IO_PORT @ATTACH &d => @PLACE(-11, 4) => @ORIENT("R0");
 // %t1 @TEXT("d", key="name", size=0.75);
 // &d @WIRE(mode="straight") {#XT:1 %t1:p};
@@ -53,28 +58,28 @@ XF (q x gateb gate vdd vss) pll_tg_pdk110_63
 // &vdd @WIRE(mode="straight") {#XT:5 %t4:p};
 // %t5 = $GROUND @ATTACH &vss => @PLACE(0, -13);
 // &vss @WIRE(mode="straight") {#XT:6 %t5:p};
-// %t6 = $IO_PORT @ATTACH &resetb => @PLACE(29, -2) => @ORIENT("R0");
+// %t6 = $IO_PORT @ATTACH &resetb => @PLACE(18, -2) => @ORIENT("R0");
 // %t6 @TEXT("resetb", key="name", size=0.75);
 // &resetb @WIRE(mode="straight") {#XN:2 %t6:p};
-// %t7 = $SUPPLY @ATTACH &vdd => @PLACE(40, 11);
+// %t7 = $SUPPLY @ATTACH &vdd => @PLACE(28, 11);
 // &vdd @WIRE(mode="straight") {#XN:4 %t7:p};
-// %t8 = $GROUND @ATTACH &vss => @PLACE(40, -11);
+// %t8 = $GROUND @ATTACH &vss => @PLACE(28, -11);
 // &vss @WIRE(mode="straight") {#XN:5 %t8:p};
-// %t9 = $SUPPLY @ATTACH &vdd => @PLACE(80, 9);
+// %t9 = $SUPPLY @ATTACH &vdd => @PLACE(56, 9);
 // &vdd @WIRE(mode="straight") {#XO:3 %t9:p};
-// %t10 = $GROUND @ATTACH &vss => @PLACE(80, -9);
+// %t10 = $GROUND @ATTACH &vss => @PLACE(56, -9);
 // &vss @WIRE(mode="straight") {#XO:4 %t10:p};
-// %t11 = $IO_PORT @ATTACH &gateb => @PLACE(29, -35) => @ORIENT("R0");
+// %t11 = $IO_PORT @ATTACH &gateb => @PLACE(18, -35) => @ORIENT("R0");
 // %t11 @TEXT("gateb", key="name", size=0.75);
 // &gateb @WIRE(mode="straight") {#XF:3 %t11:p};
-// %t12 = $IO_PORT @ATTACH &gate => @PLACE(29, -39) => @ORIENT("R0");
+// %t12 = $IO_PORT @ATTACH &gate => @PLACE(18, -39) => @ORIENT("R0");
 // %t12 @TEXT("gate", key="name", size=0.75);
 // &gate @WIRE(mode="straight") {#XF:4 %t12:p};
-// %t13 = $SUPPLY @ATTACH &vdd => @PLACE(40, -22);
+// %t13 = $SUPPLY @ATTACH &vdd => @PLACE(28, -22);
 // &vdd @WIRE(mode="straight") {#XF:5 %t13:p};
-// %t14 = $GROUND @ATTACH &vss => @PLACE(40, -48);
+// %t14 = $GROUND @ATTACH &vss => @PLACE(28, -48);
 // &vss @WIRE(mode="straight") {#XF:6 %t14:p};
-// %t15 = $IO_PORT @ATTACH &q => @PLACE(91, 0) => @ORIENT("MY");
+// %t15 = $IO_PORT @ATTACH &q => @PLACE(67, 0) => @ORIENT("MY");
 // %t15 @TEXT("q", key="name", size=0.75);
 // &q @WIRE(mode="straight") {#XO:2 %t15:p};
 // (-16, 32) @TEXT("60  Reset latch | 4 instances", size=1.2, halign="start");

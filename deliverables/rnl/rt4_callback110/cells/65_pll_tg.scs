@@ -4,9 +4,13 @@ simulator lang=spectre
 subckt pll_tg_pdk110_65 (a b on off vdd vss)
 MN (a on b vss) nch w=5.000000000000001e-07 l=1.8e-07 ad=2.4e-13 as=2.4e-13 pd=1.96e-06 ps=1.96e-06 nrd=0.54 nrs=0.54 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
 MP (a off b vdd) pch w=1e-06 l=1.8e-07 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
-// @RNL(author="manual-schematic126") {
+// @RNL(author="functional-compact127") {
 // $CELL = @DEFINE-SYMBOL {
-// @LINE {(-6, 8) (6, 8) (6, -8) (-6, -8) (-6, 8)};
+// @LINE {(-6, -8) (6, -8) (6, 8) (-6, 8) (-6, -8)};
+// @LINE {(-2.7, 0) (-2.71022, 0.0776457) (-2.74019, 0.15) (-2.78787, 0.212132) (-2.85, 0.259808) (-2.92235, 0.289778) (-3, 0.3) (-3.07765, 0.289778) (-3.15, 0.259808) (-3.21213, 0.212132) (-3.25981, 0.15) (-3.28978, 0.0776457) (-3.3, 3.67394e-17) (-3.28978, -0.0776457) (-3.25981, -0.15) (-3.21213, -0.212132) (-3.15, -0.259808) (-3.07765, -0.289778) (-3, -0.3) (-2.92235, -0.289778) (-2.85, -0.259808) (-2.78787, -0.212132) (-2.74019, -0.15) (-2.71022, -0.0776457) (-2.7, -7.34788e-17)};
+// @LINE {(3.3, 0) (3.28978, 0.0776457) (3.25981, 0.15) (3.21213, 0.212132) (3.15, 0.259808) (3.07765, 0.289778) (3, 0.3) (2.92235, 0.289778) (2.85, 0.259808) (2.78787, 0.212132) (2.74019, 0.15) (2.71022, 0.0776457) (2.7, 3.67394e-17) (2.71022, -0.0776457) (2.74019, -0.15) (2.78787, -0.212132) (2.85, -0.259808) (2.92235, -0.289778) (3, -0.3) (3.07765, -0.289778) (3.15, -0.259808) (3.21213, -0.212132) (3.25981, -0.15) (3.28978, -0.0776457) (3.3, -7.34788e-17)};
+// @LINE {(-2.7, 0) (2.5, 1.7)};
+// (0, -3) @TEXT("SW", size=0.85, halign="middle");
 // (-8, 4) @PIN(terminal="a", direction="left");
 // @LINE {(-8, 4) (-6, 4)};
 // (-5.4, 4) @TEXT("a", size=0.7, halign="start");
@@ -27,7 +31,7 @@ MP (a off b vdd) pch w=1e-06 l=1.8e-07 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96
 // (0, 7.1) @TEXT("TG", size=0.85, halign="middle");
 // };
 // # @SET-SYMBOL $CELL;
-// #MP @PLACE(22, 0) => @ORIENT("R0");
+// #MP @PLACE(13, 0) => @ORIENT("R0");
 // #MP @SET-SYMBOL $PMOS_4TERM;
 // #MP @TEXT("MP", key="name", dx=5, dy=1.5, size=0.9, halign="start");
 // #MP @TEXT("1u / 180n", key="model", dx=5, dy=-1.5, size=0.75, halign="start");
@@ -35,16 +39,16 @@ MP (a off b vdd) pch w=1e-06 l=1.8e-07 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96
 // #MN @SET-SYMBOL $NMOS_4TERM;
 // #MN @TEXT("MN", key="name", dx=5, dy=1.5, size=0.9, halign="start");
 // #MN @TEXT("500n / 180n", key="model", dx=5, dy=-1.5, size=0.75, halign="start");
-// %t1 = $IO_PORT @ATTACH &a => @PLACE(18, -5) => @ORIENT("R0");
+// %t1 = $IO_PORT @ATTACH &a => @PLACE(9, -5) => @ORIENT("R0");
 // %t1 @TEXT("a", key="name", size=0.75);
-// &a @WIRE(mode="straight") {#MP:1 (22, -5) %t1:p};
-// %t2 = $IO_PORT @ATTACH &off => @PLACE(16, 0) => @ORIENT("R0");
+// &a @WIRE(mode="straight") {#MP:1 (13, -5) %t1:p};
+// %t2 = $IO_PORT @ATTACH &off => @PLACE(7, 0) => @ORIENT("R0");
 // %t2 @TEXT("off", key="name", size=0.75);
 // &off @WIRE(mode="straight") {#MP:2 %t2:p};
-// %t3 = $IO_PORT @ATTACH &b => @PLACE(18, 5) => @ORIENT("R0");
+// %t3 = $IO_PORT @ATTACH &b => @PLACE(9, 5) => @ORIENT("R0");
 // %t3 @TEXT("b", key="name", size=0.75);
-// &b @WIRE(mode="straight") {#MP:3 (22, 5) %t3:p};
-// %t4 = $IO_PORT @ATTACH &vdd => @PLACE(26, 0) => @ORIENT("MY");
+// &b @WIRE(mode="straight") {#MP:3 (13, 5) %t3:p};
+// %t4 = $IO_PORT @ATTACH &vdd => @PLACE(17, 0) => @ORIENT("MY");
 // %t4 @TEXT("vdd", key="name", size=0.75);
 // &vdd @WIRE(mode="straight") {#MP:4 %t4:p};
 // %t5 = $IO_PORT @ATTACH &a => @PLACE(-16, 5) => @ORIENT("R0");

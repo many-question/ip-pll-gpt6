@@ -5,9 +5,15 @@ subckt tx_dff_r1_pdk110_70 (d clk reset q vdd vss)
 XI (d db vdd vss) pll_inv_pdk110_48
 XF (db clk reset qb vdd vss) tx_dff_r0_pdk110_58
 XO (qb q vdd vss) pll_inv_pdk110_62
-// @RNL(author="manual-schematic126") {
+// @RNL(author="functional-compact127") {
 // $CELL = @DEFINE-SYMBOL {
-// @LINE {(-6, 8) (6, 8) (6, -8) (-6, -8) (-6, 8)};
+// @LINE {(-6, -8) (6, -8) (6, 8) (-6, 8) (-6, -8)};
+// (-2, 1) @TEXT("D", size=1.15, halign="middle");
+// (2, 1) @TEXT("Q", size=1.15, halign="middle");
+// @LINE {(-2, -1) (2, -1)};
+// @LINE {(0.946901, -0.424689) (2, -1) (0.946901, -1.57531)};
+// (0, -3) @TEXT("FF", size=0.8, halign="middle");
+// @LINE {(-6, 1) (-4.5, 0) (-6, -1)};
 // (-8, 4) @PIN(terminal="d", direction="left");
 // @LINE {(-8, 4) (-6, 4)};
 // (-5.4, 4) @TEXT("d", size=0.7, halign="start");
@@ -29,10 +35,10 @@ XO (qb q vdd vss) pll_inv_pdk110_62
 // };
 // # @SET-SYMBOL $CELL;
 // #XI @PLACE(0, 0) => @ORIENT("R0");
-// #XF @PLACE(40, 0) => @ORIENT("R0");
-// #XO @PLACE(80, 0) => @ORIENT("R0");
-// &db @WIRE(mode="straight") {#XI:2 (20, 0) (20, 4) #XF:1};
-// &qb @WIRE(mode="straight") {#XF:4 (60, 0) (60, 0) #XO:1};
+// #XF @PLACE(28, 0) => @ORIENT("R0");
+// #XO @PLACE(56, 0) => @ORIENT("R0");
+// &db @WIRE(mode="straight") {#XI:2 (14, 0) (14, 4) #XF:1};
+// &qb @WIRE(mode="straight") {#XF:4 (42, 0) (42, 0) #XO:1};
 // %t1 = $IO_PORT @ATTACH &d => @PLACE(-11, 0) => @ORIENT("R0");
 // %t1 @TEXT("d", key="name", size=0.75);
 // &d @WIRE(mode="straight") {#XI:1 %t1:p};
@@ -40,22 +46,22 @@ XO (qb q vdd vss) pll_inv_pdk110_62
 // &vdd @WIRE(mode="straight") {#XI:3 %t2:p};
 // %t3 = $GROUND @ATTACH &vss => @PLACE(0, -9);
 // &vss @WIRE(mode="straight") {#XI:4 %t3:p};
-// %t4 = $IO_PORT @ATTACH &clk => @PLACE(29, 0) => @ORIENT("R0");
+// %t4 = $IO_PORT @ATTACH &clk => @PLACE(18, 0) => @ORIENT("R0");
 // %t4 @TEXT("clk", key="name", size=0.75);
 // &clk @WIRE(mode="straight") {#XF:2 %t4:p};
-// %t5 = $IO_PORT @ATTACH &reset => @PLACE(29, -4) => @ORIENT("R0");
+// %t5 = $IO_PORT @ATTACH &reset => @PLACE(18, -4) => @ORIENT("R0");
 // %t5 @TEXT("reset", key="name", size=0.75);
 // &reset @WIRE(mode="straight") {#XF:3 %t5:p};
-// %t6 = $SUPPLY @ATTACH &vdd => @PLACE(40, 13);
+// %t6 = $SUPPLY @ATTACH &vdd => @PLACE(28, 13);
 // &vdd @WIRE(mode="straight") {#XF:5 %t6:p};
-// %t7 = $GROUND @ATTACH &vss => @PLACE(40, -13);
+// %t7 = $GROUND @ATTACH &vss => @PLACE(28, -13);
 // &vss @WIRE(mode="straight") {#XF:6 %t7:p};
-// %t8 = $IO_PORT @ATTACH &q => @PLACE(91, 0) => @ORIENT("MY");
+// %t8 = $IO_PORT @ATTACH &q => @PLACE(67, 0) => @ORIENT("MY");
 // %t8 @TEXT("q", key="name", size=0.75);
 // &q @WIRE(mode="straight") {#XO:2 %t8:p};
-// %t9 = $SUPPLY @ATTACH &vdd => @PLACE(80, 9);
+// %t9 = $SUPPLY @ATTACH &vdd => @PLACE(56, 9);
 // &vdd @WIRE(mode="straight") {#XO:3 %t9:p};
-// %t10 = $GROUND @ATTACH &vss => @PLACE(80, -9);
+// %t10 = $GROUND @ATTACH &vss => @PLACE(56, -9);
 // &vss @WIRE(mode="straight") {#XO:4 %t10:p};
 // (-16, 32) @TEXT("70  DFF reset 1 | 3 instances", size=1.2, halign="start");
 // }

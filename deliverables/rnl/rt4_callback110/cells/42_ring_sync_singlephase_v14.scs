@@ -5,9 +5,15 @@ subckt ring_sync_singlephase_v14_pdk110_42 (d clk clkb load loadb init q vdd vss
 XDATA (d din loadb load vdd vss) pll_tg_pdk110_43
 XINIT (init din load loadb vdd vss) pll_tg_pdk110_43
 XF (din clk clkb q vdd vss) ff_singlephase_v14_pdk110_44
-// @RNL(author="manual-schematic126") {
+// @RNL(author="functional-compact127") {
 // $CELL = @DEFINE-SYMBOL {
-// @LINE {(-12, 14) (12, 14) (12, -14) (-12, -14) (-12, 14)};
+// @LINE {(-12, -14) (12, -14) (12, 14) (-12, 14) (-12, -14)};
+// (-2, 1) @TEXT("D", size=1.15, halign="middle");
+// (2, 1) @TEXT("Q", size=1.15, halign="middle");
+// @LINE {(-2, -1) (2, -1)};
+// @LINE {(0.946901, -0.424689) (2, -1) (0.946901, -1.57531)};
+// (0, -3) @TEXT("FF", size=0.8, halign="middle");
+// @LINE {(-12, 7) (-10.5, 6) (-12, 5)};
 // (-14, 10) @PIN(terminal="d", direction="left");
 // @LINE {(-14, 10) (-12, 10)};
 // (-11.4, 10) @TEXT("d", size=0.7, halign="start");
@@ -39,9 +45,9 @@ XF (din clk clkb q vdd vss) ff_singlephase_v14_pdk110_44
 // # @SET-SYMBOL $CELL;
 // #XDATA @PLACE(0, 15) => @ORIENT("R0");
 // #XINIT @PLACE(0, -20) => @ORIENT("R0");
-// #XF @PLACE(50, 0) => @ORIENT("R0");
-// &din @WIRE(mode="straight") {#XDATA:2 (30, 15) (30, 4) #XF:1};
-// &din @WIRE(mode="straight") {#XINIT:2 (30, -20) (30, 4) #XF:1};
+// #XF @PLACE(32, 0) => @ORIENT("R0");
+// &din @WIRE(mode="straight") {#XDATA:2 (18, 15) (18, 4) #XF:1};
+// &din @WIRE(mode="straight") {#XINIT:2 (18, -20) (18, 4) #XF:1};
 // %t1 = $IO_PORT @ATTACH &d => @PLACE(-11, 19) => @ORIENT("R0");
 // %t1 @TEXT("d", key="name", size=0.75);
 // &d @WIRE(mode="straight") {#XDATA:1 %t1:p};
@@ -68,18 +74,18 @@ XF (din clk clkb q vdd vss) ff_singlephase_v14_pdk110_44
 // &vdd @WIRE(mode="straight") {#XINIT:5 %t9:p};
 // %t10 = $GROUND @ATTACH &vss => @PLACE(0, -33);
 // &vss @WIRE(mode="straight") {#XINIT:6 %t10:p};
-// %t11 = $IO_PORT @ATTACH &clk => @PLACE(39, 0) => @ORIENT("R0");
+// %t11 = $IO_PORT @ATTACH &clk => @PLACE(22, 0) => @ORIENT("R0");
 // %t11 @TEXT("clk", key="name", size=0.75);
 // &clk @WIRE(mode="straight") {#XF:2 %t11:p};
-// %t12 = $IO_PORT @ATTACH &clkb => @PLACE(39, -4) => @ORIENT("R0");
+// %t12 = $IO_PORT @ATTACH &clkb => @PLACE(22, -4) => @ORIENT("R0");
 // %t12 @TEXT("clkb", key="name", size=0.75);
 // &clkb @WIRE(mode="straight") {#XF:3 %t12:p};
-// %t13 = $IO_PORT @ATTACH &q => @PLACE(61, 0) => @ORIENT("MY");
+// %t13 = $IO_PORT @ATTACH &q => @PLACE(43, 0) => @ORIENT("MY");
 // %t13 @TEXT("q", key="name", size=0.75);
 // &q @WIRE(mode="straight") {#XF:4 %t13:p};
-// %t14 = $SUPPLY @ATTACH &vdd => @PLACE(50, 13);
+// %t14 = $SUPPLY @ATTACH &vdd => @PLACE(32, 13);
 // &vdd @WIRE(mode="straight") {#XF:5 %t14:p};
-// %t15 = $GROUND @ATTACH &vss => @PLACE(50, -13);
+// %t15 = $GROUND @ATTACH &vss => @PLACE(32, -13);
 // &vss @WIRE(mode="straight") {#XF:6 %t15:p};
 // (-16, 47) @TEXT("42  Ring stage | 3 instances", size=1.2, halign="start");
 // }

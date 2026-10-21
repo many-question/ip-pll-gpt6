@@ -5,9 +5,12 @@ subckt rt_noise_scale4_v14_pdk110_49 (data clk out vdd vss)
 XFF (data clk qb vdd vss) rtcomb_ff_v13_pdk110_50
 X0 (qb ob vdd vss) pll_inv_pdk110_51
 X1 (ob out vdd vss) pll_inv_pdk110_52
-// @RNL(author="manual-schematic126") {
+// @RNL(author="functional-compact127") {
 // $CELL = @DEFINE-SYMBOL {
-// @LINE {(-6, 6) (6, 6) (6, -6) (-6, -6) (-6, 6)};
+// @LINE {(-6, -6) (6, -6) (6, 6) (-6, 6) (-6, -6)};
+// @LINE {(-3, -3) (3, -3) (3, 3) (-3, 3) (-3, -3)};
+// (0, 1) @TEXT("D  Q", size=0.9, halign="middle");
+// @LINE {(-3, -0.5) (-1.7, -1.5) (-3, -2.5)};
 // (-8, 2) @PIN(terminal="data", direction="left");
 // @LINE {(-8, 2) (-6, 2)};
 // (-5.4, 2) @TEXT("data", size=0.7, halign="start");
@@ -26,9 +29,9 @@ X1 (ob out vdd vss) pll_inv_pdk110_52
 // };
 // # @SET-SYMBOL $CELL;
 // #XFF @PLACE(0, 0) => @ORIENT("R0");
-// #X0 @PLACE(40, 0) => @ORIENT("R0");
-// #X1 @PLACE(80, 0) => @ORIENT("R0");
-// &qb @WIRE(mode="straight") {#XFF:3 (20, 0) (20, 0) #X0:1};
+// #X0 @PLACE(28, 0) => @ORIENT("R0");
+// #X1 @PLACE(56, 0) => @ORIENT("R0");
+// &qb @WIRE(mode="straight") {#XFF:3 (14, 0) (14, 0) #X0:1};
 // &ob @WIRE(mode="straight") {#X0:2 #X1:1};
 // %t1 = $IO_PORT @ATTACH &data => @PLACE(-11, 2) => @ORIENT("R0");
 // %t1 @TEXT("data", key="name", size=0.75);
@@ -40,16 +43,16 @@ X1 (ob out vdd vss) pll_inv_pdk110_52
 // &vdd @WIRE(mode="straight") {#XFF:4 %t3:p};
 // %t4 = $GROUND @ATTACH &vss => @PLACE(0, -11);
 // &vss @WIRE(mode="straight") {#XFF:5 %t4:p};
-// %t5 = $SUPPLY @ATTACH &vdd => @PLACE(40, 9);
+// %t5 = $SUPPLY @ATTACH &vdd => @PLACE(28, 9);
 // &vdd @WIRE(mode="straight") {#X0:3 %t5:p};
-// %t6 = $GROUND @ATTACH &vss => @PLACE(40, -9);
+// %t6 = $GROUND @ATTACH &vss => @PLACE(28, -9);
 // &vss @WIRE(mode="straight") {#X0:4 %t6:p};
-// %t7 = $IO_PORT @ATTACH &out => @PLACE(91, 0) => @ORIENT("MY");
+// %t7 = $IO_PORT @ATTACH &out => @PLACE(67, 0) => @ORIENT("MY");
 // %t7 @TEXT("out", key="name", size=0.75);
 // &out @WIRE(mode="straight") {#X1:2 %t7:p};
-// %t8 = $SUPPLY @ATTACH &vdd => @PLACE(80, 9);
+// %t8 = $SUPPLY @ATTACH &vdd => @PLACE(56, 9);
 // &vdd @WIRE(mode="straight") {#X1:3 %t8:p};
-// %t9 = $GROUND @ATTACH &vss => @PLACE(80, -9);
+// %t9 = $GROUND @ATTACH &vss => @PLACE(56, -9);
 // &vss @WIRE(mode="straight") {#X1:4 %t9:p};
 // (-16, 30) @TEXT("49  RT4 retimer | 3 instances", size=1.2, halign="start");
 // }

@@ -4,24 +4,22 @@ simulator lang=spectre
 subckt pll_inv_pdk110_29 (a y vdd vss)
 MN (y a vss vss) nch w=5e-07 l=1.8e-07 nf=1 ad=2.4e-13 as=2.4e-13 pd=1.96e-06 ps=1.96e-06 nrd=0.54 nrs=0.54 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
 MP (y a vdd vdd) pch w=1e-06 l=1.8e-07 nf=1 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
-// @RNL(author="manual-schematic126") {
+// @RNL(author="functional-compact127") {
 // $CELL = @DEFINE-SYMBOL {
-// @LINE {(-6, 4) (6, 4) (6, -4) (-6, -4) (-6, 4)};
+// @LINE {(-5, -3) (-5, 3) (3, 0) (-5, -3)};
+// @LINE {(5, 0) (4.96593, 0.258819) (4.86603, 0.5) (4.70711, 0.707107) (4.5, 0.866025) (4.25882, 0.965926) (4, 1) (3.74118, 0.965926) (3.5, 0.866025) (3.29289, 0.707107) (3.13397, 0.5) (3.03407, 0.258819) (3, 1.22465e-16) (3.03407, -0.258819) (3.13397, -0.5) (3.29289, -0.707107) (3.5, -0.866025) (3.74118, -0.965926) (4, -1) (4.25882, -0.965926) (4.5, -0.866025) (4.70711, -0.707107) (4.86603, -0.5) (4.96593, -0.258819) (5, -2.44929e-16)};
 // (-8, 0) @PIN(terminal="a", direction="left");
-// @LINE {(-8, 0) (-6, 0)};
-// (-5.4, 0) @TEXT("a", size=0.7, halign="start");
+// @LINE {(-8, 0) (-5, 0)};
 // (8, 0) @PIN(terminal="y", direction="right");
-// @LINE {(8, 0) (6, 0)};
-// (5.4, 0) @TEXT("y", size=0.7, halign="end");
+// @LINE {(8, 0) (5, 0)};
 // (0, 6) @PIN(terminal="vdd", direction="up");
-// @LINE {(0, 6) (0, 4)};
+// @LINE {(0, 6) (0, 1.125)};
 // (0, -6) @PIN(terminal="vss", direction="down");
-// @LINE {(0, -6) (0, -4)};
+// @LINE {(0, -6) (0, -1.125)};
 // ? @TEXT("${name}", key="name", size=1, halign="middle") => @PLACE(8, 7.5);
-// (0, 3.1) @TEXT("INV", size=0.85, halign="middle");
 // };
 // # @SET-SYMBOL $CELL;
-// #MP @PLACE(0, 12) => @ORIENT("R0");
+// #MP @PLACE(0, 11) => @ORIENT("R0");
 // #MP @SET-SYMBOL $PMOS_4TERM;
 // #MP @TEXT("MP", key="name", dx=5, dy=1.5, size=0.9, halign="start");
 // #MP @TEXT("1u / 180n", key="model", dx=5, dy=-1.5, size=0.75, halign="start");
@@ -33,20 +31,20 @@ MP (y a vdd vdd) pch w=1e-06 l=1.8e-07 nf=1 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps
 // &y @WIRE(mode="straight") {#MP:1 %y #MN:1};
 // $JUNCTION @ATTACH %y;
 // %a = (-7, 4);
-// &a @WIRE(mode="straight") {#MP:2 (-7, 12) %a (-7, -4) #MN:2};
+// &a @WIRE(mode="straight") {#MP:2 (-7, 11) %a (-7, -4) #MN:2};
 // $JUNCTION @ATTACH %a;
-// &vdd @WIRE(mode="straight") {#MP:4 (2, 12) (2, 14) #MP:3};
+// &vdd @WIRE(mode="straight") {#MP:4 (2, 11) (2, 13) #MP:3};
 // &vss @WIRE(mode="straight") {#MN:4 (2, -4) (2, -6) #MN:3};
-// %t1 = $IO_PORT @ATTACH &a => @PLACE(-6, 12) => @ORIENT("R0");
+// %t1 = $IO_PORT @ATTACH &a => @PLACE(-6, 11) => @ORIENT("R0");
 // %t1 @TEXT("a", key="name", size=0.75);
 // &a @WIRE(mode="straight") {#MP:2 %t1:p};
-// %t2 = $IO_PORT @ATTACH &y => @PLACE(-4, 7) => @ORIENT("R0");
+// %t2 = $IO_PORT @ATTACH &y => @PLACE(-4, 6) => @ORIENT("R0");
 // %t2 @TEXT("y", key="name", size=0.75);
-// &y @WIRE(mode="straight") {#MP:1 (0, 7) %t2:p};
-// %t3 = $SUPPLY @ATTACH &vdd => @PLACE(0, 17);
+// &y @WIRE(mode="straight") {#MP:1 (0, 6) %t2:p};
+// %t3 = $SUPPLY @ATTACH &vdd => @PLACE(0, 16);
 // &vdd @WIRE(mode="straight") {#MP:3 %t3:p};
 // %t4 = $GROUND @ATTACH &vss => @PLACE(0, -9);
 // &vss @WIRE(mode="straight") {#MN:3 %t4:p};
-// (-11, 36) @TEXT("29  INV | 2 instances", size=1.2, halign="start");
+// (-11, 35) @TEXT("29  INV | 2 instances", size=1.2, halign="start");
 // }
 ends pll_inv_pdk110_29
