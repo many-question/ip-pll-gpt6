@@ -1,0 +1,57 @@
+// Reference buffer | frozen callback110 / recenter109 | RNL 0.3
+// @RNL(type="header") { @VERSION("0.3"); @USE-PACKAGE(name="rnl-std-fill") {} }
+simulator lang=spectre
+subckt tx_reference_buffer_pdk110_6 (inp out vdd vss)
+X0 (inp a vdd vss) pll_inv_pdk110_7
+X1 (a b vdd vss) pll_inv_pdk110_8
+X2 (b c vdd vss) pll_inv_pdk110_9
+X3 (c out vdd vss) pll_inv_pdk110_10
+// @RNL(author="manual-schematic126") {
+// $CELL = @DEFINE-SYMBOL {
+// @LINE {(-6, 4) (6, 4) (6, -4) (-6, -4) (-6, 4)};
+// (-8, 0) @PIN(terminal="inp", direction="left");
+// @LINE {(-8, 0) (-6, 0)};
+// (-5.4, 0) @TEXT("inp", size=0.7, halign="start");
+// (8, 0) @PIN(terminal="out", direction="right");
+// @LINE {(8, 0) (6, 0)};
+// (5.4, 0) @TEXT("out", size=0.7, halign="end");
+// (0, 6) @PIN(terminal="vdd", direction="up");
+// @LINE {(0, 6) (0, 4)};
+// (0, -6) @PIN(terminal="vss", direction="down");
+// @LINE {(0, -6) (0, -4)};
+// ? @TEXT("${name}", key="name", size=1, halign="middle") => @PLACE(8, 7.5);
+// (0, 3.1) @TEXT("Reference buffer", size=0.85, halign="middle");
+// };
+// # @SET-SYMBOL $CELL;
+// #X0 @PLACE(0, 0) => @ORIENT("R0");
+// #X1 @PLACE(36, 0) => @ORIENT("R0");
+// #X2 @PLACE(72, 0) => @ORIENT("R0");
+// #X3 @PLACE(108, 0) => @ORIENT("R0");
+// &a @WIRE(mode="straight") {#X0:2 #X1:1};
+// &b @WIRE(mode="straight") {#X1:2 #X2:1};
+// &c @WIRE(mode="straight") {#X2:2 #X3:1};
+// %t1 = $IO_PORT @ATTACH &inp => @PLACE(-11, 0) => @ORIENT("R0");
+// %t1 @TEXT("inp", key="name", size=0.75);
+// &inp @WIRE(mode="straight") {#X0:1 %t1:p};
+// %t2 = $SUPPLY @ATTACH &vdd => @PLACE(0, 9);
+// &vdd @WIRE(mode="straight") {#X0:3 %t2:p};
+// %t3 = $GROUND @ATTACH &vss => @PLACE(0, -9);
+// &vss @WIRE(mode="straight") {#X0:4 %t3:p};
+// %t4 = $SUPPLY @ATTACH &vdd => @PLACE(36, 9);
+// &vdd @WIRE(mode="straight") {#X1:3 %t4:p};
+// %t5 = $GROUND @ATTACH &vss => @PLACE(36, -9);
+// &vss @WIRE(mode="straight") {#X1:4 %t5:p};
+// %t6 = $SUPPLY @ATTACH &vdd => @PLACE(72, 9);
+// &vdd @WIRE(mode="straight") {#X2:3 %t6:p};
+// %t7 = $GROUND @ATTACH &vss => @PLACE(72, -9);
+// &vss @WIRE(mode="straight") {#X2:4 %t7:p};
+// %t8 = $IO_PORT @ATTACH &out => @PLACE(119, 0) => @ORIENT("MY");
+// %t8 @TEXT("out", key="name", size=0.75);
+// &out @WIRE(mode="straight") {#X3:2 %t8:p};
+// %t9 = $SUPPLY @ATTACH &vdd => @PLACE(108, 9);
+// &vdd @WIRE(mode="straight") {#X3:3 %t9:p};
+// %t10 = $GROUND @ATTACH &vss => @PLACE(108, -9);
+// &vss @WIRE(mode="straight") {#X3:4 %t10:p};
+// (-16, 28) @TEXT("06  Reference buffer | 4 instances", size=1.2, halign="start");
+// }
+ends tx_reference_buffer_pdk110_6

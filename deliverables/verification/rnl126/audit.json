@@ -1,0 +1,459 @@
+{
+  "time": "2026-10-21T20:04:36.174301+08:00",
+  "entry": "share/deliverables/rnl/rt4_callback110/top.scs",
+  "top_instance": "XPLL",
+  "top_subckt": "pll_capture_rt4_r48_recenter109_v14_pdk110_0",
+  "source": "share/deliverables/blocks/cmos_v14_full/rt4_callback110_after.scs",
+  "source_sha256": "260a50e7e62d0d25cfdfb21d6004a22f31ca38544632329448bea811dcd38f62",
+  "language": "RNL 0.3",
+  "runtime": "0.1.0-preview.14",
+  "netlist_files": 82,
+  "original_subcircuits": 81,
+  "reachable_viewer_levels": 82,
+  "definition_instances": 2932,
+  "expanded_mos": 21479,
+  "definition_terminals": 15140,
+  "electrical_lines_identical": true,
+  "all_instances_explicitly_placed": true,
+  "all_terminals_explicitly_wired": true,
+  "solver_called": false,
+  "autorouter_called": false,
+  "errors": 0,
+  "warnings": 0,
+  "hints": 0,
+  "unplaced": 0,
+  "missing_includes": [],
+  "unresolved_circuit_subckts": [],
+  "external_primitive_models": [
+    "nch",
+    "pch",
+    "nmoscap"
+  ],
+  "visual_review": [
+    "entry",
+    "PLL signal flow",
+    "LC cross-coupled core",
+    "inverter",
+    "TSPC feedback flip-flop",
+    "DAC R-2R ladder",
+    "controller overview",
+    "FLL gate-atlas panel"
+  ],
+  "limitations": [
+    "Large synthesized digital cells retain their original hierarchy and use local same-name net tags in numbered 24-cell panels.",
+    "PDK primitive models are represented by explicit symbols; simulation model cards are not distributed.",
+    "No new simulation evidence; previously paused simulation/recovery/heartbeat work is untouched."
+  ],
+  "files": [
+    {
+      "path": "cells/00_pll_capture_rt4_r48_recenter109_v14.scs",
+      "sha256": "7c58c66df2af4447aff46ab649204748da8dceba2c2a014dcf00c9dc2243ef5f",
+      "bytes": 23793
+    },
+    {
+      "path": "cells/01_lc_vco_physical_v14.scs",
+      "sha256": "e0d4b0e89351042ad9a78cd9352a0c74e7393460d6a871bb0ed3e1b87be5745b",
+      "bytes": 8408
+    },
+    {
+      "path": "cells/02_lc_core_physical_v14.scs",
+      "sha256": "84101928094177bc0e2d6f1c4b28f558030e5bdf91c214d79a557db4b30caac0",
+      "bytes": 15897
+    },
+    {
+      "path": "cells/03_tx_inductor_pi.scs",
+      "sha256": "a6aa589e65cf219468dc1bd7c4690858fc8554c4cc8ff2f85c653d98dbbefe1f",
+      "bytes": 4920
+    },
+    {
+      "path": "cells/04_tx_cap_bank_switched_v4.scs",
+      "sha256": "c31ec3ee4d53ae3106ab9e7ad3ba41c10cb6055ac25941c79a78dc50f5520061",
+      "bytes": 17395
+    },
+    {
+      "path": "cells/05_tx_bias_mid_v5.scs",
+      "sha256": "4e0a932ffac6831b1d155a3289477b0021efdeef22332d50651094344d63383a",
+      "bytes": 2220
+    },
+    {
+      "path": "cells/06_tx_reference_buffer.scs",
+      "sha256": "a12408c3efb8f880b25978b5fd9773f7592e0a1a04ec47a3b8b27d4d63ec942b",
+      "bytes": 2554
+    },
+    {
+      "path": "cells/07_pll_inv.scs",
+      "sha256": "1e93853b8b114cdc7bd7e780bda18d6fc6d179f7f4417cac996b02c2e7dcedbb",
+      "bytes": 2567
+    },
+    {
+      "path": "cells/08_pll_inv.scs",
+      "sha256": "b755a230d2e93df242a57c28cb0268726c88843cc26b1974297c64350300c526",
+      "bytes": 2614
+    },
+    {
+      "path": "cells/09_pll_inv.scs",
+      "sha256": "e4f9bbecd49cd412816fc9831e2b702945308c44c05dd610563f15d8c0780b99",
+      "bytes": 2587
+    },
+    {
+      "path": "cells/10_pll_inv.scs",
+      "sha256": "d139b7283b3c2178612a524f1ef74ba9982269e681615ad63a2f54a8e580a46d",
+      "bytes": 2606
+    },
+    {
+      "path": "cells/11_tx_sampler.scs",
+      "sha256": "6bf4da37fdee5f1188f952d373af4ba6cb6e1cb3d4ca1e10e152ac61a6b8d49e",
+      "bytes": 4892
+    },
+    {
+      "path": "cells/12_pll_inv.scs",
+      "sha256": "05618b3098e843742928eac4ee66d9b971bad5a31960c0cfda873263a803a429",
+      "bytes": 2608
+    },
+    {
+      "path": "cells/13_pll_tg.scs",
+      "sha256": "5fb14ffcd086e83ef908832a3ce646be498ee4b87abbc61a071b38679fc9dc70",
+      "bytes": 3315
+    },
+    {
+      "path": "cells/14_cp_physical_v14.scs",
+      "sha256": "16ee1b11fd4dab96f2312b65cce6ab4b103506fdc3c4bf2e23ef2190514fa077",
+      "bytes": 10199
+    },
+    {
+      "path": "cells/15_pll_nand2.scs",
+      "sha256": "634bc1ffc000e255fcb23e01b05a7cbc27b95e3f765a03d1758d54e50d13cfce",
+      "bytes": 4570
+    },
+    {
+      "path": "cells/16_pll_tg.scs",
+      "sha256": "feb8632d5440addd2dd3bc390a2209271512beb134b7f5ef4fab5db843813da0",
+      "bytes": 3303
+    },
+    {
+      "path": "cells/17_tx_loop_filter_v5.scs",
+      "sha256": "5c5e9348eda1a791e43853738f80047d0e863423e186ba77a901a198f447dc83",
+      "bytes": 5479
+    },
+    {
+      "path": "cells/18_pll_tg.scs",
+      "sha256": "1cc3a1bfeddc074d7c03904ff551516a1bae3d18b8dadb7cfd80d102b747922e",
+      "bytes": 3319
+    },
+    {
+      "path": "cells/19_rf_light24s12_v14.scs",
+      "sha256": "6a91f288b7376708afc7729ec5e97d5643968d96c369c5e646c68eb63f4376dc",
+      "bytes": 2708
+    },
+    {
+      "path": "cells/20_pll_inv.scs",
+      "sha256": "7b8f9475c8066fde803cfe44700803bce08d32e342fa5a1d798f780d6c5682d0",
+      "bytes": 2605
+    },
+    {
+      "path": "cells/21_bank_pulsetrip_v14.scs",
+      "sha256": "a7ae0a634518272a9c2dc87029beed9fb33384ad041672955763fdb3671234ca",
+      "bytes": 47634
+    },
+    {
+      "path": "cells/22_ff_fbdelay50_v14.scs",
+      "sha256": "cbd858e942a671b7fc6b942c103a38baef3cdc48dfb0c552170cdb3dfbe766be",
+      "bytes": 8755
+    },
+    {
+      "path": "cells/23_pll_inv.scs",
+      "sha256": "75f96a02b5b8a23c0b0c6dbd0c878a43b0bee46cf2fdbc5c217ba15f71a79a69",
+      "bytes": 2573
+    },
+    {
+      "path": "cells/24_pll_inv.scs",
+      "sha256": "18456c0f1a16c60ed22abee40630d9d7e7402ebab3ff5c3c931f2a9e8af6a223",
+      "bytes": 2567
+    },
+    {
+      "path": "cells/25_pll_tspc_inv.scs",
+      "sha256": "2c88bcdaa4cd86077856390f5bcd1bef97f270d08f56818431d26f8fdcc4263a",
+      "bytes": 8448
+    },
+    {
+      "path": "cells/26_pll_inv.scs",
+      "sha256": "089dd971e75178f4e48e4b0774353e3139d609def572fab253900de401ab8f8d",
+      "bytes": 2583
+    },
+    {
+      "path": "cells/27_pll_inv.scs",
+      "sha256": "ab77dcb70da8dce337a548cb457b82a90f59296d1f583ba31898c797c5703662",
+      "bytes": 2625
+    },
+    {
+      "path": "cells/28_pll_inv.scs",
+      "sha256": "04a9507b0c817a7e7ea1431c535a20f50708d634bc1fdd7825ca68c1305a985b",
+      "bytes": 2580
+    },
+    {
+      "path": "cells/29_pll_inv.scs",
+      "sha256": "c1eda922b5ba2b2c8de3fcbbacf19327d2051314a2ef99f229b986f4082f67b9",
+      "bytes": 2565
+    },
+    {
+      "path": "cells/30_div3_fast_v14.scs",
+      "sha256": "85e239062c162df840a70474cc6b74dbaa65e9260d4d06b0ccce1c34286b51b4",
+      "bytes": 5422
+    },
+    {
+      "path": "cells/31_pll_inv.scs",
+      "sha256": "45cd570e3bf7d7de7d108d4113c3c7d148fb31f2308ba92d8442050be1be2f05",
+      "bytes": 2605
+    },
+    {
+      "path": "cells/32_nor_fast_v14.scs",
+      "sha256": "75ff43f82a0d7365ab7f73358cf7fe275e724a642fa0f1055b084eeda8fe5867",
+      "bytes": 4682
+    },
+    {
+      "path": "cells/33_ff_static_fast_v14.scs",
+      "sha256": "473bf80fb3157038fac0abed295ba43b5afd8790abaab3ea240f64c49d1eca87",
+      "bytes": 2874
+    },
+    {
+      "path": "cells/34_ring_inv_latch_v14.scs",
+      "sha256": "7182e492595d04b35d539baeedaeab60b510206a0f1f3a987a455ecc9b7a1ff4",
+      "bytes": 3600
+    },
+    {
+      "path": "cells/35_pll_tg.scs",
+      "sha256": "05c8b66e5dc90e46a8578a839f65563e8b25b1a148ee2a9e90391a77a2fb3084",
+      "bytes": 3275
+    },
+    {
+      "path": "cells/36_pll_inv.scs",
+      "sha256": "7239bd2565c44546b4c15a0641060ee201734441f03b31a204e944153c39e7e2",
+      "bytes": 2593
+    },
+    {
+      "path": "cells/37_pll_inv.scs",
+      "sha256": "c05959acf777979a2877f5d9b502ced0a5ed0334b0ddd2fc94053461dcfe051d",
+      "bytes": 2571
+    },
+    {
+      "path": "cells/38_pll_inv.scs",
+      "sha256": "1af8647f7bd81a991241b565ee099d0f4cea1cf9a6817832943726f15274fc5e",
+      "bytes": 2588
+    },
+    {
+      "path": "cells/39_pll_inv.scs",
+      "sha256": "c9404253cbf421860cebe39f515a335e591c14082e49f2fddba573e5a81b1acc",
+      "bytes": 2619
+    },
+    {
+      "path": "cells/40_pll_inv.scs",
+      "sha256": "f5f445d58429068756a6bb3fb0d428991884465352f7a363f71f3a78abb9fd3b",
+      "bytes": 2601
+    },
+    {
+      "path": "cells/41_pll_inv.scs",
+      "sha256": "18178024de549c27a851f6340898210fde737d0a03c04c9b20a7522b9577dbba",
+      "bytes": 2571
+    },
+    {
+      "path": "cells/42_ring_sync_singlephase_v14.scs",
+      "sha256": "8bdaf3882614618ab22f4f1275d7dee48620a531ce952dc2f2356b6970b08937",
+      "bytes": 4260
+    },
+    {
+      "path": "cells/43_pll_tg.scs",
+      "sha256": "2168022e2614dfeed07b18a2908af64b1691489080863ca92ab77a04513ba355",
+      "bytes": 3335
+    },
+    {
+      "path": "cells/44_ff_singlephase_v14.scs",
+      "sha256": "cd44ad51522c4e76d4c36aad4918b03c18c1c11392f8333ce6b7e428c49b56e7",
+      "bytes": 2782
+    },
+    {
+      "path": "cells/45_pll_inv.scs",
+      "sha256": "f083f48d226f371cdf057afeb59cae1e48f2e6ec467925abe08e87626daef37d",
+      "bytes": 2581
+    },
+    {
+      "path": "cells/46_ring_tail_singlephase_v14.scs",
+      "sha256": "f9564d94b4ef38ce509f1eb3f67ad5d239c2aab4e440d24caa9c72c47daa7f65",
+      "bytes": 6377
+    },
+    {
+      "path": "cells/47_tx_and.scs",
+      "sha256": "3b50c4fda198d06f51e7ea78795c1258e07d06150474e5c0584f30dfc9e8bbdf",
+      "bytes": 2397
+    },
+    {
+      "path": "cells/48_pll_inv.scs",
+      "sha256": "9d1934861a861a1b252731f515874d02963d307f443bf78dbded4290f683256d",
+      "bytes": 2585
+    },
+    {
+      "path": "cells/49_rt_noise_scale4_v14.scs",
+      "sha256": "3876ab8a61889c09c66740beea009890c091df68980946dccd2fe77f0b583bf6",
+      "bytes": 2577
+    },
+    {
+      "path": "cells/50_rtcomb_ff_v13.scs",
+      "sha256": "a270172983d0bf66440ceb3a7c592a0511e12346622c6bbb77742616a2a193fe",
+      "bytes": 8504
+    },
+    {
+      "path": "cells/51_pll_inv.scs",
+      "sha256": "c75fa6e5c23d36afbd6e4b06d80a41c6f93bb2860a81211b93240e727feee0e5",
+      "bytes": 2604
+    },
+    {
+      "path": "cells/52_pll_inv.scs",
+      "sha256": "4c427bef1b09495c9fb27c515f06e517235fdbec7dc4258ab5096e063affe803",
+      "bytes": 2612
+    },
+    {
+      "path": "cells/53_validity_physical_v14.scs",
+      "sha256": "f7623718500a6139af739b2d80a63f605db06480760b2f3d52c66f82cac6a2b8",
+      "bytes": 12541
+    },
+    {
+      "path": "cells/54_cmp_physical_v14.scs",
+      "sha256": "d7267df985b954291f42df592cd53a8baaf296dc7a0cbbc634c003255b5f8f8b",
+      "bytes": 7467
+    },
+    {
+      "path": "cells/55_pll_inv.scs",
+      "sha256": "6ce0e2dad1268f849cf42436e9d4429eccc0e42a601acf48e88e1df20d901631",
+      "bytes": 2569
+    },
+    {
+      "path": "cells/56_pll_control_recenter109_v14.scs",
+      "sha256": "32f01f8be3485873e325a583683215c547372acd8d47174d19965af2c841b7a6",
+      "bytes": 40717
+    },
+    {
+      "path": "cells/57_tx_pll_config.scs",
+      "sha256": "dd29860a6d6f55174deefa0dbd89d516fe95617b17203d336489946634c19133",
+      "bytes": 204185
+    },
+    {
+      "path": "cells/58_tx_dff_r0.scs",
+      "sha256": "0bbf4b86cef8af1299140dada4194d8622d70b9556572ed543930c0d604ef9e1",
+      "bytes": 4407
+    },
+    {
+      "path": "cells/59_pll_inv.scs",
+      "sha256": "8f82daa273ad85d758e91e8ec4a8f1ad6ab979615c5107610225adc30760fb80",
+      "bytes": 2597
+    },
+    {
+      "path": "cells/60_tx_latch_r.scs",
+      "sha256": "8bce954645cbaec7367cfc0a936fd8e184311efb46a4b901a011d948b81779f6",
+      "bytes": 3943
+    },
+    {
+      "path": "cells/61_pll_tg.scs",
+      "sha256": "3dfba8804e9c963790d5bf8e2fe9037a49c3b82e23316a36a125c5be3a066cb2",
+      "bytes": 3309
+    },
+    {
+      "path": "cells/62_pll_inv.scs",
+      "sha256": "1149abf3aafe877ac923f067372948c55c4722cb7e18596de6ba931db29ea4a1",
+      "bytes": 2617
+    },
+    {
+      "path": "cells/63_pll_tg.scs",
+      "sha256": "a8691df6f93ba0abeaccbaf8dac4f70a4ab6e8d2188d6a8369e73126d77ba6ad",
+      "bytes": 3305
+    },
+    {
+      "path": "cells/64_tx_mux.scs",
+      "sha256": "58a5615b22cb2a0e77ed16bfb0eeda0503ff57eca4167dc238abfff119126629",
+      "bytes": 4180
+    },
+    {
+      "path": "cells/65_pll_tg.scs",
+      "sha256": "4103108e9dbe22ddc70e07fb1cf34a8029300f72ba54a42886fd0703cdf14550",
+      "bytes": 3291
+    },
+    {
+      "path": "cells/66_tx_xor.scs",
+      "sha256": "c929a3b31d0b3e53e1386fd72fbdc699e110b33bfbba776d1cad6270599e9551",
+      "bytes": 2308
+    },
+    {
+      "path": "cells/67_tx_or.scs",
+      "sha256": "a151ad906219f9f4e5724df15a2eb6df2150d3338e96b4c74bc21be968bcfd97",
+      "bytes": 2151
+    },
+    {
+      "path": "cells/68_pll_nor2.scs",
+      "sha256": "a578f8e9987d56f54d13aefdd566fb47be840836d08aa1c3b811a0de5c93cd21",
+      "bytes": 4614
+    },
+    {
+      "path": "cells/69_tx_fll_recenter109_v14.scs",
+      "sha256": "823b369e7d942e3725bc0b3aa969b72e1df64ab60425c49ea0606ab5004aaa58",
+      "bytes": 1435019
+    },
+    {
+      "path": "cells/70_tx_dff_r1.scs",
+      "sha256": "dc311a63c77d961d429791640f545c745dbf6f452f99cda74ff59040ae64272e",
+      "bytes": 2843
+    },
+    {
+      "path": "cells/71_tx_fll_counter.scs",
+      "sha256": "5d6a3e5704d29008d7895b74382460dfc276bf12d77f4643ff0fb2dc2287aac3",
+      "bytes": 15599
+    },
+    {
+      "path": "cells/72_pll_latch.scs",
+      "sha256": "315505a18f8d19baf5d6d998f35f564b1e9561546e007327de1a9b66a208666b",
+      "bytes": 3588
+    },
+    {
+      "path": "cells/73_tx_tff.scs",
+      "sha256": "e20c3c142379673869b338c9b821215ee0ff6f5323ac40b05d4897a4e58e9254",
+      "bytes": 2568
+    },
+    {
+      "path": "cells/74_tx_fll_snapshot.scs",
+      "sha256": "1ebf8ae3ff0afa9e0363cf0d91a88613e3650fabac66d0100bf8bc24d0270721",
+      "bytes": 18986
+    },
+    {
+      "path": "cells/75_tx_fll_dac.scs",
+      "sha256": "3c49845f5f945e3738eecbe31558a2c6f7ef7c4243d7bb2bab04233766803350",
+      "bytes": 13401
+    },
+    {
+      "path": "cells/76_pll_inv.scs",
+      "sha256": "541a4beb9b14c5233415dfd551dd1d7559dc859c792c176923868e116cd357aa",
+      "bytes": 2575
+    },
+    {
+      "path": "cells/77_tx_pll_supervisor_capture_v14.scs",
+      "sha256": "0947dc72153b9b2e69295825cfee3a1dec4ac7a035321a87737b488cf82d6e44",
+      "bytes": 328016
+    },
+    {
+      "path": "cells/78_tx_cp_timing.scs",
+      "sha256": "d606bbdab4655610a15ecdbf43f2da20d2212ba798743b7e93c75968c4548335",
+      "bytes": 15760
+    },
+    {
+      "path": "cells/79_pll_inv.scs",
+      "sha256": "10096449e5b5ee1a8a324832d78c6a82023ff1a571e748bd7893dd77a5347335",
+      "bytes": 2585
+    },
+    {
+      "path": "cells/80_tx_frequency_watchdog.scs",
+      "sha256": "58a4dbe96c28770ea1ebcdc072803dd7fa5c131bec3a12ae5cff66e34cb657ad",
+      "bytes": 219975
+    },
+    {
+      "path": "top.scs",
+      "sha256": "6f41bfae8b3333c4efdf31c06d63ecf197d3a7489fa713d0e822b14c750b4e37",
+      "bytes": 6827
+    }
+  ]
+}

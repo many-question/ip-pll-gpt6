@@ -1,0 +1,52 @@
+// INV | frozen callback110 / recenter109 | RNL 0.3
+// @RNL(type="header") { @VERSION("0.3"); @USE-PACKAGE(name="rnl-std-fill") {} }
+simulator lang=spectre
+subckt pll_inv_pdk110_76 (a y vdd vss)
+MN (y a vss vss) nch w=5e-06 l=1.8e-07 nf=1 ad=2.4e-12 as=2.4e-12 pd=1.096e-05 ps=1.096e-05 nrd=0.054 nrs=0.054 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (y a vdd vdd) pch w=1.25e-05 l=1.8e-07 nf=1 ad=6e-12 as=6e-12 pd=2.596e-05 ps=2.596e-05 nrd=0.0216 nrs=0.0216 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+// @RNL(author="manual-schematic126") {
+// $CELL = @DEFINE-SYMBOL {
+// @LINE {(-6, 4) (6, 4) (6, -4) (-6, -4) (-6, 4)};
+// (-8, 0) @PIN(terminal="a", direction="left");
+// @LINE {(-8, 0) (-6, 0)};
+// (-5.4, 0) @TEXT("a", size=0.7, halign="start");
+// (8, 0) @PIN(terminal="y", direction="right");
+// @LINE {(8, 0) (6, 0)};
+// (5.4, 0) @TEXT("y", size=0.7, halign="end");
+// (0, 6) @PIN(terminal="vdd", direction="up");
+// @LINE {(0, 6) (0, 4)};
+// (0, -6) @PIN(terminal="vss", direction="down");
+// @LINE {(0, -6) (0, -4)};
+// ? @TEXT("${name}", key="name", size=1, halign="middle") => @PLACE(8, 7.5);
+// (0, 3.1) @TEXT("INV", size=0.85, halign="middle");
+// };
+// # @SET-SYMBOL $CELL;
+// #MP @PLACE(0, 12) => @ORIENT("R0");
+// #MP @SET-SYMBOL $PMOS_4TERM;
+// #MP @TEXT("MP", key="name", dx=5, dy=1.5, size=0.9, halign="start");
+// #MP @TEXT("12.5u / 180n", key="model", dx=5, dy=-1.5, size=0.75, halign="start");
+// #MN @PLACE(0, -4) => @ORIENT("R0");
+// #MN @SET-SYMBOL $NMOS_4TERM;
+// #MN @TEXT("MN", key="name", dx=5, dy=1.5, size=0.9, halign="start");
+// #MN @TEXT("5u / 180n", key="model", dx=5, dy=-1.5, size=0.75, halign="start");
+// %y = (0, 4);
+// &y @WIRE(mode="straight") {#MP:1 %y #MN:1};
+// $JUNCTION @ATTACH %y;
+// %a = (-7, 4);
+// &a @WIRE(mode="straight") {#MP:2 (-7, 12) %a (-7, -4) #MN:2};
+// $JUNCTION @ATTACH %a;
+// &vdd @WIRE(mode="straight") {#MP:4 (2, 12) (2, 14) #MP:3};
+// &vss @WIRE(mode="straight") {#MN:4 (2, -4) (2, -6) #MN:3};
+// %t1 = $IO_PORT @ATTACH &a => @PLACE(-6, 12) => @ORIENT("R0");
+// %t1 @TEXT("a", key="name", size=0.75);
+// &a @WIRE(mode="straight") {#MP:2 %t1:p};
+// %t2 = $IO_PORT @ATTACH &y => @PLACE(-4, 7) => @ORIENT("R0");
+// %t2 @TEXT("y", key="name", size=0.75);
+// &y @WIRE(mode="straight") {#MP:1 (0, 7) %t2:p};
+// %t3 = $SUPPLY @ATTACH &vdd => @PLACE(0, 17);
+// &vdd @WIRE(mode="straight") {#MP:3 %t3:p};
+// %t4 = $GROUND @ATTACH &vss => @PLACE(0, -9);
+// &vss @WIRE(mode="straight") {#MN:3 %t4:p};
+// (-11, 36) @TEXT("76  INV | 2 instances", size=1.2, halign="start");
+// }
+ends pll_inv_pdk110_76

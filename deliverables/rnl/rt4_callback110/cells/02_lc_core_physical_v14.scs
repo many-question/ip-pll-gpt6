@@ -1,0 +1,265 @@
+// LC core + bias | frozen callback110 / recenter109 | RNL 0.3
+// @RNL(type="header") { @VERSION("0.3"); @USE-PACKAGE(name="rnl-std-fill") {} }
+simulator lang=spectre
+subckt lc_core_physical_v14_pdk110_2 (vp vn b3 b4 b5 b6 b7 vdd vss)
+XP (vdd vp vss) tx_inductor_pi_pdk110_3
+XN (vdd vn vss) tx_inductor_pi_pdk110_3
+CP (vp vss) capacitor c=1e-14
+CN (vn vss) capacitor c=1e-14
+MN0 (vp vn tail vss) nch w=0.00012 l=1.8e-07 ad=5.76e-11 as=5.76e-11 pd=0.00024096 ps=0.00024096 nrd=0.00225 nrs=0.00225 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MN1 (vn vp tail vss) nch w=0.00012 l=1.8e-07 ad=5.76e-11 as=5.76e-11 pd=0.00024096 ps=0.00024096 nrd=0.00225 nrs=0.00225 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MT (tail nfilt vss vss) nch w=0.0003 l=1e-06 ad=1.44e-10 as=1.44e-10 pd=0.00060096 ps=0.00060096 nrd=0.0009 nrs=0.0009 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MR (nb nb vss vss) nch w=2e-05 l=1e-06 ad=9.599999999999999e-12 as=9.599999999999999e-12 pd=4.096e-05 ps=4.096e-05 nrd=0.0135 nrs=0.0135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+RREF (vdd nb) resistor r=2500
+RF (nb nfilt) resistor r=1000000
+CF (nfilt vss) capacitor c=9.999999999999999e-12
+MA3 (tail nfilt s3 vss) nch w=5e-06 l=1e-06 ad=2.4e-12 as=2.4e-12 pd=1.096e-05 ps=1.096e-05 nrd=0.054 nrs=0.054 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ME3 (s3 b3 vss vss) nch w=2e-05 l=1.8e-07 ad=9.599999999999999e-12 as=9.599999999999999e-12 pd=4.096e-05 ps=4.096e-05 nrd=0.0135 nrs=0.0135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MA4 (tail nfilt s4 vss) nch w=9.999999999999999e-06 l=1e-06 ad=4.8e-12 as=4.8e-12 pd=2.096e-05 ps=2.096e-05 nrd=0.027 nrs=0.027 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ME4 (s4 b4 vss vss) nch w=4e-05 l=1.8e-07 ad=1.92e-11 as=1.92e-11 pd=8.096e-05 ps=8.096e-05 nrd=0.00675 nrs=0.00675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MA5 (tail nfilt s5 vss) nch w=2e-05 l=1e-06 ad=9.599999999999999e-12 as=9.599999999999999e-12 pd=4.096e-05 ps=4.096e-05 nrd=0.0135 nrs=0.0135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ME5 (s5 b5 vss vss) nch w=7.999999999999999e-05 l=1.8e-07 ad=3.84e-11 as=3.84e-11 pd=0.00016096 ps=0.00016096 nrd=0.003375 nrs=0.003375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MA6 (tail nfilt s6 vss) nch w=4e-05 l=1e-06 ad=1.92e-11 as=1.92e-11 pd=8.096e-05 ps=8.096e-05 nrd=0.00675 nrs=0.00675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ME6 (s6 b6 vss vss) nch w=0.00016 l=1.8e-07 ad=7.68e-11 as=7.68e-11 pd=0.00032096 ps=0.00032096 nrd=0.0016875 nrs=0.0016875 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MA7 (tail nfilt s7 vss) nch w=7.999999999999999e-05 l=1e-06 ad=3.84e-11 as=3.84e-11 pd=0.00016096 ps=0.00016096 nrd=0.003375 nrs=0.003375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ME7 (s7 b7 vss vss) nch w=0.00032 l=1.8e-07 ad=1.536e-10 as=1.536e-10 pd=0.00064096 ps=0.00064096 nrd=0.00084375 nrs=0.00084375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+// @RNL(author="manual-schematic126") {
+// $CELL = @DEFINE-SYMBOL {
+// @LINE {(-12, 12) (12, 12) (12, -12) (-12, -12) (-12, 12)};
+// (-14, 8) @PIN(terminal="b3", direction="left");
+// @LINE {(-14, 8) (-12, 8)};
+// (-11.4, 8) @TEXT("b3", size=0.7, halign="start");
+// (-14, 4) @PIN(terminal="b4", direction="left");
+// @LINE {(-14, 4) (-12, 4)};
+// (-11.4, 4) @TEXT("b4", size=0.7, halign="start");
+// (-14, 0) @PIN(terminal="b5", direction="left");
+// @LINE {(-14, 0) (-12, 0)};
+// (-11.4, 0) @TEXT("b5", size=0.7, halign="start");
+// (-14, -4) @PIN(terminal="b6", direction="left");
+// @LINE {(-14, -4) (-12, -4)};
+// (-11.4, -4) @TEXT("b6", size=0.7, halign="start");
+// (-14, -8) @PIN(terminal="b7", direction="left");
+// @LINE {(-14, -8) (-12, -8)};
+// (-11.4, -8) @TEXT("b7", size=0.7, halign="start");
+// (14, 2) @PIN(terminal="vp", direction="right");
+// @LINE {(14, 2) (12, 2)};
+// (11.4, 2) @TEXT("vp", size=0.7, halign="end");
+// (14, -2) @PIN(terminal="vn", direction="right");
+// @LINE {(14, -2) (12, -2)};
+// (11.4, -2) @TEXT("vn", size=0.7, halign="end");
+// (0, 14) @PIN(terminal="vdd", direction="up");
+// @LINE {(0, 14) (0, 12)};
+// (0, -14) @PIN(terminal="vss", direction="down");
+// @LINE {(0, -14) (0, -12)};
+// ? @TEXT("${name}", key="name", size=1, halign="middle") => @PLACE(14, 15.5);
+// (0, 11.1) @TEXT("LC core + bias", size=0.85, halign="middle");
+// };
+// # @SET-SYMBOL $CELL;
+// #XP @PLACE(-20, 45) => @ORIENT("R0");
+// #XN @PLACE(20, 45) => @ORIENT("R0");
+// #MN0 @PLACE(-20, 10) => @ORIENT("R0");
+// #MN0 @SET-SYMBOL $NMOS_4TERM;
+// #MN0 @TEXT("MN0", key="name", dx=5, dy=1.5, size=0.9, halign="start");
+// #MN0 @TEXT("120u / 180n", key="model", dx=5, dy=-1.5, size=0.75, halign="start");
+// #MN1 @PLACE(20, 10) => @ORIENT("MY");
+// #MN1 @SET-SYMBOL $NMOS_4TERM;
+// #MN1 @TEXT("MN1", key="name", dx=5, dy=1.5, size=0.9, halign="start");
+// #MN1 @TEXT("120u / 180n", key="model", dx=5, dy=-1.5, size=0.75, halign="start");
+// #CP @PLACE(-45, 25) => @ORIENT("R0");
+// #CP @SET-SYMBOL $CAPACITOR;
+// #CP @TEXT("10f", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #CP @TEXT("CP", key="name", dx=3, dy=1, size=0.9, halign="start");
+// #CN @PLACE(45, 25) => @ORIENT("R0");
+// #CN @SET-SYMBOL $CAPACITOR;
+// #CN @TEXT("10f", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #CN @TEXT("CN", key="name", dx=3, dy=1, size=0.9, halign="start");
+// #MT @PLACE(0, -12) => @ORIENT("R0");
+// #MT @SET-SYMBOL $NMOS_4TERM;
+// #MT @TEXT("MT", key="name", dx=5, dy=1.5, size=0.9, halign="start");
+// #MT @TEXT("300u / 1u", key="model", dx=5, dy=-1.5, size=0.75, halign="start");
+// #MR @PLACE(-95, -12) => @ORIENT("R0");
+// #MR @SET-SYMBOL $NMOS_4TERM;
+// #MR @TEXT("MR", key="name", dx=5, dy=1.5, size=0.9, halign="start");
+// #MR @TEXT("20u / 1u", key="model", dx=5, dy=-1.5, size=0.75, halign="start");
+// #RREF @PLACE(-95, 18) => @ORIENT("R0");
+// #RREF @SET-SYMBOL $RESISTOR;
+// #RREF @TEXT("2.5k", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #RREF @TEXT("RREF", key="name", dx=3, dy=1, size=0.9, halign="start");
+// #RF @PLACE(-70, -1) => @ORIENT("R90");
+// #RF @SET-SYMBOL $RESISTOR;
+// #RF @TEXT("1M", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #RF @TEXT("RF", key="name", dx=3, dy=1, size=0.9, halign="start");
+// #CF @PLACE(-50, -12) => @ORIENT("R0");
+// #CF @SET-SYMBOL $CAPACITOR;
+// #CF @TEXT("10p", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #CF @TEXT("CF", key="name", dx=3, dy=1, size=0.9, halign="start");
+// #MA3 @PLACE(65, 0) => @ORIENT("R0");
+// #MA3 @SET-SYMBOL $NMOS_4TERM;
+// #MA3 @TEXT("MA3", key="name", dx=5, dy=1.5, size=0.9, halign="start");
+// #MA3 @TEXT("5u / 1u", key="model", dx=5, dy=-1.5, size=0.75, halign="start");
+// #MA4 @PLACE(95, 0) => @ORIENT("R0");
+// #MA4 @SET-SYMBOL $NMOS_4TERM;
+// #MA4 @TEXT("MA4", key="name", dx=5, dy=1.5, size=0.9, halign="start");
+// #MA4 @TEXT("10u / 1u", key="model", dx=5, dy=-1.5, size=0.75, halign="start");
+// #MA5 @PLACE(125, 0) => @ORIENT("R0");
+// #MA5 @SET-SYMBOL $NMOS_4TERM;
+// #MA5 @TEXT("MA5", key="name", dx=5, dy=1.5, size=0.9, halign="start");
+// #MA5 @TEXT("20u / 1u", key="model", dx=5, dy=-1.5, size=0.75, halign="start");
+// #MA6 @PLACE(155, 0) => @ORIENT("R0");
+// #MA6 @SET-SYMBOL $NMOS_4TERM;
+// #MA6 @TEXT("MA6", key="name", dx=5, dy=1.5, size=0.9, halign="start");
+// #MA6 @TEXT("40u / 1u", key="model", dx=5, dy=-1.5, size=0.75, halign="start");
+// #MA7 @PLACE(185, 0) => @ORIENT("R0");
+// #MA7 @SET-SYMBOL $NMOS_4TERM;
+// #MA7 @TEXT("MA7", key="name", dx=5, dy=1.5, size=0.9, halign="start");
+// #MA7 @TEXT("80u / 1u", key="model", dx=5, dy=-1.5, size=0.75, halign="start");
+// #ME3 @PLACE(65, -16) => @ORIENT("R0");
+// #ME3 @SET-SYMBOL $NMOS_4TERM;
+// #ME3 @TEXT("ME3", key="name", dx=5, dy=1.5, size=0.9, halign="start");
+// #ME3 @TEXT("20u / 180n", key="model", dx=5, dy=-1.5, size=0.75, halign="start");
+// #ME4 @PLACE(95, -16) => @ORIENT("R0");
+// #ME4 @SET-SYMBOL $NMOS_4TERM;
+// #ME4 @TEXT("ME4", key="name", dx=5, dy=1.5, size=0.9, halign="start");
+// #ME4 @TEXT("40u / 180n", key="model", dx=5, dy=-1.5, size=0.75, halign="start");
+// #ME5 @PLACE(125, -16) => @ORIENT("R0");
+// #ME5 @SET-SYMBOL $NMOS_4TERM;
+// #ME5 @TEXT("ME5", key="name", dx=5, dy=1.5, size=0.9, halign="start");
+// #ME5 @TEXT("80u / 180n", key="model", dx=5, dy=-1.5, size=0.75, halign="start");
+// #ME6 @PLACE(155, -16) => @ORIENT("R0");
+// #ME6 @SET-SYMBOL $NMOS_4TERM;
+// #ME6 @TEXT("ME6", key="name", dx=5, dy=1.5, size=0.9, halign="start");
+// #ME6 @TEXT("160u / 180n", key="model", dx=5, dy=-1.5, size=0.75, halign="start");
+// #ME7 @PLACE(185, -16) => @ORIENT("R0");
+// #ME7 @SET-SYMBOL $NMOS_4TERM;
+// #ME7 @TEXT("ME7", key="name", dx=5, dy=1.5, size=0.9, halign="start");
+// #ME7 @TEXT("320u / 180n", key="model", dx=5, dy=-1.5, size=0.75, halign="start");
+// %tail = (0, 0);
+// &tail @WIRE(mode="straight") {#MN0:3 (-20, 0) %tail (20, 0) #MN1:3};
+// &tail @WIRE(mode="straight") {%tail #MT:1};
+// $JUNCTION @ATTACH %tail;
+// &s3 @WIRE(mode="straight") {#MA3:3 #ME3:1};
+// &s4 @WIRE(mode="straight") {#MA4:3 #ME4:1};
+// &s5 @WIRE(mode="straight") {#MA5:3 #ME5:1};
+// &s6 @WIRE(mode="straight") {#MA6:3 #ME6:1};
+// &s7 @WIRE(mode="straight") {#MA7:3 #ME7:1};
+// &nb @WIRE(mode="straight") {#RREF:2 (-95, -1) (-72, -1) #RF:1};
+// &nb @WIRE(mode="straight") {#RREF:2 #MR:1};
+// &nb @WIRE(mode="straight") {#MR:2 (-101, -12) (-101, 0) (-95, 0) #MR:1};
+// &nfilt @WIRE(mode="straight") {#RF:2 (-50, -1) #CF:1};
+// %vp = (-32, 24);
+// %vn = (32, 28);
+// &vp @WIRE(mode="straight") {#XP:2 (-8, 45) (-8, 32) (-32, 32) %vp (-20, 24) #MN0:1};
+// &vn @WIRE(mode="straight") {#XN:2 (32, 45) %vn (20, 28) #MN1:1};
+// &vp @WIRE(mode="straight") {%vp (-32, 18) (30, 18) (30, 10) #MN1:2};
+// &vn @WIRE(mode="straight") {%vn (32, 22) (-28, 22) (-28, 10) #MN0:2};
+// &vp @WIRE(mode="straight") {%vp (-40, 24) (-40, 27) #CP:1};
+// &vn @WIRE(mode="straight") {%vn (45, 28) #CN:1};
+// $JUNCTION @ATTACH %vp;
+// $JUNCTION @ATTACH %vn;
+// &vss @WIRE(mode="straight") {#MT:4 (2, -12) (2, -14) #MT:3};
+// &vss @WIRE(mode="straight") {#MR:4 (-93, -12) (-93, -14) #MR:3};
+// &vss @WIRE(mode="straight") {#ME3:4 (67, -16) (67, -18) #ME3:3};
+// &vss @WIRE(mode="straight") {#ME4:4 (97, -16) (97, -18) #ME4:3};
+// &vss @WIRE(mode="straight") {#ME5:4 (127, -16) (127, -18) #ME5:3};
+// &vss @WIRE(mode="straight") {#ME6:4 (157, -16) (157, -18) #ME6:3};
+// &vss @WIRE(mode="straight") {#ME7:4 (187, -16) (187, -18) #ME7:3};
+// (-105, 58) @TEXT("Bias reference + 1 Mohm / 10 pF filter", size=1, halign="start");
+// (-35, 65) @TEXT("Cross-coupled LC core", size=1, halign="start");
+// (62, 35) @TEXT("Binary-weighted tail-current branches, b3..b7", size=1, halign="start");
+// %t1 = $IO_PORT @ATTACH &vdd => @PLACE(-31, 45) => @ORIENT("R0");
+// %t1 @TEXT("vdd", key="name", size=0.75);
+// &vdd @WIRE(mode="straight") {#XP:1 %t1:p};
+// %t2 = $GROUND @ATTACH &vss => @PLACE(-20, 36);
+// &vss @WIRE(mode="straight") {#XP:3 %t2:p};
+// %t3 = $IO_PORT @ATTACH &vdd => @PLACE(9, 45) => @ORIENT("R0");
+// %t3 @TEXT("vdd", key="name", size=0.75);
+// &vdd @WIRE(mode="straight") {#XN:1 %t3:p};
+// %t4 = $GROUND @ATTACH &vss => @PLACE(20, 36);
+// &vss @WIRE(mode="straight") {#XN:3 %t4:p};
+// %t5 = $IO_PORT @ATTACH &vss => @PLACE(-16, 10) => @ORIENT("MY");
+// %t5 @TEXT("vss", key="name", size=0.75);
+// &vss @WIRE(mode="straight") {#MN0:4 %t5:p};
+// %t6 = $IO_PORT @ATTACH &vss => @PLACE(16, 10) => @ORIENT("R0");
+// %t6 @TEXT("vss", key="name", size=0.75);
+// &vss @WIRE(mode="straight") {#MN1:4 %t6:p};
+// %t7 = $GROUND @ATTACH &vss => @PLACE(-45, 20);
+// &vss @WIRE(mode="straight") {#CP:2 %t7:p};
+// %t8 = $GROUND @ATTACH &vss => @PLACE(45, 20);
+// &vss @WIRE(mode="straight") {#CN:2 %t8:p};
+// %t9 = $IO_PORT @ATTACH &nfilt => @PLACE(-6, -12) => @ORIENT("R0");
+// %t9 @TEXT("nfilt", key="name", size=0.75);
+// &nfilt @WIRE(mode="straight") {#MT:2 %t9:p};
+// %t10 = $SUPPLY @ATTACH &vdd => @PLACE(-95, 23);
+// &vdd @WIRE(mode="straight") {#RREF:1 %t10:p};
+// %t11 = $GROUND @ATTACH &vss => @PLACE(-50, -17);
+// &vss @WIRE(mode="straight") {#CF:2 %t11:p};
+// %t12 = $IO_PORT @ATTACH &tail => @PLACE(61, 5) => @ORIENT("R0");
+// %t12 @TEXT("tail", key="name", size=0.75);
+// &tail @WIRE(mode="straight") {#MA3:1 (65, 5) %t12:p};
+// %t13 = $IO_PORT @ATTACH &nfilt => @PLACE(59, 0) => @ORIENT("R0");
+// %t13 @TEXT("nfilt", key="name", size=0.75);
+// &nfilt @WIRE(mode="straight") {#MA3:2 %t13:p};
+// %t14 = $IO_PORT @ATTACH &vss => @PLACE(69, 0) => @ORIENT("MY");
+// %t14 @TEXT("vss", key="name", size=0.75);
+// &vss @WIRE(mode="straight") {#MA3:4 %t14:p};
+// %t15 = $IO_PORT @ATTACH &tail => @PLACE(91, 5) => @ORIENT("R0");
+// %t15 @TEXT("tail", key="name", size=0.75);
+// &tail @WIRE(mode="straight") {#MA4:1 (95, 5) %t15:p};
+// %t16 = $IO_PORT @ATTACH &nfilt => @PLACE(89, 0) => @ORIENT("R0");
+// %t16 @TEXT("nfilt", key="name", size=0.75);
+// &nfilt @WIRE(mode="straight") {#MA4:2 %t16:p};
+// %t17 = $IO_PORT @ATTACH &vss => @PLACE(99, 0) => @ORIENT("MY");
+// %t17 @TEXT("vss", key="name", size=0.75);
+// &vss @WIRE(mode="straight") {#MA4:4 %t17:p};
+// %t18 = $IO_PORT @ATTACH &tail => @PLACE(121, 5) => @ORIENT("R0");
+// %t18 @TEXT("tail", key="name", size=0.75);
+// &tail @WIRE(mode="straight") {#MA5:1 (125, 5) %t18:p};
+// %t19 = $IO_PORT @ATTACH &nfilt => @PLACE(119, 0) => @ORIENT("R0");
+// %t19 @TEXT("nfilt", key="name", size=0.75);
+// &nfilt @WIRE(mode="straight") {#MA5:2 %t19:p};
+// %t20 = $IO_PORT @ATTACH &vss => @PLACE(129, 0) => @ORIENT("MY");
+// %t20 @TEXT("vss", key="name", size=0.75);
+// &vss @WIRE(mode="straight") {#MA5:4 %t20:p};
+// %t21 = $IO_PORT @ATTACH &tail => @PLACE(151, 5) => @ORIENT("R0");
+// %t21 @TEXT("tail", key="name", size=0.75);
+// &tail @WIRE(mode="straight") {#MA6:1 (155, 5) %t21:p};
+// %t22 = $IO_PORT @ATTACH &nfilt => @PLACE(149, 0) => @ORIENT("R0");
+// %t22 @TEXT("nfilt", key="name", size=0.75);
+// &nfilt @WIRE(mode="straight") {#MA6:2 %t22:p};
+// %t23 = $IO_PORT @ATTACH &vss => @PLACE(159, 0) => @ORIENT("MY");
+// %t23 @TEXT("vss", key="name", size=0.75);
+// &vss @WIRE(mode="straight") {#MA6:4 %t23:p};
+// %t24 = $IO_PORT @ATTACH &tail => @PLACE(181, 5) => @ORIENT("R0");
+// %t24 @TEXT("tail", key="name", size=0.75);
+// &tail @WIRE(mode="straight") {#MA7:1 (185, 5) %t24:p};
+// %t25 = $IO_PORT @ATTACH &nfilt => @PLACE(179, 0) => @ORIENT("R0");
+// %t25 @TEXT("nfilt", key="name", size=0.75);
+// &nfilt @WIRE(mode="straight") {#MA7:2 %t25:p};
+// %t26 = $IO_PORT @ATTACH &vss => @PLACE(189, 0) => @ORIENT("MY");
+// %t26 @TEXT("vss", key="name", size=0.75);
+// &vss @WIRE(mode="straight") {#MA7:4 %t26:p};
+// %t27 = $IO_PORT @ATTACH &b3 => @PLACE(59, -16) => @ORIENT("R0");
+// %t27 @TEXT("b3", key="name", size=0.75);
+// &b3 @WIRE(mode="straight") {#ME3:2 %t27:p};
+// %t28 = $IO_PORT @ATTACH &b4 => @PLACE(89, -16) => @ORIENT("R0");
+// %t28 @TEXT("b4", key="name", size=0.75);
+// &b4 @WIRE(mode="straight") {#ME4:2 %t28:p};
+// %t29 = $IO_PORT @ATTACH &b5 => @PLACE(119, -16) => @ORIENT("R0");
+// %t29 @TEXT("b5", key="name", size=0.75);
+// &b5 @WIRE(mode="straight") {#ME5:2 %t29:p};
+// %t30 = $IO_PORT @ATTACH &b6 => @PLACE(149, -16) => @ORIENT("R0");
+// %t30 @TEXT("b6", key="name", size=0.75);
+// &b6 @WIRE(mode="straight") {#ME6:2 %t30:p};
+// %t31 = $IO_PORT @ATTACH &b7 => @PLACE(179, -16) => @ORIENT("R0");
+// %t31 @TEXT("b7", key="name", size=0.75);
+// &b7 @WIRE(mode="straight") {#ME7:2 %t31:p};
+// %t32 = $IO_PORT @ATTACH &vp => @PLACE(-9, 45) => @ORIENT("MY");
+// %t32 @TEXT("vp", key="name", size=0.75);
+// &vp @WIRE(mode="straight") {#XP:2 %t32:p};
+// %t33 = $IO_PORT @ATTACH &vn => @PLACE(31, 45) => @ORIENT("MY");
+// %t33 @TEXT("vn", key="name", size=0.75);
+// &vn @WIRE(mode="straight") {#XN:2 %t33:p};
+// (-106, 67) @TEXT("02  LC core + bias | 21 instances", size=1.2, halign="start");
+// (-106, 63) @TEXT("Same-name tags connect locally. Open blocks for transistor details.", size=0.8, halign="start");
+// }
+ends lc_core_physical_v14_pdk110_2

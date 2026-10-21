@@ -1,0 +1,101 @@
+// Sampler | frozen callback110 / recenter109 | RNL 0.3
+// @RNL(type="header") { @VERSION("0.3"); @USE-PACKAGE(name="rnl-std-fill") {} }
+simulator lang=spectre
+subckt tx_sampler_pdk110_11 (ref vp vn hp hn vdd vss)
+XI (ref refb vdd vss) pll_inv_pdk110_12
+XSP (vp hp refb ref vdd vss) pll_tg_pdk110_13
+XSN (vn hn refb ref vdd vss) pll_tg_pdk110_13
+CP (hp vss) capacitor c=4.000000000000001e-14
+CN (hn vss) capacitor c=4.000000000000001e-14
+// @RNL(author="manual-schematic126") {
+// $CELL = @DEFINE-SYMBOL {
+// @LINE {(-6, 8) (6, 8) (6, -8) (-6, -8) (-6, 8)};
+// (-8, 4) @PIN(terminal="ref", direction="left");
+// @LINE {(-8, 4) (-6, 4)};
+// (-5.4, 4) @TEXT("ref", size=0.7, halign="start");
+// (-8, 0) @PIN(terminal="vp", direction="left");
+// @LINE {(-8, 0) (-6, 0)};
+// (-5.4, 0) @TEXT("vp", size=0.7, halign="start");
+// (-8, -4) @PIN(terminal="vn", direction="left");
+// @LINE {(-8, -4) (-6, -4)};
+// (-5.4, -4) @TEXT("vn", size=0.7, halign="start");
+// (8, 2) @PIN(terminal="hp", direction="right");
+// @LINE {(8, 2) (6, 2)};
+// (5.4, 2) @TEXT("hp", size=0.7, halign="end");
+// (8, -2) @PIN(terminal="hn", direction="right");
+// @LINE {(8, -2) (6, -2)};
+// (5.4, -2) @TEXT("hn", size=0.7, halign="end");
+// (0, 10) @PIN(terminal="vdd", direction="up");
+// @LINE {(0, 10) (0, 8)};
+// (0, -10) @PIN(terminal="vss", direction="down");
+// @LINE {(0, -10) (0, -8)};
+// ? @TEXT("${name}", key="name", size=1, halign="middle") => @PLACE(8, 11.5);
+// (0, 7.1) @TEXT("Sampler", size=0.85, halign="middle");
+// };
+// # @SET-SYMBOL $CELL;
+// #XI @PLACE(0, 32) => @ORIENT("R0");
+// #XSP @PLACE(-25, 0) => @ORIENT("R0");
+// #XSN @PLACE(25, 0) => @ORIENT("R0");
+// #CP @PLACE(-25, -26) => @ORIENT("R0");
+// #CP @SET-SYMBOL $CAPACITOR;
+// #CP @TEXT("40f", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #CP @TEXT("CP", key="name", dx=3, dy=1, size=0.9, halign="start");
+// #CN @PLACE(25, -26) => @ORIENT("R0");
+// #CN @SET-SYMBOL $CAPACITOR;
+// #CN @TEXT("40f", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #CN @TEXT("CN", key="name", dx=3, dy=1, size=0.9, halign="start");
+// %t1 = $IO_PORT @ATTACH &ref => @PLACE(-11, 32) => @ORIENT("R0");
+// %t1 @TEXT("ref", key="name", size=0.75);
+// &ref @WIRE(mode="straight") {#XI:1 %t1:p};
+// %t2 = $IO_PORT @ATTACH &refb => @PLACE(11, 32) => @ORIENT("MY");
+// %t2 @TEXT("refb", key="name", size=0.75);
+// &refb @WIRE(mode="straight") {#XI:2 %t2:p};
+// %t3 = $SUPPLY @ATTACH &vdd => @PLACE(0, 41);
+// &vdd @WIRE(mode="straight") {#XI:3 %t3:p};
+// %t4 = $GROUND @ATTACH &vss => @PLACE(0, 23);
+// &vss @WIRE(mode="straight") {#XI:4 %t4:p};
+// %t5 = $IO_PORT @ATTACH &vp => @PLACE(-36, 4) => @ORIENT("R0");
+// %t5 @TEXT("vp", key="name", size=0.75);
+// &vp @WIRE(mode="straight") {#XSP:1 %t5:p};
+// %t6 = $IO_PORT @ATTACH &hp => @PLACE(-14, 0) => @ORIENT("MY");
+// %t6 @TEXT("hp", key="name", size=0.75);
+// &hp @WIRE(mode="straight") {#XSP:2 %t6:p};
+// %t7 = $IO_PORT @ATTACH &refb => @PLACE(-36, 0) => @ORIENT("R0");
+// %t7 @TEXT("refb", key="name", size=0.75);
+// &refb @WIRE(mode="straight") {#XSP:3 %t7:p};
+// %t8 = $IO_PORT @ATTACH &ref => @PLACE(-36, -4) => @ORIENT("R0");
+// %t8 @TEXT("ref", key="name", size=0.75);
+// &ref @WIRE(mode="straight") {#XSP:4 %t8:p};
+// %t9 = $SUPPLY @ATTACH &vdd => @PLACE(-25, 13);
+// &vdd @WIRE(mode="straight") {#XSP:5 %t9:p};
+// %t10 = $GROUND @ATTACH &vss => @PLACE(-25, -13);
+// &vss @WIRE(mode="straight") {#XSP:6 %t10:p};
+// %t11 = $IO_PORT @ATTACH &vn => @PLACE(14, 4) => @ORIENT("R0");
+// %t11 @TEXT("vn", key="name", size=0.75);
+// &vn @WIRE(mode="straight") {#XSN:1 %t11:p};
+// %t12 = $IO_PORT @ATTACH &hn => @PLACE(36, 0) => @ORIENT("MY");
+// %t12 @TEXT("hn", key="name", size=0.75);
+// &hn @WIRE(mode="straight") {#XSN:2 %t12:p};
+// %t13 = $IO_PORT @ATTACH &refb => @PLACE(14, 0) => @ORIENT("R0");
+// %t13 @TEXT("refb", key="name", size=0.75);
+// &refb @WIRE(mode="straight") {#XSN:3 %t13:p};
+// %t14 = $IO_PORT @ATTACH &ref => @PLACE(14, -4) => @ORIENT("R0");
+// %t14 @TEXT("ref", key="name", size=0.75);
+// &ref @WIRE(mode="straight") {#XSN:4 %t14:p};
+// %t15 = $SUPPLY @ATTACH &vdd => @PLACE(25, 13);
+// &vdd @WIRE(mode="straight") {#XSN:5 %t15:p};
+// %t16 = $GROUND @ATTACH &vss => @PLACE(25, -13);
+// &vss @WIRE(mode="straight") {#XSN:6 %t16:p};
+// %t17 = $IO_PORT @ATTACH &hp => @PLACE(-29, -21) => @ORIENT("R0");
+// %t17 @TEXT("hp", key="name", size=0.75);
+// &hp @WIRE(mode="straight") {#CP:1 (-25, -21) %t17:p};
+// %t18 = $GROUND @ATTACH &vss => @PLACE(-25, -31);
+// &vss @WIRE(mode="straight") {#CP:2 %t18:p};
+// %t19 = $IO_PORT @ATTACH &hn => @PLACE(21, -21) => @ORIENT("R0");
+// %t19 @TEXT("hn", key="name", size=0.75);
+// &hn @WIRE(mode="straight") {#CN:1 (25, -21) %t19:p};
+// %t20 = $GROUND @ATTACH &vss => @PLACE(25, -31);
+// &vss @WIRE(mode="straight") {#CN:2 %t20:p};
+// (-41, 60) @TEXT("11  Sampler | 5 instances", size=1.2, halign="start");
+// }
+ends tx_sampler_pdk110_11

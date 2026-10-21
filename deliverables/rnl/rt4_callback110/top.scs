@@ -1,0 +1,145 @@
+// IP-PLL-GPT6 | RNL viewer entry | open XPLL
+// @RNL(type="header") { @VERSION("0.3"); @USE-PACKAGE(name="rnl-std-fill") {} }
+simulator lang=spectre
+include "cells/00_pll_capture_rt4_r48_recenter109_v14.scs"
+include "cells/01_lc_vco_physical_v14.scs"
+include "cells/02_lc_core_physical_v14.scs"
+include "cells/03_tx_inductor_pi.scs"
+include "cells/04_tx_cap_bank_switched_v4.scs"
+include "cells/05_tx_bias_mid_v5.scs"
+include "cells/06_tx_reference_buffer.scs"
+include "cells/07_pll_inv.scs"
+include "cells/08_pll_inv.scs"
+include "cells/09_pll_inv.scs"
+include "cells/10_pll_inv.scs"
+include "cells/11_tx_sampler.scs"
+include "cells/12_pll_inv.scs"
+include "cells/13_pll_tg.scs"
+include "cells/14_cp_physical_v14.scs"
+include "cells/15_pll_nand2.scs"
+include "cells/16_pll_tg.scs"
+include "cells/17_tx_loop_filter_v5.scs"
+include "cells/18_pll_tg.scs"
+include "cells/19_rf_light24s12_v14.scs"
+include "cells/20_pll_inv.scs"
+include "cells/21_bank_pulsetrip_v14.scs"
+include "cells/22_ff_fbdelay50_v14.scs"
+include "cells/23_pll_inv.scs"
+include "cells/24_pll_inv.scs"
+include "cells/25_pll_tspc_inv.scs"
+include "cells/26_pll_inv.scs"
+include "cells/27_pll_inv.scs"
+include "cells/28_pll_inv.scs"
+include "cells/29_pll_inv.scs"
+include "cells/30_div3_fast_v14.scs"
+include "cells/31_pll_inv.scs"
+include "cells/32_nor_fast_v14.scs"
+include "cells/33_ff_static_fast_v14.scs"
+include "cells/34_ring_inv_latch_v14.scs"
+include "cells/35_pll_tg.scs"
+include "cells/36_pll_inv.scs"
+include "cells/37_pll_inv.scs"
+include "cells/38_pll_inv.scs"
+include "cells/39_pll_inv.scs"
+include "cells/40_pll_inv.scs"
+include "cells/41_pll_inv.scs"
+include "cells/42_ring_sync_singlephase_v14.scs"
+include "cells/43_pll_tg.scs"
+include "cells/44_ff_singlephase_v14.scs"
+include "cells/45_pll_inv.scs"
+include "cells/46_ring_tail_singlephase_v14.scs"
+include "cells/47_tx_and.scs"
+include "cells/48_pll_inv.scs"
+include "cells/49_rt_noise_scale4_v14.scs"
+include "cells/50_rtcomb_ff_v13.scs"
+include "cells/51_pll_inv.scs"
+include "cells/52_pll_inv.scs"
+include "cells/53_validity_physical_v14.scs"
+include "cells/54_cmp_physical_v14.scs"
+include "cells/55_pll_inv.scs"
+include "cells/56_pll_control_recenter109_v14.scs"
+include "cells/57_tx_pll_config.scs"
+include "cells/58_tx_dff_r0.scs"
+include "cells/59_pll_inv.scs"
+include "cells/60_tx_latch_r.scs"
+include "cells/61_pll_tg.scs"
+include "cells/62_pll_inv.scs"
+include "cells/63_pll_tg.scs"
+include "cells/64_tx_mux.scs"
+include "cells/65_pll_tg.scs"
+include "cells/66_tx_xor.scs"
+include "cells/67_tx_or.scs"
+include "cells/68_pll_nor2.scs"
+include "cells/69_tx_fll_recenter109_v14.scs"
+include "cells/70_tx_dff_r1.scs"
+include "cells/71_tx_fll_counter.scs"
+include "cells/72_pll_latch.scs"
+include "cells/73_tx_tff.scs"
+include "cells/74_tx_fll_snapshot.scs"
+include "cells/75_tx_fll_dac.scs"
+include "cells/76_pll_inv.scs"
+include "cells/77_tx_pll_supervisor_capture_v14.scs"
+include "cells/78_tx_cp_timing.scs"
+include "cells/79_pll_inv.scs"
+include "cells/80_tx_frequency_watchdog.scs"
+XPLL (ref reset apply k0 k1 k2 k3 k4 k5 out qualified range_error cfg_ready frequency_good phase_good amp_good vdd vss) pll_capture_rt4_r48_recenter109_v14_pdk110_0
+// @RNL(author="manual-schematic126") {
+// #XPLL @PLACE(0, 0) => @ORIENT("R0");
+// %t1 = $IO_PORT @ATTACH &ref => @PLACE(-17, 16) => @ORIENT("R0");
+// %t1 @TEXT("ref", key="name", size=0.75);
+// &ref @WIRE(mode="straight") {#XPLL:1 %t1:p};
+// %t2 = $IO_PORT @ATTACH &reset => @PLACE(-17, 12) => @ORIENT("R0");
+// %t2 @TEXT("reset", key="name", size=0.75);
+// &reset @WIRE(mode="straight") {#XPLL:2 %t2:p};
+// %t3 = $IO_PORT @ATTACH &apply => @PLACE(-17, 8) => @ORIENT("R0");
+// %t3 @TEXT("apply", key="name", size=0.75);
+// &apply @WIRE(mode="straight") {#XPLL:3 %t3:p};
+// %t4 = $IO_PORT @ATTACH &k0 => @PLACE(-17, 4) => @ORIENT("R0");
+// %t4 @TEXT("k0", key="name", size=0.75);
+// &k0 @WIRE(mode="straight") {#XPLL:4 %t4:p};
+// %t5 = $IO_PORT @ATTACH &k1 => @PLACE(-17, 0) => @ORIENT("R0");
+// %t5 @TEXT("k1", key="name", size=0.75);
+// &k1 @WIRE(mode="straight") {#XPLL:5 %t5:p};
+// %t6 = $IO_PORT @ATTACH &k2 => @PLACE(-17, -4) => @ORIENT("R0");
+// %t6 @TEXT("k2", key="name", size=0.75);
+// &k2 @WIRE(mode="straight") {#XPLL:6 %t6:p};
+// %t7 = $IO_PORT @ATTACH &k3 => @PLACE(-17, -8) => @ORIENT("R0");
+// %t7 @TEXT("k3", key="name", size=0.75);
+// &k3 @WIRE(mode="straight") {#XPLL:7 %t7:p};
+// %t8 = $IO_PORT @ATTACH &k4 => @PLACE(-17, -12) => @ORIENT("R0");
+// %t8 @TEXT("k4", key="name", size=0.75);
+// &k4 @WIRE(mode="straight") {#XPLL:8 %t8:p};
+// %t9 = $IO_PORT @ATTACH &k5 => @PLACE(-17, -16) => @ORIENT("R0");
+// %t9 @TEXT("k5", key="name", size=0.75);
+// &k5 @WIRE(mode="straight") {#XPLL:9 %t9:p};
+// %t10 = $IO_PORT @ATTACH &out => @PLACE(17, 12) => @ORIENT("MY");
+// %t10 @TEXT("out", key="name", size=0.75);
+// &out @WIRE(mode="straight") {#XPLL:10 %t10:p};
+// %t11 = $IO_PORT @ATTACH &qualified => @PLACE(17, 8) => @ORIENT("MY");
+// %t11 @TEXT("qualified", key="name", size=0.75);
+// &qualified @WIRE(mode="straight") {#XPLL:11 %t11:p};
+// %t12 = $IO_PORT @ATTACH &range_error => @PLACE(17, 4) => @ORIENT("MY");
+// %t12 @TEXT("range_error", key="name", size=0.75);
+// &range_error @WIRE(mode="straight") {#XPLL:12 %t12:p};
+// %t13 = $IO_PORT @ATTACH &cfg_ready => @PLACE(17, 0) => @ORIENT("MY");
+// %t13 @TEXT("cfg_ready", key="name", size=0.75);
+// &cfg_ready @WIRE(mode="straight") {#XPLL:13 %t13:p};
+// %t14 = $IO_PORT @ATTACH &frequency_good => @PLACE(17, -4) => @ORIENT("MY");
+// %t14 @TEXT("frequency_good", key="name", size=0.75);
+// &frequency_good @WIRE(mode="straight") {#XPLL:14 %t14:p};
+// %t15 = $IO_PORT @ATTACH &phase_good => @PLACE(17, -8) => @ORIENT("MY");
+// %t15 @TEXT("phase_good", key="name", size=0.75);
+// &phase_good @WIRE(mode="straight") {#XPLL:15 %t15:p};
+// %t16 = $IO_PORT @ATTACH &amp_good => @PLACE(17, -12) => @ORIENT("MY");
+// %t16 @TEXT("amp_good", key="name", size=0.75);
+// &amp_good @WIRE(mode="straight") {#XPLL:16 %t16:p};
+// %t17 = $SUPPLY @ATTACH &vdd => @PLACE(0, 25);
+// &vdd @WIRE(mode="straight") {#XPLL:17 %t17:p};
+// %t18 = $GROUND @ATTACH &vss => @PLACE(0, -25);
+// &vss @WIRE(mode="straight") {#XPLL:18 %t18:p};
+// (-45, 45) @TEXT("OPEN XPLL: full RT4 / callback110 transistor hierarchy", size=1.7, halign="start");
+// (-45, 41) @TEXT("81 subcircuits | 2932 definition instances | no automatic placement or routing", size=1, halign="start");
+// (-45, 37) @TEXT("Double-click XPLL, then blocks. Net labels are local to each sheet; use net selection to trace.", size=0.9, halign="start");
+// (-45, -45) @TEXT("Original W/L, callback geometry, component values and connectivity are unchanged.", size=0.9, halign="start");
+// (-45, -49) @TEXT("Schematic documentation only. Simulation research remains paused; no new physical claim.", size=0.9, halign="start");
+// }

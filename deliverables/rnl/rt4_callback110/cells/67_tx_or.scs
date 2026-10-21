@@ -1,0 +1,49 @@
+// OR2 | frozen callback110 / recenter109 | RNL 0.3
+// @RNL(type="header") { @VERSION("0.3"); @USE-PACKAGE(name="rnl-std-fill") {} }
+simulator lang=spectre
+subckt tx_or_pdk110_67 (a b y vdd vss)
+XN (a b n vdd vss) pll_nor2_pdk110_68
+XI (n y vdd vss) pll_inv_pdk110_48
+// @RNL(author="manual-schematic126") {
+// $CELL = @DEFINE-SYMBOL {
+// @LINE {(-6, 6) (6, 6) (6, -6) (-6, -6) (-6, 6)};
+// (-8, 2) @PIN(terminal="a", direction="left");
+// @LINE {(-8, 2) (-6, 2)};
+// (-5.4, 2) @TEXT("a", size=0.7, halign="start");
+// (-8, -2) @PIN(terminal="b", direction="left");
+// @LINE {(-8, -2) (-6, -2)};
+// (-5.4, -2) @TEXT("b", size=0.7, halign="start");
+// (8, 0) @PIN(terminal="y", direction="right");
+// @LINE {(8, 0) (6, 0)};
+// (5.4, 0) @TEXT("y", size=0.7, halign="end");
+// (0, 8) @PIN(terminal="vdd", direction="up");
+// @LINE {(0, 8) (0, 6)};
+// (0, -8) @PIN(terminal="vss", direction="down");
+// @LINE {(0, -8) (0, -6)};
+// ? @TEXT("${name}", key="name", size=1, halign="middle") => @PLACE(8, 9.5);
+// (0, 5.1) @TEXT("OR2", size=0.85, halign="middle");
+// };
+// # @SET-SYMBOL $CELL;
+// #XN @PLACE(0, 0) => @ORIENT("R0");
+// #XI @PLACE(40, 0) => @ORIENT("R0");
+// &n @WIRE(mode="straight") {#XN:3 (20, 0) (20, 0) #XI:1};
+// %t1 = $IO_PORT @ATTACH &a => @PLACE(-11, 2) => @ORIENT("R0");
+// %t1 @TEXT("a", key="name", size=0.75);
+// &a @WIRE(mode="straight") {#XN:1 %t1:p};
+// %t2 = $IO_PORT @ATTACH &b => @PLACE(-11, -2) => @ORIENT("R0");
+// %t2 @TEXT("b", key="name", size=0.75);
+// &b @WIRE(mode="straight") {#XN:2 %t2:p};
+// %t3 = $SUPPLY @ATTACH &vdd => @PLACE(0, 11);
+// &vdd @WIRE(mode="straight") {#XN:4 %t3:p};
+// %t4 = $GROUND @ATTACH &vss => @PLACE(0, -11);
+// &vss @WIRE(mode="straight") {#XN:5 %t4:p};
+// %t5 = $IO_PORT @ATTACH &y => @PLACE(51, 0) => @ORIENT("MY");
+// %t5 @TEXT("y", key="name", size=0.75);
+// &y @WIRE(mode="straight") {#XI:2 %t5:p};
+// %t6 = $SUPPLY @ATTACH &vdd => @PLACE(40, 9);
+// &vdd @WIRE(mode="straight") {#XI:3 %t6:p};
+// %t7 = $GROUND @ATTACH &vss => @PLACE(40, -9);
+// &vss @WIRE(mode="straight") {#XI:4 %t7:p};
+// (-16, 30) @TEXT("67  OR2 | 2 instances", size=1.2, halign="start");
+// }
+ends tx_or_pdk110_67

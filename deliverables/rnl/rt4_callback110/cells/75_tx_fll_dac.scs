@@ -1,0 +1,268 @@
+// 6-bit DAC | frozen callback110 / recenter109 | RNL 0.3
+// @RNL(type="header") { @VERSION("0.3"); @USE-PACKAGE(name="rnl-std-fill") {} }
+simulator lang=spectre
+subckt tx_fll_dac_pdk110_75 (d0 d1 d2 d3 d4 d5 enable out vdd vss)
+MP (vd enable vdd vdd) pch w=2e-05 l=1.8e-07 ad=9.599999999999999e-12 as=9.599999999999999e-12 pd=4.096e-05 ps=4.096e-05 nrd=0.0135 nrs=0.0135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+XI0 (d0 b0 vd vss) pll_inv_pdk110_59
+XO0 (b0 v0 vd vss) pll_inv_pdk110_76
+RB0 (v0 r0) resistor r=10000
+XI1 (d1 b1 vd vss) pll_inv_pdk110_59
+XO1 (b1 v1 vd vss) pll_inv_pdk110_76
+RB1 (v1 r1) resistor r=10000
+RS1 (r0 r1) resistor r=5000
+XI2 (d2 b2 vd vss) pll_inv_pdk110_59
+XO2 (b2 v2 vd vss) pll_inv_pdk110_76
+RB2 (v2 r2) resistor r=10000
+RS2 (r1 r2) resistor r=5000
+XI3 (d3 b3 vd vss) pll_inv_pdk110_59
+XO3 (b3 v3 vd vss) pll_inv_pdk110_76
+RB3 (v3 r3) resistor r=10000
+RS3 (r2 r3) resistor r=5000
+XI4 (d4 b4 vd vss) pll_inv_pdk110_59
+XO4 (b4 v4 vd vss) pll_inv_pdk110_76
+RB4 (v4 r4) resistor r=10000
+RS4 (r3 r4) resistor r=5000
+XI5 (d5 b5 vd vss) pll_inv_pdk110_59
+XO5 (b5 v5 vd vss) pll_inv_pdk110_76
+RB5 (v5 out) resistor r=10000
+RS5 (r4 out) resistor r=5000
+RT (r0 vss) resistor r=10000
+// @RNL(author="manual-schematic126") {
+// $CELL = @DEFINE-SYMBOL {
+// @LINE {(-12, 16) (12, 16) (12, -16) (-12, -16) (-12, 16)};
+// (-14, 12) @PIN(terminal="d0", direction="left");
+// @LINE {(-14, 12) (-12, 12)};
+// (-11.4, 12) @TEXT("d0", size=0.7, halign="start");
+// (-14, 8) @PIN(terminal="d1", direction="left");
+// @LINE {(-14, 8) (-12, 8)};
+// (-11.4, 8) @TEXT("d1", size=0.7, halign="start");
+// (-14, 4) @PIN(terminal="d2", direction="left");
+// @LINE {(-14, 4) (-12, 4)};
+// (-11.4, 4) @TEXT("d2", size=0.7, halign="start");
+// (-14, 0) @PIN(terminal="d3", direction="left");
+// @LINE {(-14, 0) (-12, 0)};
+// (-11.4, 0) @TEXT("d3", size=0.7, halign="start");
+// (-14, -4) @PIN(terminal="d4", direction="left");
+// @LINE {(-14, -4) (-12, -4)};
+// (-11.4, -4) @TEXT("d4", size=0.7, halign="start");
+// (-14, -8) @PIN(terminal="d5", direction="left");
+// @LINE {(-14, -8) (-12, -8)};
+// (-11.4, -8) @TEXT("d5", size=0.7, halign="start");
+// (-14, -12) @PIN(terminal="enable", direction="left");
+// @LINE {(-14, -12) (-12, -12)};
+// (-11.4, -12) @TEXT("enable", size=0.7, halign="start");
+// (14, 0) @PIN(terminal="out", direction="right");
+// @LINE {(14, 0) (12, 0)};
+// (11.4, 0) @TEXT("out", size=0.7, halign="end");
+// (0, 18) @PIN(terminal="vdd", direction="up");
+// @LINE {(0, 18) (0, 16)};
+// (0, -18) @PIN(terminal="vss", direction="down");
+// @LINE {(0, -18) (0, -16)};
+// ? @TEXT("${name}", key="name", size=1, halign="middle") => @PLACE(14, 19.5);
+// (0, 15.1) @TEXT("6-bit DAC", size=0.85, halign="middle");
+// };
+// # @SET-SYMBOL $CELL;
+// #MP @PLACE(-35, 15) => @ORIENT("R0");
+// #MP @SET-SYMBOL $PMOS_4TERM;
+// #MP @TEXT("MP", key="name", dx=5, dy=1.5, size=0.9, halign="start");
+// #MP @TEXT("20u / 180n", key="model", dx=5, dy=-1.5, size=0.75, halign="start");
+// #RT @PLACE(0, -45) => @ORIENT("R0");
+// #RT @SET-SYMBOL $RESISTOR;
+// #RT @TEXT("10k", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #RT @TEXT("RT", key="name", dx=3, dy=1, size=0.9, halign="start");
+// #XI0 @PLACE(0, 25) => @ORIENT("R0");
+// #XI1 @PLACE(40, 25) => @ORIENT("R0");
+// #XI2 @PLACE(80, 25) => @ORIENT("R0");
+// #XI3 @PLACE(120, 25) => @ORIENT("R0");
+// #XI4 @PLACE(160, 25) => @ORIENT("R0");
+// #XI5 @PLACE(200, 25) => @ORIENT("R0");
+// #XO0 @PLACE(0, -10) => @ORIENT("R0");
+// #XO1 @PLACE(40, -10) => @ORIENT("R0");
+// #XO2 @PLACE(80, -10) => @ORIENT("R0");
+// #XO3 @PLACE(120, -10) => @ORIENT("R0");
+// #XO4 @PLACE(160, -10) => @ORIENT("R0");
+// #XO5 @PLACE(200, -10) => @ORIENT("R0");
+// #RB0 @PLACE(15, -30) => @ORIENT("R0");
+// #RB0 @SET-SYMBOL $RESISTOR;
+// #RB0 @TEXT("10k", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #RB0 @TEXT("RB0", key="name", dx=3, dy=1, size=0.9, halign="start");
+// #RB1 @PLACE(55, -30) => @ORIENT("R0");
+// #RB1 @SET-SYMBOL $RESISTOR;
+// #RB1 @TEXT("10k", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #RB1 @TEXT("RB1", key="name", dx=3, dy=1, size=0.9, halign="start");
+// #RB2 @PLACE(95, -30) => @ORIENT("R0");
+// #RB2 @SET-SYMBOL $RESISTOR;
+// #RB2 @TEXT("10k", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #RB2 @TEXT("RB2", key="name", dx=3, dy=1, size=0.9, halign="start");
+// #RB3 @PLACE(135, -30) => @ORIENT("R0");
+// #RB3 @SET-SYMBOL $RESISTOR;
+// #RB3 @TEXT("10k", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #RB3 @TEXT("RB3", key="name", dx=3, dy=1, size=0.9, halign="start");
+// #RB4 @PLACE(175, -30) => @ORIENT("R0");
+// #RB4 @SET-SYMBOL $RESISTOR;
+// #RB4 @TEXT("10k", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #RB4 @TEXT("RB4", key="name", dx=3, dy=1, size=0.9, halign="start");
+// #RB5 @PLACE(215, -30) => @ORIENT("R0");
+// #RB5 @SET-SYMBOL $RESISTOR;
+// #RB5 @TEXT("10k", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #RB5 @TEXT("RB5", key="name", dx=3, dy=1, size=0.9, halign="start");
+// #RS1 @PLACE(35, -45) => @ORIENT("R90");
+// #RS1 @SET-SYMBOL $RESISTOR;
+// #RS1 @TEXT("5k", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #RS1 @TEXT("RS1", key="name", dx=3, dy=1, size=0.9, halign="start");
+// #RS2 @PLACE(75, -45) => @ORIENT("R90");
+// #RS2 @SET-SYMBOL $RESISTOR;
+// #RS2 @TEXT("5k", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #RS2 @TEXT("RS2", key="name", dx=3, dy=1, size=0.9, halign="start");
+// #RS3 @PLACE(115, -45) => @ORIENT("R90");
+// #RS3 @SET-SYMBOL $RESISTOR;
+// #RS3 @TEXT("5k", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #RS3 @TEXT("RS3", key="name", dx=3, dy=1, size=0.9, halign="start");
+// #RS4 @PLACE(155, -45) => @ORIENT("R90");
+// #RS4 @SET-SYMBOL $RESISTOR;
+// #RS4 @TEXT("5k", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #RS4 @TEXT("RS4", key="name", dx=3, dy=1, size=0.9, halign="start");
+// #RS5 @PLACE(195, -45) => @ORIENT("R90");
+// #RS5 @SET-SYMBOL $RESISTOR;
+// #RS5 @TEXT("5k", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #RS5 @TEXT("RS5", key="name", dx=3, dy=1, size=0.9, halign="start");
+// &b0 @WIRE(mode="straight") {#XI0:2 (13, 25) (13, 8) (-15, 8) (-15, -10) #XO0:1};
+// &v0 @WIRE(mode="straight") {#XO0:2 (15, -10) (15, -28) #RB0:1};
+// %r0 = (15, -45);
+// &r0 @WIRE(mode="straight") {#RB0:2 %r0};
+// $JUNCTION @ATTACH %r0;
+// &b1 @WIRE(mode="straight") {#XI1:2 (53, 25) (53, 8) (25, 8) (25, -10) #XO1:1};
+// &v1 @WIRE(mode="straight") {#XO1:2 (55, -10) (55, -28) #RB1:1};
+// %r1 = (55, -45);
+// &r1 @WIRE(mode="straight") {#RB1:2 %r1};
+// $JUNCTION @ATTACH %r1;
+// &r0 @WIRE(mode="straight") {%r0 #RS1:1};
+// &r1 @WIRE(mode="straight") {#RS1:2 %r1};
+// &b2 @WIRE(mode="straight") {#XI2:2 (93, 25) (93, 8) (65, 8) (65, -10) #XO2:1};
+// &v2 @WIRE(mode="straight") {#XO2:2 (95, -10) (95, -28) #RB2:1};
+// %r2 = (95, -45);
+// &r2 @WIRE(mode="straight") {#RB2:2 %r2};
+// $JUNCTION @ATTACH %r2;
+// &r1 @WIRE(mode="straight") {%r1 #RS2:1};
+// &r2 @WIRE(mode="straight") {#RS2:2 %r2};
+// &b3 @WIRE(mode="straight") {#XI3:2 (133, 25) (133, 8) (105, 8) (105, -10) #XO3:1};
+// &v3 @WIRE(mode="straight") {#XO3:2 (135, -10) (135, -28) #RB3:1};
+// %r3 = (135, -45);
+// &r3 @WIRE(mode="straight") {#RB3:2 %r3};
+// $JUNCTION @ATTACH %r3;
+// &r2 @WIRE(mode="straight") {%r2 #RS3:1};
+// &r3 @WIRE(mode="straight") {#RS3:2 %r3};
+// &b4 @WIRE(mode="straight") {#XI4:2 (173, 25) (173, 8) (145, 8) (145, -10) #XO4:1};
+// &v4 @WIRE(mode="straight") {#XO4:2 (175, -10) (175, -28) #RB4:1};
+// %r4 = (175, -45);
+// &r4 @WIRE(mode="straight") {#RB4:2 %r4};
+// $JUNCTION @ATTACH %r4;
+// &r3 @WIRE(mode="straight") {%r3 #RS4:1};
+// &r4 @WIRE(mode="straight") {#RS4:2 %r4};
+// &b5 @WIRE(mode="straight") {#XI5:2 (213, 25) (213, 8) (185, 8) (185, -10) #XO5:1};
+// &v5 @WIRE(mode="straight") {#XO5:2 (215, -10) (215, -28) #RB5:1};
+// %r5 = (215, -45);
+// &out @WIRE(mode="straight") {#RB5:2 %r5};
+// $JUNCTION @ATTACH %r5;
+// &r4 @WIRE(mode="straight") {%r4 #RS5:1};
+// &out @WIRE(mode="straight") {#RS5:2 %r5};
+// &r0 @WIRE(mode="straight") {%r0 (6, -45) (6, -43) #RT:1};
+// (-35, 60) @TEXT("Switched supply + buffered 6-bit R-2R ladder", size=1, halign="start");
+// %t1 = $IO_PORT @ATTACH &vd => @PLACE(-39, 10) => @ORIENT("R0");
+// %t1 @TEXT("vd", key="name", size=0.75);
+// &vd @WIRE(mode="straight") {#MP:1 (-35, 10) %t1:p};
+// %t2 = $IO_PORT @ATTACH &enable => @PLACE(-41, 15) => @ORIENT("R0");
+// %t2 @TEXT("enable", key="name", size=0.75);
+// &enable @WIRE(mode="straight") {#MP:2 %t2:p};
+// %t3 = $SUPPLY @ATTACH &vdd => @PLACE(-35, 20);
+// &vdd @WIRE(mode="straight") {#MP:3 %t3:p};
+// %t4 = $IO_PORT @ATTACH &vdd => @PLACE(-31, 15) => @ORIENT("MY");
+// %t4 @TEXT("vdd", key="name", size=0.75);
+// &vdd @WIRE(mode="straight") {#MP:4 %t4:p};
+// %t5 = $GROUND @ATTACH &vss => @PLACE(0, -50);
+// &vss @WIRE(mode="straight") {#RT:2 %t5:p};
+// %t6 = $IO_PORT @ATTACH &d0 => @PLACE(-11, 25) => @ORIENT("R0");
+// %t6 @TEXT("d0", key="name", size=0.75);
+// &d0 @WIRE(mode="straight") {#XI0:1 %t6:p};
+// %t7 = $IO_PORT @ATTACH &vd => @PLACE(-4, 34) => @ORIENT("R0");
+// %t7 @TEXT("vd", key="name", size=0.75);
+// &vd @WIRE(mode="straight") {#XI0:3 (0, 34) %t7:p};
+// %t8 = $GROUND @ATTACH &vss => @PLACE(0, 16);
+// &vss @WIRE(mode="straight") {#XI0:4 %t8:p};
+// %t9 = $IO_PORT @ATTACH &d1 => @PLACE(29, 25) => @ORIENT("R0");
+// %t9 @TEXT("d1", key="name", size=0.75);
+// &d1 @WIRE(mode="straight") {#XI1:1 %t9:p};
+// %t10 = $IO_PORT @ATTACH &vd => @PLACE(36, 34) => @ORIENT("R0");
+// %t10 @TEXT("vd", key="name", size=0.75);
+// &vd @WIRE(mode="straight") {#XI1:3 (40, 34) %t10:p};
+// %t11 = $GROUND @ATTACH &vss => @PLACE(40, 16);
+// &vss @WIRE(mode="straight") {#XI1:4 %t11:p};
+// %t12 = $IO_PORT @ATTACH &d2 => @PLACE(69, 25) => @ORIENT("R0");
+// %t12 @TEXT("d2", key="name", size=0.75);
+// &d2 @WIRE(mode="straight") {#XI2:1 %t12:p};
+// %t13 = $IO_PORT @ATTACH &vd => @PLACE(76, 34) => @ORIENT("R0");
+// %t13 @TEXT("vd", key="name", size=0.75);
+// &vd @WIRE(mode="straight") {#XI2:3 (80, 34) %t13:p};
+// %t14 = $GROUND @ATTACH &vss => @PLACE(80, 16);
+// &vss @WIRE(mode="straight") {#XI2:4 %t14:p};
+// %t15 = $IO_PORT @ATTACH &d3 => @PLACE(109, 25) => @ORIENT("R0");
+// %t15 @TEXT("d3", key="name", size=0.75);
+// &d3 @WIRE(mode="straight") {#XI3:1 %t15:p};
+// %t16 = $IO_PORT @ATTACH &vd => @PLACE(116, 34) => @ORIENT("R0");
+// %t16 @TEXT("vd", key="name", size=0.75);
+// &vd @WIRE(mode="straight") {#XI3:3 (120, 34) %t16:p};
+// %t17 = $GROUND @ATTACH &vss => @PLACE(120, 16);
+// &vss @WIRE(mode="straight") {#XI3:4 %t17:p};
+// %t18 = $IO_PORT @ATTACH &d4 => @PLACE(149, 25) => @ORIENT("R0");
+// %t18 @TEXT("d4", key="name", size=0.75);
+// &d4 @WIRE(mode="straight") {#XI4:1 %t18:p};
+// %t19 = $IO_PORT @ATTACH &vd => @PLACE(156, 34) => @ORIENT("R0");
+// %t19 @TEXT("vd", key="name", size=0.75);
+// &vd @WIRE(mode="straight") {#XI4:3 (160, 34) %t19:p};
+// %t20 = $GROUND @ATTACH &vss => @PLACE(160, 16);
+// &vss @WIRE(mode="straight") {#XI4:4 %t20:p};
+// %t21 = $IO_PORT @ATTACH &d5 => @PLACE(189, 25) => @ORIENT("R0");
+// %t21 @TEXT("d5", key="name", size=0.75);
+// &d5 @WIRE(mode="straight") {#XI5:1 %t21:p};
+// %t22 = $IO_PORT @ATTACH &vd => @PLACE(196, 34) => @ORIENT("R0");
+// %t22 @TEXT("vd", key="name", size=0.75);
+// &vd @WIRE(mode="straight") {#XI5:3 (200, 34) %t22:p};
+// %t23 = $GROUND @ATTACH &vss => @PLACE(200, 16);
+// &vss @WIRE(mode="straight") {#XI5:4 %t23:p};
+// %t24 = $IO_PORT @ATTACH &vd => @PLACE(-4, -1) => @ORIENT("R0");
+// %t24 @TEXT("vd", key="name", size=0.75);
+// &vd @WIRE(mode="straight") {#XO0:3 (0, -1) %t24:p};
+// %t25 = $GROUND @ATTACH &vss => @PLACE(0, -19);
+// &vss @WIRE(mode="straight") {#XO0:4 %t25:p};
+// %t26 = $IO_PORT @ATTACH &vd => @PLACE(36, -1) => @ORIENT("R0");
+// %t26 @TEXT("vd", key="name", size=0.75);
+// &vd @WIRE(mode="straight") {#XO1:3 (40, -1) %t26:p};
+// %t27 = $GROUND @ATTACH &vss => @PLACE(40, -19);
+// &vss @WIRE(mode="straight") {#XO1:4 %t27:p};
+// %t28 = $IO_PORT @ATTACH &vd => @PLACE(76, -1) => @ORIENT("R0");
+// %t28 @TEXT("vd", key="name", size=0.75);
+// &vd @WIRE(mode="straight") {#XO2:3 (80, -1) %t28:p};
+// %t29 = $GROUND @ATTACH &vss => @PLACE(80, -19);
+// &vss @WIRE(mode="straight") {#XO2:4 %t29:p};
+// %t30 = $IO_PORT @ATTACH &vd => @PLACE(116, -1) => @ORIENT("R0");
+// %t30 @TEXT("vd", key="name", size=0.75);
+// &vd @WIRE(mode="straight") {#XO3:3 (120, -1) %t30:p};
+// %t31 = $GROUND @ATTACH &vss => @PLACE(120, -19);
+// &vss @WIRE(mode="straight") {#XO3:4 %t31:p};
+// %t32 = $IO_PORT @ATTACH &vd => @PLACE(156, -1) => @ORIENT("R0");
+// %t32 @TEXT("vd", key="name", size=0.75);
+// &vd @WIRE(mode="straight") {#XO4:3 (160, -1) %t32:p};
+// %t33 = $GROUND @ATTACH &vss => @PLACE(160, -19);
+// &vss @WIRE(mode="straight") {#XO4:4 %t33:p};
+// %t34 = $IO_PORT @ATTACH &vd => @PLACE(196, -1) => @ORIENT("R0");
+// %t34 @TEXT("vd", key="name", size=0.75);
+// &vd @WIRE(mode="straight") {#XO5:3 (200, -1) %t34:p};
+// %t35 = $GROUND @ATTACH &vss => @PLACE(200, -19);
+// &vss @WIRE(mode="straight") {#XO5:4 %t35:p};
+// %t36 = $IO_PORT @ATTACH &out => @PLACE(211, -35) => @ORIENT("R0");
+// %t36 @TEXT("out", key="name", size=0.75);
+// &out @WIRE(mode="straight") {#RB5:2 (215, -35) %t36:p};
+// (-46, 53) @TEXT("75  6-bit DAC | 25 instances", size=1.2, halign="start");
+// (-46, 49) @TEXT("Same-name tags connect locally. Open blocks for transistor details.", size=0.8, halign="start");
+// }
+ends tx_fll_dac_pdk110_75

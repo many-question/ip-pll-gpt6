@@ -1,0 +1,321 @@
+// CP timing | frozen callback110 / recenter109 | RNL 0.3
+// @RNL(type="header") { @VERSION("0.3"); @USE-PACKAGE(name="rnl-std-fill") {} }
+simulator lang=spectre
+subckt tx_cp_timing_pdk110_78 (ref enable reset pulse vdd vss)
+XI (ref refb vdd vss) pll_inv_pdk110_7
+XR (reset resetb vdd vss) pll_inv_pdk110_7
+XE (enable refb ref resetb en_hold vdd vss) tx_latch_r_pdk110_60
+XD0 (ref d1 vdd vss) pll_inv_pdk110_79
+XD1 (d1 d2 vdd vss) pll_inv_pdk110_79
+XD2 (d2 d3 vdd vss) pll_inv_pdk110_79
+XD3 (d3 d4 vdd vss) pll_inv_pdk110_79
+XD4 (d4 d5 vdd vss) pll_inv_pdk110_79
+XD5 (d5 d6 vdd vss) pll_inv_pdk110_79
+XD6 (d6 d7 vdd vss) pll_inv_pdk110_79
+XD7 (d7 d8 vdd vss) pll_inv_pdk110_79
+XD8 (d8 d9 vdd vss) pll_inv_pdk110_79
+XD9 (d9 d10 vdd vss) pll_inv_pdk110_79
+XD10 (d10 d11 vdd vss) pll_inv_pdk110_79
+XD11 (d11 d12 vdd vss) pll_inv_pdk110_79
+XD12 (d12 d13 vdd vss) pll_inv_pdk110_79
+XD13 (d13 d14 vdd vss) pll_inv_pdk110_79
+XD14 (d14 d15 vdd vss) pll_inv_pdk110_79
+XD15 (d15 d16 vdd vss) pll_inv_pdk110_79
+XD16 (d16 d17 vdd vss) pll_inv_pdk110_79
+XD17 (d17 d18 vdd vss) pll_inv_pdk110_79
+XD18 (d18 d19 vdd vss) pll_inv_pdk110_79
+XD19 (d19 d20 vdd vss) pll_inv_pdk110_79
+XD20 (d20 d21 vdd vss) pll_inv_pdk110_79
+XD21 (d21 d22 vdd vss) pll_inv_pdk110_79
+XD22 (d22 d23 vdd vss) pll_inv_pdk110_79
+XD23 (d23 d24 vdd vss) pll_inv_pdk110_79
+XN (d24 d24b vdd vss) pll_inv_pdk110_7
+XP (d12 d24b raw vdd vss) tx_and_pdk110_47
+XS (raw ref held vdd vss) tx_and_pdk110_47
+XEN (held en_hold enabled vdd vss) tx_and_pdk110_47
+XRESET (enabled resetb pulse vdd vss) tx_and_pdk110_47
+// @RNL(author="manual-schematic126") {
+// $CELL = @DEFINE-SYMBOL {
+// @LINE {(-6, 8) (6, 8) (6, -8) (-6, -8) (-6, 8)};
+// (-8, 4) @PIN(terminal="ref", direction="left");
+// @LINE {(-8, 4) (-6, 4)};
+// (-5.4, 4) @TEXT("ref", size=0.7, halign="start");
+// (-8, 0) @PIN(terminal="enable", direction="left");
+// @LINE {(-8, 0) (-6, 0)};
+// (-5.4, 0) @TEXT("enable", size=0.7, halign="start");
+// (-8, -4) @PIN(terminal="reset", direction="left");
+// @LINE {(-8, -4) (-6, -4)};
+// (-5.4, -4) @TEXT("reset", size=0.7, halign="start");
+// (8, 0) @PIN(terminal="pulse", direction="right");
+// @LINE {(8, 0) (6, 0)};
+// (5.4, 0) @TEXT("pulse", size=0.7, halign="end");
+// (0, 10) @PIN(terminal="vdd", direction="up");
+// @LINE {(0, 10) (0, 8)};
+// (0, -10) @PIN(terminal="vss", direction="down");
+// @LINE {(0, -10) (0, -8)};
+// ? @TEXT("${name}", key="name", size=1, halign="middle") => @PLACE(8, 11.5);
+// (0, 7.1) @TEXT("CP timing", size=0.85, halign="middle");
+// };
+// # @SET-SYMBOL $CELL;
+// #XI @PLACE(0, 40) => @ORIENT("R0");
+// #XR @PLACE(40, 40) => @ORIENT("R0");
+// #XE @PLACE(90, 40) => @ORIENT("R0");
+// #XD0 @PLACE(0, 0) => @ORIENT("R0");
+// #XD1 @PLACE(32, 0) => @ORIENT("R0");
+// #XD2 @PLACE(64, 0) => @ORIENT("R0");
+// #XD3 @PLACE(96, 0) => @ORIENT("R0");
+// #XD4 @PLACE(128, 0) => @ORIENT("R0");
+// #XD5 @PLACE(160, 0) => @ORIENT("R0");
+// #XD6 @PLACE(192, 0) => @ORIENT("R0");
+// #XD7 @PLACE(224, 0) => @ORIENT("R0");
+// #XD8 @PLACE(256, 0) => @ORIENT("R0");
+// #XD9 @PLACE(288, 0) => @ORIENT("R0");
+// #XD10 @PLACE(320, 0) => @ORIENT("R0");
+// #XD11 @PLACE(352, 0) => @ORIENT("R0");
+// #XD12 @PLACE(0, -45) => @ORIENT("R0");
+// #XD13 @PLACE(32, -45) => @ORIENT("R0");
+// #XD14 @PLACE(64, -45) => @ORIENT("R0");
+// #XD15 @PLACE(96, -45) => @ORIENT("R0");
+// #XD16 @PLACE(128, -45) => @ORIENT("R0");
+// #XD17 @PLACE(160, -45) => @ORIENT("R0");
+// #XD18 @PLACE(192, -45) => @ORIENT("R0");
+// #XD19 @PLACE(224, -45) => @ORIENT("R0");
+// #XD20 @PLACE(256, -45) => @ORIENT("R0");
+// #XD21 @PLACE(288, -45) => @ORIENT("R0");
+// #XD22 @PLACE(320, -45) => @ORIENT("R0");
+// #XD23 @PLACE(352, -45) => @ORIENT("R0");
+// #XN @PLACE(390, -45) => @ORIENT("R0");
+// #XP @PLACE(200, -90) => @ORIENT("R0");
+// #XS @PLACE(240, -90) => @ORIENT("R0");
+// #XEN @PLACE(280, -90) => @ORIENT("R0");
+// #XRESET @PLACE(325, -90) => @ORIENT("R0");
+// &d1 @WIRE(mode="straight") {#XD0:2 #XD1:1};
+// &d2 @WIRE(mode="straight") {#XD1:2 #XD2:1};
+// &d3 @WIRE(mode="straight") {#XD2:2 #XD3:1};
+// &d4 @WIRE(mode="straight") {#XD3:2 #XD4:1};
+// &d5 @WIRE(mode="straight") {#XD4:2 #XD5:1};
+// &d6 @WIRE(mode="straight") {#XD5:2 #XD6:1};
+// &d7 @WIRE(mode="straight") {#XD6:2 #XD7:1};
+// &d8 @WIRE(mode="straight") {#XD7:2 #XD8:1};
+// &d9 @WIRE(mode="straight") {#XD8:2 #XD9:1};
+// &d10 @WIRE(mode="straight") {#XD9:2 #XD10:1};
+// &d11 @WIRE(mode="straight") {#XD10:2 #XD11:1};
+// &d13 @WIRE(mode="straight") {#XD12:2 #XD13:1};
+// &d14 @WIRE(mode="straight") {#XD13:2 #XD14:1};
+// &d15 @WIRE(mode="straight") {#XD14:2 #XD15:1};
+// &d16 @WIRE(mode="straight") {#XD15:2 #XD16:1};
+// &d17 @WIRE(mode="straight") {#XD16:2 #XD17:1};
+// &d18 @WIRE(mode="straight") {#XD17:2 #XD18:1};
+// &d19 @WIRE(mode="straight") {#XD18:2 #XD19:1};
+// &d20 @WIRE(mode="straight") {#XD19:2 #XD20:1};
+// &d21 @WIRE(mode="straight") {#XD20:2 #XD21:1};
+// &d22 @WIRE(mode="straight") {#XD21:2 #XD22:1};
+// &d23 @WIRE(mode="straight") {#XD22:2 #XD23:1};
+// &d24 @WIRE(mode="straight") {#XD23:2 (375, -45) (375, -45) #XN:1};
+// %t1 = $IO_PORT @ATTACH &ref => @PLACE(-11, 40) => @ORIENT("R0");
+// %t1 @TEXT("ref", key="name", size=0.75);
+// &ref @WIRE(mode="straight") {#XI:1 %t1:p};
+// %t2 = $IO_PORT @ATTACH &refb => @PLACE(11, 40) => @ORIENT("MY");
+// %t2 @TEXT("refb", key="name", size=0.75);
+// &refb @WIRE(mode="straight") {#XI:2 %t2:p};
+// %t3 = $SUPPLY @ATTACH &vdd => @PLACE(0, 49);
+// &vdd @WIRE(mode="straight") {#XI:3 %t3:p};
+// %t4 = $GROUND @ATTACH &vss => @PLACE(0, 31);
+// &vss @WIRE(mode="straight") {#XI:4 %t4:p};
+// %t5 = $IO_PORT @ATTACH &reset => @PLACE(29, 40) => @ORIENT("R0");
+// %t5 @TEXT("reset", key="name", size=0.75);
+// &reset @WIRE(mode="straight") {#XR:1 %t5:p};
+// %t6 = $IO_PORT @ATTACH &resetb => @PLACE(51, 40) => @ORIENT("MY");
+// %t6 @TEXT("resetb", key="name", size=0.75);
+// &resetb @WIRE(mode="straight") {#XR:2 %t6:p};
+// %t7 = $SUPPLY @ATTACH &vdd => @PLACE(40, 49);
+// &vdd @WIRE(mode="straight") {#XR:3 %t7:p};
+// %t8 = $GROUND @ATTACH &vss => @PLACE(40, 31);
+// &vss @WIRE(mode="straight") {#XR:4 %t8:p};
+// %t9 = $IO_PORT @ATTACH &enable => @PLACE(79, 46) => @ORIENT("R0");
+// %t9 @TEXT("enable", key="name", size=0.75);
+// &enable @WIRE(mode="straight") {#XE:1 %t9:p};
+// %t10 = $IO_PORT @ATTACH &refb => @PLACE(79, 42) => @ORIENT("R0");
+// %t10 @TEXT("refb", key="name", size=0.75);
+// &refb @WIRE(mode="straight") {#XE:2 %t10:p};
+// %t11 = $IO_PORT @ATTACH &ref => @PLACE(79, 38) => @ORIENT("R0");
+// %t11 @TEXT("ref", key="name", size=0.75);
+// &ref @WIRE(mode="straight") {#XE:3 %t11:p};
+// %t12 = $IO_PORT @ATTACH &resetb => @PLACE(79, 34) => @ORIENT("R0");
+// %t12 @TEXT("resetb", key="name", size=0.75);
+// &resetb @WIRE(mode="straight") {#XE:4 %t12:p};
+// %t13 = $IO_PORT @ATTACH &en_hold => @PLACE(101, 40) => @ORIENT("MY");
+// %t13 @TEXT("en_hold", key="name", size=0.75);
+// &en_hold @WIRE(mode="straight") {#XE:5 %t13:p};
+// %t14 = $SUPPLY @ATTACH &vdd => @PLACE(90, 55);
+// &vdd @WIRE(mode="straight") {#XE:6 %t14:p};
+// %t15 = $GROUND @ATTACH &vss => @PLACE(90, 25);
+// &vss @WIRE(mode="straight") {#XE:7 %t15:p};
+// %t16 = $IO_PORT @ATTACH &ref => @PLACE(-11, 0) => @ORIENT("R0");
+// %t16 @TEXT("ref", key="name", size=0.75);
+// &ref @WIRE(mode="straight") {#XD0:1 %t16:p};
+// %t17 = $SUPPLY @ATTACH &vdd => @PLACE(0, 9);
+// &vdd @WIRE(mode="straight") {#XD0:3 %t17:p};
+// %t18 = $GROUND @ATTACH &vss => @PLACE(0, -9);
+// &vss @WIRE(mode="straight") {#XD0:4 %t18:p};
+// %t19 = $SUPPLY @ATTACH &vdd => @PLACE(32, 9);
+// &vdd @WIRE(mode="straight") {#XD1:3 %t19:p};
+// %t20 = $GROUND @ATTACH &vss => @PLACE(32, -9);
+// &vss @WIRE(mode="straight") {#XD1:4 %t20:p};
+// %t21 = $SUPPLY @ATTACH &vdd => @PLACE(64, 9);
+// &vdd @WIRE(mode="straight") {#XD2:3 %t21:p};
+// %t22 = $GROUND @ATTACH &vss => @PLACE(64, -9);
+// &vss @WIRE(mode="straight") {#XD2:4 %t22:p};
+// %t23 = $SUPPLY @ATTACH &vdd => @PLACE(96, 9);
+// &vdd @WIRE(mode="straight") {#XD3:3 %t23:p};
+// %t24 = $GROUND @ATTACH &vss => @PLACE(96, -9);
+// &vss @WIRE(mode="straight") {#XD3:4 %t24:p};
+// %t25 = $SUPPLY @ATTACH &vdd => @PLACE(128, 9);
+// &vdd @WIRE(mode="straight") {#XD4:3 %t25:p};
+// %t26 = $GROUND @ATTACH &vss => @PLACE(128, -9);
+// &vss @WIRE(mode="straight") {#XD4:4 %t26:p};
+// %t27 = $SUPPLY @ATTACH &vdd => @PLACE(160, 9);
+// &vdd @WIRE(mode="straight") {#XD5:3 %t27:p};
+// %t28 = $GROUND @ATTACH &vss => @PLACE(160, -9);
+// &vss @WIRE(mode="straight") {#XD5:4 %t28:p};
+// %t29 = $SUPPLY @ATTACH &vdd => @PLACE(192, 9);
+// &vdd @WIRE(mode="straight") {#XD6:3 %t29:p};
+// %t30 = $GROUND @ATTACH &vss => @PLACE(192, -9);
+// &vss @WIRE(mode="straight") {#XD6:4 %t30:p};
+// %t31 = $SUPPLY @ATTACH &vdd => @PLACE(224, 9);
+// &vdd @WIRE(mode="straight") {#XD7:3 %t31:p};
+// %t32 = $GROUND @ATTACH &vss => @PLACE(224, -9);
+// &vss @WIRE(mode="straight") {#XD7:4 %t32:p};
+// %t33 = $SUPPLY @ATTACH &vdd => @PLACE(256, 9);
+// &vdd @WIRE(mode="straight") {#XD8:3 %t33:p};
+// %t34 = $GROUND @ATTACH &vss => @PLACE(256, -9);
+// &vss @WIRE(mode="straight") {#XD8:4 %t34:p};
+// %t35 = $SUPPLY @ATTACH &vdd => @PLACE(288, 9);
+// &vdd @WIRE(mode="straight") {#XD9:3 %t35:p};
+// %t36 = $GROUND @ATTACH &vss => @PLACE(288, -9);
+// &vss @WIRE(mode="straight") {#XD9:4 %t36:p};
+// %t37 = $SUPPLY @ATTACH &vdd => @PLACE(320, 9);
+// &vdd @WIRE(mode="straight") {#XD10:3 %t37:p};
+// %t38 = $GROUND @ATTACH &vss => @PLACE(320, -9);
+// &vss @WIRE(mode="straight") {#XD10:4 %t38:p};
+// %t39 = $IO_PORT @ATTACH &d12 => @PLACE(363, 0) => @ORIENT("MY");
+// %t39 @TEXT("d12", key="name", size=0.75);
+// &d12 @WIRE(mode="straight") {#XD11:2 %t39:p};
+// %t40 = $SUPPLY @ATTACH &vdd => @PLACE(352, 9);
+// &vdd @WIRE(mode="straight") {#XD11:3 %t40:p};
+// %t41 = $GROUND @ATTACH &vss => @PLACE(352, -9);
+// &vss @WIRE(mode="straight") {#XD11:4 %t41:p};
+// %t42 = $IO_PORT @ATTACH &d12 => @PLACE(-11, -45) => @ORIENT("R0");
+// %t42 @TEXT("d12", key="name", size=0.75);
+// &d12 @WIRE(mode="straight") {#XD12:1 %t42:p};
+// %t43 = $SUPPLY @ATTACH &vdd => @PLACE(0, -36);
+// &vdd @WIRE(mode="straight") {#XD12:3 %t43:p};
+// %t44 = $GROUND @ATTACH &vss => @PLACE(0, -54);
+// &vss @WIRE(mode="straight") {#XD12:4 %t44:p};
+// %t45 = $SUPPLY @ATTACH &vdd => @PLACE(32, -36);
+// &vdd @WIRE(mode="straight") {#XD13:3 %t45:p};
+// %t46 = $GROUND @ATTACH &vss => @PLACE(32, -54);
+// &vss @WIRE(mode="straight") {#XD13:4 %t46:p};
+// %t47 = $SUPPLY @ATTACH &vdd => @PLACE(64, -36);
+// &vdd @WIRE(mode="straight") {#XD14:3 %t47:p};
+// %t48 = $GROUND @ATTACH &vss => @PLACE(64, -54);
+// &vss @WIRE(mode="straight") {#XD14:4 %t48:p};
+// %t49 = $SUPPLY @ATTACH &vdd => @PLACE(96, -36);
+// &vdd @WIRE(mode="straight") {#XD15:3 %t49:p};
+// %t50 = $GROUND @ATTACH &vss => @PLACE(96, -54);
+// &vss @WIRE(mode="straight") {#XD15:4 %t50:p};
+// %t51 = $SUPPLY @ATTACH &vdd => @PLACE(128, -36);
+// &vdd @WIRE(mode="straight") {#XD16:3 %t51:p};
+// %t52 = $GROUND @ATTACH &vss => @PLACE(128, -54);
+// &vss @WIRE(mode="straight") {#XD16:4 %t52:p};
+// %t53 = $SUPPLY @ATTACH &vdd => @PLACE(160, -36);
+// &vdd @WIRE(mode="straight") {#XD17:3 %t53:p};
+// %t54 = $GROUND @ATTACH &vss => @PLACE(160, -54);
+// &vss @WIRE(mode="straight") {#XD17:4 %t54:p};
+// %t55 = $SUPPLY @ATTACH &vdd => @PLACE(192, -36);
+// &vdd @WIRE(mode="straight") {#XD18:3 %t55:p};
+// %t56 = $GROUND @ATTACH &vss => @PLACE(192, -54);
+// &vss @WIRE(mode="straight") {#XD18:4 %t56:p};
+// %t57 = $SUPPLY @ATTACH &vdd => @PLACE(224, -36);
+// &vdd @WIRE(mode="straight") {#XD19:3 %t57:p};
+// %t58 = $GROUND @ATTACH &vss => @PLACE(224, -54);
+// &vss @WIRE(mode="straight") {#XD19:4 %t58:p};
+// %t59 = $SUPPLY @ATTACH &vdd => @PLACE(256, -36);
+// &vdd @WIRE(mode="straight") {#XD20:3 %t59:p};
+// %t60 = $GROUND @ATTACH &vss => @PLACE(256, -54);
+// &vss @WIRE(mode="straight") {#XD20:4 %t60:p};
+// %t61 = $SUPPLY @ATTACH &vdd => @PLACE(288, -36);
+// &vdd @WIRE(mode="straight") {#XD21:3 %t61:p};
+// %t62 = $GROUND @ATTACH &vss => @PLACE(288, -54);
+// &vss @WIRE(mode="straight") {#XD21:4 %t62:p};
+// %t63 = $SUPPLY @ATTACH &vdd => @PLACE(320, -36);
+// &vdd @WIRE(mode="straight") {#XD22:3 %t63:p};
+// %t64 = $GROUND @ATTACH &vss => @PLACE(320, -54);
+// &vss @WIRE(mode="straight") {#XD22:4 %t64:p};
+// %t65 = $SUPPLY @ATTACH &vdd => @PLACE(352, -36);
+// &vdd @WIRE(mode="straight") {#XD23:3 %t65:p};
+// %t66 = $GROUND @ATTACH &vss => @PLACE(352, -54);
+// &vss @WIRE(mode="straight") {#XD23:4 %t66:p};
+// %t67 = $IO_PORT @ATTACH &d24b => @PLACE(401, -45) => @ORIENT("MY");
+// %t67 @TEXT("d24b", key="name", size=0.75);
+// &d24b @WIRE(mode="straight") {#XN:2 %t67:p};
+// %t68 = $SUPPLY @ATTACH &vdd => @PLACE(390, -36);
+// &vdd @WIRE(mode="straight") {#XN:3 %t68:p};
+// %t69 = $GROUND @ATTACH &vss => @PLACE(390, -54);
+// &vss @WIRE(mode="straight") {#XN:4 %t69:p};
+// %t70 = $IO_PORT @ATTACH &d12 => @PLACE(189, -88) => @ORIENT("R0");
+// %t70 @TEXT("d12", key="name", size=0.75);
+// &d12 @WIRE(mode="straight") {#XP:1 %t70:p};
+// %t71 = $IO_PORT @ATTACH &d24b => @PLACE(189, -92) => @ORIENT("R0");
+// %t71 @TEXT("d24b", key="name", size=0.75);
+// &d24b @WIRE(mode="straight") {#XP:2 %t71:p};
+// %t72 = $IO_PORT @ATTACH &raw => @PLACE(211, -90) => @ORIENT("MY");
+// %t72 @TEXT("raw", key="name", size=0.75);
+// &raw @WIRE(mode="straight") {#XP:3 %t72:p};
+// %t73 = $SUPPLY @ATTACH &vdd => @PLACE(200, -79);
+// &vdd @WIRE(mode="straight") {#XP:4 %t73:p};
+// %t74 = $GROUND @ATTACH &vss => @PLACE(200, -101);
+// &vss @WIRE(mode="straight") {#XP:5 %t74:p};
+// %t75 = $IO_PORT @ATTACH &raw => @PLACE(229, -88) => @ORIENT("R0");
+// %t75 @TEXT("raw", key="name", size=0.75);
+// &raw @WIRE(mode="straight") {#XS:1 %t75:p};
+// %t76 = $IO_PORT @ATTACH &ref => @PLACE(229, -92) => @ORIENT("R0");
+// %t76 @TEXT("ref", key="name", size=0.75);
+// &ref @WIRE(mode="straight") {#XS:2 %t76:p};
+// %t77 = $IO_PORT @ATTACH &held => @PLACE(251, -90) => @ORIENT("MY");
+// %t77 @TEXT("held", key="name", size=0.75);
+// &held @WIRE(mode="straight") {#XS:3 %t77:p};
+// %t78 = $SUPPLY @ATTACH &vdd => @PLACE(240, -79);
+// &vdd @WIRE(mode="straight") {#XS:4 %t78:p};
+// %t79 = $GROUND @ATTACH &vss => @PLACE(240, -101);
+// &vss @WIRE(mode="straight") {#XS:5 %t79:p};
+// %t80 = $IO_PORT @ATTACH &held => @PLACE(269, -88) => @ORIENT("R0");
+// %t80 @TEXT("held", key="name", size=0.75);
+// &held @WIRE(mode="straight") {#XEN:1 %t80:p};
+// %t81 = $IO_PORT @ATTACH &en_hold => @PLACE(269, -92) => @ORIENT("R0");
+// %t81 @TEXT("en_hold", key="name", size=0.75);
+// &en_hold @WIRE(mode="straight") {#XEN:2 %t81:p};
+// %t82 = $IO_PORT @ATTACH &enabled => @PLACE(291, -90) => @ORIENT("MY");
+// %t82 @TEXT("enabled", key="name", size=0.75);
+// &enabled @WIRE(mode="straight") {#XEN:3 %t82:p};
+// %t83 = $SUPPLY @ATTACH &vdd => @PLACE(280, -79);
+// &vdd @WIRE(mode="straight") {#XEN:4 %t83:p};
+// %t84 = $GROUND @ATTACH &vss => @PLACE(280, -101);
+// &vss @WIRE(mode="straight") {#XEN:5 %t84:p};
+// %t85 = $IO_PORT @ATTACH &enabled => @PLACE(314, -88) => @ORIENT("R0");
+// %t85 @TEXT("enabled", key="name", size=0.75);
+// &enabled @WIRE(mode="straight") {#XRESET:1 %t85:p};
+// %t86 = $IO_PORT @ATTACH &resetb => @PLACE(314, -92) => @ORIENT("R0");
+// %t86 @TEXT("resetb", key="name", size=0.75);
+// &resetb @WIRE(mode="straight") {#XRESET:2 %t86:p};
+// %t87 = $IO_PORT @ATTACH &pulse => @PLACE(336, -90) => @ORIENT("MY");
+// %t87 @TEXT("pulse", key="name", size=0.75);
+// &pulse @WIRE(mode="straight") {#XRESET:3 %t87:p};
+// %t88 = $SUPPLY @ATTACH &vdd => @PLACE(325, -79);
+// &vdd @WIRE(mode="straight") {#XRESET:4 %t88:p};
+// %t89 = $GROUND @ATTACH &vss => @PLACE(325, -101);
+// &vss @WIRE(mode="straight") {#XRESET:5 %t89:p};
+// (-16, 74) @TEXT("78  CP timing | 32 instances", size=1.2, halign="start");
+// (-16, 70) @TEXT("Same-name tags connect locally. Open blocks for transistor details.", size=0.8, halign="start");
+// }
+ends tx_cp_timing_pdk110_78

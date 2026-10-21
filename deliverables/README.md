@@ -1,3 +1,10 @@
+最新文档交付：[第126次汇报](../reports/2026-10-21T2006.yaml)。当前 RT4/callback110 电路已加入 RNL，仿真任务线保持暂停。
+
+- [纯 RNL 网表入口](rnl/rt4_callback110/top.scs)：打开后进入 XPLL，覆盖全部 81 个子电路。
+- [RNL 检查记录](verification/rnl126/README.md)：电气语句一致，82 层次零错误、零警告、零未定位。
+
+以下为历史交付索引。
+
 本次快照：[第109次汇报](../reports/2026-10-15T1210.yaml)。二分复测已交接但完整PLL仍未锁定，随后监督器重启；已启动按新计数自动修正一档粗码的独立984MHz候选。
 
 - [真实LC候选工作点](integration/cmos_v14_full/ACTUAL_LC_CANDIDATE_REVIEW.md)

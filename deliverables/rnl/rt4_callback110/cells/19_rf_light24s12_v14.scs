@@ -1,0 +1,58 @@
+// RF receiver | frozen callback110 / recenter109 | RNL 0.3
+// @RNL(type="header") { @VERSION("0.3"); @USE-PACKAGE(name="rnl-std-fill") {} }
+simulator lang=spectre
+subckt rf_light24s12_v14_pdk110_19 (rf clk vdd vss)
+C0 (rf g0) capacitor c=4e-12
+R0 (g0 clk) resistor r=20000
+X0 (g0 clk vdd vss) pll_inv_pdk110_20
+// @RNL(author="manual-schematic126") {
+// $CELL = @DEFINE-SYMBOL {
+// @LINE {(-6, 4) (6, 4) (6, -4) (-6, -4) (-6, 4)};
+// (-8, 0) @PIN(terminal="rf", direction="left");
+// @LINE {(-8, 0) (-6, 0)};
+// (-5.4, 0) @TEXT("rf", size=0.7, halign="start");
+// (8, 0) @PIN(terminal="clk", direction="right");
+// @LINE {(8, 0) (6, 0)};
+// (5.4, 0) @TEXT("clk", size=0.7, halign="end");
+// (0, 6) @PIN(terminal="vdd", direction="up");
+// @LINE {(0, 6) (0, 4)};
+// (0, -6) @PIN(terminal="vss", direction="down");
+// @LINE {(0, -6) (0, -4)};
+// ? @TEXT("${name}", key="name", size=1, halign="middle") => @PLACE(8, 7.5);
+// (0, 3.1) @TEXT("RF receiver", size=0.85, halign="middle");
+// };
+// # @SET-SYMBOL $CELL;
+// #C0 @PLACE(-28, 0) => @ORIENT("R90");
+// #C0 @SET-SYMBOL $CAPACITOR;
+// #C0 @TEXT("4p", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #C0 @TEXT("C0", key="name", dx=3, dy=1, size=0.9, halign="start");
+// #X0 @PLACE(8, 0) => @ORIENT("R0");
+// #R0 @PLACE(0, 20) => @ORIENT("R90");
+// #R0 @SET-SYMBOL $RESISTOR;
+// #R0 @TEXT("20k", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #R0 @TEXT("R0", key="name", dx=3, dy=1, size=0.9, halign="start");
+// %t1 = $IO_PORT @ATTACH &rf => @PLACE(-33, 0) => @ORIENT("R0");
+// %t1 @TEXT("rf", key="name", size=0.75);
+// &rf @WIRE(mode="straight") {#C0:1 %t1:p};
+// %t2 = $IO_PORT @ATTACH &g0 => @PLACE(-23, 0) => @ORIENT("MY");
+// %t2 @TEXT("g0", key="name", size=0.75);
+// &g0 @WIRE(mode="straight") {#C0:2 %t2:p};
+// %t3 = $IO_PORT @ATTACH &g0 => @PLACE(-3, 0) => @ORIENT("R0");
+// %t3 @TEXT("g0", key="name", size=0.75);
+// &g0 @WIRE(mode="straight") {#X0:1 %t3:p};
+// %t4 = $IO_PORT @ATTACH &clk => @PLACE(19, 0) => @ORIENT("MY");
+// %t4 @TEXT("clk", key="name", size=0.75);
+// &clk @WIRE(mode="straight") {#X0:2 %t4:p};
+// %t5 = $SUPPLY @ATTACH &vdd => @PLACE(8, 9);
+// &vdd @WIRE(mode="straight") {#X0:3 %t5:p};
+// %t6 = $GROUND @ATTACH &vss => @PLACE(8, -9);
+// &vss @WIRE(mode="straight") {#X0:4 %t6:p};
+// %t7 = $IO_PORT @ATTACH &g0 => @PLACE(-5, 20) => @ORIENT("R0");
+// %t7 @TEXT("g0", key="name", size=0.75);
+// &g0 @WIRE(mode="straight") {#R0:1 %t7:p};
+// %t8 = $IO_PORT @ATTACH &clk => @PLACE(5, 20) => @ORIENT("MY");
+// %t8 @TEXT("clk", key="name", size=0.75);
+// &clk @WIRE(mode="straight") {#R0:2 %t8:p};
+// (-38, 42) @TEXT("19  RF receiver | 3 instances", size=1.2, halign="start");
+// }
+ends rf_light24s12_v14_pdk110_19

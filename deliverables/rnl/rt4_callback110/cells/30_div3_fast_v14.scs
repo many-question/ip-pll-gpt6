@@ -1,0 +1,111 @@
+// Divide by 3 | frozen callback110 / recenter109 | RNL 0.3
+// @RNL(type="header") { @VERSION("0.3"); @USE-PACKAGE(name="rnl-std-fill") {} }
+simulator lang=spectre
+subckt div3_fast_v14_pdk110_30 (clk out vdd vss)
+XC (clk clkb vdd vss) pll_inv_pdk110_31
+XN (q0 q1 d0 vdd vss) nor_fast_v14_pdk110_32
+X0 (d0 clk clkb q0 vdd vss) ff_static_fast_v14_pdk110_33
+X1 (q0 clk clkb q1 vdd vss) ff_static_fast_v14_pdk110_33
+XB0 (q1 ob vdd vss) pll_inv_pdk110_29
+XB1 (ob out vdd vss) pll_inv_pdk110_27
+// @RNL(author="manual-schematic126") {
+// $CELL = @DEFINE-SYMBOL {
+// @LINE {(-6, 4) (6, 4) (6, -4) (-6, -4) (-6, 4)};
+// (-8, 0) @PIN(terminal="clk", direction="left");
+// @LINE {(-8, 0) (-6, 0)};
+// (-5.4, 0) @TEXT("clk", size=0.7, halign="start");
+// (8, 0) @PIN(terminal="out", direction="right");
+// @LINE {(8, 0) (6, 0)};
+// (5.4, 0) @TEXT("out", size=0.7, halign="end");
+// (0, 6) @PIN(terminal="vdd", direction="up");
+// @LINE {(0, 6) (0, 4)};
+// (0, -6) @PIN(terminal="vss", direction="down");
+// @LINE {(0, -6) (0, -4)};
+// ? @TEXT("${name}", key="name", size=1, halign="middle") => @PLACE(8, 7.5);
+// (0, 3.1) @TEXT("Divide by 3", size=0.85, halign="middle");
+// };
+// # @SET-SYMBOL $CELL;
+// #XC @PLACE(0, 35) => @ORIENT("R0");
+// #XN @PLACE(0, -10) => @ORIENT("R0");
+// #X0 @PLACE(45, -10) => @ORIENT("R0");
+// #X1 @PLACE(90, -10) => @ORIENT("R0");
+// #XB0 @PLACE(130, -10) => @ORIENT("R0");
+// #XB1 @PLACE(170, -10) => @ORIENT("R0");
+// %t1 = $IO_PORT @ATTACH &clk => @PLACE(-11, 35) => @ORIENT("R0");
+// %t1 @TEXT("clk", key="name", size=0.75);
+// &clk @WIRE(mode="straight") {#XC:1 %t1:p};
+// %t2 = $IO_PORT @ATTACH &clkb => @PLACE(11, 35) => @ORIENT("MY");
+// %t2 @TEXT("clkb", key="name", size=0.75);
+// &clkb @WIRE(mode="straight") {#XC:2 %t2:p};
+// %t3 = $SUPPLY @ATTACH &vdd => @PLACE(0, 44);
+// &vdd @WIRE(mode="straight") {#XC:3 %t3:p};
+// %t4 = $GROUND @ATTACH &vss => @PLACE(0, 26);
+// &vss @WIRE(mode="straight") {#XC:4 %t4:p};
+// %t5 = $IO_PORT @ATTACH &q0 => @PLACE(-11, -6) => @ORIENT("R0");
+// %t5 @TEXT("q0", key="name", size=0.75);
+// &q0 @WIRE(mode="straight") {#XN:1 %t5:p};
+// %t6 = $IO_PORT @ATTACH &q1 => @PLACE(-11, -10) => @ORIENT("R0");
+// %t6 @TEXT("q1", key="name", size=0.75);
+// &q1 @WIRE(mode="straight") {#XN:2 %t6:p};
+// %t7 = $IO_PORT @ATTACH &d0 => @PLACE(-11, -14) => @ORIENT("R0");
+// %t7 @TEXT("d0", key="name", size=0.75);
+// &d0 @WIRE(mode="straight") {#XN:3 %t7:p};
+// %t8 = $SUPPLY @ATTACH &vdd => @PLACE(0, 3);
+// &vdd @WIRE(mode="straight") {#XN:4 %t8:p};
+// %t9 = $GROUND @ATTACH &vss => @PLACE(0, -23);
+// &vss @WIRE(mode="straight") {#XN:5 %t9:p};
+// %t10 = $IO_PORT @ATTACH &d0 => @PLACE(34, -6) => @ORIENT("R0");
+// %t10 @TEXT("d0", key="name", size=0.75);
+// &d0 @WIRE(mode="straight") {#X0:1 %t10:p};
+// %t11 = $IO_PORT @ATTACH &clk => @PLACE(34, -10) => @ORIENT("R0");
+// %t11 @TEXT("clk", key="name", size=0.75);
+// &clk @WIRE(mode="straight") {#X0:2 %t11:p};
+// %t12 = $IO_PORT @ATTACH &clkb => @PLACE(34, -14) => @ORIENT("R0");
+// %t12 @TEXT("clkb", key="name", size=0.75);
+// &clkb @WIRE(mode="straight") {#X0:3 %t12:p};
+// %t13 = $IO_PORT @ATTACH &q0 => @PLACE(56, -10) => @ORIENT("MY");
+// %t13 @TEXT("q0", key="name", size=0.75);
+// &q0 @WIRE(mode="straight") {#X0:4 %t13:p};
+// %t14 = $SUPPLY @ATTACH &vdd => @PLACE(45, 3);
+// &vdd @WIRE(mode="straight") {#X0:5 %t14:p};
+// %t15 = $GROUND @ATTACH &vss => @PLACE(45, -23);
+// &vss @WIRE(mode="straight") {#X0:6 %t15:p};
+// %t16 = $IO_PORT @ATTACH &q0 => @PLACE(79, -6) => @ORIENT("R0");
+// %t16 @TEXT("q0", key="name", size=0.75);
+// &q0 @WIRE(mode="straight") {#X1:1 %t16:p};
+// %t17 = $IO_PORT @ATTACH &clk => @PLACE(79, -10) => @ORIENT("R0");
+// %t17 @TEXT("clk", key="name", size=0.75);
+// &clk @WIRE(mode="straight") {#X1:2 %t17:p};
+// %t18 = $IO_PORT @ATTACH &clkb => @PLACE(79, -14) => @ORIENT("R0");
+// %t18 @TEXT("clkb", key="name", size=0.75);
+// &clkb @WIRE(mode="straight") {#X1:3 %t18:p};
+// %t19 = $IO_PORT @ATTACH &q1 => @PLACE(101, -10) => @ORIENT("MY");
+// %t19 @TEXT("q1", key="name", size=0.75);
+// &q1 @WIRE(mode="straight") {#X1:4 %t19:p};
+// %t20 = $SUPPLY @ATTACH &vdd => @PLACE(90, 3);
+// &vdd @WIRE(mode="straight") {#X1:5 %t20:p};
+// %t21 = $GROUND @ATTACH &vss => @PLACE(90, -23);
+// &vss @WIRE(mode="straight") {#X1:6 %t21:p};
+// %t22 = $IO_PORT @ATTACH &q1 => @PLACE(119, -10) => @ORIENT("R0");
+// %t22 @TEXT("q1", key="name", size=0.75);
+// &q1 @WIRE(mode="straight") {#XB0:1 %t22:p};
+// %t23 = $IO_PORT @ATTACH &ob => @PLACE(141, -10) => @ORIENT("MY");
+// %t23 @TEXT("ob", key="name", size=0.75);
+// &ob @WIRE(mode="straight") {#XB0:2 %t23:p};
+// %t24 = $SUPPLY @ATTACH &vdd => @PLACE(130, -1);
+// &vdd @WIRE(mode="straight") {#XB0:3 %t24:p};
+// %t25 = $GROUND @ATTACH &vss => @PLACE(130, -19);
+// &vss @WIRE(mode="straight") {#XB0:4 %t25:p};
+// %t26 = $IO_PORT @ATTACH &ob => @PLACE(159, -10) => @ORIENT("R0");
+// %t26 @TEXT("ob", key="name", size=0.75);
+// &ob @WIRE(mode="straight") {#XB1:1 %t26:p};
+// %t27 = $IO_PORT @ATTACH &out => @PLACE(181, -10) => @ORIENT("MY");
+// %t27 @TEXT("out", key="name", size=0.75);
+// &out @WIRE(mode="straight") {#XB1:2 %t27:p};
+// %t28 = $SUPPLY @ATTACH &vdd => @PLACE(170, -1);
+// &vdd @WIRE(mode="straight") {#XB1:3 %t28:p};
+// %t29 = $GROUND @ATTACH &vss => @PLACE(170, -19);
+// &vss @WIRE(mode="straight") {#XB1:4 %t29:p};
+// (-16, 63) @TEXT("30  Divide by 3 | 6 instances", size=1.2, halign="start");
+// }
+ends div3_fast_v14_pdk110_30

@@ -1,0 +1,236 @@
+// Validity | frozen callback110 / recenter109 | RNL 0.3
+// @RNL(type="header") { @VERSION("0.3"); @USE-PACKAGE(name="rnl-std-fill") {} }
+simulator lang=spectre
+subckt validity_physical_v14_pdk110_53 (rf hp hn amp_good phase_good vdd vss)
+MD (rf rf env vss) nch w=5e-07 l=1.8e-07 ad=2.4e-13 as=2.4e-13 pd=1.96e-06 ps=1.96e-06 nrd=0.54 nrs=0.54 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+RE (env vss) resistor r=1000000
+CE (env vss) capacitor c=5e-14
+MR (vdd vdd envref vss) nch w=5e-07 l=1.8e-07 ad=2.4e-13 as=2.4e-13 pd=1.96e-06 ps=1.96e-06 nrd=0.54 nrs=0.54 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+RR (envref vss) resistor r=1000000
+RT0 (envref threshold) resistor r=10000000
+RT1 (threshold vdd) resistor r=90000000
+XA (env threshold amp_good vdd vss) cmp_physical_v14_pdk110_54
+RH0 (hn wh) resistor r=1000000
+RH1 (wh vdd) resistor r=9000000
+RL0 (hn wl) resistor r=1000000
+RL1 (wl vss) resistor r=9000000
+XH (wh hp upper_ok vdd vss) cmp_physical_v14_pdk110_54
+XL (hp wl lower_ok vdd vss) cmp_physical_v14_pdk110_54
+XW (upper_ok lower_ok window_ok vdd vss) tx_and_pdk110_47
+XG (window_ok amp_good phase_good vdd vss) tx_and_pdk110_47
+// @RNL(author="manual-schematic126") {
+// $CELL = @DEFINE-SYMBOL {
+// @LINE {(-6, 8) (6, 8) (6, -8) (-6, -8) (-6, 8)};
+// (-8, 4) @PIN(terminal="rf", direction="left");
+// @LINE {(-8, 4) (-6, 4)};
+// (-5.4, 4) @TEXT("rf", size=0.7, halign="start");
+// (-8, 0) @PIN(terminal="hp", direction="left");
+// @LINE {(-8, 0) (-6, 0)};
+// (-5.4, 0) @TEXT("hp", size=0.7, halign="start");
+// (-8, -4) @PIN(terminal="hn", direction="left");
+// @LINE {(-8, -4) (-6, -4)};
+// (-5.4, -4) @TEXT("hn", size=0.7, halign="start");
+// (8, 2) @PIN(terminal="amp_good", direction="right");
+// @LINE {(8, 2) (6, 2)};
+// (5.4, 2) @TEXT("amp_good", size=0.7, halign="end");
+// (8, -2) @PIN(terminal="phase_good", direction="right");
+// @LINE {(8, -2) (6, -2)};
+// (5.4, -2) @TEXT("phase_good", size=0.7, halign="end");
+// (0, 10) @PIN(terminal="vdd", direction="up");
+// @LINE {(0, 10) (0, 8)};
+// (0, -10) @PIN(terminal="vss", direction="down");
+// @LINE {(0, -10) (0, -8)};
+// ? @TEXT("${name}", key="name", size=1, halign="middle") => @PLACE(8, 11.5);
+// (0, 7.1) @TEXT("Validity", size=0.85, halign="middle");
+// };
+// # @SET-SYMBOL $CELL;
+// #MD @PLACE(0, 25) => @ORIENT("R0");
+// #MD @SET-SYMBOL $NMOS_4TERM;
+// #MD @TEXT("MD", key="name", dx=5, dy=1.5, size=0.9, halign="start");
+// #MD @TEXT("500n / 180n", key="model", dx=5, dy=-1.5, size=0.75, halign="start");
+// #RE @PLACE(-15, 5) => @ORIENT("R0");
+// #RE @SET-SYMBOL $RESISTOR;
+// #RE @TEXT("1M", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #RE @TEXT("RE", key="name", dx=3, dy=1, size=0.9, halign="start");
+// #CE @PLACE(15, 5) => @ORIENT("R0");
+// #CE @SET-SYMBOL $CAPACITOR;
+// #CE @TEXT("50f", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #CE @TEXT("CE", key="name", dx=3, dy=1, size=0.9, halign="start");
+// #MR @PLACE(55, 25) => @ORIENT("R0");
+// #MR @SET-SYMBOL $NMOS_4TERM;
+// #MR @TEXT("MR", key="name", dx=5, dy=1.5, size=0.9, halign="start");
+// #MR @TEXT("500n / 180n", key="model", dx=5, dy=-1.5, size=0.75, halign="start");
+// #RR @PLACE(55, 5) => @ORIENT("R0");
+// #RR @SET-SYMBOL $RESISTOR;
+// #RR @TEXT("1M", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #RR @TEXT("RR", key="name", dx=3, dy=1, size=0.9, halign="start");
+// #RT0 @PLACE(90, 5) => @ORIENT("R90");
+// #RT0 @SET-SYMBOL $RESISTOR;
+// #RT0 @TEXT("10M", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #RT0 @TEXT("RT0", key="name", dx=3, dy=1, size=0.9, halign="start");
+// #RT1 @PLACE(120, 25) => @ORIENT("R0");
+// #RT1 @SET-SYMBOL $RESISTOR;
+// #RT1 @TEXT("90M", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #RT1 @TEXT("RT1", key="name", dx=3, dy=1, size=0.9, halign="start");
+// #XA @PLACE(165, 15) => @ORIENT("R0");
+// #RH0 @PLACE(0, -45) => @ORIENT("R90");
+// #RH0 @SET-SYMBOL $RESISTOR;
+// #RH0 @TEXT("1M", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #RH0 @TEXT("RH0", key="name", dx=3, dy=1, size=0.9, halign="start");
+// #RH1 @PLACE(30, -25) => @ORIENT("R0");
+// #RH1 @SET-SYMBOL $RESISTOR;
+// #RH1 @TEXT("9M", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #RH1 @TEXT("RH1", key="name", dx=3, dy=1, size=0.9, halign="start");
+// #RL0 @PLACE(0, -85) => @ORIENT("R90");
+// #RL0 @SET-SYMBOL $RESISTOR;
+// #RL0 @TEXT("1M", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #RL0 @TEXT("RL0", key="name", dx=3, dy=1, size=0.9, halign="start");
+// #RL1 @PLACE(30, -105) => @ORIENT("R0");
+// #RL1 @SET-SYMBOL $RESISTOR;
+// #RL1 @TEXT("9M", key="value", dx=3, dy=-1, size=0.8, halign="start");
+// #RL1 @TEXT("RL1", key="name", dx=3, dy=1, size=0.9, halign="start");
+// #XH @PLACE(80, -45) => @ORIENT("R0");
+// #XL @PLACE(80, -85) => @ORIENT("R0");
+// #XW @PLACE(130, -65) => @ORIENT("R0");
+// #XG @PLACE(175, -65) => @ORIENT("R0");
+// %t1 = $IO_PORT @ATTACH &rf => @PLACE(-4, 30) => @ORIENT("R0");
+// %t1 @TEXT("rf", key="name", size=0.75);
+// &rf @WIRE(mode="straight") {#MD:1 (0, 30) %t1:p};
+// %t2 = $IO_PORT @ATTACH &rf => @PLACE(-6, 25) => @ORIENT("R0");
+// %t2 @TEXT("rf", key="name", size=0.75);
+// &rf @WIRE(mode="straight") {#MD:2 %t2:p};
+// %t3 = $IO_PORT @ATTACH &env => @PLACE(-4, 20) => @ORIENT("R0");
+// %t3 @TEXT("env", key="name", size=0.75);
+// &env @WIRE(mode="straight") {#MD:3 (0, 20) %t3:p};
+// %t4 = $IO_PORT @ATTACH &vss => @PLACE(4, 25) => @ORIENT("MY");
+// %t4 @TEXT("vss", key="name", size=0.75);
+// &vss @WIRE(mode="straight") {#MD:4 %t4:p};
+// %t5 = $IO_PORT @ATTACH &env => @PLACE(-19, 10) => @ORIENT("R0");
+// %t5 @TEXT("env", key="name", size=0.75);
+// &env @WIRE(mode="straight") {#RE:1 (-15, 10) %t5:p};
+// %t6 = $GROUND @ATTACH &vss => @PLACE(-15, 0);
+// &vss @WIRE(mode="straight") {#RE:2 %t6:p};
+// %t7 = $IO_PORT @ATTACH &env => @PLACE(11, 10) => @ORIENT("R0");
+// %t7 @TEXT("env", key="name", size=0.75);
+// &env @WIRE(mode="straight") {#CE:1 (15, 10) %t7:p};
+// %t8 = $GROUND @ATTACH &vss => @PLACE(15, 0);
+// &vss @WIRE(mode="straight") {#CE:2 %t8:p};
+// %t9 = $SUPPLY @ATTACH &vdd => @PLACE(55, 30);
+// &vdd @WIRE(mode="straight") {#MR:1 %t9:p};
+// %t10 = $IO_PORT @ATTACH &vdd => @PLACE(49, 25) => @ORIENT("R0");
+// %t10 @TEXT("vdd", key="name", size=0.75);
+// &vdd @WIRE(mode="straight") {#MR:2 %t10:p};
+// %t11 = $IO_PORT @ATTACH &envref => @PLACE(51, 20) => @ORIENT("R0");
+// %t11 @TEXT("envref", key="name", size=0.75);
+// &envref @WIRE(mode="straight") {#MR:3 (55, 20) %t11:p};
+// %t12 = $IO_PORT @ATTACH &vss => @PLACE(59, 25) => @ORIENT("MY");
+// %t12 @TEXT("vss", key="name", size=0.75);
+// &vss @WIRE(mode="straight") {#MR:4 %t12:p};
+// %t13 = $IO_PORT @ATTACH &envref => @PLACE(51, 10) => @ORIENT("R0");
+// %t13 @TEXT("envref", key="name", size=0.75);
+// &envref @WIRE(mode="straight") {#RR:1 (55, 10) %t13:p};
+// %t14 = $GROUND @ATTACH &vss => @PLACE(55, 0);
+// &vss @WIRE(mode="straight") {#RR:2 %t14:p};
+// %t15 = $IO_PORT @ATTACH &envref => @PLACE(85, 5) => @ORIENT("R0");
+// %t15 @TEXT("envref", key="name", size=0.75);
+// &envref @WIRE(mode="straight") {#RT0:1 %t15:p};
+// %t16 = $IO_PORT @ATTACH &threshold => @PLACE(95, 5) => @ORIENT("MY");
+// %t16 @TEXT("threshold", key="name", size=0.75);
+// &threshold @WIRE(mode="straight") {#RT0:2 %t16:p};
+// %t17 = $IO_PORT @ATTACH &threshold => @PLACE(116, 30) => @ORIENT("R0");
+// %t17 @TEXT("threshold", key="name", size=0.75);
+// &threshold @WIRE(mode="straight") {#RT1:1 (120, 30) %t17:p};
+// %t18 = $IO_PORT @ATTACH &vdd => @PLACE(116, 20) => @ORIENT("R0");
+// %t18 @TEXT("vdd", key="name", size=0.75);
+// &vdd @WIRE(mode="straight") {#RT1:2 (120, 20) %t18:p};
+// %t19 = $IO_PORT @ATTACH &env => @PLACE(154, 17) => @ORIENT("R0");
+// %t19 @TEXT("env", key="name", size=0.75);
+// &env @WIRE(mode="straight") {#XA:1 %t19:p};
+// %t20 = $IO_PORT @ATTACH &threshold => @PLACE(154, 13) => @ORIENT("R0");
+// %t20 @TEXT("threshold", key="name", size=0.75);
+// &threshold @WIRE(mode="straight") {#XA:2 %t20:p};
+// %t21 = $IO_PORT @ATTACH &amp_good => @PLACE(176, 15) => @ORIENT("MY");
+// %t21 @TEXT("amp_good", key="name", size=0.75);
+// &amp_good @WIRE(mode="straight") {#XA:3 %t21:p};
+// %t22 = $SUPPLY @ATTACH &vdd => @PLACE(165, 26);
+// &vdd @WIRE(mode="straight") {#XA:4 %t22:p};
+// %t23 = $GROUND @ATTACH &vss => @PLACE(165, 4);
+// &vss @WIRE(mode="straight") {#XA:5 %t23:p};
+// %t24 = $IO_PORT @ATTACH &hn => @PLACE(-5, -45) => @ORIENT("R0");
+// %t24 @TEXT("hn", key="name", size=0.75);
+// &hn @WIRE(mode="straight") {#RH0:1 %t24:p};
+// %t25 = $IO_PORT @ATTACH &wh => @PLACE(5, -45) => @ORIENT("MY");
+// %t25 @TEXT("wh", key="name", size=0.75);
+// &wh @WIRE(mode="straight") {#RH0:2 %t25:p};
+// %t26 = $IO_PORT @ATTACH &wh => @PLACE(26, -20) => @ORIENT("R0");
+// %t26 @TEXT("wh", key="name", size=0.75);
+// &wh @WIRE(mode="straight") {#RH1:1 (30, -20) %t26:p};
+// %t27 = $IO_PORT @ATTACH &vdd => @PLACE(26, -30) => @ORIENT("R0");
+// %t27 @TEXT("vdd", key="name", size=0.75);
+// &vdd @WIRE(mode="straight") {#RH1:2 (30, -30) %t27:p};
+// %t28 = $IO_PORT @ATTACH &hn => @PLACE(-5, -85) => @ORIENT("R0");
+// %t28 @TEXT("hn", key="name", size=0.75);
+// &hn @WIRE(mode="straight") {#RL0:1 %t28:p};
+// %t29 = $IO_PORT @ATTACH &wl => @PLACE(5, -85) => @ORIENT("MY");
+// %t29 @TEXT("wl", key="name", size=0.75);
+// &wl @WIRE(mode="straight") {#RL0:2 %t29:p};
+// %t30 = $IO_PORT @ATTACH &wl => @PLACE(26, -100) => @ORIENT("R0");
+// %t30 @TEXT("wl", key="name", size=0.75);
+// &wl @WIRE(mode="straight") {#RL1:1 (30, -100) %t30:p};
+// %t31 = $GROUND @ATTACH &vss => @PLACE(30, -110);
+// &vss @WIRE(mode="straight") {#RL1:2 %t31:p};
+// %t32 = $IO_PORT @ATTACH &wh => @PLACE(69, -43) => @ORIENT("R0");
+// %t32 @TEXT("wh", key="name", size=0.75);
+// &wh @WIRE(mode="straight") {#XH:1 %t32:p};
+// %t33 = $IO_PORT @ATTACH &hp => @PLACE(69, -47) => @ORIENT("R0");
+// %t33 @TEXT("hp", key="name", size=0.75);
+// &hp @WIRE(mode="straight") {#XH:2 %t33:p};
+// %t34 = $IO_PORT @ATTACH &upper_ok => @PLACE(91, -45) => @ORIENT("MY");
+// %t34 @TEXT("upper_ok", key="name", size=0.75);
+// &upper_ok @WIRE(mode="straight") {#XH:3 %t34:p};
+// %t35 = $SUPPLY @ATTACH &vdd => @PLACE(80, -34);
+// &vdd @WIRE(mode="straight") {#XH:4 %t35:p};
+// %t36 = $GROUND @ATTACH &vss => @PLACE(80, -56);
+// &vss @WIRE(mode="straight") {#XH:5 %t36:p};
+// %t37 = $IO_PORT @ATTACH &hp => @PLACE(69, -83) => @ORIENT("R0");
+// %t37 @TEXT("hp", key="name", size=0.75);
+// &hp @WIRE(mode="straight") {#XL:1 %t37:p};
+// %t38 = $IO_PORT @ATTACH &wl => @PLACE(69, -87) => @ORIENT("R0");
+// %t38 @TEXT("wl", key="name", size=0.75);
+// &wl @WIRE(mode="straight") {#XL:2 %t38:p};
+// %t39 = $IO_PORT @ATTACH &lower_ok => @PLACE(91, -85) => @ORIENT("MY");
+// %t39 @TEXT("lower_ok", key="name", size=0.75);
+// &lower_ok @WIRE(mode="straight") {#XL:3 %t39:p};
+// %t40 = $SUPPLY @ATTACH &vdd => @PLACE(80, -74);
+// &vdd @WIRE(mode="straight") {#XL:4 %t40:p};
+// %t41 = $GROUND @ATTACH &vss => @PLACE(80, -96);
+// &vss @WIRE(mode="straight") {#XL:5 %t41:p};
+// %t42 = $IO_PORT @ATTACH &upper_ok => @PLACE(119, -63) => @ORIENT("R0");
+// %t42 @TEXT("upper_ok", key="name", size=0.75);
+// &upper_ok @WIRE(mode="straight") {#XW:1 %t42:p};
+// %t43 = $IO_PORT @ATTACH &lower_ok => @PLACE(119, -67) => @ORIENT("R0");
+// %t43 @TEXT("lower_ok", key="name", size=0.75);
+// &lower_ok @WIRE(mode="straight") {#XW:2 %t43:p};
+// %t44 = $IO_PORT @ATTACH &window_ok => @PLACE(141, -65) => @ORIENT("MY");
+// %t44 @TEXT("window_ok", key="name", size=0.75);
+// &window_ok @WIRE(mode="straight") {#XW:3 %t44:p};
+// %t45 = $SUPPLY @ATTACH &vdd => @PLACE(130, -54);
+// &vdd @WIRE(mode="straight") {#XW:4 %t45:p};
+// %t46 = $GROUND @ATTACH &vss => @PLACE(130, -76);
+// &vss @WIRE(mode="straight") {#XW:5 %t46:p};
+// %t47 = $IO_PORT @ATTACH &window_ok => @PLACE(164, -63) => @ORIENT("R0");
+// %t47 @TEXT("window_ok", key="name", size=0.75);
+// &window_ok @WIRE(mode="straight") {#XG:1 %t47:p};
+// %t48 = $IO_PORT @ATTACH &amp_good => @PLACE(164, -67) => @ORIENT("R0");
+// %t48 @TEXT("amp_good", key="name", size=0.75);
+// &amp_good @WIRE(mode="straight") {#XG:2 %t48:p};
+// %t49 = $IO_PORT @ATTACH &phase_good => @PLACE(186, -65) => @ORIENT("MY");
+// %t49 @TEXT("phase_good", key="name", size=0.75);
+// &phase_good @WIRE(mode="straight") {#XG:3 %t49:p};
+// %t50 = $SUPPLY @ATTACH &vdd => @PLACE(175, -54);
+// &vdd @WIRE(mode="straight") {#XG:4 %t50:p};
+// %t51 = $GROUND @ATTACH &vss => @PLACE(175, -76);
+// &vss @WIRE(mode="straight") {#XG:5 %t51:p};
+// (-23, 49) @TEXT("53  Validity | 16 instances", size=1.2, halign="start");
+// }
+ends validity_physical_v14_pdk110_53

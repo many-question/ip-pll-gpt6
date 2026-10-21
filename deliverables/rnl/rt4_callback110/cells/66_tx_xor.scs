@@ -1,0 +1,52 @@
+// XOR2 | frozen callback110 / recenter109 | RNL 0.3
+// @RNL(type="header") { @VERSION("0.3"); @USE-PACKAGE(name="rnl-std-fill") {} }
+simulator lang=spectre
+subckt tx_xor_pdk110_66 (a b y vdd vss)
+XI (a ab vdd vss) pll_inv_pdk110_48
+XM (a ab b y vdd vss) tx_mux_pdk110_64
+// @RNL(author="manual-schematic126") {
+// $CELL = @DEFINE-SYMBOL {
+// @LINE {(-6, 6) (6, 6) (6, -6) (-6, -6) (-6, 6)};
+// (-8, 2) @PIN(terminal="a", direction="left");
+// @LINE {(-8, 2) (-6, 2)};
+// (-5.4, 2) @TEXT("a", size=0.7, halign="start");
+// (-8, -2) @PIN(terminal="b", direction="left");
+// @LINE {(-8, -2) (-6, -2)};
+// (-5.4, -2) @TEXT("b", size=0.7, halign="start");
+// (8, 0) @PIN(terminal="y", direction="right");
+// @LINE {(8, 0) (6, 0)};
+// (5.4, 0) @TEXT("y", size=0.7, halign="end");
+// (0, 8) @PIN(terminal="vdd", direction="up");
+// @LINE {(0, 8) (0, 6)};
+// (0, -8) @PIN(terminal="vss", direction="down");
+// @LINE {(0, -8) (0, -6)};
+// ? @TEXT("${name}", key="name", size=1, halign="middle") => @PLACE(8, 9.5);
+// (0, 5.1) @TEXT("XOR2", size=0.85, halign="middle");
+// };
+// # @SET-SYMBOL $CELL;
+// #XI @PLACE(0, 0) => @ORIENT("R0");
+// #XM @PLACE(40, 0) => @ORIENT("R0");
+// &ab @WIRE(mode="straight") {#XI:2 (20, 0) (20, 0) #XM:2};
+// %t1 = $IO_PORT @ATTACH &a => @PLACE(-11, 0) => @ORIENT("R0");
+// %t1 @TEXT("a", key="name", size=0.75);
+// &a @WIRE(mode="straight") {#XI:1 %t1:p};
+// %t2 = $SUPPLY @ATTACH &vdd => @PLACE(0, 9);
+// &vdd @WIRE(mode="straight") {#XI:3 %t2:p};
+// %t3 = $GROUND @ATTACH &vss => @PLACE(0, -9);
+// &vss @WIRE(mode="straight") {#XI:4 %t3:p};
+// %t4 = $IO_PORT @ATTACH &a => @PLACE(29, 4) => @ORIENT("R0");
+// %t4 @TEXT("a", key="name", size=0.75);
+// &a @WIRE(mode="straight") {#XM:1 %t4:p};
+// %t5 = $IO_PORT @ATTACH &b => @PLACE(29, -4) => @ORIENT("R0");
+// %t5 @TEXT("b", key="name", size=0.75);
+// &b @WIRE(mode="straight") {#XM:3 %t5:p};
+// %t6 = $IO_PORT @ATTACH &y => @PLACE(51, 0) => @ORIENT("MY");
+// %t6 @TEXT("y", key="name", size=0.75);
+// &y @WIRE(mode="straight") {#XM:4 %t6:p};
+// %t7 = $SUPPLY @ATTACH &vdd => @PLACE(40, 13);
+// &vdd @WIRE(mode="straight") {#XM:5 %t7:p};
+// %t8 = $GROUND @ATTACH &vss => @PLACE(40, -13);
+// &vss @WIRE(mode="straight") {#XM:6 %t8:p};
+// (-16, 32) @TEXT("66  XOR2 | 2 instances", size=1.2, halign="start");
+// }
+ends tx_xor_pdk110_66

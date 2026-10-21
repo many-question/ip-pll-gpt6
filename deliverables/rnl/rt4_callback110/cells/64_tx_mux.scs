@@ -1,0 +1,90 @@
+// MUX2 | frozen callback110 / recenter109 | RNL 0.3
+// @RNL(type="header") { @VERSION("0.3"); @USE-PACKAGE(name="rnl-std-fill") {} }
+simulator lang=spectre
+subckt tx_mux_pdk110_64 (a b s y vdd vss)
+XI (s sb vdd vss) pll_inv_pdk110_48
+XT0 (a z sb s vdd vss) pll_tg_pdk110_65
+XT1 (b z s sb vdd vss) pll_tg_pdk110_65
+XB0 (z zb vdd vss) pll_inv_pdk110_48
+XB1 (zb y vdd vss) pll_inv_pdk110_48
+// @RNL(author="manual-schematic126") {
+// $CELL = @DEFINE-SYMBOL {
+// @LINE {(-6, 8) (6, 8) (6, -8) (-6, -8) (-6, 8)};
+// (-8, 4) @PIN(terminal="a", direction="left");
+// @LINE {(-8, 4) (-6, 4)};
+// (-5.4, 4) @TEXT("a", size=0.7, halign="start");
+// (-8, 0) @PIN(terminal="b", direction="left");
+// @LINE {(-8, 0) (-6, 0)};
+// (-5.4, 0) @TEXT("b", size=0.7, halign="start");
+// (-8, -4) @PIN(terminal="s", direction="left");
+// @LINE {(-8, -4) (-6, -4)};
+// (-5.4, -4) @TEXT("s", size=0.7, halign="start");
+// (8, 0) @PIN(terminal="y", direction="right");
+// @LINE {(8, 0) (6, 0)};
+// (5.4, 0) @TEXT("y", size=0.7, halign="end");
+// (0, 10) @PIN(terminal="vdd", direction="up");
+// @LINE {(0, 10) (0, 8)};
+// (0, -10) @PIN(terminal="vss", direction="down");
+// @LINE {(0, -10) (0, -8)};
+// ? @TEXT("${name}", key="name", size=1, halign="middle") => @PLACE(8, 11.5);
+// (0, 7.1) @TEXT("MUX2", size=0.85, halign="middle");
+// };
+// # @SET-SYMBOL $CELL;
+// #XI @PLACE(-40, 35) => @ORIENT("R0");
+// #XT0 @PLACE(0, 15) => @ORIENT("R0");
+// #XT1 @PLACE(0, -20) => @ORIENT("R0");
+// #XB0 @PLACE(50, 0) => @ORIENT("R0");
+// #XB1 @PLACE(90, 0) => @ORIENT("R0");
+// &z @WIRE(mode="straight") {#XT0:2 (30, 15) (30, 0) #XB0:1};
+// &z @WIRE(mode="straight") {#XT1:2 (30, -20) (30, 0) #XB0:1};
+// &zb @WIRE(mode="straight") {#XB0:2 #XB1:1};
+// %t1 = $IO_PORT @ATTACH &s => @PLACE(-51, 35) => @ORIENT("R0");
+// %t1 @TEXT("s", key="name", size=0.75);
+// &s @WIRE(mode="straight") {#XI:1 %t1:p};
+// %t2 = $IO_PORT @ATTACH &sb => @PLACE(-29, 35) => @ORIENT("MY");
+// %t2 @TEXT("sb", key="name", size=0.75);
+// &sb @WIRE(mode="straight") {#XI:2 %t2:p};
+// %t3 = $SUPPLY @ATTACH &vdd => @PLACE(-40, 44);
+// &vdd @WIRE(mode="straight") {#XI:3 %t3:p};
+// %t4 = $GROUND @ATTACH &vss => @PLACE(-40, 26);
+// &vss @WIRE(mode="straight") {#XI:4 %t4:p};
+// %t5 = $IO_PORT @ATTACH &a => @PLACE(-11, 19) => @ORIENT("R0");
+// %t5 @TEXT("a", key="name", size=0.75);
+// &a @WIRE(mode="straight") {#XT0:1 %t5:p};
+// %t6 = $IO_PORT @ATTACH &sb => @PLACE(-11, 15) => @ORIENT("R0");
+// %t6 @TEXT("sb", key="name", size=0.75);
+// &sb @WIRE(mode="straight") {#XT0:3 %t6:p};
+// %t7 = $IO_PORT @ATTACH &s => @PLACE(-11, 11) => @ORIENT("R0");
+// %t7 @TEXT("s", key="name", size=0.75);
+// &s @WIRE(mode="straight") {#XT0:4 %t7:p};
+// %t8 = $SUPPLY @ATTACH &vdd => @PLACE(0, 28);
+// &vdd @WIRE(mode="straight") {#XT0:5 %t8:p};
+// %t9 = $GROUND @ATTACH &vss => @PLACE(0, 2);
+// &vss @WIRE(mode="straight") {#XT0:6 %t9:p};
+// %t10 = $IO_PORT @ATTACH &b => @PLACE(-11, -16) => @ORIENT("R0");
+// %t10 @TEXT("b", key="name", size=0.75);
+// &b @WIRE(mode="straight") {#XT1:1 %t10:p};
+// %t11 = $IO_PORT @ATTACH &s => @PLACE(-11, -20) => @ORIENT("R0");
+// %t11 @TEXT("s", key="name", size=0.75);
+// &s @WIRE(mode="straight") {#XT1:3 %t11:p};
+// %t12 = $IO_PORT @ATTACH &sb => @PLACE(-11, -24) => @ORIENT("R0");
+// %t12 @TEXT("sb", key="name", size=0.75);
+// &sb @WIRE(mode="straight") {#XT1:4 %t12:p};
+// %t13 = $SUPPLY @ATTACH &vdd => @PLACE(0, -7);
+// &vdd @WIRE(mode="straight") {#XT1:5 %t13:p};
+// %t14 = $GROUND @ATTACH &vss => @PLACE(0, -33);
+// &vss @WIRE(mode="straight") {#XT1:6 %t14:p};
+// %t15 = $SUPPLY @ATTACH &vdd => @PLACE(50, 9);
+// &vdd @WIRE(mode="straight") {#XB0:3 %t15:p};
+// %t16 = $GROUND @ATTACH &vss => @PLACE(50, -9);
+// &vss @WIRE(mode="straight") {#XB0:4 %t16:p};
+// %t17 = $IO_PORT @ATTACH &y => @PLACE(101, 0) => @ORIENT("MY");
+// %t17 @TEXT("y", key="name", size=0.75);
+// &y @WIRE(mode="straight") {#XB1:2 %t17:p};
+// %t18 = $SUPPLY @ATTACH &vdd => @PLACE(90, 9);
+// &vdd @WIRE(mode="straight") {#XB1:3 %t18:p};
+// %t19 = $GROUND @ATTACH &vss => @PLACE(90, -9);
+// &vss @WIRE(mode="straight") {#XB1:4 %t19:p};
+// (-56, 63) @TEXT("64  MUX2 | 5 instances", size=1.2, halign="start");
+// }
+ends tx_mux_pdk110_64

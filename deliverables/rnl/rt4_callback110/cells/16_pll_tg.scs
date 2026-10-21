@@ -1,0 +1,64 @@
+// TG | frozen callback110 / recenter109 | RNL 0.3
+// @RNL(type="header") { @VERSION("0.3"); @USE-PACKAGE(name="rnl-std-fill") {} }
+simulator lang=spectre
+subckt pll_tg_pdk110_16 (a b on off vdd vss)
+MN (a on b vss) nch w=1e-06 l=1.8e-07 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (a off b vdd) pch w=2e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+// @RNL(author="manual-schematic126") {
+// $CELL = @DEFINE-SYMBOL {
+// @LINE {(-6, 8) (6, 8) (6, -8) (-6, -8) (-6, 8)};
+// (-8, 4) @PIN(terminal="a", direction="left");
+// @LINE {(-8, 4) (-6, 4)};
+// (-5.4, 4) @TEXT("a", size=0.7, halign="start");
+// (-8, 0) @PIN(terminal="on", direction="left");
+// @LINE {(-8, 0) (-6, 0)};
+// (-5.4, 0) @TEXT("on", size=0.7, halign="start");
+// (-8, -4) @PIN(terminal="off", direction="left");
+// @LINE {(-8, -4) (-6, -4)};
+// (-5.4, -4) @TEXT("off", size=0.7, halign="start");
+// (8, 0) @PIN(terminal="b", direction="right");
+// @LINE {(8, 0) (6, 0)};
+// (5.4, 0) @TEXT("b", size=0.7, halign="end");
+// (0, 10) @PIN(terminal="vdd", direction="up");
+// @LINE {(0, 10) (0, 8)};
+// (0, -10) @PIN(terminal="vss", direction="down");
+// @LINE {(0, -10) (0, -8)};
+// ? @TEXT("${name}", key="name", size=1, halign="middle") => @PLACE(8, 11.5);
+// (0, 7.1) @TEXT("TG", size=0.85, halign="middle");
+// };
+// # @SET-SYMBOL $CELL;
+// #MP @PLACE(22, 0) => @ORIENT("R0");
+// #MP @SET-SYMBOL $PMOS_4TERM;
+// #MP @TEXT("MP", key="name", dx=5, dy=1.5, size=0.9, halign="start");
+// #MP @TEXT("2u / 180n", key="model", dx=5, dy=-1.5, size=0.75, halign="start");
+// #MN @PLACE(-12, 0) => @ORIENT("R0");
+// #MN @SET-SYMBOL $NMOS_4TERM;
+// #MN @TEXT("MN", key="name", dx=5, dy=1.5, size=0.9, halign="start");
+// #MN @TEXT("1u / 180n", key="model", dx=5, dy=-1.5, size=0.75, halign="start");
+// %t1 = $IO_PORT @ATTACH &a => @PLACE(18, -5) => @ORIENT("R0");
+// %t1 @TEXT("a", key="name", size=0.75);
+// &a @WIRE(mode="straight") {#MP:1 (22, -5) %t1:p};
+// %t2 = $IO_PORT @ATTACH &off => @PLACE(16, 0) => @ORIENT("R0");
+// %t2 @TEXT("off", key="name", size=0.75);
+// &off @WIRE(mode="straight") {#MP:2 %t2:p};
+// %t3 = $IO_PORT @ATTACH &b => @PLACE(18, 5) => @ORIENT("R0");
+// %t3 @TEXT("b", key="name", size=0.75);
+// &b @WIRE(mode="straight") {#MP:3 (22, 5) %t3:p};
+// %t4 = $IO_PORT @ATTACH &vdd => @PLACE(26, 0) => @ORIENT("MY");
+// %t4 @TEXT("vdd", key="name", size=0.75);
+// &vdd @WIRE(mode="straight") {#MP:4 %t4:p};
+// %t5 = $IO_PORT @ATTACH &a => @PLACE(-16, 5) => @ORIENT("R0");
+// %t5 @TEXT("a", key="name", size=0.75);
+// &a @WIRE(mode="straight") {#MN:1 (-12, 5) %t5:p};
+// %t6 = $IO_PORT @ATTACH &on => @PLACE(-18, 0) => @ORIENT("R0");
+// %t6 @TEXT("on", key="name", size=0.75);
+// &on @WIRE(mode="straight") {#MN:2 %t6:p};
+// %t7 = $IO_PORT @ATTACH &b => @PLACE(-16, -5) => @ORIENT("R0");
+// %t7 @TEXT("b", key="name", size=0.75);
+// &b @WIRE(mode="straight") {#MN:3 (-12, -5) %t7:p};
+// %t8 = $IO_PORT @ATTACH &vss => @PLACE(-8, 0) => @ORIENT("MY");
+// %t8 @TEXT("vss", key="name", size=0.75);
+// &vss @WIRE(mode="straight") {#MN:4 %t8:p};
+// (-23, 24) @TEXT("16  TG | 2 instances", size=1.2, halign="start");
+// }
+ends pll_tg_pdk110_16

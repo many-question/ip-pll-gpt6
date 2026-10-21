@@ -1,0 +1,76 @@
+// Latch | frozen callback110 / recenter109 | RNL 0.3
+// @RNL(type="header") { @VERSION("0.3"); @USE-PACKAGE(name="rnl-std-fill") {} }
+simulator lang=spectre
+subckt pll_latch_pdk110_72 (d gate gateb q vdd vss)
+XT (d x gate gateb vdd vss) pll_tg_pdk110_61
+XI (x qb vdd vss) pll_inv_pdk110_48
+XO (qb q vdd vss) pll_inv_pdk110_62
+XF (q x gateb gate vdd vss) pll_tg_pdk110_63
+// @RNL(author="manual-schematic126") {
+// $CELL = @DEFINE-SYMBOL {
+// @LINE {(-6, 8) (6, 8) (6, -8) (-6, -8) (-6, 8)};
+// (-8, 4) @PIN(terminal="d", direction="left");
+// @LINE {(-8, 4) (-6, 4)};
+// (-5.4, 4) @TEXT("d", size=0.7, halign="start");
+// (-8, 0) @PIN(terminal="gate", direction="left");
+// @LINE {(-8, 0) (-6, 0)};
+// (-5.4, 0) @TEXT("gate", size=0.7, halign="start");
+// (-8, -4) @PIN(terminal="gateb", direction="left");
+// @LINE {(-8, -4) (-6, -4)};
+// (-5.4, -4) @TEXT("gateb", size=0.7, halign="start");
+// (8, 0) @PIN(terminal="q", direction="right");
+// @LINE {(8, 0) (6, 0)};
+// (5.4, 0) @TEXT("q", size=0.7, halign="end");
+// (0, 10) @PIN(terminal="vdd", direction="up");
+// @LINE {(0, 10) (0, 8)};
+// (0, -10) @PIN(terminal="vss", direction="down");
+// @LINE {(0, -10) (0, -8)};
+// ? @TEXT("${name}", key="name", size=1, halign="middle") => @PLACE(8, 11.5);
+// (0, 7.1) @TEXT("Latch", size=0.85, halign="middle");
+// };
+// # @SET-SYMBOL $CELL;
+// #XT @PLACE(0, 0) => @ORIENT("R0");
+// #XI @PLACE(40, 0) => @ORIENT("R0");
+// #XO @PLACE(80, 0) => @ORIENT("R0");
+// #XF @PLACE(40, -35) => @ORIENT("R0");
+// &x @WIRE(mode="straight") {#XT:2 (20, 0) (20, 0) #XI:1};
+// &qb @WIRE(mode="straight") {#XI:2 (60, 0) (60, 0) #XO:1};
+// &q @WIRE(mode="straight") {#XO:2 (88, -20) (32, -20) #XF:1};
+// &x @WIRE(mode="straight") {#XF:2 (55, -35) (55, -55) (20, -55) (20, 0) #XT:2};
+// %t1 = $IO_PORT @ATTACH &d => @PLACE(-11, 4) => @ORIENT("R0");
+// %t1 @TEXT("d", key="name", size=0.75);
+// &d @WIRE(mode="straight") {#XT:1 %t1:p};
+// %t2 = $IO_PORT @ATTACH &gate => @PLACE(-11, 0) => @ORIENT("R0");
+// %t2 @TEXT("gate", key="name", size=0.75);
+// &gate @WIRE(mode="straight") {#XT:3 %t2:p};
+// %t3 = $IO_PORT @ATTACH &gateb => @PLACE(-11, -4) => @ORIENT("R0");
+// %t3 @TEXT("gateb", key="name", size=0.75);
+// &gateb @WIRE(mode="straight") {#XT:4 %t3:p};
+// %t4 = $SUPPLY @ATTACH &vdd => @PLACE(0, 13);
+// &vdd @WIRE(mode="straight") {#XT:5 %t4:p};
+// %t5 = $GROUND @ATTACH &vss => @PLACE(0, -13);
+// &vss @WIRE(mode="straight") {#XT:6 %t5:p};
+// %t6 = $SUPPLY @ATTACH &vdd => @PLACE(40, 9);
+// &vdd @WIRE(mode="straight") {#XI:3 %t6:p};
+// %t7 = $GROUND @ATTACH &vss => @PLACE(40, -9);
+// &vss @WIRE(mode="straight") {#XI:4 %t7:p};
+// %t8 = $SUPPLY @ATTACH &vdd => @PLACE(80, 9);
+// &vdd @WIRE(mode="straight") {#XO:3 %t8:p};
+// %t9 = $GROUND @ATTACH &vss => @PLACE(80, -9);
+// &vss @WIRE(mode="straight") {#XO:4 %t9:p};
+// %t10 = $IO_PORT @ATTACH &gateb => @PLACE(29, -35) => @ORIENT("R0");
+// %t10 @TEXT("gateb", key="name", size=0.75);
+// &gateb @WIRE(mode="straight") {#XF:3 %t10:p};
+// %t11 = $IO_PORT @ATTACH &gate => @PLACE(29, -39) => @ORIENT("R0");
+// %t11 @TEXT("gate", key="name", size=0.75);
+// &gate @WIRE(mode="straight") {#XF:4 %t11:p};
+// %t12 = $SUPPLY @ATTACH &vdd => @PLACE(40, -22);
+// &vdd @WIRE(mode="straight") {#XF:5 %t12:p};
+// %t13 = $GROUND @ATTACH &vss => @PLACE(40, -48);
+// &vss @WIRE(mode="straight") {#XF:6 %t13:p};
+// %t14 = $IO_PORT @ATTACH &q => @PLACE(91, 0) => @ORIENT("MY");
+// %t14 @TEXT("q", key="name", size=0.75);
+// &q @WIRE(mode="straight") {#XO:2 %t14:p};
+// (-16, 32) @TEXT("72  Latch | 4 instances", size=1.2, halign="start");
+// }
+ends pll_latch_pdk110_72

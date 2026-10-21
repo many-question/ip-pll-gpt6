@@ -1,0 +1,61 @@
+// Static DFF | frozen callback110 / recenter109 | RNL 0.3
+// @RNL(type="header") { @VERSION("0.3"); @USE-PACKAGE(name="rnl-std-fill") {} }
+simulator lang=spectre
+subckt ff_static_fast_v14_pdk110_33 (d clk clkb q vdd vss)
+XM (d clkb clk qm vdd vss) ring_inv_latch_v14_pdk110_34
+XS (qm clk clkb q vdd vss) ring_inv_latch_v14_pdk110_34
+// @RNL(author="manual-schematic126") {
+// $CELL = @DEFINE-SYMBOL {
+// @LINE {(-6, 8) (6, 8) (6, -8) (-6, -8) (-6, 8)};
+// (-8, 4) @PIN(terminal="d", direction="left");
+// @LINE {(-8, 4) (-6, 4)};
+// (-5.4, 4) @TEXT("d", size=0.7, halign="start");
+// (-8, 0) @PIN(terminal="clk", direction="left");
+// @LINE {(-8, 0) (-6, 0)};
+// (-5.4, 0) @TEXT("clk", size=0.7, halign="start");
+// (-8, -4) @PIN(terminal="clkb", direction="left");
+// @LINE {(-8, -4) (-6, -4)};
+// (-5.4, -4) @TEXT("clkb", size=0.7, halign="start");
+// (8, 0) @PIN(terminal="q", direction="right");
+// @LINE {(8, 0) (6, 0)};
+// (5.4, 0) @TEXT("q", size=0.7, halign="end");
+// (0, 10) @PIN(terminal="vdd", direction="up");
+// @LINE {(0, 10) (0, 8)};
+// (0, -10) @PIN(terminal="vss", direction="down");
+// @LINE {(0, -10) (0, -8)};
+// ? @TEXT("${name}", key="name", size=1, halign="middle") => @PLACE(8, 11.5);
+// (0, 7.1) @TEXT("Static DFF", size=0.85, halign="middle");
+// };
+// # @SET-SYMBOL $CELL;
+// #XM @PLACE(0, 0) => @ORIENT("R0");
+// #XS @PLACE(45, 0) => @ORIENT("R0");
+// &qm @WIRE(mode="straight") {#XM:4 (25, 0) (25, 4) #XS:1};
+// %t1 = $IO_PORT @ATTACH &d => @PLACE(-11, 4) => @ORIENT("R0");
+// %t1 @TEXT("d", key="name", size=0.75);
+// &d @WIRE(mode="straight") {#XM:1 %t1:p};
+// %t2 = $IO_PORT @ATTACH &clkb => @PLACE(-11, 0) => @ORIENT("R0");
+// %t2 @TEXT("clkb", key="name", size=0.75);
+// &clkb @WIRE(mode="straight") {#XM:2 %t2:p};
+// %t3 = $IO_PORT @ATTACH &clk => @PLACE(-11, -4) => @ORIENT("R0");
+// %t3 @TEXT("clk", key="name", size=0.75);
+// &clk @WIRE(mode="straight") {#XM:3 %t3:p};
+// %t4 = $SUPPLY @ATTACH &vdd => @PLACE(0, 13);
+// &vdd @WIRE(mode="straight") {#XM:5 %t4:p};
+// %t5 = $GROUND @ATTACH &vss => @PLACE(0, -13);
+// &vss @WIRE(mode="straight") {#XM:6 %t5:p};
+// %t6 = $IO_PORT @ATTACH &clk => @PLACE(34, 0) => @ORIENT("R0");
+// %t6 @TEXT("clk", key="name", size=0.75);
+// &clk @WIRE(mode="straight") {#XS:2 %t6:p};
+// %t7 = $IO_PORT @ATTACH &clkb => @PLACE(34, -4) => @ORIENT("R0");
+// %t7 @TEXT("clkb", key="name", size=0.75);
+// &clkb @WIRE(mode="straight") {#XS:3 %t7:p};
+// %t8 = $IO_PORT @ATTACH &q => @PLACE(56, 0) => @ORIENT("MY");
+// %t8 @TEXT("q", key="name", size=0.75);
+// &q @WIRE(mode="straight") {#XS:4 %t8:p};
+// %t9 = $SUPPLY @ATTACH &vdd => @PLACE(45, 13);
+// &vdd @WIRE(mode="straight") {#XS:5 %t9:p};
+// %t10 = $GROUND @ATTACH &vss => @PLACE(45, -13);
+// &vss @WIRE(mode="straight") {#XS:6 %t10:p};
+// (-16, 32) @TEXT("33  Static DFF | 2 instances", size=1.2, halign="start");
+// }
+ends ff_static_fast_v14_pdk110_33
