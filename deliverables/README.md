@@ -1,3 +1,8 @@
+最新网表交付：[第128次汇报](../reports/2026-10-24T0144.yaml)。已新增去除全部 RNL 的独立 Spectre 网表库，原 RNL 版本保留。
+
+- [库入口](netlists/rt4_callback110_plain/library.scs)与[顶层入口](netlists/rt4_callback110_plain/top.scs)。
+- [使用说明与一致性审计](verification/plain_netlist128/README.md)：83 个纯网表文件、81 个子电路，电气定义保持。
+
 最新文档更新：[第127次汇报](../reports/2026-10-21T2039.yaml)。RNL 已加入功能符号并收紧排布，仍从同一入口进入。
 
 - [纯 RNL 网表入口](rnl/rt4_callback110/top.scs)。

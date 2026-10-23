@@ -1,0 +1,58 @@
+simulator lang=spectre
+subckt bank_pulsetrip_v14_pdk110_21 (clk reset s0 s1 s2 s3 s4 s5 q1 out fllclk vdd vss)
+XPRE (q0 clk q0 vdd vss) ff_fbdelay50_v14_pdk110_22
+XPB0 (q0 qb0 vdd vss) pll_inv_pdk110_23
+XPB1 (qb0 q1 vdd vss) pll_inv_pdk110_24
+XD4 (d4b q1 d4b vdd vss) pll_tspc_inv_pdk110_25
+XB40 (d4b b40 vdd vss) pll_inv_pdk110_26
+XB41 (b40 b41 vdd vss) pll_inv_pdk110_27
+XB42 (b41 d4 vdd vss) pll_inv_pdk110_28
+XFAC0 (d4 fab vdd vss) pll_inv_pdk110_29
+XFAC1 (fab fllclk vdd vss) pll_inv_pdk110_27
+XD8 (d8b d4 d8b vdd vss) pll_tspc_inv_pdk110_25
+XB8 (d8b d8 vdd vss) pll_inv_pdk110_27
+XD12 (d4 d12 vdd vss) div3_fast_v14_pdk110_30
+XCT0 (q1 ct0 vdd vss) pll_inv_pdk110_36
+XCT1 (ct0 ct1 vdd vss) pll_inv_pdk110_37
+XCT2 (ct1 cb vdd vss) pll_inv_pdk110_38
+XCT3 (cb ck vdd vss) pll_inv_pdk110_39
+XD6 (ck d6 vdd vss) div3_fast_v14_pdk110_30
+XRL (reset ck loadb vdd vss) pll_tspc_inv_pdk110_25
+XRLI (loadb load vdd vss) pll_inv_pdk110_40
+XRK (load loadb vdd vss) pll_inv_pdk110_41
+XF0 (fb ck ck load loadb vdd r0 vdd vss) ring_sync_singlephase_v14_pdk110_42
+XF1 (r0 ck ck load loadb vdd r1 vdd vss) ring_sync_singlephase_v14_pdk110_42
+XF2 (r1 ck ck load loadb vdd r2 vdd vss) ring_sync_singlephase_v14_pdk110_42
+XF3 (r2 ck ck load loadb s5 r3 vdd vss) ring_sync_singlephase_v14_pdk110_42
+XF4 (r3 ck ck load loadb vss r4 vdd vss) ring_sync_singlephase_v14_pdk110_42
+XF5 (r4 ck ck load loadb vss s5 r5 vdd vss) ring_tail_singlephase_v14_pdk110_46
+XF6 (r5 ck ck load loadb vss s5 r6 vdd vss) ring_tail_singlephase_v14_pdk110_46
+XSI3 (s3 sb3 vdd vss) pll_inv_pdk110_7
+XSI5 (s5 sb5 vdd vss) pll_inv_pdk110_7
+XT5 (r4 fb s3 sb3 vdd vss) pll_tg_pdk110_43
+XT7 (r6 fb s5 sb5 vdd vss) pll_tg_pdk110_43
+RFB (fb vss) resistor r=10000000
+XRI (reset resetb vdd vss) pll_inv_pdk110_7
+XSEB0 (s0 resetb eb0 vdd vss) pll_nand2_pdk110_15
+XSE0 (eb0 es0 vdd vss) pll_inv_pdk110_7
+XMX0 (d4 mux es0 eb0 vdd vss) pll_tg_pdk110_16
+XSEB1 (s1 resetb eb1 vdd vss) pll_nand2_pdk110_15
+XSE1 (eb1 es1 vdd vss) pll_inv_pdk110_7
+XMX1 (d6 mux es1 eb1 vdd vss) pll_tg_pdk110_16
+XSEB2 (s2 resetb eb2 vdd vss) pll_nand2_pdk110_15
+XSE2 (eb2 es2 vdd vss) pll_inv_pdk110_7
+XMX2 (d8 mux es2 eb2 vdd vss) pll_tg_pdk110_16
+XSEB3 (s3 resetb eb3 vdd vss) pll_nand2_pdk110_15
+XSE3 (eb3 es3 vdd vss) pll_inv_pdk110_7
+XMX3 (r0 mux es3 eb3 vdd vss) pll_tg_pdk110_16
+XSEB4 (s4 resetb eb4 vdd vss) pll_nand2_pdk110_15
+XSE4 (eb4 es4 vdd vss) pll_inv_pdk110_7
+XMX4 (d12 mux es4 eb4 vdd vss) pll_tg_pdk110_16
+XSEB5 (s5 resetb eb5 vdd vss) pll_nand2_pdk110_15
+XSE5 (eb5 es5 vdd vss) pll_inv_pdk110_7
+XMX5 (r0 mux es5 eb5 vdd vss) pll_tg_pdk110_16
+MMUTE (mux reset vss vss) nch w=2e-06 l=1.8e-07 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+RKEEP (mux vss) resistor r=10000000
+XO0 (mux ob vdd vss) pll_inv_pdk110_36
+XO1 (ob out vdd vss) pll_inv_pdk110_27
+ends bank_pulsetrip_v14_pdk110_21

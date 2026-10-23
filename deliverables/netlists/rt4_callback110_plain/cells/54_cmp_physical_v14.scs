@@ -1,0 +1,12 @@
+simulator lang=spectre
+subckt cmp_physical_v14_pdk110_54 (vp vn out vdd vss)
+RB (vdd nb) resistor r=100000
+MB (nb nb vss vss) nch w=1e-06 l=1e-06 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MT (tail nb vss vss) nch w=2e-06 l=1e-06 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MP (left vp tail vss) nch w=1e-06 l=5.000000000000001e-07 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MN (sense vn tail vss) nch w=1e-06 l=5.000000000000001e-07 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+PL (left left vdd vdd) pch w=2e-06 l=1e-06 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+PR (sense left vdd vdd) pch w=2e-06 l=1e-06 ad=9.599999999999999e-13 as=9.599999999999999e-13 pd=4.96e-06 ps=4.96e-06 nrd=0.135 nrs=0.135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+XI0 (sense inv vdd vss) pll_inv_pdk110_55
+XI1 (inv out vdd vss) pll_inv_pdk110_7
+ends cmp_physical_v14_pdk110_54

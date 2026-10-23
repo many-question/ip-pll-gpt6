@@ -1,0 +1,22 @@
+simulator lang=spectre
+subckt pll_control_recenter109_v14_pdk110_56 (refclk reset apply k0 k1 k2 k3 k4 k5 outclk acqclk phase_good frequency_good b0 b1 b2 b3 b4 b5 b6 b7 s0 s1 s2 s3 s4 s5 divider_reset enable pulse preset qualified range_error config_ready config_invalid restart count_gate count_reset vdd vss)
+XC (refclk reset apply k0 k1 k2 k3 k4 k5 ak0 ak1 ak2 ak3 ak4 ak5 s0 s1 s2 s3 s4 s5 config_ready config_invalid cfg_reset vdd vss) tx_pll_config_pdk110_57
+XR (cfg_reset restart fll_reset vdd vss) tx_or_pdk110_67
+XDRESET (cfg_reset restart divider_reset vdd vss) tx_or_pdk110_67
+XF (refclk fll_reset ak0 ak1 ak2 ak3 ak4 ak5 m0 m1 m2 m3 m4 m5 m6 m7 m8 m9 m10 m11 m12 m13 b0 b1 b2 b3 b4 b5 b6 b7 d0 d1 d2 d3 d4 d5 fll_gate fll_count_reset acquired range_error state0 state1 state2 vdd vss) tx_fll_recenter109_v14_pdk110_69
+XACQI (acquired acquired_b vdd vss) pll_inv_pdk110_7
+XACQ0 (acqclk clock_mux acquired_b acquired vdd vss) pll_tg_pdk110_16
+XACQ1 (outclk clock_mux acquired acquired_b vdd vss) pll_tg_pdk110_16
+XACB0 (clock_mux clock_b vdd vss) pll_inv_pdk110_36
+XACB1 (clock_b count_clock vdd vss) pll_inv_pdk110_27
+XCOUNT (count_clock count_gate count_reset q0 q1 q2 q3 q4 q5 q6 q7 q8 q9 q10 q11 q12 q13 vdd vss) tx_fll_counter_pdk110_71
+XSN (count_gate q0 q1 q2 q3 q4 q5 q6 q7 q8 q9 q10 q11 q12 q13 m0 m1 m2 m3 m4 m5 m6 m7 m8 m9 m10 m11 m12 m13 vdd vss) tx_fll_snapshot_pdk110_74
+XDAC (d0 d1 d2 d3 d4 d5 acquired preset vdd vss) tx_fll_dac_pdk110_75
+XPHCLK (refclk ref_fall vdd vss) pll_inv_pdk110_7
+XPH (phase_good ref_fall reset phase_held vdd vss) tx_dff_r0_pdk110_58
+XS (refclk reset config_ready acquired range_error phase_held frequency_good enable qualified restart fault vdd vss) tx_pll_supervisor_capture_v14_pdk110_77
+XP (refclk enable fll_reset pulse vdd vss) tx_cp_timing_pdk110_78
+XWG (fll_gate watch_gate acquired count_gate vdd vss) tx_mux_pdk110_64
+XWR (fll_count_reset watch_reset acquired count_reset vdd vss) tx_mux_pdk110_64
+XW (refclk fll_reset acquired ak0 ak1 ak2 ak3 ak4 ak5 m0 m1 m2 m3 m4 m5 m6 m7 m8 m9 m10 m11 m12 m13 watch_gate watch_reset frequency_good watchdog_valid vdd vss) tx_frequency_watchdog_pdk110_80
+ends pll_control_recenter109_v14_pdk110_56

@@ -1,0 +1,8 @@
+simulator lang=spectre
+subckt lc_vco_physical_v14_pdk110_1 (vp vn ctrl b0 b1 b2 b3 b4 b5 b6 b7 vdd vss)
+XL (vp vn b3 b4 b5 b6 b7 vdd vss) lc_core_physical_v14_pdk110_2
+XBP (vp b0 b1 b2 b3 b4 b5 b6 b7 vdd vss) tx_cap_bank_switched_v4_pdk110_4
+XBN (vn b0 b1 b2 b3 b4 b5 b6 b7 vdd vss) tx_cap_bank_switched_v4_pdk110_4
+CVP (vp ctrl) nmoscap lr=2e-06 wr=4.5e-06 mr=1
+CVN (vn ctrl) nmoscap lr=2e-06 wr=4.5e-06 mr=1
+ends lc_vco_physical_v14_pdk110_1

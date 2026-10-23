@@ -1,0 +1,19 @@
+simulator lang=spectre
+subckt validity_physical_v14_pdk110_53 (rf hp hn amp_good phase_good vdd vss)
+MD (rf rf env vss) nch w=5e-07 l=1.8e-07 ad=2.4e-13 as=2.4e-13 pd=1.96e-06 ps=1.96e-06 nrd=0.54 nrs=0.54 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+RE (env vss) resistor r=1000000
+CE (env vss) capacitor c=5e-14
+MR (vdd vdd envref vss) nch w=5e-07 l=1.8e-07 ad=2.4e-13 as=2.4e-13 pd=1.96e-06 ps=1.96e-06 nrd=0.54 nrs=0.54 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+RR (envref vss) resistor r=1000000
+RT0 (envref threshold) resistor r=10000000
+RT1 (threshold vdd) resistor r=90000000
+XA (env threshold amp_good vdd vss) cmp_physical_v14_pdk110_54
+RH0 (hn wh) resistor r=1000000
+RH1 (wh vdd) resistor r=9000000
+RL0 (hn wl) resistor r=1000000
+RL1 (wl vss) resistor r=9000000
+XH (wh hp upper_ok vdd vss) cmp_physical_v14_pdk110_54
+XL (hp wl lower_ok vdd vss) cmp_physical_v14_pdk110_54
+XW (upper_ok lower_ok window_ok vdd vss) tx_and_pdk110_47
+XG (window_ok amp_good phase_good vdd vss) tx_and_pdk110_47
+ends validity_physical_v14_pdk110_53

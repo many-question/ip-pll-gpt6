@@ -1,0 +1,9 @@
+simulator lang=spectre
+subckt ring_tail_singlephase_v14_pdk110_46 (d clk clkb load loadb init selected q vdd vss)
+XEN (loadb selected dopen vdd vss) tx_and_pdk110_47
+XI (dopen dclose vdd vss) pll_inv_pdk110_7
+XDATA (d din dopen dclose vdd vss) pll_tg_pdk110_43
+XINIT (init din load loadb vdd vss) pll_tg_pdk110_43
+RKEEP (din vss) resistor r=10000000
+XF (din clk clkb q vdd vss) ff_singlephase_v14_pdk110_44
+ends ring_tail_singlephase_v14_pdk110_46

@@ -1,0 +1,9 @@
+simulator lang=spectre
+subckt tx_loop_filter_v5_pdk110_17 (ctrl vc1 enable preset vdd vss)
+R (ctrl vc1) resistor r=100000
+C1 (vc1 vss) capacitor c=7.1619724391353e-12
+C2 (ctrl vss) capacitor c=4.77464829275685e-13
+XI (enable enb vdd vss) pll_inv_pdk110_7
+XP0 (preset ctrl enb enable vdd vss) pll_tg_pdk110_18
+XP1 (preset vc1 enb enable vdd vss) pll_tg_pdk110_18
+ends tx_loop_filter_v5_pdk110_17

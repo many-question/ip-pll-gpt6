@@ -1,0 +1,14 @@
+simulator lang=spectre
+subckt cp_physical_v14_pdk110_14 (hp hn pulse enable out vdd vss)
+RREF (vdd nb) resistor r=24000
+MB (nb nb vss vss) nch w=9.999999999999999e-06 l=1e-06 ad=4.8e-12 as=4.8e-12 pd=2.096e-05 ps=2.096e-05 nrd=0.027 nrs=0.027 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+XG (pulse enable gateb vdd vss) pll_nand2_pdk110_15
+XGI (gateb gate vdd vss) pll_inv_pdk110_7
+XT (nb ng gate gateb vdd vss) pll_tg_pdk110_16
+MOFF (ng gateb vss vss) nch w=1e-06 l=1.8e-07 ad=4.8e-13 as=4.8e-13 pd=2.96e-06 ps=2.96e-06 nrd=0.27 nrs=0.27 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MT (tail ng vss vss) nch w=9.999999999999999e-06 l=1e-06 ad=4.8e-12 as=4.8e-12 pd=2.096e-05 ps=2.096e-05 nrd=0.027 nrs=0.027 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MIP (out hp tail vss) nch w=8e-06 l=1e-06 ad=3.84e-12 as=3.84e-12 pd=1.696e-05 ps=1.696e-05 nrd=0.03375 nrs=0.03375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MIN (mir hn tail vss) nch w=8e-06 l=1e-06 ad=3.84e-12 as=3.84e-12 pd=1.696e-05 ps=1.696e-05 nrd=0.03375 nrs=0.03375 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MPD (mir mir vdd vdd) pch w=4e-06 l=1e-06 ad=1.92e-12 as=1.92e-12 pd=8.960000000000001e-06 ps=8.960000000000001e-06 nrd=0.0675 nrs=0.0675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+MPO (out mir vdd vdd) pch w=4e-06 l=1e-06 ad=1.92e-12 as=1.92e-12 pd=8.960000000000001e-06 ps=8.960000000000001e-06 nrd=0.0675 nrs=0.0675 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+ends cp_physical_v14_pdk110_14

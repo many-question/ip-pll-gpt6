@@ -1,0 +1,22 @@
+simulator lang=spectre
+subckt pll_capture_rt4_r48_recenter109_v14_pdk110_0 (ref reset apply k0 k1 k2 k3 k4 k5 out qualified range_error cfg_ready frequency_good phase_good amp_good vdd vss)
+VVCO (vco_vdd vdd) vsource dc=0
+VRX (rx_vdd vdd) vsource dc=0
+VRT (rt_vdd vdd) vsource dc=0
+XV (vp vn ctrl b0 b1 b2 b3 b4 b5 b6 b7 vco_vdd vss) lc_vco_physical_v14_pdk110_1
+XBM (vdd vss vmid) tx_bias_mid_v5_pdk110_5
+CCP (vp sp) capacitor c=1.2e-13
+CCN (vn sn) capacitor c=1.2e-13
+RBP (sp vmid) resistor r=10000
+RBN (sn vmid) resistor r=10000
+XREF (ref refb vdd vss) tx_reference_buffer_pdk110_6
+CR (refb vss) capacitor c=6.000000000000001e-14
+XS (refb sp sn hp hn vdd vss) tx_sampler_pdk110_11
+XCP (hp hn pulse en ctrl vdd vss) cp_physical_v14_pdk110_14
+XLF (ctrl vc1 en preset vdd vss) tx_loop_filter_v5_pdk110_17
+XRX (vp clk rx_vdd vss) rf_light24s12_v14_pdk110_19
+XD (clk divider_reset s0 s1 s2 s3 s4 s5 q1 data acqclk vdd vss) bank_pulsetrip_v14_pdk110_21
+XR (data clk out rt_vdd vss) rt_noise_scale4_v14_pdk110_49
+XDET (vp hp hn amp_good phase_good vdd vss) validity_physical_v14_pdk110_53
+XC (refb reset apply k0 k1 k2 k3 k4 k5 out acqclk phase_good frequency_good b0 b1 b2 b3 b4 b5 b6 b7 s0 s1 s2 s3 s4 s5 divider_reset en pulse preset qualified range_error cfg_ready cfg_invalid restart count_gate count_reset vdd vss) pll_control_recenter109_v14_pdk110_56
+ends pll_capture_rt4_r48_recenter109_v14_pdk110_0

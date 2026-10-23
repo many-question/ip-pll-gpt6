@@ -1,0 +1,7 @@
+simulator lang=spectre
+subckt tx_latch_r_pdk110_60 (d gate gateb resetb q vdd vss)
+XT (d x gate gateb vdd vss) pll_tg_pdk110_61
+XN (x resetb qb vdd vss) pll_nand2_pdk110_15
+XO (qb q vdd vss) pll_inv_pdk110_62
+XF (q x gateb gate vdd vss) pll_tg_pdk110_63
+ends tx_latch_r_pdk110_60

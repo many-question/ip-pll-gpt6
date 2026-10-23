@@ -1,0 +1,8 @@
+simulator lang=spectre
+subckt tx_sampler_pdk110_11 (ref vp vn hp hn vdd vss)
+XI (ref refb vdd vss) pll_inv_pdk110_12
+XSP (vp hp refb ref vdd vss) pll_tg_pdk110_13
+XSN (vn hn refb ref vdd vss) pll_tg_pdk110_13
+CP (hp vss) capacitor c=4.000000000000001e-14
+CN (hn vss) capacitor c=4.000000000000001e-14
+ends tx_sampler_pdk110_11

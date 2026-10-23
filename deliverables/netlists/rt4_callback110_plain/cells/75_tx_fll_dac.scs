@@ -1,0 +1,28 @@
+simulator lang=spectre
+subckt tx_fll_dac_pdk110_75 (d0 d1 d2 d3 d4 d5 enable out vdd vss)
+MP (vd enable vdd vdd) pch w=2e-05 l=1.8e-07 ad=9.599999999999999e-12 as=9.599999999999999e-12 pd=4.096e-05 ps=4.096e-05 nrd=0.0135 nrs=0.0135 sa=4.8e-07 sb=4.8e-07 sd=5.4e-07 sca=0 scb=0 scc=0
+XI0 (d0 b0 vd vss) pll_inv_pdk110_59
+XO0 (b0 v0 vd vss) pll_inv_pdk110_76
+RB0 (v0 r0) resistor r=10000
+XI1 (d1 b1 vd vss) pll_inv_pdk110_59
+XO1 (b1 v1 vd vss) pll_inv_pdk110_76
+RB1 (v1 r1) resistor r=10000
+RS1 (r0 r1) resistor r=5000
+XI2 (d2 b2 vd vss) pll_inv_pdk110_59
+XO2 (b2 v2 vd vss) pll_inv_pdk110_76
+RB2 (v2 r2) resistor r=10000
+RS2 (r1 r2) resistor r=5000
+XI3 (d3 b3 vd vss) pll_inv_pdk110_59
+XO3 (b3 v3 vd vss) pll_inv_pdk110_76
+RB3 (v3 r3) resistor r=10000
+RS3 (r2 r3) resistor r=5000
+XI4 (d4 b4 vd vss) pll_inv_pdk110_59
+XO4 (b4 v4 vd vss) pll_inv_pdk110_76
+RB4 (v4 r4) resistor r=10000
+RS4 (r3 r4) resistor r=5000
+XI5 (d5 b5 vd vss) pll_inv_pdk110_59
+XO5 (b5 v5 vd vss) pll_inv_pdk110_76
+RB5 (v5 out) resistor r=10000
+RS5 (r4 out) resistor r=5000
+RT (r0 vss) resistor r=10000
+ends tx_fll_dac_pdk110_75

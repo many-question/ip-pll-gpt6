@@ -1,0 +1,8 @@
+simulator lang=spectre
+subckt tx_mux_pdk110_64 (a b s y vdd vss)
+XI (s sb vdd vss) pll_inv_pdk110_48
+XT0 (a z sb s vdd vss) pll_tg_pdk110_65
+XT1 (b z s sb vdd vss) pll_tg_pdk110_65
+XB0 (z zb vdd vss) pll_inv_pdk110_48
+XB1 (zb y vdd vss) pll_inv_pdk110_48
+ends tx_mux_pdk110_64
